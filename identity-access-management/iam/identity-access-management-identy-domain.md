@@ -32,7 +32,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
 1. Click the **Navigation Menu** in the upper left, navigate to **Identity & Security** and select **Compartments**.
 
- ![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/id-compartment.png " ")
+ ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/id-compartment.png " ")
 
 1. Click **Create Compartment**.
    ![Create a compartment](images/create-compartment.png)
@@ -163,7 +163,7 @@ For IAM with Identity Domains, what was identified before as IAM users and group
 
    a) Click the **Navigation Menu** in the upper left. Click **Compute** and then click **Instances**.
 
-   ![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/compute-instances.png " ")
+   ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/compute-instances.png " ")
 
    b) Try to select any compartment from the left menu.
 
@@ -177,7 +177,7 @@ For IAM with Identity Domains, what was identified before as IAM users and group
       a) Sign back in with the ***admin*** account.
 
       b) Click the **Navigation Menu** in the upper left. Navigate to **Identity & Security** and select **Users**. From the **Users** list, click the user account that you just created (for example, `User01`)  to go to the User Details page.
-         ![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/id-users.png " ")
+         ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/id-users.png " ")
 
       c) Under the **Resources** menu on the left, click **Groups**, if it's not already selected.
 
