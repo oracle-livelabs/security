@@ -1,0 +1,1 @@
+Screenshot showing the Database Actions button circled on the Autonomous Database Details page.

@@ -1,0 +1,38 @@
+{
+  "workshoptitle": "Oracle Identity Governance(OIG) One Hop Upgrade",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "This lab provides an overview of this workshop.",
+      "filename": "../../introduction/introduction.md"
+    },
+    {
+      "title": "Get Started with noVNC Remote Desktop",
+      "description": "Using noVNC Remote Desktop",
+      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/remote-desktop/using-novnc-remote-desktop.md"
+    },
+    {
+      "title": "Lab 1: Initialize Environment",
+      "description": "Labs that follow the introduction are numbered, starting with Lab 1",
+      "filename": "../../initialize-environment/initialize-environment.md"
+    },
+    {
+      "title": "Lab 2: Pre-Upgrade Requirements",
+      "filename": "../../pre-upgrade/pre-upgrade.md"
+    },
+    {
+      "title": "Lab 3: One-hop Upgrade",
+      "filename": "../../upgrade/upgrade.md"
+    },
+    {
+      "title": "Lab 4: Post-Upgrade Tasks",
+      "filename": "../../post-upgrade/post-upgrade.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}

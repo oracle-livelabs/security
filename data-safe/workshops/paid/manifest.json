@@ -1,0 +1,60 @@
+{
+    "workshoptitle": "Get Started with Oracle Data Safe Fundamentals",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+      {
+        "title": "Introduction",
+        "description": "This lab provides information about the Oracle Data Safe workshop.",
+        "filename": "../../introduction/introduction.md",
+        "type": "paid"
+      },
+      {
+        "title": "Getting Started",
+        "description": "Get an Oracle Cloud account if needed and sign in.",
+        "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/pre-register-free-tier-account.md",
+        "type": "paid"
+      },
+      {
+        "title": "Prepare Your Environment",
+        "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
+        "filename": "../../prepare-environment/prepare-environment.md",
+        "type": "paid"
+      },
+      {
+        "title": "Lab 1: Register an Autonomous Database with Oracle Data Safe",
+        "description": "This lab shows you how to register an Autonomous Data Warehouse on Shared Exadata Infrastructure with Oracle Data Safe and load sample data into it.",
+        "filename": "../../register-autonomous-database/register-autonomous-database.md",
+        "type": "paid"
+      },
+      {
+        "title": "Lab 2: Audit Database Activity",
+        "description": "This lab shows you how to provision audit policies in Oracle Data Safe.",
+        "filename": "../../audit-database-activity/audit-database-activity.md",
+        "type": "paid"
+      },
+      {
+        "title": "Lab 3: Generate Alerts",
+        "description": "This lab shows you how to provision alert policies in Oracle Data Safe.",
+        "filename": "../../generate-alerts/generate-alerts.md",
+        "type": "paid"
+      },
+      {
+        "title": "Lab 4: Assess Database Configurations and Users",
+        "description": "This lab shows you how to assess database configurations and users in your Autonomous Database by using the User Assessment feature in Oracle Data Safe.",
+        "filename": "../../assess-database-configurations-users/assess-database-configurations-users.md",
+        "type": "paid"
+      },
+      {
+        "title": "Lab 5: Discover and Mask Sensitive Data",
+        "description": "This lab shows you how to discover and mask sensitive data in Oracle Data Safe by using the Data Discovery and Data Masking features.",
+        "filename": "../../discover-mask-sensitive-data/discover-mask-sensitive-data.md",
+        "type": "paid"
+      },
+      {
+        "title": "Need Help?",
+        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+        "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md",
+        "type": "paid"
+      }
+    ]
+  }

@@ -1,0 +1,1 @@
+Screenshot showing all sensitive types selected for data discovery.

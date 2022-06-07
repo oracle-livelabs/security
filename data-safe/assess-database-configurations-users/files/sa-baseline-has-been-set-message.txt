@@ -1,0 +1,1 @@
+Screenshot of the "Baseline has been set" message after setting a security assessment as a baseline.

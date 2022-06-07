@@ -1,0 +1,37 @@
+{
+  "workshoptitle": "Get started with Oracle Cloud Infrastructure Security Advisor",
+  "help": "livelabs-help-oci_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Introduction about the Workshop and Labs",
+      "filename": "../../introduction/introduction.md"
+    },
+    {
+      "title": "Getting Started",
+      "description": "Details about How to Register for Free Tier Account on OCI",
+      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/pre-register-free-tier-account.md"
+    },
+
+    {
+      "title": "Lab 1: Create a Secure Bucket",
+      "description": "Step by step instruction on creating a Secure Bucket",
+      "filename": "../../provision-secure-bucket/create-bucket.md"
+    },
+    {
+      "title": "Lab 2: Create a Secure Block Volume",
+      "description": "Step by step instruction on creating a Secure Block Volume",
+      "filename": "../../provision-block-volume/create-block-volume.md"
+    },
+    {
+      "title": "Lab 3: Create a Secure Virtual Machine Instance",
+      "description": "Step by step instruction on creating a Secure Virtual Machine Instance",
+      "filename": "../../provision-virtual-machine/create-compute-instance.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "../../need-help/need-help.md"
+  }
+  ]
+}
