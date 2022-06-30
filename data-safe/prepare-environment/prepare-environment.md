@@ -22,6 +22,7 @@ In this lab, you will:
 - Create a user group and add the user account to the group
 - Create an IAM policy for the user group
 - Provision an Autonomous Transaction Processing database
+- Run a SQL script using Oracle Database Actions to load sample data into your database
 
 
 ### Prerequisites
@@ -176,7 +177,55 @@ As a tenancy administrator or user with appropriate permissions to manage an Aut
 7. Wait a few minutes for your instance to provision. When it is ready, **AVAILABLE** is displayed below the large ATP icon.
 
 
+## Task 6: Run a SQL script using Oracle Database Actions to load sample data into your database
 
+As the `ADMIN` user on the ATP database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your target database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also grants the Data Masking role to the Oracle Data Safe service account on your target database.
+
+1. At the top of the **Autonomous Database Details** page, click **Database Actions** and wait for a new browser tab to open.
+
+2. If you are prompted to sign in to your target database, sign in as the `ADMIN` user.
+
+    - If a tenancy administrator provided you an Autonomous Database, obtain the password from your tenancy administrator.
+    - If you are using an Oracle-provided environment, enter the `ADMIN` password that was provided to you.
+
+3. Under **Development**, click **SQL**.
+
+4. If a help note is displayed, click the **X** button to close it.
+
+5. Download the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script, and then unzip it in a directory of your choice. Next, open the file in a text editor, such as NotePad.
+
+6. Copy the entire script to the clipboard and then paste it into a worksheet in Database Actions.
+
+7. On the toolbar, click the **Run Script** button.
+
+    ![Run Script button](images/run-script.png "Run Script button")
+
+    - The script takes a few minutes to run.
+    - In the bottom-left corner, the cog wheel may remain still for about a minute, and then turn as the script is processed. The script output is displayed after the script is finished running.
+    - Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
+    - The script ends with the message **END OF SCRIPT**.
+
+8. When the script is finished running, click the browser's refresh button. Then, on the **Navigator** tab on the left, select the `HCM1` schema from the first drop-down list. In the second drop-down list, leave **Tables** selected.
+
+9. On the toolbar, click the **Clear** button (trash can icon) to clear the worksheet.
+
+10. Click the **Script Output** tab. If needed, click the **Clear output** button (trash can icon) to clear the output.
+
+11. For each table listed below, drag the table to the worksheet and run the script. Choose **Select** as the insertion type when prompted. Make sure that you have the same number of rows in each table as stated below.
+
+    - `COUNTRIES` - 25 rows
+    - `DEPARTMENTS` - 27 rows
+    - `EMPLOYEES` - 107 rows
+    - `EMP_EXTENDED` - 107 rows
+    - `JOBS` - 19 rows
+    - `JOB_HISTORY` - 10 rows
+    - `LOCATIONS` - 23 rows
+    - `REGIONS` - 4 rows
+    - `SUPPLEMENTAL_DATA` - 149 rows
+
+12. If your data is different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
+
+13. Sign out of Database Actions, close the tab, and return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
 
 ## Learn More
@@ -190,4 +239,4 @@ As a tenancy administrator or user with appropriate permissions to manage an Aut
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 26, 2022
+- **Last Updated By/Date** - Jody Glover, June 30, 2022
