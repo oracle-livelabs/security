@@ -7,11 +7,13 @@ inject-note: true
 
 ## Introduction
 
-To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. If there is no option to register your database, it is because you are working in a region that does not have the Oracle Data Safe service enabled in it. A registered database is referred to as a **target database** in Oracle Data Safe.
+To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. A registered database is referred to as a **target database** in Oracle Data Safe.
 
-After registration, you need to grant roles to the Oracle Data Safe service account on your target database to enable Oracle Data Safe features on it. The roles are different for Autonomous Databases versus non-Autonomous Databases. For non-Autonomous databases, you can grant roles prior to or after registering your database. For Autonomous Databases, you first need to register your database, which unlocks the Oracle Data Safe pre-seeded service account, and then grant and revoke roles as needed. For an Autonomous Database on Shared Exadata Infrastructure, which is what you use in this workshop, all roles are already granted by default, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
+After registration, you need to grant roles to the Oracle Data Safe service account on your Autonomous Database. The roles determine which Oracle Data Safe features you can use with your database. It's important that you first register your Autonomous Database with Oracle Data Safe before granting roles because registration unlocks the Oracle Data Safe pre-seeded service account. After registration, you can grant and revoke Oracle Data Safe roles as needed. For an Autonomous Database on Shared Exadata Infrastructure, which is what you use in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
 
-Begin by registering your Autonomous Transaction Database (ATP) with Oracle Data Safe and loading sample data into it. Access Oracle Data Safe in Oracle Cloud Infrastructure and view the list of registered target databases to which you have access. Review Security Center. Security Center is the central hub for Oracle Data Safe where you can access Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Alerts, Settings, and the Oracle Data Safe dashboard.
+*Note: The Oracle Data Safe roles are different for Autonomous Databases versus non-Autonomous Databases. For non-Autonomous databases, you can grant roles before or after registering your database.*
+
+Begin by registering your Autonomous Transaction Database (ATP) with Oracle Data Safe. Next, grant the Data Masking role to the Oracle Data Safe service account on your target database. Navigate to Oracle Data Safe in Oracle Cloud Infrastructure and view the list of registered target databases to confirm yours is listed. Explore Security Center, which is the central hub for Oracle Data Safe where you can access Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Alerts, Settings, and the Oracle Data Safe dashboard.
 
 Estimated Lab Time: 30 minutes
 
@@ -20,9 +22,9 @@ Estimated Lab Time: 30 minutes
 In this lab, you will:
 
 - Register your database with Oracle Data Safe
-- Grant the necessary Oracle Data Safe roles on your target database
+- Grant Oracle Data Safe roles on your target database
 - Access Oracle Data Safe and view the list of registered target databases to which you have access
-- Access and review Security Center
+- Explore Security Center
 
 ### Prerequisites
 
@@ -59,9 +61,7 @@ This lab assumes you have:
     ![Status reads registered](images/status-registered.png "Status reads registered" )
 
 
-## Task 2: Grant the necessary Oracle Data Safe roles on your target database
-
-The Oracle Data Safe roles granted to the Oracle Data Safe service account on your target database determine which Oracle Data Safe features you can use with your target database. On an Autonomous Database, all roles except for the Data Masking role are granted by default. Therefore, if you plan to do the lab for discovery and masking, you need to perform this task. Keep in mind that you first need to register your Autonomous Database before you can grant the roles.
+## Task 2: Grant Oracle Data Safe roles on your target database
 
 1. Open **Oracle Database Actions**.
 
@@ -103,7 +103,7 @@ The Oracle Data Safe roles granted to the Oracle Data Safe service account on yo
     ![Target Database Details page](images/target-database-details-page.png "Target Database Details page")
 
 
-## Task 4: Access and review Security Center
+## Task 4: Explore Security Center
 
 1. In the breadcrumb at the top of the page, click **Data Safe**.
 
@@ -133,4 +133,4 @@ The Oracle Data Safe roles granted to the Oracle Data Safe service account on yo
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 30, 2022 exta
+- **Last Updated By/Date** - Jody Glover, July 5, 2022

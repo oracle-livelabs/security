@@ -6,7 +6,7 @@ inject-note: true
 
 ## Introduction
 
-To do this workshop, you need access to an Oracle Data Safe service in a region of your tenancy and a target database. This workshop uses an Autonomous Transaction Processing (ATP) database.
+To do this workshop, you need access to an Oracle Data Safe service in a region of your tenancy and an Oracle database. This workshop uses an Autonomous Transaction Processing (ATP) database.
 
 To complete most of the preparation tasks, you need to be a tenancy administrator. If you are a regular user in your organization's tenancy, enlist the help of a tenancy administrator. If you are using an Oracle-provided environment such as LiveLabs, you do not need to prepare an environment because Oracle provides you one with everything you need.
 
@@ -19,10 +19,10 @@ In this lab, you will:
 
 - Enable Oracle Data Safe in a region of your tenancy
 - Create a compartment
-- Create a user group and add the user account to the group
+- Create a user group and add an Oracle Cloud account to the group
 - Create an IAM policy for the user group
 - Provision an Autonomous Transaction Processing database
-- Run a SQL script using Oracle Database Actions to load sample data into your database
+- Load sample data into your database
 
 
 ### Prerequisites
@@ -53,7 +53,7 @@ As a tenancy administrator or an Oracle Data Safe administrator, enable Oracle D
 
 ## Task 2: Create a compartment
 
-As a tenancy administrator, create a compartment in IAM in which to store Oracle Data Safe resources. From here on in, we refer to the compartment created in this task as "your compartment."
+As a tenancy administrator, create a compartment in Oracle Cloud Infrastructure Identity and Access Management (IAM) in which to store Oracle Data Safe resources. From here on in, we refer to this compartment as "your compartment."
 
 > **Note**: If you have an existing compartment in your tenancy that you can use, or you are using an Oracle-provided environment, you can skip this task.
 
@@ -72,9 +72,9 @@ As a tenancy administrator, create a compartment in IAM in which to store Oracle
 5. Click **Create Compartment**.
 
 
-## Task 3: Create a user group and add the user account to the group
+## Task 3: Create a user group and add an Oracle Cloud account to the group
 
-As a tenancy administrator, create a user group and add the user account (Oracle Cloud account) to the group.
+As a tenancy administrator, create a user group and add an Oracle Cloud account to the group.
 
 > **Note**: If you are a tenancy administrator or you are using an Oracle-provided environment, you can skip this task.
 
@@ -102,7 +102,7 @@ As a tenancy administrator, create a user group and add the user account (Oracle
 
 8. From the drop-down list, select the user for this workshop, and then click **Add**.
 
-    The user account is listed as a group member.
+    The user is listed as a group member.
 
 
 ## Task 4: Create an IAM policy for the user group
@@ -138,7 +138,7 @@ As a tenancy administrator, create an IAM policy that grants the user permission
     </copy>
     ```
 
-    The first statement allows the user group to register an Oracle Database with Oracle Data Safe and create and manage Oracle Data Safe resources in the specified compartment. The second statement is allows the user group to use an Autonomous Database with Oracle Data Safe.
+    The first statement allows the user group to register an Oracle Database with Oracle Data Safe and create and manage Oracle Data Safe resources in the specified compartment. The second statement allows the user group to create an Autonomous Database in the specified compartment and use it with Oracle Data Safe.
 
 9. Click **Create**.
 
@@ -177,13 +177,13 @@ As a tenancy administrator or user with appropriate permissions to manage an Aut
 7. Wait a few minutes for your instance to provision. When it is ready, **AVAILABLE** is displayed below the large ATP icon.
 
 
-## Task 6: Run a SQL script using Oracle Database Actions to load sample data into your database
+## Task 6: Load sample data into your database
 
-As the `ADMIN` user on the ATP database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your target database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also grants the Data Masking role to the Oracle Data Safe service account on your target database.
+As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features.
 
 1. At the top of the **Autonomous Database Details** page, click **Database Actions** and wait for a new browser tab to open.
 
-2. If you are prompted to sign in to your target database, sign in as the `ADMIN` user.
+2. If you are prompted to sign in to your database, sign in as the `ADMIN` user.
 
     - If a tenancy administrator provided you an Autonomous Database, obtain the password from your tenancy administrator.
     - If you are using an Oracle-provided environment, enter the `ADMIN` password that was provided to you.
@@ -239,4 +239,4 @@ As the `ADMIN` user on the ATP database, run the `load-data-safe-sample-data_adm
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 30, 2022
+- **Last Updated By/Date** - Jody Glover, July 5, 2022
