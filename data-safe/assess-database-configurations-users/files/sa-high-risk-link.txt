@@ -1,1 +1,0 @@
-High Risk link circled in red on the Risk Summary tab in the Security Assessment dashboard.

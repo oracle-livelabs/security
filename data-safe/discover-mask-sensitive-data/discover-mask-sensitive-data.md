@@ -34,7 +34,7 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe and loaded sample data into it. Make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
+- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
 
 
 ### Assumptions
@@ -337,4 +337,4 @@ After you create a masking policy, you can run a data masking job against your t
 
 ## Acknowledgements
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, June 30, 2022
+* **Last Updated By/Date** - Jody Glover, July 5, 2022

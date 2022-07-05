@@ -1,1 +1,0 @@
-A comparison report showing that the latest security assessment is identical to the set baseline.
