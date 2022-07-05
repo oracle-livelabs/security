@@ -1,4 +1,4 @@
-# Welcome to the Data Safe Fundamentals Workshop
+# Welcome to the Get Started with Oracle Data Safe Workshop
 
 This workshop lets you practice the main features in Oracle Data Safe, including Activity Auditing, Alerts, User Assessment, Security Assessment, Data Discovery, and Data Masking.
 
