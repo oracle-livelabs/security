@@ -11,7 +11,7 @@ This workshop lets you practice the main features in Oracle Data Safe, including
 Alternatively, you can follow these labs in this Oracle Learning Library repository:
 
 - [Introduction](./introduction/introduction.md)
-- [Getting Started](../../../common/labs/cloud-login/pre-register-free-tier-account.md)
+- [Getting Started](https://github.com/oracle-livelabs/common/blob/main/labs/cloud-login/pre-register-free-tier-account.md)
 - [Prepare Your Environment](./prepare-environment/prepare-environment.md)
 - [Register an Autonomous Database with Oracle Data Safe](./register-autonomous-database/register-autonomous-database.md)
 - [Audit Database Activity](./audit-database-activity/audit-database-activity.md)

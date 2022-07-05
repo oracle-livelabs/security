@@ -42,13 +42,13 @@
       "title": "Lab 4: Assess Database Configurations",
       "description": "This lab shows you how to assess database configurations in your Autonomous Database by using the Security Assessment feature in Oracle Data Safe.",
       "filename": "../../assess-database-configurations/assess-database-configurations.md",
-      "type": "livelabs"
+      "type": "freetier"
     },
     {
       "title": "Lab 5: Assess Database Users",
       "description": "This lab shows you how to assess database users in your Autonomous Database by using the User Assessment feature in Oracle Data Safe.",
       "filename": "../../assess-database-users/assess-database-users.md",
-      "type": "livelabs"
+      "type": "freetier"
     },
     {
       "title": "Lab 6: Discover and Mask Sensitive Data",
