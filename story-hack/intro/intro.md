@@ -1,9 +1,6 @@
 # Introduction
 
 ## About this Workshop
-### Overview
-*Estimated Time to complete the workshop*: 40 minutes
-
 This workshop is a hands-on lab dedicated to the features and functionality of Oracle Database security to prevent, detect and mitigate the most common cyberattacks performed on Oracle Databases - for more details on each of the featured products, please refer to the Livelabs [DB Security Basics](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=698) and [DB Security Advanced](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=726) labs.
 
 ![](../images/hack-002.png "Ransomware Attack message")
@@ -12,7 +9,9 @@ Based on an OCI architecture, deployed in a few minutes with a simple internet c
 
 This lab helps you learn to use some of the most important security features of the Oracle Database.
 
-### Objectives
+*Estimated Workshop Time*: 40 minutes
+
+## Objectives
 During this workshop, you will perform different scenario:
 - **as an attacker** - your main objective will be to exfiltrate sensitive data from a target database before encrypting data in a simulated ransomware attack
 - **as a defender** - your main objective will be to prevent, detect and mitigate these attacks

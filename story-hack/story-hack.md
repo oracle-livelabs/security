@@ -11,17 +11,7 @@ If you are unfamiliar with ransomware, please take a moment to read the appendix
 
 *Versions tested in this lab:* Oracle DB EE 19.13, OEM 13.5, AVDF 20.5
 
-### Video Preview
-None for the moment!
-
-### Objectives
-In this lab, let's walk through the techniques that attackers use to break into your database and exfiltrate your data. A typical ransomware attack includes theft and exfiltration of data. The theft usually happens before encrypting your system to make it inoperable, with the stolen data used by the ransomware gang to help influence you to pay the ransom. Understanding the attacker's motivation and how to prevent them from being able to use the stolen data against you helps you better survive the attack and makes it more feasible to NOT pay the ransom.
-
-You will see how to:
-- Prevent, detect and mitigate data exfiltration
-- Prevent and detect privileges escalation and abuse
-- Prevent and mitigate exploitation of vulnerabilities
-
+## About this Product/Technology
 During this workshop, you will perform different scenarios:
 - **as an attacker** - your main objective will be to exfiltrate sensitive data from the target database before encrypting the database as part of a ransomware attack.
 - **as a defender** - your main objective will be to prevent, detect and mitigate these attacks
@@ -42,6 +32,14 @@ As your attack protocol progresses, you will test the same commands from the sam
 ![](./images/hack-003.png "Story of a hack - Livelab architecture")
 
 All components for the lab run in the DBSec-Lab VM. Because this is a LiveLabs environment, you can conduct your attack without any risk or fear of breaking anything.
+
+### Objectives
+In this lab, let's walk through the techniques that attackers use to break into your database and exfiltrate your data. A typical ransomware attack includes theft and exfiltration of data. The theft usually happens before encrypting your system to make it inoperable, with the stolen data used by the ransomware gang to help influence you to pay the ransom. Understanding the attacker's motivation and how to prevent them from being able to use the stolen data against you helps you better survive the attack and makes it more feasible to NOT pay the ransom.
+
+You will see how to:
+- Prevent, detect and mitigate data exfiltration
+- Prevent and detect privileges escalation and abuse
+- Prevent and mitigate exploitation of vulnerabilities
 
 ### Prerequisites
 This lab assumes you have:
@@ -965,7 +963,7 @@ We started with a fictitious attacker who planned to execute a ransomware attack
 
 ---
 
-## **Appendix**: The Stages of a Ransomware Attack
+## Appendix: The Stages of a Ransomware Attack
 Several steps characterize a cyber-attack, and attackers typically follow them in the same order.
 
 Ransomware is big business – in terms of income, it may be big enough to include in the Global 100! Modern ransomware gangs are professionally organized and operationally siloed. Specialized groups become experts at specific stages of the ransomware process. These groups sell their services or the results of their misdeeds to other groups that either don't have the specialized skills or want to save time – scaling up just like any other big business does. This agile approach offers ransomware gangs a greater capacity for generating revenue with a lower cost of operations while limiting the risk of being caught and prosecuted.
@@ -1008,7 +1006,7 @@ Unfortunately, whether you pay the ransom or not, your sensitive data is now out
 
 **So, take the steps we’ve discussed in this lab to secure your sensitive data and avoid data theft. That way you won’t find yourself dealing with these issues AFTER you’ve been attacked**.
 
-## Want to Learn More?
+## Learn More?
 Read more about ransomware here:
 - [US Cybersecurity and Infrastructure Security Agency (CISA)’s Stop Ransomware campaign] (https://www.cisa.gov/stopransomware)
 - [European Union Agency for Cybersecurity (ENISA)] (https://www.enisa.europa.eu/topics/csirts-in-europe/glossary/ransomware)
