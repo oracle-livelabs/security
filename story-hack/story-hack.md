@@ -11,7 +11,7 @@ If you are unfamiliar with ransomware, please take a moment to read the appendix
 
 *Versions tested in this lab:* Oracle DB EE 19.13, OEM 13.5, AVDF 20.5
 
-## About this Product/Technology
+### About this Product/Technology
 During this workshop, you will perform different scenarios:
 - **as an attacker** - your main objective will be to exfiltrate sensitive data from the target database before encrypting the database as part of a ransomware attack.
 - **as a defender** - your main objective will be to prevent, detect and mitigate these attacks

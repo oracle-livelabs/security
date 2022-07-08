@@ -11,7 +11,7 @@ This lab helps you learn to use some of the most important security features of 
 
 *Estimated Workshop Time*: 40 minutes
 
-## Objectives
+### Objectives
 During this workshop, you will perform different scenario:
 - **as an attacker** - your main objective will be to exfiltrate sensitive data from a target database before encrypting data in a simulated ransomware attack
 - **as a defender** - your main objective will be to prevent, detect and mitigate these attacks
