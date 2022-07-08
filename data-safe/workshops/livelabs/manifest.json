@@ -9,7 +9,7 @@
         "type": "livelabs"
       },
       {
-        "title": "Getting Started",
+        "title": "Get Started",
         "description": "Get an Oracle Cloud account if needed and sign in.",
         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md",
         "type": "livelabs"
@@ -59,7 +59,7 @@
       {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
       }
     ]
   }
