@@ -397,4 +397,4 @@ In this task you run a SQL script that runs admin activity on the target databas
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 11, 2022
+* **Last Updated By/Date** - Jody Glover, July 12, 2022

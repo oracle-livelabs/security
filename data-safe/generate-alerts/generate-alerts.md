@@ -32,7 +32,6 @@ This lab assumes you have:
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your target database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
 - Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity))
-- Accessed Security Center
 
 
 ### Assumptions
@@ -58,7 +57,6 @@ This lab assumes you have:
     - Database Schema Changes
     - User Entitlement Changes
     - User Creation/Modification
-
 
     ![Oracle Data Safe alert policies](images/oracle-data-safe-alert-policies.png "Oracle Data Safe alert policies")
 
@@ -106,6 +104,7 @@ This lab assumes you have:
 
     ![Two target-policy associations for your target database](images/two-target-policy-associations-for-target.png "Two target-policy associations for your target database")
 
+
 ## Task 3: Perform activity on your target database to cause alerts in Oracle Data Safe
 
 In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, sign in and create a user account.
@@ -138,14 +137,12 @@ In this task, you perform activities on your target database in Database Actions
     grant PDB_DBA to MALFOY;</copy>
     ```
 
-13. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab.
+10. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab.
 
-14. Wait a couple of minutes for Oracle Data Safe to produce the alerts.
-
+11. Wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
 
 ## Task 4: Review the generated alerts in Oracle Data Safe
-
 
 1. From the navigation menu, select **Oracle Database** and then **Data Safe**.
 
@@ -272,7 +269,6 @@ In this task, you perform activities on your target database in Database Actions
 11. In the **Generate Report** dialog box, click **Close**.
 
 
-
 ## Learn More
 
 - [Alerts Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-37F8AC38-44D4-42D1-AE93-9775DCF21511)
@@ -281,4 +277,4 @@ In this task, you perform activities on your target database in Database Actions
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 11, 2022
+* **Last Updated By/Date** - Jody Glover, July 12, 2022

@@ -18,4 +18,5 @@ Alternatively, you can follow these labs in this Oracle Learning Library reposit
 - [Generate Alerts](./generate-alerts/generate-alerts.md)
 - [Assess Database Configurations](./assess-database-configurations/assess-database-configurations.md)
 - [Assess Database Users](./assess-database-users/assess-database-users.md)
-- [Discover and Mask Sensitive Data](./discover-mask-sensitive-data/discover-mask-sensitive-data.md)
+- [Discover Sensitive Data](./discover-sensitive-data/discover-sensitive-data.md)
+- [Mask Sensitive Data](./mask-sensitive-data/mask-sensitive-data.md)

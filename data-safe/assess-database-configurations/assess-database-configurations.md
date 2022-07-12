@@ -138,8 +138,6 @@ When you registered your target database, Oracle Data Safe automatically created
 
 A baseline assessment shows you data for all your target databases in a selected compartment at a given point in time. However, because we are only dealing with one target database in your compartment, the baseline assessment shows data for only your target database.
 
-
-(Note: This method doesn't work)
 1. In the breadcrumb at the top of the page, click **Security Assessment**.
 
 2. Under **Related Resources**, click **Assessment History**.
@@ -164,27 +162,6 @@ A baseline assessment shows you data for all your target databases in a selected
 
 6. In the breadcrumb at the top of the page, click **Assessment History** and confirm that there is a new row in the table for the baseline assessment. If there isn't a baseline, return to the latest assessment and repeat the steps in this task.
 
-    ![Security Assessment baseline](images/sa-baseline-assessment.png "Security Assessment baseline")
-
-(this method generates a baseline assessment but it is not listed in the assessment history. Neither method is showing up as a baseline set on the Target Summary tab.):
-
-1. On the latest security assessment page, click **Set As Baseline**.
-
-2. Click **Set As Baseline**.
-
-    ![Set As Baseline button](images/set-as-baseline-button2.png "Set As Baseline button")
-
-    The **Set As Baseline?** dialog box is displayed.
-
-3. Click **Yes** to confirm that you want to set these findings as the baseline.
-
-    *Important! Stay on the page until the message **Baseline has been set** is displayed.*
-
-    ![Security Assessment Baseline has been set message](images/sa-baseline-has-been-set-message2.png "Security Assessment Baseline has been set message")
-
-4. Click the link to the baseline assessment and review the assessment.
-
-5. In the breadcrumb at the top of the page, click **Assessment History**.
 
 
 ## Task 4: Generate activity on the target database
@@ -322,8 +299,6 @@ A baseline assessment shows you data for all your target databases in a selected
 6. Review the number of findings for each risk level for your target database.
 
 7. Click **Close**.
-
-
 
 
 ## Learn More

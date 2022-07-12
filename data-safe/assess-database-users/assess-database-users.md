@@ -85,7 +85,6 @@ Currently, the latest user assessment is the one that was automatically generate
 
 3. Scroll down and review the **Assessment Details** section. This table provides the following information about each user:
 
-
     - User name
     - User type (for example, PRIVILEGED, SCHEMA)
     - Whether the user is a DBA, DV Admin, or Audit Admin
@@ -125,7 +124,6 @@ Currently, the latest user assessment is the one that was automatically generate
 ## Task 3: Review the `ADMIN` user's audit records
 
 1. Identify the row in the table for the `ADMIN` user. In the **Audit Records** column for the `ADMIN` user, click **View Activity**.
-
 
     ![ADMIN user audit records](images/ua-admin-user-audit-records.png "ADMIN user audit records")
 
@@ -181,15 +179,15 @@ Currently, the latest user assessment is the one that was automatically generate
 
     ![User Assessment Refresh Now panel](images/ua-refresh-now-panel.png "User Assessment Refresh Now panel")
 
-6. Review the refreshed latest assessment. Notice that the latest assessment kept its original name.
+7. Review the refreshed latest assessment. Notice that the latest assessment kept its original name.
 
-7. Click the **Assessment Information** tab, and then click the **Pencil** icon next to the assessment name. Change the name to **Latest User Assessment**, and then click the **Save** icon. The name is updated on the page.
+8. Click the **Assessment Information** tab, and then click the **Pencil** icon next to the assessment name. Change the name to **Latest User Assessment**, and then click the **Save** icon. The name is updated on the page.
 
     ![Renamed latest user assessment](images/ua-renamed-latest-assessment.png "Renamed latest user assessment")
 
-7. In the breadcrumb at the top of the page, click **User Assessment**. Under **Related Resources**, click **Assessment History**.
+9. In the breadcrumb at the top of the page, click **User Assessment**. Under **Related Resources**, click **Assessment History**.
 
-8. Notice that there is an additional saved user assessment. None of the user assessments is called **Latest User Assessment**. At a glance, you can compare the number of critical risks, high risks, DBAs, DV Admins, and Audit Admins between the two user assessments.
+    Notice that there is an additional saved user assessment. None of the user assessments is called **Latest User Assessment**. At a glance, you can compare the number of critical risks, high risks, DBAs, DV Admins, and Audit Admins between the two user assessments.
 
     ![User Assessment History page](images/user-assessment-history.png "User assessment History")
 
@@ -197,8 +195,6 @@ Currently, the latest user assessment is the one that was automatically generate
 ## Task 6: Compare the latest user assessment with the initial user assessment
 
 You can select a user assessment to compare with the latest user assessment. With this option, you don't need to set a baseline. This option is only available when you are viewing the latest user assessment.
-
-*compare the latest with the intial assessment. See one user added, one user removed. - need to add*
 
 1. Under **Security Center**, click **User Assessment**.
 
@@ -272,7 +268,6 @@ On the User Assessment History page, you can view a listing of all of your saved
 5. To sort the list by target database, click the **Target Database** column heading.
 
 6. Click the name of a user assessment for your target database. Notice that you cannot refresh the data in a saved user assessment.
-
 
 
 ## Task 9: Download the latest user assessment as a PDF report

@@ -16,8 +16,8 @@ Estimated Lab Time: 15 minutes
 
 In this lab, you will:
 
-- View sensitive data in your target database
 - Discover sensitive data in your target database by using Data Discovery
+- Analyze the sensitive data model
 - Create a PDF of the Sensitive Data Model report
 
 
@@ -35,37 +35,7 @@ This lab assumes you have:
 - Your data values are most likely different than those shown in the screenshots.
 
 
-## Task 1: View sensitive data in your target database
-
-1. Access the SQL Worksheet in Database Actions. If your session has expired, sign in again as the `ADMIN` user. Clear the worksheet if needed.
-
-2. On the **Navigator** tab, select the **HCM1** schema from the first drop-down list.
-
-3. Drag the `EMPLOYEES` table to the worksheet.
-
-    ![EMPLOYEES table](images/drag-employees-table-to-worksheet.png "EMPLOYEES table")
-
-4. When prompted to choose an insertion type, click **Select**, and then click **Apply**.
-
-    ![Choose the type of insertion dialog box](images/insertion-type-select.png "Choose the type of insertion dialog box")
-
-5. View the SQL query on the worksheet.
-
-    ![Worksheet tab showing EMPLOYEES table](images/query-employees-table.png "Worksheet tab showing EMPLOYEES table")
-
-
-6. On the toolbar, click the **Run Script** button.
-
-    ![Run Script button](images/run-script.png "Run Script button")
-
-7. On the **Script Output** tab, review the query results.
-
-    - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, and `HIRE_DATE` are considered sensitive data and should be masked if shared for non-production use, such as development and analytics.
-
-8. Keep the browser tab for Database Actions open so that you can return to it later.
-
-
-## Task 2: Discover sensitive data in your target database by using Data Discovery
+## Task 1: Discover sensitive data in your target database by using Data Discovery
 
 In Data Discovery, you can select the sensitive types that you want to discover in your target database. Data Discovery then generates a sensitive data model that lists sensitive columns in your target database.
 
@@ -108,7 +78,12 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
     ![Select Discovery Options page page](images/select-discovery-options-page.png "Select Discovery Options page")
 
-10. Wait for the sensitive data model to be created and then review its information on the **Sensitive Data Model Details** page.
+10. Wait for the sensitive data model to be created. The **Sensitive Data Model Details** page is displayed.
+
+
+## Task 2: Analyze the sensitive data model
+
+1. Review the information on the **Sensitive Data Model Details** page.
 
     - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
     - You can click the **View Details** link to view the work request information.
@@ -118,22 +93,22 @@ In Data Discovery, you can select the sensitive types that you want to discover 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
     ![Sensitive Data Model Details page bottom](images/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")
 
-11. Position your mouse over the **Identification Information** category in the chart to view its value. Your percentage value may be different than the value shown in the screenshot.
+2. Position your mouse over the **Identification Information** category in the chart to view its value. Your percentage value may be different than the value shown in the screenshot.
 
     ![Identification Information category in sensitive data model chart](images/sdm-chart-identification-information.png "Identification Information category in sensitive data model chart")
 
-12. With your mouse still over **Identification Information**, click the pie slice to drill down. Notice that the **Identification Information** category is now divided into two smaller categories (**Personal Identifiers** and **Public Identifiers**).
+3. With your mouse still over **Identification Information**, click the pie slice to drill down. Notice that the **Identification Information** category is now divided into two smaller categories (**Personal Identifiers** and **Public Identifiers**).
 
     ![Personal and Public Identifiers in sensitive data model chart](images/sdm-chart-personal-public-identifiers.png "Personal and Public Identifiers in sensitive data model chart")
 
 
-13.  To drill-up, click the **All** link in the chart's breadcrumb.
+4.  To drill-up, click the **All** link in the chart's breadcrumb.
 
-14. Under **Sensitive Columns**, from the drop-down list, select **Sensitive Type View** to sort the sensitive columns by sensitive type. By default, all items are expanded in the view. You can collapse the items by moving the **Expand All** slider to the left.
+5. Under **Sensitive Columns**, from the drop-down list, select **Sensitive Type View** to sort the sensitive columns by sensitive type. By default, all items are expanded in the view. You can collapse the items by moving the **Expand All** slider to the left.
 
     ![Sensitive Type View of sensitive data model](images/sensitive-type-view-sdm1.png "Sensitive Type View of sensitive data model")
 
-15. From the drop-down list, select **Schema View** to sort the sensitive columns by table name.
+6. From the drop-down list, select **Schema View** to sort the sensitive columns by table name.
 
     - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the **Parent Column**. For example, `MANAGER_ID` in the `DEPARTMENTS` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
 
@@ -168,7 +143,6 @@ In Data Discovery, you can select the sensitive types that you want to discover 
     ![PDF report of SDM1](images/pdf-report-sdm1.png "PDF report of SDM1")
 
 6. Close the PDF report and return to Oracle Data Safe.
-
 
 
 
