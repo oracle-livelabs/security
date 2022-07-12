@@ -8,7 +8,7 @@ inject-note: true
 
 To do this workshop, you need access to an Oracle Data Safe service in a region of your tenancy and an Oracle database. This workshop uses an Autonomous Transaction Processing (ATP) database.
 
-To complete most of the preparation tasks, you need to be a tenancy administrator. If you are a regular user in your organization's tenancy, enlist the help of a tenancy administrator. If you are using an Oracle-provided environment, such as LiveLabs, you do not need to prepare an environment because Oracle provides you one with everything you need.
+To complete most of the preparation tasks, you need to be a tenancy administrator. If you are a regular user in your organization's tenancy, enlist the help of a tenancy administrator. If you are using the LiveLabs Sandbox, you only need to do tasks 6 and 7 because Oracle provides you with a user account, a compartment, and an autonomous database.
 
 
 Estimated Lab Time: 15 minutes
