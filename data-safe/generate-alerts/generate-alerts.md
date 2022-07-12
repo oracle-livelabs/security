@@ -8,7 +8,7 @@ inject-note: true
 
 An alert is a message that notifies you when a particular audit event happens on a target database. In Oracle Data Safe, you can provision alert policies on your target databases, view and manage alerts, view predefined alert reports, and create custom alert reports.
 
-Start by reviewing the predefined alert policies in Oracle Data Safe, and then provision two of them. Using the web tool in Oracle Cloud Infrastructure called Database Actions, perform activity on your target database to cause alerts in Oracle Data Safe. Review the generated alerts and create a custom alerts report. Download the report as a PDF.
+Start by reviewing the predefined alert policies in Oracle Data Safe, and then provision two of them. Using Database Actions, perform activity on your target database to cause alerts in Oracle Data Safe. Review the generated alerts and create a custom alerts report. Download the report as a PDF.
 
 Estimated Lab Time: 20 minutes
 
@@ -96,53 +96,41 @@ This lab assumes you have:
 
 8. Click **Apply Policy**.
 
-    The alert policies are applied while the panel is open.
-
-9. Wait until both policies are applied. The status **Done** is displayed.
+9. Expand the bottom section to view more information. A green checkmark is displayed next to the statements that tell you the request to apply each policy is submitted.
 
     ![Apply and Enable Alert Policy To Target Databases dialog box](images/apply-and-enable-alert-policy-dialog-box.png "Apply and Enable Alert Policy To Target Databases dialog box")
 
 10. Click **Close**.
 
-    The two target-policy associations for your target database are listed on the page and show as enabled.
+    The two target-policy associations for your target database are listed on the page and are active and enabled.
 
     ![Two target-policy associations for your target database](images/two-target-policy-associations-for-target.png "Two target-policy associations for your target database")
 
 ## Task 3: Perform activity on your target database to cause alerts in Oracle Data Safe
 
-Access Oracle Database Actions in Oracle Cloud Infrastructure and perform some activities on your target database to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, sign in and create a user account.
+In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, sign in and create a user account.
 
-1. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**.
+1. Return to the **SQL | Oracle Database Actions** browser tab for your target database.
 
-2. Under **COMPARTMENT**, select your compartment.
+    If you need help accessing Database Actions, see [Prepare Your Environment](?lab=prepare-environment).
 
-3. On the right, click the name of your target database.
+2. From the drop-down list in the upper-right corner, select **Sign Out**. In the dialog box, click **Leave page**.
 
-    The **Autonomous Database Details** page is displayed.
+3. Click **Sign in**.
 
-4. Click **Database Actions** and wait for a new browser tab to open.
+4. Enter `ADMIN` for the username, and then click **Next**.
 
-    ![Database Actions button](images/database-actions-button.png "Database Actions button")
-
-    You are automatically signed in to the database as the `ADMIN` user.
-
-5. From the drop-down list in the upper-right corner, select **Sign Out**.
-
-6. Click **Sign in**.
-
-7. Enter `ADMIN` for the username, and then click **Next**.
-
-8. Do this twice: Enter an incorrect password, and then click **Sign in**. The message **An invalid user name or password was supplied.**
+5. Do this twice: Enter an incorrect password, and then click **Sign in**. The message **An invalid user name or password was supplied.**
 
     ![Invalid database password message](images/invalid-database-password.png "Invalid database password message")
 
-9. Enter the correct password, and click **Sign in**.
+6. Enter the correct password, and click **Sign in**.
 
-10. In the **Development** section, click **SQL**.
+7. In the **Development** section, click **SQL**.
 
-11. If a help note is displayed, click the **X** button to close it.
+8. If a help note is displayed, click the **X** button to close it.
 
-12. On the worksheet, run the following SQL script:
+9. On the worksheet, run the following SQL script:
 
     ```
     <copy>drop user MALFOY cascade;
@@ -150,7 +138,7 @@ Access Oracle Database Actions in Oracle Cloud Infrastructure and perform some a
     grant PDB_DBA to MALFOY;</copy>
     ```
 
-13. Sign out, close the browser tab, and return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab.
+13. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab.
 
 14. Wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
@@ -203,10 +191,7 @@ Access Oracle Database Actions in Oracle Cloud Infrastructure and perform some a
 
 ## Task 5: View details for an alert and close it
 
-1. Click one of the alerts to view more detail about it.
-
-    ![Alert name circled](images/click-alert-to-view-detail.png "Alert name circled")
-
+1. Click one of the alert names to view more detail about it.
 
 2. Review the following information about the alert:
 
@@ -217,8 +202,7 @@ Access Oracle Database Actions in Oracle Cloud Infrastructure and perform some a
     - Alert type - Currently all alert types are AUDITING
     - Policy that generated the alert
     - User operation that generated the alert
-    - Operation time
-    - Operation status
+    - Operation time and status
     - When the alert was created and updated
     - Oracle Cloud Identifier (OCID) for the alert
     - Compartment in which the alert resides
@@ -236,10 +220,11 @@ Access Oracle Database Actions in Oracle Cloud Infrastructure and perform some a
 
 1. In the breadcrumb at the top of the page, click **All Alerts** to return to the All Alerts report.
 
-2. Apply two filters:
+2. Apply three filters:
 
     - **Target Database Name = your-target-database-name**
     - **Alert Name = Failed Logins by Admin User**
+    - **Created On After beginning-of-current-day**
 
     ![Failed Logins by Admin User filter](images/failed-admin-logins-filter.png "Failed Logins by Admin User filter")
 
@@ -268,19 +253,23 @@ Access Oracle Database Actions in Oracle Cloud Infrastructure and perform some a
 
 5. Select your compartment.
 
-6. Click **Generate Report** and wait until the PDF report is generated.
+6. Leave the report start time as is.
+
+7. Click **Generate Report** and wait until the PDF report is generated.
 
     A message is displayed stating that report generation is complete.
 
     ![Generate Report dialog box](images/generate-report-dialog-box.png "Generate Report dialog box")
 
-7. Click the **click here** link to download the report.
+8. Click the **click here** link to download the report.
 
     A dialog box is displayed providing you options to open or save the document.
 
-8. Save the report to your local computer.
+9. Save the report to your local computer.
 
-9. Open the PDF report and view it.
+10. Open the PDF report and view it.
+
+11. In the **Generate Report** dialog box, click **Close**.
 
 
 
@@ -292,4 +281,4 @@ Access Oracle Database Actions in Oracle Cloud Infrastructure and perform some a
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 5, 2022
+* **Last Updated By/Date** - Jody Glover, July 11, 2022

@@ -51,9 +51,15 @@
         "type": "livelabs"
       },
       {
-        "title": "Lab 6: Discover and Mask Sensitive Data",
-        "description": "This lab shows you how to discover and mask sensitive data in Oracle Data Safe by using the Data Discovery and Data Masking features.",
-        "filename": "../../discover-mask-sensitive-data/discover-mask-sensitive-data.md",
+        "title": "Lab 6: Discover Sensitive Data",
+        "description": "This lab shows you how to discover sensitive data on your target database by using the Data Discovery feature in Oracle Data Safe.",
+        "filename": "../../discover-sensitive-data/discover-sensitive-data.md",
+        "type": "livelabs"
+      },
+      {
+        "title": "Lab 7: Mask Sensitive Data",
+        "description": "This lab shows you how to mask sensitive data on your target database by using the Data Masking feature in Oracle Data Safe.",
+        "filename": "../../mask-sensitive-data/mask-sensitive-data.md",
         "type": "livelabs"
       },
       {

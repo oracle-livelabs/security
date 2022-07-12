@@ -131,13 +131,7 @@ If you are not going to do data masking in this workshop, you can skip this task
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. Therefore, the **Security Assessment**, **User Assessment**, **Feature Usage**, and **Operations Summary** charts in the dashboard already have data.
     - During registration, Oracle Data Safe also discovers audit trails on your target database. That is why the **Audit Trails** chart in the dashboard shows one audit trail with the status **In Transition** for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
 
-    Top six charts of the dashboard:
-
     ![Initial Dashboard](images/dashboard-initial.png "Initial Dashboard")
-
-    Bottom three charts of the dashboard:
-
-    ![Dashboard bottom three charts](images/dashboard-bottom-three-charts.png "Dashboard bottom three charts")
 
 
 ## Learn More
