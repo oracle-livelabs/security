@@ -34,7 +34,7 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe and loaded sample data into it. Make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
+- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
 
 
 ### Assumptions
@@ -198,25 +198,29 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 6. Close the PDF report and return to the **Sensitive Data Models Details** page.
 
+
+
 ## Task 4: Create a masking policy for your target database
 
 Data Masking can generate a masking policy for your target database based on your sensitive data model. It automatically tries to select a default masking format for each sensitive column. You can edit these default selections and select different ones as needed. Occasionally you are prompted to address masking formats in your masking policies that are causing issues.
 
-1. In the breadcrumb at the top of the page, click **Data Safe**.
+1. Return to the browser tab that shows the **Sensitive Data Models Details** page.
 
-2. On the left under **Security Center**, click **Data Masking**.
+2. In the breadcrumb at the top of the page, click **Data Safe**.
 
-3. Under **Related Resources**, click **Masking Policies**.
+3. On the left under **Security Center**, click **Data Masking**.
+
+4. Under **Related Resources**, click **Masking Policies**.
 
     The **Masking Policies** page is displayed and shows that there is no masking policy available for your target database.
 
     ![Masking Policies page](images/no-masking-policies-available.png "Masking Policies page")
 
-4. Click **Create Masking Policy**.
+5. Click **Create Masking Policy**.
 
     The **Create Masking Policy** panel is displayed.
 
-5. Configure the masking policy as follows, and then click **Create Masking Policy**.
+6. Configure the masking policy as follows, and then click **Create Masking Policy**.
 
     *Important! Please do not close the panel. It closes automatically after all operations are completed. If you close the panel before the operations are finished, the operation to add columns to the masking policy is not initiated.*
 
@@ -230,14 +234,14 @@ Data Masking can generate a masking policy for your target database based on you
 
     The **Masking Policy Details** page is displayed.
 
-6. Review the masking policy.
+7. Review the masking policy.
 
     - On the **Masking Policy Information** tab, you can view the masking policy name (and edit it), the Oracle Cloud Identifier (OCID) for the masking policy, a link to the work request for the masking policy, the compartment in which the masking policy is stored, the target database and sensitive data model to which the masking policy is associated, and the date/time in which the masking policy was created and last updated.
     - The **Masking Columns** table lists all the sensitive columns and their masking formats. If needed, you can select a different masking format for any sensitive column. You can click the pencil icon next to a masking format to edit it.
 
     ![Masking Policy Details page for Mask SDM1](images/masking-policy-details-page-mask-sdm1.png "Masking Policy Details page for Mask SDM1")
 
-7. Under **Resources**, click **Masking Columns Needing Attention**.
+8. Under **Resources**, click **Masking Columns Needing Attention**.
 
     The **Masking Columns Needing Attention** section is displayed at the bottom of the page. This section informs you of sensitive columns that do not have a masking format. The screenshot below shows an example where there are no sensitive columns without a masking format.
 
@@ -333,4 +337,4 @@ After you create a masking policy, you can run a data masking job against your t
 
 ## Acknowledgements
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, April 14, 2022
+* **Last Updated By/Date** - Jody Glover, July 5, 2022
