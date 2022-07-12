@@ -1,1 +1,0 @@
-Screenshot showing log messages for a data masking work request.

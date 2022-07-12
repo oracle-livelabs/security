@@ -23,7 +23,9 @@ In this lab, you will:
 - View the quantity of audit records available on your target database for the discovered audit trail(s)
 - Start audit data collection
 - Provision audit policies on your target database
-- Analyze audit events across all your target databases
+- View the Activity Auditing dashboard
+- Generate admin activity on the target database
+- Analyze the audit events for your target database
 - View the All Activity report
 - Create a custom audit report
 - Generate and download a custom audit report as a PDF
@@ -38,13 +40,14 @@ This lab assumes you have:
 - Accessed Security Center
 
 
+
 ### Assumptions
 
 - Your data values are most likely different than those shown in the screenshots.
 
 ## Task 1: Review the global settings for Oracle Data Safe
 
-1. Access the home page for Oracle Data Safe. The home page is named **Overview**.
+1. Access the **Overview** page for Oracle Data Safe by clicking **Data Safe** in the breadcrumb at the top of the page.
 
 2. Under **Data Safe**, click **Settings**.
 
@@ -52,7 +55,7 @@ This lab assumes you have:
 
     - Each regional Oracle Data Safe service has global settings for paid usage, online retention period, and archive retention period.
     - Global settings are applied to all target databases unless their audit profiles override them.
-    - By default, paid usage is enabled for all target databases, the online retention period is set to the maximum value of 12 months, and the archive retention period is set to the minimum value of 0 months.
+    - By default, paid usage is enabled for all target databases, the online retention period is set to the maximum value of 12 months, and the archive retention period is set to the minimum value of 0 months. Note that you cannot enable paid usage for a free trial account.
 
     ![Global Settings](images/global-settings.png "Global Settings")
 
@@ -84,17 +87,15 @@ This lab assumes you have:
 
 2. On the left under **Related Resources**, click **Audit Trails**.
 
-3. From the **Compartment** drop-down list, make sure your compartment is selected.
+3. Under **List Scope** on the left, make sure your compartment is selected.
 
-4. From the **Target Databases** drop-down list, select your target database.
+4. Under **Filters** on the left, select your target database.
 
-5. On the right, review the audit trail(s) for your target database. Click your target database name for one of the audit trails to view more detail.
-
-    Oracle Data Safe discovers one audit trail for an Autonomous Database, which is `UNIFIED_AUDIT_TRAIL`.
+5. On the right, review the audit trail(s) for your target database. Oracle Data Safe discovers one audit trail for an Autonomous Database, which is `UNIFIED_AUDIT_TRAIL`.
 
     ![Audit Trails page](images/audit-trails-page.png "Audit Trails page")
 
-6. Review the information on the **Audit Trail Details** page. This is where you can manage audit data collection for the audit trail. Notice that the audit trail is currently inactive.
+6. Click your target database name for one of the audit trails and review the information on the **Audit Trail Details** page. This is where you can manage audit data collection for the audit trail. Notice that the audit trail is currently inactive.
 
     ![Audit Trail Details page](images/audit-trail-details-page.png "Audit Trail Details page")
 
@@ -105,15 +106,15 @@ This lab assumes you have:
 
 2. Under **Related Resources**, click **Audit Policies**.
 
-3. From the **Compartment** drop-down list, make sure your compartment is selected.
+3. From the **Compartment** drop-down list on the left, make sure your compartment is selected.
 
-4. From the **Target Databases** drop-down list, select your target database.
+4. From the **Target Databases** drop-down list on the left, select your target database.
 
-5. On the right, review the information provided for your target database's audit policy, and then click your target database name to view more detail.
+5. On the right, review the information provided for your target database's audit policy.
 
     ![Audit Policies page](images/audit-policies-page.png "Audit Policies page")
 
-6. On the **Audit Policy Details** page, scroll down and review the list of audit policies available for your target database.
+6.  Click your target database name to view more detail on the **Audit Policy Details** page. Scroll down and review the list of audit policies available for your target database.
 
     - A grey circle indicates the audit policy is not yet provisioned on the target database. A green circle indicates that the audit policy is provisioned.
     - You can choose to provision any number of audit policies on your target database and set filters on users and roles.
@@ -127,9 +128,9 @@ This lab assumes you have:
 
 2. On the left under **Related Resources**, click **Audit Profiles**.
 
-3. From the **Compartment** drop-down list, make sure your compartment is selected.
+3. From the **Compartment** drop-down list on the left, make sure your compartment is selected.
 
-4. From the **Target Databases** drop-down list, select your target database.
+4. From the **Target Databases** drop-down list on the left, select your target database.
 
 5. On the right, click the name of your target database.
 
@@ -161,9 +162,9 @@ This lab assumes you have:
 
 2. On the left under **Related Resources**, click **Audit Trails**.
 
-3. From the **Compartment** drop-down list, make sure your compartment is selected.
+3. From the **Compartment** drop-down list on the left, make sure your compartment is selected.
 
-4. From the **Target Databases** drop-down list, select your target database.
+4. From the **Target Databases** drop-down list on the left, select your target database.
 
 5. On the right, click the name of your target database for the `UNIFIED_AUDIT_TRAIL`.
 
@@ -173,13 +174,11 @@ This lab assumes you have:
 
     A **Start Audit Trail: UNIFIED\_AUDIT\_TRAIL** dialog box is displayed.
 
-7. Configure a start date based on the data in the **Compute Audit Volume** region of the audit profile that you viewed in task 5 (step 10), and then click **Start**.
-
-    For example, if you have one month listed (Feb 2022), you can set the start date to the beginning of the month.
+7. Configure a start date based on the data in the **Compute Audit Volume** region of the audit profile that you viewed in task 5 (step 10). For example, if you have one month listed (July 2022), you can set the start date to the beginning of the month.
 
     ![Start Audit Trail dialog box](images/start-audit-trail-dialog-box.png "Start Audit Trail dialog box")
 
-8. Notice when the **Collection State** changes to **COLLECTING** and then to **IDLE**.
+8. Click **Start**. Notice when the **Collection State** changes from **STARTING** to **COLLECTING** and then to **IDLE**.
 
     ![Collection State Idle](images/collection-state-idle.png "Collection State Idle")
 
@@ -190,13 +189,13 @@ This lab assumes you have:
 
 2. Under **Related Resources**, click **Audit Policies**.
 
-3. From the **Compartment** drop-down list, make sure your compartment is selected.
+3. From the **Compartment** drop-down list on the left, make sure your compartment is selected.
 
-4. From the **Target Databases** drop-down list, select your target database.
+4. From the **Target Databases** drop-down list on the left, select your target database.
 
 5. On the right, click the name of your target database.
 
-6. Click **Retrieve** to retrieve the custom audit policies that were provisioned when you loaded the sample data into your target database. When the retrieval is completed, notice that you can now enable the following three custom audit policies through Oracle Data Safe:
+6. Notice the following three custom audit policies are available. You provisioned these on your target database when you loaded the sample data. They are not yet enabled.
 
     - `APP_USER_NOT_APP_SERVER`
     - `EMPSEARCH_SELECT_USAGE_BY_PETE`
@@ -204,28 +203,26 @@ This lab assumes you have:
 
     ![Custom policies](images/custom-policies.png "Custom policies")
 
-7. Refresh the browser page.
+7. Click **Update and Provision**.
 
-8. Click **Update and Provision**. The **Provision Audit Policies** panel is displayed.
+    The **Provision Audit Policies** panel is displayed.
 
-    ![Update and Provision button](images/update-and-provision-button.png "Update and Provision button")
+8. Select **Exclude Data Safe user activity**.
 
-9. Select **Exclude Data Safe user activity**.
+9. Under **Basic Auditing**, select **Database Schema Changes** and **Critical Database Activity**.
 
-10. Under **Basic Auditing**, select **Database Schema Changes** and **Critical Database Activity**.
+10. Under **Admin Activity Auditing**, select **Admin User Activity**.
 
-11. Under **Admin Activity Auditing**, select **Admin User Activity**.
+11. Under **Custom Policies**, select **APP\_USER\_NOT\_APP\_SERVER**.
 
-12. Under **Custom Policies**, select **APP\_USER\_NOT\_APP\_SERVER**.
-
-13. Click **Update and Provision** to provision the selected policies on your target database.
+12. Click **Update and Provision** to provision the selected policies on your target database.
 
     ![Provision Audit Policies panel](images/provision-audit-policies-panel.png "Provision Audit Policies panel")
 
-14. Wait for the provisioning to finish, and then view the updated policy information on the page.
+13. Wait for the provisioning to finish, and then view the updated policy information on the page.
 
 
-## Task 8: Analyze audit events across all your target databases
+## Task 8: View the Activity Auditing dashboard
 
 1. In the breadcrumb at the top of the page, click **Activity Auditing**.
 
@@ -235,43 +232,61 @@ This lab assumes you have:
 
 3. From the **Target Databases** drop-down list on the left, select your target database.
 
+    The dashboard is automatically updated to include audit event statistics for only your target database. Notice that there is no activity recorded yet.
+
+
+## Task 9: Generate admin activity on the target database
+
+In this task you run a SQL script that runs admin activity on the target database. This activity will be audited by Oracle Data Safe.
+
+1. Return to the **SQL | Oracle Database Actions** browser tab. If your session has expired, sign in again.
+
+2. Download the [**admin-user-activity.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/admin-user-activity.sql) script and save it to a temporary directory on your computer.
+
+3. Open the file in a text editor and copy the entire script to the clipboard.
+
+4. Paste the script onto the worksheet in Database Actions.
+
+5. On the toolbar, click the **Run Script** button. Errors are expected. For example, you will get many **insufficient privileges** messages.
+
+
+## Task 10: Analyze the audit events for your target database
+
+1. Return to the **Activity Auditing** page in the other browser tab. If needed, in the breadcrumb at the top of the page, click **Activity Auditing**.
+
+2. From the **Compartments** drop-down list on the left, make sure your compartment is selected.
+
+3. From the **Time Period** drop-down list on the left, leave **Last 1 Week** selected.
+
+4. From the **Target Databases** drop-down list on the left, select your target database.
+
     The dashboard automatically is updated to include audit event statistics for only your target database.
 
-4. Review the **Failed Login Activity** chart.
+5. Review the charts.
 
-    This chart shows you the number of failed logins on all or selected target databases for the specified time period. You may or may not have any failed logins at this point.
+    - The **Failed Login Activity** chart shows you the number of failed logins on your target database for the last one week.
+    - The **Admin Activity** chart shows you the number of database schema changes, logins, audit setting changes, and entitlement changes on your target database for the last one week.
+    - The **All Activity** chart shows you the total count of audit events on your target database for the specified time period.
 
-    ![Failed Login Activity chart](images/failed-login-activity-chart.png "Failed Login Activity chart")
+    ![Activity Auditing dashboard charts](images/activity-auditing-dashboard-charts.png "Activity Auditing dashboard charts")
 
-5. Review the **Admin Activity** chart.
+6. On the **Events Summary** tab, review the statistics for audit event categories.
 
-    This chart shows you the number of database schema changes, logins, audit setting changes, and entitlement changes on all or selected target databases for the specified time period.
-
-    ![Admin Activity chart](images/admin-activity-chart.png "Admin Activity chart")
-
-6. Review the **All Activity** chart.
-
-    This chart shows you the total count of audit events on all or selected target databases for the specified time period.
-
-    ![All Activity chart](images/all-activity-chart.png "All Activity chart")
-
-7. On the **Events Summary** tab, review the statistics for audit event categories.
-
-    Statistics include the number of target databases that have an audit event in each event category and the total number of events per category.
+    Statistics include the number of target databases that have an audit event in each event category and the total number of events per category. Because you are viewing statistics for your target database only, the **Target Databases** column shows ones.
 
     ![Events Summary tab](images/events-summary-tab.png "Events Summary tab")
 
-8. On the **Targets Summary** tab, review the various audit event counts per target database.
+7. On the **Targets Summary** tab, review the various audit event counts per target database.
 
     Audit events include the number of login failures, schema changes, entitlement changes, audit settings changes, all activity (all audit events), database vault realm violations and command rule violations, and database vault policy changes. If there are no audit events for a target database, the target database isn't listed.
 
     ![Targets Summary tab](images/targets-summary-tab.png "Targets Summary tab")
 
-9. Return to the **Events Summary** tab. From the **Target Databases** drop-down list on the left under **Filters**, select your target database. On the **Events Summary** tab, click **Schema Changes By Admin** to view more detail.
+8. Return to the **Events Summary** tab and click **Schema Changes By Admin** to view more detail.
 
     ![Schema Changes By Admin event category](images/schema-changes-by-admin-event-category.png "Schema Changes By Admin event category")
 
-10. On the **Schema Changes By Admin** page, review the following:
+9. On the **Schema Changes By Admin** page, review the following:
 
     - The filters set at the top of the page. There are two filters on **Operation Time**, setting the time period for the past one week. There is a filter on **Target Database OCID**, which restricts the audit records to your target database only.
     - The total number of database users, client hosts, create statements, alter statements, and drop statements
@@ -280,26 +295,26 @@ This lab assumes you have:
 
     ![Schema Changes By Admin page](images/schema-changes-by-admin-page.png "Schema Changes By Admin page")
 
-11. Click a down arrow at the end of a row in the event table to view more detail about the event.
+10. Click the down arrow at the end of any row in the event table to view more detail about the event.
 
     When you click the down arrow, it changes to an up arrow.
 
     ![Audit event table expander](images/audit-event-table-expander.png "Audit event table expander")
 
-## Task 9: View the All Activity report
+## Task 11: View the All Activity report
 
 1. Under **Related Resources**, click **Audit Reports**. Oracle Data Safe has the following predefined audit reports:
 
+    - All Activity
+    - Admin Activity
+    - User/Entitlement Changes
+    - Audit Policy Changes
     - Login Activity
     - Data Access
-    - Admin Activity
-    - Audit Policy Changes
-    - Database Vault Activity
-    - User/Entitlement Changes
     - Data Modification
-    - Data Safe Activity
     - Database Schema Changes
-    - All Activity
+    - Data Safe Activity
+    - Database Vault Activity
 
     ![Audit Reports page](images/audit-reports-page.png "Audit Reports page")
 
@@ -321,14 +336,14 @@ This lab assumes you have:
     ![All Activity report](images/all-activity-report.png "All Activity report")
 
 
-## Task 10: Create a custom audit report
+## Task 12: Create a custom audit report
 
 1. At the top of the **All Activity** report, add the following two filters. To add a filter, click **+ Another Filter**. When you are done setting the filter parameters, click **Apply**.
 
     - **Target = your-target-database-name**
     - **Object Owner = HCM1**
 
-2. Click **Manage Columns**. In the **Manage Columns** panel, select **Target**, **DB User**, **Object**, **Operation Time**, **Event**, and **Unified Audit Policies** columns. Click **Apply Changes**. The table displays the selected columns. Also notice that the totals are adjusted too.
+2. Click **Manage Columns**. In the **Manage Columns** panel, select **Target**, **DB User**, **Event**, **Object**, **Operation Time**, and **Unified Audit Policies** columns. Click **Apply Changes**. The table displays the selected columns. Also notice that the totals are adjusted too.
 
     ![Custom audit report](images/custom-audit-report.png "Custom audit report")
 
@@ -343,11 +358,10 @@ This lab assumes you have:
 5. In the **Create Custom Report** dialog box, click the **click here** link to navigate to your custom report.
 
     - If you need to modify your custom report, you can click **Save Report** to save the changes.
+    - To view your custom report in the future, under **Related Resources** for **Activity Auditing**, click **Audit Reports**. Click the **Custom Reports** tab, and then click the name of your custom audit report.
 
-6. To view your custom report in the future, under **Related Resources** for **Activity Auditing**, click **Audit Reports**. Click the **Custom Reports** tab, and then click the name of your custom audit report.
 
-
-## Task 11: Generate and download a custom audit report as a PDF
+## Task 13: Generate and download a custom audit report as a PDF
 
 1. On the custom audit report page, click **Generate PDF/XLS Report**.
 
@@ -371,7 +385,7 @@ This lab assumes you have:
 
     A dialog box is displayed providing you options to open or save the document.
 
-8. Save the report to your local computer.
+8. Save the report to your local computer and close the **Generate Report** dialog box.
 
 9. Open the PDF report and view it.
 
@@ -384,4 +398,4 @@ This lab assumes you have:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 5, 2022
+* **Last Updated By/Date** - Jody Glover, July 12, 2022

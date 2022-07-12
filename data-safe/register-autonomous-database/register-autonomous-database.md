@@ -4,7 +4,6 @@ inject-note: true
 
 # Register an Autonomous Database with Oracle Data Safe
 
-
 ## Introduction
 
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. A registered database is referred to as a _target database_ in Oracle Data Safe.
@@ -82,13 +81,11 @@ If you are not going to do data masking in this workshop, you can skip this task
     <copy>EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$DATA_MASKING_ROLE');</copy>
     ```
 
-
 5. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query. The script output should read **PL/SQL procedure successfully completed**.
 
     ![Run Statement button on toolbar](images/run-statement-button.png "Run Statement button on toolbar")
 
     You are now allowed to perform data masking on your target database.
-
 
 
 ## Task 3: Access Oracle Data Safe and view the list of registered target databases to which you have access
@@ -131,13 +128,7 @@ If you are not going to do data masking in this workshop, you can skip this task
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. Therefore, the **Security Assessment**, **User Assessment**, **Feature Usage**, and **Operations Summary** charts in the dashboard already have data.
     - During registration, Oracle Data Safe also discovers audit trails on your target database. That is why the **Audit Trails** chart in the dashboard shows one audit trail with the status **In Transition** for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
 
-    Top six charts of the dashboard:
-
     ![Initial Dashboard](images/dashboard-initial.png "Initial Dashboard")
-
-    Bottom three charts of the dashboard:
-
-    ![Dashboard bottom three charts](images/dashboard-bottom-three-charts.png "Dashboard bottom three charts")
 
 
 ## Learn More
@@ -148,4 +139,4 @@ If you are not going to do data masking in this workshop, you can skip this task
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 6, 2022
+- **Last Updated By/Date** - Jody Glover, July 12, 2022
