@@ -1,7 +1,3 @@
----
-inject-note: false
----
-
 # Introduction
 
 This workshop is designed to help new users become familiar with the features of Oracle Data Safe. You learn how to register an Autonomous Database with Oracle Data Safe, audit database activity, generate alerts, assess the security of your database configurations and users, and discover and mask sensitive data.
