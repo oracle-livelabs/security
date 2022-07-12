@@ -211,7 +211,7 @@ Throughout this workshop, you access Database Actions to run SQL commands on you
 
 As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features.
 
-1. Download the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script, and then unzip it into a directory of your choice. Next, open the file in a text editor, such as NotePad.
+1. Download the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script, and then unzip it into a directory of your choice. Next, open the file in a text editor, such as NotePad.
 
 2. Copy the entire script to the clipboard and then paste it into the worksheet in Database Actions. The last line of the script is `select null as "End of script" from dual;`.
 

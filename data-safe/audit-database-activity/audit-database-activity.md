@@ -24,7 +24,7 @@ In this lab, you will:
 - Start audit data collection
 - Provision audit policies on your target database
 - View the Activity Auditing dashboard
-- Perform admin activity on the target database
+- Generate admin activity on the target database
 - Analyze the audit events for your target database
 - View the All Activity report
 - Create a custom audit report
@@ -38,6 +38,7 @@ This lab assumes you have:
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
 - Accessed Security Center
+
 
 
 ### Assumptions
@@ -234,13 +235,13 @@ This lab assumes you have:
     The dashboard is automatically updated to include audit event statistics for only your target database. Notice that there is no activity recorded yet.
 
 
-## Task 9: Perform admin activity on the target database
+## Task 9: Generate admin activity on the target database
 
 In this task you run a SQL script that runs admin activity on the target database. This activity will be audited by Oracle Data Safe.
 
 1. Return to the **SQL | Oracle Database Actions** browser tab. If your session has expired, sign in again.
 
-2. Download the **admin-user-activity.sql** script and save it to a temporary directory on your computer.
+2. Download the [**admin-user-activity.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/admin-user-activity.sql) script and save it to a temporary directory on your computer.
 
 3. Open the file in a text editor and copy the entire script to the clipboard.
 
