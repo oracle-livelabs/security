@@ -1,7 +1,3 @@
----
-inject-note: true
----
-
 # Assess Database Users
 
 ## Introduction

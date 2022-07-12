@@ -1,7 +1,3 @@
----
-inject-note: true
----
-
 # Audit Database Activity
 
 ## Introduction

@@ -1,7 +1,3 @@
----
-inject-note: true
----
-
 # Mask Sensitive Data
 
 ## Introduction

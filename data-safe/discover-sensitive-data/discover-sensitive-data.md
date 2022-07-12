@@ -1,7 +1,3 @@
----
-inject-note: true
----
-
 # Discover Sensitive Data
 
 ## Introduction
