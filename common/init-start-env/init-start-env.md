@@ -4,7 +4,7 @@
 
 In this lab we will review and startup all components required to successfully run this workshop.
 
-*Estimated Lab Time:* 10 Minutes.
+Estimated Time: 10 Minutes.
 
 ### Objectives
 - Initialize the workshop environment.
@@ -18,7 +18,7 @@ This lab assumes you have:
 
 ## Task 1: Validate That Required Processes are Up and Running.
 
-*Note:* All screenshots for SSH terminal type tasks featured throughout this workshop were captured using the *MobaXterm* SSH Client as described in this step. As a result when executing such tasks from within the graphical remote desktop session, skip steps requiring you to login as user *oracle* using *sudo su - oracle*, the reason being that the remote desktop session is under user *oracle*.
+**Note:** All screenshots for SSH terminal type tasks featured throughout this workshop were captured using the *MobaXterm* SSH Client as described in this step. As a result when executing such tasks from within the graphical remote desktop session, skip steps requiring you to login as user *oracle* using *sudo su - oracle*, the reason being that the remote desktop session is under user *oracle*.
 
 1. Now with access to your remote desktop session, proceed as indicated below to validate your environment before you start executing the subsequent labs. The following Processes should be up and running:
 
@@ -38,7 +38,7 @@ This lab assumes you have:
     Password: <copy>Oracle123</copy>
     ```
 
-    ![](images/em-login.png " ")
+    ![](images/em-login.png "Enterprise Manager Login")
 
 3. Open new browser tabs and confirm successful rendering of *My HR Applications* listed below.
 
@@ -74,8 +74,7 @@ This lab assumes you have:
         </copy>
         ```
 
-        ![](images/db-service-status.png " ")
-        ![](images/db-service-status2.png " ")
+        ![](images/db-service-status.png "DB Service Status")
 
     - DBSec-lab Service (Enterprise Manager 13c and My HR Applications on Glassfish)
 
@@ -85,7 +84,7 @@ This lab assumes you have:
         </copy>
         ```
 
-        ![](images/dbsec-lab-service-status.png " ")
+        ![](images/dbsec-lab-service-status.png "DBSecLab Service Status ")
 
 5. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
 
@@ -180,8 +179,8 @@ If for any reason you want to login from a location that is external to your rem
 
     - *Note:* You may see an error on the browser while accessing the Web Console - “*Your connection is not private*” as shown below. Ignore and add the exception to proceed.
 
-    ![](images/login-em-external-1.png " ")
-    ![](images/login-em-external-2.png " ")
+    ![](images/login-em-external-1.png "Enterprise Manager External Login")
+    ![](images/login-em-external-2.png "Enterprise Manager External Login")
 
 2. My HR Applications on Glassfish
 
