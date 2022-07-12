@@ -1,65 +1,65 @@
 {
-    "workshoptitle": "Get Started with Oracle Data Safe Fundamentals",
+    "workshoptitle": "Lock up risk with Oracle Data Safe",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
       {
         "title": "Introduction",
-        "description": "This lab provides information about the Oracle Data Safe workshop.",
+        "description": "This lab provides information about the workshop.",
         "filename": "../../introduction/introduction.md",
-        "type": "livelabs"
+        "type": "ocw-livelabs"
       },
       {
-        "title": "Get Started",
+        "title": "Getting Started",
         "description": "Get an Oracle Cloud account if needed and sign in.",
         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md",
-        "type": "livelabs"
+        "type": "ocw-livelabs"
       },
       {
         "title": "Prepare Your Environment",
-        "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
+        "description": "Prerequisites to run the workshop in your own tenancy.",
         "filename": "../../prepare-environment/prepare-environment.md",
-        "type": "livelabs"
+        "type": "ocw-livelabs"
       },
       {
         "title": "Lab 1: Register an Autonomous Database with Oracle Data Safe",
         "description": "This lab shows you how to register an Autonomous Data Warehouse on Shared Exadata Infrastructure with Oracle Data Safe and load sample data into it.",
         "filename": "../../register-autonomous-database/register-autonomous-database.md",
-        "type": "livelabs"
+        "type": "ocw-livelabs"
       },
       {
         "title": "Lab 2: Audit Database Activity",
         "description": "This lab shows you how to provision audit policies in Oracle Data Safe.",
         "filename": "../../audit-database-activity/audit-database-activity.md",
-        "type": "livelabs"
+        "type": "ocw-livelabs"
       },
       {
         "title": "Lab 3: Generate Alerts",
         "description": "This lab shows you how to provision alert policies in Oracle Data Safe.",
         "filename": "../../generate-alerts/generate-alerts.md",
-        "type": "livelabs"
+        "type": "ocw-livelabs"
       },
       {
         "title": "Lab 4: Assess Database Configurations",
         "description": "This lab shows you how to assess database configurations in your Autonomous Database by using the Security Assessment feature in Oracle Data Safe.",
         "filename": "../../assess-database-configurations/assess-database-configurations.md",
-        "type": "livelabs"
+        "type": "ocw-livelabs"
       },
       {
         "title": "Lab 5: Assess Database Users",
         "description": "This lab shows you how to assess database users in your Autonomous Database by using the User Assessment feature in Oracle Data Safe.",
         "filename": "../../assess-database-users/assess-database-users.md",
-        "type": "livelabs"
+        "type": "ocw-livelabs"
       },
       {
         "title": "Lab 6: Discover and Mask Sensitive Data",
         "description": "This lab shows you how to discover and mask sensitive data in Oracle Data Safe by using the Data Discovery and Data Masking features.",
         "filename": "../../discover-mask-sensitive-data/discover-mask-sensitive-data.md",
-        "type": "livelabs"
+        "type": "ocw-livelabs"
       },
       {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-        "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
       }
     ]
   }
