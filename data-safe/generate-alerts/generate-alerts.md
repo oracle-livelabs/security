@@ -17,15 +17,15 @@ In this lab, you will:
 - Perform activity on your target database to generate alerts in Oracle Data Safe
 - Review alerts in Oracle Data Safe
 - View details for an alert and close it
-- Create a custom alerts report
-- Generate and download a custom alerts report as a PDF
+- (Optional) Create a custom alerts report
+- (Optional) Generate and download a custom alerts report as a PDF
 
 ### Prerequisites
 
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to Oracle Cloud Infrastructure
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
+- Prepared your environment for this workshop
 - Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your target database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
 - Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity))
 
@@ -209,7 +209,7 @@ In this task, you perform activities on your target database in Database Actions
 
     The alert status is immediately set to **CLOSED**.
 
-## Task 6: Create a custom alerts report
+## Task 6 (Optional): Create a custom alerts report
 
 1. In the breadcrumb at the top of the page, click **All Alerts** to return to the All Alerts report.
 
@@ -232,7 +232,7 @@ In this task, you perform activities on your target database in Database Actions
 5. Click the **click here** link to view the report.
 
 
-## Task 7: Generate and download a custom alerts report as a PDF
+## Task 7 (Optional): Generate and download a custom alerts report as a PDF
 
 1. On the custom report page, click **Generate PDF/XLS Report**.
 

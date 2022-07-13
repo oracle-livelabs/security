@@ -16,7 +16,6 @@ In this lab, you will:
 - Create a masking policy for your target database
 - Mask sensitive data in your target database by using Data Masking
 - View the Data Masking report
-- (Optional) Create a PDF of the Data Masking report
 - Validate the masked data in your target database
 
 
@@ -25,9 +24,9 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe. It's important that you have already granted the Data Masking role on your target database; otherwise, you will not be able to mask sensitive data. Also, make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
-- Created a sensitive data model (see [Discover Sensitive Data](?lab=discover-sensitive-data))
+- Prepared your environment for this workshop
+- Registered your target database with Oracle Data Safe. It's important that you have granted the Data Masking role on your target database; otherwise, you will not be able to mask sensitive data. Also, make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
+- Created a sensitive data model (see [Discover Sensitive Data](?lab=discover-sensitive-data-ocw))
 
 
 ### Assumptions
@@ -155,30 +154,8 @@ After you create a masking policy, you can run a data masking job against your t
     ![Masking report top](images/masking-report-top.png "Masking report top")
     ![Masking report bottom](images/masking-report-bottom.png "Masking report bottom")
 
-## Task 5 (Optional): Create a PDF of the Data Masking report
 
-1. At the top of the **Masking Report Details** page, click **Generate Report**.
-
-    The **Generate Report** dialog box is displayed.
-
-2. Leave **PDF** selected, and click **Generate Report**. Wait for the report to generate, and then click **Close**.
-
-    ![Generate PDF report for masked data](images/generate-pdf-masked-data.png "Generate PDF report for masked data")
-
-3. Click **Download Report**.
-
-    A **Download Report** dialog box is displayed.
-
-4. Leave **PDF** selected, and click **Download Report**.
-
-    ![Download PDF report for masked data](images/download-pdf-masked-data.png "Download PDF report for masked data")
-
-5. Open the PDF report, review it, and then close it.
-
-    ![Data Masking PDF report](images/data-masking-pdf-report.png "Data Masking PDF report")
-
-
-## Task 6: Validate the masked data in your target database
+## Task 5: Validate the masked data in your target database
 
 1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. The `SELECT` statement against the `EMPLOYEES` table should be displayed on the worksheet.
 
@@ -187,7 +164,6 @@ After you create a masking policy, you can run a data masking job against your t
 3. Review the masked data on the **Query Result** tab at the bottom of the page. You can resize the panel to view more data and you can scroll down and to the right.
 
     ![Masked EMPLOYEE data](images/masked-query-results.png "Masked EMPLOYEE data")
-
 
 
 ## Learn More

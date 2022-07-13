@@ -23,8 +23,8 @@ In this lab, you will:
 - Generate admin activity on the target database
 - Analyze the audit events for your target database
 - View the All Activity report
-- Create a custom audit report
-- Generate and download a custom audit report as a PDF
+- (Optional) Create a custom audit report
+- (Optional) Generate and download a custom audit report as a PDF
 
 ### Prerequisites
 
@@ -32,9 +32,8 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account
 - Signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
+- Prepared your environment for this workshop
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
-- Accessed Security Center
 
 
 ### Assumptions
@@ -335,7 +334,7 @@ In this task you run a SQL script that runs admin activity on the target databas
     ![All Activity report](images/all-activity-report2.png "All Activity report")
 
 
-## Task 12: Create a custom audit report
+## Task 12 (Optional): Create a custom audit report
 
 1. At the top of the **All Activity** report, add the following two filters. To add a filter, click **+ Another Filter**. When you are done setting the filter parameters, click **Apply**.
 
@@ -360,7 +359,7 @@ In this task you run a SQL script that runs admin activity on the target databas
     - To view your custom report in the future, under **Related Resources** for **Activity Auditing**, click **Audit Reports**. Click the **Custom Reports** tab, and then click the name of your custom audit report.
 
 
-## Task 13: Generate and download a custom audit report as a PDF
+## Task 13 (Optional): Generate and download a custom audit report as a PDF
 
 1. On the custom audit report page, click **Generate PDF/XLS Report**.
 

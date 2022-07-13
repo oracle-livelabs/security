@@ -4,7 +4,6 @@
 
 User Assessment helps you assess the security of your database users and identify potential high risk users. By default, Oracle Data Safe automatically generates user assessments for your target databases and stores them in the Assessment History. You can analyze assessment data across all your target databases and for each target database. You can monitor security drift on your target databases by comparing the latest assessment to a baseline or to another assessment.
 
-In this lab, you explore User Assessment.
 
 Estimated Lab Time: 20 minutes
 
@@ -14,12 +13,9 @@ In this lab, you will:
 
 - View the dashboard for User Assessment
 - Analyze users in the latest user assessment
-- Review the `ADMIN` user's audit records
 - Generate suspicious activity on the target database
 - Refresh the latest user assessment and rename it
 - Compare the latest user assessment with the initial user assessment
-- (Optional) View the user assessment history for all target databases
-- (Optional) Download the latest user assessment as a PDF report
 
 
 ### Prerequisites
@@ -27,9 +23,8 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
+- Prepared your environment for this workshop
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
-- Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity)). Audit data collection is required if you want to view a user's audit records from within User Assessment.
 
 
 ### Assumptions
@@ -116,25 +111,7 @@ Currently, the latest user assessment is the one that was automatically generate
 7. To remove the filter, click the **X** next to the filter.
 
 
-## Task 3: Review the `ADMIN` user's audit records
-
-1. Identify the row in the table for the `ADMIN` user. In the **Audit Records** column for the `ADMIN` user, click **View Activity**.
-
-    ![ADMIN user audit records](images/ua-admin-user-audit-records.png "ADMIN user audit records")
-
-    The **All Activity** report for the `ADMIN` user is displayed.
-
-2. Examine the report.
-
-    - The report is automatically filtered to show you audit records for the past one week, for the `ADMIN` user, and for your target database.
-    - At the top of the report, you can view totals for **Targets**, **DB Users**, **Client Hosts**, **DMLs**, **Privilege Changes**, **DDLs**, **User/Entitlement Changes**, **Login Failures**, **Login Successes**, and **Total Events**.
-    - The **Event** column in the table shows you the types of activities performed by the `ADMIN` user, for example, `GRANT`, `LOGON`, `CREATE USER`, and so on.
-    - At the bottom of the page, click the page numbers to view more audit records.
-
-    ![All Activity report for the ADMIN user](images/ua-all-activity-report-admin-user.png "All Activity report for the ADMIN user")
-
-
-## Task 4: Generate suspicious activity on the target database
+## Task 3: Generate suspicious activity on the target database
 
 1. Access the SQL worksheet in **Database Actions**.
 
@@ -156,7 +133,7 @@ Currently, the latest user assessment is the one that was automatically generate
 
 
 
-## Task 5: Refresh the latest user assessment and rename it
+## Task 4: Refresh the latest user assessment and rename it
 
 1. Return to the browser tab for Oracle Data Safe.
 
@@ -191,7 +168,7 @@ Currently, the latest user assessment is the one that was automatically generate
     ![User Assessment History page](images/user-assessment-history.png "User assessment History")
 
 
-## Task 6: Compare the latest user assessment with the initial user assessment
+## Task 5: Compare the latest user assessment with the initial user assessment
 
 You can select a user assessment to compare with the latest user assessment. With this option, you don't need to set a baseline. This option is only available when you are viewing the latest user assessment.
 
@@ -225,63 +202,6 @@ You can select a user assessment to compare with the latest user assessment. Wit
     ![Comparison Details panel](images/ua-comparison-details-panel.png "Comparison Details panel")
 
 10. Review the information, and then click **Close**. At this point, you might consider setting a baseline assessment.
-
-
-## Task 7 (Optional): View the user assessment history for all target databases
-
-On the User Assessment History page, you can view a listing of all of your saved user assessments for all your target databases.
-
-1. In the breadcrumb at the top of the page, click **User Assessment**.
-
-2. Under **Related Resources**, click **Assessment History**.
-
-3. Under **List Scope**, make sure your compartment is selected.
-
-4. Notice that your saved user assessments are listed here.
-
-    - You can compare the number of critical risks, high risks, DBAs, DV Admins, and Audit Admins across all target databases in the selected compartment(s).
-    - You can also quickly identify user assessments that are set as baselines.
-
-    ![Assessment History for all target databases](images/ua-assessment-history-all-targets.png "Assessment History for all target databases")
-
-
-5. To sort the list by target database, click the **Target Database** column heading.
-
-6. Click the name of a user assessment for your target database. Notice that you cannot refresh the data in a saved user assessment.
-
-
-## Task 8 (Optional): Download the latest user assessment as a PDF report
-
-1. Return to the latest user assessment. To do so, in the breadcrumb at the top of the page, click **User Assessment**. Click the **Target Summary** tab, and then click **View Report** for your target database.
-
-2. From the **More Actions** menu, click **Generate Report**.
-
-    The **Generate Report** dialog box is displayed.
-
-3. Leave **PDF** selected as the report format, and click **Generate Report**.
-
-4. Wait for a message that says the **PDF report generation is complete**, and then click **Close**.
-
-    ![Generate Report dialog box in User Assessment](images/ua-generate-report-dialog.png "Generate Report dialog box in User Assessment")
-
-
-5. From the **More Actions** menu, click **Download Report**.
-
-    The **Download Report** dialog box is displayed.
-
-6. Leave the **PDF** report format selected, and click **Download Report**.
-
-    ![Download Report dialog box in User Assessment](images/ua-download-report-dialog.png "Download Report dialog box in User Assessment")
-
-
-7. Open the PDF and review it.
-
-    ![Latest user assessment in PDF format page 1](images/ua-pdf-report-page1.png "Latest user assessment in PDF format page 1")
-
-    ![Latest user assessment in PDF format page 2](images/ua-pdf-report-page2.png "Latest user assessment in PDF format page 2")
-
-8. Close the PDF and return to the browser tab for Oracle Data Safe.
-
 
 
 ## Learn More
