@@ -109,7 +109,7 @@ In this task, you perform activities on your target database in Database Actions
 
     If you need help accessing Database Actions, see [Prepare Your Environment](?lab=prepare-environment).
 
-2. From the drop-down list in the upper-right corner, select **Sign Out**. In the dialog box, click **Leave page**.
+2. From the drop-down list in the upper-right corner, select **Sign Out**. If needed, in the dialog box, click **Leave page**.
 
 3. Click **Sign in**.
 
@@ -125,7 +125,7 @@ In this task, you perform activities on your target database in Database Actions
 
 8. If a help note is displayed, click the **X** button to close it.
 
-9. On the worksheet, run the following SQL script:
+9. On the worksheet, paste the following SQL script:
 
     ```
     <copy>drop user MALFOY cascade;
@@ -133,18 +133,18 @@ In this task, you perform activities on your target database in Database Actions
     grant PDB_DBA to MALFOY;</copy>
     ```
 
-10. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab.
+10. On the toolbar, click the **Run Script** button and wait for the script to finish running.
 
-11. Wait a couple of minutes for Oracle Data Safe to produce the alerts.
+    ![Run Script button](images/run-script.png "Run Script button")
+
+11. Return to the browser tab for Oracle Data Safe and wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
 
 ## Task 4: Review alerts in Oracle Data Safe
 
-1. From the navigation menu, select **Oracle Database** and then **Data Safe**.
+1. Under **Security Center** on the left, click **Alerts**.
 
-2. Under **Security Center** on the left, click **Alerts**.
-
-3. Notice that the alerts dashboard now has data.
+2. Notice that the alerts dashboard now has data.
 
     - The **Alerts summary** chart shows that there are four alerts. Two are critical risk and two are medium risk.
     - The **Open Alerts** chart shows that there are four alerts on the current day.
@@ -154,13 +154,13 @@ In this task, you perform activities on your target database in Database Actions
     ![Alerts dashboard with data](images/alerts-dashboard-with-data.png "Alerts dashboard with data")
     ![Targets Summary tab](images/targets-summary.png "Targets Summary tab")
 
-4. Under **Related Resources**, click **Reports**.
+3. Under **Related Resources**, click **Reports**.
 
-5. In the **Report Name** column on the right, click the **All Alerts** report to view it.
+4. In the **Report Name** column on the right, click the **All Alerts** report to view it.
 
     ![All Alerts report](images/alerts-reports.png "All Alerts report")
 
-6. Review the report.
+5. Review the report.
 
     - The report currently does not have any filters set. It shows you all alerts for all target databases in the selected compartment.
     - At the top of the report, you can view several totals, including the total number of target databases; total number of open and closed alerts, and the total number of critical, high, medium, and low alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
@@ -169,17 +169,17 @@ In this task, you perform activities on your target database in Database Actions
 
     ![All Alerts report](images/all-alerts-report.png "All Alerts report")
 
-7. At the top of the report, click **+ Add Filter**. Create the filter **Target Database Name = your-target-database-name**, and click **Apply**.
+6. At the top of the report, click **+ Add Filter**. Create the filter **Target Database Name = your-target-database-name**, and click **Apply**.
 
     Only alerts that pertain to your target database are listed in the table.
 
-8. Click **+ Another Filter**. Create the filter **Alert Name = User Creation/Modification**, and click **Apply**.
+7. Click **+ Another Filter**. Create the filter **Alert Name = User Creation/Modification**, and click **Apply**.
 
     Only alerts that pertain to User Creation/Modification are listed in the table.
 
     ![Filtered alerts](images/filtered-alerts.png "Filtered alerts")
 
-9. Review the alerts generated for **User Creation/Modification**.
+8. Review the alerts generated for **User Creation/Modification**.
 
 
 ## Task 5: View details for an alert and close it

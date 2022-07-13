@@ -25,10 +25,9 @@ In this lab, you will:
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
-- Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity))
 
 
 ### Assumptions
@@ -42,7 +41,7 @@ This lab assumes you have:
 
 2. Under **List Scope**, select your compartment. Deselect **Include child compartments**.
 
-    The dashboard shows statistics across all target databases in the selected compartment(s).
+    The dashboard shows statistics for your target database.
 
 3. At the top of the page, review the **Risk Level** and **Risks by Category** charts.
 
@@ -156,8 +155,7 @@ A baseline assessment shows you data for all your target databases in a selected
 
     ![Security Assessment Baseline has been set message](images/sa-baseline-has-been-set-message.png "Security Assessment Baseline has been set message")
 
-6. In the breadcrumb at the top of the page, click **Assessment History** and confirm that there is a new row in the table for the baseline assessment. If there isn't a baseline, return to the latest assessment and repeat the steps in this task.
-
+6. In the breadcrumb at the top of the page, click **Assessment History** and confirm that there is a new row in the table for the baseline assessment. The assessment name starts with **SA_baseline**.
 
 
 ## Task 4: Generate activity on the target database
@@ -166,54 +164,67 @@ A baseline assessment shows you data for all your target databases in a selected
 
 2. If needed, clear the worksheet.
 
-3. On the worksheet, enter the following command and then click the **Run Statement** button on the toolbar (green circle with white arrow).
+3. On the worksheet, enter the following command:
 
     ```
     <copy>grant ALTER ANY ROLE to PUBLIC;</copy>
     ```
+
+4. On the toolbar, click the **Run Statement** button (green circle with white arrow).
+
+    ![Run Statement button](images/run-statement-button.png "Run Statement button")
 
 
 ## Task 5: Refresh the latest security assessment and analyze the results
 
 1. Return to the browser tab for Oracle Data Safe.
 
-2. At the top of the latest security assessment, click **Refresh Now**.
+2. In the breadcrumb at the top of the page, click **Security Assessment**.
+
+3. Click the **Target Summary** tab.
+
+4. Click **View Report** for your target database to view the latest assessment.
+
+5. At the top of the latest security assessment, click **Refresh Now**.
 
     The **Refresh Now** panel is displayed.
 
-3. In the **Save Latest Assessment** box, enter **My Security Assessment**, and then click **Refresh Now**.
+6. In the **Save Latest Assessment** box, enter **My Security Assessment**, and then click **Refresh Now**.
 
     - This action updates the latest security assessment for your target database and also saves a copy named My Security Assessment in the Assessment History.
     - The refresh operation takes about one minute.
 
     ![Security Assessment Refresh Now panel](images/sa-refresh-now-panel.png "Security Assessment Refresh Now panel")
 
-4. Click the **Assessment Information** tab and observe that the assessment date and time is right now.
+7. Click the **Assessment Information** tab and observe that the assessment date and time is right now.
 
     ![Security Assessment Assessed On right now](images/sa-assessed-on-right-now.png "Security Assessment Assessed On right now")
 
-5. In the breadcrumb at the top of the page, click **Security Assessment** to return to the dashboard. Make sure your compartment is selected.
+8. In the breadcrumb at the top of the page, click **Security Assessment** to return to the dashboard. Make sure your compartment is selected.
 
-6. In the **Risk Level** column, click **High** to view all the high risk findings.
+9. In the **Risk Level** column, click **High** to view all the high risk findings.
 
     ![Security Assessment High Risk link](images/sa-high-risk-link.png "Security Assessment High Risk link")
 
-7. On the **Overview** tab, review the **Risks by Category** chart. You can position your cursor over the percentage values to view the category name and count.
+10. On the **Overview** tab, review the **Risks by Category** chart. You can position your cursor over the percentage values to view the category name and count.
 
     ![Security Assessment High Risk findings for all target databases](images/sa-high-risk-findings-all-targets.png "Security Assessment High Risk findings for all target databases")
 
-8. In the **Risk Details** section, expand **System Privileges Granted to PUBLIC**. This finding pertains to the grant you made in the previous task.
+11. In the **Risk Details** section, expand **System Privileges Granted to PUBLIC**. This finding pertains to the grant you made in the previous task.
 
     - The **Remarks** section explains the risk and how you can mitigate it.
     - The **Target Databases** section lists the target databases to which the high risk applies.
 
     ![Security Assessment System Privileges Granted to Public](images/sa-system-privileges-granted-to-public.png "Security Assessment System Privileges Granted to Public")
 
-8. Click your target database name to view the details about the finding for your target database. The finding includes your target database name, risk level, a summary about the risk, details on your target database, remarks that explain the risk and help you to mitigate it, and references.
+12. Click your target database name to view the details about the finding for your target database.
+
+    - The finding includes your target database name, risk level, a summary about the risk, details on your target database, remarks that explain the risk and help you to mitigate it, and references.
+    - The **Remarks** section says "Privileges granted to PUBLIC are available to all users. This generally should include few, if any, system privileges since these will not be needed by ordinary users who are not administrators."
 
     ![Security Assessment System Privileges Granted to PUBLIC Details](images/sa-system-privileges-granted-to-public-details.png "Security Assessment System Privileges Granted to PUBLIC Details")
 
-9. To view the latest assessment for your target database, scroll down to the bottom of the page and click the **click here** link. You are returned to the latest security assessment.
+13. To view the latest assessment for your target database, scroll down to the bottom of the page and click the **click here** link. You are returned to the latest security assessment.
 
     ![Click Here link to view latest security assessment](images/sa-click-here-link.png "Click Here link to view latest security assessment")
 
@@ -224,7 +235,7 @@ A baseline assessment shows you data for all your target databases in a selected
 
     ![Compare With Baseline option under Resources](images/sa-resources-compare-with-baseline-option.png "Compare With Baseline option under Resources")
 
-2. When the comparison operation is completed, review the **Comparison** report.
+2. When the comparison operation is completed, scroll down and review the **Comparison** report.
 
     - Review the number of findings per risk category for each risk level. Categories include **User Accounts**, **Privileges and Roles**, **Authorization Control**, **Data Encryption**, **Fine-Grained Access Control**, **Auditing**, and **Database Configuration**.
     - You can identify where the changes have occurred on your target database by viewing cells that contain the word **Modified**. The number represents the total count of new, remediated, and modified risks on the target database.
@@ -269,7 +280,7 @@ A baseline assessment shows you data for all your target databases in a selected
 
     ![Add Schedule to Save Assessments page](images/sa-add-schedule-to-save-an-assessment.png "Add Schedule to Save Assessments page")
 
-13. Notice that when the schedule is created, its status changes to SUCCEEDED on the **Schedule Details** page.
+13. Notice that when the schedule is created, its status changes to **SUCCEEDED** on the **Schedule Details** page.
 
     ![Schedule Details page](images/sa-schedule-details-page.png "Schedule Details page")
 
@@ -286,7 +297,7 @@ A baseline assessment shows you data for all your target databases in a selected
 
 4. At the top of the page, click **View History**.
 
-5. Review all the security assessments for your target database.
+5. Review the list of security assessments for your target database.
 
     - If you don't see your assessments, make sure that your compartment is selected.
     - To view assessments saved to a different compartment, select the compartment from the **Compartment** drop-down list.
@@ -304,4 +315,4 @@ A baseline assessment shows you data for all your target databases in a selected
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 12, 2022
+* **Last Updated By/Date** - Jody Glover, July 13, 2022

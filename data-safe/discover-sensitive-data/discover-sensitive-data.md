@@ -6,7 +6,7 @@ Data Discovery helps you find sensitive data in your target databases. You tell 
 
 Start by examining sensitive data in one of the tables on your target database by using Oracle Database Actions. Then, use Oracle Data Safe to discover sensitive data on your target database and generate a sensitive data model. Create a PDF of your sensitive data model.
 
-Estimated Lab Time: 15 minutes
+Estimated Lab Time: 10 minutes
 
 ### Objectives
 
@@ -14,16 +14,16 @@ In this lab, you will:
 
 - Discover sensitive data in your target database by using Data Discovery
 - Analyze the sensitive data model
-- Create a PDF of the Sensitive Data Model report
+- (Optional) Create a PDF of the Sensitive Data Model report
 
 
 ### Prerequisites
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
+- Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
 
 
 ### Assumptions
@@ -37,9 +37,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 1. Return to the browser tab for Oracle Data Safe. If needed, sign in again.
 
-2. From the navigation menu, select **Oracle Database** and then **Data Safe**.
-
-    The **Overview** page for the Oracle Data Safe service is displayed.
+2. In the breadcrumb at the top of the page, click **Data Safe**.
 
 3. On the left under **Security Center**, and click **Data Discovery**.
 
@@ -66,7 +64,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
     ![Select Schemas page](images/select-schemas-page.png "Select Schemas page")
 
-8. On the **Select Sensitive Types** page, expand all of the sensitive categories by moving the **Expand All** slider to the right. Scroll down the page and review the sensitive types. Notice that you can select individual sensitive types, sensitive categories, and all sensitive types. At the top of the page, select the **All** check box, and then click **Next**.
+8. On the **Select Sensitive Types** page, expand all of the sensitive categories by moving the **Expand All** slider to the right. Scroll down the page and review the sensitive types. Notice that you can select individual sensitive types, sensitive categories, and all sensitive types at one time. At the top of the page, select the **All** check box, and then click **Next**.
 
     ![Select Sensitive Types page](images/select-sensitive-types-page.png "Select Sensitive Types page")
 
@@ -81,7 +79,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 1. Review the information on the **Sensitive Data Model Details** page.
 
-    - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
+    - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
     - You can click the **View Details** link to view the work request information.
     - The pie chart compares the number of sensitive values per sensitive category and sensitive type.
     - The **Sensitive Columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
@@ -111,7 +109,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
     ![Schema View of sensitive data model](images/schema-view-sdm1.png "Schema View of sensitive data model")
 
 
-## Task 3: Create a PDF of the Sensitive Data Model report
+## Task 3 (Optional): Create a PDF of the Sensitive Data Model report
 
 1. At the top of the **Sensitive Data Models Details** page, click **Generate Report**.
 
@@ -131,7 +129,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
     ![Download PDF report of SDM1](images/download-pdf-report-sdm1.png "Download PDF report of SDM1")
 
 
-5. In the **Opening SDM1** dialog box, leave **Save File** selected, and then click **OK**. Browse to the desktop of your computer, leave **SDM1.pdf** set as the file name, and then click **Save**. On your desktop, open **SDM1.pdf** and view the report.
+5. Open the PDF report and review it.
 
     - The **Summary** table shows totals for columns and values scanned, sensitive types, sensitive tables, sensitive columns, and sensitive values.
     - The **Sensitive Columns** table lists the sensitive columns in the sensitive data model. For each sensitive column, the table shows you its sensitive type, schema name, table name, column name, sensitive value count, whether the column data was matched (Y or N), whether the column name was matched (Y or N), and whether the column comment was matched (Y or N).
@@ -148,4 +146,4 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 12, 2022
+- **Last Updated By/Date** - Jody Glover, July 13, 2022

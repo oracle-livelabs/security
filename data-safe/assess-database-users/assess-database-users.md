@@ -2,7 +2,7 @@
 
 ## Introduction
 
-User Assessment helps you assess the security of your database users and identify high risk users. By default, Oracle Data Safe automatically generates user assessments for your target databases and stores them in the Assessment History. You can analyze assessment data across all your target databases and for each target database. You can monitor security drift on your target databases by comparing the latest assessment to a baseline or to another assessment.
+User Assessment helps you assess the security of your database users and identify potential high risk users. By default, Oracle Data Safe automatically generates user assessments for your target databases and stores them in the Assessment History. You can analyze assessment data across all your target databases and for each target database. You can monitor security drift on your target databases by comparing the latest assessment to a baseline or to another assessment.
 
 In this lab, you explore User Assessment.
 
@@ -18,19 +18,18 @@ In this lab, you will:
 - Generate suspicious activity on the target database
 - Refresh the latest user assessment and rename it
 - Compare the latest user assessment with the initial user assessment
-- Set the latest assessment as the baseline
-- View the user assessment history for all target databases
-- Download the latest user assessment as a PDF report
+- (Optional) View the user assessment history for all target databases
+- (Optional) Download the latest user assessment as a PDF report
 
 
 ### Prerequisites
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
-- Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity))
+- Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity)). Audit data collection is required if you want to view a user's audit records from within User Assessment.
 
 
 ### Assumptions
@@ -98,7 +97,7 @@ Currently, the latest user assessment is the one that was automatically generate
     - User name
     - Target database name
     - Date and time when the user was created
-    - Risk level - Hover over the question mark to view what constitutes a critical risk user.
+    - Potential risk level - Hover over the question mark to view what constitutes a critical risk user.
     - User type
     - User profile
     - Privileged roles (the Admin roles granted to the user)
@@ -110,7 +109,7 @@ Currently, the latest user assessment is the one that was automatically generate
 
 5. Click **Close**.
 
-6. Notice at the top of the table that you can set filters. Click **+ Filter**. From the first drop-down list, select **Potential Risk**. From the second drop-down list, select **=**. In the **Value** box, enter **CRITICAL**. Click **Apply**. The table now shows you only critical risk users.
+6. Notice at the top of the table that you can set filters. Click **+ Add Filter**. From the first drop-down list, select **Potential Risk**. From the second drop-down list, select **=**. In the **Value** box, enter **CRITICAL**. Click **Apply**. The table now shows you only potentially critical risk users.
 
     ![Critical risk users filter](images/ua-critical-risk-users-filter.png "Critical risk users filter")
 
@@ -183,7 +182,11 @@ Currently, the latest user assessment is the one that was automatically generate
 
 9. In the breadcrumb at the top of the page, click **User Assessment**. Under **Related Resources**, click **Assessment History**.
 
-    Notice that there is an additional saved user assessment. None of the user assessments is called **Latest User Assessment**. At a glance, you can compare the number of critical risks, high risks, DBAs, DV Admins, and Audit Admins between the two user assessments.
+10. Observe the following:
+
+    - There is an additional saved user assessment.
+    - None of the user assessments is called **Latest User Assessment**.
+    - At a glance, you can compare the number of critical risks, high risks, DBAs, DV Admins, and Audit Admins between the two user assessments.
 
     ![User Assessment History page](images/user-assessment-history.png "User assessment History")
 
@@ -192,11 +195,11 @@ Currently, the latest user assessment is the one that was automatically generate
 
 You can select a user assessment to compare with the latest user assessment. With this option, you don't need to set a baseline. This option is only available when you are viewing the latest user assessment.
 
-1. Under **Security Center**, click **User Assessment**.
+1. Under **Security Center**, click **User Assessment** to return to the dashboard.
 
 2. Click the **Target Summary** tab.
 
-3. Click the **View Report** link for your target database to open the latest user assessment.
+3. Click the **View Report** link for your target database to open its latest user assessment.
 
 4. On the left under **Resources**, click **Compare Assessments**.
 
@@ -224,26 +227,7 @@ You can select a user assessment to compare with the latest user assessment. Wit
 10. Review the information, and then click **Close**.
 
 
-## Task 7: Set the latest assessment as the baseline
-
-1. At the top of the **Latest User Assessment** page, click **Set As Baseline**.
-
-    ![Set As Baseline button](images/ua-set-as-baseline-button.png "Set As Baseline button")
-
-2. Click **Yes** to confirm that you want to set these findings as the baseline.
-
-    *Important! Stay on the page until the **Baseline has been set** message is displayed.*
-
-    ![User Assessment Baseline has been set message](images/ua-baseline-has-been-set-message.png "User Assessment Baseline has been set message")
-
-3. Click the **View History** button and review the assessment history for your target database. There are three saved user assessments, one of which is the baseline assessment.
-
-    ![User Assessment history for target database](images/ua-assessment-history-for-target-database.png "User Assessment history for target database")
-
-4. Click **Close**.
-
-
-## Task 8: View the user assessment history for all target databases
+## Task 7 (Optional): View the user assessment history for all target databases
 
 On the User Assessment History page, you can view a listing of all of your saved user assessments for all your target databases.
 
@@ -253,7 +237,7 @@ On the User Assessment History page, you can view a listing of all of your saved
 
 3. Under **List Scope**, make sure your compartment is selected.
 
-4. Notice that your saved user assessments are listed here too.
+4. Notice that your saved user assessments are listed here.
 
     - You can compare the number of critical risks, high risks, DBAs, DV Admins, and Audit Admins across all target databases in the selected compartment(s).
     - You can also quickly identify user assessments that are set as baselines.
@@ -266,7 +250,7 @@ On the User Assessment History page, you can view a listing of all of your saved
 6. Click the name of a user assessment for your target database. Notice that you cannot refresh the data in a saved user assessment.
 
 
-## Task 9: Download the latest user assessment as a PDF report
+## Task 8 (Optional): Download the latest user assessment as a PDF report
 
 1. Return to the latest user assessment. To do so, in the breadcrumb at the top of the page, click **User Assessment**. Click the **Target Summary** tab, and then click **View Report** for your target database.
 
@@ -290,19 +274,13 @@ On the User Assessment History page, you can view a listing of all of your saved
     ![Download Report dialog box in User Assessment](images/ua-download-report-dialog.png "Download Report dialog box in User Assessment")
 
 
-7. In the **Opening user-assessment-report.pdf** dialog box, leave **Save File** selected, and click **OK**.
-
-    The **Enter name of file to save to** dialog box is displayed.
-
-8. Browse to the desktop, leave **user-assessment-report.pdf** set as the name, and then click **Save**.
-
-9. On your desktop, open the report and scroll through it. When you are done, close the file.
+7. Open the PDF and review it.
 
     ![Latest user assessment in PDF format page 1](images/ua-pdf-report-page1.png "Latest user assessment in PDF format page 1")
 
     ![Latest user assessment in PDF format page 2](images/ua-pdf-report-page2.png "Latest user assessment in PDF format page 2")
 
-10. Close the PDF and return to the browser tab for Oracle Data Safe.
+8. Close the PDF and return to the browser tab for Oracle Data Safe.
 
 
 
@@ -313,4 +291,4 @@ On the User Assessment History page, you can view a listing of all of your saved
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 12, 2022
+* **Last Updated By/Date** - Jody Glover, July 13, 2022
