@@ -14,8 +14,8 @@ In this lab, you will:
 
 - Review the Oracle Data Safe alert policies
 - Provision alert policies on your target database
-- Perform activity on your target database to cause an alert in Oracle Data Safe
-- Review the generated alerts in Oracle Data Safe
+- Perform activity on your target database to generate alerts in Oracle Data Safe
+- Review alerts in Oracle Data Safe
 - View details for an alert and close it
 - Create a custom alerts report
 - Generate and download a custom alerts report as a PDF
@@ -24,7 +24,7 @@ In this lab, you will:
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+- Obtained an Oracle Cloud account and signed in to Oracle Cloud Infrastructure
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your target database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
 - Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity))
@@ -44,7 +44,7 @@ This lab assumes you have:
 
 2. Under **Related Resources**, click **Alert Policies**.
 
-3. Review the list of available alert policies in Oracle Data Safe. They are as follows:
+3. Review the list of available alert policies provided by Oracle Data Safe. They are as follows:
 
     - Profile Changes
     - Failed Logins by Admin User
@@ -88,9 +88,9 @@ This lab assumes you have:
 
 7. From the drop-down list, one at a time, select the **User Creation/Modification** and **Failed Logins by Admin User** alert policies.
 
-8. Click **Apply Policy**.
+8. Click **Apply Policy** and wait until a message states that the policies are applied. Please don't close the panel until then.
 
-9. Expand the bottom section to view more information. A green checkmark is displayed next to the statements that tell you the request to apply each policy is submitted.
+9. When it becomes available, expand the bottom section to view more information. A green checkmark is displayed next to the statements that tell you the request to apply each policy is submitted.
 
     ![Apply and Enable Alert Policy To Target Databases dialog box](images/apply-and-enable-alert-policy-dialog-box.png "Apply and Enable Alert Policy To Target Databases dialog box")
 
@@ -101,7 +101,7 @@ This lab assumes you have:
     ![Two target-policy associations for your target database](images/two-target-policy-associations-for-target.png "Two target-policy associations for your target database")
 
 
-## Task 3: Perform activity on your target database to cause alerts in Oracle Data Safe
+## Task 3: Perform activity on your target database to generate alerts in Oracle Data Safe
 
 In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, sign in and create a user account.
 
@@ -138,7 +138,7 @@ In this task, you perform activities on your target database in Database Actions
 11. Wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
 
-## Task 4: Review the generated alerts in Oracle Data Safe
+## Task 4: Review alerts in Oracle Data Safe
 
 1. From the navigation menu, select **Oracle Database** and then **Data Safe**.
 

@@ -9,15 +9,9 @@
         "type": "ocw-livelabs"
       },
       {
-        "title": "Getting Started",
-        "description": "Get an Oracle Cloud account if needed and sign in.",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md",
-        "type": "ocw-livelabs"
-      },
-      {
         "title": "Prepare Your Environment",
         "description": "Prerequisites to run the workshop in your own tenancy.",
-        "filename": "../../prepare-environment/prepare-environment.md",
+        "filename": "../../prepare-environment/prepare-environment-sandbox.md",
         "type": "ocw-livelabs"
       },
       {

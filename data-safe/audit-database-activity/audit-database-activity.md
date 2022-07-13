@@ -4,7 +4,7 @@
 
 In Oracle Data Safe, you can provision audit policies on your target databases and collect audit data into the Oracle Data Safe repository. There are basic, administrator, user, Oracle pre-defined, and custom audit policies, as well as audit policies designed to help your organization meet compliance standards. When you register a target database, Oracle Data Safe automatically creates an audit profile, audit policy, and audit trails relevant for the target database.
 
-Start by reviewing the global settings in Oracle Data Safe. Then, review the audit profile, audit trail(s), and audit policy automatically created for your target database. Start audit data collection on your target database and provision a few audit policies. Analyze the audit events, view reports, create a custom audit report, and download the custom audit report as a PDF.
+Start by reviewing the global settings in Oracle Data Safe. Then, review the audit profile, audit trail(s), and audit policy that are automatically created for your target database. Start audit data collection on your target database and provision a few audit policies. Analyze the audit events, view reports, create a custom audit report, and download the custom audit report as a PDF.
 
 Estimated Lab Time: 20 minutes
 
@@ -30,11 +30,11 @@ In this lab, you will:
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+- Obtained an Oracle Cloud account
+- Signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
 - Accessed Security Center
-
 
 
 ### Assumptions
@@ -73,7 +73,7 @@ This lab assumes you have:
 6. Review the details in the audit profile.
 
     - There are default settings for paid usage, online retention period, and offline retention period.
-    - All initial audit profile settings are inherited from the global settings for Oracle Data Safe, but you can modify them here as needed.
+    - All initial audit profile settings for your target database are inherited from the global settings for Oracle Data Safe, but you can modify them here as needed.
 
     ![Audit Profile Details page](images/audit-profile-details-page.png "Audit Profile Details page")
 
@@ -87,7 +87,7 @@ This lab assumes you have:
 
 4. Under **Filters** on the left, select your target database.
 
-5. On the right, review the audit trail(s) for your target database. Oracle Data Safe discovers one audit trail for an Autonomous Database, which is `UNIFIED_AUDIT_TRAIL`.
+5. On the right, review the audit trail(s) for your target database. Oracle Data Safe discovers one audit trail for an Autonomous Database, which is the `UNIFIED_AUDIT_TRAIL`.
 
     ![Audit Trails page](images/audit-trails-page.png "Audit Trails page")
 
@@ -112,8 +112,8 @@ This lab assumes you have:
 
 6.  Click your target database name to view more detail on the **Audit Policy Details** page. Scroll down and review the list of audit policies available for your target database.
 
-    - A grey circle indicates the audit policy is not yet provisioned on the target database. A green circle indicates that the audit policy is provisioned.
-    - You can choose to provision any number of audit policies on your target database and set filters on users and roles.
+    - A grey circle means the audit policy is not yet provisioned on the target database. A green circle means the audit policy is provisioned.
+    - You can choose to provision and enable any number of audit policies on your target database and set filters on users and roles.
 
     ![Audit Policies Details page](images/audit-policies-details-page.png "Audit Policies Details page")
 
@@ -136,7 +136,7 @@ This lab assumes you have:
 
     The **Compute Available Volume** dialog box is displayed.
 
-7. In the **Select Start Date** box, enter the current date. You can use the calendar widget to help you.
+7. For the start date, click the calendar widget and select the current date. You select the current date because your target database is brand new.
 
 8. From the **Trail Locations** drop-down list, select `UNIFIED_AUDIT_TRAIL`.
 
@@ -146,8 +146,9 @@ This lab assumes you have:
 
 10. In the **Available in Target Database** column, view the number of audit records for the `UNIFIED_AUDIT_TRAIL`.
 
-    - There is a small number of audit records in the `UNIFIED_AUDIT_TRAIL` because your target database has just been provisioned. For an older target database, there are probably many more audit records.
+    - In our case, the number of records in the `UNIFIED_AUDIT_TRAIL` is small because your target database has just been provisioned. For an older target database, however, there are probably a large number of audit records.
     - Oracle Data Safe splits up the numbers by month. These values help you to decide on a start date for the Oracle Data Safe audit trail.
+    - Don't worry if the number of audit records on your system is different than what is shown below.
 
     ![Available in Target Database column](images/available-in-target-database.png "Available in Target Database column")
 
@@ -170,11 +171,11 @@ This lab assumes you have:
 
     A **Start Audit Trail: UNIFIED\_AUDIT\_TRAIL** dialog box is displayed.
 
-7. Configure a start date based on the data in the **Compute Audit Volume** region of the audit profile that you viewed in task 5 (step 10). For example, if you have one month listed (July 2022), you can set the start date to the beginning of the month.
+7. Configure a start date based on the data in the **Compute Audit Volume** region of the audit profile that you viewed in task 5 (step 10). For example, if you have one month listed (July 2022), you can set the start date to the beginning of July.
 
     ![Start Audit Trail dialog box](images/start-audit-trail-dialog-box.png "Start Audit Trail dialog box")
 
-8. Click **Start**. Notice when the **Collection State** changes from **STARTING** to **COLLECTING** and then to **IDLE**.
+8. Click **Start**. Wait for the **Collection State** to change from **STARTING** to **COLLECTING** and then to **IDLE**. It takes about a minute.
 
     ![Collection State Idle](images/collection-state-idle.png "Collection State Idle")
 
@@ -191,7 +192,7 @@ This lab assumes you have:
 
 5. On the right, click the name of your target database.
 
-6. Notice the following three custom audit policies are available. You provisioned these on your target database when you loaded the sample data. They are not yet enabled.
+6. Notice that the following three custom audit policies are provisioned on your target database, but not yet enabled. You provisioned these on your target database when you loaded the sample data in the **Prepare Your Environment** lab.
 
     - `APP_USER_NOT_APP_SERVER`
     - `EMPSEARCH_SELECT_USAGE_BY_PETE`
@@ -215,35 +216,37 @@ This lab assumes you have:
 
     ![Provision Audit Policies panel](images/provision-audit-policies-panel.png "Provision Audit Policies panel")
 
-13. Wait for the provisioning to finish, and then view the updated policy information on the page.
+13. Wait for the provisioning to finish, and then view the updated policy information on the page. Notice that the enabled policies now have green circles.
 
 
 ## Task 8: View the Activity Auditing dashboard
 
 1. In the breadcrumb at the top of the page, click **Activity Auditing**.
 
-    By default, the Activity Auditing dashboard shows you a summary of audit events for the last one week for all target databases in the form of charts and tables. You can filter by compartment, time period, and target database.
+    By default, the Activity Auditing dashboard shows you a summary of audit events for the last one week for all target databases in the form of charts and tables. On the left under **List Scope** and **Filters**, you can filter by compartment, time period, and target database.
 
 2. From the **Compartments** drop-down list on the left, make sure your compartment is selected.
 
 3. From the **Target Databases** drop-down list on the left, select your target database.
 
-    The dashboard is automatically updated to include audit event statistics for only your target database. Notice that there is no activity recorded yet.
+    The dashboard is automatically updated to include audit event statistics for only your target database.
 
 
 ## Task 9: Generate admin activity on the target database
 
-In this task you run a SQL script that runs admin activity on the target database. This activity will be audited by Oracle Data Safe.
+In this task you run a SQL script that runs admin activity on the target database. The activity will be audited by your target database and the resulting audit data will be collected into Oracle Data Safe.
 
 1. Return to the **SQL | Oracle Database Actions** browser tab. If your session has expired, sign in again.
 
-2. Download the [**admin-user-activity.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/admin-user-activity.sql) script and save it to a temporary directory on your computer.
+2. Open the [**admin-user-activity.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/admin-user-activity.sql) script in a text editor and copy its entirety to the clipboard.
 
-3. Open the file in a text editor and copy the entire script to the clipboard.
+3. Clear the SQL worksheet and **Script Output** tab, if needed.
 
 4. Paste the script onto the worksheet in Database Actions.
 
-5. On the toolbar, click the **Run Script** button. Errors are expected. For example, you will get many **insufficient privileges** messages.
+5. On the toolbar, click the **Run Script** button. Errors are expected. For example, you will get many **insufficient privileges** messages when the `ADMIN` user tries to perform activities that are not allowed.
+
+    ![Run Script button](images/run-script.png "Run Script button")
 
 
 ## Task 10: Analyze the audit events for your target database
@@ -260,23 +263,23 @@ In this task you run a SQL script that runs admin activity on the target databas
 
 5. Review the charts.
 
-    - The **Failed Login Activity** chart shows you the number of failed logins on your target database for the last one week.
+    - The **Failed Login Activity** chart shows you the number of failed logins on your target database for the last one week. You may or may not have any failed logins, depending on how you have interacted in Database Actions so far.
     - The **Admin Activity** chart shows you the number of database schema changes, logins, audit setting changes, and entitlement changes on your target database for the last one week.
     - The **All Activity** chart shows you the total count of audit events on your target database for the specified time period.
 
-    ![Activity Auditing dashboard charts](images/activity-auditing-dashboard-charts.png "Activity Auditing dashboard charts")
+    ![Activity Auditing dashboard charts](images/activity-auditing-dashboard-charts2.png "Activity Auditing dashboard charts")
 
 6. On the **Events Summary** tab, review the statistics for audit event categories.
 
     Statistics include the number of target databases that have an audit event in each event category and the total number of events per category. Because you are viewing statistics for your target database only, the **Target Databases** column shows ones.
 
-    ![Events Summary tab](images/events-summary-tab.png "Events Summary tab")
+    ![Events Summary tab](images/events-summary-tab2.png "Events Summary tab")
 
 7. On the **Targets Summary** tab, review the various audit event counts per target database.
 
     Audit events include the number of login failures, schema changes, entitlement changes, audit settings changes, all activity (all audit events), database vault realm violations and command rule violations, and database vault policy changes. If there are no audit events for a target database, the target database isn't listed.
 
-    ![Targets Summary tab](images/targets-summary-tab.png "Targets Summary tab")
+    ![Targets Summary tab](images/targets-summary-tab2.png "Targets Summary tab")
 
 8. Return to the **Events Summary** tab and click **Schema Changes By Admin** to view more detail.
 
@@ -318,7 +321,7 @@ In this task you run a SQL script that runs admin activity on the target databas
 
 3. View the filters set in the report.
 
-    - By default, the report is filtered to show audit events for the past one week for all target databases in the selected compartment.
+    - By default, the report is filtered to show audit events for the past one week for all target databases in the selected compartment(s).
 
 4. View the totals in the report.
 
@@ -329,7 +332,7 @@ In this task you run a SQL script that runs admin activity on the target databas
 
 6. To view more detail for a particular audit event, click the down arrow to expand the row and show details for the particular event. For some details, you can copy their values to the clipboard.
 
-    ![All Activity report](images/all-activity-report.png "All Activity report")
+    ![All Activity report](images/all-activity-report2.png "All Activity report")
 
 
 ## Task 12: Create a custom audit report
@@ -341,7 +344,7 @@ In this task you run a SQL script that runs admin activity on the target databas
 
 2. Click **Manage Columns**. In the **Manage Columns** panel, select **Target**, **DB User**, **Event**, **Object**, **Operation Time**, and **Unified Audit Policies** columns. Click **Apply Changes**. The table displays the selected columns. Also notice that the totals are adjusted too.
 
-    ![Custom audit report](images/custom-audit-report.png "Custom audit report")
+    ![Custom audit report](images/custom-audit-report2.png "Custom audit report")
 
 3. Click **Create Custom Report**.
 
@@ -394,4 +397,4 @@ In this task you run a SQL script that runs admin activity on the target databas
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 12, 2022
+* **Last Updated By/Date** - Jody Glover, July 13, 2022

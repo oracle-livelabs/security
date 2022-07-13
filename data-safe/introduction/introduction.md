@@ -19,10 +19,8 @@ In this workshop, you learn how to perform the following tasks:
 - Register an Autonomous Database with Oracle Data Safe
 - Collect audit data from your target database and analyze database activity
 - Generate alerts in Oracle Data Safe to inform you of database activity
-- Assess the security of your database configurations using Oracle Data Safe
-- Assess database users using Oracle Data Safe
-- Discover sensitive data on your target database using Oracle Data Safe
-- Mask sensitive data on your target database using Oracle Data Safe
+- Assess the security of your database configurations and database users using Oracle Data Safe
+- Discover and mask sensitive data on your target database using Oracle Data Safe
 
 ## Learn More
 
