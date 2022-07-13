@@ -96,7 +96,7 @@ This lab assumes you have:
 
 10. Click **Close**.
 
-    The two target-policy associations for your target database are listed on the page and are active and enabled.
+    The two target-policy associations for your target database are listed on the page and are enabled and active.
 
     ![Two target-policy associations for your target database](images/two-target-policy-associations-for-target.png "Two target-policy associations for your target database")
 
