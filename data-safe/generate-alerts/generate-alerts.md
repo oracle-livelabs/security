@@ -105,7 +105,7 @@ This lab assumes you have:
 
 In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, sign in and create a user account.
 
-1. Return to the **SQL | Oracle Database Actions** browser tab for your target database.
+1. Return to the SQL worksheet in Database Actions.
 
 2. From the drop-down list in the upper-right corner, select **Sign Out**. If needed, in the dialog box, click **Leave page**.
 
@@ -271,4 +271,4 @@ In this task, you perform activities on your target database in Database Actions
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 12, 2022
+* **Last Updated By/Date** - Jody Glover, July 15, 2022
