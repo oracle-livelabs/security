@@ -25,8 +25,8 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe. It's important that you have granted the Data Masking role on your target database; otherwise, you will not be able to mask sensitive data. Also, make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
-- Created a sensitive data model (see [Discover Sensitive Data](?lab=discover-sensitive-data-ocw))
+- Registered your target database with Oracle Data Safe. It's important that you have already granted the **Data Masking** role on your target database; otherwise, you will not be able to mask sensitive data. Also, make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
+- Created a sensitive data model (see [Discover Sensitive Data](?lab=discover-sensitive-data))
 
 
 ### Assumptions
@@ -155,7 +155,7 @@ After you create a masking policy, you can run a data masking job against your t
     ![Masking report bottom](images/masking-report-bottom.png "Masking report bottom")
 
 
-## Task 5: Validate the masked data in your target database
+## Task 6: Validate the masked data in your target database
 
 1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. The `SELECT` statement against the `EMPLOYEES` table should be displayed on the worksheet.
 
@@ -166,10 +166,11 @@ After you create a masking policy, you can run a data masking job against your t
     ![Masked EMPLOYEE data](images/masked-query-results.png "Masked EMPLOYEE data")
 
 
+
 ## Learn More
 
 - [Data Masking](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-masking.html)
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 13, 2022
+- **Last Updated By/Date** - Jody Glover, July 15, 2022

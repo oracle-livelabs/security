@@ -4,7 +4,7 @@
 
 Data Discovery helps you find sensitive data in your target databases. You tell Data Discovery what kind of sensitive data to search for, and it inspects the actual data in your target database and its data dictionary, and then returns to you a list of sensitive columns. By default, Data Discovery can search for a wide variety of sensitive data pertaining to identification, biographic, IT, financial, healthcare, employment, and academic information.
 
-Start by examining sensitive data in one of the tables on your target database by using Oracle Database Actions. Then, use Oracle Data Safe to discover sensitive data on your target database and generate a sensitive data model.
+Start by examining sensitive data in one of the tables on your target database by using Oracle Database Actions. Then, use Oracle Data Safe to discover sensitive data on your target database and generate a sensitive data model. Create a PDF of your sensitive data model.
 
 Estimated Lab Time: 10 minutes
 
@@ -108,10 +108,11 @@ In Data Discovery, you can select the sensitive types that you want to discover 
     ![Schema View of sensitive data model](images/schema-view-sdm1.png "Schema View of sensitive data model")
 
 
+
 ## Learn More
 
 - [Data Discovery](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-discovery.html)
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 13, 2022
+- **Last Updated By/Date** - Jody Glover, July 15, 2022

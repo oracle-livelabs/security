@@ -4,6 +4,7 @@
 
 User Assessment helps you assess the security of your database users and identify potential high risk users. By default, Oracle Data Safe automatically generates user assessments for your target databases and stores them in the Assessment History. You can analyze assessment data across all your target databases and for each target database. You can monitor security drift on your target databases by comparing the latest assessment to a baseline or to another assessment.
 
+In this lab, you explore User Assessment.
 
 Estimated Lab Time: 20 minutes
 
@@ -15,6 +16,7 @@ In this lab, you will:
 - Analyze users in the latest user assessment
 - Generate suspicious activity on the target database
 - Refresh the latest user assessment and rename it
+- View the user assessment history for your target database
 - Compare the latest user assessment with the initial user assessment
 
 
@@ -25,6 +27,7 @@ This lab assumes you have:
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
+- Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity)). Audit data collection is required if you want to view users' audit records from within User Assessment.
 
 
 ### Assumptions
@@ -69,11 +72,13 @@ Currently, the latest user assessment is the one that was automatically generate
 
 1. On the **Target Summary** tab, click **View Report** to view the latest user assessment for your target database.
 
-2. At the top of the report, review the **User Risks**, **User Roles**, **Last Password Change**, and **Last Login** charts.
+2. At the top of the report on the **Overview** tab, review the **User Risks**, **User Roles**, **Last Password Change**, and **Last Login** charts.
 
     ![User Assessment Latest charts](images/ua-latest-charts.png "User Assessment Latest charts")
 
-3. Scroll down and review the **Assessment Details** section. This table provides the following information about each user:
+3. Click the **Assessment Information** tab and review the details.
+
+4. Scroll down and review the **Assessment Details** section. This table provides the following information about each user:
 
     - User name
     - User type (for example, PRIVILEGED, SCHEMA)
@@ -85,7 +90,7 @@ Currently, the latest user assessment is the one that was automatically generate
 
     ![User Assessment latest assessment details](images/ua-latest-assessment-details.png "User Assessment latest assessment details")
 
-4. In the **User Name** column, click a user that is a **CRITICAL** potential risk, for example, **EVIL_RICH**.
+5. In the **User Name** column, click a user that is a **CRITICAL** potential risk, for example, **EVIL_RICH**.
 
     The **User Details** panel shows the following information about the user:
 
@@ -102,20 +107,20 @@ Currently, the latest user assessment is the one that was automatically generate
 
     ![ADMIN user details](images/ua-admin-user-details.png "ADMIN user details")
 
-5. Click **Close**.
+6. Click **Close**.
 
-6. Notice at the top of the table that you can set filters. Click **+ Add Filter**. From the first drop-down list, select **Potential Risk**. From the second drop-down list, select **=**. In the **Value** box, enter **CRITICAL**. Click **Apply**. The table now shows you only potentially critical risk users.
+7. Notice at the top of the table that you can set filters. Click **+ Add Filter**. From the first drop-down list, select **Potential Risk**. From the second drop-down list, select **=**. In the **Value** box, enter **CRITICAL**. Click **Apply**. The table now shows you only potentially critical risk users.
 
     ![Critical risk users filter](images/ua-critical-risk-users-filter.png "Critical risk users filter")
 
-7. To remove the filter, click the **X** next to the filter.
+8. To remove the filter, click the **X** next to the filter.
 
 
 ## Task 3: Generate suspicious activity on the target database
 
 1. Access the SQL worksheet in **Database Actions**.
 
-2. If needed, clear the worksheet.
+2. If needed, clear the worksheet and the **Script Output** tab.
 
 3. On the SQL worksheet, enter the following commands:
 
@@ -132,12 +137,11 @@ Currently, the latest user assessment is the one that was automatically generate
 5. On the **Script Output** tab at the bottom of the page, verify that the `EVIL_RICH` user is dropped, the `JOE_SMITH` user is created, and the grant is successful.
 
 
-
 ## Task 4: Refresh the latest user assessment and rename it
 
 1. Return to the browser tab for Oracle Data Safe.
 
-2. Under **Security Center** on the left, click **User Assessment**.
+2. In the breadcrumb at the top of the page, click **User Assessment**.
 
 3. Click the **Target Summary** tab.
 
@@ -147,61 +151,58 @@ Currently, the latest user assessment is the one that was automatically generate
 
     ![User Assessment Refresh Now button](images/ua-refresh-now-button.png "User Assessment Refresh Now button")
 
-6. In the **Refresh Now** panel, keep the default name as is, and click **Refresh Now**. Wait for the status of the latest user assessment to read as **SUCCEEDED**. When you refresh the latest user assessment, Oracle Data Safe automatically saves a static copy of it to the Assessment History.
+6. In the **Refresh Now** panel, keep the default name as is, and click **Refresh Now**. Wait for the status of the latest user assessment to read as **SUCCEEDED**. Oracle Data Safe automatically saves a static copy of it to the Assessment History as the name you provided.
 
     ![User Assessment Refresh Now panel](images/ua-refresh-now-panel.png "User Assessment Refresh Now panel")
 
-7. Review the refreshed latest assessment. Notice that the latest assessment kept its original name.
+7. Review the refreshed latest assessment.
 
 8. Click the **Assessment Information** tab, and then click the **Pencil** icon next to the assessment name. Change the name to **Latest User Assessment**, and then click the **Save** icon. The name is updated on the page.
 
     ![Renamed latest user assessment](images/ua-renamed-latest-assessment.png "Renamed latest user assessment")
 
-9. In the breadcrumb at the top of the page, click **User Assessment**. Under **Related Resources**, click **Assessment History**.
 
-10. Observe the following:
+## Task 5: View the user assessment history for your target database
 
-    - There is an additional saved user assessment.
-    - None of the user assessments is called **Latest User Assessment**.
-    - At a glance, you can compare the number of critical risks, high risks, DBAs, DV Admins, and Audit Admins between the two user assessments.
+1. At the top of the **Latest User Assessment** page, click **View History**.
 
-    ![User Assessment History page](images/user-assessment-history.png "User assessment History")
+2. Make sure that your compartment is selected. Deselect **Include child compartments**.
+
+3. Review the list of assessments.
+
+4. Click **Close** to return to the latest user assessment.
 
 
-## Task 5: Compare the latest user assessment with the initial user assessment
+## Task 6: Compare the latest user assessment with the initial user assessment
 
 You can select a user assessment to compare with the latest user assessment. With this option, you don't need to set a baseline. This option is only available when you are viewing the latest user assessment.
 
-1. Under **Security Center**, click **User Assessment** to return to the dashboard.
-
-2. Click the **Target Summary** tab.
-
-3. Click the **View Report** link for your target database to open its latest user assessment.
-
-4. On the left under **Resources**, click **Compare Assessments**.
+1. While viewing the latest user assessment, on the left under **Resources**, click **Compare Assessments**.
 
     ![User Assessment Compare Assessments option](images/ua-compare-assessments-option.png "User Assessment Compare Assessments option")
 
-5. Scroll down to the **Comparison with Other Assessments** section.
+2. Scroll down to the **Comparison with Other Assessments** section.
 
-6. If your compartment isn't shown, click **Change Compartment** and select your compartment.
+3. If your compartment isn't shown, click **Change Compartment** and select your compartment.
 
-7. From the **Select Assessment** drop-down list, select the earliest assessment for your target database. As soon as you select it, the comparison operation is started.
+4. From the **Select Assessment** drop-down list, select the initial assessment for your target database (second one in the list). As soon as you select it, the comparison operation is started.
 
-8. Review the **Comparison** report.
+5. Review the **Comparison** report.
 
-    - The report tells you that there was a new user added, a user deleted, and a grant given to an existing user.
-    - Two findings are identified as potential critical risks.
+    - The report tells you that there is a new user added, a user deleted, and a grant given to an existing user.
+    - Two findings are identified as **CRITICIAL** potential risks.
 
     ![User Assessment Comparison report](images/ua-comparison-report.png "User Assessment Comparison report")
 
-9. In the **Comparison Results** column, click one of the **Open Details** links to view more information.
+6. In the **Comparison Results** column, click one of the **Open Details** links to view more information.
 
     The **Comparison Details** panel is displayed.
 
     ![Comparison Details panel](images/ua-comparison-details-panel.png "Comparison Details panel")
 
-10. Review the information, and then click **Close**. At this point, you might consider setting a baseline assessment.
+7. Review the information, and then click **Close**. At this point, you might consider setting a baseline assessment again.
+
+
 
 
 ## Learn More
@@ -211,4 +212,4 @@ You can select a user assessment to compare with the latest user assessment. Wit
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 13, 2022
+* **Last Updated By/Date** - Jody Glover, July 15, 2022
