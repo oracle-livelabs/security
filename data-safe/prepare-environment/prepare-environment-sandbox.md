@@ -22,7 +22,7 @@ This lab assumes you have:
 - Obtained your own Oracle Cloud account
 
 
-## Task 1: View your reservation information
+## Task 1: View your LiveLabs Sandbox reservation information
 
 1. At the top of this page, click the **View Login Info** link. A **Reservation Information** panel is displayed.
 
@@ -49,7 +49,7 @@ This lab assumes you have:
 
 3. In the **Current Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Note the password requirements, which are provided on the page. Click **Save New Password**.
 
-    You are signed in to your sandbox.
+    You are now signed in to your sandbox.
 
 4. Return to the **Run Workshop** browser tab (lab instructions).
 
@@ -130,7 +130,9 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
 5. Click the browser's refresh button and then click **Leave Page**. The page is refreshed. Verify that you can select the `HCM1` schema from the first drop-down list on the **Navigator** tab.
 
-6. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+6. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.
+
+7. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
 
 ## Learn More
@@ -144,4 +146,4 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 13, 2022
+- **Last Updated By/Date** - Jody Glover, July 14, 2022

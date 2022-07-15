@@ -35,7 +35,7 @@ This lab assumes you have:
 
 In Data Discovery, you can select the sensitive types that you want to discover in your target database. Data Discovery then generates a sensitive data model that lists sensitive columns in your target database.
 
-1. Return to the browser tab for Oracle Data Safe. If needed, sign in again.
+1. Make sure that you are on the browser tab for Oracle Data Safe. If needed, sign in again.
 
 2. In the breadcrumb at the top of the page, click **Data Safe**.
 

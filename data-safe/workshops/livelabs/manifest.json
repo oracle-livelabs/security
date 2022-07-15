@@ -11,7 +11,7 @@
       {
         "title": "Prepare Your Environment",
         "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
-        "filename": "../../prepare-environment/prepare-environment-sandbox.md",
+        "filename": "../../prepare-environment/prepare-environment.md",
         "type": "livelabs"
       },
       {

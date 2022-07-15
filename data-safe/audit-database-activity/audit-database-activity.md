@@ -32,7 +32,7 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account
 - Signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop
+- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
 
 
@@ -149,7 +149,7 @@ This lab assumes you have:
     - Oracle Data Safe splits up the numbers by month. These values help you to decide on a start date for the Oracle Data Safe audit trail.
     - Don't worry if the number of audit records on your system is different than what is shown below.
 
-    ![Available in Target Database column](images/available-in-target-database.png "Available in Target Database column")
+    ![Available in Target Database column](images/available-in-target-database2.png "Available in Target Database column")
 
 
 ## Task 6: Start audit data collection
@@ -237,7 +237,7 @@ In this task you run a SQL script that runs admin activity on the target databas
 
 1. Return to the **SQL | Oracle Database Actions** browser tab. If your session has expired, sign in again.
 
-2. Open the [**admin-user-activity.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/admin-user-activity.sql) script in a text editor and copy its entirety to the clipboard.
+2. Download the [**admin-user-activity.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/admin-user-activity.sql) script, open it in a text editor, and copy its entirety to the clipboard.
 
 3. Clear the SQL worksheet and **Script Output** tab, if needed.
 
@@ -250,9 +250,9 @@ In this task you run a SQL script that runs admin activity on the target databas
 
 ## Task 10: Analyze the audit events for your target database
 
-1. Return to the **Activity Auditing** page in the other browser tab. If needed, in the breadcrumb at the top of the page, click **Activity Auditing**.
+1. Return to the **Activity Auditing** dashboard in the other browser tab. If needed, in the breadcrumb at the top of the page, click **Activity Auditing**.
 
-2. From the **Compartments** drop-down list on the left, make sure your compartment is selected.
+2. From the **Compartments** drop-down list on the left, make sure your compartment is selected. Deselect **Include Child Compartments**.
 
 3. From the **Time Period** drop-down list on the left, leave **Last 1 Week** selected.
 

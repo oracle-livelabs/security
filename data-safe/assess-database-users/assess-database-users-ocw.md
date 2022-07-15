@@ -23,7 +23,7 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop
+- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
 
 
@@ -36,7 +36,7 @@ This lab assumes you have:
 
 1. Navigate to **User Assessment**. To do this, in the breadcrumb at the top of the page, click **Security Center**. On the left, click **User Assessment**.
 
-2. Under **List Scope**, make sure your compartment is selected.
+2. Under **List Scope**, make sure your compartment is selected. Deselect **Include child compartments**.
 
 3. At the top of the dashboard, review the four charts.
 

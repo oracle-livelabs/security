@@ -25,7 +25,7 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to Oracle Cloud Infrastructure
-- Prepared your environment for this workshop
+- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your target database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
 - Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity))
 
@@ -107,8 +107,6 @@ In this task, you perform activities on your target database in Database Actions
 
 1. Return to the **SQL | Oracle Database Actions** browser tab for your target database.
 
-    If you need help accessing Database Actions, see [Prepare Your Environment](?lab=prepare-environment).
-
 2. From the drop-down list in the upper-right corner, select **Sign Out**. If needed, in the dialog box, click **Leave page**.
 
 3. Click **Sign in**.
@@ -123,7 +121,7 @@ In this task, you perform activities on your target database in Database Actions
 
 7. In the **Development** section, click **SQL**.
 
-8. If a help note is displayed, click the **X** button to close it.
+8. If a help note is displayed, click the **X** button to close it. Clear the worksheet.
 
 9. On the worksheet, paste the following SQL script:
 
