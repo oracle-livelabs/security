@@ -16,7 +16,6 @@ In this lab, you will:
 - Create a masking policy for your target database
 - Mask sensitive data in your target database by using Data Masking
 - View the Data Masking report
-- (Optional) Create a PDF of the Data Masking report
 - Validate the masked data in your target database
 
 
@@ -154,28 +153,6 @@ After you create a masking policy, you can run a data masking job against your t
 
     ![Masking report top](images/masking-report-top.png "Masking report top")
     ![Masking report bottom](images/masking-report-bottom.png "Masking report bottom")
-
-## Task 5 (Optional): Create a PDF of the Data Masking report
-
-1. At the top of the **Masking Report Details** page, click **Generate Report**.
-
-    The **Generate Report** dialog box is displayed.
-
-2. Leave **PDF** selected, and click **Generate Report**. Wait for the report to generate, and then click **Close**.
-
-    ![Generate PDF report for masked data](images/generate-pdf-masked-data.png "Generate PDF report for masked data")
-
-3. Click **Download Report**.
-
-    A **Download Report** dialog box is displayed.
-
-4. Leave **PDF** selected, and click **Download Report**.
-
-    ![Download PDF report for masked data](images/download-pdf-masked-data.png "Download PDF report for masked data")
-
-5. Open the PDF report, review it, and then close it.
-
-    ![Data Masking PDF report](images/data-masking-pdf-report.png "Data Masking PDF report")
 
 
 ## Task 6: Validate the masked data in your target database

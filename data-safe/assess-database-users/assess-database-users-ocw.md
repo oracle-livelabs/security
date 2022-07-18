@@ -14,13 +14,10 @@ In this lab, you will:
 
 - View the dashboard for User Assessment
 - Analyze users in the latest user assessment
-- Review the `ADMIN` user's audit records
 - Generate suspicious activity on the target database
 - Refresh the latest user assessment and rename it
 - View the user assessment history for your target database
 - Compare the latest user assessment with the initial user assessment
-- (Optional) Download the latest user assessment as a PDF report
-- (Optional) View the user assessment history for all target databases
 
 
 ### Prerequisites
@@ -119,25 +116,7 @@ Currently, the latest user assessment is the one that was automatically generate
 8. To remove the filter, click the **X** next to the filter.
 
 
-## Task 3: Review the `ADMIN` user's audit records
-
-1. Identify the row in the table for the `ADMIN` user. In the **Audit Records** column for the `ADMIN` user, click **View Activity**.
-
-    ![ADMIN user audit records](images/ua-admin-user-audit-records.png "ADMIN user audit records")
-
-    The **All Activity** report for the `ADMIN` user is displayed.
-
-2. Examine the report.
-
-    - The report is automatically filtered to show you audit records for the past one week, for the `ADMIN` user, and for your target database.
-    - At the top of the report, you can view totals for **Targets**, **DB Users**, **Client Hosts**, **DMLs**, **Privilege Changes**, **DDLs**, **User/Entitlement Changes**, **Login Failures**, **Login Successes**, and **Total Events**.
-    - The **Event** column in the table shows you the types of activities performed by the `ADMIN` user, for example, `GRANT`, `LOGON`, `CREATE USER`, and so on.
-    - At the bottom of the page, click the page numbers to view more audit records.
-
-    ![All Activity report for the ADMIN user](images/ua-all-activity-report-admin-user.png "All Activity report for the ADMIN user")
-
-
-## Task 4: Generate suspicious activity on the target database
+## Task 3: Generate suspicious activity on the target database
 
 1. Access the SQL worksheet in **Database Actions**.
 
@@ -158,12 +137,11 @@ Currently, the latest user assessment is the one that was automatically generate
 5. On the **Script Output** tab at the bottom of the page, verify that the `EVIL_RICH` user is dropped, the `JOE_SMITH` user is created, and the grant is successful.
 
 
-
-## Task 5: Refresh the latest user assessment and rename it
+## Task 4: Refresh the latest user assessment and rename it
 
 1. Return to the browser tab for Oracle Data Safe.
 
-2. Under **Security Center** on the left, click **User Assessment**.
+2. In the breadcrumb at the top of the page, click **User Assessment**.
 
 3. Click the **Target Summary** tab.
 
@@ -184,7 +162,7 @@ Currently, the latest user assessment is the one that was automatically generate
     ![Renamed latest user assessment](images/ua-renamed-latest-assessment.png "Renamed latest user assessment")
 
 
-## Task 6: View the user assessment history for your target database
+## Task 5: View the user assessment history for your target database
 
 1. At the top of the **Latest User Assessment** page, click **View History**.
 
@@ -195,7 +173,7 @@ Currently, the latest user assessment is the one that was automatically generate
 4. Click **Close** to return to the latest user assessment.
 
 
-## Task 7: Compare the latest user assessment with the initial user assessment
+## Task 6: Compare the latest user assessment with the initial user assessment
 
 You can select a user assessment to compare with the latest user assessment. With this option, you don't need to set a baseline. This option is only available when you are viewing the latest user assessment.
 
@@ -222,63 +200,7 @@ You can select a user assessment to compare with the latest user assessment. Wit
 
     ![Comparison Details panel](images/ua-comparison-details-panel.png "Comparison Details panel")
 
-7. Review the information, and then click **Close**.
-
-
-## Task 8 (Optional): Download the latest user assessment as a PDF report
-
-1. At the top of the latest user assessment page, from the **More Actions** menu, click **Generate Report**.
-
-    The **Generate Report** dialog box is displayed.
-
-2. Leave **PDF** selected as the report format, and click **Generate Report**.
-
-3. Wait for a message that says the **PDF report generation is complete**, and then click **Close**.
-
-    ![Generate Report dialog box in User Assessment](images/ua-generate-report-dialog.png "Generate Report dialog box in User Assessment")
-
-
-4. From the **More Actions** menu, click **Download Report**.
-
-    The **Download Report** dialog box is displayed.
-
-5. Leave the **PDF** report format selected, and click **Download Report**.
-
-    ![Download Report dialog box in User Assessment](images/ua-download-report-dialog.png "Download Report dialog box in User Assessment")
-
-
-6. Open the PDF and review it.
-
-    ![Latest user assessment in PDF format page 1](images/ua-pdf-report-page1.png "Latest user assessment in PDF format page 1")
-
-    ![Latest user assessment in PDF format page 2](images/ua-pdf-report-page2.png "Latest user assessment in PDF format page 2")
-
-7. Close the PDF and return to the browser tab for Oracle Data Safe.
-
-
-## Task 9 (Optional): View the user assessment history for all target databases
-
-On the User Assessment History page, you can view a listing of all of your saved user assessments for all your target databases.
-
-1. In the breadcrumb at the top of the page, click **User Assessment**.
-
-2. Under **Related Resources**, click **Assessment History**.
-
-3. Under **List Scope**, make sure your compartment is selected.
-
-4. Notice that your saved user assessments are listed here.
-
-    - You can compare the number of critical risks, high risks, DBAs, DV Admins, and Audit Admins across all target databases in the selected compartment(s).
-    - You can also quickly identify user assessments that are set as baselines.
-
-    ![Assessment History for all target databases](images/ua-assessment-history-all-targets.png "Assessment History for all target databases")
-
-
-5. To sort the list by target database, click the **Target Database** column heading.
-
-6. Click the name of a user assessment for your target database. Notice that you cannot refresh the data in a saved user assessment.
-
-
+7. Review the information, and then click **Close**. At this point, you might consider setting a baseline assessment again.
 
 
 

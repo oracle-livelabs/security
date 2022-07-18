@@ -14,17 +14,17 @@ In this lab, you will:
 
 - Review the Oracle Data Safe alert policies
 - Provision alert policies on your target database
-- Perform activity on your target database to cause an alert in Oracle Data Safe
-- Review the generated alerts in Oracle Data Safe
+- Perform activity on your target database to generate alerts in Oracle Data Safe
+- Review alerts in Oracle Data Safe
 - View details for an alert and close it
-- Create a custom alerts report
-- Generate and download a custom alerts report as a PDF
+- (Optional) Create a custom alerts report
+- (Optional) Generate and download a custom alerts report as a PDF
 
 ### Prerequisites
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+- Obtained an Oracle Cloud account and signed in to Oracle Cloud Infrastructure
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your target database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
 - Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity))
@@ -44,7 +44,7 @@ This lab assumes you have:
 
 2. Under **Related Resources**, click **Alert Policies**.
 
-3. Review the list of available alert policies in Oracle Data Safe. They are as follows:
+3. Review the list of available alert policies provided by Oracle Data Safe. They are as follows:
 
     - Profile Changes
     - Failed Logins by Admin User
@@ -88,28 +88,26 @@ This lab assumes you have:
 
 7. From the drop-down list, one at a time, select the **User Creation/Modification** and **Failed Logins by Admin User** alert policies.
 
-8. Click **Apply Policy**.
+8. Click **Apply Policy** and wait until a message states that the policies are applied. Please don't close the panel until then.
 
-9. Expand the bottom section to view more information. A green checkmark is displayed next to the statements that tell you the request to apply each policy is submitted.
+9. When it becomes available, expand the bottom section to view more information. A green checkmark is displayed next to the statements that tell you the request to apply each policy is submitted.
 
     ![Apply and Enable Alert Policy To Target Databases dialog box](images/apply-and-enable-alert-policy-dialog-box.png "Apply and Enable Alert Policy To Target Databases dialog box")
 
 10. Click **Close**.
 
-    The two target-policy associations for your target database are listed on the page and are active and enabled.
+    The two target-policy associations for your target database are listed on the page and are enabled and active.
 
     ![Two target-policy associations for your target database](images/two-target-policy-associations-for-target.png "Two target-policy associations for your target database")
 
 
-## Task 3: Perform activity on your target database to cause alerts in Oracle Data Safe
+## Task 3: Perform activity on your target database to generate alerts in Oracle Data Safe
 
 In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, sign in and create a user account.
 
-1. Return to the **SQL | Oracle Database Actions** browser tab for your target database.
+1. Return to the SQL worksheet in Database Actions.
 
-    If you need help accessing Database Actions, see [Prepare Your Environment](?lab=prepare-environment).
-
-2. From the drop-down list in the upper-right corner, select **Sign Out**. In the dialog box, click **Leave page**.
+2. From the drop-down list in the upper-right corner, select **Sign Out**. If needed, in the dialog box, click **Leave page**.
 
 3. Click **Sign in**.
 
@@ -123,9 +121,9 @@ In this task, you perform activities on your target database in Database Actions
 
 7. In the **Development** section, click **SQL**.
 
-8. If a help note is displayed, click the **X** button to close it.
+8. If a help note is displayed, click the **X** button to close it. Clear the worksheet.
 
-9. On the worksheet, run the following SQL script:
+9. On the worksheet, paste the following SQL script:
 
     ```
     <copy>drop user MALFOY cascade;
@@ -133,18 +131,18 @@ In this task, you perform activities on your target database in Database Actions
     grant PDB_DBA to MALFOY;</copy>
     ```
 
-10. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab.
+10. On the toolbar, click the **Run Script** button and wait for the script to finish running.
 
-11. Wait a couple of minutes for Oracle Data Safe to produce the alerts.
+    ![Run Script button](images/run-script.png "Run Script button")
+
+11. Return to the browser tab for Oracle Data Safe and wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
 
-## Task 4: Review the generated alerts in Oracle Data Safe
+## Task 4: Review alerts in Oracle Data Safe
 
-1. From the navigation menu, select **Oracle Database** and then **Data Safe**.
+1. Under **Security Center** on the left, click **Alerts**.
 
-2. Under **Security Center** on the left, click **Alerts**.
-
-3. Notice that the alerts dashboard now has data.
+2. Notice that the alerts dashboard now has data.
 
     - The **Alerts summary** chart shows that there are four alerts. Two are critical risk and two are medium risk.
     - The **Open Alerts** chart shows that there are four alerts on the current day.
@@ -154,13 +152,13 @@ In this task, you perform activities on your target database in Database Actions
     ![Alerts dashboard with data](images/alerts-dashboard-with-data.png "Alerts dashboard with data")
     ![Targets Summary tab](images/targets-summary.png "Targets Summary tab")
 
-4. Under **Related Resources**, click **Reports**.
+3. Under **Related Resources**, click **Reports**.
 
-5. In the **Report Name** column on the right, click the **All Alerts** report to view it.
+4. In the **Report Name** column on the right, click the **All Alerts** report to view it.
 
     ![All Alerts report](images/alerts-reports.png "All Alerts report")
 
-6. Review the report.
+5. Review the report.
 
     - The report currently does not have any filters set. It shows you all alerts for all target databases in the selected compartment.
     - At the top of the report, you can view several totals, including the total number of target databases; total number of open and closed alerts, and the total number of critical, high, medium, and low alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
@@ -169,17 +167,17 @@ In this task, you perform activities on your target database in Database Actions
 
     ![All Alerts report](images/all-alerts-report.png "All Alerts report")
 
-7. At the top of the report, click **+ Add Filter**. Create the filter **Target Database Name = your-target-database-name**, and click **Apply**.
+6. At the top of the report, click **+ Add Filter**. Create the filter **Target Database Name = your-target-database-name**, and click **Apply**.
 
     Only alerts that pertain to your target database are listed in the table.
 
-8. Click **+ Another Filter**. Create the filter **Alert Name = User Creation/Modification**, and click **Apply**.
+7. Click **+ Another Filter**. Create the filter **Alert Name = User Creation/Modification**, and click **Apply**.
 
     Only alerts that pertain to User Creation/Modification are listed in the table.
 
     ![Filtered alerts](images/filtered-alerts.png "Filtered alerts")
 
-9. Review the alerts generated for **User Creation/Modification**.
+8. Review the alerts generated for **User Creation/Modification**.
 
 
 ## Task 5: View details for an alert and close it
@@ -209,7 +207,7 @@ In this task, you perform activities on your target database in Database Actions
 
     The alert status is immediately set to **CLOSED**.
 
-## Task 6: Create a custom alerts report
+## Task 6 (Optional): Create a custom alerts report
 
 1. In the breadcrumb at the top of the page, click **All Alerts** to return to the All Alerts report.
 
@@ -232,7 +230,7 @@ In this task, you perform activities on your target database in Database Actions
 5. Click the **click here** link to view the report.
 
 
-## Task 7: Generate and download a custom alerts report as a PDF
+## Task 7 (Optional): Generate and download a custom alerts report as a PDF
 
 1. On the custom report page, click **Generate PDF/XLS Report**.
 
@@ -273,4 +271,4 @@ In this task, you perform activities on your target database in Database Actions
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 12, 2022
+* **Last Updated By/Date** - Jody Glover, July 15, 2022

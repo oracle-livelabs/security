@@ -20,8 +20,6 @@ In this lab, you will:
 - Refresh the latest security assessment and analyze the results
 - Review the high risk level findings from the dashboard
 - Generate a Comparison report for Security Assessment
-- Add a schedule to save a security assessment for your target database every Sunday at 11:30 PM
-- View the history of all security assessments for all of your target databases
 
 ### Prerequisites
 
@@ -265,63 +263,6 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     ![Click Here link to view latest security assessment](images/sa-click-here-link.png "Click Here link to view latest security assessment")
 
-
-
-
-## Task 9: Add a schedule to save a security assessment for your target database every Sunday at 11:30 PM
-
-1. In the breadcrumb at the top of the page, click **Security Assessment**.
-
-2. Under **Related Resources** on the left, click **Schedules**.
-
-    The **Schedules** page is displayed.
-
-3. In the table, notice that a schedule already exists. Its type is LATEST. This is the default schedule that automatically runs a security assessment job on your target database once per week. You can update it and rename it, but you can't delete it.
-
-    ![Default schedule for Security Assessment](images/sa-default-schedule.png "Default schedule for Security Assessment")
-
-4. Click **Add Schedule**.
-
-    The **Add Schedule To Save An Assessment** panel is displayed.
-
-5. If the compartment shown at the top of the page is not yours, click **Change Compartment** and select your compartment.
-
-6. From the **Target Database** drop-down list, select your target database.
-
-7. In the **Schedule Name** box, enter **Sunday Security Assessment**.
-
-8. From the **Compartment To Save The Assessments** drop-down list, select your compartment.
-
-9. From the **Schedule Type** drop-down list, select **Weekly**.
-
-10. From the **Every** drop-down list, select **Sunday**.
-
-11. Click the **Time** box, scroll down, and select **11:30 PM**. You can manually enter the time too.
-
-12. Click **Add Schedule**.
-
-    ![Add Schedule to Save Assessments page](images/sa-add-schedule-to-save-an-assessment.png "Add Schedule to Save Assessments page")
-
-13. Notice that when the schedule is created, its status changes to **SUCCEEDED** on the **Schedule Details** page.
-
-    ![Schedule Details page](images/sa-schedule-details-page.png "Schedule Details page")
-
-
-## Task 10: View the history of all security assessments for all of your target databases
-
-1. In the breadcrumb at the top of the page, click **Security Assessment**.
-
-2. Under **Related Resources**, click **Assessment History**.
-
-3. Under **List Scope** on the left, select your compartment. Optionally, select **Include child compartments**.
-
-4. View the list of security assessments.
-
-    - The table shows the target database name, the assessment name, whether the assessment is a baseline assessment, the date and time the assessment was created, the state of the assessment (for example, Succeeded), and the number of high, medium, low, advisory, and evaluate risk findings.
-    - You can click on an assessment name to view it.
-    - You can click **Save Latest Assessment As** and create a copy of the latest assessment for a selected target database.
-
-    ![Assessment History page](images/sa-assessment-history-page.png "Assessment History page")
 
 
 ## Learn More

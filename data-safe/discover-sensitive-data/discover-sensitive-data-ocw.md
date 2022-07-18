@@ -14,7 +14,6 @@ In this lab, you will:
 
 - Discover sensitive data in your target database by using Data Discovery
 - Analyze the sensitive data model
-- (Optional) Create a PDF of the Sensitive Data Model report
 
 
 ### Prerequisites
@@ -107,36 +106,6 @@ In Data Discovery, you can select the sensitive types that you want to discover 
     - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the **Parent Column**. For example, `MANAGER_ID` in the `DEPARTMENTS` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
 
     ![Schema View of sensitive data model](images/schema-view-sdm1.png "Schema View of sensitive data model")
-
-
-## Task 3 (Optional): Create a PDF of the Sensitive Data Model report
-
-1. At the top of the **Sensitive Data Models Details** page, click **Generate Report**.
-
-    A **Generate Report** dialog box is displayed.
-
-2. Leave **PDF** selected, click **Generate Report**, and wait for the report to be 100% generated. Click **Close**.
-
-    ![Generate PDF report of SDM1](images/generate-pdf-report-sdm1.png "Generate PDF report of SDM1")
-
-
-3. At the top of the page, click **Download Report**.
-
-    A **Download Report** dialog box is displayed.
-
-4. Leave **PDF** selected, and click **Download Report**.
-
-    ![Download PDF report of SDM1](images/download-pdf-report-sdm1.png "Download PDF report of SDM1")
-
-
-5. Open the PDF report and review it.
-
-    - The **Summary** table shows totals for columns and values scanned, sensitive types, sensitive tables, sensitive columns, and sensitive values.
-    - The **Sensitive Columns** table lists the sensitive columns in the sensitive data model. For each sensitive column, the table shows you its sensitive type, schema name, table name, column name, sensitive value count, whether the column data was matched (Y or N), whether the column name was matched (Y or N), and whether the column comment was matched (Y or N).
-
-    ![PDF report of SDM1](images/pdf-report-sdm1.png "PDF report of SDM1")
-
-6. Close the PDF report and return to Oracle Data Safe.
 
 
 
