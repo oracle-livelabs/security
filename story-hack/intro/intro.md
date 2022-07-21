@@ -9,9 +9,6 @@ Based on an OCI architecture, deployed in a few minutes with a simple internet c
 
 This lab helps you learn to use some of the most important security features of the Oracle Database.
 
-*Estimated Workshop Time*: 40 minutes
-
-### Objectives
 During this workshop, you will perform different scenario:
 - **as an attacker** - your main objective will be to exfiltrate sensitive data from a target database before encrypting data in a simulated ransomware attack
 - **as a defender** - your main objective will be to prevent, detect and mitigate these attacks
@@ -23,6 +20,14 @@ As all these components are stored in the workshop's DBSec-Lab VM, you can condu
 So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set up!
 
 The entire Database Security team wishes you an excellent workshop!
+
+*Estimated Time*: 40 minutes
+
+### Objectives
+You will see how to:
+- Prevent, detect and mitigate data exfiltration
+- Prevent and detect privileges escalation and abuse
+- Prevent and mitigate exploitation of vulnerabilities
 
 You may now [proceed to the next lab](#next).
 
