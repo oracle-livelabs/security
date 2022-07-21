@@ -24,7 +24,7 @@ The entire Database Security team wishes you an excellent workshop!
 *Estimated Time*: 40 minutes
 
 ### Objectives
-You will see how to:
+You will learn how to:
 - Prevent, detect and mitigate data exfiltration
 - Prevent and detect privileges escalation and abuse
 - Prevent and mitigate exploitation of vulnerabilities
