@@ -7,15 +7,15 @@ We will use a ransomware attack to explore how attackers operate and what databa
 
 If you are unfamiliar with ransomware, please take a moment to read the appendix to this lab. You'll find "The stages of a ransomware attack" towards the end of the lab – look for the appendix in the navigation pane.
 
+During this workshop, you will perform different scenarios:
+- **as an attacker** - your main objective will be to exfiltrate sensitive data from the target database before encrypting the database as part of a ransomware attack.
+- **as a defender** - your main objective will be to prevent, detect and mitigate these attacks
+
 *Estimated Time:* 40 minutes
 
 *Versions tested in this lab:* Oracle DB EE 19.13, OEM 13.5, AVDF 20.5
 
 ### About this Product/Technology
-During this workshop, you will perform different scenarios:
-- **as an attacker** - your main objective will be to exfiltrate sensitive data from the target database before encrypting the database as part of a ransomware attack.
-- **as a defender** - your main objective will be to prevent, detect and mitigate these attacks
-
 In order to make this possible, we provide you with all the necessary components and tools so that you can test the common attack techniques exploited on a database by hackers.
 
 You will use the following resources:
@@ -36,7 +36,7 @@ All components for the lab run in the DBSec-Lab VM. Because this is a LiveLabs e
 ### Objectives
 In this lab, let's walk through the techniques that attackers use to break into your database and exfiltrate your data. A typical ransomware attack includes theft and exfiltration of data. The theft usually happens before encrypting your system to make it inoperable, with the stolen data used by the ransomware gang to help influence you to pay the ransom. Understanding the attacker's motivation and how to prevent them from being able to use the stolen data against you helps you better survive the attack and makes it more feasible to NOT pay the ransom.
 
-You will see how to:
+You will learn how to:
 - Prevent, detect and mitigate data exfiltration
 - Prevent and detect privileges escalation and abuse
 - Prevent and mitigate exploitation of vulnerabilities
@@ -48,8 +48,6 @@ This lab assumes you have:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
-
-### Lab Timing (estimated)
 
 | Step No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
