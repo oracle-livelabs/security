@@ -1,17 +1,15 @@
----
-inject-note: true
----
-
 # Prepare Your Environment
 
 ## Introduction
 
-To do this workshop, you need access to an Oracle Data Safe service in a region of your tenancy and an Oracle database. This workshop uses an Autonomous Transaction Processing (ATP) database.
+In this lab, you prepare your environment in Oracle Cloud Infrastructure for the workshop.
 
-To complete most of the preparation tasks, you need to be a tenancy administrator. If you are a regular user in your organization's tenancy, enlist the help of a tenancy administrator. If you are using an Oracle-provided environment, such as LiveLabs, you do not need to prepare an environment because Oracle provides you one with everything you need.
+If you are using the **Run on Your Tenancy** option, complete all of the tasks, except for task 6. If you are a regular user in your organization's tenancy, you need to enlist the help of your tenancy administrator to complete the tasks.
+
+If you are using the **Run on LiveLabs** option, you need to complete tasks 6, 7, and 8 only. Oracle provides you with a tenancy where Oracle Data Safe is enabled, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database.
 
 
-Estimated Lab Time: 15 minutes
+Estimated Lab Time: 15 minutes (Run on Your Tenancy), 5 minutes (Run on LiveLabs)
 
 ### Objectives
 
@@ -22,7 +20,8 @@ In this lab, you will:
 - Create a user group and add an Oracle Cloud account to the group
 - Create an IAM policy for the user group
 - Provision an Autonomous Transaction Processing database
-- Access Database Actions
+- (LiveLabs reservation only) View your LiveLabs reservation information and sign in
+- Access Oracle Database Actions
 - Load sample data into your database
 
 
@@ -182,57 +181,88 @@ As a tenancy administrator or user with appropriate permissions to manage an Aut
     ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
 
 
-## Task 6: Access Database Actions
+## Task 6 (LiveLabs reservation only): View your LiveLabs reservation information and sign in
 
-Throughout this workshop, you access Database Actions to run SQL commands on your target database. The steps for accessing Database Actions are covered once here. In the future when asked to access Database Actions, you can refer back to this section if needed.
+If you are doing the workshop in your own tenancy, you can skip this step.
 
-1. At the top of the **Autonomous Database Details** page, click **Database Actions**.
+1. At the top of the lab instructions page (this page), click the **View Login Info** link. A **Reservation Information** panel is displayed.
 
-    A new tab is opened called **Oracle Database Actions** with **Database Actions | Launchpad** displayed at the top of the page. If this page is not displayed, check that pop-up windows are allowed in your browser.
+2. Review the information. You are provided with the following in Oracle Cloud Infrastructure:
+
+    - Access to one of the LiveLab's tenancies in a region where Oracle Data Safe is enabled
+    - A link that directs you to the sign in page for Oracle Cloud Infrastructure (**Launch OCI** button)
+    - A username and password to sign in to Oracle Cloud Infrastructure. When signing in for the first time, you are prompted to change your password.
+    - A compartment of your very own. We refer to this compartment as "your compartment" throughout the workshop. Make note of your compartment's name because you need to select it often throughout the workshop.
+    - An Autonomous Database in your compartment. You are provided the password for the `ADMIN` account on your database.
+
+3. Click the **Copy Password** button for Oracle Cloud Infrastructure.
+
+4. On the **Reservation Information** panel, click the **Launch OCI** button.
+
+    A new browser tab is opened and the sign in page for the LiveLabs tenancy is displayed.
+
+5. Under **Oracle Cloud Infrastructure Direct Sign-In**, paste the password into the **Password** box, and then click **Sign In**.
+
+    The **Change Password** page is displayed.
+
+6. In the **Current Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Note the password requirements, which are provided on the page. Click **Save New Password**.
+
+    You are now signed in to the LiveLabs tenancy in Oracle Cloud Infrastructure.
+
+7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment. In the table on the right, click the name of your target database.
+
+    ![Your Autonomous Database in the LiveLabs tenancy](images/ll-autonomous-database.png "Your Autonomous Database in the LiveLabs tenancy")
+
+
+## Task 7: Access Oracle Database Actions
+
+Throughout this workshop, you access Database Actions to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
+
+1. At the top of the **Autonomous Database Details** page, click **Database Actions**. A new tab is opened called **Oracle Database Actions** with **Database Actions | Launchpad** displayed at the top of the page.
+
+    - If this page is not displayed, check that pop-up windows are allowed in your browser.
+    - Keep this tab open throughout the workshop. If your session expires, you can always sign in again.
 
 2. If you are prompted to sign in to your target database, sign in as the `ADMIN` user.
 
     - If a tenancy administrator provided you an Autonomous Database, obtain the password from your tenancy administrator.
     - If you are using an Oracle-provided environment, enter the `ADMIN` password that was provided to you.
 
-
-3. In the **Development** section, click **SQL**. If nothing happens, refresh the browser tab.
+3. In the **Development** section, click **SQL**.
 
 4. In the help note dialog box, click the **X** button to close it.
 
-5. Review the interface. Here are the ways that you use Database Actions during the workshop:
+5. In the **Warning** dialog box in the upper-right corner, click the **X** to close it.
 
-    - On the left, you select schemas and tables on your target database.
-    - On the right, you enter SQL statements and scripts on the SQL worksheet.
-    - At the bottom, you review query results and output generated from running scripts.
+6. Review the interface. Here are the ways that you use Database Actions during the workshop:
+
+    - In the **Navigator** pane on the left, you select tables from the **HCM1** schema on your target database.
+    - On the **Worksheet** on the right, you run SQL commands and scripts.
+    - On the **Query Result** and **Script Output** tabs at the bottom of the page, you review query results and output generated from running scripts.
+
+    ![SQL Worksheet in Oracle Database Actions](images/database-actions.png "SQL Worksheet in Oracle Database Actions")
 
 
-## Task 7: Load sample data into your database
+## Task 8: Load sample data into your database
 
-As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features.
+As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also generates database activity for the `ADMIN` user.
 
-1. Download the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script, and then unzip it into a directory of your choice. Next, open the file in a text editor, such as NotePad.
+1. Download the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad.
 
-2. Copy the entire script to the clipboard and then paste it into the worksheet in Database Actions. The last line of the script is `select null as "End of script" from dual;`.
+2. Copy the entire script to the clipboard and paste it into the worksheet in Database Actions. The last line of the script is as follows:
 
-3. On the toolbar, click the **Run Script** button.
+     `select null as "End of script" from dual;`
+
+3. On the toolbar, click the **Run Script** button and wait for the script to finish running.
 
     ![Run Script button](images/run-script.png "Run Script button")
 
     - The script takes a few minutes to run.
-    - In the bottom-left corner, the cog wheel may remain still for about a minute, and then turn as the script is processed. The script output is displayed after the script is finished running.
+    - In the bottom-left corner, the cog wheel may remain still for about a minute, and then it turns as the script is processed. The script output is displayed after the script is finished running.
     - Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
     - The script ends with the message **END OF SCRIPT**.
 
-4. When the script is finished running, click the browser's refresh button. If prompted, click **Leave Page**. The same is displayed after it is refreshed.
-
-5. On the **Navigator** tab on the left, select the `HCM1` schema from the first drop-down list. In the second drop-down list, leave **Tables** selected.
-
-6. On the toolbar, click the **Clear** button (trash can icon) to clear the worksheet.
-
-7. At the bottom of the page, click the **Script Output** tab. If needed, click the **Clear output** button (trash can icon) to clear the output.
-
-8. For each table listed below, drag the table to the worksheet. Choose **Select** as the insertion type when prompted and then click **Apply**. On the toolbar, click the **Run Script** button. Make sure that you have the same number of rows in each table as stated below. Clear the worksheet after each query.
+4. To ensure the sample data is loaded successfully, at the end of the script output, review the row count for each table in the `HCM1` schema. The counts should be as follows:
 
     - `COUNTRIES` - 25 rows
     - `DEPARTMENTS` - 27 rows
@@ -244,9 +274,12 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
     - `REGIONS` - 4 rows
     - `SUPPLEMENTAL_DATA` - 149 rows
 
-9. If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
 
-10. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+    If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
+
+5. Refresh Database Actions: Click the _browser's_ refresh button and then click **Leave Page**. The page is refreshed. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
+
+6. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
 
 ## Learn More
@@ -260,4 +293,4 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 6, 2022
+- **Last Updated By/Date** - Jody Glover, July 15, 2022
