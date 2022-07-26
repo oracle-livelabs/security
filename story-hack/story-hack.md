@@ -60,7 +60,7 @@ Several options are available in this case. From the farthest to the closest to 
 
 ![](./images/hack-lab01.png "Data exfiltration by bypassing DB access control")
 
-## Task 2: Prevent data exfiltration from the network (data-in-transit)
+## Task 1a: Prevent data exfiltration from the network (data-in-transit)
 
 The attacker can use a packet analyzer, also known as packet sniffer, protocol analyzer, or network analyzer. The best known are **tcpdump** or **Wireshark** (tcpdump with a graphical front-end and integrated sorting and filtering options).
     
@@ -149,7 +149,7 @@ To see how easy it is to exfiltrate data from an unencrypted network, let's run 
     
 > To learn more about how to enable NNE, please refer to the "[DB Security - Native Network Encryption] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=700)" workshop 
     
-## Task 3: Prevent data exfiltration from inert and residual files (backups and exports)
+## Task 1b: Prevent data exfiltration from inert and residual files (backups and exports)
 
 Although stealing unencrypted data over the network is very easy for the attacker, the data available to steal is limited to only what is traveling over the network. The attacker is passive – and this type of theft does not reveal the underlying data model, making it difficult for the attacker to know what else is available within the database.
     
@@ -228,7 +228,7 @@ Let's see how this type of attack could focus on an export file, but keep in min
 
     ---
 
-## Task 4: Prevent data exfiltration from Database data files (data-at-rest)
+## Task 1c: Prevent data exfiltration from Database data files (data-at-rest)
     
 If the attacker wants to get MORE data (especially if the inert file breach was over a partial export), or if the prior attacks were blocked, then the attacker will need to start taking more risks. They will need to get closer to their target and remain under the radar of the database access and audit controls. To do this, they will now attack the active data files. These files contain all the data of the database.
 
@@ -242,7 +242,7 @@ Attacking the production server may seem riskier, but they will attack that targ
     
 The technique remains the same in production or development, so let's take a look at how they might go about it on the production server. We'll see later how to secure the non-production data.
 
-**Option 1: The attacker targets the production server**
+### **Option 1: The attacker targets the production server**
     
 We will use a well-known Linux command "strings" to view data in the datafiles associated with the EMPDATA_PROD tablespace. Strings is an OS command that operates directly on the database files, bypassing database access and audit controls.
         
@@ -286,7 +286,7 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
 
     ---
 
-**Option 2: The attacker focuses on the non-production (test or development) database servers**
+### **Option 2: The attacker focuses on the non-production (test or development) database servers**
 
 If the attacker has more time, they will avoid attacking the production database in order to reduce their risk of discovery. Hackers often focus on non-production systems because those usually have fewer active security controls and less stringent monitoring. For each production database, we see an average of four non-production databases (development, test, integration, UAT, validation, stage, support, etc). In many cases, the test databases are just production clones and contain the same data. Because developers must be close to actual production conditions, they require non-production environments to be as faithful as possible to the production database.
         
@@ -296,54 +296,54 @@ The simplest and safest solution is to implement a good baseline level of securi
 
 ![](./images/hack-021.png "Data Masking concept")
 
-4. Imagine that you decide to refresh your development database every Monday from the production database. That means that your development database will become as sensitive as your production environment as soon as it is refreshed. Your datafiles are exposed to exactly the same attack that we saw earlier.
+Imagine that you decide to refresh your development database every Monday from the production database. That means that your development database will become as sensitive as your production environment as soon as it is refreshed. Your datafiles are exposed to exactly the same attack that we saw earlier.
 
-    - Let's **refresh the development from production on PDB1 with no masking script**
+1. Let's **refresh the development from production on PDB1 with no masking script**
             
-        ````
-        <copy>./sh_refresh_dev_from_prod.sh pdb1 nomasking</copy>
-        ````
+    ````
+    <copy>./sh_refresh_dev_from_prod.sh pdb1 nomasking</copy>
+    ````
 
-        ![](./images/hack-022.png "Refresh UNSECURED DEV data on PDB1")
+    ![](./images/hack-022.png "Refresh UNSECURED DEV data on PDB1")
 
-        **Note**: Because the data is not masked in development, you can see the same sensitive data that is in production!
+    **Note**: Because the data is not masked in development, you can see the same sensitive data that is in production!
             
-    - Next, for example, **extract only the email of the User 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB1**, as seen in the previous attack
+2. Next, for example, **extract only the email of the User 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB1**, as seen in the previous attack
 
-        ````
-        <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
-        ````
+    ````
+    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
+    ````
 
-        ![](./images/hack-023.png "Extract data from UNSECURED DEV datafile on PDB1")
+    ![](./images/hack-023.png "Extract data from UNSECURED DEV datafile on PDB1")
 
-        **Note**:
-        - The database file is readable as expected, and you can see the email address. Hence, production-sensitive data is vulnerable in the development environment!
-        - Of course, here, you exfiltrated only a single email address, but an attacker could exfiltrate any other dataset they wanted by using the same method
-        - To be secured, you would need to implement, maintain, and monitor strong security solutions in the development environment
+    **Note**:
+    - The database file is readable as expected, and you can see the email address. Hence, production-sensitive data is vulnerable in the development environment!
+    - Of course, here, you exfiltrated only a single email address, but an attacker could exfiltrate any other dataset they wanted by using the same method
+    - To be secured, you would need to implement, maintain, and monitor strong security solutions in the development environment
 
-    - Now, let's see what happens if you **mask the sensitive data during the duplication process in Dev on PDB2**
+3. Now, let's see what happens if you **mask the sensitive data during the duplication process in Dev on PDB2**
             
-        ````
-        <copy>./sh_refresh_dev_from_prod.sh pdb2 masking</copy>
-        ````
+    ````
+    <copy>./sh_refresh_dev_from_prod.sh pdb2 masking</copy>
+    ````
 
-        ![](./images/hack-024.png "Refresh SECURED DEV data on PDB2")
+    ![](./images/hack-024.png "Refresh SECURED DEV data on PDB2")
             
-        **Note**:
-        - Here, we apply a masking process during the refresh process that removes risk from sensitive data by replacing it with non-sensitive, usually artificial, data
-        - Now, the **data is masked in development and is different from what is in production**!
+    **Note**:
+    - Here, we apply a masking process during the refresh process that removes risk from sensitive data by replacing it with non-sensitive, usually artificial, data
+    - Now, the **data is masked in development and is different from what is in production**!
 
-    - Next, try again to **extract only the email of the user 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB2**
+4. Next, try again to **extract only the email of the user 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB2**
 
-        ````
-        <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
-        ````
+    ````
+    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
+    ````
 
-        ![](./images/hack-025.png "Extract data from SECURED DEV datafile on PDB2")
+    ![](./images/hack-025.png "Extract data from SECURED DEV datafile on PDB2")
 
-        **Note**:
-        - **There's no result!**
-        - Although the datafile is still readable as expected - remember, we didn't encrypt the development env - but now, because the data is masked in development, even if the attacker actually connects to the database, there's no longer sensitive data to be stolen!
+    **Note**:
+    - **There's no result!**
+    - Although the datafile is still readable as expected - remember, we didn't encrypt the development env - but now, because the data is masked in development, even if the attacker actually connects to the database, there's no longer sensitive data to be stolen!
 
 5. Here, we have used the data masking capability provided by the Oracle Database, called **Data Masking and Subsetting (DMS)**.
    
@@ -367,7 +367,7 @@ The simplest and safest solution is to implement a good baseline level of securi
         
     ---
 
-## Task 5: Detect and mitigate the risk of data exfiltration through an application
+## Task 2: Data exfiltration through an application
 
 Next, our attackers will attempt to indirectly retrieve data from the database by attacking an application connected to the database. Their risk of detection goes up because (hopefully) the application is being monitored for this type of attack using tools like Web Application Firewall (WAF).
 
@@ -375,138 +375,142 @@ Next, our attackers will attempt to indirectly retrieve data from the database b
 
 Possibly the attacker has access to your application, even with a simple user account. Or they may not even have that – if the application developers did not do a good job of securely coding their application it's possible that the attacker can steal data from the login screen without ever actually completing an application authentication. Hackers use two common techniques when attacking the database through an application – SQL Injection and sensitive data harvesting.
 
-1. **SQL Injection**
+## Task 2a: Detect and mitigate a SQL Injection
 
-    SQL Injection (SQLi) is a code injection technique used to attack data-driven applications by inserting malicious SQL statements into entry fields.
+SQL Injection (SQLi) is a code injection technique used to attack data-driven applications by inserting malicious SQL statements into entry fields.
     
-    SQLi is a well-known cyber attack representing one of the most commonly used attack techniques. SQLi's ability to exploit security holes can be potent if properly used. SQLi exploits security holes in an application that interacts with a database. The SQL injection attack consists of tricking the application into modifying a valid SQL query by injecting an unanticipated response to an input variable, often through a form. The hacker can thus retrieve data from the database that the application developer never intended to expose. In some cases, the attacker can even update or delete data, create new user accounts, or escalate privileges, thus compromising the system's security.
+SQLi is a well-known cyber attack representing one of the most commonly used attack techniques. SQLi's ability to exploit security holes can be potent if properly used. SQLi exploits security holes in an application that interacts with a database. The SQL injection attack consists of tricking the application into modifying a valid SQL query by injecting an unanticipated response to an input variable, often through a form. The hacker can thus retrieve data from the database that the application developer never intended to expose. In some cases, the attacker can even update or delete data, create new user accounts, or escalate privileges, thus compromising the system's security.
     
-    Every day someone discovers a new SQLi vulnerability - even in some of the most well-known applications. Secure coding practices, periodic developer training, and comprehensive code audits can prevent new applications from being released with SQLi vulnerabilities. Many older applications contain unpatched SQLi vulnerabilities.
+Every day someone discovers a new SQLi vulnerability - even in some of the most well-known applications. Secure coding practices, periodic developer training, and comprehensive code audits can prevent new applications from being released with SQLi vulnerabilities. Many older applications contain unpatched SQLi vulnerabilities.
     
-    In this lab, you will perform a "UNION-based" SQL injection attack on an application that is NOT securely developed! You'll see how a SQLi attack works and then see how to block it.
+In this lab, you will perform a "UNION-based" SQL injection attack on an application that is NOT securely developed! You'll see how a SQLi attack works and then see how to block it.
     
-    - First, open 2 Web browser tabs and launch the HR app using these URLs:
-        - If you are working from a remote desktop (usually the case for this lab):
-            - **On PDB1** (unsecured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb1`*
-            - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
-        - If you are working through a public IP address (often the case if you launched this lab in your own tenancy):
-            - **On PDB1**: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-            - **On PDB2**: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb2`*
-        - To help you differentiate between the two applications, the HR App menu is grey on PDB1 and in red on PDB2. Remember, this application is deliberately poorly developed to allow attacks such as SQL injection attacks
+1. First, open 2 Web browser tabs and launch the HR app using these URLs:
+    - If you are working from a remote desktop (usually the case for this lab):
+        - **On PDB1** (unsecured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb1`*
+        - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
+    - If you are working through a public IP address (often the case if you launched this lab in your own tenancy):
+        - **On PDB1**: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+        - **On PDB2**: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb2`*
+    - To help you differentiate between the two applications, the HR App menu is grey on PDB1 and in red on PDB2. Remember, this application is deliberately poorly developed to allow attacks such as SQL injection attacks
 
-    - Login to these 2 applications as *`hradmin`* with the password "*`Oracle123`*"
+2. Login to these 2 applications as *`hradmin`* with the password "*`Oracle123`*"
 
-        ````
-        <copy>hradmin</copy>
-        ````
+    ````
+    <copy>hradmin</copy>
+    ````
 
-        ````
-        <copy>Oracle123</copy>
-        ````
+    ````
+    <copy>Oracle123</copy>
+    ````
 
-        ![](./images/hack-030.png "HR App - Menu")
+    ![](./images/hack-030.png "HR App - Menu")
 
-        ![](./images/hack-031.png "HR App - Login screen")
+    ![](./images/hack-031.png "HR App - Login screen")
 
-    - Click **Search Employees**
-    - Click [**Search**]
+3. Click **Search Employees**
 
-        ![](./images/hack-032.png "HR App - Search ALL employees")
+4. Click [**Search**]
 
-        **Note**: All rows are returned because, remember, you allowed everything!
+    ![](./images/hack-032.png "HR App - Search ALL employees")
 
-    - Now, tick the **checkbox "Debug"** to see the SQL query behind this form
+    **Note**: All rows are returned because, remember, you allowed everything!
 
-        ![](./images/hack-033.png "HR App - Debug mode")
+5. Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
-    - Click [**Search**] again
+    ![](./images/hack-033.png "HR App - Debug mode")
 
-        ![](./images/hack-034.png "HR App - Debug mode results")
+6. Click [**Search**] again
+
+    ![](./images/hack-034.png "HR App - Debug mode results")
+
+    **Note:**
+    - Now, you can see the SQL query executed by this form which displays the results
+    - This query gives you the information of the number of columns requested, their name, the tables in use, and their relationship. That information helps you know what database columns relate to which columns in the application's user interface.
+
+7. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID', 'MEMBER_ID', 'PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
+
+    ````
+    <copy>
+    ' UNION SELECT userid, ' ID: '|| member_id, 'SQLi', '1', '1', '1', '1', '1', '1', 0, 0, payment_acct_no, routing_number, sysdate, sysdate, '0', 1, '1', '1', 1 FROM demo_hr_supplemental_data --
+    </copy>
+    ````
+
+8. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form on both Web App and tick the "Debug" checkbox
+
+    ![](./images/hack-035.png "HR App - SQL Injection")
+
+    **Note:**
+    - Don't forget the "`'`" before the UNION key word to close the SQL clause "LIKE"
+    - Don't forget the "`--`" at the end to disable rest of the application's original query
+
+9. Click [**Search**]
+
+    - **On PDB1** (unsecured)
+
+        ![](./images/hack-036.png "HR App - SQL Injection results in Debug mode on PDB1")
 
         **Note:**
-        - Now, you can see the SQL query executed by this form which displays the results
-        - This query gives you the information of the number of columns requested, their name, the tables in use, and their relationship. That information helps you know what database columns relate to which columns in the application's user interface.
+        - Now, because the source code of the app is exposed to this kind of attack, instead of the results as usual, you can see sensitive information that the application developer never intended to expose to you!
+        - Of course, you can modify this UNION query and extract different columns if you want. The key is to ensure the number of returned values continues to match the original source query
 
-    - Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID', 'MEMBER_ID', 'PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
+    - **On PDB2** (secured)
 
-        ````
-        <copy>
-        ' UNION SELECT userid, ' ID: '|| member_id, 'SQLi', '1', '1', '1', '1', '1', '1', 0, 0, payment_acct_no, routing_number, sysdate, sysdate, '0', 1, '1', '1', 1 FROM demo_hr_supplemental_data --
-        </copy>
-        ````
+        ![](./images/hack-037.png "HR App - SQL Injection results in Debug mode on PDB2")
 
-    - Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form on both Web App and tick the "Debug" checkbox
+        **Note**:
+        - The output returns "**no rows**"
+        - The SQL injection attack was blocked by the Database Firewall mechanisms configured specifically to protect this database from SQLi attacks!
+        - Even with a poorly developed application, your data is still protected
 
-        ![](./images/hack-035.png "HR App - SQL Injection")
+10. Here, we have used the SQL Firewalling feature provide by Oracle Audit Vault and Database Firewall (AVDF)
 
-        **Note:**
-        - Don't forget the "`'`" before the UNION key word to close the SQL clause "LIKE"
-        - Don't forget the "`--`" at the end to disable rest of the application's original query
-
-    - Click [**Search**]
-
-        - **On PDB1** (unsecured)
-
-            ![](./images/hack-036.png "HR App - SQL Injection results in Debug mode on PDB1")
-
-            **Note:**
-            - Now, because the source code of the app is exposed to this kind of attack, instead of the results as usual, you can see sensitive information that the application developer never intended to expose to you!
-            - Of course, you can modify this UNION query and extract different columns if you want. The key is to ensure the number of returned values continues to match the original source query
-
-        - **On PDB2** (secured)
-
-            ![](./images/hack-037.png "HR App - SQL Injection results in Debug mode on PDB2")
-
-            **Note**:
-            - The output returns "**no rows**"
-            - The SQL injection attack was blocked by the Database Firewall mechanisms configured specifically to protect this database from SQLi attacks!
-            - Even with a poorly developed application, your data is still protected
-
-    - Here, we have used the SQL Firewalling feature provide by Oracle Audit Vault and Database Firewall (AVDF)
-
-        > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" workshop 
+    > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" workshop 
 
 
-2. **Sensitive data harvesting**
+## Task 2b: Detect and mitigate the sensitive data harvesting
 
-    Many older applications expose data to the user that is no longer appropriate. Older applications were often developed when privacy concerns were not as important as they are now and when privacy regulations were not as stringent. It may not be practical to modify the applications, but you can still control the display of sensitive data within those applications.
+Many older applications expose data to the user that is no longer appropriate. Older applications were often developed when privacy concerns were not as important as they are now and when privacy regulations were not as stringent. It may not be practical to modify the applications, but you can still control the display of sensitive data within those applications.
 
-    - Go back to your HR App on both env (PDB1 and PDB2)
+1. Go back to your HR App on both env (PDB1 and PDB2)
 
-        - Click on **Search Employees**
+2. Click on **Search Employees**
 
-            ![](./images/hack-040.png "HR App - Search employees link")
+    ![](./images/hack-040.png "HR App - Search employees link")
 
-        - We'll filter on the employee "**Alice - UserID 77**" for example **by entering 77 as HR ID** value and click [**Search**]
+3. We'll filter on the employee "**Alice - UserID 77**" for example **by entering 77 as HR ID** value and click [**Search**]
 
-            ![](./images/hack-041.png "HR App - Search UserID 77")
+    ![](./images/hack-041.png "HR App - Search UserID 77")
 
-        - Now, click on the **Full Name** link of this employee to see her details
+4. Now, click on the **Full Name** link of this employee to see her details
 
-            ![](./images/hack-042.png "HR App - UserID 77")
+    ![](./images/hack-042.png "HR App - UserID 77")
 
-            - **On PDB1** (unsecured), as you can see, sensitive data like the `SSN` or `SIN` is readable by an authorized user. Or by a user the application THINKS is authorized (perhaps this session is a hacker using compromised account credentials)!
+    - **On PDB1** (unsecured), as you can see, sensitive data like the `SSN` or `SIN` is readable by an authorized user. Or by a user the application THINKS is authorized (perhaps this session is a hacker using compromised account credentials)!
 
-                ![](./images/hack-043.png "HR App - SIN value for UserID 77 on PDB1")
+        ![](./images/hack-043.png "HR App - SIN value for UserID 77 on PDB1")
 
-            - **On PDB2** (secured), even with the same user, the same privileges, the same application, from the same server, the column `SIN` is no longer available!
+    - **On PDB2** (secured), even with the same user, the same privileges, the same application, from the same server, the column `SIN` is no longer available!
 
-                ![](./images/hack-044.png "HR App - SIN value for UserID 77 on PDB2")
+        ![](./images/hack-044.png "HR App - SIN value for UserID 77 on PDB2")
 
-    - Here, we have used the data redaction feature provide natively by the Oracle database, called **Data Redaction**. Because we've decided that application users have no need to view extremely sensitive information like `SSN`/`SIN`, we placed a redaction policy on the database table that controls the conditions under which the data is allowed to leave the database.
+5. Here, we have used the data redaction feature provide natively by the Oracle database, called **Data Redaction**. Because we've decided that application users have no need to view extremely sensitive information like `SSN`/`SIN`, we placed a redaction policy on the database table that controls the conditions under which the data is allowed to leave the database.
 
-        - Because Data Redaction is part of the database, there is no need to modify the application to hide this sensitive data. Just create a Data Redaction policy on the table that holds your sensitive column and refresh the application screen to see the effects
+    ---
 
-        - **Benefits of Using Oracle Data Redaction**
-            - You have different styles of redaction from which to choose
-            - Because the data is redacted at runtime, Data Redaction is well suited to environments in which data is constantly changing
-            - You can create the Data Redaction policies in one central location and easily manage them from there
-            - The Data Redaction policies enable you to create a wide variety of policy conditions based on `SYS_CONTEXT` values, which can be used at runtime to decide when the Data Redaction policies will apply to the results of the application user's query
+    Because Data Redaction is part of the database, there is no need to modify the application to hide this sensitive data. Just create a Data Redaction policy on the table that holds your sensitive column and refresh the application screen to see the effects
+
+    **Benefits of Using Oracle Data Redaction**
+    - You have different styles of redaction from which to choose
+    - Because the data is redacted at runtime, Data Redaction is well suited to environments in which data is constantly changing
+    - You can create the Data Redaction policies in one central location and easily manage them from there
+    - The Data Redaction policies enable you to create a wide variety of policy conditions based on `SYS_CONTEXT` values, which can be used at runtime to decide when the Data Redaction policies will apply to the results of the application user's query
             
         > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
+    ---
 
-## Task 6: Detect and mitigate data exfiltration from the database
+## Task 3: Detect and mitigate data exfiltration from the database
 
 Our attacker now switches their attention to a direct attack on the database. This type of attack exposes the hacker to the highest level of detection risk.
 
