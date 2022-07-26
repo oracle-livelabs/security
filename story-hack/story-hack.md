@@ -47,7 +47,7 @@ This lab assumes you have:
 | 2| Detect and mitigate the risk of data exfiltration through an application | <15 minutes||
 | 3| Detect and mitigate data exfiltration from the database | <15 minutes||
 
-## Task 1: Prevent data exfiltration by bypassing database access controls
+## Task 1: Data exfiltration by bypassing database access controls
 
 Acting while remaining silent is a golden rule for any good attacker. Anything that can be done far away from the target is preferred because the closer the attacker gets to the target, the greater their risk of being caught.
 
@@ -60,314 +60,314 @@ Several options are available in this case. From the farthest to the closest to 
 
 ![](./images/hack-lab01.png "Data exfiltration by bypassing DB access control")
 
-1. **From the network** (data-in-transit)
+## Task 2: Prevent data exfiltration from the network (data-in-transit)
 
-    The attacker can use a packet analyzer, also known as packet sniffer, protocol analyzer, or network analyzer. The best known are **tcpdump** or **Wireshark** (tcpdump with a graphical front-end and integrated sorting and filtering options).
+The attacker can use a packet analyzer, also known as packet sniffer, protocol analyzer, or network analyzer. The best known are **tcpdump** or **Wireshark** (tcpdump with a graphical front-end and integrated sorting and filtering options).
     
-    These tools allow an attacker to read or record data passing through a local network. They allow to capture each packet of the Data flowing through the network and to analyze its content.
+These tools allow an attacker to read or record data passing through a local network. They allow to capture each packet of the Data flowing through the network and to analyze its content.
     
-    Tools like tcpdump see everything that passes through the network interface, whether it is the SQL flow between the server and the client. That includes extremely sensitive information like passwords that pass in clear text or any other unencrypted information.
+Tools like tcpdump see everything that passes through the network interface, whether it is the SQL flow between the server and the client. That includes extremely sensitive information like passwords that pass in clear text or any other unencrypted information.
     
-    The solution to this problem is to encrypt the network and use secure communication protocols, such as SSH (SFTP, SCP), TLS (HTTPS or FTPS). Unfortunately, all too often internal company networks are not secured and the staff is not sufficiently trained in security aspects. Worse, the network is sometime voluntarily not encrypted because after purchasing some very expensive network probes, these would become useless with an encrypted network and the administrators would no longer be able to carry out their investigations in case of a failure!
+The solution to this problem is to encrypt the network and use secure communication protocols, such as SSH (SFTP, SCP), TLS (HTTPS or FTPS). Unfortunately, all too often internal company networks are not secured and the staff is not sufficiently trained in security aspects. Worse, the network is sometime voluntarily not encrypted because after purchasing some very expensive network probes, these would become useless with an encrypted network and the administrators would no longer be able to carry out their investigations in case of a failure!
 
-    <!-- ![](./images/hack-005.png "Data exfiltration from the network") -->
+<!-- ![](./images/hack-005.png "Data exfiltration from the network") -->
 
-    To see how easy it is to exfiltrate data from an unencrypted network, let's run a simple SQL query on PDB1 (unsecured database) and run tcpdump to analyze its traffic.
+To see how easy it is to exfiltrate data from an unencrypted network, let's run a simple SQL query on PDB1 (unsecured database) and run tcpdump to analyze its traffic.
 
-    - Open a terminal session on your **DBSec-Lab** VM as OS user *oracle*
+1. Open a terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
-        ````
-        <copy>sudo su - oracle</copy>
-        ````
+    ````
+    <copy>sudo su - oracle</copy>
+    ````
 
-        **Note**: If you are using your remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session already logged on as *oracle* user
+    **Note**: If you are using your remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session already logged on as *oracle* user
 
-    - Go to the scripts directory
+2. Go to the scripts directory
 
-        ````
-        <copy>cd $DBSEC_LABS/story-hack</copy>
-        ````
+    ````
+    <copy>cd $DBSEC_LABS/story-hack</copy>
+    ````
 
-    - Execute a SQL query **on PDB1** and run tcpdump to capture and analyze the packets in transit on the network (wait for the end of the execution)
+3. Execute a SQL query **on PDB1** and run tcpdump to capture and analyze the packets in transit on the network (wait for the end of the execution)
 
-        ````
-        <copy>./sh_extract_data_from_network.sh pdb1</copy>
-        ````
+    ````
+    <copy>./sh_extract_data_from_network.sh pdb1</copy>
+    ````
 
-        ![](./images/hack-006.png "Extract data from network on PDB1 (unsecured DB)")
+    ![](./images/hack-006.png "Extract data from network on PDB1 (unsecured DB)")
 
-        **Note**:
-        - The script output shows you that unencrypted data is flowing over the network! Even if native network encryption is NOT in use the banner entries still include entries for the available security services. Notice that "`Encryption service for Linux`" is available, indicating that the connection COULD be encrypted; however, there is no entry indicating the specific algorithms used by the session. When we look at an encrypted session, the difference will become more evident.
+    **Note**:
+    - The script output shows you that unencrypted data is flowing over the network! Even if native network encryption is NOT in use the banner entries still include entries for the available security services. Notice that "`Encryption service for Linux`" is available, indicating that the connection COULD be encrypted; however, there is no entry indicating the specific algorithms used by the session. When we look at an encrypted session, the difference will become more evident.
 
-            ![](./images/hack-007.png "SQL workflow in clear on the network")
+        ![](./images/hack-007.png "SQL workflow in clear on the network")
 
-        - The script executes the following SQL query on PDB1: `SELECT firstname, lastname, salary, address_1 FROM employeesearch_prod.demo_hr_employees`
+    - The script executes the following SQL query on PDB1: `SELECT firstname, lastname, salary, address_1 FROM employeesearch_prod.demo_hr_employees`
 
-            ![](./images/hack-008.png "SQL query output on PDB1")
+        ![](./images/hack-008.png "SQL query output on PDB1")
 
-        - It captures and analyzes the traffic network generated
-        - It displays the result of the analysis
+    - It captures and analyzes the traffic network generated
+    - It displays the result of the analysis
 
-    - Scroll up from the tcpdump output until the SQL Query `SELECT firstname, lastname, salary, address_1 FROM employeesearch_prod.demo_hr_employees`
+4. Scroll up from the tcpdump output until the SQL Query `SELECT firstname, lastname, salary, address_1 FROM employeesearch_prod.demo_hr_employees`
 
-        ![](./images/hack-009.png "SQL workflow in clear in tcpdump")
+    ![](./images/hack-009.png "SQL workflow in clear in tcpdump")
 
-        **Note**: Because the session is unencrypted, the query results appear in clear-text on the network. It is easy for an attacker to capture and exfiltrate the sensitive data-in-transit!
+    **Note**: Because the session is unencrypted, the query results appear in clear-text on the network. It is easy for an attacker to capture and exfiltrate the sensitive data-in-transit!
 
-    - Now, let's have a look at what happens with an encrypted session. We run the same SQL query on PDB2 (the secured database). Again, we will use tcpdump to analyze the session traffic.
+5. Now, let's have a look at what happens with an encrypted session. We run the same SQL query on PDB2 (the secured database). Again, we will use tcpdump to analyze the session traffic.
 
-    - Execute an SQL query on PDB2 and run tcpdump to capture and analyze the packets in transit on the network (wait for the end of the execution)
+6. Execute an SQL query on PDB2 and run tcpdump to capture and analyze the packets in transit on the network (wait for the end of the execution)
 
-        ````
-        <copy>./sh_extract_data_from_network.sh pdb2</copy>
-        ````
+    ````
+    <copy>./sh_extract_data_from_network.sh pdb2</copy>
+    ````
 
-        **Note**:
-        - The script checks if the SQL traffic is encrypted. You can see the connection is encrypted because an encryption algorithm was selected for the session. You can still see the default banner information for the available encryption service and the crypto-checksumming (integrity) service. Now, you can also see the algorithm used is "`AES256 Encryption service adapter for Linux`".
+    **Note**:
+    - The script checks if the SQL traffic is encrypted. You can see the connection is encrypted because an encryption algorithm was selected for the session. You can still see the default banner information for the available encryption service and the crypto-checksumming (integrity) service. Now, you can also see the algorithm used is "`AES256 Encryption service adapter for Linux`".
 
-            ![](./images/hack-010.png "SQL workflow encrypted on the network")
+        ![](./images/hack-010.png "SQL workflow encrypted on the network")
 
-        - The script executes the following SQL query on PDB2: `SELECT firstname, lastname, salary, address_1 FROM employeesearch_prod.demo_hr_employees`
+    - The script executes the following SQL query on PDB2: `SELECT firstname, lastname, salary, address_1 FROM employeesearch_prod.demo_hr_employees`
 
-            ![](./images/hack-011.png "SQL query output on PDB2")
+        ![](./images/hack-011.png "SQL query output on PDB2")
 
-        - It captures and analyzes the traffic network generated
-        - It displays the result of the analysis
+    - It captures and analyzes the traffic network generated
+    - It displays the result of the analysis
 
-    - Scroll up from the tcpdump output and confirm that you can't find the SQL Query `SELECT firstname, lastname, salary, address_1 FROM employeesearch_prod.demo_hr_employees`!
+7. Scroll up from the tcpdump output and confirm that you can't find the SQL Query `SELECT firstname, lastname, salary, address_1 FROM employeesearch_prod.demo_hr_employees`!
 
-        ![](./images/hack-012.png "SQL workflow encrypted in tcpdump")
+    ![](./images/hack-012.png "SQL workflow encrypted in tcpdump")
 
-        **Note**:
-        - The `DEMO_HR_EMPLOYEES` table data is still queryable but when it shows up in the tcpdump, the data is unreadable because the session is encrypted!
-        - Even with a compromised network, the SQL workflow is secured with no code updates, no application changes, and no network architecture changes! Your sensitive data is protected in transit!
-        - Network administrators can continue to use their existing probes to analyze events while being sure that they can't read the data-in-transit
+    **Note**:
+    - The `DEMO_HR_EMPLOYEES` table data is still queryable but when it shows up in the tcpdump, the data is unreadable because the session is encrypted!
+    - Even with a compromised network, the SQL workflow is secured with no code updates, no application changes, and no network architecture changes! Your sensitive data is protected in transit!
+    - Network administrators can continue to use their existing probes to analyze events while being sure that they can't read the data-in-transit
     
-    - Encrypting the SQL traffic for an Oracle Database is fast and easy! It works immediately, with no downtime, application changes, or complex command lines, so why are you waiting to implement it?
+8. Encrypting the SQL traffic for an Oracle Database is fast and easy! It works immediately, with no downtime, application changes, or complex command lines, so why are you waiting to implement it?
 
-    - We protected the SQL traffic using an encryption feature provided natively by the Oracle database, called **Native Network Encryption (NNE)**. Another option for encrypting network traffic would be Transport Layer Security (TLS). We chose NNE because, unlike TLS, NNE doesn't require any changes in the application.
+9. We protected the SQL traffic using an encryption feature provided natively by the Oracle database, called **Native Network Encryption (NNE)**. Another option for encrypting network traffic would be Transport Layer Security (TLS). We chose NNE because, unlike TLS, NNE doesn't require any changes in the application.
     
-    > To learn more about how to enable NNE, please refer to the "[DB Security - Native Network Encryption] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=700)" workshop 
+> To learn more about how to enable NNE, please refer to the "[DB Security - Native Network Encryption] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=700)" workshop 
     
-2. **From inert and residual files** (backups and exports)
+## Task 3: Prevent data exfiltration from inert and residual files (backups and exports)
 
-    Although stealing unencrypted data over the network is very easy for the attacker, the data available to steal is limited to only what is traveling over the network. The attacker is passive – and this type of theft does not reveal the underlying data model, making it difficult for the attacker to know what else is available within the database.
+Although stealing unencrypted data over the network is very easy for the attacker, the data available to steal is limited to only what is traveling over the network. The attacker is passive – and this type of theft does not reveal the underlying data model, making it difficult for the attacker to know what else is available within the database.
     
-    The attacker will naturally move closer to the database to get a better idea of what data is available, but always being careful not to set off any alarms. The attacker shifts their focus to inert files of the database. Whether they are backups or export files, they are copied outside the database servers and frequently proliferate throughout the organization. They are almost always unattended or without protective security controls. These files are a real goldmine for attackers because they can contain sensitive data, the structure of the database, and other valuable information.
+The attacker will naturally move closer to the database to get a better idea of what data is available, but always being careful not to set off any alarms. The attacker shifts their focus to inert files of the database. Whether they are backups or export files, they are copied outside the database servers and frequently proliferate throughout the organization. They are almost always unattended or without protective security controls. These files are a real goldmine for attackers because they can contain sensitive data, the structure of the database, and other valuable information.
     
-    The attacker may be able to retrieve these files from file shares or backup servers, as email attachments, from tapes, or even from service providers who may have little regard for good security practices or the security implications of these types of files falling into the wrong hands. The attacker can then read the content of those files at their leisure.
+The attacker may be able to retrieve these files from file shares or backup servers, as email attachments, from tapes, or even from service providers who may have little regard for good security practices or the security implications of these types of files falling into the wrong hands. The attacker can then read the content of those files at their leisure.
     
-    <!-- ![](./images/hack-0013.png "Data exfiltration from inert and residual files") -->
+<!-- ![](./images/hack-0013.png "Data exfiltration from inert and residual files") -->
 
-    Let's see how this type of attack could focus on an export file, but keep in mind that it would work the same way with a backup file.
+Let's see how this type of attack could focus on an export file, but keep in mind that it would work the same way with a backup file.
    
-    - Let's say that while performing a search, the attacker finds an old, insecure PDB1 export file (`employeesearch_data_PDB1_20220505.dmp`) that was generated for use by a development or support team. The attacker tries to read the file contents
+1. Let's say that while performing a search, the attacker finds an old, insecure PDB1 export file (`employeesearch_data_PDB1_20220505.dmp`) that was generated for use by a development or support team. The attacker tries to read the file contents
 
-        ````
-        <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20220505.dmp</copy>
-        ````
+    ````
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20220505.dmp</copy>
+    ````
 
-        ![](./images/hack-014.png "Extract data from UNSECURED export file on PDB1")
+    ![](./images/hack-014.png "Extract data from UNSECURED export file on PDB1")
 
-        **Note**:
-        - By scrolling the output, you can see that all the schema data and metadata are readable!
-        - Because this file wasn't encrypted when it was generated, it's possible to extract its entire content by simply reading it
+    **Note**:
+    - By scrolling the output, you can see that all the schema data and metadata are readable!
+    - Because this file wasn't encrypted when it was generated, it's possible to extract its entire content by simply reading it
        
-    - And if the attacker tries to exfiltrate all the email addresses for example, nothing could be easier with the right command line
+2. And if the attacker tries to exfiltrate all the email addresses for example, nothing could be easier with the right command line
+
+    ````
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20220505.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
+    ````
+
+    ![](./images/hack-015.png "Extract emails from UNSECURED export file on PDB1")
+
+3. Now, do the same thing on export file from PDB2 (`employeesearch_data_PDB2_20220506.dmp`). Unlike the export from PDB1, this export was encrypted.
+
+    ````
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB2_20220506.dmp</copy>
+    ````
+
+    ![](./images/hack-016.png "Extract data from SECURED export file on PDB2")
+
+    **Note**:
+    - The output is unreadable!
+    - Because this file was encrypted when it was generated, it's impossible to extract usable content
+
+4. And if the attacker tries to exfiltrate all the email addresses, there's nothing but unusable data
+
+    ````
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB2_20220506.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
+    ````
+
+    ![](./images/hack-017.png "Extract emails from SECURED export file on PDB2")
+
+5. Here, we have used Data Pump Encryption, one of the database encryption features provide by the Oracle Advanced Security Option (ASO)
+   
+    ---
+
+    SysAdmin might answer here that it's easy to secure an inert file to avoid this kind of attack and that it's enough to encrypt the export file with utilities like GnuGP or mCrypt - the most well-known file encryption utilities. Unfortunately, what seems to be a good solution in theory is not a good solution in practice.
+        
+    Think about it - every time you use these utilities, you will have to encrypt a file that is already in clear text. The risk of compromising the file between generation and encryption during the operation is very real, not to mention the added complexity from an operations standpoint.
+        
+    You'll also have to manually generate a unique encryption key that you'll have to store and manage to make sure you can restore the file someday or enter a password. That password becomes something that needs to be securely stored and managed. You can never forget it and will have to pass it on to the end-user who might want to open the file. All this is time-consuming and expensive to maintain and increases the risk of manipulation errors or compromise.
+        
+    So, in general, to avoid possible problems, the admins will either use the same password for all the encryptions or store it somewhere to avoid losing it. You'll need to work out procedures for changing the password when the teams change personnel over time. All this represents a heavy load in terms of time, resources, processes, and money. This manual process also represents a real security risk because anything perceived as an operational barrier is seldom maintained over time.
+        
+    We prefer to use the native encryption functionalities built into the Oracle Database, like Data Pump encryption for export files and RMAN backup encryption for Oracle Database backups.
+        
+    **Benefits of using database encryption**
+
+    Compared to other solutions like GnuPG, mCrypt or third party encryption, database encryption offers multiple advantages:
+    - it's native, so no other layer to install; ready-to-use and optimized for the Oracle Database
+    - transparent, once initiated, you can automatically create an encrypted export file without the intervention of an Admin
+    - non-intrusive, no code or architecture changes are required
+    - secure, no password to use, a key is generated automatically
+    - centralized for Data Pump, the key is generated by the Oracle Database and stored within the local keystore or in a key manager like Oracle Key Vault (OKV)
+    - already encrypted for RMAN backup, no need to generate another key because all the encrypted database blocks are managed by RMAN during the backup process - advantage: the backup is already and automatically encrypted, and all the key are stored within the database keystore
+    - Data Pump encryption happens during the export process, so there is no risk of data theft during the time between creating the export and encrypting it because there is no gap
+
+    ---
+
+## Task 4: Prevent data exfiltration from Database data files (data-at-rest)
+    
+If the attacker wants to get MORE data (especially if the inert file breach was over a partial export), or if the prior attacks were blocked, then the attacker will need to start taking more risks. They will need to get closer to their target and remain under the radar of the database access and audit controls. To do this, they will now attack the active data files. These files contain all the data of the database.
+
+Here they have two options:
+- try to attack the production server directly
+- or attempt to harvest data from non-production servers
+    
+Attacking the production server may seem riskier, but they will attack that target if they don't have enough time or think they can get away with it. Suppose the attackers are not in a hurry. In that case, they can take time to explore non-production servers, which are generally less complete and less up-to-date but have the advantage of being little monitored and rarely with the same level of security as production servers.
+
+<!-- ![](./images/hack-018.png "Data exfiltration from the datafile") -->
+    
+The technique remains the same in production or development, so let's take a look at how they might go about it on the production server. We'll see later how to secure the non-production data.
+
+**Option 1: The attacker targets the production server**
+    
+We will use a well-known Linux command "strings" to view data in the datafiles associated with the EMPDATA_PROD tablespace. Strings is an OS command that operates directly on the database files, bypassing database access and audit controls.
+        
+1. On PDB1, the `EMPDATA_PROD` tablespace is unsecured and its associated datafiles is named `empdata_prod.dbf`
+        
+    ````
+    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_prod.dbf</copy>
+    ````
+
+    ![](./images/hack-019.png "Extract data from UNSECURED datafile on PDB1")
+
+    **Note**:
+    - By scrolling the output, you can see that all the schema data and metadata are visible!
+    - Because this datafile is not encrypted, it's easy to extract its entire contents by simply reading it
+    - Beware, even if this datafile is located on an encrypted disk array or encrypted by a third-tier software, the content of the file is still available to a privileged user like root or oracle
+
+2. On PDB2, the `EMPDATA_PROD` tablespace is secured and its datafiles associated is named `empdata_prod_enc.dbf`
+        
+    ````
+    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_prod_enc.dbf</copy>
+    ````
+
+    ![](./images/hack-020.png "Extract data from SECURED datafile on PDB2")
+
+    **Note**:
+    - The output is unreadable!
+    - Because this datafile is encrypted at the database block level it's impossible to extract its content without going through an authorized, audited, database session
+
+3. This time, we have used another database encryption feature provide natively by the Oracle database called Transparent Data Encryption (TDE). TDE is included with all Oracle Database cloud services and is available with Oracle Enterprise Edition databases.
+   
+    ---
+
+    **Benefits of using Oracle Transparent Data Encryption (TDE)**
+    - As a security administrator, you have peace of mind knowing that sensitive data is secured in the event that the storage media or data file is stolen - Data is encrypted within the database and therefore safe everywhere in Oracle Database ecosystem the data is copied to (including clones of the database, backups, etc)
+    - Using TDE helps you address encryption-related regulatory compliance issues
+    - You don't need to modify applications to use TDE. Data is transparently encrypted as it is added to the database, and transparently decrypted for authorized database sessions
+    - You can encrypt data with zero downtime on production systems by using "Online Table Redefinition," or you can encrypt it offline during maintenance periods (see "Oracle Database Administrator's Guide" for more information about "Online Table Redefinition")
+    - Oracle Database automates TDE master encryption key and keystore management operations. The user or application does not need to manage TDE master encryption keys and the keys are never exposed to the clients, reducing the chances for loss or theft of the keys
+
+    > To learn more about how to use TDE, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
+
+    ---
+
+**Option 2: The attacker focuses on the non-production (test or development) database servers**
+
+If the attacker has more time, they will avoid attacking the production database in order to reduce their risk of discovery. Hackers often focus on non-production systems because those usually have fewer active security controls and less stringent monitoring. For each production database, we see an average of four non-production databases (development, test, integration, UAT, validation, stage, support, etc). In many cases, the test databases are just production clones and contain the same data. Because developers must be close to actual production conditions, they require non-production environments to be as faithful as possible to the production database.
+        
+Applying production-quality levels of security to non-production databases is unworkable in many cases. In addition to the additional cost to secure these extra environments, developers frequently require full access to the system during the development and testing process.
+        
+The simplest and safest solution is to implement a good baseline level of security, including auditing and assessment. And then work to make the content of these databases functional, so that the teams can work correctly, but without any sensitive information so that you are not worried about data compromise. We will use data masking to remove the security risk from these non-production clones. Masking is cheaper than implementing production-quality controls. Masking allows you to invest the minimum security resources in these databases without risk of disclosing your sensitive data.
+
+![](./images/hack-021.png "Data Masking concept")
+
+4. Imagine that you decide to refresh your development database every Monday from the production database. That means that your development database will become as sensitive as your production environment as soon as it is refreshed. Your datafiles are exposed to exactly the same attack that we saw earlier.
+
+    - Let's **refresh the development from production on PDB1 with no masking script**
+            
+        ````
+        <copy>./sh_refresh_dev_from_prod.sh pdb1 nomasking</copy>
+        ````
+
+        ![](./images/hack-022.png "Refresh UNSECURED DEV data on PDB1")
+
+        **Note**: Because the data is not masked in development, you can see the same sensitive data that is in production!
+            
+    - Next, for example, **extract only the email of the User 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB1**, as seen in the previous attack
 
         ````
-        <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20220505.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
+        <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
         ````
 
-        ![](./images/hack-015.png "Extract emails from UNSECURED export file on PDB1")
-
-    - Now, do the same thing on export file from PDB2 (`employeesearch_data_PDB2_20220506.dmp`). Unlike the export from PDB1, this export was encrypted.
-
-        ````
-        <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB2_20220506.dmp</copy>
-        ````
-
-        ![](./images/hack-016.png "Extract data from SECURED export file on PDB2")
+        ![](./images/hack-023.png "Extract data from UNSECURED DEV datafile on PDB1")
 
         **Note**:
-        - The output is unreadable!
-        - Because this file was encrypted when it was generated, it's impossible to extract usable content
+        - The database file is readable as expected, and you can see the email address. Hence, production-sensitive data is vulnerable in the development environment!
+        - Of course, here, you exfiltrated only a single email address, but an attacker could exfiltrate any other dataset they wanted by using the same method
+        - To be secured, you would need to implement, maintain, and monitor strong security solutions in the development environment
 
-    - And if the attacker tries to exfiltrate all the email addresses, there's nothing but unusable data
+    - Now, let's see what happens if you **mask the sensitive data during the duplication process in Dev on PDB2**
+            
+        ````
+        <copy>./sh_refresh_dev_from_prod.sh pdb2 masking</copy>
+        ````
+
+        ![](./images/hack-024.png "Refresh SECURED DEV data on PDB2")
+            
+        **Note**:
+        - Here, we apply a masking process during the refresh process that removes risk from sensitive data by replacing it with non-sensitive, usually artificial, data
+        - Now, the **data is masked in development and is different from what is in production**!
+
+    - Next, try again to **extract only the email of the user 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB2**
 
         ````
-        <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB2_20220506.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
+        <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
         ````
 
-        ![](./images/hack-017.png "Extract emails from SECURED export file on PDB2")
+        ![](./images/hack-025.png "Extract data from SECURED DEV datafile on PDB2")
 
-    - Here, we have used Data Pump Encryption, one of the database encryption features provide by the Oracle Advanced Security Option (ASO)
+        **Note**:
+        - **There's no result!**
+        - Although the datafile is still readable as expected - remember, we didn't encrypt the development env - but now, because the data is masked in development, even if the attacker actually connects to the database, there's no longer sensitive data to be stolen!
+
+5. Here, we have used the data masking capability provided by the Oracle Database, called **Data Masking and Subsetting (DMS)**.
    
-        ---
+    ---
 
-        SysAdmin might answer here that it's easy to secure an inert file to avoid this kind of attack and that it's enough to encrypt the export file with utilities like GnuGP or mCrypt - the most well-known file encryption utilities. Unfortunately, what seems to be a good solution in theory is not a good solution in practice.
-        
-        Think about it - every time you use these utilities, you will have to encrypt a file that is already in clear text. The risk of compromising the file between generation and encryption during the operation is very real, not to mention the added complexity from an operations standpoint.
-        
-        You'll also have to manually generate a unique encryption key that you'll have to store and manage to make sure you can restore the file someday or enter a password. That password becomes something that needs to be securely stored and managed. You can never forget it and will have to pass it on to the end-user who might want to open the file. All this is time-consuming and expensive to maintain and increases the risk of manipulation errors or compromise.
-        
-        So, in general, to avoid possible problems, the admins will either use the same password for all the encryptions or store it somewhere to avoid losing it. You'll need to work out procedures for changing the password when the teams change personnel over time. All this represents a heavy load in terms of time, resources, processes, and money. This manual process also represents a real security risk because anything perceived as an operational barrier is seldom maintained over time.
-        
-        We prefer to use the native encryption functionalities built into the Oracle Database, like Data Pump encryption for export files and RMAN backup encryption for Oracle Database backups.
-        
-        **Benefits of using database encryption**
+    Oracle Data Masking and Subsetting (DMS) generates a scalable masking script with a highly efficient and robust mechanism for creating consistent and realistic masked data. No need to manually create a complex masking script to maintain, just define the masking rules and DMS generates the masking script for you.
 
-        Compared to other solutions like GnuPG, mCrypt or third party encryption, database encryption offers multiple advantages:
-        - it's native, so no other layer to install; ready-to-use and optimized for the Oracle Database
-        - transparent, once initiated, you can automatically create an encrypted export file without the intervention of an Admin
-        - non-intrusive, no code or architecture changes are required
-        - secure, no password to use, a key is generated automatically
-        - centralized for Data Pump, the key is generated by the Oracle Database and stored within the local keystore or in a key manager like Oracle Key Vault (OKV)
-        - already encrypted for RMAN backup, no need to generate another key because all the encrypted database blocks are managed by RMAN during the backup process - advantage: the backup is already and automatically encrypted, and all the key are stored within the database keystore
-        - Data Pump encryption happens during the export process, so there is no risk of data theft during the time between creating the export and encrypting it because there is no gap
-
-        ---
-
-3. **From Database data files** (data-at-rest)
+    **Benefits of using DMS**
+    - Maximize the business value of data by masking sensitive information
+    - Minimize the compliance boundary by not proliferating the sensitive production information
+    - Lower the storage costs on test and development environments by subsetting data
+    - Automate the discovery of sensitive data and parent-child relationships
+    - Provide a comprehensive library of masking formats, masking transformations, subsetting techniques, and select application templates
+    - Maintain your masking script easily over time according to the evolution of the schemas structures
+    - Mask and subset data in-Database or on-the-file by extracting the data from a source database
+    - Mask and subset Oracle Databases hosted on-premises, in the Oracle Cloud, and in third-party clouds
+    - Preserve data integrity during masking and subsetting and offers many more unique features
+    - Integrate with select Oracle testing, security, and integration products
     
-    If the attacker wants to get MORE data (especially if the inert file breach was over a partial export), or if the prior attacks were blocked, then the attacker will need to start taking more risks. They will need to get closer to their target and remain under the radar of the database access and audit controls. To do this, they will now attack the active data files. These files contain all the data of the database.
-
-    Here they have two options:
-    - try to attack the production server directly
-    - or attempt to harvest data from non-production servers
-    
-    Attacking the production server may seem riskier, but they will attack that target if they don't have enough time or think they can get away with it. Suppose the attackers are not in a hurry. In that case, they can take time to explore non-production servers, which are generally less complete and less up-to-date but have the advantage of being little monitored and rarely with the same level of security as production servers.
-
-    <!-- ![](./images/hack-018.png "Data exfiltration from the datafile") -->
-    
-    The technique remains the same in production or development, so let's take a look at how they might go about it on the production server. We'll see later how to secure the non-production data.
-
-    - **Option 1: The attacker targets the production server**
-    
-        We will use a well-known Linux command "strings" to view data in the datafiles associated with the EMPDATA_PROD tablespace. Strings is an OS command that operates directly on the database files, bypassing database access and audit controls.
+    > To know more about DMS, please refer to the "[DB Security - Data Masking and Subsetting] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=704)" workshop. The Oracle Data Safe cloud service also provides Data Masking capability. If you'd like more information on using Oracle Data Safe please refer to the "[Get Started with Oracle Data Safe Fundamentals] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)" workshop
         
-        - On PDB1, the `EMPDATA_PROD` tablespace is unsecured and its associated datafiles is named `empdata_prod.dbf`
-        
-            ````
-            <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_prod.dbf</copy>
-            ````
+    ---
 
-            ![](./images/hack-019.png "Extract data from UNSECURED datafile on PDB1")
-
-            **Note**:
-            - By scrolling the output, you can see that all the schema data and metadata are visible!
-            - Because this datafile is not encrypted, it's easy to extract its entire contents by simply reading it
-            - Beware, even if this datafile is located on an encrypted disk array or encrypted by a third-tier software, the content of the file is still available to a privileged user like root or oracle
-
-        - On PDB2, the `EMPDATA_PROD` tablespace is secured and its datafiles associated is named `empdata_prod_enc.dbf`
-        
-            ````
-            <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_prod_enc.dbf</copy>
-            ````
-
-            ![](./images/hack-020.png "Extract data from SECURED datafile on PDB2")
-
-            **Note**:
-            - The output is unreadable!
-            - Because this datafile is encrypted at the database block level it's impossible to extract its content without going through an authorized, audited, database session
-
-        - This time, we have used another database encryption feature provide natively by the Oracle database called Transparent Data Encryption (TDE). TDE is included with all Oracle Database cloud services and is available with Oracle Enterprise Edition databases.
-   
-        ---
-
-        **Benefits of using Oracle Transparent Data Encryption (TDE)**
-        - As a security administrator, you have peace of mind knowing that sensitive data is secured in the event that the storage media or data file is stolen - Data is encrypted within the database and therefore safe everywhere in Oracle Database ecosystem the data is copied to (including clones of the database, backups, etc)
-        - Using TDE helps you address encryption-related regulatory compliance issues
-        - You don't need to modify applications to use TDE. Data is transparently encrypted as it is added to the database, and transparently decrypted for authorized database sessions
-        - You can encrypt data with zero downtime on production systems by using "Online Table Redefinition," or you can encrypt it offline during maintenance periods (see "Oracle Database Administrator's Guide" for more information about "Online Table Redefinition")
-        - Oracle Database automates TDE master encryption key and keystore management operations. The user or application does not need to manage TDE master encryption keys and the keys are never exposed to the clients, reducing the chances for loss or theft of the keys
-
-        > To learn more about how to use TDE, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
-
-        ---
-
-    - **Option 2: The attacker focuses on the non-production (test or development) database servers**
-
-        If the attacker has more time, they will avoid attacking the production database in order to reduce their risk of discovery. Hackers often focus on non-production systems because those usually have fewer active security controls and less stringent monitoring. For each production database, we see an average of four non-production databases (development, test, integration, UAT, validation, stage, support, etc). In many cases, the test databases are just production clones and contain the same data. Because developers must be close to actual production conditions, they require non-production environments to be as faithful as possible to the production database.
-        
-        Applying production-quality levels of security to non-production databases is unworkable in many cases. In addition to the additional cost to secure these extra environments, developers frequently require full access to the system during the development and testing process.
-        
-        The simplest and safest solution is to implement a good baseline level of security, including auditing and assessment. And then work to make the content of these databases functional, so that the teams can work correctly, but without any sensitive information so that you are not worried about data compromise. We will use data masking to remove the security risk from these non-production clones. Masking is cheaper than implementing production-quality controls. Masking allows you to invest the minimum security resources in these databases without risk of disclosing your sensitive data.
-
-        ![](./images/hack-021.png "Data Masking concept")
-
-        - Imagine that you decide to refresh your development database every Monday from the production database. That means that your development database will become as sensitive as your production environment as soon as it is refreshed. Your datafiles are exposed to exactly the same attack that we saw earlier.
-
-            - Let's **refresh the development from production on PDB1 with no masking script**
-            
-                ````
-                <copy>./sh_refresh_dev_from_prod.sh pdb1 nomasking</copy>
-                ````
-
-                ![](./images/hack-022.png "Refresh UNSECURED DEV data on PDB1")
-
-                **Note**: Because the data is not masked in development, you can see the same sensitive data that is in production!
-            
-            - Next, for example, **extract only the email of the User 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB1**, as seen in the previous attack
-
-                ````
-                <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
-                ````
-
-                ![](./images/hack-023.png "Extract data from UNSECURED DEV datafile on PDB1")
-
-                **Note**:
-                - The database file is readable as expected, and you can see the email address. Hence, production-sensitive data is vulnerable in the development environment!
-                - Of course, here, you exfiltrated only a single email address, but an attacker could exfiltrate any other dataset they wanted by using the same method
-                - To be secured, you would need to implement, maintain, and monitor strong security solutions in the development environment
-
-            - Now, let's see what happens if you **mask the sensitive data during the duplication process in Dev on PDB2**
-            
-                ````
-                <copy>./sh_refresh_dev_from_prod.sh pdb2 masking</copy>
-                ````
-
-                ![](./images/hack-024.png "Refresh SECURED DEV data on PDB2")
-            
-                **Note**:
-                - Here, we apply a masking process during the refresh process that removes risk from sensitive data by replacing it with non-sensitive, usually artificial, data
-                - Now, the **data is masked in development and is different from what is in production**!
-
-            - Next, try again to **extract only the email of the user 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB2**
-
-                ````
-                <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
-                ````
-
-                ![](./images/hack-025.png "Extract data from SECURED DEV datafile on PDB2")
-
-                **Note**:
-                - **There's no result!**
-                - Although the datafile is still readable as expected - remember, we didn't encrypt the development env - but now, because the data is masked in development, even if the attacker actually connects to the database, there's no longer sensitive data to be stolen!
-
-        - Here, we have used the data masking capability provided by the Oracle Database, called **Data Masking and Subsetting (DMS)**.
-   
-        ---
-
-        Oracle Data Masking and Subsetting (DMS) generates a scalable masking script with a highly efficient and robust mechanism for creating consistent and realistic masked data. No need to manually create a complex masking script to maintain, just define the masking rules and DMS generates the masking script for you.
-
-        **Benefits of using DMS**
-        - Maximize the business value of data by masking sensitive information
-        - Minimize the compliance boundary by not proliferating the sensitive production information
-        - Lower the storage costs on test and development environments by subsetting data
-        - Automate the discovery of sensitive data and parent-child relationships
-        - Provide a comprehensive library of masking formats, masking transformations, subsetting techniques, and select application templates
-        - Maintain your masking script easily over time according to the evolution of the schemas structures
-        - Mask and subset data in-Database or on-the-file by extracting the data from a source database
-        - Mask and subset Oracle Databases hosted on-premises, in the Oracle Cloud, and in third-party clouds
-        - Preserve data integrity during masking and subsetting and offers many more unique features
-        - Integrate with select Oracle testing, security, and integration products
-    
-        > To know more about DMS, please refer to the "[DB Security - Data Masking and Subsetting] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=704)" workshop. The Oracle Data Safe cloud service also provides Data Masking capability. If you'd like more information on using Oracle Data Safe please refer to the "[Get Started with Oracle Data Safe Fundamentals] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)" workshop
-        
-        ---
-
-## Task 2: Detect and mitigate the risk of data exfiltration through an application
+## Task 5: Detect and mitigate the risk of data exfiltration through an application
 
 Next, our attackers will attempt to indirectly retrieve data from the database by attacking an application connected to the database. Their risk of detection goes up because (hopefully) the application is being monitored for this type of attack using tools like Web Application Firewall (WAF).
 
@@ -506,7 +506,7 @@ Possibly the attacker has access to your application, even with a simple user ac
         > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
 
-## Task 3: Detect and mitigate data exfiltration from the database
+## Task 6: Detect and mitigate data exfiltration from the database
 
 Our attacker now switches their attention to a direct attack on the database. This type of attack exposes the hacker to the highest level of detection risk.
 
