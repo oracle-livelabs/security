@@ -1,7 +1,9 @@
 # Introduction
 
 ## About this Workshop
-This workshop is a hands-on lab dedicated to the features and functionality of Oracle Database security to prevent, detect and mitigate the most common cyberattacks performed on Oracle Databases - for more details on each of the featured products, please refer to the Livelabs [DB Security Basics](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=698) and [DB Security Advanced](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=726) labs.
+This workshop is a hands-on lab dedicated to the features and functionality of Oracle Database security to prevent, detect and mitigate the most common cyberattacks performed on Oracle Databases - for more details on each of the featured products, please refer to the following workshops:
+- [DB Security Basics](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=698)
+- [DB Security Advanced](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=726) labs.
 
 ![](../images/hack-002.png "Ransomware Attack message")
 
@@ -13,18 +15,24 @@ This lab helps you learn to use some of the most important security features of 
 
 ### Objectives
 During this workshop, you will perform different scenario:
-- **as an attacker** - your main objective will be to exfiltrate sensitive data from a target database before encrypting data in a simulated ransomware attack
-- **as a defender** - your main objective will be to prevent, detect and mitigate these attacks
+* **as an attacker** - your main objective will be to exfiltrate sensitive data from a target database before encrypting data in a simulated ransomware attack
+* **as a defender** - your main objective will be to prevent, detect and mitigate these attacks
 
 In order to make this possible, we provide you with the necessary infrastructure components so that you can test the most common attacks exploited on a database by hackers.
 
 As all these components are stored in the workshop's DBSec-Lab VM, you can conduct your attack without any risk and without fear of breaking anything.
 
+### Prerequisites
+This lab assumes you have:
+* An Oracle Cloud Account - Please view this workshop's LiveLabs landing page to see which environments are supported
+
+*Note: If you have a **Free Trial** account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available. **[Click here for the Free Tier FAQ page.](https://www.oracle.com/cloud/free/faq.html)***
+
 So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set up!
 
 The entire Database Security team wishes you an excellent workshop!
 
-You may now [proceed to the next lab](#next).
+You may now proceed to the next lab.
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security Senior Principal PM
