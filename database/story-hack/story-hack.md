@@ -1,24 +1,24 @@
 # Oracle DB Security - Story of a hack
 
 ## Introduction
-Cybercriminals are becoming more and more equipped and better prepared. They now have a substantial technological arsenal that allows them to launch attacks against you from almost everywhere if you are not prepared to deal with them.
+In this lab, let's walk through the techniques that attackers use to break into your database and exfiltrate your data.
 
 We will use a ransomware attack to explore how attackers operate and what database features you should use to prevent, detect, and mitigate data exfiltration risks.
 
 If you are unfamiliar with ransomware, please take a moment to read the appendix to this lab. You'll find "The stages of a ransomware attack" towards the end of the lab – look for the appendix in the navigation pane.
 
+![](./images/hack-001.png "Ransomware Attack message")
+
+A typical ransomware attack includes theft and exfiltration of data. The theft usually happens before encrypting your system to make it inoperable, with the stolen data used by the ransomware gang to help influence you to pay the ransom.
+
+Understanding the attacker's motivation and how to prevent them from being able to use the stolen data against you helps you better survive the attack and makes it more feasible to NOT pay the ransom.
+
 *Estimated Time:* 40 minutes
-*Versions tested in this lab:* Oracle DB EE 19.13, OEM 13.5, AVDF 20.5
 
 ### About this Product/Technology
-During this workshop, you will perform different scenarios:
-- **as an attacker** - your main objective will be to exfiltrate sensitive data from the target database before encrypting the database as part of a ransomware attack.
-- **as a defender** - your main objective will be to prevent, detect and mitigate these attacks
-
-In order to make this possible, we provide you with all the necessary components and tools so that you can test the common attack techniques exploited on a database by hackers.
-
-You will use the following resources:
+During this lab you will use the following resources:
   - SSH Terminal Client
+  - Oracle Databases
   - Glassfish HR App
   - Audit Vault web console
   - OEM Cloud Control (DBA Web console)
@@ -28,14 +28,14 @@ In our scenario, this database contains sensitive data that could be used by the
 
 As your attack protocol progresses, you will test the same commands from the same interfaces, but this time pointing to another Oracle Database named PDB2. Oracle's recommended security controls protect PDB2. You will see how a well-configured database can block the most common attacks used to break in and steal data.
 
-![](./images/hack-003.png "Story of a hack - Livelab architecture")
+![](./images/hack-005.png "Story of a hack - Livelab architecture")
 
 All components for the lab run in the DBSec-Lab VM. Because this is a LiveLabs environment, you can conduct your attack without any risk or fear of breaking anything.
 
-### Objectives
-In this lab, let's walk through the techniques that attackers use to break into your database and exfiltrate your data. A typical ransomware attack includes theft and exfiltration of data. The theft usually happens before encrypting your system to make it inoperable, with the stolen data used by the ransomware gang to help influence you to pay the ransom. Understanding the attacker's motivation and how to prevent them from being able to use the stolen data against you helps you better survive the attack and makes it more feasible to NOT pay the ransom.
+*Versions tested in this lab:* Oracle DB EE 19.13, OEM 13.5, AVDF 20.5
 
-You will see how to:
+### Objectives
+You will learn how to:
 - Prevent, detect and mitigate data exfiltration
 - Prevent and detect privileges escalation and abuse
 - Prevent and mitigate exploitation of vulnerabilities
@@ -967,7 +967,7 @@ Several steps characterize a cyber-attack, and attackers typically follow them i
 
 Ransomware is big business – in terms of income, it may be big enough to include in the Global 100! Modern ransomware gangs are professionally organized and operationally siloed. Specialized groups become experts at specific stages of the ransomware process. These groups sell their services or the results of their misdeeds to other groups that either don't have the specialized skills or want to save time – scaling up just like any other big business does. This agile approach offers ransomware gangs a greater capacity for generating revenue with a lower cost of operations while limiting the risk of being caught and prosecuted.
 
-![](./images/hack-001.png "The stages of an attack")
+![](./images/hack-004.png "The stages of an attack")
 
 ### Step 1-5: The calm before the storm
 The first four stages of a cyberattack can happen without you seeing it coming because these attacks target systems where they are most vulnerable, often starting with users. For example, attackers target a company's staff using social networks to infiltrate the target system by sending out phishing email attacks, setting up malicious websites, sending fake software upgrade alerts, offering infected USB drives, etc (**1 - Reconnaissance**) and work to get them to click on a link, download a file, watch a video or any other action (**2 - Weaponization**) that allows attackers to download a small package of malware (exploit kit) on a system on the company's network (**3 - Delivery**) to exploit existing vulnerabilities onto the system to get a better foothold (**4 - Exploitation**). Once the malware infiltrates your system, the malicious code will set up a backdoor - a communication line back allowing a persistent access to the attacker (**5 - Installation**). At this point, the malware may lay hidden and dormant for days, weeks, or months before the attacker chooses to initiate the attack or sell this backdoor to another attacker!
