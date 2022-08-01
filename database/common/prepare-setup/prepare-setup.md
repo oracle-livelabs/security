@@ -53,7 +53,7 @@ This lab assumes you have:
     - [dbsec-mkplc-vm01-priv-analysis.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/d4RqsYQ5fUYEhQUWrh3l_Tj2Co9XT5K7sULbDC1BrTkVN36segiiKYOcpWIQtvTl/n/natdsecurity/b/stack/o/dbsec-mkplc-vm01-priv-analysis.zip)
 </if>
 <if type="story-hack">
-    - [dbsec-mkplc-vm01-story-hack.zip]()
+    - [dbsec-hack-mkplc-freetier.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/InDAlahG9IAtnYwc2-J88zYAjdABvaVOToDPxA3FGawYr1QQcexrQ5ppRgh-4fdB/n/natdsecurity/b/stack/o/dbsec-hack-mkplc-freetier.zip)
 </if>
 <if type="tsdp">
     - [dbsec-mkplc-vm01-tsdp.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/l3z-aNRSuctZUUFQ-cX6StRG5oudCNPPTg41n9mUZPFthb2DRBhlV1YX7Lkp4jsB/n/natdsecurity/b/stack/o/dbsec-mkplc-vm01-tsdp.zip)
@@ -73,11 +73,16 @@ This workshop requires a certain number of ports to be available, a requirement 
 | :------------- | :------------------------------------ |
 | 22             | SSH                                   |
 | 80             | Application (http)                    |
-| 443            | Application (https)                   |
 | 6080           | noVNC Remote Desktop                  |
+{: title="Required Ports"}
+
+| Port           |Description                            |
+| :------------- | :------------------------------------ |
+| 443            | Application (https)                   |
 | 7803           | Oracle Enterprise Manager             |
 | 8080           | Glassfish Application                 |
 | 50002          | Glassfish Application                 |
+{: title="Optional Ports - For Apps Access outside of noVNC remote desktop"}
 
 1.  Go to *Networking >> Virtual Cloud Networks*
 2.  Choose your network
@@ -86,7 +91,7 @@ This workshop requires a certain number of ports to be available, a requirement 
 5.  Click Add Ingress Rule button
 6.  Enter the following:  
     - Source CIDR: 0.0.0.0/0
-    - Destination Port Range: *Refer to above table*
+    - Destination Port Range: *Refer to above table(s)*
 7.  Click the Add Ingress Rules button
 
 ## Task 3: Setup Compute   
