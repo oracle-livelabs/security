@@ -69,19 +69,19 @@ In other words, before encrypting your system to make it unavailable, the attack
 
 Fortunately for you, the Oracle Database is the best-equipped database on the market for the prevention, detection, and analysis of cyber threats.
 
-### The Stages of a Ransomware Attack
+### To go further: The stages of a ransomware attack
 Several steps characterize a cyber-attack, and attackers typically follow them in the same order.
 
 Ransomware is big business – in terms of income, it may be big enough to include in the Global 100! Modern ransomware gangs are professionally organized and operationally siloed. Specialized groups become experts at specific stages of the ransomware process. These groups sell their services or the results of their misdeeds to other groups that either don't have the specialized skills or want to save time – scaling up just like any other big business does. This agile approach offers ransomware gangs a greater capacity for generating revenue with a lower cost of operations while limiting the risk of being caught and prosecuted.
 
 ![](../images/hack-004.png "The stages of an attack")
 
-### Step 1-5: The calm before the storm
+#### **Step 1-5: The calm before the storm**
 The first four stages of a cyberattack can happen without you seeing it coming because these attacks target systems where they are most vulnerable, often starting with users. For example, attackers target a company's staff using social networks to infiltrate the target system by sending out phishing email attacks, setting up malicious websites, sending fake software upgrade alerts, offering infected USB drives, etc (**1 - Reconnaissance**) and work to get them to click on a link, download a file, watch a video or any other action (**2 - Weaponization**) that allows attackers to download a small package of malware (exploit kit) on a system on the company's network (**3 - Delivery**) to exploit existing vulnerabilities onto the system to get a better foothold (**4 - Exploitation**). Once the malware infiltrates your system, the malicious code will set up a backdoor - a communication line back allowing a persistent access to the attacker (**5 - Installation**). At this point, the malware may lay hidden and dormant for days, weeks, or months before the attacker chooses to initiate the attack or sell this backdoor to another attacker!
 
 Raising awareness and training staff on these risks is essential to combat these first phases. Your people should understand best practices for staying safe, especially on social networks. On a technical level, the company should equip itself with web application firewalls, anti-spam, anti-virus, and intrusion detection systems. Periodic penetration tests and security audits will also be of great help.
 
-### Step 6: The wind rises
+#### **Step 6: The wind rises**
 Once attackers have a beachhead within your network, they activate a backdoor to prepare for the actual attack by communicating remotely with the exploit kit which will provide them a "hands-on keyboard access" inside the target's network (**6 - Command and Control (C2)**).
 
 Here, they begin to spread out and attack other systems to establish multiple backdoors and scan the network to discover the golden assets to steal (**6a - Lateral movement**). One of the highest value systems to attack is your corporate directory (usually Microsoft Active Directory) and the DNS server. Successful penetration of these two systems leads to the ability to penetrate many other systems.
@@ -90,7 +90,7 @@ Thus, they can start mapping the architecture of the system they have in front o
 
 At each stage of the attack you may see a hand-off between different groups of attackers, as one specialized group sells their results to another group that takes the attack further.
 
-### Step 7: In the middle of the storm
+#### **Step 7: In the middle of the storm**
 Now, the attackers know the targeted system, have the right tools, and have enough privileges to act, so everything is in place to accomplish their mission and the real attack can begin. That attack can happen anytime the attacker chooses and catch your organization entirely off guard (**7 - Action on objectives**). Once the attack has started, it can be a race against time for your organization to even identify that the attack is occurring so that mitigation and recovery efforts may go into action.
 
 Once an attack is launched, your system and data are at risk. Without a mitigation and recovery plan, your sensitive data can be altered or disclosed, and downtime on your systems can range from days to months. In most cases, some data is never restored. The results of a ransomware attack are costly and can be catastrophic, both to your bottom line and to your brand reputation.
