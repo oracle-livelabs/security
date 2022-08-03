@@ -19,6 +19,21 @@ As all these components are stored in the workshop's DBSec-Lab VM, you can condu
 
 > If you are unfamiliar with ransomware, please take a moment to read the "Learn More" section below.
 
+### About this Product/Technology
+During this lab you will use the following resources:
+  - SSH Terminal Client
+  - Oracle Databases
+  - Glassfish HR App
+  - Audit Vault web console
+  - OEM Cloud Control (DBA Web console)
+
+Note that the Glassfish HR application is a fictitious employee management web application that points to an unsecured Oracle Database named PDB1.
+In our scenario, this database contains sensitive data that could be used by the attackers to extort a ransomware payment, or be sold on the dark web for profit.
+
+As your attack protocol progresses, you will test the same commands from the same interfaces, but this time pointing to another Oracle Database named PDB2. Oracle's recommended security controls protect PDB2. You will see how a well-configured database can block the most common attacks used to break in and steal data.
+
+*Versions tested in this lab:* Oracle DB EE 19.13, OEM 13.5, AVDF 20.5
+
 ### Objectives
 This lab helps you learn to use some of the most important security features of the Oracle Database.
 
