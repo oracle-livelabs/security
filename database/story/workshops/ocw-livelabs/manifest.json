@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "DB Security - Story of a hack",
+  "workshoptitle": "Tales from the dark side: Hacking the database",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
@@ -8,19 +8,25 @@
       "filename": "../../intro/intro.md"
     },
     {
-      "title": "Lab 1: Environment Setup",
-      "description": "Verify Setup of compute instance",
-      "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
+      "title": "Lab 1: Prepare Setup",
+      "description": "How to download your ORM stack and update security rules for an existing VCN",
+      "filename": "../../../common/prepare-setup/prepare-setup.md",
+      "type": "story-hack"
     },
     {
-      "title": "Lab 2: Initialize Environment",
+      "title": "Lab 2: Environment Setup",
+      "description": "How to provision the workshop environment and connect to it",
+      "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
+    },
+    {
+      "title": "Lab 3: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "filename": "../../../common/init-start-env/init-start-env.md"
     },
     {
-      "title": "Lab 3: Oracle facing a Ransomware attack",
+      "title": "Lab 4: Oracle facing a Ransomware attack",
       "description": "In this lab you can see how to leverage Oracle DB Security solutions against a Ransomware attack",
-      "filename": "../../story-hack.md"
+      "filename": "../../story-hack/story-hack.md"
     },
     {
       "title": "Need Help?",

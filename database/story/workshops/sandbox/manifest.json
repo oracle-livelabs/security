@@ -8,19 +8,19 @@
       "filename": "../../intro/intro.md"
     },
     {
-      "title": "Get Started with noVNC Remote Desktop",
-      "description": "Using noVNC Remote Desktop",
-      "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
+      "title": "Lab 1: Environment Setup",
+      "description": "Verify Setup of compute instance",
+      "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
     },
     {
-      "title": "Lab 1: Initialize Environment",
-      "description": "Initialize Environment",
+      "title": "Lab 2: Initialize Environment",
+      "description": "How to initialize and start all the workshop components",
       "filename": "../../../common/init-start-env/init-start-env.md"
     },
     {
-      "title": "Lab 2: Oracle facing a Ransomware attack",
+      "title": "Lab 3: Oracle facing a Ransomware attack",
       "description": "In this lab you can see how to leverage Oracle DB Security solutions against a Ransomware attack",
-      "filename": "../../story-hack.md"
+      "filename": "../../story-hack/story-hack.md"
     },
     {
       "title": "Need Help?",

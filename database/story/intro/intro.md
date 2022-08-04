@@ -9,7 +9,7 @@ In this lab, we will use a ransomware attack to explore how attackers operate an
 
 A typical ransomware attack includes theft and exfiltration of data. The theft usually happens before encrypting your system to make it inoperable, with the stolen data used by the ransomware gang to help influence you to pay the ransom.
 
-![Ransomware Attack message](../images/hack-001.png "Ransomware Attack message")
+![Ransomware Attack message](./images/intro-hack-01.png "Ransomware Attack message")
 
 In order to make this possible, we provide you with the necessary infrastructure components based on an OCI architecture, deployed in a few minutes, so that you can test the most common attacks exploited on a database by hackers with a simple internet connection.
 
@@ -74,13 +74,13 @@ From then on, the only options available to you were :
 
 If you were not prepared for this eventuality and hadn't anticipated having to deal with it, then the disruption this type of attack posed to your business was quite a challenge to overcome. Seeing this message below probably placed you in a state of extreme stress!
 
-![Ransomware screen](../images/hack-002.png "Ransomware screen")
+![Ransomware screen](./images/intro-hack-02.png "Ransomware screen")
 
 Ransomware evolved quickly. According to [MS-ISAC in 2020](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjAo9Wi_fX3AhUG_IUKHVTIDcUQFnoECBUQAQ&url=https%3A%2F%2Fwww.cisa.gov%2Fsites%2Fdefault%2Ffiles%2Fpublications%2FCISA_MS-ISAC_Ransomware%2520Guide_S508C.pdf&usg=AOvVaw1T7xwLzdEx9zlCoNSNytU0), "malicious actors have adjusted their ransomware tactics over time to include pressuring victims to pay by threatening to release stolen data if they refuse to pay and publicly naming and shaming victims as secondary forms of extortion."
 
 In other words, before encrypting your system to make it unavailable, the attackers steal your sensitive data and are ready to leak and sell it if you refuse to pay the ransom! The thieves modified their tactics to make it more likely you would pay the ransom instead of just recovering from backup. There are several techniques the thieves use to steal the data, as seen below.
 
-![Attack surface of a database](../images/hack-003.png "Attack surface of a database")
+![Attack surface of a database](./images/intro-hack-03.png "Attack surface of a database")
 
 Fortunately for you, the Oracle Database is the best-equipped database on the market for the prevention, detection, and analysis of cyber threats.
 
@@ -89,7 +89,7 @@ Several steps characterize a cyber-attack, and attackers typically follow them i
 
 Ransomware is big business – in terms of income, it may be big enough to include in the Global 100! Modern ransomware gangs are professionally organized and operationally siloed. Specialized groups become experts at specific stages of the ransomware process. These groups sell their services or the results of their misdeeds to other groups that either don't have the specialized skills or want to save time – scaling up just like any other big business does. This agile approach offers ransomware gangs a greater capacity for generating revenue with a lower cost of operations while limiting the risk of being caught and prosecuted.
 
-![The stages of an attack](../images/hack-004.png "The stages of an attack")
+![The stages of an attack](./images/intro-hack-04.png "The stages of an attack")
 
 #### **Step 1-5: The calm before the storm**
 The first four stages of a cyberattack can happen without you seeing it coming because these attacks target systems where they are most vulnerable, often starting with users. For example, attackers target a company's staff using social networks to infiltrate the target system by sending out phishing email attacks, setting up malicious websites, sending fake software upgrade alerts, offering infected USB drives, etc (**1 - Reconnaissance**) and work to get them to click on a link, download a file, watch a video or any other action (**2 - Weaponization**) that allows attackers to download a small package of malware (exploit kit) on a system on the company's network (**3 - Delivery**) to exploit existing vulnerabilities onto the system to get a better foothold (**4 - Exploitation**). Once the malware infiltrates your system, the malicious code will set up a backdoor - a communication line back allowing a persistent access to the attacker (**5 - Installation**). At this point, the malware may lay hidden and dormant for days, weeks, or months before the attacker chooses to initiate the attack or sell this backdoor to another attacker!
