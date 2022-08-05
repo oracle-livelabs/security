@@ -424,7 +424,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     - Now, you can see the SQL query executed by this form which displays the results
     - This query gives you the information of the number of columns requested, their name, the tables in use, and their relationship. That information helps you know what database columns relate to which columns in the application's user interface.
 
-7. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID', 'MEMBER_ID', 'PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
+7. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID, MEMBER_ID, PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
 
     ````
     <copy>
@@ -472,7 +472,7 @@ Many older applications expose data to the user that is no longer appropriate. O
 
     ![HR App - Search employees link](./images/hack-lab2b-01.png "HR App - Search employees link")
 
-2. We'll filter on the employee "**Alice - UserID 77**" for example **by entering 77 as HR ID** value and click [**Search**]
+2. We'll filter on the employee "Alice HARPER" for example by entering **77 as HR ID** value and click [**Search**]
 
     ![HR App - Search UserID 77](./images/hack-lab2b-02.png "HR App - Search UserID 77")
 
