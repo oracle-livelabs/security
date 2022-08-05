@@ -17,7 +17,7 @@ As all these components are stored in the workshop's DBSec-Lab VM, you can condu
 
 *Estimated Time*: 40 minutes
 
-> If you are unfamiliar with ransomware, please take a moment to read the "Learn More" section below.
+> If you are unfamiliar with ransomware, please take a moment to read the "Learn More" section below
 
 ### About this Product/Technology
 During this lab you will use the following resources:
