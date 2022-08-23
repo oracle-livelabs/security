@@ -63,6 +63,12 @@
         "type": "ocw-freetier"
       },
       {
+        "title": "Lab 8: Clean Up Your Environment",
+        "description": "This lab shows you how to clean up your Oracle Cloud Infrastructure environment after completing this workshop.",
+        "filename": "../../clean-up-environment/clean-up-environment-ocw.md",
+        "type": "ocw-freetier"
+      },
+      {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",
         "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
