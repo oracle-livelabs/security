@@ -148,9 +148,7 @@ A baseline assessment shows you data for all your target databases in a selected
     ![First security assessment on Assessment History page](images/first-security-assessment-on-assessment-history-page.png "First security assessment on Assessment History page")
 
 
-2. Click **Set as Baseline**.
-
-    ![Set As Baseline button](images/set-as-baseline-button.png "Set As Baseline button")
+2. Click **Set As Baseline**.
 
     The **Set As Baseline?** dialog box is displayed.
 
@@ -219,6 +217,8 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Task 7: Generate a Comparison report for Security Assessment
 
 1. With the latest security assessment displayed, under **Resources** on the left, click **Compare with Baseline**. Oracle Data Safe automatically begins processing the comparison.
+
+    If you navigated away from the latest security assessment, you can return to it by doing the following: Click **Security Assessment** in the breadcrumb. Click the **Target Summary** tab. Click **View Report** for your target database.
 
     ![Compare With Baseline option under Resources](images/sa-resources-compare-with-baseline-option.png "Compare With Baseline option under Resources")
 
@@ -331,4 +331,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 15, 2022
+* **Last Updated By/Date** - Jody Glover, Aug 22, 2022

@@ -179,7 +179,7 @@ Currently, the latest user assessment is the one that was automatically generate
 
 7. Review the refreshed latest assessment.
 
-8. Click the **Assessment Information** tab, and then click the **Pencil** icon next to the assessment name. Change the name to **Latest User Assessment**, and then click the **Save** icon. The name is updated on the page.
+8. Click the **Assessment Information** tab, and then click the **Pencil** icon next to the assessment name. Change the name to **Latest User Assessment**, and then click the **Save** icon. Wait for the status to change from **UPDATING** to **SUCCEEDED**. The name is updated on the page.
 
     ![Renamed latest user assessment](images/ua-renamed-latest-assessment.png "Renamed latest user assessment")
 
@@ -193,6 +193,8 @@ Currently, the latest user assessment is the one that was automatically generate
 3. Review the list of assessments.
 
 4. Click **Close** to return to the latest user assessment.
+
+    If you navigated away from the latest user assessment, you can return to it by doing the following: Click **User Assessment** in the breadcrumb. Click the **Target Summary** tab. Click **View Report** for your target database.
 
 
 ## Task 7: Compare the latest user assessment with the initial user assessment
