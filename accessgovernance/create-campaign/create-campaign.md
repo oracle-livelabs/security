@@ -16,7 +16,7 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as Access Review Campaign Administrator
 
-1. Open Chrome browser and go to https://accessgov-si-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/
+1. Open Chrome browser and go to [Oracle Access Governance Oracle LiveLabs Tenancy](https://accessgov-si-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/)
 2. Ensure you have accessgov_iam domain selected.
 3. Login Access Governance URL campaign administrator with user and password provided by Hands-on Lab instructors.
 	![Access Governance Login](images/ag-logon.png)
@@ -44,15 +44,16 @@ In this lab, you will:
  ![View Charts](images/summary.png)
 10. Newly created campaign is scheduled in My upcoming campaigns section.
  ![View Charts](images/view-created-campaign.png)
+ 11. During this lab, you have navigated **Oracle Access Governance** console, and created an **User Access Review campaign**.
+ 12. You may now **proceed to the next lab**. 
 
 ## Learn More
 
-*(optional - include links to docs, white papers, blogs, etc)*
-
-* [URL text 1](http://docs.oracle.com)
-* [URL text 2](http://docs.oracle.com)
+* [Oracle Access Governance Create Access Review Campaign](https://docs.oracle.com/en/cloud/paas/access-governance/pdapg/index.html)
+* [Oracle Access Governance Product Page](https://www.oracle.com/security/cloud-security/access-governance/)
+* [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
+* [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgements
-* **Author** - <Name, Title, Group>
-* **Contributors** -  <Name, Group> -- optional
-* **Last Updated By/Date** - <Name, Month Year>
+* **Author** - Edward Lu, Abhishek Juneja, Oracle IAM Product Management
+* **Last Updated By/Date** - Edward Lu, Abhishek Juneja, Oracle IAM Product Management, August 2022
