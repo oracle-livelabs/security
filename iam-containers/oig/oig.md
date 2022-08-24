@@ -82,15 +82,14 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 3. Run the following helm command to install and start the operator:
 
 	```
-	<copy>cd weblogic-kubernetes-operator/</copy>
-	```
-
-	```
-	<copy>helm install weblogic-kubernetes-operator kubernetes/charts/weblogic-operator \
+	<copy>
+  cd weblogic-kubernetes-operator/
+  helm install weblogic-kubernetes-operator kubernetes/charts/weblogic-operator \
 	--namespace operator \
 	--set image=weblogic-kubernetes-operator:3.1.0 \
 	--set serviceAccount=operator-serviceaccount \
-	--set "domainNamespaces={}"</copy>
+	--set "domainNamespaces={}"
+  </copy>
 	```
 
 	![Install operator pod](images/7-helm.png)
@@ -135,7 +134,7 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 	<copy>kubectl exec -it helper -n oimcluster -- /bin/bash</copy>
 	```
 
-5. In the helper bash shell run the following commands to set the environment. Replace the *`<PRIVATE_IP>`* parameter copied under Lab 2, Task 2, Step 2  (instance private IP).
+5. In the helper bash shell run the following commands to set the environment. Replace the *`<PRIVATE_IP>`* parameter copied from the previous Lab 'Initialize Environment', Task 2, Step 2  (instance private IP).
 
 	```
 	<copy>
@@ -200,11 +199,10 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 2. Create a Kubernetes secret for the domain using the create-weblogic-credentials script in the same Kubernetes namespace as the domain:
 
 	```
-	<copy>cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials</copy>
-	```
-
-	```
-	<copy>./create-weblogic-credentials.sh -u weblogic -p Welcom@123 -n oimcluster -d oimcluster -s oimcluster-domain-credentials</copy>
+	<copy>
+  cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials
+  ./create-weblogic-credentials.sh -u weblogic -p Welcom@123 -n oimcluster -d oimcluster -s oimcluster-domain-credentials
+  </copy>
 	```
 
 	where:
@@ -230,11 +228,10 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 4. Create a Kubernetes secret for RCU in the same Kubernetes namespace as the domain, using the create-weblogic-credentials.sh script:
 
 	```
-	<copy>cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-credentials</copy>
-	```
-
-	```
-	<copy>./create-rcu-credentials.sh -u OIGK8S -p Welcom#123 -a sys -q Welcom#123 -d oimcluster -n oimcluster -s oimcluster-rcu-credentials</copy>
+	<copy>
+  cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-credentials
+  ./create-rcu-credentials.sh -u OIGK8S -p Welcom#123 -a sys -q Welcom#123 -d oimcluster -n oimcluster -s oimcluster-rcu-credentials
+  </copy>
 	```
 
 	where:
@@ -330,7 +327,7 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
   </copy>
 	```
 
-3. Edit the *rcuDatabaseURL* parameter to include the private IP of your instance (noted in Step 2.2). Alternatively, you can also get the private IP by giving the command *cat /etc/hosts*. The *rcuDatabaseURL* parameter is towards the end of the *create-domain-inputs.yaml* file. Navigate to the end of the file and update the parameter to the private IP of the instance.
+3. Edit the *rcuDatabaseURL* parameter to include the private IP of your instance (noted from the previous Lab 'Initialize Environment', Task 2, Step 2). Alternatively, you can also get the private IP by giving the command *cat /etc/hosts*. The *rcuDatabaseURL* parameter is towards the end of the *create-domain-inputs.yaml* file. Navigate to the end of the file and update the parameter to the private IP of the instance.
 
   *Note: To edit a file, use the command 'vi <file name>', after which you can use arrow keys to move to the location where changes need to be made in the file (As a shortcut, you can use 'Shift + G' to directly go to the end of file). Press 'i' on the keyboard to switch to insert mode. You can type your required changes OR if you want to paste copied content, simply do a Right Click by first ensuring the cursor be at the exact place. Once done, press 'Esc' to exit out of Insert mode. Finally, press ':wq' to save the changes and quit the vi editor.*
 

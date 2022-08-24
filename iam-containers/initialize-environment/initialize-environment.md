@@ -57,15 +57,11 @@ This lab assumes you have:
 1. Perform the following prerequisite setup steps to initialize the environment.
 
 	```
-	<copy>sudo setenforce 0</copy>
-	```
-
-	```
-	<copy>sudo sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux</copy>
-	```
-
-	```
-	<copy>sudo swapoff -a</copy>
+	<copy>
+  sudo setenforce 0
+	sudo sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+	sudo swapoff -a
+  </copy>
 	```
 
 2. Note the private IP of the instance.
