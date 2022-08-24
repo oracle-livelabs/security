@@ -56,9 +56,7 @@ Watch the video below for a quick walk through of the lab.
 
 7. Configure the database:
 
-    <!--
-    - **Always Free** - Leave this option deselected (the slider should be to the left)
-    -->
+    <!-- **Always Free** - Leave this option deselected (the slider should be to the left) -->
     - **Always Free** - Select this option by moving the slider to the right
     - **Database version** - Leave *`19c`* selected
     - **OCPU Count** - Select *`1`*
