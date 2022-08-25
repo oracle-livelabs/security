@@ -277,7 +277,7 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
     If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
 
-5. Refresh Database Actions: Click the _browser's_ refresh button and then click **Leave Page**. The page is refreshed. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
+5. Refresh Database Actions: Refresh the _browser's_ page and then verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
 6. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
@@ -293,4 +293,4 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Aug 22 2022
+- **Last Updated By/Date** - Jody Glover, Aug 24, 2022
