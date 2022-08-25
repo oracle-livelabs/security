@@ -29,9 +29,9 @@ This lab assumes you have:
 
 4. Click the name of your target database.
 
-5. From the **More Actions** drop-down list, select **Terminate**.
+5. From the **More actions** drop-down list, select **Terminate**.
 
-6. On the **Terminate Autonomous Database** page, enter your database name to confirm that you want to terminate it.
+    The **Terminate Autonomous Database** dialog box is displayed.
 
-7. Click **Terminate Autonomous Database**. 
+6. Enter your database name, and then click **Terminate Autonomous Database**. 
 

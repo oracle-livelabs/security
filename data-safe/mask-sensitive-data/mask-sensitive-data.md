@@ -69,7 +69,7 @@ In the [Discover Sensitive Data](?lab=discover-sensitive-data) lab, you learned 
 
 ## Task 2: Create a masking policy for your target database
 
-Data Masking can generate a masking policy for your target database based on your sensitive data model. It automatically tries to select a default masking format for each sensitive column. You can edit these default selections and select different ones as needed. Occasionally you might be prompted to fix issues in your masking formats if they exist.
+Data Masking can generate a masking policy for your target database based on your sensitive data model. It automatically tries to select a default masking format for each sensitive column. You can edit these default selections and select different ones as needed. Occasionally you might be prompted to fix issues (if they exist) in your masking formats.
 
 1. In the breadcrumb at the top of the page, click **Data Safe**.
 
@@ -152,7 +152,7 @@ After you create a masking policy, you can run a data masking job against your t
     - The **Masking Report Information** tab shows you the target database name, masking policy name (you can click a link to view it), Oracle Cloud Identifier (OCID) for the masking policy, the date and time when the data masking job started and finished, and the number of masked sensitive types, schemas, tables, columns, and values. There is also a pie chart that shows you the masked value percentages for each sensitive type. You can click on a pie slice to drill down into the chart.
     - The **Masked Columns** table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
 
-    ![Masking report top](images/masking-report-top.png "Masking report top")
+    ![Masking report top](images/masking-report-top2.png "Masking report top")
     ![Masking report bottom](images/masking-report-bottom.png "Masking report bottom")
 
 ## Task 5 (Optional): Create a PDF of the Data Masking report

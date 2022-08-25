@@ -2,8 +2,6 @@
 
 This workshop is designed to help new users become familiar with the features of Oracle Data Safe. You learn how to register an Autonomous Database with Oracle Data Safe, assess the security of your database configurations and users, and discover and mask sensitive data.
 
-You can do this workshop in Oracle's free tier with trial credits.
-
 Estimated Workshop Time: 90 minutes
 
 ## About Oracle Data Safe
@@ -33,4 +31,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, Aug 23, 2022
+* **Last Updated By/Date** - Jody Glover, Aug 24, 2022
