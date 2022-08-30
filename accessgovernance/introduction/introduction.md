@@ -1,8 +1,9 @@
 # Introduction
 
 ## About this Workshop
+**Oracle Access Governance: Discover. Monitor. Learn. Automate.**
 
-Oracle Access Governance addresses the growing challenges security owners face in dealing with the increase in advanced security threats and regulations. This cloud native solution helps meet governance and compliance requirements across many applications, workloads, infrastructures, and identity platforms. It provides organizationwide visibility and capabilities to identify anomalies and mitigate security risks across cloud and on-premises environments. Using advanced analytics, Oracle Access Governance offers an intuitive user experience, providing recommendations and insights into access entitlements, behaviors, and risks.
+Oracle Access Governance addresses the growing challenges security owners face in dealing with the increase in advanced security threats and regulations. This cloud native solution helps meet governance and compliance requirements across many applications, workloads, infrastructures, and identity platforms. It provides organization-wide visibility and capabilities to identify anomalies and mitigate security risks across cloud and on-premises environments. Using advanced analytics, Oracle Access Governance offers an intuitive user experience, providing recommendations and insights into access entitlements, behaviors, and risks.
 
 This lab walks you through the steps to get started using Oracle Access Governance. This cloud native solution helps meet governance and compliance requirements across many applications, workloads, infrastructures, and identity platforms. It provides organization wide visibility and capabilities to identify anomalies and mitigate security risks across cloud and on-premises environments.
 
@@ -14,7 +15,7 @@ This lab walks you through the steps to get started using Oracle Access Governan
 In this workshop, you will learn how to:
 * Create access review campaigns as administrator
 * Perform access review tasks as users and user manager
-* Monitor and manage accesss review campaigns as administrator
+* Monitor and manage access review campaigns as administrator
 * Review user privileges for yourself and your direct reports
 
 ### Prerequisites
