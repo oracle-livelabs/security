@@ -65,7 +65,7 @@ This lab assumes you have:
 5. Click the **Target Summary** tab and view the information.
 
     - The **Target Summary** tab shows you the security posture of each target database.
-    - You can view the number of high, medium, low, advisory, and evaluate risks for each target database.
+    - You can view the number of high, medium, low, advisory, and evaluate risk findings for each target database.
     - You can view the assessment date and find out if the latest assessment deviates from a baseline (if one is set).
     - You can access the latest assessment report for each target database.
 
@@ -101,6 +101,7 @@ Oracle Data Safe automatically creates a security assessment of your target data
 
     - This section shows you all the findings for each risk category.
     - Risks are color-coded to help you easily identify categories that have high risk findings (red).
+    - The high risk findings listed under **Privileges and Roles** were introduced when you ran the SQL script to populate your target database with sample data.
 
     ![Latest Security Assessment Assessment Details section](images/latest-sa-assessment-details-section.png "Latest Security Assessment Assessment Details section")
 
@@ -227,7 +228,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
     - Review the number of findings per risk category for each risk level. Categories include **User Accounts**, **Privileges and Roles**, **Authorization Control**, **Data Encryption**, **Fine-Grained Access Control**, **Auditing**, and **Database Configuration**.
     - You can identify where the changes have occurred on your target database by viewing cells that contain the word **Modified**. The number represents the total count of new, remediated, and modified risks on the target database.
     - In the details table, you can view the risk level for each finding, the category to which the finding belongs, the finding name, and a description of what has changed on your target database. The Comparison Report column is important because it provides explanations of what is changed, added, or removed from the target database since the baseline report was generated.
-    - Notice the **`PUBLIC: [ALTER ANY ROLE]` Modification Details(added)** notes for some of the findings.
+    - Notice the **`PUBLIC: [ALTER ANY ROLE]` Modification Details(added)** notes for some of the findings. The changes introduced by granting the masking role to `DS$ADMIN` are also included.
 
     ![Security Assessment Comparison report top](images/sa-comparison-report-top.png "Security Assessment Comparison report top")
     ![Security Assessment Comparison report bottom](images/sa-comparison-report-bottom.png "Security Assessment Comparison report bottom")
