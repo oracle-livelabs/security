@@ -7,23 +7,25 @@
             "description": "The Introduction is always first. The title and contents menu title match for the Introduction.",
             "filename": "../../introduction/introduction.md"
         },
+        
         {
             "title": "Lab 1: Create Access Review Campaign",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../create-campaign/create-campaign.md"
         },
         {
-            "title": "Lab 2: Perform Access Review",
+            "title": "Lab 2: Review Who Has Access to What",
+            "filename": "../../review-who-has-access/review-who-has-access.md"
+        },
+        {
+            "title": "Lab 3: Perform Access Review",
             "filename": "../../perform-access-review/perform-access-review.md"
         },
         {
-            "title": "Lab 3: Manage Access Review Campaigns",
+            "title": "Lab 4: Manage Access Review Campaigns",
             "filename": "../../manage-campaign/manage-campaign.md"
         },
-        {
-            "title": "Lab 4: Review Who Has Access to What",
-            "filename": "../../review-who-has-access/review-who-has-access.md"
-        },
+        
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
