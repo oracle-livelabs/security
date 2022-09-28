@@ -6,7 +6,10 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 Begin by registering your Autonomous Transaction Database (ATP) with Oracle Data Safe. Navigate to Oracle Data Safe in Oracle Cloud Infrastructure and view the list of registered target databases to confirm that yours is listed. Explore Security Center, which is the central hub for Oracle Data Safe where you can access Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Alerts, and the Oracle Data Safe dashboard.
 
-Estimated Lab Time: 10 minutes
+Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Register an Autonomous Database with Oracle Data Safe](videohub:1_0yhculpk)
 
 ### Objectives
 
