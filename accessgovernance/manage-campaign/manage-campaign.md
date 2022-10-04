@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Users with the **campaign administrator** role can monitor and manage access review campaigns using the **Oracle Access Governance** Console. Users will be able to view the progress of **on-going campaigns**, view and download detailed campaign analysis reports, clone **previous campaigns**, terminate **on-going campaigns**, etc. 
+Users with the **campaign administrator** role can monitor and manage access review campaigns using the **Oracle Access Governance** console. Users will be able to view the progress of **on-going campaigns**, view and download detailed campaign analysis reports, clone **previous campaigns**, terminate **on-going campaigns**, etc. 
 
 * Estimated Time: 10 minutes
 * Persona: Campaign Administrator

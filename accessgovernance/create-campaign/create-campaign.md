@@ -11,7 +11,7 @@ As a user with a **campaign administrator** role, you can create access review c
 
 In this lab, you will:
 * Create **access review campaign** for self and user manager review
-* Define reviewers' workflow
+* Define **reviewers' workflow**
 * Run now or schedule an **access review campaign**
 
 
@@ -46,7 +46,7 @@ In this lab, you will:
  ![Default Workflow](images/default-workflow.png)
 8. You may provide a campaign name and description of your choice. For example, enter the campaign name such as **Support Org Corporate Access Review**, enter the description you prefer, select **Run now** and click on the **Next** button to schedule the campaign.
  ![Name Campaign](images/name-campaign.png)
-9. You may review the selected campaign criteria, workflow, reviewers, and the run schedule. For this lab, click on the **Create** button to create and schedule a campaign. The campaign will start approximately **10 minutes** from creation.
+9. You may review the selected campaign criteria, workflow, reviewers, and the run schedule. For this lab, click on the **Create** button to create and schedule a campaign. The campaign will start approximately **10 minutes** from creation. Note the **campaign name** for reference in the next lab to search for your newly created access review campaign. 
  ![View Charts](images/summary.png)
 10. A newly created campaign **Support Org Corporate Access Review** is scheduled in **My upcoming campaigns** section.
  ![View Charts](images/view-created-campaign.png)

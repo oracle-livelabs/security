@@ -2,7 +2,7 @@
 
 ## Introduction
 
-**Access reviews** can be carried out from the **Oracle Access Governance** Console by users with the following roles, which are based on data attributes derived from the connected system:
+**Access reviews** can be carried out from the **Oracle Access Governance** console by users with the following roles, which are based on data attributes derived from the connected system:
 
 * **User** (review access assigned to me/self)
 * **Manager** (review access assigned to users in my team)
@@ -35,11 +35,11 @@ In this lab, you will:
 
 1. Select one of the Access Reviews Tasks tiles. For this lab, click on the **Select** button of the tile **I'm feeling ambitious, let's review all...**
   ![Access Review Tasks](images/open-menu-review.png)
-2. You will see a list of **access review tasks** assigned to you from the **access review campaigns** scheduled from the first lab. Find the access review tasks created from the first lab based on the **Campaign name** in the middle column of the table. In case the **campaign** from the first lab has not been started yet, you can also pick a **review task** from a pre-configured campaign. In that case, select the access review tasks with **Campaign name** as **...Org Access Review Example**, for example, **Support Org Access Review Example**. To review the access, please follow the below steps:
-    - Check review task information such as **Assignment name**, **Manager name**, **Assignment type**, and **Due days** for which the task is raised
+2. You will see a list of **access review tasks** assigned to you from the **access review campaigns** scheduled from the first lab. Find the access review tasks created from the first lab based on the **Campaign name** in the middle column of the table, which you note down in **Lab 1**. In case the **campaign** from the first lab has not been started yet, you can also pick a **review task** from a pre-configured campaign. In that case, select the access review tasks with **Campaign name** as **...Org Access Review Example**, for example, **Support Org Access Review Example**. To review the access, please follow the below steps:
+    - Check review task information such as **Identity name**, **Assignment name**, **Manager name**, **Assignment type**, and **Due days** for which the task is raised.
     - Filter the review tasks list by selecting **Recommend Accept** or **Recommend Review**. Based on **Prescriptive Analytics** powered by ML algorithm, **Oracle Access Governance** recommends action for each review item based on calculated risk scores and analytics. 
-    - You may choose to accept the review item by clicking on **Accept** in the **Actions** column. This action is suggested for **Recommend Accept** items only. 
-    - In case you want to view the analytic insights, especially for items flagged as **Recommend Review**, you may click on the **View** in **Insights** column to review a task
+    - You may choose to accept the review item by clicking on **Accept** in the **Actions** column. This action is suggested for **Recommendation Accept** items only. 
+    - In case you want to view the analytic insights, especially for items flagged as **Recommendation Review**, you may click on the **View** in **Insights** column to review a task.
   ![Access Review Tasks](images/select-review-recommended.png)
 Insights include:
     - AI/ ML driven insights with alignment score. For example, notice the text **Most peers of this user don't have the same permissions for their accounts.**, which is the result based on an **AI/ML peer group analysis** conducted by **Oracle Access Governance**. 
@@ -47,11 +47,11 @@ Insights include:
     - Access review trail
     - Recent changes in user’s profile
   ![Access Review Tasks](images/review-insight-analytics.png)
-3. Decide (Accept or Revoke): Review all insights and select to **accept** or **revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **accept** it. Enter **justification** for why you accept this access review item. **Accept** the review task item will trigger the **current review task** assigned to the second-level reviewer, which is the **user manager** in the next task. On the contrary, **revoke** access by an **employee user** will not trigger next-level access review by the **manager user**.  
+3. Decide (Accept or Revoke): Review all insights and select to **accept** or **revoke** this access privilege. In this lab, you may pick one access review with **Recommendation Review**, view the detail, and **Accept** it. Enter **justification** for why you accept this access review item, which will be logged in **Access review trail**. **Accept** the review task item will trigger the **current review task** assigned to the second-level reviewer, which is the **user manager** in the next task. On the contrary, **revoke** access by an **employee user** will not trigger next-level access review by the **manager user**.  
   ![Access Review Tasks](images/revoke-accept-with-insights.png)
-4. Bulk action based on recommendation: You may also select multiple review tasks and decide to accept or revoke those privileges. For example, selecting the filter **Recommend Accept** will return a list of access review items recommended by **Oracle Access Governance** for **Accept** based on **prescriptive analytics**. 
+4. Bulk action based on recommendation: You may also select multiple review tasks and decide to accept or revoke those privileges. For example, selecting the filter **Recommendation Accept** will return a list of access review items recommended by **Oracle Access Governance** for **Accept** based on **prescriptive analytics**. 
   ![Access Review](images/bulk-review.png)
-5. Bulk selection: select all **Recommend Accept** items, then click on **Accept** button.
+5. Bulk selection: select all **Recommendation Accept** items, then click on **Accept** button.
   ![Access Review Tasks](images/bulk-review-selection.png)
 5. Bulk action with justification: Provide justification for **Accept** then click on **Submit**.
   ![Access Review Tasks](images/bulk-accept-justification.png)
@@ -71,13 +71,13 @@ Insights include:
 
 ## Task 4: Perform access review task (User Manager Review)
 
-1. In this lab, the user manager is the second-level reviewer. As user manager, you see the access review items accepted by your employee users in the previous task. Click the **Select** button for the tile **I am busy, let's just review...** to review **high risk** items.
+1. In this lab, the user manager is the second-level reviewer. As user manager, you see the access review items your employee users accept in the previous task. Click on the **Select** button of the tile **I'm feeling ambitious, let's review all...**. As an alternative, you can also click the **Select** button for the tile **I am busy, let's just review...** to review **high risk** items only. 
   ![Image alt text](images/open-menu-manager-review.png)
-2. You will see a list of access review tasks assigned to you from access review campaigns or from your employee's access review results which you are the second-level reviewer as manager. For review tasks:
-    - Check review task information such as **Assignment name**, **Manager name**, **Assignment type**, and **Due days** for which the task is raised
-    - Filter the review tasks list by selecting **Recommend Accept** or **Recommend Review**. Based on **Prescriptive Analytics** powered by **AI/ML algorithm**, **Oracle Access Governance** recommends action for each review item based on calculated risk scores and analytics. 
-    - You may choose to accept or revoke the review item by clicking on **Accept** or **Revoke** in the **Actions** column. The **Accept** action is suggested for **Recommend Accept** items only.
-    - In case you want to view the analytic insights, especially for item flagged as **Recommend Review**, you may click on the **View** in **Insights** column to review a task
+2. You will see a list of access review tasks assigned to you from access review campaigns or from your employee's access review results which you are the second-level reviewer as manager. Search the review task triggered by the last **employee user review** lab step by **Identity name** and **Assignment name**. For review tasks:
+    - Check review task information such as **Identity name**, **Assignment name**, **Manager name**, **Assignment type**, and **Due days** for which the task is raised.
+    - Filter the review tasks list by selecting **Recommendation Accept** or **Recommendation Review**. Based on **Prescriptive Analytics** powered by **AI/ML algorithm**, **Oracle Access Governance** recommends action for each review item based on calculated risk scores and analytics.
+    - You may choose to accept or revoke the review item by clicking on **Accept** or **Revoke** in the **Actions** column. The **Accept** action is suggested for **Recommendation Accept** items only.
+    - In case you want to view the analytic insights, especially for item flagged as **Recommendation Review**, you may click on the **View** in **Insights** column to review a task.
   ![Access Review Tasks](images/select-review-recommended.png)
 Insights include:
     - AI/ ML driven insights with alignment score. For example, notice the text **Most peers of this user don't have the same permissions for their accounts.**, which is the result based on an AI/ML **peer group analysis** conducted by **Oracle Access Governance**. 
@@ -85,7 +85,7 @@ Insights include:
     - Access review trail, you should see the **justification** entered by your employee self-reviewer in the previous task. 
     - Recent changes in user’s profile
   ![Access Review Tasks](images/review-insight-analytics.png)
-3. Decide (Accept or Revoke): Review all insights and select to **Accept** or **Revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
+3. Decide (Accept or Revoke): Review all insights and select to **Accept** or **Revoke** this access privilege. In this lab, you may pick one access review with **Recommendation Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
 4. During this lab, you have navigated the **Oracle Access Governance** console to select **access review tasks** assigned to you as an **employee** and **manager user**, view **prescriptive analytics** and **recommendation** proposed by **Oracle Access Governance**, and make informed decisions **Accept** or **Revoke** for review tasks based on **peer group analysis** and **risk analysis**. 
 5. You may now **proceed to the next lab**. 
 
