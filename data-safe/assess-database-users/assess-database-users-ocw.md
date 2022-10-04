@@ -6,7 +6,10 @@ User Assessment helps you assess the security of your database users and identif
 
 In this lab, you explore User Assessment.
 
-Estimated Lab Time: 20 minutes
+Estimated Time: 20 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Assess Database Users](videohub:1_pa50fwfv)
 
 ### Objectives
 

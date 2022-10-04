@@ -4,7 +4,10 @@
 
 To clean up your environment after you are finished with this workshop, you need to terminate your target database. Terminating an Autonomous Database permanently deletes the instance from Oracle Cloud Infrastructure, removes all automatic backups, and deregesters the database from Oracle Data Safe. Oracle Data Safe automatically deprovisions resources when your free trial period expires. You cannot recover a terminated database.
 
-Estimated Lab Time: 2 minutes
+Estimated Time: 2 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Clean Up Your Environment](videohub:1_gtnuybhy)
 
 ### Objectives
 
