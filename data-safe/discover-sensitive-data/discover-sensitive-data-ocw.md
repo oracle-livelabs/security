@@ -6,7 +6,10 @@ Data Discovery helps you find sensitive data in your target databases. You tell 
 
 Use Oracle Data Safe to discover sensitive data on your target database and then analyze the generated sensitive data model.
 
-Estimated Lab Time: 10 minutes
+Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Discover Sensitive Data](videohub:1_1r9jn53a)
 
 ### Objectives
 
