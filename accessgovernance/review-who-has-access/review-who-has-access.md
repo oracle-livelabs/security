@@ -33,7 +33,7 @@ In this lab, you will:
   ![My Direct Menu](images/open-menu-direct.png)
 2. You will see a list of users reporting to the current user manager. You may select one user. For example, Select **George Jimenez** as an example in the below screen. **Please note employee users in your assigned system might be different from LiveLabs step screenshot.** 
   ![Review Direct List](images/review-direct-list.png)
-3. A list of applications to which **George Jimenez** has access is listed. You can select each application and review the privileges assigned to the user in the selected application. Review what **applications** your employee has, **Permission**, **Grant Type**, **Date Granted** etc. 
+3. A list of applications to which **George Jimenez** has access is listed. You can select each application and review the privileges assigned to the user in the selected application. Review what **applications** your employee has, **Accounts**, **Permission**, **Grant Type**, **Date Granted** etc. 
   ![Review Application](images/review-individual-app.png)
 4. Select **Roles** from **Group-by** drop-down menu to see the list of roles assigned to a user.
   ![Review Role](images/review-individual-role.png)
