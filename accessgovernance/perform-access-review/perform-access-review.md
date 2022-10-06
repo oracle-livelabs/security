@@ -42,7 +42,7 @@ In this lab, you will:
     - In case you want to view the analytic insights, especially for items flagged as **Recommendation Review**, you may click on the **View** in **Insights** column to review a task.
   ![Access Review Tasks](images/select-review-recommended.png)
 Insights include:
-    - AI/ ML driven insights with alignment score. For example, notice the text **Most peers of this user don't have the same permissions for their accounts.**, which is the result based on an **AI/ML peer group analysis** conducted by **Oracle Access Governance**. 
+    - AI/ ML driven insights with **alignment score** uses AI/ML **peer group analysis** conducted by **Oracle Access Governance** to recommend this item for **Review** or **Accept** 
     - Description of the review task
     - Access review trail
     - Recent changes in user’s profile
@@ -51,9 +51,9 @@ Insights include:
   ![Access Review Tasks](images/revoke-accept-with-insights.png)
 4. Bulk action based on recommendation: You may also select multiple review tasks and decide to accept or revoke those privileges. For example, selecting the filter **Recommendation Accept** will return a list of access review items recommended by **Oracle Access Governance** for **Accept** based on **prescriptive analytics**. 
   ![Access Review](images/bulk-review.png)
-5. Bulk selection: select all **Recommendation Accept** items, then click on **Accept** button.
+5. Bulk selection: select all **Recommendation Accept** items, then click on **Accept** button. Likewise, select all **Recommendation Review** items, then click on **Revoke** button.
   ![Access Review Tasks](images/bulk-review-selection.png)
-5. Bulk action with justification: Provide justification for **Accept** then click on **Submit**.
+5. Bulk action with justification: Provide justification for **Accept** or **Revoke** then click on **Submit**.
   ![Access Review Tasks](images/bulk-accept-justification.png)
 
 ## Task 3: Login Oracle Access Governance as User Manager
@@ -78,13 +78,13 @@ Insights include:
     - Filter the review tasks list by selecting **Recommendation Accept** or **Recommendation Review**. Based on **Prescriptive Analytics** powered by **AI/ML algorithm**, **Oracle Access Governance** recommends action for each review item based on calculated risk scores and analytics.
     - You may choose to accept or revoke the review item by clicking on **Accept** or **Revoke** in the **Actions** column. The **Accept** action is suggested for **Recommendation Accept** items only.
     - In case you want to view the analytic insights, especially for item flagged as **Recommendation Review**, you may click on the **View** in **Insights** column to review a task.
-  ![Access Review Tasks](images/select-review-recommended.png)
+  ![Access Review Tasks](images/access-review-manager.png)
 Insights include:
-    - AI/ ML driven insights with alignment score. For example, notice the text **Most peers of this user don't have the same permissions for their accounts.**, which is the result based on an AI/ML **peer group analysis** conducted by **Oracle Access Governance**. 
+    - AI/ ML driven insights with **alignment score** uses AI/ML **peer group analysis** conducted by **Oracle Access Governance** to recommend this item for **Review** or **Accept** 
     - Description of the review task
     - Access review trail, you should see the **justification** entered by your employee self-reviewer in the previous task. 
     - Recent changes in user’s profile
-  ![Access Review Tasks](images/review-insight-analytics.png)
+  ![Access Review Tasks](images/access-review-insights-manager.png)
 3. Decide (Accept or Revoke): Review all insights and select to **Accept** or **Revoke** this access privilege. In this lab, you may pick one access review with **Recommendation Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
 4. During this lab, you have navigated the **Oracle Access Governance** console to select **access review tasks** assigned to you as an **employee** and **manager user**, view **prescriptive analytics** and **recommendation** proposed by **Oracle Access Governance**, and make informed decisions **Accept** or **Revoke** for review tasks based on **peer group analysis** and **risk analysis**. 
 5. You may now **proceed to the next lab**. 
