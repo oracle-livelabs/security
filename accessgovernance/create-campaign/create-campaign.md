@@ -7,11 +7,14 @@ As a user with a **campaign administrator** role, you can create access review c
 * Estimated Time: 15 minutes
 * Persona: Campaign Administrator
 
+Watch the video below for a quick walk-through of the lab.
+[Create Access Review Campaign](videohub:1_p2m93d2k)
+
 ### Objectives
 
 In this lab, you will:
 * Create **access review campaign** for self and user manager review
-* Define reviewers' workflow
+* Define **reviewers' workflow**
 * Run now or schedule an **access review campaign**
 
 
@@ -33,7 +36,7 @@ In this lab, you will:
   ![Select Criteria](images/create-campaign.png)
 2. You may select any one of the 4 dimensions **Who has access?** (Users), **What are they accessing** (Applications), **Which permissions** (Permission), and **Which Roles** (Roles). For this lab, you can select **Who has access?** (Users) tile first. 
   ![Select Users](images/select-dimensions.png)
-3. You may select users by **organization**, **location**, or **job code**. For this lab, you should select the **organization** your users are under based on the lab assignment.  For example, select **Support** organization. Other **organizations** in lab assignments include **Human Resources**, **Software Engineering**, **Product Management**, and **Finance**. After that, click on **Apply my selections**, which will bring you back to **Create a new access review campaign** wizard. 
+3. You may select users by **organization**, **job code**, or **location**. For this lab, you should select the **organization** your users are under review based on the lab assignment.  For example, select **Support** organization. Other **organizations** in lab assignments include **Human Resources**, **Software Engineering**, **Product Management**, and **Finance**. After that, click on **Apply my selections**, which will bring you back to **Create a new access review campaign** wizard. 
   ![Select Organizations](images/select-users.png)
 4. You may select any one of the remaining 3 dimensions **What are they accessing** (Applications), **Which permissions** (Permission), or **Which Roles** (Roles). For this lab, you can select **What are they accessing** (Applications) tile.
   ![Select Next Criteria](images/select-next.png)
@@ -44,13 +47,13 @@ In this lab, you will:
 7. Review the auto-selected workflow and reviewers. You can change those if required. For example, clicking on **I'll choose my own workflow** will open up **configure workflow** menu. For this lab, you may not need to change workflow and reviewers. Accept the default and click on **Next**. With this setup, access reviews go to **employee user** first, after the employee self review, it will go to the second reviewer **user manager** for approval.
  ![Default Workflow](images/configure-workflow.png)
  ![Default Workflow](images/default-workflow.png)
-8. You may provide a campaign name and description of your choice. For example, enter the campaign name such as **Support Org Corporate Access Review**, enter the description you prefer, select **Run now** and click on the **Next** button to schedule the campaign.
+8. Accept default value **One time** for the field **How often do you want this to run?**. You may provide a campaign name and description of your choice. For example, enter the campaign name as **Support Org Corporate Access Review**, enter the description you prefer, select **Run now** and click on the **Next** button to schedule the campaign. Note the **campaign name** for reference in the next lab to search for your newly created access review campaign. For reviewers, the **campaign name** is referred to as **Review source** in the review tasks dashboard. 
  ![Name Campaign](images/name-campaign.png)
-9. You may review the selected campaign criteria, workflow, reviewers, and the run schedule. For this lab, click on the **Create** button to create and schedule a campaign. The campaign will start approximately **10 minutes** from creation.
+9. You may review the selected campaign criteria, workflow, reviewers, and the run schedule. For this lab, click on the **Create** button to create and schedule a campaign. The campaign will start approximately **10 minutes** from creation.  
  ![View Charts](images/summary.png)
-10. A newly created campaign **Support Org Corporate Access Review** is scheduled in **My upcoming campaigns** section.
+10. A newly created campaign **Support Org Corporate Access Review** is scheduled in **My upcoming campaigns** section. It takes approximately 10 minutes for **the newly created campaign** to move to **in progress** status. 
  ![View Charts](images/view-created-campaign.png)
- 11. During this lab, you have navigated the **Oracle Access Governance** console and created a **User Access Review campaign** as a **campaign administrator**.
+ 11. During this lab, you have navigated the **Oracle Access Governance** console and created a **user access review campaign** as a **campaign administrator**.
  12. You may now **proceed to the next lab**. 
 
 ## Learn More
