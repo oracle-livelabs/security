@@ -12,6 +12,9 @@ Based on the workflow setup in the first lab **Create Access Review Campaign**, 
 * Estimated Time: 20 minutes
 * Persona: Employee and User Manager
 
+Watch the video below for a quick walk-through of the lab.
+[Perform Access Review](videohub:1_kui9p56v)
+
 ### Objectives
 
 In this lab, you will:
