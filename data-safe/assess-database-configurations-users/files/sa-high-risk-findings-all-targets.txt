@@ -1,1 +1,0 @@
-High risk findings for all target databases in Security Assessment.

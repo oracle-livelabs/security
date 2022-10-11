@@ -57,15 +57,11 @@ This lab assumes you have:
 1. Perform the following prerequisite setup steps to initialize the environment.
 
 	```
-	<copy>sudo setenforce 0</copy>
-	```
-
-	```
-	<copy>sudo sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux</copy>
-	```
-
-	```
-	<copy>sudo swapoff -a</copy>
+	<copy>
+  sudo setenforce 0
+	sudo sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+	sudo swapoff -a
+  </copy>
 	```
 
 2. Note the private IP of the instance.
@@ -88,15 +84,10 @@ This lab assumes you have:
 4. Enable kubectl to work with non-root users.
 
 	```
-	<copy>sudo mkdir -p /home/oracle/.kube</copy>
-	```
-
-	```
-	<copy>sudo cp -i /etc/kubernetes/admin.conf /home/oracle/.kube/config</copy>
-	```
-
-	```
-	<copy>sudo chown -R oracle:oinstall /home/oracle/.kube</copy>
+	<copy>sudo mkdir -p /home/oracle/.kube
+	sudo cp -i /etc/kubernetes/admin.conf /home/oracle/.kube/config
+  sudo chown -R oracle:oinstall /home/oracle/.kube
+  </copy>
 	```
 
 5. Verify the Kubernetes version and schedule pods on the control-pane node.

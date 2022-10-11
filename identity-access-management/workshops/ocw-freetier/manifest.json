@@ -1,0 +1,31 @@
+{
+    "workshoptitle": "Identity and Access Management Lab",
+    "help": "livelabs-help-oci_us@oracle.com",
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "filename": "./../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for the Prerequisite lab. This lab is always second.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "IAM Prerequisites",
+            "filename": "./../../prerequisites/iam.md"
+        },
+        {
+            "title": "Lab 1: IAM without Identity Domains",
+            "filename": "./../../iam/identity-access-management.md"
+        },
+        {
+            "title": "Lab 2: IAM with Identity Domains",
+            "filename": "./../../iam/identity-access-management-identy-domain.md"
+        },
+        {
+            "title": "Oracle CloudWorld 2022 - Get Help",
+            "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+        }
+    ]
+}

@@ -1,1 +1,0 @@
-The View Activity link in the Audit Records column is circled in red for the ADMIN user in the last user assessment.

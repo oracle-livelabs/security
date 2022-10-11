@@ -9,7 +9,7 @@
       "type": "freetier"
     },
     {
-      "title": "Getting Started",
+      "title": "Get Started",
       "description": "Get an Oracle Cloud account if needed and sign in.",
       "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md",
       "type": "freetier"
@@ -39,21 +39,33 @@
       "type": "freetier"
     },
     {
-      "title": "Lab 4: Assess Database Configurations and Users",
-      "description": "This lab shows you how to assess database configurations and users in your Autonomous Database by using the User Assessment feature in Oracle Data Safe.",
-      "filename": "../../assess-database-configurations-users/assess-database-configurations-users.md",
+      "title": "Lab 4: Assess Database Configurations",
+      "description": "This lab shows you how to assess database configurations in your Autonomous Database by using the Security Assessment feature in Oracle Data Safe.",
+      "filename": "../../assess-database-configurations/assess-database-configurations.md",
       "type": "freetier"
     },
     {
-      "title": "Lab 5: Discover and Mask Sensitive Data",
-      "description": "This lab shows you how to discover and mask sensitive data in Oracle Data Safe by using the Data Discovery and Data Masking features.",
-      "filename": "../../discover-mask-sensitive-data/discover-mask-sensitive-data.md",
+      "title": "Lab 5: Assess Database Users",
+      "description": "This lab shows you how to assess database users in your Autonomous Database by using the User Assessment feature in Oracle Data Safe.",
+      "filename": "../../assess-database-users/assess-database-users.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Lab 6: Discover Sensitive Data",
+      "description": "This lab shows you how to discover sensitive data on your target database by using the Data Discovery feature in Oracle Data Safe.",
+      "filename": "../../discover-sensitive-data/discover-sensitive-data.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Lab 7: Mask Sensitive Data",
+      "description": "This lab shows you how to mask sensitive data on your target database by using the Data Masking feature in Oracle Data Safe.",
+      "filename": "../../mask-sensitive-data/mask-sensitive-data.md",
       "type": "freetier"
     },
     {
       "title": "Need Help?",
       "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-      "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
     }
   ]
 }
