@@ -7,6 +7,9 @@ As a user with a **campaign administrator** role, you can create access review c
 * Estimated Time: 15 minutes
 * Persona: Campaign Administrator
 
+Watch the video below for a quick walk-through of the lab.
+[Create Access Review Campaign](videohub:1_p2m93d2k)
+
 ### Objectives
 
 In this lab, you will:

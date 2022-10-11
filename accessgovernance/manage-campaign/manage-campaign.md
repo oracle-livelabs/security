@@ -7,6 +7,9 @@ Users with the **campaign administrator** role can monitor and manage access rev
 * Estimated Time: 10 minutes
 * Persona: Campaign Administrator
 
+Watch the video below for a quick walk-through of the lab.
+[Manage Access Review Campaigns](videohub:1_mmcocyjw)
+
 ### Objectives
 
 In this lab, you will:
