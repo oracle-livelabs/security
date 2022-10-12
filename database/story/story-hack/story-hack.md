@@ -11,6 +11,9 @@ You will perform different scenarios:
 
 *Estimated Time:* 40 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Oracle facing a Ransomware attack](videohub:1_n8s28bsk)
+
 ### Objectives
 You will learn how to:
 - Prevent, detect and mitigate data exfiltration
