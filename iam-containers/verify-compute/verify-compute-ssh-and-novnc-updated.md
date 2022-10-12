@@ -5,6 +5,9 @@ This lab will show you how to login to your pre-created compute instance running
 
 *Estimated Lab Time*: 10 minutes
 
+Watch the video below for a quick walk-through of the lab. 
+[Verify Compute Instance Setup](videohub:1_x7kr6rj0)
+
 ### Objectives
 In this lab, you will:
 - Gather details needed to connect to your instance (Public IP Address)
