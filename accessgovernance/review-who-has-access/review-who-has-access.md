@@ -7,6 +7,9 @@ Users can check what access they have or what access their direct reports have. 
 * Estimated Time: 15 minutes
 * Persona: User Manager
 
+Watch the video below for a quick walk-through of the lab.
+[Review Who has Access to What](videohub:1_fb9lydfl)
+
 ### Objectives
 
 In this lab, you will:

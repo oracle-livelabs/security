@@ -6,6 +6,9 @@ This lab provides information about steps involved in deploying and running OIG 
 
 *Estimated Time:* 30 minutes
 
+Watch the video below for a quick walk-through of the lab. 
+[Deploy Oracle Identity Governance (OIG) Domain](videohub:1_furulwif)
+
 ### About Product/Technology
 Oracle Identity Governance(OIG) is a powerful and flexible enterprise identity management system that automatically manages user's access privileges within enterprise IT resources. The Oracle WebLogic Kubernetes Operator supports deployment of Oracle Identity Governance (OIG). OIG domains are supported using the “domain on a persistent volume” model, where the domain home is located in a persistent volume (PV).
 

@@ -6,9 +6,9 @@ This lab walks you through the steps to get started using the Oracle Autonomous 
 
 Estimated time: 10 minutes
 
-Watch the video below for a quick walk through of the lab.
-
-[](youtube:RmiewRNMceQ)
+Watch the video below for a quick walk-through of the lab.
+[Prepare your environment](videohub:1_3krv0mxe)
+<!-- [](youtube:RmiewRNMceQ)-->
 
 ### Objectives
 
