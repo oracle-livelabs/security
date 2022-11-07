@@ -43,7 +43,7 @@ You will be using Terraform to create your lab environment.
 
 5.  Select **My Configuration**, choose the **.ZIP FILE** button, click the **Browse** link and select the zip file (oci-network-firewall-live-labs.zip) that you downloaded. Click **Select**.
 
-    ![Oracle Resource Manager Create Stack Workflow with Zip File Upload](./images/MyConfiguration-Upload-Zip-Initial-Configuration.png " ")
+    ![Oracle Resource Manager Create Stack Workflow with Zip File Upload](./images/myconfiguration-upload-zip-initial-configuration.png " ")
 
     Enter the following information and accept all the defaults
 
@@ -55,7 +55,7 @@ You will be using Terraform to create your lab environment.
 
 6.  Click **Next**. 
 
-    ![Oracle Resource Manager Create Stack Workflow with adding variables](./images/MyConfiguration-Upload-Zip-Initial-Configuration-Step2.png " ")
+    ![Oracle Resource Manager Create Stack Workflow with adding variables](./images/myconfiguration-upload-zip-initial-configuration-step2.png " ")
 
     Enter/Select the following minimum information. Some information may already be pre-populated. Do not change the pre-populated info.
 
@@ -71,7 +71,7 @@ You will be using Terraform to create your lab environment.
 
 6. Click **Create** to create your stack. Now you can move next steps to create your environment.
 
-    ![Oracle Resource Manager Create Stack Workflow with reviewing variables](./images/MyConfiguration-Upload-Zip-Initial-Configuration-Step3.png " ")
+    ![Oracle Resource Manager Create Stack Workflow with reviewing variables](./images/myconfiguration-upload-zip-initial-configuration-step3.png " ")
 
 ## **Task 2: Terraform Plan and Apply**
 
@@ -79,15 +79,15 @@ When using Resource Manager to deploy an environment, you need to execute a terr
 
 1. [OPTIONAL] Click **Plan** to validate your configuration. This takes about a minute, please be patient.
 
-    ![Terraform Plan Option](./images/Terraform-Plan.png " ")
+    ![Terraform Plan Option](./images/terraform-plan.png " ")
 
 2.  At the top of your page, click on **Stack Details**.  Click the button, **Apply**. This will create your instances and required configuration.
 
-    ![Terraform Apply Option](./images/Terraform-Apply.png " ")
+    ![Terraform Apply Option](./images/terraform-apply.png " ")
 
 3.  Once this job succeeds, your environment is created! Time to login to your instance to finish the configuration.
 
-    ![Terraform Apply Successfull Output](./images/Terraform-Apply-Success.png " ")
+    ![Terraform Apply Successful Output](./images/terraform-apply-success.png " ")
 
     **NOTE**: **Network Firewall** deployment will take close to **30-35 mins** and terraform apply will succeed afterwards. 
 
@@ -97,11 +97,11 @@ When using Resource Manager to deploy an environment, you need to execute a terr
 
 1. Based on your laptop config, choose the appropriate steps to connect to your instances. 
 
-   ![Created Instance using Terraform](./images/Final-Instances.png " ")
+   ![Created Instance using Terraform](./images/final-instances.png " ")
 
 2. You should be able to see your **Network Firewall** and **Network Firewall Policy** created successfully. 
 
-   ![Created Network Firewall using Terraform](./images/Network-Firewall.png " ")
+   ![Created Network Firewall using Terraform](./images/network-firewall.png " ")
 
 **NOTE**: It will take few minutes before you can connect to ssh-daemon becomes available. If you are unable to connect then make sure you have a valid key, wait a few minutes, and try again.
 

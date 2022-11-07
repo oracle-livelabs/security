@@ -22,7 +22,7 @@ Estimated Lab Time: 45 minutes.
 
 1. From the OCI Services menu, click **Network Firewall Policies** under **Identity & Security**. Select your region on right part of the screen:
 
-   ![Navigate to Network Firewall Window](../common/images/Network-Firewall-Window.png " ")
+   ![Navigate to Network Firewall Window](../common/images/network-firewall-window.png " ")
 
 2. Below table represents what you will be creating. Click on **Create Policy** icon to create new **Network Firewall Policy**:
 
@@ -30,22 +30,22 @@ Estimated Lab Time: 45 minutes.
       |---------------------------------------|------------------------------------------------------------|
       | network-firewall-policy-demo          |  You will be adding required policy configuration in **Lab3** so you will allow default **allow all** rule first. |
 
-   ![Create Network Firewall Policy Button](../common/images/Create-Network-Firewall-Policy.png " ")
+   ![Create Network Firewall Policy Button](../common/images/create-network-firewall-policy.png " ")
 
 3. Fill out the dialog box and Click **Next**:
 
       - **Policy NAME**: Provide a name
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create Network Firewall Policy Basic Information](../common/images/Create-Network-Firewall-Policy-Basic-Information.png " ")
+   ![Create Network Firewall Policy Basic Information](../common/images/create-network-firewall-policy-basic-information.png " ")
 
 4. Keep value as default and Click **Next**:
 
-   ![Create Network Firewall Policy Lists Information](../common/images/Create-Network-Firewall-Policy-Lists-Information.png " ")
+   ![Create Network Firewall Policy Lists Information](../common/images/create-network-firewall-policy-lists-information.png " ")
 
 5. Keep value as default and Click **Next**:
 
-   ![Create Network Firewall Policy Mapped Secrets Information](../common/images/Create-Network-Firewall-Policy-Secrets-Information.png " ")
+   ![Create Network Firewall Policy Mapped Secrets Information](../common/images/create-network-firewall-policy-secrets-information.png " ")
 
 6. You will add an **allow-all** rule. Click on **Add Security Rule** and Fill out the dialog box:
 
@@ -59,13 +59,13 @@ Estimated Lab Time: 45 minutes.
 
 7. Verify all the information and Click **Save Changes** and click on **Next**.
 
-   ![Create Network Firewall Policy Security Rules Information](../common/images/Create-Network-Firewall-Policy-Rules-Information.png " ")
+   ![Create Network Firewall Policy Security Rules Information](../common/images/create-network-firewall-policy-rules-information.png " ")
 
-   ![Create Network Firewall Policy Security Rules Next Page](../common/images/Create-Network-Firewall-Policy-Rules-Click-Next-Page.png " ")
+   ![Create Network Firewall Policy Security Rules Next Page](../common/images/create-network-firewall-policy-rules-click-next-page.png " ")
 
 7. Click on **Create Network Policy** to create your initial policy: 
 
-   ![Create Network Firewall Policy Complete Page Review Information](../common/images/Create-Network-Firewall-Policy-Complete-Page.png " ")
+   ![Create Network Firewall Policy Complete Page Review Information](../common/images/create-network-firewall-policy-complete-page.png " ")
 
 8. This will create a Network Firewall Policy with following components.
 
@@ -75,7 +75,7 @@ Estimated Lab Time: 45 minutes.
 
 1. From the OCI Services menu, click **Network Firewall** under **Identity & Security**. Select your region on right part of the screen:
 
-   ![Navigate to Network Firewall Window](../common/images/Network-Firewall-Window.png " ")
+   ![Navigate to Network Firewall Window](../common/images/network-firewall-window.png " ")
 
 2. Below table represents what you will be creating. Click on **Create Network Firewall** icon to create new **Network Firewall**:
 
@@ -83,7 +83,7 @@ Estimated Lab Time: 45 minutes.
       |---------------------------------------|------------------------------------------------------------|
       | oci-network-firewall-demo|  You will be creating Network Firewall in **Firewall-Subnet** to protect public and OCI workloads. |
 
-   ![Create Network Firewall Button](../common/images/Create-Network-Firewall-Button-Click.png " ")
+   ![Create Network Firewall Button](../common/images/create-network-firewall-button-click.png " ")
 
 3. Fill out the dialog box:
 
@@ -93,9 +93,9 @@ Estimated Lab Time: 45 minutes.
       - **Enforcement Point**: 
         - **Virtual Cloud Network**: Select **firewall-vcn** from dropdown.
         - **Subnet**: Select **firewall-subnet** from dropdown.
-        - **[Optional] Availabliity Domain**: Select required **AD** from dropdown.
+        - **[Optional] Availability Domain**: Select required **AD** from dropdown.
 
-   ![Create Network Firewall](../common/images/Create-Network-Firewall.png " ")
+   ![Create Network Firewall](../common/images/create-network-firewall.png " ")
 
 4. Verify all the information and Click **Create Network Firewall**.
 
@@ -107,7 +107,7 @@ Estimated Lab Time: 45 minutes.
 
 6. Verify **Network Firewall** IP address which you would need to update route tables in next task. 
 
-   ![Network Firewall Created Successfully](../common/images/Created-Network-Firewall.png " ")
+   ![Network Firewall Created Successfully](../common/images/created-network-firewall.png " ")
 
 ## **Task 3: Update Route Tables on Firewall-VCN**
 
@@ -123,7 +123,7 @@ Estimated Lab Time: 45 minutes.
 
 5. Add **Description**.
 
-   ![Update VCN Ingress Route Table in Firewall VCN](../common/images/Updated-VCN-Ingress-Route-Table-Entries-Firewall-VCN.png " ")
+   ![Update VCN Ingress Route Table in Firewall VCN](../common/images/updated-vcn-ingress-route-table-entries-firewall-vcn.png " ")
 
 6. Click **Add Route Rules** to finish.
 
@@ -153,7 +153,7 @@ Estimated Lab Time: 45 minutes.
 
 10. Add **Description** for each entry.
 
-   ![Update Client Subnet Route Table in Firewall VCN](../common/images/Update-Client-Subnet-Route-Table-Entries-Firewall-VCN.png " ")
+   ![Update Client Subnet Route Table in Firewall VCN](../common/images/update-client-subnet-route-table-entries-firewall-vcn.png " ")
 
 11. Click **Add Route Rules** to finish.
 
@@ -176,7 +176,7 @@ Estimated Lab Time: 45 minutes.
 
 15. Add **Description** for each entry.
 
-   ![Update Server Subnet Route Table in Firewall VCN](../common/images/Update-Server-Subnet-Route-Table-Entries-Firewall-VCN.png " ")
+   ![Update Server Subnet Route Table in Firewall VCN](../common/images/update-server-subnet-route-table-entries-firewall-vcn.png " ")
 
 16. Click **Add Route Rules** to finish.
 
@@ -194,7 +194,7 @@ Estimated Lab Time: 45 minutes.
 
 20. Add **Description** for each entry.
 
-   ![Update Firewall Subnet Route Table in Firewall VCN](../common/images/Update-Firewall-Subnet-Route-Table-Entries-Firewall-VCN.png " ")
+   ![Update Firewall Subnet Route Table in Firewall VCN](../common/images/update-firewall-subnet-route-table-entries-firewall-vcn.png " ")
 
 17. Click **Add Route Rules** to finish.
 
@@ -210,7 +210,7 @@ Estimated Lab Time: 45 minutes.
 
 22. Add **Description** for each entry.
 
-   ![Update Service Gateway Route Table Entries in Firewall VCN](../common/images/Update-SGW-Route-Table-Entry-Firewall-VCN.png " ")
+   ![Update Service Gateway Route Table Entries in Firewall VCN](../common/images/update-sgw-route-table-entry-firewall-vcn.png " ")
 
 ## **Task 4: Verify Route Tables associated to Subnets and Gateways**
 
@@ -228,11 +228,11 @@ Estimated Lab Time: 45 minutes.
 
 2. Below example reflects how to attach correct route table based on above table to one of the resources **Service Gateway**:
 
-   ![Add Service Gateway Route Table to Service Gateway in Firewall VCN](../common/images/Add-Service-Gateway-Route-Table-SGW-Firewall-VCN.png " ")
+   ![Add Service Gateway Route Table to Service Gateway in Firewall VCN](../common/images/add-service-gateway-route-table-sgw-firewall-vcn.png " ")
 
 3. Below example reflects how to attach correct route table based on above table to one of the resources **FirewallSubnetRouteTable**:
 
-   ![Add Firewall Subnet Route Table to Firewall Subnet in Firewall VCN](../common/images/Add-Firewall-Subnet-Route-Table-FirewallSubnet-Firewall-VCN.png " ")
+   ![Add Firewall Subnet Route Table to Firewall Subnet in Firewall VCN](../common/images/add-firewall-subnet-route-table-firewallsubnet-firewall-vcn.png " ")
 
 ***Congratulations! You have successfully completed the lab.***
 

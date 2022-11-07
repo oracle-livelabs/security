@@ -22,7 +22,7 @@ Estimated Lab Time: 15 minutes.
 
 1. From the OCI Services menu, click **Virtual Cloud Networks** under **Networking**. Select your region on right part of the screen:
 
-   ![Navigation window for Virtual Cloud Networks](../common/images/VCN-Home.png " ")
+   ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
 2. Below table represents what you will be creating. Click on **Create VCN** icon to create new **Virtual Cloud Network**:
 
@@ -30,7 +30,7 @@ Estimated Lab Time: 15 minutes.
       |---------------------------------------|----------------|------------------------------------------------------------|
       | firewall-vcn                          | 10.10.0.0/16   | Hub Virtual Cloud Network; OCI Network Firewall will be part of this |
       
-   ![Create Virtual Cloud Network Button](../common/images/VCN-Create.png " ")
+   ![Create Virtual Cloud Network Button](../common/images/vcn-create.png " ")
 
 3. Fill out the dialog box:
 
@@ -38,7 +38,7 @@ Estimated Lab Time: 15 minutes.
       - **COMPARTMENT**: Ensure your compartment is selected
       - **VCN CIDR BLOCK**: Provide a CIDR block (10.10.0.0/16)
 
-   ![Create Firewall Virtual Cloud Network](../common/images/Create-Firewall-VCN.png " ")
+   ![Create Firewall Virtual Cloud Network](../common/images/create-firewall-vcn.png " ")
 
 4. Verify all the information and Click **Create VCN**.
 
@@ -67,7 +67,7 @@ Estimated Lab Time: 15 minutes.
       - **DHCP Options**: Default DHCP Options in your case.
       - **Security List**: Default Security List in your case.
 
-   ![Create Firewall Subnet in Firewall VCN](../common/images/Create-Firewall-Subnet.png " ")
+   ![Create Firewall Subnet in Firewall VCN](../common/images/create-firewall-subnet.png " ")
 
 9. Verify all the information and Click **Create Subnet**.
 
@@ -92,7 +92,7 @@ Estimated Lab Time: 15 minutes.
       - **DHCP Options**: Default DHCP Options in your case.
       - **Security List**: Default Security List in your case.
 
-   ![Create Client Subnet in Firewall VCN](../common/images/Create-Client-Subnet.png " ")
+   ![Create Client Subnet in Firewall VCN](../common/images/create-client-subnet.png " ")
 
 13. Verify all the information and Click **Create Subnet**.
 
@@ -117,7 +117,7 @@ Estimated Lab Time: 15 minutes.
       - **DHCP Options**: Default DHCP Options in your case.
       - **Security List**: Default Security List in your case.
 
-   ![Create Server Subnet in Firewall VCN](../common/images/Create-Server-Subnet.png " ")
+   ![Create Server Subnet in Firewall VCN](../common/images/create-server-subnet.png " ")
 
 17. Verify all the information and Click **Create Subnet**.
 
@@ -136,7 +136,7 @@ Estimated Lab Time: 15 minutes.
       - **NAME**: Provide a name
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create Internet Gateway in Firewall VCN](../common/images/Create-Internet-Gateway-Firewall-VCN.png " ")
+   ![Create Internet Gateway in Firewall VCN](../common/images/create-internet-gateway-firewall-vcn.png " ")
 
 21. Verify all the information and Click **Create Internet Gateway**.
 
@@ -156,7 +156,7 @@ Estimated Lab Time: 15 minutes.
       - **COMPARTMENT**: Ensure your compartment is selected
       - **Services**: Select appropriate services
 
-   ![Create Service Gateway in Firewall VCN](../common/images/Create-Service-Gateway-Firewall-VCN.png " ")
+   ![Create Service Gateway in Firewall VCN](../common/images/create-service-gateway-firewall-vcn.png " ")
 
 25. Verify all the information and Click **Create Service Gateway**.
 
@@ -176,7 +176,7 @@ Estimated Lab Time: 15 minutes.
       - **COMPARTMENT**: Ensure your compartment is selected
       - **Public IP Address**: Select Ephemeral or your Reserved Public IP
 
-   ![Create NAT Gateway in Firewall VCN](../common/images/Create-NAT-Gateway-Firewall-VCN.png " ")
+   ![Create NAT Gateway in Firewall VCN](../common/images/create-nat-gateway-firewall-vcn.png " ")
 
 30. Verify all the information and Click **Create NAT Gateway**.
 
@@ -188,7 +188,7 @@ Estimated Lab Time: 15 minutes.
 
 1. From the OCI Services menu, click **Virtual Cloud Networks** under **Networking**. Select your region on right part of the screen:
 
-   ![Navigation window for Virtual Cloud Networks](../common/images/VCN-Home.png " ")
+   ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
 2. Below table represents what you will be creating. Click on **Create VCN** icon to create new **Virtual Cloud Network**:
 
@@ -202,7 +202,7 @@ Estimated Lab Time: 15 minutes.
       - **COMPARTMENT**: Ensure your compartment is selected
       - **VCN CIDR BLOCK**: Provide a CIDR block (10.20.0.0/16)
 
-   ![Create Spoke VCN](../common/images/Create-Spoke-VCN.png " ")
+   ![Create Spoke VCN](../common/images/create-spoke-vcn.png " ")
 
 4. Verify all the information and Click **Create VCN**.
 
@@ -229,7 +229,7 @@ Estimated Lab Time: 15 minutes.
       - **DHCP Options**: Default DHCP Options in your case.
       - **Security List**: Default Security List in your case.
 
-   ![Create ServerA Subnet in Spoke VCN](../common/images/Create-ServerA-Subnet.png " ")
+   ![Create ServerA Subnet in Spoke VCN](../common/images/create-servera-subnet.png " ")
 
 9. Verify all the information and Click **Create Subnet**.
 
@@ -254,7 +254,7 @@ Estimated Lab Time: 15 minutes.
       - **DHCP Options**: Default DHCP Options in your case.
       - **Security List**: Default Security List in your case.
 
-   ![Create ServerB Subnet in Spoke VCN](../common/images/Create-ServerB-Subnet.png " ")
+   ![Create ServerB Subnet in Spoke VCN](../common/images/create-serverb-subnet.png " ")
 
 13. Verify all the information and Click **Create Subnet**.
 
@@ -273,7 +273,7 @@ Estimated Lab Time: 15 minutes.
       - **NAME**: Provide a name
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create Internet Gateway in Spoke VCN](../common/images/Create-Internet-Gateway-Spoke-VCN.png " ")
+   ![Create Internet Gateway in Spoke VCN](../common/images/create-internet-gateway-spoke-vcn.png " ")
 
 17. Verify all the information and Click **Create Internet Gateway**.
 
@@ -285,7 +285,7 @@ Estimated Lab Time: 15 minutes.
 
 1. From the OCI Services menu, click **Dynamic Routing Gateways** under **Networking**. Select your region on right part of the screen:
 
-   ![Navigate Dynamic Routing Gateway](../common/images/DRG-Home.png " ")
+   ![Navigate Dynamic Routing Gateway](../common/images/drg-home.png " ")
 
 2. Below table represents what you will be creating. Click on **Create Dynamic Routing Gateway** icon to create new **Dynamic Routing Gateway**:
 
@@ -298,7 +298,7 @@ Estimated Lab Time: 15 minutes.
       - **DRG NAME**: Provide a name
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create Dynamic Routing Gateway](../common/images/Create-Firewall-DRG.png " ")
+   ![Create Dynamic Routing Gateway](../common/images/create-firewall-drg.png " ")
 
 4. Verify all the information and Click **Create Dynamic Routing Gateway**.
 
@@ -320,7 +320,7 @@ Estimated Lab Time: 15 minutes.
       - **COMPARTMENT**: Ensure your compartment is selected
       - **DRG Route Table**:  Select default value as you will be updating route table in this lab.
 
-   ![Create Firewall VCN Attachment to DRG](../common/images/Create-Firewall-VCN-DRG-Attachment.png " ")
+   ![Create Firewall VCN Attachment to DRG](../common/images/create-firewall-vcn-drg-attachment.png " ")
 
 9. Verify all the information and Click **Create Virtual Cloud Network Attachment**.
 
@@ -340,7 +340,7 @@ Estimated Lab Time: 15 minutes.
       - **COMPARTMENT**: Ensure your compartment is selected
       - **DRG Route Table**:  Select default value as you will be updating route table in this lab.
 
-   ![Create Spoke VCN Attachment to DRG](../common/images/Create-Spoke-VCN-DRG-Attachment.png " ")
+   ![Create Spoke VCN Attachment to DRG](../common/images/create-spoke-vcn-drg-attachment.png " ")
 
 13. Verify all the information and Click **Create Virtual Cloud Network Attachment**.
 
@@ -362,7 +362,7 @@ Estimated Lab Time: 15 minutes.
       - **Next Hop Attachment Type**:  Select Virtual Cloud Network type. 
       - **Next Hop Attachment**:  Select Firewall_VCN attachment created earlier from drop-down
 
-   ![Create To-Firewall DRG Route Table for Traffic from Spoke VCN](../common/images/Create-DRG-To-Firewall-Route-Table.png " ")
+   ![Create To-Firewall DRG Route Table for Traffic from Spoke VCN](../common/images/create-drg-to-firewall-route-table.png " ")
 
 17. Verify all the information and Click **Create DRG Route Table**.
 
@@ -381,7 +381,7 @@ Estimated Lab Time: 15 minutes.
       - **Route Table NAME**: Provide a name
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create From-Firewall DRG Route Table for Traffic from Firewall VCN](../common/images/Create-DRG-From-Firewall-Route-Table.png " ")
+   ![Create From-Firewall DRG Route Table for Traffic from Firewall VCN](../common/images/create-drg-from-firewall-route-table.png " ")
 
 21. Verify all the information and Click **Create DRG Route Table**.
 
@@ -393,13 +393,13 @@ Estimated Lab Time: 15 minutes.
 
 24. Click on **Firewall_VCN** and click **Edit** button to update route table. Click on **Show Advanced Options** next to Edit Attachment Dialog box and select **From-Firewall** route table from **DRG Route Table** and **Save Changes**
 
-   ![Add From-Firewall DRG Route Table to Firewall VCN Attachment](../common/images/Update-Firewall-VCN-Attachment-Route-Table.png " ")
+   ![Add From-Firewall DRG Route Table to Firewall VCN Attachment](../common/images/update-firewall-vcn-attachment-route-table.png " ")
 
 25. Attach **To-Firewall** route table to **Spoke VCN** attachment on Dynamic Routing Gateway. 
 
 26. Click on **Spoke_VCN** and click **Edit** button to update route table. Click on **Show Advanced Options** next to Edit Attachment Dialog box and select **To-Firewall** route table from **DRG Route Table** and **Save Changes**
 
-   ![Add From-Firewall DRG Route Table to Spoke VCN Attachment](../common/images/Update-Spoke-VCN-Attachment-Route-Table.png " ")
+   ![Add From-Firewall DRG Route Table to Spoke VCN Attachment](../common/images/update-spoke-vcn-attachment-route-table.png " ")
 
 27. Create **Import Route Distribution** for each DB and Web VCNs on Dynamic Routing Gateway. Below table represents what you will be creating on **Import Route Distribution Entries**: 
 
@@ -419,7 +419,7 @@ Estimated Lab Time: 15 minutes.
             - **VCN Attachment**: Select Spoke_VCN from dropdown
             - **Action**: Default Value as ACCEPT       
 
-   ![Create Import Route Distribution and Import Spoke VCNs Routes](../common/images/DRG-Import-Route-Distribution.png " ")
+   ![Create Import Route Distribution and Import Spoke VCNs Routes](../common/images/drg-import-route-distribution.png " ")
 
 29. Verify all the information and Click **Create Import Route Distribution**.
 
@@ -431,7 +431,7 @@ Estimated Lab Time: 15 minutes.
 
 32. Select **Enable Route Distribution** and from drop down in dialog box select **Transit Spokes** import route distribution. Complete your change by clicking **Save Changes**
 
-   ![Attach Import Route Distribution to From-Firewall DRG Route Table for Return Traffic from Firewall VCN](../common/images/Update-Firewall-VCN-Attachment-Route-Table-Distribution.png " ")
+   ![Attach Import Route Distribution to From-Firewall DRG Route Table for Return Traffic from Firewall VCN](../common/images/update-firewall-vcn-attachment-route-table-distribution.png " ")
 
 33. This will update import route distribution to **From-Firewall** route table attached to **Firewall VCN**
 
@@ -439,7 +439,7 @@ Estimated Lab Time: 15 minutes.
 
 1. From the OCI Services menu, click **Virtual Cloud Networks** under **Networking**. Select your region on right part of the screen:
 
-   ![Navigation window for Virtual Cloud Networks](../common/images/VCN-Home.png " ")
+   ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
 2. Select **spoke-vcn** which you created earlier. You will be creating **ServerA-Subnet, ServerB-Subnet** route tables within this VCN. Make sure you choose right Compartment from drop down on your left screen **COMPARTMENT** section. 
 
@@ -448,7 +448,7 @@ Estimated Lab Time: 15 minutes.
       - **NAME**: Provide a name; In your case **ServerASubnetRouteTable**
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create ServerA Subnet Route Table in Spoke VCN](../common/images/Create-ServerA-Route-Table-Spoke-VCN.png " ")
+   ![Create ServerA Subnet Route Table in Spoke VCN](../common/images/create-servera-route-table-spoke-vcn.png " ")
 
 4. Verify all the information and Click **Create**.
 
@@ -461,7 +461,7 @@ Estimated Lab Time: 15 minutes.
       - **NAME**: Provide a name; In your case **ServerBSubnetRouteTable**
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create ServerA Subnet Route Table in Spoke VCN](../common/images/Create-ServerB-Route-Table-Spoke-VCN.png " ")
+   ![Create ServerA Subnet Route Table in Spoke VCN](../common/images/create-serverb-route-table-spoke-vcn.png " ")
 
 7. Verify all the information and Click **Create**.
 
@@ -483,7 +483,7 @@ Estimated Lab Time: 15 minutes.
       - **Destination CIDR Block**:  Enter Destination CIDR block which you want to inspect; 10.10.0.0/16 in our case.
       - **Description**:  Enter a user-Friendly Description 
 
-   ![Update ServerA Subnet Route Table in Spoke VCN](../common/images/Update-ServerA-Route-Table-Spoke-VCN.png " ")
+   ![Update ServerA Subnet Route Table in Spoke VCN](../common/images/update-servera-route-table-spoke-vcn.png " ")
 
 11. Verify all the information and Click **Add Route Rules**.
 
@@ -504,7 +504,7 @@ Estimated Lab Time: 15 minutes.
       - **Destination CIDR Block**:  Enter Destination CIDR block which you want to inspect; 0.0.0.0/0 in our case.
       - **Description**:  Enter a user-Friendly Description 
 
-   ![Update ServerB Subnet Route Table in Spoke VCN](../common/images/Update-ServerB-Route-Table-Spoke-VCN.png " ")
+   ![Update ServerB Subnet Route Table in Spoke VCN](../common/images/update-serverb-route-table-spoke-vcn.png " ")
 
 15. Verify all the information and Click **Add Route Rules**.
 
@@ -525,7 +525,7 @@ Estimated Lab Time: 15 minutes.
       - **IP Protocol**:  Select IP Protocol from dropdown; All Protocols in our case.
       - **Description**:  Enter a user-Friendly Description 
 
-   ![Update Default Security List Ingress Rule in Spoke VCN](../common/images/Update-Ingress-Rules-Security-List-Spoke-VCN.png " ")
+   ![Update Default Security List Ingress Rule in Spoke VCN](../common/images/update-ingress-rules-security-list-spoke-vcn.png " ")
 
 19. Verify all the information and Click **Add Ingress Rules**.
 
@@ -540,7 +540,7 @@ Estimated Lab Time: 15 minutes.
       - **NAME**: Provide a name; In your case **ClientSubnetRouteTable**
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create Client Subnet Route Table in Firewall VCN](../common/images/Create-Client-Subnet-Route-Table-Firewall-VCN.png " ")
+   ![Create Client Subnet Route Table in Firewall VCN](../common/images/create-client-subnet-route-table-firewall-vcn.png " ")
 
 27. Verify all the information and Click **Create**.
 
@@ -553,7 +553,7 @@ Estimated Lab Time: 15 minutes.
       - **NAME**: Provide a name; In your case **ServerSubnetRouteTable**
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create Server Subnet Route Table in Firewall VCN](../common/images/Create-Server-Subnet-Route-Table-Firewall-VCN.png " ")
+   ![Create Server Subnet Route Table in Firewall VCN](../common/images/create-server-subnet-route-table-firewall-vcn.png " ")
 
 30. Verify all the information and Click **Create**.
 
@@ -566,7 +566,7 @@ Estimated Lab Time: 15 minutes.
       - **NAME**: Provide a name; In your case **FirewallSubnetRouteTable**
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create Firewall Subnet Route Table in Firewall VCN](../common/images/Create-Firewall-Subnet-Route-Table-Firewall-VCN.png " ")
+   ![Create Firewall Subnet Route Table in Firewall VCN](../common/images/create-firewall-subnet-route-table-firewall-vcn.png " ")
 
 33. Verify all the information and Click **Create**.
 
@@ -579,7 +579,7 @@ Estimated Lab Time: 15 minutes.
       - **NAME**: Provide a name; In your case **VCN-INGRESS-RouteTable**
       - **COMPARTMENT**: Ensure your compartment is selected
 
-   ![Create VCN Ingress Route Table in Firewall VCN](../common/images/Create-VCN-Ingress-Route-Table-Firewall-VCN.png " ")
+   ![Create VCN Ingress Route Table in Firewall VCN](../common/images/create-vcn-ingress-route-table-firewall-vcn.png " ")
 
 36. Verify all the information and Click **Create**.
 
@@ -600,7 +600,7 @@ Estimated Lab Time: 15 minutes.
       - **IP Protocol**:  Select IP Protocol from dropdown; All Protocols in our case.
       - **Description**:  Enter a user-Friendly Description
 
-   ![Update Default Security List Ingress Rule in Firewall VCN](../common/images/Update-Ingress-Rules-Security-List-Firewall-VCN.png " ")
+   ![Update Default Security List Ingress Rule in Firewall VCN](../common/images/update-ingress-rules-security-list-firewall-vcn.png " ")
 
 40. Verify all the information and Click **Add Ingress Rules**.
 
@@ -610,7 +610,7 @@ Estimated Lab Time: 15 minutes.
 
 42. Navigate to **firewall-drg** dynamic routing gateway's **Firewall_VCN** attachment to update VCN Route Table. Click on **Edit** icon to update **VCN Route Table** and select **VCN-INGRESS-RouteTable** route table from drop-down.
 
-   ![Add VCN Ingress Route Table for Firewall VCN Attachment at DRG](../common/images/Update-Firewall-VCN-Attachment-VCN-Ingress-Route-Tabl.png " ")
+   ![Add VCN Ingress Route Table for Firewall VCN Attachment at DRG](../common/images/update-firewall-vcn-attachment-vcn-ingress-route-tabl.png " ")
 
 43. Verify all the information and Click **Save Changes**.
 
@@ -712,7 +712,7 @@ Estimated Lab Time: 15 minutes.
 
 11. Verify that required instances in **Firewall VCN** and **Spoke VCN** are in **Running** state. 
 
-   ![Created Running Instance in Firewall and Spoke VCNs](../common/images/Running-Firewall-Spoke-VCNs-Instances.png " ")
+   ![Created Running Instance in Firewall and Spoke VCNs](../common/images/running-firewall-spoke-vcns-instances.png " ")
 
 ***Congratulations! You have successfully completed the lab.***
 

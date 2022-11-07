@@ -26,7 +26,7 @@ Estimated Lab Time: 30 minutes.
 
 1. From the OCI Services menu, click **Virtual Cloud Network** and navigate to **firewall-vcn**. 
 
-   ![Navigation window for Virtual Cloud Networks](../common/images/VCN-Home.png " ")
+   ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
 2. Click on **Create Route Table** on **Route Tables** resources under **firewall-vcn** section. You will be creating an Internet Gateway route table. Fill out the dialog box: 
 
@@ -45,7 +45,7 @@ Estimated Lab Time: 30 minutes.
 
 5. Verify all the information and Click **Create**.
 
-   ![Create Internet Gateway Route Table to Support Inbound Traffic in Firewall VCN](../common/images/Create-IGW-Route-Table-Firewall-VCN.png " ")
+   ![Create Internet Gateway Route Table to Support Inbound Traffic in Firewall VCN](../common/images/create-igw-route-table-firewall-vcn.png " ")
 
 6. This will create IGW Route Table for firewall-vcn with following components.
 
@@ -53,17 +53,17 @@ Estimated Lab Time: 30 minutes.
 
 7. Associated **IGWRouteTable** to internet gateway, Click on **Associate Route Table**: 
 
-   ![Add IGW Route Table to Interent Gateway in Firewall VCN](../common/images/Associate-IGW-Route-Table-IGW-Firewall-VCN.png " ")
+   ![Add IGW Route Table to Internet Gateway in Firewall VCN](../common/images/associate-igw-route-table-igw-firewall-vcn.png " ")
 
-   ![Save IGW Route Table to Interent Gateway in Firewall VCN](../common/images/Save-IGW-Route-Table-IGW-Firewall-VCN.png " ")
+   ![Save IGW Route Table to Internet Gateway in Firewall VCN](../common/images/save-igw-route-table-igw-firewall-vcn.png " ")
 
 8. Update **firewall-subnet** default route to consider **IGW** to go out which will ensure client VM internet traffic goes via firewall: 
 
-   ![Update Firewall Subnet Rout Table Entry with Interent Gateway in Firewall VCN](../common/images/Update-Firewall-Subnet-RT-IGW-Entry-Firewall-VCN.png " ")
+   ![Update Firewall Subnet Rout Table Entry with Internet Gateway in Firewall VCN](../common/images/update-firewall-subnet-rt-igw-entry-firewall-vcn.png " ")
 
 9. You have already defined required security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
 
-   ![Verify Security Rule Applicable for Inbound Traffic via Network Firewall](../common/images/Verify-Security-Rule-Inbound-Traffic-Network-Firewall.png " ")
+   ![Verify Security Rule Applicable for Inbound Traffic via Network Firewall](../common/images/verify-security-rule-inbound-traffic-network-firewall.png " ")
 
 10. Connect to **Client-VM** instance public IP on your local machine's over **SSH** as per below table: 
 
@@ -79,37 +79,37 @@ Estimated Lab Time: 30 minutes.
 
 12. Below diagram validates that Inbound traffic is working towards your Client VM. 
 
-   ![Terminal Output of North South Inbound Traffic](../common/images/Terminal-Output-Inbound-Traffic.png " ")
+   ![Terminal Output of North South Inbound Traffic](../common/images/terminal-output-inbound-traffic.png " ")
 
 13. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource. Data *filters* are avaialble, below screenshot shows **policy-rule** filtered traffic:
 
-   ![Logs Output of North South Inbound Traffic via Network Firewall](../common/images/Network-Firewall-Logs-Inbound-Traffic.png " ")
+   ![Logs Output of North South Inbound Traffic via Network Firewall](../common/images/network-firewall-logs-inbound-traffic.png " ")
 
 14. You can expand the logs and confirm its hitting right security rule **rule-inbound-my-ip-to-client-vm-allow-all-traffic** as below: 
 
-   ![Detailed Logs Output of North South Inbound Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-Inbound-Traffic.png " ")
+   ![Detailed Logs Output of North South Inbound Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-inbound-traffic.png " ")
 
 ## **Task 2: Validate North-South Outbound Traffic**
 
 1. From the OCI Services menu, click **Virtual Cloud Network** and navigate to **firewall-vcn**. 
 
-   ![Navigation window for Virtual Cloud Networks](../common/images/VCN-Home.png " ")
+   ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
 2. Confirm **Client-Subnet** route table has an entry for Internet Traffic CIDR **0.0.0.0/0** via **Network Firewall**:
 
-   ![Outbound Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Client-Subnet-RT-Firewall-VCN.png " ")
+   ![Outbound Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-client-subnet-rt-firewall-vcn.png " ")
 
-3. Confirm **Firewalll-Subnet** route table has an entry for Internet Traffic CIDR **0.0.0.0/0** via **internet-gateway**:
+3. Confirm **Firewall-Subnet** route table has an entry for Internet Traffic CIDR **0.0.0.0/0** via **internet-gateway**:
 
-   ![Outbound Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Firewall-Subnet-RT-Firewall-VCN.png " ")
+   ![Outbound Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-firewall-subnet-rt-firewall-vcn.png " ")
 
 4. Confirm **InternetGateway** route table has an entry for return traffic of **Client-Subnet** CIDR via **Network Firewall**:
 
-   ![Outbound Traffic: Confirm IGW Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-IGW-RT-Firewall-VCN.png " ")
+   ![Outbound Traffic: Confirm IGW Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-igw-rt-firewall-vcn.png " ")
 
-5. You have already defined requird security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
+5. You have already defined required security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
 
-   ![Verify Security Rule Applicable for Outbound Traffic via Network Firewall](../common/images/Verify-Security-Rule-Outbound-Traffic-Network-Firewall.png " ")
+   ![Verify Security Rule Applicable for Outbound Traffic via Network Firewall](../common/images/verify-security-rule-outbound-traffic-network-firewall.png " ")
 
 6. Connect to **Client-VM** instance public IP on your local machine's over **SSH** as per below table and initiate **ICMP** traffic which should go through **Network-Firewall**:
 
@@ -121,53 +121,53 @@ Estimated Lab Time: 30 minutes.
 
     | Traffic From       | Traffic To  |  Traffic  | Action        | Network Firewall Policy Rule                               |
     |-------------------------|-------------|--------------------|-----------------|--------------------------------------------|
-    | Client VM | Interent Traffic   | ICMP Traffic| Allowed         | rule-client-to-outbound-allow-all-traffic                     |
+    | Client VM | Internet Traffic   | ICMP Traffic| Allowed         | rule-client-to-outbound-allow-all-traffic                     |
 
 8. Below diagram validates that Outbound traffic is working towards Public IP:
 
-   ![Terminal Output of North South Outbound Traffic](../common/images/Terminal-Output-Outbound-Traffic.png " ")
+   ![Terminal Output of North South Outbound Traffic](../common/images/terminal-output-outbound-traffic.png " ")
 
 9. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource. Data *filters* are avaialble, below screenshot shows **policy-rule** filtered traffic:
 
-   ![Logs Output of North South Outbound Traffic via Network Firewall](../common/images/Network-Firewall-Logs-Outbound-Traffic.png " ")
+   ![Logs Output of North South Outbound Traffic via Network Firewall](../common/images/network-firewall-logs-outbound-traffic.png " ")
 
 10. You can expand the logs and confirm its hitting right security rule **rule-inbound-my-ip-to-client-vm-allow-all-traffic** as below: 
 
-   ![Detailed Logs Output of North South Outbound Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-Outbound-Traffic.png " ")
+   ![Detailed Logs Output of North South Outbound Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-outbound-traffic.png " ")
 
 ## **Task 3: Validate East-West Intra VCN Traffic**
 
 1. From the OCI Services menu, click **Virtual Cloud Network** and navigate to **firewall-vcn**. 
 
-   ![Navigation window for Virtual Cloud Networks](../common/images/VCN-Home.png " ")
+   ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
 2. Confirm **Client-Subnet** route table has an entry for Server-Subnet CIDR **10.10.2.0/24** and Spoke VCN CIDR via **Network Firewall**:
 
-   ![East-West Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Client-Subnet-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-client-subnet-rt-firewall-vcn.png " ")
 
    **PLEASE READ**: You must define subnet level route table entries if you want to inspect traffic at subnet levels within a VCN else local routes will take precedence.
 
 3. Confirm **Server-Subnet** route table has an entry for Client-Subnet CIDR **10.10.1.0/24** and Spoke VCN CIDR via **Network Firewall**:
 
-   ![East-West Traffic: Confirm Server Subnet Route Table Entry in Firewall VCN](../common/images/East-West-Traffic-Confirm-Server-Subnet-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm Server Subnet Route Table Entry in Firewall VCN](../common/images/east-west-traffic-confirm-server-subnet-rt-firewall-vcn.png " ")
 
    **PLEASE READ**: You must define subnet level route table entries if you want to inspect traffic at subnet levels within a VCN else local routes will take precedence.
 
 4. Confirm **ServerA-Subnet** route table has an entry for ServerB-Subnet CIDR and Firewall VCN CIDR via **dynamic-routing-gateway**:
 
-   ![East-West Traffic: Confirm ServerA Subnet Route Table Entry in Firewall VCN](../common/images/East-West-Traffic-Confirm-ServerA-Subnet-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm ServerA Subnet Route Table Entry in Firewall VCN](../common/images/east-west-traffic-confirm-servera-subnet-rt-firewall-vcn.png " ")
 
    **PLEASE READ**: You must define subnet level route table entries if you want to inspect traffic at subnet levels within a VCN else local routes will take precedence.
 
 5. Confirm **ServerB-Subnet** route table has an entry for ServerA-Subnet CIDR and Firewall VCN CIDR via **dynamic-routing-gateway**:
 
-   ![East-West Traffic: Confirm ServerB Subnet Route Table Entry in Firewall VCN](../common/images/East-West-Traffic-Confirm-ServerB-Subnet-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm ServerB Subnet Route Table Entry in Firewall VCN](../common/images/east-west-traffic-confirm-serverb-subnet-rt-firewall-vcn.png " ")
 
    **PLEASE READ**: You must define subnet level route table entries if you want to inspect traffic at subnet levels within a VCN else local routes will take precedence.
 
 6. You have already defined required security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
 
-   ![Verify Security Rule Applicable for East-West Traffic via Network Firewall](../common/images/Verify-Security-Rule-East-West-Traffic-Network-Firewall.png " ")
+   ![Verify Security Rule Applicable for East-West Traffic via Network Firewall](../common/images/verify-security-rule-east-west-traffic-network-firewall.png " ")
 
 7. Connect to **Client-VM** instance public IP on your local machine's over **SSH** as per below table and initiate traffic which should go through **Network-Firewall**:
 
@@ -189,35 +189,35 @@ Estimated Lab Time: 30 minutes.
 
 9. Below diagram validates that Intra VCN traffic is working between Client and Server VMs in **firewall-vcn**. 
 
-   ![Terminal Output of East West Traffic from Client to Server VM](../common/images/Terminal-Output-East-West-Client-Server-Traffic.png " ")
+   ![Terminal Output of East West Traffic from Client to Server VM](../common/images/terminal-output-east-west-client-server-traffic.png " ")
 
 10. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource.
 
-   ![Logs Output of East West Client Server Allow Traffic via Network Firewall](../common/images/Network-Firewall-Logs-East-West-Client-Server-Allow-Traffic.png " ")
+   ![Logs Output of East West Client Server Allow Traffic via Network Firewall](../common/images/network-firewall-logs-east-west-client-server-allow-traffic.png " ")
 
-   ![Logs Output of East West Client Server Reject ICMP Traffic via Network Firewall](../common/images/Network-Firewall-Logs-East-West-Client-Server-Reject-ICMP-Traffic.png " ")
+   ![Logs Output of East West Client Server Reject ICMP Traffic via Network Firewall](../common/images/network-firewall-logs-east-west-client-server-reject-icmp-traffic.png " ")
 
 11. You can also expand the logs and confirm if its hitting right security rules **rule-client-server-vm-reject-icmp-traffic** & **rule-client-server-vm-allow-ssh-traffic** as below: 
 
-   ![Logs Output of East West Client Server Allow Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-East-West-Client-Server-Allow-Traffic.png " ")
+   ![Logs Output of East West Client Server Allow Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-east-west-client-server-allow-traffic.png " ")
 
-   ![Detailed Logs Output of East West Client Server Reject ICMP Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-East-West-Client-Server-Reject-ICMP-Traffic.png " ")
+   ![Detailed Logs Output of East West Client Server Reject ICMP Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-east-west-client-server-reject-icmp-traffic.png " ")
 
 12. Below diagram validates that Intra VCN traffic is working between Firewall VCN VMs and Server VMs in **spoke-vcn**. 
 
-   ![Terminal Output of East West Traffic from ServerA to ServerB VM](../common/images/Terminal-Output-East-West-ServerA-ServerB-Traffic.png " ")
+   ![Terminal Output of East West Traffic from ServerA to ServerB VM](../common/images/terminal-output-east-west-servera-serverb-traffic.png " ")
 
 13. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource.
 
-   ![Logs Output of East West ServerA ServerB Allow Traffic via Network Firewall](../common/images/Network-Firewall-Logs-East-West-ServerA-ServerB-Allow-Traffic.png " ")
+   ![Logs Output of East West ServerA ServerB Allow Traffic via Network Firewall](../common/images/network-firewall-logs-east-west-servera-serverb-allow-traffic.png " ")
 
-   ![Logs Output of East West ServerB ServerA Allow Traffic via Network Firewall](../common/images/Network-Firewall-Logs-East-West-ServerB-ServerA-Allow-Traffic.png " ")
+   ![Logs Output of East West ServerB ServerA Allow Traffic via Network Firewall](../common/images/network-firewall-logs-east-west-serverb-servera-allow-traffic.png " ")
 
 14. You can also expand the logs and confirm if its hitting right security rules **rule-serverA-to-serverB-allow-icmp-traffic** & **rule-serverB-to-serverA-allow-ssh-http-https-traffic** as below: 
 
-   ![Detailed Logs Output of East West ServerA ServerB Allow Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-East-West-ServerA-ServeB-Traffic.png " ")
+   ![Detailed Logs Output of East West ServerA ServerB Allow Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-east-west-servera-serveb-traffic.png " ")
 
-   ![Detailed Logs Output of East West ServerB ServerA Allow Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-East-West-ServerB-ServeA-Traffic.png " ")
+   ![Detailed Logs Output of East West ServerB ServerA Allow Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-east-west-serverb-servea-traffic.png " ")
 
 ## **Task 4: Validate East-West Inter VCNs Traffic**
 
@@ -227,19 +227,19 @@ Estimated Lab Time: 30 minutes.
 
 2. Confirm **Client-Subnet** route table has an entry for Spoke VCN CIDR **10.20.0.0/16** via **Network Firewall**:
 
-   ![East-West Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Client-Subnet-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-client-subnet-rt-firewall-vcn.png " ")
 
 3. Confirm **Server-Subnet** route table has an entry for Spoke VCN CIDR **10.20.0.0/16** via **Network Firewall**:
 
-   ![East-West Traffic: Confirm Server Subnet Route Table Entry in Firewall VCN](../common/images/East-West-Traffic-Confirm-Server-Subnet-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm Server Subnet Route Table Entry in Firewall VCN](../common/images/east-west-traffic-confirm-server-subnet-rt-firewall-vcn.png " ")
 
-4. Confirm **Firewalll-Subnet** route table has an entry for Spoke VCN CIDR **10.20.0.0/16** via **dynamic-routing-gateway**:
+4. Confirm **Firewall-Subnet** route table has an entry for Spoke VCN CIDR **10.20.0.0/16** via **dynamic-routing-gateway**:
 
-   ![East-West Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Firewall-Subnet-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-firewall-subnet-rt-firewall-vcn.png " ")
 
 5. Confirm **VCN-Ingress-RouteTable** route table has an entry for Spoke VCN return traffic via **Network-Firewall**:
 
-   ![East-West Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/East-West-Traffic-Confirm-VCN-Ingress-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/east-west-traffic-confirm-vcn-ingress-rt-firewall-vcn.png " ")
 
 6. From the OCI Services menu, click **Virtual Cloud Network** and navigate to **spoke-vcn**. 
 
@@ -247,19 +247,19 @@ Estimated Lab Time: 30 minutes.
 
 7. Confirm **ServerA-Subnet** route table has an entry for Firewall-VCN CIDR via **dynamic-routing-gateway**:
 
-   ![East-West Traffic: Confirm ServerA Subnet Route Table Entry in Firewall VCN](../common/images/East-West-Traffic-Confirm-ServerA-Subnet-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm ServerA Subnet Route Table Entry in Firewall VCN](../common/images/east-west-traffic-confirm-servera-subnet-rt-firewall-vcn.png " ")
 
    **PLEASE READ**: You must define subnet level route table entries if you want to inspect traffic at subnet levels within a VCN else local routes will take precedence.
 
 8. Confirm **ServerB-Subnet** route table has an entry for Firewall-VCN CIDR via **dynamic-routing-gateway**:
 
-   ![East-West Traffic: Confirm ServerB Subnet Route Table Entry in Firewall VCN](../common/images/East-West-Traffic-Confirm-ServerB-Subnet-RT-Firewall-VCN.png " ")
+   ![East-West Traffic: Confirm ServerB Subnet Route Table Entry in Firewall VCN](../common/images/east-west-traffic-confirm-serverb-subnet-rt-firewall-vcn.png " ")
 
    **PLEASE READ**: You must define subnet level route table entries if you want to inspect traffic at subnet levels within a VCN else local routes will take precedence.
 
 9. You have already defined required security rules in **Lab 3** but you can double check, for this task below rule will take in effect: 
 
-   ![Verify Security Rule Applicable for East-West Inter VCN Traffic via Network Firewall](../common/images/Verify-Security-Rule-East-West-Inter-VCN-Traffic-Network-Firewall.png " ")
+   ![Verify Security Rule Applicable for East-West Inter VCN Traffic via Network Firewall](../common/images/verify-security-rule-east-west-inter-vcn-traffic-network-firewall.png " ")
 
 10. Connect to **Client-VM**, **ServerA-VM** instances public IP on your local machine's over **SSH** as per below table and initiate traffic which should go through **Network-Firewall**:
 
@@ -280,49 +280,49 @@ Estimated Lab Time: 30 minutes.
 
 12. Below diagram validates that traffic is working between your Client VM from **firewall-vcn** and Spoke VMs in **spoke-vcn**. 
 
-   ![Terminal Output of East West Inter VCN Traffic from Client to Spoke VMs](../common/images/Terminal-Output-East-West-Inter-VCN-Client-Spoke-VMs-Traffic.png " ")
+   ![Terminal Output of East West Inter VCN Traffic from Client to Spoke VMs](../common/images/terminal-output-east-west-inter-vcn-client-spoke-vms-traffic.png " ")
 
 13. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource.
 
-   ![Logs Output of East West Client Spoke VMs Reject Traffic via Network Firewall](../common/images/Network-Firewall-Logs-East-West-Client-Spoke-VMs-Allow-Traffic.png " ")
+   ![Logs Output of East West Client Spoke VMs Reject Traffic via Network Firewall](../common/images/network-firewall-logs-east-west-client-spoke-vms-allow-traffic.png " ")
 
 14. You can also expand the logs and confirm if its hitting right security rule **rule-client-serverB-vm-reject-all-traffic** as below: 
 
-   ![Detailed Logs Output of East West Client Spoke VMs Reject Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-East-West-Client-Spoke-VMs-Reject-Traffic.png " ")
+   ![Detailed Logs Output of East West Client Spoke VMs Reject Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-east-west-client-spoke-vms-reject-traffic.png " ")
 
 15. Below diagram validates that traffic is working between your Spoke VCMs and Client/Server VMs in **spoke-vcn**. 
 
-   ![Terminal Output of East West Inter VCN Traffic from Spoke VMs to Client/Server VMs](../common/images/Terminal-Output-East-West-Inter-VCN-Spoke-Client-VMs-Traffic.png " ")
+   ![Terminal Output of East West Inter VCN Traffic from Spoke VMs to Client/Server VMs](../common/images/terminal-output-east-west-inter-vcn-spoke-client-vms-traffic.png " ")
 
 16. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource.
 
-   ![Logs Output of East West Spoke VMs to Client VM Allow Traffic via Network Firewall](../common/images/Network-Firewall-Logs-East-West-Spoke-Client-VMs-Allow-Traffic.png " ")
+   ![Logs Output of East West Spoke VMs to Client VM Allow Traffic via Network Firewall](../common/images/network-firewall-logs-east-west-spoke-client-vms-allow-traffic.png " ")
 
 17. You can also expand the logs and confirm if its hitting right security rule **rule-spoke-vcn-to-firewall-vcn-allow-all-traffic** as below:
 
-   ![Detailed Logs Output of East West Spoke VMs to Client VM Allow Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-East-West-Spoke-Client-VMs-Allow-Traffic.png " ")
+   ![Detailed Logs Output of East West Spoke VMs to Client VM Allow Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-east-west-spoke-client-vms-allow-traffic.png " ")
 
 ## **Task 5: Validate IPS/IDS Traffic**
 
 1. From the OCI Services menu, click **Virtual Cloud Network** and navigate to **firewall-vcn**. 
 
-   ![Navigation window for Virtual Cloud Networks](../common/images/VCN-Home.png " ")
+   ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
-2. Confirm **Client-Subnet** route table has an entry for Interent Traffic **0.0.0.0/0** via **Network Firewall**:
+2. Confirm **Client-Subnet** route table has an entry for Internet Traffic **0.0.0.0/0** via **Network Firewall**:
 
-   ![Validate IPS Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Client-Subnet-RT-Firewall-VCN.png " ")
+   ![Validate IPS Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-client-subnet-rt-firewall-vcn.png " ")
 
-3. Confirm **Firewalll-Subnet** route table has an entry for Interent Traffic **0.0.0.0/0** via **internet-gateway**:
+3. Confirm **Firewall-Subnet** route table has an entry for Internet Traffic **0.0.0.0/0** via **internet-gateway**:
 
-   ![Validate IPS Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Firewall-Subnet-RT-Firewall-VCN.png " ")
+   ![Validate IPS Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-firewall-subnet-rt-firewall-vcn.png " ")
 
 4. Confirm **InternetGateway** route table has an entry for return traffic of **Client-Subnet** CIDR:
 
-   ![Validate IPS Traffic: Confirm IGW Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-IGW-RT-Firewall-VCN.png " ")
+   ![Validate IPS Traffic: Confirm IGW Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-igw-rt-firewall-vcn.png " ")
 
-5. You have already defined requird security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
+5. You have already defined required security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
 
-   ![Verify Security Rule Applicable for IPS/IDS Traffic via Network Firewall](../common/images/Verify-Security-Rule-IPS-IDS-Traffic-Network-Firewall.png " ")
+   ![Verify Security Rule Applicable for IPS/IDS Traffic via Network Firewall](../common/images/verify-security-rule-ips-ids-traffic-network-firewall.png " ")
 
 6. Connect to **Client-VM** instance public IP on your local machine's over **SSH** as per below table and initiate **ICMP** traffic which should go through **Network-Firewall**:
 
@@ -334,57 +334,57 @@ Estimated Lab Time: 30 minutes.
 
     | Traffic From       | Traffic To  |  Traffic  | Action        | Network Firewall Policy Rule                               |
     |-------------------------|-------------|--------------------|-----------------|--------------------------------------------|
-    | Client VM | Interent Traffic   | IDS Traffic over HTTPS| IDS Profile         | rule-client-to-internet-intrusion-detection-traffic                     |
+    | Client VM | Internet Traffic   | IDS Traffic over HTTPS| IDS Profile         | rule-client-to-internet-intrusion-detection-traffic                     |
 
 8. Below diagram validates that Outbound traffic is working towards when User download a malware file. 
 
-   ![Terminal Output of IDS Traffic from Client VM to Internet](../common/images/Terminal-Output-IDS-Client-Internet-Traffic.png " ")
+   ![Terminal Output of IDS Traffic from Client VM to Internet](../common/images/terminal-output-ids-client-internet-traffic.png " ")
 
 9. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource. Data *filters* are avaialble, below screenshot shows **policy-rule** filtered traffic:
 
-   ![Logs Output of IDS Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Logs-IDS-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Logs Output of IDS Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-logs-ids-client-vms-internet-allow-traffic.png " ")
 
 10. You can expand the logs and confirm its hitting right security rule **rule-client-to-internet-intrusion-detection-traffic** as below: 
 
-   ![Detailed Logs Output of IDS Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-IDS-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Detailed Logs Output of IDS Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-ids-client-vms-internet-allow-traffic.png " ")
 
 11. You can update action of **rule-client-to-internet-intrusion-detection-traffic** policy rule to **Intrusion preventation** and try to redownload malware file: 
 
-   ![Update Security Rule Applicable for IPS/IDS Traffic via Network Firewall](../common/images/Update-Security-Rule-IPS-IDS-Traffic-Network-Firewall.png " ")
+   ![Update Security Rule Applicable for IPS/IDS Traffic via Network Firewall](../common/images/update-security-rule-ips-ids-traffic-network-firewall.png " ")
 
 12. Below diagram validates that Outbound traffic is blocked towards when User download a malware file. 
 
-   ![Terminal Output of IPS Traffic from Client VM to Internet](../common/images/Terminal-Output-IPS-Client-Internet-Traffic.png " ")
+   ![Terminal Output of IPS Traffic from Client VM to Internet](../common/images/terminal-output-ips-client-internet-traffic.png " ")
 
 13. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource. Data *filters* are avaialble, below screenshot shows **policy-rule** filtered traffic:
 
-   ![Detailed Logs Output of IDS Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Logs-IPS-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Detailed Logs Output of IDS Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-logs-ips-client-vms-internet-allow-traffic.png " ")
 
 14. You can expand the logs and confirm its hitting right security rule **rule-client-to-internet-intrusion-detection-traffic** as below: 
 
-   ![Detailed Logs Output of IDS Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-IPS-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Detailed Logs Output of IDS Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-ips-client-vms-internet-allow-traffic.png " ")
 
 ## **Task 6: Validate URL Filtering Traffic**
 
 1. From the OCI Services menu, click **Virtual Cloud Network** and navigate to **firewall-vcn**. 
 
-   ![Navigation window for Virtual Cloud Networks](../common/images/VCN-Home.png " ")
+   ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
-2. Confirm **Client-Subnet** route table has an entry for Interent Traffic CIDR **0.0.0.0/0** via **Network Firewall**:
+2. Confirm **Client-Subnet** route table has an entry for Internet Traffic CIDR **0.0.0.0/0** via **Network Firewall**:
 
-   ![Validate URLs Filtering Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Client-Subnet-RT-Firewall-VCN.png " ")
+   ![Validate URLs Filtering Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-client-subnet-rt-firewall-vcn.png " ")
 
-3. Confirm **Firewalll-Subnet** route table has an entry for Interent Traffic CIDR **0.0.0.0/0** via **internet-gateway**:
+3. Confirm **Firewall-Subnet** route table has an entry for Internet Traffic CIDR **0.0.0.0/0** via **internet-gateway**:
 
-   ![Validate URLs Filtering Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Firewall-Subnet-RT-Firewall-VCN.png " ")
+   ![Validate URLs Filtering Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-firewall-subnet-rt-firewall-vcn.png " ")
 
 4. Confirm **InternetGateway** route table has an entry for return traffic of **Client-Subnet** CIDR:
 
-   ![Validate URLs Filtering Traffic: Confirm IGW Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-IGW-RT-Firewall-VCN.png " ")
+   ![Validate URLs Filtering Traffic: Confirm IGW Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-igw-rt-firewall-vcn.png " ")
 
-5. You have already defined requird security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
+5. You have already defined required security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
 
-   ![Verify Security Rule Applicable for URLs Traffic via Network Firewall](../common/images/Verify-Security-Rule-URLs-Traffic-Network-Firewall.png " ")
+   ![Verify Security Rule Applicable for URLs Traffic via Network Firewall](../common/images/verify-security-rule-urls-traffic-network-firewall.png " ")
 
 6. Connect to **Client-VM** instance public IP on your local machine's over **SSH** as per below table and initiate **ICMP** traffic which should go through **Network-Firewall**:
 
@@ -396,41 +396,41 @@ Estimated Lab Time: 30 minutes.
 
     | Traffic From       | Traffic To  |  Traffic  | Action        | Network Firewall Policy Rule                               |
     |-------------------------|-------------|--------------------|-----------------|--------------------------------------------|
-    | Client VM | Interent Traffic   | HTTP and HTTPS| Allowed with selected URLs         | rule-client-allow-http-https-url-filtering-traffic	                    |
+    | Client VM | Internet Traffic   | HTTP and HTTPS| Allowed with selected URLs         | rule-client-allow-http-https-url-filtering-traffic	                    |
 
-8. Below diagram validates that Client VM connect to Interent URL over http and https/SSL traffic. 
+8. Below diagram validates that Client VM connect to Internet URL over http and https/SSL traffic. 
 
-   ![Terminal Output of URLs Traffic from Client VM to Internet](../common/images/Terminal-Output-URLs-Client-Internet-Traffic.png " ")
+   ![Terminal Output of URLs Traffic from Client VM to Internet](../common/images/terminal-output-urls-client-internet-traffic.png " ")
 
 9. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource. Data *filters* are avaialble, below screenshot shows **policy-rule** filtered traffic:
 
-   ![Logs Output of URLs Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Logs-URLs-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Logs Output of URLs Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-logs-urls-client-vms-internet-allow-traffic.png " ")
 
 10. You can expand the logs and confirm its hitting right security rule **rule-client-allow-http-https-url-filtering-traffic** as below and **filter** with: 
 
-   ![Detailed Logs Output of URLs Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-URLs-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Detailed Logs Output of URLs Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-urls-client-vms-internet-allow-traffic.png " ")
 
 ## **Task 7: Validate SSL Forward Proxy Traffic**
 
 1. From the OCI Services menu, click **Virtual Cloud Network** and navigate to **firewall-vcn**. 
 
-   ![Navigation window for Virtual Cloud Networks](../common/images/VCN-Home.png " ")
+   ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
 2. Confirm **Client-Subnet** route table has an entry for Internet Traffic **0.0.0.0/0** via **Network Firewall**:
 
-   ![Validate SSL Forward Proxy Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Client-Subnet-RT-Firewall-VCN.png " ")
+   ![Validate SSL Forward Proxy Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-client-subnet-rt-firewall-vcn.png " ")
 
-3. Confirm **Firewalll-Subnet** route table has an entry for Internet Traffic **0.0.0.0/0** via **internet-gateway**:
+3. Confirm **Firewall-Subnet** route table has an entry for Internet Traffic **0.0.0.0/0** via **internet-gateway**:
 
-   ![Validate SSL Forward Proxy Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Firewall-Subnet-RT-Firewall-VCN.png " ")
+   ![Validate SSL Forward Proxy Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-firewall-subnet-rt-firewall-vcn.png " ")
 
 4. Confirm **InternetGateway** route table has an entry for return traffic of **Client-Subnet** CIDR:
 
-   ![Validate SSL Forward Proxy Traffi: Confirm IGW Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-IGW-RT-Firewall-VCN.png " ")
+   ![Validate SSL Forward Proxy Traffic: Confirm IGW Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-igw-rt-firewall-vcn.png " ")
 
-5. You have already defined requird security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
+5. You have already defined required security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
 
-   ![Verify Security Rule Applicable for SSL Traffic via Network Firewall](../common/images/Verify-Security-Rule-IPS-IDS-Traffic-Network-Firewall.png " ")
+   ![Verify Security Rule Applicable for SSL Traffic via Network Firewall](../common/images/verify-security-rule-ips-ids-traffic-network-firewall.png " ")
 
 6. Connect to **Client-VM** instance public IP on your local machine's over **SSH** as per below table and initiate **ICMP** traffic which should go through **Network-Firewall**:
 
@@ -442,19 +442,19 @@ Estimated Lab Time: 30 minutes.
 
     | Traffic From       | Traffic To  |  Traffic  | Action        | Network Firewall Policy Rule                               |
     |-------------------------|-------------|--------------------|-----------------|--------------------------------------------|
-    | Client VM | Interent Traffic   | HTTP and HTTPS| Allowed         | rule-client-to-internet-intrusion-detection-traffic                     |
+    | Client VM | Internet Traffic   | HTTP and HTTPS| Allowed         | rule-client-to-internet-intrusion-detection-traffic                     |
 
-8. Below diagram validates that Client VM connects to Interent over HTTPS/SSL traffic. 
+8. Below diagram validates that Client VM connects to Internet over HTTPS/SSL traffic. 
 
-   ![Terminal Output of SSL Traffic from Client VM to Internet](../common/images/Terminal-Output-SSL-Client-Internet-Traffic.png " ")
+   ![Terminal Output of SSL Traffic from Client VM to Internet](../common/images/terminal-output-ssl-client-internet-traffic.png " ")
 
 9. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource. Data *filters* are avaialble, below screenshot shows **policy-rule** filtered traffic:
 
-   ![Logs Output of SSL Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Logs-SSL-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Logs Output of SSL Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-logs-ssl-client-vms-internet-allow-traffic.png " ")
 
 10. You can expand the logs and confirm its hitting right security rule **rule-client-to-internet-intrusion-detection-traffic** as below: 
 
-   ![Detailed Logs Output of SSL Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-SSL-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Detailed Logs Output of SSL Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-ssl-client-vms-internet-allow-traffic.png " ")
 
 ## **Task 8: Validate NAT Gateway Ingress Routing Traffic**
 
@@ -462,11 +462,11 @@ Estimated Lab Time: 30 minutes.
 
 2. Confirm **Client-Subnet** route table has an entry for Internet Traffic **0.0.0.0/0** via **Network Firewall**:
 
-   ![Validate NAT GW Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/Outbound-Traffic-Confirm-Client-Subnet-RT-Firewall-VCN.png " ")
+   ![Validate NAT GW Traffic: Confirm Client Subnet Route Table Entry in Firewall VCN](../common/images/outbound-traffic-confirm-client-subnet-rt-firewall-vcn.png " ")
 
-3. Confirm **Firewalll-Subnet** route table has an entry for Internet Traffic **0.0.0.0/0** via **nat-gateway** and for **public-ip** via **internet-gateway**:
+3. Confirm **Firewall-Subnet** route table has an entry for Internet Traffic **0.0.0.0/0** via **nat-gateway** and for **public-ip** via **internet-gateway**:
 
-   ![Validate NAT GW Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/NAT-GW-Traffic-Confirm-Firewall-Subnet-RT-Firewall-VCN.png " ")
+   ![Validate NAT GW Traffic: Confirm Firewall Subnet Route Table Entry in Firewall VCN](../common/images/nat-gw-traffic-confirm-firewall-subnet-rt-firewall-vcn.png " ")
 
    **PLEASE READ**: We have updated route table here with default route entry via **NAT-GW** and access to **Client-VM** using your public IP via **IGW**. 
 
@@ -487,15 +487,15 @@ Estimated Lab Time: 30 minutes.
 
 7. Verify all the information and Click **Create**.
 
-   ![Create NAT GW Route Table in Firewall VCN](../common/images/NGW-Route-Table-Firewall-VCN.png " ")
+   ![Create NAT GW Route Table in Firewall VCN](../common/images/ngw-route-table-firewall-vcn.png " ")
 
 8. This will create NAT Gateway Route Table for firewall-vcn with following components.
 
     *Created NAT GW RouteTable for firewall-vcn*
 
-9. You have already defined requird security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
+9. You have already defined required security rule in **Lab 3** but you can double check, for this task below rule will take in effect: 
 
-   ![Verify Security Rule Applicable for NAT GW Traffic via Network Firewall](../common/images/Verify-Security-Rule-Outbound-Traffic-Network-Firewall.png " ")
+   ![Verify Security Rule Applicable for NAT GW Traffic via Network Firewall](../common/images/verify-security-rule-outbound-traffic-network-firewall.png " ")
 
 10. Connect to **Client-VM** instance public IP on your local machine's over **SSH** as per below table and initiate **ICMP** traffic which should go through **Network-Firewall**:
 
@@ -507,23 +507,23 @@ Estimated Lab Time: 30 minutes.
 
     | Traffic From       | Traffic To  |  Traffic  | Action        | Network Firewall Policy Rule                               |
     |-------------------------|-------------|--------------------|-----------------|--------------------------------------------|
-    | Client VM | Interent Traffic   | HTTP and HTTPS| Allowed with selected URLs         | rule-client-to-outbound-allow-all-traffic                     |
+    | Client VM | Internet Traffic   | HTTP and HTTPS| Allowed with selected URLs         | rule-client-to-outbound-allow-all-traffic                     |
 
 12. You can also **Block** the traffic at **NAT Gateway** level which will also allow you to validate stop traffic. 
 
-   ![Block NAT GW Traffic in Firewall VCN](../common/images/Block-NAT-GW-Traffic-Firewall-VCN.png " ")
+   ![Block NAT GW Traffic in Firewall VCN](../common/images/block-nat-gw-traffic-firewall-vcn.png " ")
 
-13. Below diagram validates that Client VM connects to Interent over HTTPS/SSL traffic. 
+13. Below diagram validates that Client VM connects to Internet over HTTPS/SSL traffic. 
 
-   ![Terminal Output of NAT GW Traffic from Client VM to Internet](../common/images/Terminal-Output-NAT-GW-Client-Internet-Traffic.png " ")
+   ![Terminal Output of NAT GW Traffic from Client VM to Internet](../common/images/terminal-output-nat-gw-client-internet-traffic.png " ")
 
 14. You can also verify traffic from **Traffic Logs** on your **Network Firewall** resource. Data *filters* are avaialble, below screenshot shows **policy-rule** filtered traffic:
 
-   ![Logs Output of NAT GW Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Logs-NAT-GW-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Logs Output of NAT GW Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-logs-nat-gw-client-vms-internet-allow-traffic.png " ")
 
 15. You can expand the logs and confirm its hitting right security rule **rule-client-to-outbound-allow-all-traffic** as below: 
 
-   ![Detailed Logs Output of NAT GW Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/Network-Firewall-Detailed-Logs-NAT-GW-Client-VMs-Internet-Allow-Traffic.png " ")
+   ![Detailed Logs Output of NAT GW Traffic from Client To Internet Allow Traffic via Network Firewall](../common/images/network-firewall-detailed-logs-nat-gw-client-vms-internet-allow-traffic.png " ")
 
 ## **Task 9: Explore SGW Gateway Ingress Routing Traffic**
 
@@ -533,7 +533,7 @@ Estimated Lab Time: 30 minutes.
 
 3. You could consider deploying another **Network Firewall** in private subnet so **OCI SGW Network** traffic can be inspected by this new firewall. 
 
-4. You should consider firewall pricing too which plays a critical role when desigining architecture.
+4. You should consider firewall pricing too which plays a critical role when designing architecture.
 
 ***Congratulations! You have successfully completed the lab.***
 
