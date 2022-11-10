@@ -65,7 +65,7 @@ This lab assumes you have:
 	Elapsed: 00:00:00.901
 	```
     
-In the next task, We are going to capture access to objects in the `EMPLOYEESEARCH_PROD` schema, including access by the schema itself. This will help us understand which objects are accessed and where they are accesed from. 
+In the next task, We are going to capture access to objects in the `EMPLOYEESEARCH_PROD` schema, including access by the schema itself. This will help us understand which objects are available and where they are retrieved from. 
 
 ## Task 2: Use simulation mode to identify the connections to the EMPLOYEESEARCH_PROD schema
 
