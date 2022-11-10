@@ -19,7 +19,7 @@ This lab assumes you have:
 
 ## Task 1: Create a Database Vault realm
 
-1. Navigate back to your **Database Actions SQL Worksheet**. Under the menu bar for **ADMIN** at the top right select **Sign out**. Sign back into Database Actions under the user **sec_admin_owen** and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from **ADMIN** to **SEC_ADMIN_OWEN**.
+1. Navigate back to your **Database Actions SQL Worksheet**. Under the menu bar for **ADMIN** at the top right select **Sign out**. Sign back into Database Actions under the user `sec_admin_owen` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from **ADMIN** to `SEC_ADMIN_OWEN`.
 
 	![Change db actions schema](images/change-schema-dbactions.png)
 
@@ -85,7 +85,7 @@ In the next task, We are going to capture access to objects in the `EMPLOYEESEAR
 	<copy>select * from dba_dv_simulation_log;</copy>
 	```
 
-3. Under the menu bar for **SEC_ADMIN_OWEN** at the top right select **Sign out**. Sign back into Database Actions under the user **dba_debra** and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from **DBA_DEBRA** to **SEC_ADMIN_OWEN**.
+3. Under the menu bar for `SEC_ADMIN_OWEN` at the top right select **Sign out**. Sign back into Database Actions under the user **dba_debra** and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from **DBA_DEBRA** to `SEC_ADMIN_OWEN`.
 
 	![Login as dba_debra](images/signin-dba-debra.png)
 

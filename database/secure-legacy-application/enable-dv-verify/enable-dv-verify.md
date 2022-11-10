@@ -54,7 +54,7 @@ This lab assumes you have:
    GRANT CREATE SESSION TO accts_admin_ace;
    GRANT AUDIT_ADMIN to accts_admin_ace;</copy>
    ```
-7. Clear your worksheet. Under the **ADMIN** schema, copy and paste the following commands to create the DBA user, **dba_debra**. Select the button **Run Script** to execute the statements. Check the **Script output** at the bottom of the page to make sure the statements executed successfully.
+7. Clear your worksheet. Under the **ADMIN** schema, copy and paste the following commands to create the DBA user, `dba_debra`. Select the button **Run Script** to execute the statements. Check the **Script output** at the bottom of the page to make sure the statements executed successfully.
 
    ```
    <copy>CREATE USER dba_debra IDENTIFIED by WElcome_123#;
