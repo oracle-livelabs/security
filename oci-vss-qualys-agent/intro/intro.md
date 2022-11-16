@@ -1,24 +1,26 @@
 # Introduction to OCI Vulnerability Scanning Service
 
-Oracle Cloud Infrastructure (OCI) Vulnerability Scanning Service (VSS) helps improve your security posture by routinely checking hosts and container images for potential vulnerabilities. The service gives developers, operations, and security administrators comprehensive visibility into misconfigured or vulnerable resources, and generates reports with metrics and details about these vulnerabilities including remediation information. In this workshop you will be using **OCI VSS Service** to scan your workloads. 
+Oracle Cloud Infrastructure (OCI) Vulnerability Scanning Service (VSS) helps improve your security posture by routinely checking hosts and container images for potential vulnerabilities. The service gives developers, operations, and security administrators comprehensive visibility into misconfigured or vulnerable resources, and generates reports with metrics and details about these vulnerabilities including remediation information. In this workshop, you will be using **OCI VSS Service** to scan your workloads. 
 
-This workshop will cover step-by-step(manual) and automated approach which you can follow to deploy required components on Oracle Cloud Infrastructure with **OCI Vulnerability solution integration with Qualys VMDR**.
+This workshop will cover step-by-step(manual) and automated approaches which you can follow to deploy required components on Oracle Cloud Infrastructure with **OCI Vulnerability solution integration with Qualys VMDR**.
+
+Estimated time: 45 minutes
 
 ## Solution
 
-Oracle has partnered with **Qualys** to provide VSS integration solution for customers to leverage their Vulnerability Management, Detection and Response (**VMDR**) license. You can use this solution to scan your workloads running on OCI which provides the following **key benefits**: 
+Oracle has partnered with **Qualys** to provide a VSS integration solution for customers to leverage their Vulnerability Management, Detection, and Response (**VMDR**) license. You can use this solution to scan your workloads running on OCI which provides the following **key benefits**: 
 
 - **Simple** – Change your VSS host scan recipe to use the Qualys agents
 - **Managed** – Know that OCI will install and update these agents on your compute instances
 - **Vulnerabilities**: Qualys VMDR will match the OCI compute instance information into QIDs (CVEs)
-- **Logging/Reporting**: View multi-cloud findings in Qualys dashboard.
+- **Logging/Reporting**: View multi-cloud findings in the Qualys dashboard.
 - **Finding**: View OCI findings in VSS and Cloud Guard
 
 Attached below is a sample architecture of the solution:
 
    ![OCI Network Firewall Workshop Topology Architecture](../common/images/arch.png " ")
 
-Estimated time: 45 minutes
+This architecture shows two compute instances running in a regional compute subnet in a VCN and you will use OCI VSS service to scan those compute resources. You can also use the OCI CloudGuard service to monitor resources.
 
 ### Objectives
 
@@ -31,16 +33,16 @@ Estimated time: 45 minutes
 ### Prerequisites
 
    - Oracle Cloud Infrastructure paid account credentials (User, Password, Tenant, and Compartment)
-   - User must have required permissions, quota to deploy resources.
+   - User must have required permissions, and quota to deploy resources.
    - User must have a valid Qualys VMDR Cloud Agent license code. 
 
-   > **Please Read**: You can sign up for [**Qualys VMDR**](https://www.qualys.com/apps/vulnerability-management-detection-response/) and generate a license code with cloud install agent option. 
+   > **Please Read**: You can sign up for [**Qualys VMDR**](https://www.qualys.com/apps/vulnerability-management-detection-response/) and generate a license code with the cloud install agent option. 
    
    ![Qualys VMDR Create License Code](../common/images/qualys-vmdr-cloud-agent-license-code-key.png " ")
    
 ### Let's get Started!
 
-You may now [proceed to the labs](#next).
+You may now **proceed to the next lab**.
 
 ### Learn More
 

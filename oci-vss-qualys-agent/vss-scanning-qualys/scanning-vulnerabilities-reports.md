@@ -2,11 +2,11 @@
 
 ## Introduction
 
-In this lab you will be validating scanning & vulnerabilities reports from **VSS**, **CloudGuard** and **Qualys VMDR** platform.
+In this lab, you will be validating scanning & vulnerability reports from **VSS**, **CloudGuard**, and **Qualys VMDR** platforms.
 
-> **Please Read**: Qualys performs OCI hosts scans every **four hours** so you can view reports in the **Qualys** portal approximately in four hours. Similarly view Qualys scan results in the OCI Console within **12 hours** of creating the new scan target
+> **Please Read**: Qualys performs OCI hosts scan every **four hours** so you can view reports in the **Qualys** portal approximately in four hours. Similarly, view Qualys scan results in the OCI Console within **12 hours** of creating the new scan target
 
-Estimated Lab Time: 10 minutes.
+Estimated time: 10 minutes.
 
 ### Objectives
 
@@ -17,11 +17,11 @@ Estimated Lab Time: 10 minutes.
 ### Prerequisites
 
 - Oracle Cloud Infrastructure account credentials (User, Password, Tenant, and Compartment)
-- User must have required permissions, quota to deploy/view resources.
+- User must have required permissions, and quota to deploy/view resources.
 
 ## Task 1: Validate Scanning and Vulnerabilities Reports from OCI VSS
 
-1. From the OCI Services menu, click **Scanning** under **Identity & Security**. Select your region on right part of the screen.
+1. From the OCI Services menu, click **Scanning** under **Identity & Security**. Select your region on the right part of the screen.
 
 2. Navigate to your **Scanning Reports** to view individual **host target** reports. 
 
@@ -31,13 +31,13 @@ Estimated Lab Time: 10 minutes.
 
    ![Compute Hosts Vulnerabilities Reports](../common/images/compute-target-vulnerabilities-reports.png " ")
 
-4. Click on vulnerability to know more about and related details, for example **QID: 159493**:
+4. Click on vulnerability to know more about and related details, for example, **QID: 159493**:
 
    ![Compute Hosts Vulnerability Details](../common/images/compute-target-vulnerabilities-details-reports.png " ")
 
 ## Task 2: Explore Scanning and Vulnerabilities Reports from OCI CloudGuard
 
-1. From the OCI Services menu, click **CloudGuard** under **Identity & Security**. Select your region on right part of the screen.
+1. From the OCI Services menu, click **CloudGuard** under **Identity & Security**. Select your region on the right part of the screen.
 
    ![Compute Hosts CloudGuard Home Page](../common/images/cloudguard-home-page.png " ")
 
@@ -63,9 +63,9 @@ Estimated Lab Time: 10 minutes.
 
    ![Qualys VMDR Vulnerabilities](../common/images/qualys-vmdr-vulnerability.png " ")
 
-***Congratulations! You have successfully completed the lab.***
+***Congratulations! You have completed the lab.***
 
-You may now [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Learn More
 
