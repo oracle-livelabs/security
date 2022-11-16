@@ -30,7 +30,7 @@ This lab assumes you have:
 
    ![Login database actions](images/db-actions-login.png)
 
-4. Under the **Development** section, select **SQL**
+4. Under the **Development** section, select **SQL**.
 
    ![Select sql](images/select-sql.png)
 
@@ -84,7 +84,10 @@ This lab assumes you have:
    ```
 
 9. Check to make sure Database Vault configure status is **true but not enabled** by querying the `DBA_DV_STATUS` table. Make sure your worksheet is clear, then copy and paste the following query into the worksheet. Run the command and make sure you received an appropriate output.
-SELECT * FROM DBA_DV_STATUS;
+
+   ```
+   <copy>SELECT * FROM DBA_DV_STATUS;</copy>
+   ```
 
 10. Navigate back to the **Autonomous Database Details** page. Under **More actions**, select **Restart** (This can take a few minutes).
 

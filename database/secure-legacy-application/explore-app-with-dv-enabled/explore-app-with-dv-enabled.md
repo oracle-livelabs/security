@@ -4,7 +4,6 @@
 
 In this lab, we will now flip our Database Vault Realm from **simulation** to **enforcement** mode. This will commit our realm into production. Then, we will put our realm to the test and demonstrate the inability to query the application data under a particular user.
 
-
 ### Objectives
 
 In this lab, you will complete the following tasks:
@@ -21,7 +20,7 @@ This lab assumes you have:
 
 ## Task 1: Explore the production HR application before enforcing Database Vault
 
-1. Navigate back to the **production** HR application environment and sign back in if you are logged out. Locate the **Search Employees Option** and under **Active** drop down menu, select **Active** and press **Search**.
+1. Navigate back to the **production** HR application environment and sign back in if you are logged out. Locate the **Search Employees Option** and under **Active** drop down menu, select **Active** then **Search**.
 
 	![Search employees](images/search-emp.png)
 
@@ -34,7 +33,7 @@ Notice that the data is viewable and accessible. Next, we will switch the Databa
 
 ## Task 2: Flip the Database Vault realm from simulation to enforcement mode
 
-1. Navigate back to the **DBA Actions** page. Under the menu bar for `DBA_DEBRA` at the top right select **Sign out**. Sign back into Database Actions under the user `sec_admin_owen` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated to `SEC_ADMIN_OWEN*`
+1. Navigate back to the **DBA Actions** page. Under the menu bar for `DBA_DEBRA` at the top right select **Sign out**. Sign back into Database Actions under the user `sec_admin_owen` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated to `SEC_ADMIN_OWEN*`.
 
 2. Copy and paste the following script to switch the Database Vault realm from **simulation** to **enforcement** mode. Run the script and check the output to see that the procedure was completed successfully.
 

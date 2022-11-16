@@ -2,11 +2,7 @@
 
 ## Introduction
 
-In this lab, we will connect to the Glassfish legacy HR application. This will involve generating an SSH key and using it to connect to the application virtual machine (VM)
-
-<!---
-Download the Glassfish application files for the lab: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/vmkYRTjFDKT14aBgppExmxjWXNForfovxySRrgqJGlWMacsc6mMtClQY1a6foD3c/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL1.zip)
--->
+In this lab, we will connect to the Glassfish legacy HR application. This will involve generating an SSH key and using it to connect to the application virtual machine (VM).
 
 ### Objectives
 
@@ -59,23 +55,23 @@ This lab assumes you have:
         ```
         <copy>ls</copy>
         ```
-    - Retrieve the public key and copy/paste it to a clipboard of your choosing. We will need this in future steps:
+    - Retrieve the public key and copy/paste it to a clipboard of your choosing. You will need this in future steps:
 
         ```
         <copy>cat myhrappkey.pub</copy>
         ```
 
-    - Retrieve the private key and copy/paste it to a clipboard of your choosing. We will need this in future steps:
+    - Retrieve the private key and copy/paste it to a clipboard of your choosing. You will need this in future steps:
 
         ```
         <copy>cat myhrappkey</copy>
         ```
 
-3. Close out of cloud shell.
+3. Minimize cloud shell. You will need it again for future tasks.
 
 ## Task 2: Create the Glassfish application instance.
 
-1. Using the hamburger menu at the top left, navigate to **Compute** and select **Custom Images**
+1. Using the hamburger menu at the top left, navigate to **Compute** and select **Custom Images**.
 
     ![Navigate to custom image](images/navigate-custom-image.png)
 
@@ -83,7 +79,7 @@ This lab assumes you have:
 
     ![Select import image](images/select-import-image.png)
 
-3. Fill in the corresponding fields as shown in the image below (use the compartment of your choice) and select **Import image**. Use the following link for the **Object Storage URL**: https://objectstorage.us-ashburn-1.oraclecloud.com/p/rJE5dhCwlzOime6oy4QdsyneI7fkgFM49PqmIpN-2GRt6[…]cm/b/dbsec_rich/o/myhrapp-20220923-custom-image
+3. Fill in the corresponding fields as shown in the image below (use the compartment of your choice) and select **Import image**. Use the following link for the **Object Storage URL**: https://objectstorage.us-ashburn-1.oraclecloud.com/p/rJE5dhCwlzOime6oy4QdsyneI7fkgFM49PqmIpN-2GRt6[…]cm/b/dbsec_rich/o/myhrapp-20220923-custom-image.
 
     ![Create custom image](images/create-custom-image.png)
 
@@ -110,17 +106,13 @@ This lab assumes you have:
 
 ## Task 3: Save the ATP TLS connection string in the Glassfish application server's properties file.
 
-1. On the top right of your OCI console, open up the cloud shell. 
-
-    ![Open cloud shell](images/open-cloud-shell.png)
-
-2. Move to your `myhrapp` directory.
+1. Open back up your Cloud Shell terminal. Make sure you are in the `myhrapp` directory.
 
     ```
     <copy>cd myhrapp</copy>
     ```
 
-3. SSH into the Glassfish application instance using the public IP address of the instance. Whene prompted if you wish to continue the connection, type into the terminal **yes**.
+2. SSH into the Glassfish application instance using the public IP address of the instance. Whene prompted if you wish to continue the connection, type into the terminal **yes**.
 
     ```
     <copy>ssh -i myhrappkey opc@<PASTE INSTANCE PUBLIC IP ADDRESS HERE></copy>
@@ -128,13 +120,13 @@ This lab assumes you have:
 
     ![SSH into instance](images/ssh-into-instance.png)
 
-4. Move to the `lab_01` directory.
+3. Move to the `lab_01` directory.
 
     ```
     <copy>cd lab_01</copy>
     ```
 
-5. Run the `save_connection_string.sh` script to save the TLS connection string from you ATP instance. Paste your connection string when prompted.
+4. Run the `save_connection_string.sh` script to save the TLS connection string from you ATP instance. Paste your connection string when prompted.
 
     ```
     <copy>./save_connection_string.sh</copy>
@@ -142,7 +134,7 @@ This lab assumes you have:
     
     ![Save connection string](images/save-connection-string.png)
 
-6. Run the `test_connection_string.sh` script to test the application instance connection to the ATP instance. When prompted, enter your ATP ADMIN password that you created previously.
+5. Run the `test_connection_string.sh` script to test the application instance connection to the ATP instance. When prompted, enter your ATP ADMIN password that you created previously.
 
     ```
     <copy>./test_connection_string.sh</copy>

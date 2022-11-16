@@ -4,15 +4,11 @@
 
 In this lab, we will populate the Glassfish application with data and then verify that the HR application still functions appropriately. This will involve loading the `EMPLOYEESEARCH_PROD` schema objects to the ATP instance.
 
-<!---
-**Download the data lab files:** [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/tVAwp-XWRsm1oouSHDzzZwyUQ5TErSPpPNhuYPMTbSJOZlC-Pvsed-caGfHYrkV5/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip)
--->
-
 ### Objectives
 
 In this lab, you will complete the following tasks:
 
-- Create the `EMPLOYEESEARCH_PROD` schema using `SQL*Plus` from the Glassfish App Server.
+- Create the `EMPLOYEESEARCH_PROD` schema using `SQL/Plus` from the Glassfish App Server.
 - Update the connection string.
 - Start the Glassfish application.
 - Verify the HR app functions using the Glassfish app **public IP**.
@@ -23,9 +19,9 @@ This lab assumes you have:
 - Oracle Cloud Infrastructure (OCI) Tenancy Account
 - Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the Glassfish legacy HR application
 
-## Task 1: Create the EMPLOYEESEARCH_PROD schema using SQL*Plus from the Glassfish App Server and startup the Glassfish application.
+## Task 1: Create the EMPLOYEESEARCH_PROD schema using SQL/Plus from the Glassfish App Server and startup the Glassfish application.
 
-1. From the Cloud Shell console within `myhrapp` use the `load_app_data.sh` script to load data into your ATP instance.
+1. From the Cloud Shell console within `myhrapp`, use the `load_app_data.sh` script to load data into your ATP instance.
 
     ```
     <copy>./load_app_data.sh</copy>
@@ -51,7 +47,7 @@ This lab assumes you have:
 
 ## Task 2: Verify the HR app functions using the Glassfish app public IP.
 
-1. Minimize your cloud shell terminal and navigate back to you Glassfish app instance in OCI using the hamburger menu under **Compute > Instances**.
+1. Minimize your Cloud Shell terminal and navigate back to you Glassfish app instance in OCI using the hamburger menu under **Compute>Instances**.
 
     ![Running instance](images/instance-running.png)
 
@@ -69,7 +65,7 @@ This lab assumes you have:
 
     ![Add ingress rule](images/add-ingress.png)
 
-6. Navigate back to your cloud shell terminal. Locate the output of the `startGlassfish.sh` script and find both the **Production** and **Development** URLs given to you at the conclusion of the output. You may also copy it from clipboard below. Using two seperate windows on your browser, Make sure to fill both URLs with the instance **public IP**. 
+6. Navigate back to your Cloud Shell terminal. Locate the output of the `startGlassfish.sh` script and find both the **Production** and **Development** URLs given to you at the conclusion of the output. You may also copy it from clipboard below. Using two seperate windows on your browser, Make sure to fill both URLs with the instance **public IP**. 
 
     ```
     <copy>http://<PUBLIC_IP>:8080/myhrapp</copy>
