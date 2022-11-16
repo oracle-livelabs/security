@@ -2,11 +2,11 @@
 
 ## Introduction
 
-In this lab you will be using Oracle Resource Manager to deploy required virtual cloud networks (VCNs), subnets in each VCN, dynamic routing gateways (DRG), route tables, compute instances and OCI Network Firewall to support traffic between VCNs.
+In this lab you will be using Oracle Resource Manager to deploy required virtual cloud network, subnet, and compute instances to support use-case to scan compute resources using **OCI VSS** integrated with **Qualys VMDR**.
 
-**PLEASE READ**: If you wish to deploy the configuration manually, please skip **Lab0** and continue from **Lab1** onwards.
+> **Please Read**: If you wish to deploy the configuration manually, please skip **Lab0** and continue from **Lab1** onwards.
 
-Estimated Lab Time: 45 minutes.
+Estimated Lab Time: 10 minutes.
 
 ### Objectives
 
@@ -16,20 +16,20 @@ Estimated Lab Time: 45 minutes.
 
 ### Prerequisites
 
-- Oracle Cloud Infrastructure paid account credentials (User, Password, Tenant, and Compartment)
-- Required Quota, Resources permission,and associated policies are complete.
+- Oracle Cloud Infrastructure account credentials (User, Password, Tenant, and Compartment)
+- User must have required permissions, quota to deploy resources.
 
-## **Task 1: Login and Create Stack using Resource Manager**
+## Task 1: Login and Create Stack using Resource Manager
 
 You will be using Terraform to create your lab environment.
 
 1.  Click on the link below to download the zip file which you need to build your environment.  
 
-    - Click here: [oci-network-firewall-live-labs.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/NlkE3VlkA0kwaYKviti6g9Afhy4W2DHpeduNWl63xIKOHWB-87asj2axKTaHdI3L/n/partners/b/files/o/oci-network-firewall.zip) 
-        - Packaged terraform **OCI Network Firewall** use-case.
+    - Click here: [oci-network-vss-qualys-live-labs.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/fAx5rXgL1PJ3YMHzw0gM4PuCmeyjBoV3CBwdMJla7GDIhKLkWjSKu3vG22SrbAtp/n/partners/b/files/o/vss-integration-qualys.zip) 
+        - Packaged terraform **OCI VSS Qualys** use-case.
         - **PAR URL** is valid until **Dec, 2025**.
 
-    **Please Read**: You can also download this zip folder locally and update required resources to support additional use-cases. 
+    > **Please Read**: You can also download this zip folder locally and update required resources to support additional use-cases. 
 
 2.  Save in your local machine's downloads folder.
 
@@ -41,7 +41,7 @@ You will be using Terraform to create your lab environment.
 
     ![Oracle Resource Manager Create Stack Page](./images/create-stack-page.png " ")
 
-5.  Select **My Configuration**, choose the **.ZIP FILE** button, click the **Browse** link and select the zip file (oci-network-firewall-live-labs.zip) that you downloaded. Click **Select**.
+5.  Select **My Configuration**, choose the **.ZIP FILE** button, click the **Browse** link and select the zip file (vss-integration-qualys.zip) that you downloaded. Click **Select**.
 
     ![Oracle Resource Manager Create Stack Workflow with Zip File Upload](./images/myconfiguration-upload-zip-initial-configuration.png " ")
 
@@ -67,13 +67,13 @@ You will be using Terraform to create your lab environment.
 
     **Network Compartment**: Select Network Compartment from drop-down where you would like to create networking components i.e. VCN, subnets, route tables, DRG etc.  
 
-    **Note:** Keep the Network Strategy as **Create New VCN and Subnet** as default value, if you chose to modify the code you can do so to support existing VCN/Subnet values. 
+    > **Note:** Keep the Network Strategy as **Create New VCN and Subnet** as default value, if you chose to modify the code you can do so to support existing VCN/Subnet values. 
 
 6. Click **Create** to create your stack. Now you can move next steps to create your environment.
 
     ![Oracle Resource Manager Create Stack Workflow with reviewing variables](./images/myconfiguration-upload-zip-initial-configuration-step3.png " ")
 
-## **Task 2: Terraform Plan and Apply**
+## Task 2: Terraform Plan and Apply
 
 When using Resource Manager to deploy an environment, you need to execute a terraform **plan** and **apply**. Let's do that now.
 
@@ -89,25 +89,19 @@ When using Resource Manager to deploy an environment, you need to execute a terr
 
     ![Terraform Apply Successful Output](./images/terraform-apply-success.png " ")
 
-    **NOTE**: **Network Firewall** deployment will take close to **30-35 mins** and terraform apply will succeed afterwards. 
+    > **Note:**  Stack will deploy required VMs to support this use-case.
 
-    **NOTE**: Stack will deploy **Network Firewall** and required VMs to support this use-case.
-
-## **Task 3: Connect to your instances**
+## Task 3: Connect to your instances
 
 1. Based on your laptop config, choose the appropriate steps to connect to your instances. 
 
    ![Created Instance using Terraform](./images/final-instances.png " ")
 
-2. You should be able to see your **Network Firewall** and **Network Firewall Policy** created successfully. 
-
-   ![Created Network Firewall using Terraform](./images/network-firewall.png " ")
-
-**NOTE**: It will take few minutes before you can connect to ssh-daemon becomes available. If you are unable to connect then make sure you have a valid key, wait a few minutes, and try again.
+    > **Note:**  It will take few minutes before you can connect to ssh-daemon becomes available. If you are unable to connect then make sure you have a valid key, wait a few minutes, and try again.
 
 ***Congratulations! You have successfully completed the lab.***
 
-**PLEASE READ**: You must skip **Lab 1 to Lab2** now and proceed to **Lab 3** i.e. **Configure OCI Network Firewall Policy**. 
+> **Please Read**: You must skip **Lab 1** now and proceed to **Lab 2** i.e. **Deploy VSS integration with Qualys and Supporting Configuration**. 
 
 You may now [proceed to the next lab](#next).
 
@@ -115,14 +109,13 @@ You may now [proceed to the next lab](#next).
 
 1. [OCI Training](https://www.oracle.com/cloud/iaas/training/)
 2. [Familiarity with OCI console](https://docs.us-phoenix-1.oraclecloud.com/Content/GSG/Concepts/console.htm)
-3. [Overview of Networking](https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/overview.htm)
-4. [Overview of OCI Network Firewall](https://docs.oracle.com/en-us/iaas/Content/network-firewall/overview.htm)
-5. [OCI Network Firewall Cloud Security Page](https://www.oracle.com/security/cloud-security/network-firewall/)
-6. [OCI Intra VCN Routing Capabilities](https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/managingroutetables.htm)
+3. [Overview of OCI Vulnerability Scanning Service](https://docs.oracle.com/en-us/iaas/scanning/home.htm)
+4. [OCI Vulnerability Scanning Service Page](https://www.oracle.com/security/cloud-security/cloud-guard/)
+5. [OCI CloudGuard Capabilities](https://www.oracle.com/security/cloud-security/cloud-guard/)
 
 ## Acknowledgements
 
 - **Author** - Arun Poonia, Principal Solutions Architect
 - **Adapted by** - Oracle
 - **Contributors** - N/A
-- **Last Updated By/Date** - Arun Poonia, Oct 2022
+- **Last Updated By/Date** - Arun Poonia, Nov 2022
