@@ -63,6 +63,7 @@ This lab assumes you have:
       ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('dba_debra'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('dba_debra'), p_auto_rest_auth => TRUE);
    END;
    /</copy>
+   ```
 
 8. Enable **SQL Worksheet** priveledges for the users that were just created. Clear your worksheet after executing each of the following commands and check to make sure the statements were executed properly.
 

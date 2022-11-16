@@ -23,7 +23,7 @@ This lab assumes you have:
 
 	![Change db actions schema](images/change-schema-dbactions.png)
 
-2. Copy and paste the following to script in the SQL worksheet to create a Database Vault realm `PROTECT_MYHRAPP` in order to protect `EMPLOYEESEARCH_PROD`. Select the **Run Script** button to execute the script. Check the script output at the bottom to make sure the script executed successfully.
+2. Copy and paste the following script to the SQL worksheet to create a Database Vault realm `PROTECT_MYHRAPP` in order to protect `EMPLOYEESEARCH_PROD`. Select the **Run Script** button to execute the script. Check the script output at the bottom to make sure the script executed successfully.
 
 	```
 	<copy>BEGIN
@@ -69,7 +69,7 @@ In the next task, We are going to capture access to objects in the `EMPLOYEESEAR
 
 ## Task 2: Use simulation mode to identify the connections to the EMPLOYEESEARCH_PROD schema
 
-1. Within the **sec_admin_owen** schema, copy and paste the following query to look at the `dba_dv_simulation_log`. Make sure the output reads that the realm `PROTECT_MYHRAPP` correlates to the object owner `EMPLOYEESEARCH_PROD`
+1. Within the `SEC_ADMIN_OWEN` schema, copy and paste the following query to look at the `dba_dv_simulation_log`. Make sure the output reads that the realm `PROTECT_MYHRAPP` correlates to the object owner `EMPLOYEESEARCH_PROD`
 
 	```
 	<copy>select * from dba_dv_simulation_log;</copy>
@@ -85,7 +85,7 @@ In the next task, We are going to capture access to objects in the `EMPLOYEESEAR
 	<copy>select * from dba_dv_simulation_log;</copy>
 	```
 
-3. Under the menu bar for `SEC_ADMIN_OWEN` at the top right select **Sign out**. Sign back into Database Actions under the user **dba_debra** and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from **DBA_DEBRA** to `SEC_ADMIN_OWEN`.
+3. Under the menu bar for `SEC_ADMIN_OWEN` at the top right select **Sign out**. Sign back into Database Actions under the user `dba_debra` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from `DBA_DEBRA` to `SEC_ADMIN_OWEN`.
 
 	![Login as dba_debra](images/signin-dba-debra.png)
 

@@ -35,7 +35,7 @@ This lab assumes you have:
 
     ![Enter admin credentials](images/atp-password.png) 
 
-5. Change network access to **allowed IPs and VCNs only** and change IP notation type to **CIDR Block.** 
+5. Change network access to **allowed IPs and VCNs only** and change IP notation type to **CIDR Block. Input the CIDR value of 0.0.0.0/0 into the blank field.** 
 
     ![Enter admin credentials](images/secure-access.png) 
 
