@@ -2,11 +2,11 @@
 
 ## Introduction
 
-In this lab you will be using Oracle Resource Manager to deploy required virtual cloud network, subnet, and compute instances to support use-case to scan compute resources using **OCI VSS** integrated with **Qualys VMDR**.
+In this lab, you will be using Oracle Resource Manager to deploy the required virtual cloud network, subnet, and compute instances to support the use-case to scan compute resources using **OCI VSS** integrated with **Qualys VMDR**.
 
 > **Please Read**: If you wish to deploy the configuration manually, please skip **Lab0** and continue from **Lab1** onwards.
 
-Estimated Lab Time: 10 minutes.
+Estimated time: 10 minutes.
 
 ### Objectives
 
@@ -17,7 +17,7 @@ Estimated Lab Time: 10 minutes.
 ### Prerequisites
 
 - Oracle Cloud Infrastructure account credentials (User, Password, Tenant, and Compartment)
-- User must have required permissions, quota to deploy resources.
+- User must have required permissions, and quota to deploy resources.
 
 ## Task 1: Login and Create Stack using Resource Manager
 
@@ -29,7 +29,7 @@ You will be using Terraform to create your lab environment.
         - Packaged terraform **OCI VSS Qualys** use-case.
         - **PAR URL** is valid until **Dec, 2025**.
 
-    > **Please Read**: You can also download this zip folder locally and update required resources to support additional use-cases. 
+    > **Please Read**: You can also download this zip folder locally and update the required resources to support additional use cases. 
 
 2.  Save in your local machine's downloads folder.
 
@@ -37,7 +37,7 @@ You will be using Terraform to create your lab environment.
 
     ![Oracle Resource Manager Home Page](./images/orm-home-page.png " ")
 
-4. Choose the right compartment from left hand side drop-down and appropriate region from top right drop-down and click the **Create Stack** button
+4. Choose the right compartment from the left-hand side drop-down and the appropriate region from the top right drop-down and click the **Create Stack** button
 
     ![Oracle Resource Manager Create Stack Page](./images/create-stack-page.png " ")
 
@@ -59,17 +59,17 @@ You will be using Terraform to create your lab environment.
 
     Enter/Select the following minimum information. Some information may already be pre-populated. Do not change the pre-populated info.
 
-    **Compute Compartment**: Select Compute Compartment from drop-down where you would like to create compute instances. 
+    **Compute Compartment**: Select Compute Compartment from the drop-down where you would like to create compute instances. 
 
-    **Availability Domain:** Select Appropriate AD from drop-down. 
+    **Availability Domain:** Select Appropriate AD from the drop-down. 
 
-    **Public SSH Key**: Paste the public key string which you would like to use to connect VMs via your private-key.
+    **Public SSH Key**: Paste the public key string that you would like to use to connect VMs via your private key.
 
-    **Network Compartment**: Select Network Compartment from drop-down where you would like to create networking components i.e. VCN, subnets, route tables, DRG etc.  
+    **Network Compartment**: Select Network Compartment from the drop-down where you would like to create networking components i.e. VCN, subnets, route tables, DRG, etc.  
 
-    > **Note:** Keep the Network Strategy as **Create New VCN and Subnet** as default value, if you chose to modify the code you can do so to support existing VCN/Subnet values. 
+    > **Note:** Keep the Network Strategy as **Create New VCN and Subnet** as the default value, if you chose to modify the code you can do so to support existing VCN/Subnet values. 
 
-6. Click **Create** to create your stack. Now you can move next steps to create your environment.
+6. Click **Create** to create your stack. Now you can move to the next steps to create your environment.
 
     ![Oracle Resource Manager Create Stack Workflow with reviewing variables](./images/myconfiguration-upload-zip-initial-configuration-step3.png " ")
 
@@ -85,7 +85,7 @@ When using Resource Manager to deploy an environment, you need to execute a terr
 
     ![Terraform Apply Option](./images/terraform-apply.png " ")
 
-3.  Once this job succeeds, your environment is created! Time to login to your instance to finish the configuration.
+3.  Once this job succeeds, your environment is created! Time to log in to your instance to finish the configuration.
 
     ![Terraform Apply Successful Output](./images/terraform-apply-success.png " ")
 
@@ -97,13 +97,13 @@ When using Resource Manager to deploy an environment, you need to execute a terr
 
    ![Created Instance using Terraform](./images/final-instances.png " ")
 
-    > **Note:**  It will take few minutes before you can connect to ssh-daemon becomes available. If you are unable to connect then make sure you have a valid key, wait a few minutes, and try again.
+    > **Note:**  It will take a few minutes before you can connect to ssh-daemon becomes available. If you are unable to connect then make sure you have a valid key, wait a few minutes, and try again.
 
-***Congratulations! You have successfully completed the lab.***
+***Congratulations! You have completed the lab.***
 
 > **Please Read**: You must skip **Lab 1** now and proceed to **Lab 2** i.e. **Deploy VSS integration with Qualys and Supporting Configuration**. 
 
-You may now [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Learn More
 
