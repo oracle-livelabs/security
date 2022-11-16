@@ -53,7 +53,7 @@ Estimated time: 15 minutes.
 
       - **Name**: Enter Policy Name
       - **Description**: Enter Policy Description
-      - **COMPARTMENT**: Ensure the Root compartment is selected
+      - **Compartment**: Ensure the Root compartment is selected
          - You can define policy at your Root or Required Compartment level based on your need.
          - Please follow the official docs mentioned in the **Learn More** section to know more about **Agent-Based Qualys Policies**. 
       - **Policy Builder**: Enter policy
@@ -91,8 +91,8 @@ Estimated time: 15 minutes.
 
 4. Fill out the dialog box and Click **Next**:
 
-      - **VAULT NAME**: Provide a name
-      - **COMPARTMENT**: Ensure your compartment is selected
+      - **Vault Name**: Provide a name
+      - **Compartment**: Ensure your compartment is selected
       
    ![Create VSS Virtual Cloud Network](../common/images/vault-create-details.png " ")
 
@@ -112,10 +112,10 @@ Estimated time: 15 minutes.
 
 9. Click on **Create Key** and fill out the dialog box: 
 
-      - **COMPARTMENT**: Ensure your compartment is selected
-      - **PROTECTION MODE**: Select **HSM**
-      - **NAME**: Provide a name
-      - **KEY SHAPE ALGORITHM**: Select **AWES**.
+      - **Compartment**: Ensure your compartment is selected
+      - **Protection Mode**: Select **HSM**
+      - **Name**: Provide a name
+      - **Key Shape Algorithm**: Select **AWES**.
 
    ![Create Master Encryption Key in Demo Vault](../common/images/create-master-encryption-key.png " ")
 
@@ -133,11 +133,11 @@ Estimated time: 15 minutes.
 
 13. Click on **Create Secret** and fill out the dialog box: 
 
-      - **COMPARTMENT**: Ensure your compartment is selected
-      - **NAME**: Provide a name
-      - **ENCRYPTION KEY**: Select **mas-key**
-      - **SECRET TYPE TEMPLATE**: Select **Base64**
-      - **SECRET CONTENT**: Enter **License Code Value**.
+      - **Compartment**: Ensure your compartment is selected
+      - **Name**: Provide a name
+      - **Encryption Key**: Select **mas-key**
+      - **Secret Type Template**: Select **Base64**
+      - **Secret Content**: Enter **License Code Value**.
 
    ![Create License Secret in Demo Vault](../common/images/create-lic-secret.png " ")
 
@@ -164,10 +164,10 @@ Estimated time: 15 minutes.
 4. Fill out the dialog box:
 
       - **Type**: Select Compute
-      - **NAME**: Provide a name
-      - **AGENT BASED SCANNING**: Select **Qualys**
-      - **VAULT**: Select your Vault.
-      - **SECRET**: Select your Secret
+      - **Name**: Provide a name
+      - **Agent Based Scanning**: Select **Qualys**
+      - **Vault**: Select your Vault.
+      - **Secret**: Select your Secret
       
    ![Create Scanning Recipe with Details](../common/images/scanning-create-details.png " ")
 
@@ -187,12 +187,12 @@ Estimated time: 15 minutes.
 
 9. Click on **Create** and fill out the dialog box: 
 
-      - **NAME**: Provide a name
-      - **COMPARTMENT**: Ensure your compartment is selected
-      - **DESCRIPTION**: Enter user friendly description
-      - **SCAN RECIPE**: Select your scanning recipe
-      - **TARGET COMPARTMENT**: Ensure your compartment is selected
-      - **TARGETS**: Ensure your compartment or compartment's instances are selected which you want to scan.
+      - **Name**: Provide a name
+      - **Compartment**: Ensure your compartment is selected
+      - **Description**: Enter user friendly description
+      - **Scan Recipe**: Select your scanning recipe
+      - **Target Compartment**: Ensure your compartment is selected
+      - **Targets**: Ensure your compartment or compartment's instances are selected which you want to scan.
 
    ![Create Scanning Host Targets with Details](../common/images/target-create-details.png " ")
 

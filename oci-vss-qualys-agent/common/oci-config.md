@@ -38,11 +38,11 @@ Estimated time: 10 minutes.
 
 4. Fill out the dialog box and Click **Next**:
 
-      - **VCN NAME**: Provide a name
-      - **COMPARTMENT**: Ensure your compartment is selected
-      - **VCN CIDR BLOCK**: Provide a CIDR block (10.10.0.0/16)
-      - **PUBLIC SUBNET CIDR BLOCK**: Provide a CIDR block (10.10.0.0/24)
-      - **PRIVATE SUBNET  CIDR BLOCK**: Provide a CIDR block (10.10.1.0/24)
+      - **VCN Name**: Provide a name
+      - **Compartment**: Ensure your compartment is selected
+      - **VCN CIDR Block**: Provide a CIDR block (10.10.0.0/16)
+      - **Public Subnet CIDR Block**: Provide a CIDR block (10.10.0.0/24)
+      - **Private Subnet  CIDR Block**: Provide a CIDR block (10.10.1.0/24)
       
    ![Create VSS Virtual Cloud Network](../common/images/create-firewall-vcn.png " ")
 
