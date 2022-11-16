@@ -1,4 +1,4 @@
-# Migrate a legacy Glassfish application to Oracle Autonomous Database using Oracle Database Vault
+# Securing a legacy application using Oracle Database Vault on Oracle Autonomous Database
 
 ## Introduction
 
