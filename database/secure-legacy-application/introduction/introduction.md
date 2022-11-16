@@ -30,7 +30,7 @@ In this lab, you will complete the following tasks:
 
 ### Prerequisites
 
-This lab assumes you have:
+This workshop assumes you have:
 - An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
 - Familiarity with Database is desired
 - Some understanding of cloud and database terms is helpful
