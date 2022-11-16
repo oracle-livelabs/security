@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In this lab you will be creating required virtual cloud network (VCN) with subnets, internet gateway,nat gateway, service gateways, and compute instances which you will scanning using **OCI VSS**.
+In this lab, you will be creating the required virtual cloud network (VCN) with subnets, internet gateway, nat gateway, service gateways, and compute instances which you will scan using **OCI VSS**.
 
-Estimated Lab Time: 10 minutes.
+Estimated time: 10 minutes.
 
 ### Objectives
 
@@ -14,15 +14,15 @@ Estimated Lab Time: 10 minutes.
 ### Prerequisites
 
 - Oracle Cloud Infrastructure account credentials (User, Password, Tenant, and Compartment)
-- User must have required permissions, quota to deploy resources.
+- User must have required permissions, and quota to deploy resources.
 
 ## Task 1: Configure VSS VCN
 
-1. From the OCI Services menu, click **Virtual Cloud Networks** under **Networking**. Select your region on right part of the screen:
+1. From the OCI Services menu, click **Virtual Cloud Networks** under **Networking**. Select your region on the right part of the screen:
 
    ![Navigation window for Virtual Cloud Networks](../common/images/vcn-home.png " ")
 
-2. Below table represents what you will be creating. Click on **Start VCN Wizard** icon to create new **Virtual Cloud Network**:
+2. Below table represents what you will be creating. Click on the **Start VCN Wizard** icon to create a new **Virtual Cloud Network**:
 
       | Resource | Name                              | CIDR       | Comment                                                    |
       |---------------------------------------|----------------|----------------|------------------------------------------------------------|
@@ -32,7 +32,7 @@ Estimated Lab Time: 10 minutes.
       
    ![Create Virtual Cloud Network Button](../common/images/vcn-create.png " ")
 
-3. Click on **Create a VCN with Internet Connectivity** option: 
+3. Click on the **Create a VCN with Internet Connectivity** option: 
 
    ![Create Virtual Cloud Network with Internet Connectivity](../common/images/create-firewall-vcn-with-internet-connectivity.png " ")
 
@@ -50,7 +50,7 @@ Estimated Lab Time: 10 minutes.
 
    ![Confirm VSS Virtual Cloud Network Details](../common/images/create-firewall-vcn-confirm-details.png " ")
 
-6. This will create a VCN with following components.
+6. This will create a VCN with the following components.
 
     *VCN, Default Route Tables, Default Security List, Public Subnet, Private Subnet, NAT Gateway, Service Gateway, and Internet Gateway*
 
@@ -64,9 +64,9 @@ Estimated Lab Time: 10 minutes.
 
 ## Task 2: Launch Compute instances in VSS VCN
 
-1. Launch **Cloud Shell** by clicking the icon next to region name on top right of OCI console. ('<=' icon)
+1. Launch **Cloud Shell** by clicking the icon next to the region name on the top right of the OCI console. ('<=' icon)
 
-2. Once cloud Shell is launched. Enter command **ssh-keygen**, press enter for all prompts. This will create a ssh key pair. Enter command.
+2. Once cloud Shell is launched. Enter command **ssh-keygen**, and press enter for all prompts. This will create an ssh key pair. Enter command.
 
       ```
       <copy>
@@ -78,9 +78,9 @@ Estimated Lab Time: 10 minutes.
    
    Copy the key displayed. This will be used when creating the compute instance.
 
-3. From OCI services menu, Click **Instances** under **Compute**.
+3. From the OCI services menu, Click **Instances** under **Compute**.
  
-4. On the left sidebar, select the **Compartment** in which you placed your **VSS VCN** under **List Scope**. The, Click **Create Instance**. You will be creating **2** instances as per below table: 
+4. On the left sidebar, select the **Compartment** in which you placed your **VSS VCN** under **List Scope**. Then, Click **Create Instance**. You will be creating **2** instances as per below table: 
 
    | Name     | Placement | Image                 | Shape   | Network | Subnet              | Add SSH-Keys                | Assign Public IP              |
    |----------|------------|-----------------------|---------|---------|---------------------|-----------------------------|---|
@@ -102,9 +102,9 @@ Estimated Lab Time: 10 minutes.
 
 9. Ensure **PASTE PUBLIC KEYS** is selected under **Add SSH Keys**. Paste the public key copied earlier.
  
-    > **Note:** If 'Service limit' error is displayed choose a different shape from VM.Standard.E4.Flex, VM.Standard2.1, VM.Standard.E2.1, VM.Standard1.1, VM.Standard.B1.1 OR choose a different AD.
+    > **Note:** If the 'Service limit' error is displayed choose a different shape from VM.Standard.E4.Flex, VM.Standard2.1, VM.Standard.E2.1, VM.Standard1.1, VM.Standard.B1.1 OR choose a different AD.
 
-    > **Note:** If you already have your ssh-key available you can skip copying from cloud-shell and paste your own public key and use private key associated to that for accessing instance.
+    > **Note:** If you already have your ssh-key available you can skip copying from cloud-shell and paste your public key and use the private key associated with that for accessing the instance.
 
 10. Click **Create** and wait for Instance to be in **Running** state. 
 
@@ -112,9 +112,9 @@ Estimated Lab Time: 10 minutes.
 
    ![Created Running Instance in VSS VCN](../common/images/final-manual-instances.png " ")
 
-***Congratulations! You have successfully completed the lab.***
+***Congratulations! You have completed the lab.***
 
-You may now [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Learn More
 
