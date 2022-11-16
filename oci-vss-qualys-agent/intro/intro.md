@@ -18,7 +18,7 @@ Attached below is a sample architecture of the solution:
 
    ![OCI Network Firewall Workshop Topology Architecture](../common/images/arch.png " ")
 
-Estimated time: 30 minutes
+Estimated time: 45 minutes
 
 ### Objectives
 
