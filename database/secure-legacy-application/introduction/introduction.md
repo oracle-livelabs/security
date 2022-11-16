@@ -31,12 +31,14 @@ In this lab, you will complete the following tasks:
 ### Prerequisites
 
 This workshop assumes you have:
-- An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
+- An Oracle Cloud Infratructure tanancy account
 - Familiarity with Database is desired
 - Some understanding of cloud and database terms is helpful
 - Familiarity with Oracle Cloud Infrastructure (OCI) is helpful
 - Some basic understanding of data protection and security is a plus
 - Some familiarity with Linux/Bash commands is helpful
+
+*Note: Throughout this workshop, if you ever find yourself struggling when it comes to finding your resources in Oracle Cloud, make sure both your compartment and region correspond to where you created the resource.*
 
 ## Want to learn more about Oracle Database Vault?
 - [Oracle Database Vault Landing Page](https://www.oracle.com/uk/security/database-security/database-vault/)

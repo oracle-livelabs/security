@@ -15,7 +15,7 @@ In this lab, you will complete the following tasks:
 ### Prerequisites
 
 This lab assumes you have:
-- Oracle Cloud Infrastructure (OCI) Tenancy Account
+- Oracle Cloud Infrastructure (OCI) tenancy account
 
 ## Task 1: Create an ATP database instance.
 

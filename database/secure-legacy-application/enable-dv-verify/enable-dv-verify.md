@@ -15,7 +15,7 @@ In this lab, you will complete the following tasks:
 ### Prerequisites
 
 This lab assumes you have:
-- Oracle Cloud Infrastructure (OCI) Tenancy Account
+- Oracle Cloud Infrastructure (OCI) tenancy account
 - Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the Glassfish legacy HR application, Load and verify the data in the Glassfish application
 
 ## Task 1: Enable Database Vault on the ATP instance

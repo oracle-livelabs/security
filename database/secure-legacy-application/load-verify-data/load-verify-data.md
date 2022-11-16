@@ -16,7 +16,7 @@ In this lab, you will complete the following tasks:
 ### Prerequisites
 
 This lab assumes you have:
-- Oracle Cloud Infrastructure (OCI) Tenancy Account
+- Oracle Cloud Infrastructure (OCI) tenancy account
 - Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the Glassfish legacy HR application
 
 ## Task 1: Create the EMPLOYEESEARCH_PROD schema using SQL/Plus from the Glassfish App Server and startup the Glassfish application.
