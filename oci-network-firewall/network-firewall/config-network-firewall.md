@@ -2,14 +2,14 @@
 
 ## Introduction
 
-In this lab you will be configuring Network Firewall Policy required resources,rules to explore different firewall features sets and supporting configuration for **Lab 4**.
+In this lab you will be configuring Network Firewall Policy required resources, rules to explore different firewall features sets, and supporting configuration for **Lab 4**.
 
-Estimated Lab Time: 30 minutes.
+Estimated time: 30 minutes.
 
 ### Objectives
 
 - Configure Network Firewall Policy Rules
-- Configure Application, URLs and IP Address Lists
+- Configure Applications, URLs, and IP Address Lists
 - Configure Decryption rules to support SSL/HTTPS Traffic, SSL Inbound Inspection, Forward Proxy
 - Configure Security rules to support Allow, Block, Reject, IPS/IDS traffic, URL Filtering
 - Demonstrate updating Network Firewall Policy to Network Firewall
@@ -19,11 +19,11 @@ Estimated Lab Time: 30 minutes.
 ### Prerequisites
 
 - Oracle Cloud Infrastructure paid account credentials (User, Password, Tenant, and Compartment)  
-- Required Resources and Quota as per use-case topology.
+- User must have required permissions, and quota to deploy resources.
 
-## **Task 1: Clone Network Firewall Policy**
+## Task 1: Clone Network Firewall Policy
 
-1. From the OCI Services menu, click **Network Firewall Policies** under **Identity & Security**. Select your region on right part of the screen:
+1. From the OCI Services menu, click **Network Firewall Policies** under **Identity & Security**. Select your region on the right part of the screen:
 
    ![Navigate to Network Firewall Window](../common/images/network-firewall-window.png " ")
 
@@ -31,24 +31,24 @@ Estimated Lab Time: 30 minutes.
 
    ![Click on Created Network Firewall Policy](../common/images/click-created-network-firewall-policy.png " ")
 
-3. Below table represents what you will be creating. Click on **Clone Policy** icon to create copy of **Network Firewall Policy**:
+3. Below table represents what you will be creating. Click on the **Clone Policy** icon to create a copy of **Network Firewall Policy**:
 
       | New Policy Name                           | Comment                                                    |
       |---------------------------------------|------------------------------------------------------------|
-      | network-firewall-policy-demo-latest          |  This Lab will include tasks to update Policy. |
+      | network-firewall-policy-demo-latest          |  This Lab will include tasks to update the Policy. |
 
    ![Clone Network Firewall Policy](../common/images/clone-network-firewall-policy.png " ")
 
 3. Fill out the dialog box and Click **Next**:
 
-      - **POLICY NAME**: Provide a name
-      - **COMPARTMENT**: Ensure your compartment is selected
+      - **Policy Name**: Provide a name
+      - **Compartment**: Ensure your compartment is selected
 
    ![Clone Network Firewall Policy Basic Information](../common/images/clone-network-firewall-policy-basic-information.png " ")
 
 4. Continue to **next task** to create **Application Lists**. 
 
-## **Task 2: Create Application Lists**
+## Task 2: Create Application Lists
 
 1. Continue with **Create network firewall policy clone** workflow and click on **Add application list**: 
 
@@ -61,8 +61,8 @@ Estimated Lab Time: 30 minutes.
       | ssh-http-https-list          |  Select TCP with Port 22, 80, 443 |   These ports traffic will be validated |
       | icmp-list          |  Select Echo Request and Echo Reply ICMP Protocol |   ICMP Traffic will be validated |
 
-3. You will add list one-by-one by clicking on **Add application list** and Fill out the dialog box:
-      - **LIST NAME**: Provide a name
+3. You will add lists one by one by clicking on **Add application list** and Filling out the dialog box:
+      - **List Name**: Provide a name
       - **Application List Protocol Setting**: Select **UDP/TCP**
          - **App1**: 
             - **Protocol** Select **TCP** from dropdown.
@@ -80,7 +80,7 @@ Estimated Lab Time: 30 minutes.
 
 5. Similarly create another application list to support **ICMP** traffics as per *Step 3* table: 
 
-      - **List NAME**: Provide a name
+      - **List Name**: Provide a name
       - **Application List Protocol Setting**: Select **UDP/TCP**
          - **App1**: 
             - **Protocol** Select **ICMP/ICMP6** from dropdown.
@@ -93,9 +93,9 @@ Estimated Lab Time: 30 minutes.
 
    ![Clone Network Firewall Policy Add Application ICMP Lists](../common/images/clone-network-firewall-add-application-icmp-lists.png " ")
 
-6. Continue to next task to create **URL Lists**. 
+6. Continue to the next task to create **URL Lists**. 
 
-## **Task 3: Create URL Lists**
+## Task 3: Create URL Lists
 
 1. Continue with **Create network firewall policy clone** workflow and click on **Add URL list**: 
 
@@ -105,18 +105,18 @@ Estimated Lab Time: 30 minutes.
       |---------------------------------------|------------------------------------------------------------|------------------------------------------------------------|
       | http-info-url-espn-traffic          |  Enter URLs: info.cern.ch, espn.com |   URL Filtering Validation: Info Cern for HTTP and ESPN for SSL/HTTPS traffic |
 
-3. You will add list one-by-one by clicking on **Add appication list** and Fill out the dialog box:
+3. You will add lists one by one by clicking on **Add application list** and Filling out the dialog box:
 
-      - **List NAME**: Provide a name
+      - **List Name**: Provide a name
       - **URLs**: Enter **info.cern.ch** and **espn.com** URLs.
 
 4. Verify all the information and Click **Add URL List**.
 
    ![Clone Network Firewall Policy Add URLs Lists](../common/images/clone-network-firewall-add-url-lists.png " ")
 
-5. Continue to next task to create **IP address Lists**. 
+5. Continue to the next task to create **IP address Lists**. 
 
-## **Task 4: Create IP Address Lists**
+## Task 4: Create IP Address Lists
 
 1. Continue with **Create network firewall policy clone** workflow and click on **Add address list**.
 
@@ -131,13 +131,13 @@ Estimated Lab Time: 30 minutes.
       | ServerB-Subnet-CIDR        |  10.10.2.0/24 |   ServerB Subnet CIDR in Spoke-VCN     |
       | MyPublic-IP                |  98.X.X.X/32  |   Enter your Public IP Address         |
 
-3. You will add list one-by-one by clicking on **Add appication list** and Fill out the dialog box:
+3. You will add lists one by one by clicking on **Add application list** and Filling out the dialog box:
 
-      - **IP Address List NAME**: Provide a name
-      - **IP Addresses**: Enter value as per table for Each List. 
+      - **IP Address List Name**: Provide a name
+      - **IP Addresses**: Enter the value as per the table for Each List. 
         - For Example: **Clinet-Subnet-CIDR** IP address list enter **10.10.1.0/24**.
 
-4. Verify all the information and Click **Add IP Addrerss List**.
+4. Verify all the information and Click **Add IP Address List**.
 
    ![Clone Network Firewall Policy Add IP Address Client CIDR List](../common/images/clone-network-firewall-add-ip-address-client-cidr-lists.png " ")
 
@@ -161,27 +161,27 @@ Estimated Lab Time: 30 minutes.
 
    ![Clone Network Firewall Policy Add IP Address My Public IP CIDR List](../common/images/clone-network-firewall-add-ip-address-my-public-cidr-lists.png " ")
 
-10. Continue to next task to create **Mapped Secrets and Decryption Profiles**. 
+10. Continue to the next task to create **Mapped Secrets and Decryption Profiles**. 
 
-## **Task 5: Create Mapped Secrets and Decryption Profiles**
+## Task 5: Create Mapped Secrets and Decryption Profiles
 
-1. Our use-case requires SSL Forward Proxy (HTTPS) traffic validation so you must follow **Task 1-4: Store the Certrificarte** from **Network Firewall** official docs: 
+1. Our use case requires SSL Forward Proxy (HTTPS) traffic validation so you must follow **Task 1-4: Store the Certificate** from **Network Firewall** official docs: 
 
    [Task 1-4: Create Vault, Create Certificate, Store the Certificate](https://docs.oracle.com/en-us/iaas/Content/network-firewall/setting-up-certificate-authentication.htm)
 
-  **PLEASE READ**: You can also refer *Step 2-4* to create a **Certificate**, **Secret** and **Update CA Cert** to create a **mapped secret**. In case if you have completed *Step1* you can continue with *Step6*. 
+  > **Please Read**: You can also refer *Step 2-4* to create a **Certificate**, **Secret** and **Update CA Cert** to create a **mapped secret**. In case you have completed *Step1* you can continue with *Step6*. 
 
-2. For your reference you can download certificate script on your **Client-VM**. Save this [file](https://github.com/oracle-quickstart/oci-network-firewall/blob/master/scripts/create-certificate.sh) as **certificate.sh** at home directory. 
+2. For your reference you can download the certificate script on your **Client-VM**. Save this [file](https://github.com/oracle-quickstart/oci-network-firewall/blob/master/scripts/create-certificate.sh) as **certificate.sh** at the home directory. 
 
 3. Run bash scrip **./certificate.sh** with **forward** and **network firewall ip** parameters command to generate certificate:
 
    ![Run Certificate Script to Generate SSL Forward Proxy](../common/images/run-certificate-script-generate-ssl-foreward-proxy.png " ")
 
-4. You can refer this image which shows how to **Create Secret** with **...ssl-forward-proxy.json** file output. 
+4. You can refer to this image which shows how to **Create Secret** with **...ssl-forward-proxy.json** file output. 
 
    ![Create Secret in OCI Vault with SSL Forward Proxy JSON Output](../common/images/create-secret-oci-vaule-with-certificate.png " ")
 
-5. You need to update **CA-Cert**, below is a sample image which shows commands that you need to run:
+5. You need to update **CA-Cert**, below is a sample image that shows commands that you need to run:
 
    ![Add Client Certificate to CA Cert Bundle on Linux VM](../common/images/add-client-certificate-to-ca-cert-bundle.png " ")
 
@@ -193,9 +193,9 @@ Estimated Lab Time: 30 minutes.
       |---------------------------------------|------------------------------------------------------------|------------------------------------------------------------|
       | ssl-forward-proxy-mapped-secret          |  SSL Forward Proxy |   Select SSL Forward Proxy Certificate Secret Import in OCI Vault |
 
-8. You will add mapped secret by clicking on **Add mapped secret** and Fill out the dialog box:
+8. You will add a mapped secret by clicking on **Add mapped secret** and Filling out the dialog box:
 
-      - **Mapped Secret NAME**: Provide a name
+      - **Mapped Secret Name**: Provide a name
       - **Mapped Secret Type**: Select **SSL Forward Proxy**
       - **Vault**: Select **Vault** from your Compartment
       - **Secret**: Select **Secret** from your Vault
@@ -205,7 +205,7 @@ Estimated Lab Time: 30 minutes.
 
    ![Clone Network Firewall Policy Add Mapped Secret](../common/images/clone-network-firewall-add-mapped-secret.png " ")
 
-10. You will add decryption profile by clicking on **Add Decryption Profile** and Fill out the dialog box:
+10. You will add a decryption profile by clicking on **Add Decryption Profile** and Filling out the dialog box:
 
       - **Decryption Profile NAME**: Provide a name
       - **Decryption Profile Type**: Select **SSL Forward Proxy**
@@ -214,9 +214,9 @@ Estimated Lab Time: 30 minutes.
 
    ![Clone Network Firewall Policy Add Decryption Profile](../common/images/clone-network-firewall-add-decrpytion-profile.png " ")
 
-12. Continue to next task to create **Decryption Rule**. 
+12. Continue to the next task to create the **Decryption Rule**. 
 
-## **Task 6: Create Decryption Rules**
+## Task 6: Create Decryption Rules
 
 1. Continue with **Create network firewall policy clone** workflow and click on **Add Decryption Rule**.
 
@@ -226,9 +226,9 @@ Estimated Lab Time: 30 minutes.
       |---------------------------------------|
       | Client-SSL-Traffic-Decryption-Rule    | 
 
-3. You will create Decpytion Rule by clicking on **Add Decrpytion Rule** and Fill out the dialog box:
+3. You will create Decryption Rule by clicking on **Add Decryption Rule** and Filling out the dialog box:
 
-      - **Decrpytion Rule NAME**: Provide a name
+      - **Decryption Rule NAME**: Provide a name
       - **Match Condition**:
          - **Source IP address**: Select **Client-Subnet-CIDR**
          - **Destination IP address**: Enter **Any IP Address** 
@@ -241,32 +241,32 @@ Estimated Lab Time: 30 minutes.
 
    ![Clone Network Firewall Policy Add Decryption Rule](../common/images/clone-network-firewall-add-decrpytion-rule.png " ")
 
-5. Continue to next task to create **Security Rules**. 
+5. Continue to the next task to create **Security Rules**. 
 
-## **Task 7: Create Security Rules**
+## Task 7: Create Security Rules
 
-1. Navigate to next page of **Create network firewall policy clone workflow** and click on **Add Secure Rule** to create security Rule: 
+1. Navigate to the next page of **Create network firewall policy clone workflow** and click on **Add Secure Rule** to create a security Rule: 
 
 2. Below table represents what you will be creating **Security Rules** to support traffic flow:
 
       | Rule Name                           | Source IP Addresses       | Destination IP Addresses     | Applications | URLs | Rule Action                                              |
       |---------------------------------------|------------------------------------------------------------|------------------------------------------------------------|---------|---------|---------|
       | rule-inbound-my-ip-to-client-vm-allow-all-traffic |  MyPublic-IP |  Client-Subnet-CIDR | Any protocol | Any URL | Allow Traffic |
-      | rule-client-server-vm-allow-ssh-traffic |  Client-Subnet-CIDR |  Server-Subnet-CIDR | UDP/TCP with ssh-http-https-list | Any URL | Allow Traffic |	
-      | rule-client-server-vm-reject-icmp-traffic |  Client-Subnet-CIDR |  Server-Subnet-CIDR | ICMP/ICMPv6 with icmp-list  | Any URL | Reject traffic |	
-      | rule-client-serverB-vm-reject-all-traffic |  Client-Subnet-CIDR | ServerB-Subnet-CIDR | Any protocol  | Any URL| Reject traffic	|
-      | rule-client-serverA-vm-allow-all-traffic  |  Client-Subnet-CIDR |  ServerA-Subnet-CIDR | Any protocol | Any URL | Allow Traffic |	
-      | rule-client-allow-http-https-url-filtering-traffic   | Client-Subnet-CIDR |  Client-Subnet-CIDR | UDP/TCP with  ssh-http-https-list | http-info-url-espn-traffic | Allow Traffic |	
-      | rule-client-to-internet-intrusion-detection-traffic | Client-Subnet-CIDR |  Any IP address | UDP/TCP with  ssh-http-https-list | Any URL | Intrusion Detection |	
-      | rule-client-to-outbound-allow-all-traffic               |  Client-Subnet-CIDR|  Any IP address | Any protocol | Any URL | Allow Traffic |	
-      | rule-serverA-to-serverB-allow-icmp-traffic               |  ServerA-Subnet-CIDR |  ServerB-Subnet-CIDR | ICMP/ICMPv6 with  icmp-list | Any URL | Allow Traffic |	
-      | rule-serverB-to-serverA-allow-ssh-http-https-traffic    | ServerB-Subnet-CIDR | ServerA-Subnet-CIDR| UDP/TCP with  ssh-http-https-list | Any URL | Allow Traffic |	
-      | rule-spoke-vcn-to-firewall-vcn-allow-all-traffic   |  Client-Subnet-CIDR, Spoke-VCN-Subnet-CIDRs, Server-Subnet-CIDR |   Client-Subnet-CIDR, Spoke-VCN-Subnet-CIDRs, Server-Subnet-CIDR | Any protocol | Any URL | Allow Traffic |	
-      | rule-default-drop-all-traffic               | Any IP address|  Any IP address | Any protocol | Any URL | Drop Traffic |	
+      | rule-client-server-vm-allow-ssh-traffic |  Client-Subnet-CIDR |  Server-Subnet-CIDR | UDP/TCP with ssh-http-https-list | Any URL | Allow Traffic |  
+      | rule-client-server-vm-reject-icmp-traffic |  Client-Subnet-CIDR |  Server-Subnet-CIDR | ICMP/ICMPv6 with icmp-list  | Any URL | Reject traffic | 
+      | rule-client-serverB-vm-reject-all-traffic |  Client-Subnet-CIDR | ServerB-Subnet-CIDR | Any protocol  | Any URL| Reject traffic   |
+      | rule-client-serverA-vm-allow-all-traffic  |  Client-Subnet-CIDR |  ServerA-Subnet-CIDR | Any protocol | Any URL | Allow Traffic | 
+      | rule-client-allow-http-https-url-filtering-traffic   | Client-Subnet-CIDR |  Client-Subnet-CIDR | UDP/TCP with  ssh-http-https-list | http-info-url-espn-traffic | Allow Traffic |   
+      | rule-client-to-internet-intrusion-detection-traffic | Client-Subnet-CIDR |  Any IP address | UDP/TCP with  ssh-http-https-list | Any URL | Intrusion Detection |   
+      | rule-client-to-outbound-allow-all-traffic               |  Client-Subnet-CIDR|  Any IP address | Any protocol | Any URL | Allow Traffic |  
+      | rule-serverA-to-serverB-allow-icmp-traffic               |  ServerA-Subnet-CIDR |  ServerB-Subnet-CIDR | ICMP/ICMPv6 with  icmp-list | Any URL | Allow Traffic |   
+      | rule-serverB-to-serverA-allow-ssh-http-https-traffic    | ServerB-Subnet-CIDR | ServerA-Subnet-CIDR| UDP/TCP with  ssh-http-https-list | Any URL | Allow Traffic | 
+      | rule-spoke-vcn-to-firewall-vcn-allow-all-traffic   |  Client-Subnet-CIDR, Spoke-VCN-Subnet-CIDRs, Server-Subnet-CIDR |   Client-Subnet-CIDR, Spoke-VCN-Subnet-CIDRs, Server-Subnet-CIDR | Any protocol | Any URL | Allow Traffic |   
+      | rule-default-drop-all-traffic               | Any IP address|  Any IP address | Any protocol | Any URL | Drop Traffic |  
 
-3. You will add rules one-by-one by clicking on **Add Security Rule** and Fill out the dialog box:
+3. You will add rules one by one by clicking on **Add Security Rule** and Filling out the dialog box:
 
-      - **Rule NAME**: Provide a name
+      - **Rule Name**: Provide a name
       - **Match Condition**:
          - **Source IP address**: Enter as per Table
          - **Destination IP address**: Enter as per Table
@@ -288,11 +288,11 @@ Estimated Lab Time: 30 minutes.
 
    ![Clone Network Firewall Policy Add All Security Rules](../common/images/clone-network-firewall-add-all-security-rules.png " ")
 
-8. Finish the Network Firewall Policy creation by clicking on **Create Network Firewall Policy** button:  
+8. Finish the Network Firewall Policy creation by clicking on the **Create Network Firewall Policy** button:  
 
    ![Clone Network Firewall Policy Review and Complete Workflow](../common/images/clone-network-firewall-review-final-updates.png " ")
 
-## **Task 8: Update Network Firewall Policy**
+## Task 8: Update Network Firewall Policy
 
 1. Navigate to **Network Firewall** page to to update **Network Firewall Policy**: 
 
@@ -308,21 +308,21 @@ Estimated Lab Time: 30 minutes.
 
    ![Update Network Firewall Policy](../common/images/network-firewall-update-policy.png " ")
 
-5. Policy Updates takes close to **7-10** mins at this moment and you can track your work request within **Network Firewall** resources page. 
+5. Policy Updates take close to **7-10** mins at this moment and you can track your work request within the **Network Firewall** resources page. 
 
-## **Task 9: Enable Network Firewall Logs**
+## Task 9: Enable Network Firewall Logs
 
 1. Navigate to **Network Firewall > Resources > Logs** page to to enable **Traffic** and **Threat** logs: 
 
    ![Enable Network Firewall Logs](../common/images/network-firewall-enable-logs.png " ")
 
-2. Click on toggle buttons next to **Threat Log** to enable logs. 
+2. Click on the toggle buttons next to **Threat Log** to enable logs. 
 
 3. Verify all the information and Click **Enable Log**.
 
    ![Enable Network Firewall Threat Log](../common/images/network-firewall-enable-threat-logs.png " ")
 
-4. Click on toggle buttons next to **Traffic Log** to enable logs.
+4. Click on the toggle buttons next to **Traffic Log** to enable logs.
 
 5. Verify all the information and Click **Enable Log**.
 
@@ -330,17 +330,17 @@ Estimated Lab Time: 30 minutes.
 
 6. You have successfully enabled Network Firewall Logs.
 
-## **Task 10: Explore Network Firewall Metrics**
+## Task 10: Explore Network Firewall Metrics
 
 1. Navigate to **Network Firewall > Resources > Metrics** page to to check **Metrics**: 
 
    ![Explore Network Firewall Metrics](../common/images/network-firewall-metrics.png " ")
 
-2. Explore different metrics either hovering on top of it or explore **options** to create alarms if needed: 
+2. Explore different metrics either hovering on top of it or exploring **options** to create alarms if needed: 
 
    ![Explore Network Firewall Metrics Security Hit Counts](../common/images/network-firewall-security-hit-counts.png " ")
 
-## **Task 11: Explore Network Firewall Work Requests**
+## Task 11: Explore Network Firewall Work Requests
 
 1. Navigate to **Network Firewall > Resources > Work requests** page to to check **Work requests**: 
 
@@ -350,9 +350,9 @@ Estimated Lab Time: 30 minutes.
 
    ![Explore Network Firewall Work Requests - Update Firewall](../common/images/network-firewall-work-requests-update-firewall.png " ")
 
-***Congratulations! You have successfully completed the lab.***
+***Congratulations! You have completed the lab.***
 
-You may now [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Learn More
 
