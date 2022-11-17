@@ -1,8 +1,10 @@
 # Introduction to OCI Network Firewall
 
-Oracle Cloud Infrastructure (OCI) offers best-in-class security technology and operational processes to secure its enterprise cloud services. However, security in the cloud is based on a shared responsibility model. Oracle is responsible for the security of the underlying infrastructure, such as data center facilities, hardware, and software to manage cloud operations and services. Customers are responsible for securing their workloads and configuring their services and applications securely to meet their compliance obligations. In this workshop you will be using **OCI Network Firewall** solution to secure your workloads.
+Oracle Cloud Infrastructure (OCI) offers best-in-class security technology and operational processes to secure its enterprise cloud services. However, security in the cloud is based on a shared responsibility model. Oracle is responsible for the security of the underlying infrastructure, such as data center facilities, hardware, and software to manage cloud operations and services. Customers are responsible for securing their workloads and configuring their services and applications securely to meet their compliance obligations. In this workshop, you will be using the **OCI Network Firewall** solution to secure your workloads.
 
-This workshop will cover step-by-step(manual) and automated approach which you can follow to deploy required components on Oracle Cloud Infrastructure with OCI Network Firewall solution.
+This workshop will cover step-by-step(manual) and automated approaches which you can follow to deploy required components on Oracle Cloud Infrastructure with OCI Network Firewall solution.
+
+Estimated time: 120 minutes
 
 ## Solution
 
@@ -15,19 +17,17 @@ Oracle has partnered with **Palo Alto Networks** to provide Oracle Cloud Infrast
 - **Logging**: Network Firewall is integrated with Oracle Cloud Infrastructure Logging. Enable logs based on your firewall's policy rules.
 - **Metrics**: Network Firewall is integrated with Oracle Cloud Infrastructure Monitoring. Enable alerts based on metrics such as the number of blocked requests using Monitoring service capabilities.
 - **Intra-VCN subnet traffic inspection**: Route traffic between two subnets within a VCN through a network firewall.
-- **Inter-VCN traffic inspection**: Route traffic between two VCNs through a network firewall.
+- **Inter-VCN traffic inspection**: Route traffic between VCNs through a network firewall.
 
 You can deploy **Network Firewall** in two different architectures:
-- **Distributed Network Firewall**: Network Firewall is deployed in its dedicated VCN which is recommended.
-- **Transit Network Firewall**: Network Firewall is deployed in a Firewall VCN and connected to spoke VCNs through dynamic routing gateway.
+- **Distributed Network Firewall**: Network Firewall is deployed in its dedicated VCN which is recommended that way you can deploy a firewall in each VCN and secure your workloads.
+- **Transit Network Firewall**: Network Firewall is deployed in a Firewall VCN and connected to spoke VCNs through a dynamic routing gateway.
 
-You can use this solution with different use-cases to secure your workloads. This workshop will cover different features use-case where you can deploy the solution and secure the workloads.
+This workshop will cover different security key features including security rules, intrusion prevention, intrusion detection, URL filtering, and more where you can deploy the solution and secure your OCI workloads.
 
-Attached below is a sample architecture of the solution based on **Transit Network Firewall**:
+Attached below is a sample architecture of the solution based on **Transit Network Firewall** which gives you the familiarity of the **Hub & Spoke** model and traffic routed through the network firewall in **firewall-vcn**:
 
    ![OCI Network Firewall Workshop Topology Architecture](../common/images/arch.png " ")
-
-Estimated time: 120 minutes
 
 ### Objectives
 
@@ -41,13 +41,14 @@ Estimated time: 120 minutes
 ### Prerequisites
 
    - Oracle Cloud Infrastructure paid account credentials (User, Password, Tenant, and Compartment)
-   - Required Quota, Resources permission,and associated policies are complete.
+   - User must have required permissions, and quota to deploy resources.
 
-   **PLEASE READ**: You must have a valid **Oracle Cloud Infrastructure paid account** which allows you to deploy **OCI Network Firewall** and associated components. **Getting Started** section includes instructions to create a new free trial account, please convert that account as pay you go so you can deploy resources.
+   > **Please Read**: You must have a valid **Oracle Cloud Infrastructure paid account** which allows you to deploy **OCI Network Firewall** and associated components. 
+   > **Note**: The **Getting Started** section includes instructions to create a new free trial account, please convert that account as pay you go so you can deploy resources.
 
 ### Let's get Started!
 
-You may now [proceed to the labs](#next).
+You may now **proceed to the next lab**.
 
 ### Learn More
 
