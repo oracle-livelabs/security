@@ -89,16 +89,16 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 	![Login as dba_debra](images/signin-dba-debra.png)
 
-4. Repeat the same query from step two to show that **DBA_DEBRA does not have sufficient priveldges** to access the Database Vault logs.
+4. Repeat the same query from step two to show that **DBA_DEBRA does not have sufficient privileges** to access the Database Vault logs.
 
 	```
 	<copy>select * from dba_dv_simulation_log;</copy>
 	```
 
-	![Show dba_debra priveledges](images/show-debra-priveledges.png)
+	![Show dba_debra privileges](images/show-debra-privileges.png)
 
 
-We have now tested our Database Vault realm in simulation mode and checked that typical DBA users like DBA_DEBRA do not have sufficient priveledges. In the next lab, we will now take our realm from simulation mode to **enforce** mode and explore our application with Database Vault enabled.
+We have now tested our Database Vault realm in simulation mode and checked that typical DBA users like DBA_DEBRA do not have sufficient privileges. In the next lab, we will now take our realm from simulation mode to **enforce** mode and explore our application with Database Vault enabled.
 
 You may now **proceed to the next lab.**
 

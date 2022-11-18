@@ -36,18 +36,19 @@ This lab assumes you have:
         ```
         <copy>cd myhrapp</copy>
         ```
-
-    - Set editing preferences:
-
-        ```
-        <copy>set -o vi</copy>
-        ```
     
     - Generate the SSH key-pair:
 
         ```
         <copy>ssh-keygen -b 2048 -t rsa -f myhrappkey</copy>
         ```
+   
+    - Set the permissions on the ssh keypair so only you, the owner, has both reading and writing capabilities.
+
+        ```
+        <copy>chmod 600 myhrapp</copy>
+        ```
+
     - When prompted if you want a passcode, press enter again to avoid creating one.
 
     - View the key-pair you just created:
@@ -119,6 +120,12 @@ This lab assumes you have:
     ```
 
     ![SSH into instance](images/ssh-into-instance.png)
+
+    *Note:* If you are having trouble with your keys, remember that your **myhrapp** directory needs to maintain read and write privileges for the owner. If you are ever running into this issue, copy and paste the following command in your **myhrapp** directory in Cloud Shell to update read and write privileges.
+
+    ```
+    <copy>chmod 600 myhrapp</copy>
+    ```
 
 3. Move to the `lab_01` directory.
 

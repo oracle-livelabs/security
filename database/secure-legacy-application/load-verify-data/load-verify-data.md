@@ -8,7 +8,7 @@ In this lab, we will populate the Glassfish application with data and then verif
 
 In this lab, you will complete the following tasks:
 
-- Create the `EMPLOYEESEARCH_PROD` schema using `SQL/Plus` from the Glassfish App Server.
+- Create the `EMPLOYEESEARCH_PROD` schema using `SQL*Plus` from the Glassfish App Server.
 - Update the connection string.
 - Start the Glassfish application.
 - Verify the HR app functions using the Glassfish app **public IP**.
@@ -19,7 +19,7 @@ This lab assumes you have:
 - Oracle Cloud Infrastructure (OCI) tenancy account
 - Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the Glassfish legacy HR application
 
-## Task 1: Create the EMPLOYEESEARCH_PROD schema using SQL/Plus from the Glassfish App Server and startup the Glassfish application.
+## Task 1: Create the EMPLOYEESEARCH_PROD schema using SQL*Plus from the Glassfish App Server and startup the Glassfish application.
 
 1. From the Cloud Shell console within `myhrapp`, use the `load_app_data.sh` script to load data into your ATP instance.
 
@@ -102,7 +102,6 @@ This lab assumes you have:
     ![Open myhrapp](images/verify-data.png)
 
 9. Using the menu at the top of the page, select **Home** to navigate back to the home page.
-
 
 You may now **proceed to the next lab.**
 

@@ -37,10 +37,12 @@ This lab assumes you have:
 5. Under the **ADMIN** schema, copy and paste the following commands to create the **Database Vault owner**. Select the button **Run Script** to execute the statements. Check the **Script output** at the bottom of the page to make sure the statements executed successfully.
 
    ```
-   <copy>CREATE USER sec_admin_owen IDENTIFIED BY WElcome_123#;
+   <copy>
+   CREATE USER sec_admin_owen IDENTIFIED BY WElcome_123#;
    GRANT CREATE SESSION TO sec_admin_owen;
    GRANT SELECT ANY DICTIONARY TO sec_admin_owen;
-   GRANT AUDIT_ADMIN to sec_admin_owen;</copy>
+   GRANT AUDIT_ADMIN to sec_admin_owen;
+   </copy>
    ```
 
    ![Create dv owner](images/create-dv-owner.png)
@@ -57,22 +59,26 @@ This lab assumes you have:
 7. Clear your worksheet. Under the **ADMIN** schema, copy and paste the following commands to create the DBA user, `dba_debra`. Select the button **Run Script** to execute the statements. Check the **Script output** at the bottom of the page to make sure the statements executed successfully.
 
    ```
-   <copy>CREATE USER dba_debra IDENTIFIED by WElcome_123#;
+   <copy>
+   CREATE USER dba_debra IDENTIFIED by WElcome_123#;
    GRANT PDB_DBA to dba_debra;
    BEGIN
       ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('dba_debra'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('dba_debra'), p_auto_rest_auth => TRUE);
    END;
-   /</copy>
+   /
+   </copy>
    ```
 
-8. Enable **SQL Worksheet** priveledges for the users that were just created. Clear your worksheet after executing each of the following commands and check to make sure the statements were executed properly.
+8. Enable **SQL Worksheet** privileges for the users that were just created. Clear your worksheet after executing each of the following commands and check to make sure the statements were executed properly.
 
    ```
-   <copy>BEGIN
+   <copy>
+   BEGIN
       ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('sec_admin_owen'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('sec_admin_owen'), p_auto_rest_auth => TRUE);
       ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('accts_admin_ace'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('accts_admin_ace'), p_auto_rest_auth => TRUE);
    END;
-   /</copy>
+   /
+   </copy>
    ```
 
    ```
@@ -83,17 +89,25 @@ This lab assumes you have:
    <copy>EXEC DBMS_CLOUD_MACADM.ENABLE_DATABASE_VAULT;</copy>
    ```
 
-9. Check to make sure Database Vault configure status is **true but not enabled** by querying the `DBA_DV_STATUS` table. Make sure your worksheet is clear, then copy and paste the following query into the worksheet. Run the command and make sure you received an appropriate output.
+9. Add authorization privileges to **only** the `EMPLOYEESEARCH_PROD` schema.
+
+   ```
+   <copy>
+   ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('employeesearch_prod'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('employeesearch_prod'), p_auto_rest_auth => TRUE);
+   </copy>
+   ```
+
+10. Check to make sure Database Vault configure status is **true but not enabled** by querying the `DBA_DV_STATUS` table. Make sure your worksheet is clear, then copy and paste the following query into the worksheet. Run the command and make sure you received an appropriate output.
 
    ```
    <copy>SELECT * FROM DBA_DV_STATUS;</copy>
    ```
 
-10. Navigate back to the **Autonomous Database Details** page. Under **More actions**, select **Restart** (This can take a few minutes).
+11. Navigate back to the **Autonomous Database Details** page. Under **More actions**, select **Restart** (This can take a few minutes).
 
    ![Restart atp](images/restart-atp.png)
 
-11. Navigate back to the **Database Actions SQL Worksheet** and refresh the page. Make sure your worksheet is clear and copy/paste the query below. Check your script output to make sure that both `DV_CONFIGURE_STATUS` and `DV_ENABLE_STATUS` are now **TRUE**.
+12. Navigate back to the **Database Actions SQL Worksheet** and refresh the page. Make sure your worksheet is clear and copy/paste the query below. Check your script output to make sure that both `DV_CONFIGURE_STATUS` and `DV_ENABLE_STATUS` are now **TRUE**.
 
    ```
    <copy>SELECT * FROM DBA_DV_STATUS;</copy>

@@ -57,9 +57,9 @@ Notice that the data is viewable and accessible. Next, we will switch the Databa
 
 1. Navigate back to the **production** HR application. Under **Search Employees**, select **Search** again and check the results.
 
-	![Insufficient priveledges](images/insufficient-priveledge.png)
+	![Insufficient privileges](images/insufficient-privilege.png)
 
-Notice how the application was locked out of the `EMPLOYEESEARCH_PROD` schema due to insufficient priveledges, and as a result, the employee data is no longer accessible.
+Notice how the application was locked out of the `EMPLOYEESEARCH_PROD` schema due to insufficient privileges, and as a result, the employee data is no longer accessible.
 
 2. Navigate back to **Database Actions** and clear the SQL worksheet. Cope and paste the following query into the work sheet and run the script.
 
@@ -67,7 +67,7 @@ Notice how the application was locked out of the `EMPLOYEESEARCH_PROD` schema du
 	<copy>select userid, firstname, lastname, emptype, position, ssn, sin, nino from employeesearch_prod.demo_hr_employees where rownum < 10;</copy>
 	```
 
-	![Insufficient db priveledges](images/db-insufficient-priveledge.png)
+	![Insufficient db privileges](images/db-insufficient-privilege.png)
 
 Notice how `sec_admin_owen` is no longer able to query data in the `EMPLOYEESEARCH_PROD` schema. We have now succesfully moved and secured our legacy application in Oracle Cloud!
 

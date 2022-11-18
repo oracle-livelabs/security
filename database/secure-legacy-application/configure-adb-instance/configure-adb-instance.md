@@ -27,9 +27,9 @@ This lab assumes you have:
 
     ![Select Create Autonomous Database](images/create-autonomous-database.png) 
 
-3. Enter a display name and database name.  
+3. Use a compartment of your choice and enter a display name and database name of **MyHRAppDB**.  
 
-    ![Enter database name](images/name-database.png) 
+    ![Enter database name](images/myhrapp-db-name.png) 
 
 4. Create a password for admin credentials.
 

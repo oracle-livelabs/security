@@ -2,16 +2,16 @@
 
 ## Introduction
 
-One of the primary challenges when moving to the cloud is how to integrate legacy enterprises applications and services into the modern, secure cloud. Using the power of Oracle Database Vault and Autonomous Database, customers can have flexibility and peace of mind when it comes to moving their legacy services and applications to the cloud, with their data encrypted and secured at rest and in motion.
+One of the primary challenges when moving to the cloud is how to integrate legacy enterprises applications and services into the modern, secure cloud. Oracle Autonomous Database will automatically encrypt data at rest and in-motion.  By adding Oracle Database Vault, customers can have flexibility and peace of mind to securely move legacy services and applications to the Oracle cloud.
 
-The hostility towards moving to the cloud comes from three main reasons when it comes the realm of security:
+Customers describe three main concerns when moving to the cloud:
+
 - Losing control: When a system goes down, who is to blame?
 - Data Protection: When moving to the cloud, how do I make sure my data is secure and encrypted?
 - Security: Can other customers access our data? Have all the security patches been kept up to date?
+ 
 
-Using Oracle Database Vault in combination with Oracle Autonomous Database, customers can learn how to migrate their legacy applications to the cloud in a secure and flexible manner.
-
-Oracle Database Vault implements data security controls within Oracle Database to restrict access to application data by privileged users. Reduce the risk of insider and outside threats and address compliance requirements, including separation of duties.
+Oracle Autonomous Database, with Oracle Database Vault, solves all three concerns. Autonomous Database is a fault-tolerant and highly-available solution which automatically encrypts your data at-rest and in-motion. Oracle Database Vault implements data security controls within Oracle Database to restrict access to application data by privileged users. Reduce the risk of insider and outside threats and address compliance requirements, including separation of duties.
 
 ![Lab Architecture](images/intro-architecture.png)
 
