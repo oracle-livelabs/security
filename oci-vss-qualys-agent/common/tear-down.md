@@ -2,35 +2,35 @@
 
 ## Introduction
 
-In this lab you will be destroying lab environment which you created either manually or using Oracle Resource Manager. Manual steps include deleting virtual cloud networks (VCNs), subnets in each VCN, route tables, compute instances, scanning recipe, targets, secret and vault.
+In this lab, you will be destroying the lab environment which you created either manually or using Oracle Resource Manager. Manual steps include deleting virtual cloud networks (VCNs), subnets in each VCN, route tables, compute instances, scanning recipes, targets, secret, and vault.
 
 > **Note:**  Select the right Compartment where you have created your resources. 
 
-Estimated Lab Time: 10 minutes.
+Estimated time: 10 minutes.
 
 ### Objectives
 
-   - Destroy environment manually
+   - Destroy the environment manually
    - Destroy environment using Oracle Resource Manager
 
 ### Prerequisites
 
 - Oracle Cloud Infrastructure account credentials (User, Password, Tenant, and Compartment)
-- User must have required permissions, quota to deploy resources.
+- User must have required permissions, and quota to deploy resources.
 
 ## Task 1: Delete environment manually
 
-When manually destroying the environment, ensure that one-resource is not tied to another resource.
+When manually destroying the environment, ensure that one resource is not tied to another resource.
 
-1. From OCI services menu, Click **Instances** under **Compute** and delete instances which you have created in your lab environment. 
+1. From the OCI services menu, Click **Instances** under **Compute** and delete instances that you have created in your lab environment. 
 
-2. From OCI services menu, Click **Scanning** under **Identity & Security**. Delete the Scanning Recipe and Targets which you created earlier to validate use-cases. 
+2. From OCI services menu, Click **Scanning** under **Identity & Security**. Delete the Scanning Recipe and Targets which you created earlier to validate use cases. 
 
-3. From OCI services menu, Click **Vault** under **Identity & Security**. Delete the Scanning Recipe and Targets which you created earlier to validate use-cases.
+3. From OCI services menu, Click **Vault** under **Identity & Security**. Delete the Scanning Recipe and Targets which you created earlier to validate use cases.
 
-    > **Note:** Vault deletion can be done through scheduled time. You would need to consider that time to ensure environment is deleted successfully.
+    > **Note:** Vault deletion can be done through scheduled time. You would need to consider that time to ensure the environment is deleted successfully.
 
-4. From OCI services menu, Click **Virtual Cloud Networks** under **Networking** and delete route table entries, service gateway, route tables, subnets and VCN from each **vss-vcn**, which you have created in your lab environment. 
+4. From the OCI services menu, Click **Virtual Cloud Networks** under **Networking** and delete route table entries, service gateway, route tables, subnets, and VCN from each **VSS-VCN**, which you have created in your lab environment. 
 
 ## Task 2: Delete environment using Oracle Resource Manager
 
@@ -46,7 +46,7 @@ When using Resource Manager to destroy the environment, you need to execute a **
 
     ![Terraform Destroy Successful Window](./images/terraform-destroy-success.png " ")
 
-***Congratulations! You have successfully completed the labs.***
+***Congratulations! You have completed the labs.***
 
 ## Learn More
 

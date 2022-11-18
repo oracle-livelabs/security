@@ -2,37 +2,37 @@
 
 ## Introduction
 
-In this lab you will be destroying lab environment which you created either manually or using Oracle Resource Manager. Manual steps include deleting virtual cloud networks (VCNs), subnets in each VCN, dynamic routing gateways (DRG), route tables, compute instances and network firewall.
+In this lab, you will be destroying the lab environment which you created either manually or using Oracle Resource Manager. Manual steps include deleting virtual cloud networks (VCNs), subnets in each VCN, dynamic routing gateways (DRG), route tables, compute instances, and network firewall.
 
-**Note**: Select the right Compartment where you have created your resources. 
+> **Note**: Select the right Compartment where you have created your resources. 
 
-Estimated Lab Time: 10 minutes.
+Estimated time: 10 minutes.
 
 ### Objectives
 
-   - Destroy environment manually
+   - Destroy the environment manually
    - Destroy environment using Oracle Resource Manager
 
 ### Prerequisites
 
 - Oracle Cloud Infrastructure paid account credentials (User, Password, Tenant, and Compartment)
-- Required Quota, Resources permission,and associated policies are complete.
+- User must have required permissions, and quota to deploy resources.
 
-## **Task 1: Delete environment manually**
+## Task 1: Delete environment manually
 
-When manually destroying the environment, ensure that one-resource is not tied to another resource.
+When manually destroying the environment, ensure that one resource is not tied to another resource.
 
-1. From OCI services menu, Click **Instances** under **Compute** and delete instances which you have created in your lab environment. 
+1. From the OCI services menu, Click **Instances** under **Compute** and delete instances that you have created in your lab environment. 
 
-2. From OCI services menu, Click **Network Firewall and Policy** under **Identity & Security**. Delete the Network Firewall Policy and Network Firewall which you created earlier to validate use-cases. 
+2. From OCI services menu, Click **Network Firewall and Policy** under **Identity & Security**. Delete the Network Firewall Policy and Network Firewall which you created earlier to validate use cases. 
 
 3. From OCI services menu, Click **Dynamic Routing Gateway** under **Networking > Customer Connectivity** and delete **firewall-drg** DRG which you have created in your lab environment. 
 
-4. From OCI services menu, Click **Virtual Cloud Networks** under **Networking** and delete route table entries, service gateway, route tables, subnets and VCN from each **firewall-vcn, spoke-vcn**,  which you have created in your lab environment. 
+4. From the OCI services menu, Click **Virtual Cloud Networks** under **Networking** and delete route table entries, service gateway, route tables, subnets, and VCN from each **firewall-vcn, spoke-vcn**,  which you have created in your lab environment. 
 
-5. From OCI services menu, Click **Buckets** under **Storage**. Delete the object and bucket which you created earlier to validate the Object Storage Network traffic.
+5. From the OCI services menu, Click **Buckets** under **Storage**. Delete the object and bucket which you created earlier to validate the Object Storage Network traffic.
 
-## **Task 2: Delete environment using Oracle Resource Manager**
+## Task 2: Delete environment using Oracle Resource Manager
 
 When using Resource Manager to destroy the environment, you need to execute a **terraform destroy** and apply. Let's do that now.
 
@@ -46,7 +46,7 @@ When using Resource Manager to destroy the environment, you need to execute a **
 
     ![Terraform Destroy Successful Window](./images/terraform-destroy-success.png " ")
 
-***Congratulations! You have successfully completed the labs.***
+***Congratulations! You have completed the labs.***
 
 ## Learn More
 

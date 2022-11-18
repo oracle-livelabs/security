@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In this lab you will be creating **Network Firewall Policy**, **Network Firewall**, update required routes and policy to support traffic between VCNs.
+In this lab, you will be creating **Network Firewall Policy**, and **Network Firewall**, updating required routes and policies to support traffic between VCNs.
 
-Estimated Lab Time: 45 minutes.
+Estimated time: 45 minutes.
 
 ### Objectives
 
@@ -16,11 +16,11 @@ Estimated Lab Time: 45 minutes.
 ### Prerequisites
 
 - Oracle Cloud Infrastructure paid account credentials (User, Password, Tenant, and Compartment)
-- Required Resources and Quota as per use-case topology.
+- User must have required permissions, and quota to deploy resources.
 
-## **Task 1: Configure Network Firewall Policy**
+## Task 1: Configure Network Firewall Policy
 
-1. From the OCI Services menu, click **Network Firewall Policies** under **Identity & Security**. Select your region on right part of the screen:
+1. From the OCI Services menu, click **Network Firewall Policies** under **Identity & Security**. Select your region on the right part of the screen:
 
    ![Navigate to Network Firewall Window](../common/images/network-firewall-window.png " ")
 
@@ -34,8 +34,8 @@ Estimated Lab Time: 45 minutes.
 
 3. Fill out the dialog box and Click **Next**:
 
-      - **Policy NAME**: Provide a name
-      - **COMPARTMENT**: Ensure your compartment is selected
+      - **Policy Name**: Provide a name
+      - **Compartment**: Ensure your compartment is selected
 
    ![Create Network Firewall Policy Basic Information](../common/images/create-network-firewall-policy-basic-information.png " ")
 
@@ -49,10 +49,10 @@ Estimated Lab Time: 45 minutes.
 
 6. You will add an **allow-all** rule. Click on **Add Security Rule** and Fill out the dialog box:
 
-      - **Rule NAME**: Provide a name
+      - **Rule Name**: Provide a name
       - **Match Condition**: 
         - **Source IP Address**: Ensure **Any IP Address** is selected
-        - **Destinatio IP Address**: Ensure **Any IP Address** is selected
+        - **Destination IP Address**: Ensure **Any IP Address** is selected
         - **Application**: Ensure **Any Protocol** is selected
         - **URLs**: Ensure **Any URL** is selected
       - **Match Condition**: Select **Allow Traffic** action. 
@@ -67,13 +67,13 @@ Estimated Lab Time: 45 minutes.
 
    ![Create Network Firewall Policy Complete Page Review Information](../common/images/create-network-firewall-policy-complete-page.png " ")
 
-8. This will create a Network Firewall Policy with following components.
+8. This will create a Network Firewall Policy with the following components.
 
     *Network Firewall Policy with Allow All Rule*
 
-## **Task 2: Create Network Firewall in Firewall VCN**
+## Task 2: Create Network Firewall in Firewall VCN
 
-1. From the OCI Services menu, click **Network Firewall** under **Identity & Security**. Select your region on right part of the screen:
+1. From the OCI Services menu, click **Network Firewall** under **Identity & Security**. Select your region on the right part of the screen:
 
    ![Navigate to Network Firewall Window](../common/images/network-firewall-window.png " ")
 
@@ -87,8 +87,8 @@ Estimated Lab Time: 45 minutes.
 
 3. Fill out the dialog box:
 
-      - **Firewall NAME**: Provide a name
-      - **COMPARTMENT**: Ensure your compartment is selected
+      - **Firewall Name**: Provide a name
+      - **Compartment**: Ensure your compartment is selected
       - **Network Firewall Policy**: Select **network-firewall-policy-demo** from dropdown. 
       - **Enforcement Point**: 
         - **Virtual Cloud Network**: Select **firewall-vcn** from dropdown.
@@ -99,27 +99,27 @@ Estimated Lab Time: 45 minutes.
 
 4. Verify all the information and Click **Create Network Firewall**.
 
-5. This will create a Network Firewall with following components.
+5. This will create a Network Firewall with the following components.
 
     *Network Firewall within Firewall-Subnet*
 
-   **PLEASE READ**: OCI Network Firewall deployment will take close to **30-35 mins** initially. So ensure that this task is complete before proceeding further.
+   > **Please Read**: OCI Network Firewall deployment will take close to **30-35 mins** initially. Ensure that this task is complete before proceeding further.
 
-6. Verify **Network Firewall** IP address which you would need to update route tables in next task. 
+6. Verify the **Network Firewall** IP address which you would need to update route tables in the next task. 
 
    ![Network Firewall Created Successfully](../common/images/created-network-firewall.png " ")
 
-## **Task 3: Update Route Tables on Firewall-VCN**
+## Task 3: Update Route Tables on Firewall-VCN
 
 1. Navigate to the **firewall-vcn** and select **VCN-INGRESS-RouteTable** route table. 
 
 2. Click **Add Route Rules**
 
-3. Select the Target Type as **Private IP** and enter the Secondary IP Address Associated with **Network Firewall** IP-Address.
+3. Select the Target Type as **Private IP** and enter the Secondary IP Address Associated with **Network Firewall** IP Address.
 
 4. Enter the **Destination CIDR Block**
 
-    - In this case you will put all default CIDR **0.0.0.0/0** which is incoming traffic from Spoke VCNs via **DRG** to Active Firewall. You can also enter the CIDR block for the Firewall VCNs or Public/On-Prem Subnets if needed.  i.e.: 10.10.1.0/24 or 10.10.2.0/24
+    - In this case, you will put all default CIDR **0.0.0.0/0** which is incoming traffic from Spoke VCNs via **DRG** to Active Firewall. You can also enter the CIDR block for the Firewall VCNs or Public/On-Prem Subnets if needed.  i.e.: 10.10.1.0/24 or 10.10.2.0/24
 
 5. Add **Description**.
 
@@ -131,7 +131,7 @@ Estimated Lab Time: 45 minutes.
 
 8. Click **Add Route Rules**
 
-9. Enter the required entries as below, click on **Another Route Rule** as needed:
+9. Enter the required entries as below, and click on **Another Route Rule** as needed:
 
     - **First Entry**
         - Select the Target Type as **Private IP** 
@@ -149,7 +149,7 @@ Estimated Lab Time: 45 minutes.
             - In this case you will put **0.0.0.0/0** for ensuring any outgoing traffic goes via **OCI Network Firewall**.
         - **Target Selection**: Enter **Network Firewall** IP Address.  
 
-       **PLEASE READ**: Even though we are adding **0.0.0.0/0** route rule it's needed to add **first entry** if you want to inspect intra-vcn subnets level inspection. Each route table has its own local entry hence first entry is needed which will take precedence.
+       > **Please Read**: Even though we are adding the **0.0.0.0/0** route rule it's needed to add **first entry** if you want to inspect intra-vcn subnets level inspection. Each route table has its local entry hence first entry is needed which will take precedence.
 
 10. Add **Description** for each entry.
 
@@ -161,7 +161,7 @@ Estimated Lab Time: 45 minutes.
 
 13. Click **Add Route Rules**
 
-14. Enter the required entries as below, click on **Another Route Rule** as needed:
+14. Enter the required entries as below, and click on **Another Route Rule** as needed:
 
     - **First Entry**
         - Select the Target Type as **Private IP** 
@@ -184,7 +184,7 @@ Estimated Lab Time: 45 minutes.
 
 18. Click **Add Route Rules**
 
-19. Enter the required entries as below, click on **Another Route Rule** as needed:
+19. Enter the required entries as below, and click on **Another Route Rule** as needed:
 
     - **First Entry**
         - Select the Target Type as **Private IP** 
@@ -196,25 +196,25 @@ Estimated Lab Time: 45 minutes.
 
    ![Update Firewall Subnet Route Table in Firewall VCN](../common/images/update-firewall-subnet-route-table-entries-firewall-vcn.png " ")
 
-17. Click **Add Route Rules** to finish.
+21. Click **Add Route Rules** to finish.
 
-18. Navigate to the **firewall-vcn** and select **SGWRouteTable** route table. 
+22. Navigate to the **firewall-vcn** and select **SGWRouteTable** route table. 
 
-19. Click **Add Route Rules**
+23. Click **Add Route Rules**
 
-20.  Select the Target Type as **Private IP** and enter **Network Firewall** IP address.
+24.  Select the Target Type as **Private IP** and enter **Network Firewall** IP address.
 
-21. Enter the **Destination CIDR Block**
+25. Enter the **Destination CIDR Block**
 
-    - In this case you will put all default CIDR **0.0.0.0/0** so all return traffic goes from Service Gateway goes via Firewall.
+    - In this case, you will put all default CIDR **0.0.0.0/0** so all return traffic goes from Service Gateway goes via Firewall.
 
-22. Add **Description** for each entry.
+26. Add **Description** for each entry.
 
    ![Update Service Gateway Route Table Entries in Firewall VCN](../common/images/update-sgw-route-table-entry-firewall-vcn.png " ")
 
-## **Task 4: Verify Route Tables associated to Subnets and Gateways**
+## Task 4: Verify Route Tables associated with Subnets and Gateways
 
-1. Below table includes necessary subnets in each **VCNs** and make sure **Route Table** are attached to right subnets and service gateway. 
+1. Below table includes the necessary subnets in each **VCN** and makes sure **Route Table** is attached to the right subnets and service gateway. 
 
     | VCN          | Resource Name/Type                       | Route Table Name                |
     |--------------|------------------------------------------|---------------------------------|
@@ -226,17 +226,17 @@ Estimated Lab Time: 45 minutes.
     | spoke-vcn    | serverA-subnet              | ServerASubnet Route Table for spoke-vcn |
     | spoke-vcn    | serverB-subnet              | ServerBSubnet Route Table for spoke-vcn |
 
-2. Below example reflects how to attach correct route table based on above table to one of the resources **Service Gateway**:
+2. Below example reflects how to attach the correct route table based on the above table to one of the resources **Service Gateway**:
 
    ![Add Service Gateway Route Table to Service Gateway in Firewall VCN](../common/images/add-service-gateway-route-table-sgw-firewall-vcn.png " ")
 
-3. Below example reflects how to attach correct route table based on above table to one of the resources **FirewallSubnetRouteTable**:
+3. Below example reflects how to attach the correct route table based on the above table to one of the resources **FirewallSubnetRouteTable**:
 
    ![Add Firewall Subnet Route Table to Firewall Subnet in Firewall VCN](../common/images/add-firewall-subnet-route-table-firewallsubnet-firewall-vcn.png " ")
 
-***Congratulations! You have successfully completed the lab.***
+***Congratulations! You have completed the lab.***
 
-You may now [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Learn More
 
