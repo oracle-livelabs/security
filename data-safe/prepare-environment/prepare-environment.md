@@ -6,10 +6,10 @@ In this lab, you prepare your environment in Oracle Cloud Infrastructure for the
 
 If you are using the **Run on Your Tenancy** option, complete all of the tasks, except for task 6. If you are a regular user in your organization's tenancy, you need to enlist the help of your tenancy administrator to complete the tasks.
 
-If you are using the **Run on LiveLabs** option, you need to complete tasks 6, 7, and 8 only. Oracle provides you with a tenancy where Oracle Data Safe is enabled, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database.
+If you are using the **Run on LiveLabs Sandbox** option, you need to complete tasks 6, 7, and 8 only. Oracle provides you with a tenancy where Oracle Data Safe is enabled, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database.
 
 
-Estimated Lab Time: 15 minutes (Run on Your Tenancy), 5 minutes (Run on LiveLabs)
+Estimated Lab Time: 15 minutes (Run on Your Tenancy), 5 minutes (Run on LiveLabs Sandbox)
 
 ### Objectives
 
@@ -20,7 +20,7 @@ In this lab, you will:
 - Create a user group and add an Oracle Cloud account to the group
 - Create an IAM policy for the user group
 - Provision an Autonomous Transaction Processing database
-- (LiveLabs reservation only) View your LiveLabs reservation information and sign in
+- (LiveLabs Sandbox reservation only) View your LiveLabs reservation information and sign in
 - Access Oracle Database Actions
 - Load sample data into your database
 
@@ -181,7 +181,7 @@ As a tenancy administrator or user with appropriate permissions to manage an Aut
     ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
 
 
-## Task 6 (LiveLabs reservation only): View your LiveLabs reservation information and sign in
+## Task 6 (LiveLabs Sandbox reservation only): View your LiveLabs Sandbox reservation information and sign in
 
 If you are doing the workshop in your own tenancy, you can skip this step.
 
@@ -195,21 +195,21 @@ If you are doing the workshop in your own tenancy, you can skip this step.
     - A compartment of your very own. We refer to this compartment as "your compartment" throughout the workshop. Make note of your compartment's name because you need to select it often throughout the workshop.
     - An Autonomous Database in your compartment. You are provided the password for the `ADMIN` account on your database.
 
-3. Click the **Copy Password** button for Oracle Cloud Infrastructure.
+3. Make note of your username and click the **Copy Password** button for Oracle Cloud Infrastructure.
 
 4. On the **Reservation Information** panel, click the **Launch OCI** button.
 
     A new browser tab is opened and the sign in page for the LiveLabs tenancy is displayed.
 
-5. Under **Oracle Cloud Infrastructure Direct Sign-In**, paste the password into the **Password** box, and then click **Sign In**.
+5. Under **Oracle Cloud Infrastructure Direct Sign-In**, enter your username (if needed) and paste the password into the **Password** box, and then click **Sign In**.
 
     The **Change Password** page is displayed.
 
 6. In the **Current Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Note the password requirements, which are provided on the page. Click **Save New Password**.
 
-    You are now signed in to the LiveLabs tenancy in Oracle Cloud Infrastructure.
+    You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
 
-7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment. In the table on the right, click the name of your target database.
+7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your target database.
 
     ![Your Autonomous Database in the LiveLabs tenancy](images/ll-autonomous-database.png "Your Autonomous Database in the LiveLabs tenancy")
 
@@ -277,7 +277,7 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
     If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
 
-5. Refresh Database Actions: Click the _browser's_ refresh button and then click **Leave Page**. The page is refreshed. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
+5. Refresh Database Actions: Refresh the _browser's_ page and then verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
 6. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
@@ -293,4 +293,4 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 15, 2022
+- **Last Updated By/Date** - Jody Glover, Aug 24, 2022

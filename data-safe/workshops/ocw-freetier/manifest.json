@@ -5,25 +5,19 @@
       {
         "title": "Introduction",
         "description": "This lab provides information about the workshop.",
-        "filename": "../../introduction/introduction.md",
-        "type": "ocw-freetier"
-      },
-      {
-        "title": "Getting Started",
-        "description": "Get an Oracle Cloud account if needed and sign in.",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md",
+        "filename": "../../introduction/introduction-ocw.md",
         "type": "ocw-freetier"
       },
       {
         "title": "Prepare Your Environment",
         "description": "Prerequisites to run the workshop in your own tenancy.",
-        "filename": "../../prepare-environment/prepare-environment.md",
+        "filename": "../../prepare-environment/prepare-environment-ocw-freetier.md",
         "type": "ocw-freetier"
       },
       {
         "title": "Lab 1: Register an Autonomous Database with Oracle Data Safe",
         "description": "This lab shows you how to register an Autonomous Data Warehouse on Shared Exadata Infrastructure with Oracle Data Safe and load sample data into it.",
-        "filename": "../../register-autonomous-database/register-autonomous-database.md",
+        "filename": "../../register-autonomous-database/register-autonomous-database-ocw.md",
         "type": "ocw-freetier"
       },
       {
@@ -51,21 +45,14 @@
         "type": "ocw-freetier"
       },
       {
-        "title": "Lab 6 (Optional): Audit Database Activity",
-        "description": "This lab shows you how to provision audit policies in Oracle Data Safe.",
-        "filename": "../../audit-database-activity/audit-database-activity.md",
+        "title": "Lab 6: Clean Up Your Environment",
+        "description": "This lab shows you how to clean up your Oracle Cloud Infrastructure environment after completing this workshop.",
+        "filename": "../../clean-up-environment/clean-up-environment-ocw.md",
         "type": "ocw-freetier"
       },
       {
-        "title": "Lab 7 (Optional): Generate Alerts",
-        "description": "This lab shows you how to provision alert policies in Oracle Data Safe.",
-        "filename": "../../generate-alerts/generate-alerts.md",
-        "type": "ocw-freetier"
-      },
-      {
-        "title": "Need Help?",
-        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
-      }
+        "title": "Oracle CloudWorld 2022 - Get Help",
+        "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+        }
     ]
   }

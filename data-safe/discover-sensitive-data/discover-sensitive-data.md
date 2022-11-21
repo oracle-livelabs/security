@@ -60,7 +60,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
     ![Provide Basic Information page](images/provide-basic-information-page.png "Provide Basic Information page")
 
-7. On the **Select Schemas** page, leave **Select specific schemas only** selected. Scroll down and select the **HCM1** schema, and then click **Next**. You may need to click the right arrow button at the bottom of the page to navigate to page 2.
+7. On the **Select Schemas** page, leave **Select specific schemas only** selected. Scroll down and select the **HCM1** schema, and then click **Next**. You might need to click the right arrow button at the bottom of the page to navigate to page 2.
 
     ![Select Schemas page](images/select-schemas-page.png "Select Schemas page")
 
@@ -146,4 +146,4 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 15, 2022
+- **Last Updated By/Date** - Jody Glover, Aug 24, 2022

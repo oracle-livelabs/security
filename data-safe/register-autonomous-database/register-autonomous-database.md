@@ -55,6 +55,8 @@ If you plan to use a database other than an ATP database for this workshop, plea
 
     ![Status reads registered](images/status-registered.png "Status reads registered" )
 
+    
+
 ## Task 2: Grant the Data Masking role on your target database
 
 If you are not going to do the **Mask Sensitive Data** lab in this workshop, you can skip this task. Also, if you are using a target database other than an ATP database, please refer to the _Administering Oracle Data Safe_ guide for instructions on how to grant roles specific to your target database.
