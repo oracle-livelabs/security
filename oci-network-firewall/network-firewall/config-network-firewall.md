@@ -256,7 +256,7 @@ Estimated time: 30 minutes.
       | rule-client-server-vm-reject-icmp-traffic |  Client-Subnet-CIDR |  Server-Subnet-CIDR | ICMP/ICMPv6 with icmp-list  | Any URL | Reject traffic | 
       | rule-client-serverB-vm-reject-all-traffic |  Client-Subnet-CIDR | ServerB-Subnet-CIDR | Any protocol  | Any URL| Reject traffic   |
       | rule-client-serverA-vm-allow-all-traffic  |  Client-Subnet-CIDR |  ServerA-Subnet-CIDR | Any protocol | Any URL | Allow Traffic | 
-      | rule-client-allow-http-https-url-filtering-traffic   | Client-Subnet-CIDR |  Client-Subnet-CIDR | UDP/TCP with  ssh-http-https-list | http-info-url-espn-traffic | Allow Traffic |   
+      | rule-client-allow-http-https-url-filtering-traffic   | Client-Subnet-CIDR |  Any IP address | UDP/TCP with  ssh-http-https-list | http-info-url-espn-traffic | Allow Traffic |   
       | rule-client-to-internet-intrusion-detection-traffic | Client-Subnet-CIDR |  Any IP address | UDP/TCP with  ssh-http-https-list | Any URL | Intrusion Detection |   
       | rule-client-to-outbound-allow-all-traffic               |  Client-Subnet-CIDR|  Any IP address | Any protocol | Any URL | Allow Traffic |  
       | rule-serverA-to-serverB-allow-icmp-traffic               |  ServerA-Subnet-CIDR |  ServerB-Subnet-CIDR | ICMP/ICMPv6 with  icmp-list | Any URL | Allow Traffic |   
