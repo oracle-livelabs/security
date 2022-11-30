@@ -8,9 +8,8 @@ In this lab, we will now flip our Database Vault Realm from **simulation** to **
 
 In this lab, you will complete the following tasks:
 
-- Explore the production HR application before enforcing Database Vault
 - Flip the Database Vault realm from **simulation** to **enforcement** mode
-- Demonstrate the inability to view data on the HR application and query the data in `EMPLOYEESEARCH_PROD` through Database Actions.
+- Demonstrate the inability to query the data in `EMPLOYEESEARCH_PROD` with DBA_DEBRA and ADMIN.
 
 ### Prerequisites
 
@@ -18,24 +17,26 @@ This lab assumes you have:
 - Oracle Cloud Infrastructure (OCI) tenancy account
 - Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the Glassfish legacy HR application, Load and verify the data in the Glassfish application, Enable Database Vault and verify the HR application, Identify the connections to the EMPLOYEESEARCH_PROD schema
 
-## Task 1: Explore the production HR application before enforcing Database Vault
+## Task 1: Flip the Database Vault realm from simulation to enforcement mode
 
-1. Navigate back to the **production** HR application environment and sign back in if you are logged out. Locate the **Search Employees Option** and under **Active** drop down menu, select **Active** then **Search**.
+1. Within **Database Actions** as **sec_admin_owen**, run the following query the `dvsys.dba_dv_realm_auth` table. 
 
-	![Search employees](images/search-emp.png)
+	```
+	<copy>select * from (
+	SELECT realm_Name , 'protected objects' col5, owner col2 , object_type col3 object_name col4
+	FROM dvsys.dba_dv_realm_object
+	union
+	select REALM_NAME ,'authorizations' col5, GRANTEE col2 ,AUTH_RULE_SET_NAME col3 , AUTH_OPTIONS col4 from dvsys.dba_dv_realm_auth )
+	where realm_name = 'PROTECT_MYHRAPP'
+	order by realm_name asc ,col5 desc
+	/</copy>
+	```
 
-    ![Select active emp](images/select-active.png)
+	![Query dbadv](images/query-dbadv.png)
 
-    ![Open myhrapp](images/verify-data.png)
+	This shows a final verification that the realm is protecting `EMPLOYEESEARCH_PROD` and that `EMPLOYEESEARCH_PROD` is authorized as the **realm owner** without any rule sets (null).
 
-
-Notice that the data is viewable and accessible. Next, we will switch the Database Vault realm from **simulation** to **enforcement** mode and restrict that data from being queried or viewed in the application.
-
-## Task 2: Flip the Database Vault realm from simulation to enforcement mode
-
-1. Navigate back to the **DBA Actions** page. Under the menu bar for `DBA_DEBRA` at the top right select **Sign out**. Sign back into Database Actions under the user `sec_admin_owen` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated to `SEC_ADMIN_OWEN*`.
-
-2. Copy and paste the following script to switch the Database Vault realm from **simulation** to **enforcement** mode. Run the script and check the output to see that the procedure was completed successfully.
+2. As **sec_admin_owen**, copy and paste the following command to switch the Database Vault realm from **simulation** to **enforcement** mode. Check the output to see that the procedure was completed successfully.
 
 	```
 	<copy>BEGIN
@@ -53,23 +54,64 @@ Notice that the data is viewable and accessible. Next, we will switch the Databa
 
 *Note*: It may take a few minutes for the update to take into effect.
 
-## Task 3: Demonstrate the inability to view data on the HR application and query the data in `EMPLOYEESEARCH_PROD` through Database Actions.
+## Task 2: Demonstrate the inability to query the data in `EMPLOYEESEARCH_PROD` with DBA_DEBRA and ADMIN.
 
-1. Navigate back to the **production** HR application. Under **Search Employees**, select **Search** again and check the results.
-
-	![Insufficient privileges](images/insufficient-privilege.png)
-
-Notice how the application was locked out of the `EMPLOYEESEARCH_PROD` schema due to insufficient privileges, and as a result, the employee data is no longer accessible.
-
-2. Navigate back to **Database Actions** and clear the SQL worksheet. Cope and paste the following query into the work sheet and run the script.
+1. Log out of database actions and log back in as **DBA_DEBRA**. Copy and paste the following commands to query objects in `EMPLOYEESEARCH_PROD`.
 
 	```
-	<copy>select userid, firstname, lastname, emptype, position, ssn, sin, nino from employeesearch_prod.demo_hr_employees where rownum < 10;</copy>
+	<copy>alter session set current_schema = EMPLOYEESEARCH_PROD;</copy>
 	```
 
-	![Insufficient db privileges](images/db-insufficient-privilege.png)
+	```
+	<copy>select a.USERID, a.FIRSTNAME, a.LASTNAME, a.EMAIL, a.PHONEMOBILE, a.PHONEFIX, a.PHONEFAX, a.EMPTYPE, a.POSITION, a.ISMANAGER, a.MANAGERID, a.DEPARTMENT, a.CITY, a.STARTDATE, a.ENDDATE, a.ACTIVE, a.COSTCENTER, b.FIRSTNAME as MGR_FIRSTNAME, b.LASTNAME as MGR_LASTNAME, b.USERID as MGR_USERID from DEMO_HR_EMPLOYEES a left outer join DEMO_HR_EMPLOYEES b on a.MANAGERID = b.USERID where 1=1 order by a.LASTNAME, a.FIRSTNAME</copy>
+	```
 
-Notice how `sec_admin_owen` is no longer able to query data in the `EMPLOYEESEARCH_PROD` schema. We have now succesfully moved and secured our legacy application in Oracle Cloud!
+	![Debra insufficient privileges](images/debra-insufficient.png)
+
+	Notice how now **DBA_DEBRA** no longer has authorization to query database objects protected by the realm and owned by `EMPLOYEESEARCH_PROD`.
+
+2. Open up Cloud Shell. Use te following commands to run the `dv_query_employee_search.sh` script as **ADMIN**.
+
+	*Note: If you have been logged out of your Glassfish instance due to inactivity, use the following command to log back in. Public IP address can be found on the instance details dashboard on Oracle Cloud:*
+
+	```
+	<copychmod 600 myhrappkey</copy>
+	```
+
+	```
+    <copy>ssh -i myhrappkey opc@<PASTE INSTANCE PUBLIC IP ADDRESS HERE></copy>
+    ```
+
+	*Here are the commands for running dv_query_employee_search.sh:*
+
+	```
+	<copy>cd lab_02</copy>
+	```
+
+	```
+	<copy>./dv_query_employee_search.sh</copy>
+	```
+
+	![Admin insufficient privileges](images/admin-insufficient.png)
+
+	Notice how **ADMIN** also now no longer has authorization to query database objects protected by the realm and owned by `EMPLOYEESEARCH_PROD`.
+
+3. Minimize Cloud Shell. Locate **Database Actions** and log out of **DBA_DEBRA**. Log back in as **ADMIN**, then copy and paste the following commands to query objects in `EMPLOYEESEARCH_PROD`.
+
+	```
+	<copy>alter session set current_schema = EMPLOYEESEARCH_PROD;</copy>
+	```
+
+	```
+	<copy>select a.USERID, a.FIRSTNAME, a.LASTNAME, a.EMAIL, a.PHONEMOBILE, a.PHONEFIX, a.PHONEFAX, a.EMPTYPE, a.POSITION, a.ISMANAGER, a.MANAGERID, a.DEPARTMENT, a.CITY, a.STARTDATE, a.ENDDATE, a.ACTIVE, a.COSTCENTER, b.FIRSTNAME as MGR_FIRSTNAME, b.LASTNAME as MGR_LASTNAME, b.USERID as MGR_USERID from DEMO_HR_EMPLOYEES a left outer join DEMO_HR_EMPLOYEES b on a.MANAGERID = b.USERID where 1=1 order by a.LASTNAME, a.FIRSTNAME</copy>
+	```
+
+	![Admin database actions](images/admin-db-actions.png)
+
+	**ADMIN** now also has the inability to query objects protected by `EMPLOYEESEARCH_PROD` within **Database Actions** as well.
+
+
+Congratulations! You have now succesfully moved and secured a legacy HR application in Oracle Cloud!
 
 You may now **proceed to the next lab.**
 
