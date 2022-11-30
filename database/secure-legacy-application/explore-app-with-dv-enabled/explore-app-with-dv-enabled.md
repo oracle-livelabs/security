@@ -75,7 +75,7 @@ This lab assumes you have:
 	*Note: If you have been logged out of your Glassfish instance due to inactivity, use the following command to log back in. Public IP address can be found on the instance details dashboard on Oracle Cloud:*
 
 	```
-	<copychmod 600 myhrappkey</copy>
+	<copy>chmod 600 myhrappkey</copy>
 	```
 
 	```
