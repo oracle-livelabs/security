@@ -9,7 +9,7 @@ In this lab, we will now flip our Database Vault Realm from **simulation** to **
 In this lab, you will complete the following tasks:
 
 - Flip the Database Vault realm from **simulation** to **enforcement** mode
-- Demonstrate the inability to query the data in `EMPLOYEESEARCH_PROD` with DBA_DEBRA and ADMIN.
+- Demonstrate the inability to query the data in `EMPLOYEESEARCH_PROD` with `DBA_DEBRA` and `ADMIN`.
 
 ### Prerequisites
 
@@ -19,7 +19,7 @@ This lab assumes you have:
 
 ## Task 1: Flip the Database Vault realm from simulation to enforcement mode
 
-1. Within **Database Actions** as **sec_admin_owen**, run the following query the `dvsys.dba_dv_realm_auth` table. 
+1. Within **Database Actions** as `sec_admin_owen`, run the following query the `dvsys.dba_dv_realm_auth` table. 
 
 	```
 	<copy>select * from (
@@ -36,7 +36,7 @@ This lab assumes you have:
 
 	This shows a final verification that the realm is protecting `EMPLOYEESEARCH_PROD` and that `EMPLOYEESEARCH_PROD` is authorized as the **realm owner** without any rule sets (null).
 
-2. As **sec_admin_owen**, copy and paste the following command to switch the Database Vault realm from **simulation** to **enforcement** mode. Check the output to see that the procedure was completed successfully.
+2. As `sec_admin_owen`, copy and paste the following command to switch the Database Vault realm from **simulation** to **enforcement** mode. Check the output to see that the procedure was completed successfully.
 
 	```
 	<copy>BEGIN
@@ -56,7 +56,7 @@ This lab assumes you have:
 
 ## Task 2: Demonstrate the inability to query the data in `EMPLOYEESEARCH_PROD` with DBA_DEBRA and ADMIN.
 
-1. Log out of database actions and log back in as **DBA_DEBRA**. Copy and paste the following commands to query objects in `EMPLOYEESEARCH_PROD`.
+1. Log out of database actions and log back in as `DBA_DEBRA`. Copy and paste the following commands to query objects in `EMPLOYEESEARCH_PROD`.
 
 	```
 	<copy>alter session set current_schema = EMPLOYEESEARCH_PROD;</copy>
@@ -68,9 +68,9 @@ This lab assumes you have:
 
 	![Debra insufficient privileges](images/debra-insufficient.png)
 
-	Notice how now **DBA_DEBRA** no longer has authorization to query database objects protected by the realm and owned by `EMPLOYEESEARCH_PROD`.
+	Notice how now `DBA_DEBRA` no longer has authorization to query database objects protected by the realm and owned by `EMPLOYEESEARCH_PROD`.
 
-2. Open up Cloud Shell. Use te following commands to run the `dv_query_employee_search.sh` script as **ADMIN**.
+2. Open up Cloud Shell. Use te following commands to run the `dv_query_employee_search.sh` script as `ADMIN`.
 
 	*Note: If you have been logged out of your Glassfish instance due to inactivity, use the following command to log back in. Public IP address can be found on the instance details dashboard on Oracle Cloud:*
 
@@ -94,9 +94,9 @@ This lab assumes you have:
 
 	![Admin insufficient privileges](images/admin-insufficient.png)
 
-	Notice how **ADMIN** also now no longer has authorization to query database objects protected by the realm and owned by `EMPLOYEESEARCH_PROD`.
+	Notice how `ADMIN` also now no longer has authorization to query database objects protected by the realm and owned by `EMPLOYEESEARCH_PROD`.
 
-3. Minimize Cloud Shell. Locate **Database Actions** and log out of **DBA_DEBRA**. Log back in as **ADMIN**, then copy and paste the following commands to query objects in `EMPLOYEESEARCH_PROD`.
+3. Minimize Cloud Shell. Locate **Database Actions** and log out of `DBA_DEBRA`. Log back in as `ADMIN`, then copy and paste the following commands to query objects in `EMPLOYEESEARCH_PROD`.
 
 	```
 	<copy>alter session set current_schema = EMPLOYEESEARCH_PROD;</copy>
@@ -108,7 +108,7 @@ This lab assumes you have:
 
 	![Admin database actions](images/admin-db-actions.png)
 
-	**ADMIN** now also has the inability to query objects protected by `EMPLOYEESEARCH_PROD` within **Database Actions** as well.
+	`ADMIN` now also has the inability to query objects protected by `EMPLOYEESEARCH_PROD` within **Database Actions** as well.
 
 
 Congratulations! You have now succesfully moved and secured a legacy HR application in Oracle Cloud!

@@ -19,7 +19,7 @@ This lab assumes you have:
 
 ## Task 1: Create a Database Vault realm
 
-1. Navigate back to your **Database Actions SQL Worksheet**. Under the menu bar for **ADMIN** at the top right select **Sign out**. Sign back into Database Actions under the user `sec_admin_owen` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from **ADMIN** to `SEC_ADMIN_OWEN`.
+1. Navigate back to your **Database Actions SQL Worksheet**. Under the menu bar for `ADMIN` at the top right select **Sign out**. Sign back into Database Actions under the user `sec_admin_owen` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from **ADMIN** to `SEC_ADMIN_OWEN`.
 
 	![Change db actions schema](images/change-schema-dbactions.png)
 
@@ -106,7 +106,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 
 
-4. Log out of **DBA_DEBRA** and log back into database actions as **SEC_ADMIN_OWEN**. Under **Developemnt**, select **SQL**. Copy, paste, and run the following command to query the `dba_dv_simulation_log` table.
+4. Log out of `DBA_DEBRA` and log back into database actions as `SEC_ADMIN_OWEN`. Under **Developemnt**, select **SQL**. Copy, paste, and run the following command to query the `dba_dv_simulation_log` table.
 
 	```
 	<copy>select username, violation_type, realm_name, object_owner, object_name, client_ip, dv$_module, dv$_client_identifier from dba_dv_simulation_log;</copy>
@@ -114,7 +114,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 	![Query sim logs](images/query-sim-log.png)
 
-	This query displays all the recent usage and connections to objects under the database vault realm that was created. Notice how there are connections from users like **DBA_DEBRA, SEC_ADMIN_OWEN, and ADMIN**. These users besides for **EMPLOYEESEARCH_PROD** will be prohibited once we provide realm authorization to **EMPLOYEESEARCH_PROD**. Note the `DV$_MODULE` column as well. This shows the connection methods to the **EMPLOYEESEARCH_PROD** objects. The only connection we will trust is the connections coming from `JDBC Thin Client` which is the HR application connection. All other connections will be banned using the created realm. 
+	This query displays all the recent usage and connections to objects under the database vault realm that was created. Notice how there are connections from users like `DBA_DEBRA, SEC_ADMIN_OWEN, and ADMIN`. These users besides for **EMPLOYEESEARCH_PROD** will be prohibited once we provide realm authorization to **EMPLOYEESEARCH_PROD**. Note the `DV$_MODULE` column as well. This shows the connection methods to the **EMPLOYEESEARCH_PROD** objects. The only connection we will trust is the connections coming from `JDBC Thin Client` which is the HR application connection. All other connections will be banned using the created realm. 
 
 5. Clear the `dba_dv_simulation_log` table using the following commands. 
 
@@ -153,7 +153,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 	![Select employees](images/select-emp.png)
 
-8. Open back up **Database Actions** in Oracle Cloud. As **sec_admin_owen**, copy, paste, and run the following command to query the `dba_dv_simulation_log` table.
+8. Open back up **Database Actions** in Oracle Cloud. As `sec_admin_owen`, copy, paste, and run the following command to query the `dba_dv_simulation_log` table.
 
 	```
 	<copy>select * from dba_dv_simulation_log;</copy>
@@ -187,7 +187,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 	![Query using admin](images/bash-query.png)
 
-10. Minimize Cloud Shell and navigate back to your **Database Actions** tab in Oracle Cloud. As **sec_admin_owen**, copy, paste, and run the following command to query the `dba_dv_simulation_log` table again.
+10. Minimize Cloud Shell and navigate back to your **Database Actions** tab in Oracle Cloud. As `sec_admin_owen`, copy, paste, and run the following command to query the `dba_dv_simulation_log` table again.
 
 	```
 	<copy>select * from dba_dv_simulation_log;</copy>
@@ -195,7 +195,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 	![Query post admin](images/post-admin-query.png)
 
-Because **ADMIN** just accessed database objects under `EMPLOYEESEARCH_PROD` when the `dba_dv_simulation_log` was ran, when querying the `dba_dv_simulation_log`, we can see that ADMIN acted in violtaion of the realm that was created to protect `EMPLOYEESEARCH_PROD`. Now, we have successfully configured our authorized users and connections. Next, when we shift the realm from **simulation** to **enforcement** mode, we will see that users like **ADMIN** and **DBA_DEBRA** will no longer have sufficient privileges to access or query `EMPLOYEESEARCH_PROD` objects. 
+Because `ADMIN` just accessed database objects under `EMPLOYEESEARCH_PROD` when the `dba_dv_simulation_log` was ran, when querying the `dba_dv_simulation_log`, we can see that `ADMIN` acted in violtaion of the realm that was created to protect `EMPLOYEESEARCH_PROD`. Now, we have successfully configured our authorized users and connections. Next, when we shift the realm from **simulation** to **enforcement** mode, we will see that users like `ADMIN` and `DBA_DEBRA` will no longer have sufficient privileges to access or query `EMPLOYEESEARCH_PROD` objects. 
 
 You may now **proceed to the next lab.**
 
