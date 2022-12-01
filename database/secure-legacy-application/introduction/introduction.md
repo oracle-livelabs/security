@@ -41,7 +41,7 @@ This workshop assumes you have:
 *Note: Throughout this workshop, if you ever find yourself struggling when it comes to finding your resources in Oracle Cloud, make sure both your compartment and region correspond to where you created the resource.*
 
 ## Want to learn more about Oracle Database Vault?
-- [Oracle Database Vault Landing Page](https://www.oracle.com/uk/security/database-security/database-vault/)
+- [Oracle Database Vault Landing Page](https://www.oracle.com/security/database-security/database-vault/)
 - [Introduction to Oracle Database Vault](https://docs.oracle.com/database/121/DVADM/dvintro.htm#DVADM001)
 - [Additional Database Vault LiveLab](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=682&clear=RR,180&session=100352880546347)
 

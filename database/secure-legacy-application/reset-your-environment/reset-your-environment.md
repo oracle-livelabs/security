@@ -8,7 +8,7 @@ In this lab, we will show you how to teardown your Glassfish HR application and 
 
 In this lab, you will complete the following tasks:
 
-- Termiante the Glassfish HR application.
+- Terminate the Glassfish HR application.
 - Delete the Glassfish custom image
 - Terminate the ATP instance.
 - Delete the associated Virtual Cloud Network (VCN)

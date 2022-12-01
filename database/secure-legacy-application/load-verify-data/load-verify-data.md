@@ -17,11 +17,11 @@ In this lab, you will complete the following tasks:
 
 This lab assumes you have:
 - Oracle Cloud Infrastructure (OCI) tenancy account
-- Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the Glassfish legacy HR application
+- Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the legacy Glassfish HR application
 
 ## Task 1: Create the EMPLOYEESEARCH_PROD schema using SQL*Plus from the Glassfish App Server and startup the Glassfish application.
 
-1. From the Cloud Shell console within `myhrapp`, use the `load_app_data.sh` script to load data into your ATP instance.
+1. Execute the `load_app_data.sh` script to load data into your ATP instance.
 
     ```
     <copy>./load_app_data.sh</copy>
@@ -43,7 +43,9 @@ This lab assumes you have:
     <copy>./startGlassfish.sh</copy>
     ```
 
-    ![Start glassfish app](images/start-glassfish.png)
+    ![Start glassfish app](images/glassfish-start.png)
+
+    *Note: If you click the Production or development links, they will not be accessible until after the next step, allowing ingress on port 8080*
 
 ## Task 2: Verify the HR app functions using the Glassfish app public IP.
 
@@ -75,7 +77,7 @@ This lab assumes you have:
     <copy>http://<PUBLIC_IP>:8080/dev_myhrapp</copy>
     ```
 
-    ![Locate public ip](images/find-ip.png)
+    ![Start glassfish app](images/glassfish-start.png)
 
     ![Open myhrapp](images/front-page-prod.png)
 

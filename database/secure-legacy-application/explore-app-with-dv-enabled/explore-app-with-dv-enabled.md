@@ -15,24 +15,17 @@ In this lab, you will complete the following tasks:
 
 This lab assumes you have:
 - Oracle Cloud Infrastructure (OCI) tenancy account
-- Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the Glassfish legacy HR application, Load and verify the data in the Glassfish application, Enable Database Vault and verify the HR application, Identify the connections to the EMPLOYEESEARCH_PROD schema
+- Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the legacy Glassfish HR application, Load and verify the data in the Glassfish application, Enable Database Vault and verify the HR application, Identify the connections to the EMPLOYEESEARCH_PROD schema
 
 ## Task 1: Flip the Database Vault realm from simulation to enforcement mode
 
-1. Within **Database Actions** as `sec_admin_owen`, run the following query the `dvsys.dba_dv_realm_auth` table. 
+1. Within **Database Actions**, as `sec_admin_owen`, run the following query the `dvsys.dba_dv_realm_auth` table. 
 
 	```
-	<copy>select * from (
-	SELECT realm_Name , 'protected objects' col5, owner col2 , object_type col3 object_name col4
-	FROM dvsys.dba_dv_realm_object
-	union
-	select REALM_NAME ,'authorizations' col5, GRANTEE col2 ,AUTH_RULE_SET_NAME col3 , AUTH_OPTIONS col4 from dvsys.dba_dv_realm_auth )
-	where realm_name = 'PROTECT_MYHRAPP'
-	order by realm_name asc ,col5 desc
-	/</copy>
+	<copy>select grantee from dvsys.dba_dv_realm_auth where realm_name = 'PROTECT_MYHRAPP';</copy>
 	```
 
-	![Query dbadv](images/query-dbadv.png)
+	![Query dbadv](images/final-verification.png)
 
 	This shows a final verification that the realm is protecting `EMPLOYEESEARCH_PROD` and that `EMPLOYEESEARCH_PROD` is authorized as the **realm owner** without any rule sets (null).
 
@@ -85,7 +78,7 @@ This lab assumes you have:
 	*Here are the commands for running dv_query_employee_search.sh:*
 
 	```
-	<copy>cd lab_02</copy>
+	<copy>cd secure-legacy-app-db-vault</copy>
 	```
 
 	```

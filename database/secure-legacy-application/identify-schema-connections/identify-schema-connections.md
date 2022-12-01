@@ -15,7 +15,7 @@ In this lab, you will complete the following tasks:
 
 This lab assumes you have:
 - Oracle Cloud Infrastructure (OCI) tenancy account
-- Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the Glassfish legacy HR application, Load and verify the data in the Glassfish application, Enable Database Vault and verify the HR application
+- Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the legacy Glassfish HR application, Load and verify the data in the Glassfish application, Enable Database Vault and verify the HR application
 
 ## Task 1: Create a Database Vault realm
 
@@ -47,7 +47,7 @@ This lab assumes you have:
 
 	![Show dv realm](images/show-dv-realm.png)
 
-4. Clear your SQL worksheet. Copy and paste the following script to add the `EMPLOYEESEARCH_PROD` schema, storing all objects to the `PROTECT_MYHRAPP` Database Vault realm. check the output to see that the script executed successfully.
+4. Clear your SQL worksheet. Copy and paste the following script to add the `EMPLOYEESEARCH_PROD` schema, and all its objects to the `PROTECT_MYHRAPP` Database Vault realm. This applies to existing and any new objects created within the `EMPLOYEESEARCH_PROD` schema. Check the output to see that the script executed successfully.
 
 	```
     <copy>BEGIN
@@ -59,13 +59,8 @@ This lab assumes you have:
     END;
     /</copy>
 	```
-
-	```
-	PL/SQL procedure successully completed.
-	Elapsed: 00:00:00.901
-	```
     
-In the next task, we are going to capture access to objects in the `EMPLOYEESEARCH_PROD` schema, including access by the schema itself. This will help us understand which objects are available and where they are retrieved from. 
+	In the next task, we are going to capture access to objects in the `EMPLOYEESEARCH_PROD` schema, including access by the schema itself. This will help us understand which objects are available and where they are retrieved from. 
 
 5. Navigate back to your **HR Production** application and log out, then log back in as **hradmin**. Check to see that the data still appears and is available. Click through the employee profile menu tabs to ensure all data is present.
 
@@ -78,7 +73,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 ## Task 2: Use simulation mode to identify the connections to the EMPLOYEESEARCH_PROD schema
 
-1. Within the `SEC_ADMIN_OWEN`, copy and paste the following query to look at the `dba_dv_simulation_log`. Ensure that `EMPLOYEESEARCH_PROD` is the **Object Owner**. Notice how the schema `EMPLOYEESEARCH_PROD` is labeled as a **Realm Violation**. We will be configuring Database Vault so that `EMPLOYEESEARCH_PROD` is the only schema that is able to access the data.
+1. As `SEC_ADMIN_OWEN`, copy and paste the following query to look at the `dba_dv_simulation_log`. Ensure that `EMPLOYEESEARCH_PROD` is the **Object Owner**. Notice how the schema `EMPLOYEESEARCH_PROD` is labeled as a **Realm Violation**. We will be configuring Database Vault so that `EMPLOYEESEARCH_PROD` is the only schema that is able to access the data.
 	
 	```
 	<copy>select * from dba_dv_simulation_log;</copy>
@@ -102,7 +97,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 	![Query with dba](images/dba-query.png)
 
-	*Notice how DBA is able to query objects found in the EMPLOYEESEARCH_PROD schema, the same data that is displayed in the HR application. This is an example of what we will prohibit when we switch the Database Vault realm from simulation to enforcement mode. This will also disable access for users like sec_admin_owen and even ADMIN. The goal is to make these database objects only available to EMPLOYEESEARCH_PROD and the HR application.*
+	Notice how DBA is able to query objects found in the EMPLOYEESEARCH_PROD schema, the same data that is displayed in the HR application. This is an example of what we will prohibit when we switch the Database Vault realm from simulation to enforcement mode. This will also disable access for privileged users, like `ADMIN`, and users with the `PDB_DBA` role
 
 
 
@@ -114,7 +109,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 	![Query sim logs](images/query-sim-log.png)
 
-	This query displays all the recent usage and connections to objects under the database vault realm that was created. Notice how there are connections from users like `DBA_DEBRA, SEC_ADMIN_OWEN, and ADMIN`. These users besides for **EMPLOYEESEARCH_PROD** will be prohibited once we provide realm authorization to **EMPLOYEESEARCH_PROD**. Note the `DV$_MODULE` column as well. This shows the connection methods to the **EMPLOYEESEARCH_PROD** objects. The only connection we will trust is the connections coming from `JDBC Thin Client` which is the HR application connection. All other connections will be banned using the created realm. 
+	This query displays all the recent usage and connections to objects under the database vault realm that was created. Notice how there are connections from users like `DBA_DEBRA, SEC_ADMIN_OWEN, and ADMIN`. These users besides for `EMPLOYEESEARCH_PROD` will be prohibited once we provide realm authorization to `EMPLOYEESEARCH_PROD`. Note the `DV$_MODULE` column as well. This shows the connection methods to the `EMPLOYEESEARCH_PROD` objects. The only connection we will trust is the connections coming from `JDBC Thin Client` which is the HR application connection. All other connections will be banned using the created realm. 
 
 5. Clear the `dba_dv_simulation_log` table using the following commands. 
 
@@ -126,7 +121,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 	<copy>commit;</copy>
 	```
 
-6. Make sure your SQL worksheet is clear. Copy, paste, and run the following PL*SQL block to add realm authorization to `EMPLOYEESEARCH_PROD`.
+6. Make sure your SQL worksheet is clear. Copy, paste, and run the following PL*SQL block to add realm `EMPLOYEESEARCH_PROD` as an authorized participant in the `PROTECT_MYHRAPP` realm.  This allows the `EMPLOYEESEARCH_PROD` schema to access its own objects without showing as a Realm Violation in the simulation logs and ensures it can access the objects when we switch from simulation mode to enforcement mode.
 
 	```
 	<copy>
@@ -138,11 +133,6 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 			, auth_options => DBMS_MACUTL.G_REALM_AUTH_OWNER); 
 	end;
 	/</copy>
-	```
-	```
-	...
-
-	PL/SQL procedure successfully completed.
 	```
 
 	![Add realm authorization](images/add-auth.png)
@@ -161,24 +151,24 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 	![Search employees](images/log-query.png)
 
-	Now that we added realm authorization to `EMPLOYEESEARCH_PROD`. Now, incoming connections from the **JDBC client** or the HR application no longer qualies as a realm violation because now they are a trusted user and connection.  
+	Now that we added realm authorization to `EMPLOYEESEARCH_PROD`. Incoming connections from the **JDBC client** or the HR application no longer qualies as a realm violation because now they are a trusted user and connection.  
 
 9. Relocate the cloud shell console. Use te following commands to run the `dv_query_employee_search.sh` script as **ADMIN**.
 
 	*Note: If you have been logged out of your Glassfish instance due to inactivity, use the following command to log back in. Public IP address can be found on the instance details dashboard on Oracle Cloud:*
 
 	```
-	<copychmod 600 myhrappkey</copy>
+	<copy>chmod 600 myhrappkey</copy>
 	```
 
 	```
     <copy>ssh -i myhrappkey opc@<PASTE INSTANCE PUBLIC IP ADDRESS HERE></copy>
     ```
 
-	*Here are the commands for running dv_query_employee_search.sh:*
+	Here are the commands for running `dv_query_employee_search.sh`:
 
 	```
-	<copy>cd lab_02</copy>
+	<copy>cd cd secure-legacy-app-db-vault</copy>
 	```
 
 	```
@@ -195,7 +185,7 @@ In the next task, we are going to capture access to objects in the `EMPLOYEESEAR
 
 	![Query post admin](images/post-admin-query.png)
 
-Because `ADMIN` just accessed database objects under `EMPLOYEESEARCH_PROD` when the `dba_dv_simulation_log` was ran, when querying the `dba_dv_simulation_log`, we can see that `ADMIN` acted in violtaion of the realm that was created to protect `EMPLOYEESEARCH_PROD`. Now, we have successfully configured our authorized users and connections. Next, when we shift the realm from **simulation** to **enforcement** mode, we will see that users like `ADMIN` and `DBA_DEBRA` will no longer have sufficient privileges to access or query `EMPLOYEESEARCH_PROD` objects. 
+Because `ADMIN` accessed `EMPLOYEESEARCH_PROD` database objects, it will show as a Realm Violation in the Database Vault simulation log. Next, we will move the realm from **simulation to enforcement mode** and see that privileged users, like `ADMIN` and `DBA_DEBRA`, will no longer have sufficient privileges to query `EMPLOYEESEARCH_PROD` objects
 
 You may now **proceed to the next lab.**
 

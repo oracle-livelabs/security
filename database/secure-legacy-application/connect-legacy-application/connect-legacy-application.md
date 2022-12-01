@@ -1,4 +1,4 @@
-# Connect to the Glassfish legacy HR application
+# Connect to the legacy Glassfish HR application
 
 ## Introduction
 
@@ -37,7 +37,7 @@ This lab assumes you have:
         <copy>cd myhrapp</copy>
         ```
     
-    - Generate the SSH key-pair:
+    - Generate the SSH key-pair. Press return twice to confirm and omit the passphrase option:
 
         ```
         <copy>ssh-keygen -b 2048 -t rsa -f myhrappkey</copy>
@@ -46,7 +46,7 @@ This lab assumes you have:
     - Set the permissions on the ssh keypair so only you, the owner, has both reading and writing capabilities.
 
         ```
-        <copy>chmod 600 myhrapp</copy>
+        <copy>chmod 600 myhrappkey</copy>
         ```
 
     - When prompted if you want a passcode, press enter again to avoid creating one.
@@ -97,7 +97,7 @@ This lab assumes you have:
     - **Placement**: Select a placement of your choice.
     - **Image**: Select **change image**. Change the image source to **Custom images**. **Make sure your compartment is the same as the one you imported the custom image to**. Select the custom Glassfish image you created in the previous steps (this can sometimes take a little bit of time to load).
     - **Shape**: Use the default shape provided.
-    - **Networking**: Select **Create new virtual cloud network** and **Create a new public subnet**. Use a name and compartment of your choice for both. For the CIDR block, use `10.0.0.0/24`. For the public IP address, select **Assign a public IPv4 address**.
+    - **Networking**: Select **Create new virtual cloud network** and **Create a new public subnet**. Use the name `myhrapp-vcn` and a compartment of your choice. For the CIDR block, use `10.0.0.0/24`. For the public IP address, select **Assign a public IPv4 address**.
     - **Add SSH keys**: Select **Paste public keys**. copy and paste the public ssh key you created from your clipboard (make sure its the public key).
     - **Boot volume**: Make sure all options are **not** checked.
 
@@ -110,7 +110,7 @@ This lab assumes you have:
 1. Open back up your Cloud Shell terminal. Make sure you are in the `myhrapp` directory.
 
     ```
-    <copy>cd myhrapp</copy>
+    <copy>cd myhrappkey</copy>
     ```
 
 2. SSH into the Glassfish application instance using the public IP address of the instance. Whene prompted if you wish to continue the connection, type into the terminal **yes**.
@@ -124,13 +124,13 @@ This lab assumes you have:
     *Note:* If you are having trouble with your keys, remember that your **myhrapp** directory needs to maintain read and write privileges for the owner. If you are ever running into this issue, copy and paste the following command in your **myhrapp** directory in Cloud Shell to update read and write privileges.
 
     ```
-    <copy>chmod 600 myhrapp</copy>
+    <copy>chmod 600 myhrappkey</copy>
     ```
 
-3. Move to the `lab_01` directory.
+3. Move to the `secure-legacy-app-db-vault` directory.
 
     ```
-    <copy>cd lab_01</copy>
+    <copy>cd secure-legacy-app-db-vault</copy>
     ```
 
 4. Run the `save_connection_string.sh` script to save the TLS connection string from you ATP instance. Paste your connection string when prompted.
@@ -139,12 +139,25 @@ This lab assumes you have:
     <copy>./save_connection_string.sh</copy>
     ```
     
-    ![Save connection string](images/save-connection-string.png)
+    ![Save connection string](images/connect-string.png)
 
-5. Run the `test_connection_string.sh` script to test the application instance connection to the ATP instance. When prompted, enter your ATP ADMIN password that you created previously.
+5. Run the `test_connection_string.sh` script to test the application instance connection to the ATP instance. When prompted, enter your ATP ADMIN password that you created previously. Make sure you receive the correct output indicating a successful connection.
 
     ```
     <copy>./test_connection_string.sh</copy>
+    ```
+
+    ```
+    ...
+    
+    SQL> SQL> Current User is...
+    SQL> 
+    USER
+    --------------------------------------------------------------------------------
+    ADMIN
+
+    SQL> 
+    SQL> Success!
     ```
 
     ![Test connection](images/test-connection.png)
