@@ -28,24 +28,24 @@ This lab assumes you have:
 1. On the Identity Role Intelligence home page, in the Start something new tile, click *Create a new Task*. Alternatively, you can click the Application Navigation menu icon, and click *All Tasks*, and then click New Task on the top right of the page.
 The New Task page to select the data for creating a new role mining task appears.
 
-    ![](images/1-mining.png)
+    ![](images/1a-mining.png)
 
 
 2. In the Users tab you can optionally apply a number of filters and select a group of users that you want to include in the role mining task.
 All the users are selected by default if we do not apply any filters. Let us include all users for this workshop.
 
-    ![](images/2-mining.png)
+    ![](images/2a-mining.png)
 
 
 3. Click the Applications tab. The applications are listed in this tab based on the user selection on the Users tab. We can observe that we have an Application called *Document Access*.
 
-    ![](images/3-mining.png)
+    ![](images/3a-mining.png)
 
 
 4. Click the Entitlements tab. The entitlements are listed in this tab based on the user and application selection on the Users and Applications tabs.
 The Entitlements tab lists the entitlements that have been assigned to users. This tab does not list all the entitlements in the OIRI database.
 
-    ![](images/4-mining.png)
+    ![](images/4a-mining.png)
 
 
 5. Click *Mine Roles* to mine the roles based on the user, application, and entitlement selection in the role mining task.
@@ -54,11 +54,11 @@ The *Save Task and Mine Roles* dialog box appears with the following options:
   - Description: Enter a description for the role mining task.
   - Fine-tuning slider: Drag to minimize or maximize the number of candidate roles. Dragging the slider to the left minimizes the number of candidate roles. In other words, more users will get the permissions provided by the roles. Whereas, dragging the slider to the right maximizes the number of candidate roles. In other words, less misaligned entitlements and users provided by the roles.
 
-    ![](images/5-mining.png)
+    ![](images/5a-mining.png)
 
     Click on *Mine Roles* to run the role mining task and discover candidate roles. A message appears stating that a request for running the task has been submitted.
 
-    ![](images/6-mining.png)  
+    ![](images/6a-mining.png)  
 
 
 ## Task 2: Review candidate roles
@@ -68,9 +68,9 @@ The *Save Task and Mine Roles* dialog box appears with the following options:
 2. Click on *Refresh* until the task status shows that it has been completed, then click *View Candidate Roles*.
 The Results for role mining task page appears. In this page, the line at the top provides a summary of the role mining task run. It indicates the number of users and entitlements for which the task has been run, and how many candidate roles have been identified.
 
-    ![](images/13-mining.png)
+    ![](images/13a-mining.png)
 
-    ![](images/7-mining.png)
+    ![](images/7a-mining.png)
 
 
 3. The candidate roles are listed in the Candidate Roles section. Notice the roles listed under *Review not started*.
@@ -79,25 +79,25 @@ The Results for role mining task page appears. In this page, the line at the top
 4. For any candidate role listed, Click *Review Role* to open the Review and Adjust a Candidate Role page that lets you review and modify the candidate role before exporting and publishing.
 For example, Click on the first candidate role with 70 users and 1 entitlement.
 
-    ![](images/8-mining.png)
+    ![](images/8a-mining.png)
 
 5. The *Review and adjust a Candidate Role* page appears.
 
 6. The Entitlements horizontal bar shows the number of entitlements that are part of the candidate role out of the total number of entitlements included in the role mining task. To view the entitlements, click *Show*.
 Notice that the Entitlement (Sales Document Access in this example) is displayed.
 
-    ![](images/9-mining.png)
+    ![](images/9a-mining.png)
 
-    ![](images/10-mining.png)
+    ![](images/10a-mining.png)
 
 7. Click the Go Back icon to navigate back to the Review and Adjust Candidate Role page.
 
-    ![](images/11-mining.png)
+    ![](images/12a-mining.png)
 
 
 8. The Users horizontal bar shows the number of users that are part of the candidate role out of the total number of users included in the role mining task. To view the users, click *Show*. Review the users included in the role mining task. Click the Go Back icon to navigate back to the Review and Adjust Candidate Role page.
 
-    ![](images/12-mining.png)
+    ![](images/12a-mining.png)
 
 
 

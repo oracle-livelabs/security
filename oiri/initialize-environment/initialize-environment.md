@@ -57,7 +57,15 @@ This lab assumes you have:
 
     You may now [proceed to the next lab](#next).
 
-4. If you are still unable to login or the login page is not functioning after reloading from the *Workshop Links* bookmark folder, open a terminal session and proceed as indicated below to validate the services.
+4. If you are still unable to login or the login page is not functioning after reloading from the URL mentioned below, open a terminal  session and proceed as indicated below to validate the services.
+
+    - URL
+
+      ```
+      <copy>
+      http://oiri.livelabs.oraclevcn.com:7001/console/login/
+      </copy>
+      ```
 
     - Database and Listener
 

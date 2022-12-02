@@ -53,7 +53,7 @@ Follow the steps below to load these docker images.
     <copy>docker load --input oiri-ding-12.2.1.4.210423.tar</copy>
     ```
 
-    ![](images/1-docker-images.png)
+    ![](images/1a-docker-images.png)
 
 
     *Note*:
@@ -70,7 +70,7 @@ Follow the steps below to load these docker images.
     <copy>docker images | grep 12.2.1.4.210423</copy>
     ```
 
-    ![](images/2-docker-images.png)
+    ![](images/2a-docker-images.png)
 
 ## Task 2: Set up the configuration files
 
@@ -110,7 +110,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     ```
   For example:
 
-    ![](images/3-ip.png)
+    ![](images/3a-ip.png)
 
 
 3. Run *oiri-cli* container.
@@ -135,7 +135,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     <copy>vi /home/oracle/.kube/config</copy>
     ```
 
-    ![](images/4-config.png)
+    ![](images/4a-config.png)
 
 5. Go to *oiri-cli* container.
 
@@ -153,7 +153,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     <copy>chmod 400 /app/k8s/config</copy>
     ```
 
-    ![](images/5-kube-config.png)
+    ![](images/5a-kube-config.png)
 
 
 7. Verify the kubectl and helm version. Ensure that the *helm version* and *kubectl version* commands run successfully without any warning or error, and display the version.
@@ -165,7 +165,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     <copy>helm version</copy>
     ```
 
-    ![](images/6-kube-version.png)
+    ![](images/6a-kube-version.png)
 
 
   *Note: If there is an error, it could mean that the Kube config file content is not copied correctly. Copy and paste the kube config file content as per the previous steps 4-6 and try again*
@@ -206,7 +206,7 @@ Set up the files required for configuring data import (or data ingestion) and He
   --oigserverurl http://10.0.0.231:14000
     ```
 
-    ![](images/7-setup.png)
+    ![](images/7a-setup.png)
 
 9. Verify that the configuration files have been generated.
 
@@ -216,8 +216,6 @@ Set up the files required for configuring data import (or data ingestion) and He
     ```
     <copy>ls /app/oiri/data/conf</copy>
     ```
-
-    ![](images/8-setup.png)
 
 10.	Set up the values.yaml file to be used for Helm chart. Replace the `<VM IP>` parameter with the instance private IP address noted from the */etc/hosts* file in step 2.
 
@@ -262,7 +260,6 @@ Set up the files required for configuring data import (or data ingestion) and He
     <copy>exit</copy>
     ```
 
-    ![](images/9-setup.png)
 
 
 ## Task 3: Update entity parameters for data import
@@ -294,7 +291,7 @@ Set up the files required for configuring data import (or data ingestion) and He
       Password: <copy>Welcome1</copy>
       ```
 
-  ![](images/10-keystore.png)
+  ![](images/10a-keystore.png)
 
   The *default-keystore.jks* is located at *DOMAIN_HOME/config/fmwconfig*. The certificate you are exporting here protects the OIG REST API. It is not the same as the OIG server certificate.
 
@@ -310,7 +307,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     <copy>sudo ls -latr /nfs/oiri/data/keystore</copy>
     ```
 
-    ![](images/11-opc.png)
+    ![](images/11a-opc.png)
 
 
 3. Generate a keystore inside the *oiri-cli* container.
@@ -347,7 +344,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     [no]:  yes
     ```
 
-    ![](images/12-keytool.png)
+    ![](images/12a-keytool.png)
 
 4. Import the certificate into OIRI keystore.
 
@@ -370,7 +367,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     Trust this certificate? [no]: yes
     ```
 
-    ![](images/13-keytool.png)
+    ![](images/13a-keytool.png)
 
 5. Create the wallet.
 
@@ -390,7 +387,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     - OIRI JWT Key Alias: **oirikey**
     - OIRI JWT Key password: **Welcome1**
 
-    ![](images/14-wallet.png)
+    ![](images/14a-wallet.png)
 
 
 6. Verify that the OIRI and Ding wallets have been created.
@@ -402,7 +399,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     <copy>ls /app/oiri/data/wallet</copy>
     ```
 
-    ![](images/15-wallet.png)
+    ![](images/15a-wallet.png)
 
 
 ## Task 5: Create and Seed OIRI Database Schema
@@ -418,7 +415,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     Password: <copy>Welcome1</copy>
     ```
 
-    ![](images/16-wallet.png)
+    ![](images/16a-wallet.png)
 
 2. Seed the database schema.
 
@@ -432,7 +429,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     <copy>./verifyWallet.sh</copy>
     ```
 
-    ![](images/17-wallet.png)
+    ![](images/17a-wallet.png)
 
     Note: If the verification of wallet fails, use *oiri-cli --config=/app/data/conf/config.yaml wallet update* command to fix the entry reported having an issue
 
@@ -471,7 +468,7 @@ Set up the files required for configuring data import (or data ingestion) and He
     <copy>helm install oiri /helm/oiri -f /app/k8s/values.yaml</copy>
     ```
 
-    ![](images/19-helm.png)
+    ![](images/19a-helm.png)
 
 4. List the pods and ensure that all the pods are running. Additionally, check if the pods under the namespace ding and oiri are RUNNING and READY 1/1 state.
 
@@ -491,9 +488,9 @@ Set up the files required for configuring data import (or data ingestion) and He
     <copy>exit</copy>
     ```
 
-    ![](images/18-pods.png)
+    ![](images/18a-pods.png)
 
-    ![](images/20-pods.png)
+    ![](images/20a-pods.png)
 
 
 You may now [proceed to the next lab](#next).

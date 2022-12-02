@@ -85,9 +85,17 @@ This lab assumes you have:
 
     ![](images/4-db.png) -->
 
-1. Verify that the Admin Server is running. Open a browser window and Click on the bookmark *Workshop links* and click on *Weblogic Admin Console* to access the Weblogic console.
+1. Verify that the Admin Server is running. Open a browser window and use the below mentioned URL to access the Weblogic console.
+     
+    - URL
 
-    ![](images/7-weblogic-console.png)
+    ```
+    <copy>
+    http://oiri.livelabs.oraclevcn.com:7001/console/login/
+    </copy>
+    ```
+
+    ![](images/7a-weblogic-console.png)
 
 2. Sign in to the console with the weblogic credentials.
 
@@ -98,18 +106,27 @@ This lab assumes you have:
     Password:<copy>Welcome1</copy>
     ```
 
-    ![](images/8-weblogic.png)
+    ![](images/8a-weblogic.png)
 
 3. On the Weblogic console, Click on *Servers* under *Environment*. Under Summary of servers, click on *Control*.
 
-    ![](images/9-server.png)
+    ![](images/9a-server.png)
 
     Select SOA and OIM server and click on *Start*.
 
-    ![](images/10-server.png)
-    ![](images/11-server.png)
+    ![](images/10a-server.png)
+    ![](images/11a-server.png)
 
-4. Open another browser tab and Click on the bookmark *Workshop links* and click on *OIG Identity Console*. Login to the Identity console using the following credentials:
+4. Open another browser tab and use the below URL to access the *OIG Identity Console*. Login to the Identity console using the following credentials:
+
+    - URL
+
+    ```
+
+    <copy>
+    http://oiri.livelabs.oraclevcn.com:14000/identity
+    </copy>
+    ```
 
     ```
     Username: <copy>xelsysadm</copy>
@@ -118,26 +135,26 @@ This lab assumes you have:
     Password: <copy>Welcome1</copy>
     ```
 
-    ![](images/12-oig.png)
+    ![](images/12a-oig.png)
 
-    ![](images/13-oig.png)
+    ![](images/13a-oig.png)
 
 5. Click on *Manage* on the top right corner. Then, click on *Users* and notice that about 1000 test users have been created with respective roles and entitlements. Click on any user and Click on the *Accounts* tab notice that the users are provisioned to the *Document Access* application.
 
-    ![](images/15-oig.png)
+    ![](images/15a-oig.png)
 
-    ![](images/16-oig.png)
+    ![](images/16a-oig.png)
 
-    ![](images/17-oig.png)
+    ![](images/17a-oig.png)
 
 
 6. Now click on *Home*. Then, click on *Roles and Access policies* and select *Roles*. Notice that the *OrclOIRIRoleEngineer* role is created and assigned to the application user so that the user can login to the OIRI application. Click on the *OrclOIRIRoleEngineer* role. Click on the *Members* tab and notice that this role is assigned to the *xelsysadm* user.
 
-    ![](images/18-oig.png)
+    ![](images/18a-oig.png)
 
-    ![](images/19-oig.png)
+    ![](images/19a-oig.png)
 
-    ![](images/20-oig.png)
+    ![](images/20a-oig.png)
 
 You may now [proceed to the next lab](#next).
 
