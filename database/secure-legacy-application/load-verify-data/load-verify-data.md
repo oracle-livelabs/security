@@ -67,15 +67,7 @@ This lab assumes you have:
 
     ![Add ingress rule](images/add-ingress.png)
 
-6. Navigate back to your Cloud Shell terminal. Locate the output of the `startGlassfish.sh` script and find both the **Production** and **Development** URLs given to you at the conclusion of the output. You may also copy it from clipboard below. Using two seperate windows on your browser, Make sure to fill both URLs with the instance **public IP**. 
-
-    ```
-    <copy>http://<PUBLIC_IP>:8080/myhrapp</copy>
-    ```
-
-    ```
-    <copy>http://<PUBLIC_IP>:8080/dev_myhrapp</copy>
-    ```
+6. Navigate back to your Cloud Shell terminal. Locate the output of the `startGlassfish.sh` script and find both the **Production** and **Development** URLs given to you at the conclusion of the output. 
 
     ![Start glassfish app](images/glassfish-start.png)
 

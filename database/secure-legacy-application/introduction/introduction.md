@@ -2,7 +2,7 @@
 
 ## Introduction
 
-One of the primary challenges when moving to the cloud is how to integrate legacy enterprises applications and services into the modern, secure cloud. Oracle Autonomous Database will automatically encrypt data at rest and in-motion.  By adding Oracle Database Vault, customers can have flexibility and peace of mind to securely move legacy services and applications to the Oracle cloud.
+One of the primary challenges when moving to the cloud is how to integrate legacy enterprise applications and services into the modern, secure cloud. Oracle Autonomous Database will automatically encrypt data at rest and in motion. By adding Oracle Database Vault, customers can have flexibility and peace of mind to securely move legacy services and applications to the Oracle cloud.
 
 Customers describe three main concerns when moving to the cloud:
 
@@ -11,7 +11,7 @@ Customers describe three main concerns when moving to the cloud:
 - Security: Can other customers access our data? Have all the security patches been kept up to date?
  
 
-Oracle Autonomous Database, with Oracle Database Vault, solves all three concerns. Autonomous Database is a fault-tolerant and highly-available solution which automatically encrypts your data at-rest and in-motion. Oracle Database Vault implements data security controls within Oracle Database to restrict access to application data by privileged users. Reduce the risk of insider and outside threats and address compliance requirements, including separation of duties.
+Oracle Autonomous Database, with Oracle Database Vault, solves all three concerns. Autonomous Database is a fault-tolerant and highly available solution that automatically encrypts your data at rest and in motion. Oracle Database Vault implements data security controls within Oracle Database to restrict access to application data by privileged users. Reduce the risk of insider and outside threats and address compliance requirements, including separation of duties.
 
 ![Lab Architecture](images/intro-architecture.png)
 
