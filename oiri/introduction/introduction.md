@@ -41,4 +41,4 @@ This lab assumes you have:
 ## Acknowledgements
 * **Author** - Keerti R, Brijith TG, Anuj Tripathi, NATD Solution Engineering
 * **Contributors** -  Keerti R, Brijith TG, Anuj Tripathi
-* **Last Updated By/Date** - Keerti R, NATD Solution Engineering, June 2021
+* **Last Updated By/Date** - Keerti R, June 2021

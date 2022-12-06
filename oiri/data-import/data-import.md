@@ -69,20 +69,11 @@ This lab assumes you have:
 ## Task 3: Sign in to the OIRI user interface and validate the dry data import
 
 1. Sign in to Identity Role Intelligence user interface. Launch a browser window and enter the URL mentioned below. Ignore the warning message by clicking on *Advanced* and then on *Accept Risk and Continue. The OIRI account sign in page appears. Enter the username and password.
-    - URL
 
     ```
-
-    <copy>
-    https://oiri.livelabs.oraclevcn.com:30305/oiri
-    </copy>
-    ```
-
-    ```
-    Username: <copy>xelsysadm</copy>
-    ```
-    ```
-    Password: <copy>Welcome1</copy>
+    URL       https://oiri.livelabs.oraclevcn.com:30305/oiri/ui/v1/console/
+    Username  xelsysadm
+    Password  Welcome1
     ```
 
     ![](images/2a-oiri.png)
@@ -156,4 +147,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 * **Author** - Keerti R, Brijith TG, Anuj Tripathi, NATD Solution Engineering
 * **Contributors** -  Keerti R, Brijith TG, Anuj Tripathi
-* **Last Updated By/Date** - Keerti R, NATD Solution Engineering, June 2021
+* **Last Updated By/Date** - Indiradarshni B, NATD Solution Engineering, December 2022

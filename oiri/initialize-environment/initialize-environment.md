@@ -35,16 +35,9 @@ This lab assumes you have:
 
 2. On the *Web Browser* window on the right preloaded Weblogic 12c console, click on the *Username* field and select the saved credentials to login. These credentials have been saved within *Web Browser* and are provided below for reference.
 
-    - Username
-
     ```
-    <copy>weblogic</copy>
-    ```
-
-    - Password
-
-    ```
-    <copy>Welcome1</copy>
+    Username  weblogic
+    Password  Welcome1
     ```
 
     ![](images/oiri-vnc.png " ")
@@ -59,13 +52,12 @@ This lab assumes you have:
 
 4. If you are still unable to login or the login page is not functioning after reloading from the URL mentioned below, open a terminal  session and proceed as indicated below to validate the services.
 
-    - URL
-
-      ```
-      <copy>
-      http://oiri.livelabs.oraclevcn.com:7001/console/login/
-      </copy>
-      ```
+       ```
+      URL       http://oiri.livelabs.oraclevcn.com:7001/console/login/
+      Username  weblogic
+      Password  Welcome1
+       ```
+      
 
     - Database and Listener
 
@@ -200,4 +192,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 * **Author** - Keerti R, Brijith TG, Anuj Tripathi, NATD Solution Engineering
 * **Contributors** -  Keerti R, Brijith TG, Anuj Tripathi
-* **Last Updated By/Date** - Rene Fontcha, LiveLabs Platform Lead, NA Technology, November 2021
+* **Last Updated By/Date** - Indiradarshni B, NATD Solution Engineering

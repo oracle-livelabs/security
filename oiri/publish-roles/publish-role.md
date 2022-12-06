@@ -68,19 +68,11 @@ The list of entitlements in the role along with the associated applications is d
 
 1. Sign in to Identity Self Service console.
 Open a browser tab using the below URL to access *OIG Identity Console*.
-     - URL
 
     ```
-
-    <copy>
-    http://oiri.livelabs.oraclevcn.com:14000/identity
-    </copy>
-    ```
-    ```
-    Username: <copy>Xelsysadm</copy>
-    ```
-    ```
-    Password: <copy>Welcome1</copy>
+    URL        http://oiri.livelabs.oraclevcn.com:14000/identity
+    Username   Xelsysadm
+    Password   Welcome1
     ```
 
 
@@ -89,52 +81,52 @@ Open a browser tab using the below URL to access *OIG Identity Console*.
 
 3. Click the Pending Approvals box. The Pending Approvals page is displayed. Notice that the Approval request for the published role (GlobalSales) is displayed.
 
-    ![](images/9a-publish-role.png)
+    ![](images/9b-publish-role.png)
 
 
 4. Click on the approval request. The task details page displays a detailed view of the request in the Details section, Summary Information section, the Request Details tab, the Approvals tab, and the Cart Items section. It allows complete management of the listed task.
 Click on *Approve*.
 
-    ![](images/10a-publish-role.png)
+    ![](images/10b-publish-role.png)
 
-    ![](images/11a-publish-role.png)
+    ![](images/11b-publish-role.png)
 
 
 5. A default request level approval is generated. Click on the approval request and then Click *Approve*.
 The task is now approved and is no longer displayed.
 
-    ![](images/12a-publish-role.png)
+    ![](images/12b-publish-role.png)
 
-    ![](images/13a-publish-role.png)
+    ![](images/13b-publish-role.png)
 
 
 6. Click on the refresh icon and notice that default approval request is generated for each of the users that were a part of the published role.
 
-    ![](images/14a-publish-role.png)
+    ![](images/14b-publish-role.png)
 
 7. Select all the requests and click on *Actions* and select *Approve*. Enter appropriate comments and click on *OK*.
 
     *Note : To Select all requests, select any one request and then press ctrl+A*
 
-    ![](images/15a-publish-role.png)
+    ![](images/15b-publish-role.png)
 
-    ![](images/16a-publish-role.png)
+    ![](images/16b-publish-role.png)
 
 8. Click on the refresh icon and make sure that there are no pending approvals.
 
 9. Click on Manage on the top right corner. Then, click on *Roles and Access policies* and select *Roles*.
 
-    ![](images/17a-publish-role.png)
+    ![](images/17b-publish-role.png)
 
 10. Notice that the Role (GlobalSales) has been published in OIG.
 
-    ![](images/18a-publish-role.png)
+    ![](images/18b-publish-role.png)
 
 11. Click on the role to review the members and access policy associated with the role.
 
-    ![](images/19-publish-role.png)
+    ![](images/19c-publish-role.png)
 
-    ![](images/20-publish-role.png)
+    ![](images/20c-publish-role.png)
 
 
 ## **Summary**
@@ -155,4 +147,4 @@ From the knowledge gained from this workshop, you can now use OIRI to implement:
 ## Acknowledgements
 * **Author** - Keerti R, Brijith TG, Anuj Tripathi, NATD Solution Engineering
 * **Contributors** -  Keerti R, Brijith TG, Anuj Tripathi
-* **Last Updated By/Date** - Keerti R, NATD Solution Engineering, June 2021
+* **Last Updated By/Date** - Indiradarshni B, NATD Solution Engineering, December 2022
