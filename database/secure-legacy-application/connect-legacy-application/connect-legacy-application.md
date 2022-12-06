@@ -80,7 +80,7 @@ This lab assumes you have:
 
     ![Select import image](images/select-import-image.png)
 
-3. Fill in the corresponding fields as shown in the image below (use the compartment of your choice) and select **Import image**. Use the following link for the **Object Storage URL**: https://objectstorage.us-ashburn-1.oraclecloud.com/p/rJE5dhCwlzOime6oy4QdsyneI7fkgFM49PqmIpN-2GRt6[…]cm/b/dbsec_rich/o/myhrapp-20220923-custom-image.
+3. Fill in the corresponding fields as shown in the image below (use the compartment of your choice) and select **Import image**. Use the following link for the **Object Storage URL**: https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/MyHRApp20221201-final
 
     ![Create custom image](images/create-custom-image.png)
 
