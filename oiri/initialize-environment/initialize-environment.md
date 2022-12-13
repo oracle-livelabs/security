@@ -40,11 +40,11 @@ This lab assumes you have:
     Password  Welcome1
     ```
 
-    ![](images/oiri-vnc.png " ")
+    ![Weblogic console](images/oiri-vnc.png " ")
 
 3. Confirm successful login. Please note that it takes about 5 minutes after instance provisioning for all processes to fully start.
     - On the Weblogic console, Click on *Servers* under *Environment* and verify that the Admin server is in the ‘RUNNING’ state.
-    ![](images/oiri-landing.png " ")
+    ![Weblogic console](images/oiri-landing.png " ")
 
     If successful, the page above is displayed and as a result your environment is now ready.  
 
@@ -66,7 +66,7 @@ This lab assumes you have:
       sudo systemctl status oracle-database
       </copy>
       ```
-      ![](images/4-db.png " ")
+      ![Terminal window commands](images/4-db.png " ")
 
     - WLS Admin Server And Node Manager
 
@@ -75,14 +75,14 @@ This lab assumes you have:
       sudo systemctl status oiri-weblogic.service
       </copy>
       ```
-      ![](images/oiri-wls-service.png " ")
+      ![Terminal window commands](images/oiri-wls-service.png " ")
 
       ```
       <copy>
       sudo systemctl status oiri-node.service
       </copy>
       ```
-      ![](images/oiri-node-service.png " ")
+      ![Terminal window commands](images/oiri-node-service.png " ")
 
 5. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
 
