@@ -66,7 +66,7 @@ This lab assumes you have:
       sudo systemctl status oracle-database
       </copy>
       ```
-      ![Terminal window commands](images/4-db.png " ")
+      ![Terminal window commands](images/db.png " ")
 
     - WLS Admin Server And Node Manager
 
