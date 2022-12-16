@@ -73,17 +73,9 @@ This lab assumes you have:
     <copy>kubectl get pods --all-namespaces</copy>
     ```
 
-   ![Terminal window commands](images/pods.png) 
+   ![Initialize the Kubernetes cluster and the pod network add-on](images/pods.png) 
 
 ## Task 2: Start the Oracle Identity Governance (OIG) Server and analyze the roles in OIG
-
-<!-- 1. Verify that the OIG Database is running.
-
-    ```
-    <copy>systemctl status oracle-database.service</copy>
-    ```
-
-    ![Weblogic console](images/4-db.png) -->
 
 1. Verify that the Admin Server is running. Open a browser window and use the below mentioned URL to access the Weblogic console.
      
@@ -91,7 +83,7 @@ This lab assumes you have:
     URL  http://oiri.livelabs.oraclevcn.com:7001/console/login/
     ```
 
-    ![Weblogic console](images/weblogic-console.png)
+    ![Weblogic console page](images/weblogic-console.png)
 
 2. Sign in to the console with the weblogic credentials.
 
@@ -100,16 +92,16 @@ This lab assumes you have:
     Password  Welcome1
     ```
 
-    ![Weblogic console](images/weblogic-credentials.png)
+    ![Weblogic console credentials login](images/weblogic-credentials.png)
 
 3. On the Weblogic console, Click on *Servers* under *Environment*. Under Summary of servers, click on *Control*.
 
-    ![Weblogic console](images/weblogic-server.png)
+    ![Click on Servers under Environment](images/weblogic-server.png)
 
     Select SOA and OIM server and click on *Start*.
 
-    ![Weblogic console](images/control-server.png)
-    ![Weblogic console](images/running-server.png)
+    ![Click on Control and start](images/control-server.png)
+    ![Servers in Running status](images/running-server.png)
 
 4. Open another browser tab and use the below URL to access the *OIG Identity Console*. Login to the Identity console using the following credentials:
 
@@ -121,28 +113,28 @@ This lab assumes you have:
     ```
 
 
-    ![OIG Identity console](images/oig.png)
+    ![OIG Identity console homepage](images/oig.png)
 
-    ![OIG Identity console](images/oig-credentials.png)
+    ![OIG Identity console credentials login](images/oig-credentials.png)
 
 5. Click on *Manage* on the top right corner. Then, click on *Users* and notice that about 1000 test users have been created with respective roles and entitlements. Click on any user and Click on the *Accounts* tab notice that the users are provisioned to the *Document Access* application.
 
-    ![OIG Identity console](images/users-oig.png)
+    ![OIG Identity Manage tab](images/users-oig.png)
 
-    ![OIG Identity console](images/display-users-oig.png)
+    ![OIG Identity Users tab](images/display-users-oig.png)
 
-    ![OIG Identity console](images/user-details-oig.png)
+    ![OIG Identity User's Account Details tab](images/user-details-oig.png)
 
     
 
 
 6. Now click on *Home*. Then, click on *Roles and Access policies* and select *Roles*. Notice that the *OrclOIRIRoleEngineer* role is created and assigned to the application user so that the user can login to the OIRI application. Click on the *OrclOIRIRoleEngineer* role. Click on the *Members* tab and notice that this role is assigned to the *xelsysadm* user.
 
-    ![OIG Identity console](images/roles-oig.png)
+    ![OIG Identity Roles and Access Policies](images/roles-oig.png)
 
-    ![OIG Identity console](images/display-roles-oig.png)
+    ![OIG Identity Roles tab](images/display-roles-oig.png)
 
-    ![OIG Identity console](images/members-role-oig.png)
+    ![OIG Identity Role's Member details tab](images/members-role-oig.png)
 
 You may now [proceed to the next lab](#next).
 

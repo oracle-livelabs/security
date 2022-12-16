@@ -44,7 +44,7 @@ This lab assumes you have:
     ```
 
 
-    ![Terminal window commands](images/data-load.png)
+    ![Terminal docker commands to Run ding-cli container and update the existing data load configuration to import entity data](images/data-load.png)
 
 
 ## Task 2: Perform a Dry Import Run
@@ -76,33 +76,33 @@ This lab assumes you have:
     Password  Welcome1
     ```
 
-    ![OIRI console](images/oiri.png)
+    ![OIRI console homepage](images/oiri.png)
 
 
 
 2. Click the Application Navigation menu icon on the top left of the page, and click *Data Import* to open the *Manage Data Import* page with a list of all the data import tasks.
 
-    ![OIRI console](images/data-import.png)
+    ![Click the Application Navigation menu icon on the top left of the page](images/data-import.png)
 
-    ![OIRI console](images/manage-data-import.png)    
+    ![Click Data Import to open the Manage Data Import page](images/manage-data-import.png)    
 
 
 3. While the dry-run is running, observe that there is a red clock icon next to the task. Once the dry data import run has been completed successfully, we will get a green tick and the button *View Results* will be made available. Click *View Results* against the Import data(dry-run) from Oracle Identity Governance task. Alternatively, you can click the data import task name. The *View Results* window is displayed with the result for data import from Oracle Identity Governance database.
 
-    ![OIRI console](images/result-data-import.png)
+    ![Click View Results against the Import data](images/result-data-import.png)
 
 
 4. Expand each entity to review the details of the data import of that entity, such as duplicate data count, whether or not dataset is valid, and the count of invalid data type.
 
-    ![OIRI console](images/viewresult-data-import.png)
+    ![View Results](images/viewresult-data-import.png)
 
-    ![OIRI console](images/role-data-import.png)
+    ![View Results - Role](images/role-data-import.png)
 
-    ![OIRI console](images/application-data-import.png)
+    ![View Results - Application](images/application-data-import.png)
 
-    ![OIRI console](images/entitlement-data-import.png)
+    ![View Results - Entitlement](images/entitlement-data-import.png)
 
-    ![OIRI console](images/user-data-import.png)
+    ![View Results - User](images/user-data-import.png)
 
 5. Click Cancel to close the View Results window.
 
@@ -120,7 +120,7 @@ This lab assumes you have:
     <copy>kubectl get pods -n ding</copy>
     ```
 
-    ![Terminal window commands](images/getpods-data-import.png)
+    ![Terminal command to observe the pods that get generated under the namespace ding](images/getpods-data-import.png)
 
     Notice that once the dry-run task has completed, the ding driver will move from the status *Running* to *Completed*.
 
@@ -132,11 +132,11 @@ This lab assumes you have:
 
 3. While the data import is running, observe that there is a red clock icon next to the task. Once the data import run has been completed successfully, we will get a green tick and the button *View Results* will be made available. Click *View Results* against the Import data from Oracle Identity Governance task. Alternatively, you can click the data import task name. The *View Results* window is displayed with the result for data import from Oracle Identity Governance database.
 
-    ![OIRI console](images/view-data-import.png)
+    ![OIRI - View Results window](images/view-data-import.png)
 
 4. Expand each entity to review the details of the data import of that entity.
 
-    ![OIRI console](images/review-data-import.png)
+    ![OIRI - review the details of the data import](images/review-data-import.png)
 
 5. Click Cancel to close the View Results window.
 
