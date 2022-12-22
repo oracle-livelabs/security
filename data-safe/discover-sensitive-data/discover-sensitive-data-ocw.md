@@ -4,9 +4,12 @@
 
 Data Discovery helps you find sensitive data in your target databases. You tell Data Discovery what kind of sensitive data to search for, and it inspects the actual data in your target database and its data dictionary, and then returns to you a list of sensitive columns. By default, Data Discovery can search for a wide variety of sensitive data pertaining to identification, biographic, IT, financial, healthcare, employment, and academic information.
 
-Start by examining sensitive data in one of the tables on your target database by using Oracle Database Actions. Then, use Oracle Data Safe to discover sensitive data on your target database and generate a sensitive data model. Create a PDF of your sensitive data model.
+Use Oracle Data Safe to discover sensitive data on your target database and then analyze the generated sensitive data model.
 
-Estimated Lab Time: 10 minutes
+Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Discover Sensitive Data](videohub:1_1r9jn53a)
 
 ### Objectives
 
@@ -59,7 +62,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
     ![Provide Basic Information page](images/provide-basic-information-page.png "Provide Basic Information page")
 
-7. On the **Select Schemas** page, leave **Select specific schemas only** selected. Scroll down and select the **HCM1** schema, and then click **Next**. You may need to click the right arrow button at the bottom of the page to navigate to page 2.
+7. On the **Select Schemas** page, leave **Select specific schemas only** selected. Scroll down and select the **HCM1** schema, and then click **Next**. You might need to click the right arrow button at the bottom of the page to navigate to page 2.
 
     ![Select Schemas page](images/select-schemas-page.png "Select Schemas page")
 
@@ -115,4 +118,4 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 15, 2022
+- **Last Updated By/Date** - Jody Glover, Aug 24, 2022

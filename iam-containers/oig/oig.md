@@ -6,6 +6,9 @@ This lab provides information about steps involved in deploying and running OIG 
 
 *Estimated Time:* 30 minutes
 
+Watch the video below for a quick walk-through of the lab. 
+[Deploy Oracle Identity Governance (OIG) Domain](videohub:1_furulwif)
+
 ### About Product/Technology
 Oracle Identity Governance(OIG) is a powerful and flexible enterprise identity management system that automatically manages user's access privileges within enterprise IT resources. The Oracle WebLogic Kubernetes Operator supports deployment of Oracle Identity Governance (OIG). OIG domains are supported using the “domain on a persistent volume” model, where the domain home is located in a persistent volume (PV).
 
@@ -45,23 +48,17 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 
 ## Task 2: Setup the Code Repository to Deploy Oracle Identity Governance Domains
 
-1. Create a working directory to setup the source code.
+1. Create a working directory and download the Oracle WebLogic Kubernetes Operator 3.1.0 source code from the operator github project
 
 	```
-	<copy>mkdir -p /u01/k8siam</copy>
+  <copy>
+  mkdir -p /u01/k8siam
+	cd /u01/k8siam
+	git clone https://github.com/oracle/weblogic-kubernetes-operator.git --branch release/3.1.0
+  </copy>
 	```
 
-2. Download the Oracle WebLogic Kubernetes Operator 3.1.0 source code from the operator github project
-
-	```
-	<copy>cd /u01/k8siam</copy>
-	```
-
-	```
-	<copy>git clone https://github.com/oracle/weblogic-kubernetes-operator.git --branch release/3.1.0</copy>
-	```
-
-3. Clone the Oracle Identity Governance deployment scripts from the OIG repository and copy them into the WebLogic operator samples location
+2. Clone the Oracle Identity Governance deployment scripts from the OIG repository and copy them into the WebLogic operator samples location
 
 	```
 	<copy>git clone https://github.com/oracle/fmw-kubernetes.git</copy>
@@ -88,15 +85,14 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 3. Run the following helm command to install and start the operator:
 
 	```
-	<copy>cd weblogic-kubernetes-operator/</copy>
-	```
-
-	```
-	<copy>helm install weblogic-kubernetes-operator kubernetes/charts/weblogic-operator \
+	<copy>
+  cd weblogic-kubernetes-operator/
+  helm install weblogic-kubernetes-operator kubernetes/charts/weblogic-operator \
 	--namespace operator \
 	--set image=weblogic-kubernetes-operator:3.1.0 \
 	--set serviceAccount=operator-serviceaccount \
-	--set "domainNamespaces={}"</copy>
+	--set "domainNamespaces={}"
+  </copy>
 	```
 
 	![Install operator pod](images/7-helm.png)
@@ -141,7 +137,7 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 	<copy>kubectl exec -it helper -n oimcluster -- /bin/bash</copy>
 	```
 
-5. In the helper bash shell run the following commands to set the environment. Replace the *`<PRIVATE_IP>`* parameter copied in step 2.1 (instance private IP).
+5. In the helper bash shell run the following commands to set the environment. Replace the *`<PRIVATE_IP>`* parameter copied from the previous Lab 'Initialize Environment', Task 2, Step 2  (instance private IP).
 
 	```
 	<copy>
@@ -185,7 +181,7 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 	-f < /tmp/pwd.txt</copy>
 	```
 
-	It may take about 5-8 minutes for the RCU schemas to be created.
+	***Note: It may take about 5-8 minutes for RCU schemas to be created.***
 
 	![Create RCU schemas](images/9-rcu.png)
 
@@ -206,11 +202,10 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 2. Create a Kubernetes secret for the domain using the create-weblogic-credentials script in the same Kubernetes namespace as the domain:
 
 	```
-	<copy>cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials</copy>
-	```
-
-	```
-	<copy>./create-weblogic-credentials.sh -u weblogic -p Welcom@123 -n oimcluster -d oimcluster -s oimcluster-domain-credentials</copy>
+	<copy>
+  cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials
+  ./create-weblogic-credentials.sh -u weblogic -p Welcom@123 -n oimcluster -d oimcluster -s oimcluster-domain-credentials
+  </copy>
 	```
 
 	where:
@@ -236,11 +231,10 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 4. Create a Kubernetes secret for RCU in the same Kubernetes namespace as the domain, using the create-weblogic-credentials.sh script:
 
 	```
-	<copy>cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-credentials</copy>
-	```
-
-	```
-	<copy>./create-rcu-credentials.sh -u OIGK8S -p Welcom#123 -a sys -q Welcom#123 -d oimcluster -n oimcluster -s oimcluster-rcu-credentials</copy>
+	<copy>
+  cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-credentials
+  ./create-rcu-credentials.sh -u OIGK8S -p Welcom#123 -a sys -q Welcom#123 -d oimcluster -n oimcluster -s oimcluster-rcu-credentials
+  </copy>
 	```
 
 	where:
@@ -271,33 +265,22 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 1. Create the required directory for persistent volume.
 
 	```
-	<copy>mkdir -p /u01/domains/oimclusterdomainpv</copy>
-	```
-
-	```
-	<copy>chmod 777 /u01/domains/oimclusterdomainpv</copy>
+	<copy>
+  mkdir -p /u01/domains/oimclusterdomainpv
+	chmod 777 /u01/domains/oimclusterdomainpv
+  </copy>
 	```
 
 2. Make a backup copy of the create-pv-pvc-inputs.yaml file and Execute the create-pv-pvc.sh script to create the PV and PVC configuration files:
 
 	```
-	<copy>cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-pv-pvc</copy>
-	```
-
-	```
-	<copy>cp create-pv-pvc-inputs.yaml create-pv-pvc-inputs.yaml.orig</copy>
-	```
-
-	```
-	<copy>mkdir output_oimcluster</copy>
-	```
-
-	```
-	<copy>cp /u01/sampleFilesOIG/create-pv-pvc-inputs.yaml .</copy>
-	```
-
-	```
-	<copy>./create-pv-pvc.sh -i create-pv-pvc-inputs.yaml -o output_oimcluster</copy>
+	<copy>
+  cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-pv-pvc
+  cp create-pv-pvc-inputs.yaml create-pv-pvc-inputs.yaml.orig
+  mkdir output_oimcluster
+  cp /u01/sampleFilesOIG/create-pv-pvc-inputs.yaml .
+  ./create-pv-pvc.sh -i create-pv-pvc-inputs.yaml -o output_oimcluster
+  </copy>
 	```
 
 	![Create persistent volume](images/12-pv.png)
@@ -339,22 +322,15 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 1. Make a copy of the create-domain-inputs.yaml file:
 
 	```
-	<copy>cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-oim-domain/domain-home-on-pv</copy>
+	<copy>
+  cd /u01/k8siam/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-oim-domain/domain-home-on-pv
+  cp create-domain-inputs.yaml create-domain-inputs.yaml.orig
+	mkdir output_oimcluster
+	cp /u01/sampleFilesOIG/create-domain-inputs.yaml .
+  </copy>
 	```
 
-	```
-	<copy>cp create-domain-inputs.yaml create-domain-inputs.yaml.orig</copy>
-	```
-
-	```
-	<copy>mkdir output_oimcluster</copy>
-	```
-
-	```
-	<copy>cp /u01/sampleFilesOIG/create-domain-inputs.yaml .</copy>
-	```
-
-3. Edit the *rcuDatabaseURL* parameter to include the private IP of your instance (noted in Step 2.2). Alternatively, you can also get the private IP by giving the command *cat /etc/hosts*. The *rcuDatabaseURL* parameter is towards the end of the *create-domain-inputs.yaml* file. Navigate to the end of the file and update the parameter to the private IP of the instance.
+3. Edit the *rcuDatabaseURL* parameter to include the private IP of your instance (noted from the previous Lab 'Initialize Environment', Task 2, Step 2). Alternatively, you can also get the private IP by giving the command *cat /etc/hosts*. The *rcuDatabaseURL* parameter is towards the end of the *create-domain-inputs.yaml* file. Navigate to the end of the file and update the parameter to the private IP of the instance.
 
   *Note: To edit a file, use the command 'vi <file name>', after which you can use arrow keys to move to the location where changes need to be made in the file (As a shortcut, you can use 'Shift + G' to directly go to the end of file). Press 'i' on the keyboard to switch to insert mode. You can type your required changes OR if you want to paste copied content, simply do a Right Click by first ensuring the cursor be at the exact place. Once done, press 'Esc' to exit out of Insert mode. Finally, press ':wq' to save the changes and quit the vi editor.*
 
@@ -368,7 +344,10 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 
 ## Task 8: Run the create domain script to generate domain related kubernetes artifacts
 
-1. Run the create domain script, specifying your inputs file and an output directory to store the generated artifacts. This may take about 6-7 minutes.
+1. Run the create domain script, specifying your inputs file and an output directory to store the generated artifacts.
+
+
+  *Note: This may take about 6-7 minutes.*
 
 	```
 	<copy>./create-domain.sh -i create-domain-inputs.yaml -o output_oimcluster</copy>
@@ -379,7 +358,7 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 1. Create a Docker Registry Secret with the name oig-docker.
 
 
-	*Note: The weblogic operator validates the presence of this secret. The OIG image has already been loaded in the VM. So you can run this command as is. The presence of the secret is sufficient for creating the Kubernetes resource in the next step.*
+	*Note: You can run this command as is. There is no need to update any of the parameter values in the below command.*
 
 	```
 	<copy>kubectl create secret docker-registry oig-docker -n oimcluster --docker-username='<user_name>' --docker-password='<password>' --docker-server='<docker_registry_url>' --docker-email='<email_address>'</copy>
@@ -388,11 +367,10 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 2. Create the Kubernetes resource using the following command:
 
 	```
-	<copy>cd output_oimcluster/weblogic-domains/oimcluster/</copy>
-	```
-
-	```
-	<copy>kubectl apply -f domain.yaml</copy>
+	<copy>
+  cd output_oimcluster/weblogic-domains/oimcluster/
+  kubectl apply -f domain.yaml
+  </copy>
 	```
 
 3. Run the following command to view the status of the OIG pods:
@@ -401,11 +379,13 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 	<copy>kubectl get pods -n oimcluster</copy>
 	```
 
-	The introspect-domain-job pod will be displayed first. Run the command again after 5-10 minutes and check to see that the AdminServer and SOA Server are both started. When started they should have STATUS = Running and READY = 1/1
+	***Note: The introspect-domain-job pod will be displayed first, which will be responsible for creating the adminserver and soa-server pods.***
+
 
 	![OIG pods](images/16-pods.png)
 
-4. It will take several minutes before all the pods listed above show. When a pod has a STATUS of 0/1 the pod is started but the OIG server associated with it is currently starting. While the pods are starting you can check the startup status in the pod logs, by running the following commands:
+4. It will take 8-10 minutes before the pods for adminserver and soa-server come to a 1/1 state.
+   While the pods are starting, you can check the startup status in the pod logs by running the following commands:
 
 	```
 	<copy>kubectl logs oimcluster-adminserver -n oimcluster</copy>
@@ -415,7 +395,10 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 	<copy>kubectl logs oimcluster-soa-server1 -n oimcluster</copy>
 	```
 
-5. Once both pods are running, start the OIM Server using the following command:
+  ***Note: You must only proceed to the next step once the pods for adminserver and soa-server are in a READY 1/1 state.***
+
+5. Once both the pods from the previous step are in a 1/1 READY state, start the OIM Server using the following command:
+
 
 	```
 	<copy>kubectl apply -f domain_oim_soa.yaml</copy>
@@ -425,7 +408,7 @@ The Oracle WebLogic Server Kubernetes Operator Docker image must be installed on
 	<copy>kubectl get pods -n oimcluster -o wide</copy>
 	```
 
-	It may take about 6-7 minutes for all the pods to be in the RUNNING state. While the pods are starting you can check the startup status in the pod logs.
+	It may take about 6-8 minutes for the OIM pod (oim-server) to be in a READY 1/1 state. While the pod is starting, you can check the startup status in the pod logs.
 
 	![OIG pods](images/17-pods.png)
 

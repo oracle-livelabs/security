@@ -72,7 +72,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment.
 
 1. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**.
 
-2. In the **Filters** section on the left, make sure your workload type is **Transaction Processing** or **All** so that you can view your database listing after you create it.
+2. In the **Filters** section on the left, make sure your workload type is **Transaction Processing** or **All** so that you can view your database listing after you create your database.
 
 3. From the **Compartment** drop-down list, select your compartment.
 
@@ -111,9 +111,6 @@ Throughout this workshop, you access Database Actions to run SQL commands on you
 
 2. If you are prompted to sign in to your target database, sign in as the `ADMIN` user.
 
-    - If a tenancy administrator provided you an Autonomous Database, obtain the password from your tenancy administrator.
-    - If you are using an Oracle-provided environment, enter the `ADMIN` password that was provided to you.
-
 3. In the **Development** section, click **SQL**.
 
 4. In the help note dialog box, click the **X** button to close it.
@@ -148,7 +145,7 @@ As the `ADMIN` user on your database, run the `load-data-safe-sample-data_admin.
     - Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
     - The script ends with the message **END OF SCRIPT**.
 
-4. To ensure the sample data is loaded successfully, at the end of the script output, review the row count for each table in the `HCM1` schema. The counts should be as follows:
+4. To ensure the sample data is loaded successfully, scroll up from the bottom of the script output and review the row count for each table in the `HCM1` schema. The counts should be as follows:
 
     - `COUNTRIES` - 25 rows
     - `DEPARTMENTS` - 27 rows
@@ -163,7 +160,7 @@ As the `ADMIN` user on your database, run the `load-data-safe-sample-data_admin.
 
     If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
 
-5. Refresh Database Actions: Click the _browser's_ refresh button and then click **Leave Page**. The page is refreshed. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
+5. Refresh Database Actions: Refresh the _browser's_ page and then verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
 6. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
@@ -179,4 +176,4 @@ As the `ADMIN` user on your database, run the `load-data-safe-sample-data_admin.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Aug 23, 2022
+- **Last Updated By/Date** - Jody Glover, Aug 24, 2022

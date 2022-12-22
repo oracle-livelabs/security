@@ -12,7 +12,11 @@ You can deploy controls to block privileged account access to application data a
 *Version tested in this lab:* Oracle Autonomous Database 19c
 
 ### Video Preview
+
 Watch a preview of "*LiveLabs - Prevent unauthorized data access in Autonomous Databases with Database Vault (May 2022)*" [](youtube:xKq0a_dwM1Y)
+
+Watch the video below for a quick walk-through of the lab.
+[Oracle Database Vault on an Autonomous Database](videohub:1_hpawkio9)
 
 ### Objectives
 Oracle Database vault comes pre-installed with your Autonomous database.
