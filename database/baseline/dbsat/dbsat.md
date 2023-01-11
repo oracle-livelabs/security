@@ -163,7 +163,7 @@ This lab assumes you have:
     - This script will copy the html report to the glassfish webserver to make it easier for you to see the report
     - For real life cases you won’t need to copy file to glassfish, but just unzip the files and open the html
 
-6. On a new web browser tab, copy-paste the URL provided as the output, where *`dbsec-lab`* below is **your own DBSecLab public IP address**
+6. In a new web browser tab, copy-paste the URL provided as the output with your DBSecLab Public IP, or use the link below where *`dbsec-lab`* is **your own DBSecLab domain name for your Private IP address**
 
     ````
     <copy>http://dbsec-lab:8080/hr_prod_pdb1/dbsat/pdbhol_report.html</copy>
@@ -501,7 +501,7 @@ In this exercise, you will learn how to execute DBSAT discoverer. DBSAT discover
 
     **Note**: This script will copy the html report to the glassfish webserver to make it easier for you to see the report
 
-10. Open your web browser, copy-paste the URL provided for the discoverer html report (**`pdb1_dbsat_discover.html`**) as the output, where *`dbsec-lab`* below is **your own DBSecLab public IP address**
+10. Open your web browser, copy-paste the URL provided for the discoverer html report (**`pdb1_dbsat_discover.html`**) as the output with your DBSecLab Public IP, or use the link below where *`dbsec-lab`* is **your own DBSecLab domain name for your Private IP address**
 
     ````
     <copy>http://dbsec-lab:8080/hr_prod_pdb1/dbsat/pdb1_dbsat_discover.html</copy>
@@ -662,7 +662,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
 
     **Note**: This script will copy the html report to the glassfish webserver to make it easier for you to see the report
 
-14. On a new web browser tab, copy-paste the URL provided for the "**v2**" discoverer html report (**`pdb1_dbsat_v2_discover.html`**) as the output, where *`dbsec-lab`* below is **your own DBSecLab public IP address**
+14. On a new web browser tab, copy-paste the URL provided for the "**v2**" discoverer html report (**`pdb1_dbsat_v2_discover.html`**) as the output with your DBSecLab Public IP, or use the link below where *`dbsec-lab`* is **your own DBSecLab domain name for your Private IP address**
 
     ````
     <copy>http://dbsec-lab:8080/hr_prod_pdb1/dbsat/pdb1_dbsat_v2_discover.html</copy>
@@ -722,7 +722,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
 
     ![](./images/dbsat-042d.png " ")
 
-20. On a new web browser tab, copy-paste the URL provided for the "**v3**" discoverer html report (**`pdb1_dbsat_v3_discover.html`**) as the output, where *`dbsec-lab`* below is **your own DBSecLab public IP address**
+20. On a new web browser tab, copy-paste the URL provided for the "**v3**" discoverer html report (**`pdb1_dbsat_v3_discover.html`**) as the output with your DBSecLab Public IP, or use the link below where *`dbsec-lab`* is **your own DBSecLab domain name for your Private IP address**
 
     ````
     <copy>http://dbsec-lab:8080/hr_prod_pdb1/dbsat/pdb1_dbsat_v3_discover.html</copy>
