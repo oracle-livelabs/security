@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data S
 
 *Estimated Lab Time:* 120 minutes 
 
-*Version tested in this lab:* Oracle Data Safe on OCI and Oracle DB 19.13
+*Version tested in this lab:* Oracle Data Safe on OCI and Oracle DB 19.17
 
 ### Video Preview
 
@@ -1876,10 +1876,6 @@ Oracle Data Safe is Oracle’s platform for securing data in databases. As a nat
 
 ![](./images/data-safe-concept-01.png " ")
 
-
-### **Benefits of Using Oracle Data Safe**
-XXXXXX
-
 ## Want to Learn More?
 Technical Documentation:
 - [Oracle Data Safe website](https://www.oracle.com/database/technologies/security/data-safe.html)
@@ -1899,4 +1895,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Bettina Schaeumer, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2022
