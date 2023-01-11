@@ -1894,5 +1894,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Bettina Schaeumer, Rene Fontcha
+- **Contributors** - Jody Glover, Bettina Schaeumer, Rene Fontcha
 - **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2022
