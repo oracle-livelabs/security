@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data M
 
 *Estimated Lab Time:* 85 minutes
 
-*Version tested in this lab:* Oracle Enterprise Manager 13.5
+*Version tested in this lab:* Oracle Enterprise Manager 13.5.0.11
 
 ### Video Preview
 Watch a preview of "*Understanding Oracle Data Masking & Subsetting (April 2019)*" [](youtube:3zi0Bs_bgEw)
@@ -45,9 +45,11 @@ This lab assumes you have:
 
 ## Task 1: Import Schema Structure
 
-1. Open a Web Browser at the URL *`https://<DBSecLab-VM_@IP-Public>:7803/em`*
+1. Open a Web Browser to *`https://dbseclab:7803/em`* to access to Oracle Enterprise Manager 13c Console
 
-2. Login to Oracle Enterprise Manager 13c Console as *`SYSMAN`* with the password "*`Oracle123`*"
+    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:7803/em`*
+
+2. Login as *`SYSMAN`* with the password "*`Oracle123`*"
 
     ````
     <copy>SYSMAN</copy>
@@ -58,8 +60,6 @@ This lab assumes you have:
     ````
 
     ![](./images/dms-001.png " ")
-
-   **Notes:** You may also access this page with your remote desktop by going to *`https://dbseclab:7803/em`*
 
 3. Navigate to the Application Data Models page from the Quality Management submenu by selecting the menu **Enterprise > Quality Management > Application Data Modeling** as follow:
 
@@ -1389,4 +1389,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2022

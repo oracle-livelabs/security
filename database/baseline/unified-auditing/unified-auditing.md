@@ -129,7 +129,9 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
 
 2. In parallel, use your Glassfish App to generated activity on your database:
 
-    - Open a web browser window to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+    - Open a web browser window to *`https://dbsec-lab:8080/hr_prod_pdb1`*
+    
+        **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
     
     - Login to the HR Application as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -206,23 +208,7 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
 
         **Note**: When prompted, **DO NOT press [return]** before executing a research in Glassfish as mentioned below!
 
-    - Open a new web browser window to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-    
-    - Login to the HR Application as *`hradmin`* with the password "*`Oracle123`*"
-
-        ````
-        <copy>hradmin</copy>
-        ````
-
-        ````
-        <copy>Oracle123</copy>
-        ````
-
-        ![](./images/ua-008.png " ")
-
-        ![](./images/ua-009.png " ")
-
-    - Click on **Search Employees**
+    - Go back to your Glassfish app to generate new activity by clicking on **Search Employees**
 
         ![](./images/ua-010.png " ")
 

@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data R
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DB 19.13
+*Version tested in this lab:* Oracle DB 19.17
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
@@ -58,7 +58,9 @@ This lab assumes you have:
 
     - Now, let's have a look **on your Glassfish App**
 
-        - Open a web browser window to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`* to acces to your Glassfish App
+        - Open a Web Browser at the URL *`https://dbsec-lab:8080/hr_prod_pdb1`*
+
+            **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
     
         - Login to the HR Application as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -225,4 +227,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2022

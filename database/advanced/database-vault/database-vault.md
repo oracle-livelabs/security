@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Databa
 
 Estimated Time: 45 minutes
 
-*Version tested in this lab:* Oracle DB 19.13
+*Version tested in this lab:* Oracle DB 19.17
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Database Vault (May 2022)*" [](youtube:M5Kn-acUHRQ)
@@ -75,7 +75,9 @@ This lab assumes you have:
 
 ## Task 2: Create a Simple Realm
 
-1. Open a web browser and launch the Glassfish app by navigating to this URL: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+1. Open a web browser window to *`https://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
+
+    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
     ![](./images/dv-029.png " ")
 
@@ -149,19 +151,15 @@ This lab assumes you have:
 
 ## Task 3: Create a Trusted Path / Multi-factor Authorization
 
-1. Go back to your Glassfish app as *`hradmin`*
-
-    ![](./images/dv-030.png " ")
-
-2. Click [**Search Employee**] again
+1. Go back to your Glassfish app and click [**Search Employee**] again
 
     ![](./images/dv-031.png " ")
 
-3. And click [**Search**]
+2. And click [**Search**]
 
     ![](./images/dv-032.png " ")
 
-4. Go back to your Terminal session and run this query to view the session information associated with the Glassfish application
+3. Go back to your Terminal session and run this query to view the session information associated with the Glassfish application
 
     ````
     <copy>./dv_query_employeesearch_usage.sh</copy>
@@ -169,7 +167,7 @@ This lab assumes you have:
 
     ![](./images/dv-019.png " ")
 
-5. Now, query the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table with the owner `EMPLOYEESEARCH_PROD` to demonstrate it is accessible
+4. Now, query the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table with the owner `EMPLOYEESEARCH_PROD` to demonstrate it is accessible
 
     ````
     <copy>./dv_query_employee_search.sh</copy>
@@ -177,7 +175,7 @@ This lab assumes you have:
 
     ![](./images/dv-020.png " ")
 
-6. Begin protecting the application credentials by creating a Database Vault Rule
+5. Begin protecting the application credentials by creating a Database Vault Rule
 
     ````
     <copy>./dv_create_rule.sh</copy>
@@ -187,7 +185,7 @@ This lab assumes you have:
 
     **Note**: We authorize as a Trusted Path app only the access from Glassfish Web App (JDBC Thin Client) through the schema owner `EMPLOYEESEARCH_PROD`!
 
-7. We use the Database Vault Rule by adding it to a **DV Rule Set**
+6. We use the Database Vault Rule by adding it to a **DV Rule Set**
 
     - You can have one or more rules in the rule set
     - If you have more than one, you can choose between the rule set evaluating all rules must be true or `ANY` rule must be true
@@ -199,7 +197,7 @@ This lab assumes you have:
 
     ![](./images/dv-022.png " ")
 
-8. Create a Command Rule on "**CONNECT**" to protect the `EMPLOYEESEARCH_PROD` user
+7. Create a Command Rule on "**CONNECT**" to protect the `EMPLOYEESEARCH_PROD` user
 
     ````
     <copy>./dv_create_command_rule.sh</copy>
@@ -209,11 +207,11 @@ This lab assumes you have:
 
    **Note**: You can only "`CONNECT`" as `EMPLOYEESEARCH_PROD` if you match the Rule Set we created!
 
-9. Go back to your Glassfish app and refresh a few times and run some queries by clicking [**Search**] and explore employee data
+8. Go back to your Glassfish app and refresh a few times and run some queries by clicking [**Search**] and explore employee data
 
     **Note**: Because you're using the Glassfish App as a Trusted Path app you can access the data!
 
-10. Go back to your terminal session and re-run our query of the application usage to verify that it still works
+9. Go back to your terminal session and re-run our query of the application usage to verify that it still works
 
     ````
     <copy>./dv_query_employeesearch_usage.sh</copy>
@@ -221,7 +219,7 @@ This lab assumes you have:
 
     ![](./images/dv-024.png " ")
 
-11. Now, try to query the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table with the owner `EMPLOYEESEARCH_PROD`... **You should be blocked**!
+10. Now, try to query the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table with the owner `EMPLOYEESEARCH_PROD`... **You should be blocked**!
 
     ````
     <copy>./dv_query_employee_search.sh</copy>
@@ -231,7 +229,7 @@ This lab assumes you have:
 
     **Note**: Because you're querying via a non-"Trusted Path" app you can't access the data!
 
-12. Once you have successfully completed the lab, you can delete the **Command Rule**, **Rule Set**, and **Rule** from Database Vault
+11. Once you have successfully completed the lab, you can delete the **Command Rule**, **Rule Set**, and **Rule** from Database Vault
 
     ````
     <copy>./dv_del_trusted_path.sh</copy>
@@ -467,4 +465,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Alan Williams, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2022

@@ -88,8 +88,10 @@ This lab assumes you have:
         <copy>./nne_capt_empsearch_traffic.sh</copy>
         ````
 
-    - In parallel, open a web browser window to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`* to acces to your Glassfish App
+    - In parallel, open a web browser window to *`https://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
     
+        **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+
     - Perform the following steps:
 
         - Login to the HR Application as *`hradmin`* with the password "*`Oracle123`*"

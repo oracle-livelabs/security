@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Key Va
 
 *Estimated Lab Time:* 55 minutes
 
-*Version tested in this lab:* Oracle OKV 21.3
+*Version tested in this lab:* Oracle OKV 21.5
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault (May 2022)*" [](youtube:4VR1bbDpUIA)
@@ -139,12 +139,9 @@ If you didn't execute them yet, do it right now by following the instructions be
 ## Task 2: Add an Endpoint
 First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
 
-1. Open a web browser window to *`https://<OKV-VM_@IP-Public>`*
+1. Open a Web Browser to *`https://kv`* to access to Oracle Key Vault Console
 
-    **Note**:
-    - You may also access this page from the remote desktop by going to *`https://kv`*
-    - On the right web browser window on your remote desktop, switch to tab preloaded with the Oracle Key Vault Web Console
-    - If you inadvertently closed it, open a new tab
+    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
 
 2. Login to Oracle Key Vault Web Console using the credentials below
 
@@ -211,6 +208,8 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
         ````
 
         ![](./images/okv-006.png " ")
+
+        **Note**: Enter '**Y**' to continue
 
     - Before finishing, we have to change the Endpoint password
 
@@ -728,4 +727,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2022

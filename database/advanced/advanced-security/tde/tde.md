@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Transp
 
 *Estimated Lab Time:* 45 minutes
 
-*Version tested in this lab:* Oracle DB 19.13
+*Version tested in this lab:* Oracle DB 19.17
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
@@ -178,7 +178,7 @@ This lab assumes you have:
 
     ![](./images/tde-015.png " ")
 
-2. Next, **encrypt** the data by encrypting the entire tablespace
+2. Next, **encrypt explicitly** the data by encrypting the entire tablespace using the AES256 encryption algorithm
 
     ````
     <copy>./tde_encrypt_tbs.sh</copy>
@@ -206,15 +206,22 @@ This lab assumes you have:
 
     ![](./images/tde-018.png " ")
 
-2. Next, change the init parameter `ENCRYPT_NEW_TABLESPACES` to be **ALWAYS** so all new tablespaces are encrypted
+2. Next, change the init parameter `TABLESPACE_ENCRYPTION` to "`AUTO_ENABLE`" to always **encrypt implicitly all new tablespaces**, and the hidden init parameter `_tablespace_encryption_default_algorithm` to use "`AES256`" as default encryption algorithm
 
     ````
-    <copy>./tde_encrypt_all_new_tbs.sh</copy>
+    <copy>./tde_set_encrypt_all_new_tbs.sh</copy>
     ````
 
     ![](./images/tde-019.png " ")
 
-3. Finally, create a tablespace to test it. The tablespace **TEST** will be created without specifying the encryption parameters (the default encryption is **AES256**) and will be dropped after.
+    **Note**:
+    - The `TABLESPACE_ENCRYPTION` parameter cannot be modified, hence **the database must be restarted**!
+    - This parameter is **introduced in Oracle Database version 19.16**, as an alternative to the `ENCRYPT_NEW_TABLESPACES` parameter
+    - Similar to `ENCRYPT_NEW_TABLESPACES`, this parameter allows you to specify whether to encrypt newly created user tablespaces
+    - If the behavior specified by the `ENCRYPT_NEW_TABLESPACES` setting conflicts with the behavior specified by the `TABLESPACE_ENCRYPTION` setting, then the `TABLESPACE_ENCRYPTION` behavior takes precedence
+    - So, `ENCRYPT_NEW_TABLESPACES` must be set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE` 
+    
+3. Finally, create and drop a tablespace TEST to check the effect
 
     ````
     <copy>./tde_create_new_tbs.sh</copy>
@@ -222,7 +229,9 @@ This lab assumes you have:
 
     ![](./images/tde-020.png " ")
 
-4. Now, your new Tablespaces will be encrypted by default!
+    **Note**: Despite the fact that the tablespace **TEST** was created without specifying encryption parameters, it's encrypted by default with the AES256 encryption algorithm
+
+4. Now, all your new Tablespaces will be encrypted by default!
 
 ## Task 7: Rekey Master Key
 
@@ -332,7 +341,13 @@ This lab assumes you have:
 
     ![](./images/tde-029.png " ")
 
-7. Now, your database is restored to the point in time prior to enabling TDE!
+7. Now, your database is restored to the point in time prior to enabling TDE and you can remove your dabase backup (optional)!
+
+    ````
+    <copy>./tde_delete_backup_db.sh</copy>
+    ````
+
+    ![](./images/tde-030.png " ")
 
 You may now proceed to the next lab!
 
@@ -374,4 +389,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2022
