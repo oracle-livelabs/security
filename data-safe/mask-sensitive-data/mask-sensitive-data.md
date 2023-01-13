@@ -12,6 +12,7 @@ Estimated Lab Time: 15 minutes
 
 In this lab, you will:
 
+- Grant the Data Masking role on your target database
 - View sensitive data in your target database
 - Create a masking policy for your target database
 - Mask sensitive data in your target database by using Data Masking
@@ -26,7 +27,7 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe. It's important that you have already granted the **Data Masking** role on your target database; otherwise, you will not be able to mask sensitive data. Also, make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
+- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
 - Created a sensitive data model (see [Discover Sensitive Data](?lab=discover-sensitive-data))
 
 
@@ -34,40 +35,67 @@ This lab assumes you have:
 
 - Your data values are most likely different than those shown in the screenshots.
 
-## Task 1: View sensitive data in your target database
+## Task 1: Grant the Data Masking role on your target database
 
-In the [Discover Sensitive Data](?lab=discover-sensitive-data) lab, you learned that the `HCM1.EMPLOYEES` table has sensitive data. In this task, you view the actual sensitive data in that table by using Database Actions.
+After registering an Autonomous Database, you can grant and revoke roles from the Oracle Data Safe service account on your Autonomous Database to control which Oracle Data Safe features you can use with the database. You need to register your Autonomous Database before granting roles because registration unlocks the Oracle Data Safe pre-seeded service account on your target database. Keep in mind that the roles for Autonomous Databases are different than those for non-Autonomous Databases. For non-Autonomous Databases, you can grant roles before or after registering your database.
+- For an **Autonomous Database on Shared Exadata Infrastructure**, which is what we are using in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
+- For an **Autonomous Database on Dedicated Exadata Infrastructure**, only the User and Security Assessment role (`DS$ASSESSMENT_ROLE`) and the Audit Collection role (`DS$AUDIT_COLLECTION_ROLE`) are granted by default. You can grant the other roles as needed.
+- For all **non-Autonomous Databases**, you need to run a SQL privileges script on the target database to grant roles. No roles are granted by default.
+
+If you are using a target database other than an ATP database, please refer to the _Administering Oracle Data Safe_ guide for instructions on how to grant roles specific to your target database.
 
 1. Access the SQL worksheet in Database Actions. If your session has expired, sign in again as the `ADMIN` user. Clear the worksheet if needed.
 
-2. On the **Navigator** tab, select the **HCM1** schema from the first drop-down list.
+2. Click the **Clear** button (trash can icon) on the toolbar to clear the worksheet. Click the **Clear output** button on the **Script Output** tab to clear the output.
 
-3. Drag the `EMPLOYEES` table to the worksheet.
+3. On the SQL worksheet, enter the following command to grant the Data Masking role to the Oracle Data Safe service account on your target database.
+
+    ```
+    <copy>EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$DATA_MASKING_ROLE');</copy>
+    ```
+
+4. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query. The script output should read as follows:
+
+    `PL/SQL procedure successfully completed`
+
+    ![Run Statement button on toolbar](images/run-statement-button.png "Run Statement button on toolbar")
+
+    You are now able to mask sensitive data on your target database.
+
+
+
+## Task 2: View sensitive data in your target database
+
+In the [Discover Sensitive Data](?lab=discover-sensitive-data) lab, you learned that the `HCM1.EMPLOYEES` table has sensitive data. In this task, you view the actual sensitive data in that table by using Database Actions.
+
+1. On the **Navigator** tab, select the **HCM1** schema from the first drop-down list.
+
+2. Drag the `EMPLOYEES` table to the worksheet.
 
     ![EMPLOYEES table](images/drag-employees-table-to-worksheet.png "EMPLOYEES table")
 
-4. When prompted to choose an insertion type, click **Select**, and then click **Apply**.
+3. When prompted to choose an insertion type, click **Select**, and then click **Apply**.
 
     ![Choose the type of insertion dialog box](images/insertion-type-select.png "Choose the type of insertion dialog box")
 
-5. View the SQL query on the worksheet.
+4. View the SQL query on the worksheet.
 
     ![Worksheet tab showing EMPLOYEES table](images/query-employees-table.png "Worksheet tab showing EMPLOYEES table")
 
 
-6. On the toolbar, click the **Run Script** button.
+5. On the toolbar, click the **Run Script** button.
 
     ![Run Script button](images/run-script.png "Run Script button")
 
 
-7. On the **Script Output** tab, review the query results.
+6. On the **Script Output** tab, review the query results.
 
     - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, and `HIRE_DATE` are considered sensitive data and should be masked if shared for non-production use.
 
-8. Return to the browser tab for Oracle Data Safe. Keep this browser tab open because you return to it later.
+7. Return to the browser tab for Oracle Data Safe. Keep this browser tab open because you return to it later.
 
 
-## Task 2: Create a masking policy for your target database
+## Task 3: Create a masking policy for your target database
 
 Data Masking can generate a masking policy for your target database based on your sensitive data model. It automatically tries to select a default masking format for each sensitive column. You can edit these default selections and select different ones as needed. Occasionally you might be prompted to fix issues (if they exist) in your masking formats.
 
@@ -116,7 +144,7 @@ Data Masking can generate a masking policy for your target database based on you
     ![Masking Columns Needing Attention section](images/masking-columns-needing-attention.png "Masking Columns Needing Attention section")
 
 
-## Task 3: Mask sensitive data in your target database by using Data Masking
+## Task 4: Mask sensitive data in your target database by using Data Masking
 
 After you create a masking policy, you can run a data masking job against your target database from the **Masking Policy Details** page. You can also run a data masking job from the **Data Masking** page.
 
@@ -141,7 +169,7 @@ After you create a masking policy, you can run a data masking job against your t
     ![Work Request page for masking job succeeded](images/work-request-masking-job-succeeded.png "Work Request page for masking job succeeded")
 
 
-## Task 4: View the Data Masking report
+## Task 5: View the Data Masking report
 
 1. While on the **Work Request** page, next to **Masking Report** on the **Work Request Information** tab, click **View Details**.
 
@@ -155,7 +183,7 @@ After you create a masking policy, you can run a data masking job against your t
     ![Masking report top](images/masking-report-top2.png "Masking report top")
     ![Masking report bottom](images/masking-report-bottom.png "Masking report bottom")
 
-## Task 5 (Optional): Create a PDF of the Data Masking report
+## Task 6 (Optional): Create a PDF of the Data Masking report
 
 1. At the top of the **Masking Report Details** page, click **Generate Report**.
 
@@ -178,7 +206,7 @@ After you create a masking policy, you can run a data masking job against your t
     ![Data Masking PDF report](images/data-masking-pdf-report.png "Data Masking PDF report")
 
 
-## Task 6: Validate the masked data in your target database
+## Task 7: Validate the masked data in your target database
 
 1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. The `SELECT` statement against the `EMPLOYEES` table should be displayed on the worksheet.
 
@@ -196,4 +224,4 @@ After you create a masking policy, you can run a data masking job against your t
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 15, 2022
+- **Last Updated By/Date** - Jody Glover, January 13, 2023
