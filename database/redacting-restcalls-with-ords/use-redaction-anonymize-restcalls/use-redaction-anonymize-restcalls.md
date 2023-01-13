@@ -89,8 +89,8 @@ This lab assumes you have:
 
 Congratulations, You have successfully redacted REST calls using ORDS!
 
-# Acknowledgements
+## Acknowledgements
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
-- **Creator** - Pedro Lopes, Dataabse Security Product Manager
+- **Creator** - Pedro Lopes, Database Security Product Manager
 - **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, January 2023

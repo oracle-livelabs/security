@@ -111,5 +111,5 @@ You may now **proceed to the next lab.**
 # Acknowledgements
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
-- **Creator** - Pedro Lopes, Dataabse Security Product Manager
+- **Creator** - Pedro Lopes, Database Security Product Manager
 - **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, January 2023
