@@ -39,8 +39,8 @@ This workshop assumes you have:
 - [Introduction to Oracle Data Redcation](https://docs.oracle.com/database/121/DVADM/dvintro.htm#DVADM001)
 - [Oracle Data Redaction FAQs](https://www.oracle.com/technetwork/database/options/data-masking-subsetting/learnmore/faq-security-asdr-external-3215961.pdf)
 
-# Acknowledgements
+## Acknowledgements
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
-- **Creator** - Pedro Lopes, Dataabse Security Product Manager
+- **Creator** - Pedro Lopes, Database Security Product Manager
 - **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, January 2023
