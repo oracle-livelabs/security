@@ -1,4 +1,5 @@
 # Redacting REST calls with ORDS
+
 ## Introduction
 
 Oracle Data Redaction is an Oracle Advanced Security component that allows database users to ensure the confidentiality and privacy of their critical data. 

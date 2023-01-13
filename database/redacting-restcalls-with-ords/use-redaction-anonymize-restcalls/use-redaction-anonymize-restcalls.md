@@ -22,7 +22,7 @@ This lab assumes you have:
 
 ## Task 1: REST enable the table
 
-1. From the Database Actions Launchpad for `EMPLOYEESEARCH_PROD` navigate to **SQ**L under the **Development section**.
+1. From the Database Actions Launchpad for `EMPLOYEESEARCH_PROD` navigate to **SQL** under the **Development section**.
 
     ![Select SQL from Launchpad](images/launchpad-sql.png) 
 
