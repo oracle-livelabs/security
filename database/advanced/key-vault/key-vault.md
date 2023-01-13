@@ -37,9 +37,12 @@ This lab assumes you have:
 | 8| Secret Management with OKV | 10 minutes||
 | 9| (Optional) Reset the OKV Lab Config | <10 minutes||
 
-<!-- Other OKV Labs
-| 8a| Perform Wallet_Download | 5 minutes | To return master keys to an Oracle Wallet |
-| 8b| (Optional) Create a 2-node Multi-Master Cluster | 5 minutes||
+<!-- Other OKV Labs for 21.5
+| 8a| DB Account Pwd Management | 5 minutes ||
+| 8b| Key Management for DBMS_CRYPTO | 5 minutes ||
+| 8c| Automated Java Keystore rotation | 5 minutes ||
+| 8d| SSH Key Management | 5 minutes ||
+| 8e| XXXXXXXXXX | 5 minutes ||
 -->
 
 ## Task 1: (Mandatory) TDE Prerequisites
@@ -463,7 +466,8 @@ You must create a Master Key for the container database before continuing. Each 
 
 9. Now you have rekeyed the Master Key for the container and pluggable database(s)!
 
-## Task 8: Secret Management with OKV - Fetching Database Account Password From OKV On-Demand
+## Task 8: Secret Management with OKV
+In this lab, we will fetch a Database account password from OKV On-Demand
 
 1. Create a new Endpoint for secret management
 
@@ -527,10 +531,7 @@ You must create a Master Key for the container database before continuing. Each 
 
 <!-- Other OPTIONAL OKV Labs
 
-**STEP 8a**: Perform  Wallet Download
-To return master keys to an Oracle Wallet... This does not disable the Online Master Key mode
-
-**STEP 8b**: (Optional) Create a 2-node Multi-Master Cluster
+**STEP XXXX**: (Optional) Create a 2-node Multi-Master Cluster
 Oracle provides deployment recommendations for deployments that have two or more nodes.
 
 - **2-Node Deployment Recommendations**
