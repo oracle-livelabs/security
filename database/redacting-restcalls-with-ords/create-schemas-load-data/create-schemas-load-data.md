@@ -65,7 +65,7 @@ This lab assumes you have:
 4. Use the following URL to download and save the `employee_data_load.sql` script:
 
     ```
-    <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRg[…]management-library-files/employee_data_load.sql</copy>   
+    <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/employee_data_load.sql</copy>   
     ```
 
 5. At the top of the menu bar, select the folder icon to open a file.
