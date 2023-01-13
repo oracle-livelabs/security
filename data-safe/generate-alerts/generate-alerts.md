@@ -96,7 +96,7 @@ This lab assumes you have:
 
 10. Click **Close**.
 
-    The two target-policy associations for your target database are listed on the page and are enabled and active.
+    The two target-policy associations for your target database are listed on the page and are enabled and active. If a target-policy association is not displayed, please clear the filter for the policy name if it's still set to **User Creation/Modification**.
 
     ![Two target-policy associations for your target database](images/two-target-policy-associations-for-target.png "Two target-policy associations for your target database")
 
