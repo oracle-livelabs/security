@@ -6,7 +6,10 @@ Security Assessment helps you assess the security of your database configuration
 
 In this lab, you explore Security Assessment.
 
-Estimated Lab Time: 20 minutes
+Estimated Time: 20 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Assess Database Configurations](videohub:1_egh1qfyz)
 
 ### Objectives
 
