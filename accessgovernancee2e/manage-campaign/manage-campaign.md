@@ -62,5 +62,5 @@ In this lab, you will:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Edward Lu, Abhishek Juneja, Oracle IAM Product Management; Ruben Alejandro Casas, Oracle Security Cloud Platform Enablement 
-* **Last Updated By/Date** - Edward Lu, Oracle IAM Product Management, October 2022
+* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
