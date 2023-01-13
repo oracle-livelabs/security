@@ -62,7 +62,7 @@ This lab assumes you have:
 
     ![SQL worksheet](images/sql-worksheet.png)
 
-4. Use the following URL to download and save the `employee_data_load.sql` script: <!--PLACE OBJECT STORAGE LINK HERE!!>
+4. Use the following URL to download and save the `employee_data_load.sql` script:
 
 5. At the top of the menu bar, select the folder icon to open a file.
 
