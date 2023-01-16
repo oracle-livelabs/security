@@ -283,11 +283,22 @@ This lab assumes you have:
 
 4. Select the **Sensitive Columns** tab
 
-    ![](./images/dms-036.png " ")
+    ![](./images/dms-036a.png " ")
 
 5. Currently, there are no sensitive columns discovered so you must initiate a search. Click the option to **Create Discovery Job...**
 
-6. Provide the parameters for the sensitive columns discovery job. Choose the *`EMPLOYEESEARCH_DEV`* schema and choose the all of them *except `EMAIL_ID`, `ISBN_10`, `ISBN_13`, and `UNIVERSAL_PRODUCT_CODE`* Sensitive Column Types
+    ![](./images/dms-036b.png " ")
+
+6. Provide the parameters for the sensitive columns discovery job. Choose the *`EMPLOYEESEARCH_DEV`* schema and choose the following Sensitive Column Types:
+    - *`CREDIT_CARD_NUMBER`*
+    - *`EMAIL_ORA`*
+    - *`IP_ADDRESS`*
+    - *`NAME`*
+    - *`NATIONAL_INSURANCE_NUMBER`*
+    - *`PHONE_NUMBER`*
+    - *`SOCIAL_INSURANCE_NUMBER`*
+    - *`SOCIAL_SECURITY_NUMBER`*
+    - *`UNIVERSAL_PRODUCT_CODE`*
 
     ![](./images/dms-037.png " ")
 
@@ -309,7 +320,7 @@ This lab assumes you have:
 
 11. Click "**View**" the "**Expand All**" to review the Sensitive Column Discovery Results
 
-    ![](./images/dms-041.png " ")
+    ![](./images/dms-041a.png " ")
 
 12. Notice that the Sensitive Status of these columns is currently set to **Undefined** and now you have to set the sensitive status of all columns to **Sensitive** that you want to mask
 
@@ -322,7 +333,7 @@ This lab assumes you have:
         - *`DEMO_HR_USERS.EMAIL`*
         - *`DEMO_HR_EMPLOYEES.FIRST_NAME`*
         - *`DEMO_HR_EMPLOYEES.LAST_NAME`*
-        - *`DEMO_HR_SUPPLEMENATL_DATA.ROUTING_NUMBER`*
+        - *`DEMO_HR_EMPLOYEES.SSN`*
     
             ![](./images/dms-042a.png " ")
 
@@ -494,63 +505,39 @@ As previously discussed, there are many different options to format the column o
 
         **Note** Now, the masking format is defined for this column 
 
-4. Now, let's use another masking format from "**Format Library**" that Oracle provides: the "**Generic Credit Card**"
+4. Now, let's define our own **customised masking format** ("`999-999-999`" where digits are randomly attributed)
 
-    - Select *`DEMO_HR_SUPPLEMENTAL_DATA.PAYMENT_ACCT_NO`* row and click on **Define Format** icon
-
-        ![](./images/dms-060.png " ")
-
-    - Click on the [**Import Format**]
-
-        ![](./images/dms-060b.png " ")
-
-    - Select the **Generic Credit Card Number** radio button
-
-        ![](./images/dms-061.png " ")
-
-    - Click [**Import**]
-
-        ![](./images/dms-062.png " ")
-
-        **Note**: Here, this pre-defined library uses the Function `MGMT_DM_GEN_ANYC` of the Package `DBSNMP.DM_FMTLIB`
-
-    - Please, be sure your algorithm is correctly set with put Package Name `DBSNMP.DM_FMTLIB` and Function Name `MGMT_DM_GEN_ANYC`
-
-        ![](./images/dms-062c.png " ")
-
-        **Note**: If not, you will have an error when you will click [OK]!
-
-        ![](./images/dms-062b.png " ")
-
-    - Click on the **Sample** icon to check the generated masked value
-
-        ![](./images/dms-062c.png " ")
-
-        **Note** Here, a random "true-false" generic credit card number is generated!
-
-    - Click [**OK**]
-
-        ![](./images/dms-062d.png " ")
-
-        **Note** Now, the masking format is defined for this column 
-
-5. Now, let's define our own **customised masking format** ("`999-999-999`" where digits are randomly attributed)
-
-    - Select *`DEMO_HR_SUPPLEMENTAL_DATA.ROUTING_NUMBER`* row and click on **Define Format** icon
+    - Select *`DEMO_HR_EMPLOYEES.SSN`* row and click on **Define Format** icon
     
-        ![](./images/dms-063.png " ")
+        ![](./images/dms-060.png " ")
     
     - Select **Random Digits** from the drop down list box and click [**Add**]
 
-        ![](./images/dms-063b.png " ")
+        ![](./images/dms-061.png " ")
 
     - Enter "*`3`*" for **Start Length** and **End Length**
 
-        ![](./images/dms-064.png " ")
+        ![](./images/dms-062.png " ")
 
     - Select **Fixed String** from the drop down list box and click [**Add**]
 
+        ![](./images/dms-063.png " ")
+
+    - Enter "*`-`*" for value
+
+        ![](./images/dms-064.png " ")
+
+    - Select **Random Digits** from the drop down list box and click [**Add**]
+
+        ![](./images/dms-061.png " ")
+
+    - Enter "*`3`*" for **Start Length** and **End Length**
+
         ![](./images/dms-065.png " ")
+
+    - Select **Fixed String** from the drop down list box and click [**Add**]
+
+        ![](./images/dms-063.png " ")
 
     - Enter "*`-`*" for value
 
@@ -558,35 +545,59 @@ As previously discussed, there are many different options to format the column o
 
     - Select **Random Digits** from the drop down list box and click [**Add**]
 
-        ![](./images/dms-063b.png " ")
+        ![](./images/dms-061.png " ")
 
     - Enter "*`3`*" for **Start Length** and **End Length**
 
         ![](./images/dms-067.png " ")
 
-    - Select **Fixed String** from the drop down list box and click [**Add**]
-
-        ![](./images/dms-065.png " ")
-
-    - Enter "*`-`*" for value
+    - Click on the **Sample** icon to check if the generated value conforms to the format you want
 
         ![](./images/dms-068.png " ")
 
-    - Select **Random Digits** from the drop down list box and click [**Add**]
-
-        ![](./images/dms-063b.png " ")
-
-    - Enter "*`3`*" for **Start Length** and **End Length**
+    - Click [**OK**]
 
         ![](./images/dms-069.png " ")
 
-    - Click on the **Sample** icon to check if the generated value conforms to the format you want
+        **Note** Now, the masking format is defined for this column 
 
-        ![](./images/dms-070.png " ")
+5. Now, let's use another masking format from "**Format Library**" that Oracle provides: the "**Generic Credit Card**"
+
+    - Select *`DEMO_HR_SUPPLEMENTAL_DATA.PAYMENT_ACCT_NO`* row and click on **Define Format** icon
+
+        ![](./images/dms-070a.png " ")
+
+    - Click on the [**Import Format**]
+
+        ![](./images/dms-070b.png " ")
+
+    - Select the **Generic Credit Card Number** radio button
+
+        ![](./images/dms-070c.png " ")
+
+    - Click [**Import**]
+
+        ![](./images/dms-070d.png " ")
+
+        **Note**: Here, this pre-defined library uses the Function `MGMT_DM_GEN_ANYC` of the Package `DBSNMP.DM_FMTLIB`
+
+    - Please, be sure your algorithm is correctly set with put Package Name `DBSNMP.DM_FMTLIB` and Function Name `MGMT_DM_GEN_ANYC`
+
+        ![](./images/dms-070e.png " ")
+
+        **Note**: If not, you will have an error when you will click [OK]!
+
+        ![](./images/dms-070f.png " ")
+
+    - Click on the **Sample** icon to check the generated masked value
+
+        ![](./images/dms-070g.png " ")
+
+        **Note** Here, a random "true-false" generic credit card number is generated!
 
     - Click [**OK**]
 
-        ![](./images/dms-070b.png " ")
+        ![](./images/dms-070h.png " ")
 
         **Note** Now, the masking format is defined for this column 
 
@@ -889,9 +900,10 @@ To execute the Data Masking script you will need an SSH key-pair and **DO  NOT**
     -- -----------------------------
 
     -- EMPLOYEE_DATA
-    SELECT distinct(e.userid), e.firstname, e.lastname, e.email, sd.routing_number, sd.payment_acct_no
+    SELECT distinct(e.userid), e.firstname, e.lastname, e.email, e.ssn, sd.payment_acct_no
       FROM EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES e, EMPLOYEESEARCH_PROD.DEMO_HR_SUPPLEMENTAL_DATA sd
      WHERE e.userid = sd.userid
+       AND e.ssn is not null
      ORDER BY 1;
 
     -- USERS_DATA
@@ -913,9 +925,10 @@ To execute the Data Masking script you will need an SSH key-pair and **DO  NOT**
     -- -----------------------------
 
     -- EMPLOYEE_DATA
-    SELECT distinct(e.userid), e.firstname, e.lastname, e.email, sd.routing_number, sd.payment_acct_no
+    SELECT distinct(e.userid), e.firstname, e.lastname, e.email, e.ssn, sd.payment_acct_no
       FROM EMPLOYEESEARCH_DEV.DEMO_HR_EMPLOYEES e, EMPLOYEESEARCH_DEV.DEMO_HR_SUPPLEMENTAL_DATA sd
      WHERE e.userid = sd.userid
+       AND e.ssn is not null
      ORDER BY 1;
 
     -- USERS_DATA
@@ -1264,7 +1277,40 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
 
 8. As you can see, the new dataset is different from the original sensitive data, it subsetted and masked and you can now share it without worrying!
 
-## Task 16: (Optional) Reset the Labs Environment
+## Task 16: Advanced Data Masking Definitions
+
+Now, let's have a look on few advanced features for Data Masking
+
+1. But before, because you have masked data in previous task, you have to restore the `EMPLOYEESEARCH_DEV` tables on **pdb1** by cloning data from `EMPLOYEESEARCH_PROD` schema to have original data
+
+    - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+
+        ````
+        <copy>sudo su - oracle</copy>
+        ````
+
+        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+
+    - Go to the scripts directory
+
+        ````
+        <copy>cd $DBSEC_LABS/dms</copy>
+        ````
+
+    - Reset the `EMPLOYEESEARCH_DEV` data as it was before masking
+
+        ````
+        <copy>./dms_restore_pdb1_dev.sh</copy>
+        ````
+
+        ![](./images/dms-150.png " ")
+
+2. Now, go back to the OEM Console and navigate to the Application Data Models page from the Quality Management submenu by selecting the menu **Enterprise > Quality Management > Data Masking Definitions**
+
+    ![](./images/dms-044.png " ")
+
+
+## Task 17: (Optional) Reset the Labs Environment
 
 1. Restore the `EMPLOYEESEARCH_DEV` tables on pdb1 by cloning data from `EMPLOYEESEARCH_PROD` schema
 
