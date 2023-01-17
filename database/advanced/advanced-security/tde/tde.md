@@ -219,7 +219,7 @@ This lab assumes you have:
     - This parameter is **introduced in Oracle Database version 19.16**, as an alternative to the `ENCRYPT_NEW_TABLESPACES` parameter
     - Similar to `ENCRYPT_NEW_TABLESPACES`, this parameter allows you to specify whether to encrypt newly created user tablespaces
     - If the behavior specified by the `ENCRYPT_NEW_TABLESPACES` setting conflicts with the behavior specified by the `TABLESPACE_ENCRYPTION` setting, then the `TABLESPACE_ENCRYPTION` behavior takes precedence
-    - So, `ENCRYPT_NEW_TABLESPACES` must be set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE` 
+    <!-- - So, `ENCRYPT_NEW_TABLESPACES` must be set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE` -->
     
 3. Finally, create and drop a tablespace TEST to check the effect
 

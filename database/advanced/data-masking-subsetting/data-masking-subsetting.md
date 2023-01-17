@@ -1305,9 +1305,198 @@ Now, let's have a look on few advanced features for Data Masking
 
         ![](./images/dms-150.png " ")
 
-2. Now, go back to the OEM Console and navigate to the Application Data Models page from the Quality Management submenu by selecting the menu **Enterprise > Quality Management > Data Masking Definitions**
+2. Now, we will add a new ADM, with advanced Masking scripts already preset, by importing its XML file
 
-    ![](./images/dms-044.png " ")
+    ````
+    <copy>./dms_import_adv_def.sh</copy>
+    ````
+
+    ![](./images/dms-165.png " ")
+
+3. Now, go back to the OEM Console and navigate to the Application Data Models page from the Quality Management submenu by selecting the menu **Enterprise > Quality Management > Application Data Modeling**
+
+    ![](./images/dms-002.png " ")
+
+4. Refresh the web page by pressing F5 to see the ADM imported called `ADM_Advanced`
+
+    ![](./images/dms-166.png " ")
+
+5. Select it and click on [**Edit...**] to see its details
+
+    ![](./images/dms-167.png " ")
+
+6. Select the **Sensitive Columns** tab
+
+    ![](./images/dms-168.png " ")
+
+    **Note**: The sensitive columns are already loaded and ready to be masked
+
+7. Click [**Save and Return**]
+
+8. Open the **Create Data Masking Definition** page by clicking on the link
+
+    ![](./images/dms-169.png " ")
+
+9. The Masking defintion `EMPLOYEE_ADV_MASK`is already created, but the script is not generated (default behavior after importing it)
+
+    ![](./images/dms-170.png " ")
+
+10. Select it and click on [**Edit**] to see its details
+
+    ![](./images/dms-171.png " ")
+
+11. Let's have a look on the advanced algorithms used in this masking definition
+    
+    ![](./images/dms-172.png " ")
+
+12. By selecting:
+    
+    - *`ADDRESS_1`*, *`CITY`*, *`COUNTRY`*, *`STATE`* or *`POSTAL_CODE`*, you will see an example of a **COMPOUND masking**
+    
+        ![](./images/dms-173.png " ")
+
+        **Note**:
+        - Compound masking, also known as grouping option, enables you to mask related columns together as a group, ensuring that the masked data across the related columns retain the same relationship, so the masked data appears consistent
+        - The columns being masked as a group must belong to the same table, and each column will be masked with data from another table (here the table *`EMPLOYEESEARCH_DEV.MASK_DATA`*)
+        - You can use Deterministic Substitution, Random Substitution, Shuffle, or User Defined Function for compound masking
+
+    - *`PHONEFAX`*, you will see an example of a **ENCRYPT masking**
+
+        ![](./images/dms-174.png " ")
+
+        **Note**:
+        - Deterministic Encryption encrypts column data using a cryptographic key and Advanced Encryption Standard (AES 128), hashing, and regular expression to produce a deterministic masked output
+        - The format of the masked output corresponds to the specified regular expression
+        - As this technique uses a key to encrypt the data, the same string can be used to decrypt the data
+        - The key also acts as seed to maintain consistent outputs for a given input
+        - It supports format preserving encryption, i.e., the format of column data is preserved after encryption
+        - **It’s a deterministic and reversible masking format**
+        - It's helpful when businesses need to mask and send their data to a third party for analysis, reporting, or any other business processing purpose
+        - After the processed data is received from the third party, the original data can be recovered (decrypted) using the same seed value that was used to encrypt the data
+        - **Caution**, this method is therefore not compatible with strict regulations such as EU GDPR!
+
+    - *`PHONEMOBILE`*, you will see an example of a **SQL EXPRESSION masking with ORA-HASH function**
+
+        ````
+        decode(%PHONEMOBILE%,null,'N/A',ORA_HASH (%PHONEMOBILE%, 9) || '-(' || ORA_HASH (%PHONEMOBILE%, 999) || ')' || ORA_HASH (%PHONEMOBILE%, 999) || '-' || ORA_HASH (%PHONEMOBILE%, 9999))
+        ````
+
+        ![](./images/dms-175.png " ")
+
+        **Note**:
+        - SQL Expression lets you use a SQL expression to mask column data
+        - Data Masking uses the specified SQL expression to generate values which are used to replace the original data
+        - It can also contain substitution columns (columns from the same table as the column to be masked)
+        - You should specify the substitution columns within percent (%) symbols
+        - You can also use ORA_HASH function in order to have a deterministic value
+        - ORA_HASH takes three arguments: Expression / Number of hash buckets / Seed (can be any number which decides the consistency)
+        - The uniqueness is not guaranteed but depends on the input and the number of hash buckets used
+
+    - *`SALARY`*, you will see an example of a **CONDITIONAL masking**
+
+        ![](./images/dms-176.png " ")
+
+        **Note**:
+        - Conditional transformation provides an ability to arrange masking formats according to different conditions
+        - For example, consider masking the `SALARY` column based on the job `POSITION` of an employee. Depending on the position he occupies within the company, a different algorithm will be applied to make it more or less difficult to access the real original data
+
+    - *`FIRSTNAME`*, you will see an example of a **DETERMINISTIC masking**
+
+        ![](./images/dms-177.png " ")
+
+        **Note**:
+        - The determistic technique ensures repeatable masked values after a mask run
+        - One of the key requirements while masking data in large databases or multi-database environment is to consistently mask some columns, i.e., for a given input, the output should always be the same. At the same time, the masked output should not be predictable
+        - Deterministic masking generates consistent output for a given input across databases and data masking jobs
+        - Masking multiple times across different databases yields the same masked value
+        - This characteristic is valid across multiple databases or multiple runs assuming that the same input values are used in the two runs
+        - Deterministic masking is helpful in maintaining data integrity across multiples applications and preserve system integrity and an Enterprise may use this technique to ensure that certain values, e.g. a customer number gets masked to the same value across all databases
+        - **Note for Substitute**: the method uses a hash-based algorithm in the back end, the mappings are consistent that the uniqueness of the masked value is not guaranteed but depends on the number of columns being used in the substitution table i.e. if the original table contains 50000 unique values, then for the masked output to be unique and deterministic the substitution column should also contain 50000 unique values without which only consistency is maintained but not uniqueness
+
+13. Once you are comfortable with this masking definition, go bakc to **Data Masking Definition** page and click [**Generate Script**] to create the Masking script
+
+    ![](./images/dms-178.png " ")
+
+14. In the "**Generate Masking**" screen, fill it out as following:
+
+    - Reference Database: Select *`cdb1_PDB1`*
+    - Script Generation Options: Select "*`Mask-in-database`*"
+    - Database Credentials: select the **Named** radio button and choose the default credential using the *`DMS_ADMIN`* username
+
+        ![](./images/dms-179.png " ")
+
+15. Click [**Submit**]
+
+16. Once is created, you must see "**Script Generated**" as status
+
+    ![](./images/dms-180.png " ")
+
+17. Click [**Schedule Job**] to execute the masking script
+
+    ![](./images/dms-181.png " ")
+
+18. In the "**Schedule Data Masking Job**" screen, fill it out as following:
+
+    - Database: Select *`cdb1_PDB1`*
+    - Select "*`Mask-in-database`*" and check "*`The selected target is not a production database`*" (**Mandatory!**)
+    - Seed: *`Enter any string`*  (this is the hash-key required for Substitue and Encrypt format)
+    - Script File Location: *`/home/oracle/DBSecLab/livelabs/dms/scripts`*
+    - Host Credentials: select the **Named** radio button and choose the default credential using the *`OS_ORACLE_SSH`* username
+    - Database Credentials: select the **Named** radio button and choose the default credential using the *`DMS_ADMIN`* username
+
+        ![](./images/dms-182.png " ")
+
+19. Click [**Submit**]
+
+20. Once is executed, you must see "**Masking Job Succeeded**" as status
+
+    ![](./images/dms-183.png " ")
+
+21. Now, you can compare the data between PROD and DEV
+
+    - Open **SQL Developer** on your PC and connect to **pdb1 as sysdba**
+
+        ![](./images/dms-093.png " ")
+
+    - Press [**Alt**]+[**F10**] to open a SQL Worksheet and select `pdb1@sysdba`
+
+        ![](./images/dms-094.png " ")
+
+    - Do it again in order to have 2 tabs
+
+    - In the first one, copy the following queries for the **PROD: BEFORE MASKING**
+
+        ````
+        <copy>
+        -- -----------------------------
+        -- PROD: BEFORE MASKING
+        -- -----------------------------
+        SELECT userid, firstname, lastname, position, address_1, address_2, postal_code, city, state, country, phonemobile, phonefax, salary
+          FROM employeesearch_prod.demo_hr_employees
+         WHERE phonefax is not null
+         ORDER BY 1;
+        </copy>
+        ````
+
+        ![](./images/dms-184.png " ")
+
+    - In the second one, copy the following queries for the **DEV: AFTER MASKING**
+
+        ````
+        <copy>
+        -- -----------------------------
+        -- DEV: AFTER MASKING
+        -- -----------------------------
+        SELECT userid, firstname, lastname, position, address_1, address_2, postal_code, city, state, country, phonemobile, phonefax, salary
+          FROM employeesearch_dev.demo_hr_employees
+         WHERE phonefax is not null
+         ORDER BY 1;
+        </copy>
+        ````
+
+        ![](./images/dms-185.png " ")
+
+22. As you can see, the new dataset is different from the original sensitive data based on all advanced masking formats!
 
 
 ## Task 17: (Optional) Reset the Labs Environment
@@ -1344,17 +1533,17 @@ Now, let's have a look on few advanced features for Data Masking
 
         ![](./images/dms-044.png " ")
 
-    - Select *`EMPLOYEE_DATA_MASK`* data masking definition and click [**Delete**]
+    - Select **every** Data Masking Definition and click [**Delete**]
 
-        ![](./images/dms-162.png " ")
+        ![](./images/dms-190.png " ")
 
     - Click [**Yes**] to confirm
 
-        ![](./images/dms-163.png " ")
+        ![](./images/dms-191.png " ")
 
     - Now, your Data Masking Definition is dropped!
 
-        ![](./images/dms-164.png " ")
+        ![](./images/dms-192.png " ")
 
 4. Next, **drop the Data Subsetting definitions**
 
@@ -1362,17 +1551,17 @@ Now, let's have a look on few advanced features for Data Masking
 
         ![](./images/dms-130.png " ")
 
-    - Select *`EMPLOYEE_DATA_SUBSET`* data subsetting definition and click [**Delete**]
+    - Select **every** Data Subsetting Definition and click [**Delete**]
 
-        ![](./images/dms-165.png " ")
+        ![](./images/dms-193.png " ")
 
     - Click [**Yes**] to confirm
 
-        ![](./images/dms-166.png " ")
+        ![](./images/dms-194.png " ")
 
     - Now, your Data Subsetting Definition is dropped!
 
-        ![](./images/dms-167.png " ")
+        ![](./images/dms-195.png " ")
 
 5. Finally, **drop the Application Data Model (ADM)**
 
@@ -1380,17 +1569,17 @@ Now, let's have a look on few advanced features for Data Masking
 
         ![](./images/dms-002.png " ")
 
-    - Select *`EMPLOYEE_ADM`* Application Data Model and click [**Delete**]
+    - Select **every** Application Data Model and click [**Delete**]
 
-        ![](./images/dms-168.png " ")
+        ![](./images/dms-196.png " ")
 
     - Click [**Yes**] to confirm
 
-        ![](./images/dms-169.png " ")
+        ![](./images/dms-197.png " ")
 
     - Now, your Data Subsetting Definition is dropped!
 
-        ![](./images/dms-170.png " ")
+        ![](./images/dms-198.png " ")
 
 You may now proceed to the next lab!
 
