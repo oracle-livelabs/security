@@ -2,14 +2,11 @@
 
 ## Introduction
 
-Oracle Data Redaction is an Oracle Advanced Security component that allows database users to ensure the confidentiality and privacy of their critical data. 
+Oracle Data Redaction is an advanced security feature that allows you to mask sensitive data in real-time, protecting it from unauthorized disclosure. This feature is included with your Autonomous Database subscription and is particularly useful for read-only scenarios such as displaying sensitive information in reports or sending it to other applications via GET APIs.
 
-Data redaction is the process of obscuring sensitive data in a document or database, usually by replacing it with a placeholder. The goal of data redaction is to protect the privacy of individuals and prevent the unauthorized disclosure of sensitive information. Data redaction is often used to protect personal information such as names, addresses, and social security numbers, as well as financial and medical information. It is also used to redact classified or confidential information in government documents and other official records.
+The DMBS_REDACT PL/SQL package is used to manage redaction policies and configure the specific columns and redaction formats.
 
-In terms of using Oracle Redaction with REST calls through ORDS (Oracle REST Data Services), you can use the ORDS API to configure redaction policies for specific columns or tables in your database. These policies can then be applied to REST calls made through ORDS, ensuring that sensitive data is not returned in the response.
-
-To implement redaction in ORDS, you would first need to enable the redaction feature in the database. Then, you can use the ORDS API to create redaction policies that specify which columns or tables should be redacted, as well as the specific redaction function to be used (e.g. replacing with a specific string or a random value). These policies can then be applied to REST calls by configuring ORDS to use the redaction policies for specific resources or resource templates.
-This workshop demonstrates how we can use Oracle Data Redaction with Oracle Rest Data Services to redact Get calls allowing user's to ensure the privacy of sensitive data.
+In this workshop, you will learn how to use Oracle Data Redaction with Oracle Rest Data Services (ORDS) to redact  data in a GET response, ensuring the privacy of sensitive data. The process includes REST enabling the table you want to make available through ORDS, creating redaction policies for specific columns and tables, and specifying the redaction function to be used. You'll be able to contrast the response that contains data in clear vs the one that has sensitive data redacted.
 
 ![Lab architecture](images/lab-architecture.png)
 
@@ -36,7 +33,7 @@ This workshop assumes you have:
 *Note: Throughout this workshop, if you ever find yourself struggling when it comes to finding your resources in Oracle Cloud, make sure both your compartment and region correspond to where you created the resource.*
 
 ## Want to learn more about Oracle Data Redaction?
-- [Introduction to Oracle Data Redcation](https://docs.oracle.com/database/121/DVADM/dvintro.htm#DVADM001)
+- [Introduction to Oracle Data Redaction](https://docs.oracle.com/en/database/oracle/oracle-database/21/asoag/introduction-to-oracle-data-redaction.html#GUID-82EA9712-387C-4D3A-BB72-F64A707C67CA)
 - [Oracle Data Redaction FAQs](https://www.oracle.com/technetwork/database/options/data-masking-subsetting/learnmore/faq-security-asdr-external-3215961.pdf)
 
 ## Acknowledgements
