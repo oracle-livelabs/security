@@ -881,11 +881,11 @@ To execute the Data Masking script you will need an SSH key-pair and **DO  NOT**
 
 1. Once the job successfully completes, query the masked data in the Development and Production environments for a before and after comparison
 
-2. Open **SQL Developer** on your PC and connect to **pdb1 as sysdba**
+2. Open **SQL Developer** on your PC and connect to **pdb1 as SYSTEM**
 
     ![](./images/dms-093.png " ")
 
-3. Press [**Alt**]+[**F10**] to open a SQL Worksheet and select `pdb1@sysdba`
+3. Press [**Alt**]+[**F10**] to open a SQL Worksheet and select `PDB1_SYSTEM`
 
     ![](./images/dms-094.png " ")
 
@@ -1161,11 +1161,11 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
 
 1. Once the job successfully completes, query the subsetted data in the Development and Production environments for a before and after comparison
 
-2. Open **SQL Developer** on your PC and connect to **pdb1 as sysdba**
+2. Open **SQL Developer** on your PC and connect to **pdb1 as SYSTEM**
 
     ![](./images/dms-093.png " ")
 
-3. Press [**Alt**]+[**F10**] to open a SQL Worksheet and select `pdb1@sysdba`
+3. Press [**Alt**]+[**F10**] to open a SQL Worksheet and select `PDB1_SYSTEM`
 
     ![](./images/dms-094.png " ")
 
@@ -1454,11 +1454,11 @@ Now, let's have a look on few advanced features for Data Masking
 
 21. Now, you can compare the data between PROD and DEV
 
-    - Open **SQL Developer** on your PC and connect to **pdb1 as sysdba**
+    - Open **SQL Developer** on your PC and connect to **pdb1 as SYSTEM**
 
         ![](./images/dms-093.png " ")
 
-    - Press [**Alt**]+[**F10**] to open a SQL Worksheet and select `pdb1@sysdba`
+    - Press [**Alt**]+[**F10**] to open a SQL Worksheet and select `PDB1_SYSTEM`
 
         ![](./images/dms-094.png " ")
 
