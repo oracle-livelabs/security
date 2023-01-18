@@ -45,7 +45,7 @@ This lab assumes you have:
 
 ## Task 1: Import Schema Structure
 
-1. Open a Web Browser to *`https://dbseclab:7803/em`* to access to Oracle Enterprise Manager 13c Console
+1. Open a Web Browser to *`https://dbsec-lab:7803/em`* to access to Oracle Enterprise Manager 13c Console
 
     **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:7803/em`*
 
