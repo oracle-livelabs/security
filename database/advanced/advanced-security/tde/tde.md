@@ -34,7 +34,7 @@ This lab assumes you have:
 | 6 | Encyrpt All New Tablespaces | 5 minutes |
 | 7 | Rekey Master Key | 5 minutes |
 | 8 | View Keystore Details | 5 minutes |
-| 9 | (Optional) Restore Before TDE | 5 minutes |
+| 9 | Restore Before TDE | 5 minutes |
 
 ## Task 1: Allow DB Restore
 
@@ -295,8 +295,7 @@ This lab assumes you have:
     <copy>./tde_view_wallet_in_db.sh</copy>
     ````
 
-## Task 9: (Optional) Restore Before TDE
-**Attention: DO NOT run this lab if you want perfoming Oracle Key Vault labs later!**
+## Task 9: Restore Before TDE
 
 1. First, execute this script to restore the pfile
 
