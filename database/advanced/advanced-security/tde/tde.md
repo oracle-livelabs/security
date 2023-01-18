@@ -140,7 +140,7 @@ This lab assumes you have:
 
     ![](./images/tde-011.png " ")
 
-3. Now, create the **Autologin Oracle Wallet**
+3. Now, create the **Auto-login Oracle Wallet**
 
     ````
     <copy>./tde_create_autologin_wallet.sh</copy>

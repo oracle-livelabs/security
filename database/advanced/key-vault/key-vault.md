@@ -113,13 +113,13 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![](../advanced-security/tde/images/tde-006.png " ")
 
-9. Ceate the **Autologin** Oracle Wallet
+9. Ceate the **Auto-login Oracle Wallet**
 
     ````
     <copy>./tde_create_autologin_wallet.sh</copy>
     ````
 
-    ![](../advanced-security/tde/images/tde-007.png " ")
+    ![](../advanced-security/tde/images/tde-012.png " ")
 
 10. You should now see all these file, including the **cwallet.sso** file
 
