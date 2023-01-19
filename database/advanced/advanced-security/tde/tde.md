@@ -92,6 +92,8 @@ This lab assumes you have:
 
     ![](./images/tde-004.png " ")
 
+    **Note:** We create a secret for the Administer password in order to hide it for the next command!
+
 4. Now, your Oracle Wallet has been created!
 
 ## Task 3: Create Master Key
@@ -170,13 +172,18 @@ This lab assumes you have:
 
 ## Task 5: Encrypt Existing Tablespace
 
-1. Use the Linux command, strings, to view the data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace. This is an operating system command that bypasses the database to view the data. This is called a 'side-channel attack' because the database is unaware of it.
+1. Use the Linux command, strings, to view the data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace
 
     ````
     <copy>./tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![](./images/tde-015.png " ")
+
+    **Note:**
+    - You can see the data and you are not connected to the database!
+    - This is an Operating System command that bypasses the database to view the data
+    - This is called a 'side-channel attack' because the database is unaware of it
 
 2. Next, **encrypt explicitly** the data by encrypting the entire tablespace using the AES256 encryption algorithm
 
@@ -219,7 +226,7 @@ This lab assumes you have:
     - This parameter is **introduced in Oracle Database version 19.16**, as an alternative to the `ENCRYPT_NEW_TABLESPACES` parameter
     - Similar to `ENCRYPT_NEW_TABLESPACES`, this parameter allows you to specify whether to encrypt newly created user tablespaces
     - If the behavior specified by the `ENCRYPT_NEW_TABLESPACES` setting conflicts with the behavior specified by the `TABLESPACE_ENCRYPTION` setting, then the `TABLESPACE_ENCRYPTION` behavior takes precedence
-    <!-- - So, `ENCRYPT_NEW_TABLESPACES` must be set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE` -->
+    - So, `ENCRYPT_NEW_TABLESPACES` is automatically set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE`
     
 3. Finally, create and drop a tablespace TEST to check the effect
 
