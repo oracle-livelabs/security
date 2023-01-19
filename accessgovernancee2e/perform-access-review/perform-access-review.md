@@ -59,7 +59,36 @@ Insights include:
 5. Bulk action with justification: Provide justification for **Accept** or **Revoke** then click on **Submit**.
   ![Access Review Tasks](images/bulk-accept-justification.png)
 
-## Task 3: Login Oracle Access Governance as User Manager
+## Task 3: Login Oracle Identity Governance as System Administrator 
+
+1. Sign in to Identity Self Service console. Open a browser tab using the below URL to access OIG Identity Console.
+
+   ```
+    URL       http://oiri.livelabs.oraclevcn.com:14000/identity
+    Username  xelsysadm
+    Password  Welcome1
+    ```
+
+2. Log in to **Oracle Identity Governance** as the **Employee user** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+	![Access Governance Login](images/ag-logon.png)
+3. You should see the **Oracle Identity Governance** main dashboard. **Please note data on Oracle Identity Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
+  ![Access Governance Homepage](images/ag-homepage.png)
+
+4. Click Self Service. Self service Home page is displayed.
+
+5. Click the Pending Approvals box. The Pending Approvals page is displayed. Notice that the Approval request for the published role (GlobalSales) is displayed.
+
+6. Click on the approval request. The task details page displays a detailed view of the request in the Details section, Summary Information section, the Request Details tab, the Approvals tab, and the Cart Items section. It allows complete management of the listed task. Click on Approve.
+
+7. Go back to Self Service. Click Provisioning Tasks box. 
+
+8. Approve the task. Now remediation is completed with approval and manual provisioning.
+
+9. Login in to **Oracle Access Governance** as the **Campaign Administrator** to view the Completion of review tasks.
+
+
+
+## Task 4: Login Oracle Access Governance as User Manager
 
 1. Open Chrome browser and go to **Oracle Access Governance** URL based on your **group** assignment. 
     - [Oracle Access Governance LiveLabs Group 1](https://accessgov-ocw-01-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/)
@@ -72,7 +101,7 @@ Insights include:
 4. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/ag-homepage.png)
 
-## Task 4: Perform access review task (User Manager Review)
+## Task 5: Perform access review task (User Manager Review)
 
 1. In this lab, the user manager is the second-level reviewer. As user manager, you see the access review items your employee users accepted in the previous task. Click on the **Select** button of the tile **I'm feeling ambitious, let's review all...**. As an alternative, you can also click the **Select** button for the tile **I am busy, let's just review...** to review **high risk** items only. 
   ![Image alt text](images/open-menu-manager-review.png)
