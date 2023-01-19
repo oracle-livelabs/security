@@ -43,33 +43,134 @@ This lab assumes you have:
 1. Navigate back to the **Database Actions** SQL Development page for Admin. Grant access for `EMPLOYEESEARCH_PROD` to the `DBMS_REDACT` package by pasting the text below in the worksheet.
 
     ```
-    Username:<copy>grant execute on sys.dbms_redact to EMPLOYEESEARCH_PROD</copy>   
+    <copy>grant execute on sys.dbms_redact to EMPLOYEESEARCH_PROD</copy>   
     ```
 
     ![Pre-Redaction REST Call](images/grant-red.png)
 
-2. Run the **first query** and view the unredacted results under query results at the **bottom of the page**.
+2. Return to the **Database Actions** SQL Development page for EMPLOYEESEARCH_PROD and run the **first query**. View the unredacted results under query results at the **bottom of the page**.
     
+    ```
+    <copy>SELECT
+        USERID,
+        FIRSTNAME,   
+        LASTNAME,  --redact
+        EMAIL, --redact
+        PHONEMOBILE,
+        STARTDATE, --redact
+        SALARY, --redact
+        MANAGERID,
+        DEPARTMENT
+    FROM
+        DEMO_HR_EMPLOYEES;</copy>   
+    ```
+
     ![Qry](images/qry.png)
     
     Also review the table data in our browser window from the previous task.
 
     This is how our data looks before any redaction policy is applied.
 
-3. Add a **redaction policy** to run last name with random chars.
+
+3. Enable ORDS for the schema and the table.
+
+    ![Enable ORDS](images/enable-ords.png)
+    ```
+    <copy>BEGIN
+    /* enable ORDS for schema */
+    ORDS.ENABLE_SCHEMA(p_enabled => TRUE,
+                       p_schema => 'EMPLOYEESEARCH_PROD',
+                       p_url_mapping_type => 'BASE_PATH',
+                       p_url_mapping_pattern => 'EMPLOYEESEARCH_PROD',
+                       p_auto_rest_auth => FALSE);
+     /* enable ORDS for table */         
+    ORDS.ENABLE_OBJECT(p_enabled => TRUE,
+                       p_schema => 'EMPLOYEESEARCH_PROD',
+                       p_object => 'DEMO_HR_EMPLOYEES',
+                       p_object_type => 'TABLE',
+                       p_object_alias => 'employees',
+                       p_auto_rest_auth => FALSE);
+    COMMIT;
+    END;
+    /</copy>   
+    ```
+4. Add a **redaction policy** to run last name with random chars.
     
+    ```
+    <copy>begin
+            dbms_redact.add_policy(
+                object_schema => 'EMPLOYEESEARCH_PROD',
+                object_name   => 'demo_hr_employees',
+                column_name   => 'lastname',
+                policy_name   => 'redact_emp_info',
+                function_type => dbms_redact.random,
+                expression    => '1=1'
+            );
+    end;
+    /</copy>   
+    ```
     ![Last Name](images/last-name.png)
 
-4. Add an **email column** to the redaction policy and redact it using default **regex patterns** that anonymize it with `X`
+5. Add an **email column** to the redaction policy and redact it using default **regex patterns** that anonymize it with `X`
 
+    ```
+    <copy>begin
+            dbms_redact.alter_policy (
+            object_schema => 'EMPLOYEESEARCH_PROD',
+            object_name   => 'DEMO_HR_EMPLOYEES',
+            column_name   => 'email',
+            policy_name   => 'redact_emp_info',
+            action              => dbms_redact.add_column,
+            function_type          => DBMS_REDACT.REGEXP,
+            function_parameters    => NULL,
+            expression             => '1=1',
+            regexp_pattern         => DBMS_REDACT.RE_PATTERN_EMAIL_ADDRESS,
+            regexp_replace_string  => DBMS_REDACT.RE_REDACT_EMAIL_NAME,
+            regexp_position        => DBMS_REDACT.RE_BEGINNING,
+            regexp_occurrence      => DBMS_REDACT.RE_FIRST,
+            regexp_match_parameter => DBMS_REDACT.RE_CASE_INSENSITIVE,
+            policy_description     => 'Regular expressions to redact email address names',
+            column_description     => 'email column contains customer emails');
+        END;
+    /</copy>   
+    ```
     ![Email](images/email.png)
 
-5. Add the **start date column** to the redaction policy, redacting the day and month.
+6. Add the **start date column** to the redaction policy, redacting the day and month.
     
+    ```
+    <copy>BEGIN
+            DBMS_REDACT.alter_policy (
+            object_schema       => 'EMPLOYEESEARCH_PROD',
+            object_name         => 'DEMO_HR_EMPLOYEES',
+            policy_name         => 'redact_emp_info',
+            action              => DBMS_REDACT.add_column,
+            column_name         => 'startdate',
+            function_type       => DBMS_REDACT.partial,
+            function_parameters => 'm1d1Y'
+            );
+        END;
+    /</copy>   
+    ```
     ![Start Date](images/start-date.png)
 
-6. Add the **Salary column** to the redaction policy and redact the first two digits making it 99.
+7. Add the **Salary column** to the redaction policy and redact the first two digits making it 99.
     
+    ```
+    <copy>BEGIN
+            DBMS_REDACT.alter_policy (
+            object_schema          => 'EMPLOYEESEARCH_PROD', 
+            object_name            => 'DEMO_HR_EMPLOYEES', 
+            column_name            => 'salary',
+            column_description     => 'holds employee salaries',
+            policy_name            => 'redact_emp_info', 
+            policy_description     => 'Partially redacts the salary column',
+            function_type          => DBMS_REDACT.PARTIAL,
+            function_parameters    => '9,1,2',
+            expression             => '1=1');
+        END;
+    /</copy>   
+    ```
     ![Salary](images/salary.png)
 
 ## Task 3: See the data come redacted from the REST Get call
@@ -84,6 +185,16 @@ This lab assumes you have:
 
 3. Navigate back to the **SQL window** for `EMPLOYEESEARCH_PROD` and **drop the redaction policy**.
     
+    ```
+    <copy>BEGIN
+            dbms_redact.drop_policy (
+            object_schema => 'EMPLOYEESEARCH_PROD',
+            object_name   => 'DEMO_HR_EMPLOYEES',
+            policy_name   => 'redact_emp_info'
+            );
+        end;
+    /</copy>   
+    ```
     ![Drop](images/drop.png)
 
 

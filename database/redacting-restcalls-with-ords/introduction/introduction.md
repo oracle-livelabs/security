@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Oracle Data Redaction is an advanced security feature that allows you to mask sensitive data in real-time, protecting it from unauthorized disclosure. This feature is included with your Autonomous Database subscription and is particularly useful for read-only scenarios such as displaying sensitive information in reports or sending it to other applications via GET APIs.
+Oracle Data Redaction is an Advanced Security feature that allows you to mask sensitive data in real-time, protecting it from unauthorized disclosure. This feature is included with your Autonomous Database subscription and is particularly useful for read-only scenarios such as displaying sensitive information in reports or sending it to other applications via GET APIs.
 
 The DMBS_REDACT PL/SQL package is used to manage redaction policies and configure the specific columns and redaction formats.
 
@@ -24,7 +24,7 @@ In this lab, you will complete the following tasks:
 ### Prerequisites
 
 This workshop assumes you have:
-- An Oracle Cloud Infratructure tanancy account
+- An Oracle Cloud Infrastructure tenancy account
 - Familiarity with Database is desired
 - Some understanding of cloud and database terms is helpful
 - Familiarity with Oracle Cloud Infrastructure (OCI) is helpful
