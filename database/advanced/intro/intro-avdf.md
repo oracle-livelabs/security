@@ -24,8 +24,8 @@ It's composed of 4 VMs:
 During this mini-lab, you'll use different resources to interact with these VMs:
   - SSH Terminal Client
   - Glassfish HR App
-  - Oracle AVDF Web Console
   - Oracle Golden Gate Web Console
+  - Oracle AVDF Web Console
   - (Optionally) SQL Developer
 
 So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set!

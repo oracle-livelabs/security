@@ -27,10 +27,10 @@ During this 2nd workshop, you'll use different resources to interact with these 
   - SSH Terminal Client
   - Glassfish HR App
   - Oracle Enterprise Manager 13c
-  - Oracle AVDF Web Console (for AVDF labs only)
+  - Oracle SQL Developer
   - Oracle Golden Gate Web Console (for AVDF labs only)
+  - Oracle AVDF Web Console (for AVDF labs only)
   - Oracle Key Vault Web Console (for OKV labs only)
-  - (Optionally) SQL Developer
 
 So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set!
 
