@@ -180,7 +180,6 @@ This lab assumes you have:
 
 ## Task 7: Review the Activity Auditing dashboard
 
-By default, the Activity Auditing dashboard shows you a summary of audit events for the last one week for all target databases in the form of charts and tables. On the left under **List Scope** and **Filters**, you can filter by compartment, time period, and target database.
 
 1. In the breadcrumb at the top of the page, click **Activity Auditing**.
 

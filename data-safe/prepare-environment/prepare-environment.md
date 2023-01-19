@@ -253,13 +253,12 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
      `select null as "End of script" from dual;`
 
-3. On the toolbar, click the **Run Script** button and wait for the script to finish running.
+3. On the toolbar, click the **Run Script** button and wait for the script to finish running. Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
 
     ![Run Script button](images/run-script.png "Run Script button")
 
     - The script takes a few minutes to run.
     - In the bottom-left corner, the cog wheel may remain still for about a minute, and then it turns as the script is processed. The script output is displayed after the script is finished running.
-    - Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
     - The script ends with the message **END OF SCRIPT**.
 
 4. To ensure the sample data is loaded successfully, at the end of the script output, review the row count for each table in the `HCM1` schema. The counts should be as follows:
