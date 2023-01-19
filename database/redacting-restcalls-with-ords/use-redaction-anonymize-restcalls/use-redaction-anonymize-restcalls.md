@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, we will demonstrate an application of Oracle Data Redaction using REST Get Calls to view Employee table data both before and after applying a redaction policy.
+In this lab, we will demonstrate an application of Oracle Data Redaction using REST Get Calls to view Employee table data before and after applying a redaction policy.
 
 ### Objectives
 
