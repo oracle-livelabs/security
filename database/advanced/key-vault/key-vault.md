@@ -202,7 +202,9 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
             ![](./images/okv-005a.png " ")
             ![](./images/okv-005b.png " ")
 
-            **Note**: This script okv-ep.sh will automate the process to create the Endpoint, the Oracle Wallet and deploy the OKV software
+            **Note**:
+            - The script *`okv-ep.sh`* will automate the process to create the Endpoint, the Oracle Wallet and deploy the OKV software
+            - It also downloads the latest version of the RESTful Service utility from OKV server
 
     - Add your **cdb1** database on DBSec-Lab VM as Endpoint
 
@@ -211,8 +213,6 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
         ````
 
         ![](./images/okv-006.png " ")
-
-        **Note**: Enter '**Y**' to continue
 
     - Before finishing, we have to change the Endpoint password
 
@@ -350,7 +350,7 @@ Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate 
 
         ![](./images/okv-020.png " ")
 
-        **Note:** You will now see rows for TDE MEK migrated!
+        **Note:** You will now see rows for TDE MEK migrated (lines with MKID)!
 
 3. Once you are comfortable, you can delete the existing Wallet files in `$TDE_HOME`
 
@@ -452,7 +452,7 @@ You must create a Master Key for the container database before continuing. Each 
 
     ![](./images/okv-016.png " ")
 
-7. In the section **Wallet Contents**, on the right-bottom corner, click on the "**Next**" button
+7. In the section **Wallet Contents**, you can see your rekeyed Master Keys for **cdb1** and **pdb1** (and pdb2 if you did it)
 
     ![](./images/okv-028.png " ")
 
@@ -460,7 +460,7 @@ You must create a Master Key for the container database before continuing. Each 
     - It's exactly the same as what you can see from the script `okv_view_wallet_in_kv.sh`
     - On the right-bottom corner, you see that these 2 new rows have been added to the 11 existing rows
 
-8. On the 2nd page of results, you can see at the bottom your rekeyed Master Keys for **cdb1** and **pdb1** (and pdb2 if you did it)
+8. Click on the "**Next**" button to see the 2nd page of results
 
     ![](./images/okv-029.png " ")
 
