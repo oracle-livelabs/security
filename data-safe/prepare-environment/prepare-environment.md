@@ -65,9 +65,9 @@ As a tenancy administrator, create a compartment in Oracle Cloud Infrastructure 
 
     The **Create Compartment** dialog box is displayed.
 
-3. Enter a name for your compartment, for example, `dsc01` (short for Data Safe compartment 1).
+3. Enter a name for your compartment.
 
-4. Enter a description for the compartment, for example, **Compartment for the Oracle Data Safe Workshop**.
+4. Enter a description for the compartment.
 
 5. Select a parent compartment.
 
@@ -162,21 +162,21 @@ As a tenancy administrator or user with appropriate permissions to manage an Aut
 5. On the **Create Autonomous Database** page, provide basic information for your database:
 
     - **Compartment** - If needed, select a different compartment.
-    - **Display name** - Enter a memorable name for the database for display purposes, for example, **ad01** (short for Autonomous Database 1).
-    - **Database name** - Enter **ad01**. It's important to use letters and numbers only, starting with a letter. The maximum length is 14 characters. Underscores are not supported.
+    - **Display name** - Enter a memorable name for the database for display purposes.
+    - **Database name** - Enter a database name. It's important to use letters and numbers only, starting with a letter. The maximum length is 14 characters. Underscores are not supported.
     - **Workload type** - Select **Transaction Processing**.
-    - **Deployment type** - Leave **Shared Infrastructure** selected.
+    - **Deployment type** - Leave **Shared infrastructure** selected.
     - **Always Free** - Select this option by moving the slider to the right.
     - **Database version** - Leave **19c** selected.
     - **OCPU Count** - You get **1** OCPU.
     - **Storage** - You get 0.02TB of storage.
     - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
     - **Access Type** - Leave **Secure access from everywhere** selected.
-    - **License Type** - Leave **License Included** selected.
+    - **License Type** - Leave **License included** selected.
 
 6. Click **Create Autonomous Database**. The **Autonomous Database Details** page is displayed.
 
-7. Wait a few minutes for your database instance to provision. The **Autonomous Database Details** page is displayed. Wait for **AVAILABLE** to be displayed below the large ATP icon.
+7. Wait a few minutes for your database instance to provision. The **Autonomous Database details** page is displayed. Wait for **AVAILABLE** to be displayed below the large ATP icon.
 
     ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
 
@@ -218,7 +218,7 @@ If you are doing the workshop in your own tenancy, you can skip this step.
 
 Throughout this workshop, you access Database Actions to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. At the top of the **Autonomous Database Details** page, click **Database Actions**. A new tab is opened called **Oracle Database Actions** with **Database Actions | Launchpad** displayed at the top of the page.
+1. At the top of the **Autonomous Database details** page, click **Database actions**. A new tab is opened called **Oracle Database Actions** with **Database Actions | Launchpad** displayed at the top of the page.
 
     - If this page is not displayed, check that pop-up windows are allowed in your browser.
     - Keep this tab open throughout the workshop. If your session expires, you can always sign in again.
@@ -230,9 +230,9 @@ Throughout this workshop, you access Database Actions to run SQL commands on you
 
 3. In the **Development** section, click **SQL**.
 
-4. In the help note dialog box, click the **X** button to close it.
+4. In the **Warning** dialog box in the upper-right corner, click the **X** to close it.
 
-5. In the **Warning** dialog box in the upper-right corner, click the **X** to close it.
+5. In the help note dialog box, click the **X** button to close it. 
 
 6. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
@@ -292,4 +292,4 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Aug 24, 2022
+- **Last Updated By/Date** - Jody Glover, Jan 21, 2023

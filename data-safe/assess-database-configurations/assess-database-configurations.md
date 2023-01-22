@@ -34,7 +34,7 @@ This lab assumes you have:
 
 ### Assumptions
 
-- Your data values are most likely different than those shown in the screenshots.
+- Your data values might be different than those shown in the screenshots.
 
 
 ## Task 1: View the dashboard for Security Assessment
@@ -48,7 +48,7 @@ This lab assumes you have:
 3. At the top of the page, review the **Risk Level** and **Risks by Category** charts.
 
     - The **Risk Level** chart shows you a percentage breakdown of the different risk levels (High, Medium, Low, Advisory, and Evaluate) across all target databases in the selected compartment(s).
-    - The **Risks by Category** chart shows you a percentage breakdown of the different risk categories (User Accounts, Privileges and Roles, Authorization Control, Data Encryption, Fine-Grained Access Control, Auditing, and Database Configurations) across target databases in the selected compartment(s).
+    - The **Risks by Category** chart shows you a percentage breakdown of the different risk categories (User Accounts, Privileges and Roles, Authorization Control, Data Encryption, Fine-Grained Access, Auditing, and Database Configurations) across target databases in the selected compartment(s).
 
     ![Security Assessment Risk Level and Risks by Category charts for all targets](images/sa_risklevel_risksbycategory.png "Security Assessment Risk Level and Risks by Category charts for all targets")
 
@@ -89,7 +89,7 @@ Oracle Data Safe automatically creates a security assessment of your target data
 
 3. To view details about the security assessment itself, click the **Assessment Information** tab.
 
-    - Details include assessment name, OCID, compartment to which the assessment was saved, target database name, target database version, assessment date, schedule (if applicable), name of the baseline assessment (if one is set), and complies with baseline flag (Yes, No, or No Baseline Set).
+    - Details include assessment name, OCID, compartment to which the assessment was saved, target database name, target database version, assessment date, schedule (if applicable), name of the baseline assessment (if one is set), and whether the assessment complies with the baseline assessment (Yes, No, or No Baseline Set).
 
     ![Latest Security Assessment Assessment Information tab](images/latest-sa-assessment-information-tab.png "Latest Security Assessment Assessment Information tab")
 
@@ -97,7 +97,7 @@ Oracle Data Safe automatically creates a security assessment of your target data
 
     ![Rename Latest Security Assessment](images/rename-latest-sa-assessment.png "Rename Latest Security Assessment")
 
-5. Scroll down and view the **Assessment Details** section. If there are no details, move the slider to the left and then to the right.
+5. Scroll down and view the **Assessment Details** section.
 
     - This section shows you all the findings for each risk category.
     - Risks are color-coded to help you easily identify categories that have high risk findings (red).
@@ -108,25 +108,31 @@ Oracle Data Safe automatically creates a security assessment of your target data
 
 6. Under **Filters By Risks** on the left, notice that you can select the risk levels that you want displayed. Select **Pass**, and then click **Apply**.
 
+    The **Assessment Details** section is updated to include findings with no risk found (they have a **Pass** level).
+
     ![Security Assessment filters for risk levels](images/sa-filters-risk-levels.png "Security Assessment filters for risk levels")
 
-7. Under **User Accounts**, expand **User Details**.
+7. Under **Filters By References** on the left, notice that you can also filter the list of findings based on recommendations from DISA STIG (Security Technical Implementation Guide), CIS Benchmark (Center for Internet Security), EU GDPR (European Union's General Data Protection Regulation), and Oracle Best Practices.
+
+    ![Filters by references](images/filters-by-references.png "Filters by references")
+
+8. Under **User Accounts**, expand **User Details**.
 
     - For each user in your target database, the table shows the user status, profile used, the user's default tablespace, whether the user is Oracle Defined (Yes or No), and how the user is authenticated (Auth Type).
 
     ![Security Assessment user details](images/sa-user-details.png "Security Assessment user details")
 
-8. Expand another category and review the findings.
+9. Expand another category and review the findings.
 
-    - Each finding shows you the status (risk level), a summary of the finding, details about the finding, remarks to help you to mitigate the risk, and references - whether a finding is recommended by the Center for Internet Security (**CIS**), European Union's General Data Protection Regulation (**GDPR**), and/or Security Technical Implementation Guide (**STIG**). These references make it easy for you to identify the recommended security controls.
-    - In the example below, the **Transparent Data Encryption** finding has two references: **STIG** and **GDPR**.
+    - Each finding shows you the status (risk level), a summary of the finding, details about the finding, remarks to help you to mitigate the risk, and references. The references make it easy for you to identify the recommended security controls.
+    - In the example below, the **Password Verification Functions** finding is a medium risk finding that has two references: **STIG** and **CIS**.
 
-    ![Transparent Data Encryption finding](images/transparent-data-encryption-finding.png "Transparent Data Encryption finding")
+    ![Password Verification Functions finding](images/password-verification-functions.png "Password Verification Functions finding")
 
 
-9. Expand a few categories under **Privileges and Roles**, and review the findings.
+10. Expand a few categories under **Privileges and Roles**, and review the findings.
 
-10. Scroll down further and expand other categories. Each category lists related findings about your target database and how you can make changes to improve its security.
+11. Scroll down further and expand other categories. Each category lists related findings about your target database and how you can make changes to improve its security.
 
 
 ## Task 3: View the history of security assessments for your target database
@@ -163,11 +169,15 @@ A baseline assessment shows you data for all your target databases in a selected
 
 5. Click **Close**.
 
-6. On the **Latest Security Assessment** page, click **View History**, and confirm that there is a new row in the table for the baseline assessment. The assessment name starts with **SA_baseline**.
+    You are returned to the **Latest Security Assessment** page.
+
+6. Click **View History**, and confirm that there is a new row in the table for the baseline assessment. The assessment name starts with **SA_baseline**.
 
     ![Assessment history with baseline assessment](images/sa-assessment-history-with-baseline.png "Assessment history with baseline assessment")
 
-7. Click **Close**. The latest security assessment is displayed.
+7. Click **Close**. 
+
+    The latest security assessment is displayed.
 
 
 ## Task 5: Generate activity on the target database
@@ -215,6 +225,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     ![System Privileges Granted to PUBLIC finding](images/system-privileges-granted-to-public.png "System Privileges Granted to PUBLIC finding")
 
+
 ## Task 7: Generate a Comparison report for Security Assessment
 
 1. With the latest security assessment displayed, under **Resources** on the left, click **Compare with Baseline**. Oracle Data Safe automatically begins processing the comparison.
@@ -255,7 +266,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
 5. Click your target database name to view the details about the finding for your target database.
 
     - The finding includes your target database name, risk level, a summary about the risk, details on your target database, remarks that explain the risk and help you to mitigate it, and references.
-    - The **Summary** sections says that are 428 grants to `PUBLIC`.
+    - The **Summary** section tells you how many grants to `PUBLIC` exist.
     - In the **Details** section, you can see that **`PUBLIC`** has **`ALTER ANY ROLE`** grant, which is what you did in task 5.
     - The **Remarks** section says **Privileges granted to PUBLIC are available to all users. This generally should include few, if any, system privileges since these will not be needed by ordinary users who are not administrators.**
     - The **References** section tells you the Security Technical Information Guide (STIG) rule number, which is **RULE SV-75925R1**.
@@ -303,7 +314,9 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     ![Add Schedule to Save Assessments page](images/sa-add-schedule-to-save-an-assessment.png "Add Schedule to Save Assessments page")
 
-13. Notice that when the schedule is created, its status changes to **SUCCEEDED** on the **Schedule Details** page.
+    The **Schedule Details** page is displayed.
+
+13. Notice that when the schedule is created, its status changes to **SUCCEEDED**. The schedule type is **SAVED**.
 
     ![Schedule Details page](images/sa-schedule-details-page.png "Schedule Details page")
 
@@ -332,4 +345,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, Aug 22, 2022
+* **Last Updated By/Date** - Jody Glover, January 21, 2023
