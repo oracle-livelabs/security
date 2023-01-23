@@ -18,15 +18,10 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as Campaign Administrator
 
-1. Open Chrome browser and go to Oracle Access Governance URL based on your **group** assignment. 
-    - [Oracle Access Governance LiveLabs Group 1](https://accessgov-ocw-01-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/)
-    - [Oracle Access Governance LiveLabs Group 2](https://accessgov-ocw-002-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/)
-    - [Oracle Access Governance LiveLabs Group 3](https://accessgov-ocw-03-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/)
-    - [Oracle Access Governance LiveLabs Group 4](https://accessgov-ocw04-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/)
-2. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **accessgov_iam** identity domain selected.
-3. Log in to **Oracle Access Governance** as a **campaign administrator** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
-	![Access Governance Login](images/ag-logon.png)
-4. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
+1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **Default** identity domain selected.
+2. Log in to **Oracle Access Governance** as a **campaign administrator - Pamela Green** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+  ![Access Governance Login](images/admin-login.png)
+3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/event-based-setup.png)
 
 ## Task 2: Enable Event Based Access Review Campaigns
@@ -50,7 +45,7 @@ In this lab, you will:
 1.  Sign in to Identity Self Service console. Open a browser tab using the below URL to access OIG Identity Console.
 
    ```
-    URL       
+    URL       https://<--privateipofyourcomputeinstace-->:14000/identity
     Username  xelsysadm
     Password  Welcome1
     ```
@@ -62,10 +57,12 @@ In this lab, you will:
 
   ![Clone Campaign](images/manage-self-service.png)
 4. Click on **Disable** button to disable the user identity **Roger Young** 
-5. Refresh the page , now you will see the user **Roger Young** is in disabled status.
+
 ![Clone Campaign](images/disable-user.png)
 
 ![Clone Campaign](images/disable-submit.png)
+
+5. Refresh the page , now you will see the user **Roger Young** is in disabled status.
 
 ![Clone Campaign](images/user-disabled.png)
 
@@ -80,26 +77,24 @@ In this lab, you will:
 2. In the **Connected Systems** screen, select the **Manage** button for the Oracle Access Governance connected system you want to manage.
 
 
-3. Select the **Load data now** option from the **Actions** drop-down menu in the top right-hand corner. This will initiate a data load which you can track the status of in the **Activity Log.** Refresh screen and wait for the status to be **Successful*
+3. Select the **Load data now** option from the **Actions** drop-down menu in the top right-hand corner. This will initiate a data load which you can track the status of in the **Activity Log.** Refresh screen and wait for the status to be **Successful**
 
 ## Task 5: Enable the user in Oracle Identity Governance
 
 1.  Sign in to Identity Self Service console. Open a browser tab using the below URL to access OIG Identity Console.
 
    ```
-    URL       
+    URL       https://<--privateipofyourcomputeinstace-->:14000/identity
     Username  xelsysadm
     Password  Welcome1
     ```
   ![Campaign Analytics](images/oig-login-page.png)
-2.  You should see the **Oracle Identity Governance** main dashboard
-  ![Campaign Detail Menu](images/campaign-detail-menu.png)
-3. Click on Manage on the top right corner. Then, click on Users.Select **Display Name** and enter the user name **Roger Young**. The user profile of **Roger Young** is displayed.The user is in **Disabled** status. 
+2.  You should see the **Oracle Identity Governance** main dashboard. Click on Manage on the top right corner. Then, click on Users.Select **Display Name** and enter the user name **Roger Young**. The user profile of **Roger Young** is displayed.The user is in **Disabled** status. 
 
   ![Clone Campaign](images/enable-user.png)
-4. Click on **Enable** button to enable the user identity **Roger Young** 
-5. Refresh the page , now you will see the user **Roger Young** is in **Active** status.
-![Clone Campaign](images/enabled.png)
+3. Click on **Enable** button to enable the user identity **Roger Young** 
+4. Refresh the page , now you will see the user **Roger Young** is in **Active** status.
+
 
 ## Task 6: Again Perform Data load in OAG console
 
@@ -110,7 +105,7 @@ In this lab, you will:
     
 2. In the **Connected Systems** screen, select the **Manage** button for the Oracle Access Governance connected system you want to manage. 
 
-3. Select the **Load data now** option from the **Actions** drop-down menu in the top right-hand corner. This will initiate a data load which you can track the status of in the **Activity Log.** Refresh screen and wait for the status to be **Successful*
+3. Select the **Load data now** option from the **Actions** drop-down menu in the top right-hand corner. This will initiate a data load which you can track the status of in the **Activity Log.** Refresh screen and wait for the status to be **Successful**
 
 ## Task 7: Login Oracle Access Governance as Campaign Administrator 
 

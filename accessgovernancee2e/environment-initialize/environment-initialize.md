@@ -54,6 +54,10 @@ This lab assumes you have:
 
     ```
     <copy>./start_db.sh</copy>
+    ```
+    Wait till DB gets started. Then proceed to start all servers.
+     ```
+    
     <copy>./start_all_servers.sh</copy>
     ```
     ![DB server started](images/start-db.png)

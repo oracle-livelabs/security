@@ -40,13 +40,13 @@ This lab assumes you have:
 3. Install the agent
 
     ```
-    <copy>sh agentManagement.sh --volume /home/opc/vol_oag —-agentpackage /home/opc/zip_oag/oig-oag.zip —-install</copy>
+    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --agentpackage /home/opc/zip_oag/oig-oag.zip --install</copy>
     ```
     ![Initialize the Kubernetes cluster and the pod network add-on](images/agent-install.png) 
 
 4. Start the agent
      ```
-    <copy>sh agentManagement.sh --volume /home/opc/vol_oag —-start</copy>
+    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --start</copy>
     ```
     ![Initialize the Kubernetes cluster and the pod network add-on](images/agent-start.png) 
 
