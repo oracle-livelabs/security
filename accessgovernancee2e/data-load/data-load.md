@@ -53,6 +53,7 @@ Create users in IAM and assign them to Application roles.
     oci iam user create --name mark.hernandez --email <--email-id--> --description OAG-User-Cloud-Shell
 
 	oci iam user create --name pamela.green --email <--email-id--> --description OAG-User-Cloud-Shell 
+    oci iam user create --name harlan.bullard --email <--email-id--> --description OAG-User-Cloud-Shell
     ```
     ![Weblogic console credentials login](images/cloud-shell.png)
 

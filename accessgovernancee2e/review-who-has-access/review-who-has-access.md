@@ -26,31 +26,29 @@ In this lab, you will:
     - [Oracle Access Governance LiveLabs Group 4](https://accessgov-ocw04-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/)
 3. Ensure you have **accessgov_iam** identity domain selected.
 4. Log in to **Oracle Access Governance** as **user manager** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
-	![Access Governance Login](images/ag-logon.png)
+	![Access Governance Login](images/manager-ag-logon.png)
 5. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.** 
-  ![Access Governance Homepage](images/ag-homepage.png)
+  ![Access Governance Homepage](images/manager-ag-homepage.png)
 
 ## Task 2: Review My Direct Report's Access
 
 1. Click on the **Oracle Access Governance** menu, go to **Who has access to what**, then select **My Direct’s Access**.
-  ![My Direct Menu](images/open-menu-direct.png)
+  ![My Direct Menu](images/manager-open-menu-direct.png)
 2. You will see a list of users reporting to the current user manager. You may select one user. For example, Select **George Jimenez** as an example in the below screen. **Please note employee users in your assigned system might be different from LiveLabs step screenshot.** 
-  ![Review Direct List](images/review-direct-list.png)
+  ![Review Direct List](images/manager-review-direct-list.png)
 3. A list of applications to which **George Jimenez** has access is listed. You can select each application and review the privileges assigned to the user in the selected application. For each **application** your employee has, review **Accounts**, **Permission**, **Grant type**, **Date granted**, **Granted until** etc. 
-  ![Review Application](images/review-individual-app.png)
+  ![Review Application](images/manager-review-individual-app.png)
 4. Select **Roles** from **Group by** drop-down menu to see the list of roles assigned to a user.
-  ![Review Role](images/review-individual-role.png)
+  ![Review Role](images/manager-review-individual-role.png)
 5. Review **Roles** assigned to users and the detail for each role. 
-  ![Review Role](images/user-roles.png)
 
 ## Task 3: Review my access
 
 1. Click on the **Oracle Access Governance** menu, go to **Who has access to what**, then select **My Access**.
-  ![My Direct Menu](images/open-menu-direct.png)
+  ![My Direct Menu](images/manager-open-direct.png)
 2. You can review a list of **applications** to which the signed-in user has access. You can select each application and review the privileges assigned to the user.
-  ![Review My Access](images/review-my-access.png)
+  ![Review My Access](images/manager-review-my-access.png)
 3. Select **Roles** from **Group by** drop-down menu to see a list of roles assigned to the user. You can also click on each **Role** to view details.
-  ![Review My Role](images/review-my-access-role.png)
 4. During this lab, you have navigated the **Oracle Access Governance** console as a user manager to list your direct report employees and your own access privileges. This is a security good practice and part of the employees' **Due Care / Due Diligence**.
 5. You may now **proceed to the next lab**. 
 
