@@ -18,7 +18,7 @@ This lab assumes you have:
 
 ## Task 1: Install OAG Agent on the Compute Instance and Configure
 
-1. Open a terminal session.  Move Agent ZIP file from the local file system to zip_oag inside OIG: /home/opc. 
+1. Open a terminal session.  Move Agent ZIP file from the Downloads folder to /home/opc:
 
     ```
     <copy>cd /home/opc/zip_oag</copy>
@@ -40,7 +40,7 @@ This lab assumes you have:
 3. Install the agent
 
     ```
-    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --agentpackage /home/opc/zip_oag/oig-oag.zip --install</copy>
+    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --agentpackage /home/opc/zip_oag/oag.zip --install</copy>
     ```
     ![Initialize the Kubernetes cluster and the pod network add-on](images/agent-install.png) 
 
