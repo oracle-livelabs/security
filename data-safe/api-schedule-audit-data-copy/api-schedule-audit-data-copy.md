@@ -364,7 +364,7 @@ In this task, you create a configuration file named `config` in the `oci` direct
     # <copy>vi config</copy>
     ```
 
-2. Paste the configuration file contents (earlier you pasted this content into a temporary text file) into the `config` file. The content looks similar to the following code. Be sure to include `[DEFAULT]` at the top as shown below.
+2. Paste the configuration file contents (earlier you pasted this content into a temporary text file) into the `config` file. The content looks similar to the following code. Be sure to include `[DEFAULT]` at the top.
 
    ```text
     [DEFAULT]
