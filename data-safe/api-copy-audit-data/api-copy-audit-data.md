@@ -16,6 +16,7 @@ In this lab, you will:
 - Access Cloud Shell in Oracle Cloud Infrastructure and install the SDK
 - Configure the SDK
 - Review and compile the java example that has Oracle Data Safe REST API commands
+- Obtain the compartment OCID for your target database
 - Run the compiled java file
 - Verify that the audit data is copied to your bucket
 
@@ -65,7 +66,10 @@ Create a bucket to store your audit data.
 
     A **Start Audit Trail: UNIFIED\_AUDIT\_TRAIL** dialog box is displayed.
 
-7. Set the start date to the beginning of the current month.
+7. Set the start date to the beginning of the current month. 
+
+    - If it's currently the first day of the month, you can select the previous day to be sure you collect all of the data.
+    - Do not select the **Auto Purge** option.
 
 8. Click **Start**. Wait for **Collection State** to change from **STARTING** to **COLLECTING** and then to **IDLE**. It takes about a minute.
 
@@ -93,9 +97,9 @@ Create a bucket to store your audit data.
 
 In Cloud Shell, download the SDK to a directory named `oci`. Unzip the SDK into the `oci` directory.
 
-1. In the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Developer tools** icon, and then select **Cloud Shell** icon to open Cloud Shell.
+1. To open Cloud Shell, in the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Developer tools** icon, and then select **Cloud Shell**.
 
-    When you first open Cloud Shell, you are in your home directory; for example, `/home/jody_glove`.
+    When you first open Cloud Shell, your current directory is your home directory; for example, `/home/jody_glove`.
 
 2. Make a directory named `oci`, give yourself `read/write/execute` permissions on it, and then switch to it.
 
@@ -127,9 +131,11 @@ Create a configuration file in your `oci` directory (`~/.oci/config`).
 
 4. Leave **Generate API Key Pair** selected, click **Download Private Key**, and save your key to a local directory on your computer. 
 
+5. Click **Add**.
+
     The **Configuration File Preview** dialog box is displayed showing you a preview of the configuration file.
 
-5. Copy the configuration file contents to a temporary text file. It should look similar to this:
+6. Copy the configuration file contents to a temporary text file. It should look similar to this:
 
     ```
     [DEFAULT]
@@ -140,45 +146,47 @@ Create a configuration file in your `oci` directory (`~/.oci/config`).
     key_file=<path to your private keyfile> # TODO
     ```
 
-6. Click **Close**.
+7. Click **Close**.
 
-7. Return to Cloud Shell.
+    The new API key is listed under **API Keys**.
 
-8. Switch to your home directory and create a directory named `datasafe_keyfile`.
+8. Return to Cloud Shell.
+
+9. Switch to your home directory and create a directory named `datasafe_keyfile`.
 
     ```
     <copy>cd $HOME
     mkdir datasafe_keyfile</copy>
     ```
 
-9. Create a configuration file in the `oci` directory using the vi editor.
+10. Create a configuration file in the `oci` directory using the vi editor.
 
     ```
     <copy>vi ~/oci/config</copy>
     ```
 
-10. Paste the configuration file contents.
+11. Paste the configuration file contents.
 
-11. Modify the last line to be the path to your key file. In the example below, substitute `your-pem-file.pem` with your own PEM file name. 
+12. Modify the last line to be the future path to your key file. In a later step, you move your PEM file to this directory. In the example below, substitute `your-pem-file.pem` with your own PEM file name. 
 
     ```
     <copy>key_file=datasafe_keyfile/your-pem-file.pem</copy>
     ```
 
-12. Save and close (press **Escape**, and then enter **:wq**).
+13. Save and close (press **Escape**, and then enter **:wq**).
 
 
-13. In Cloud Shell in the upper-right corner, click the **cloud Shell** menu icon, and select **Upload**.
+14. In Cloud Shell in the upper-right corner, click the **cloud Shell** menu icon, and select **Upload**.
 
     The **File Upload to your Home Directory** dialog box is displayed.
 
-14. Drag your PEM file to the dialog box, and click **Upload**. 
+15. Drag your PEM file to the dialog box, and click **Upload**. 
 
     Your file is uploaded to your home directory.
 
-15. After the file is successfully transferred, click **Hide** to close the dialog box.
+16. After the file is successfully transferred, click **Hide** to close the dialog box.
 
-16. Move the file to the `datasafe_keyfile` directory. In the example below, replace `your-pem-file.pem` with your own PEM file name.
+17. Move the file to the `datasafe_keyfile` directory. In the example below, replace `your-pem-file.pem` with your own PEM file name.
 
     ```
     <copy>mv ~/your-pem-file.pem ~/datasafe_keyfile/your-pem-file.pem</copy>
@@ -189,25 +197,32 @@ Create a configuration file in your `oci` directory (`~/.oci/config`).
 
 The name of the Java file is `DataSafeRestAPIClientExample.java`. Use the `javac` command to compile the file.
 
-1. Review the file:
-
-    ```
-    <copy>cat ~/oci/examples/DataSafeRestAPIClientExample.java</copy>
-    ```
-
-    If you don't have this class file, you can download it here from GitHub:
-
-    ```
-    <copy>wget https://raw.githubusercontent.com/oracle/oci-java-sdk/master/bmc-examples/src/main/java/DataSafeRestAPIClientExample.java</copy>
-    ```
-
-2. Switch to the `oci` directory.
+1. Switch to the `oci/examples` directory. This directory is provided with the SDK installation and provides several sample files.
 
     ```
     <copy>cd ~/oci/examples</copy>
     ```
 
-3. Compile the file.
+2. List the content in the `examples` directory. Notice that you have a Java file named `DataSafeRestAPIClientExample.java`.
+
+    ```
+    <copy>ls</copy>
+    ```
+
+3. Open and review `DataSafeRestAPIClientExample.java`. Examine the REST API commands that pertain to Oracle Data Safe.
+
+    ```
+    <copy>cat ~/oci/examples/DataSafeRestAPIClientExample.java</copy>
+    ```
+
+4. If you don't have this class file, you can download it here from GitHub:
+
+    ```
+    <copy>wget https://raw.githubusercontent.com/oracle/oci-java-sdk/master/bmc-examples/src/main/java/DataSafeRestAPIClientExample.java</copy>
+    ```
+
+
+5. Compile the file.
 
     ```
     <copy>javac -cp .:$OCI_JAVA_SDK_FULL_JAR_LOCATION:$OCI_JAVA_SDK_LOCATION/third-party/lib/*:$HOME/oci/lib/oci-java-sdk-full-3.2.0.jar DataSafeRestAPIClientExample.java</copy>
@@ -215,10 +230,27 @@ The name of the Java file is `DataSafeRestAPIClientExample.java`. Use the `javac
 
     The file compiles without any output in the console.
 
-## Task 7: Run the compiled java file
+## Task 7: Obtain the compartment OCID for your target database
+
+1. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**. 
+
+2. Under **List scope** on the left, make sure that your compartment is selected. 
+
+3. On the right, click the name of your database. On the **Autonomous Database information** tab, find the compartment information. 
+
+4. From the navigation menu, select **Identity and Security**, and then on the right under **Identity**, select **Compartments**. 
+
+5. Click the name of your compartment.
+
+    The **Compartment details** page is displayed.
+
+6. On the **Compartment Information** tab, click the **Copy** link next to **OCID** and paste the OCID into a temporary local text file. You need the OCID for the next task.
 
 
-1. Run the following commands to set the variables. In the example below, replace `your-compartment-ocid` with the OCID of the compartment for your target database.
+## Task 8: Run the compiled java file
+
+
+1. Return to Cloud Shell and run the following commands to set the variables. In the example below, replace `your-compartment-ocid` with the compartment OCID for your target database.
 
     ```
     <copy>export BUCKET=DataSafeAuditData
@@ -231,7 +263,7 @@ The name of the Java file is `DataSafeRestAPIClientExample.java`. Use the `javac
     <copy>java -cp .:$OCI_JAVA_SDK_FULL_JAR_LOCATION:$OCI_JAVA_SDK_LOCATION/third-party/lib/*:$HOME/oci/lib/oci-java-sdk-full-3.2.0.jar DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
     ```
 
-## Task 8: Verify that the audit data is copied to your bucket
+## Task 9: Verify that the audit data is copied to your bucket
 
 1. From the navigation menu in OCI, select **Storage**, and then **Buckets**.
 
@@ -260,7 +292,7 @@ The name of the Java file is `DataSafeRestAPIClientExample.java`. Use the `javac
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Richard Evans, Anna Haikl, Archana Rao
-- **Last Updated By/Date** - Jody Glover, January 22, 2023
+- **Last Updated By/Date** - Jody Glover, January 23, 2023
 
 
 
