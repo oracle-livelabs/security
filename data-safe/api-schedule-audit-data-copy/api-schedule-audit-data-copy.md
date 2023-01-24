@@ -4,6 +4,8 @@
 
 When you start your target database's audit trail in Oracle Data Safe, Oracle Data Safe begins copying audit records from the database's audit trail into the Oracle Data Safe repository. In this lab, you use the Oracle Data Safe application programming interface (API) and crontab on a compute instance to schedule the copying of Oracle Data Safe's audit data for your target database into object storage. 
 
+If you already have a bucket in Oracle Cloud Infrastructure and you have started the audit trail for your target database in Oracle Data Safe, then you can skip tasks 1 and 2.
+
 Estimated Lab Time: 30 minutes
 
 ### Objectives
@@ -41,7 +43,7 @@ This lab assumes you have:
 
 ## Task 1: Create a bucket in your compartment
 
-Create a bucket to store your audit data. You also use the bucket to transfer a PEM file to a compute instance in a later task. If you already have a bucket, you can skip this step.
+Create a bucket to store your audit data. You also use the bucket to transfer a PEM file to a compute instance in a later task.
 
 1. From the navigation menu in Oracle Cloud Infrastructure, select **Storage**, and then **Buckets**.
 
@@ -57,8 +59,6 @@ Create a bucket to store your audit data. You also use the bucket to transfer a 
 
 
 ## Task 2: Start the audit trail for your target database in Oracle Data Safe
-
-If the audit trail is already started on your target database, you can skip this step.
 
 1. Click **View** to access Security Center in Oracle Data Safe.
 
@@ -364,7 +364,7 @@ In this task, you create a configuration file named `config` in the `oci` direct
     # <copy>vi config</copy>
     ```
 
-2. Paste the configuration file contents (earlier you pasted this content into a temporary text file) into the `config` file. The content looks similar to the following code:
+2. Paste the configuration file contents (earlier you pasted this content into a temporary text file) into the `config` file. The content looks similar to the following code. Be sure to include `[DEFAULT]` at the top as shown below.
 
    ```text
     [DEFAULT]
@@ -434,9 +434,10 @@ The OCI jar file is located in `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-<v
     Note: There is no output after the file is compiled. You are simply returned to the prompt.
 
 
-6. List the files in the `examples` directory and confirm that you now have a class file named `DataSafeRestAPIClientExample.class`.
+6. Change to the `examples` directory and list the files. Confirm that you now have a class file named `DataSafeRestAPIClientExample.class`.
 
     ```text
+    # <copy>cd examples</copy>
     # <copy>ls</copy>
     ```
 
