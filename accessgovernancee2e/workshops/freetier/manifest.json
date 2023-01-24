@@ -13,44 +13,44 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Environment verification and Initialization",
+            "title": "Lab 1: Verify environment and initialize",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../environment-initialize/environment-initialize.md"
         },
         {
-            "title": "Lab 2: Oracle Access Governance Service Instance Setup and Configuration",
+            "title": "Lab 2: Setup and configure Oracle Access Governance service instance",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../instance-setup/ag-instance-setup.md"
         },
         {
-            "title": "Lab 3: Oracle Access Governance Agent Installation and Configuration ",
+            "title": "Lab 3: Install and configure Oracle Access Governance agent ",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../agent-install/agent-install.md"
         },
         {
-            "title": "Lab 4: AG Data Load and IAM User Creation ",
+            "title": "Lab 4: Perform AG data load and create IAM users",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../data-load/data-load.md"
         },
         {
-            "title": "Lab 5: Create Access Review Campaign",
+            "title": "Lab 5: Create access review campaign ",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../create-campaign/create-campaign.md"
         },
         {
-            "title": "Lab 6: Review Who Has Access to What",
+            "title": "Lab 6: Review who has access to what",
             "filename": "../../review-who-has-access/review-who-has-access.md"
         },
         {
-            "title": "Lab 7: Perform Access Review",
+            "title": "Lab 7: Perform access review",
             "filename": "../../perform-access-review/perform-access-review.md"
         },
         {
-            "title": "Lab 8: Manage Access Review Campaigns",
+            "title": "Lab 8: Manage access review campaigns",
             "filename": "../../manage-campaign/manage-campaign.md"
         },
         {
-            "title": "Lab 9: Manage Event Based Access Review Campaigns",
+            "title": "Lab 9: Manage event based access review campaigns",
             "filename": "../../event-based-review/event-based-review.md"
         },
         {

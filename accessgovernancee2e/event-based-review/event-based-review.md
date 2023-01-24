@@ -1,4 +1,4 @@
-# Event Based Access Reviews
+# Manage event based access review
 
 ## Introduction
 
@@ -27,9 +27,9 @@ In this lab, you will:
 ## Task 2: Enable Event Based Access Review Campaigns
 
 1. Select Event-Based Administration → Event-Based Setup from the Navigation Menu.
-  ![Menu Monitor Campaign](images/event-based-setup.png)
+  ![Event based setup](images/event-based-setup.png)
 2. Each event type is displayed as a tile with a status of Enabled or Disabled and an Actions drop-down menu, providing the option to Edit or View details. Select Edit for the **Identity Enabled** event-type. 
-  ![View List of Campaigns](images/edit-identity-enabled.png)
+  ![Edit Identity Enabled](images/edit-identity-enabled.png)
 3. On the Configure the event type screen:
   Use the radio button to Enable the event-type.
   If you want to auto-approve low risk task for this event type, select Yes.
@@ -38,7 +38,7 @@ In this lab, you will:
 
 5. In the **Configure the event type** screen. Select **Save** to keep the changes to your event-type configuration.
  
- ![Campaign Progress](images/enable-complete.png)
+ ![Enable Complete](images/enable-complete.png)
 
 ## Task 3: Disable the user in Oracle Identity Governance
 
@@ -49,31 +49,31 @@ In this lab, you will:
     Username  xelsysadm
     Password  Welcome1
     ```
-  ![Campaign Analytics](images/oig-login-page.png)
+  ![OIG Login](images/oig-login-page.png)
 2.  You should see the **Oracle Identity Governance** main dashboard
-  ![Clone Campaign](images/self-service.png)
+  ![OIG Self Service](images/self-service.png)
 
 3. Click on Manage on the top right corner. Then, click on Users.Select **Display Name** and enter the user name **Roger Young**. The user profile of **Roger Young** is displayed.
 
-  ![Clone Campaign](images/manage-self-service.png)
+  ![Manage Self Service](images/manage-self-service.png)
 4. Click on **Disable** button to disable the user identity **Roger Young** 
 
-![Clone Campaign](images/disable-user.png)
+![Disable User](images/disable-user.png)
 
 5. Provide the Justification and Click on *Submit*
 
-![Clone Campaign](images/disable-submit.png)
+![Submit Disable User](images/disable-submit.png)
 
 6. Refresh the page , now you will see the user **Roger Young** is in disabled status.
 
-![Clone Campaign](images/user-disabled.png)
+![User disabled](images/user-disabled.png)
 
 
 ## Task 4: Perform Data load in OAG console
 
 1.  In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Connected Systems.**
 
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/data-load.png) 
+    ![Data Load](images/data-load.png) 
     
     
 2. In the **Connected Systems** screen, select the **Manage** button for the Oracle Access Governance connected system you want to manage.
@@ -90,10 +90,10 @@ In this lab, you will:
     Username  xelsysadm
     Password  Welcome1
     ```
-  ![Campaign Analytics](images/oig-login-page.png)
+  ![OIG Login Page](images/oig-login-page.png)
 2.  You should see the **Oracle Identity Governance** main dashboard. Click on Manage on the top right corner. Then, click on Users.Select **Display Name** and enter the user name **Roger Young**. The user profile of **Roger Young** is displayed.The user is in **Disabled** status. 
 
-  ![Clone Campaign](images/enable-user.png)
+  ![Enable User](images/enable-user.png)
 3. Click on **Enable** button to enable the user identity **Roger Young** . Provide the Justification and Click on *Submit*
 4. Refresh the page , now you will see the user **Roger Young** is in **Active** status.
 
@@ -102,7 +102,7 @@ In this lab, you will:
 
 1.  In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Connected Systems.**
 
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/data-load.png) 
+    ![Data Load](images/data-load.png) 
     
     
 2. In the **Connected Systems** screen, select the **Manage** button for the Oracle Access Governance connected system you want to manage. 
@@ -113,12 +113,12 @@ In this lab, you will:
 
 1.  In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **My Access Reviews**
 
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/my-access-review.png) 
+    ![My Access review](images/my-access-review.png) 
     
     
 2. You can view the certification event that Roger identity has been just enabled.
 
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/accpet-review.png) 
+    ![Accept Access Review](images/accpet-review.png) 
 
 
 

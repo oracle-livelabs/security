@@ -1,4 +1,4 @@
-# Check Who has Access to What for Myself or My Direct Reports
+# Check who has access to what for myself or my direct reports
 
 ## Introduction
 
@@ -36,7 +36,7 @@ In this lab, you will:
   ![Review Role](images/manager-review-individual-role.png)
 5. Review **Roles** assigned to users and the detail for each role. 
 
-## Task 3: Review my access
+## Task 3: Review My Access
 
 1. Click on the **Oracle Access Governance** menu, go to **Who has access to what**, then select **My Access**.
   ![My Direct Menu](images/manager-open-direct.png)

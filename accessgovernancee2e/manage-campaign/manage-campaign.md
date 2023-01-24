@@ -1,4 +1,4 @@
-# Manage access review campaign (Campaign Owner)
+# Manage access review campaign (campaign owner)
 
 ## Introduction
 
@@ -49,6 +49,7 @@ In this lab, you will:
     - Perform access review tasks as an **employee user** and a **user manager**
     - Monitor and manage access review campaigns as a **campaign administrator**
 
+You may now **proceed to the next lab**
 ## Learn More
 
 * [Oracle Access Governance Manage Access Review Campaign](https://docs.oracle.com/en/cloud/paas/access-governance/kfdck/index.html)

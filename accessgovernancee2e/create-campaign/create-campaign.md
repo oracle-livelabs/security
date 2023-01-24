@@ -1,4 +1,4 @@
-# Create Access Review campaign – Self and User Manager review
+# Create access review campaign – self and user manager review
 
 ## Introduction
 
@@ -35,15 +35,15 @@ In this lab, you will:
   ![Select Organizations](images/select-org.png)
   ![Select Next Criteria](images/admin-select-next.png)
 4. In the pie charts on the top right corner, you can review the scope of selected **Users**, **Applications**, **Permissions**, and **Roles** in **What I’ve selected** selection, review the selections made by you. For this lab, you can click on the button **I’m good, go to workflows**.
-  ![View Charts](images/admin-select-next.png)
+  ![Select the workflow](images/admin-select-next.png)
 5. Review the auto-selected workflow and reviewers. You can change those if required. For example, clicking on **I'll choose my own workflow** will open up **configure workflow** menu. For this lab, you may not need to change workflow and reviewers. Accept the default and click on **Next**. With this setup, access reviews go to **employee user** first, after the employee self review, it will go to the second reviewer **user manager** for approval.
   ![Default Workflow](images/admin-configure-workflow.png)
 6. Accept default value **One time** for the field **How often do you want this to run?**. You may provide a campaign name and description of your choice. For example, enter the campaign name as **Organization Access Review**, enter the description you prefer, select **Run now** and click on the **Next** button to schedule the campaign. Note the **campaign name** for reference in the next lab to search for your newly created access review campaign. For reviewers, the **campaign name** is referred to as **Review source** in the review tasks dashboard. 
-  ![Default Workflow](images/admin-default-workflow.png)
+  ![Default Workflow - One time run](images/admin-default-workflow.png)
 7. You may review the selected campaign criteria, workflow, reviewers, and the run schedule. For this lab, click on the **Create** button to create and schedule a campaign. The campaign will start approximately **10 minutes** from creation.  
-  ![View Charts](images/admin-summary.png)
+  ![View Charts - Create](images/admin-summary.png)
 8. A newly created campaign **Organization Access Review** is scheduled in **My upcoming campaigns** section. It takes approximately 10 minutes for **the newly created campaign** to move to **in progress** status. 
-  ![View Charts](images/admin-view-created-campaign.png)
+  ![View Charts - created campaign](images/admin-view-created-campaign.png)
  11. During this lab, you have navigated the **Oracle Access Governance** console and created a **user access review campaign** as a **campaign administrator**.
  12. You may now **proceed to the next lab**. 
 

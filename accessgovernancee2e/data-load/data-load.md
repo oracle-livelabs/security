@@ -1,4 +1,4 @@
-#  AG Data Load and IAM User Creation
+#  Perform AG data load and create IAM users 
 
 ## Introduction
 
@@ -14,25 +14,25 @@ In this lab, you will:
 
 ### Prerequisites
 This lab assumes you have:
-- A Free Tier, Paid or LiveLabs Oracle Cloud account
+- A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 
 ## Task 1: Perform Data load in OAG console
 
 1.  In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Connected Systems.**
 
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/connected-systems.png) 
+    ![Naviagte to Service Administration → Connected Systems](images/connected-systems.png) 
     
     
 2. In the **Connected Systems** screen, select the **Manage** button for the Oracle Access Governance connected system you want to manage.
 
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/manage.png) 
+    ![Select Manage](images/manage.png) 
 
 3. Select the **Load data now** option from the **Actions** drop-down menu in the top right-hand corner. This will initiate a data load which you can track the status of in the **Activity Log.** Refresh screen and wait for the status to be **Successful**
 
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/select-actions.png) 
+    ![Select Load Data now](images/select-actions.png) 
 
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/load-data.png) 
+    ![Data Load successful](images/load-data.png) 
 
 ## Task 2: Create Users in IAM
 
@@ -40,7 +40,7 @@ Create users in IAM and assign them to Application roles.
 
 1. In the Oracle Access Governance Console, access the Cloud Shell.
 
-    ![Weblogic console page](images/oci-cloud-shell.png)
+    ![Access Cloud Shell](images/oci-cloud-shell.png)
 
 2. Follow the below commands to create 3 users - Pamela Green (Campaign Administrator), Harlan Bullard (Manager), Mark Hernandez (Employee User) in IAM.
     * Create a new file **user-iam.sh**
@@ -54,7 +54,7 @@ Create users in IAM and assign them to Application roles.
     * Select the saved file **user-iam.sh**
     * The **user-iam.sh** file upload will be completed. 
 
-    ![Weblogic console credentials login](images/cloud-shell.png)
+    ![Cloud Shell user creation](images/cloud-shell.png)
 
 3. In cloud shell enter the below commands to execute the .sh file:
 
@@ -62,7 +62,7 @@ Create users in IAM and assign them to Application roles.
     <copy>ls</copy>
     <copy>sh user-iam.sh</copy>
     ```
-    ![Click on Servers under Environment](images/run-script.png)
+    ![Execute the user-iam.sh file](images/run-script.png)
 
 4. For each user created, an activation mail will be sent to the email-id provided in the *Task 2: Step 2* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 
     Reset password to the below mentioned password:
@@ -89,7 +89,7 @@ Create users in IAM and assign them to Application roles.
     * Pamela Green has been assigned with the *Administrator* application role. You can now close the window.
 
 
-    You may now [proceed to the next lab](#next).
+    You may now **proceed to the next lab.**
 
 ## Learn More
 

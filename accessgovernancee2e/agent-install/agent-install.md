@@ -1,4 +1,4 @@
-# Oracle Access Governance Agent Installation and Configuration
+# Install and configure Oracle Access Governance agent
 
 ## Introduction
 
@@ -13,7 +13,7 @@ In this lab, you will:
 
 ### Prerequisites
 This lab assumes you have:
-- A Free Tier, Paid or LiveLabs Oracle Cloud account
+- A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 
 ## Task 1: Install OAG Agent on the Compute Instance and Configure
@@ -30,7 +30,7 @@ This lab assumes you have:
     <copy>cd /home/opc/zip_oag</copy>
     <copy>ls</copy>
     ```
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/terminal-oag.png) 
+    ![Move the OAG Agent to zip_oag](images/env_setup.png) 
 
      Verify the Agent zip (oag.zip) is present inside folder zip_oag.
 
@@ -40,7 +40,7 @@ This lab assumes you have:
     ```
     <copy>source oag_agent.env</copy>
     ```
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/env-setup.png) 
+    ![Initialize the environment variable](images/terminal-oag.png) 
  
 
 3. Install the agent
@@ -48,20 +48,20 @@ This lab assumes you have:
     ```
     <copy>sh agentManagement.sh --volume /home/opc/vol_oag --agentpackage /home/opc/zip_oag/oag.zip --install</copy>
     ```
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/agent-install.png) 
+    ![Install the agent](images/agent-install.png) 
 
 4. Start the agent
      ```
     <copy>sh agentManagement.sh --volume /home/opc/vol_oag --start</copy>
     ```
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/agent-start.png) 
+    ![Start the agent](images/agent-start.png) 
 
 5. Verify the agent
 
      ```
     <copy>sh agentManagement.sh --volume /home/opc/vol_oag --status</copy>
     ```
-    ![Initialize the Kubernetes cluster and the pod network add-on](images/agent-status.png) 
+    ![Verify the agent](images/agent-status.png) 
 
 
 You may now [proceed to the next lab](#next).

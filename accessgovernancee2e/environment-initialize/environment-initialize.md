@@ -1,4 +1,4 @@
-# Environment verification and Initialization
+# Verify environment and initialize 
 
 ## Introduction
 
@@ -15,7 +15,7 @@ In this lab, you will:
 
 ### Prerequisites
 This lab assumes you have:
-- A Free Tier, Paid or LiveLabs Oracle Cloud account
+- A valid Oracle OCI tenancy, with OCI administrator privileges. 
 
 
 ## Task 1: Validate Docker is up and running
@@ -28,7 +28,8 @@ This lab assumes you have:
     ```
     Expected output: Docker version 20.10.22, build 3a2c30b
     ```
-     ![Check the version of docker](images/docker-version.png)
+    ![Check the version of docker](images/docker-version.png)
+
 2. Validate the status to verify if docker service is up/running
 
     ```
@@ -70,7 +71,7 @@ This lab assumes you have:
 
 
 
-You may now [proceed to the next lab](#next).
+You may now **proceed to the next lab.**
 
 ## Learn More
 

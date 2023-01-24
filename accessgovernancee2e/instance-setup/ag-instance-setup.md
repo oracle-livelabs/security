@@ -1,4 +1,4 @@
-# Oracle Access Governance Service Instance Setup and Configuration
+# Setup and configure Oracle Access Governance service instance
 
 ## Introduction
 
@@ -15,7 +15,7 @@ In this lab, you will:
 
 ### Prerequisites
 This lab assumes you have:
-- A Free Tier, Paid or LiveLabs Oracle Cloud account
+- A valid Oracle OCI tenancy, with OCI administrator privileges. 
 
 ## Task 1: Create AG Service instance 
 
@@ -55,7 +55,7 @@ This lab assumes you have:
     ![Access Governance console - Connected Systems](images/connected-systems.png)
 
 2. On the tile labeled **Would you like to connect to an Identity Governance System** select the **Add** button.
-    ![Access Governance console - Connected Systems](images/connected-system-page.png)
+    ![Access Governance console - Connected Systems-Add](images/connected-system-page.png)
 
 3. Click **Close** on the information pop-up to navigate to the **Add an Identity Governance System** page and begin the configuration.
 
@@ -65,7 +65,7 @@ This lab assumes you have:
 4. On the **Select System** step, select the tile for **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
 
 
-    ![Access Governance console - Connected Systems](images/select-oig.png)
+    ![Access Governance console - Connected Systems-Next](images/select-oig.png)
 
 
 5. On the **Enter Details** step, enter the following details:
@@ -74,7 +74,7 @@ This lab assumes you have:
     * **Description:** OIG
     * **Click Next.**
 
-    ![Access Governance console - Connected Systems](images/select-system.png)
+    ![Access Governance console - Connected Systems-OIG](images/select-system.png)
 
    
 
@@ -89,13 +89,13 @@ This lab assumes you have:
     * **OIG Server Password:** Welcome1
     * **OIG Server Confirm Password:** Welcome1
 
-     ![Access Governance console - Connected Systems](images/connection-details.png)
+     ![Configure Details](images/connection-details.png)
 
 7. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
 
 
-    ![Access Governance console - Connected Systems](images/download-link.png)
-You may now [proceed to the next lab](#next).
+    ![Download the agent](images/download-link.png)
+You may now **proceed to the next lab**
 
 ## Learn More
 
