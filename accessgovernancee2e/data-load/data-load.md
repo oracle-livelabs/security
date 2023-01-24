@@ -34,8 +34,6 @@ This lab assumes you have:
 
     ![Initialize the Kubernetes cluster and the pod network add-on](images/load-data.png) 
 
-4. Private IP need to updated in JDBC url and OIG url in AG settings
-
 ## Task 2: Create Users in IAM
 
 Create users in IAM and assign them to Application roles.
@@ -44,49 +42,54 @@ Create users in IAM and assign them to Application roles.
 
     ![Weblogic console page](images/oci-cloud-shell.png)
 
-2. Add the below commands to create users in file as **user.sh** file and upload in Cloud shell:
-
-    Quality Asurance: Mark Hernandez
-	Operations: Pamela Green 
-
+2. Follow the below commands to create 3 users - Pamela Green (Campaign Administrator), Harlan Bullard (Manager), Mark Hernandez (Employee User) in IAM.
+    * Create a new file **user-iam.sh**
+    * Add the below contents in the **user-iam.sh** file and save it. Specify the email-id provided to you at the time of your account creation.
     ```
-    oci iam user create --name mark.hernandez --email <--email-id--> --description OAG-User-Cloud-Shell
-
-	oci iam user create --name pamela.green --email <--email-id--> --description OAG-User-Cloud-Shell 
-    oci iam user create --name harlan.bullard --email <--email-id--> --description OAG-User-Cloud-Shell
+    oci iam user create --name mhernandez --email <--email-id provided--> --description OAG-User-Cloud-Shell
+	oci iam user create --name pamela.green --email <--email-id provided--> --description OAG-User-Cloud-Shell 
+    oci iam user create --name harlan.bullard --email <--email-id provided--> --description OAG-User-Cloud-Shell
     ```
+    * Open the Cloud Shell. Click on the right top corner *Settings* icon. Click on *Upload* option.
+    * Select the saved file **user-iam.sh**
+    * The **user-iam.sh** file upload will be completed. 
+
     ![Weblogic console credentials login](images/cloud-shell.png)
 
 3. In cloud shell enter the below commands to execute the .sh file:
 
     ```
     <copy>ls</copy>
-    <copy>sh users.sh</copy>
+    <copy>sh user-iam.sh</copy>
     ```
     ![Click on Servers under Environment](images/run-script.png)
 
-4. Once the users activation mail is received , reset the password to the below mentioned password:
+4. For each user created, an activation mail will be sent to the email-id provided in the *Task 2: Step 2* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 
+    Reset password to the below mentioned password:
 
     ```
     Password: Oracl@123456
     ```
+5. Assign Administrator Application Role to User Pamela Green
 
-5.  Private IP need to updated in JDBC url and OIG url in AG settings
+    * In the OCI console, navigate to Identity -> Domains -> Default Domain -> Oracle Cloud Services -> AG-<name of your AG service-instance> -> Application Role. 
 
-    ![OIG Identity Roles and Access Policies](images/change-settings.png)
-
-6. In the OCI console, navigate to Identity -> Domains -> Default Domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
-
-
-    ```
-    Assign AdminAppRole to User Pamela Green 
-    ```
+    * Notice the *AG Administrator* Role listed. Click on the Downward arrow on the right corner. 
 
     ![OIG Identity Roles and Access Policies](images/user-approle.png)
 
+    * Click on *Assigned Users -> Manage*. Select *Pamela Green* in *Available Users.* Click on *Assign*
+
+    ![OIG Identity Roles and Access Policies](images/user-approle-list.png)
+
+    * The user Pamela Green is now visible under *Assigned Users*.
+
+    ![OIG Identity Roles and Access Policies](images/user-approle-assign.png)
+
+    * Pamela Green has been assigned with the *Administrator* application role. You can now close the window.
 
 
-You may now [proceed to the next lab](#next).
+    You may now [proceed to the next lab](#next).
 
 ## Learn More
 

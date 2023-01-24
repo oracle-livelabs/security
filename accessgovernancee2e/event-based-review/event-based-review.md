@@ -60,9 +60,11 @@ In this lab, you will:
 
 ![Clone Campaign](images/disable-user.png)
 
+5. Provide the Justification and Click on *Submit*
+
 ![Clone Campaign](images/disable-submit.png)
 
-5. Refresh the page , now you will see the user **Roger Young** is in disabled status.
+6. Refresh the page , now you will see the user **Roger Young** is in disabled status.
 
 ![Clone Campaign](images/user-disabled.png)
 
@@ -92,7 +94,7 @@ In this lab, you will:
 2.  You should see the **Oracle Identity Governance** main dashboard. Click on Manage on the top right corner. Then, click on Users.Select **Display Name** and enter the user name **Roger Young**. The user profile of **Roger Young** is displayed.The user is in **Disabled** status. 
 
   ![Clone Campaign](images/enable-user.png)
-3. Click on **Enable** button to enable the user identity **Roger Young** 
+3. Click on **Enable** button to enable the user identity **Roger Young** . Provide the Justification and Click on *Submit*
 4. Refresh the page , now you will see the user **Roger Young** is in **Active** status.
 
 

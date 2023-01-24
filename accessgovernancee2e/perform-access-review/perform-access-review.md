@@ -23,11 +23,10 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as Employee User
 
-1. Open Chrome browser and go to **Oracle Access Governance** URL based on your **group** assignment. 
-2. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **default** identity domain selected.
-3. Log in to **Oracle Access Governance** as an **employee user - Mark Hernandez** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **default** identity domain selected.
+2. Log in to **Oracle Access Governance** as an **employee user - Mark Hernandez** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
 	![Access Governance Login](images/user-ag-logon.png)
-4. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
+3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/user-ag-homepage.png)
 
 ## Task 2: Perform access review task (Employee User Review)
@@ -48,7 +47,8 @@ Insights include:
     - Recent changes in user’s profile
     ![Access Review Tasks](images/user-review-insight-analytics.png)
 3. Decide (Accept or Revoke): Review all insights and select to **accept** or **revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Accept** it. Enter **justification** for why you accept this access review item, which will be logged in **Access review trail**. **Accept** the review task item will trigger the **current review task** assigned to the second-level reviewer, which is the **user manager** in the next task. On the contrary, **revoke** access by an **employee user** will not trigger next-level access review by the **manager user**.  
-**Note: In this example, Accept the Access Reviews tasks in this lab.**
+
+  **Note:** In this lab example, accept all the *Access Review* tasks.
   ![Access Review Tasks](images/user-revoke-accept-with-insights.png)
 4. Bulk action based on recommendation: You may also select multiple review tasks and decide to accept or revoke those privileges. For example, selecting the filter **Recommend Accept** will return a list of access review items recommended by **Oracle Access Governance** for **Accept** based on **prescriptive analytics**. 
   ![Access Review Tasks](images/user-select-review-recommended.png)
@@ -82,7 +82,8 @@ Insights include:
     - Recent changes in user’s profile
   ![Access Review Tasks](images/manager-access-review-insights-manager.png)
 3. Decide (Accept or Revoke): Review all insights and select to **Accept** or **Revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
-**Note:In this lab, Revoke the Access Review for user - Mark Hernandez**
+
+  **Note:** In this lab example, Revoke the *Access Review* for user - *Mark Hernandez*
 4. During this lab, you have navigated the **Oracle Access Governance** console to select **access review tasks** assigned to you as an **employee** and **manager user**, view **prescriptive analytics** and **recommendation** proposed by **Oracle Access Governance**, and make informed decisions **Accept** or **Revoke** for review tasks based on **peer group analysis** and **insights**. 
 ## Task 5: Login Oracle Identity Governance as System Administrator 
 

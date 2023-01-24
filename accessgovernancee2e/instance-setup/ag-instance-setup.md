@@ -24,20 +24,12 @@ This lab assumes you have:
     ```
     <copy>URL: https://console.us-ashburn-1.oraclecloud.com/</copy>
     ```
+    ![Create Service Instance](images/oci-login-console.png)
+
+2. Click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products.
     ![Create Service Instance](images/oci-console.png)
 
-2. Click the Navigation Menu icon in the top left corner to display the *Navigation menu.*
-
-3. Click *Identity and Security* in the *Navigation menu*
-
-
-4. Select *Access Governance* from the list of products.
-
-
-5. On the Access Governance page, select *Service Instances.*
-
-
-6. Click on *Create Service Instance*
+3. On the Access Governance page, select *Service Instances.*Click on *Create Service Instance*
 
 
     ```
@@ -45,51 +37,48 @@ This lab assumes you have:
     Description: Compartment
     Compartment: Ensure your compartment is selected
     ```
-
-    Click *Create Service Instance*
     ![Create Service Instance](images/create-service-instance.png)
     ![Service Instance details](images/service-instance.png)
 
-7. Wait for the service instance to have the *Active* status 
+4. Wait for the service instance to have the *Active* status 
 
     ![Service Instance is Active](images/ag-url.png)
 
-8. Click on the Serivce Instance to access the URL. 
+5. Click on the Serivce Instance to access the URL. 
 
     ![Access Governance console](images/ag-console.png)
 
 ## Task 2: Integrate with Oracle Identity Governance
 
-1. Login to the Oracle Access Governance service home page as the user with the Administrator application  role.
-
-2. On the Oracle Access Governance service home page, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
+1. On the Oracle Access Governance service home page, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
 
     ![Access Governance console - Connected Systems](images/connected-systems.png)
 
-3. On the tile labeled **Would you like to connect to an Identity Governance System** select the **Add** button.
-    ![Access Governance console - Connected Systems](images/connected-systems-page.png)
+2. On the tile labeled **Would you like to connect to an Identity Governance System** select the **Add** button.
+    ![Access Governance console - Connected Systems](images/connected-system-page.png)
 
-4. Click **Close** on the information pop-up to navigate to the **Add an Identity Governance System** page and begin the configuration.
+3. Click **Close** on the information pop-up to navigate to the **Add an Identity Governance System** page and begin the configuration.
 
     ![Close the Pop-up window](images/pop-up.png)
 
 
-5. On the **Select System** step, select the tile for **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
+4. On the **Select System** step, select the tile for **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
 
 
     ![Access Governance console - Connected Systems](images/select-oig.png)
 
 
-6. On the **Enter Details** step, enter the following details:
-  **Name**
-  **Description**
-  **Click Next.**
+5. On the **Enter Details** step, enter the following details:
+
+    * **Name:** OIG
+    * **Description:** OIG
+    * **Click Next.**
 
     ![Access Governance console - Connected Systems](images/select-system.png)
 
-    ![Access Governance console - Connected Systems](images/connection-details.png)
+   
 
-7. On the **Configure** step, enter connection details for the target system:
+6. On the **Configure** step, enter connection details for the target system:
 
     * **JDBC URL:** jdbc:oracle:thin:@//<--privateipofyourcomputeinstance-->:1521/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM
     * **OIG Database User Name:** DEV_OIM
@@ -100,7 +89,9 @@ This lab assumes you have:
     * **OIG Server Password:** Welcome1
     * **OIG Server Confirm Password:** Welcome1
 
-8. On the Download Agent step, select the *Download link* and download the agent zip file to the environment in which the agent will run.
+     ![Access Governance console - Connected Systems](images/connection-details.png)
+
+7. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
 
 
     ![Access Governance console - Connected Systems](images/download-link.png)

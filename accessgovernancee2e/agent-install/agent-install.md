@@ -18,7 +18,13 @@ This lab assumes you have:
 
 ## Task 1: Install OAG Agent on the Compute Instance and Configure
 
-1. Open a terminal session.  Move Agent ZIP file from the Downloads folder to /home/opc:
+1. Move the downloaded zip file (oag.zip) present in the /home/opc/Downloads folder to /home/opc/zip_oag folder.
+    
+    ```
+    <copy>mv /home/opc/Downloads/oag.zip /home/opc/zip_oag</copy>
+    ```
+
+    Open a terminal session.  Move Agent ZIP file from the Downloads folder to /home/opc:
 
     ```
     <copy>cd /home/opc/zip_oag</copy>
@@ -26,7 +32,7 @@ This lab assumes you have:
     ```
     ![Initialize the Kubernetes cluster and the pod network add-on](images/terminal-oag.png) 
 
-     Verify the Agent zip is present inside zip_oag.
+     Verify the Agent zip (oag.zip) is present inside folder zip_oag.
 
     
 2. Setting the Environment variables using the below command:
