@@ -124,7 +124,9 @@ The Oracle Cloud Infrastructure SDK for Java (oci-java-sdk) provides an SDK for 
     addons  apidocs  buildTools  CHANGELOG.md  CONTRIBUTING.md  examples  lib  LICENSE.txt  NOTICE.txt  README.md  shaded  third-party  THIRD_PARTY_LICENSES.txt
     ```
 
-4. Change to the `examples` directory and list its content. Notice that there is a `DataSafeRestAPIClientExample.java` file. Using Oracle Data Safe REST API commands, this Java program copies audit data from a specified compartment to a specified bucket in object storage. 
+4. Make note that the OCI jar file is located in: `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-<version>.jar`, and third-party libraries are in `/usr/lib64/java-oci-sdk/third-party/lib`.
+
+5. Change to the `examples` directory and list its content. Notice that there is a `DataSafeRestAPIClientExample.java` file. Using Oracle Data Safe REST API commands, this Java program copies audit data from a specified compartment to a specified bucket in object storage. 
 
     ```text
     $ <copy>cd examples</copy>
@@ -135,7 +137,7 @@ The Oracle Cloud Infrastructure SDK for Java (oci-java-sdk) provides an SDK for 
     ...
     ```
 
-5. Open `DataSafeRestAPIClientExample.java` and examine the code. The steps in the program are as follows:
+6. Open `DataSafeRestAPIClientExample.java` and examine the code. The steps in the program are as follows:
 
     - Periodic auditEvents rest api invocation 
     - Upload auditEvents to Objectstore
