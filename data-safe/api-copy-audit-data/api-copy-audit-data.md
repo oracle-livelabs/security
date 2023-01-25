@@ -32,11 +32,10 @@ This lab assumes you have:
 ### Assumptions
 
 Cloud Shell is running the following application versions:
-
-java version "11.0.17" 2022-10-18 LTS
-Java(TM) SE Runtime Environment 18.9 (build 11.0.17+10-LTS-269)
-Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.17+10-LTS-269, mixed mode)
-Linux 7.9
+- java version "11.0.17" 2022-10-18 LTS
+- Java(TM) SE Runtime Environment 18.9 (build 11.0.17+10-LTS-269)
+- Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.17+10-LTS-269, mixed mode)
+- Linux 7.9
 
 
 ## Task 1: Create a bucket in your compartment
