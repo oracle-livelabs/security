@@ -27,8 +27,8 @@
       "type": "freetier"
     },
     {
-      "title": "Lab 2: Work with the Oracle Data Safe Command Line Interface",
-      "description": "This lab shows you how to use the Oracle Data Safe command line interface to perform various tasks.",
+      "title": "Lab 2: Download the latest security assessment by using the Oracle Data Safe CLI",
+      "description": "This lab shows you how to use the Oracle Data Safe CLI to download a security assessment report.",
       "filename": "../../cli/cli.md",
       "type": "freetier"
     },{

@@ -1,4 +1,4 @@
-# Set up notifications in Oracle Cloud Infrastructure for Oracle Data Safe events
+# Get notified about security drift on your target databases by setting up Oracle Data Safe events
 
 In this lab, you configure the Events service to notify you via email when there is security drift on your target database.
 
