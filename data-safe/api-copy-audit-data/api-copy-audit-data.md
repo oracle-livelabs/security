@@ -32,11 +32,8 @@ This lab assumes you have:
 ### Assumptions
 
 Cloud Shell is running the following application versions:
-- java version "11.0.17" 2022-10-18 LTS
+- Java version 11.0.17
 - Java(TM) SE Runtime Environment 18.9 (build 11.0.17+10-LTS-269)
-- Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.17+10-LTS-269, mixed mode)
-- Apache Maven 3.6.1 (Red Hat 3.6.1-6.3)
-- Maven home: /opt/rh/rh-maven36/root/usr/share/maven
 - Linux 7.9
 - Oracle Cloud Infrastructure Java SDK 3.2.2
 
