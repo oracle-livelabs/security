@@ -81,6 +81,8 @@ This lab assumes you have:
 
 ## Task 3: Gather information to build your CLI commands
 
+In this task, you identify the commands and values that are required for the next task.
+
 1. To find your compartment OCID, from the navigation menu in Oracle Cloud Infrastructure, select **Identity & Security**, and then on the right under **Identity**, click **Compartments**. Click the name of your compartment. On the **Compartment Information** tab, click **Copy** next to **OCID**. Paste the OCID into a temporary text file. Modify the text as follows to define a variable called `compartment_id`:
 
     ```text
@@ -127,6 +129,8 @@ This lab assumes you have:
 
 ## Task 4: Create an SH file
 
+Create an SH file to hold all of your commands that you have in your local text file. Be sure to use your own values for the variables.
+
 1. In Cloud Shell, open the vi editor and create a file called `example.sh`. 
 
     ```text
@@ -160,6 +164,8 @@ This lab assumes you have:
 
 
 ## Task 5: Run the SH file and view the report
+
+When you run the SH file, the latest security assessment is downloaded to your cloud shell machine. From there, you can download it to your local computer for viewing.
 
 1. Enter the following command to run the SH file:
 
