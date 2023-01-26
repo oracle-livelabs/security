@@ -580,6 +580,9 @@ The name of the Java file that you compile in this task is `DataSafeRestAPIClien
     ```text
     $ <copy>java -cp $OCI_JAVA_SDK_FULL_JAR_LOCATION:$OCI_JAVA_SDK_LOCATION/third-party/lib/*:$OCI_JAVA_SDK_LOCATION/third-party/jersey/lib/*:$OCI_JAVA_SDK_LOCATION/lib/jersey/oci-java-sdk-common-httpclient-jersey-3.2.1.jar:$OCI_JAVA_SDK_LOCATION/third-party/lib/slf4j-api-1.7.33.jar:$HOME/.oci DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
 
+    without the slf4j path:
+    $ java -cp $OCI_JAVA_SDK_FULL_JAR_LOCATION:$OCI_JAVA_SDK_LOCATION/third-party/lib/*:$OCI_JAVA_SDK_LOCATION/third-party/jersey/lib/*:$OCI_JAVA_SDK_LOCATION/lib/jersey/oci-java-sdk-common-httpclient-jersey-3.2.1.jar:$HOME/.oci DataSafeRestAPIClientExample $BUCKET $COMPARTMENT
+
     SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
     SLF4J: Defaulting to no-operation (NOP) logger implementation
     SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
