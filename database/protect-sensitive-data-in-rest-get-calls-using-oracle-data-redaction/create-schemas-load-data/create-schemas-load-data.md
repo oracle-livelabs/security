@@ -8,6 +8,8 @@ For more information on the Autonomous Transaction Processing database click [he
 
 For more information on the OCI Database Actions click [here](https://www.oracle.com/database/sqldeveloper/technologies/db-actions/).
 
+Estimated Time: 10 minutes
+
 ### Objectives
 
 In this lab, you will complete the following tasks:

@@ -4,6 +4,8 @@
 
 In this lab, we will demonstrate an application of Oracle Data Redaction using REST Get Calls to view Employee table data before and after applying a redaction policy.
 
+Estimated Time: 15 minutes
+
 ### Objectives
 
 In this lab, you will complete the following tasks:
@@ -38,7 +40,7 @@ This lab assumes you have:
 
     ![Pre-Redaction REST Call](images/pre-redaction-rest.png)
 
-## Task 2: Apply Data Redaction Policy to the Table
+## Task 2: Create users and upload data
 
 1. Navigate back to the **Database Actions** SQL Development page for Admin. Grant access for `EMPLOYEESEARCH_PROD` to the `DBMS_REDACT` package by pasting the text below in the worksheet.
 

@@ -4,6 +4,8 @@
 
 In this lab, we will show you how to teardown your Autonomous Database instance. This will reset your environment to as it was before.
 
+Estimated Time: 2 minutes
+
 ### Objectives
 
 In this lab, you will complete the following tasks:

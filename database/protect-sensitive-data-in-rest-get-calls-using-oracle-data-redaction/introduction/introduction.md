@@ -11,7 +11,7 @@ In this workshop, you will learn how to use Oracle Data Redaction with Oracle Re
 ![Lab architecture](images/lab-architecture.png)
 
 
-Estimated Time: 30 minutes
+Estimated Workshop Time: 27 minutes
 
 ### Objectives
 
