@@ -52,7 +52,7 @@ This lab assumes you have:
     <copy>oci data-safe alert alerts-update [OPTIONS]</copy>
     ```
 
-5. When specifying required or optional parameters, be aware that you need to include the name of the parameter and then follow with the value. For example, suppose you want to quickly close all the alerts for a target database. You could issue the following statement in Cloud Shell.
+5. When specifying required or optional parameters, be aware that you need to include the name of the parameter and then follow with the value. For example, to close all the alerts for a target database, you could issue the following command.
 
     ```text
     <copy>oci data-safe alert alerts-update --compartment-id your-compartment-ocid --status CLOSED --target-id your-target-database-OCID</copy>
@@ -81,47 +81,59 @@ This lab assumes you have:
 
 ## Task 3: Gather information to build your CLI commands
 
-In this task, you identify the commands and values that are required for the next task.
+In this task, you identify the commands and values that are required for the SH script.
 
-1. To find your compartment OCID, from the navigation menu in Oracle Cloud Infrastructure, select **Identity & Security**, and then on the right under **Identity**, click **Compartments**. Click the name of your compartment. On the **Compartment Information** tab, click **Copy** next to **OCID**. Paste the OCID into a temporary text file. Modify the text as follows to define a variable called `compartment_id`:
+1. Identify your compartment OCID.
+
+    To do this, from the navigation menu in Oracle Cloud Infrastructure, select **Identity & Security**, and then on the right under **Identity**, click **Compartments**. Click the name of your compartment. On the **Compartment Information** tab, click **Copy** next to **OCID**. Paste the OCID into a temporary text file. Modify the text as follows to define a variable called `compartment_id`.
 
     ```text
     export compartment_id=your-compartment-ocid
     ```
 
-2. To find your target database OCID in Oracle Data Safe (this is not your database OCID!), from the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Target Databases**. Under **List Scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target Database Details** tab, click **Copy** next to **OCID**. Paste the OCID into the temporary text file. Modify the text as follows to define a variable called `target_id`. Replace `your-target-database-ocid` with your own OCID.
+2. Identify your target database OCID (not your database OCID!). 
+
+    To do this, from the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Target Databases**. Under **List Scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target Database Details** tab, click **Copy** next to **OCID**. Paste the OCID into the temporary text file. Modify the text as follows to define a variable called `target_id`. Replace `your-target-database-ocid` with your own OCID.
 
     ```text
     export target_id=your-target-database-ocid
     ```
 
-3. Think of a file name for your downloaded Security Assessment report and enter it into your temporary text file. Modify the text as follows to define a variable called `file_name`. Replace `your-download-file-name` with your own name. Include .pdf or .xls, depending on the file format you want. 
+3. Define a file name for your downloaded Security Assessment report.
 
-    Note: It is possible to specify a path to download the file to a specific directory; for example, `~/examples/myreport.pdf`.For our example here, we will keep it simple and just use the home directory (so no path is required).
+    To do this, add a line to your text file that defines a variable called `file_name`. Replace `your-download-file-name` with your own name. Include .pdf or .xls, depending on the file format you want. Note: It is possible to specify a path; for example, `~/examples/myreport.pdf`. For our example here, we will keep it simple and just use the home directory (so no path is required).
 
     ```text
     export file_name=your-download-file-name
     ```
 
-4. Specify the report format (PDF or XLS). To do that, add a line to your text file that defines a variable called `format`, as shown below. Replace `pdf-or-xls` with **PDF** or **XLS**.
+4. Determine the report format (PDF or XLS) that you want for the downloaded security assessment. 
+
+    To do this, add a line to your text file that defines a variable called `format`. Replace `pdf-or-xls` with **PDF** or **XLS**.
 
     ```text
     export format=pdf-or-xls
     ```
 
-5. To find the security assessment OCID, you create the assessment and extract the OCID information from it. Add the following line of code to your text file as is. Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters.
+5. Identify the security assessment OCID. 
+
+    To do this, you need to first create the security assessment and then extract the OCID information from it. Add the following line of code to your text file as is. Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters.
 
     ```text
     security_assessment_id=$(oci data-safe security-assessment create --compartment-id $compartment_id --target-id $target_id --query data.id --raw-output)
     ```
 
-6. Before you can download a security assessment, you must first generate it. Add the following line of code to your text file as is. Notice how we make use of the variables that we defined in earlier steps (`$format` and `$security_assessment_id`).
+6. Build the command to generate a security assessment.
+
+    Before you can download a security assessment, you must first generate it. to do this, add the following line of code to your text file as is. Notice how we make use of the variables that we defined in earlier steps (`$format` and `$security_assessment_id`).
 
     ```text
     oci data-safe security-assessment generate-security-assessment-report --format $format --security-assessment-id $security_assessment_id
     ```
 
-7. Configure the code line that downloads the security assessment report. You can use the following code as is. Notice how we make use of the variables that we defined in earlier steps (`$file`, `$format`, and `$security_assessment_id`).
+7. Build the command to download the security assessment report.
+
+    You can use the following code as is. Notice how we make use of the variables that we defined in earlier steps (`$file`, `$format`, and `$security_assessment_id`).
 
     ```text
     oci data-safe security-assessment download-security-assessment-report --file $file --format $format --security-assessment-id $security_assessment_id
