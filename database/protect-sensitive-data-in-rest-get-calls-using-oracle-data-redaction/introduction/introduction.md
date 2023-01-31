@@ -23,7 +23,7 @@ In this lab, you will complete the following tasks:
 
 ### Prerequisites
 
-This workshop assumes you have:
+This workshop assumes that you have:
 - An Oracle Cloud Infrastructure tenancy account
 - Familiarity with Database is desired
 - Some understanding of cloud and database terms is helpful
