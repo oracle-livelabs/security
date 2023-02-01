@@ -591,9 +591,29 @@ Oracle provides deployment recommendations for deployments that have two or more
 
     ![](./images/okv-051.png " ")
 
-3. **Now you can perform again this lab from TASK 2 if you want!**
+3. Drop the uploaded keys into Key Vault
 
-4. Only if you want to clean TDE also, so you can restore the DB like before-TDE
+    - Go back to the OKV Web Console as *`KVRESTADMIN`*
+
+        ![](./images/okv-001.png " ")
+
+    - Go to the **Keys & Wallets** tab and select the sub-menu **Keys & Secrets**
+
+        ![](./images/okv-052.png " ")
+
+    - Select ALL items and click [**Delete**]
+
+        ![](./images/okv-053.png " ")
+
+    - Confirm deletion by clicking [**OK**]
+
+        ![](./images/okv-054.png " ")
+
+    - Now, your uploaded keys have been removed
+
+        ![](./images/okv-055.png " ")
+
+4. Restore the DB like before-TDE
 
     - Go to the TDE scripts directory
 
@@ -650,7 +670,7 @@ Oracle provides deployment recommendations for deployments that have two or more
         <copy>$DBSEC_LABS/okv/okv_view_wallet_in_db.sh</copy>
         ````
 
-        ![](./images/okv-052.png " ")
+        ![](./images/okv-056.png " ")
 
 5. **Now, you can perform again this lab from TASK 1** (your database is restored to the point in time prior to enabling TDE)!
 
