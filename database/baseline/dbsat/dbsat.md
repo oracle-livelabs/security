@@ -1223,4 +1223,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Pedro Lopes, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023

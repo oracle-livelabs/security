@@ -13,9 +13,9 @@ Now, you no longer need important resources on your PC (storage, CPU or memory),
 Watch a preview of "*Livelabs - Database Security Basics (May 2022)*" [](youtube:tyyZmW4YyPk)
 
 ### Components
-The complete architecture of the **DB Security Hands-On Labs (v5)** is as following:
+The complete architecture of the **DB Security Hands-On Labs (v5 - January 2023)** is as following:
 
-  ![](./images/dbseclab-archi-v5.png "")
+  ![](./images/dbseclab-archi.png "")
 
 It's composed of 4 VMs:
   - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)
@@ -49,4 +49,4 @@ You may now [proceed to the next lab](#next)
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
