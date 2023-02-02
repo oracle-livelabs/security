@@ -45,10 +45,11 @@ This lab assumes you have:
     ![Enter admin credentials](images/secure-access.png) 
 
 6. Select the licensing option of your choosing, then select **Create Autonomous Database** at the bottom.
+*Note: Spinning up the ADB can take a couple of minutes.*
 
     ![Create ADB button at the bottom](images/create-atp.png)
 
-    *Note: Spinning up the ADB can take a couple of minutes.*
+    
 
 ## Task 2: Use the `employee_data_load.sql` script to create the `EMPLOYEESEARCH_PROD` user and upload data.
 
@@ -105,11 +106,11 @@ This lab assumes you have:
 13. Login into **Database Actions** as `EMPLOYEESEARCH_PROD` using the following credentials:
 
     ```
-    Username:<copy>EMPLOYEESEARCH_PROD</copy>   
+    <copy>EMPLOYEESEARCH_PROD</copy>   
     ```
 
     ```
-    Password:<copy>Oracle123+Oracle123+</copy>
+    <copy>Oracle123+Oracle123+</copy>
     ```
 
 You may now **proceed to the next lab.**
