@@ -1,15 +1,16 @@
 # Introduction
 
 ## About this Workshop
-**Oracle Access Governance: Discover. Monitor. Learn. Automate.**
 
- **Oracle Access Governance** is a SaaS IGA solution that addresses the growing challenges security owners face in dealing with the increase in advanced security threats and regulations. This cloud-native solution helps meet governance and compliance requirements across many applications, workloads, infrastructures, and identity platforms. It provides **organization-wide** visibility and capabilities to identify anomalies and mitigate security risks across cloud and on-premises environments. Using **prescriptive analytics**, **Oracle Access Governance** offers an intuitive user experience and provides recommendations and insights into access entitlements, behaviors, and risks.
+ Oracle Access Governance addresses the growing challenges security owners face in dealing with the increase in advanced security threats and regulations. This cloud native solution helps meet governance and compliance requirements across many applications, workloads, infrastructures, and identity platforms. It provides organizationwide visibility and capabilities to identify anomalies and mitigate security risks across cloud and on-premises environments. Using advanced analytics, Oracle Access Governance offers an intuitive user experience, providing recommendations and insights into access entitlements, behaviors, and risks.
 
-  ![View List of Campaigns](images/access-governance.png)
+ The graphic below shows the high level architecture of Oracle Access Governance.
 
-This lab walks you through the steps to get started using **Oracle Access Governance** with a popular use case - **access review certification campaign**. Acme corporation is using **Oracle Identity Governance (OIG)** to manage and govern the application access of its employees and contractors. As part of their cloud strategy, they want to optimize their access review certification campaign process with a cloud-native solution while leveraging pre-existing on-premises **Oracle Identity Governance (OIG)** investment. **Oracle Access Governance** SaaS solution is designed for this purpose and serves as a natural extension of **OIG** solution. With **Oracle Access Governance**, Acme can immediately benefit from automated access review workflows that layer in prescriptive analytics with intuitive dashboards/reports while preserving their existing **OIG** investment. 
+  ![View List of Campaigns](images/oracle-access-governance-overview.png)
 
-**Oracle Access Governance** allows Acme's: 
+This lab walks you through the steps to get started using **Oracle Access Governance** with a popular use case - **access review certification campaign**. In this workshop, a ficticious corporation is using **Oracle Identity Governance (OIG)** to manage and govern the application access of its employees and contractors. As part of their cloud strategy, they want to optimize their access review certification campaign process with a cloud-native solution while leveraging pre-existing on-premises **Oracle Identity Governance (OIG)** investment. **Oracle Access Governance** SaaS solution is designed for this purpose and serves as a natural extension of **OIG** solution. With **Oracle Access Governance**, they can immediately benefit from automated access review workflows that layer in prescriptive analytics with intuitive dashboards/reports while preserving their existing **OIG** investment. 
+
+**Oracle Access Governance** allows : 
 - **Campaign administrator** to run intelligent access review campaigns for access governance and compliance
 - **Access reviewers** to review identity insights and take informed decisions based on **prescriptive analytics**
 - **Users** and **user managers** to validate access assigned to self and their direct reports, respectively. 
@@ -21,6 +22,9 @@ This lab walks you through the steps to get started using **Oracle Access Govern
 ### Objectives
 
 In this workshop, you will learn how to:
+* Setup and configure Oracle Access Governance service instance
+* Install and configure Oracle Access Governance agent
+* Perform AG data load and create IAM users
 * Create access review campaigns as a **campaign administrator**
 * Perform access review tasks as an **employee user** and a **user manager**
 * Monitor and manage access review campaigns as a **campaign administrator**
@@ -28,7 +32,7 @@ In this workshop, you will learn how to:
 
 ### Prerequisites
 This lab assumes you have:
-* **Oracle Access Governance** tenancy with usernames and passwords provided by LiveLabs instructors
+* A tenancy where you have administrative access
 
 
 ## Learn More
