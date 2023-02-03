@@ -81,43 +81,43 @@ This lab assumes you have:
 
 ## Task 3: Gather information to build your CLI commands
 
-In this task, you identify the commands and values that are required for the SH script.
+In this task, you identify the commands and values that are required for the SH script and test each one in Cloud Shell.
 
-1. Identify your compartment OCID.
+1. Create a variable that defines your compartment OCID.
 
-    To do this, from the navigation menu in Oracle Cloud Infrastructure, select **Identity & Security**, and then on the right under **Identity**, click **Compartments**. Click the name of your compartment. On the **Compartment Information** tab, click **Copy** next to **OCID**. Paste the OCID into a temporary text file. Modify the text as follows to define a variable called `compartment_id`.
+    To do this, first find your OCID: From the navigation menu in Oracle Cloud Infrastructure, select **Identity & Security**, and then on the right under **Identity**, click **Compartments**. Click the name of your compartment. On the **Compartment Information** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-compartment-ocid` with your own OCID.
 
     ```text
     export compartment_id=your-compartment-ocid
     ```
 
-2. Identify your target database OCID (not your database OCID!). 
+2. Create a variable that defines your target database OCID (not your database OCID!). 
 
-    To do this, from the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Target Databases**. Under **List Scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target Database Details** tab, click **Copy** next to **OCID**. Paste the OCID into the temporary text file. Modify the text as follows to define a variable called `target_id`. Replace `your-target-database-ocid` with your own OCID.
+    To do this, first find your OCID: From the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Target Databases**. Under **List Scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target Database Details** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-target-database-ocid` with your own OCID.
 
     ```text
     export target_id=your-target-database-ocid
     ```
 
-3. Define a file name for your downloaded Security Assessment report.
+3. Create a variable that defines the file name for your downloaded Security Assessment report.
 
-    To do this, add a line to your text file that defines a variable called `file_name`. Replace `your-download-file-name` with your own name. Include .pdf or .xls, depending on the file format you want. Note: It is possible to specify a path; for example, `~/examples/myreport.pdf`. For our example here, we will keep it simple and just use the home directory (so no path is required).
+    To do this, in Cloud Shell, enter the following command, replacing `your-download-file-name` with a name of your choice. Include .pdf or .xls, depending on the file format you want. Note: It is possible to specify a path; for example, `~/examples/myreport.pdf`. For our example here, let's keep it simple and just use the home directory (so no path is required).
 
     ```text
     export file_name=your-download-file-name
     ```
 
-4. Determine the report format (PDF or XLS) that you want for the downloaded security assessment. 
+4. Create a variable that defines the report format (PDF or XLS) you want for the downloaded security assessment. 
 
-    To do this, add a line to your text file that defines a variable called `format`. Replace `pdf-or-xls` with **PDF** or **XLS**.
+    To do this, in Cloud Shell, enter the following command, replacing `pdf-or-xls` with **PDF** or **XLS**.
 
     ```text
     export format=pdf-or-xls
     ```
 
-5. Identify the security assessment OCID. 
+5. Create a security assessment and obtain its OCID. 
 
-    To do this, you need to first create the security assessment and then extract the OCID information from it. Add the following line of code to your text file as is. Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters.
+    To do this, in Cloud Shell, enter the following command as is. Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters. Wait for the security assessment to be created (about 1 minute).
 
     ```text
     security_assessment_id=$(oci data-safe security-assessment create --compartment-id $compartment_id --target-id $target_id --query data.id --raw-output)
@@ -129,17 +129,21 @@ In this task, you identify the commands and values that are required for the SH 
       { "compartment-id": "ocid1.compartment.oc1...", "defined-tags": { "Oracle-Tags": { "CreatedBy": "jody.glove..", "CreatedOn": "2023-01-30T20:40:53.671Z" } }, "description": null, "display-name": "SA_1675111253797", "freeform-tags": {}, "id": "ocid1.datasafesecurityassessment.oc1...", "ignored-assessment-ids": null, "ignored-targets": null, "is-baseline": false, "is-deviated-from-baseline": null, "last-compared-baseline-id": null, "lifecycle-details": null, "lifecycle-state": "CREATING", "link": null, "schedule": null, "schedule-security-assessment-id": null, "statistics": null, "system-tags": {}, "target-ids": [ "ocid1.datasafetargetdatabase.oc1..." ], "target-version": null, "time-created": "2023-01-30T20:40:53.797000+00:00", "time-updated": "2023-01-30T20:40:53.797000+00:00", "triggered-by": "USER", "type": "SAVED" }
       ```
 
-6. Build the command to generate a security assessment.
+6. View the new security assessment in Oracle Data Safe. 
 
-    Before you can download a security assessment, you must first generate it. to do this, add the following line of code to your text file as is. Notice how we make use of the variables that we defined in earlier steps (`$format` and `$security_assessment_id`).
+    To do this, from the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Security Assessment**. Click the **Target Summary** tab, locate the line that has your target database, and click **View Report**. At the top of the latest security assessment page, click **View History**. Make sure that your compartment is selected. Find the new security assessment for your target database that was generated by the CLI command in the previous step. If it's not listed, you may need to wait a little longer.
+
+7. Generate the security assessment PDF.
+
+    Before you can download a security assessment, you must first generate it. To do this, in Cloud Shell, enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$format` and `$security_assessment_id`). Wait for the report to be generated (about 1 minute).
 
     ```text
     oci data-safe security-assessment generate-security-assessment-report --format $format --security-assessment-id $security_assessment_id
     ```
 
-7. Build the command to download the security assessment report.
+8. Download the security assessment PDF to a specified directory in Cloud Shell.
 
-    You can use the following code as is. Notice how we make use of the variables that we defined in earlier steps (`$file`, `$format`, and `$security_assessment_id`).
+    To do this, in Cloud Shell, enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$file`, `$format`, and `$security_assessment_id`). Wait for the report to be downloaded (about 1 minute).
 
     ```text
     oci data-safe security-assessment download-security-assessment-report --file $file --format $format --security-assessment-id $security_assessment_id
@@ -147,7 +151,7 @@ In this task, you identify the commands and values that are required for the SH 
 
 ## Task 4: Create an SH file
 
-Create an SH file to hold all of your commands that you have in your local text file. Be sure to use your own values for the variables.
+Create an SH file and add all of the commands that you tested in the previous task. Be sure to use your own values for the variables.
 
 1. In Cloud Shell, open the vi editor and create a file called `example.sh`. 
 
@@ -155,7 +159,7 @@ Create an SH file to hold all of your commands that you have in your local text 
     $ <copy>vi example.sh</copy>
     ```
 
-2. Paste all of your code lines into the file. Insert two `sleep` commands - one after you create the report and another after you generate it so that the program allows time for the operations to complete; otherwise, you will get errors. You can also write to the console (using `echo`) before the `sleep` commands to inform the user of the wait time.
+2. Paste all of your commands into the file. Insert two `sleep` commands - one after you create the PDF report and another after you generate it so that the program allows time for the operations to complete; otherwise, you will get errors. You can also write to the console (using `echo`) before the `sleep` commands to inform the user of the wait time.
 
     ```text
     <copy>export compartment_id=ocid1.compartment.oc1...
@@ -220,4 +224,4 @@ When you run the SH file, the latest security assessment is downloaded to your c
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, January 30, 2023
+- **Last Updated By/Date** - Jody Glover, February 3, 2023
