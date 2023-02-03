@@ -23,16 +23,14 @@ This lab assumes you have:
     ```
     <copy>mv /home/opc/Downloads/oag.zip /home/opc/zip_oag</copy>
     ```
-
-    Open a terminal session.  Move Agent ZIP file from the Downloads folder to /home/opc:
-
+    Verify the Agent zip (oag.zip) is present inside folder zip_oag.
     ```
     <copy>cd /home/opc/zip_oag</copy>
     <copy>ls</copy>
     ```
     ![Move the OAG Agent to zip_oag](images/env_setup.png) 
 
-     Verify the Agent zip (oag.zip) is present inside folder zip_oag.
+     
 
     
 2. Setting the Environment variables using the below command:

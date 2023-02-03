@@ -19,10 +19,10 @@ This lab assumes you have:
 
 ## Task 1: Create AG Service instance 
 
-1. Launch a browser window. Login to OCI console using the URL mentioned below. The OCI account sign in page appears. Enter the username and password.
+1. Launch a browser window. Login to OCI console using the URL mentioned below. The OCI account sign in page appears. Enter the username and password provided during signup. 
      
     ```
-    <copy>URL: https://console.us-ashburn-1.oraclecloud.com/</copy>
+    <copy>https://console.us-ashburn-1.oraclecloud.com/</copy>
     ```
     ![Create Service Instance](images/oci-login-console.png)
 
@@ -33,8 +33,8 @@ This lab assumes you have:
 
 
     ```
-    Name: Service-Instance
-    Description: Compartment
+    Name: service-instance
+    Description: service-instance
     Compartment: Ensure your compartment is selected
     ```
     ![Create Service Instance](images/create-service-instance.png)
@@ -70,31 +70,55 @@ This lab assumes you have:
 
 5. On the **Enter Details** step, enter the following details:
 
-    * **Name:** OIG
-    * **Description:** OIG
+    * **Name:** oag
+    * **Description:** oag
     * **Click Next.**
 
-    ![Access Governance console - Connected Systems-OIG](images/select-system.png)
+    ![Access Governance console - Connected Systems-OIG](images/oag-select-system.png)
 
    
 
 6. On the **Configure** step, enter connection details for the target system:
 
-    * **JDBC URL:** jdbc:oracle:thin:@//<--privateipofyourcomputeinstance-->:1521/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM
-    * **OIG Database User Name:** DEV_OIM
-    * **Password:** Welcome1
-    * **Confirm Password:** Welcome1
-    * **OIG Server URL:** http://<--privateipofyourcomputeinstance-->:14000
-    * **OIG Server User Name:** xelsysadm
-    * **OIG Server Password:** Welcome1
-    * **OIG Server Confirm Password:** Welcome1
+    **JDBC URL:** 
+    ```
+    <copy>jdbc:oracle:thin:@//<--privateipofyourcomputeinstance-->:1521/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM</copy>
+    ```
+    **OIG Database User Name:**
+    ```
+    <copy>DEV_OIM</copy>
+    ```
+    **Password:**
+    ```
+    <copy>Welcome1</copy>
+    ```
+    **Confirm Password:**
+    ```
+    <copy>Welcome1</copy>
+    ```
+    **OIG Server URL:** 
+    ```
+    <copy>http://<--privateipofyourcomputeinstance-->:14000</copy>
+    ```
+    **OIG Server User Name:** 
+    ```
+    <copy>xelsysadm</copy>
+    ```
+     **OIG Server User Password:** 
+    ```
+    <copy>Welcome1</copy>
+    ```
+    **OIG Server Confirm Password:** 
+    ```
+    <copy>Welcome1</copy>
+    ```
 
-     ![Configure Details](images/connection-details.png)
+     ![Configure Details](images/oag-connection-details.png)
 
 7. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
 
 
-    ![Download the agent](images/download-link.png)
+    ![Download the agent](images/oag-download-link.png)
 You may now **proceed to the next lab**
 
 ## Learn More

@@ -12,6 +12,7 @@ In this lab, you will:
  * Verify the docker 
  * Start OIG services
  * Verify the status of all servers
+ * Verify the private IP address of the compute instance 
 
 ### Prerequisites
 This lab assumes you have:
@@ -67,9 +68,25 @@ This lab assumes you have:
 
     ![All servers are started](images/start-all-servers.png)
 
+## Task 3: Verify the Private IP address of Compute Instance
+
+1. Launch a browser window. Login to OCI console using the URL mentioned below. The OCI account sign in page appears. Enter the username and password provided during signup.
+    
+    ```
+    <copy>https://console.us-ashburn-1.oraclecloud.com/</copy>
+    ```
+
+2. Click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Select *Compute* in the *Navigation menu*. Select *Instances* from the list of products.
+     
+    ![Move to script files location](images/oci-console.png)
+    ![List of files in directory](images/compute-instance.png)
 
 
+2. Notedown the Private IP address of the Compute Instance for reference. We will require to use them in the further labs. 
 
+      ![List of files in directory](images/private-ip.png)
+
+ 
 
 You may now **proceed to the next lab.**
 

@@ -43,11 +43,6 @@ In this lab, you will:
 8. Click on **Clone** and enter a new name for the campaign, select **Run now**, then click on **Create**. You now create a new campaign by cloning an existing campaign. 
   ![Clone Campaign](images/admin-clone-campaign.png)
 9. During this lab, as a **campaign administrator**, you have leveraged the analytics features delivered by **Oracle Access Governance** to have insights on campaign progress status. You also learn how to quickly create a new campaign by cloning an existing campaign. 
-10. **Congratulations!** You now finish **Oracle Access Governance Hands-on Lab**. In this workshop, you have learned how to:
-    - Create access review campaigns as a **campaign administrator**
-    - Review user privileges for yourself and your direct reports as a **user manager**
-    - Perform access review tasks as an **employee user** and a **user manager**
-    - Monitor and manage access review campaigns as a **campaign administrator**
 
 You may now **proceed to the next lab**
 ## Learn More

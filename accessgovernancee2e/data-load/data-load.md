@@ -46,10 +46,11 @@ Create users in IAM and assign them to Application roles.
     * Create a new file **user-iam.sh**
     * Add the below contents in the **user-iam.sh** file and save it. Specify the email-id provided to you at the time of your account creation.
     ```
-    oci iam user create --name mhernandez --email <--email-id provided--> --description OAG-User-Cloud-Shell
+    <copy>oci iam user create --name mhernandez --email <--email-id provided--> --description OAG-User-Cloud-Shell
 	oci iam user create --name pamela.green --email <--email-id provided--> --description OAG-User-Cloud-Shell 
-    oci iam user create --name harlan.bullard --email <--email-id provided--> --description OAG-User-Cloud-Shell
+    oci iam user create --name harlan.bullard --email <--email-id provided--> --description OAG-User-Cloud-Shell</copy>
     ```
+   
     * Open the Cloud Shell. Click on the right top corner *Settings* icon. Click on *Upload* option.
     * Select the saved file **user-iam.sh**
     * The **user-iam.sh** file upload will be completed. 
@@ -67,8 +68,9 @@ Create users in IAM and assign them to Application roles.
 4. For each user created, an activation mail will be sent to the email-id provided in the *Task 2: Step 2* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 
     Reset password to the below mentioned password:
 
-    ```
-    Password: Oracl@123456
+    **Password:**
+     ```
+    <copy>Oracl@123456</copy>
     ```
 5. Assign Administrator Application Role to User Pamela Green
 

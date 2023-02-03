@@ -19,8 +19,19 @@ In this lab, you will:
 ## Task 1: Login Oracle Access Governance as Campaign Administrator
 
 1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **Default** identity domain selected.
-2. Log in to **Oracle Access Governance** as a **campaign administrator - Pamela Green** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+2. Log in to **Oracle Access Governance** as a **campaign administrator - Pamela Green** with the username and password mentioned below.
+
+  **Username:**
+    ```
+    <copy>pamela.green</copy>
+    ```
+
+  **Password:**
+    ```
+    <copy>Oracl@123456</copy>
+    ```
   ![Access Governance Login](images/admin-login.png)
+
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/event-based-setup.png)
 
@@ -44,12 +55,22 @@ In this lab, you will:
 
 1.  Sign in to Identity Self Service console. Open a browser tab using the below URL to access OIG Identity Console.
 
-   ```
-    URL       https://<--privateipofyourcomputeinstace-->:14000/identity
-    Username  xelsysadm
-    Password  Welcome1
+  **URL:**
     ```
+    <copy>https://<--privateipofyourcomputeinstace-->:14000/identity</copy>
+    ```
+    **Username:**
+    ```
+    <copy>xelsysadm</copy>
+    ```
+
+  **Password:**
+    ```
+    <copy>Welcome1</copy>
+    ```
+
   ![OIG Login](images/oig-login-page.png)
+
 2.  You should see the **Oracle Identity Governance** main dashboard
   ![OIG Self Service](images/self-service.png)
 
@@ -85,11 +106,20 @@ In this lab, you will:
 
 1.  Sign in to Identity Self Service console. Open a browser tab using the below URL to access OIG Identity Console.
 
-   ```
-    URL       https://<--privateipofyourcomputeinstace-->:14000/identity
-    Username  xelsysadm
-    Password  Welcome1
+    **URL:**
     ```
+    <copy>https://<--privateipofyourcomputeinstace-->:14000/identity</copy>
+    ```
+    **Username:**
+    ```
+    <copy>xelsysadm</copy>
+    ```
+
+    **Password:**
+    ```
+    <copy>Welcome1</copy>
+    ```
+
   ![OIG Login Page](images/oig-login-page.png)
 2.  You should see the **Oracle Identity Governance** main dashboard. Click on Manage on the top right corner. Then, click on Users.Select **Display Name** and enter the user name **Roger Young**. The user profile of **Roger Young** is displayed.The user is in **Disabled** status. 
 
@@ -120,6 +150,12 @@ In this lab, you will:
 
     ![Accept Access Review](images/accpet-review.png) 
 
+3. **Congratulations!** You now finish **Oracle Access Governance Hands-on Lab**. In this workshop, you have learned how to:
+    - Create access review campaigns as a **campaign administrator**
+    - Review user privileges for yourself and your direct reports as a **user manager**
+    - Perform access review tasks as an **employee user** and a **user manager**
+    - Monitor and manage access review campaigns as a **campaign administrator**
+    - Manage event based access review campaigns as a **campaign administrator**
 
 
 ## Learn More

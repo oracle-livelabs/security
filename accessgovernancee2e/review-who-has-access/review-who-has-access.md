@@ -19,7 +19,18 @@ In this lab, you will:
 ## Task 1: Login Oracle Access Governance as User Manager
 
 1. Ensure you have **default** identity domain selected.
-2. Log in to **Oracle Access Governance** as **user manager - Harlan Bullard** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+2. Log in to **Oracle Access Governance** as **User Manager - Harlan Bullard** with the username and password mentioned below.
+
+    **Username:**
+    ```
+    <copy>harlan.bullard</copy>
+    ```
+
+    **Password:**
+    ```
+    <copy>Oracl@123456</copy>
+    ```
+    
 	![Access Governance Login](images/manager-ag-logon.png)
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.** 
   ![Access Governance Homepage](images/manager-ag-homepage.png)

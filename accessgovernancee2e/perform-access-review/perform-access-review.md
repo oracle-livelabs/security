@@ -24,7 +24,18 @@ In this lab, you will:
 ## Task 1: Login Oracle Access Governance as Employee User
 
 1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **default** identity domain selected.
-2. Log in to **Oracle Access Governance** as an **employee user - Mark Hernandez** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+2. Log in to **Oracle Access Governance** as an **employee user - Mark Hernandez** with the username and password mentioned below.
+
+    **Username:**
+    ```
+    <copy>mhernandez</copy>
+    ```
+
+    **Password:**
+    ```
+    <copy>Oracl@123456</copy>
+    ```
+
 	![Access Governance Login](images/user-ag-logon.png)
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/user-ag-homepage.png)
@@ -40,27 +51,37 @@ In this lab, you will:
     - You may choose to accept the review item by clicking on **Accept** in the **Actions** column. This action is suggested for **Recommend Accept** items only. 
     - In case you want to view the analytic insights, especially for items flagged as **Recommend Review**, you may click on the **View** in **Insights** column to review a task.
    ![Access Review Tasks Select Review](images/user-select-review-recommended.png)
-Insights include:
+  Insights include:
     - AI/ ML driven insights with **alignment score** uses AI/ML **peer group analysis** conducted by **Oracle Access Governance** to recommend this item for **Review** or **Accept** 
     - Description of the review task
     - Access review trail
     - Recent changes in user’s profile
     ![Access Review Tasks Insights AI/ML](images/user-review-insight-analytics.png)
-3. Decide (Accept or Revoke): Review all insights and select to **accept** or **revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Accept** it. Enter **justification** for why you accept this access review item, which will be logged in **Access review trail**. **Accept** the review task item will trigger the **current review task** assigned to the second-level reviewer, which is the **user manager** in the next task. On the contrary, **revoke** access by an **employee user** will not trigger next-level access review by the **manager user**.  
+3. Decide (Accept or Revoke):  Select all the access reviews. Click on the **Accept** button under **Actions** column. Enter **justification** for why you accept all the access review items and then click on **Submit**. 
 
-  **Note:** In this lab example, accept all the *Access Review* tasks.
-  ![User revoke accept with insights](images/user-revoke-accept-with-insights.png)
-4. Bulk action based on recommendation: You may also select multiple review tasks and decide to accept or revoke those privileges. For example, selecting the filter **Recommend Accept** will return a list of access review items recommended by **Oracle Access Governance** for **Accept** based on **prescriptive analytics**. 
+  **Note:** In this lab example, we accept all the *Access Review* taks. However you can review all insights and select to **accept** or **revoke** this access privilege.  **Accept** the review task item will trigger the **current review task** assigned to the second-level reviewer, which is the **user manager** in the next task. On the contrary, **revoke** access by an **employee user** will not trigger next-level access review by the **manager user**.  
+
   ![User select review recommend](images/user-select-review-recommended.png)
-5. Bulk selection: select all **Recommend Accept** items, then click on **Accept** button. Likewise, select all **Recommend Review** items, then click on **Revoke** button.
-6. Bulk action with justification: Provide justification for **Accept** or **Revoke** then click on **Submit**.
+ 
   ![Bulk accept justification](images/user-bulk-accept-justification.png)
 
 ## Task 3: Login Oracle Access Governance as User Manager
 
 1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **Default** identity domain selected.
-2. Log in to **Oracle Access Governance** as a **manager user - Harlan Bullard** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+2. Log in to **Oracle Access Governance** as a **Manager User - Harlan Bullard** with the username and password mentioned below.
+
+  **Username:**
+    ```
+    <copy>harlan.bullard</copy>
+    ```
+
+  **Password:**
+    ```
+    <copy>Oracl@123456</copy>
+    ```
+
 	![Manager Access Governance Login](images/manager-ag-logon.png)
+
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Manager Access Governance Homepage](images/manager-ag-homepage.png)
 
@@ -75,25 +96,33 @@ Insights include:
     - You may choose to accept or revoke the review item by clicking on **Accept** or **Revoke** in the **Actions** column. The **Accept** action is suggested for **Recommend Accept** items only.
     - In case you want to view the analytic insights, especially for item flagged as **Recommend Review**, you may click on the **View** in **Insights** column to review a task.
   ![Access Review Manager](images/manager-access-review-manager.png)
-Insights include:
+  Insights include:
     - AI/ ML driven insights with **alignment score** uses AI/ML **peer group analysis** conducted by **Oracle Access Governance** to recommend this item for **Review** or **Accept** 
     - Description of the review task
     - Access review trail, you should see the **justification** entered by your employee self-reviewer in the previous task. 
     - Recent changes in user’s profile
   ![AI/ML Insights](images/manager-access-review-insights-manager.png)
-3. Decide (Accept or Revoke): Review all insights and select to **Accept** or **Revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
+3. Decide (Accept or Revoke): Select the *Access Review* for the user - *Mark Hernandez* and **Revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
 
-  **Note:** In this lab example, Revoke the *Access Review* for user - *Mark Hernandez*
 4. During this lab, you have navigated the **Oracle Access Governance** console to select **access review tasks** assigned to you as an **employee** and **manager user**, view **prescriptive analytics** and **recommendation** proposed by **Oracle Access Governance**, and make informed decisions **Accept** or **Revoke** for review tasks based on **peer group analysis** and **insights**. 
+
 ## Task 5: Login Oracle Identity Governance as System Administrator 
 
 1. Sign in to Identity Self Service console. Open a browser tab using the below URL to access OIG Identity Console.
 
-   ```
-    URL       http://<--privateipofyourcomputeinstance-->:14000/identity
-    Username  xelsysadm
-    Password  Welcome1
+   **URL:**
     ```
+      <copy>http://<--privateipofyourcomputeinstance-->:14000/identity</copy>
+     ```
+   **Username:**
+     ```
+      <copy>xelsysadm</copy>
+     ```
+   **Password:**
+     ```
+      <copy>Welcome1</copy>
+      ```
+
   ![OIG Login Page](images/oig-logon.png)
 2. You should see the **Oracle Identity Governance** main dashboard. Click on Manage -> Users.
   ![OIG Homepage](images/oig-homepage.png)
