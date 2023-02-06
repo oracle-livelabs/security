@@ -34,11 +34,11 @@ This lab assumes you have:
 
     ```
     Name: service-instance
-    Description: service-instance
+    Description: Oracle Access Governance service instance
     Compartment: Ensure your compartment is selected
     ```
     ![Create Service Instance](images/create-service-instance.png)
-    ![Service Instance details](images/service-instance.png)
+    ![Service Instance details](images/ag-service-instance.png)
 
 4. Wait for the service instance to have the *Active* status 
 
@@ -81,6 +81,7 @@ This lab assumes you have:
 6. On the **Configure** step, enter connection details for the target system:
 
     **JDBC URL:** 
+    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 3 : Task 3*  for the private ip of your compute instance. 
     ```
     <copy>jdbc:oracle:thin:@//<--privateipofyourcomputeinstance-->:1521/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM</copy>
     ```
@@ -97,6 +98,7 @@ This lab assumes you have:
     <copy>Welcome1</copy>
     ```
     **OIG Server URL:** 
+    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 3 : Task 3*  for the private ip of your compute instance. 
     ```
     <copy>http://<--privateipofyourcomputeinstance-->:14000</copy>
     ```

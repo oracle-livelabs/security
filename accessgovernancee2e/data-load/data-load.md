@@ -74,7 +74,7 @@ Create users in IAM and assign them to Application roles.
     ```
 5. Assign Administrator Application Role to User Pamela Green
 
-    * In the OCI console, navigate to Identity -> Domains -> Default Domain -> Oracle Cloud Services -> AG-<name of your AG service-instance> -> Application Role. 
+    * In the OCI console, navigate to Identity -> Domains -> Default Domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
 
     * Notice the *AG Administrator* Role listed. Click on the Downward arrow on the right corner. 
 
