@@ -24,7 +24,7 @@ This lab assumes you have:
 
 ## Task 1: Create an ATP database instance.
 
-1. With OCI open, navigate to the ATP portal by selecting the hamburger menu in the top left corner, which will allow for you to select **Oracle Database** and then, **Autonomous Transaction Processing.**
+1. With the OCI console open, navigate to the ATP portal by selecting the hamburger menu in the top left corner, which will allow for you to select **Oracle Database** and then, **Autonomous Transaction Processing.**
 
     ![Select ATP from OCI menu](images/select-atp-menu.png) 
 
