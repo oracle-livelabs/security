@@ -26,7 +26,7 @@ This lab assumes you have:
 
 1. With the OCI console open, navigate to the ATP portal by selecting the hamburger menu in the top left corner, which will allow for you to select **Oracle Database** and then, **Autonomous Transaction Processing.**
 
-    ![Select ATP from OCI menu](images/select-atp-menu.png) 
+    ![Select ATP from OCI menu](images/select-the-atp-menu.png) 
 
 2. Select **Create Autonomous Database.**
 
@@ -47,7 +47,7 @@ This lab assumes you have:
 6. Select the licensing option of your choosing, then select **Create Autonomous Database** at the bottom.
 *Note: Spinning up the ADB can take a couple of minutes.*
 
-    ![Create ADB button at the bottom](images/create-atp.png)
+    ![Create ADB button at the bottom](images/create-the-atp.png)
 
     
 
