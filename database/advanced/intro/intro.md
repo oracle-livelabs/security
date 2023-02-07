@@ -15,7 +15,7 @@ Watch a preview of "*Livelabs - Database Security Advanced (May 2022)*" [](youtu
 ### Components
 The complete architecture of the **DB Security Hands-On Labs (v5 - January 2023)** is as following:
 
-  ![](./images/dbseclab-archi.png "")
+  ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
 It's composed of 4 VMs:
   - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)

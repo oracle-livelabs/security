@@ -51,7 +51,7 @@ This lab assumes you have:
     <copy>./pa_create_capture.sh</copy>
     ````
 
-    ![](./images/pa-001.png " ")
+    ![Privilege Analysis](./images/pa-001.png "Privilege Analysis")
 
 4. Next, start the capture
 
@@ -59,7 +59,7 @@ This lab assumes you have:
     <copy>./pa_enable_capture.sh</copy>
     ````
 
-    ![](./images/pa-002.png " ")
+    ![Privilege Analysis](./images/pa-002.png "Privilege Analysis")
 
     **Note**: This will start collecting all of the privileges and/or roles that are being used
 
@@ -69,7 +69,7 @@ This lab assumes you have:
     <copy>./pa_generate_workload.sh</copy>
     ````
 
-    ![](./images/pa-003.png " ")
+    ![Privilege Analysis](./images/pa-003.png "Privilege Analysis")
 
 6. We can disable the capture when we feel we have enough data
 
@@ -77,7 +77,7 @@ This lab assumes you have:
     <copy>./pa_disable_capture.sh</copy>
     ````
 
-    ![](./images/pa-004.png " ")
+    ![Privilege Analysis](./images/pa-004.png "Privilege Analysis")
 
 ## Task 2: Analyze the workload captured
 
@@ -87,7 +87,7 @@ This lab assumes you have:
     <copy>./pa_generate_report.sh</copy>
     ````
 
-    ![](./images/pa-005.png " ")
+    ![Privilege Analysis](./images/pa-005.png "Privilege Analysis")
 
     **Note**:
     - It takes all of the privileges and roles that were identified as used during the capture and compares it to the roles and privileges granted to each user
@@ -99,7 +99,7 @@ This lab assumes you have:
     <copy>./pa_review_report.sh</copy>
     ````
 
-    ![](./images/pa-006.png " ")
+    ![Privilege Analysis](./images/pa-006.png "Privilege Analysis")
 
     **Note**:
     - You can see all the privileges (System and Objects) used and unused by all the active users during the capture
@@ -167,7 +167,7 @@ This lab assumes you have:
     <copy>./pa_drop_capture.sh</copy>
     ````
 
-    ![](./images/pa-015.png " ")
+    ![Privilege Analysis](./images/pa-015.png "Privilege Analysis")
 
 You may now proceed to the next lab!
 
@@ -177,7 +177,7 @@ Privilege analysis increases the security of your applications and database oper
 
 Running inside the Oracle Database kernel, privilege analysis helps reduce the attack surface of user, tooling, and application accounts by identifying used and unused privileges to implement the least-privilege model.
 
-![](./images/pa-concept.png " ")
+![Privilege Analysis](./images/pa-concept.png "Privilege Analysis")
 
 Privilege analysis dynamically captures privileges used by database users and applications. The use of privilege analysis can help to quickly and efficiently enforce least privilege guidelines. In the least-privilege model, users are only given the privileges and access they need to do their jobs. Frequently, even though users perform different tasks, users are all granted the same set of powerful privileges. Without privilege analysis, figuring out the privileges that each user must have can be hard work and in many cases, users could end up with some common set of privileges even though they have different tasks. Even in organizations that manage privileges, users tend to accumulate privileges over time and rarely lose any privileges. Separation of duty breaks a single process into separate tasks for different users. Least privileges enforces the separation so users can only do their required tasks. The enforcement of separation of duty is beneficial for internal control, but it also reduces the risk from malicious users who steal privileged credentials.
 
