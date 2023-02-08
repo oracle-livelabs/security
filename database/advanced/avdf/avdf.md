@@ -45,13 +45,13 @@ This lab assumes you have:
 |12| Build and Test the DB Firewall Allow-List Policy | 20 minutes|
 |13| Block a SQL Injection Attack | 10 minutes|
 |14| Detect Data Exfiltration Attempts | 15 minutes|
-|15| (Optional) Restore the Glassfish App Configuration to Use Direct Mode | <5 minutes|
+|15| Restore the Glassfish App Configuration to Use Direct Mode | <5 minutes|
 || **AVDF Advanced Labs**||
 |16| (Optional) PostgreSQL Audit Collection | 10 minutes|
 |17| (Optional) Linux Audit Collection | 10 minutes|
 |18| (Optional) LDAP/Active Directory Configuration | <5 minutes|
 || **Reset Labs**||
-|19| (Optional) Reset the AVDF labs config | <5 minutes|
+|19| Reset the AVDF labs config | <5 minutes|
 
 ## Task 1: Audit Vault - Run the Deploy Agent
 
@@ -1462,7 +1462,7 @@ In this lab you will create the policy `PII Exfiltration Monitor` to monitor the
 
 20. Now you know how to detect a sensitive data exfiltration with no impact on the performance thanks to Database Firewall!
 
-## Task 15: DB Firewall - (Optional) Restore the Glassfish App Configuration to Use Direct Mode
+## Task 15: DB Firewall - Restore the Glassfish App Configuration to Use Direct Mode
 
 In this lab you will restore the Glassfish connection in order to connecting directly to the pluggable database **pdb1** without the Database Firewall
 
@@ -1804,7 +1804,7 @@ Important: before performing this lab, you must have:
 
 5. Click [**Save**]
 
-## Task 19: (Optional) Reset the AVDF Lab Config
+## Task 19: Reset the AVDF Lab Config
 
 1. Delete the **Database Firewall Monitoring** configuration
 

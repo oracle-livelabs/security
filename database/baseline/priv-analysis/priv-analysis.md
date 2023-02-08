@@ -27,7 +27,7 @@ This lab assumes you have:
 |--|------------------------------------------------------------|-------------|
 | 1 | Capture the workloard to analyze | 5 minutes |
 | 2 | Analyze the workload caputred | 5 minutes |
-| 3 | (Optional) Drop the capture | <5 minutes |
+| 3 | Drop the capture | <5 minutes |
 
 ## Task 1: Capture the workload to analyze
 
@@ -159,7 +159,7 @@ This lab assumes you have:
         **Note**: We can clearly see if a user has too many rights, or rights that they don't need to perform their tasks
 
 
-## Task 3: (Optional) Drop the capture
+## Task 3: Drop the capture
 
 1. Once we have reviewed our report and we are comfortable with Privilege Analysis, we can drop the capture we created
 

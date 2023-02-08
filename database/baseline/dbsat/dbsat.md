@@ -36,7 +36,7 @@ This lab assumes you have:
 |10| Advanced Discoverer - Getting into Pattern files, Sensitive Types, and Categories | 10 minutes |
 |11| Advanced Discoverer - Pattern Files | 15 minutes |
 |12| Processing DBSAT report JSON output | 10 minutes |
-|13| (Optional) Uninstalling DBSAT | <5 minutes |
+|13| Uninstalling DBSAT | <5 minutes |
 
 ## Task 1: Installing DBSAT
 
@@ -1146,7 +1146,7 @@ In this exercise, you will be exposed to the DBSAT utilities ("`dbsat_diff`" & "
         <copy>exit</copy>
         ````
 
-## Task 13: (Optional) Uninstalling DBSAT
+## Task 13: Uninstalling DBSAT
 
 1. Go to the scripts directory
 

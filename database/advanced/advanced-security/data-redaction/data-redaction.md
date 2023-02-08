@@ -26,7 +26,7 @@ This lab assumes you have:
 |--|------------------------------------------------------------|-------------|
 | 1 | Create a basic Data Redaction policy | 5 minutes |
 | 2 | Contextualize an existing Data Redaction policy | 5 minutes |
-| 3 | (Optional) Drop the Data Redaction policy | <5 minutes |
+| 3 | Drop the Data Redaction policy | <5 minutes |
 
 ## Task 1: Create a basic Data Redaction policy
 
@@ -164,7 +164,7 @@ This lab assumes you have:
 
         **Note**: Because you're using the only authorized app, you can see the sensitive data now!
 
-## Task 3: (Optional) Drop the Data Redaction policy
+## Task 3: Drop the Data Redaction policy
 
 1. When you are finished with the lab, you can drop the redaction policy
 
