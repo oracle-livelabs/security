@@ -38,17 +38,13 @@ This lab assumes you have:
 
 Enable Oracle Data Safe in a region of your tenancy. If Oracle Data Safe is already enabled in the desired region of your tenancy, or you are working in an Oracle-provided environment, you can skip this task.
 
-1. In Oracle Cloud Infrastructure, at the top of the page on the right, select the region of your tenancy in which you want to enable Oracle Data Safe. Usually, you leave your home region selected, for example, **US East (Ashburn)**.
-
-   ![Select Home region](images/select-region.png "Select Home region")
+1. On the Oracle Cloud Infrastructure toolbar on the right, select the region of your tenancy in which you want to enable Oracle Data Safe. Usually, you leave your home region selected, for example, **US East (Ashburn)**.
 
 2. From the navigation menu, select **Oracle Database**, and then **Data Safe**.
 
     The **Overview** page is displayed.
 
 3. Click **Enable Data Safe** and wait a couple of minutes for the service to enable. When it's enabled, a confirmation message is displayed in the upper-right corner.
-
-    ![Enable Data Safe button](images/enable-data-safe-button.png "Enable Data Safe button")
 
 
 ## Task 2: Create a compartment
@@ -175,6 +171,8 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
 
 
+
+
 ## Task 6 (LiveLabs Sandbox reservation only): View your LiveLabs Sandbox reservation information and sign in
 
 1. At the top of the lab instructions page (this page), click the **View Login Info** link. A **Reservation Information** panel is displayed.
@@ -203,14 +201,12 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
 7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your target database.
 
-    ![Your Autonomous Database in the LiveLabs tenancy](images/ll-autonomous-database.png "Your Autonomous Database in the LiveLabs tenancy")
-
 
 ## Task 7: Access Oracle Database Actions
 
 Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. At the top of the **Autonomous Database details** page, click **Database actions**. A new tab is opened called **Oracle Database Actions** with **Database Actions | Launchpad** displayed at the top of the page.
+1. At the top of the **Autonomous Database details** page, click **Database actions**. A new browser tab is opened called **Oracle Database Actions** with **Database Actions | Launchpad** displayed at the top of the page.
 
     - If this page is not displayed, check that pop-up windows are allowed in your browser.
     - Keep this tab open throughout the workshop. If your session expires, you can always sign in again.
@@ -222,11 +218,9 @@ Database Actions provides a way for you to run SQL commands on your target datab
 
 3. In the **Development** section, click **SQL**.
 
-4. In the **Warning** dialog box in the upper-right corner, click the **X** to close it.
+4. Close warning and help dialog boxes.
 
-5. In the help note dialog box, click the **X** button to close it. 
-
-6. Review the interface. Here are the ways that you use Database Actions during the workshop:
+5. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
     - In the **Navigator** pane on the left, you select tables from the **HCM1** schema on your target database.
     - On the **Worksheet** on the right, you run SQL commands and scripts.
@@ -247,11 +241,11 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
 3. On the toolbar, click the **Run Script** button and wait for the script to finish running. Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
 
-    ![Run Script button](images/run-script.png "Run Script button")
-
     - The script takes a few minutes to run.
     - In the bottom-left corner, the cog wheel may remain still for about a minute, and then it turns as the script is processed. The script output is displayed after the script is finished running.
     - The script ends with the message **END OF SCRIPT**.
+
+    ![Run Script button](images/run-script.png "Run Script button")
 
 4. To ensure the sample data is loaded successfully, at the end of the script output, review the row count for each table in the `HCM1` schema. The counts should be as follows:
 
@@ -284,4 +278,4 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Jan 22, 2023
+- **Last Updated By/Date** - Jody Glover, February 10, 2023
