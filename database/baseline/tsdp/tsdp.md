@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Transparent Sensitive Data 
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DB 19.13
+*Version tested in this lab:* Oracle DB 19.17
 
 ### Video Preview
 No video for the moment
@@ -51,7 +51,7 @@ This lab assumes you have:
     <copy>./tsdp_prepare_env.sh</copy>
     ````
 
-    ![](./images/tsdp-001.png " ")
+    ![TSDP](./images/tsdp-001.png "TSDP")
 
 ## Task 2: Create a TSDP Policy
 
@@ -61,7 +61,7 @@ This lab assumes you have:
     <copy>./tsdp_create_sensitive_type.sh</copy>
     ````
 
-    ![](./images/tsdp-002.png " ")
+    ![TSDP](./images/tsdp-002.png "TSDP")
 
     **Note:**
     - The sensitive type is a class of data that you designate as sensitive
@@ -73,7 +73,7 @@ This lab assumes you have:
     <copy>./tsdp_add_sensitive_col.sh</copy>
     ````
 
-    ![](./images/tsdp-003.png " ")
+    ![TSDP](./images/tsdp-003.png "TSDP")
 
     **Note:** To identify the columns to protect, based on the sensitive type that you defined, you either can use an OEM Cloud Control Application Data Model (ADM) to identify these columns, or you can use the `DBMS_TSDP_MANAGE.ADD_SENSITIVE_COLUMN` procedure
 
@@ -83,7 +83,7 @@ This lab assumes you have:
     <copy>./tsdp_create_policy.sh</copy>
     ````
 
-    ![](./images/tsdp-004.png " ")
+    ![TSDP](./images/tsdp-004.png "TSDP")
 
     **Note:** You can create the policy by defining an anonymous block that has the following components:
     - If you are using Oracle Data Redaction for your policy, a specification of the type of Data Redaction that you want to use, such as partial Data Redaction
@@ -97,7 +97,7 @@ This lab assumes you have:
     <copy>./tsdp_associate_policy.sh</copy>
     ````
 
-    ![](./images/tsdp-005.png " ")
+    ![TSDP](./images/tsdp-005.png "TSDP")
 
 5. Select sensitive data **before enabling** the TSDP policy
 
@@ -105,7 +105,7 @@ This lab assumes you have:
     <copy>./tsdp_select_data.sh</copy>
     ````
 
-    ![](./images/tsdp-006.png " ")
+    ![TSDP](./images/tsdp-006.png "TSDP")
 
     **Note:** The credit card numbers in the column "`CORPORATE_CARD`" are in clear text
 
@@ -115,7 +115,7 @@ This lab assumes you have:
     <copy>./tsdp_enable_policy.sh</copy>
     ````
 
-    ![](./images/tsdp-007.png " ")
+    ![TSDP](./images/tsdp-007.png "TSDP")
 
 7. Select sensitive data **after enabling** the TSDP policy
 
@@ -123,7 +123,7 @@ This lab assumes you have:
     <copy>./tsdp_select_data.sh</copy>
     ````
 
-    ![](./images/tsdp-008.png " ")
+    ![TSDP](./images/tsdp-008.png "TSDP")
 
     **Note:**
     - Now, you can see that the credit card numbers have been redacted with the format `****-****-9999-9999`
@@ -137,7 +137,7 @@ This lab assumes you have:
     <copy>./tsdp_reset_env.sh</copy>
     ````
 
-    ![](./images/tsdp-009.png " ")
+    ![TSDP](./images/tsdp-009.png "TSDP")
 
 You may now proceed to the next lab!
 
@@ -166,4 +166,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2021
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023

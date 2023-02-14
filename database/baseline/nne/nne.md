@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Native Network Encryption (
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DB 19.13
+*Version tested in this lab:* Oracle DB 19.17
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Native Network Encryption (May 2022)*" [](youtube:N6Uz-pVTkaI)
@@ -54,7 +54,7 @@ This lab assumes you have:
 
     **Note**: It should be empty!
 
-   ![](./images/nne-001.png " ")
+   ![Network Encryption](./images/nne-001.png "Network Encryption")
 
 4. Check if the network is already encrypted
 
@@ -62,34 +62,55 @@ This lab assumes you have:
     <copy>./nne_is_sess_encrypt.sh</copy>
     ````
 
-    ![](./images/nne-002.png " ")
+    ![Network Encryption](./images/nne-002.png "Network Encryption")
 
     **Note**: You should not see the "Encryption service adapter" row
 
 ## Task 2: Generate and capture SQL traffic
 
-1. Run tcpdump on the traffic to analyze the packets in transit on the network (wait for the end of the execution)
+1. Run **tcpdump** on the traffic to analyze the packets in transit on the network (wait for the end of the execution)
 
     ````
     <copy>./nne_tcpdump_traffic.sh</copy>
     ````
 
-    ![](./images/nne-003.png " ")
+    ![Network Encryption](./images/nne-003a.png "Network Encryption")
+
+    ![Network Encryption](./images/nne-003b.png "Network Encryption")
 
     **Note**:
-    - The output has been saved to tcpdump.pcap
+    - We execute a query on the `DEMO_HR_EMPLOYEES` table
+    - The output has been saved to **`tcpdump.pcap`** file
     - There are a lot of tools available to analyze pcap files
 
-2. Next, we will capture traffic across the wire for the Glassfish application
+2. Now, extract sensitive data from tcpdump.pcap file, just generated, to see if the fishing was good
 
-    - Begin the capture script and **don't close it**
+    ````
+    <copy>./nne_tcpdump_extract.sh</copy>
+    ````
+
+    ![Network Encryption](./images/nne-004.png "Network Encryption")
+
+    **Note**:
+    - We extract all rows containing an email or something similar
+    - Because the network is in the clear text, the `DEMO_HR_EMPLOYEES` table data is totally readable!
+
+3. Next, run **tcpflow** to capture traffic across the wire for the Glassfish application
+
+    - Begin the capture script and **DON'T CLOSE IT!**
 
         ````
-        <copy>./nne_capt_empsearch_traffic.sh</copy>
+        <copy>./nne_tcpflow_traffic.sh</copy>
         ````
 
-    - In parallel, open a web browser window to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`* to acces to your Glassfish App
+        ![Network Encryption](./images/nne-005.png "Network Encryption")
+
+        **Notes:** We will extract all lines containing an email or something similar (see the egrep command)
+
+    - In parallel, open a web browser window to *`https://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
     
+        **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+
     - Perform the following steps:
 
         - Login to the HR Application as *`hradmin`* with the password "*`Oracle123`*"
@@ -102,25 +123,28 @@ This lab assumes you have:
             <copy>Oracle123</copy>
             ````
 
-            ![](./images/nne-009.png " ")
-            ![](./images/nne-010.png " ")
+            ![Network Encryption](./images/nne-006.png "Network Encryption")
+            ![Network Encryption](./images/nne-007.png "Network Encryption")
 
         - Click on **Search Employees**
 
-            ![](./images/nne-011.png " ")
+            ![Network Encryption](./images/nne-008.png "Network Encryption")
 
         - Click [**Search**]
 
-            ![](./images/nne-012.png " ")
+            ![Network Encryption](./images/nne-009.png "Network Encryption")
 
     - Now go back to your terminal session to see traffic content
 
-        ![](./images/nne-004.png " ")
+        ![Network Encryption](./images/nne-010.png "Network Encryption")
 
-3. When you have seen the un-encrypted data, use "*`[Ctrl]+C`* " to stop the `nne_capt_empsearch_traffic.sh` script
+4. When you have seen the un-encrypted data, use "*`[Ctrl]+C`* " to stop the script
+
+    **Notes:** Because the network is in the clear text, we can access to all sensitive data in transit!
+
 
 ## Task 3: Enable the network encryption
-You will enable SQL*Net encryption with the `REQUESTED` value for `SQLNET.ENCRYPTION_SERVER`
+You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.ENCRYPTION_SERVER`*
 
 1. To begin with, we use this option because it will allow non-encrypted connections to still connect. While this rarely has an impact, it is often important to do this so the change does not interfere with production systems that cannot encrypt between the client and the database!
 
@@ -128,7 +152,7 @@ You will enable SQL*Net encryption with the `REQUESTED` value for `SQLNET.ENCRYP
     <copy>./nne_enable_requested.sh</copy>
     ````
 
-    ![](./images/nne-005.png " ")
+    ![Network Encryption](./images/nne-011.png "Network Encryption")
 
     **Note**: There's an alternative to Native Network Encryption, it's TLS certificates but those require user management and more configuration
 
@@ -138,53 +162,69 @@ You will enable SQL*Net encryption with the `REQUESTED` value for `SQLNET.ENCRYP
     <copy>./nne_is_sess_encrypt.sh</copy>
     ````
 
-    ![](./images/nne-006.png " ")
+    ![Network Encryption](./images/nne-012.png "Network Encryption")
 
     **Note**: You should notice an additional line that says "**AES256 Encryption service adapter for Linux**"
 
-3. Now, re-run tcpdump on the traffic to analyze the packets in transit on the network (wait for the end of the execution)
+3. Now, re-run **tcpdump** on the traffic to analyze the packets in transit on the network (wait for the end of the execution)
 
     ````
     <copy>./nne_tcpdump_traffic.sh</copy>
     ````
 
-    ![](./images/nne-007.png " ")
+    ![Network Encryption](./images/nne-003a.png "Network Encryption")
 
-    **Note**: The `DEMO_HR_EMPLOYEES` table data is still queryable but when it shows up in the tcpdump, they are now unreadable because **the session is encrypted**!
+    ![Network Encryption](./images/nne-003b.png "Network Encryption")
 
-4. Now, you will test the Glassfish application queries to see the impact of the network encryption
+4. Like previously, extract the same sensitive data from the new tcpdump.pcap file generated
 
-    - On your terminal session capture the traffic generated  and, again, **don't close it**
+    ````
+    <copy>./nne_tcpdump_extract.sh</copy>
+    ````
+
+    ![Network Encryption](./images/nne-013.png "Network Encryption")
+
+    **Note**:
+    - We extract all rows containing an email or something similar
+    - Because the session is encrypted, the `DEMO_HR_EMPLOYEES` table data is unreadable!
+
+5. Now, let's do the test with **tcpflow** for Glassfish application to see the impact of the network encryption
+
+    - On your terminal session capture the traffic generated and, again, **DON'T CLOSE IT!**
 
         ````
-        <copy>./nne_capt_empsearch_traffic.sh</copy>
+        <copy>./nne_tcpflow_traffic.sh</copy>
         ````
 
-        ![](./images/nne-008.png " ")
+        ![Network Encryption](./images/nne-005.png "Network Encryption")
 
-    - Go bakc to your web browser, **logout** the Glassfish application and **login** again as *`hradmin`* to see what happens when we sniff this traffic
+    - Go back to your web browser, **logout** the Glassfish application and **login** again as *`hradmin`* to see what happens when we sniff this traffic
 
-        ![](./images/nne-009.png " ")
+        ![Network Encryption](./images/nne-006.png "Network Encryption")
 
-        ![](./images/nne-010.png " ")
+        ![Network Encryption](./images/nne-007.png "Network Encryption")
 
     - Click on **Search Employees**
 
-        ![](./images/nne-011.png " ")
+        ![Network Encryption](./images/nne-008.png "Network Encryption")
 
     - Click [**Search**]
 
-        ![](./images/nne-012.png " ")
+        ![Network Encryption](./images/nne-009.png "Network Encryption")
 
     - Now go back to your terminal session to see traffic content
 
-        ![](./images/nne-008.png " ")
+        ![Network Encryption](./images/nne-005.png "Network Encryption")
 
     **Note**:
+    - You should see no data!
+    - We are still trying to extract all rows containing an email or something similar, but because the network is encrypted, we have nothing!
     - The data is encrypted between our Glassfish application (JDBC Thin Client) and the database
-    - This works immediately (or after a refresh) because our Glassfish application creates a new connection for each query. A real application would probably need to be stopped and restarted to disconnect the existing application connections from the database!
+    - This works immediately (or after a refresh) because our Glassfish application creates a new connection for each query
+    - A real application would probably need to be stopped and restarted to disconnect the existing application connections from the database!
 
-5. When you have seen the encrypted data, use "*`[Ctrl]+C`* " to stop the `nne_capt_empsearch_traffic.sh` script
+6. When you have seen the effect of the network encryption, use "*`[Ctrl]+C`* " to stop the script
+
 
 ## Task 4: (Optional) Disable the network encryption
 
@@ -194,7 +234,7 @@ You will enable SQL*Net encryption with the `REQUESTED` value for `SQLNET.ENCRYP
     <copy>./nne_disable.sh</copy>
     ````
 
-    ![](./images/nne-013.png " ")
+    ![Network Encryption](./images/nne-014.png "Network Encryption")
 
 You may now proceed to the next lab!
 
@@ -203,7 +243,7 @@ You may now proceed to the next lab!
 
 Oracle Database provides native **data network encryption and integrity** to ensure that data in-motion is secure as it travels across the network.
 
-![](./images/nne-concept.png " ")
+![Network Encryption](./images/nne-concept.png "Network Encryption")
 
 The purpose of a secure cryptosystem is to convert plaintext data into unintelligible ciphertext based on a key, in such a way that it is very hard (computationally infeasible) to convert ciphertext back into its corresponding plaintext without knowledge of the correct key.
 
@@ -219,5 +259,5 @@ Technical Documentation:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Contributors** - Richard Evans, Rene Fontcha
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
