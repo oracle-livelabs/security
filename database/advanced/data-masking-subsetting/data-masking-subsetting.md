@@ -41,7 +41,7 @@ This lab assumes you have:
 |13 | Create Data Subsetting Definitions | 5 minutes |
 |14 | Execute Data Subsetting Scripts | 5 minutes |
 |15 | Compare the Pre-Subsetted Data vs. the Post-Subsetted Data | 5 minutes |
-|16 | (Optional) Reset the Labs Environment | <5 minutes |
+|16 | Reset the Labs Environment | <5 minutes |
 
 ## Task 1: Import Schema Structure
 
@@ -1499,7 +1499,7 @@ Now, let's have a look on few advanced features for Data Masking
 22. As you can see, the new dataset is different from the original sensitive data based on all advanced masking formats!
 
 
-## Task 17: (Optional) Reset the Labs Environment
+## Task 17: Reset the Labs Environment
 
 1. Restore the `EMPLOYEESEARCH_DEV` tables on pdb1 by cloning data from `EMPLOYEESEARCH_PROD` schema
 

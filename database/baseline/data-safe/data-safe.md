@@ -35,7 +35,7 @@ This lab assumes you have:
 |03| Collect audit data and generate alerts | 20 minutes|
 |04| Assess the security of your database configurations and users | 20 minutes|
 |05| Discover and mask sensitive data | 30 minutes|
-|06| (Optional) Reset Oracle Data Safe configuration | <10 minutes|
+|06| Reset Oracle Data Safe configuration | <10 minutes|
 
 ## Task 1: Register an on-premise Oracle Database
 
@@ -1793,7 +1793,7 @@ Data Discovery helps you find sensitive data in your databases and Data Masking 
     ![Data Safe](./images/ds-232.png "Data Safe")
 
 
-## Task 6: (Optional) Reset Oracle Data Safe configuration
+## Task 6: Reset Oracle Data Safe configuration
 
 1. From the Data Safe console
 

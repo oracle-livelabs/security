@@ -27,7 +27,7 @@ This lab assumes you have:
 |--|------------------------------------------------------------|-------------|
 | 1 | Prepare the TSDP Environment for the Labs | <5 minutes |
 | 2 | Create a TSDP Policy | 5 minutes |
-| 3 | (Optional) Reset the TSDP Labs Environment | <5 minutes |
+| 3 | Reset the TSDP Labs Environment | <5 minutes |
 
 ## Task 1: Prepare the TSDP Environment for the Labs
 
@@ -129,7 +129,7 @@ This lab assumes you have:
     - Now, you can see that the credit card numbers have been redacted with the format `****-****-9999-9999`
     - As you can see, TSDP redacts sensitive data **immediately** and you **don't need rebooting or rewriting SQL query**!
 
-## Task 3: (Optional) Reset the TSDP Labs Environment
+## Task 3: Reset the TSDP Labs Environment
 
 1. Once you are comfortable with the TSDP concept, you can reset the environment
 

@@ -45,13 +45,13 @@ This lab assumes you have:
 |12| Build and Test the DB Firewall Allow-List Policy | 20 minutes|
 |13| Block a SQL Injection Attack | 10 minutes|
 |14| Detect Data Exfiltration Attempts | 15 minutes|
-|15| (Optional) Restore the Glassfish App Configuration to Use Direct Mode | <5 minutes|
+|15| Restore the Glassfish App Configuration to Use Direct Mode | <5 minutes|
 || **AVDF Advanced Labs**||
 |16| (Optional) PostgreSQL Audit Collection | 10 minutes|
 |17| (Optional) Linux Audit Collection | 10 minutes|
 |18| (Optional) LDAP/Active Directory Configuration | <5 minutes|
 || **Reset Labs**||
-|19| (Optional) Reset the AVDF labs config | <5 minutes|
+|19| Reset the AVDF labs config | <5 minutes|
 
 ## Task 1: Audit Vault - Run the Deploy Agent
 
@@ -702,33 +702,32 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
     ![AVDF](./images/avdf-102.png "AVDF")
 
-5. Click on **eth0**
+5. Check that the **Proxy Port** for **eth0** is set to *`dbfw_proxy(15223)`*
 
     ![AVDF](./images/avdf-103.png "AVDF")
-
-6. Add a **Proxy Port**
+    
+    **Note**: FYI, follow these instructions to create a Proxy Port:
+    - Click on **eth0**
+    
+        ![AVDF](./images/avdf-104a.png "AVDF")
 
     - Click [**Add**]
 
-        ![AVDF](./images/avdf-104.png "AVDF")
-
-    - Name it *`dbfw_proxy`* for the port *`15223`*, then click [**Save**]
-
         ![AVDF](./images/avdf-104b.png "AVDF")
 
-7. Your Database Firewall Network Settings should now look like this:
+    - Name it (here *`dbfw_proxy`*) for the port *`15223`*, then click [**Save**]
 
-    ![AVDF](./images/avdf-105.png "AVDF")
+        ![AVDF](./images/avdf-104c.png "AVDF")
 
-8. Click [**Close**]
+6. Click [**Close**]
 
-9. Now, enable DB Firewall Monitoring for `pdb1` using the Proxy Port we just created
+7. Now, enable DB Firewall Monitoring for `pdb1` using the Proxy Port we just created
 
     - Click the **Targets** tab and click **pdb1**
 
     - In the **Database Firewall Monitoring** section of this page, click [**Add**]
 
-        ![AVDF](./images/avdf-105b.png "AVDF")
+        ![AVDF](./images/avdf-105.png "AVDF")
 
     - Fill out the following details
 
@@ -758,7 +757,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
         ![AVDF](./images/avdf-108.png "AVDF")
 
-10. Now, verify connectivity between the database and the DB Firewall
+8. Now, verify connectivity between the database and the DB Firewall
 
     - Go back to your Terminal session and go to the DBF directoy
 
@@ -1462,7 +1461,7 @@ In this lab you will create the policy `PII Exfiltration Monitor` to monitor the
 
 20. Now you know how to detect a sensitive data exfiltration with no impact on the performance thanks to Database Firewall!
 
-## Task 15: DB Firewall - (Optional) Restore the Glassfish App Configuration to Use Direct Mode
+## Task 15: DB Firewall - Restore the Glassfish App Configuration to Use Direct Mode
 
 In this lab you will restore the Glassfish connection in order to connecting directly to the pluggable database **pdb1** without the Database Firewall
 
@@ -1804,7 +1803,7 @@ Important: before performing this lab, you must have:
 
 5. Click [**Save**]
 
-## Task 19: (Optional) Reset the AVDF Lab Config
+## Task 19: Reset the AVDF Lab Config
 
 1. Delete the **Database Firewall Monitoring** configuration
 

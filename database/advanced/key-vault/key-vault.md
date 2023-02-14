@@ -35,7 +35,7 @@ This lab assumes you have:
 | 6| Create the OKV SEPS Wallet | <5 minutes||
 | 7| Perform a ReKey Operation | 5 minutes||
 | 8| Secret Management with OKV | 10 minutes||
-| 9| (Optional) Reset the OKV Lab Config | <10 minutes||
+| 9| Reset the OKV Lab Config | <10 minutes||
 
 <!-- Other OKV Labs for 21.5
 | 8a| DB Account Pwd Management | 5 minutes ||
@@ -569,7 +569,7 @@ Oracle provides deployment recommendations for deployments that have two or more
 
 -->
 
-## Task 9: (Optional) Reset the OKV Lab Config
+## Task 9: Reset the OKV Lab Config
 
 1. Drop the Endpoint and Wallet created in OKV during this lab
 
