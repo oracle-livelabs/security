@@ -702,33 +702,33 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
     ![AVDF](./images/avdf-102.png "AVDF")
 
-5. Click on **eth0**
+5. Check that the **Proxy Port** for **eth0** is set to *`dbfw_proxy(15223)`*
 
     ![AVDF](./images/avdf-103.png "AVDF")
-
-6. Add a **Proxy Port**
+    
+    **Note**: FYI, follow these instructions to create a Proxy Port:
+    - Click on **eth0**
+    
+        ![AVDF](./images/avdf-104a.png "AVDF")
 
     - Click [**Add**]
 
-        ![AVDF](./images/avdf-104.png "AVDF")
-
-    - Name it *`dbfw_proxy`* for the port *`15223`*, then click [**Save**]
-
         ![AVDF](./images/avdf-104b.png "AVDF")
 
-7. Your Database Firewall Network Settings should now look like this:
+    - Name it (here *`dbfw_proxy`*) for the port *`15223`*, then click [**Save**]
 
-    ![AVDF](./images/avdf-105.png "AVDF")
+        ![AVDF](./images/avdf-104c.png "AVDF")
 
-8. Click [**Close**]
 
-9. Now, enable DB Firewall Monitoring for `pdb1` using the Proxy Port we just created
+6. Click [**Close**]
+
+7. Now, enable DB Firewall Monitoring for `pdb1` using the Proxy Port we just created
 
     - Click the **Targets** tab and click **pdb1**
 
     - In the **Database Firewall Monitoring** section of this page, click [**Add**]
 
-        ![AVDF](./images/avdf-105b.png "AVDF")
+        ![AVDF](./images/avdf-105.png "AVDF")
 
     - Fill out the following details
 
@@ -758,7 +758,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
         ![AVDF](./images/avdf-108.png "AVDF")
 
-10. Now, verify connectivity between the database and the DB Firewall
+8. Now, verify connectivity between the database and the DB Firewall
 
     - Go back to your Terminal session and go to the DBF directoy
 
