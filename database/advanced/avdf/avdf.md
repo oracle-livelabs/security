@@ -719,7 +719,6 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
         ![AVDF](./images/avdf-104c.png "AVDF")
 
-
 6. Click [**Close**]
 
 7. Now, enable DB Firewall Monitoring for `pdb1` using the Proxy Port we just created
