@@ -106,9 +106,9 @@ Create a bucket to store your audit data. You also use the bucket to transfer a 
 
 Create an SSH key pair that you can use to connect to your compute instance. The standard name is `cloudshellkey`.
 
-1. Open Cloud Shell. When you first open Cloud Shell, you are in your home directory; for example, `/home/jody_glove`.`
+1. Open Cloud Shell. When you first open Cloud Shell, you are in your home directory; for example, `/home/jody_glove`.
 
-2. (Optional) Reset your Cloud Shell environment. The following command erases all the data in your `$HOME` directory on your Cloud Shell machine and resets the `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.bash_logout`, and `$HOME/.emacs` files back to their default values.
+2. (Optional) Reset your Cloud Shell environment. The following command erases all the data in your `$HOME` directory on your Cloud Shell machine and resets the `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.bash_logout`, and `$HOME/.emacs` files back to their default values. Enter **y** at the prompt to confirm.
 
     ```bash
     $ <copy>csreset --all</copy>
@@ -476,7 +476,7 @@ Run the `DataSafeRestAPIClientExample.class` file to test that it runs without e
 3. Run the following command to run the class file.
 
     ```text
-    # <copy>java -cp examples:lib/oci-java-sdk-full-2.27.0.jar:third-party/lib/* DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
+    # <copy>java -cp /usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-2.27.0.jar:/usr/lib64/java-oci-sdk/third-party/lib/*:/usr/lib64/java-oci-sdk/examples DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
     ```
 
 ## Task 14: Verify that the audit data is in your bucket
