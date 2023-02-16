@@ -286,12 +286,12 @@ There are three parts to configuring the SDK: create an API key, create a config
 6. Copy the configuration file contents to a temporary text file. You will need it later. It content looks similar to this:
 
     ```text
-    [DEFAULT]
+    <copy>[DEFAULT]
     user=ocid1.user.oc1...
     fingerprint=your-fingerprint
     tenancy=ocid1.tenancy.oc1...
     region=eu-frankfurt-1
-    key_file=<path to your private keyfile> # TODO
+    key_file=<path to your private keyfile> # TODO</copy>
     ```
 
 6. Click **Close**.
@@ -367,12 +367,12 @@ In this task, you create a configuration file named `config` in the `.oci` direc
 2. Press **Escape** and then **i**. Paste the configuration file contents into the `config` file. Note: Earlier you pasted this content into a temporary text file. The content looks similar to the following code. Be sure to include `[DEFAULT]` at the top.
 
    ```text
-    [DEFAULT]
+    <copy>[DEFAULT]
     user=ocid1.user.oc1...
     fingerprint=your-fingerprint
     tenancy=ocid1.tenancy.oc1...
     region=eu-frankfurt-1
-    key_file=<path to your private keyfile> # TODO
+    key_file=<path to your private keyfile> # TODO</copy>
     ```
 
 3. Modify the last line to be the path to your PEM file on your compute instance. In the example below, substitute `your-private-key-file-name` with your own private key file name.

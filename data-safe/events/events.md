@@ -215,7 +215,7 @@ After you generate a comparison report, if there is security drift (which there 
 2. Locate and open the email notification from Oracle. The message contains text similar to the following:
 
     ```text
-    {
+    <copy>{
     "eventType" : "com.oraclecloud.datasafe.userassessmentdriftfrombaseline",
     "cloudEventsVersion" : "0.1",
     "eventTypeVersion" : "2.0",
@@ -246,7 +246,7 @@ After you generate a comparison report, if there is security drift (which there 
     Please do not reply directly to this email. If you have any questions or comments regarding this email, contact your account administrator.
 
     Oracle Corporation - Worldwide Headquarters
-    2300 Oracle Way, Austin, Texas 78741 USA
+    2300 Oracle Way, Austin, Texas 78741 USA</copy>
     ```
 
 ## Learn More

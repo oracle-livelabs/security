@@ -188,12 +188,12 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
 7. Copy the configuration file contents to a temporary local text file. Be sure to include `[DEFAULT]`. It should look similar to this:
 
     ```text
-    [DEFAULT]
+    <copy>[DEFAULT]
     user=ocid1.user.oc1...
     fingerprint=ff:35...
     tenancy=ocid1.tenancy.oc1...
     region=eu-frankfurt-1
-    key_file=<path to your private keyfile> # TODO
+    key_file=<path to your private keyfile> # TODO</copy>
     ```
 
 8. Click **Close**.
@@ -227,12 +227,12 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
 15. Paste the configuration file contents into the `config` file (press **Escape** and then **i** before you paste). The content should look similar to the following code. Don't forget to include `[DEFAULT]`.
 
     ```text
-    [DEFAULT]
+    <copy>[DEFAULT]
     user=ocid1.user.oc1...
     fingerprint=ff:35...
     tenancy=ocid1.tenancy.oc1...
     region=eu-frankfurt-1
-    key_file=<path to your private keyfile> # TODO
+    key_file=<path to your private keyfile> # TODO</copy>
     ```
 
 16. Modify the last line to be the path to your private key file. In the example below, substitute `your-private-key-file.pem` with your own private key file name. Remove the **# TODO** text. 
@@ -358,7 +358,7 @@ Use the `javac` command to compile the `DataSafeRestAPIClientExample.java` file.
 5. Notice that you now have a line item named `auditeventjson` that contains the text `noofrecords_<some-number>`. This is the audit data copied from the Oracle Data Safe repository. `<some-number>` is the number of copied audit records.
 
     ```text
-    auditeventjson2023-02-15T22:01:39.579619Z _noofrecords_ 35 Start =2023-02-14T22:01:38.325Z, End=2023-02-15T22:01:38.324Z
+    <copy>auditeventjson2023-02-15T22:01:39.579619Z _noofrecords_ 35 Start =2023-02-14T22:01:38.325Z, End=2023-02-15T22:01:38.324Z</copy>
     ```
 
 
