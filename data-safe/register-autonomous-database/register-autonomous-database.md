@@ -66,15 +66,13 @@ You have three options for registering an Autonomous Database on Shared Infrastr
 
 ## Task 2: Register your database with Oracle Data Safe using the wizard
 
-For this lab, let's use the wizard to register your database.
-
-If you plan to register a database other than an ATP database for this workshop, please follow the registration instructions specific for your database type in the _Administering Oracle Data Safe_ guide. See the **Learn More** section at the bottom of this page.
+To register a database other than an ATP database for this workshop, please follow the registration instructions specific for your database type in the _Administering Oracle Data Safe_ guide. See the **Learn More** section at the bottom of this page.
 
 1. Click **Register Database via Wizard**.
 
     The **Overview** page is displayed.
 
-2. In the **Autonomous Databases** section, click **Start Wizard**. 
+2. On the **Autonomous Databases** tile, click **Start Wizard**. 
 
     The first page in the wizard called **Select Database** is displayed.
 
@@ -82,11 +80,11 @@ If you plan to register a database other than an ATP database for this workshop,
 
 4. (Optional) Change the default display name for your target database. This name is displayed in your Oracle Data Safe reports. 
 
-5. (Optional) Select a different compartment in which to save the target registration. Usually you save to the same compartment as your target database.
+5. (Optional) Select a different compartment in which to save the target database. Usually you select the compartment in which your database resides.
 
 6. (Optional) Enter a description for your target database. 
 
-7. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity Option) and 3 ('Add Security Rule') are not necessary and will be skipped.** If your database had a private IP address, you would need to configure an Oracle Data Safe private endpoint and security rules. 
+7. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity Option) and 3 ('Add Security Rule') are not necessary and will be skipped.** If your database has a private IP address, you need to configure an Oracle Data Safe private endpoint and security rules. 
 
     ![Autonomous Database registration wizard - Select Database page](images/ADB-wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
 
@@ -148,4 +146,4 @@ If you plan to register a database other than an ATP database for this workshop,
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 10, 2023
+- **Last Updated By/Date** - Jody Glover, February 15, 2023

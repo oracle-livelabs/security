@@ -123,7 +123,7 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 
 8. In the policy field, enter the following policy statements. Substitute `{group name}` and `{compartment name}` with the appropriate values.
 
-    - For the **Get Started with Oracle Data Safe Fundamentals** workshop, you require the following permissions. The first statement allows the user group to register an Oracle Database with Oracle Data Safe and create and manage Oracle Data Safe resources in the specified compartment. The second statement allows the user group to create an Autonomous Database in the specified compartment and use it with Oracle Data Safe.
+    - For the **Get Started with Oracle Data Safe Fundamentals** workshop, you require the following permissions:
 
     ```
     <copy>
@@ -131,6 +131,16 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
     Allow group {group name} to manage autonomous-database in compartment {compartment name}
     </copy>
     ```
+<!---
+    - For the **Integrate Oracle Data Safe with Applications and Services** workshop, you require the following permissions:
+
+    ```
+    <copy>
+    Allow group {group name} to manage data-safe-family in compartment {compartment name}
+    Allow group {group name} to manage autonomous-database in compartment {compartment name}
+    </copy>
+    ```
+    --->
 
 9. Click **Create**.
 
@@ -169,8 +179,6 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 7. Wait a few minutes for your database instance to provision. The **Autonomous Database details** page is displayed. Wait for **AVAILABLE** to be displayed below the large ATP icon.
 
     ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
-
-
 
 
 ## Task 6 (LiveLabs Sandbox reservation only): View your LiveLabs Sandbox reservation information and sign in
@@ -278,4 +286,4 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 10, 2023
+- **Last Updated By/Date** - Jody Glover, February 15, 2023

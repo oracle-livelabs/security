@@ -10,12 +10,12 @@ Estimated Lab Time: 30 minutes
 
 In this lab, you will:
 
-- Create a bucket in your compartment
+- Create a bucket to store the audit data
 - Start the audit trail for your target database in Oracle Data Safe
 - View the quantity of audit data collected by Oracle Data Safe
 - Access Cloud Shell in Oracle Cloud Infrastructure and review the SDK for Java installation
 - Configure the SDK
-- Compile the Java file
+- Compile a Java file
 - Obtain the compartment OCID for your target database
 - Run the compiled Java file
 - Verify that the audit data is copied to your bucket
@@ -38,9 +38,7 @@ Cloud Shell is running the following application versions:
 - Oracle Cloud Infrastructure Java SDK 3.2.2
 
 
-## Task 1: Create a bucket in your compartment
-
-Create a bucket to store your audit data. 
+## Task 1: Create a bucket to store the audit data
 
 1. From the navigation menu in Oracle Cloud Infrastructure, select **Storage**, and then **Buckets**.
 
@@ -48,7 +46,7 @@ Create a bucket to store your audit data.
 
 3. Click **Create Bucket**.
 
-    The **Create Bucket** dialog box is displayed.
+    The **Create Bucket** panel is displayed.
 
 4. For bucket name, enter **DataSafeAuditData**.
 
@@ -78,7 +76,7 @@ Create a bucket to store your audit data.
     - If it's currently the first day of the month, you can select the previous day to be sure you collect all of the data.
     - Do not select the **Auto Purge** option.
 
-8. Click **Start**. Wait for **Collection State** to change from **STARTING** to **COLLECTING** and then to **IDLE**. It takes about a minute.
+8. Click **Start**. Wait for **Collection State** to change from **STARTING** to **COLLECTING** and then to **IDLE**. It takes about one minute.
 
 
 ## Task 3: View the quantity of audit data collected by Oracle Data Safe
@@ -97,7 +95,9 @@ Create a bucket to store your audit data.
 
     The **Compute Collected Volume** dialog box is displayed.
 
-6. Set the **Start Month** and **End Month** fields to the first and last day of the current month respectively, and click **Compute**. Make note of the number of audit records collected by Oracle Data Safe.
+6. Set the **Start Month** and **End Month** fields to the first and last day of the current month respectively, and click **Compute**. 
+
+7. In the **Collected in Data Safe (Online)** column, make note of the number of audit records collected by Oracle Data Safe.
 
 
 ## Task 4: Access Cloud Shell in Oracle Cloud Infrastructure and review the SDK for Java installation
@@ -115,7 +115,7 @@ The Oracle Cloud Infrastructure SDK for Java (oci-java-sdk) provides an SDK for 
     $ <copy>csreset --all</copy>
     ```
 
-3. Change to the `/usr/lib64/java-oci-sdk` directory and list its contents. The OCI jar file is located in: `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-3.2.1.jar`, and third-party libraries are in `/usr/lib64/java-oci-sdk/third-party/lib`.
+3. Change to the `/usr/lib64/java-oci-sdk` directory and list its contents.
 
     ```text
     $ <copy>cd /usr/lib64/java-oci-sdk</copy>
@@ -124,10 +124,26 @@ The Oracle Cloud Infrastructure SDK for Java (oci-java-sdk) provides an SDK for 
     addons  apidocs  buildTools  CHANGELOG.md  CONTRIBUTING.md  examples  lib  LICENSE.txt  NOTICE.txt  README.md  shaded  third-party  THIRD_PARTY_LICENSES.txt
     ```
 
-4. Change to the `examples` directory and list its content. Notice that there is a `DataSafeRestAPIClientExample.java` file. This Java program uses Oracle Data Safe REST API commands to copy audit data from a specified compartment to a specified bucket in object storage. 
+4. Change to the `/usr/lib64/java-oci-sdk/lib` directory and list its contents. Make note of the version of the OCI jar file (`oci-java-sdk-full-version.jar`). In the example below, the version is 3.3.0. 
 
     ```text
-    $ <copy>cd examples</copy>
+    $ <copy>cd /usr/lib64/java-oci-sdk/lib</copy>
+    $ <copy>ls</copy>
+
+    jersey  jersey3  oci-java-sdk-full-3.3.0.jar  oci-java-sdk-full-3.3.0-javadoc.jar  oci-java-sdk-full-3.3.0-sources.jar
+    ```
+
+5. Change to the directory `/usr/lib64/java-oci-sdk/third-party/lib`, which contains the third party libraries, and list its content.
+
+    ```text
+    $ <copy>cd /usr/lib64/java-oci-sdk/third-party/lib</copy>
+    $ <copy>ls</copy>
+    ```
+
+6. Change to the `/usr/lib64/java-oci-sdk/examples` directory and list its contents. Notice that there is a `DataSafeRestAPIClientExample.java` file. This Java program uses Oracle Data Safe REST API commands to copy audit data from a specified compartment to a specified bucket in object storage. 
+
+    ```text
+    $ <copy>cd /usr/lib64/java-oci-sdk/examples</copy>
     $ <copy>ls</copy>
 
     ...
@@ -135,7 +151,7 @@ The Oracle Cloud Infrastructure SDK for Java (oci-java-sdk) provides an SDK for 
     ...
     ```
 
-5. Open `DataSafeRestAPIClientExample.java` and examine the code.
+7. Review the `DataSafeRestAPIClientExample.java` file.
 
     ```text
     $ <copy>cat DataSafeRestAPIClientExample.java</copy>
@@ -155,7 +171,7 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
     $ <copy>cd ~/.oci</copy>
    ```
 
-2. In the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Profile** icon, and then click your username.
+2. In the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Profile** icon, and then select your username.
 
 3. On the left, click **API Keys**.
 
@@ -163,7 +179,7 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
 
     The **Add API Key** dialog box is displayed.
 
-5. Leave **Generate API Key Pair** selected, click **Download Private Key**, and save your key to a local directory on your computer. 
+5. Leave **Generate API Key Pair** selected and click **Download Private Key**. A private key (PEM file) is downloaded to your browser. Save your private key file to a local directory of your choice on your computer. 
 
 6. Click **Add**.
 
@@ -192,7 +208,7 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
 
 11. Drag your private key file to the dialog box, and click **Upload**. 
 
-    Your file is uploaded to your home directory.
+    Your private key file is uploaded to your home directory.
 
 12. To close the **File Transfers** dialog box, click **Hide**.
 
@@ -208,7 +224,7 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
     $ <copy>vi config</copy>
     ```
 
-15. Paste the configuration file contents into the `config` file. The content should look similar to the following code.
+15. Paste the configuration file contents into the `config` file (press **Escape** and then **i** before you paste). The content should look similar to the following code. Don't forget to include `[DEFAULT]`.
 
     ```text
     [DEFAULT]
@@ -219,21 +235,21 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
     key_file=<path to your private keyfile> # TODO
     ```
 
-16. Modify the last line to be the path to your private key file. In the example below, substitute `your-private-key-file.pem` with your own private key file name. 
+16. Modify the last line to be the path to your private key file. In the example below, substitute `your-private-key-file.pem` with your own private key file name. Remove the **# TODO** text. 
 
     ```text
-    $ <copy>key_file=~/.oci/your-private-key-file.pem</copy>
+    <copy>key_file=~/.oci/your-private-key-file.pem</copy>
     ```
 
 17. Save and close (press **Escape**, and then enter **:wq**).
 
 
-## Task 6: Compile the Java file
+## Task 6: Compile a Java file
 
-In this task, you use the `javac` command to compile the `DataSafeRestAPIClientExample.java` file. The following two variables are already set in Cloud Shell. You can use these when compiling and running the Java program.
+Use the `javac` command to compile the `DataSafeRestAPIClientExample.java` file. The following two variables are already set in Cloud Shell. You can use these when compiling and running the Java program.
 
 - `$OCI_JAVA_SDK_LOCATION` = `/usr/lib64/java-oci-sdk`
-- `$OCI_JAVA_SDK_FULL_JAR_LOCATION` = `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-3.2.1.jar`
+- `$OCI_JAVA_SDK_FULL_JAR_LOCATION` = `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-version.jar`
 
 
 1. Copy `DataSafeRestAPIClientExample.java` to your current directory (`~/.oci`).
@@ -242,7 +258,7 @@ In this task, you use the `javac` command to compile the `DataSafeRestAPIClientE
     $ <copy>cp $OCI_JAVA_SDK_LOCATION/examples/DataSafeRestAPIClientExample.java .</copy>
     ```
 
-2. Compile `DataSafeRestAPIClientExample.java`.
+2. Compile `DataSafeRestAPIClientExample.java`. There is no output after the program is compiled.
 
     ```text
     $ <copy>javac -cp $OCI_JAVA_SDK_FULL_JAR_LOCATION:$OCI_JAVA_SDK_LOCATION/third-party/lib/* DataSafeRestAPIClientExample.java</copy>
@@ -251,19 +267,25 @@ In this task, you use the `javac` command to compile the `DataSafeRestAPIClientE
 
 ## Task 7: Obtain the compartment OCID for your target database
 
-1. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**. 
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe**. 
 
-2. Under **List scope** on the left, make sure that your compartment is selected. 
+2. On the left, click **Target Databases**. 
 
-3. On the right, click the name of your database. On the **Autonomous Database information** tab, find the compartment information. 
+3. On the left, select your compartment.
 
-4. From the navigation menu, select **Identity and Security**, and then on the right under **Identity**, select **Compartments**. 
+4. On the right, click the name of your target database. 
 
-5. Click the name of your compartment.
+    The **Target Database Details** page is displayed.
+    
+5. On the **Target Database Details** tab, make note of the compartment. 
+
+6. From the navigation menu, select **Identity & Security**, and then on the right under **Identity**, select **Compartments**. 
+
+7. Click the name of your compartment.
 
     The **Compartment details** page is displayed.
 
-6. On the **Compartment Information** tab, click the **Copy** link next to **OCID** and paste the OCID into a temporary local text file. You need the OCID for the next task.
+8. On the **Compartment Information** tab, click the **Copy** link next to **OCID** and paste the OCID into a temporary local text file. You need the OCID for the next task.
 
 
 ## Task 8: Run the compiled Java file
@@ -275,10 +297,18 @@ In this task, you use the `javac` command to compile the `DataSafeRestAPIClientE
     $ <copy>export COMPARTMENT=your-compartment-ocid</copy>
     ```
 
-2. Run `DataSafeRestAPIClientExample.class`. You can ignore the error about failing to load the `org.slf4j.impl.StaticLoggerBinder` class. Review the output. One of the lines tells you the count of audit records copied into object storage.
+2. Find the version of the `oci-java-sdk-common-httpclient-jersey-version.jar` file. In the example below, the version is 3.3.0.
+
+    ```bash
+    $ <copy> ls $OCI_JAVA_SDK_LOCATION/lib/jersey</copy>
+
+    oci-java-sdk-common-httpclient-jersey-3.3.0.jar  oci-java-sdk-common-httpclient-jersey-3.3.0-javadoc.jar  oci-java-sdk-common-httpclient-jersey-3.3.0-sources.jar
+    ```
+
+3. Run `DataSafeRestAPIClientExample.class` by running the following command. Replace `version` in `oci-java-sdk-common-httpclient-jersey-version.jar` with the version you obtained in the previous step. You can ignore the error about failing to load the `org.slf4j.impl.StaticLoggerBinder` class. 
 
     ```text
-    $ <copy>java -cp $OCI_JAVA_SDK_FULL_JAR_LOCATION:$OCI_JAVA_SDK_LOCATION/third-party/lib/*:$OCI_JAVA_SDK_LOCATION/third-party/jersey/lib/*:$OCI_JAVA_SDK_LOCATION/lib/jersey/oci-java-sdk-common-httpclient-jersey-3.2.1.jar:$HOME/.oci DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
+    $ <copy>java -cp $OCI_JAVA_SDK_FULL_JAR_LOCATION:$OCI_JAVA_SDK_LOCATION/third-party/lib/*:$OCI_JAVA_SDK_LOCATION/third-party/jersey/lib/*:$OCI_JAVA_SDK_LOCATION/lib/jersey/oci-java-sdk-common-httpclient-jersey-version.jar:$HOME/.oci DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
 
     
     SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
@@ -290,30 +320,32 @@ In this task, you use the `javac` command to compile the `DataSafeRestAPIClientE
     Namespace: frmwj0cqbupb
 
 
-    Getting content for object cursor  from bucket: Test
+    Getting content for object cursor  from bucket: DataSafeAuditData
 
 
     ignore
     Finished reading content for object cursor, last upload's last auditEvent record's timecollected FAILED
 
 
-    2023-01-25T01:03:57.410Z
-    Querying for auditEvents with timeCollected Start = 2023-01-25T01:03:57.410Z, End = 2023-01-26T01:03:57.410Z
+    2023-02-14T22:01:38.325Z
+    Querying for auditEvents with timeCollected Start = 2023-02-14T22:01:38.325Z, End = 2023-02-15T22:01:38.324Z
 
 
-    Countx
+    Count35
 
 
-    Upload complete at  Thu Jan 26 01:03:59 UTC 2023 of auditeventjson2023-01-26T01:03:58.877047Z _noofrecords_x Start =2023-01-25T01:03:57.410Z, End=2023-01-26T01:03:57.410Z  OpcRequestId: fra-1:i53...
+    Upload complete at  Wed Feb 15 22:01:40 UTC 2023 of auditeventjson2023-02-15T22:01:39.579619Z _noofrecords_ 35 Start =2023-02-14T22:01:38.325Z, End=2023-02-15T22:01:38.324Z  OpcRequestId: fra-1:q_rNFX-2hAnzGEoiurT376...
 
 
-    Upload complete at  Thu Jan 26 01:03:59 UTC 2023 of cursor  OpcRequestId: fra-1:97Q...
+    Upload complete at  Wed Feb 15 22:01:40 UTC 2023 of cursor  OpcRequestId: fra-1:YpGeKJmQ7HtfJLXCVGLYKIEGCEPGbsdF...
     ```
+
+4. Review the output. The third last output line tells you the count of audit records copied into object storage.
 
 
 ## Task 9: Verify that the audit data is copied to your bucket
 
-1. From the navigation menu in OCI, select **Storage**, and then **Buckets**.
+1. From the navigation menu, select **Storage**, and then **Buckets**.
 
 2. Select your compartment.
 
@@ -324,6 +356,11 @@ In this task, you use the `javac` command to compile the `DataSafeRestAPIClientE
 4. Scroll down to the **Objects** section.
 
 5. Notice that you now have a line item named `auditeventjson` that contains the text `noofrecords_<some-number>`. This is the audit data copied from the Oracle Data Safe repository. `<some-number>` is the number of copied audit records.
+
+    ```text
+    auditeventjson2023-02-15T22:01:39.579619Z _noofrecords_ 35 Start =2023-02-14T22:01:38.325Z, End=2023-02-15T22:01:38.324Z
+    ```
+
 
 
 ## Learn More
@@ -339,8 +376,8 @@ In this task, you use the `javac` command to compile the `DataSafeRestAPIClientE
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
-- **Consultants** - Richard Evans, Anna Haikl, Archana Rao
-- **Last Updated By/Date** - Jody Glover, January 25, 2023
+- **Consultants** - Richard Evans, Bettina Schaeumer, Archana Rao, Anna Haikl 
+- **Last Updated By/Date** - Jody Glover, February 15, 2023
 
 
 
