@@ -28,7 +28,7 @@ This lab assumes you have:
 | 1 | Check the current network configuration | <5 minutes |
 | 2 | Generate and capture SQL traffic | 5 minutes |
 | 3 | Enable the network encryption | 5 minutes |
-| 4 | (Optional) Disable the network encryption | <5 minutes |
+| 4 | Disable the network encryption | <5 minutes |
 
 ## Task 1: Check the current network configuration
 
@@ -226,7 +226,7 @@ You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.EN
 6. When you have seen the effect of the network encryption, use "*`[Ctrl]+C`* " to stop the script
 
 
-## Task 4: (Optional) Disable the network encryption
+## Task 4: Disable the network encryption
 
 1. When you have completed the lab, you can return the Native Network Encryption to the default settings
 
