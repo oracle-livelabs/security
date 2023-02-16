@@ -18,7 +18,7 @@ This lab assumes you have:
 
     *Note 1:* If providing a single Stack download for the workshop, use this simple expression.
 
-    - [sample-mkplc-freetier.zip](<--objectstorageurl-->)
+    - [oracle_access_governance_stack](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/oracle_access_governance_stack.zip)
 
     *Note 2:* If providing multiple Stacks download for the same workshop, use a conditional expression similar to the below. Keep in mind that the condition or *type* must be paired with a valid entry in the *manifest.json* file. Refer to *freetier-advanced* and *freetier-basics*
 
