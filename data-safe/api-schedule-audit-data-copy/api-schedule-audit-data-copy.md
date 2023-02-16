@@ -20,7 +20,7 @@ In this lab, you will:
 - Create a compute instance using the Oracle Linux Cloud Developer 8 image
 - Connect to your compute instance from Cloud Shell
 - Create an API key
-- Upload your PEM file to your compute instance
+- Upload your private key (PEM file) to your compute instance
 - Create a configuration file
 - Compile the Java program
 - Obtain the compartment OCID for your target database
@@ -60,7 +60,7 @@ Create a bucket to store your audit data. You also use the bucket to transfer a 
 
 ## Task 2: Start the audit trail for your target database in Oracle Data Safe
 
-1. Click **View** to access Security Center in Oracle Data Safe.
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe**.
 
 2. Under **Security Center** on the left, click **Activity Auditing**.
 
@@ -78,7 +78,7 @@ Create a bucket to store your audit data. You also use the bucket to transfer a 
 
 7. Set the start date to the beginning of the current month.
 
-8. Click **Start**. Wait for **Collection State** to change from **STARTING** to **COLLECTING** and then to **IDLE**. It takes about a minute.
+8. Click **Start**. Wait for **Collection State** to change from **STARTING** to **COLLECTING** and then to **IDLE**. It takes about one minute.
 
 
 ## Task 3: View the quantity of audit data collected by Oracle Data Safe
@@ -99,14 +99,14 @@ Create a bucket to store your audit data. You also use the bucket to transfer a 
 
 6. Set the **Start Month** and **End Month** fields to the first and last day of the current month respectively, and click **Compute**. Make note of the number of audit records collected by Oracle Data Safe.
 
-7. If for some reason the number of audit records is equal to zero, run the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) SQL script to load sample data into your database. This script generates auditable database activity for the `ADMIN` user. Then, repeat steps 5 and 6 and view the amount of collected audit data.
+7. If for some reason the number of audit records is equal to zero, run the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) SQL script in Database Actions to load sample data into your database. This script generates auditable database activity for the `ADMIN` user. Then, repeat steps 5 and 6 to view the amount of collected audit data.
 
 
 ## Task 4: Create SSH keys in Cloud Shell
 
-Create an SSH key pair that you can use to connect to your compute instance. The standard name is `cloudshellkey`.
+In Cloud Shell, create an SSH key pair that you can use to connect to your compute instance. The standard name is `cloudshellkey`.
 
-1. Open Cloud Shell. When you first open Cloud Shell, you are in your home directory; for example, `/home/jody_glove`.
+1. On the toolbar in Oracle Cloud Infrastructure, click **Developer tools**, and then select **Cloud Shell**. When you first open Cloud Shell, you are in your home directory; for example, `/home/jody_glove`.
 
 2. (Optional) Reset your Cloud Shell environment. The following command erases all the data in your `$HOME` directory on your Cloud Shell machine and resets the `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.bash_logout`, and `$HOME/.emacs` files back to their default values. Enter **y** at the prompt to confirm.
 
@@ -152,7 +152,7 @@ Create an SSH key pair that you can use to connect to your compute instance. The
 
 ## Task 5: Create a virtual cloud network (VCN)
 
-1. From the navigation menu in OCI, select **Networking**, and then **Virtual Cloud Networks**.
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Networking**, and then **Virtual cloud networks**.
 
 2. Select your compartment.
 
@@ -164,9 +164,9 @@ Create an SSH key pair that you can use to connect to your compute instance. The
 
 6. For **IPV4 CIDR Block**, enter **10.0.0.0/24**.
 
-7. Leave the **USE DNS HOSTNAMES IN THIS VCN** check box selected.
+7. Leave the **Use DNS hostnames in this VCN** check box selected.
 
-8. For **DNS label**, enter **labvcn**.
+8. For **DNS Label**, enter **labvcn**.
 
 9. Click **Create VCN**.
 
@@ -182,7 +182,7 @@ Create an SSH key pair that you can use to connect to your compute instance. The
 
 15. For subnet access, leave **Public Subnet** selected.
 
-16. Leave the **USE DNS HOSTNAMES IN THIS SUBNET** check box selected.
+16. Leave the **Use DNS hostnames in this SUBNET** check box selected.
 
 17. For **DNS label**, enter **subnet1**.
 
@@ -190,7 +190,7 @@ Create an SSH key pair that you can use to connect to your compute instance. The
 
 19. On the left, click **Internet Gateways**.
 
-20. Click **Create Internet Gateway**. The **Create Internet Gateway** dialog box is displayed.
+20. Click **Create Internet Gateway**. The **Create Internet Gateway** panel is displayed.
 
 21. For name, enter **livelabs-igw**.
 
@@ -204,7 +204,7 @@ Create an SSH key pair that you can use to connect to your compute instance. The
 
 26. Click **Add Route Rules**.
 
-    The **Add Route Rules** dialog box is displayed.
+    The **Add Route Rules** panel is displayed.
 
 27. For target type, select **Internet Gateway**.
 
@@ -221,7 +221,7 @@ The Oracle Linux Cloud Developer Image is supported on all Compute shapes, excep
 
 1. From the navigation menu for Oracle Cloud Infrastructure, select **Compute**, and then **Instances**.
 
-2. Select your compartment, for example, **DataSafeAuditData**.
+2. Select your compartment.
 
 3. Click **Create instance**.
 
@@ -231,24 +231,24 @@ The Oracle Linux Cloud Developer Image is supported on all Compute shapes, excep
 
 6. In the **Image and shape** section, click **Edit**. 
 
-7. Click **Change image**. For image source, select **Platform images**. In the **Image name** column, select **Oracle Linux Cloud Developer**. Select the **I have reviewed and accept the following documents: Oracle LInux Cloud Developer Image Terms of Use** check box. Click **Select image**.
+7. Click **Change image**. Leave **Oracle Linux** selected. Scroll down and select **Oracle Linux Cloud Developer 8**. Select the **I have reviewed and accept the following documents: Oracle LInux Cloud Developer Image Terms of Use** check box. Click **Select image**.
 
-8. Click **Change shape**. Select the **Ampere** shape series. Select the **VM.Standard.A1.Flex** image selected. Scroll down and enter **8** GB of memory. Click **Select Shape**. 
+8. Click **Change shape**. Leave **Virtual Machine** and the **Ampere** shape series selected. Leave the **VM.Standard.A1.Flex** image selected. Scroll down and enter **8** GB of memory. Click **Select shape**. 
 
-9. For networking, click **Edit**, leave **Select existing virtual cloud network** selected. For **Virtual cloud network in your-compartment**, select **labVCN**. For **Subnet in your-compartment**, select **lab-public-subnet1**. For **Public IP Address**, leave **Assign a public IPv4 address** selected.
+9. In the  **Networking** section, click **Edit**, leave **Select existing virtual cloud network** selected. For **Virtual cloud network in your-compartment**, select **labVCN**. For **Subnet in your-compartment**, select **lab-public-subnet1**. For **Public IP Address**, leave **Assign a public IPv4 address** selected.
 
-10. For SSH keys, select **Paste public keys**. Return to Cloud Shell and copy the entire SSH public key to the clipboard. It starts with `ssh-rsa` and ends with something similar to `jody_glove@1e3ebc618797`. In the SSH keys box, paste your public key. Make sure that there are no hard returns. If needed, you can run `cat .ssh/cloudshellkey.pub` to get the public key again.
+10. In the **Add SSH keys** section, select **Paste public keys**. Return to Cloud Shell and copy the entire SSH public key to the clipboard. It starts with `ssh-rsa` and ends with something similar to `jody_glove@1e3ebc618797`. In the SSH keys box, paste your public key. Make sure that there are no hard returns. If needed, you can run `cat .ssh/cloudshellkey.pub` to get the public key again.
 
-11. In the Boot volume section, leave the defaults as is.
+11. In the **Boot volume** section, leave the default settings as is.
 
-12. Click **Create**. Your compute instance is provisioned in less than a minute and its page is displayed.
+12. Click **Create** and wait about one minute for your compute instance to be provisioned. The **Work requests** page is displayed where you can view information about your compute instance.
 
 
 ## Task 7: Connect to your compute instance from Cloud Shell
 
 1. If you've navigated away from your compute instance page, you can find it again by doing this: From the navigation menu in Oracle Cloud Infrastructure, select **Compute**, and then **Instances**. Select your compartment. Click the name of your compute instance.
 
-2. On the **Instance Information** tab under **Instance Access**, copy the public IP address to the clipboard.
+2. On the **Instance Information** tab under **Instance access**, copy the public IP address to the clipboard.
 
 3. In Cloud Shell, enter the following `SSH` command to connect to your compute instance, replacing `public-ip-address` with the one you just copied to the clipboard.
 
@@ -269,7 +269,7 @@ The Oracle Linux Cloud Developer Image is supported on all Compute shapes, excep
 There are three parts to configuring the SDK: create an API key, create a configuration file, and upload a PEM file to your compute instance. To use the SDK for Java, you must have a key pair used for signing API requests, with the public key uploaded to Oracle. Only the user calling the API should be in possession of the private key.
 
 
-1. Begin by creating an API key. In the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Profile** icon, and then click your username.
+1. Begin by creating an API key. To do so, in the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Profile** icon, and then click your username.
 
 2. On the left, click **API Keys**.
 
@@ -277,7 +277,7 @@ There are three parts to configuring the SDK: create an API key, create a config
 
     The **Add API Key** dialog box is displayed.
 
-4. Leave **Generate API Key Pair** selected, click **Download Private Key**, and save your key (PEM file) to a local directory on your computer. 
+4. Leave **Generate API Key Pair** selected, click **Download Private Key**, and save your private key (PEM file) to a local directory on your computer. 
 
 5. Click **Add**.
 
@@ -308,11 +308,11 @@ There are three parts to configuring the SDK: create an API key, create a config
     # <copy>mkdir ~/.oci</copy>
     ```
 
-## Task 9: Upload your PEM file to your compute instance
+## Task 9: Upload your private key (PEM file) to your compute instance
 
-Upload your PEM file into object storage, and then copy it to your compute instance.
+Upload your private key (PEM file) into object storage, and then copy it to your compute instance.
 
-1. From the navigation menu in Oracle Cloud Infrastructure, select **Storage**, and then **Buckets**. Select your compartment, for example, **DataSafeAuditData**. Click the name of your bucket.
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Storage**, and then **Buckets**. Select your compartment. Click the name of your bucket.
    
     The **Bucket Details** page is displayed.
 
@@ -324,7 +324,7 @@ Upload your PEM file into object storage, and then copy it to your compute insta
 
 4. Click **Close**.
 
-5. At the end of the row for your PEM file listing, click the 3 dots, and then select **Create Pre-Authenticated Request**. 
+5. At the end of the row for your private key file listing, click the 3 dots, and then select **Create Pre-Authenticated Request**. 
 
     The **Create Pre-Authenticated Request** panel is displayed.
 
@@ -342,13 +342,13 @@ Upload your PEM file into object storage, and then copy it to your compute insta
     # <copy>cd ~/.oci</copy>
     ```
 
-10. Use the `WGET` command to copy your PEM file from object storage into the .oci directory. 
+10. Use the `WGET` command to copy your private key file from object storage into the `.oci` directory. 
 
     ```text
     # <copy>wget full-url-to-PEM-file</copy>
     ```
 
-11. List the contents of the directory to ensure the file is present.
+11. List the contents of the directory to ensure the private key file is present.
 
     ```text
     # <copy>ls</copy>
@@ -356,7 +356,7 @@ Upload your PEM file into object storage, and then copy it to your compute insta
 
 ## Task 10: Create a configuration file
 
-In this task, you create a configuration file named `config` in the `oci` directory for the SDK, and then add the API content that you obtained from the API key (which you created in a previous task). In the config file, correct the last line by adding the actual path to your PEM file on your compute instance. The java file that you compile in a subsequent step looks for the config file in `~/.oci/config` with a profile named `DEFAULT`.
+In this task, you create a configuration file named `config` in the `.oci` directory for the SDK, and then add the API content that you obtained from the API key (which you created in a previous task). In the config file, correct the last line by adding the actual path to your private key file on your compute instance. The java file that you compile in a subsequent task looks for the config file in `~/.oci/config` with a profile named `DEFAULT`.
 
 1. Using the vi editor and while you are still in the `.oci` directory, create a configuration file.
 
@@ -364,7 +364,7 @@ In this task, you create a configuration file named `config` in the `oci` direct
     # <copy>vi config</copy>
     ```
 
-2. Paste the configuration file contents (earlier you pasted this content into a temporary text file) into the `config` file. The content looks similar to the following code. Be sure to include `[DEFAULT]` at the top.
+2. Press **Escape** and then **i**. Paste the configuration file contents into the `config` file. Note: Earlier you pasted this content into a temporary text file. The content looks similar to the following code. Be sure to include `[DEFAULT]` at the top.
 
    ```text
     [DEFAULT]
@@ -375,57 +375,46 @@ In this task, you create a configuration file named `config` in the `oci` direct
     key_file=<path to your private keyfile> # TODO
     ```
 
-3. Modify the last line to be the path to your PEM file on your compute instance. In the example below, substitute `your-PEM-file-name` with your own PEM file name.
+3. Modify the last line to be the path to your PEM file on your compute instance. In the example below, substitute `your-private-key-file-name` with your own private key file name.
 
     ```text
-    <copy>key_file=~/.oci/your-PEM-file-name</copy>
+    <copy>key_file=~/.oci/your-private-key-file-name</copy>
     ```
 
 4. Save and close the file (press **Escape**, enter **:wq**, and press **Return**).
 
-5. List the contents of the current directory and ensure that your config file is there.
+5. List the contents of the current directory and ensure that your `config` file is there.
 
     ```text
     # <copy>ls</copy>
+
+    config  your-private-key-file-name
     ```
 
 
-## Task 11: Compile the Java program
+## Task 11: Compile a Java program
 
-The Oracle Linux Cloud Developer image comes with the SDK and Java software already installed. The SDK provides several example files, including a java program named `DataSafeRestAPIClientExample.java`, which contains Oracle Data Safe REST API commands. This file resides in the `/usr/lib64/java-oci-sdk/examples` directory on your compute instance. The purpose of the java file is to copy audit data from the Oracle Data Safe repository into object storage. You can also download this file from GitHub using the following command: `wget https://raw.githubusercontent.com/oracle/oci-java-sdk/master/bmc-examples/src/main/java/DataSafeRestAPIClientExample.java`.
+The Oracle Linux Cloud Developer image comes with the SDK and Java software already installed. The OCI jar file is located in `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-<version>.jar`, and third-party libraries are in `/usr/lib64/java-oci-sdk/third-party/lib`. To compile a Java file, use the `javac` command. 
 
-The OCI jar file is located in `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-<version>.jar`, and third-party libraries are in `/usr/lib64/java-oci-sdk/third-party/lib`. To compile the java file, use the `javac` command.
+In this task, you compile a Java program named `DataSafeRestAPIClientExample.java`, which comes with the SDK installation. The purpose of this program is to copy audit data from the Oracle Data Safe repository into a specific object storage bucket. If needed, you can also download the program directly from Github by running the following command: `wget https://raw.githubusercontent.com/oracle/oci-java-sdk/master/bmc-examples/src/main/java/DataSafeRestAPIClientExample.java`.
 
-1. Switch to the `/usr/lib64/java-oci-sdk/examples` directory and list its content. 
-
-    ```text
-    # <copy>cd /usr/lib64/java-oci-sdk/examples</copy>
-    # <copy>ls</copy>
-    ```
-
-
-2. Review the `DataSafeRestAPIClientExample.java` file. 
+1. Verify the version of the `oci-java-sdk-full-version.jar` file. In this example, the version is 2.27.0.
 
     ```text
-    # <copy>cat DataSafeRestAPIClientExample.java</copy>
-    ```
-
-3. Verify the version of the `oci-java-sdk-full-version.jar` file. In this example, the version is 2.27.0.
-
-    ```text
-    # <copy>cd /usr/lib64/java-oci-sdk/lib</copy>
-    # <copy>ls</copy>
+    # <copy>ls /usr/lib64/java-oci-sdk/lib</copy>
 
     oci-java-sdk-full-2.27.0.jar  oci-java-sdk-full-2.27.0-javadoc.jar  oci-java-sdk-full-2.27.0-sources.jar
     ```
 
-4. Switch to the `/usr/lib64/java-oci-sdk` directory.
+2. Switch to the `/usr/lib64/java-oci-sdk` directory.
 
     ```text
     # <copy>cd /usr/lib64/java-oci-sdk</copy>
     ```
 
-5. Compile the `DataSafeRestAPIClientExample.java` file. Be sure to use the correct version in the `oci-java-sdk-full-version.jar` file name. It’s very common that a Java program depends on one or more external libraries (JAR files). Use the flag `-classpath` (or `-cp`) to tell the compiler where to look for external libraries. By default, the compiler looks in the bootstrap classpath and in the `CLASSPATH` environment variable.
+3. Compile the `DataSafeRestAPIClientExample.java` file. Be sure to use the correct version in the `oci-java-sdk-full-<version>.jar` file name. The example below uses version 2.27.0. 
+
+    It’s very common that a Java program depends on one or more external libraries (JAR files). Use the flag `-classpath` (or `-cp`) to tell the compiler where to look for external libraries. By default, the compiler looks in the bootstrap classpath and in the `CLASSPATH` environment variable.
 
     ```text
     # <copy>javac -cp lib/oci-java-sdk-full-2.27.0.jar:third-party/lib/* examples/DataSafeRestAPIClientExample.java</copy>
@@ -443,19 +432,27 @@ The OCI jar file is located in `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-<v
 
 ## Task 12: Obtain the compartment OCID for your target database
 
-1. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**. 
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe**. 
 
-2. Under **List scope** on the left, make sure that your compartment is selected. 
+2. On the left, click **Target Databases**. 
 
-3. On the right, click the name of your database. On the **Autonomous Database information** tab, find the compartment information. 
+3. On the left, select your compartment.
 
-4. From the navigation menu, select **Identity and Security**, and then on the right under **Identity**, select **Compartments**. 
+4. On the right, click the name of your target database. 
 
-5. Click the name of your compartment.
+    The **Target Database Details** page is displayed.
+    
+5. On the **Target Database Details** tab, make note of the compartment. 
+
+6. From the navigation menu, select **Identity & Security**, and then on the right under **Identity**, select **Compartments**. 
+
+7. Click the name of your compartment.
 
     The **Compartment details** page is displayed.
 
-6. On the **Compartment Information** tab, click the **Copy** link next to **OCID** and paste the OCID into a temporary local text file. You need the OCID for the next task. 
+8. On the **Compartment Information** tab, click the **Copy** link next to **OCID** and paste the OCID into a temporary local text file. You need the OCID for the next task.
+
+
 
 ## Task 13: Run the compiled Java class file
 
@@ -467,25 +464,57 @@ Run the `DataSafeRestAPIClientExample.class` file to test that it runs without e
 1. Run the following commands to set two variables. Substitute `compartment-ocid-for-target-database` with your own OCID.
 
     ```text
-    # <copy>export BUCKET=DataSafeAuditDataBucket</copy>
+    # <copy>export BUCKET=DataSafeAuditData</copy>
     # <copy>export COMPARTMENT=compartment-ocid-for-target-database</copy>
     ```
 
 2. Make sure that you are still working in the `/usr/lib64/java-oci-sdk/lib/examples` directory.
 
-3. Run the following command to run the class file.
+3. Run the following command to run the class file. The example below uses `oci-java-sdk-full-2.27.0.jar`, but be sure to use the version that is on your system. You can ignore the error about failing to load the `org.slf4j.impl.StaticLoggerBinder` class. 
 
     ```text
     # <copy>java -cp /usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-2.27.0.jar:/usr/lib64/java-oci-sdk/third-party/lib/*:/usr/lib64/java-oci-sdk/examples DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
+
+    SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+    SLF4J: Defaulting to no-operation (NOP) logger implementation
+    SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+    Getting the namespace
+
+
+    Namespace: frmwj0cqbupb
+
+
+    Getting content for object cursor  from bucket: DataSafeAuditData
+
+
+    ignore
+    Finished reading content for object cursor, last upload's last auditEvent record's timecollected FAILED
+
+
+    2023-02-15T19:03:33.225Z
+    Querying for auditEvents with timeCollected Start = 2023-02-15T19:03:33.225Z, End = 2023-02-16T19:03:33.223Z
+
+
+    Count43
+
+
+    Upload complete at  Thu Feb 16 19:03:34 GMT 2023 of auditeventjson2023-02-16T19:03:34.290935835Z _noofrecords_ 43 Start =2023-02-15T19:03:33.225Z, End=2023-02-16T19:03:33.223Z  OpcRequestId: fra-1:RMvrVLBJGMQYyKnOATHwJs6Ywthox3dK9BGYWIaZv3LD2lFq5oRaUuZKzWsJkwZf
+
+
+    Upload complete at  Thu Feb 16 19:03:34 GMT 2023 of cursor  OpcRequestId: fra-1:v5KE-S9VbuBMsqnof2qx5dkabTsHgbZv50wSAJJLk-TD-b3e4cqwRmIDG6Bdwa1y
     ```
+
+4. Review the output. The third last output line tells you the count of audit records copied into object storage.
+
+
 
 ## Task 14: Verify that the audit data is in your bucket
 
-1. From the navigation menu in OCI, select **Storage**, and then **Buckets**.
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Storage**, and then **Buckets**.
 
 2. Select your compartment.
 
-3. Click the name of your bucket, for exmaple, **DataSafeAuditData**.
+3. Click the name of your bucket.
 
     The **Bucket Details** page for your bucket is displayed.
 
@@ -493,12 +522,14 @@ Run the `DataSafeRestAPIClientExample.class` file to test that it runs without e
 
 5. Notice that you now have a line item named `auditeventjson` that contains the text `noofrecords_<some-number>`. This is the audit data copied from the Oracle Data Safe repository. `<some-number>` is the number of copied audit records.
 
+    ![Initial audit records object](images/initial-audit-records-object.png "Initial audit records object")
+
 
 ## Task 15: Create an SH script for cronjob
 
-Now that you've verified that the compiled java program works fine, you are ready to schedule it using cronjob on your compute instance. The Cron daemon is a built-in Linux utility that runs processes on your system at a scheduled time. Cron reads the crontab (cron tables) for predefined commands and scripts. You need to be the `root` user or a user with `sudo` privileges to create a cron job.
+Now that you've verified that the compiled Java program works fine, you are ready to schedule it using cronjob on your compute instance. The Cron daemon is a built-in Linux utility that runs processes on your system at a scheduled time. Cron reads the crontab (cron tables) for predefined commands and scripts. You need to be the `root` user or a user with `sudo` privileges to create a cron job.
 
-In this task, you create an SH script that contains the variables and the Java command to run the Java program. In the next task, you schedule the SH script.
+In this task, you create an SH script that contains the variables and Java command to run the Java program. In the next task, you schedule the SH script.
 
 1. Change to the `/usr/local/bin` directory.
 
@@ -512,14 +543,14 @@ In this task, you create an SH script that contains the variables and the Java c
     # <copy>vi datasafejob.sh</copy>
     ```
 
-3. Add the following content to the SH file. Notice that we use a slightly different Java command in this step than in task 13. To execute the class file from anywhere, we need to include the path to the `examples` directory in the class path.
+3. Add the following content to the SH file. Notice that we use a slightly different Java command in this step than in task 13. To execute the class file from anywhere, we need to include the path to the `examples` directory in the class path. Again, we are using `oci-java-sdk-full-2.27.0.jar`. Be sure to use the correct version on your system. Substitute `compartment-ocid-for-target-database` with your own compartment OCID.
 
     ```text
     <copy>#!/bin/bash
 
-    export BUCKET=DataSafeAuditDataBucket
+    export BUCKET=DataSafeAuditData
 
-    export COMPARTMENT=ocid1.compartment.oc1..aaaaaaaaagz53obpmrdli3lcdl5u36wd6nkrbi4kpvduvyqlmm4w2krpediq
+    export COMPARTMENT=compartment-ocid-for-target-database
 
     java -cp /usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-2.27.0.jar:/usr/lib64/java-oci-sdk/third-party/lib/*:/usr/lib64/java-oci-sdk/examples DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
     ```
@@ -549,10 +580,13 @@ Start by scheduling the SH script to run every minute so that you can test that 
     <copy>* * * * * /usr/local/bin/datasafejob.sh</copy>
     ```
 
-3. Generate some activity for Data Safe to audit. To do this, access Database Actions for your target database. Download the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad. Copy the entire script to the clipboard and paste it into the worksheet in Database Actions. On the toolbar, click the **Run Script** button and wait for the script to finish running.
+3. Generate some activity for Oracle Data Safe to audit. To do this, access Database Actions for your target database. Download the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad. Copy the entire script to the clipboard and paste it into the worksheet in Database Actions. On the toolbar, click the **Run Script** button and wait for the script to finish running.
 
 
-4. Return to your bucket and view the audit data being collected each minute.
+4. Return to your bucket and view the audit data being collected each minute. It may take a few minutes for the audit data objects to be displayed.
+
+    ![Audit records objects](images/audit-records-objects.png "Audit records objects")
+
 
 5. In Cloud Shell, access crontab.
 
@@ -581,6 +615,8 @@ Start by scheduling the SH script to run every minute so that you can test that 
 
 3. Save your changes (press **Escape**, enter **:wq**, and press **Return**).
 
+4. Close Cloud Shell.
+
 
 ## Learn More
 - [Activity Auditing Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-741E8CFE-041E-46C4-9C04-D849573A4DB7)
@@ -594,8 +630,8 @@ Start by scheduling the SH script to run every minute so that you can test that 
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Contributors** - Richard Evans, Anna Haikl, Russ Lowenthal, Archana Rao
-- **Last Updated By/Date** - Jody Glover, January 24, 2023
+- **Contributors** - Richard Evans, Anna Haikl, Russ Lowenthal, Archana Rao, Bettina Schaeumer
+- **Last Updated By/Date** - Jody Glover, February 16, 2023
 
 
 

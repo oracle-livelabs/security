@@ -22,11 +22,10 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Administrator permissions in your tenancy
+- *Administrator* permissions in your tenancy
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
 - A valid email address
-
 
 ### Assumptions
 
@@ -45,9 +44,13 @@ This lab assumes you have:
 
 4. In the **Last Assessed On** column, click **View Report** to view the latest user assessment.
 
-5. Review the information on the **Assessment Summary** tab. 
+5. Review the charts on the **Overview** tab. 
 
-6. Scroll down and review the information in the **Assessment Details** section.
+    ![Latest user assessment Overview tab](images/latest-ua-overview-tab.png "Latest user assessment Overview tab")
+
+6. Scroll down and review the information in the **User Details** section.
+
+    ![Latest user assessment User Details section](images/latest-ua-user-details-section.png "Latest user assessment User Details section")
 
 
 ## Task 2: Set the latest user assessment as the baseline
@@ -61,6 +64,8 @@ This lab assumes you have:
      `Baseline has been set.`
 
 3. Click **View History**. Notice that in your compartment (where your target database resides), you have a baseline assessment.
+
+    ![Assessment History page](images/assessment-history.png "Assessment History page")
 
 
 ## Task 3: Create a notification topic and subscription
@@ -85,7 +90,9 @@ To create a notifications topic, you must a tenancy administrator.
 
     The **Topic Details** page is displayed.
 
-7. Click **Create Subscription**. The **Create Subscription** panel is displayed.
+7. Click **Create Subscription**. 
+
+    The **Create Subscription** panel is displayed.
 
 8. For **Protocol**, leave **Email** selected.
 
@@ -99,7 +106,9 @@ To create a notifications topic, you must a tenancy administrator.
 
     A **Subscription confirmed** page is displayed in the browser.
 
-12. Notice that the state of the subscription is now set to **Active**.
+12. Refresh the **Topic Details** page. Notice that the state of the subscription is now set to **Active**.
+
+    ![Active Subscription](images/active-subscription.png "Active Subscription")
 
 
 ## Task 4: Create a rule in the Events service
@@ -118,7 +127,7 @@ To create a notifications topic, you must a tenancy administrator.
 
 7. For **Service Name**, select **Data Safe**.
 
-8. For **Event type**, select **User Assessment Drift From Baseline**.
+8. For **Event Type**, select **User Assessment Drift From Baseline**.
 
 9. Click **View example events (JSON)** and review the rule logic. This is the information that you will receive in your email. Click **Cancel** to close the panel.
 
@@ -128,14 +137,18 @@ To create a notifications topic, you must a tenancy administrator.
 
 12. For **Topic**, select the topic that you just created (for example, **security-drift**).
 
+    ![Create Rule page](images/create-rule-page.png "Create Rule page")
+
 13. Click **Create Rule**.
 
     The **Security Drift** page is displayed.
 
+    ![Security Drift page](images/security-drift-page.png "Security Drift page")
+
 
 ## Task 5: Generate activity on the target database
 
-In this task, you issue a `GRANT` command on your target database.
+In this task, you create a user on your target database with the `PDB_DBA` role.
 
 1. Access the SQL worksheet in Database Actions. If your session has expired, sign in again as the `ADMIN` user.
 
@@ -179,16 +192,20 @@ In this task, you issue a `GRANT` command on your target database.
 
 9. Compare the risk values between the baseline assessment and the new assessment that you just generated. Are there any differences?
 
+    ![Assessment History after](images/assessment-history-after.png "Assessment History after")
+
 10. Click **Close**.
 
 
 ## Task 7: Generate a Comparison report for User Assessment
 
-After you generate a comparison report, if there is security drift (which there should be because you made changes on the database), the Events service should trigger an email notification.
+After you generate a comparison report, if there is security drift (which there should be because you added a privileged user), the Events service should trigger an email notification.
 
 1. With the latest user assessment displayed, under **Resources** on the left, click **Compare with Baseline**. Oracle Data Safe automatically begins processing the comparison.
 
-2. When the comparison operation is completed, scroll down and review the **Comparison** report.
+2. When the comparison operation is completed, review the **Comparison** report. Click **Open Details** to view more information.
+
+    ![Comparison Details panel](images/comparison-details-panel.png "Comparison Details panel")
 
 
 ## Task 8: Review your email notification
@@ -197,33 +214,34 @@ After you generate a comparison report, if there is security drift (which there 
 
 2. Locate and open the email notification from Oracle. The message contains text similar to the following:
 
-    ```
+    ```text
     {
     "eventType" : "com.oraclecloud.datasafe.userassessmentdriftfrombaseline",
     "cloudEventsVersion" : "0.1",
     "eventTypeVersion" : "2.0",
     "source" : "DataSafe",
-    "eventTime" : "2023-01-22T19:46:24Z",
+    "eventTime" : "2023-02-16T19:54:52Z",
     "contentType" : "application/json",
     "data" : {
-      "compartmentId" : "ocid1.compartment.oc1...",
-      "compartmentName" : "Compartment1",
-      "resourceName" : "userAssessment",
-      "resourceId" : "not applicable",
-      "availabilityDomain" : "ad1",
-      "additionalDetails" : {
-        "targetNames" : [ "ATP1" ],
-        "ComparisonId" : "ocid1.datasafesecurityassessment.oc1..."
-      }
+        "compartmentId" : "ocid1.compartment.oc1...",
+        "compartmentName" : "compartment-name",
+        "resourceName" : "userAssessment",
+        "resourceId" : "not applicable",
+        "availabilityDomain" : "ad3",
+        "additionalDetails" : {
+        "targetName" : "ATP2000",
+        "comparedWith" : "ocid1.datasafeuserassessment.oc1..."
+        }
     },
-    "eventID" : "44b1620c-4f9d-...",
+    "eventID" : "e46fad7b-ac11...",
     "extensions" : {
-      "compartmentId" : "ocid1.compartment.oc1..."
-      }
+        "compartmentId" : "ocid1.compartment.oc1..."
+    }
     }
 
     --
-    You are receiving notifications as a subscriber to the topic: security-drift (Topic OCID: ocid1.onstopic.oc1...). To stop receiving notifications from this topic, unsubscribe: https://cell1.notification....
+    You are receiving notifications as a subscriber to the topic: security-drift (Topic OCID: ocid1.onstopic.oc1.eu-frankfurt-1.aaaaa...). 
+    To stop receiving notifications from this topic, unsubscribe: https://cell1.notification.eu-frankfurt-1.oci.oraclecloud.com/20181201/subscriptions/ocid1.onssubscription.oc1.eu-frankfurt-1.aaaaa.../unsubscription?token=YVpsOE4weTU4TTdKSGxoTkVwR3kyaU8...==&protocol=EMAIL
 
     Please do not reply directly to this email. If you have any questions or comments regarding this email, contact your account administrator.
 
@@ -238,6 +256,7 @@ After you generate a comparison report, if there is security drift (which there 
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 15, 2023
+- **Contributors** - Bettina Schaeumer
+- **Last Updated By/Date** - Jody Glover, February 16, 2023
 
 
