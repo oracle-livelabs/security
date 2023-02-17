@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Oracle Data Safe Advanced",
+  "workshoptitle": "Integrate Oracle Data Safe with Applications and Services",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
@@ -27,19 +27,24 @@
       "type": "freetier"
     },
     {
-      "title": "Lab 2: Copy audit data to object storage using the Oracle Data Safe REST API",
+      "title": "Lab 2: Download the latest security assessment by using the Oracle Data Safe CLI",
+      "description": "This lab shows you how to use the Oracle Data Safe CLI to download a security assessment report.",
+      "filename": "../../cli/cli.md",
+      "type": "freetier"
+    },{
+      "title": "Lab 3: Copy audit data to object storage using the Oracle Data Safe REST API",
       "description": "This lab shows you how to use the Oracle Data Safe REST API to copy audit data to object storage.",
       "filename": "../../api-copy-audit-data/api-copy-audit-data.md",
       "type": "freetier"
     },
     {
-      "title": "Lab 3: Schedule the copying of audit data to object storage using the Oracle Data Safe REST API",
+      "title": "Lab 4: Schedule the copying of audit data to object storage using the Oracle Data Safe REST API",
       "description": "This lab shows you how to use the Oracle Data Safe REST API to schedule the copying of audit data to object storage.",
       "filename": "../../api-schedule-audit-data-copy/api-schedule-audit-data-copy.md",
       "type": "freetier"
     },
     {
-      "title": "Lab 4: Set up notifications in Oracle Cloud Infrastructure for Oracle Data Safe events",
+      "title": "Lab 5: Get notified about security drift on your target databases by setting up Oracle Data Safe events",
       "description": "This lab shows you how to set up events in Oracle Cloud Infrastructure for Oracle Data Safe events.",
       "filename": "../../events/events.md",
       "type": "freetier"

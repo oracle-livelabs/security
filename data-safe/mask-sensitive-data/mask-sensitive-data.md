@@ -49,8 +49,6 @@ To use the Data Masking feature with an Autonomous Database on Shared Infrastruc
 
 3. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query. 
 
- 
-
     ![Run Statement button on toolbar](images/run-statement-button.png "Run Statement button on toolbar")
 
     The script output should read as follows:
@@ -218,4 +216,4 @@ After you create a masking policy, you can run a data masking job against your t
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 21, 2023
+- **Last Updated By/Date** - Jody Glover, February 14, 2023
