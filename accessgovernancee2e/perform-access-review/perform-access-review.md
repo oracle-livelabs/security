@@ -112,7 +112,7 @@ In this lab, you will:
 
    **URL:**
     ```
-      <copy>http://<--privateipofyourcomputeinstance-->:14000/identity</copy>
+      <copy>https://oimhost.us.oracle.com:14000/identity</copy>
      ```
    **Username:**
      ```

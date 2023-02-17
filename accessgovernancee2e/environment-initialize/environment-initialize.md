@@ -27,7 +27,7 @@ This lab assumes you have:
     <copy>docker -v</copy>
     ```
     ```
-    Expected output: Docker version 20.10.22, build 3a2c30b
+    Expected output: Docker version 23.0.0, build e92dd87
     ```
     ![Check the version of docker](images/docker-version.png)
 

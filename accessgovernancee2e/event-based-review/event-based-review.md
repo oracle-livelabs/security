@@ -57,7 +57,7 @@ In this lab, you will:
 
   **URL:**
     ```
-    <copy>https://<--privateipofyourcomputeinstace-->:14000/identity</copy>
+    <copy>https://oimhost.us.oracle.com:14000/identity</copy>
     ```
     **Username:**
     ```
@@ -108,7 +108,7 @@ In this lab, you will:
 
     **URL:**
     ```
-    <copy>https://<--privateipofyourcomputeinstace-->:14000/identity</copy>
+    <copy>https://oimhost.us.oracle.com:14000/identity</copy>
     ```
     **Username:**
     ```
