@@ -1,10 +1,10 @@
 # Introduction
 
-This workshop is designed to help developers and administrators become familiar with the advanced capabilities of Oracle Data Safe. You learn how to register an Autonomous Database with Oracle Data Safe, integrate applications with the Oracle Data Safe REST API, and configure Oracle Data Safe events.
+This workshop is designed to show developers and administrators how they can perform complex tasks by integrating Oracle Data Safe with other applications and services. The workshop covers how to register an Autonomous Database with Oracle Data Safe, use the Oracle Data Safe command line interface (CLI), use the Oracle Data Safe REST API, and configure Oracle Data Safe events.
 
 You can do this workshop in Oracle's free tier with trial credits or in your own tenancy using a paid Oracle Cloud account.
 
-Estimated Workshop Time: 2 hours
+Estimated Workshop Time: 1.5 hours
 
 ## About Oracle Data Safe
 
@@ -17,9 +17,10 @@ Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:U
 In this workshop, you learn how to perform the following tasks:
 
 - Register an Autonomous Database with Oracle Data Safe
+- Download the latest security assessment by using the Oracle Data Safe CLI
 - Copy audit data to object storage using the Oracle Data Safe REST API
 - Schedule the copying of audit data to object storage using the Oracle Data Safe REST API
-- Set up notifications in Oracle Cloud Infrastructure for Oracle Data Safe events
+- Get notified about security drift on your target database by setting up Oracle Data Safe events
 
 ## Learn More
 
@@ -33,4 +34,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, January 22, 2023
+* **Last Updated By/Date** - Jody Glover, January 26, 2023

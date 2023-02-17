@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Label 
 
 *Estimated Lab Time:* 30 minutes
 
-*Version tested in this lab:* Oracle DB 19.13
+*Version tested in this lab:* Oracle DB 19.17
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Label Security (May 2022)*" [](youtube:7hBsg0ygZt4)
@@ -77,8 +77,8 @@ Different applications have different purposes:
     <copy>./ols_setup_env.sh</copy>
     ````
 
-    ![](./images/ols-001a.png " ")
-    ![](./images/ols-001b.png " ")
+    ![OLS](./images/ols-001a.png "OLS")
+    ![OLS](./images/ols-001b.png "OLS")
 
     **Note**:
     - This script creates `C##OSCAR_OLS` user, creates a table, loads data, creates users that will be used to showcase difference scenarios and it also configures, and enables OLS
@@ -91,8 +91,8 @@ Different applications have different purposes:
     <copy>./ols_create_policy.sh</copy>
     ````
 
-    ![](./images/ols-002.png " ")
-    ![](./images/ols-002b.png " ")
+    ![OLS](./images/ols-002.png "OLS")
+    ![OLS](./images/ols-002b.png "OLS")
 
     **Note**:
     - This script will create Policy (Levels, Groups, and Labels), set Levels and Groups for Users, and apply the Policy to the `APPCRM.CRM_CUSTOMER` table
@@ -104,7 +104,7 @@ Different applications have different purposes:
     <copy>./ols_label_data.sh</copy>
     ````
 
-    ![](./images/ols-003.png " ")
+    ![OLS](./images/ols-003.png "OLS")
 
     **Note**:   
     - This script update data labels to create some diversity of labels that will be used in the scenarios
@@ -117,7 +117,7 @@ Different applications have different purposes:
     <copy>./ols_label_sec_in_action.sh</copy>
     ````
 
-    ![](./images/ols-004.png " ")
+    ![OLS](./images/ols-004.png "OLS")
 
     **Note**:   
     - This script connects as different apps would be connecting
@@ -131,7 +131,7 @@ Different applications have different purposes:
     <copy>./ols_to_be_forgotten.sh</copy>
     ````
 
-    ![](./images/ols-005.png " ")
+    ![OLS](./images/ols-005.png "OLS")
 
     **Note**:
     - This script simulates an app that would process records marked to be forgotten
@@ -147,7 +147,7 @@ Different applications have different purposes:
     <copy>./ols_clean_env.sh</copy>
     ````
 
-    ![](./images/ols-006.png " ")
+    ![OLS](./images/ols-006.png "OLS")
 
 ## Task 2: Protect Glassfish Application
 
@@ -157,7 +157,7 @@ Different applications have different purposes:
     <copy>./ols_setup_glassfish_env.sh</copy>
     ````
 
-    ![](./images/ols-007.png " ")
+    ![OLS](./images/ols-007.png "OLS")
 
 2. Next, setup the OLS policy for Glassfish
 
@@ -165,8 +165,8 @@ Different applications have different purposes:
     <copy>./ols_setup_glassfish_policy.sh</copy>
     ````
 
-    ![](./images/ols-008a.png " ")
-    ![](./images/ols-008b.png " ")
+    ![OLS](./images/ols-008a.png "OLS")
+    ![OLS](./images/ols-008b.png "OLS")
 
     **Note**:   
     - This script enable OLS, so it will reboot the DB
@@ -181,13 +181,15 @@ Different applications have different purposes:
     <copy>./ols_config_employeesearch_app.sh</copy>
     ````
 
-    ![](./images/ols-009.png " ")
+    ![OLS](./images/ols-009.png "OLS")
 
     **Note**:   
     - This script will create a custom table for the Application User Labels, `EMPLOYEESEARCH_PROD.DEMO_HR_USER_LABELS`, and populate it with all of the rows from `EMPLOYEESEARCH_PROD.DEMO_HR_USERS`
     - The script will also create a few additional users we will use in this exercise, such as `CAN_CANDY`, `EU_EVAN`, and then grant the appropriate OLS User Labels to all of the Application Users
 
-4. Open a web browser and launch the Glassfish app by navigating to this URL: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+4. Open a web browser window to *`https://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
+
+    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
 5. Login to the application as *`can_candy`* with the password "*`Oracle123`*"
 
@@ -202,7 +204,7 @@ Different applications have different purposes:
     - Select "**Search Employees**" and click [**Search**]
     - See the result before enabling OLS policy
 
-    ![](./images/ols-017.png " ")
+    ![OLS](./images/ols-017.png "OLS")
 
 6. Logout and login as *`eu_evan`* with the password "*`Oracle123`*"
 
@@ -217,7 +219,7 @@ Different applications have different purposes:
     - Select "**Search Employees**" and click [**Search**]
     - You can see all employees data with no geographic restriction
 
-    ![](./images/ols-018.png " ")
+    ![OLS](./images/ols-018.png "OLS")
 
 7. Go back to your terminal session and apply the OLS policy to the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table
 
@@ -225,7 +227,7 @@ Different applications have different purposes:
     <copy>./ols_apply_policy.sh</copy>
     ````
 
-    ![](./images/ols-010.png " ")
+    ![OLS](./images/ols-010.png "OLS")
 
     **Note**: Once an OLS policy is applied to a table, only users with authorized labels, or OLS privileges, can see data
 
@@ -235,7 +237,7 @@ Different applications have different purposes:
     <copy>./ols_set_row_labels.sh</copy>
     ````
 
-    ![](./images/ols-011.png " ")
+    ![OLS](./images/ols-011.png "OLS")
 
     **Note**:   
     - We will do this based on the `CITY` column in the table
@@ -247,25 +249,25 @@ Different applications have different purposes:
     <copy>./ols_verify_our_policy.sh</copy>
     ````
 
-    ![](./images/ols-012.png " ")
+    ![OLS](./images/ols-012.png "OLS")
 
     ...and go through the data to demonstrate the different data labels and how they are displayed based on the "application user" that is accessing it:
 
     - for the DB USer, and schema owner `EMPLOYEESEARCH_PROD`
 
-    ![](./images/ols-013.png " ")
+    ![OLS](./images/ols-013.png "OLS")
 
     - for the App User `HRADMIN`
 
-    ![](./images/ols-014.png " ")
+    ![OLS](./images/ols-014.png "OLS")
 
     - for the App User `EU_EVAN`
 
-    ![](./images/ols-015.png " ")
+    ![OLS](./images/ols-015.png "OLS")
 
     - for the App User `CAN_CANDY`
 
-    ![](./images/ols-016.png " ")
+    ![OLS](./images/ols-016.png "OLS")
 
 10. Finally, we make changes to the Glassfish App config files to embbed the OLS policy... This script will step you through all of the additions we need to make
 
@@ -273,7 +275,7 @@ Different applications have different purposes:
     <copy>./ols_upd_glassfish.sh</copy>
     ````
 
-    ![](./images/ols-019.png " ")
+    ![OLS](./images/ols-019.png "OLS")
 
 11. Go back to your Glassfish app and login as *`can_candy`* with the password "*`Oracle123`*"
 
@@ -288,7 +290,7 @@ Different applications have different purposes:
     - Select "**Search Employees**" and click [**Search**]
     - Now, you will see there is a difference after enabling OLS policy: `CAN_CANDY` can only see **Canadian-labeled users**!
 
-    ![](./images/ols-020.png " ")
+    ![OLS](./images/ols-020.png "OLS")
 
 12. Logout and login as *`eu_evan`* with the password "*`Oracle123`*"
 
@@ -303,7 +305,7 @@ Different applications have different purposes:
     - Select "**Search Employees**" and click [**Search**]
     - Notice that `EU_EVAN` can only see **EU-labeled users**!
 
-    ![](./images/ols-021.png " ")
+    ![OLS](./images/ols-021.png "OLS")
 
 13. Logout and login as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -318,7 +320,7 @@ Different applications have different purposes:
     - Select "**Search Employees**" and click [**Search**]
     - Notice that accordingly to the OLS policy, `HRADMIN` can still see **all users**!
 
-    ![](./images/ols-022.png " ")
+    ![OLS](./images/ols-022.png "OLS")
 
 14. When you have completed the lab, you can remove the policies and restore the Glassfish JSP files to their original state
 
@@ -326,8 +328,8 @@ Different applications have different purposes:
     <copy>./ols_restore_glassfish_env.sh</copy>
     ````
 
-    ![](./images/ols-023a.png " ")
-    ![](./images/ols-023b.png " ")
+    ![OLS](./images/ols-023a.png "OLS")
+    ![OLS](./images/ols-023b.png "OLS")
 
 You may now proceed to the next lab!
 
@@ -338,7 +340,7 @@ OLS works by comparing the row label with a user's label authorizations to enabl
 
 This way, users with different authorization levels (for example, managers and sales representatives) can have access to specific rows of data in a table. You can apply OLS policies to one or more application tables. The design of OLS is similar to Oracle Virtual Private Database (VPD). However, unlike VPD, OLS provides the access mediation functions, data dictionary tables, and policy-based architecture out of the box, eliminating customized coding and providing a consistent label based access control model that can be used by multiple applications.
 
-![](./images/ols-concept.png " ")
+![OLS](./images/ols-concept.png "OLS")
 
 OLS is based on multi-level security (MLS) requirements that are found in government and defense organizations. OLS software is installed by default, but not automatically enabled. You can enable OLS in either SQLPlus or by using the Oracle Database Configuration Assistant (DBCA). The default administrator for OLS is the user `LBACSYS`. To manage OLS, you can use either a set of PL/SQL packages and standalone functions at the command-line level or Oracle Enterprise Manager Cloud Control. To find information about OLS policies, you can query `ALL_SA_*`, `DBA_SA_*`, or `USER_SA_*` data dictionary views.
 
@@ -367,4 +369,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Alan Williams, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
