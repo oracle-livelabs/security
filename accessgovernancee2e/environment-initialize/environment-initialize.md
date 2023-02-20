@@ -21,24 +21,35 @@ This lab assumes you have:
 
 ## Task 1: Validate Docker is up and running
 
-1. Open a terminal session. Check the version of the docker.
+1. Open a terminal session. 
+
+   ![Open terminal](images/open-terminal.png)
+
+   The terminal session has started. 
+
+   ![Terminal window](images/terminal-window.png)
+
+2. Check the version of the docker.
 
     ```
     <copy>docker -v</copy>
     ```
+    ![Check the version of docker](images/docker-version.png)
+
     ```
     Expected output: Docker version 23.0.0, build e92dd87
     ```
-    ![Check the version of docker](images/docker-version.png)
+    
 
-2. Validate the status to verify if docker service is up/running
+3. Validate the status to verify if docker service is up/running
 
     ```
     <copy>systemctl status docker</copy>
     ```
-    Enter **Ctrl+C** to return to the command prompt
 
     ![Validate the status of docker](images/docker-info.png) 
+
+     Enter **Ctrl+C** to return to the command prompt
 
 ## Task 2: Start the Oracle Identity Governance (OIG) Services
 
@@ -49,22 +60,30 @@ This lab assumes you have:
     ```
 
     ![Move to script files location](images/script-file.png)
+
+2. List the files inside the directory.
+
+    ```
+    <copy>ls</copy>
+    ```
+
     ![List of files in directory](images/list-files.png)
 
 
-2. Start DB and all servers manually,using below scripts.
+3. Start DB and all servers manually,using below scripts.
 
     ```
     <copy>./start_db.sh</copy>
     ```
     Wait till DB gets started. Then proceed to start all servers.
-     ```
-    
-    <copy>./start_all_servers.sh</copy>
-    ```
+
     ![DB server started](images/start-db.png)
 
     ![DB server started](images/db-started.png)
+
+    ```   
+    <copy>./start_all_servers.sh</copy>
+    ```
 
     ![All servers are started](images/start-all-servers.png)
 
