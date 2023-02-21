@@ -39,14 +39,14 @@ This lab assumes you have:
     <copy>audit policy audit_hr_select;</copy>   
     ```
     
-    ![Create Audit Policy](images/enable-audit-policy.png)
+    ![Enable Audit Policy](images/enable-audit-policy.png)
 3. Now, we also want to include the information on the module that is being used in the query. This will give us additional information to narrow down the REST call.
 
     ```
     <copy>audit context namespace userenv attributes module;</copy>   
     ```
     
-    ![Create Audit Policy](images/audit-context.png)
+    ![Audit Context](images/audit-context.png)
 
 ## Task 2: View the Employee query and REST call data before changing the redaction policy and examine audit records
 
@@ -67,6 +67,8 @@ This lab assumes you have:
     ```
     The data above will still show as redacted because we have not yet changed our redaction policy.
 
+    ![Redacted Query](images/redacted-query.png)
+
 2. As ADMIN, verify there is a new audit record for our newly-created Unified Audit policy in the Unified Audit Trail.
     ```
     SELECT dbusername, dbproxy_username, client_program_name, sql_text, APPLICATION_CONTEXTS
@@ -74,12 +76,12 @@ This lab assumes you have:
     WHERE application_contexts is not null
         AND regexp_like(unified_audit_policies,'AUDIT_HR_SELECT');  
     ```
-
+    ![New Audit Record](images/new-audit-rec.png)
 3. Now, run the REST call from your browser by refreshing the browser tab. The data will be redacted.
-
+    ![Redacted REST Call](images/redacted-rest-call.png)
 4. Again, as ADMIN, you should see additional audit records in the Unified Audit Trail. These new audit records should show differences in the values of the application_contexts column.  For example, Database Actions SQL will show a value of: '/_/sql/', while the Oracle Rest Data Services CALL will show the value of application_contexts column as:
 '/demo_hr_employees/'
-
+    ![Additional Audit Records](images/add-audit-rec.png)
 ## Task 3: Update Redaction policy then review employee query data, REST call data and audit records
 1. Next, as `EMPLOYEESEARCH_PROD`, we will update the Oracle Data Redaction policy parameter expression from '1=1' to what we know our REST Call uses.
     ```
@@ -93,6 +95,7 @@ This lab assumes you have:
     END;
     /
     ```
+    ![Change Redaction Policy](images/change-red-pol.png)
 2. Now, re-run the query as `EMPLOYEESEARCH_PROD` in Database Actions SQL.  The data should no longer be redacted.
     ```
     <copy>SELECT
@@ -108,14 +111,16 @@ This lab assumes you have:
     FROM
         DEMO_HR_EMPLOYEES;</copy>   
     ```
+    ![Run Query Again](images/re-run-qry.png)
 3. Also re-run the REST Call. The data should still be redacted.
-
+    ![Run Query Again](images/redacted-rest-call.png)
 ## Task 4: Drop Audit policy and then the Redaction policy.
 1. Since our Unified Audit policy has served its purpose, we can drop it as we do not need to audit every single SELECT statement.
     ```
     noaudit policy audit_hr_select;
     drop AUDIT POLICY audit_hr_select;  
     ```
+    ![Drop Audit Policy](images/drop-aud-pol.png)
 2. Navigate back to the **SQL window** for `EMPLOYEESEARCH_PROD` and **drop the redaction policy**.
     
     ```
