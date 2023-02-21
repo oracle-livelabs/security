@@ -18,12 +18,17 @@
       "filename": "../../create-schemas-load-data/create-schemas-load-data.md"
    },
    {
-      "title": "Lab 2: Use Redaction to anonymize REST Get calls",
+      "title": "Lab 2: Use Redaction to anonymize all REST Get calls and queries",
       "description": "",
       "filename": "../../use-redaction-anonymize-restcalls/use-redaction-anonymize-restcalls.md"
    },
    {
-      "title": "Lab 3: Reset your environment",
+      "title": "Lab 3: Use Redaction to anonymize only REST Get calls",
+      "description": "",
+      "filename": "../../use-redaction-anonymize-restcalls/use-redaction-to-anonymize-only-restcalls-and-all-queries.md"
+   },
+   {
+      "title": "Lab 4: Reset your environment",
       "description": "",
       "filename": "../../reset-your-environment/reset-your-environment.md"
    },
