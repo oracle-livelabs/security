@@ -16,7 +16,7 @@ In this lab, you will complete the following tasks:
 
 This lab assumes you have:
 - An Oracle Cloud Infrastructure (OCI) tenancy account
-- Completed all the previous labs in the **Redacting restcalls with ORDS** LiveLab workshop
+- Completed all of the previous labs in the **Protect sensitive data in REST GET calls using Oracle Data Redaction** LiveLab workshop
 
 *Warning: Terminating resources may take a few minutes*
 

@@ -21,6 +21,7 @@ In this lab, you will complete the following tasks:
 
 This lab assumes you have:
 - Oracle Cloud Infrastructure (OCI) tenancy account
+- Completed all of the previous labs in the **Protect sensitive data in REST GET calls using Oracle Data Redaction** LiveLab workshop
 
 ## Task 1: Create an ATP database instance.
 
