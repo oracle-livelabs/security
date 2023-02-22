@@ -2,11 +2,11 @@
 
 ## Introduction
 
- You can use the command line interface (CLI) in Cloud Shell to perform tasks in Oracle Data Safe. Cloud Shell is a small virtual machine running a Linux shell, and is accessible in your tenancy in the Oracle Cloud Infrastructure Console. It's ready and free to use in your tenancy (within monthly tenancy limits). If you want to perform complex tasks using the CLI, it's useful to create an SH script that contains all of your CLI commands. 
+ You can use the command line interface (CLI) in Cloud Shell to perform tasks in Oracle Data Safe. Cloud Shell is a small virtual machine running a Linux shell and is accessible in your tenancy in the Oracle Cloud Infrastructure Console. It's ready and free to use in your tenancy (within monthly tenancy limits). If you want to perform complex tasks using the CLI, it's useful to create an SH script that contains all of your CLI commands. 
  
- In this lab, you use the CLI to refresh the latest Security Assessment report for your target database and download it to a directory on your Cloud Shell machine. Begin by taking a look at the command line interface (CLI) documentation for the Oracle Data Safe service.
+ In this lab, you use the CLI to refresh the latest Security Assessment report for your target database and download it to a directory on your Cloud Shell machine. Begin by familiarizing yourself with the command line interface (CLI) documentation for Oracle Data Safe.
 
-Estimated Lab Time: 15 minutes
+Estimated Lab Time: 20 minutes
 
 ### Objectives
 
@@ -14,9 +14,9 @@ In this lab, you will:
 
 - Review the documentation for the Oracle Data Safe CLI
 - Access Cloud Shell
-- Build and test your CLI commands
-- Create an SH file
-- Run the SH file and view the report
+- Build and test your CLI commands one at a time
+- Create an SH file with all of your CLI commands
+- Run the SH file and view the security assessment report
 
 
 ### Prerequisites
@@ -58,14 +58,14 @@ This lab assumes you have:
     <copy>oci data-safe alert alerts-update --compartment-id your-compartment-ocid --status CLOSED --target-id your-target-database-OCID</copy>
     ```
 
-6. Scroll down the end of the page to view examples. 
+6. Scroll down to the end of the page to view examples. 
 
 ## Task 2: Access Cloud Shell
 
 
 1. To open Cloud Shell, in the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Developer tools** icon, and then select **Cloud Shell**.
 
-    When you first open Cloud Shell, your current directory is your home directory; for example, `/home/jody_glove`.
+    When you first open Cloud Shell, your current directory is your home directory; for example, `/home/jody_glove`. For this lab, we can work in the home directory (`~/`).
 
 
 2. (Optional) If you use Cloud Shell often and want to start fresh, you can reset it. The following command erases all the data in your `$HOME` directory on your Cloud Shell machine and resets the `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.bash_logout`, and `$HOME/.emacs` files back to their default values. Enter **y** at the prompt to confirm.
@@ -74,18 +74,14 @@ This lab assumes you have:
     $ <copy>csreset --all</copy>
     ```
 
-3. For this lab, we can work in the home directory (`~/`).
 
-4. Keep Cloud Shell open because you return to it in a later task.
-
-
-## Task 3: Build and test your CLI commands
+## Task 3: Build and test your CLI commands one at a time
 
 Identify the commands and values that are required for the SH script and test each one in Cloud Shell.
 
 1. Create a variable that defines your compartment OCID.
 
-    To do this, first find your OCID: From the navigation menu in Oracle Cloud Infrastructure, select **Identity & Security**, and then on the right under **Identity**, click **Compartments**. Click the name of your compartment. On the **Compartment Information** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-compartment-ocid` with your own OCID.
+    To do this, first find your compartment OCID: From the navigation menu in Oracle Cloud Infrastructure, select **Identity & Security**, and then on the right under **Identity**, click **Compartments**. Click the name of your compartment. On the **Compartment Information** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-compartment-ocid` with your own OCID.
 
     ```text
     $ <copy>export compartment_id=your-compartment-ocid</copy>
@@ -93,7 +89,7 @@ Identify the commands and values that are required for the SH script and test ea
 
 2. Create a variable that defines your Oracle Data Safe target database OCID (not your Autonomous Database OCID!). 
 
-    To do this, first find your OCID: From the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Target Databases**. Under **List Scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target Database Details** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-target-database-ocid` with your own OCID.
+    To do this, first find your target database OCID: From the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Target Databases**. Under **List Scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target Database Details** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-target-database-ocid` with your own OCID.
 
     ```text
     $ <copy>export target_id=your-target-database-ocid</copy>
@@ -117,13 +113,13 @@ Identify the commands and values that are required for the SH script and test ea
 
 5. Create a security assessment and obtain its OCID. 
 
-    To do this, in Cloud Shell, enter the following command as is. Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters. Wait for the security assessment to be created (about 1 minute).
+    To do this, in Cloud Shell, enter the following command as is. Wait for the security assessment to be created (about 1 minute).
 
     ```text
     $ <copy>security_assessment_id=$(oci data-safe security-assessment create --compartment-id $compartment_id --target-id $target_id --query data.id --raw-output)</copy>
     ```
 
-     Tip: If you need to obtain metadata about a resource, you can learn which metadata values are available by including the `--query data` and `--raw-output` parameters. For example, if the above statement used `--query data` instead of `--query data.id`, the output value would include all possible key-value pairs.
+     Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters. If you need to obtain metadata about a resource, you can learn which metadata values are available by including the `--query data` and `--raw-output` parameters. For example, if the above statement used `--query data` instead of `--query data.id`, the output value would include all possible key-value pairs.
 
      ```json
      <copy>{"compartment-id": "ocid1.compartment.oc1...", "defined-tags": { "Oracle-Tags": { "CreatedBy": "jody.glove..", "CreatedOn": "2023-01-30T20:40:53.671Z" } }, "description": null, "display-name": "SA_1675111253797", "freeform-tags": {}, "id": "ocid1.datasafesecurityassessment.oc1...", "ignored-assessment-ids": null, "ignored-targets": null, "is-baseline": false, "is-deviated-from-baseline": null, "last-compared-baseline-id": null, "lifecycle-details": null, "lifecycle-state": "CREATING", "link": null, "schedule": null, "schedule-security-assessment-id": null, "statistics": null, "system-tags": {}, "target-ids": [ "ocid1.datasafetargetdatabase.oc1..." ], "target-version": null, "time-created": "2023-01-30T20:40:53.797000+00:00", "time-updated": "2023-01-30T20:40:53.797000+00:00", "triggered-by": "USER", "type": "SAVED" }</copy>
@@ -137,15 +133,15 @@ Identify the commands and values that are required for the SH script and test ea
 
 7. Generate the security assessment PDF.
 
-    Before you can download a security assessment, you must first generate it. To do this, in Cloud Shell, enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$format` and `$security_assessment_id`). Wait for the report to generate. (about 1 minute).
+    Before you can download a security assessment, you must first generate it. To do this, return to Cloud Shell and enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$format` and `$security_assessment_id`). Wait for the report to generate (about 1 minute).
 
     ```text
     $ <copy>oci data-safe security-assessment generate-security-assessment-report --format $format --security-assessment-id $security_assessment_id</copy>
     ```
 
-8. Download the security assessment PDF to a specified directory in Cloud Shell.
+8. Download the security assessment PDF to your home directory in Cloud Shell.
 
-    To do this, in Cloud Shell, enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$file`, `$format`, and `$security_assessment_id`). Wait for the report to download (about 1 minute).
+    To do this, in Cloud Shell, enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$file_name`, `$format`, and `$security_assessment_id`). Wait for the report to download (about 1 minute).
 
     ```text
     $ <copy>oci data-safe security-assessment download-security-assessment-report --file $file_name --format $format --security-assessment-id $security_assessment_id</copy>
@@ -166,7 +162,7 @@ Identify the commands and values that are required for the SH script and test ea
     ```
 
 
-## Task 4: Create an SH file
+## Task 4: Create an SH file with all of your CLI commands
 
 Create an SH file and add all the commands that you tested in the previous task. Be sure to use your own values for the variables.
 
@@ -176,7 +172,7 @@ Create an SH file and add all the commands that you tested in the previous task.
     $ <copy>vi example.sh</copy>
     ```
 
-2. Paste all of your commands into the file (press **Escape** and then **i** before you paste). Insert two `sleep` commands - one after you create the PDF report and another after you generate it so that the program allows time for the operations to complete; otherwise, you will get errors. You can also write to the console (using `echo`) before the `sleep` commands to inform the user of the wait time.
+2. Paste all of your commands into the file. Insert two `sleep` commands - one after you create the PDF report and another after you generate it so that the program allows time for the operations to complete; otherwise, you will get errors. You can also write to the console (using `echo`) before the `sleep` commands to inform the user of the wait time.
 
     ```text
     <copy>export compartment_id=ocid1.compartment.oc1...
@@ -202,16 +198,16 @@ Create an SH file and add all the commands that you tested in the previous task.
 
 
 
-## Task 5: Run the SH file and view the report
+## Task 5: Run the SH file and view the security assessment report
 
-When you run the SH file, the latest security assessment is downloaded to your cloud shell machine. From there, you can download it to your local computer for viewing.
+When you run the SH file, the latest security assessment is downloaded to your Cloud Shell machine. From there, you can download it to your local computer for viewing.
 
-1. Enter the following command to run the SH file:
+1. Enter the following command to run the SH file. Wait for three minutes for the script to run.
 
     ```text
     $ <copy>./example.sh</copy>
     ```
-2. If you get a service error message that indicates a step needs more time, increase the `sleep` value in your SH script.
+2. If you get a service error message that implies a step needs more time, increase the appropriate `sleep` value in your SH script.
 
 3. List the files in your home directory.
 
@@ -220,7 +216,7 @@ When you run the SH file, the latest security assessment is downloaded to your c
 
     example.sh  your-download-file-name
     ```
-4. In the upper-right corner of Cloud Shell, click the **Cloud Shell Menu** icon, and select **Download**.
+4. In the upper-right corner of Cloud Shell, click the **Cloud Shell Menu** icon (cog wheel), and select **Download**.
 
     A **Download File** dialog box is displayed.
 
@@ -230,7 +226,7 @@ When you run the SH file, the latest security assessment is downloaded to your c
 
 6. Open the PDF file and review the assessment report. Close the browser tab when you're finished.
 
-7. Close Cloud Shell.
+7. Close Cloud Shell and click **Exit** to confirm.
 
 
 
@@ -243,4 +239,4 @@ When you run the SH file, the latest security assessment is downloaded to your c
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 15, 2023
+- **Last Updated By/Date** - Jody Glover, February 22, 2023
