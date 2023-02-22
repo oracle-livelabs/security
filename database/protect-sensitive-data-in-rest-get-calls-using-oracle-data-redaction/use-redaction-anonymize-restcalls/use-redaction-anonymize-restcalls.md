@@ -32,7 +32,11 @@ This lab assumes you have:
 
     ![Enable REST](images/enable-rest.png)
 
-3. The **REST Enable Object slider** will appear from the right side of the page. We are going to use the defaults for this page but take note and **copy** the Preview URL to a clipboard of your choice. This is the URL we will use to **access the REST enabled table**. When ready, click the **Enable button** in the lower right of the slider.
+3. The **REST Enable Object slider** will appear from the right side of the page. We are going to use the defaults for this page but take note and **copy** the Preview URL to a clipboard of your choice. This is the URL we will use to **access the REST enabled table**. This process will also enable ORDS for the table, select the show code option to view the code for this action.
+
+    ![Enable ORDS](images/rest-ords.png)
+
+When ready, click the **Enable button** in the lower right of the slider.
 *Warning: Do not enable Require Authentication. This will require that users go through an additional authentication process.*
 
     ![Enable REST](images/rest-enable-object.png)
@@ -75,30 +79,7 @@ This lab assumes you have:
 
     This is how our data looks before any redaction policy is applied.
 
-
-3. Enable ORDS for the schema and the table.
-
-    ![Enable ORDS](images/enable-ords.png)
-    ```
-    <copy>BEGIN
-    /* enable ORDS for schema */
-    ORDS.ENABLE_SCHEMA(p_enabled => TRUE,
-                       p_schema => 'EMPLOYEESEARCH_PROD',
-                       p_url_mapping_type => 'BASE_PATH',
-                       p_url_mapping_pattern => 'EMPLOYEESEARCH_PROD',
-                       p_auto_rest_auth => FALSE);
-     /* enable ORDS for table */         
-    ORDS.ENABLE_OBJECT(p_enabled => TRUE,
-                       p_schema => 'EMPLOYEESEARCH_PROD',
-                       p_object => 'DEMO_HR_EMPLOYEES',
-                       p_object_type => 'TABLE',
-                       p_object_alias => 'employees',
-                       p_auto_rest_auth => FALSE);
-    COMMIT;
-    END;
-    /</copy>   
-    ```
-4. Add a **redaction policy** to run last name with random chars.
+3. Add a **redaction policy** to run last name with random chars.
     
     ```
     <copy>begin
@@ -115,7 +96,7 @@ This lab assumes you have:
     ```
     ![Last Name](images/last-name.png)
 
-5. Add an **email column** to the redaction policy and redact it using default **regex patterns** that anonymize it with `X`
+4. Add an **email column** to the redaction policy and redact it using default **regex patterns** that anonymize it with `X`
 
     ```
     <copy>begin
@@ -140,7 +121,7 @@ This lab assumes you have:
     ```
     ![Email](images/email.png)
 
-6. Add the **start date column** to the redaction policy, redacting the day and month.
+5. Add the **start date column** to the redaction policy, redacting the day and month.
     
     ```
     <copy>BEGIN
@@ -158,7 +139,7 @@ This lab assumes you have:
     ```
     ![Start Date](images/start-date.png)
 
-7. Add the **Salary column** to the redaction policy and redact the first two digits making it 99.
+6. Add the **Salary column** to the redaction policy and redact the first two digits making it 99.
     
     ```
     <copy>BEGIN
@@ -186,22 +167,7 @@ This lab assumes you have:
 2. Run the **first query from the previous task** and view the redacted data at the **bottom of the page**.
     
     ![Redacted REST](images/redacted-query.png)
-
-3. Navigate back to the **SQL window** for `EMPLOYEESEARCH_PROD` and **drop the redaction policy**.
     
-    ```
-    <copy>BEGIN
-            dbms_redact.drop_policy (
-            object_schema => 'EMPLOYEESEARCH_PROD',
-            object_name   => 'DEMO_HR_EMPLOYEES',
-            policy_name   => 'redact_emp_info'
-            );
-        end;
-    /</copy>   
-    ```
-    ![Drop](images/drop.png)
-
-
 Congratulations, You have successfully redacted REST calls using ORDS!
 
 ## Acknowledgements

@@ -65,27 +65,29 @@ This lab assumes you have:
     FROM
         DEMO_HR_EMPLOYEES;</copy>   
     ```
-    The data above will still show as redacted because we have not yet changed our redaction policy.
+    The data will still show as redacted because we have not yet changed our redaction policy.
 
     ![Redacted Query](images/redacted-query.png)
 
 2. As ADMIN, verify there is a new audit record for our newly-created Unified Audit policy in the Unified Audit Trail.
+
     ```
-    SELECT dbusername, dbproxy_username, client_program_name, sql_text, APPLICATION_CONTEXTS
+    <copy>SELECT dbusername, dbproxy_username, client_program_name, sql_text, APPLICATION_CONTEXTS
         FROM unified_audit_trail
     WHERE application_contexts is not null
-        AND regexp_like(unified_audit_policies,'AUDIT_HR_SELECT');  
+        AND regexp_like(unified_audit_policies,'AUDIT_HR_SELECT');</copy>  
     ```
     ![New Audit Record](images/new-audit-rec.png)
 3. Now, run the REST call from your browser by refreshing the browser tab. The data will be redacted.
     ![Redacted REST Call](images/redacted-rest-call.png)
-4. Again, as ADMIN, you should see additional audit records in the Unified Audit Trail. These new audit records should show differences in the values of the application_contexts column.  For example, Database Actions SQL will show a value of: '/_/sql/', while the Oracle Rest Data Services CALL will show the value of application_contexts column as:
+4. Again, as ADMIN, you should see additional audit records in the Unified Audit Trail. These new audit records should show differences in the values of the application\_contexts column. For example, Database Actions SQL will show a value of: '/\_/sql/', while the Oracle Rest Data Services CALL will show the value of application\_contexts column as:
 '/demo_hr_employees/'
     ![Additional Audit Records](images/add-audit-rec.png)
 ## Task 3: Update Redaction policy then review employee query data, REST call data and audit records
 1. Next, as `EMPLOYEESEARCH_PROD`, we will update the Oracle Data Redaction policy parameter expression from '1=1' to what we know our REST Call uses.
+
     ```
-    BEGIN
+    <copy>BEGIN
     DBMS_REDACT.ALTER_POLICY  (
         OBJECT_SCHEMA => 'EMPLOYEESEARCH_PROD'
         ,object_name => 'DEMO_HR_EMPLOYEES'
@@ -93,10 +95,11 @@ This lab assumes you have:
         ,action => DBMS_REDACT.MODIFY_EXPRESSION
         ,expression => 'sys_context(''userenv'',''module'') = ''/demo_hr_employees/''');
     END;
-    /
+    /</copy> 
     ```
     ![Change Redaction Policy](images/change-red-pol.png)
 2. Now, re-run the query as `EMPLOYEESEARCH_PROD` in Database Actions SQL.  The data should no longer be redacted.
+
     ```
     <copy>SELECT
         USERID,
