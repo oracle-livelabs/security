@@ -2,9 +2,9 @@
 
 ## Introduction
 
- You can use the command line interface (CLI) in Cloud Shell to perform tasks in Oracle Data Safe. Cloud Shell is a small virtual machine running a Linux shell, and is accessible in your tenancy in the Oracle Cloud Infrastructure Console. It's ready and free to use in your tenancy (within monthly tenancy limits). If you want to perform complex tasks using the CLI, it's useful to create an SH script that contains all of your CLI commands. 
+ You can use the command line interface (CLI) in Cloud Shell to perform tasks in Oracle Data Safe. Cloud Shell is a small virtual machine running a Linux shell and is accessible in your tenancy in the Oracle Cloud Infrastructure Console. It's ready and free to use in your tenancy (within monthly tenancy limits). If you want to perform complex tasks using the CLI, it's useful to create an SH script that contains all of your CLI commands. 
  
- In this lab, you use the CLI to refresh the latest Security Assessment report for your target database and download it to a directory on your Cloud Shell machine. Begin by taking a look at the command line interface (CLI) documentation for the Oracle Data Safe service.
+ In this lab, you use the CLI to refresh the latest Security Assessment report for your target database and download it to a directory on your Cloud Shell machine. Begin by familiarizing yourself with the command line interface (CLI) documentation for Oracle Data Safe.
 
 Estimated Lab Time: 15 minutes
 
@@ -14,9 +14,9 @@ In this lab, you will:
 
 - Review the documentation for the Oracle Data Safe CLI
 - Access Cloud Shell
-- Build and test your CLI commands
-- Create an SH file
-- Run the SH file and view the report
+- Build and test your CLI commands one at a time
+- Create an SH file with all of your CLI commands
+- Run the SH file and view the security assessment report
 
 
 ### Prerequisites
@@ -58,14 +58,14 @@ This lab assumes you have:
     <copy>oci data-safe alert alerts-update --compartment-id your-compartment-ocid --status CLOSED --target-id your-target-database-OCID</copy>
     ```
 
-6. Scroll down the end of the page to view examples. 
+6. Scroll down to the end of the page to view examples. 
 
 ## Task 2: Access Cloud Shell
 
 
 1. To open Cloud Shell, in the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Developer tools** icon, and then select **Cloud Shell**.
 
-    When you first open Cloud Shell, your current directory is your home directory; for example, `/home/jody_glove`.
+    When you first open Cloud Shell, your current directory is your home directory; for example, `/home/jody_glove`. For this lab, we can work in the home directory (`~/`).
 
 
 2. (Optional) If you use Cloud Shell often and want to start fresh, you can reset it. The following command erases all the data in your `$HOME` directory on your Cloud Shell machine and resets the `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.bash_logout`, and `$HOME/.emacs` files back to their default values. Enter **y** at the prompt to confirm.
@@ -74,18 +74,14 @@ This lab assumes you have:
     $ <copy>csreset --all</copy>
     ```
 
-3. For this lab, we can work in the home directory (`~/`).
 
-4. Keep Cloud Shell open because you return to it in a later task.
-
-
-## Task 3: Build and test your CLI commands
+## Task 3: Build and test your CLI commands one at a time
 
 Identify the commands and values that are required for the SH script and test each one in Cloud Shell.
 
 1. Create a variable that defines your compartment OCID.
 
-    To do this, first find your OCID: From the navigation menu in Oracle Cloud Infrastructure, select **Identity & Security**, and then on the right under **Identity**, click **Compartments**. Click the name of your compartment. On the **Compartment Information** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-compartment-ocid` with your own OCID.
+    To do this, first find your compartment OCID: From the navigation menu in Oracle Cloud Infrastructure, select **Identity & Security**, and then on the right under **Identity**, click **Compartments**. Click the name of your compartment. On the **Compartment Information** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-compartment-ocid` with your own OCID.
 
     ```text
     $ <copy>export compartment_id=your-compartment-ocid</copy>
@@ -166,7 +162,7 @@ Identify the commands and values that are required for the SH script and test ea
     ```
 
 
-## Task 4: Create an SH file
+## Task 4: Create an SH file with all of your CLI commands
 
 Create an SH file and add all the commands that you tested in the previous task. Be sure to use your own values for the variables.
 
@@ -202,7 +198,7 @@ Create an SH file and add all the commands that you tested in the previous task.
 
 
 
-## Task 5: Run the SH file and view the report
+## Task 5: Run the SH file and view the security assessment report
 
 When you run the SH file, the latest security assessment is downloaded to your cloud shell machine. From there, you can download it to your local computer for viewing.
 

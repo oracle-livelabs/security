@@ -33,7 +33,7 @@ This lab assumes you have:
 ## Task 1: Explore target database registration options
 
 You have three options for registering an Autonomous Database on Shared Infrastructure with secure access from everywhere:
-- Use the **Register** link on the **Autonomous Database Details** page (one-click method with no interaction).
+- Use the **Register** link on the **Autonomous Database details** page (one-click method with no interaction).
 - Use the Autonomous Databases wizard on the **Overview** page for the Oracle Data Safe service (guided method with customization options).
 - Manually register your target database from the **Registered Targets** page (advanced method without guidance).
 
@@ -56,9 +56,9 @@ You have three options for registering an Autonomous Database on Shared Infrastr
 
     ![Overview page for Oracle Data Safe](images/overview-page.png "Overview page for Oracle Data Safe")
 
-4. Under **Data Safe** on the left, select **Target Databases**. 
+4. Under **Data Safe** on the left, click **Target Databases**. 
 
-5. On the right, click **Register Database**. From here, you can configure registration details. This method assumes that you have already completed the prerequisites.
+5. On the right, click **Register Database**. From here, you can configure registration details. This method assumes that you have already completed the required pre-registration tasks for your database.
 
    ![Manual target registration](images/manual-target-registration.png "Manual target registration")
 
@@ -103,7 +103,7 @@ To register a database other than an ATP database for this workshop, please foll
 
     - You can view/edit the target database name and description.
     - You can view the Oracle Cloud Identifier (OCID), when the target database was registered, the compartment name to where the target database was registered, the database type (Autonomous Database), and the connection protocol (TLS). The information varies depending on the target database type.
-    - You have options to edit connection details (change the connection protocol), move the target database registration to another compartment, deregister the target database, and add tags.
+    - You have options to edit connection details (change the connection protocol), move the target database to another compartment, deregister the target database, and add tags.
 
     ![Target Database Details page](images/target-database-details-page.png "Target Database Details page")
     
@@ -112,7 +112,7 @@ To register a database other than an ATP database for this workshop, please foll
 
 1. In the breadcrumb at the top of the page, click **Target Databases**.
 
-2. Under **List Scope**, make sure your compartment is selected and deselect **Include child compartments**. Your registered target database is listed on the right.
+2. Under **List Scope**, make sure your compartment is selected. Your registered target database is listed on the right.
 
     - A target database with an **ACTIVE** status means that it is currently registered with Oracle Data Safe.
     - A target database with a **DELETED** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
@@ -126,7 +126,7 @@ To register a database other than an ATP database for this workshop, please foll
 
     The **Overview** page is displayed.
 
-2. Under **Security Center** on the left, click **Dashboard** and review the dashboard. Scroll down to view all the charts. Make sure your compartment is selected under **List Scope**. Optionally, you can deselect **Include child compartments** so that the data in the dashboard reflects only the target databases in your compartment.
+2. Under **Security Center** on the left, click **Dashboard** and review the dashboard. Scroll down to view all the charts. Make sure your compartment is selected under **List Scope**. From the **Target Databases** drop-down list, select your target database so that the data in the dashboard pertains to your target database only.
 
     - In Security Center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, and Alerts.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security Assessment**, **User Assessment**, **Feature Usage**, and **Operations Summary** charts in the dashboard already have data.
@@ -146,4 +146,4 @@ To register a database other than an ATP database for this workshop, please foll
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 15, 2023
+- **Last Updated By/Date** - Jody Glover, February 22, 2023
