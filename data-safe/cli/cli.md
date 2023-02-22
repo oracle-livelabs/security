@@ -6,7 +6,7 @@
  
  In this lab, you use the CLI to refresh the latest Security Assessment report for your target database and download it to a directory on your Cloud Shell machine. Begin by familiarizing yourself with the command line interface (CLI) documentation for Oracle Data Safe.
 
-Estimated Lab Time: 15 minutes
+Estimated Lab Time: 20 minutes
 
 ### Objectives
 

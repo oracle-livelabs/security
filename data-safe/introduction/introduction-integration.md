@@ -4,7 +4,7 @@ This workshop is designed to show developers and administrators how they can per
 
 You can do this workshop in Oracle's free tier with trial credits or in your own tenancy using a paid Oracle Cloud account.
 
-Estimated Workshop Time: 2.5 hours
+Estimated Workshop Time: 2 hours
 
 ## About Oracle Data Safe
 
