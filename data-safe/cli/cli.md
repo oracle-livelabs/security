@@ -89,7 +89,7 @@ Identify the commands and values that are required for the SH script and test ea
 
 2. Create a variable that defines your Oracle Data Safe target database OCID (not your Autonomous Database OCID!). 
 
-    To do this, first find your OCID: From the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Target Databases**. Under **List Scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target Database Details** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-target-database-ocid` with your own OCID.
+    To do this, first find your target database OCID: From the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Target Databases**. Under **List Scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target Database Details** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-target-database-ocid` with your own OCID.
 
     ```text
     $ <copy>export target_id=your-target-database-ocid</copy>
@@ -113,13 +113,13 @@ Identify the commands and values that are required for the SH script and test ea
 
 5. Create a security assessment and obtain its OCID. 
 
-    To do this, in Cloud Shell, enter the following command as is. Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters. Wait for the security assessment to be created (about 1 minute).
+    To do this, in Cloud Shell, enter the following command as is. Wait for the security assessment to be created (about 1 minute).
 
     ```text
     $ <copy>security_assessment_id=$(oci data-safe security-assessment create --compartment-id $compartment_id --target-id $target_id --query data.id --raw-output)</copy>
     ```
 
-     Tip: If you need to obtain metadata about a resource, you can learn which metadata values are available by including the `--query data` and `--raw-output` parameters. For example, if the above statement used `--query data` instead of `--query data.id`, the output value would include all possible key-value pairs.
+     Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters. If you need to obtain metadata about a resource, you can learn which metadata values are available by including the `--query data` and `--raw-output` parameters. For example, if the above statement used `--query data` instead of `--query data.id`, the output value would include all possible key-value pairs.
 
      ```json
      <copy>{"compartment-id": "ocid1.compartment.oc1...", "defined-tags": { "Oracle-Tags": { "CreatedBy": "jody.glove..", "CreatedOn": "2023-01-30T20:40:53.671Z" } }, "description": null, "display-name": "SA_1675111253797", "freeform-tags": {}, "id": "ocid1.datasafesecurityassessment.oc1...", "ignored-assessment-ids": null, "ignored-targets": null, "is-baseline": false, "is-deviated-from-baseline": null, "last-compared-baseline-id": null, "lifecycle-details": null, "lifecycle-state": "CREATING", "link": null, "schedule": null, "schedule-security-assessment-id": null, "statistics": null, "system-tags": {}, "target-ids": [ "ocid1.datasafetargetdatabase.oc1..." ], "target-version": null, "time-created": "2023-01-30T20:40:53.797000+00:00", "time-updated": "2023-01-30T20:40:53.797000+00:00", "triggered-by": "USER", "type": "SAVED" }</copy>
@@ -133,15 +133,15 @@ Identify the commands and values that are required for the SH script and test ea
 
 7. Generate the security assessment PDF.
 
-    Before you can download a security assessment, you must first generate it. To do this, in Cloud Shell, enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$format` and `$security_assessment_id`). Wait for the report to generate. (about 1 minute).
+    Before you can download a security assessment, you must first generate it. To do this, return to Cloud Shell and enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$format` and `$security_assessment_id`). Wait for the report to generate (about 1 minute).
 
     ```text
     $ <copy>oci data-safe security-assessment generate-security-assessment-report --format $format --security-assessment-id $security_assessment_id</copy>
     ```
 
-8. Download the security assessment PDF to a specified directory in Cloud Shell.
+8. Download the security assessment PDF to your home directory in Cloud Shell.
 
-    To do this, in Cloud Shell, enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$file`, `$format`, and `$security_assessment_id`). Wait for the report to download (about 1 minute).
+    To do this, in Cloud Shell, enter the following command as is. Notice how we make use of the variables that we defined in earlier steps (`$file_name`, `$format`, and `$security_assessment_id`). Wait for the report to download (about 1 minute).
 
     ```text
     $ <copy>oci data-safe security-assessment download-security-assessment-report --file $file_name --format $format --security-assessment-id $security_assessment_id</copy>
@@ -172,7 +172,7 @@ Create an SH file and add all the commands that you tested in the previous task.
     $ <copy>vi example.sh</copy>
     ```
 
-2. Paste all of your commands into the file (press **Escape** and then **i** before you paste). Insert two `sleep` commands - one after you create the PDF report and another after you generate it so that the program allows time for the operations to complete; otherwise, you will get errors. You can also write to the console (using `echo`) before the `sleep` commands to inform the user of the wait time.
+2. Paste all of your commands into the file. Insert two `sleep` commands - one after you create the PDF report and another after you generate it so that the program allows time for the operations to complete; otherwise, you will get errors. You can also write to the console (using `echo`) before the `sleep` commands to inform the user of the wait time.
 
     ```text
     <copy>export compartment_id=ocid1.compartment.oc1...
@@ -200,14 +200,14 @@ Create an SH file and add all the commands that you tested in the previous task.
 
 ## Task 5: Run the SH file and view the security assessment report
 
-When you run the SH file, the latest security assessment is downloaded to your cloud shell machine. From there, you can download it to your local computer for viewing.
+When you run the SH file, the latest security assessment is downloaded to your Cloud Shell machine. From there, you can download it to your local computer for viewing.
 
-1. Enter the following command to run the SH file:
+1. Enter the following command to run the SH file. Wait for three minutes for the script to run.
 
     ```text
     $ <copy>./example.sh</copy>
     ```
-2. If you get a service error message that indicates a step needs more time, increase the `sleep` value in your SH script.
+2. If you get a service error message that implies a step needs more time, increase the appropriate `sleep` value in your SH script.
 
 3. List the files in your home directory.
 
@@ -216,7 +216,7 @@ When you run the SH file, the latest security assessment is downloaded to your c
 
     example.sh  your-download-file-name
     ```
-4. In the upper-right corner of Cloud Shell, click the **Cloud Shell Menu** icon, and select **Download**.
+4. In the upper-right corner of Cloud Shell, click the **Cloud Shell Menu** icon (cog wheel), and select **Download**.
 
     A **Download File** dialog box is displayed.
 
@@ -226,7 +226,7 @@ When you run the SH file, the latest security assessment is downloaded to your c
 
 6. Open the PDF file and review the assessment report. Close the browser tab when you're finished.
 
-7. Close Cloud Shell.
+7. Close Cloud Shell and click **Exit** to confirm.
 
 
 
@@ -239,4 +239,4 @@ When you run the SH file, the latest security assessment is downloaded to your c
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 15, 2023
+- **Last Updated By/Date** - Jody Glover, February 22, 2023

@@ -136,13 +136,15 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 
     ```text
     <copy>
+    Allow group {group name} to read compartments in compartment {compartment name}
     Allow group {group name} to manage data-safe-family in compartment {compartment name}
     Allow group {group name} to manage autonomous-database in compartment {compartment name}
-    allow group {group name} to use cloud-shell in tenancy
+    Allow group {group name} to use cloud-shell in tenancy
+    Allow group {group name} to manage buckets in compartment {compartment name}
     Allow group {group name} to manage objects in compartment {compartment name}
     Allow group {group name} to manage instance-family in compartment {compartment name}
     Allow group {group name} to read app-catalog-listing in tenancy
-    Allow group {group name} to use virtual-network-family in compartment {compartment name}
+    Allow group {group name} to manage virtual-network-family in compartment {compartment name}
     </copy>
     ```
    

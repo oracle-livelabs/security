@@ -42,7 +42,7 @@ Cloud Shell is running the following application versions:
 
 1. From the navigation menu in Oracle Cloud Infrastructure, select **Storage**, and then **Buckets**.
 
-2. Select your compartment.
+2. Make sure that your compartment is selected.
 
 3. Click **Create Bucket**.
 
@@ -115,36 +115,32 @@ The Oracle Cloud Infrastructure SDK for Java (oci-java-sdk) provides an SDK for 
     $ <copy>csreset --all</copy>
     ```
 
-3. Change to the `/usr/lib64/java-oci-sdk` directory and list its contents.
+3. Review the `/usr/lib64/java-oci-sdk` directory. This is the OCI Java SDK location.
 
     ```text
-    $ <copy>cd /usr/lib64/java-oci-sdk</copy>
-    $ <copy>ls</copy>
+    $ <copy>ls /usr/lib64/java-oci-sdk</copy>
 
     addons  apidocs  buildTools  CHANGELOG.md  CONTRIBUTING.md  examples  lib  LICENSE.txt  NOTICE.txt  README.md  shaded  third-party  THIRD_PARTY_LICENSES.txt
     ```
 
-4. Change to the `/usr/lib64/java-oci-sdk/lib` directory and list its contents. Make note of the version of the OCI jar file (`oci-java-sdk-full-version.jar`). In the example below, the version is 3.3.0. 
+4. List the contents of the `/usr/lib64/java-oci-sdk/lib` directory. Note the version of the `oci-java-sdk-full-version.jar` file. In the example below, the version is 3.3.0. 
 
     ```text
-    $ <copy>cd /usr/lib64/java-oci-sdk/lib</copy>
-    $ <copy>ls</copy>
+    $ <copy>ls /usr/lib64/java-oci-sdk/lib</copy>
 
     jersey  jersey3  oci-java-sdk-full-3.3.0.jar  oci-java-sdk-full-3.3.0-javadoc.jar  oci-java-sdk-full-3.3.0-sources.jar
     ```
 
-5. Change to the directory `/usr/lib64/java-oci-sdk/third-party/lib`, which contains the third party libraries, and list its content.
+5. List the third party libraries in the `/usr/lib64/java-oci-sdk/third-party/lib` directory.
 
     ```text
-    $ <copy>cd /usr/lib64/java-oci-sdk/third-party/lib</copy>
-    $ <copy>ls</copy>
+    $ <copy>ls /usr/lib64/java-oci-sdk/third-party/lib</copy>
     ```
 
-6. Change to the `/usr/lib64/java-oci-sdk/examples` directory and list its contents. Notice that there is a `DataSafeRestAPIClientExample.java` file. This Java program uses Oracle Data Safe REST API commands to copy audit data from a specified compartment to a specified bucket in object storage. 
+6. List the examples in the `/usr/lib64/java-oci-sdk/examples` directory. Notice that there is a `DataSafeRestAPIClientExample.java` file. This Java program contains Oracle Data Safe REST API commands that copy audit data from a specified compartment to a specified bucket in object storage. 
 
     ```text
-    $ <copy>cd /usr/lib64/java-oci-sdk/examples</copy>
-    $ <copy>ls</copy>
+    $ <copy>ls /usr/lib64/java-oci-sdk/examples</copy>
 
     ...
     DataSafeRestAPIClientExample.java
@@ -154,7 +150,7 @@ The Oracle Cloud Infrastructure SDK for Java (oci-java-sdk) provides an SDK for 
 7. Review the `DataSafeRestAPIClientExample.java` file.
 
     ```text
-    $ <copy>cat DataSafeRestAPIClientExample.java</copy>
+    $ <copy>cat /usr/lib64/java-oci-sdk/examples/DataSafeRestAPIClientExample.java</copy>
     ```
 
 
@@ -185,7 +181,7 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
 
     The **Configuration File Preview** dialog box is displayed showing you a preview of the configuration file.
 
-7. Copy the configuration file contents to a temporary local text file. Be sure to include `[DEFAULT]`. It should look similar to this:
+7. Copy the contents of the Configuration File Preview to a temporary local text file. Be sure to include `[DEFAULT]`. It should look similar to this:
 
     ```text
     <copy>[DEFAULT]
@@ -200,31 +196,29 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
 
     The new API key is listed under **API Keys**.
 
-9. Return to Cloud Shell.
-
-10. In Cloud Shell in the upper-right corner, click the **Cloud Shell Menu** icon, and select **Upload**.
+9. In Cloud Shell in the upper-right corner, click the **Cloud Shell Menu** icon, and select **Upload**.
 
     The **File Upload to your Home Directory** dialog box is displayed.
 
-11. Drag your private key file to the dialog box, and click **Upload**. 
+10. Drag your private key file to the dialog box, and click **Upload**. 
 
     Your private key file is uploaded to your home directory.
 
-12. To close the **File Transfers** dialog box, click **Hide**.
+11. To close the **File Transfers** dialog box, click **Hide**.
 
-13. Move your private key file to the `~/.oci` directory. In the example below, replace `your-private-key-file.pem` with your own private key file name.
+12. Move your private key file to the `~/.oci` directory. In the example below, replace `your-private-key-file.pem` with your own private key file name.
 
     ```bash
     $ <copy>mv ~/your-private-key-file.pem ~/.oci/your-private-key-file.pem</copy>
     ```
 
-14. Create a configuration file in the `~/.oci` directory using the vi editor.
+13. Create a configuration file in the `~/.oci` directory using the vi editor.
 
     ```bash
     $ <copy>vi config</copy>
     ```
 
-15. Paste the configuration file contents into the `config` file (press **Escape** and then **i** before you paste). The content should look similar to the following code. Don't forget to include `[DEFAULT]`.
+14. Paste your configuration file contents into the `config` file. The content should look similar to the following code. Don't forget to include `[DEFAULT]`.
 
     ```text
     <copy>[DEFAULT]
@@ -235,13 +229,13 @@ Oracle Cloud Infrastructure SDKs require basic configuration information, like u
     key_file=<path to your private keyfile> # TODO</copy>
     ```
 
-16. Modify the last line to be the path to your private key file. In the example below, substitute `your-private-key-file.pem` with your own private key file name. Remove the **# TODO** text. 
+15. Modify the last line to be the path to your private key file. In the example below, substitute `your-private-key-file.pem` with your own private key file name. Remove the **# TODO** text. 
 
     ```text
     <copy>key_file=~/.oci/your-private-key-file.pem</copy>
     ```
 
-17. Save and close (press **Escape**, and then enter **:wq**).
+16. Save and close the file (press **Escape**, enter **:wq**, and then press **Enter**).
 
 
 ## Task 6: Compile a Java file
@@ -290,7 +284,7 @@ Use the `javac` command to compile the `DataSafeRestAPIClientExample.java` file.
 
 ## Task 8: Run the compiled Java file
 
-1. Return to Cloud Shell and run the following commands to set two variables. In the example below, replace `your-compartment-ocid` with the compartment OCID for your target database.
+1. Return to Cloud Shell and run the following commands to define two variables: **BUCKET** and **COMPARTMENT**. In the example below, replace `your-compartment-ocid` with the compartment OCID for your target database.
 
     ```bash
     $ <copy>export BUCKET=DataSafeAuditData</copy>
@@ -340,14 +334,14 @@ Use the `javac` command to compile the `DataSafeRestAPIClientExample.java` file.
     Upload complete at  Wed Feb 15 22:01:40 UTC 2023 of cursor  OpcRequestId: fra-1:YpGeKJmQ7HtfJLXCVGLYKIEGCEPGbsdF...
     ```
 
-4. Review the output. The third last output line tells you the count of audit records copied into object storage.
+4. Review the output. The third last output line tells you the count of audit records copied into object storage. Your value may be different than the one shown in this example.
 
 
 ## Task 9: Verify that the audit data is copied to your bucket
 
 1. From the navigation menu, select **Storage**, and then **Buckets**.
 
-2. Select your compartment.
+2. Make sure your compartment is selected.
 
 3. Click the name of your bucket.
 
@@ -361,23 +355,24 @@ Use the `javac` command to compile the `DataSafeRestAPIClientExample.java` file.
     <copy>auditeventjson2023-02-15T22:01:39.579619Z _noofrecords_ 35 Start =2023-02-14T22:01:38.325Z, End=2023-02-15T22:01:38.324Z</copy>
     ```
 
+6. Delete the object and cursor: One at a time, click the three dots at the end of the row and select **Delete**. In the **Confirm Delete Object** dialog box, click **Delete**.
+
 
 
 ## Learn More
 
 - [Activity Auditing Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-741E8CFE-041E-46C4-9C04-D849573A4DB7)
 - [Audit Trails](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-8E684604-879A-4312-8FF6-519ECD67D179)
-- [Downloading and installing the Java SDK](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/javasdkgettingstarted.htm)
-- [oci-java-sdk on GitHub](https://github.com/oracle/oci-java-sdk)
-- [Configuring the SDK](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/javasdk.htm)
-- [Oracle Data Safe API Reference and Endpoints](https://docs.oracle.com/en-us/iaas/api/#/en/data-safe/20181201/)
-- [Oracle Cloud Infrastructure Java SDK Packages and Classes](https://docs.oracle.com/en-us/iaas/tools/java/3.2.2/)
-- [Data Safe API](https://docs.oracle.com/en-us/iaas/api/#/en/data-safe/20181201/)
+- [Getting Started (with SDK for Java)](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/javasdkgettingstarted.htm)
+- [oci-java-sdk (on GitHub)](https://github.com/oracle/oci-java-sdk)
+- [SDK for Java (configuring the SDK)](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/javasdk.htm)
+- [Data Safe API (reference and endpoints)](https://docs.oracle.com/en-us/iaas/api/#/en/data-safe/20181201/)
+- [Oracle Cloud Infrastructure Java SDK (packages and classes)](https://docs.oracle.com/en-us/iaas/tools/java/3.2.2/)
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Richard Evans, Bettina Schaeumer, Archana Rao, Anna Haikl 
-- **Last Updated By/Date** - Jody Glover, February 15, 2023
+- **Last Updated By/Date** - Jody Glover, February 22, 2023
 
 
 
