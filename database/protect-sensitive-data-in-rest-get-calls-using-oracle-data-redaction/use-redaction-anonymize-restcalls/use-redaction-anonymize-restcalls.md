@@ -28,7 +28,7 @@ This lab assumes you have:
 
     ![Select SQL from Launchpad](images/launchpad-sql.png) 
 
-2. **REST enabling the table** is simple. To do this, find the table we just created named `DEMO_HR_EMPLOYEE`S in the **navigator** on the left of the **SQL Worksheet**. Right click on the table name and select **REST** in the pop up menu then Enable.
+2. **REST enabling the table** is simple. To do this, find the table we just created named `DEMO_HR_EMPLOYEES` in the **navigator** on the left of the **SQL Worksheet**. Right click on the table name and select **REST** in the pop up menu then Enable.
 
     ![Enable REST](images/enable-rest.png)
 
@@ -48,7 +48,7 @@ When ready, click the **Enable button** in the lower right of the slider.
 
 ## Task 2: Create users and upload data
 
-1. Navigate back to the **Database Actions** SQL Development page for Admin. Grant access for `EMPLOYEESEARCH_PROD` to the `DBMS_REDACT` package by pasting the text below in the worksheet.
+1. Navigate back to the **Database Actions** SQL Development page for `ADMIN`. Grant access for `EMPLOYEESEARCH_PROD` to the `DBMS_REDACT` package by pasting the text below in the worksheet.
 
     ```
     <copy>grant execute on sys.dbms_redact to EMPLOYEESEARCH_PROD</copy>   
@@ -56,7 +56,7 @@ When ready, click the **Enable button** in the lower right of the slider.
 
     ![Pre-Redaction REST Call](images/grant-red.png)
 
-2. Return to the **Database Actions** SQL Development page for EMPLOYEESEARCH_PROD and run the **first query**. View the unredacted results under query results at the **bottom of the page**.
+2. Return to the **Database Actions** SQL Development page for `EMPLOYEESEARCH_PROD` and run the **first query**. View the unredacted results under query results at the **bottom of the page**.
     
     ```
     <copy>SELECT
@@ -167,11 +167,11 @@ When ready, click the **Enable button** in the lower right of the slider.
 2. Run the **first query from the previous task** and view the redacted data at the **bottom of the page**.
     
     ![Redacted REST](images/redacted-query.png)
-    
+
 Congratulations, You have successfully redacted REST calls using ORDS!
 
 ## Acknowledgements
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, January 2023
+- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, February 2023

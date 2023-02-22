@@ -40,4 +40,4 @@ This lab assumes you have:
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, January 2023
+- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, February 2023

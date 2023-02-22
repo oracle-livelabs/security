@@ -25,7 +25,7 @@ This lab assumes you have:
 
 ## Task 1: Identify the session information of the REST call and create a Unified Audit policy.
 
-1. The first thing we need to do is to identify the session information of the REST call. We will do this by auditing all sessions that execute a SELECT on the DEMO_HR_EMPLOYEES. We will create, and enable, a Unified Audit policy for this. Navigate to the Admin SQL Window, paste the following script, then run the statement. This script will create the audit policy.
+1. The first thing we need to do is to identify the session information of the REST call. We will do this by auditing all sessions that execute a SELECT on the `DEMO_HR_EMPLOYEES`. We will create, and enable, a Unified Audit policy for this. Navigate to the `ADMIN` SQL Window, paste the following script, then run the statement. This script will create the audit policy.
 
     ```
     <copy>CREATE AUDIT POLICY audit_hr_select ACTIONS SELECT on employeesearch_prod.demo_hr_employees;</copy>   
@@ -69,7 +69,7 @@ This lab assumes you have:
 
     ![Redacted Query](images/redacted-query.png)
 
-2. As ADMIN, verify there is a new audit record for our newly-created Unified Audit policy in the Unified Audit Trail.
+2. As `ADMIN`, verify there is a new audit record for our newly-created Unified Audit policy in the Unified Audit Trail.
 
     ```
     <copy>SELECT dbusername, dbproxy_username, client_program_name, sql_text, APPLICATION_CONTEXTS
@@ -80,7 +80,7 @@ This lab assumes you have:
     ![New Audit Record](images/new-audit-rec.png)
 3. Now, run the REST call from your browser by refreshing the browser tab. The data will be redacted.
     ![Redacted REST Call](images/redacted-rest-call.png)
-4. Again, as ADMIN, you should see additional audit records in the Unified Audit Trail. These new audit records should show differences in the values of the application\_contexts column. For example, Database Actions SQL will show a value of: '/\_/sql/', while the Oracle Rest Data Services CALL will show the value of application\_contexts column as:
+4. Again, as `ADMIN`, you should see additional audit records in the Unified Audit Trail. These new audit records should show differences in the values of the application\_contexts column. For example, Database Actions SQL will show a value of: '/\_/sql/', while the Oracle Rest Data Services CALL will show the value of application\_contexts column as:
 '/demo_hr_employees/'
     ![Additional Audit Records](images/add-audit-rec.png)
 ## Task 3: Update Redaction policy then review employee query data, REST call data and audit records
@@ -118,7 +118,7 @@ This lab assumes you have:
 3. Also re-run the REST Call. The data should still be redacted.
     ![Run Query Again](images/redacted-rest-call.png)
 ## Task 4: Drop Audit policy and then the Redaction policy.
-1. Since our Unified Audit policy has served its purpose, we can drop it as we do not need to audit every single SELECT statement.
+1. Since our Unified Audit policy has served its purpose, we can drop it as we do not need to audit every single SELECT statement. As `ADMIN`, run the following script:
     ```
     noaudit policy audit_hr_select;
     drop AUDIT POLICY audit_hr_select;  
@@ -142,4 +142,4 @@ This lab assumes you have:
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, January 2023
+- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, February 2023
