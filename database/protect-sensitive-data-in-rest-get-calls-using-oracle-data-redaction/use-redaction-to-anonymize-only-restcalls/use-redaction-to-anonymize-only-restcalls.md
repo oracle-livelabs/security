@@ -81,7 +81,7 @@ This lab assumes you have:
 3. Now, run the REST call from your browser by refreshing the browser tab. The data will be redacted.
     ![Redacted REST Call](images/redacted-rest-call.png)
 4. Again, as `ADMIN`, you should see additional audit records in the Unified Audit Trail. These new audit records should show differences in the values of the application\_contexts column. For example, Database Actions SQL will show a value of: '/\_/sql/', while the Oracle Rest Data Services CALL will show the value of application\_contexts column as:
-'/demo_hr_employees/'
+'/demo\_hr\_employees/'
     ![Additional Audit Records](images/add-audit-rec.png)
 ## Task 3: Update Redaction policy then review employee query data, REST call data and audit records
 1. Next, as `EMPLOYEESEARCH_PROD`, we will update the Oracle Data Redaction policy parameter expression from '1=1' to what we know our REST Call uses.

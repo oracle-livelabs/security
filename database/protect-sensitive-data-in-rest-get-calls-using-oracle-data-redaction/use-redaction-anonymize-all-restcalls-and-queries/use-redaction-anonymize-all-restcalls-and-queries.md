@@ -1,4 +1,4 @@
-# Use Redaction to Anonymize All REST calls
+# Use Redaction to Anonymize All REST calls and Queries
 
 ## Introduction
 
