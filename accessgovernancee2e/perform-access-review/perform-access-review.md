@@ -102,7 +102,7 @@ In this lab, you will:
     - Access review trail, you should see the **justification** entered by your employee self-reviewer in the previous task. 
     - Recent changes in user’s profile
   ![AI/ML Insights](images/manager-access-review-insights-manager.png)
-3. Decide (Accept or Revoke): Select the *Access Review* for the user - *Mark Hernandez* and **Revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
+3. Decide (Accept or Revoke): Select the *Access Review* for the user - *Mark Hernandez* with *Assignment Type* as *Account* and **Revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
 
 4. During this lab, you have navigated the **Oracle Access Governance** console to select **access review tasks** assigned to you as an **employee** and **manager user**, view **prescriptive analytics** and **recommendation** proposed by **Oracle Access Governance**, and make informed decisions **Accept** or **Revoke** for review tasks based on **peer group analysis** and **insights**. 
 

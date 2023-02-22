@@ -36,6 +36,7 @@ This lab assumes you have:
 2. Setting the Environment variables using the below command:
 
     ```
+    <copy>cd ~</copy>
     <copy>source oag_agent.env</copy>
     ```
     ![Initialize the environment variable](images/terminal-oag.png) 
