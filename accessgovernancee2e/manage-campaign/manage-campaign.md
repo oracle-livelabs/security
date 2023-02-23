@@ -44,7 +44,8 @@ In this lab, you will:
   ![Clone Campaign](images/admin-clone-campaign.png)
 9. During this lab, as a **campaign administrator**, you have leveraged the analytics features delivered by **Oracle Access Governance** to have insights on campaign progress status. You also learn how to quickly create a new campaign by cloning an existing campaign. 
 
-You may now **proceed to the next lab**
+  You may now **proceed to the next lab**
+  
 ## Learn More
 
 * [Oracle Access Governance Manage Access Review Campaign](https://docs.oracle.com/en/cloud/paas/access-governance/kfdck/index.html)

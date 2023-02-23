@@ -64,7 +64,7 @@ Using the details from the two Tasks above, proceed to the lab *Environment Setu
 -  Create Stack:  *Compute + Networking*
 -  Create Stack:  *Compute only* with an existing VCN where security lists have been updated as per *Task 2* above
 
-You may now proceed to the next lab.
+    You may now **proceed to the next lab.**
 
 ## Acknowledgements
 * **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology

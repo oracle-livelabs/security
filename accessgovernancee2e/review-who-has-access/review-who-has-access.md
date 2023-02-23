@@ -55,7 +55,8 @@ In this lab, you will:
   ![Review My Access](images/manager-review-my-access.png)
 3. Select **Roles** from **Group by** drop-down menu to see a list of roles assigned to the user. You can also click on each **Role** to view details.
 4. During this lab, you have navigated the **Oracle Access Governance** console as a **user manager** to list your direct report employees and your own access privileges. This is a security good practice and part of the employees' **Due Care / Due Diligence**.
-5. You may now **proceed to the next lab**. 
+
+  You may now **proceed to the next lab**. 
 
 
 ## Learn More

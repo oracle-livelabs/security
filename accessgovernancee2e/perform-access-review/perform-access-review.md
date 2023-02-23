@@ -124,14 +124,14 @@ In this lab, you will:
       ```
 
   ![OIG Login Page](images/oig-logon.png)
-2. You should see the **Oracle Identity Governance** main dashboard. Click on Manage -> Users.
+2. You should see the **Oracle Identity Governance** main dashboard. Click on **Manage -> Users**
   ![OIG Homepage](images/oig-homepage.png)
 
 3. Click Users. Search for User **Mark Hernandez**.Note **Figma** application entitlements present for the user. 
 
 ![Access Governance Homepage](images/initial-user-details.png)
 
-4. Click on **Provisioning Tasks -> Manual Fulfillment** . The Manual Fulfillment page is displayed. Notice that the Mnaual Fulfillment request for the user is displayed is displayed.
+4. Click on **Self Service -> Provisioning Tasks -> Manual Fulfillment** . The Manual Fulfillment page is displayed. Notice that the Manual Fulfillment request for the user is displayed is displayed.
 ![Provisioning tasks list](images/provisioning-tasks.png)
 5. Click on the  request. The request details page displays a detailed view of the request in the Details section, Content section and the Cart Items section. It allows complete management of the listed task. Click on Complete.
 ![Manual Fulfillment requests](images/manual-fulfillment.png)
@@ -141,8 +141,7 @@ Now remediation is completed with approval and manual provisioning.
 7. Notice the **Figma** application entitlements have been removed for the user **Mark Hernandez** 
 ![User Details OIG](images/user-details.png)
 
-8. Login in to **Oracle Access Governance** as the **Campaign Administrator** to view the Completion of review tasks.
-9. You may now **proceed to the next lab**. 
+    You may now **proceed to the next lab.**
 
 ## Learn More
 

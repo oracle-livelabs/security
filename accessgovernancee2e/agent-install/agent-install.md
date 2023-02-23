@@ -18,22 +18,28 @@ This lab assumes you have:
 
 ## Task 1: Install OAG Agent on the Compute Instance and Configure
 
-1. Move the downloaded zip file (oag.zip) present in the /home/opc/Downloads folder to /home/opc/zip_oag folder.
+1. Open the terminal session.
+
+    ![Open terminal session](images/open-terminal-window.png) 
+
+2. Move the downloaded zip file (oag.zip) present in the /home/opc/Downloads folder to /home/opc/zip_oag folder.
     
     ```
     <copy>mv /home/opc/Downloads/oag.zip /home/opc/zip_oag</copy>
     ```
+    ![Move the OAG Agent to zip_oag](images/move-oag-agent.png) 
+
     Verify the Agent zip (oag.zip) is present inside folder zip_oag.
     ```
     <copy>cd /home/opc/zip_oag</copy>
     <copy>ls</copy>
     ```
-    ![Move the OAG Agent to zip_oag](images/env_setup.png) 
+    ![Verify the Agent zip oag.zip](images/env_setup.png) 
 
      
 
     
-2. Setting the Environment variables using the below command:
+3. Setting the Environment variables using the below command:
 
     ```
     <copy>cd ~</copy>
@@ -42,20 +48,20 @@ This lab assumes you have:
     ![Initialize the environment variable](images/terminal-oag.png) 
  
 
-3. Install the agent
+4. Install the agent
 
     ```
     <copy>sh agentManagement.sh --volume /home/opc/vol_oag --agentpackage /home/opc/zip_oag/oag.zip --install</copy>
     ```
     ![Install the agent](images/agent-install.png) 
 
-4. Start the agent
+5. Start the agent
      ```
     <copy>sh agentManagement.sh --volume /home/opc/vol_oag --start</copy>
     ```
     ![Start the agent](images/agent-start.png) 
 
-5. Verify the agent
+6. Verify the agent
 
      ```
     <copy>sh agentManagement.sh --volume /home/opc/vol_oag --status</copy>
@@ -63,7 +69,7 @@ This lab assumes you have:
     ![Verify the agent](images/agent-status.png) 
 
 
-You may now [proceed to the next lab](#next).
+    You may now **proceed to the next lab.**
 
 ## Learn More
 

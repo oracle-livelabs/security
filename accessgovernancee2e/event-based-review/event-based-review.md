@@ -157,6 +157,7 @@ In this lab, you will:
     - Monitor and manage access review campaigns as a **campaign administrator**
     - Manage event based access review campaigns as a **campaign administrator**
 
+  You may now **proceed to the next lab.**
 
 ## Learn More
 
