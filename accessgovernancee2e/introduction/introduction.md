@@ -16,7 +16,7 @@ This lab walks you through the steps to get started using **Oracle Access Govern
 - **Users** and **user managers** to validate access assigned to self and their direct reports, respectively. 
 
 
-*Estimated Time:* 60 minutes
+*Estimated Time:* 3 Hours
 
 
 ### Objectives
