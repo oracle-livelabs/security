@@ -357,7 +357,7 @@ Use the `javac` command to compile the `DataSafeRestAPIClientExample.java` file.
 
 6. Delete the object and cursor: One at a time, click the three dots at the end of the row and select **Delete**. In the **Confirm Delete Object** dialog box, click **Delete**.
 
-
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -372,7 +372,7 @@ Use the `javac` command to compile the `DataSafeRestAPIClientExample.java` file.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Richard Evans, Bettina Schaeumer, Archana Rao, Anna Haikl 
-- **Last Updated By/Date** - Jody Glover, February 22, 2023
+- **Last Updated By/Date** - Jody Glover, February 23, 2023
 
 
 
