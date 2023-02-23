@@ -4,7 +4,7 @@ This workshop is designed to show developers and administrators how they can per
 
 You can do this workshop in Oracle's free tier with trial credits or in your own tenancy using a paid Oracle Cloud account.
 
-Estimated Workshop Time: 1.5 hours
+Estimated Workshop Time: 2 hours
 
 ## About Oracle Data Safe
 
@@ -20,7 +20,7 @@ In this workshop, you learn how to perform the following tasks:
 - Download the latest security assessment by using the Oracle Data Safe CLI
 - Copy audit data to object storage using the Oracle Data Safe REST API
 - Schedule the copying of audit data to object storage using the Oracle Data Safe REST API
-- Get notified about security drift on your target database by setting up Oracle Data Safe events
+- Get notified about security drift on your target database by setting up an Oracle Data Safe event
 
 ## Learn More
 
@@ -34,4 +34,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, January 26, 2023
+* **Last Updated By/Date** - Jody Glover, February 22, 2023
