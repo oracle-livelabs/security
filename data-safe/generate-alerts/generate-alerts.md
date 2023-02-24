@@ -269,6 +269,7 @@ In this task, you perform activities on your target database in Database Actions
 
     ![Alert report history](images/alert-report-history.png "Alert report history")
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -278,4 +279,4 @@ In this task, you perform activities on your target database in Database Actions
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 10, 2023
+* **Last Updated By/Date** - Jody Glover, February 23, 2023

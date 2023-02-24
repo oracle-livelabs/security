@@ -619,6 +619,7 @@ Start by scheduling the SH script to run every minute so that you can test that 
 
 4. Close Cloud Shell.
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 - [Activity Auditing Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-741E8CFE-041E-46C4-9C04-D849573A4DB7)
@@ -634,7 +635,7 @@ Start by scheduling the SH script to run every minute so that you can test that 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Contributors** - Richard Evans, Anna Haikl, Russ Lowenthal, Archana Rao, Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 22, 2023
+- **Last Updated By/Date** - Jody Glover, February 23, 2023
 
 
 

@@ -284,9 +284,7 @@ On the User Assessment History page, you can view a listing of all of your saved
 
 6. Click the name of a user assessment for your target database. Notice that you cannot refresh the data in a saved user assessment.
 
-
-
-
+You may now **proceed to the next lab**.
 
 
 ## Learn More
@@ -296,4 +294,4 @@ On the User Assessment History page, you can view a listing of all of your saved
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 14, 2023
+* **Last Updated By/Date** - Jody Glover, February 23, 2023

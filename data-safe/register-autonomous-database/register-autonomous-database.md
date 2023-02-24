@@ -136,6 +136,7 @@ To register a database other than an ATP database for this workshop, please foll
 
     ![Initial Dashboard - bottom half](images/dashboard-initial-bottom.png "Initial Dashboard - bottom half")
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -146,4 +147,4 @@ To register a database other than an ATP database for this workshop, please foll
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 22, 2023
+- **Last Updated By/Date** - Jody Glover, February 23, 2023

@@ -440,6 +440,7 @@ Schedule your custom audit report to generate a PDF every Sunday at 11PM UTC.
 
     ![Custom report with schedule](images/custom-report-w-schedule.png "Custom report with schedule")
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -449,4 +450,4 @@ Schedule your custom audit report to generate a PDF every Sunday at 11PM UTC.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 10, 2023
+* **Last Updated By/Date** - Jody Glover, February 23, 2023
