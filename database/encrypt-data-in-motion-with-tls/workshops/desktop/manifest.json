@@ -13,9 +13,9 @@
       "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
    },
    {
-      "title": "Lab 1: Configure the Autonomous Database environment",
+      "title": "Lab 1: Create Database wallet and self-signed certificate",
       "description": "",
-      "filename": "../../create-schemas-load-data/create-schemas-load-data.md"
+      "filename": "../../create-wallet-certificate/create-wallet-certificate.md"
    },
    {
       "title": "Lab 2: Use Redaction to anonymize REST Get calls",
@@ -24,6 +24,11 @@
    },
    {
       "title": "Lab 3: Reset your environment",
+      "description": "",
+      "filename": "../../reset-your-environment/reset-your-environment.md"
+   },
+   {
+      "title": "Optional Lab: Reset your environment hello",
       "description": "",
       "filename": "../../reset-your-environment/reset-your-environment.md"
    },
