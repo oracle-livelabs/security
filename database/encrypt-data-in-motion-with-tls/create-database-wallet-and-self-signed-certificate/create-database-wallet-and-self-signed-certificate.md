@@ -37,6 +37,7 @@ ls -al</copy>
 `
 
 
+
     ![Enable REST](images/enable-rest.png)
 
 3. The **REST Enable Object slider** will appear from the right side of the page. We are going to use the defaults for this page but take note and **copy** the Preview URL to a clipboard of your choice. This is the URL we will use to **access the REST enabled table**. When ready, click the **Enable button** in the lower right of the slider.
