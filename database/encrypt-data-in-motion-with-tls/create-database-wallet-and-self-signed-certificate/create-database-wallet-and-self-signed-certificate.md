@@ -22,13 +22,20 @@ This lab assumes you have:
 
 *Warning: Terminating resources may take a few minutes*
 
-## Task 1: REST enable the table
+## Task 1: Create Database wallet and self-signed certificate  
 
-1. From the Database Actions Launchpad for `EMPLOYEESEARCH_PROD` navigate to **SQL** under the **Development section**.
+1. `<copy>mkdir -v -p /etc/ORACLE/WALLETS/oracle/</copy>`
+
 
     ![Select SQL from Launchpad](images/launchpad-sql.png) 
 
-2. **REST enabling the table** is simple. To do this, find the table we just created named `DEMO_HR_EMPLOYEE`S in the **navigator** on the left of the **SQL Worksheet**. Right click on the table name and select **REST** in the pop up menu then Enable.
+2. `<copy>
+cd /etc/ORACLE/WALLETS/oracle/
+orapki wallet create -wallet . -pwd Oracle123 -auto_login
+orapki wallet display -wallet .
+ls -al</copy>
+`
+
 
     ![Enable REST](images/enable-rest.png)
 
