@@ -40,11 +40,11 @@ This lab assumes you have:
     ![Create Service Instance](images/create-service-instance.png)
     ![Service Instance details](images/ag-service-instance.png)
 
-4. Wait for the service instance to have the *Active* status 
+4. Wait for the service instance to have the *Active* status . Note down this URL as we will be using it in the further labs. 
 
     ![Service Instance is Active](images/ag-url.png)
 
-5. Click on the Serivce Instance to access the URL. 
+5. Click on the Service Instance to access the URL. 
 
     ![Access Governance console](images/ag-console.png)
 
@@ -143,4 +143,5 @@ This lab assumes you have:
 
 ## Acknowledgments
 * **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Contributors** - Edward Lu
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023

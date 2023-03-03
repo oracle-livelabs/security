@@ -68,6 +68,6 @@ Using the details from the two Tasks above, proceed to the lab *Environment Setu
 
 ## Acknowledgements
 * **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
-* **Contributors** - Meghana Banka
+* **Contributors** - Meghana Banka, Edward Lu
 * **Last Updated By/Date** - Indira Balasundaram, January 2023
 
