@@ -338,6 +338,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     ![Assessment History page](images/sa-assessment-history-page.png "Assessment History page")
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -346,4 +347,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 14, 2023
+* **Last Updated By/Date** - Jody Glover, February 23, 2023

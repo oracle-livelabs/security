@@ -291,6 +291,7 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
 7. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -303,4 +304,4 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 22, 2023
+- **Last Updated By/Date** - Jody Glover, February 23, 2023

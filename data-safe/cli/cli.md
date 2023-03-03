@@ -228,7 +228,7 @@ When you run the SH file, the latest security assessment is downloaded to your C
 
 7. Close Cloud Shell and click **Exit** to confirm.
 
-
+You may now **proceed to the next lab**.
 
 ## Related Resources
 
@@ -239,4 +239,4 @@ When you run the SH file, the latest security assessment is downloaded to your C
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 22, 2023
+- **Last Updated By/Date** - Jody Glover, February 23, 2023

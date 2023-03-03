@@ -257,6 +257,6 @@ After you generate a comparison report, if there is security drift (which there 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Contributors** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 22, 2023
+- **Last Updated By/Date** - Jody Glover, February 23, 2023
 
 
