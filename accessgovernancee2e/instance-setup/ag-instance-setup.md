@@ -40,11 +40,11 @@ This lab assumes you have:
     ![Create Service Instance](images/create-service-instance.png)
     ![Service Instance details](images/ag-service-instance.png)
 
-4. Wait for the service instance to have the *Active* status 
+4. Wait for the service instance to have the *Active* status . Note down this URL as we will be using it in the further labs. 
 
     ![Service Instance is Active](images/ag-url.png)
 
-5. Click on the Serivce Instance to access the URL. 
+5. Click on the Service Instance to access the URL. 
 
     ![Access Governance console](images/ag-console.png)
 
@@ -54,21 +54,25 @@ This lab assumes you have:
 
     ![Access Governance console - Connected Systems](images/connected-systems.png)
 
-2. On the tile labeled **Would you like to connect to an Identity Governance System** select the **Add** button.
+2. Click on **Add a connected system**
+
+    ![Add - Connected System](images/add-connected-system.png)
+
+3. On the tile labeled **Would you like to connect to an Identity Governance System** select the **Add** button.
     ![Access Governance console - Connected Systems-Add](images/connected-system-page.png)
 
-3. Click **Close** on the information pop-up to navigate to the **Add an Identity Governance System** page and begin the configuration.
+4. Click **Close** on the information pop-up to navigate to the **Add an Identity Governance System** page and begin the configuration.
 
     ![Close the Pop-up window](images/pop-up.png)
 
 
-4. On the **Select System** step, select the tile for **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
+5. On the **Select System** step, select the tile for **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
 
 
     ![Access Governance console - Connected Systems-Next](images/select-oig.png)
 
 
-5. On the **Enter Details** step, enter the following details:
+6. On the **Enter Details** step, enter the following details:
 
     * **Name:** oag
     * **Description:** oag
@@ -78,7 +82,7 @@ This lab assumes you have:
 
    
 
-6. On the **Configure** step, enter connection details for the target system:
+7. On the **Configure** step, enter connection details for the target system:
 
     **JDBC URL:** 
     Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 3 : Task 3*  for the private ip of your compute instance. 
@@ -117,11 +121,18 @@ This lab assumes you have:
 
      ![Configure Details](images/oag-connection-details.png)
 
-7. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
+8. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
 
 
     ![Download the agent](images/oag-download-link.png)
-You may now **proceed to the next lab**
+
+9. You can verify the downloaded agent zip file.
+
+     ![Navigate to file system](images/locate-zip.png)
+
+     ![Verify the zip file](images/verify-zip.png)
+
+    You may now **proceed to the next lab.**
 
 ## Learn More
 
@@ -132,4 +143,5 @@ You may now **proceed to the next lab**
 
 ## Acknowledgments
 * **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Contributors** - Edward Lu
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
