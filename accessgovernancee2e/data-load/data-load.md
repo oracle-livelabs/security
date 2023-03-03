@@ -46,7 +46,7 @@ Create users in IAM and assign them to Application roles.
     * Open the Text Editor inside the Workshop on the Linux environment. 
     ![Open Text Editor](images/open-texteditor.png)
     * Create a new file **user-iam.sh**
-    * Add the below contents in the **user-iam.sh** file and save it. Specify the email-id provided to you at the time of your OCI cloud account creation.
+    * Add the below contents in the **user-iam.sh** file and save it. Specify any email-id to which you will be receiving *Activation mail* for password reset for the users. 
     ```
     <copy>oci iam user create --name mhernandez --email <--email-id provided--> --description OAG-User-Cloud-Shell
 	oci iam user create --name pamela.green --email <--email-id provided--> --description OAG-User-Cloud-Shell 
