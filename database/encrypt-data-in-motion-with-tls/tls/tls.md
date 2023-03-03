@@ -11,8 +11,13 @@ This workshop introduces the functionality of Oracle Transport Layer Security (T
 Watch a preview of "*LiveLabs - Oracle Native Network Encryption (May 2022)*" [](youtube:N6Uz-pVTkaI)
 
 ### Objectives
-- Enable/Disable the Native Network Encryption on your database
-- Check the network encryption effects before/after enabling
+- Download tls.zip file to local directory  
+- Generate and capture unencrypted SQL traffic 
+- Create wallet and self signed certificate 
+- Enable TLS network encryption 
+- Generate and capture encrypted SQL traffic 
+- (Optional) Disable encryption 
+
 
 ### Prerequisites
 This lab assumes you have:
@@ -25,75 +30,80 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | Check the current network configuration | <5 minutes |
-| 2 | Generate and capture SQL traffic | 5 minutes |
-| 3 | Enable the network encryption | 5 minutes |
-| 4 | Disable the network encryption | <5 minutes |
+| 1 | Download tls.zip file to local directory | <5 minutes |
+| 2 | Generate and capture unencrypted SQL traffic | 5 minutes |
+| 3 | Create wallet and self signed certificate | 5 minutes |
+| 4 | Enable TLS network encryption | <5 minutes |
+| 5 | Generate and capture encrypted SQL traffic | <5 minutes |
+| 6 | (Optional) Disable encryption | <5 minutes |
 
-## Task 1: Check the current network configuration
+## Task 1: Download tls.zip file to local directory
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* and use `cd` command to move to livelabs directory.
 
     ````
-    <copy>sudo su - oracle</copy>
+    <copy>cd livelabs</copy>
     ````
 
     **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
-2. Go to the scripts directory
+2. Create TLS directory within the livelabs folder. 
 
     ````
-    <copy>cd $DBSEC_LABS/nne</copy>
+    <copy>mkdir -v tls</copy>
     ````
 
-3. View your **SQL*Net.ora** file content
+3. Move into TLS directory you just created. 
 
     ````
-    <copy>./nne_view_sqlnet_ora.sh</copy>
+    <copy>cd tls</copy>
     ````
 
-    **Note**: It should be empty!
-
-   ![Network Encryption](./images/nne-001.png "Network Encryption")
-
-4. Check if the network is already encrypted
+4. Use `wget` command to download tls.zip file.
 
     ````
-    <copy>./nne_is_sess_encrypt.sh</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/go8OvUV3HWuaHALnGYA3pHooq_AkPU2oK3JIOu5SFBBrOlZ_STdjpnHmOA78uhMM/n/oradbclouducm/b/dbsec_rich/o/tls.zip</copy>
     ````
 
-    ![Network Encryption](./images/nne-002.png "Network Encryption")
-
-    **Note**: You should not see the "Encryption service adapter" row
-
-## Task 2: Generate and capture SQL traffic
-
-1. Run **tcpdump** on the traffic to analyze the packets in transit on the network (wait for the end of the execution)
-
+5. Unzip tls.zip file. 
+    
     ````
-    <copy>./nne_tcpdump_traffic.sh</copy>
+    <copy>unzip tls.zip</copy>
     ````
 
-    ![Network Encryption](./images/nne-003a.png "Network Encryption")
-
-    ![Network Encryption](./images/nne-003b.png "Network Encryption")
-
-    **Note**:
-    - We execute a query on the `DEMO_HR_EMPLOYEES` table
-    - The output has been saved to **`tcpdump.pcap`** file
-    - There are a lot of tools available to analyze pcap files
-
-2. Now, extract sensitive data from tcpdump.pcap file, just generated, to see if the fishing was good
-
+6. Remove tls.zip file. 
+    
     ````
-    <copy>./nne_tcpdump_extract.sh</copy>
+    <copy>rm -v tls.zip</copy>
     ````
 
-    ![Network Encryption](./images/nne-004.png "Network Encryption")
+7. Use following command to change access permissions of the files in the tls directory. 
+    
+    ````
+    <copy>chmod +x *.sh</copy>
+    ````
 
-    **Note**:
-    - We extract all rows containing an email or something similar
-    - Because the network is in the clear text, the `DEMO_HR_EMPLOYEES` table data is totally readable!
+7.  Use the following command to list files in tls directory. Now you should be able to see the foler is populated with .sh files. 
+    
+    ````
+    <copy>ls -al</copy>
+    ````
+    
+
+## Task 2: Generate and capture unencrypted SQL traffic
+
+1. Use the following command to ping the pluggable database, PDB1.
+
+    ````
+    <copy>tnsping pdb1</copy>
+    ````
+
+2. First, let's look at the existing PDB1 connection to see that the data is not encrypted in motion.
+
+    ````
+    <copy>./tls_is_sess_encrypt.sh pdb1</copy>
+    ````
+    
 
 3. Next, run **tcpflow** to capture traffic across the wire for the Glassfish application
 
