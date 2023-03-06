@@ -103,150 +103,105 @@ This lab assumes you have:
     ````
     <copy>./tls_is_sess_encrypt.sh pdb1</copy>
     ````
-    
-
-3. Next, run **tcpflow** to capture traffic across the wire for the Glassfish application
-
-    - Begin the capture script and **DON'T CLOSE IT!**
-
-        ````
-        <copy>./nne_tcpflow_traffic.sh</copy>
-        ````
-
-        ![Network Encryption](./images/nne-005.png "Network Encryption")
-
-        **Notes:** We will extract all lines containing an email or something similar (see the egrep command)
-
-    - In parallel, open a web browser window to *`https://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
-    
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-
-    - Perform the following steps:
-
-        - Login to the HR Application as *`hradmin`* with the password "*`Oracle123`*"
-
-            ````
-            <copy>hradmin</copy>
-            ````
-
-            ````
-            <copy>Oracle123</copy>
-            ````
-
-            ![Network Encryption](./images/nne-006.png "Network Encryption")
-            ![Network Encryption](./images/nne-007.png "Network Encryption")
-
-        - Click on **Search Employees**
-
-            ![Network Encryption](./images/nne-008.png "Network Encryption")
-
-        - Click [**Search**]
-
-            ![Network Encryption](./images/nne-009.png "Network Encryption")
-
-    - Now go back to your terminal session to see traffic content
-
-        ![Network Encryption](./images/nne-010.png "Network Encryption")
-
-4. When you have seen the un-encrypted data, use "*`[Ctrl]+C`* " to stop the script
-
-    **Notes:** Because the network is in the clear text, we can access to all sensitive data in transit!
+    Your NETWORK_PROTOCOL should not be encrypted and read 'tcp'
 
 
-## Task 3: Enable the network encryption
-You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.ENCRYPTION_SERVER`*
-
-1. To begin with, we use this option because it will allow non-encrypted connections to still connect. While this rarely has an impact, it is often important to do this so the change does not interfere with production systems that cannot encrypt between the client and the database!
+3. This allows you to intercept traffic on port 1521 and generates pkat file 
 
     ````
-    <copy>./nne_enable_requested.sh</copy>
+    <copy>./tls_tcpdump_traffic.sh pdb1</copy>
     ````
 
-    ![Network Encryption](./images/nne-011.png "Network Encryption")
-
-    **Note**: There's an alternative to Native Network Encryption, it's TLS certificates but those require user management and more configuration
-
-2. Now, re-run the script to check if the session is encrypted
+4. Pulls data from pkat file 
 
     ````
-    <copy>./nne_is_sess_encrypt.sh</copy>
+    <copy>./tls_tcpdump_extract.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-012.png "Network Encryption")
 
-    **Note**: You should notice an additional line that says "**AES256 Encryption service adapter for Linux**"
 
-3. Now, re-run **tcpdump** on the traffic to analyze the packets in transit on the network (wait for the end of the execution)
+## Task 3: Create wallet and self signed certificate 
 
-    ````
-    <copy>./nne_tcpdump_traffic.sh</copy>
-    ````
-
-    ![Network Encryption](./images/nne-003a.png "Network Encryption")
-
-    ![Network Encryption](./images/nne-003b.png "Network Encryption")
-
-4. Like previously, extract the same sensitive data from the new tcpdump.pcap file generated
+1. 
 
     ````
-    <copy>./nne_tcpdump_extract.sh</copy>
+    <copy>./tls_create_wallet_cert.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-013.png "Network Encryption")
+    You should see 'wallet and certificate creation completed!' 
 
-    **Note**:
-    - We extract all rows containing an email or something similar
-    - Because the session is encrypted, the `DEMO_HR_EMPLOYEES` table data is unreadable!
+## Task 4: Enable TLS network encryption
 
-5. Now, let's do the test with **tcpflow** for Glassfish application to see the impact of the network encryption
-
-    - On your terminal session capture the traffic generated and, again, **DON'T CLOSE IT!**
-
-        ````
-        <copy>./nne_tcpflow_traffic.sh</copy>
-        ````
-
-        ![Network Encryption](./images/nne-005.png "Network Encryption")
-
-    - Go back to your web browser, **logout** the Glassfish application and **login** again as *`hradmin`* to see what happens when we sniff this traffic
-
-        ![Network Encryption](./images/nne-006.png "Network Encryption")
-
-        ![Network Encryption](./images/nne-007.png "Network Encryption")
-
-    - Click on **Search Employees**
-
-        ![Network Encryption](./images/nne-008.png "Network Encryption")
-
-    - Click [**Search**]
-
-        ![Network Encryption](./images/nne-009.png "Network Encryption")
-
-    - Now go back to your terminal session to see traffic content
-
-        ![Network Encryption](./images/nne-005.png "Network Encryption")
-
-    **Note**:
-    - You should see no data!
-    - We are still trying to extract all rows containing an email or something similar, but because the network is encrypted, we have nothing!
-    - The data is encrypted between our Glassfish application (JDBC Thin Client) and the database
-    - This works immediately (or after a refresh) because our Glassfish application creates a new connection for each query
-    - A real application would probably need to be stopped and restarted to disconnect the existing application connections from the database!
-
-6. When you have seen the effect of the network encryption, use "*`[Ctrl]+C`* " to stop the script
-
-
-## Task 4: Disable the network encryption
-
-1. When you have completed the lab, you can return the Native Network Encryption to the default settings
+1. 
 
     ````
-    <copy>./nne_disable.sh</copy>
+    <copy>./tls_update_tnsnames_ora.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-014.png "Network Encryption")
+2. 
 
-You may now proceed to the next lab!
+    ````
+    <copy>./tls_update_sqlnet_ora.sh</copy>
+    ````
+3. 
+
+    ````
+    <copy>lsnrctl stop</copy>
+    ````
+
+4. 
+
+    ````
+    <copy>./tls_update_listener_ora.sh</copy>
+    ````
+5. 
+
+    ````
+    <copy>lsnrctl start</copy>
+    ````
+
+6. 
+
+    ````
+    <copy>lsnrctl status</copy>
+    ````
+7. 
+
+    ````
+    <copy>tnsping pdb1</copy>
+    ````
+
+8. 
+
+    ````
+    <copy>tnsping pdb1_tls</copy>
+    ````
+## Task 5: Generate and capture encrypted SQL traffic
+
+1. 
+
+    ````
+    <copy>./tls_is_sess_encrypt.sh pdb1_tls</copy>
+    ````
+2. 
+
+    ````
+    <copy>./tls_tcpdump_traffic.sh pdb1_tls</copy>
+    ````
+3. 
+
+    ````
+    <copy>./tls_tcpdump_extract.sh</copy>
+    ````
+## Task 6 (Optional): Disable encryption 
+
+1. 
+
+    ````
+    <copy>./tls_disable.sh</copy>
+    ````
+
+
 
 ## **Appendix**: About the Product
 ### **Overview**
@@ -268,6 +223,6 @@ Technical Documentation:
 - [Oracle Native Network Encryption 19c](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-network-data-encryption-and-integrity.html)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Richard Evans, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
+- **Author** - Stephen Stuart & Alpha Diallo, North America Specialist Hub
+- **Contributors** - Richard C. Evans, Database Security Product Manager 
+- **Last Updated By/Date** - Stephen Stuart & Alpha Diallo, March 2023
