@@ -38,6 +38,6 @@ This workshop assumes that you have:
 
 ## Acknowledgements
 
-- **Authors** - Stephen Stuart & Alpha Diallo, North America Specialist Hub
+- **Authors** - Stephen Stuart & Alpha Diallo, Solution Engineers,North America Specialist Hub
 - **Creator** - Richard C. Evans, Database Security Product Manager
 - **Last Updated By/Date** - Stephen Stuart & Alpha Diallo, March 2023

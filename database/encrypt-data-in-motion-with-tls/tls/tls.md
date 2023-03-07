@@ -213,8 +213,9 @@ Oracle SQL*Net traffic can be encrypted by using:
 ## Want to Learn More?
 Technical Documentation:
 - [Configuring Transport Layer Security Authentication](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-secure-sockets-layer-authentication.html)
+- [Oracle Native Network Encryption 19c](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-network-data-encryption-and-integrity.html)
 
 ## Acknowledgements
-- **Author** - Stephen Stuart & Alpha Diallo, North America Specialist Hub
+- **Author** - Stephen Stuart & Alpha Diallo, Solution Engineers, North America Specialist Hub
 - **Contributors** - Richard C. Evans, Database Security Product Manager 
 - **Last Updated By/Date** - Stephen Stuart & Alpha Diallo, March 2023
