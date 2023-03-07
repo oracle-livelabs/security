@@ -174,7 +174,8 @@ This lab assumes you have:
     <copy>./tls_is_sess_encrypt.sh pdb1_tls</copy>
     ````
     The output should read 'tcps' instead. 
-2. 
+
+2. Again, we will capture SQL queries from sqlplus using tcpdump. The queries will show on our screen but the packet capture (pcap) file will not contain unencrypted emails.
 
     ````
     <copy>./tls_tcpdump_traffic.sh pdb1_tls</copy>
