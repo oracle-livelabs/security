@@ -187,7 +187,7 @@ This lab assumes you have:
     ````
 ## Task 6 (Optional): Disable encryption 
 
-1. 
+1. This step will disable TLS encryption for the listener, remove the parameters from the sqlnet.ora and tnsnames.ora file, and delete the TLS wallet files.
 
     ````
     <copy>./tls_disable.sh</copy>
