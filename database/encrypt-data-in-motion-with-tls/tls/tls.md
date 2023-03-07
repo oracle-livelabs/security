@@ -150,24 +150,18 @@ This lab assumes you have:
     <copy>./tls_update_sqlnet_ora.sh</copy>
     ````
 
-3. Configure the listener to be available for TLS connections on port 1522 and accept one-way TLS connections.
+3. This step will stop the Oracle Listener and update the listener.ora to be available for TLS connections on port 1522. It will start the Oracle listener and dynamically register the existing CDB and PDBs with it.
 
     ````
     <copy>./tls_update_listener_ora.sh</copy>
     ````
-
 4. 
-
-    ````
-    <copy>lsnrctl status</copy>
-    ````
-5. 
 
     ````
     <copy>tnsping pdb1</copy>
     ````
 
-6. 
+5. 
 
     ````
     <copy>tnsping pdb1_tls</copy>
