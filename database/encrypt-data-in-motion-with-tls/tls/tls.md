@@ -77,13 +77,13 @@ This lab assumes you have:
     <copy>rm -v tls.zip</copy>
     ````
 
-7. Use following command to change access permissions of the files in the tls directory. 
+7. Use following command to enable execute permissions on the scripts in the tls directory. 
     
     ````
     <copy>chmod +x *.sh</copy>
     ````
 
-7.  Use the following command to list files in tls directory. Now you should be able to see the foler is populated with .sh files. 
+7.  Use the following command to list files in tls directory. Now you should be able to see the folder is populated with .sh files. 
     
     ````
     <copy>ls -al</copy>
@@ -106,29 +106,35 @@ This lab assumes you have:
     Your NETWORK_PROTOCOL should not be encrypted and read 'tcp'
 
 
-3. This allows you to intercept traffic on port 1521 and generates pkat file 
+3. This allows you to intercept traffic on port 1521 and generates a pcap file. 
 
     ````
     <copy>./tls_tcpdump_traffic.sh pdb1</copy>
     ````
 
-4. Pulls data from pkat file 
+4. Extracts readable data from pcap file, you will see email addressess in the output.
 
     ````
-    <copy>./tls_tcpdump_extract.sh</copy>
+    <copy>./tls_tcpdump_extract.sh pdb1</copy>
     ````
 
 
 
 ## Task 3: Create wallet and self signed certificate 
 
-1. 
+1. This script will create the TLS wallet directory, create the wallet with orapki, and generate a self-signed certificate based on the DB server's hostname.
 
     ````
     <copy>./tls_create_wallet_cert.sh</copy>
     ````
 
     You should see 'wallet and certificate creation completed!' 
+
+2. The trusted certificate was exported to be used for the client. Display the contents of the dbseclab.crt file.
+
+    ````
+    <copy>cat dbseclab.crt</copy>
+    ````
 
 ## Task 4: Enable TLS network encryption
 
