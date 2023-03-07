@@ -168,12 +168,12 @@ This lab assumes you have:
     ````
 ## Task 5: Generate and capture encrypted SQL traffic
 
-1. As we did for the un-encrypted connection to PDB1, we will re-run the step on the TLS encrypted connection to PDB1 on port 1522, using the tnsnames alias of pdb1_tls.
+1. As we did for the un-encrypted connection to PDB1, we will re-run the step using the tnsnames alias of pdb1_tls.  This connection will now be a TLS encrypted connection to PDB1 on port 1522 instead of port 1521.
 
     ````
     <copy>./tls_is_sess_encrypt.sh pdb1_tls</copy>
     ````
-    The output should read 'tcps'. 
+    The output should read 'tcps' instead. 
 2. 
 
     ````
