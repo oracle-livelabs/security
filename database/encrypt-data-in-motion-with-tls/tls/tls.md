@@ -138,7 +138,7 @@ This lab assumes you have:
 
 ## Task 4: Enable TLS network encryption
 
-1. 
+1. Add a new tnsnames.ora entry for the pdb1_tls connection string. This will copy the existing pdb1 connection string and modify it to use TCPS protocol and connect to port 1522 instead of 1521.
 
     ````
     <copy>./tls_update_tnsnames_ora.sh</copy>
