@@ -155,13 +155,13 @@ This lab assumes you have:
     ````
     <copy>./tls_update_listener_ora.sh</copy>
     ````
-4. 
+4. Ensure you can still ping the un-encrypted connection to PDB1.
 
     ````
     <copy>tnsping pdb1</copy>
     ````
 
-5. 
+5. Now, because our listener is available for TLS connections on port 1522, we can use tnsping to verify connectivity.
 
     ````
     <copy>tnsping pdb1_tls</copy>
