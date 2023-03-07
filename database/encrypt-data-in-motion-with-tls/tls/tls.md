@@ -144,7 +144,7 @@ This lab assumes you have:
     <copy>./tls_update_tnsnames_ora.sh</copy>
     ````
 
-2. 
+2. In this step, we update the database's sqlnet.ora to include the SSL_CLIENT_AUTHENTICATION parameter as false. When set to false, one-way TLS can be used by the client. If set to true, mutual TLS (mTLS) must be used.
 
     ````
     <copy>./tls_update_sqlnet_ora.sh</copy>
