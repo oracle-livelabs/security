@@ -198,17 +198,11 @@ This lab assumes you have:
 ## **Appendix**: About the Product
 ### **Overview**
 
-Oracle Database provides native **data network encryption and integrity** to ensure that data in-motion is secure as it travels across the network.
+Oracle Database provides both native data network encryption and TLS-based encryption to ensure that data in-motion is secure as it travels across the network.
 
 ![Network Encryption](./images/nne-concept.png "Network Encryption")
 
-The purpose of a secure cryptosystem is to convert plaintext data into unintelligible ciphertext based on a key, in such a way that it is very hard (computationally infeasible) to convert ciphertext back into its corresponding plaintext without knowledge of the correct key.
 
-In a symmetric cryptosystem, the same key is used both for encryption and decryption of the same data. Oracle Database provides the **Advanced Encryption Standard (AES) symmetric cryptosystem** for protecting the confidentiality of Oracle Net Services traffic.
-
-Oracle SQL*Net traffic can be encrypted by using:
-- Native Network Encryption
-- TLS certificate-based encryption
 
 ## Want to Learn More?
 Technical Documentation:
