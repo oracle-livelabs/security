@@ -180,10 +180,10 @@ This lab assumes you have:
     ````
     <copy>./tls_tcpdump_traffic.sh pdb1_tls</copy>
     ````
-3. 
+3. When we extract data from the pcap file, we will no longer see email addresses because the traffic we captured was encrypted.
 
     ````
-    <copy>./tls_tcpdump_extract.sh</copy>
+    <copy>./tls_tcpdump_extract.sh pdb1_tls</copy>
     ````
 ## Task 6 (Optional): Disable encryption 
 
