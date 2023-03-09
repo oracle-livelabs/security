@@ -18,7 +18,6 @@ Watch a preview of "*LiveLabs - Oracle Native Network Encryption (May 2022)*" []
 - Generate and capture encrypted SQL traffic 
 - (Optional) Disable encryption 
 
-
 ### Prerequisites
 This lab assumes you have:
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
