@@ -42,7 +42,7 @@ This lab assumes you have:
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* and use `cd` command to move to livelabs directory.
 
     ````
-    <copy>cd livelabs</copy>
+    <copy>sudo cp tls.zip /home/oracle/DBSecLab/livelabs</copy>
     ````
 
     **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
@@ -50,31 +50,31 @@ This lab assumes you have:
 2. Create TLS directory within the livelabs folder. 
 
     ````
-    <copy>mkdir -v tls</copy>
+    <copy>sudo su - oracle</copy>
     ````
 
 3. Move into TLS directory you just created. 
 
     ````
-    <copy>cd tls</copy>
+    <copy>cd /home/oracle/DBSecLab/livelabs</copy>
     ````
 
-4. Use `wget` command to download tls.zip file.
+4. Unzip tls.zip file.
 
-    ````
-    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/go8OvUV3HWuaHALnGYA3pHooq_AkPU2oK3JIOu5SFBBrOlZ_STdjpnHmOA78uhMM/n/oradbclouducm/b/dbsec_rich/o/tls.zip</copy>
-    ````
-
-5. Unzip tls.zip file. 
-    
     ````
     <copy>unzip tls.zip</copy>
     ````
 
-6. Remove tls.zip file. 
+5.  Remove tls zip. 
     
     ````
-    <copy>rm -v tls.zip</copy>
+    <copy>rm tls.zip</copy>
+    ````
+
+6.  Change directory to tls. 
+    
+    ````
+    <copy>cd tls/</copy>
     ````
 
 7. Use following command to enable execute permissions on the scripts in the tls directory. 
@@ -83,10 +83,10 @@ This lab assumes you have:
     <copy>chmod +x *.sh</copy>
     ````
 
-7.  Use the following command to list files in tls directory. Now you should be able to see the folder is populated with .sh files. 
+7.  Converts file to Unix. 
     
     ````
-    <copy>ls -al</copy>
+    <copy>dos2unix *</copy>
     ````
     
 
@@ -122,18 +122,34 @@ This lab assumes you have:
 
 ## Task 3: Create wallet and self signed certificate 
 
-1. This script will create the TLS wallet directory, create the wallet with orapki, and generate a self-signed certificate based on the DB server's hostname.
+1. Create rootCA wallet. 
 
     ````
-    <copy>./tls_create_wallet_cert.sh</copy>
+    <copy>./tls_create_rootCA_wallet.sh</copy>
+    ````
+
+2. Next, you will create the DB wallet and certificate request to be signed by the rootCA. This step also imports the rootCA trusted certificate into the DB wallet.
+
+    ````
+    <copy>./tls_create_DB_wallet.sh</copy>
     ````
 
     You should see 'wallet and certificate creation completed!' 
 
-2. The trusted certificate was exported to be used for the client. Display the contents of the dbseclab.crt file.
+3. Now, you will have the rootCA sign the DB server user certificate.
 
     ````
-    <copy>cat dbseclab.crt</copy>
+    <copy>./tls_sign_DB_cert.sh</copy>
+    ````
+4. After generating the signed DB user certificate, import it to the DB wallet. In this step, you will see that the DB wallet moves from a "requested certificate" to a "user certificate". 
+
+    ````
+    <copy>./tls_import_signed_cert.sh</copy>
+    ````
+5. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location
+
+    ````
+    <copy>./tls_deploy_db_wallet.sh</copy>
     ````
 
 ## Task 4: Enable TLS network encryption
@@ -155,7 +171,8 @@ This lab assumes you have:
     ````
     <copy>./tls_update_listener_ora.sh</copy>
     ````
-4. Ensure you can still ping the un-encrypted connection to PDB1.
+4. Ensure you can still connect to the un-encrypted and encrypted listener aliases
+tnsping pdb1
 
     ````
     <copy>tnsping pdb1</copy>
