@@ -202,7 +202,66 @@ tnsping pdb1
     ````
     <copy>./tls_tcpdump_extract.sh pdb1_tls</copy>
     ````
-## Task 6 (Optional): Disable encryption 
+    You have succesfully encrypted data-in-motion between the Oracle Database and the oracle OS user.
+
+## Task 6: Create new OS user and encrypt SQL traffic. 
+
+1. The next step is to create a separate user and ensure the connectivity between the new user and the Oracle Database is also encrypted. Create the OS user, 'dba_dan'.
+
+    ````
+    <copy>./tls_useradd_dba_dan.sh</copy>
+    ````
+2. Install the Oracle Instant Client and SQL*Plus RPMs. Note: For this step, your VM must have internet access to download two RPMs.
+
+    ````
+    <copy>./tls_install_oracle_ic.sh</copy>
+    ````
+3. Create a tns_admin directory and a sqlnet.ora for 'dba_dan' in Dan's home directory.
+
+    ````
+    <copy>./tls_dba_dan_sqlnet_ora.sh</copy>
+    ````
+4. Create a tns_admin directory and a tnsnames.ora file for 'dba_dan' in Dan's home directory. The tnsnames.ora file will only have an entry for the pdb1_tls alias. 
+
+    ````
+    <copy>./tls_dba_dan_tnsnames_ora.sh</copy>
+    ````
+5. Because the Oracle Database is using a self-signed certificate, from the rootCA, either 'dba_dan' must maintain a wallet with the rootCA trusted certificate or the rootCA trusted certificate must be added to the Linux trusted root certificates list. In this step, you will add the rootCA trusted certificate to the Linux trusted root certificates list, allowing all users on the OS to use it to connect to PDB1 via TCPS on port 1522. In an enterprise environment, this would be the most efficient method to manage internal, self-signed, certificates to use TLS to connect to Oracle Databases.  On Windows, you would install this certificate using the Microsoft Management Console (MMC).
+
+    ````
+    <copy>./tls_install_linux_cert.sh</copy>
+    ````
+6. Test the connectivity as the Linux user 'dba_dan'.
+
+    ````
+    <copy>sudo su - dba_dan</copy>
+    ````
+7. The Oracle Instant Client needs to know where to find the tns-related parameters. This will be the alias, pdb1_tls, and the SSL_CLIENT_AUTHENTICATION connection specifying TLS instead of mTLS.
+
+    ````
+    <copy>export TNS_ADMIN=$HOME/tns_admin</copy>
+    ````
+8.  Use SQL*Plus to connect to the DB using the tcps encrypted listener. 
+
+    ````
+    <copy>sqlplus system/Oracle123@pdb1_tls</copy>
+    ````
+9. Show that the network protocol is 'tcps'.
+
+    ````
+    <copy>SELECT sys_context('USERENV', 'NETWORK_PROTOCOL') as network_protocol FROM dual;</copy>
+    ````
+
+
+
+
+
+
+
+
+
+
+## Task 9 : Disable encryption 
 
 1. This step will disable TLS encryption for the listener, remove the parameters from the sqlnet.ora and tnsnames.ora file, and delete the TLS wallet files.
 
