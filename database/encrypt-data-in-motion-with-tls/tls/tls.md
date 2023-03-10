@@ -11,14 +11,20 @@ This workshop introduces the functionality of Oracle Transport Layer Security (T
 Watch a preview of "*LiveLabs - Oracle Native Network Encryption (May 2022)*" [](youtube:N6Uz-pVTkaI)
 
 ### Objectives
-- Download tls.zip file to local directory  
-- Generate and capture unencrypted SQL traffic 
-- Create wallet and self signed certificate 
-- Enable TLS network encryption 
-- Generate and capture encrypted SQL traffic 
-- (Optional) Disable encryption 
+- Successfully protect your database communication using 1-way TLS
+- Verify network traffic is unencrypted before configuring TLS
+- Create root wallet and self signed root CA certificate
+- Create database server wallet and create certificate request
+- Sign database certificate with root CA certificate
+- Add CA root certificate and database server certificcate to database wallet
+- Import CA root certificate into client trust store (Linux, Windows only)
+- Configure for TLS network encryption
+- Connect using TLS network encryption and verify traffic is encrypted
+- (Optional) Disable encryption
 
 ### Prerequisites
+
+**Need to update this**
 This lab assumes you have:
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
