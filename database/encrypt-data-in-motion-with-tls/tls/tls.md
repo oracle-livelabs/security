@@ -41,7 +41,7 @@ This lab assumes you have:
 1.  Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* and use `cd` command to move to livelabs directory.
 
     ````
-    <copy>cd  livelabs</copy>
+    <copy>cd livelabs</copy>
     ````
 
     **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
@@ -49,19 +49,19 @@ This lab assumes you have:
 2.  Use the Linux command 'wget' to download a bundled (zipped) file of the commands for the lab. 
 
     ````
-    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/nuQM-DwsX3LG4QJIEol2y14valFDFUFFz_KIA58rqvEYN6Fk9JivX5ZVC8z-zTWB/n/oradbclouducm/b/dbsec_rich/o/lltls.zip</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/AjvzsV9DMydnARvKi9Y5j2sFZ2femVdGi5Ciz9r09V--QIRrorH12rLR3zrmKOeH/n/oradbclouducm/b/dbsec_rich/o/tls.zip</copy>
     ````
 
 3.  Unzip the tls.zip file downloaded.
 
     ````
-    <copy>unzip lltls.zip</copy>
+    <copy>unzip tls.zip</copy>
     ````
 
 4.  Remove tls zip. 
     
     ````
-    <copy>rm lltls.zip</copy>
+    <copy>rm tls.zip</copy>
     ````
 
 5.  Change directory to tls. 
@@ -138,7 +138,7 @@ This lab assumes you have:
     ````
     <copy>./tls_import_signed_cert.sh</copy>
     ````
-5. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location. 
+5. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location. The DB will use the `WALLET_ROOT` parameter to look for it's wallet-related information, including tde and tls. This step will copy the DB wallet, with the signed certificate, to both the PDB's `WALLET_ROOT` tls directory and the default directory a client would search for the wallet, `/etc/ORACLE/WALLETS/<user>`, in this case it would be `/etc/ORACLE/WALLETS/oracle` since we are using `sqlplus` as the `oracle` user. 
 
     ````
     <copy>./tls_deploy_db_wallet.sh</copy>
