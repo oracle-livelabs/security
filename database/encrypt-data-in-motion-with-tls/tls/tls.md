@@ -121,7 +121,7 @@ This lab assumes you have:
 
 ## Task 3: Create wallet and self signed certificate 
 
-1. Create rootCA wallet. 
+1. Create rootCA wallet. In most environments, you will have your own root certificate authority to work with. This rootCA is created as example. 
 
     ````
     <copy>./tls_create_rootCA_wallet.sh</copy>
@@ -133,9 +133,9 @@ This lab assumes you have:
     <copy>./tls_create_DB_wallet.sh</copy>
     ````
 
-    You should see 'wallet and certificate creation completed!' 
+    You should see 'DB wallet and certificate creation completed!' 
 
-3. Now, you will have the rootCA sign the DB server user certificate.
+3. Now, you will have the rootCA sign the DB server user certificate. This provides validity to the certificate. If it is not signed by a public root, or intermediate, certificate authority (CA), or an organization's root, or intermediate, CA, then the certificate may not be trustworthy.
 
     ````
     <copy>./tls_sign_DB_cert.sh</copy>
@@ -145,7 +145,7 @@ This lab assumes you have:
     ````
     <copy>./tls_import_signed_cert.sh</copy>
     ````
-5. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location
+5. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location. 
 
     ````
     <copy>./tls_deploy_db_wallet.sh</copy>
@@ -153,7 +153,7 @@ This lab assumes you have:
 
 ## Task 4: Enable TLS network encryption
 
-1. Add a new tnsnames.ora entry for the pdb1_tls connection string. This will copy the existing pdb1 connection string and modify it to use TCPS protocol and connect to port 1522 instead of 1521.
+1. Add a new tnsnames.ora entry for the pdb1_tls connection string. This will copy the existing pdb1 connection string and modify it to use TCPS protocol and port 1522 instead of 1521.
 
     ````
     <copy>./tls_update_tnsnames_ora.sh</copy>
@@ -165,7 +165,7 @@ This lab assumes you have:
     <copy>./tls_update_sqlnet_ora.sh</copy>
     ````
 
-3. This step will stop the Oracle Listener and update the listener.ora to be available for TLS connections on port 1522. It will start the Oracle listener and dynamically register the existing CDB and PDBs with it.
+3. This step will stop the Oracle Listener and update the listener.ora to be available for TLS connections on port 1522. After starting the Oracle LIstener, it will dynamically register the existing CDB and PDBs with it.
 
     ````
     <copy>./tls_update_listener_ora.sh</copy>
@@ -225,7 +225,7 @@ tnsping pdb1
     ````
     <copy>./tls_dba_dan_tnsnames_ora.sh</copy>
     ````
-5. Because the Oracle Database is using a self-signed certificate, from the rootCA, either 'dba_dan' must maintain a wallet with the rootCA trusted certificate or the rootCA trusted certificate must be added to the Linux trusted root certificates list. In this step, you will add the rootCA trusted certificate to the Linux trusted root certificates list, allowing all users on the OS to use it to connect to PDB1 via TCPS on port 1522. In an enterprise environment, this would be the most efficient method to manage internal, self-signed, certificates to use TLS to connect to Oracle Databases.  On Windows, you would install this certificate using the Microsoft Management Console (MMC).
+5. Because the Oracle Database is using a self-signed certificate, from the rootCA, either 'dba_dan' must maintain a wallet with the rootCA trusted certificate or the rootCA trusted certificate must be added to the Linux trusted root certificates list. In this step, you will add the rootCA trusted certificate to the Linux trusted root certificates list, allowing all users on the OS to use it to connect to PDB1 via TCPS on port 1522. In an enterprise environment, this would be the most efficient method to manage internal, self-signed, certificates to connect to Oracle Databases that use TLS.  On Windows, you would install this certificate using the Microsoft Management Console (MMC).
 
     ````
     <copy>./tls_install_linux_cert.sh</copy>
