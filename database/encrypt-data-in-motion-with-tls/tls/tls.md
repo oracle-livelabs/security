@@ -158,7 +158,7 @@ This lab assumes you have:
     <copy>./tls_update_sqlnet_ora.sh</copy>
     ````
 
-3. This step will stop the Oracle Listener and update the listener.ora to be available for TLS connections on port 1522. After starting the Oracle LIstener, it will dynamically register the existing CDB and PDBs with it.
+3. This step will stop the Oracle Listener and update the listener.ora to be available for TLS connections on port 1522. After starting the Oracle Listener, it will dynamically register the existing CDB and PDBs with it.
 
     ````
     <copy>./tls_update_listener_ora.sh</copy>
@@ -255,7 +255,19 @@ tnsping pdb1
 
 ## Task 9 : Disable encryption 
 
-1. This step will disable TLS encryption for the listener, remove the parameters from the sqlnet.ora and tnsnames.ora file, and delete the TLS wallet files.
+1. Exit SQL*Plus.
+
+    ````
+    <copy>exit</copy>
+    ````
+
+2. Exit from DBA Dan back to Oracle user. 
+
+    ````
+    <copy>exit</copy>
+    ````
+
+3. This step will disable TLS encryption for the listener, remove the parameters from the sqlnet.ora and tnsnames.ora file, and delete the TLS wallet files.
 
     ````
     <copy>./tls_disable.sh</copy>
