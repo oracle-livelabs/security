@@ -38,57 +38,50 @@ This lab assumes you have:
 
 ## Task 1: Download tls.zip file to local directory
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* and use `cd` command to move to livelabs directory.
+1.  Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* and use `cd` command to move to livelabs directory.
 
     ````
-    <copy>sudo cp tls.zip /home/oracle/DBSecLab/livelabs</copy>
+    <copy>cd  livelabs</copy>
     ````
 
     **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
-2. Create TLS directory within the livelabs folder. 
+2.  Use the Linux command 'wget' to download a bundled (zipped) file of the commands for the lab. 
 
     ````
-    <copy>sudo su - oracle</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/nuQM-DwsX3LG4QJIEol2y14valFDFUFFz_KIA58rqvEYN6Fk9JivX5ZVC8z-zTWB/n/oradbclouducm/b/dbsec_rich/o/lltls.zip</copy>
     ````
 
-3. Move into TLS directory you just created. 
+3.  Unzip the tls.zip file downloaded.
 
     ````
-    <copy>cd /home/oracle/DBSecLab/livelabs</copy>
+    <copy>unzip lltls.zip</copy>
     ````
 
-4. Unzip tls.zip file.
-
-    ````
-    <copy>unzip tls.zip</copy>
-    ````
-
-5.  Remove tls zip. 
+4.  Remove tls zip. 
     
     ````
-    <copy>rm tls.zip</copy>
+    <copy>rm lltls.zip</copy>
     ````
 
-6.  Change directory to tls. 
+5.  Change directory to tls. 
     
     ````
     <copy>cd tls/</copy>
     ````
 
-7. Use following command to enable execute permissions on the scripts in the tls directory. 
+6. Use following command to enable execute permissions on the shell scripts in the tls directory. 
     
     ````
     <copy>chmod +x *.sh</copy>
     ````
 
-7.  Converts file to Unix. 
+7.  Converts file to Unix. This may not be necessary but it will not harm the files to run it. 
     
     ````
     <copy>dos2unix *</copy>
     ````
     
-
 ## Task 2: Generate and capture unencrypted SQL traffic
 
 1. Use the following command to ping the pluggable database, PDB1.
