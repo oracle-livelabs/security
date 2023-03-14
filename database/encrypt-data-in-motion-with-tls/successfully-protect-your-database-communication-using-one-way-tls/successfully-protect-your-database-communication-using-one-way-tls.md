@@ -1,4 +1,4 @@
-# Oracle TLS Network Encryption (TLS)
+# Successfully protect your database communication using 1-way Transport Layer Security (TLS)
 
 ## Introduction
 This workshop introduces the functionality of Oracle Transport Layer Security (TLS) network encryption. It gives the user an opportunity to learn how to configure this feature to encrypt and secure its data in-motion.
@@ -16,10 +16,11 @@ Watch a preview of "*LiveLabs - Oracle Native Network Encryption (May 2022)*" []
 - Create root wallet and self signed root CA certificate
 - Create database server wallet and create certificate request
 - Sign database certificate with root CA certificate
-- Add CA root certificate and database server certificcate to database wallet
+- Add CA root certificate and database server certificate to database wallet
 - Import CA root certificate into client trust store (Linux, Windows only)
 - Configure for TLS network encryption
 - Connect using TLS network encryption and verify traffic is encrypted
+- Create new OS user and encrypt SQL traffic.
 - (Optional) Disable encryption
 
 ### Prerequisites
@@ -36,13 +37,18 @@ This lab assumes you have:
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
 | 1 | Download tls.zip file to local directory | <5 minutes |
-| 2 | Generate and capture unencrypted SQL traffic | 5 minutes |
-| 3 | Create wallet and self signed certificate | 5 minutes |
-| 4 | Enable TLS network encryption | <5 minutes |
-| 5 | Generate and capture encrypted SQL traffic | <5 minutes |
-| 6 | (Optional) Disable encryption | <5 minutes |
+| 2 | Verify network traffic is unencrypted before configuring TLS | <5 minutes |
+| 3 | Create root wallet and self signed root CA certificate | 5 minutes |
+| 4 | Create database server wallet and create certificate request | 5 minutes |
+| 5 | Sign database certificate with root CA certificate | <5 minutes |
+| 6 | Add CA root certificate and database server certificate to database wallet | <5 minutes |
+| 7 | Import CA root certificate into client trust store (Linux, Windows only) | 5 minutes |
+| 8 | Configure for TLS network encryption | <5 minutes |
+| 9 | Connect using TLS network encryption and verify traffic is encrypted | <5 minutes |
+| 10 | Create new OS user and encrypt SQL traffic. | 5 minutes |
+| 11 | (Optional) Disable encryption | <5 minutes |
 
-## Task 1: Download tls.zip file to local directory
+## Task 1: Download tls.zip file to local directory.
 
 1.  Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* and use `cd` command to move to livelabs directory.
 
@@ -88,7 +94,7 @@ This lab assumes you have:
     <copy>dos2unix *</copy>
     ````
     
-## Task 2: Generate and capture unencrypted SQL traffic
+## Task 2: Verify network traffic is unencrypted before configuring TLS.
 
 1. Use the following command to ping the pluggable database, PDB1.
 
@@ -118,7 +124,7 @@ This lab assumes you have:
 
 
 
-## Task 3: Create wallet and self signed certificate 
+## Task 3: Create root wallet and self signed root CA certificate. 
 
 1. Create rootCA wallet. In most environments, you will have your own root certificate authority to work with. This rootCA is created as example. 
 
@@ -126,7 +132,9 @@ This lab assumes you have:
     <copy>./tls_create_rootCA_wallet.sh</copy>
     ````
 
-2. Next, you will create the DB wallet and certificate request to be signed by the rootCA. This step also imports the rootCA trusted certificate into the DB wallet.
+## Task 4: Create database server wallet and create certificate request.
+
+1. Next, you will create the DB wallet and certificate request to be signed by the rootCA. This step also imports the rootCA trusted certificate into the DB wallet.
 
     ````
     <copy>./tls_create_DB_wallet.sh</copy>
@@ -134,23 +142,33 @@ This lab assumes you have:
 
     You should see 'DB wallet and certificate creation completed!' 
 
-3. Now, you will have the rootCA sign the DB server user certificate. This provides validity to the certificate. If it is not signed by a public root, or intermediate, certificate authority (CA), or an organization's root, or intermediate, CA, then the certificate may not be trustworthy.
+
+## Task 5: Sign database certificate with root CA certificate.
+
+1. Now, you will have the rootCA sign the DB server user certificate. This provides validity to the certificate. If it is not signed by a public root, or intermediate, certificate authority (CA), or an organization's root, or intermediate, CA, then the certificate may not be trustworthy.
 
     ````
     <copy>./tls_sign_DB_cert.sh</copy>
     ````
-4. After generating the signed DB user certificate, import it to the DB wallet. In this step, you will see that the DB wallet moves from a "requested certificate" to a "user certificate". 
+
+
+## Task 6: Add CA root certificate and database server certificate to database wallet.
+
+1. After generating the signed DB user certificate, import it to the DB wallet. In this step, you will see that the DB wallet moves from a "requested certificate" to a "user certificate". 
 
     ````
     <copy>./tls_import_signed_cert.sh</copy>
     ````
-5. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location. The DB will use the `WALLET_ROOT` parameter to look for it's wallet-related information, including tde and tls. This step will copy the DB wallet, with the signed certificate, to both the PDB's `WALLET_ROOT` tls directory and the default directory a client would search for the wallet, `/etc/ORACLE/WALLETS/<user>`, in this case it would be `/etc/ORACLE/WALLETS/oracle` since we are using `sqlplus` as the `oracle` user. 
+
+## Task 7: Import CA root certificate into client trust store (Linux, Windows only)
+
+1. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location. The DB will use the `WALLET_ROOT` parameter to look for it's wallet-related information, including tde and tls. This step will copy the DB wallet, with the signed certificate, to both the PDB's `WALLET_ROOT` tls directory and the default directory a client would search for the wallet, `/etc/ORACLE/WALLETS/<user>`, in this case it would be `/etc/ORACLE/WALLETS/oracle` since we are using `sqlplus` as the `oracle` user. 
 
     ````
     <copy>./tls_deploy_db_wallet.sh</copy>
     ````
 
-## Task 4: Enable TLS network encryption
+## Task 8: Configure for TLS network encryption.
 
 1. Add a new tnsnames.ora entry for the pdb1_tls connection string. This will copy the existing pdb1 connection string and modify it to use TCPS protocol and port 1522 instead of 1521.
 
@@ -181,7 +199,7 @@ tnsping pdb1
     ````
     <copy>tnsping pdb1_tls</copy>
     ````
-## Task 5: Generate and capture encrypted SQL traffic
+## Task 9: Connect using TLS network encryption and verify traffic is encrypted.
 
 1. As we did for the un-encrypted connection to PDB1, we will re-run the step using the tnsnames alias of pdb1_tls.  This connection will now be a TLS encrypted connection to PDB1 on port 1522 instead of port 1521.
 
@@ -202,7 +220,7 @@ tnsping pdb1
     ````
     You have succesfully encrypted data-in-motion between the Oracle Database and the oracle OS user.
 
-## Task 6: Create new OS user and encrypt SQL traffic. 
+## Task 10: Create new OS user and encrypt SQL traffic. 
 
 1. The next step is to create a separate user and ensure the connectivity between the new user and the Oracle Database is also encrypted. Create the OS user, 'dba_dan'.
 
@@ -250,16 +268,7 @@ tnsping pdb1
     <copy>SELECT sys_context('USERENV', 'NETWORK_PROTOCOL') as network_protocol FROM dual;</copy>
     ````
 
-
-
-
-
-
-
-
-
-
-## Task 9 : Disable encryption 
+## Task 11 : (Optional) Disable encryption 
 
 1. Exit SQL*Plus.
 
