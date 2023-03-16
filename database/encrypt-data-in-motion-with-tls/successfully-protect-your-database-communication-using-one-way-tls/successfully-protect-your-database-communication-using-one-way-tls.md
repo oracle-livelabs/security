@@ -3,6 +3,8 @@
 ## Introduction
 This workshop introduces the functionality of Oracle Transport Layer Security (TLS) network encryption. It gives the user an opportunity to learn how to configure this feature to encrypt and secure its data in-motion.
 
+Description: TLS is the standard based approach for encrypthing data in motion. Since TLS provides one-way authentication or mutual two-way authentication it minimizes the chance of a breach. 
+
 *Estimated Lab Time:* 15 minutes
 
 *Version tested in this lab:* Oracle DB 19.17
