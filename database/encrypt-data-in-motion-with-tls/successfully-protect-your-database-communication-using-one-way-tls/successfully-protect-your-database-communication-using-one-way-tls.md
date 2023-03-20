@@ -128,7 +128,7 @@ This lab assumes you have:
 
 ## Task 3: Create root wallet and self signed root CA certificate. 
 
-1. Create rootCA wallet. In most environments, you will have your own root certificate authority to work with. This rootCA is created as example. 
+1. In this step, the script will use `orapki` to create the wallet, generate the self-signed certificate and export the trusted certificate for use by the client trust store. 
 
     ````
     <copy>./tls_create_rootCA_wallet.sh</copy>
@@ -141,9 +141,6 @@ This lab assumes you have:
     ````
     <copy>./tls_create_DB_wallet.sh</copy>
     ````
-
-    You should see 'DB wallet and certificate creation completed!' 
-
 
 ## Task 5: Sign database certificate with root CA certificate.
 
@@ -161,6 +158,13 @@ This lab assumes you have:
     ````
     <copy>./tls_import_signed_cert.sh</copy>
     ````
+Note: Before importing the signed user certificate, the DB wallet output looks like this:
+    
+    Insert pic 
+
+After importing the signed certificate, the DB wallet output looks like this:
+
+    Insert pic 
 
 ## Task 7: Import CA root certificate into client trust store (Linux, Windows only)
 
@@ -169,6 +173,7 @@ This lab assumes you have:
     ````
     <copy>./tls_deploy_db_wallet.sh</copy>
     ````
+Note: In order to set the WALLET_ROOT initialization parameter the DB must be restarted.
 
 ## Task 8: Configure for TLS network encryption.
 
@@ -189,8 +194,7 @@ This lab assumes you have:
     ````
     <copy>./tls_update_listener_ora.sh</copy>
     ````
-4. Ensure you can still connect to the un-encrypted and encrypted listener aliases
-tnsping pdb1
+4. Ensure you can still use tnsping to connect to the un-encrypted listener alias for PDB1.
 
     ````
     <copy>tnsping pdb1</copy>
@@ -224,7 +228,7 @@ tnsping pdb1
 
 ## Task 10: Create new OS user and encrypt SQL traffic. 
 
-1. The next step is to create a separate user and ensure the connectivity between the new user and the Oracle Database is also encrypted. Create the OS user, 'dba_dan'.
+1. The next step is to create a separate operating system user and ensure the connectivity between the new user and the Oracle Database is also encrypted. Create the OS user, 'dba_dan'.
 
     ````
     <copy>./tls_useradd_dba_dan.sh</copy>
@@ -249,6 +253,8 @@ tnsping pdb1
     ````
     <copy>./tls_install_linux_cert.sh</copy>
     ````
+Note: You will see that the rootCA.crt was copied to the Linux directory '/etc/pki/ca-trust/source/anchor' and loaded into the list of trusted certificates. This location may vary based on the Linux distribution you use in your environment.
+
 6. Test the connectivity as the Linux user 'dba_dan'.
 
     ````
