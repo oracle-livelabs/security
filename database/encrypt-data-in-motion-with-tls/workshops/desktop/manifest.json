@@ -3,39 +3,9 @@
    "help": "livelabs-help-db_us@oracle.com",
    "tutorials": [
    {
-      "title": "Introduction",
+      "title": "Successfully Protect Your Database Communication Using One-Way TLS",
       "description": "",
-      "filename": "../../introduction/introduction.md"
+      "filename": "../../successfully-protect-your-database-communication-using-one-way-tls/successfully-protect-your-database-communication-using-one-way-tls.md"
    },
-   {
-      "title": "Get Started",
-      "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
-      "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
-   },
-   {
-      "title": "Lab 1: Create Database wallet and self-signed certificate",
-      "description": "",
-      "filename": "../../create-wallet-certificate/create-wallet-certificate.md"
-   },
-   {
-      "title": "Lab 2: Configure Database listener to support TLS encryption",
-      "description": "",
-      "filename": "../../use-redaction-anonymize-restcalls/use-redaction-anonymize-restcalls.md"
-   },
-   {
-      "title": "Lab 3: Test TLS and non-TLS connectivity",
-      "description": "",
-      "filename": "../../reset-your-environment/reset-your-environment.md"
-   },
-   {
-      "title": "Optional Lab: Configure the Oracle Instant Client on Linux 8",
-      "description": "",
-      "filename": "../../reset-your-environment/reset-your-environment.md"
-   },
-   {
-      "title": "Need Help?",
-      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
-   }
 ]
 }
