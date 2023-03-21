@@ -129,7 +129,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 4. Close the PDF report and return to Oracle Data Safe.
 
-
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -137,4 +137,4 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 21, 2023
+- **Last Updated By/Date** - Jody Glover, February 23, 2023

@@ -38,17 +38,13 @@ This lab assumes you have:
 
 Enable Oracle Data Safe in a region of your tenancy. If Oracle Data Safe is already enabled in the desired region of your tenancy, or you are working in an Oracle-provided environment, you can skip this task.
 
-1. In Oracle Cloud Infrastructure, at the top of the page on the right, select the region of your tenancy in which you want to enable Oracle Data Safe. Usually, you leave your home region selected, for example, **US East (Ashburn)**.
-
-   ![Select Home region](images/select-region.png "Select Home region")
+1. On the Oracle Cloud Infrastructure toolbar on the right, select the region of your tenancy in which you want to enable Oracle Data Safe. Usually, you leave your home region selected, for example, **US East (Ashburn)**.
 
 2. From the navigation menu, select **Oracle Database**, and then **Data Safe**.
 
     The **Overview** page is displayed.
 
 3. Click **Enable Data Safe** and wait a couple of minutes for the service to enable. When it's enabled, a confirmation message is displayed in the upper-right corner.
-
-    ![Enable Data Safe button](images/enable-data-safe-button.png "Enable Data Safe button")
 
 
 ## Task 2: Create a compartment
@@ -127,14 +123,31 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 
 8. In the policy field, enter the following policy statements. Substitute `{group name}` and `{compartment name}` with the appropriate values.
 
-    - For the **Get Started with Oracle Data Safe Fundamentals** workshop, you require the following permissions. The first statement allows the user group to register an Oracle Database with Oracle Data Safe and create and manage Oracle Data Safe resources in the specified compartment. The second statement allows the user group to create an Autonomous Database in the specified compartment and use it with Oracle Data Safe.
+    - For the **Get Started with Oracle Data Safe Fundamentals** workshop, you require the following permissions:
 
-    ```
+    ```text
     <copy>
     Allow group {group name} to manage data-safe-family in compartment {compartment name}
     Allow group {group name} to manage autonomous-database in compartment {compartment name}
     </copy>
     ```
+
+    - For the **Integrate Oracle Data Safe with Applications and Services** workshop, you require the following permissions. Note that only tenancy administrators have the necessary permissions to do the lab called **Get notified about security drift on your target databases by setting up Oracle Data Safe events**. 
+
+    ```text
+    <copy>
+    Allow group {group name} to read compartments in compartment {compartment name}
+    Allow group {group name} to manage data-safe-family in compartment {compartment name}
+    Allow group {group name} to manage autonomous-database in compartment {compartment name}
+    Allow group {group name} to use cloud-shell in tenancy
+    Allow group {group name} to manage buckets in compartment {compartment name}
+    Allow group {group name} to manage objects in compartment {compartment name}
+    Allow group {group name} to manage instance-family in compartment {compartment name}
+    Allow group {group name} to read app-catalog-listing in tenancy
+    Allow group {group name} to manage virtual-network-family in compartment {compartment name}
+    </copy>
+    ```
+   
 
 9. Click **Create**.
 
@@ -147,7 +160,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
 1. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**.
 
-2. In the **Filters** section on the left, make sure your workload type is **Transaction Processing** or **All** so that you can view your database listing after you create it.
+2. In the **Filters** section on the left, make sure your workload type is **Transaction Processing** or **All** so that you can view your database listing after you create your database.
 
 3. From the **Compartment** drop-down list, select your compartment.
 
@@ -168,16 +181,22 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - **Access Type** - Leave **Secure access from everywhere** selected.
     - **License Type** - Leave **License included** selected.
 
-6. Click **Create Autonomous Database**. The **Autonomous Database Details** page is displayed.
+6. Click **Create Autonomous Database**. 
 
-7. Wait a few minutes for your database instance to provision. The **Autonomous Database details** page is displayed. Wait for **AVAILABLE** to be displayed below the large ATP icon.
+    The **Autonomous Database details** page is displayed.
+
+7. Wait a few minutes for your database instance to provision. 
+
+    **AVAILABLE** is displayed below the large ATP icon.
 
     ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
 
 
 ## Task 6 (LiveLabs Sandbox reservation only): View your LiveLabs Sandbox reservation information and sign in
 
-1. At the top of the lab instructions page (this page), click the **View Login Info** link. A **Reservation Information** panel is displayed.
+1. At the top of the lab instructions page (this page), click the **View Login Info** link. 
+
+    A **Reservation Information** panel is displayed.
 
 2. Review the information. You are provided with the following in Oracle Cloud Infrastructure:
 
@@ -203,14 +222,14 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
 7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your target database.
 
-    ![Your Autonomous Database in the LiveLabs tenancy](images/ll-autonomous-database.png "Your Autonomous Database in the LiveLabs tenancy")
-
 
 ## Task 7: Access Oracle Database Actions
 
 Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. At the top of the **Autonomous Database details** page, click **Database actions**. A new tab is opened called **Oracle Database Actions** with **Database Actions | Launchpad** displayed at the top of the page.
+1. At the top of the **Autonomous Database details** page, click **Database actions**. 
+
+    A new browser tab is opened called **Oracle Database Actions** with **Database Actions | Launchpad** displayed at the top of the page.
 
     - If this page is not displayed, check that pop-up windows are allowed in your browser.
     - Keep this tab open throughout the workshop. If your session expires, you can always sign in again.
@@ -222,11 +241,9 @@ Database Actions provides a way for you to run SQL commands on your target datab
 
 3. In the **Development** section, click **SQL**.
 
-4. In the **Warning** dialog box in the upper-right corner, click the **X** to close it.
+4. Close warning and help dialog boxes.
 
-5. In the help note dialog box, click the **X** button to close it. 
-
-6. Review the interface. Here are the ways that you use Database Actions during the workshop:
+5. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
     - In the **Navigator** pane on the left, you select tables from the **HCM1** schema on your target database.
     - On the **Worksheet** on the right, you run SQL commands and scripts.
@@ -247,11 +264,11 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
 3. On the toolbar, click the **Run Script** button and wait for the script to finish running. Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
 
-    ![Run Script button](images/run-script.png "Run Script button")
-
     - The script takes a few minutes to run.
     - In the bottom-left corner, the cog wheel may remain still for about a minute, and then it turns as the script is processed. The script output is displayed after the script is finished running.
     - The script ends with the message **END OF SCRIPT**.
+
+    ![Run Script button](images/run-script.png "Run Script button")
 
 4. To ensure the sample data is loaded successfully, at the end of the script output, review the row count for each table in the `HCM1` schema. The counts should be as follows:
 
@@ -268,20 +285,23 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
     If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
 
-5. Refresh Database Actions: Refresh the _browser's_ page and then verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
+5. Refresh Database Actions by refreshing the _browser_ page.
 
-6. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+6. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
+7. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+
+You may now **proceed to the next lab**.
 
 ## Learn More
 
 - [Oracle Cloud Infrastructure documentation](https://docs.oracle.com/iaas/Content/home.htm)
-- [Try Oracle Cloud](https://www.oracle.com/cloud/free/)
+- [OCI Cloud Free Tier](https://www.oracle.com/cloud/free/)
 - [Provision Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-provision.html)
-- [Loading Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/load-data.html)
+- [Loading Data into an Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/load-data.html)
 
 
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Jan 22, 2023
+- **Last Updated By/Date** - Jody Glover, February 23, 2023

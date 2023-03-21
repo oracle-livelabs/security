@@ -22,6 +22,8 @@ In this workshop, you learn how to perform the following tasks:
 - Assess the security of your database configurations and database users using Oracle Data Safe
 - Discover and mask sensitive data on your target database using Oracle Data Safe
 
+You may now **proceed to the next lab**.
+
 ## Learn More
 
 The following links provide more information about Oracle Data Safe:
@@ -34,4 +36,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, January 21, 2023
+* **Last Updated By/Date** - Jody Glover, February 23, 2023

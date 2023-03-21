@@ -92,7 +92,7 @@ This lab assumes you have:
 
 8. Click **Apply Policy** and wait until a message states that you can close the panel.
 
-    ![Apply and Enable Alert Policy To Target Databases dialog box](images/apply-and-enable-alert-policy-dialog-box.png "Apply and Enable Alert Policy To Target Databases dialog box")
+    ![Apply and Enable Alert Policy To Target Databases panel](images/apply-and-enable-alert-policy-panel.png "Apply and Enable Alert Policy To Target Databases panel")
 
 
 9. Click **Close**.
@@ -108,7 +108,7 @@ In this task, you perform activities on your target database in Database Actions
 
 1. Return to the SQL worksheet in Database Actions.
 
-2. From the drop-down list in the upper-right corner, select **Sign Out**. If needed, in the dialog box, click **Leave page**.
+2. If needed, sign out. To do so, from the drop-down list in the upper-right corner, select **Sign Out**, and then in the dialog box, click **Leave page**.
 
 3. Click **Sign in**.
 
@@ -120,19 +120,19 @@ In this task, you perform activities on your target database in Database Actions
 
 6. Enter the correct password, and click **Sign in**.
 
-7. Clear the worksheet, and then paste the following SQL script:
+7. If needed, under **Development**, click **SQL**.
+
+8. Clear the worksheet, and then paste the following SQL script. Replace `your-password` with a password of your choice. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
 
     ```
     <copy>drop user MALFOY cascade;
-    create user MALFOY identified by Oracle123_Oracle123;
+    create user MALFOY identified by your-password;
     grant PDB_DBA to MALFOY;</copy>
     ```
 
-8. On the toolbar, click the **Run Script** button and wait for the script to finish running.
+9. On the toolbar, click the **Run Script** button and wait for the script to finish running.
 
-    ![Run Script button](images/run-script.png "Run Script button")
-
-9. Return to the browser tab for Oracle Data Safe and wait a couple of minutes for Oracle Data Safe to produce the alerts.
+10. Return to the browser tab for Oracle Data Safe and wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
 
 ## Task 4: Review alerts in Oracle Data Safe
@@ -202,9 +202,8 @@ In this task, you perform activities on your target database in Database Actions
 
 3. To close the alert, click **Close**.
 
-    ![Close alert](images/close-alert.png "Close alert")
-
     The alert status is immediately set to **CLOSED**.
+
 
 ## Task 6: Create a custom alerts report
 
@@ -237,11 +236,11 @@ In this task, you perform activities on your target database in Database Actions
 
 2. Leave **PDF** selected.
 
-3. For **Display Name**, enter **Failed Admin Logins for your-target-database-name**.
+3. Enter the display name **Failed Admin Logins for your-target-database-name**.
 
 4. (Optional) For **Description**, enter **Failed logins by Admin user for target database your-target-database-name**.
 
-5. Select your compartment.
+5. Leave your compartment selected.
 
 6. Leave the report start time as is.
 
@@ -253,7 +252,7 @@ In this task, you perform activities on your target database in Database Actions
 
 8. Click the **here** link to download the report.
 
-9. If needed, save the report to your local computer.
+9. If needed, choose to save the report to your local computer.
 
 10. Open the PDF report and view it. When you are finished, close the browser tab.
 
@@ -270,6 +269,7 @@ In this task, you perform activities on your target database in Database Actions
 
     ![Alert report history](images/alert-report-history.png "Alert report history")
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -279,4 +279,4 @@ In this task, you perform activities on your target database in Database Actions
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, January 21, 2023
+* **Last Updated By/Date** - Jody Glover, February 23, 2023

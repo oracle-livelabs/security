@@ -37,7 +37,7 @@ This lab assumes you have:
 - As part of pre-upgrade steps, customers have to delete any 10g agents in oamconsole. If they fail to do this UA readiness check will fail indicating presence of 10g agents. As part of pre-upgrade steps for OAM, delete any 10g agents in oamconsole.  UA readiness check will fail if 10g agents exist
 - UA readiness check with fail at System Components Infrastructure with the error "OHS\_managed\_template.jar" missing. This can be ignored as we are not upgrading OHS
 
-##  **STEP 1**: Upgrade IAM Components from 11.1.2.3 to 12.2.1.3
+##  **Task 1**: Upgrade IAM Components from 11.1.2.3 to 12.2.1.3
 
 1. Upgrade OUD 11.1.2.3 to OUD 12.2.1.3
 
@@ -125,7 +125,7 @@ This lab assumes you have:
       - [Stack Patch Bundle Page for OIG](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=320313382903924&id=2657920.1&_adf.ctrl-state=13r3ivrcxc_110)
       - [Download and Apply SPB for 12.2.1.3](https://support.oracle.com/epmos/faces/PatchSearchResults?_adf.ctrl-state=r390fd14k_135&_afrLoop=321341144687003)
 
-##  **STEP 2**: Upgrade IAM Components from 12.2.1.3 to 12.2.1.4
+##  **Task 2**: Upgrade IAM Components from 12.2.1.3 to 12.2.1.4
 
 1. Upgrade OUD from 12.2.1.3 to 12.2.1.4
     Upgrade OUD using the instructions in *section 6.4* of the documentation below
@@ -150,12 +150,12 @@ This lab assumes you have:
     - [Apply Stack Patch Bundle for Oracle Identity Management Products](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=320313382903924&id=2657920.1&_adf.ctrl-state=13r3ivrcxc_110)
     - [Download and Apply 12.2.1.4 SPB](https://support.oracle.com/epmos/faces/ui/patch/PatchDetail.jspx?parent=DOCUMENT&sourceId=2657920.1&patchId=32395452)
 
-##  **STEP 3**: Integrate OIG and OAM using LDAP Connector
+##  **Task 3**: Integrate OIG and OAM using LDAP Connector
 
   Configure OIG and OAM integration using the step by step instructions in *section 2.3* of the below documentation:
   - [Configuring Oracle Identity Governance and Oracle Access Manager Integration](https://docs.oracle.com/en/middleware/idm/suite/12.2.1.4/idmig/integrating-oracle-identity-governance-and-oracle-access-manager-using-ldap-connectors.html#GUID-9FD153DD-1497-4846-8D39-813B20E29B40)
 
-##  **STEP 4**: Transition OHS to 12.2.1.4:
+##  **Task 4**: Transition OHS to 12.2.1.4:
 1. Follow the steps below to install and configure OHS:
     - [Prepare and install OHS](https://docs.oracle.com/en/middleware/fusion-middleware/12.2.1.4/wtins/preparing-install-and-configure-product.html#GUID-16F78BFD-4095-45EE-9C3B-DB49AD5CBAAD)
 
@@ -193,7 +193,7 @@ This lab assumes you have:
 
 4. Start OHS server
 
-##  **STEP 5**: Validate the IAM 12.2.1.4 Integrated environment
+##  **Task 5**: Validate the IAM 12.2.1.4 Integrated environment
 
 1. Test OAM and OIG using the steps in *section 2.4.7* in the documentation below
     - [Functionally Testing the Access Manager and Oracle Identity Governance Integration](https://docs.oracle.com/en/middleware/idm/suite/12.2.1.4/idmig/integrating-oracle-identity-governance-and-oracle-access-manager-using-ldap-connectors.html#GUID-3803AA41-A882-41C9-B1E8-0BBCBD581CE9)

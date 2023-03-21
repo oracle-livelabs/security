@@ -13,9 +13,9 @@ Now, you no longer need important resources on your PC (storage, CPU or memory),
 Watch a preview of "*Livelabs - Database Security Basics (May 2022)*" [](youtube:tyyZmW4YyPk)
 
 ### Components
-The complete architecture of the **DB Security Hands-On Labs (v4)** is as following:
+The complete architecture of the **DB Security Hands-On Labs (v5 - January 2023)** is as following:
 
-  ![](./images/dbseclab-archi-v4.png "")
+  ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
 It's composed of 4 VMs:
   - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)
@@ -26,6 +26,7 @@ It's composed of 4 VMs:
 During this 1st part, you'll use different resources to interact with these VMs:
   - SSH Terminal Client
   - Glassfish HR App
+  - Oracle Enterprise Manager 13c
   - (Optionally) SQL Developer
 
 So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set!
@@ -48,4 +49,4 @@ You may now [proceed to the next lab](#next)
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
