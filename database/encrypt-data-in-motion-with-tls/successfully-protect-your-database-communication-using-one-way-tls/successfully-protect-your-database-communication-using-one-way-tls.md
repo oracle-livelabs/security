@@ -160,23 +160,23 @@ This lab assumes you have:
     ````
 Note: Before importing the signed user certificate, the DB wallet output looks like this:
 
-````
+```
 Requested Certificates: 
 Subject:        CN=dbsec-lab,OU=dbsecdemo,O=LiveLabs,L=Austin,ST=Texas,C=US
 User Certificates:
 Trusted Certificates: 
 Subject:        C=US,CN=ROOT
-````
+```
 
 After importing the signed certificate, the DB wallet output looks like this:
 
-````
+```
 Requested Certificates: 
 User Certificates:
 Subject:        CN=dbsec-lab,OU=dbsecdemo,O=LiveLabs,L=Austin,ST=Texas,C=US
 Trusted Certificates: 
 Subject:        C=US,CN=ROOT
-````
+```
 
 ## Task 7: Import CA root certificate into client trust store (Linux, Windows only)
 
