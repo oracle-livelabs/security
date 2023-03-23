@@ -795,9 +795,9 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
 1. First, verify that the application functions **before** we make any changes to connection string!
 
-2. Open a Web Browser at the URL *`https://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
+2. Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
 
-    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+    **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
     
 3. Login to the application as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -2016,4 +2016,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani, Nazia Zaidi, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023

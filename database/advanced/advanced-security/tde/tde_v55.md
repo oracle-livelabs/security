@@ -26,15 +26,17 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | Allow DB Restore | 5 minutes  |
-| 2 | Create Keystore | <5 minutes |
-| 3 | Create Master Key | <5 minutes |
-| 4 | Create Local Auto-login Wallet | <5 minutes |
-| 5 | Encrypt Existing Tablespace | 5 minutes |
-| 6 | Encyrpt All New Tablespaces | 5 minutes |
-| 7 | Rekey Master Key | 5 minutes |
-| 8 | View Keystore Details | 5 minutes |
-| 9 | Restore Before TDE | 5 minutes |
+|1 | Allow DB Restore | 5 minutes  |
+|2 | Create Keystore | <5 minutes |
+|3 | Create Local Auto-login Keystore | <5 minutes |
+|4 | Create Master Key | <5 minutes |
+|5 | Encrypt Existing USERS Tablespaces in CDB$ROOT | 5 minutes |
+|6 | Encyrpt Credentials in CDB$ROOT | 5 minutes |
+|7 | Encrypt SYSTEM, SYSAUX and USERS Tablespaces in PDB | 5 minutes |
+|8 | Encyrpt All New Tablespaces | 5 minutes |
+|9 | Rekey Master Key | 5 minutes |
+|10| View Keystore Details | 5 minutes |
+|11| Restore Before TDE | 5 minutes |
 
 ## Task 1: Allow DB Restore
 
