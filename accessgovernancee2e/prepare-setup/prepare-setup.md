@@ -16,18 +16,8 @@ This lab assumes you have:
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
-    *Note 1:* If providing a single Stack download for the workshop, use this simple expression.
+    - [oracle_access_governance_stack.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/oracle_access_governance_stack.zip)
 
-    - [sample-mkplc-freetier.zip](<--objectstorageurl-->)
-
-    *Note 2:* If providing multiple Stacks download for the same workshop, use a conditional expression similar to the below. Keep in mind that the condition or *type* must be paired with a valid entry in the *manifest.json* file. Refer to *freetier-advanced* and *freetier-basics*
-
-<if type="advanced">
-    - [sample-mkplc-advanced.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/_EIwsXv5v6KkKcQldUQixExqAgJCbY826XovJec4I25rc4dHEZW4whrF-nb2QUye/n/natdsecurity/b/stack/o/sample-mkplc-advanced.zip)
-</if>
-<if type="basics">
-    - [sample-mkplc-basics.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/m4wcgeN1hw9D1zV3pgOkbRjwanAt5dIW7QsZS7znZNnHU63vh495UHhkiRtaDJHE/n/natdsecurity/b/stack/o/sample-mkplc-basics.zip)
-</if>
 
 2.  Save in your downloads folder.
 
@@ -74,10 +64,10 @@ Using the details from the two Tasks above, proceed to the lab *Environment Setu
 -  Create Stack:  *Compute + Networking*
 -  Create Stack:  *Compute only* with an existing VCN where security lists have been updated as per *Task 2* above
 
-You may now proceed to the next lab.
+    You may now **proceed to the next lab.**
 
 ## Acknowledgements
 * **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
-* **Contributors** - Meghana Banka
+* **Contributors** - Meghana Banka, Edward Lu
 * **Last Updated By/Date** - Indira Balasundaram, January 2023
 

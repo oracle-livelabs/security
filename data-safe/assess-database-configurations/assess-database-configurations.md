@@ -125,14 +125,15 @@ Oracle Data Safe automatically creates a security assessment of your target data
 9. Expand another category and review the findings.
 
     - Each finding shows you the status (risk level), a summary of the finding, details about the finding, remarks to help you to mitigate the risk, and references. The references make it easy for you to identify the recommended security controls.
-    - In the example below, the **Password Verification Functions** finding is a medium risk finding that has two references: **STIG** and **CIS**.
+    - In the example below, the **Users with Powerful Roles** finding is a high risk finding that has two references: **STIG** and **CIS**.
 
-    ![Password Verification Functions finding](images/password-verification-functions.png "Password Verification Functions finding")
+    ![Users with Powerful Roles finding](images/users-with-powerful-roles.png "Users with Powerful Roles finding")
 
 
 10. Expand a few categories under **Privileges and Roles**, and review the findings.
 
 11. Scroll down further and expand other categories. Each category lists related findings about your target database and how you can make changes to improve its security.
+
 
 
 ## Task 3: View the history of security assessments for your target database
@@ -143,7 +144,7 @@ Oracle Data Safe automatically creates a security assessment of your target data
 
 3. Notice that you have one security assessment listed for your target database. This is a *static* copy (separate copy) of the latest security assessment.
 
-    ![Assessment History](images/assessment-history.png "Assessment History")
+    ![Assessment History page](images/assessment-history.png "Assessment History page")
 
 
 ## Task 4: Set a baseline assessment
@@ -327,7 +328,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
 2. Under **Related Resources**, click **Assessment History**.
 
-3. Under **List Scope** on the left, select your compartment. Optionally, select **Include child compartments**.
+3. Under **List Scope** on the left, select your compartment. Optionally, deselect **Include child compartments**.
 
 4. View the list of security assessments.
 
@@ -337,6 +338,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     ![Assessment History page](images/sa-assessment-history-page.png "Assessment History page")
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -345,4 +347,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, January 21, 2023
+* **Last Updated By/Date** - Jody Glover, February 23, 2023

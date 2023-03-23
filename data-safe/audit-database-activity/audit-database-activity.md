@@ -87,7 +87,7 @@ This lab assumes you have:
 
 4. Under **Filters** on the left, select your target database.
 
-5. On the right, review the audit trail(s) for your target database. Oracle Data Safe discovers one audit trail for an Autonomous Database, which is the `UNIFIED_AUDIT_TRAIL`.
+5. On the right, review the audit trail(s) for your target database. Oracle Data Safe discovers one audit trail for an Autonomous Database called `UNIFIED_AUDIT_TRAIL`.
 
     ![Audit Trails page](images/audit-trails-page.png "Audit Trails page")
 
@@ -106,7 +106,7 @@ This lab assumes you have:
 
 4. From the **Target Databases** drop-down list on the left, select your target database.
 
-5. On the right, review the information provided for your target database's audit policy. Notice that only the **Additional Policies** category indicates (by a green cirecle with a check mark) that policies are enabled. These are Oracle pre-defined policies that are enabled by default on an Autonomous Transaction Processing database.
+5. On the right, review the information provided for your target database's audit policy. Notice that only the **Additional Policies** category has policies enabled, which is indicated by a green circle with a check mark. These are Oracle pre-defined policies that are enabled by default on an Autonomous Transaction Processing database.
 
     ![Audit Policies page](images/audit-policies-page.png "Audit Policies page")
 
@@ -132,8 +132,6 @@ This lab assumes you have:
 
 6. Scroll down to the **Compute Audit Volume** section, and click **Available on Target Database**.
 
-    ![Compute Audit Volume section](images/compute-audit-volume-section.png "Compute Audit Volume section")
-
     The **Compute Available Volume** dialog box is displayed.
 
 7. For the start date, click the calendar widget and select the current date at 00:00 UTC. You select the current date because your target database is brand new.
@@ -141,16 +139,17 @@ This lab assumes you have:
 8. From the **Trail Locations** drop-down list, select `UNIFIED_AUDIT_TRAIL`.
 
 9. Click **Compute** and wait for Oracle Data Safe to calculate the available audit volume.
+  
+   ![Compute Available Volume dialog box](images/compute-available-volume-dialog-box.png "Compute Available Volume dialog box")
 
-    ![Compute Available Volume dialog box](images/compute-available-volume-dialog-box.png "Compute Available Volume dialog box")
-
+ 
 10. In the **Available in Target Database** column, view the number of audit records for the `UNIFIED_AUDIT_TRAIL`.
 
     - In our case, the number of records in the `UNIFIED_AUDIT_TRAIL` is small because your target database has just been provisioned. For an older target database, however, there are probably a large number of audit records.
     - Oracle Data Safe splits up the numbers by month. These values help you to decide on a start date for the Oracle Data Safe audit trail.
     - Don't worry if the number of audit records on your system is different than what is shown below.
 
-    ![Available in Target Database column](images/available-in-target-database3.png "Available in Target Database column")
+    ![Available in Target Database column](images/available-in-target-database.png "Available in Target Database column")
 
 
 ## Task 6: Start audit data collection
@@ -171,7 +170,7 @@ This lab assumes you have:
 
     A **Start Audit Trail: UNIFIED\_AUDIT\_TRAIL** dialog box is displayed.
 
-7. Configure a start date based on the data in the **Compute Audit Volume** region of the audit profile that you viewed in task 5 (step 10). For example, if you have one month listed (Jan 2023), you can set the start date to the beginning of January.
+7. Configure a start date based on the data in the **Compute Audit Volume** region of the audit profile that you viewed in task 5 (step 10). For example, if you have one month listed (Feb 2023), you can set the start date to the beginning of January.
 
     ![Start Audit Trail dialog box](images/start-audit-trail-dialog-box.png "Start Audit Trail dialog box")
 
@@ -203,13 +202,13 @@ This lab assumes you have:
 
     Statistics include the number of target databases that have an audit event in each event category and the total number of events per category. Because you are viewing statistics for your target database only, the **Target Databases** column shows ones.
 
-    ![Activity Auditing dashboard initial table](images/activity-auditing-dashboard-table-initial.png "Activity Auditing dashboard initial table")
+    ![Activity Auditing dashboard Events Summary tab](images/activity-auditing-events-summary-tab.png "Activity Auditing dashboard Events Summary tab")
 
 4. Click the **Target Summary** tab and review the various audit event counts per target database.
 
-    Audit events include the number of login failures, schema changes, entitlement changes, audit settings changes, all activity (all audit events), database vault realm violations and command rule violations, and database vault policy changes.
+    Audit events include the number of login failures, schema changes, entitlement changes, audit settings changes, all activity (all audit events), Database Vault violations, and Database Vault policy changes.
 
-    ![Activity Auditing dashboard initial target summary](images/activity-auditing-dashboard-targetsummary-initial.png "Activity Auditing dashboard initial target summary")
+    ![Activity Auditing dashboard Target Summary tab](images/activity-auditing-dashboard-target-summary-tab.png "Activity Auditing dashboard Target Summary tab")
 
 ## Task 8: Provision audit policies
 
@@ -222,7 +221,7 @@ This lab assumes you have:
 
 4. On the right, click the name of your target database.
 
-5. Notice that there are several custom audit policies provisioned on your target database, but they are not yet enabled.
+5. Notice that the following custom audit policies are provisioned on your target database, but not yet enabled:
 
     - `APP_USER_NOT_APP_SERVER`
     - `ADB_OPERATOR_AUDIT`
@@ -264,8 +263,6 @@ This lab assumes you have:
 
 3. You notice that there are schema changes. To investigate, on the **Events Summary** tab, click **Schema Changes By Admin** to view more detail.
 
-    ![Schema Changes By Admin event category](images/schema-changes-by-admin-event-category.png "Schema Changes By Admin event category")
-
 4. On the **Schema Changes By Admin** page, review the following:
 
     - The filters set at the top of the page. There are two filters set on **Operation Time**, setting the time period for the past one week. There is one filter set on **Target Id**, setting the target database to your database.
@@ -273,11 +270,11 @@ This lab assumes you have:
     - The total number of events
     - The individual audit events
 
-    ![Schema Changes By Admin page](images/schema-changes-by-admin-page2.png "Schema Changes By Admin page")
+    ![Schema Changes By Admin page](images/schema-changes-by-admin-page.png "Schema Changes By Admin page")
 
 5. Click the down arrow at the end of any row in the event table to view more detail about the event. When you click the down arrow, it changes to an up arrow.
 
-    ![Audit event table expander](images/audit-event-table-expander2.png "Audit event table expander")
+    ![Audit event table expander](images/audit-event-table-expander.png "Audit event table expander")
 
 6. What was the SQL issued?
 
@@ -324,7 +321,7 @@ By default, the All Activity report shows audit events for the past one week for
 
 7. To view more detail for a particular audit event, click the down arrow to expand the row and show details for the particular event. For some details, you can copy their values to the clipboard.
 
-    ![All Activity report](images/all-activity-report2.png "All Activity report")
+    ![All Activity report](images/all-activity-report.png "All Activity report")
 
 
 ## Task 11: Create a custom audit report
@@ -334,13 +331,17 @@ By default, the All Activity report shows audit events for the past one week for
     - **Target = your-target-database-name**
     - **Object Owner = HCM1**
 
-2. Click **Manage Columns**. In the **Manage Columns** panel, select **Target**, **DB User**, **Event**, **Object**, **Operation Time**, and **Unified Audit Policies** columns. Click **Apply Changes**. The table displays the selected columns. Also notice that the totals are adjusted too.
+2. Click **Manage Columns**. In the **Manage Columns** panel, select **Target**, **DB User**, **Event**, **Object**, **Operation Time**, and **Unified Audit Policies** columns. Click **Apply Changes**. 
+
+    The table displays the selected columns. Also notice that the totals are adjusted too.
+
+    ![All Activity report](images/custom-audit-report3.png "All Activity report")
 
 3. Click **Create Custom Report**.
 
     The **Create Custom Report** dialog box is displayed.
 
-4. Enter the report name **All Activity Report on schema: HCM1 in the target your-target-database-name**. Enter an optional description. Select your compartment, if needed. Click **Create Custom Report** and wait for the report to generate.
+4. Enter the display name **All Activity Report on schema: HCM1 in the target your-target-database-name**. Enter an optional description. Select your compartment, if needed. Click **Create Custom Report** and wait for the report to generate.
 
     ![Create Custom Report dialog box](images/create-custom-report-dialog-box.png "Create Custom Report dialog box")
 
@@ -358,7 +359,7 @@ By default, the All Activity report shows audit events for the past one week for
 
 2. Leave **PDF** selected.
 
-3. For **Display Name**, enter **All Activity Report on schema: HCM1 in the target your-target-database-name**.
+3. Enter the display name **All Activity Report on schema: HCM1 in the target your-target-database-name**.
 
 4. (Optional) Enter a description.
 
@@ -372,7 +373,7 @@ By default, the All Activity report shows audit events for the past one week for
 
 8. Click the **here** link to download the report.
 
-9. If a dialog box is displayed asking you to open or save the document, choose to save the report to your local computer.
+9. If you are prompted to open or save the report, choose to save.
 
 10. Close the **Generate Report** dialog box.
 
@@ -380,14 +381,14 @@ By default, the All Activity report shows audit events for the past one week for
 
    ![All Activity PDF report](images/all-activity-report-pdf.png "All Activity PDF report")
 
-12. Close the report by closing the browser tab.
+12. To close the PDF report, close the browser tab.
 
 
 ## Task 13: View the Audit Report History
 
 1. Under **Related Resources**, click **Audit Report History**.
 
-2. View the details for your custom report. On this page, you can click the name of a report to view its report details and download the report as a PDF or XLS document (depending on how you originally generated it)
+2. View the details for your custom report. On this page, you can click the name of a report to view its report details and download the report as a PDF or XLS document (depending on how you originally generated it). Oracle Data Safe keeps the history of audit reports for up to three months.
 
    ![History for custom report](images/history-custom-report.png "History for custom report")
 
@@ -429,14 +430,17 @@ Schedule your custom audit report to generate a PDF every Sunday at 11PM UTC.
 
 12. For **Events Time Span**, leave **Last Days** and **7** as is so that only one weeks worth of data is displayed in the report.
 
-13. Click **Save Schedule**. The panel closes and you are returned to your custom report.
-
    ![Manage Report Schedule panel](images/manage-report-schedule-panel.png "Manage Report Schedule panel")
+
+13. Click **Save Schedule**. 
+
+    The panel closes and you are returned to your custom report.
 
 14. To view the schedule, under **Related Resources**, click **Audit Reports**. On the right, click the **Custom Reports** tab. Notice that now there is a report schedule for your custom report. You can access the reports generated by the schedule on the **Audit Report History** page.
 
     ![Custom report with schedule](images/custom-report-w-schedule.png "Custom report with schedule")
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -446,4 +450,4 @@ Schedule your custom audit report to generate a PDF every Sunday at 11PM UTC.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, January 21, 2022
+* **Last Updated By/Date** - Jody Glover, February 23, 2023

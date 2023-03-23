@@ -102,7 +102,7 @@ In this lab, you will:
     - Access review trail, you should see the **justification** entered by your employee self-reviewer in the previous task. 
     - Recent changes in user’s profile
   ![AI/ML Insights](images/manager-access-review-insights-manager.png)
-3. Decide (Accept or Revoke): Select the *Access Review* for the user - *Mark Hernandez* and **Revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
+3. Decide (Accept or Revoke): Select the *Access Review* for the user - *Mark Hernandez* with *Assignment Type* as *Account* and **Revoke** this access privilege. In this lab, you may pick one access review with **Recommend Review**, view the detail, and **Revoke** it, which will trigger the auto-remediation process in the **Oracle Access Governance** system. 
 
 4. During this lab, you have navigated the **Oracle Access Governance** console to select **access review tasks** assigned to you as an **employee** and **manager user**, view **prescriptive analytics** and **recommendation** proposed by **Oracle Access Governance**, and make informed decisions **Accept** or **Revoke** for review tasks based on **peer group analysis** and **insights**. 
 
@@ -112,7 +112,7 @@ In this lab, you will:
 
    **URL:**
     ```
-      <copy>http://<--privateipofyourcomputeinstance-->:14000/identity</copy>
+      <copy>http://oimhost.us.oracle.com:14000/identity</copy>
      ```
    **Username:**
      ```
@@ -124,14 +124,14 @@ In this lab, you will:
       ```
 
   ![OIG Login Page](images/oig-logon.png)
-2. You should see the **Oracle Identity Governance** main dashboard. Click on Manage -> Users.
+2. You should see the **Oracle Identity Governance** main dashboard. Click on **Manage -> Users**
   ![OIG Homepage](images/oig-homepage.png)
 
 3. Click Users. Search for User **Mark Hernandez**.Note **Figma** application entitlements present for the user. 
 
 ![Access Governance Homepage](images/initial-user-details.png)
 
-4. Click on **Provisioning Tasks -> Manual Fulfillment** . The Manual Fulfillment page is displayed. Notice that the Mnaual Fulfillment request for the user is displayed is displayed.
+4. Click on **Self Service -> Provisioning Tasks -> Manual Fulfillment** . The Manual Fulfillment page is displayed. Notice that the Manual Fulfillment request for the user is displayed is displayed.
 ![Provisioning tasks list](images/provisioning-tasks.png)
 5. Click on the  request. The request details page displays a detailed view of the request in the Details section, Content section and the Cart Items section. It allows complete management of the listed task. Click on Complete.
 ![Manual Fulfillment requests](images/manual-fulfillment.png)
@@ -141,8 +141,7 @@ Now remediation is completed with approval and manual provisioning.
 7. Notice the **Figma** application entitlements have been removed for the user **Mark Hernandez** 
 ![User Details OIG](images/user-details.png)
 
-8. Login in to **Oracle Access Governance** as the **Campaign Administrator** to view the Completion of review tasks.
-9. You may now **proceed to the next lab**. 
+    You may now **proceed to the next lab.**
 
 ## Learn More
 
@@ -153,4 +152,5 @@ Now remediation is completed with approval and manual provisioning.
 
 ## Acknowledgments
 * **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Contributors** - Edward Lu 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
