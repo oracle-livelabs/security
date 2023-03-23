@@ -9,9 +9,6 @@ Description: TLS is the standard based approach for encrypthing data in motion. 
 
 *Version tested in this lab:* Oracle DB 19.17
 
-### Video Preview
-Watch a preview of "*LiveLabs - Oracle Native Network Encryption (May 2022)*" [](youtube:N6Uz-pVTkaI)
-
 ### Objectives
 - Successfully protect your database communication using 1-way TLS
 - Verify network traffic is unencrypted before configuring TLS
@@ -322,7 +319,6 @@ Oracle Database provides both native data network encryption and TLS-based encry
 ## Want to Learn More?
 Technical Documentation:
 - [Configuring Transport Layer Security Authentication](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-secure-sockets-layer-authentication.html)
-- [Oracle Native Network Encryption 19c](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-network-data-encryption-and-integrity.html)
 
 ## Acknowledgements
 - **Author** - Stephen Stuart & Alpha Diallo, Solution Engineers, North America Specialist Hub
