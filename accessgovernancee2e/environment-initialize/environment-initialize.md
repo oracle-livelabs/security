@@ -18,6 +18,8 @@ In this lab, you will:
 This lab assumes you have:
 - A valid Oracle OCI tenancy, with OCI administrator privileges. 
 
+    *Note:* From this lab onwards until the completetion of the workshop, all the steps need to be performed inside the Workshop URL only. 
+
 
 ## Task 1: Validate Docker is up and running
 
@@ -107,7 +109,7 @@ This lab assumes you have:
 
  
 
-You may now **proceed to the next lab.**
+    You may now **proceed to the next lab.**
 
 ## Learn More
 
@@ -118,4 +120,5 @@ You may now **proceed to the next lab.**
 
 ## Acknowledgments
 * **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Contributors** - Edward Lu
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023

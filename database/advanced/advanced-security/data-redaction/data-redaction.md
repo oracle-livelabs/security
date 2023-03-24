@@ -58,9 +58,9 @@ This lab assumes you have:
 
     - Now, let's have a look **on your Glassfish App**
 
-        - Open a Web Browser at the URL *`https://dbsec-lab:8080/hr_prod_pdb1`*
+        - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`*
 
-            **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+            **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
     
         - Login to the HR Application as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -227,4 +227,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023

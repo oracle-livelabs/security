@@ -19,7 +19,7 @@ This lab assumes you have:
 
 ## Task 1: Perform Data load in OAG console
 
-1.  In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Connected Systems.**
+1.  Log in to Oracle Access Governance console. Refer to *Lab 4: Task 1.4* for the Oracle Access Governance service instance URL. In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Connected Systems.**
 
     ![Naviagte to Service Administration → Connected Systems](images/connected-systems.png) 
     
@@ -43,18 +43,20 @@ Create users in IAM and assign them to Application roles.
     ![Access Cloud Shell](images/oci-cloud-shell.png)
 
 2. Follow the below commands to create 3 users - Pamela Green (Campaign Administrator), Harlan Bullard (Manager), Mark Hernandez (Employee User) in IAM.
+    * Open the Text Editor inside the Workshop on the Linux environment. 
+    ![Open Text Editor](images/open-texteditor.png)
     * Create a new file **user-iam.sh**
-    * Add the below contents in the **user-iam.sh** file and save it. Specify the email-id provided to you at the time of your account creation.
+    * Add the below contents in the **user-iam.sh** file and save it. Specify any email-id to which you will be receiving *Activation mail* for password reset for the users. 
     ```
     <copy>oci iam user create --name mhernandez --email <--email-id provided--> --description OAG-User-Cloud-Shell
 	oci iam user create --name pamela.green --email <--email-id provided--> --description OAG-User-Cloud-Shell 
     oci iam user create --name harlan.bullard --email <--email-id provided--> --description OAG-User-Cloud-Shell</copy>
     ```
-   
+    * Save the file **user-iam.sh** 
+    ![Create new file](images/create-file.png)
     * Open the Cloud Shell. Click on the right top corner *Settings* icon. Click on *Upload* option.
     * Select the saved file **user-iam.sh**
     * The **user-iam.sh** file upload will be completed. 
-
     ![Cloud Shell user creation](images/cloud-shell.png)
 
 3. In cloud shell enter the below commands to execute the .sh file:
@@ -101,5 +103,6 @@ Create users in IAM and assign them to Application roles.
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
+* **Contributors** - Edward Lu  
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
