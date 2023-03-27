@@ -46,39 +46,29 @@ This workshop assumes you have:
     In the lab, give the **password - _WElcome123##_** for the ADMIN user you created when you provisioned your Oracle Autonomous Database instance and click **Sign in to Administration** to sign in to APEX Workspace.
 	![](./images/task1-4.png " ")
 
-5. Click **Create Workspace**.
+3. Click on the 'Create Workspace' button.
 
-	![](./images/task1-5.png " ")
+  ![](images/task1-5.png)
 
-6. In the Create Workspace dialog, enter the following and click **Create Workspace**.
-    - Database User: DEMOUSER
-    - Password : _WElcome123##_ **Note:** The password field will be disabled as DEMOUSER is an existing database user.
-    - Workspace Name : DEMOUSER
+4. Select 'Existing Schema'
 
-	![](./images/task1-6.png " ")
+  ![](images/task1-6.png)
 
-7. In the APEX Instance Administration page, click the **DEMOUSER** link in the success message.
+5. Click on the menu in Database User
+    
+  ![](images/task1-7.png)
 
-    Note: This will log you out of APEX Administration so that you can log into your new workspace.
-    ![](./images/task1-7.png " ")
+6. Search for **DEMOUSER** created in Lab1
+    
+  ![](images/task1-8.png)
 
-8. On the APEX Workspace log in page, enter the **Password - _WElcome123##_** for the DEMOUSER workspace, check the Remember workspace and username checkbox, and then click **Sign In**.
+7. Enter the **password - _WElcome123##_** that was setup for DEMOUSER in Lab1
+    
+  ![](images/task1-9.png)
 
-    ![](./images/task1-8.png " ")
+7. Access the Console
 
-9. Click **Set APEX Account Password**.
-
-	![](./images/task1-9.png " ")
-
-10. Navigate to the tab with Oracle cloud console, click on Profile icon then click **User Setting** and copy the email address.
-
-	![](./images/task1-101.png " ")
-    ![](./images/task1-102.png " ")
-
-11. Navigate back to the APEX workspace, paste the email address in the Email Address field, give the **Password - _W3lcome123##_** and confirm the password for the `demouser` and click **Apply Changes**.
-
-	![](./images/task1-111.png " ")
-	![](./images/task1-112.png " ")
+  ![](images/task1-10.png)
 
 ## Task 2: Define the REST End Points and Enable the Schema
 
