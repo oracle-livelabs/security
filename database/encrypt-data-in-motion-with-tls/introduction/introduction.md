@@ -1,43 +1,43 @@
-# Encrypt Data in-motion with TLS
+# Introduction
 
-## Introduction
+## About this Workshop
+### Overview
+*Estimated Time to complete the workshop*: 15 minutes
 
-Oracle Data Redaction is an Advanced Security feature that allows you to mask sensitive data in real-time, protecting it from unauthorized disclosure. This feature is included with your Autonomous Database subscription and is particularly useful for read-only scenarios such as displaying sensitive information in reports or sending it to other applications via GET APIs.
+This workshop is the FIRST PART of the Hands-On Labs dedicated to the Oracle Database Security features and functionalities - for the second workshop, please refer to the *DB Security Advanced*.
 
-The DMBS_REDACT PL/SQL package is used to manage redaction policies and configure the specific columns and redaction formats.
+Based on an OCI architecture, deployed in a few minutes with a simple internet connection, it allows you to test DB Security use cases in a complete environment already pre-configured by the Oracle Database Security Product Manager Team.
 
-In this workshop, you will learn how to use Oracle Data Redaction with Oracle Rest Data Services (ORDS) to redact  data in a GET response, ensuring the privacy of sensitive data. The process includes REST enabling the table you want to make available through ORDS, creating redaction policies for specific columns and tables, and specifying the redaction function to be used. You'll be able to contrast the response that contains data in clear vs the one that has sensitive data redacted.
+Now, you no longer need important resources on your PC (storage, CPU or memory), nor complex tools to master, making you completely autonomous to discover at your rhythm all new DB Security features.
 
-![Lab architecture](images/lab-architecture.png)
+### Components
+The complete architecture of the **DB Security Hands-On Labs (v5 - January 2023)** is as following:
 
+  ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
-Estimated Workshop Time: 27 minutes
+It's composed of 4 VMs:
+  - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)
+  - **Audit Vault Server VM** (for Advanced workshop only)
+  - **DB Firewall Server VM** (for Advanced workshop only)
+  - **Key Vault Server VM** (for Advanced workshop only)
+
+During this mini-lab, you'll use different resources to interact with these VMs:
+  - SSH Terminal Client
+  - Glassfish HR App
+  - (Optionally) SQL Developer
+
+So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set!
 
 ### Objectives
+This Hands-On Labs give the user an opportunity to learn how to configure the DB Security features to protect and secure their databases from the Baseline to the Maximum Security Architecture (MSA).
 
-In this lab, you will complete the following tasks:
+In this mini-lab, you will learn how to use the **Oracle Native Network Encryption** (NNE) features.
 
-- Create Database wallet and self signed certificate.
-- Configure Database listener to support TLS encryption.
-- Test TLS and non-TLS connectivity.
-- Configure the Oracle Instant Client on Linux 8. 
+The entire DB Security PMs Team wishes you an excellent workshop!
 
-### Prerequisites
-
-This workshop assumes that you have:
-- Familiarity with Database is desirable, but not required
-- Some understanding of cloud and database terms is helpful
-- Familiarity with Oracle Cloud Infrastructure (OCI) is helpful
-- Some basic understanding of DB security is a plus
-
-*Note: Throughout this workshop, if you ever find yourself struggling when it comes to finding your resources in Oracle Cloud, make sure both your compartment and region correspond to where you created the resource.*
-
-## Want to learn more about Oracle Data Security?
-- [Introduction to Oracle Data Redaction](https://docs.oracle.com/en/database/oracle/oracle-database/21/asoag/introduction-to-oracle-data-redaction.html#GUID-82EA9712-387C-4D3A-BB72-F64A707C67CA)
-- [Oracle Data Redaction FAQs](https://www.oracle.com/technetwork/database/options/data-masking-subsetting/learnmore/faq-security-asdr-external-3215961.pdf)
+You may now [proceed to the next lab](#next)
 
 ## Acknowledgements
-
-- **Authors** - Stephen Stuart & Alpha Diallo, Solution Engineers,North America Specialist Hub
-- **Creator** - Richard C. Evans, Database Security Product Manager
-- **Last Updated By/Date** - Stephen Stuart & Alpha Diallo, March 2023
+- **Author** - Hakim Loumi, Database Security PM
+- **Contributors** - Rene Fontcha
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
