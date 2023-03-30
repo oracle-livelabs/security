@@ -157,6 +157,7 @@ In this lab, you will:
     - Monitor and manage access review campaigns as a **campaign administrator**
     - Manage event based access review campaigns as a **campaign administrator**
 
+  You may now **proceed to the next lab.**
 
 ## Learn More
 
@@ -167,4 +168,5 @@ In this lab, you will:
 
 ## Acknowledgments
 * **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Contributors** - Edward Lu 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023

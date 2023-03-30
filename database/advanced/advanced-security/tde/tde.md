@@ -29,7 +29,7 @@ This lab assumes you have:
 | 1 | Allow DB Restore | 5 minutes  |
 | 2 | Create Keystore | <5 minutes |
 | 3 | Create Master Key | <5 minutes |
-| 4 | Create Auto-login Wallet | <5 minutes |
+| 4 | Create Local Auto-login Wallet | <5 minutes |
 | 5 | Encrypt Existing Tablespace | 5 minutes |
 | 6 | Encyrpt All New Tablespaces | 5 minutes |
 | 7 | Rekey Master Key | 5 minutes |
@@ -124,7 +124,7 @@ This lab assumes you have:
 
 4. Now, you have a master key and you can begin encrypting tablespaces or column!
 
-## Task 4: Create Auto-login Wallet
+## Task 4: Create Local Auto-login Wallet
 
 1. Run the script to view the Oracle Wallet content on the Operating System
 
@@ -395,4 +395,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023
