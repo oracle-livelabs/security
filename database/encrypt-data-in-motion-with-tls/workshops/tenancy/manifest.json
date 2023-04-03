@@ -6,7 +6,7 @@
        "title": "Introduction",
        "description": "Understand the architecture of this workshop and what it can do",
        "publisheddate": "09/01/2020",
-       "filename": "../../intro/intro-nne.md"
+       "filename": "../../introduction/introduction.md"
      },
      {
        "title": "Getting Started",
@@ -17,7 +17,7 @@
        "title": "Lab 1: Prepare Setup",
        "description": "How to download your ORM stack and update security rules for an existing VCN",
        "publisheddate": "09/28/2020",
-       "filename": "../../../../common/prepare-setup/prepare-setup.md",
+       "filename": "../../prepare-setup/prepare-setup.md",
        "type": "nne"
      },
      {
@@ -30,7 +30,7 @@
        "title": "Lab 3: Initialize Environment",
        "description": "How to initialize and start all the workshop components",
        "publisheddate": "10/14/2020",
-       "filename": "../../../../common/init-start-env/init-start-env.md"
+       "filename": "../../init-start-env/init-start-env.md"
      },
      {
        "title": "Lab 4: Successfully Protect Your Database Communication Using One-Way TLS",
