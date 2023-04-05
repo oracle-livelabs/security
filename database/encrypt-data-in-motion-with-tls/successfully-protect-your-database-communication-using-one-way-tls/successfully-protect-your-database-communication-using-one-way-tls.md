@@ -150,7 +150,7 @@ This lab assumes you have:
 
 ## Task 6: Add CA root certificate and database server certificate to database wallet.
 
-1. After generating the signed DB user certificate, import it to the DB wallet. In this step, you will see that the DB wallet moves from a "requested certificate" to a "user certificate". 
+1. After generating the signed DB user certificate, import it to the DB wallet. In this step, you will see that the DB server user certificate changes from a "requested certificate" to a "user certificate". 
 
     ````
     <copy>./tls_import_signed_cert.sh</copy>
@@ -177,22 +177,22 @@ Subject:        C=US,CN=ROOT
 
 ## Task 7: Import CA root certificate into client trust store (Linux, Windows only)
 
-1. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location. The DB will use the `WALLET_ROOT` parameter to look for it's wallet-related information, including tde and tls. This step will copy the DB wallet, with the signed certificate, to both the PDB's `WALLET_ROOT` tls directory and the default directory a client would search for the wallet, `/etc/ORACLE/WALLETS/<user>`, in this case it would be `/etc/ORACLE/WALLETS/oracle` since we are using `sqlplus` as the `oracle` user. 
+1. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location. The DB will use the `WALLET_ROOT` parameter to look for it's wallet-related information, including tde and tls. This step will copy the DB wallet, with the signed certificate, to both the PDB's `WALLET_ROOT` tls directory and the default directory an Oracle software client would search for the wallet, `/etc/ORACLE/WALLETS/<user>`, in this case it would be `/etc/ORACLE/WALLETS/oracle` since we are using `sqlplus` as the `oracle` user. 
 
     ````
     <copy>./tls_deploy_db_wallet.sh</copy>
     ````
-Note: In order to set the WALLET_ROOT initialization parameter the DB must be restarted.
+Note: In order to set the WALLET_ROOT initialization parameter the DB must be restarted. The script will automatically restart the DB for you. 
 
 ## Task 8: Configure for TLS network encryption.
 
-1. Add a new tnsnames.ora entry for the pdb1_tls connection string. This will copy the existing pdb1 connection string and modify it to use TCPS protocol and port 1522 instead of 1521.
+1. Add a new tnsnames.ora entry for the pdb1_tls connection string. This will copy the existing pdb1 connection string and modify it to use TCPS protocol and port 1522 instead of TCP and 1521.
 
     ````
     <copy>./tls_update_tnsnames_ora.sh</copy>
     ````
 
-2. In this step, we update the database's sqlnet.ora to include the SSL_CLIENT_AUTHENTICATION parameter as false. When set to false, one-way TLS can be used by the client. If set to true, mutual TLS (mTLS) must be used.
+2. In this step, we update the database's sqlnet.ora to include the SSL\_CLIENT\_AUTHENTICATION parameter as false. When set to false, one-way TLS can be used by the client. If set to true, mutual TLS (mTLS) must be used.
 
     ````
     <copy>./tls_update_sqlnet_ora.sh</copy>
