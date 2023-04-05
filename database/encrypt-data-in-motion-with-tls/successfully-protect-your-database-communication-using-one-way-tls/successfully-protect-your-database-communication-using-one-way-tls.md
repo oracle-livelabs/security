@@ -109,7 +109,7 @@ This lab assumes you have:
     Your NETWORK_PROTOCOL should not be encrypted and read 'tcp'
 
 
-3. This allows you to intercept traffic on port 1521 and generates a pcap file. 
+3. This allows you to intercept traffic on port 1521 and generates a packet capture (pcap) file. 
 
     ````
     <copy>./tls_tcpdump_traffic.sh pdb1</copy>
@@ -198,7 +198,7 @@ Note: In order to set the WALLET_ROOT initialization parameter the DB must be re
     <copy>./tls_update_sqlnet_ora.sh</copy>
     ````
 
-3. This step will stop the Oracle Listener and update the listener.ora to be available for TLS connections on port 1522. After starting the Oracle Listener, it will dynamically register the existing CDB and PDBs with it.
+3. This step will stop the Oracle Listener and update the listener.ora to be available for TCPS (TLS) connections on port 1522. After starting the Oracle Listener, it will dynamically register the existing CDB and PDBs with it.
 
     ````
     <copy>./tls_update_listener_ora.sh</copy>
@@ -209,7 +209,7 @@ Note: In order to set the WALLET_ROOT initialization parameter the DB must be re
     <copy>tnsping pdb1</copy>
     ````
 
-5. Now, because our listener is available for TLS connections on port 1522, we can use tnsping to verify connectivity.
+5. Now, because our listener is available for TCPS (TLS) connections on port 1522, we can use tnsping to verify connectivity.
 
     ````
     <copy>tnsping pdb1_tls</copy>
@@ -233,7 +233,7 @@ Note: In order to set the WALLET_ROOT initialization parameter the DB must be re
     ````
     <copy>./tls_tcpdump_extract.sh pdb1_tls</copy>
     ````
-    You have succesfully encrypted data-in-motion between the Oracle Database and the oracle OS user.
+    You have succesfully encrypted data-in-motion between the Oracle Database and the Oracle SQL*Plus client.
 
 ## Task 10: Create new OS user and encrypt SQL traffic. 
 
@@ -247,12 +247,12 @@ Note: In order to set the WALLET_ROOT initialization parameter the DB must be re
     ````
     <copy>./tls_install_oracle_ic.sh</copy>
     ````
-3. Create a tns_admin directory and a sqlnet.ora for 'dba_dan' in Dan's home directory.
+3. Create a tns\_admin directory and a sqlnet.ora for 'dba\_dan' in Dan's home directory.
 
     ````
     <copy>./tls_dba_dan_sqlnet_ora.sh</copy>
     ````
-4. Create a tns_admin directory and a tnsnames.ora file for 'dba_dan' in Dan's home directory. The tnsnames.ora file will only have an entry for the pdb1_tls alias. 
+4. Create a tns\_admin directory and a tnsnames.ora file for 'dba\_dan' in Dan's home directory. The tnsnames.ora file will only have an entry for the pdb1_tls alias. 
 
     ````
     <copy>./tls_dba_dan_tnsnames_ora.sh</copy>
@@ -269,7 +269,7 @@ Note: You will see that the rootCA.crt was copied to the Linux directory '/etc/p
     ````
     <copy>sudo su - dba_dan</copy>
     ````
-7. The Oracle Instant Client needs to know where to find the tns-related parameters. This will be the alias, pdb1_tls, and the SSL_CLIENT_AUTHENTICATION connection specifying TLS instead of mTLS.
+7. The Oracle Instant Client needs to know where to find the tns-related parameters. This will be the alias, pdb1\_tls, and the SSL\_CLIENT\_AUTHENTICATION connection specifying TLS instead of mTLS.
 
     ````
     <copy>export TNS_ADMIN=$HOME/tns_admin</copy>
