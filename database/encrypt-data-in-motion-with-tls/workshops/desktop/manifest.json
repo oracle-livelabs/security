@@ -1,0 +1,11 @@
+{
+   "workshoptitle": "LiveLabs",
+   "help": "livelabs-help-db_us@oracle.com",
+   "tutorials": [
+   {
+      "title": "Successfully Protect Your Database Communication Using One-Way TLS",
+      "description": "",
+      "filename": "../../successfully-protect-your-database-communication-using-one-way-tls/successfully-protect-your-database-communication-using-one-way-tls.md"
+   }
+]
+}

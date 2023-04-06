@@ -129,9 +129,9 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
 
 2. In parallel, use your Glassfish App to generated activity on your database:
 
-    - Open a web browser window to *`https://dbsec-lab:8080/hr_prod_pdb1`*
+    - Open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`*
     
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
     
     - Login to the HR Application as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -428,4 +428,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023
