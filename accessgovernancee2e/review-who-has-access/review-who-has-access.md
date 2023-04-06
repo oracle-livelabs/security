@@ -8,7 +8,7 @@ Users can check what access they have or what access their direct reports have. 
 * Persona: User Manager
 
 Watch the video below for a quick walk-through of the lab.
-[Review Who has Access to What](videohub:1_fb9lydfl)
+[Review Who has Access to What](videohub:1_tfcwfcju)
 
 ### Objectives
 
