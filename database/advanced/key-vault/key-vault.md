@@ -14,6 +14,7 @@ Watch a preview of "*LiveLabs - Oracle Key Vault (May 2022)*" [](youtube:4VR1bbD
 - Connect an Oracle DB (encrypted by TDE) to OKV
 - Manage with OKV the existing DB Wallet
 - Migrate the DB Wallet and manage the Online Keys by OKV
+- Create a Non-extractable Master Key
 
 ### Prerequisites
 This lab assumes you have:
@@ -35,7 +36,8 @@ This lab assumes you have:
 | 6| Create the OKV SEPS Wallet | <5 minutes||
 | 7| Perform a ReKey Operation | 5 minutes||
 | 8| Secret Management with OKV | 10 minutes||
-| 9| (Optional) Reset the OKV Lab Config | <10 minutes||
+| 9| Create a Non-extractable Online Master Key | (15) minutes||
+| 10| (Optional) Reset the OKV Lab Config | <10 minutes||
 
 <!-- Other OKV Labs
 | 8a| Perform Wallet_Download | 5 minutes | To return master keys to an Oracle Wallet |
@@ -568,6 +570,27 @@ Oracle provides deployment recommendations for deployments that have two or more
         - Good network connectivity between data centers is mandatory
 
 -->
+
+## Task 8: Demonstrate Non-extractable Feature of OKV
+
+1. As KVRESTADMIN, navigate to the "Keys and Wallets" section and select "Keys and Secrets". 
+
+2. Select the edit button for the first item at the top of the "Keys and Secrets".
+
+3. Under advanced, scroll down to the "extractable" attribute. Note that it currently reads "True". 
+
+4. Navigate back to the terminal window and log in to sqlplus as `sysdba`.
+
+5. Connect to the pluggable database.
+
+6. View the blank file
+
+View file before
+
+change value
+
+view file after
+
 
 ## Task 9: (Optional) Reset the OKV Lab Config
 

@@ -39,8 +39,6 @@ This lab assumes you have:
 When ready, click the **Enable button** in the lower right of the slider.
 *Warning: Do not enable Require Authentication. This will require that users go through an additional authentication process.*
 
-    ![Enable REST](images/rest-enable-object.png)
-
 3. That's it! Your table is **REST enabled**. Open a new browser window or tab and enter **URL** that was copied in the previous step.
 
 
