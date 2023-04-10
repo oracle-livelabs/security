@@ -1,43 +1,40 @@
-# Encrypt Data in-motion with TLS
+# Introduction
 
-## Introduction
+## About this Workshop
 
-Oracle Data Redaction is an Advanced Security feature that allows you to mask sensitive data in real-time, protecting it from unauthorized disclosure. This feature is included with your Autonomous Database subscription and is particularly useful for read-only scenarios such as displaying sensitive information in reports or sending it to other applications via GET APIs.
+This workshop introduces the functionality of Oracle Transport Layer Security (TLS) network encryption. It gives the user an opportunity to learn how to configure this feature to encrypt and secure its data in-motion.
 
-The DMBS_REDACT PL/SQL package is used to manage redaction policies and configure the specific columns and redaction formats.
+*Estimated Workshop Time*: 45 minutes
 
-In this workshop, you will learn how to use Oracle Data Redaction with Oracle Rest Data Services (ORDS) to redact  data in a GET response, ensuring the privacy of sensitive data. The process includes REST enabling the table you want to make available through ORDS, creating redaction policies for specific columns and tables, and specifying the redaction function to be used. You'll be able to contrast the response that contains data in clear vs the one that has sensitive data redacted.
+### About TLS 
 
-![Lab architecture](images/lab-architecture.png)
-
-
-Estimated Workshop Time: 27 minutes
+TLS is the standard based approach for encrypting data in motion. Since TLS provides one-way authentication or mutual two-way authentication, it minimizes the chance of a breach. 
 
 ### Objectives
+- Successfully protect your database communication using 1-way TLS
+- Verify network traffic is unencrypted before configuring TLS
+- Create root wallet and self signed root CA certificate
+- Create database server wallet and create certificate request
+- Sign database certificate with root CA certificate
+- Add CA root certificate and database server certificate to database wallet
+- Import CA root certificate into client trust store (Linux, Windows only)
+- Configure for TLS network encryption
+- Connect using TLS network encryption and verify traffic is encrypted
+- Create new OS user and encrypt SQL traffic.
+- (Optional) Disable encryption
 
-In this lab, you will complete the following tasks:
-
-- Create Database wallet and self signed certificate.
-- Configure Database listener to support TLS encryption.
-- Test TLS and non-TLS connectivity.
-- Configure the Oracle Instant Client on Linux 8. 
+The entire DB Security PMs Team wishes you an excellent workshop!
 
 ### Prerequisites
 
-This workshop assumes that you have:
-- Familiarity with Database is desirable, but not required
-- Some understanding of cloud and database terms is helpful
-- Familiarity with Oracle Cloud Infrastructure (OCI) is helpful
-- Some basic understanding of DB security is a plus
-
-*Note: Throughout this workshop, if you ever find yourself struggling when it comes to finding your resources in Oracle Cloud, make sure both your compartment and region correspond to where you created the resource.*
-
-## Want to learn more about Oracle Data Security?
-- [Introduction to Oracle Data Redaction](https://docs.oracle.com/en/database/oracle/oracle-database/21/asoag/introduction-to-oracle-data-redaction.html#GUID-82EA9712-387C-4D3A-BB72-F64A707C67CA)
-- [Oracle Data Redaction FAQs](https://www.oracle.com/technetwork/database/options/data-masking-subsetting/learnmore/faq-security-asdr-external-3215961.pdf)
+This lab assumes you have:
+- A Free Tier, Paid or LiveLabs Oracle Cloud account
+- You have completed:
+    - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
+    - Lab: Environment Setup
+    - Lab: Initialize Environment
 
 ## Acknowledgements
-
-- **Authors** - Stephen Stuart & Alpha Diallo, Solution Engineers,North America Specialist Hub
-- **Creator** - Richard C. Evans, Database Security Product Manager
-- **Last Updated By/Date** - Stephen Stuart & Alpha Diallo, March 2023
+- **Author** - Stephen Stuart & Alpha Diallo, Solution Engineers, North America Specialist Hub
+- **Contributors** - Richard C. Evans, Database Security Product Manager 
+- **Last Updated By/Date** - Stephen Stuart & Alpha Diallo, April 2023
