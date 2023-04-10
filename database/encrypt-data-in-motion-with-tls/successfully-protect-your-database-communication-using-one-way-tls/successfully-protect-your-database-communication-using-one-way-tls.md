@@ -24,28 +24,12 @@ Description: TLS is the industry-standard for encrypting data in motion. Since T
 
 ### Prerequisites
 
-**Need to update this**
 This lab assumes you have:
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
-
-### Lab Timing (estimated)
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-| 1 | Download tls.zip file to local directory | <5 minutes |
-| 2 | Verify network traffic is unencrypted before configuring TLS | <5 minutes |
-| 3 | Create root wallet and self signed root CA certificate | 5 minutes |
-| 4 | Create database server wallet and create certificate request | 5 minutes |
-| 5 | Sign database certificate with root CA certificate | <5 minutes |
-| 6 | Add CA root certificate and database server certificate to database wallet | <5 minutes |
-| 7 | Import CA root certificate into client trust store (Linux, Windows only) | 5 minutes |
-| 8 | Configure for TLS network encryption | <5 minutes |
-| 9 | Connect using TLS network encryption and verify traffic is encrypted | <5 minutes |
-| 10 | Create new OS user and encrypt SQL traffic. | 5 minutes |
-| 11 | (Optional) Disable encryption | <5 minutes |
 
 ## Task 1: Download tls.zip file to local directory.
 
