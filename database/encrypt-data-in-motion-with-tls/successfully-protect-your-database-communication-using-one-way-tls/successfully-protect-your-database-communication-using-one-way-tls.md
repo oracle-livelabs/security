@@ -300,7 +300,7 @@ Oracle Database provides both native data network encryption and TLS-based encry
 
 
 
-## Want to Learn More?
+## Learn More
 Technical Documentation:
 - [Configuring Transport Layer Security Authentication](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-secure-sockets-layer-authentication.html)
 
