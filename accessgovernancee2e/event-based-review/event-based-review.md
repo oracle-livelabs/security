@@ -8,7 +8,7 @@ Users with the **campaign administrator** role can create and manage event based
 * Persona: Campaign Administrator
 
 Watch the video below for a quick walk-through of the lab.
-[Manage Access Review Campaigns](videohub:1_mmcocyjw)
+[Manage Event Based Review Campaigns](videohub:1_1azcpenj)
 
 ### Objectives
 

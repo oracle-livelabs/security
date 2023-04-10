@@ -8,7 +8,7 @@ As a user with a **campaign administrator** role, you can create access review c
 * Persona: Campaign Administrator
 
 Watch the video below for a quick walk-through of the lab.
-[Create Access Review Campaign](videohub:1_p2m93d2k)
+[Create Access Review Campaign](videohub:1_9s3mt0qx)
 
 ### Objectives
 

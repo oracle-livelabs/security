@@ -6,6 +6,9 @@ In this lab we will review the environment setup and start all services required
 
 *Estimated Lab Time*: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Environment intialize](videohub:1_9mdts598)
+
 ### Objectives
 
 In this lab, you will:
