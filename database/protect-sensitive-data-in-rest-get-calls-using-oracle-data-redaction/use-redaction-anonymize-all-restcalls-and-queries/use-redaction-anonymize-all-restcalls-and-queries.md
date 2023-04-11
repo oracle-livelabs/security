@@ -168,6 +168,8 @@ When ready, click the **Enable button** in the lower right of the slider.
 
 Congratulations, You have successfully redacted REST calls using ORDS!
 
+You may now **proceed to the next lab.**
+
 ## Acknowledgements
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub

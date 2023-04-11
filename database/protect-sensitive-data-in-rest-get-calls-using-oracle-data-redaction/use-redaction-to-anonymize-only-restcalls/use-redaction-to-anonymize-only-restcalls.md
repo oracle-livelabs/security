@@ -138,6 +138,8 @@ This lab assumes you have:
     ```
     ![Drop](images/drop.png)
 
+You may now **proceed to the next lab.**
+
 ## Acknowledgements
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub

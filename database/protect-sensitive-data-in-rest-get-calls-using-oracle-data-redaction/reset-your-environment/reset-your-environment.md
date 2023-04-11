@@ -35,7 +35,6 @@ This lab assumes you have:
     ![Terminate adb](images/terminate.png)
 
 
-
 ## Acknowledgements
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
