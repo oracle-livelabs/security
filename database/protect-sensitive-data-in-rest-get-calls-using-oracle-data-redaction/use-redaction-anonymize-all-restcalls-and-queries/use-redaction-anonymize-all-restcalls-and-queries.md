@@ -44,12 +44,12 @@ When ready, click the **Enable button** in the lower right of the slider.
 
     ![Pre-Redaction REST Call](images/pre-redaction-rest.png)
 
-## Task 2: Create users and upload data
+## Task 2: Query data and add redaction policy
 
 1. Navigate back to the **Database Actions** SQL Development page for `ADMIN`. Grant access for `EMPLOYEESEARCH_PROD` to the `DBMS_REDACT` package by pasting the text below in the worksheet.
 
     ```
-    <copy>grant execute on sys.dbms_redact to EMPLOYEESEARCH_PROD</copy>   
+    <copy>grant execute on sys.dbms_redact to EMPLOYEESEARCH_PROD;</copy>   
     ```
 
     ![Pre-Redaction REST Call](images/grant-red.png)
@@ -160,11 +160,11 @@ When ready, click the **Enable button** in the lower right of the slider.
 
 1. View the changes to the table by **reloading the browser** window.
     
-    ![Redacted REST](images/redacted-rest-call.png)
+    ![Redacted REST](images/redacted-call.png)
 
 2. Run the **first query from the previous task** and view the redacted data at the **bottom of the page**.
     
-    ![Redacted REST](images/redacted-query.png)
+    ![Redacted REST](images/redacted-qry.png)
 
 Congratulations, You have successfully redacted REST calls using ORDS!
 
