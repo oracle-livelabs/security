@@ -6,9 +6,9 @@ In this lab, you prepare your environment in Oracle Cloud Infrastructure for the
 
 *Please read the following instructions carefully!:*
 
-- For the **Run on Your Tenancy** option: If you are the tenancy administrator, complete all tasks except for 3, 4, and 6. If you are not a tenancy administrator, enlist the help of one in your organization to complete all tasks, except for task 6.
+- For the **Run on Your Tenancy** option: If you are the tenancy administrator, complete all tasks except for 2, 3, and 5. If you are not a tenancy administrator, enlist the help of one in your organization to complete all tasks, except for task 5.
 
-- For the **Run on LiveLabs Sandbox** option: Complete tasks 6, 7, and 8 only. Oracle provides you with a tenancy where Oracle Data Safe is enabled, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database.
+- For the **Run on LiveLabs Sandbox** option: Complete tasks 5, 6, and 7 only. Oracle provides you with a tenancy, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database.
 
 
 Estimated Lab Time: 15 minutes (Run on Your Tenancy), 5 minutes (Run on LiveLabs Sandbox)
@@ -17,7 +17,6 @@ Estimated Lab Time: 15 minutes (Run on Your Tenancy), 5 minutes (Run on LiveLabs
 
 In this lab, you will:
 
-- Enable Oracle Data Safe in a region of your tenancy
 - Create a compartment
 - Create a user group and add an Oracle Cloud account to the group
 - Create an IAM policy for the user group
@@ -34,20 +33,7 @@ This lab assumes you have:
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
 
 
-## Task 1: Enable Oracle Data Safe in a region of your tenancy
-
-Enable Oracle Data Safe in a region of your tenancy. If Oracle Data Safe is already enabled in the desired region of your tenancy, or you are working in an Oracle-provided environment, you can skip this task.
-
-1. On the Oracle Cloud Infrastructure toolbar on the right, select the region of your tenancy in which you want to enable Oracle Data Safe. Usually, you leave your home region selected, for example, **US East (Ashburn)**.
-
-2. From the navigation menu, select **Oracle Database**, and then **Data Safe**.
-
-    The **Overview** page is displayed.
-
-3. Click **Enable Data Safe** and wait a couple of minutes for the service to enable. When it's enabled, a confirmation message is displayed in the upper-right corner.
-
-
-## Task 2: Create a compartment
+## Task 1: Create a compartment
 
 Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Access Management (IAM). From here on in, we refer to this compartment as "your compartment." If you have an existing compartment in your tenancy that you can use, you can skip this task.
 
@@ -68,7 +54,7 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 6. Click **Create Compartment**.
 
 
-## Task 3: Create a user group and add an Oracle Cloud account to the group
+## Task 2: Create a user group and add an Oracle Cloud account to the group
 
 Create a user group and add your Oracle Cloud account to the group.
 
@@ -99,7 +85,7 @@ Create a user group and add your Oracle Cloud account to the group.
     The user is listed as a group member.
 
 
-## Task 4: Create an IAM policy for the user group
+## Task 3: Create an IAM policy for the user group
 
 Create an IAM policy that grants you the necessary permissions for the workshop.
 
@@ -152,7 +138,7 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 9. Click **Create**.
 
 
-## Task 5: Provision an Autonomous Transaction Processing database
+## Task 4: Provision an Autonomous Transaction Processing database
 
 Create an Autonomous Transaction Processing (ATP) database in your compartment. Before proceeding, make sure that you have enough quota in your tenancy to create an (Always Free) Autonomous Database.
 
@@ -192,7 +178,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
 
 
-## Task 6 (LiveLabs Sandbox reservation only): View your LiveLabs Sandbox reservation information and sign in
+## Task 5 (LiveLabs Sandbox reservation only): View your LiveLabs Sandbox reservation information and sign in
 
 1. At the top of the lab instructions page (this page), click the **View Login Info** link. 
 
@@ -223,7 +209,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your target database.
 
 
-## Task 7: Access Oracle Database Actions
+## Task 6: Access Oracle Database Actions
 
 Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
@@ -252,7 +238,7 @@ Database Actions provides a way for you to run SQL commands on your target datab
     ![SQL Worksheet in Oracle Database Actions](images/database-actions.png "SQL Worksheet in Oracle Database Actions")
 
 
-## Task 8: Load sample data into your database
+## Task 7: Load sample data into your database
 
 As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also generates database activity for the `ADMIN` user.
 
@@ -304,4 +290,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 23, 2023
+- **Last Updated By/Date** - Jody Glover, April 4, 2023
