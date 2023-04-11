@@ -13,7 +13,7 @@ Based on the workflow setup in the first lab **Create Access Review Campaign**, 
 * Persona: Employee and User Manager
 
 Watch the video below for a quick walk-through of the lab.
-[Perform Access Review](videohub:1_kui9p56v)
+[Perform Access Review](videohub:1_jteb4r9y)
 
 ### Objectives
 

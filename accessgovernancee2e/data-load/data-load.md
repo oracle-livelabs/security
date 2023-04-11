@@ -6,6 +6,9 @@ To initiate a data load from the target connected system instance, perform the f
 
 *Estimated Lab Time*: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Perform Data and Create IAM Users](videohub:1_009fisy0)
+
 ### Objectives
 
 In this lab, you will:
