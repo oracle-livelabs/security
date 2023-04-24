@@ -99,7 +99,7 @@ This lab assumes you have:
 	![Kubectl version](images/5-kube.png)
 
 	```
-	<copy>kubectl taint nodes --all node-role.kubernetes.io/master-</copy>
+	<copy>kubectl taint nodes --all node-role.kubernetes.io/control-plane-</copy>
 	```
 
 6. List all pods in all namespaces.

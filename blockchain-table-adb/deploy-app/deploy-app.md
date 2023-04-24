@@ -306,11 +306,11 @@ Now, let's see how to install Node.js in the compute instance for the Node.js ap
 
     ![](./images/lab5-task7-1.png " ")
 
-2.  To install Node.js we need to have oracle-release-el7 repo added to the virtual machine via sudo. This will take about a minute and will say "Complete!" when finished.
+2.  Nodejs is released as an AppStream Module for Oracle Linux 8; ol8_appstream repository is enabled by default on Oracle Linux 8 via sudo. This will take about a minute and will say "Complete!" when finished. Run the command below to enable Nodejs.
 
     ```
     <copy>
-    sudo yum install -y oracle-nodejs-release-el7 oracle-release-el7
+    sudo dnf config-manager --set-enabled ol8_appstream
     </copy>
     ```
     ![](./images/task1-2.png " ")
@@ -319,7 +319,7 @@ Now, let's see how to install Node.js in the compute instance for the Node.js ap
 
     ```
     <copy>
-    sudo yum install nodejs
+    sudo dnf module install nodejs
     </copy>
     ```
     ![](./images/task1-3.png " ")
