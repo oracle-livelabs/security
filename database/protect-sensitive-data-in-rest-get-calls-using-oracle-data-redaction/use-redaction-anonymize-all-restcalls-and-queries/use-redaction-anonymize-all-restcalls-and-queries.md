@@ -12,7 +12,7 @@ In this lab, you will complete the following tasks:
 
 - REST enable the table.
 - Apply the Data Redaction Policy to the Table.
-- See the data come redacted from the REST Get call.
+- See data come redacted from the REST Get call.
 
 ### Prerequisites
 
