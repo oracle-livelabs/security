@@ -31,16 +31,17 @@ This lab assumes you have:
 
 3. Enter the details of the Identity Domain to be created. Click *Create*  
     
-     ```
+    ```
     Display Name: ag-domain
     Description: Oracle Access Governance Identity Domain
-    Domain type: Free
-    Domain Administrator: Select the checkbox for Create an Administrative user for this domain 
-    Administrator's first name: Enter Administrator's  first name 
-    Administrator's last name: Enter Administrator's last name 
-    Administrator's username/email: Enter the Administrator's email id
+    Domaintype: Free
+    Domain Administrator: Select the checkbox for Create an administrative user for this domain 
+    Administrator first name: Enter administrator  first name 
+    Administrator last name: Enter administrator last name 
+    Administrator username/email: Enter the administrator email id
     Compartment: Ensure your root compartment is selected
     ```
+
 
     ![Click Create Identity Domain](images/click-create-domain.png) 
 

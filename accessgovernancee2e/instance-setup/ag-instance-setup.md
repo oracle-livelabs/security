@@ -46,7 +46,7 @@ This lab assumes you have:
     The *Group* has been created succesfully. 
 
 
-## Task 1: Create AG Policies 
+## Task 2: Create AG Policies 
 
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Policies* from the list of products.
@@ -97,7 +97,7 @@ This lab assumes you have:
      The *Policies* have been created successfully.
 
 
-## Task 2: Create AG Service instance 
+## Task 3: Create AG Service instance 
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products.
     ![Create Service Instance](images/oci-console.png)
@@ -121,7 +121,7 @@ This lab assumes you have:
 
     ![Access Governance console](images/ag-console.png)
 
-## Task 3: Integrate with Oracle Identity Governance
+## Task 4: Integrate with Oracle Identity Governance
 
 1. On the Oracle Access Governance service home page, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
 
