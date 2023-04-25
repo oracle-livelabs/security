@@ -18,7 +18,7 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as User Manager
 
-1. Ensure you have **default** identity domain selected.
+1. Ensure you have **ag-domain** identity domain selected.
 2. Log in to **Oracle Access Governance** as **User Manager - Harlan Bullard** with the username and password mentioned below.
 
     **Username:**
