@@ -87,7 +87,7 @@ Create users in IAM and assign them to Application roles.
 
     ```
     First Name: Mark
-    Last Name: hernandez
+    Last Name: Hernandez
     Username: mhernandez
     Email: Specify unique email-id to which you will be receiving activation mail for password reset for the user. 
     ```
