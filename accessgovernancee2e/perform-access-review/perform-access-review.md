@@ -23,7 +23,7 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as Employee User
 
-1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **default** identity domain selected.
+1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
 2. Log in to **Oracle Access Governance** as an **employee user - Mark Hernandez** with the username and password mentioned below.
 
     **Username:**
@@ -67,7 +67,8 @@ In this lab, you will:
 
 ## Task 3: Login Oracle Access Governance as User Manager
 
-1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **Default** identity domain selected.
+1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
+
 2. Log in to **Oracle Access Governance** as a **Manager User - Harlan Bullard** with the username and password mentioned below.
 
   **Username:**
