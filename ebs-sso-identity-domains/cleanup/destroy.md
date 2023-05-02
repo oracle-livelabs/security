@@ -11,12 +11,15 @@ This lab will show you how you can carry out the cleanup activities for the enti
 -   Destroy the Stack 1 and 2 for performing the cleanup of the resources.
 
 
-## Task 1: Manual deletion of the Application and Identity Domain
+## Task 1: Deactivate the confidential applications and the Identity Domain
 
-In this task you will be carrying out the prerequisites before destroying Stack 1 and 2. You will be manually deleting the Applications and Identity Domain on the OCI console.
+In this task you will be carrying out the prerequisites before destroying Stack 1 and 2. You will be manually deactivating the applications and Identity Domain on the OCI console.
 
-	**Sample Output:**  ![Capture 1](./images/Capture1.png "Capture 1")
-	**Sample Output:**  ![Capture 2](./images/Capture2.png "Capture 2")
+	**Sample Output:**  ![Capture 1](./images/capture1.png "Capture 1")
+
+	**Sample Output:**  ![Capture 2](./images/capture2.png "Capture 2")
+
+    **Sample Output:**  ![Capture 2](./images/capture3.png "Capture 3")
 		
 ## Task 2: Destroy the Stack 1 - Destroy for performing the cleanup of the resources.
 
