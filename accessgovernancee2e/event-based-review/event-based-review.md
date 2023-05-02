@@ -18,7 +18,7 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as Campaign Administrator
 
-1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **Default** identity domain selected.
+1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
 2. Log in to **Oracle Access Governance** as a **campaign administrator - Pamela Green** with the username and password mentioned below.
 
   **Username:**
@@ -167,6 +167,5 @@ In this lab, you will:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Contributors** - Edward Lu 
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
