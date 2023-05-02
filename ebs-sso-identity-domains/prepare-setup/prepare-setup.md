@@ -22,9 +22,9 @@ This lab assumes you have:
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file to Deploy 
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
-    - [Stack 1 - Deploy.zip] #(https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LiveLAB-EBS_bucket/o/Stack%201%20-%20Deploy.zip)#
+    - [Stack1-Deploy.zip] (https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LiveLAB-EBS_bucket/o/Stack%201%20-%20Deploy.zip)
 	
-	- [Stack 2 - Configure.zip]	#(https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LiveLAB-EBS_bucket/o/Stack%202%20-%20Configure.zip)#
+	- [Stack2-Configure.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LiveLAB-EBS_bucket/o/Stack%202%20-%20Configure.zip)
 
 2.  Save in your *downloads* folder.
 
@@ -45,7 +45,6 @@ This workshop requires a certain number of ports to be available, a requirement 
 | Ingress        | All            | 0.0.0.0/0   | 1521             | TCP      | For EBS Database                      |
 | Egress         | All            | N/A         | 80               | TCP      | Outbound HTTP access                  |
 | Egress         | All            | N/A         | 443              | TCP      | Outbound HTTPS access                 |
-
 {: title="List of Required Network Security Rules"}
 
 <!-- **Notes**: This next table is for reference and should be adapted for the workshop. If optional rules are needed as shown in the example below, then uncomment it and add those optional rules. The first entry is just for illustration and may not fit your workshop -->
