@@ -3,9 +3,9 @@
 ## Introduction
 This workshop introduces the functionality of Oracle Transport Layer Security (TLS) network encryption. It gives the user an opportunity to learn how to configure this feature to encrypt and secure its data in-motion.
 
-Description: TLS is the standard based approach for encrypthing data in motion. Since TLS provides one-way authentication or mutual two-way authentication it minimizes the chance of a breach. 
+Description: TLS is the industry-standard for encrypting data in motion. Since TLS provides one-way authentication or mutual two-way authentication, it minimizes the chance of a breach.
 
-*Estimated Lab Time:* 15 minutes
+*Estimated Lab Time:* 30 minutes
 
 *Version tested in this lab:* Oracle DB 19.17
 
@@ -24,28 +24,12 @@ Description: TLS is the standard based approach for encrypthing data in motion. 
 
 ### Prerequisites
 
-**Need to update this**
 This lab assumes you have:
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
-
-### Lab Timing (estimated)
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-| 1 | Download tls.zip file to local directory | <5 minutes |
-| 2 | Verify network traffic is unencrypted before configuring TLS | <5 minutes |
-| 3 | Create root wallet and self signed root CA certificate | 5 minutes |
-| 4 | Create database server wallet and create certificate request | 5 minutes |
-| 5 | Sign database certificate with root CA certificate | <5 minutes |
-| 6 | Add CA root certificate and database server certificate to database wallet | <5 minutes |
-| 7 | Import CA root certificate into client trust store (Linux, Windows only) | 5 minutes |
-| 8 | Configure for TLS network encryption | <5 minutes |
-| 9 | Connect using TLS network encryption and verify traffic is encrypted | <5 minutes |
-| 10 | Create new OS user and encrypt SQL traffic. | 5 minutes |
-| 11 | (Optional) Disable encryption | <5 minutes |
 
 ## Task 1: Download tls.zip file to local directory.
 
@@ -109,7 +93,7 @@ This lab assumes you have:
     Your NETWORK_PROTOCOL should not be encrypted and read 'tcp'
 
 
-3. This allows you to intercept traffic on port 1521 and generates a pcap file. 
+3. This allows you to intercept traffic on port 1521 and generates a packet capture (pcap) file. 
 
     ````
     <copy>./tls_tcpdump_traffic.sh pdb1</copy>
@@ -150,7 +134,7 @@ This lab assumes you have:
 
 ## Task 6: Add CA root certificate and database server certificate to database wallet.
 
-1. After generating the signed DB user certificate, import it to the DB wallet. In this step, you will see that the DB wallet moves from a "requested certificate" to a "user certificate". 
+1. After generating the signed DB user certificate, import it to the DB wallet. In this step, you will see that the DB server user certificate changes from a "requested certificate" to a "user certificate". 
 
     ````
     <copy>./tls_import_signed_cert.sh</copy>
@@ -177,28 +161,28 @@ Subject:        C=US,CN=ROOT
 
 ## Task 7: Import CA root certificate into client trust store (Linux, Windows only)
 
-1. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location. The DB will use the `WALLET_ROOT` parameter to look for it's wallet-related information, including tde and tls. This step will copy the DB wallet, with the signed certificate, to both the PDB's `WALLET_ROOT` tls directory and the default directory a client would search for the wallet, `/etc/ORACLE/WALLETS/<user>`, in this case it would be `/etc/ORACLE/WALLETS/oracle` since we are using `sqlplus` as the `oracle` user. 
+1. Now that you have your signed DB server user certificate, you will deploy it to your DB wallet root location. The DB will use the `WALLET_ROOT` parameter to look for it's wallet-related information, including tde and tls. This step will copy the DB wallet, with the signed certificate, to both the PDB's `WALLET_ROOT` tls directory and the default directory an Oracle software client would search for the wallet, `/etc/ORACLE/WALLETS/<user>`, in this case it would be `/etc/ORACLE/WALLETS/oracle` since we are using `sqlplus` as the `oracle` user. 
 
     ````
     <copy>./tls_deploy_db_wallet.sh</copy>
     ````
-Note: In order to set the WALLET_ROOT initialization parameter the DB must be restarted.
+Note: In order to set the WALLET_ROOT initialization parameter the DB must be restarted. The script will automatically restart the DB for you. 
 
 ## Task 8: Configure for TLS network encryption.
 
-1. Add a new tnsnames.ora entry for the pdb1_tls connection string. This will copy the existing pdb1 connection string and modify it to use TCPS protocol and port 1522 instead of 1521.
+1. Add a new tnsnames.ora entry for the pdb1_tls connection string. This will copy the existing pdb1 connection string and modify it to use TCPS protocol and port 1522 instead of TCP and 1521.
 
     ````
     <copy>./tls_update_tnsnames_ora.sh</copy>
     ````
 
-2. In this step, we update the database's sqlnet.ora to include the SSL_CLIENT_AUTHENTICATION parameter as false. When set to false, one-way TLS can be used by the client. If set to true, mutual TLS (mTLS) must be used.
+2. In this step, we update the database's sqlnet.ora to include the SSL\_CLIENT\_AUTHENTICATION parameter as false. When set to false, one-way TLS can be used by the client. If set to true, mutual TLS (mTLS) must be used.
 
     ````
     <copy>./tls_update_sqlnet_ora.sh</copy>
     ````
 
-3. This step will stop the Oracle Listener and update the listener.ora to be available for TLS connections on port 1522. After starting the Oracle Listener, it will dynamically register the existing CDB and PDBs with it.
+3. This step will stop the Oracle Listener and update the listener.ora to be available for TCPS (TLS) connections on port 1522. After starting the Oracle Listener, it will dynamically register the existing CDB and PDBs with it.
 
     ````
     <copy>./tls_update_listener_ora.sh</copy>
@@ -209,7 +193,7 @@ Note: In order to set the WALLET_ROOT initialization parameter the DB must be re
     <copy>tnsping pdb1</copy>
     ````
 
-5. Now, because our listener is available for TLS connections on port 1522, we can use tnsping to verify connectivity.
+5. Now, because our listener is available for TCPS (TLS) connections on port 1522, we can use tnsping to verify connectivity.
 
     ````
     <copy>tnsping pdb1_tls</copy>
@@ -233,7 +217,7 @@ Note: In order to set the WALLET_ROOT initialization parameter the DB must be re
     ````
     <copy>./tls_tcpdump_extract.sh pdb1_tls</copy>
     ````
-    You have succesfully encrypted data-in-motion between the Oracle Database and the oracle OS user.
+    You have succesfully encrypted data-in-motion between the Oracle Database and the Oracle SQL*Plus client.
 
 ## Task 10: Create new OS user and encrypt SQL traffic. 
 
@@ -247,12 +231,12 @@ Note: In order to set the WALLET_ROOT initialization parameter the DB must be re
     ````
     <copy>./tls_install_oracle_ic.sh</copy>
     ````
-3. Create a tns_admin directory and a sqlnet.ora for 'dba_dan' in Dan's home directory.
+3. Create a tns\_admin directory and a sqlnet.ora for 'dba\_dan' in Dan's home directory.
 
     ````
     <copy>./tls_dba_dan_sqlnet_ora.sh</copy>
     ````
-4. Create a tns_admin directory and a tnsnames.ora file for 'dba_dan' in Dan's home directory. The tnsnames.ora file will only have an entry for the pdb1_tls alias. 
+4. Create a tns\_admin directory and a tnsnames.ora file for 'dba\_dan' in Dan's home directory. The tnsnames.ora file will only have an entry for the pdb1_tls alias. 
 
     ````
     <copy>./tls_dba_dan_tnsnames_ora.sh</copy>
@@ -269,7 +253,7 @@ Note: You will see that the rootCA.crt was copied to the Linux directory '/etc/p
     ````
     <copy>sudo su - dba_dan</copy>
     ````
-7. The Oracle Instant Client needs to know where to find the tns-related parameters. This will be the alias, pdb1_tls, and the SSL_CLIENT_AUTHENTICATION connection specifying TLS instead of mTLS.
+7. The Oracle Instant Client needs to know where to find the tns-related parameters. This will be the alias, pdb1\_tls, and the SSL\_CLIENT\_AUTHENTICATION connection specifying TLS instead of mTLS.
 
     ````
     <copy>export TNS_ADMIN=$HOME/tns_admin</copy>
@@ -316,11 +300,11 @@ Oracle Database provides both native data network encryption and TLS-based encry
 
 
 
-## Want to Learn More?
+## Learn More
 Technical Documentation:
 - [Configuring Transport Layer Security Authentication](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-secure-sockets-layer-authentication.html)
 
 ## Acknowledgements
 - **Author** - Stephen Stuart & Alpha Diallo, Solution Engineers, North America Specialist Hub
 - **Contributors** - Richard C. Evans, Database Security Product Manager 
-- **Last Updated By/Date** - Stephen Stuart & Alpha Diallo, March 2023
+- **Last Updated By/Date** - Stephen Stuart & Alpha Diallo, April 2023

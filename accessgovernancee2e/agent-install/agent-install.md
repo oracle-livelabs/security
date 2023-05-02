@@ -6,6 +6,9 @@ OAG Agent will be installed and configured.
 
 *Estimated Lab Time*: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Oracle Access Governance Agent install](videohub:1_u4xrvpak)
+
 ### Objectives
 
 In this lab, you will:
@@ -79,6 +82,6 @@ This lab assumes you have:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
 * **Contributors** - Edward Lu 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
