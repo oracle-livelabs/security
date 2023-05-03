@@ -19,13 +19,13 @@ Once the **Stack 2- Configure** is successfully deployed and the EBS Profile cha
 
 The browser will display the result of the EBS Asserter configurations.
 
-	**Sample Output:**  ![Capture 1](./images/Capture1.png "Capture 1")
+![Capture 1](./image/Capture1.png "Capture 1")
 	
 ## Task 2: Change Default Password for the SSO test Users
 
 Below are the users who were created as sample SSO test users. 
 
-	**Sample Output:**  ![Capture 3](./images/Capture3.png "Capture 3")
+![Capture 3](./image/Capture3.png "Capture 3")
 	
 	**Default Password** - "Welcome@1234567890"
 		
@@ -39,11 +39,11 @@ Below are the users who were created as sample SSO test users.
 	4. If the **Oracle EBS** home page appears, verify the **logged-in user name**.
 	5. Log out from Oracle EBS. The browser is redirected to the **OCI IAM Identity Domains Sign** In page.
 
-	**Sample Output:**  ![Capture 2](./images/Capture2.png "Capture 2")
+	![Capture 2](./image/Capture2.png "Capture 2")
 	
 
 ## Acknowledgements
-* **Author** - Aqib Bhat, Samratha S P, Gautam Mishra
+* **Author** - Gautam Mishra, Aqib Bhat, Samratha S P
 * **Contributor** - Chetan Soni, Sagar Takkar
 * **Supported By** - Deepak Rao Narasimha Gajendragad
 * **Lead By** - Deepthi Shetty 

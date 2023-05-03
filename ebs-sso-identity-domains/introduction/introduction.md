@@ -24,7 +24,7 @@ OCI IAM Identity Domains is a comprehensive identity-as-a-service (IDaaS) soluti
 * Oracle E-Business Suite presents the user requested protected resource.
 
 
-This lab walks you through the steps to get started using **OCI IAM Identity Domains** with a popular use case - **Achieve EBS SSO using EBS Asserter **. In this workshop, we will follow the steps to deploy the **EBS** application on OCI using *Terraform* via **Resource Manager**. Same Stack will also deploy a **EBS Asserter Server** and an **OCI IAM Identity Domain**. Once deployed, we will also make some necessary configuration changes in the *EBS Asserter Server* and the *Identity Domain* using **Terraform**. We will carry out some *manual tasks* to complete the configuration at the EBS application as well as in Identity Domains before heading towards the validation of the entire flow. Once validation is done we will be going through the clean up activities/steps using the *Resource Manager*.
+This lab walks you through the steps to get started using **OCI IAM Identity Domains** with a popular use case - **Achieve EBS SSO using EBS Asserter**. In this workshop, we will follow the steps to deploy the **EBS** application on OCI using *Terraform* via **Resource Manager**. Same Stack will also deploy a **EBS Asserter Server** and an **OCI IAM Identity Domain**. Once deployed, we will also make some necessary configuration changes in the *EBS Asserter Server* and the *Identity Domain* using Terraform. We will carry out some *manual tasks* to complete the configuration at the EBS application as well as in Identity Domains before heading towards the validation of the entire flow. Once validation is done we will be going through the clean up activities/steps using the *Resource Manager*.
 
 
 *Estimated Time:* 1 Hours
@@ -54,7 +54,7 @@ This lab assumes you have:
 
 
 ## Acknowledgements
-* **Author** - Aqib Bhat, Samratha S P, Gautam Mishra
+* **Author** - Gautam Mishra, Aqib Bhat, Samratha S P
 * **Contributor** - Chetan Soni, Sagar Takkar
 * **Supported By** - Deepak Rao Narasimha Gajendragad
 * **Lead By** - Deepthi Shetty 

@@ -19,33 +19,33 @@ This module will also help you to create a confidential application under the ne
  
 2. On the page that gets loaded, please **reset your password** for your admin account under your newly created Domain.
 
-	**Sample Output:**  ![Capture 2](./images/Capture2.jpg "Capture 2")
+	![Capture 2](./images/Capture2.jpg "Capture 2")
 	
 3. Now, please try to login into your new Domain with the admin account you just completed the password reset.
 
-	**Sample Output:**  ![Capture 3](./images/Capture3.jpg "Capture 3")
+	![Capture 3](./images/Capture3.jpg "Capture 3")
 	
 4. After successful authentication you will land on the **My Console** page, click on the **OCI Console** Option from the menu to go to your **Infrastructure Console** screen
 
-	**Sample Output:**  ![Capture 4](./images/Capture4.jpg "Capture 4")
+	![Capture 4](./images/Capture4.jpg "Capture 4")
 	
 5. You should land on the below mentioned screen which gives you the details about your newly created Domain of the type - **Oracle Apps Premium**
 
-	**Sample Output:**  ![Capture 5](./images/Capture5.jpg "Capture 5")
+	![Capture 5](./images/Capture5.jpg "Capture 5")
 
-### Task 2: Create a confidential application 
+## Task 2: Create a confidential application 
 
 We will register a Confidential Application under newly created OCI-IAM Domain with the allowed grants type **Client Credentials**
 
 1. Under your newly created **Identity Domain**, Copy the **Identity Domain URL** from the **Domain Information** section. Click on **Applications** from the navigation menu.
 
-	![Image 5](./images/image5.jpg "Image 5")
+	![Image 5](./images/image5.png "Image 5")
 
 	![Capture 6](./images/Capture6.jpg "Capture 6")
 	
 **Note** Kindly exclude **:443** from the end of the **Domain URL**
  
-2. Select **Confidential Application ** and then click on **Launch Workflow**
+2. Select **Confidential Application** and then click on **Launch Workflow**
  
 ![Capture 7](./images/Capture7.jpg "Capture 7")
 
@@ -81,7 +81,7 @@ In this Lab, we activated the Admin user under your newly created Identity Domai
  You may now **proceed to the next lab.**
 
 ## Acknowledgements
-* **Author** - Aqib Bhat, Samratha S P, Gautam Mishra
+* **Author** - Gautam Mishra, Aqib Bhat, Samratha S P
 * **Contributor** - Chetan Soni, Sagar Takkar
 * **Supported By** - Deepak Rao Narasimha Gajendragad
 * **Lead By** - Deepthi Shetty 

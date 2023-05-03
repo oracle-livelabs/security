@@ -20,7 +20,7 @@
         {
             "title": "Lab 2: Deploy ORM stack to create EBS, EBS Asserter and Identity Domain",
             "description": "How to use the stack to deploy the resources",
-            "filename": "../../prepare-setup/deploy.md"
+            "filename": "../../deploy/deploy.md"
         },
         {
             "title": "Lab 3: Create a confidential application in OCI IAM",

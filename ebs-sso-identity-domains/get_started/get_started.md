@@ -45,7 +45,7 @@ If you've signed out of the Oracle Cloud, use these steps to sign back in.
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-* **Author** - Aqib Bhat, Samratha S P, Gautam Mishra
+* **Author** - Gautam Mishra, Aqib Bhat, Samratha S P
 * **Contributor** - Chetan Soni, Sagar Takkar
 * **Supported By** - Deepak Rao Narasimha Gajendragad
 * **Lead By** - Deepthi Shetty 

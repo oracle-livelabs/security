@@ -69,7 +69,7 @@ Create an user in Oracle IAM Identity Domain that corresponds to the System Admi
 
 1. Sign in to your OCI IAM Identity Domains to access the **OCI console**. Once logged in, **Navigate** to **Domains** under **Identity and Security**. Now select your **Identity Domain** provisioned previously.
 
-	**Sample Output:**  ![Image 9](./images/image9.png "Image 9")
+	![Image 9](./images/image9.png "Image 9")
 	
 2. Click on the **Users**, In the **Add User window**, provide the following values, and then click **Create**.
 	1. **First Name**: EBS
@@ -78,7 +78,7 @@ Create an user in Oracle IAM Identity Domain that corresponds to the System Admi
 	4. **User Name**: sysadmin
 	5. **Email**: Provide the email address set to the SYSADMIN account in your Oracle E-Business Suite.
 	
-	**Sample Output:**  ![Image 10](./images/image10.png "Image 10")
+	![Image 10](./images/image10.png "Image 10")
 
 
 ## Task 2: Update Oracle E-Business Suite's System Administrator Email Address
@@ -91,11 +91,11 @@ Update the email address of the SYSADMIN user in Oracle E-Business Suite to matc
 
 3. In the **User Maintenance** page, search by User Name **SYSADMIN**, and click the **update icon** for the **SYSADMIN** user.
 
-	**Sample Output:**  ![Image 11](./images/image11.png "Image 11")
+	![Image 11](./images/image11.png "Image 11")
 	
 4. Update the **Email** field value with the same email address you provided during the creation of the system administrator user in OCI IAM Identity Domain, and then click **Apply**.
 
-	**Sample Output:**  ![Image 12](./images/image12.png "Image 12")
+	![Image 12](./images/image12.png "Image 12")
 	
 5. Close Oracle E-Business Suite application.
 
@@ -105,23 +105,23 @@ Update the email address of the SYSADMIN user in Oracle E-Business Suite to matc
 
 1. Access **Oracle Applications Administration** page in **Oracle E-business Suite**, click the Core Services tab, and then click **Profiles tab**
 
-	**Sample Output:**  ![Image 13](./images/image13.png "Image 13")
+	![Image 13](./images/image13.png "Image 13")
 	
 2. Enter **App%Agent%** in the Search, Profile Values, Code field, and then click **Find**
 
-	**Sample Output:**  ![Image 14](./images/image14.png "Image 14")
+	![Image 14](./images/image14.png "Image 14")
 	
 3. 	On the Define Profile Values: **Application Authenticate Agent** page enter **E-Business Suite Asserter's URL- 		 https://ebsasserter.example.com:7004/ebs** in the Site Value field, and then **save it**.
 
-	**Sample Output:**  ![Image 14](./images/image14.png "Image 14")
+	![Image 14](./images/image14.png "Image 14")
 	
 4. Back to the **Profiles tab**, enter **%SSO%Type%** in the Search, update the **APPS_SSO** code entry from **SSWA to SSWAw/SSO**, and **save** the profile.
 
-	**Sample Output:**  ![Image 15](./images/image15.png "Image 15")
+	![Image 15](./images/image15.png "Image 15")
 	
 5 Back to the **Profiles tab**, enter **%Oracle Applications Session%** in the Search, update the value from **HOST** to **DOMAIN** and **save** the profile.
 
-	**Sample Output:**  ![Image 16](./images/image16.png "Image 16")
+![Image 16](./images/image16.png "Image 16")
 
 **Note** To run the EBS Application and update these Profile vaules you need to have JAVA installed on your Local System.
 
@@ -140,7 +140,7 @@ $ /u01/install/APPS/scripts/startapps.sh
 **Note** Please use the above mentioned Hostname as wherever required.
 
 ## Acknowledgements
-* **Author** - Aqib Bhat, Samratha S P, Gautam Mishra
+* **Author** - Gautam Mishra, Aqib Bhat, Samratha S P
 * **Contributor** - Chetan Soni, Sagar Takkar
 * **Supported By** - Deepak Rao Narasimha Gajendragad
 * **Lead By** - Deepthi Shetty 
