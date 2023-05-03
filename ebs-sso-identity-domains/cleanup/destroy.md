@@ -15,11 +15,11 @@ This lab will show you how you can carry out the cleanup activities for the enti
 
 In this task you will be carrying out the prerequisites before destroying Stack 1 and 2. You will be *manually deactivating* the applications and Identity Domain on the OCI console.
 
-![Capture 1](./images/capture1.png "Capture 1")
+![Image 8](./images/image8.png "Image 8")
 
-![Capture 2](./images/capture2.png "Capture 2")
+![Image 9](./images/image9.png "Image 9")
 
-![Capture 2](./images/capture3.png "Capture 3")
+![Image 10](./images/image10.png "image10")
 		
 ## Task 2: Destroy the Stack 1 - Destroy for performing the cleanup of the resources.
 
