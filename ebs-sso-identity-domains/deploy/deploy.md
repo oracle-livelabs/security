@@ -19,9 +19,9 @@ Using this stack we will be able to deploy/install **EBS - 12.2.11, EBS Asserter
 
 **Note** Please do not select the **Root** compartment while creating the stack
 
-![Capture 1](./images/capture1.png "Capture 1")
+![Capture 1](./images/image21.png "Capture 1")
 	
-![Capture 2](./images/capture2.png "Capture 2")
+![Capture 2](./images/image22.png "Capture 2")
  
 2. On the Create Stack Wizard, select the **.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
