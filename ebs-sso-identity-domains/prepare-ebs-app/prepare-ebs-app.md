@@ -139,6 +139,8 @@ $ /u01/install/APPS/scripts/startapps.sh
 
 **Note** Please use the above mentioned Hostname as wherever required.
 
+ You may now **proceed to the next lab.**
+
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat, Samratha S P
 * **Contributor** - Chetan Soni, Sagar Takkar

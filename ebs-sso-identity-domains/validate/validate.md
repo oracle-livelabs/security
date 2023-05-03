@@ -41,6 +41,7 @@ Below are the users who were created as sample SSO test users.
 
 	![Capture 2](./image/capture2.png "Capture 2")
 	
+ You may now **proceed to the next lab.**
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat, Samratha S P
