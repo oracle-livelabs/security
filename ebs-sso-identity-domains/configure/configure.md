@@ -18,9 +18,9 @@ Using this stack we will be able to configure **EBS, EBS Asserter Server and Ide
 
 **Note** Please do not select the **Root** compartment while creating the stack
 
-![Capture 1](./images/Capture1.png "Capture 1")
+![Capture 1](./images/capture1.png "Capture 1")
 	
-![Capture 2](./images/Capture2.png "Capture 2")
+![Capture 2](./images/capture2.png "Capture 2")
  
 2. On the Create Stack Wizard, select the **Stack 2- Configure.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
@@ -41,12 +41,12 @@ Using this stack we will be able to configure **EBS, EBS Asserter Server and Ide
 	5. *Client ID- Please enter the Client ID of your IDCS Confidential App*
 	6. *Client Secret - Please enter the Client Secret of your IDCS Confidential App*
 
-	![Capture 3](./images/Capture3.png "Capture 3")
+	![Capture 3](./images/capture3.png "Capture 3")
 	
 	
 4. Now on the **Review Details** check for the configurations and then click on **Create** . Make sure the **Run Apply** is not selected.
 
-	![Capture 4](./images/Capture4.png "Capture 4")
+	![Capture 4](./images/capture4.png "Capture 4")
 	
 9. From the created stack now click on the **Plan** option. You should get an **Success** output.
 
