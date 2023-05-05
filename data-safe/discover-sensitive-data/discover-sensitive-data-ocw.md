@@ -4,7 +4,7 @@
 
 Data Discovery helps you find sensitive data in your target databases. You tell Data Discovery what kind of sensitive data to search for, and it inspects the actual data in your target database and its data dictionary, and then returns to you a list of sensitive columns. By default, Data Discovery can search for a wide variety of sensitive data pertaining to identification, biographic, IT, financial, healthcare, employment, and academic information.
 
-Use Oracle Data Safe to discover sensitive data on your target database and then analyze the generated sensitive data model.
+Use Oracle Data Safe to discover sensitive data on your target database and then adjust the sensitive data model.
 
 Estimated Time: 10 minutes
 
@@ -16,7 +16,7 @@ Watch the video below for a quick walk-through of the lab.
 In this lab, you will:
 
 - Discover sensitive data in your target database by using Data Discovery
-- Analyze the sensitive data model
+- Adjust the sensitive data model
 
 
 ### Prerequisites
@@ -24,8 +24,8 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
+- Prepared your environment for this workshop
+- Registered your target database with Oracle Data Safe
 
 
 ### Assumptions
@@ -77,7 +77,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 10. Wait for the sensitive data model to be created. The **Sensitive Data Model Details** page is displayed.
 
 
-## Task 2: Analyze the sensitive data model
+## Task 2: Adjust the sensitive data model
 
 1. Review the information on the **Sensitive Data Model Details** page.
 
@@ -89,28 +89,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
     ![Sensitive Data Model Details page bottom](images/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")
 
-2. Position your mouse over the **Identification Information** category in the chart to view its value. Your percentage value may be different than the value shown in the screenshot.
-
-    ![Identification Information category in sensitive data model chart](images/sdm-chart-identification-information.png "Identification Information category in sensitive data model chart")
-
-3. With your mouse still over **Identification Information**, click the pie slice to drill down. Notice that the **Identification Information** category is now divided into two smaller categories (**Personal Identifiers** and **Public Identifiers**).
-
-    ![Personal and Public Identifiers in sensitive data model chart](images/sdm-chart-personal-public-identifiers.png "Personal and Public Identifiers in sensitive data model chart")
-
-
-4.  To drill-up, click the **All** link in the chart's breadcrumb.
-
-5. Under **Sensitive Columns**, from the drop-down list, select **Sensitive Type View** to sort the sensitive columns by sensitive type. By default, all items are expanded in the view. You can collapse the items by moving the **Expand All** slider to the left.
-
-    ![Sensitive Type View of sensitive data model](images/sensitive-type-view-sdm1.png "Sensitive Type View of sensitive data model")
-
-6. From the drop-down list, select **Schema View** to sort the sensitive columns by table name.
-
-    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the **Parent Column**. For example, `MANAGER_ID` in the `DEPARTMENTS` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
-
-    ![Schema View of sensitive data model](images/schema-view-sdm1.png "Schema View of sensitive data model")
-
-
+2. Remove the `DATA_OF_HIRE` column. To do this, click the elipses symbol to the right of the column in the **Sensitive Columns** list, and select **Remove**. In the dialog box, click **Remove Column** to confirm.
 
 ## Learn More
 
@@ -118,4 +97,4 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Aug 24, 2022
+- **Last Updated By/Date** - Jody Glover, May 5, 2023

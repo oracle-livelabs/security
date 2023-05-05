@@ -30,9 +30,9 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
-- Created a sensitive data model (see [Discover Sensitive Data](?lab=discover-sensitive-data))
+- Prepared your environment for this workshop
+- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your database on hand.
+- Created a sensitive data model
 
 
 ### Assumptions
@@ -139,6 +139,8 @@ Data Masking can generate a masking policy for your target database based on you
 
     ![Masking Policy Details page for Mask SDM1](images/masking-policy-details-page-mask-sdm1.png "Masking Policy Details page for Mask SDM1")
 
+9. Set `SALARY` to be a fixed number, such as 50000. To do this, locate the row for the `SALARY` column. Click the pencil button next to the masking format to open the **Edit Masking Format** page. Select **Fixed Number**, and enter **50000**. Click **Continue**. Notice that the updated row is highlighted. To save your update, click **Save Masking Formats**. 
+
 
 ## Task 4: Mask sensitive data in your target database by using Data Masking
 
@@ -199,4 +201,4 @@ After you create a masking policy, you can run a data masking job against your t
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Aug 24, 2022
+- **Last Updated By/Date** - Jody Glover, May 5, 2023

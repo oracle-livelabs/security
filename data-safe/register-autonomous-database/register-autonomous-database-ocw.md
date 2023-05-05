@@ -4,20 +4,17 @@
 
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. A registered database is referred to as a _target database_ in Oracle Data Safe.
 
-Begin by registering your Autonomous Transaction Database (ATP) with Oracle Data Safe. Navigate to Oracle Data Safe in Oracle Cloud Infrastructure and view the list of registered target databases to confirm that yours is listed. Explore Security Center, which is the central hub for Oracle Data Safe where you can access Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Alerts, and the Oracle Data Safe dashboard.
+Begin by registering your database with the wizard. Next, navigate to Oracle Data Safe and view the list of registered target databases to confirm that yours is listed. Optionally explore Security Center, which is the central hub for Oracle Data Safe where you can access Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Alerts, and the Oracle Data Safe dashboard.
 
-Estimated Time: 10 minutes
-
-Watch the video below for a quick walk-through of the lab.
-[Register an Autonomous Database with Oracle Data Safe](videohub:1_0yhculpk)
+Estimated Lab Time: 10 minutes
 
 ### Objectives
 
 In this lab, you will:
 
-- Register your database with Oracle Data Safe
-- Access Oracle Data Safe and view your list of registered target databases
-- Explore Security Center
+- Register your database with Oracle Data Safe using the wizard
+- View your registered target database
+- (Optional) Explore Security Center
 
 ### Prerequisites
 
@@ -29,74 +26,98 @@ This lab assumes you have:
 ### Assumptions
 
 - Your data values are most likely different than those shown in the screenshots.
+- Please ignore the dates for the data. Screenshots are taken at various times and may differ between labs and within labs.
 
 
-## Task 1: Register your database with Oracle Data Safe
+## Task 1: Register your database with Oracle Data Safe using the wizard
 
-1. Make sure that you are on the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous Database Details** page.
+1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous Database details** page.
 
     If you navigated away from this page: From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**. Select your compartment (if needed), and then click the name of your database.
 
-2. Scroll down the page, and then under **Data Safe**, click **Register**.
+2. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. On this page, there are wizards to register the following types of databases. For an Autonomous Database on Shared Infrastructure with secure access from everywhere, you use the Autonomous Databases wizard.
 
-    ![Register option for your database](images/register-database.png "Register option for your database")
+    - Autonomous Databases
+    - Oracle Cloud Databases
+    - Oracle On-Premises Databases
+    - Oracle Databases on Compute
+    - Oracle Cloud@Customer Databases
 
-3. In the **Register Database with Data Safe** dialog box, click **Confirm**.
+    ![Overview page for Oracle Data Safe](images/overview-page.png "Overview page for Oracle Data Safe")
 
-    ![Register Database with Data Safe confirm dialog box](images/confirm-registration.png "Register Database with Data Safe confirm dialog box")
+3. On the **Autonomous Databases** tile, click **Start Wizard**. 
+
+    The first page in the wizard called **Select Database** is displayed.
+
+4. From the first drop-down list, select your database. If needed, click **Change Compartment**, select your compartment, and then select your database. 
+
+5. (Optional) Change the default display name for your target database. This name is displayed in your Oracle Data Safe reports. 
+
+6. (Optional) Select a different compartment in which to save the target database. Usually you select the compartment in which your database resides.
+
+7. (Optional) Enter a description for your target database. 
+
+8. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity Option) and 3 ('Add Security Rule') are not necessary and will be skipped.** If your database has a private IP address, you need to configure an Oracle Data Safe private endpoint and security rules. 
+
+    ![Autonomous Database registration wizard - Select Database page](images/ADB-wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
+
+9. Click **Next**.    
+
+10. On the **Review and Submit** page, review the information. To make a change, you can return to the **Select Database** page. 
+
+    ![Autonomous Database registration wizard - Review and Submit page](images/ADB-wizard-review-submit.png "Autonomous Database registration wizard - Review and Submit page")
 
 
-4. Wait for the registration process to finish and for the status to change to **Registered**.
+11. Click **Register**.
 
-    ![Status reads registered](images/status-registered.png "Status reads registered" )
+    The **Registration Progress** page is displayed briefly, and then the **Target Database Details** page is displayed. 
 
-
-## Task 2: Access Oracle Data Safe and view your list of registered target databases
-
-
-1. From the navigation menu, select **Oracle Database**, and then **Data Safe**.
-
-    The **Overview** page for the Oracle Data Safe service is displayed. On this page, you can access Security Center, register target databases, and find links to useful information.
-
-2. On the left, click **Target Databases**.
-
-3. From the **Compartment** drop-down list under **List Scope**, select your compartment. Optionally, deselect **Include child compartments**. Your registered target database is listed on the right.
-
-    - A target database with an **ACTIVE** status means that it is currently registered with Oracle Data Safe.
-    - A target database with a **DELETED** status means that it is no longer registered with Oracle Data Safe. The listing is removed after 45 days.
-
-    ![Target Databases page in OCI](images/target-databases-page-oci.png "Target Databases page in OCI")
-
-4. Click the name of your target database to view its registration details. The **Target Database Details** page is displayed.
+12. Wait for the target database status to turn to **ACTIVE**, which means your target database is fully registered. Next, review the information and options provided on the page.
 
     - You can view/edit the target database name and description.
     - You can view the Oracle Cloud Identifier (OCID), when the target database was registered, the compartment name to where the target database was registered, the database type (Autonomous Database), and the connection protocol (TLS). The information varies depending on the target database type.
-    - You have options to edit connection details (change the connection protocol), move the target database registration to another compartment, deregister the target database, and add tags.
+    - You have options to edit connection details (change the connection protocol), move the target database to another compartment, deregister the target database, and add tags.
 
     ![Target Database Details page](images/target-database-details-page.png "Target Database Details page")
+    
+
+## Task 2: View your registered target database
+
+1. In the breadcrumb at the top of the page, click **Target Databases**.
+
+2. Under **List Scope**, make sure your compartment is selected. Your registered target database is listed on the right.
+
+    - A target database with an **ACTIVE** status means that it is currently registered with Oracle Data Safe.
+    - A target database with a **DELETED** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
+
+    ![Target Databases page in OCI](images/target-databases-page-oci.png "Target Databases page in OCI")
 
 
-## Task 3: Explore Security Center
+## Task 3: (Optional) Explore Security Center
 
 1. In the breadcrumb at the top of the page, click **Data Safe**.
 
     The **Overview** page is displayed.
 
-2. Under **Security Center** on the left, click **Dashboard** and review the dashboard. Scroll down to view all the charts. Make sure your compartment is selected under **List Scope**.
+2. Under **Security Center** on the left, click **Dashboard** and review the dashboard. Scroll down to view all the charts. Make sure your compartment is selected under **List Scope**. From the **Target Databases** drop-down list, select your target database so that the data in the dashboard pertains to your target database only.
 
     - In Security Center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, and Alerts.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security Assessment**, **User Assessment**, **Feature Usage**, and **Operations Summary** charts in the dashboard already have data.
     - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit Trails** chart in the dashboard shows one audit trail with the status **In Transition** for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
 
-    ![Initial Dashboard](images/dashboard-initial.png "Initial Dashboard")
+    ![Initial Dashboard - top half](images/dashboard-initial-top.png "Initial Dashboard - top half")
 
+    ![Initial Dashboard - bottom half](images/dashboard-initial-bottom.png "Initial Dashboard - bottom half")
+
+You may now **proceed to the next lab**.
 
 ## Learn More
 
 - [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
+- [Oracle Data Safe Dashboard](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B4D784B8-F3F7-4020-891D-49D709B9A302)
 
 
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 15, 2022
+- **Last Updated By/Date** - Jody Glover, May 5, 2023
