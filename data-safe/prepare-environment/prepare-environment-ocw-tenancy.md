@@ -4,14 +4,7 @@
 
 In this lab, you prepare your environment in Oracle Cloud Infrastructure for the workshop.
 
-*Please read the following instructions carefully!:*
-
-- For the **Run on Your Tenancy** option: If you are the tenancy administrator, complete all tasks except for 2, 3, and 5. If you are not a tenancy administrator, enlist the help of one in your organization to complete all tasks, except for task 5.
-
-- For the **Run on LiveLabs Sandbox** option: Complete tasks 5, 6, and 7 only. Oracle provides you with a tenancy, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database.
-
-
-Estimated Lab Time: 15 minutes (Run on Your Tenancy), 5 minutes (Run on LiveLabs Sandbox)
+Estimated Lab Time: 15 minutes
 
 ### Objectives
 
@@ -21,7 +14,6 @@ In this lab, you will:
 - Create a user group and add an Oracle Cloud account to the group
 - Create an IAM policy for the user group
 - Provision an Autonomous Transaction Processing database
-- (LiveLabs Sandbox reservation only) View your LiveLabs reservation information and sign in
 - Access Oracle Database Actions
 - Load sample data into your database
 
@@ -56,7 +48,7 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 
 ## Task 2: Create a user group and add an Oracle Cloud account to the group
 
-Create a user group and add your Oracle Cloud account to the group.
+Create a user group and add your Oracle Cloud account to the group. If you are a tenancy administrator, then you can skip this task; otherwise, enlist the help of one to complete this task.
 
 1. From the navigation menu, select **Identity & Security**, and then **Groups**.
 
@@ -87,7 +79,7 @@ Create a user group and add your Oracle Cloud account to the group.
 
 ## Task 3: Create an IAM policy for the user group
 
-Create an IAM policy that grants you the necessary permissions for the workshop.
+Create an IAM policy that grants you the necessary permissions for the workshop. If you are a tenancy administrator, then you can skip this task; otherwise, enlist the help of one to complete this task.
 
 1. From the navigation menu, select **Identity & Security**, and then **Policies**.
 
@@ -109,31 +101,12 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 
 8. In the policy field, enter the following policy statements. Substitute `{group name}` and `{compartment name}` with the appropriate values.
 
-    - For the **Get Started with Oracle Data Safe Fundamentals** workshop, you require the following permissions:
-
     ```text
     <copy>
     Allow group {group name} to manage data-safe-family in compartment {compartment name}
     Allow group {group name} to manage autonomous-database in compartment {compartment name}
     </copy>
     ```
-
-    - For the **Integrate Oracle Data Safe with Applications and Services** workshop, you require the following permissions. Note that only tenancy administrators have the necessary permissions to do the lab called **Get notified about security drift on your target databases by setting up Oracle Data Safe events**. 
-
-    ```text
-    <copy>
-    Allow group {group name} to read compartments in compartment {compartment name}
-    Allow group {group name} to manage data-safe-family in compartment {compartment name}
-    Allow group {group name} to manage autonomous-database in compartment {compartment name}
-    Allow group {group name} to use cloud-shell in tenancy
-    Allow group {group name} to manage buckets in compartment {compartment name}
-    Allow group {group name} to manage objects in compartment {compartment name}
-    Allow group {group name} to manage instance-family in compartment {compartment name}
-    Allow group {group name} to read app-catalog-listing in tenancy
-    Allow group {group name} to manage virtual-network-family in compartment {compartment name}
-    </copy>
-    ```
-   
 
 9. Click **Create**.
 
@@ -142,7 +115,7 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 
 Create an Autonomous Transaction Processing (ATP) database in your compartment. Before proceeding, make sure that you have enough quota in your tenancy to create an (Always Free) Autonomous Database.
 
-> **Note**: If you plan to use an existing ATP database in your tenancy or you are using an Oracle-provided environment, you can skip this task.
+> **Note**: If you plan to use an existing ATP database in your tenancy, you can skip this task.
 
 1. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**.
 
@@ -178,38 +151,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
 
 
-## Task 5 (LiveLabs Sandbox reservation only): View your LiveLabs Sandbox reservation information and sign in
-
-1. In the upper-left corner of the lab instructions page (this page), click the **View Login Info** link. 
-
-    A **Reservation Information** panel is displayed.
-
-2. Review the information. You are provided with the following in Oracle Cloud Infrastructure:
-
-    - Access to one of the LiveLab's tenancies
-    - A link that directs you to the sign-in page for Oracle Cloud Infrastructure (**Launch OCI** button)
-    - A username and password to sign in to the LiveLabs tenancy. When signing in for the first time, you are prompted to change your password.
-    - A compartment of your very own. We refer to this compartment as "your compartment" throughout the workshop. Make note of your compartment's name because you need to select it often throughout the workshop.
-    - An Autonomous Database in your compartment. You are provided the password for the `ADMIN` account on your database.
-
-3. Make note of your username and click the **Copy Password** button for Oracle Cloud Infrastructure.
-
-4. On the **Reservation Information** panel, click the **Launch OCI** button.
-
-    A new browser tab is opened and the sign in page for the LiveLabs tenancy is displayed.
-
-5. Enter your username (if needed) and paste the password into the **Password** box, and then click **Sign In**.
-
-    The **Change Password** page is displayed.
-
-6. In the **Current Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Note the password requirements, which are provided on the page. Click **Save New Password**.
-
-    You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
-
-7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your target database.
-
-
-## Task 6: Access Oracle Database Actions
+## Task 5: Access Oracle Database Actions
 
 Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
@@ -221,10 +163,9 @@ Database Actions provides a way for you to run SQL commands on your target datab
 
     A browser tab named **Oracle Database Actions** is opened. *Keep this tab open throughout the workshop.* If your session expires, you can always sign in again.
 
-    - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
-    - If you are using an Oracle-provided environment, enter the database password provided to you.
+    - If a tenancy administrator provided you an Autonomous Database, obtain the database password from that person.
 
-3. In the **Development** section, click **SQL**.
+3. In the **Development** section, click **SQL**. 
 
     The browser tab name is changed to **SQL | Oracle Database Actions**.
 
@@ -239,7 +180,7 @@ Database Actions provides a way for you to run SQL commands on your target datab
     ![SQL Worksheet in Oracle Database Actions](images/database-actions.png "SQL Worksheet in Oracle Database Actions")
 
 
-## Task 7: Load sample data into your database
+## Task 6: Load sample data into your database
 
 As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also generates database activity for the `ADMIN` user.
 

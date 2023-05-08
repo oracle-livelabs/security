@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Ensure the security posture of your database with Oracle Data Safe",
+    "workshoptitle": "Become a data security superhero in just 90 minutes with Data Safe",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
       {
@@ -10,14 +10,14 @@
       },
       {
         "title": "Prepare Your Environment",
-        "description": "Prerequisites to run the workshop in your own tenancy.",
-        "filename": "../../prepare-environment/prepare-environment.md",
+        "description": "Prerequisites to run the workshop in the LiveLabs sandbox.",
+        "filename": "../../prepare-environment/prepare-environment-ocw-sandbox.md",
         "type": "ocw-livelabs"
       },
       {
         "title": "Lab 1: Register an Autonomous Database with Oracle Data Safe",
         "description": "This lab shows you how to register an Autonomous Data Warehouse on Shared Exadata Infrastructure with Oracle Data Safe and load sample data into it.",
-        "filename": "../../register-autonomous-database/register-autonomous-database.md",
+        "filename": "../../register-autonomous-database/register-autonomous-database-ocw.md",
         "type": "ocw-livelabs"
       },
       {
