@@ -10,7 +10,7 @@
       },
       {
         "title": "Prepare Your Environment",
-        "description": "Prerequisites to run the workshop in your own tenancy.",
+        "description": "Prerequisites to run the workshop in the LiveLabs sandbox.",
         "filename": "../../prepare-environment/prepare-environment-ocw-sandbox.md",
         "type": "ocw-livelabs"
       },

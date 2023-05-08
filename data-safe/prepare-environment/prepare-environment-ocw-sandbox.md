@@ -25,15 +25,15 @@ This lab assumes you have:
 
 ## Task 1: View your LiveLabs Sandbox reservation information and sign in
 
-1. At the top of the lab instructions page (this page), click the **View Login Info** link. 
+1. In the upper-left corner of the lab instructions page (this page), click the **View Login Info** link. 
 
     A **Reservation Information** panel is displayed.
 
 2. Review the information. You are provided with the following in Oracle Cloud Infrastructure:
 
-    - Access to one of the LiveLab's tenancies in a region where Oracle Data Safe is enabled
-    - A link that directs you to the sign in page for Oracle Cloud Infrastructure (**Launch OCI** button)
-    - A username and password to sign in to Oracle Cloud Infrastructure. When signing in for the first time, you are prompted to change your password.
+    - Access to one of the LiveLab's tenancies
+    - A link that directs you to the sign-in page for Oracle Cloud Infrastructure (**Launch OCI** button)
+    - A username and password to sign in to the LiveLabs tenancy. When signing in for the first time, you are prompted to change your password.
     - A compartment of your very own. We refer to this compartment as "your compartment" throughout the workshop. Make note of your compartment's name because you need to select it often throughout the workshop.
     - An Autonomous Database in your compartment. You are provided the password for the `ADMIN` account on your database.
 
@@ -43,7 +43,7 @@ This lab assumes you have:
 
     A new browser tab is opened and the sign in page for the LiveLabs tenancy is displayed.
 
-5. Under **Oracle Cloud Infrastructure Direct Sign-In**, enter your username (if needed) and paste the password into the **Password** box, and then click **Sign In**.
+5. Enter your username (if needed) and paste the password into the **Password** box, and then click **Sign In**.
 
     The **Change Password** page is displayed.
 
@@ -60,19 +60,17 @@ Database Actions provides a way for you to run SQL commands on your target datab
 
 1. At the top of the **Autonomous Database details** page, click **Database actions**. 
 
-    A new browser tab is opened called **Oracle Database Actions** with **Database Actions | Launchpad** displayed at the top of the page.
+    The **Sign-in** page is displayed.
 
-    - If this page is not displayed, check that pop-up windows are allowed in your browser.
-    - Keep this tab open throughout the workshop. If your session expires, you can always sign in again.
+2. Sign in as the `ADMIN` user. Be sure to use the database password provided to you by LiveLabs.
 
-2. If you are prompted to sign in to your target database, sign in as the `ADMIN` user.
+    A browser tab named **Oracle Database Actions** is opened.
 
-    - If a tenancy administrator provided you an Autonomous Database, obtain the password from your tenancy administrator.
-    - If you are using an Oracle-provided environment, enter the `ADMIN` password that was provided to you.
+3. In the **Development** section, click **SQL**. 
 
-3. In the **Development** section, click **SQL**.
+    The browser tab name is changed to **SQL | Oracle Database Actions**.
 
-4. Close warning and help dialog boxes.
+4. Close the warning and help dialog boxes.
 
 5. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
@@ -116,11 +114,11 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
     If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
 
-5. Refresh Database Actions by refreshing the _browser_ page.
+5. Refresh Database Actions by refreshing the _browser_ page. If prompted, click **Leave page**.
 
 6. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
-7. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+7. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
 You may now **proceed to the next lab**.
 
@@ -135,4 +133,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 5, 2023
+- **Last Updated By/Date** - Jody Glover, May 8, 2023

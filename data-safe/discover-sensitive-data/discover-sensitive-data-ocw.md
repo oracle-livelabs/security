@@ -45,9 +45,9 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 4. From the **Compartment** drop-down list, select your compartment.
 
-    A Data Discovery dashboard is displayed with statistics for the top five target databases in your compartment. Your dashboard is most likely empty because this is the first time you are using Data Discovery in this workshop.
+    A Data Discovery overview page is displayed with statistics for the top five target databases in your compartment. Your page is most likely empty because this is the first time you are using Data Discovery in this workshop.
 
-    ![Data Discovery dashboard](images/data-discovery-dashboard.png "Data Discovery dashboard")
+    ![Data Discovery overview](images/data-discovery-overview.png "Data Discovery overview")
 
 5. Click **Discover Sensitive Data**.
 
@@ -76,20 +76,31 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 10. Wait for the sensitive data model to be created. The **Sensitive Data Model Details** page is displayed.
 
-
-## Task 2: Adjust the sensitive data model
-
-1. Review the information on the **Sensitive Data Model Details** page.
+11. Review the information on the **Sensitive Data Model Details** page.
 
     - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
-    - You can click the **View Details** link to view the work request information.
+    - You can view the selected sensitive types for discovery (click **View Details**).
+    - You can view the work request information (click **View Details**).
     - The pie chart compares the number of sensitive values per sensitive category and sensitive type.
     - The **Sensitive Columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
     ![Sensitive Data Model Details page bottom](images/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")
 
-2. Remove the `DATA_OF_HIRE` column. To do this, click the elipses symbol to the right of the column in the **Sensitive Columns** list, and select **Remove**. In the dialog box, click **Remove Column** to confirm.
+## Task 2: Adjust the sensitive data model
+
+Remove the `DATE_OF_HIRE` column from the sensitive data model.
+
+1. In the **Sensitive Columns** section, click **Remove Columns**. 
+
+    The **Remove Columns** panel is displayed.
+    
+2. In the **COLUMN NAME** box, enter **DATE**, and then select **DATE_OF_HIRE**.
+
+3. Click **Search**.
+
+4. Select the checkbox for the **DATE_OF_HIRE** column in the **JOB_HISTORY** table, and then click **REMOVE COLUMNS**.
+
 
 ## Learn More
 
@@ -97,4 +108,4 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 5, 2023
+- **Last Updated By/Date** - Jody Glover, May 8, 2023
