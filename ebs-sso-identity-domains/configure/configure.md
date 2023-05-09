@@ -36,10 +36,10 @@ Using this stack we will be able to configure **EBS, EBS Asserter Server and Ide
 
 	1. *Public IP address of your asserter Server*
 	2. *Public IP address of your EBS Server*
-	3. *Enter WebLogic password*
-	4. *Identity Domain URL - Domain URL of the Deployed Domain*
-	5. *Client ID- Please enter the Client ID of your IDCS Confidential App*
-	6. *Client Secret - Please enter the Client Secret of your IDCS Confidential App*
+   	3. *Enter WebLogic password* . **Note** This is the same password that you have placed in the secret of your vault which gets used in Stack1 - Deploy.zip
+    	4. *Identity Domain URL - Domain URL of the Deployed Domain* . **Note** Remove **:443** from the end of the Domain URL.
+    	5. *Client ID- Please enter the Client ID of your IDCS Confidential App*
+    	6. *Client Secret - Please enter the Client Secret of your IDCS Confidential App*
 
 	![Capture 3](./images/image12.png "Capture 3")
 	
