@@ -41,36 +41,61 @@ This lab assumes you have:
 
 Create users in IAM and assign them to Application roles.
 
-1. In the Oracle Access Governance Console, access the Cloud Shell.
-
-    ![Access Cloud Shell](images/oci-cloud-shell.png)
-
-2. Follow the below commands to create 3 users - Pamela Green (Campaign Administrator), Harlan Bullard (Manager), Mark Hernandez (Employee User) in IAM.
-    * Open the Text Editor inside the Workshop on the Linux environment. 
-    ![Open Text Editor](images/open-texteditor.png)
-    * Create a new file **user-iam.sh**
-    * Add the below contents in the **user-iam.sh** file and save it. Specify any email-id to which you will be receiving *Activation mail* for password reset for the users. 
+1. Launch a browser window. Login to OCI console , identity domain : *ag-domain* using the URL mentioned below. The OCI account sign in page appears. Enter the username and password provided during signup. 
+     
     ```
-    <copy>oci iam user create --name mhernandez --email <--email-id provided--> --description OAG-User-Cloud-Shell
-	oci iam user create --name pamela.green --email <--email-id provided--> --description OAG-User-Cloud-Shell 
-    oci iam user create --name harlan.bullard --email <--email-id provided--> --description OAG-User-Cloud-Shell</copy>
+    <copy>https://console.us-ashburn-1.oraclecloud.com/</copy>
     ```
-    * Save the file **user-iam.sh** 
-    ![Create new file](images/create-file.png)
-    * Open the Cloud Shell. Click on the right top corner *Settings* icon. Click on *Upload* option.
-    * Select the saved file **user-iam.sh**
-    * The **user-iam.sh** file upload will be completed. 
-    ![Cloud Shell user creation](images/cloud-shell.png)
+    ![Login OCI console](images/oci-login-console.png)
 
-3. In cloud shell enter the below commands to execute the .sh file:
+
+2. Click the Navigation Menu icon in the top left corner to display the Navigation menu. Click Identity and Security in the Navigation menu. Select Domains from the list of products.
+
+    ![Navigate to Domains](images/navigate-select-domain.png)
+
+
+3. On the Domains page, Click on Identity-domain : *ag-domain* you have created. 
+
+    ![Navigate to Identity Domains](images/open-domains.png)
+
+   Select *Users*. Click on *Create User*
+
+     ![Navigate to Users](images/navigate-to-users.png)
+
+4. Enter the following details to create 3 users - Pamela Green (Campaign Administrator), Harlan Bullard (Manager), Mark Hernandez (Employee User) in IAM.
+
 
     ```
-    <copy>ls</copy>
-    <copy>sh user-iam.sh</copy>
+    First Name: Pamela
+    Last Name: Green
+    Username: pamela.green
+    Email: Specify unique email-id to which you will be receiving activation mail for password reset for the user. 
     ```
-    ![Execute the user-iam.sh file](images/run-script.png)
+    ![Create User](images/user-create-pamela.png)
 
-4. For each user created, an activation mail will be sent to the email-id provided in the *Task 2: Step 2* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 
+    Click *Create*
+
+    ```
+    First Name: Harlan
+    Last Name: Bullard
+    Username: harlan.bullard
+    Email: Specify unique email-id to which you will be receiving activation mail for password reset for the user. 
+    ```
+    ![Create User](images/user-create-harlan.png)
+
+    Click *Create*
+
+    ```
+    First Name: Mark
+    Last Name: Hernandez
+    Username: mhernandez
+    Email: Specify unique email-id to which you will be receiving activation mail for password reset for the user. 
+    ```
+    ![Create User](images/user-create-mark.png)
+
+    Click *Create*
+
+4. For each user created, an activation mail will be sent to the email-id provided in the *Task 2: Step 4* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 
     Reset password to the below mentioned password:
 
     **Password:**
@@ -106,6 +131,6 @@ Create users in IAM and assign them to Application roles.
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
 * **Contributors** - Edward Lu  
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
