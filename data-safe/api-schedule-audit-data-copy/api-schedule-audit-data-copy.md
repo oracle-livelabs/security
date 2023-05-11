@@ -60,7 +60,7 @@ Create a bucket to store your audit data. You also use the bucket to transfer a 
 
 ## Task 2: Start the audit trail for your target database in Oracle Data Safe
 
-1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe**.
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe - Database Security**.
 
 2. Under **Security Center** on the left, click **Activity Auditing**.
 
@@ -434,7 +434,7 @@ In this task, you compile a Java program named `DataSafeRestAPIClientExample.jav
 
 ## Task 12: Obtain the compartment OCID for your target database
 
-1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe**. 
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe - Database Security**. 
 
 2. On the left, click **Target Databases**. 
 
@@ -635,7 +635,7 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Contributors** - Richard Evans, Anna Haikl, Russ Lowenthal, Archana Rao, Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 23, 2023
+- **Last Updated By/Date** - Jody Glover, April 11, 2023
 
 
 
