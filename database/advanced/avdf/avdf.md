@@ -2015,5 +2015,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Angeline Dhanarani, Nazia Zaidi, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023
+- **Contributors** - Nazia Zaidi
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2023

@@ -427,5 +427,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Angeline Dhanarani, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023
+- **Contributors** - Angeline Dhanarani
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2023
