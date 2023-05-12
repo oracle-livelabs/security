@@ -1,0 +1,51 @@
+{
+    "workshoptitle": "Secure your encryption keys on an HSM you own to address Security and Sovereignty",
+    "help": "livelabs-help-oci_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Secure your cloud encryption keys on your own HSM to meet Security and Sovereignty requirements.",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: HSM (Hardware Security module) and Key management Setup",
+            "description": "Create a HSM (hardware Security Module) and Key Management environment.",
+            "filename": "../../hsm-and-kms-setup/hsm-and-kms-setup.md"
+        },
+        {
+            "title": "Lab 2: Link creation between OCI and you HSM and Master Encryption Key creation",
+            "filename": "../../create-connection/create-connection.md"
+        },
+        {
+            "title": "Lab 3a: Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)",
+            "filename": "../../byok-to-oci/byok-to-oci.md"
+        },
+        {
+            "title": "Lab 3b: Hold Your Own Key (HYOK): Configure External Key Management between OCI and your HSM",
+            "filename": "../../hyok/hyok.md"
+        },
+        {
+            "title": "Lab 4: Configure Customer Managed Encryption for OCI Resources",
+            "filename": "../../encrypt-resources/ecncrypt-resoources.md"
+        },
+        {
+            "title": "Lab 5: Emergency simulation test: blocking data access",
+            "filename": "../../simulation/simulation.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        },
+        {
+            "title": "Other LiveLabs you might like",
+            "description": "Other LiveLabs you might like",
+            "filename": "../../other-livelabs/other-livelabs.md"
+        }
+    ]
+}
