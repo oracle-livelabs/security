@@ -51,7 +51,7 @@ To use the Data Masking feature with an Autonomous Database on Shared Infrastruc
 
     ![Run Statement button on toolbar](images/run-statement-button.png "Run Statement button on toolbar")
 
-    The script output should read as follows:
+4. Verify that the script output reads as follows:
 
    `PL/SQL procedure successfully completed`  
     
@@ -129,7 +129,7 @@ Data Masking can generate a masking policy for your target database based on you
 
 8. Review the masking policy.
 
-    - On the **Masking Policy Information** tab, you can view the masking policy name (and edit it), the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, a link to the work request for the masking policy, the target database and sensitive data model to which the masking policy is associated, and the date/time in which the masking policy was created and last updated.
+    - On the **Masking Policy Information** tab, you can view the masking policy name (and edit it), the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, a link to the work request for the masking policy, a link to masking options, the target database and sensitive data model to which the masking policy is associated, and the date/time in which the masking policy was created and last updated.
     - The **Masking Columns** table lists all the masking columns and their masking formats. If needed, you can select a different masking format for any masking column. You can click the pencil icon next to a masking format to edit it.
 
     ![Masking Policy Details page for Mask SDM1 - top](images/masking-policy-details-page-mask-sdm1-top.png "Masking Policy Details page for Mask SDM1 - top")
@@ -175,7 +175,7 @@ After you create a masking policy, you can run a data masking job against your t
 
 2. Review the masking report.
 
-    - The **Masking Report Information** tab shows you the target database name, masking policy name (you can click a link to view it), the Oracle Cloud Identifier (OCID) for the masking policy, the date and time when the data masking job started and finished, and the number of masked sensitive types, schemas, tables, columns, and values. There is also a pie chart that shows you the masked value percentages for each sensitive type. You can click on a pie slice to drill down into the chart.
+    - The **Masking Report Information** tab shows you the target database name, masking policy name (you can click a link to view it), the Oracle Cloud Identifier (OCID) for the masking policy, the date and time when the data masking job started and finished, and the number of masked sensitive types, schemas, tables, columns, and values. There is also a pie chart that shows you the masked value percentages for each sensitive type. You can click a link to view masking options. You can click on a pie slice to drill down into the chart.
     - The **Masked Columns** table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
 
     ![Masking report top](images/masking-report-top2.png "Masking report top")

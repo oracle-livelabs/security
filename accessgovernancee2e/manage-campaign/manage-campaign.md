@@ -8,7 +8,7 @@ Users with the **campaign administrator** role can monitor and manage access rev
 * Persona: Campaign Administrator
 
 Watch the video below for a quick walk-through of the lab.
-[Manage Access Review Campaigns](videohub:1_mmcocyjw)
+[Manage Access Review Campaigns](videohub:1_b19sk9f6)
 
 ### Objectives
 
@@ -18,7 +18,7 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as Campaign Administrator
 
-1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **Default** identity domain selected.
+1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
 2. Log in to **Oracle Access Governance** as a **campaign administrator - Pamela Green** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
 	![Access Governance Login](images/admin-login.png)
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
@@ -54,6 +54,6 @@ In this lab, you will:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Contributors** - Edward Lu 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023

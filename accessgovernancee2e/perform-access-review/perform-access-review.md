@@ -13,7 +13,7 @@ Based on the workflow setup in the first lab **Create Access Review Campaign**, 
 * Persona: Employee and User Manager
 
 Watch the video below for a quick walk-through of the lab.
-[Perform Access Review](videohub:1_kui9p56v)
+[Perform Access Review](videohub:1_jteb4r9y)
 
 ### Objectives
 
@@ -23,7 +23,7 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as Employee User
 
-1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **default** identity domain selected.
+1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
 2. Log in to **Oracle Access Governance** as an **employee user - Mark Hernandez** with the username and password mentioned below.
 
     **Username:**
@@ -67,7 +67,8 @@ In this lab, you will:
 
 ## Task 3: Login Oracle Access Governance as User Manager
 
-1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **Default** identity domain selected.
+1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
+
 2. Log in to **Oracle Access Governance** as a **Manager User - Harlan Bullard** with the username and password mentioned below.
 
   **Username:**
@@ -151,6 +152,6 @@ Now remediation is completed with approval and manual provisioning.
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Contributors** - Edward Lu 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023

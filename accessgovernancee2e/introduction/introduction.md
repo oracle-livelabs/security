@@ -44,5 +44,5 @@ This lab assumes you have:
 * [Oracle Access Governance Announcement Blog](https://blogs.oracle.com/cloudsecurity/post/intelligent-cloud-delivered-access-governance-with-prescriptive-analytics)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023

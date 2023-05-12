@@ -34,7 +34,7 @@ This lab assumes you have:
 
 ## Task 1: Review the latest user assessment
 
-1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe**.
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe - Database Security**.
 
 2. Under **Security Center**, click **User Assessment**.
 
@@ -171,7 +171,7 @@ In this task, you create a user on your target database with the `PDB_DBA` role.
 
 1. Return to the browser tab for Oracle Cloud Infrastructure.
 
-2. From the navigation menu, select **Oracle Database**, and then **Data Safe**.
+2. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**.
 
 3. Under **Security Center**, click **User Assessment**.
 
@@ -257,6 +257,6 @@ After you generate a comparison report, if there is security drift (which there 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Contributors** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 23, 2023
+- **Last Updated By/Date** - Jody Glover, April 11, 2023
 
 

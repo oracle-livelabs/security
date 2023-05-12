@@ -53,7 +53,7 @@ This lab assumes you have:
     ![Security Assessment Risk Level and Risks by Category charts for all targets](images/sa_risklevel_risksbycategory.png "Security Assessment Risk Level and Risks by Category charts for all targets")
 
 
-4. View the **Risk Summary** tab.
+4. Review the information on the **Risk Summary** tab.
 
     - The **Risk Summary** tab shows you how much risk you have across all target databases in the specified compartment(s).
     - You can compare the number of high, medium, low, advisory, and evaluate risk findings across all target databases, and view which risk categories have the greatest numbers.
@@ -62,7 +62,7 @@ This lab assumes you have:
     ![Security Assessment Risk Summary tab](images/sa-risk-summary-tab.png "Security Assessment Risk Summary tab")
 
 
-5. Click the **Target Summary** tab and view the information.
+5. Click the **Target Summary** tab and review the information.
 
     - The **Target Summary** tab shows you the security posture of each target database.
     - You can view the number of high, medium, low, advisory, and evaluate risk findings for each target database.
@@ -239,7 +239,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     - Review the number of findings per risk category for each risk level. Categories include **User Accounts**, **Privileges and Roles**, **Authorization Control**, **Data Encryption**, **Fine-Grained Access Control**, **Auditing**, and **Database Configuration**.
     - You can identify where the changes have occurred on your target database by viewing cells that contain the word **Modified**. The number represents the total count of new, remediated, and modified risks on the target database.
-    - In the details table, you can view the risk level for each finding, the category to which the finding belongs, the finding name, and a description of what has changed on your target database. The Comparison Report column is important because it provides explanations of what is changed, added, or removed from the target database since the baseline report was generated.
+    - In the details table, you can view the risk level for each finding, the category to which the finding belongs, the finding name, and a description of what has changed on your target database. The Comparison Report column is important because it explains what is changed, added, or removed from the target database since the baseline report was generated.
     - Notice the **`PUBLIC: [ALTER ANY ROLE]` Modification Details(added)** notes for some of the findings. The changes introduced by granting the masking role to `DS$ADMIN` are also included.
 
     ![Security Assessment Comparison report top](images/sa-comparison-report-top.png "Security Assessment Comparison report top")

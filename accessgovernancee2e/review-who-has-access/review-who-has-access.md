@@ -8,7 +8,7 @@ Users can check what access they have or what access their direct reports have. 
 * Persona: User Manager
 
 Watch the video below for a quick walk-through of the lab.
-[Review Who has Access to What](videohub:1_fb9lydfl)
+[Review Who has Access to What](videohub:1_tfcwfcju)
 
 ### Objectives
 
@@ -18,7 +18,7 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as User Manager
 
-1. Ensure you have **default** identity domain selected.
+1. Ensure you have **ag-domain** identity domain selected.
 2. Log in to **Oracle Access Governance** as **User Manager - Harlan Bullard** with the username and password mentioned below.
 
     **Username:**
@@ -67,6 +67,6 @@ In this lab, you will:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Contributors** - Edward Lu
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023

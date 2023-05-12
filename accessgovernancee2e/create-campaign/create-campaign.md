@@ -8,7 +8,7 @@ As a user with a **campaign administrator** role, you can create access review c
 * Persona: Campaign Administrator
 
 Watch the video below for a quick walk-through of the lab.
-[Create Access Review Campaign](videohub:1_p2m93d2k)
+[Create Access Review Campaign](videohub:1_9s3mt0qx)
 
 ### Objectives
 
@@ -20,7 +20,7 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as Access Review Campaign Administrator
 
-1. Ensure you have **default** identity domain selected.
+1. Ensure you have **ag-domain** identity domain selected.
 2. Log in to **Oracle Access Governance** console. Refer to *Lab 4: Task 1.4* for the **Oracle Access Governance** service instance URL. 
 3. Login as the **Campaign Administrator - Pamela Green** with the username and password mentioned below.
 
@@ -71,6 +71,6 @@ In this lab, you will:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Contributors** - Edward Lu 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
