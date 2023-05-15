@@ -1,4 +1,4 @@
-# lab 1 - HSM (Hardware Security Module) and Key Management Setup
+# Lab 1 - HSM (Hardware Security Module) and Key Management Setup
 
 ## Introduction
 
@@ -58,38 +58,13 @@ This lab assumes you have:
 
 	The tenant cannot be renamed.
 
+6. On first login to the new tenant, the default Application Administrator is "admin", with the temporary password you set during [service creation on the Data Protection on Demand (DPoD) marketplace](https://thalesdocs.com/dpod/services/key_management_services/cdsp/index.html). The initial password must be changed before using the CipherTrust Data Security Platform Services.
+  a. Login as user "admin" using the temporary password you set on DPoD.
+  b. Change the temporary password immediately, as prompted. Failure to do so could allow an attacker to compromise the system.
 
-## Task 2: Concise Task Description
+7. On first login to the UI, you are presented with the CipherTrust Data Security Platform Services products page, with the administrative navigation menu on the left, and application products in the center.
+  ![Thales CipherTrust Manager](images/thales-ciphertrust.png)
 
-1. Step 1 - tables sample
-
-  Use tables sparingly:
-
-  | Column 1 | Column 2 | Column 3 |
-  | --- | --- | --- |
-  | 1 | Some text or a link | More text  |
-  | 2 |Some text or a link | More text |
-  | 3 | Some text or a link | More text |
-
-2. You can also include bulleted lists - make sure to indent 4 spaces:
-
-    - List item 1
-    - List item 2
-
-3. Code examples
-
-    ```
-    Adding code examples
-  	Indentation is important for the code example to appear inside the step
-    Multiple lines of code
-  	<copy>Enclose the text you want to copy in <copy></copy>.</copy>
-    ```
-
-4. Code examples that include variables
-
-	```
-  <copy>ssh -i <ssh-key-file></copy>
-  ```
 
 ## Learn More
 
