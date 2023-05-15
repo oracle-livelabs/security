@@ -98,7 +98,7 @@ Try accessing your EBS Instance via this url - *http://demoebs.example.com:8000/
 
 **Username** - *SYSADMIN*
 
-**Password** - Enter your *SYSADMIN Password*
+**Password** - Enter your *SYSADMIN Password* . Use *sysadmin@1234* as the password to login.
 
 3. Navigate to **Domains** under **Identity and Security** on the OCI console to validate that your Domain of type **Oracle Apps Premium** has been created.
 
