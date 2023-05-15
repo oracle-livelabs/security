@@ -31,42 +31,43 @@ This lab assumes you have:
 
 ## Task 1: Connect to OCI and create your own Vault in OCI Vault
 
-(optional) Task 1 opening paragraph.
+1. Log in to your OCI account by following steps in section Get Started
 
-1. Step 1
+2. Navigate through the main hamburger menu to *"Identity & Security > Vault"*
 
-	![Image alt text](images/sample1.png)
+	![Go to Vault](images/vault-menu.png)
 
-	> **Note:** Use this format for notes, hints, and tips. Only use one "Note" at a time in a step.
+3. Pick up the compartment in the left menu. Click the display menu and select the already created subcompartment "ocw23-OCI-Vault-HOL". Then click "Create Vault".
 
-2. Step 2
+    ![Create Vault](images/select-compartment-create-vault.png)
 
-  ![Image alt text](images/sample1.png)
+4. Enter a name for your Vault. Please follow the naming convention:
 
-4. Example with inline navigation icon ![Image alt text](images/sample2.png) click **Navigation**.
+     ![Enter name for Vault](images/create-name-vault.png)
 
-5. Example with bold **text**.
+5. Now your Vault will start to be created. Once it is created, the status will appear as Green and Active in your OCI console:
 
-   If you add another paragraph, add 3 spaces before the line.
+    ![Vault successfully created](images/vault-created.png)
+
+
 
 ## Task 2: Adding a connection between your Thales CipherTrust Manager and OCI
 
 1. Click the + Add Connection button to open the Add Connection wizard. The wizard consists of the following steps:
-    a.	Select Connection Type : Select “Cloud” : “Oracle Cloud Infrastructure”
-    b.	General Info: provide a Name and Description (optional) for the new connection.
-    c.	Configure Connection: 
-        i.	To configure an OCI connection:
-        ii.  Tenancy OCID: OCID of the tenancy.
-        iii.  User OCID: OCID of the user.
-        iv.  Region: An Oracle Cloud Infrastructure region.
-        v.  Fingerprint: Fingerprint of the public key added to this user.
-        vi.  Key File: Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
-        vii.   File Upload: Select and click Upload Certificate to upload the key file from your machine.
-        viii.   Text: Select and paste the certificate content in the text field.
-        ix.  Passphrase: Passphrase of the encrypted key file.
-        x.	Click Test Credentials to check whether the connection is configured correctly. If the test is successful, the status is OK else the status is Fail.
+    * Select Connection Type : Select “Cloud” : “Oracle Cloud Infrastructure”
+    * General Info: provide a Name and Description (optional) for the new connection.
+    * Configure Connection: 
+        * Tenancy OCID: OCID of the tenancy.
+        * User OCID: OCID of the user.
+        * Region: An Oracle Cloud Infrastructure region.
+        * Fingerprint: Fingerprint of the public key added to this user.
+        * Key File: Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
+        * File Upload: Select and click Upload Certificate to upload the key file from your machine.
+        * Text: Select and paste the certificate content in the text field.
+        * Passphrase: Passphrase of the encrypted key file.
+        * Click Test Credentials to check whether the connection is configured correctly. If the test is successful, the status is OK else the status is Fail.
         Click Next to move to the next step.
-    d.	Add Products: Use the check boxes in the Products list to select Cloud Key manager”
+    * Add Products: Use the check boxes in the Products list to select Cloud Key manager”
 
 ## Task 3: Master Encryption Key Creation
 

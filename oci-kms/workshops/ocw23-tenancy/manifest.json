@@ -31,7 +31,7 @@
         },
         {
             "title": "Lab 4: Configure Customer Managed Encryption for OCI Resources",
-            "filename": "../../encrypt-resources/ecncrypt-resoources.md"
+            "filename": "../../encrypt-resources/encrypt-resources.md"
         },
         {
             "title": "Lab 5: Emergency simulation test: blocking data access",
