@@ -116,7 +116,7 @@ This lab assumes you have:
     ```
     ![Run Query Again](images/re-run-qry.png)
 3. Also re-run the REST Call. The data should still be redacted.
-    ![Run Query Again](images/redacted-rest-call.png)
+    ![Run Query Again](images/redacted-call.png)
 ## Task 4: Drop Audit policy and then the Redaction policy.
 1. Since our Unified Audit policy has served its purpose, we can drop it as we do not need to audit every single SELECT statement. As `ADMIN`, run the following script:
     ```

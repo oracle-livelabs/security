@@ -160,11 +160,11 @@ When ready, click the **Enable button** in the lower right of the slider.
 
 1. View the changes to the table by **reloading the browser** window.
     
-    ![Redacted REST](images/redacted-rest-call.png)
+    ![Redacted REST](images/redacted-call.png)
 
 2. Run the **first query from the previous task** and view the redacted data at the **bottom of the page**.
     
-    ![Redacted REST](images/redacted-query.png)
+    ![Redacted REST](images/redacted-qry.png)
 
 Congratulations, You have successfully redacted REST calls using ORDS!
 
