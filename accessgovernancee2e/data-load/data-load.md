@@ -1,4 +1,4 @@
-#  Perform AG data load and create IAM users 
+#  Perform AG data load and create IAM users (OIG)
 
 ## Introduction
 

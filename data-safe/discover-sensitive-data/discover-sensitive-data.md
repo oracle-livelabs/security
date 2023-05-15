@@ -43,7 +43,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 4. From the **Compartment** drop-down list, select your compartment.
 
-    A Data Discovery dashboard is displayed with statistics for the top five target databases in your compartment. Your dashboard is most likely empty because this is the first time you are using Data Discovery in this workshop.
+    A Data Discovery overview page is displayed with statistics for the top five target databases in your compartment. Your page is most likely empty because this is the first time you are using Data Discovery in this workshop.
 
     ![Data Discovery dashboard](images/data-discovery-dashboard.png "Data Discovery dashboard")
 
@@ -80,7 +80,8 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 1. Review the information on the **Sensitive Data Model Details** page.
 
     - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, the selected schema for discovery (HCM1), the selected sensitive types for discovery (click the **View Details** link), and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
-    - You can click the **View Details** link to view the work request information.
+    - You can view the selected sensitive types for discovery (click **View Details**).
+    - You can view the work request information (click **View Details**).
     - The pie chart shows percentages of sensitive categories and sensitive types.
     - The **Sensitive Columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
 
