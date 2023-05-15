@@ -11,6 +11,9 @@ Using this stack we will be able to configure **EBS, EBS Asserter Server and Ide
 2. 	Configure **EBS Asserter Server**
 3.	Create the **Confidential Application** under **Identity Domain** 
 
+## Prerequisites
+
+Once the **Stack2- Configure.zip** is downloaded, unzip the zip file and replace the the content of the **.pem** files (ebs.pem and ebsasserter.pem) with your respective content of the private key.
 
 ## Task 1: Deploy the Configuration Stack via Resource Manager
 
