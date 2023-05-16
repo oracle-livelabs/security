@@ -10,18 +10,12 @@ In this HOL, you will learn how to manage your encryption keys outside of OCI us
 
 This Hands-On Lab will walk you through how to enable the feature, link your HSM outside of OCI to your OCI tenant and start encrypting data in OCI, for storage encryption and OCI Database encryption through TDE support. Now your Master Encryption Keys never leave your own HSM. You will also simulate an Emergency Situation in which you are being asked to block access to data stored in OCI Storage Buckets or Database Service. You’re in control. 
 
-Estimated Workshop Time: -- hours -- minutes (This estimate is for the entire workshop - it is the sum of the estimates provided for each of the labs included in the workshop.)
-
-*You may add an option video, using this format: [](youtube:YouTube video id)*
-
-  [](youtube:zNKxJjkq0Pw)
+Estimated Workshop Time: -- hours -- minutes 
 
 *Note* In this lab you will use THALES CipherTrust Key Manager as a Service for the Key Management and HSM service. 
 
 
 ### Objectives
-
-*List objectives for the workshop*
 
 In this workshop, you will learn how to:
 * Set up HSM and Key Management in Thales
@@ -44,9 +38,7 @@ Whatever option you chose, the remaining points are the following:
 * Emergency simulation test: blocking data access
 
 
-### Prerequisites (Optional)
-
-*List the prerequisites for this lab using the format below. Fill in whatever knowledge, accounts, etc. is needed to complete the lab. **Do NOT list** each previous lab as a prerequisite.*
+### Prerequisites
 
 This lab assumes you have:
 * An Oracle account

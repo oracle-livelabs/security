@@ -6,27 +6,21 @@ This lab walks you through the steps to create a HSM (Hardware Security Module) 
 
 Estimated Time: -- minutes
 
-### About <Product/Technology> (Optional)
+### About technology used in this lab 
 It is representing the situation of you as an Oracle Cloud Infrastructure (OCI) customer. Either you are already owning an HSM On-Premise, or  you want to use an “HSM-as-a-Service” outside of Oracle Cloud like the Thales service we will use in this lab. 
 For the purpose of this lab, you will work with Thales CipherTrust Data Security Platform service to create your encryption keys. 
 
 ### Objectives
-
-*List objectives for this lab using the format below*
 
 In this lab, you will:
 * Create an external Thales HSM/Key Management
 
 ### Prerequisites (Optional)
 
-*List the prerequisites for this lab using the format below. Fill in whatever knowledge, accounts, etc. is needed to complete the lab. Do NOT list each previous lab as a prerequisite.*
-
 This lab assumes you have:
 * An Oracle Cloud account
 * A Thales account
 
-
-*Below, is the "fold"--where items are collapsed by default.*
 
 ## Task 1: External Thales HSM/Key Management creation
 

@@ -1,4 +1,5 @@
-# Title of the Lab
+# Lab 3b - Hold Your Own Key (HYOK): Configure External Key Management between OCI and your HSM
+
 
 ## Introduction
 
@@ -14,9 +15,8 @@ Enter background information here about the technology/feature or product used i
 *List objectives for this lab using the format below*
 
 In this lab, you will:
-* Objective 1
-* Objective 2
-* Objective 3
+* Connect to your OCI tenant and create an External Vault in OCI Vault
+* Set up the connection between OCI Vault and your external HSM in Thales CipherTrust Manager 
 
 ### Prerequisites (Optional)
 

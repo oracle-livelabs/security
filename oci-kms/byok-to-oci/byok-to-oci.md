@@ -1,4 +1,4 @@
-# Title of the Lab
+# Lab 3a - Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)
 
 ## Introduction
 
@@ -14,9 +14,7 @@ Enter background information here about the technology/feature or product used i
 *List objectives for this lab using the format below*
 
 In this lab, you will:
-* Objective 1
-* Objective 2
-* Objective 3
+* Bring Your Own Keys to your OCI Vault
 
 ### Prerequisites (Optional)
 

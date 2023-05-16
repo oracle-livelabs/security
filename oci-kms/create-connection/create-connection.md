@@ -11,23 +11,17 @@ Enter background information here about the technology/feature or product used i
 
 ### Objectives
 
-*List objectives for this lab using the format below*
-
 In this lab, you will:
 * Connect to your OCI tenant and create your Vault in OCI Vault
 * Set up a link between Thales CipherTrust Manager (created in Lab 1) and OCI Vault
 * Create a Master Encryption Key (MEK) in your Thales HSM via Thales CipherTrust Manager
 
-### Prerequisites (Optional)
-
-*List the prerequisites for this lab using the format below. Fill in whatever knowledge, accounts, etc. is needed to complete the lab. Do NOT list each previous lab as a prerequisite.*
+### Prerequisites
 
 This lab assumes you have:
 * An Oracle Cloud account
 * All previous labs successfully completed
 
-
-*This is the "fold" - below items are collapsed by default*
 
 ## Task 1: Connect to OCI and create your own Vault in OCI Vault
 
@@ -79,7 +73,7 @@ This lab assumes you have:
 
 4.	Under Select Method, select Create/Upload New Key Material. The Select Source section appears. Depending on your requirements, select from the following sources:
 
-        Luna HSM: Refer to Uploading Luna HSM Key Material for details.
+    * Luna HSM: Refer to Uploading Luna HSM Key Material for details.
 
 5.	Select Material Origin > Select Source
     a.	Select Luna HSM.

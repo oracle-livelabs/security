@@ -1,4 +1,4 @@
-# Title of the Lab
+# Lab 5 - Emergency simulation test: blocking data access
 
 ## Introduction
 
@@ -14,9 +14,9 @@ Enter background information here about the technology/feature or product used i
 *List objectives for this lab using the format below*
 
 In this lab, you will:
-* Objective 1
-* Objective 2
-* Objective 3
+* Simulate an emergency situation where you as a customer want to block access to your data in OCI
+* Remove encryption key from the external CipherTrust Key management console
+* Test access to the encrypted data and confirm users cannot access cleartext data in the Storage Bucket and Autonomous Database anymore
 
 ### Prerequisites (Optional)
 
