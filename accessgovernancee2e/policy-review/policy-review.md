@@ -14,30 +14,23 @@ In this lab, you will:
 * Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
 
-## Task 1: Generate API Keys and Oracle Cloud Identifier (OCID) for an Identity User
+## Task 1: Setup Policy to allow Oracle Access Governance to connect OCI
 
+1. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Click Identity and Security in the Navigation menu. Select Policies from the list of products.
 
-You need to generate API Keys for the identity user (Admin user who is part of the ag-group) and note OCID for that identity user. You will use it to configure your cloud service provider on the Oracle Access Governance Console.
+2. On the Policies page, In the root compartment click on Create Policy to create a policy : oci-iam-policy
 
-1. On OCI console, from the navigation menu, select **Identity & Security**, and then **Domains.**
-
-2. Select the **root** compartment and **ag-domain** domain.
-
-3. From the left pane, select **Users.**
-
-4. Select the identity user. In this tutorial, select the **Admin user**
-
-5. On the left pane, in the **Resources** section, select **API keys.**
-
-6. Click the **Add API** key button, and then select **Generate API key pair.**
-
-7. Download the private key and save it.
-
-8. Click **Add.** The configuration file is created displaying ocid, fingerprint, tenancy and region details.
-
-9. Save the information available on the configuration file in a separate text file. For this tutorial, you will be using this information in **Task 2** of this lab.
-
-  ![API keys generated](images/generate-api-keys.png)
+    ```
+    Name: oci-iam-policy
+    Description: Allow Oracle Access Governance to connect OCI in tenancy
+    Compartment: Ensure your root compartment is selected
+    Policy Builder: Select the show manual editor checkbox 
+    Statement 1: allow resource accessgov-agent resource-scanner to read all-resources in tenancy
+    Statement 2: allow resource accessgov-agent resource-manager to manage domains in tenancy
+    Statement 3: allow resource accessgov-agent resource-manager to manage policies in tenancy
+    ```
+ 
+    Click Create
 
 
 ## Task 2: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
@@ -48,15 +41,22 @@ You need to generate API Keys for the identity user (Admin user who is part of t
 
 3. Select the **Add a connected system** button from the Connected Systems page.
 
+      ![Select cloud service provider](images/cloud-service-provider.png)
+
 4.  Select the **Would you like to connect to a cloud service provider?** tile by clicking the Add button.
+    
 
 5. In the **Select system** step, select the **Oracle Cloud Infrastructure** tile and then click **Next.**
 
-6. In the **Enter details** step, enter name and description of the connected system, and then click **Next.**
+  ![Select cloud service provider](images/select-oci.png)
 
-  ![OCI Enter details](images/oci-enter-details.png)
+6. Enter name and description of the connected system, and then click **Next.**
 
-7. In the **Configure** step, add the connection details of the identity user, generated in **Task 1**
+  ![OCI Enter details](images/enter-oci-system-name.png)
+
+7. Enter the Tenancy OCID and Region details. 
+
+  ![OCI Enter details](images/oci-iam-details.png)
 
 8. Click **Add.** If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
 
@@ -74,5 +74,5 @@ You need to generate API Keys for the identity user (Admin user who is part of t
 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Contributors** - Edward Lu 
+* **Contributors** - Abhishek Juneja 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
