@@ -28,17 +28,17 @@
             "filename": "../../environment-initialize/environment-initialize.md"
         },
         {
-            "title": "Lab 4: Create Identity Domain (IAM)",
+            "title": "Lab 4: Create Identity Domain",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "../../create-identity-domain/create-identity-domain.md"
         },
         {
-            "title": "Lab 5: Create Access Governance Groups and Policies (IAM)",
+            "title": "Lab 5: Create Access Governance Groups and Policies (OCI IAM)",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "../../create-ag-group-policies/create-ag-group-policies.md"
         },
         {
-            "title": "Lab 6: Setup and configure Oracle Access Governance service instance (OIG)",
+            "title": "Lab 6: Setup and configure Oracle Access Governance service instance",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../instance-setup/ag-instance-setup.md"
         },
@@ -74,15 +74,15 @@
             "filename": "../../event-based-review/event-based-review.md"
         },
         {
-            "title": "Lab 14: Setup Identity Orchestration between Oracle Access Governance and OCI IAM (IAM) ",
+            "title": "Lab 14: Setup Identity Orchestration between Oracle Access Governance and OCI IAM (OCI IAM) ",
             "filename": "../../policy-review/policy-review.md"
         },
         {
-            "title": "Lab 15: Create OCI Policies, Groups and Compartments (IAM) ",
+            "title": "Lab 15: Create OCI Policies, Groups and Compartments (OCI IAM) ",
             "filename": "../../create-policies/create-policies.md"
         },
         {
-            "title": "Lab 16: Create and Perform Policy Review Campaigns (IAM)",
+            "title": "Lab 16: Create and Perform Policy Review Campaigns (OCI IAM)",
             "filename": "../../create-policy-reviews/create-policy-review.md"
         },
         {

@@ -21,13 +21,11 @@ This lab assumes you have:
 
 1. Open up the hamburger menu in the top left corner. Click Identity and Security, and choose Identity > Domains. 
 
-    ![OCI Console](images/logged-in-console.png)
-
     ![Navigate to domains](images/navigate-to-domains.png)
 
 2. Select the *root* compartment in which you will create the identity domain. Click *Create Domain*
 
-    ![Select Create Identity Domain](images/create-domain.png)
+    ![Select Create Identity Domain](images/create-domains.png)
 
 3. Enter the details of the Identity Domain to be created. Click *Create*  
     

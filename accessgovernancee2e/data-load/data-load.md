@@ -7,7 +7,7 @@ To initiate a data load from the target connected system instance, perform the f
 *Estimated Lab Time*: 15 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Perform Data and Create IAM Users](videohub:1_009fisy0)
+[Perform Data and Create OCI IAM Users](videohub:1_009fisy0)
 
 ### Objectives
 
@@ -37,9 +37,9 @@ This lab assumes you have:
 
     ![Data Load successful](images/load-data.png) 
 
-## Task 2: Create Users in IAM
+## Task 2: Create Users in OCI IAM
 
-Create users in IAM and assign them to Application roles.
+Create users in OCI IAM and assign them to Application roles.
 
 1. Launch a browser window. Login to OCI console , identity domain : *ag-domain* using the URL mentioned below. The OCI account sign in page appears. Enter the username and password provided during signup. 
      

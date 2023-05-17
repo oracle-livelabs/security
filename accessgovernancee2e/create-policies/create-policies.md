@@ -69,5 +69,5 @@ In this lab, you will:
 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Contributors** - Edward Lu 
+* **Contributors** - Abhishek Juneja 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023

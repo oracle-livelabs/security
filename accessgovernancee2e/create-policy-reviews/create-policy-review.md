@@ -1,4 +1,4 @@
-# Setup Identity Orchestration between Oracle Acccess Governance and OCI IAM 
+# Create and Perform Policy Review Campaigns
 
 ## Introduction
 
@@ -26,7 +26,7 @@ In this lab, you will:
   You will be navigated to the home page of your Oracle Access Governance Console.
 
 
-  ![API keys generated](images/generate-api-keys.png)
+  ![Access Governance Homepage](images/ag-homepage.png)
 
 
 ## Task 2: Create a Policy Review Campaign
@@ -115,5 +115,5 @@ In this lab, you will:
 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Contributors** - Edward Lu 
+* **Contributors** - Abhishek Juneja
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
