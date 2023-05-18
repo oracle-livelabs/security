@@ -25,16 +25,20 @@ This lab assumes you have:
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products.
     ![Create Service Instance](images/oci-console.png)
 
-3. On the Access Governance page, select *Service Instances.*Click on *Create Service Instance*
+2. On the Access Governance page, select *Service Instances.*
 
 
     ```
-    Name: service-instance
+    Name: ag-service-instance
     Description: Oracle Access Governance service instance
     Compartment: Ensure your root compartment is selected
     ```
     ![Create Service Instance](images/create-service-instance.png)
-    ![Service Instance details](images/ag-service-instance.png)
+    
+
+3. Select the License type : Access Governance for Oracle Workloads. Click on *Create Service Instance*
+
+    ![Select License type](images/license-type.png)
 
 4. Wait for the service instance to have the *Active* status . Note down this URL as we will be using it in the further labs. 
 

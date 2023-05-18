@@ -45,17 +45,26 @@ In this lab, you will:
 
   ![Click Next](images/click-next.png)
 
+6. Under Configure variables, enter the domain url. 
 
-6. Select Run Apply and click Create.
+  ![Configure Variables](images/configure-variables.png)
 
-  ![Click Run Apply](images/click-run-apply.png)
+  To obtain the domain url, navigate to Identity -> Domains -> ag-domain
 
+  ![Obtain the domain url](images/domain-url.png)
 
+7. Click Create.
 
+  ![Click Create](images/stack-created.png)
 
-7. Your stack has now been created and the Apply action triggered is running to deploy your environment!
 
   ![Policy stack created](images/policy-stack-created.png)
+
+8. Click on Plan. Once the job has succeeded , click on Apply.
+
+  ![Policy stack Plan and Apply](images/plan-apply.png)
+
+9. Your stack has now been created and the Apply action triggered is running to deploy your environment
 
 
   You may now **proceed to the next lab**. 
