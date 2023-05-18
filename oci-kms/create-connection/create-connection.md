@@ -25,6 +25,18 @@ This lab assumes you have:
 
 ## Task 1: Connect to OCI and create your own Vault in OCI Vault
 
+You need below parameters to configure OCI connection to integrate with CCKM.
+* **Tenancy OCID:** OCID of the tenancy.
+* **User OCID:** OCID of the user.
+* **Region:** An Oracle Cloud Infrastructure region.
+* **Fingerprint:** Fingerprint of the public key added to this user.
+* **Key File:** Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
+
+You need to create vault in order to store your keys and secrets. There are two types of vaults: Default and Virtual Private. 
+* Default vaults share a partition of HSM. 
+* Virtual private vault use an isolated partition on a HSM.
+Each vault has a management endpoint and a cryptography endpoint. To create a Vault, follow the next steps.
+
 1. Log in to your OCI account by following steps in section Get Started
 
 2. Navigate through the main hamburger menu to *"Identity & Security > Vault"*
@@ -42,6 +54,25 @@ This lab assumes you have:
 5. Now your Vault will start to be created. Once it is created, the status will appear as Green and Active in your OCI console:
 
     ![Vault successfully created](images/vault-created.png)
+
+6. In order to configure CCKM Oracle connection, we must add an API Key (a RSA key pair) for the user. CCKM will use the private key to make connection to OCI and call its API. To do that, navigate through the main hamburger menu to *"Identity & Security > Identity > Users"*
+
+    ![Users](images/users-apikey.png)
+
+7. You will be able to see the list of users in the tenant. Once you click on your user name, you will be able to see all your user details. In the menu on the left called *"Resources"*, select API Keys. Click *"Add API Key"*.
+
+    ![Add API Key](images/add-apikey.png)
+
+8. A window will prompt asking you how you want to create those API Keys. You can generate the API key pair direclty in this step, or you also have the option to import previously created keys. In this case, we will generate the API key pair in this step and will download the private key. Then select *"Generate API Key Pair"* and *"Download Private Key"*. Save your private key in a local directory, as you will need it later. Click Add.
+
+    ![Generate API Key](images/generate-apikey.png)
+
+9. After you click *"Add"*, you will be able to see the Configuration File Preview, as following:
+
+    ![Configuration file](images/configuration-file.png)
+
+Copy all the information on notepad as it will be used to create connection between Oracle and CCKM.
+
 
 
 
