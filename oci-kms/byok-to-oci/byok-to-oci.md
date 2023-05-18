@@ -2,7 +2,7 @@
 
 ## Introduction
 
-*Describe the lab in one or two sentences, for example:* This lab walks you through the steps to ...
+This lab walks you through the steps to ...
 
 Estimated Time: -- minutes
 
@@ -11,73 +11,42 @@ Enter background information here about the technology/feature or product used i
 
 ### Objectives
 
-*List objectives for this lab using the format below*
-
 In this lab, you will:
 * Bring Your Own Keys to your OCI Vault
 
 ### Prerequisites (Optional)
-
-*List the prerequisites for this lab using the format below. Fill in whatever knowledge, accounts, etc. is needed to complete the lab. Do NOT list each previous lab as a prerequisite.*
 
 This lab assumes you have:
 * An Oracle Cloud account
 * All previous labs successfully completed
 
 
-*This is the "fold" - below items are collapsed by default*
+## Task 1: Managing Oracle Keys From CCKM
 
-## Task 1: Concise Task Description
+1.	Open the CipherTrust Manager Web UI.
 
-(optional) Task 1 opening paragraph.
+2. Click the **Cloud Key Manager** application.
 
-1. Step 1
+3.	On the left pane, click **Cloud Keys > Oracle**.
 
-	![Image alt text](images/sample1.png)
+4. Click **Refresh All**, the keys that are stored in Oracle will be displayed (note the refresh can take a few minutes).
 
-	> **Note:** Use this format for notes, hints, and tips. Only use one "Note" at a time in a step.
+5.	Click on Add Key tab. The Select Material Origin screen of the Add Oracle Key wizard is displayed.
 
-2. Step 2
+6. 	You can Create/Upload new key material or Clone existing key material.
 
-  ![Image alt text](images/sample1.png)
+7. Select the key source. In this case we are going to create local key on CipherTrust.  
 
-4. Example with inline navigation icon ![Image alt text](images/sample2.png) click **Navigation**.
+8. Add oracle key by providing Key name, Key Type and Key Size.
 
-5. Example with bold **text**.
+9. You need to select existing compartment, Vault and protection mode. 
 
-   If you add another paragraph, add 3 spaces before the line.
+10. Click next.
 
-## Task 2: Concise Task Description
+11. Review the key and click on add key.
 
-1. Step 1 - tables sample
+12. Go back to the OCI Vault and check whether key created from CCKM is visible or not. 
 
-  Use tables sparingly:
-
-  | Column 1 | Column 2 | Column 3 |
-  | --- | --- | --- |
-  | 1 | Some text or a link | More text  |
-  | 2 |Some text or a link | More text |
-  | 3 | Some text or a link | More text |
-
-2. You can also include bulleted lists - make sure to indent 4 spaces:
-
-    - List item 1
-    - List item 2
-
-3. Code examples
-
-    ```
-    Adding code examples
-  	Indentation is important for the code example to appear inside the step
-    Multiple lines of code
-  	<copy>Enclose the text you want to copy in <copy></copy>.</copy>
-    ```
-
-4. Code examples that include variables
-
-	```
-  <copy>ssh -i <ssh-key-file></copy>
-  ```
 
 ## Learn More
 

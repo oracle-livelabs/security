@@ -76,9 +76,17 @@ Copy all the information on notepad as it will be used to create connection betw
 
 
 
-## Task 2: Adding a connection between your Thales CipherTrust Manager and OCI
+## Task 2: Configuring CipherTrust Manager Connection to Oracle
 
-1. Click the + Add Connection button to open the Add Connection wizard. The wizard consists of the following steps:
+1. From the training platform, open Windows Server.
+2. Open your browser and enter the CipherTrust IP Address as the site name.
+3. The Login window opens.
+4. Enter the following:
+
+You are now logged into the web GUI console.
+5. On the left pane, expand Access Management, and then click Connections.
+
+6. Click the + Add Connection button to open the Add Connection wizard. The wizard consists of the following steps:
     * Select Connection Type : Select “Cloud” : “Oracle Cloud Infrastructure”
     * General Info: provide a Name and Description (optional) for the new connection.
     * Configure Connection: 
@@ -94,78 +102,53 @@ Copy all the information on notepad as it will be used to create connection betw
         Click Next to move to the next step.
     * Add Products: Use the check boxes in the Products list to select Cloud Key manager”
 
-## Task 3: Master Encryption Key Creation
+7. Click the **Cloud** icon.
 
-1.	Open the Cloud Key Manager application.
+8. Under **Select Cloud type**, select **Oracle Cloud Infrastructure**, and then click **Next**.
 
-2.	In the left pane, click Cloud Keys > Oracle.
+9. Enter the connection name in the **Name** field, and then click **Next**.
 
-3.	Click Add Key. The Select Material Origin screen of the Add Oracle Key wizard is displayed.
+10. Add connection with product Cloud Key Manager aka CCKM.
 
-4.	Under Select Method, select Create/Upload New Key Material. The Select Source section appears. Depending on your requirements, select from the following sources:
+11. Under **Configure Connection**, enter the following parameters:
 
-    * Luna HSM: Refer to Uploading Luna HSM Key Material for details.
+    * **Tenancy OCID:** OCID of the tenancy.
+    * **User OCID:** OCID of the user.
+    * **Region:** An Oracle Cloud Infrastructure region.
+    * **Fingerprint:** Fingerprint of the public key added to this user.
+    * **Key File:** Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
+    * **File Upload:** Select and click Upload Certificate to upload the key file from your machine.
+    * **Text:** Select and paste the certificate content in the text field.
+    * **Passphrase:** Passphrase of the encrypted key file.
 
-5.	Select Material Origin > Select Source
-    a.	Select Luna HSM.
-    b.	Click Next. The Configure HSM Key screen is displayed. The drop-down list shows the HSM partitions linked with the configured Luna HSM connection.
+12. Click Test Credentials to check whether the connection is configured correctly. If the test is successful, the status is OK else the status is Fail. Click Next to move to the next step.
 
-6.	Configure HSM Key
+13. From the connection pane you will get an option to test the connection again.
 
-7.	    Select the Partition ID of the desired Luna HSM partition.
+14. Your connection state should be **Ready.** 
 
-8.	    Enter an HSM Key Name. A new key with this name will be created on the Luna HSM and its key material will be uploaded to Oracle cloud.
+    > Note:  If the test does not succeed, check the CipherTrust Network configuration.
 
-9.	    Select Key Type. The options are AES and RSA. It creates and uploads an RSA key pair.
 
-10.	    Select the Key Size based on the key type:
-    a.	        For an AES key, the options are 128, 192, and 256.
-    b.	        For an RSA key, the options are 2048, 3072, and 4096.
+## Task 3: Configuring the CCKM Connection to Oracle
 
-11.	    (Optional) Specify the tags.
-	To add a new tag: Select a Tag Namespace. The options are:
-    * Free Form: Allows adding free form tags.
-    * Oracle Tags: Allows adding tags based on created on and created by.
-	    Specify a Tag Key.
-	    Specify a Tag Value.
-	    Click +.
-    Similarly, add as many tags as required.
+1. Log into the CipherTrust Manager Web UI.
+2. Click the Cloud Key Manager application.
+3. On the left pane, click Containers and Oracle Vaults. 
+4. Click Add Existing Vault.
+5. Under Add Existing Key Vault configuration, add the following parameters:
+    * **Oracle connection** - select the connection that was previously created.
+    * **Compartment** – Select the compartment created with Oracle.
+    * **Region** - Select your relevant region from the dropdown.
+    * **Vault** – Select the vault which we created earlier with Oracle.
 
-12.	    Select the Key Attributes. The options are:
-    * Modifiable, Extractable, Sensitive (all three are selected for a BYOK Compatible key)
-    * Encrypt, Decrypt, Wrap, Unwrap
-    * Sign, Verify, Derive
+    > Note: Bucket name and Bucket Namespace are required for creating key backups of HSM protected 
+keys for Virtual Private Vaults. Key Backup functionality while syncing vaults will cease without these 
+parameters.
 
-13.	Click Next. The Configure Oracle Key screen is displayed.
-    Configure Oracle Key:
-    * Enter a unique, user-friendly alias as the Oracle Key Name. This will be the key name on Oracle cloud. This name helps uniquely identify an Oracle key. By default, the HSM Key Name you specified on the previous screen is populated.
-    * Select the desired Oracle Compartment from the drop-down list. The drop-down list shows the list of Oracle compartments added to the CCKM.
-    * Select the desired Key Vault from the drop-down list. The drop-down list shows the list of Oracle vaults added to the CCKM.
-    * Select the Protection Mode. The options are Software and HSM.
+6. Click next and add the Vault.
 
-    (Optional) Specify the tags.
-    To add a new tag: Select a Tag Namespace. The options are:
-    * Free Form: Allows adding free form tags.
-    * Oracle Tags: Allows adding tags based on created on and created by
-    Specify a Tag Key.
-    Specify a Tag Value.
-    Click +.
-    Similarly, add as many tags as required.
 
-14.	Click Next. The Review and Add screen is displayed. Review and Add.
-
-15.	This screen shows the key details that you have provided. These details are divided into MATERIAL ORIGIN, SOURCE KEY, and DESTINATION KEY sections.
-
-    Before adding the key, review all details. After the key is added, certain features will no longer be editable.
-    Review the key details displayed on the screen.
-    If details are incorrect or you want to make any changes, click Edit next to the SOURCE KEY and DESTINATION KEY sections and update details. Alternatively, click Back and make changes, as appropriate.
-
-16.	    Click Add Key.
-    The key creation starts. A Create Key In Progress message is displayed on the screen. Leave the window open until the process is completed.
-    When the status next to the SOURCE KEY and DESTINATION KEY sections becomes Complete and the Key ID links are displayed, the key is created successfully.
-
-17.	    Click Close. The Add Oracle Key wizard is closed.
-18.	The newly created key is displayed in the list of Oracle keys.
 
 
 ## Learn More
