@@ -67,7 +67,7 @@ This lab assumes you have:
     ```
     The data will still show as redacted because we have not yet changed our redaction policy.
 
-    ![Redacted Query](images/redacted-qry.png)
+    ![Redacted Query](./images/redacted-qry.png)
 
 2. As `ADMIN`, verify there is a new audit record for our newly-created Unified Audit policy in the Unified Audit Trail.
 
@@ -79,7 +79,7 @@ This lab assumes you have:
     ```
     ![New Audit Record](images/new-audit-rec.png)
 3. Now, run the REST call from your browser by refreshing the browser tab. The data will be redacted.
-    ![Redacted REST Call](images/redacted-call.png)
+    ![Redacted REST Call](./images/redacted-call.png)
 4. Again, as `ADMIN`, you should see additional audit records in the Unified Audit Trail. These new audit records should show differences in the values of the application\_contexts column. For example, Database Actions SQL will show a value of: '/\_/sql/', while the Oracle Rest Data Services CALL will show the value of application\_contexts column as:
 '/demo\_hr\_employees/'
     ![Additional Audit Records](images/add-audit-rec.png)
@@ -116,7 +116,7 @@ This lab assumes you have:
     ```
     ![Run Query Again](images/re-run-qry.png)
 3. Also re-run the REST Call. The data should still be redacted.
-    ![Run Query Again](images/redacted-call.png)
+    ![Run Query Again](./images/redacted-call.png)
 ## Task 4: Drop Audit policy and then the Redaction policy.
 1. Since our Unified Audit policy has served its purpose, we can drop it as we do not need to audit every single SELECT statement. As `ADMIN`, run the following script:
     ```
