@@ -97,8 +97,8 @@ In order to use customer-managed encryption for Autonomous Database, it is neede
 
 7.	Fill the parameters as follows:
     * Compartment: ocw23-OCI-Vault-HOL
-    *	Display Name: ocw23-OCI-Vault-XXX
-    *	Database Name: ocw23-OCI-Vault-XXX
+    *	Display Name: ocw23XXX
+    *	Database Name: ocw23XXX
     *	Workload type: Transaction Processing
     *	Deployment type: Shared Infrastructure
     *	Configure the database: &lt;Leave it as default&gt; 
@@ -107,11 +107,14 @@ In order to use customer-managed encryption for Autonomous Database, it is neede
     *	License type: Bring Your Own License (BYOL)
     * Oracle Database Edition: Oracle Database Standard Edition (SE)
   
-  Click the link *"Show advanced options"*. A new section for Encryption Key will appear. Select the option: *"Encrypt using a customer-managed key in this tenancy"* and enter your reviously created Vault and Master Encryption Key.
+  Click the link *"Show advanced options"*. A new section for Encryption Key will appear. Select the option: *"Encrypt using a customer-managed key in this tenancy"* and enter your previously created Vault and Master Encryption Key.
+
+    ![Encryption in Autonomous Database](./images/adb-encryption.png "Encryption in Autonomous Database")
+
 
 8. Click Create Autonomous Database. Then wait until the database status is set to green and ACTIVE.
 
-![Click Create Autonomous Database](./images/click-create-autonomous-db.png "Click Create Autonomous Database")
+  ![Click Create Autonomous Database](./images/click-create-autonomous-db.png "Click Create Autonomous Database")
 
 
 

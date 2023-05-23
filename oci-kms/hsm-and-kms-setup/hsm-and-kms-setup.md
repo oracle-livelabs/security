@@ -27,19 +27,13 @@ This lab assumes you have:
 
 1. Register a DPoD subscriber tenant through either of the following URLs, depending on your region. A DPoD subscriber tenant is a DPoD instance, with its own unique URL subdomain, where users consume services, including HSM as a Service where you will be able to create your encryption keys and simulate the usage of your own HSM. 
 
-	![Image alt text](images/sample1.png)
-
   > Tip: When you create the CDSPaaS service on DPoD, you can select a different cloud region to deploy the service in. The cloud region of the service has more of an effect on network latency for CDSPaaS than the DPoD subscriber tenant region.
 
 2. Log in to your DPoD subscriber tenant as the Tenant Administrator.
 
-  ![Image alt text](images/sample1.png)
-
   Provision the CDSPaaS service on DPoD to make a CDSPaaS tenant with an 	automatically generated tenant name. A CDSPaaS tenant is a logical boundary for 	each customer, cryptographically isolated from other customers by a unique Luna Cloud HSM encryption key.
 
 3. Navigate to Services, select Add Service and select the CipherTrust Data Security Platform service.
-
-  ![Image alt text](images/sample2.png) click **Navigation**.
 
 4. Enter your configuration details in the Add Service wizard and click Finish to confirm.
 

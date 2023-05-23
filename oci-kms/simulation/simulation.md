@@ -27,25 +27,35 @@ This lab assumes you have:
 * All previous labs successfully completed
 
 
-*This is the "fold" - below items are collapsed by default*
+## Task 1: Load data in Autonomous Database and bucket in Object Storage
 
-## Task 1: Concise Task Description
+In this task you will load data in your previously created Autonomous Database and also in your bucket.
 
-(optional) Task 1 opening paragraph.
+1. Create a table with data in your Autonomous Database by accessing the Web SQL Developer. In order to do that, go to your Autonomous Database and click on Database Actions:
 
-1. Step 1
+	![Click Database Actions](images/database-actions.png)
 
-	![Image alt text](images/sample1.png)
+2. Log in with ADMIN user and the password you provided during database creation.
 
-2. Step 2
+  ![Enter Admin credentials](images/admin-login.png)
 
-  ![Image alt text](images/sample1.png)
+3. Click on SQL box, under Development section.
 
-4. Example with inline navigation icon ![Image alt text](images/sample2.png) click **Navigation**.
+  ![Click SQL](images/sql.png)
 
-5. Example with bold **text**.
+4. Web SQL Developer will launch, and you will be able to run SQL queries to create users and tables.
 
-   If you add another paragraph, add 3 spaces before the line.
+  ![SQL Developer](images/sql-developer.png)
+
+5. Create now a table to store test data by running the following script in web SQL Developer:
+
+  ```
+  CREATE TABLE ADMIN.NEWDATA
+(   STATUS VARCHAR2(50 BYTE) COLLATE "USING_NLS_COMP",
+    SERVICE VARCHAR2(255 BYTE) not null,
+    EXTRACT_DATE DATE not null
+)   DEFAULT COLLATION "USING_NLS_COMP";
+  ```
 
 ## Task 2: Concise Task Description
 
