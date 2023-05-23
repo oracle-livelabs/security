@@ -78,6 +78,7 @@ In order to use customer-managed encryption for Autonomous Database, it is neede
 
   ```
   Allow dynamic-group ocw23-OCI-Vault-XXX to use vaults in compartment ocw23-OCI-Vault-HOL
+  Allow dynamic-group ocw23-OCI-Vault-XXX to use keys in compartment ocw23-OCI-Vault-HOL
   ```
   It will look like something similar to:
 

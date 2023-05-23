@@ -27,68 +27,44 @@ This lab assumes you have:
 * All previous labs successfully completed
 
 
-## Task 1: Load data in Autonomous Database and bucket in Object Storage
+## Task 1: Load sample data into your Autonomous Database 
 
-In this task you will load data in your previously created Autonomous Database and also in your bucket.
+In this task you will load data into your previously created Autonomous Database and also in your bucket.
 
-1. Create a table with data in your Autonomous Database by accessing the Web SQL Developer. In order to do that, go to your Autonomous Database and click on Database Actions:
+1. Right-click on the link below and click **Save Link As…** to download the file to your computer.
 
-	![Click Database Actions](images/database-actions.png)
+	TODO: link
 
-2. Log in with ADMIN user and the password you provided during database creation.
+2. Navigate to your Autonomous Database page in OCI console and go to the Data Load main page by going to the Database Actions Launchpad and in the **Data Studio** section, click **DATA LOAD.**
 
-  ![Enter Admin credentials](images/admin-login.png)
+  ![Database Actions](./images/database-actions.png "Database Actions")
 
-3. Click on SQL box, under Development section.
+  ![Data Load](./images/data-load.png "Data Load")
 
-  ![Click SQL](images/sql.png)
+3. Leave the default selections, **LOAD DATA** and **LOCAL FILE**, and click Next.
 
-4. Web SQL Developer will launch, and you will be able to run SQL queries to create users and tables.
+  ![Load File](./images/load-file.png "Load File")
 
-  ![SQL Developer](images/sql-developer.png)
+4. The Local Files page enables you to drag and drop files to upload, or you can select files. Drag the customer_segment.csv file from the directory where you downloaded onto the Drag and Drop target. Or select the files using the Select Files pop-up dialog.
 
-5. Create now a table to store test data by running the following script in web SQL Developer:
+  ![File loaded](./images/file-loaded.png "File loaded")
 
-  ```
-  CREATE TABLE ADMIN.NEWDATA
-(   STATUS VARCHAR2(50 BYTE) COLLATE "USING_NLS_COMP",
-    SERVICE VARCHAR2(255 BYTE) not null,
-    EXTRACT_DATE DATE not null
-)   DEFAULT COLLATION "USING_NLS_COMP";
-  ```
+5. When the upload is complete, you simply click the blue **Start** button and click **Run** to run the data load job.
 
-## Task 2: Concise Task Description
+6. When the load job finishes, a green check mark appears for each table. Click **Catalog** in the menu on the left.
 
-1. Step 1 - tables sample
+  ![Table created](./images/table-created.png "Table created")
 
-  Use tables sparingly:
+7. The Catalog shows the CUSTOMER_SEGMENT table has been successfully created. You can click the table name to see the data.
 
-  | Column 1 | Column 2 | Column 3 |
-  | --- | --- | --- |
-  | 1 | Some text or a link | More text  |
-  | 2 |Some text or a link | More text |
-  | 3 | Some text or a link | More text |
+  ![Table](./images/customer-table.png "Table")
 
-2. You can also include bulleted lists - make sure to indent 4 spaces:
+This completes the lab on loading CSV files from your local computer.
 
-    - List item 1
-    - List item 2
+## Task 2: Load sample data into your bucket
 
-3. Code examples
-
-    ```
-    Adding code examples
-  	Indentation is important for the code example to appear inside the step
-    Multiple lines of code
-  	<copy>Enclose the text you want to copy in <copy></copy>.</copy>
-    ```
-
-4. Code examples that include variables
-
-	```
-  <copy>ssh -i <ssh-key-file></copy>
-  ```
-
+## Task 3: Disable connection to Thales CipherTrust Manager
+ 
 ## Learn More
 
 *(optional - include links to docs, white papers, blogs, etc)*
