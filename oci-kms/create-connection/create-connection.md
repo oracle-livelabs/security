@@ -25,7 +25,7 @@ This lab assumes you have:
 
 ## Task 1: Connect to OCI and create your own Vault in OCI Vault
 
-You need below parameters to configure OCI connection to integrate with CCKM.
+You need below parameters to configure OCI connection to integrate with CTM.
 * **Tenancy OCID:** OCID of the tenancy.
 * **User OCID:** OCID of the user.
 * **Region:** An Oracle Cloud Infrastructure region.
@@ -47,7 +47,7 @@ Each vault has a management endpoint and a cryptography endpoint. To create a Va
 
     ![Create Vault](images/select-compartment-create-vault.png)
 
-4. Enter a name for your Vault. Please follow the naming convention:
+4. Enter a name for your Vault. Please follow the naming convention: ocw23-OCI-Vault-XXX where XXX is your number student.
 
      ![Enter name for Vault](images/create-name-vault.png)
 
@@ -55,11 +55,11 @@ Each vault has a management endpoint and a cryptography endpoint. To create a Va
 
     ![Vault successfully created](images/vault-created.png)
 
-6. In order to configure CCKM Oracle connection, we must add an API Key (a RSA key pair) for the user. CCKM will use the private key to make connection to OCI and call its API. To do that, navigate through the main hamburger menu to *"Identity & Security > Identity > Users"*
+6. In order to configure CTM Oracle connection, you must add an API Key (a RSA key pair) for your user. CTM will use the private key to make connection to OCI and call its API. To do that, click on the top right user profile icon in OCI console and select **User Settings**
 
-    ![Users](images/users-apikey.png)
+    ![User Settings](images/user-settings.png)
 
-7. You will be able to see the list of users in the tenant. Once you click on your user name, you will be able to see all your user details. In the menu on the left called *"Resources"*, select API Keys. Click *"Add API Key"*.
+7. In the menu left, navigate to Resources and API Keys. Click *"Add API Key"*.
 
     ![Add API Key](images/add-apikey.png)
 
@@ -71,66 +71,83 @@ Each vault has a management endpoint and a cryptography endpoint. To create a Va
 
     ![Configuration file](images/configuration-file.png)
 
-Copy all the information on notepad as it will be used to create connection between Oracle and CCKM.
+Copy all the information on notepad as it will be used to create connection between Oracle and CTM.
+
 
 
 
 
 ## Task 2: Configuring CipherTrust Manager Connection to Oracle
 
-1. From the training platform, open Windows Server.
-2. Open your browser and enter the CipherTrust IP Address as the site name.
-3. The Login window opens.
-4. Enter the following:
+In this task you will create a connection from CipherTrust Manager in Thales platform to Oracle. 
 
-You are now logged into the web GUI console.
-5. On the left pane, expand Access Management, and then click Connections.
+CipherTrust Cloud Key Manager (CTM) solution is part of the Thales CipherTrust Manager. It is designed to address enterprise needs for encrypting data in the cloud while retaining custodianship of encryption keys, to comply with data security mandates in cloud storage environments. The solution uses an already-installed CipherTrust Manager (CM) as the underlying appliance that generates, stores, and retrieves encryption keys used by the CTM servers. The keys and CTM are administered by a Web based graphic interface (Management Console), Command Line Interfaces (CLI) and command-line utilities. The encryption keys are maintained on the Thales CipherTrust Manager Appliance.
 
-6. Click the + Add Connection button to open the Add Connection wizard. The wizard consists of the following steps:
-    * Select Connection Type : Select “Cloud” : “Oracle Cloud Infrastructure”
-    * General Info: provide a Name and Description (optional) for the new connection.
-    * Configure Connection: 
-        * Tenancy OCID: OCID of the tenancy.
-        * User OCID: OCID of the user.
-        * Region: An Oracle Cloud Infrastructure region.
-        * Fingerprint: Fingerprint of the public key added to this user.
-        * Key File: Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
-        * File Upload: Select and click Upload Certificate to upload the key file from your machine.
-        * Text: Select and paste the certificate content in the text field.
-        * Passphrase: Passphrase of the encrypted key file.
-        * Click Test Credentials to check whether the connection is configured correctly. If the test is successful, the status is OK else the status is Fail.
-        Click Next to move to the next step.
-    * Add Products: Use the check boxes in the Products list to select Cloud Key manager”
-
-7. Click the **Cloud** icon.
-
-8. Under **Select Cloud type**, select **Oracle Cloud Infrastructure**, and then click **Next**.
-
-9. Enter the connection name in the **Name** field, and then click **Next**.
-
-10. Add connection with product Cloud Key Manager aka CCKM.
-
-11. Under **Configure Connection**, enter the following parameters:
-
-    * **Tenancy OCID:** OCID of the tenancy.
-    * **User OCID:** OCID of the user.
-    * **Region:** An Oracle Cloud Infrastructure region.
-    * **Fingerprint:** Fingerprint of the public key added to this user.
-    * **Key File:** Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
-    * **File Upload:** Select and click Upload Certificate to upload the key file from your machine.
-    * **Text:** Select and paste the certificate content in the text field.
-    * **Passphrase:** Passphrase of the encrypted key file.
-
-12. Click Test Credentials to check whether the connection is configured correctly. If the test is successful, the status is OK else the status is Fail. Click Next to move to the next step.
-
-13. From the connection pane you will get an option to test the connection again.
-
-14. Your connection state should be **Ready.** 
-
-    > Note:  If the test does not succeed, check the CipherTrust Network configuration.
+CTM is a hardened appliance (Ubuntu) for optimum security and comprises/integrates with MongoDB for secure storage. CipherTrust Cloud Key Manager is delivered as a virtual appliance that can be installed either on-premises (by deploying an .ova file) or on Amazon Web Services (by deploying an Amazon Machine Image (AMI)) or from Azure Marketplace. The features and functionality are the same for both deployment scenarios.
 
 
-## Task 3: Configuring the CCKM Connection to Oracle
+1. Go to the following URL to access [CipherTrust Manager as a Service](https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM).
+
+    ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
+
+2. Enter the credentials you have been provided with. You are now logged into the CipherTrust Manager web console.
+
+    ![CipherTrust Manager web console](images/ctm-page.png "CipherTrust Manager web console")
+
+3. On the left pane, expand Access Management, and then click Connections.
+
+    ![Connection](images/create-connection.png "Connection")
+
+4. Click the + Add Connection button to open the Add Connection wizard. The wizard consists of the multiple steps.
+
+    ![Add connection](images/add-connection.png "Add connection")
+
+5. Select Connection Type : Select “Cloud” : “Oracle Cloud Infrastructure”
+
+     ![Connection type](images/connection-type.png "Connection type")
+
+6. General Info: provide a Name and Description (optional) for the new connection.
+
+    ![Connection name](images/name-connection.png "Connection name")
+
+7. Configure Connection. In this step you have to enter the information you got in your configuration file previously saved, after you created your API key:
+
+    * Tenancy OCID: OCID of the tenancy.
+    * User OCID: OCID of the user.
+    * Region: An Oracle Cloud Infrastructure region.
+    * Fingerprint: Fingerprint of the public key added to this user.
+    * Key File: Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
+    * File Upload: Select and click Upload Private Key to upload the key file from your machine.
+    * Text: Select and paste the certificate content in the text field.
+    * Passphrase: Passphrase of the encrypted key file.
+    * Click Test Credentials to check whether the connection is configured correctly. If the test is successful, the status is OK else the status is Fail. Click Next to move to the next step.
+
+    ![Connection details](images/connection-details.png "Connection details")
+
+
+    ![Successful connection](images/successful-connection.png "Successful connection")
+
+
+
+8. Add Products: Use the check boxes in the Products list to select Cloud Key manager.
+
+    ![Add Product](images/add-cloudkeymanager.png "Add Product")
+
+9. Click Add Connection.
+
+
+10. Now you have to test the connection:
+
+    
+    ![Test connection](images/test-connection.png "Test connection")
+
+
+11. Your connection state should be **Ready.** 
+
+      ![Connection ready](images/tested-connection.png "Connection ready")
+
+
+## Task 3: Configuring the CTM Connection to Oracle
 
 1. Log into the CipherTrust Manager Web UI.
 2. Click the Cloud Key Manager application.
