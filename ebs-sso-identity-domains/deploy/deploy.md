@@ -13,6 +13,12 @@ Using this stack we will be able to deploy/install **EBS - 12.2.11, EBS Asserter
 3.	Deploy the **Identity Domain** of the type **Oracle Apps Premium**
 4.	Validate the created resources via web browser and via SSH access.
 
+## Prerequisites
+
+Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace the the content of the **SSH.key** file  with your respective content of the private key.
+
+**Note** Name of the file should not be changed.
+
 ## Task 1: Deploy the Stack via Resource Manager
 
 1. Once logged in to the OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
@@ -98,7 +104,7 @@ Try accessing your EBS Instance via this url - *http://demoebs.example.com:8000/
 
 **Username** - *SYSADMIN*
 
-**Password** - Enter your *SYSADMIN Password*
+**Password** - Enter your *SYSADMIN Password* . Use *sysadmin@1234* as the password to login.
 
 3. Navigate to **Domains** under **Identity and Security** on the OCI console to validate that your Domain of type **Oracle Apps Premium** has been created.
 
