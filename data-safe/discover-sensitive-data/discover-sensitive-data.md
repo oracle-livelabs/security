@@ -33,8 +33,6 @@ This lab assumes you have:
 
 ## Task 1: Discover sensitive data in your target database by using Data Discovery
 
-In Data Discovery, you can select the sensitive types that you want to discover in your target database. Data Discovery then generates a sensitive data model that lists sensitive columns in your target database.
-
 1. Make sure that you are on the browser tab for Oracle Data Safe. If needed, sign in again.
 
 2. In the breadcrumb at the top of the page, click **Data Safe**.
@@ -44,8 +42,6 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 4. From the **Compartment** drop-down list, select your compartment.
 
     A Data Discovery overview page is displayed with statistics for the top five target databases in your compartment. Your page is most likely empty because this is the first time you are using Data Discovery in this workshop.
-
-    ![Data Discovery dashboard](images/data-discovery-dashboard.png "Data Discovery dashboard")
 
 5. Click **Discover Sensitive Data**.
 
@@ -138,4 +134,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 23, 2023
+- **Last Updated By/Date** - Jody Glover, May 24, 2023
