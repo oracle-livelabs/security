@@ -57,7 +57,7 @@ To use the Data Masking feature with an Autonomous Database on Shared Infrastruc
     
     You are now able to mask sensitive data on your target database.
 
-4. Clear the worksheet.
+4. Clear the worksheet and script output.
 
 
 
@@ -162,7 +162,7 @@ After you create a masking policy, you can run a data masking job against your t
 
     ![Log messages for data masking work request](images/masking-log-messages.png "Log messages for data masking work request")
 
-4. Wait for the status to read **SUCCEEDED**.
+4. Wait for the status to read as **SUCCEEDED**.
 
     ![Work Request page for masking job succeeded](images/work-request-masking-job-succeeded.png "Work Request page for masking job succeeded")
 
@@ -216,4 +216,4 @@ After you create a masking policy, you can run a data masking job against your t
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 23, 2023
+- **Last Updated By/Date** - Jody Glover, May 24, 2023
