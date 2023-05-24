@@ -110,7 +110,7 @@ CTM is a hardened appliance (Ubuntu) for optimum security and comprises/integrat
 
     ![Connection name](images/name-connection.png "Connection name")
 
-7. Configure Connection. In this step you have to enter the information you got in your configuration file previously saved, after you created your API key:
+7. After you click **Next**, the step Configure Connection is coming. In this step you have to enter the information you got in your configuration file previously saved, after you created your API key:
 
     * Tenancy OCID: OCID of the tenancy.
     * User OCID: OCID of the user.
@@ -120,23 +120,26 @@ CTM is a hardened appliance (Ubuntu) for optimum security and comprises/integrat
     * File Upload: Select and click Upload Private Key to upload the key file from your machine.
     * Text: Select and paste the certificate content in the text field.
     * Passphrase: Passphrase of the encrypted key file.
-    * Click Test Credentials to check whether the connection is configured correctly. If the test is successful, the status is OK else the status is Fail. Click Next to move to the next step.
+    
 
     ![Connection details](images/connection-details.png "Connection details")
+
+    
+    Click Test Connection, a Status: OK message is displayed:
 
 
     ![Successful connection](images/successful-connection.png "Successful connection")
 
 
 
-8. Add Products: Use the check boxes in the Products list to select Cloud Key manager.
+8. Click Next. The step is Add Products: Use the check boxes in the Products list to select Cloud Key manager.
 
     ![Add Product](images/add-cloudkeymanager.png "Add Product")
 
 9. Click Add Connection.
 
 
-10. Now you have to test the connection:
+10. From the connection pane you will get an option to test the connection again:
 
     
     ![Test connection](images/test-connection.png "Test connection")
@@ -144,10 +147,10 @@ CTM is a hardened appliance (Ubuntu) for optimum security and comprises/integrat
 
 11. Your connection state should be **Ready.** 
 
-      ![Connection ready](images/tested-connection.png "Connection ready")
+    ![Connection ready](images/tested-connection.png "Connection ready")
 
 
-## Task 3: Configuring the CTM Connection to Oracle
+## Task 3: Add Oracle Vault to CTM
 
 1. Log into the CipherTrust Manager Web UI.
 2. Click the Cloud Key Manager application.
