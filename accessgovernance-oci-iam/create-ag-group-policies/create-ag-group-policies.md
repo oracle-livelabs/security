@@ -7,8 +7,6 @@ Create groups and policies for Access Governance.
 * Estimated Time: 15 minutes
 * Persona: Campaign Administrator
 
-Watch the video below for a quick walk-through of the lab.
-[Create Access Review Campaign](videohub:1_9s3mt0qx)
 
 ### Objectives
 

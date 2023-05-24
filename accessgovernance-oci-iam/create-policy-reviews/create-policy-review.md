@@ -28,8 +28,36 @@ In this lab, you will:
 
   ![Access Governance Homepage](images/ag-homepage.png)
 
+## Task 2: Activate the Identities
 
-## Task 2: Create a Policy Review Campaign
+In this task, you will select the identities that you want to include in your service.
+
+1. In the Oracle Access Governance Console, navigate to Service Administration -> Manage Identities
+
+  ![Navigate Manage Identities](images/navigate-manage-identities.png)
+
+2. Select **Any** condition match option.
+
+   ![Manage Identities page](images/select-any.png)
+
+3. Select the below options for the condition to match the identities that you want to include. 
+
+      *  Select attribute: Domain OCID 
+      * Select operator: Contains 
+      * Attribute value: ocid 
+    
+    Hit **Enter**
+
+      ![Manage Identities page](images/condition-identity.png)
+
+4. Click on **Preview Summary based on the rule above**. The identities that match the rule will be visible. 
+
+5. Close the pop-up and click on **Save**
+
+  ![Manage Identities page](images/identities-user.png)
+
+
+## Task 3: Create a Policy Review Campaign
 
 1.  On the **Oracle Access Governance** console home page, scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
 
@@ -97,7 +125,7 @@ In this lab, you will:
 
   ![OCI Enter details](images/campaign-scheduled.png)
 
-## Task 3: Perform Policy Review Tasks
+## Task 4: Perform Policy Review Tasks
 
   In this task, you will review and certify OCI IAM review tasks raised by the campaign created in the previous task.
 
