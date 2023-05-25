@@ -1,4 +1,5 @@
 # Prepare Setup
+ANBU - IS THIS BEING USED? - ANBU
 
 ## Introduction
 This lab will show you how to download the Oracle Resource Manager (ORM) stack zip file needed to set up the resource needed to run this workshop.

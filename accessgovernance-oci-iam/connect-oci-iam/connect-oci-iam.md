@@ -1,4 +1,4 @@
-# Setup Identity Orchestration between Oracle Acccess Governance and OCI IAM 
+# Integrate Oracle Access Governance with OCI IAM 
 
 ## Introduction
 
@@ -13,11 +13,13 @@ In this lab, you will:
 * Generate API Keys and Oracle Cloud Identifier (OCID) for an Identity User
 * Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
+ANBU - Generate API Keys steps are missing; Let us add a Task for that if needed; I did not need it to complete as pamela.green - ANBU
 
 ## Task 1: Setup Policy to allow Oracle Access Governance to connect OCI
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Click Identity and Security in the Navigation menu. Select Policies from the list of products.
 
+ANBU - In the following step, separate the policy statements (without Statement n:), and make is copy-able - ANBU
 2. On the Policies page, In the root compartment click on Create Policy to create a policy : oci-iam-policy
 
     ```
@@ -35,6 +37,7 @@ In this lab, you will:
 
 ## Task 2: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
+ANBU - Let us ask them to login as pamela.green specifically - ANBU
 1.  In a browser, navigate to the Oracle Access Governance service home page and log in as a user with the Administrator application role.
 
 2.  On the Oracle Access Governance service home page, click on the Navigation Menu icon, and select **Service Administration → Connected Systems**
@@ -50,15 +53,15 @@ In this lab, you will:
 
   ![Select cloud service provider](images/select-oci.png)
 
-6. Enter name and description of the connected system, and then click **Next.**
+6. Enter name (local-oci-iam) and description (Local OCI IAM) of the connected system, and then click **Next.**
 
   ![OCI Enter details](images/enter-oci-system-name.png)
 
-7. Enter the Tenancy OCID and Region details. 
+7. Enter the Tenancy OCID and Region details. (ANBU - Add a step to get the OCID and link to the region codes (give example us-ashburn-1) - ANBU)
 
   ![OCI Enter details](images/oci-iam-details.png)
 
-8. Click **Add.** If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
+8. Click **Add.** (ANBU - I had to click on manage to see the status - ANBU) If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
 
   ![OCI Connection status](images/oci-connection-status.png)
 

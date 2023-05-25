@@ -29,7 +29,7 @@
         },
         {
             "title": "Lab 4: Setup Identity Orchestration between Oracle Access Governance and OCI IAM",
-            "filename": "../../policy-review/policy-review.md"
+            "filename": "../../connect-oci-iam/connect-oci-iam.md"
         },
         {
             "title": "Lab 5: Create OCI Policies, Groups and Compartments ",

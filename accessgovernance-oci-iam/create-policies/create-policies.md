@@ -17,7 +17,7 @@ In this lab, you will:
 * Download the stack zip file 
 * Create  OCI Policies, Groups and Compartments using the stack
 
-
+ANBU - The following steps need to be performed as the IDD administrator created, Please mention that initially - ANBU
 ## Task 1: Download the Policy stack zip file
 
 1. Click on the link below to download the Resource Manager zip file you need to build your environment:
@@ -49,7 +49,7 @@ In this lab, you will:
 
   ![Configure Variables](images/configure-variables.png)
 
-  To obtain the domain url, navigate to Identity -> Domains -> ag-domain
+  To obtain the domain url, navigate to Identity -> Domains -> ag-domain (ANBU - MOVE THIS TO STEP 3 and ask them to copy, so that they will have the URL - ANBU)
 
   ![Obtain the domain url](images/domain-url.png)
 

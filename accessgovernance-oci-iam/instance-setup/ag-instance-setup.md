@@ -18,11 +18,14 @@ In this lab, you will:
 ### Prerequisites
 This lab assumes you have:
 - A valid Oracle OCI tenancy, with OCI administrator privileges. 
+- ANBU - You choose a region where Access Governance is available. 
 
 
 ## Task 1: Create AG Service instance 
 
-1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products.
+ANBU - We need to ask them to login to the created IDD, if they are not already, before this step - ANBU
+
+1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. ANBU - If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region.
     ![Create Service Instance](images/oci-console.png)
 
 2. On the Access Governance page, select *Service Instances.*

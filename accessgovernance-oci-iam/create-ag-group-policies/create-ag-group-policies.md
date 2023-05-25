@@ -40,7 +40,7 @@ In this lab, you will:
     The *Group* has been created succesfully. 
 
 
-## Task 2: Create AG Policies 
+## Task 2: Create AG Policies (ANBU - To be moved to Lab 1)
 
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Policies* from the list of products.

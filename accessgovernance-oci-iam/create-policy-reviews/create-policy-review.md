@@ -2,7 +2,7 @@
 
 ## Introduction
 
-As OCI Tenancy Administrators and Access Governance Administrators they can create policy review campaign and Perform Policy Review tasks. 
+Access Governance Administrators can create policy review campaign and Perform Policy Review tasks. 
 
 * Estimated Time: 15 minutes
 * Persona: Administrator
@@ -14,7 +14,7 @@ In this lab, you will:
 * Examine policy review tasks raised by the campaign
 * Evaluate policy review tasks assigned to you as a Cloud Administrator
 
-
+ANBU - Let us be specific about the user performing these steps. It should be Pamela Green - ANBU
 ## Task 1: Sign in to Oracle Access Governance Console
 
 1. From your browser, go to the Oracle Access Governance Console.
