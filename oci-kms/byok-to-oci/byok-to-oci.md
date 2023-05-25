@@ -21,32 +21,79 @@ This lab assumes you have:
 * All previous labs successfully completed
 
 
-## Task 1: Managing Oracle Keys From CCKM
+## Task 1: Managing Oracle Vaults From CTM
 
 1.	Open the CipherTrust Manager Web UI.
 
-2. Click the **Cloud Key Manager** application.
+    ![CTM UI](images/log-in-ctm.png "CTM UI")
 
-3.	On the left pane, click **Cloud Keys > Oracle**.
+2. On the left pane, click Containers and Oracle Vaults. 
 
-4. Click **Refresh All**, the keys that are stored in Oracle will be displayed (note the refresh can take a few minutes).
+    ![Oracle Vaults](images/oracle-vaults.png "Oracle Vaults")
 
-5.	Click on Add Key tab. The Select Material Origin screen of the Add Oracle Key wizard is displayed.
+3. Click Add Existing Vault.
 
-6. 	You can Create/Upload new key material or Clone existing key material.
+    ![Add Vault](images/add-vault.png "Add Vault")
 
-7. Select the key source. In this case we are going to create local key on CipherTrust.  
+4. Under Add Existing Key Vault configuration, add the following parameters:
+    * Oracle connection - select the connection that was previously created.
+    * Compartment – Select the compartment created with Oracle.
+    * Region - Select your relevant region from the dropdown.
+    * Vault – Select the vault which we created earlier with Oracle.
 
-8. Add oracle key by providing Key name, Key Type and Key Size.
+    ![Info Vault](images/info-vault.png "Info Vault")
 
-9. You need to select existing compartment, Vault and protection mode. 
+Click Next. 
 
-10. Click next.
+5. Indeed this configuration does not apply to our lab use case. You can skip it.
 
-11. Review the key and click on add key.
+     ![Add bucket](images/add-bucket.png "Add bucket")
 
-12. Go back to the OCI Vault and check whether key created from CCKM is visible or not. 
+6. Click Add and add the vault.
 
+     ![New Vault](images/created-vault.png "New Vault")
+
+## Task 2: Managing Oracle Keys From CTM
+
+1.	On the left pane, click **Cloud Keys > Oracle**.
+
+    ![Oracle keys](images/oracle-keys.png "Oracle keys")
+
+2.	Click on Add Key tab. The Select Material Origin screen of the Add Oracle Key wizard is displayed. Select the key source, in this case we are going to create local key on CipherTrust. 
+
+    ![Add key](images/add-key.png "Add key")
+
+3. Add Oracle key by providing Key Name, Key Type and Key Size.
+
+     ![Add AES key](images/aes-key.png "Add AES key")
+
+4. You need to select existing compartment, Vault and protection mode. 
+
+    ![Add AES key](images/key-compartment.png "Add AES key")
+
+5. Click Next.
+
+6. Review the key and click on add key.
+
+     ![Review key](images/review-key.png "Review key")
+
+7. If the key is created successfully, you will see the following screen:
+
+    ![Successfully created key](images/created-key.png "Successfully created key")
+
+8. The key now will appear on the list:
+
+    ![List of created keys](images/list-key.png "List of created keys")
+
+9. Now you can go back to the OCI Vault and check whether key created from CTM is visible or not. 
+
+    ![Key in OCI Vault](images/keys-oci.png "Key in OCI Vault")
+
+10. If you click on your recently created key, and check the key versions for this key, you will be able to see the key details, where the Source of the key is shown as External:
+
+     ![External Key](images/external-key.png "External Key")
+
+This concludes this lab.
 
 ## Learn More
 
