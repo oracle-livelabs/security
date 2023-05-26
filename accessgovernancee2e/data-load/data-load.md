@@ -95,6 +95,8 @@ Create users in OCI IAM and assign them to Application roles.
 
     Click *Create*
 
+4. Logout of the Cloud Account. 
+
 4. For each user created, an activation mail will be sent to the email-id provided in the *Task 2: Step 4* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 
     Reset password to the below mentioned password:
 
@@ -102,11 +104,11 @@ Create users in OCI IAM and assign them to Application roles.
      ```
     <copy>Oracl@123456</copy>
     ```
-5. Assign Administrator Application Role to User Pamela Green
+5. Login to OCI console Identity Domain: ag-domain as the Identity Domain Administrator. Assign Administrator Application Role to User Pamela Green
 
     * In the OCI console, navigate to Identity -> Domains -> Default Domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
 
-    * Notice the *AG Administrator* Role listed. Click on the Downward arrow on the right corner. 
+    * Notice the *AG Administrator* Role and *AG Campaign Administrator* ROle listed. Click on the Downward arrow on the right corner for each of them. 
 
     ![OIG Identity Roles and Access Policies](images/user-approle.png)
 
@@ -118,7 +120,7 @@ Create users in OCI IAM and assign them to Application roles.
 
     ![OIG Identity Roles and Access Policies](images/user-approle-assign.png)
 
-    * Pamela Green has been assigned with the *Administrator* application role. You can now close the window.
+    * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator* role. You can now close the window.
 
 
     You may now **proceed to the next lab.**

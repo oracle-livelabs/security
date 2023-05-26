@@ -19,6 +19,8 @@ In this lab, you will:
 
 ## Task 1: Create AG Group 
 
+1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
+
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Domains* from the list of products.
 
     ![Navigate to Domains](images/navigate-select-domain.png)
@@ -49,7 +51,7 @@ In this lab, you will:
 
     ![Navigate to Policies](images/navigate-policies.png)
 
-3. On the Policies page, Click on *Create Policy* to create 3 policies : ag-access-policy, orm-access-policy, compute-policy
+3. On the Policies page, Click on *Create Policy* to create policy : ag-access-policy
 
 
     ```
@@ -62,35 +64,10 @@ In this lab, you will:
 
     Click *Create*
 
-    ```
-    Name: orm-access-policy
-    Description: IAM policy for granting ag-group access to manage resource manager stacks and jobs
-    Compartment: Ensure your root compartment is selected
-    Policy Builder: Select the show manual editor checkbox 
-    Statement 1: Allow group ag-domain/ag-group to manage orm-stacks in tenancy
-    Statement 2: Allow group ag-domain/ag-group to manage orm-jobs in tenancy
-    ```
-
-    Click *Create*
-
-
-    ```
-    Name: compute-policy
-    Description: Allow group ag-domain/ag-group to manage instance-family in tenancy
-    Compartment: Ensure your root compartment is selected
-    Policy Builder: Select the show manual editor checkbox 
-    Statement 1: Allow group ag-domain/ag-group to manage instance-family in tenancy
-    Statement 2: Allow group ag-domain/ag-group to use app-catalog-listing in tenancy
-    Statement 3: Allow group ag-domain/ag-group to manage volume-family in tenancy
-    Statement 4: Allow group ag-domain/ag-group to manage virtual-network-family in tenancy
-    ```
-
-    Click *Create*
-
 
     ![Policies have been created](images/policies-created.png)
 
-     The *Policies* have been created successfully.
+     The *Policy* have been created successfully.
 
   You may now **proceed to the next lab**. 
 

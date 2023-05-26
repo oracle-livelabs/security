@@ -74,8 +74,8 @@
             "filename": "../../event-based-review/event-based-review.md"
         },
         {
-            "title": "Lab 14: Setup Identity Orchestration between Oracle Access Governance and OCI IAM (OCI IAM) ",
-            "filename": "../../policy-review/policy-review.md"
+            "title": "Lab 14: Integrate Oracle Access Governance with OCI IAM (OCI IAM) ",
+            "filename": "../../connect-oci-iam/connect-oci-iam.md"
         },
         {
             "title": "Lab 15: Create OCI Policies, Groups and Compartments (OCI IAM) ",
