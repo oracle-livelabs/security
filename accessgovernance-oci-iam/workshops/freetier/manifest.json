@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Oracle Access Governance - Complete Experience",
+    "workshoptitle": "Oracle Access Governance with OCI IAM",
     "help": "livelabs-help-oci_us@oracle.com",
     "tutorials": [
         {
@@ -24,7 +24,7 @@
         },
         {
             "title": "Lab 3: Setup and configure Oracle Access Governance service instance",
-            "description": "Labs that follow the introduction are numbered, starting with Lab ",
+            "description": "Setup and configure Oracle Access Governance service instance ",
             "filename": "../../instance-setup/ag-instance-setup.md"
         },
         {
