@@ -4,7 +4,7 @@
 
 In this lab we will setup the OAG service instance and make configurations required to successfully run this workshop.
 
-*Estimated Lab Time*: 15 minutes
+*Estimated Lab Time*: 30 minutes
 
 Watch the video below for a quick walk-through of the lab.
 [Access Governance instance setup](videohub:1_x3fb7d7m)
@@ -161,4 +161,4 @@ Login to the OCI console using the Identity domain: ag-domain, if not currently 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Contributors** - Edward Lu
-* **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
+* **Last Updated By/Date** - Anbu Anbarasu, May 2023

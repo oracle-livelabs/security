@@ -94,4 +94,4 @@ This lab assumes you have:
 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
-* **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
+* **Last Updated By/Date** - Anbu Anbarasu, May 2023

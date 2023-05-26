@@ -8,27 +8,26 @@
 
   ![View List of Campaigns](images/oracle-access-governance-overview.png)
 
-This lab walks you through the steps to get started using **Oracle Access Governance** with a popular use case - **access review certification campaign**. In this workshop, a ficticious corporation is using **Oracle Identity Governance (OIG)** to manage and govern the application access of its employees and contractors. As part of their cloud strategy, they want to optimize their access review certification campaign process with a cloud-native solution while leveraging pre-existing on-premises **Oracle Identity Governance (OIG)** investment. **Oracle Access Governance** SaaS solution is designed for this purpose and serves as a natural extension of **OIG** solution. With **Oracle Access Governance**, they can immediately benefit from automated access review workflows that layer in prescriptive analytics with intuitive dashboards/reports while preserving their existing **OIG** investment. 
+This lab walks you through the steps to get started using **Oracle Access Governance** with a popular use case - **policy review certification campaign**. In this workshop, a ficticious corporation is using **Oracle IAM** to manage and govern their Cloud resources. As part of their cloud strategy, they want to optimize their plicy review certification campaign process with a cloud-native solution. **Oracle Access Governance** SaaS solution is designed for this purpose and serves as a natural extension of **Oracle IAM**. With **Oracle Access Governance**, they can immediately benefit from automated policy review workflows that layer in prescriptive analytics with intuitive dashboards/reports. 
 
 **Oracle Access Governance** allows : 
-- **Campaign administrator** to run intelligent access review campaigns for access governance and compliance
-- **Access reviewers** to review identity insights and take informed decisions based on **prescriptive analytics**
+- **Campaign administrator** to run intelligent access review campaigns for policy governance and compliance
+- **Cloud Access reviewers** to review identity insights and take informed decisions based on **prescriptive analytics**
 - **Users** and **user managers** to validate access assigned to self and their direct reports, respectively. 
 
 
-*Estimated Time:* 3 Hours
+*Estimated Time:* 2 Hours
 
 
 ### Objectives
 
 In this workshop, you will learn how to:
 * Setup and configure Oracle Access Governance service instance
-* Install and configure Oracle Access Governance agent
-* Perform AG data load and create IAM users
-* Create access review campaigns as a **campaign administrator**
-* Perform access review tasks as an **employee user** and a **user manager**
-* Monitor and manage access review campaigns as a **campaign administrator**
-* Review user privileges for yourself and your direct reports as a **user manager**
+* Create OCI groups and policies needed
+* Integrate OCI IAM with Access Governance
+* Create policy review campaigns as a **campaign administrator**
+* Perform policy review tasks 
+* Monitor and manage policy review campaigns as a **campaign administrator**
 
 ### Prerequisites
 This lab assumes you have:
