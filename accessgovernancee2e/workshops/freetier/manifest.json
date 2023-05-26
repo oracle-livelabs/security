@@ -23,7 +23,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
         },
         {
-            "title": "Lab 3: Verify environment and initialize",
+            "title": "Lab 3: Verify environment and initialize (OIG)",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../environment-initialize/environment-initialize.md"
         },
@@ -33,47 +33,64 @@
             "filename": "../../create-identity-domain/create-identity-domain.md"
         },
         {
-            "title": "Lab 5: Setup and configure Oracle Access Governance service instance",
+            "title": "Lab 5: Create Access Governance Groups and Policies (OCI IAM)",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "../../create-ag-group-policies/create-ag-group-policies.md"
+        },
+        {
+            "title": "Lab 6: Setup and configure Oracle Access Governance service instance",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../instance-setup/ag-instance-setup.md"
         },
         {
-            "title": "Lab 6: Install and configure Oracle Access Governance agent ",
+            "title": "Lab 7: Install and configure Oracle Access Governance agent (OIG)",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../agent-install/agent-install.md"
         },
         {
-            "title": "Lab 7: Perform AG data load and create IAM users",
+            "title": "Lab 8: Perform AG data load and create IAM users (OIG)",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../data-load/data-load.md"
         },
         {
-            "title": "Lab 8: Create access review campaign ",
+            "title": "Lab 9: Create access review campaign (OIG)",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../create-campaign/create-campaign.md"
         },
         {
-            "title": "Lab 9: Review who has access to what",
+            "title": "Lab 10: Review who has access to what (OIG)",
             "filename": "../../review-who-has-access/review-who-has-access.md"
         },
         {
-            "title": "Lab 10: Perform access review",
+            "title": "Lab 11: Perform access review (OIG)",
             "filename": "../../perform-access-review/perform-access-review.md"
         },
         {
-            "title": "Lab 11: Manage access review campaigns",
+            "title": "Lab 12: Manage access review campaigns (OIG)",
             "filename": "../../manage-campaign/manage-campaign.md"
         },
         {
-            "title": "Lab 12: Manage event based access review campaigns",
+            "title": "Lab 13: Manage event based access review campaigns (OIG)",
             "filename": "../../event-based-review/event-based-review.md"
         },
         {
-            "title": "Lab 13: Access Governance service instance cleanup",
+            "title": "Lab 14: Integrate Oracle Access Governance with OCI IAM (OCI IAM) ",
+            "filename": "../../connect-oci-iam/connect-oci-iam.md"
+        },
+        {
+            "title": "Lab 15: Create OCI Policies, Groups and Compartments (OCI IAM) ",
+            "filename": "../../create-policies/create-policies.md"
+        },
+        {
+            "title": "Lab 16: Create and Perform Policy Review Campaigns (OCI IAM)",
+            "filename": "../../create-policy-reviews/create-policy-review.md"
+        },
+        {
+            "title": "Lab 17: Access Governance service instance cleanup",
             "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
         },
          {
-            "title": "Lab 14: Environment Cleanup",
+            "title": "Lab 18: Environment Cleanup",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "https://oracle-livelabs.github.io/common/labs/cleanup-stack/cleanup-stack.md"
         },
