@@ -1,4 +1,4 @@
-# Lab 5 - Emergency simulation test: blocking data access
+# Lab 4 - Emergency simulation test: blocking data access
 
 ## Introduction
 
@@ -27,43 +27,25 @@ This lab assumes you have:
 * All previous labs successfully completed
 
 
-## Task 1: Load sample data into your Autonomous Database 
+## Task 1: Disable keys in CTM
 
-In this task you will load data into your previously created Autonomous Database and also in your bucket.
+1. Log in to your CTM account and navigate to Cloud Key Manager:
 
-1. Right-click on the link below and click **Save Link As…** to download the file to your computer.
+2. Go to Cloud Keys section where your ecnryption keys will be shown:
 
-	TODO: link
+3. Click on the three points on the right and select **Disable**:
 
-2. Navigate to your Autonomous Database page in OCI console and go to the Data Load main page by going to the Database Actions Launchpad and in the **Data Studio** section, click **DATA LOAD.**
+4. Click **Refresh All** and wait that keys are in Disabled status:
 
-  ![Database Actions](./images/database-actions.png "Database Actions")
 
-  ![Data Load](./images/data-load.png "Data Load")
+## Task 2: Check data visibility into your bucket
 
-3. Leave the default selections, **LOAD DATA** and **LOCAL FILE**, and click Next.
 
-  ![Load File](./images/load-file.png "Load File")
+## Task 3: Check data visibility into your Autonomous Database
 
-4. The Local Files page enables you to drag and drop files to upload, or you can select files. Drag the customer_segment.csv file from the directory where you downloaded onto the Drag and Drop target. Or select the files using the Select Files pop-up dialog.
 
-  ![File loaded](./images/file-loaded.png "File loaded")
 
-5. When the upload is complete, you simply click the blue **Start** button and click **Run** to run the data load job.
 
-6. When the load job finishes, a green check mark appears for each table. Click **Catalog** in the menu on the left.
-
-  ![Table created](./images/table-created.png "Table created")
-
-7. The Catalog shows the CUSTOMER_SEGMENT table has been successfully created. You can click the table name to see the data.
-
-  ![Table](./images/customer-table.png "Table")
-
-This completes the lab on loading CSV files from your local computer.
-
-## Task 2: Load sample data into your bucket
-
-## Task 3: Disable connection to Thales CipherTrust Manager
  
 ## Learn More
 

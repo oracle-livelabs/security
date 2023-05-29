@@ -1,4 +1,4 @@
-# Lab 3b - Hold Your Own Key (HYOK): Configure External Key Management between OCI and your HSM
+# Lab 2b - Hold Your Own Key (HYOK): Configure External Key Management between OCI and your HSM
 
 
 ## Introduction

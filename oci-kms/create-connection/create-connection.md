@@ -1,4 +1,4 @@
-# Lab 2 - Link creation between OCI and your HSM and Master Encryption Key creation
+# Lab 1 - Link creation between OCI and your HSM and Master Encryption Key creation
 
 ## Introduction
 
@@ -148,26 +148,6 @@ CTM is a hardened appliance (Ubuntu) for optimum security and comprises/integrat
 11. Your connection state should be **Ready.** 
 
     ![Connection ready](images/tested-connection.png "Connection ready")
-
-
-## Task 3: Add Oracle Vault to CTM
-
-1. Log into the CipherTrust Manager Web UI.
-2. Click the Cloud Key Manager application.
-3. On the left pane, click Containers and Oracle Vaults. 
-4. Click Add Existing Vault.
-5. Under Add Existing Key Vault configuration, add the following parameters:
-    * **Oracle connection** - select the connection that was previously created.
-    * **Compartment** – Select the compartment created with Oracle.
-    * **Region** - Select your relevant region from the dropdown.
-    * **Vault** – Select the vault which we created earlier with Oracle.
-
-    > Note: Bucket name and Bucket Namespace are required for creating key backups of HSM protected 
-keys for Virtual Private Vaults. Key Backup functionality while syncing vaults will cease without these 
-parameters.
-
-6. Click next and add the Vault.
-
 
 
 

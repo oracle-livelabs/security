@@ -13,28 +13,23 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: HSM (Hardware Security module) and Key management Setup",
-            "description": "Create a HSM (hardware Security Module) and Key Management environment.",
-            "filename": "../../hsm-and-kms-setup/hsm-and-kms-setup.md"
-        },
-        {
-            "title": "Lab 2: Link creation between OCI and you HSM and Master Encryption Key creation",
+            "title": "Lab 1: Link creation between OCI and you HSM and Master Encryption Key creation",
             "filename": "../../create-connection/create-connection.md"
         },
         {
-            "title": "Lab 3a: Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)",
+            "title": "Lab 2a: Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)",
             "filename": "../../byok-to-oci/byok-to-oci.md"
         },
         {
-            "title": "Lab 3b: Hold Your Own Key (HYOK): Configure External Key Management between OCI and your HSM",
+            "title": "Lab 2b: Hold Your Own Key (HYOK): Configure External Key Management between OCI and your HSM",
             "filename": "../../hyok/hyok.md"
         },
         {
-            "title": "Lab 4: Configure Customer Managed Encryption for OCI Resources",
+            "title": "Lab 3: Configure Customer Managed Encryption for OCI Resources",
             "filename": "../../encrypt-resources/encrypt-resources.md"
         },
         {
-            "title": "Lab 5: Emergency simulation test: blocking data access",
+            "title": "Lab 4: Emergency simulation test: blocking data access",
             "filename": "../../simulation/simulation.md"
         },
         {

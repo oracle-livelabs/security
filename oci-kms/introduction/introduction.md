@@ -18,16 +18,14 @@ Estimated Workshop Time: -- hours -- minutes
 ### Objectives
 
 In this workshop, you will learn how to:
-* Set up HSM and Key Management in Thales
-* Connect to OCI and create your own Vault in OCI Vault
 * Add a connection between your Thales CipherTrust Manager and OCI
-* Create the keys
+* Create Oracle keys in Thales 
 
 Then you will have 2 options: “BYOK” (Lab 3a) or “HYOK” (Lab 3b). 
 
 * BYOK means “Bring Your Own Keys”. It is the concept of bringing into Oracle Cloud Infrastructure (OCI) Encryption Keys which have been created outside of OCI. This might be mandatory to comply with certain regulations mandating that the encryption Key creation ceremony is done outside of the Cloud. 
 BYOK is compatible with any key material you are creating which is compatible with OCI Vault supported key types. 
-For a complete list of OCI Vault supported Key Types, please refer to the following link:[Supported Key Types and Key Sizes](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/Tasks/importingkeys.htm)
+For a complete list of OCI Vault supported Key Types, please refer to the following link: [Supported Key Types and Key Sizes](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/Tasks/importingkeys.htm)
 
 * HYOK means “Hold Your Own Key” and is officially called in OCI Vault “External Key management”. It means that your Master Encryption Key (MEK) never leaves your  own HSM located outside of OCI, whether it is in your own Data Center or hosted by a third party. 
 As of today, HYOK is only compatible with Thales CipherTrust Manager. Hence the reason why during this lab you will use THALES CipherTrust Key Manager.
