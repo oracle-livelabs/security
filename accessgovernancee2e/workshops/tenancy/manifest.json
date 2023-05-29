@@ -79,7 +79,7 @@
         },
         {
             "title": "Lab 15: Create OCI Policies, Groups and Compartments (OCI IAM) ",
-            "filename": "../../create-policies/create-policies.md"
+            "filename": "../../create-oci-resource/create-oci-resource.md"
         },
         {
             "title": "Lab 16: Create and Perform Policy Review Campaigns (OCI IAM) ",
