@@ -33,7 +33,7 @@
         },
         {
             "title": "Lab 5: Create OCI Policies, Groups and Compartments",
-            "filename": "../../create-policies/create-policies.md"
+            "filename": "../../create-oci-resource/create-oci-resource.md"
         },
         {
             "title": "Lab 6: Create and Perform Policy Review Campaigns",
