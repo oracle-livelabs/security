@@ -15,6 +15,24 @@ As a user with a **Administrator** role in the identity domain, you can create O
 
 In this lab, you will: 
 * Create  OCI Policies, Groups and Compartments manually
+* We create the following resources in this lab:
+
+| Resource Type           | Resource    | Description |
+| :-----------   |   :--------:   |  :--------: |
+| Compartment      | Development           | Development   |
+|      | Quality-Assurance           | Quality-Assurance   |
+|      | Testing             | Testing   |
+| Users        | demouser1           | demouser1 belongs to groups - SecurityAdmins   |
+|       | demouser2            | demouser2 belongs to groups -  SecurityAdmins and NetworkAdmins  |
+|        | demouser3           | demouser3 belongs to groups - SecurityAdmins and Auditors   |
+| Groups         | SecurityAdmins           | SecurityAdmins         |
+|          | NetworkAdmins             | NetworkAdmins        |
+|          | Auditors            | Auditors        | 
+| Policies         | tf1-auditors-policy            | Access Policy for Auditors         |
+|         |  tf2-network-admins-policy            | Access Policy for Network Administrators        |
+|          | tf3-security-admins-policy           | Access Policy for Security Admins         |
+
+
 
 ## Task 1: Create Compartments
 
