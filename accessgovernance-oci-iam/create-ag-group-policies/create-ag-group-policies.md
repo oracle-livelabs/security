@@ -12,6 +12,7 @@ Create group for Access Governance.
 
 In this lab, you will:
 * Create **group** for Access Governance
+* Create **policies** for Access Governance 
 
 
 ## Task 1: Create AG Group 
@@ -37,6 +38,25 @@ In this lab, you will:
     ![Create AG Group](images/create-ag-group.png)
 
     The *Group* has been created succesfully. 
+
+
+## Task 2 : Create AG Policies 
+
+
+1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Policies* from the list of products.
+
+2. On the Policies page, Click on *Create Policy* to create the policy : ag-access-policy
+
+
+    ```
+    Name: ag-access-policy
+    Description: IAM policy for granting ag-group access to manage access governance instances
+    Compartment: Ensure your root compartment is selected
+    Policy Builder: Select the show manual editor checkbox
+    Statement 1: Allow group ag-domain/ag-group to manage all-resources in tenancy
+    ```
+
+    Click *Create*
 
   You may now **proceed to the next lab**. 
 

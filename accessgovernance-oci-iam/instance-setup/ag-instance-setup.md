@@ -15,7 +15,6 @@ In this lab, you will:
  * Create AG Service Instance
  * Access the AG console url
  * Create Users in OCI IAM
- * Create AG Policies
 
 ### Prerequisites
 This lab assumes you have:
@@ -131,23 +130,6 @@ Login to the OCI console using the Identity domain: ag-domain, if not currently 
 
     * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator*. You can now close the window.
 
-## Task 3 : Create AG Policies 
-
-
-1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Policies* from the list of products.
-
-2. On the Policies page, Click on *Create Policy* to create the policy : ag-access-policy
-
-
-    ```
-    Name: ag-access-policy
-    Description: IAM policy for granting ag-group access to manage access governance instances
-    Compartment: Ensure your root compartment is selected
-    Policy Builder: Select the show manual editor checkbox
-    Statement 1: Allow group ag-domain/ag-group to manage all-resources in tenancy
-    ```
-
-    Click *Create*
 
     You may now **proceed to the next lab.**
 
