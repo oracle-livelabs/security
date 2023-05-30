@@ -86,7 +86,7 @@ CipherTrust Cloud Key Manager (CTM) solution is part of the Thales CipherTrust M
 CTM is a hardened appliance (Ubuntu) for optimum security and comprises/integrates with MongoDB for secure storage. CipherTrust Cloud Key Manager is delivered as a virtual appliance that can be installed either on-premises (by deploying an .ova file) or on Amazon Web Services (by deploying an Amazon Machine Image (AMI)) or from Azure Marketplace. The features and functionality are the same for both deployment scenarios.
 
 
-1. Go to the following URL to access [CipherTrust Manager as a Service](https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM).
+1. Go to the following URL to access CipherTrust Manager as a Service: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM"* and append your student number. For example, if your student number is 001, go to the following URL: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001"*
 
     ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
 
