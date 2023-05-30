@@ -5,7 +5,7 @@
 Create group for Access Governance. 
 
 * Estimated Time: 15 minutes
-* Persona: Campaign Administrator
+* Persona: Identity Domain Administrator
 
 
 ### Objectives
@@ -27,11 +27,11 @@ In this lab, you will:
 
     ![Select Groups](images/select-groups.png)
 
-    Enter the following details to create the *ag-group*
+    Enter the following details to create the *ag-group* and assign the **Identity Domain Administrator** user to the group. 
     ```
     Name: ag-group
     Description: Access governance group to manage users 
-    Users: Select the Admin user from the list of users. 
+    Users: Select the Identity Domain Administrator user from the list of users. 
     ```
     Click *Create*
 
