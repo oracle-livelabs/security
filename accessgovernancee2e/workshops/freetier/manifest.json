@@ -48,7 +48,7 @@
             "filename": "../../agent-install/agent-install.md"
         },
         {
-            "title": "Lab 8: Perform AG data load and create IAM users (OIG)",
+            "title": "Lab 8: Perform AG data load (OIG)",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../data-load/data-load.md"
         },
