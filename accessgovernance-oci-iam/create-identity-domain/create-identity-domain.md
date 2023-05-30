@@ -57,7 +57,7 @@ This lab assumes you have:
 
 ## Task 2: Activate your Account 
 
-1. Go to your email and click **Activate Your Account**
+1. Go to your Administrator email and click **Activate Your Account**
 
     ![Activate Email](images/activate-email.png)
 

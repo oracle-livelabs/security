@@ -5,7 +5,7 @@
 Create groups and policies for Access Governance. 
 
 * Estimated Time: 15 minutes
-* Persona: Campaign Administrator
+* Persona: Identity Domain Administrator
 
 Watch the video below for a quick walk-through of the lab.
 [Create Access Review Campaign](videohub:1_9s3mt0qx)
@@ -31,11 +31,11 @@ In this lab, you will:
 
     ![Select Groups](images/select-groups.png)
 
-    Enter the following details to create the *ag-group*
+    Enter the following details to create the *ag-group* and Assign the **Identity Domain Administrator** user to the group
     ```
     Name: ag-group
     Description: Access governance group to manage users 
-    Users: Select the Admin user from the list of users. 
+    Users: Select the Identity Domain Administrator user from the list of users. 
     ```
     Click *Create*
 

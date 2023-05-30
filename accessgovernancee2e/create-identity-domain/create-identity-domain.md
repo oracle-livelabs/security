@@ -10,7 +10,9 @@ Creation of Identity Domain.
 ### Objectives
 
 In this lab, you will:
- * Create an **Identity Domain.**
+ * Create an **Identity Domain**
+ * Activate you **Account**
+ * Login to Oracle Cloud using **Identity Domain**
 
 ### Prerequisites
 This lab assumes you have:
@@ -53,8 +55,16 @@ This lab assumes you have:
 
 5. Logout of your Cloud Account by clicking on the *User icon* in the top right corner. Click on *Sign out* option. 
 
+## Task 2: Activate your Account 
 
-## Task 2: Login to Oracle Cloud using Identity Domain. 
+1. Go to your Administrator email and click **Activate Your Account**
+
+    ![Activate Email](images/activate-email.png)
+
+2. Enter the password in the next screen and submit
+
+
+## Task 3: Login to Oracle Cloud using Identity Domain. 
 
 1. Go to cloud.oracle.com and enter your Tenancy name and click **Continue**
 
@@ -72,6 +82,7 @@ This lab assumes you have:
     
      ![Logged into Identity Domain Cloud Account](images/logged-in-identitydomain.png)
 
+
     You may now **proceed to the next lab.**
 
 ## Learn More
@@ -83,4 +94,4 @@ This lab assumes you have:
 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
-* **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
+* **Last Updated By/Date** - Anbu Anbarasu, May 2023
