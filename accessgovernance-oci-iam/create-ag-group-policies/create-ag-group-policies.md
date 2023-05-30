@@ -1,4 +1,4 @@
-# Create Group for Access Governance
+# Create Group and Policies for Access Governance
 
 ## Introduction
 
