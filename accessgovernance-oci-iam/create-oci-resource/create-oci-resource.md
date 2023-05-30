@@ -201,7 +201,8 @@ In this lab, you will:
 
      ```
     <copy>Allow group Auditors to inspect all-resources in tenancy
-    Allow group Auditors to read instances in compartment Quality-Assurance</copy>
+    Allow group Auditors to read instances in compartment Quality-Assurance
+    Allow group Auditors to read audit-events in compartment Quality-Assurance </copy>
     ```  
 
     Click *Create*
