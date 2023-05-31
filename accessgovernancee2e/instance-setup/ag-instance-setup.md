@@ -1,10 +1,10 @@
-# Setup and configure Oracle Access Governance service instance
+# Setup and configure Oracle Access Governance service instance and Create Users in OCI IAM
 
 ## Introduction
 
 In this lab we will setup the OAG service instance and make configurations required to successfully run this workshop.
 
-*Estimated Lab Time*: 15 minutes
+*Estimated Lab Time*: 30 minutes
 
 Watch the video below for a quick walk-through of the lab.
 [Access Governance instance setup](videohub:1_x3fb7d7m)
@@ -14,16 +14,20 @@ Watch the video below for a quick walk-through of the lab.
 In this lab, you will:
  * Create AG Service Instance
  * Access the AG console url
- * Create OCI IAM users 
+ * Create Users in OCI IAM
 
 ### Prerequisites
 This lab assumes you have:
 - A valid Oracle OCI tenancy, with OCI administrator privileges. 
+- Choose a region where Access Governance is available. 
 
 
 ## Task 1: Create AG Service instance 
 
-1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products.
+Login to the OCI console using the Identity domain: ag-domain, if not currently not logged in to the Identity domain. 
+
+1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region.
+
     ![Create Service Instance](images/oci-console.png)
 
 2. On the Access Governance page, select *Service Instances.*
@@ -51,22 +55,12 @@ This lab assumes you have:
 
 ## Task 2: Create Users in OCI IAM
 
-Create users in OCI IAM and assign them to Application roles.
-
-1. Launch a browser window. Login to OCI console , identity domain : *ag-domain* using the URL mentioned below. The OCI account sign in page appears. Enter the username and password provided during signup. 
-     
-    ```
-    <copy>https://console.us-ashburn-1.oraclecloud.com/</copy>
-    ```
-    ![Login OCI console](images/oci-login-console.png)
-
-
-2. Click the Navigation Menu icon in the top left corner to display the Navigation menu. Click Identity and Security in the Navigation menu. Select Domains from the list of products.
+1. Click the Navigation Menu icon in the top left corner to display the Navigation menu. Click Identity and Security in the Navigation menu. Select Domains from the list of products.
 
     ![Navigate to Domains](images/navigate-select-domain.png)
 
 
-3. On the Domains page, Click on Identity-domain : *ag-domain* you have created. 
+2. On the Domains page, Click on Identity-domain : *ag-domain* you have created. 
 
     ![Navigate to Identity Domains](images/open-domains.png)
 
@@ -74,7 +68,9 @@ Create users in OCI IAM and assign them to Application roles.
 
      ![Navigate to Users](images/navigate-to-users.png)
 
-4. Enter the following details to create 3 users - Pamela Green (Campaign Administrator), Harlan Bullard (Manager), Mark Hernandez (Employee User) in IAM.
+3. Uncheck "Use the email address as the username" 
+
+4. Enter the following details to create 3 users - Pamela Green (Campaign Administrator), Harlan Bullard (Manager), Mark Hernandez (Employee User) in IAM. Be sure to use different email IDs for different users.
 
 
     ```
@@ -107,20 +103,20 @@ Create users in OCI IAM and assign them to Application roles.
 
     Click *Create*
 
-4. Logout of the Cloud Account. 
+5. Sign out from the cloud console.
 
-4. For each user created, an activation mail will be sent to the email-id provided in the *Task 2: Step 4* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 
+6. For each user created, an activation mail will be sent to the email-id provided in the *Task 3: Step 4* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 
     Reset password to the below mentioned password:
 
     **Password:**
      ```
     <copy>Oracl@123456</copy>
     ```
-5. Login to OCI console Identity Domain: ag-domain as the Identity Domain Administrator. Assign Administrator Application Role to User Pamela Green
+7. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
 
-    * In the OCI console, navigate to Identity -> Domains -> ag-domain Domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
+    * In the OCI console, navigate to Identity -> Domains ->  ag-domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
 
-    * Notice the *AG Administrator* Role and *AG Campaign Administrator* Role listed. Click on the Downward arrow on the right corner for each of them.
+    * Notice the *AG Administrator* Role and *AG Campaign Administrator* Role listed. Click on the Downward arrow on the right corner for each of them. 
 
     ![OIG Identity Roles and Access Policies](images/user-approle.png)
 
@@ -132,8 +128,21 @@ Create users in OCI IAM and assign them to Application roles.
 
     ![OIG Identity Roles and Access Policies](images/user-approle-assign.png)
 
-    * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator* role. You can now close the window.
+    * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator*. You can now close the window.
 
+    * Now, Notice the *AG User* Role and *AG CloudAccessReviewer* Role listed. Click on the Downward arrow on the right corner for each of them. 
+
+      ![OIG Identity Roles and Access Policies](images/aguser.png)
+
+       ![OIG Identity Roles and Access Policies](images/agreviewer.png)
+
+    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez* and *Harlan Bullard* in *Available Users.* Click on *Assign*
+
+     ![OIG Identity Roles and Access Policies](images/ag-userassign.png)
+
+     ![OIG Identity Roles and Access Policies](images/ag-reviewerassign.png)
+
+    * Mark Hernandez and Harlan Bullard have now been assigned with the *AG User* application role and *AG CloudAccessReviewer*. You can now close the window.
 
 
     You may now **proceed to the next lab.**
@@ -148,4 +157,4 @@ Create users in OCI IAM and assign them to Application roles.
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Contributors** - Edward Lu
-* **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
+* **Last Updated By/Date** - Anbu Anbarasu, May 2023
