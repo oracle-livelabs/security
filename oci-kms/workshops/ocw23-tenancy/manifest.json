@@ -17,12 +17,8 @@
             "filename": "../../create-connection/create-connection.md"
         },
         {
-            "title": "Lab 2a: Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)",
+            "title": "Lab 2: Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)",
             "filename": "../../byok-to-oci/byok-to-oci.md"
-        },
-        {
-            "title": "Lab 2b: Hold Your Own Key (HYOK): Configure External Key Management between OCI and your HSM",
-            "filename": "../../hyok/hyok.md"
         },
         {
             "title": "Lab 3: Configure Customer Managed Encryption for OCI Resources",
@@ -30,17 +26,16 @@
         },
         {
             "title": "Lab 4: Emergency simulation test: blocking data access",
-            "filename": "../../simulation/simulation.md"
+            "filename": "../../simulation-block-access/simulation-block-access.md"
+        },
+        {
+            "title": "Lab 5: Emergency simulation test: re-enabling data access",
+            "filename": "../../simulation-enable-access/simulation-enable-access.md"
         },
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
-        },
-        {
-            "title": "Other LiveLabs you might like",
-            "description": "Other LiveLabs you might like",
-            "filename": "../../other-livelabs/other-livelabs.md"
         }
     ]
 }

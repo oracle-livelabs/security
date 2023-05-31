@@ -35,12 +35,12 @@ This lab assumes you have:
     
     ![Buckets](./images/buckets.png "Buckets")
 
-2. Create a bucket in the compartment we used to create the Vault by selecting the compartment and clicking Create Bucket.
+2. Create a bucket in the compartment we used to create the Vault by selecting the compartment and clicking **Create Bucket**.
     
     ![Create bucket](./images/create-bucket.png "Create bucket")
 
 
-3. Name it by following same name convention: ocw23-OCI-bucket-001. Select the option Encrypt using customer-managed keys. Once you select that option, new fields to be filled will appear. Select the previously created Vault and the encryption keys that you stored in this Vault. Then click Create.
+3. Name it by following same name convention: ocw23-OCI-bucket-001. Select the option **Encrypt using customer-managed keys**. Once you select that option, new fields to be filled will appear. Select the previously created Vault and the encryption keys that you stored in this Vault. Then click **Create**.
     
     ![Bucket info](./images/bucket-info.png "Bucket info")
 
@@ -62,7 +62,7 @@ You will upload a file that will be provided to you into the bucket you recently
 
    ![Upload file](./images/upload-file.png "Upload file")
 
-4. Close the window, and now you can see your file uploaded into your bucket:
+4. Close the window, and now you can see your file uploaded into your bucket under section **Objects**:
 
   ![Object](./images/object.png "Object")
 
@@ -78,13 +78,13 @@ You will upload a file that will be provided to you into the bucket you recently
 
   ![Add Pre-Authenticated Request info](./images/par-info.png "Add Pre-Authenticated Request info")
 
-8. A window will prompt with the URL of the pre-authenticated request. Copy this URL and save it locally, you will need it later to perform lab 4 tasks 2 and 5. Click **Close**.
+8. A window will prompt with the URL of the pre-authenticated request. Copy this URL and save it locally, you will need it later in lab 4. Click **Close**.
 
   ![Pre-Authenticated Request URL](./images/par-created.png "Pre-Authenticated Request URL")
 
 9. To check you have visibility into the file in your bucket, open another browser and go to the URL you copied previoulsy. The file should be automatically downloaded. You have already permissions to donwload and see the file as you have access to your encryption keys created in OCI from CTM.
 
-## Task 3: Create an Autonomoous Database with your own encryption keys
+## Task 3: Create an Autonomous Database with your own encryption keys
 
 Let's create now the Autonomous Database.
 In order to use customer-managed encryption for Autonomous Database, it is needed to create permissions to allow OCI Vault service to communicate with your Autonomoous Database. To do that, you need first to create a dynamic group and policies to provide access to the vault and keys for Autonomous Database instance. 
@@ -156,13 +156,13 @@ In order to use customer-managed encryption for Autonomous Database, it is neede
     ![Encryption in Autonomous Database](./images/adb-encryption.png "Encryption in Autonomous Database")
 
 
-10. Click Create Autonomous Database. Then wait until the database status is set to green and ACTIVE.
+10. Click **Create Autonomous Database**. Then wait until the database status is set to green and ACTIVE.
 
   ![Autonomous Database active](./images/adb-created.png "Autonomous Database active")
 
-## Task 3: Upload data into the Autonomous Database and check visibility
+## Task 4: Upload data into the Autonomous Database and check visibility
 
-In this task you will load the previous csv file you loaded into your bucket, into your previously created Autonomous Database.
+In this task you will load the previous CSV file you loaded into your bucket, into your previously created Autonomous Database.
 
 1. Navigate to your Autonomous Database page in OCI console and go to the Database Actions Launchpad:
 
@@ -176,15 +176,15 @@ In this task you will load the previous csv file you loaded into your bucket, in
 
   ![Click Data Load](./images/data-load.png "Click Data Load")
 
-4. Drag and drop the file into it and click the button **Run all**:
+4. Drag and drop the file into the prompted window and click the button **Run all**, which is shown as the green button icon on the top-left corner:
 
   ![File loading](./images/drag-and-drop.png "File loading")
 
-5. When the upload is complete, you will be able to see the green icon next to the filw:
+5. When the upload is complete, you will be able to see the state **Uploaded** next to the file. Click **Close**:
 
    ![File loaded](./images/upload-done.png "File loaded")
 
-6. Click **Close**. Refresh the browser and you will be able to see the new created table:
+6. Refresh the browser and you will be able to see the new created table:
 
   ![Table created](./images/new-table.png "Table created")
 
@@ -196,7 +196,7 @@ In this task you will load the previous csv file you loaded into your bucket, in
 
   ![See data](./images/data.png "See data")
 
-This completes the lab on loading CSV files from your local computer.
+This concludes this lab.
 
 ## Learn More
 

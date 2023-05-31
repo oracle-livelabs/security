@@ -47,13 +47,17 @@ This lab assumes you have:
 
   ![Disable keys](images/to-disable.png "Disable keys")
 
-5. A new window will prompt you to confirm:
+5. A new window will prompt you to confirm. Click **Disable**:
 
   ![Disable keys](images/disable.png "Disable keys")
 
-6. Click **Refresh All** and a new window will prompt you again to confirm:
+6. Click **Refresh All**:
 
-  ![Refresh all](images/refresh.png "Refresh all")
+  ![Refresh all](images/disabling.png "Refresh all")
+
+ a new window will prompt you again to confirm. Click **Refresh All**:
+
+  ![Confirm refresh](images/refresh.png "Confirm refresh")
 
 7. Wait until keys are in "Disabled" state:
 
@@ -135,105 +139,8 @@ You created a pre-authenticated request to access the excel file you uploaded in
 
   ![Start Autonomous Database](./images/try-start-adb.png "Start Autonomous Database")
 
-  Clicking *Start** will always bring you back to that screen until the key becomes enabled into OCI Vault, which we will see in the next task.
+  Clicking **Start** will always bring you back to that screen until the key becomes enabled into OCI Vault, which we will see in the next lab.
 
-
-
-## Task 4: Re-enable key in CipherTrust Manager
-
-1. Go back to the CipherTrust Manager console. If you closed it, use the following URL to access CipherTrust Manager as a Service: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM"* and append your student number. For example, if your student number is 001, go to the following URL: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001"*
-
-  ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
-
-  Enter the credentials you have been provided with. You are now logged into the CipherTrust Manager web console. Click on the Cloud Key Manager icon:
-
-  ![CipherTrust Manager web console](images/ctm-page.png "CipherTrust Manager web console")
-
-
-2. On the left pane, click **Cloud Keys > Oracle**.
-
-  ![Oracle keys](images/menu-keys.png "Oracle keys")
-
-3. Click on the three points on the right of your key line and select **Enable**:
-
-  ![Enable keys](images/to-enable.png "Enable keys")
-
-4. A new window will prompt you to confirm:
-
-  ![Enable keys](images/enable-key.png "Enable keys")
-
-6. Click **Refresh All** and a new window will prompt you again to confirm:
-
-  ![Refresh all](images/refresh.png "Refresh all")
-
-7. Wait until keys are in "Enabled" state:
-
-  ![Enabled keys](images/enabled-key.png "Enabled keys")
-
-
-## Task 5: Confirm data access into your bucket is possible as a result
-
-1. Log in to OCI cloud tenant as Data\_Manager\_XXX, where "XXX" is your student number (please go to lab TODO to see how to log in to OCI), and navigate through the main hamburger menu to *"Storage > Object Storage > Buckets"*.
-    
-    ![Buckets](./images/buckets.png "Buckets")
-
-2. As you can see, the bucket you created with an external key is accessible again: 
-
-   ![Buckets](./images/bucket-visible.png "Buckets")
-
-  If you click on your bucket, you will be able to access:
-
-   ![Access](./images/upload-object.png "Access")
-
-  and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerfull key management solution for all of their OCI resources. 
-
-3. Now we will check that the pre-authenticated request (PAR) that you have created is functional again as the key is enabled.
-  Copy the URL you saved in lab 3 task 2 and paste it in your browser again. Confirm you can download the document. 
-  Thus we have now confirmed that re-enabling the key from the external CipherTrust Manager instance brings back a fully functional behavior to OCI storage bucket.
-
-
-## Task 6: Check data access into your Autonomous Database
-
-1. Navigate through the main hamburger menu to: *"Oracle Database > Autonomous Database"*.
-
-  ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
-
-2. As you can see, the database is still stopped as the key was disabled. Now you will try to start the database because the key is enabled again:
-
-  ![Stopped Autonomous Database](./images/stopped-adb.png "Stopped Autonomous Database")
-
-3. Try to start again the database by clicking on **More Actions** and **Start**:
-
-  ![Start Autonomous Database](./images/re-start.png "Start Autonomous Database")
-
-  Once you click **Start**, you will see the database is starting:
-
-  ![Starting Autonomous Database](./images/starting-adb.png "Starting Autonomous Database")
-  
-  Wait until the database is started:
-  
-  ![Autonomous Database available](./images/adb-available.png "Autonomous Database available")
-
-  As you can see, now it is possible to start the database as the key is re-enabled and reachable by the autonomous database. 
-
-
-4. In order to ensure the data can be decrypted, let's try to access the data within the database. In order to do that, go to the Database Actions Launchpad:
-
-  ![Database Actions](./images/db-actions.png "Database Actions")
-
-5. Once there, click to SQL under Development:
-
-  ![SQL Development](./images/sql.png "SQL Development")
-
-6. Web SQL Development UI is open and now you can see the data into the table, right click to the table and click **Open**:
-
-  ![Open table](./images/see-data.png "Open table")
-
-7. In the new window, click the tab Data:
-
-  ![See data](./images/data.png "See data")
-
-  As you can see, now you have again complete visibility on the data within the database, as the key was re-enabled.
 
 
 ## Learn More

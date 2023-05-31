@@ -20,20 +20,17 @@ Estimated Workshop Time: -- hours -- minutes
 In this workshop, you will learn how to:
 * Add a connection between your Thales CipherTrust Manager and OCI
 * Create Oracle keys in Thales 
-
-Then you will have 2 options: “BYOK” (Lab 3a) or “HYOK” (Lab 3b). 
-
-* BYOK means “Bring Your Own Keys”. It is the concept of bringing into Oracle Cloud Infrastructure (OCI) Encryption Keys which have been created outside of OCI. This might be mandatory to comply with certain regulations mandating that the encryption Key creation ceremony is done outside of the Cloud. 
-BYOK is compatible with any key material you are creating which is compatible with OCI Vault supported key types. 
-For a complete list of OCI Vault supported Key Types, please refer to the following link: [Supported Key Types and Key Sizes](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/Tasks/importingkeys.htm)
-
-* HYOK means “Hold Your Own Key” and is officially called in OCI Vault “External Key management”. It means that your Master Encryption Key (MEK) never leaves your  own HSM located outside of OCI, whether it is in your own Data Center or hosted by a third party. 
-As of today, HYOK is only compatible with Thales CipherTrust Manager. Hence the reason why during this lab you will use THALES CipherTrust Key Manager.
-
-Whatever option you chose, the remaining points are the following:
+* Bring Your Own Key (BYOK) to OCI
+    > BYOK means “Bring Your Own Key”. It is the concept of bringing into Oracle Cloud Infrastructure (OCI) Encryption Keys which have been created outside of OCI. This might be mandatory to comply with certain regulations mandating that the encryption Key creation ceremony is done outside of the Cloud. 
+    BYOK is compatible with any key material you are creating which is compatible with OCI Vault supported key types. 
+    For a complete list of OCI Vault supported Key Types, please refer to the following link: [Supported Key Types and Key Sizes](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/Tasks/importingkeys.htm)
 
 * Configure customer managed encryption for OCI resources
-* Emergency simulation test: blocking data access
+* Emergency simulation test (I): blocking data access
+* Emergency simulation test (II): re-enabling data access
+
+Optionally, you will have an extra lab to perform Hold Your Own Key (HYOK) to OCI. HYOK means “Hold Your Own Key” and is officially called in OCI Vault “External Key management”. It means that your Master Encryption Key (MEK) never leaves your  own HSM located outside of OCI, whether it is in your own Data Center or hosted by a third party. 
+As of today, HYOK is only compatible with Thales CipherTrust Manager. Hence the reason why during this lab you will use THALES CipherTrust Key Manager.
 
 
 ### Prerequisites
@@ -42,7 +39,7 @@ This lab assumes you have:
 * An Oracle account
 * A Thales account
 
-*This is the "fold" - below items are collapsed by default*
+
 
 
 ## Learn More
