@@ -76,6 +76,12 @@ This lab assumes you have:
 
   and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerfull key management solution for all of their OCI resources. 
 
+3. Now we will check that any pre-authenticated request (PAR) that have been created are also non-functional anymore because the key was disabled.
+You created a pre-authenticated request to access the excel file you uploaded in your bucket in lab 3 task 2. Copy the URL you saved and paste it in your browser:
+
+  ![No access to PAR](./images/no-access-par.png "No access to PAR")
+
+  As you can see, the pre-authenticated request does not work anymore, and the error message clearly explains this is due to the key not being accessible to the bucket anymore.  
 
 ## Task 3: Check data access into your Autonomous Database
 
@@ -146,7 +152,7 @@ This lab assumes you have:
 
 2. On the left pane, click **Cloud Keys > Oracle**.
 
-  ![Oracle keys](images/list-key.png "Oracle keys")
+  ![Oracle keys](images/menu-keys.png "Oracle keys")
 
 3. Click on the three points on the right of your key line and select **Enable**:
 
@@ -154,7 +160,7 @@ This lab assumes you have:
 
 4. A new window will prompt you to confirm:
 
-  ![Enable keys](images/disable.png "Enable keys")
+  ![Enable keys](images/enable-key.png "Enable keys")
 
 6. Click **Refresh All** and a new window will prompt you again to confirm:
 
@@ -162,7 +168,7 @@ This lab assumes you have:
 
 7. Wait until keys are in "Enabled" state:
 
-  ![Enabled keys](images/enabled.png "Enabled keys")
+  ![Enabled keys](images/enabled-key.png "Enabled keys")
 
 
 ## Task 5: Confirm data access into your bucket is possible as a result
@@ -171,15 +177,19 @@ This lab assumes you have:
     
     ![Buckets](./images/buckets.png "Buckets")
 
-2. As you can see, the bucket you created with an external key is not accessible anymore and even a user like Data Manager user, who has full rights to manage this bucket cannot access any configuration items or see any parameters like Visibility and Default Storage Tier.
+2. As you can see, the bucket you created with an external key is accessible again: 
 
-   ![Buckets](./images/inaccessible-bucket.png "Buckets")
+   ![Buckets](./images/bucket-visible.png "Buckets")
 
-  If you click on your bucket, you will not be able to access:
+  If you click on your bucket, you will be able to access:
 
-   ![No access](./images/no-access-to-bucket.png "No access")
+   ![Access](./images/upload-object.png "Access")
 
   and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerfull key management solution for all of their OCI resources. 
+
+3. Now we will check that the pre-authenticated request (PAR) that you have created is functional again as the key is enabled.
+  Copy the URL you saved in lab 3 task 2 and paste it in your browser again. Confirm you can download the document. 
+  Thus we have now confirmed that re-enabling the key from the external CipherTrust Manager instance brings back a fully functional behavior to OCI storage bucket.
 
 
 ## Task 6: Check data access into your Autonomous Database
@@ -188,55 +198,42 @@ This lab assumes you have:
 
   ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
 
-2. As you can see, the database is still running:
-
-  ![Autonomous Database](./images/adb-running.png "Autonomous Database")
-
-  Indeed, after you switch to customer-managed keys, some database operations will be affected when the Master Encryption Key used for your Autonomous Database instance is in "Disabled" state in Oracle Cloud Infrastructure Vault. But in order to protect production databases from any kind of events that would prevent the database to access Oracle Cloud Infrastructure Vault, such as a network outage, then Autonomous Database handles the outage as follows:
-
-    * There is a 2-hour grace period where the database remains up and running.
-
-    * If Oracle Cloud Infrastructure Vault is not reachable at the end of the 2-hour grace period, the database Lifecycle State is set to Inaccessible. In this state existing connections are dropped and new connections are not allowed.
-
-    * If Autonomous Data Guard is enabled, during or after the 2-hour grace period you can manually try to perform a failover operation. Autonomous Data Guard automatic failover is not triggered when you are using customer-managed encryption keys and the Oracle Cloud Infrastructure Vault is unreachable.
-
-    * If Autonomous Database is stopped, then you cannot start the database when the Oracle Cloud Infrastructure Vault is unreachable. For this case, the work request shown when you click Work Requests on the Oracle Cloud Infrastructure console under Resources shows: 
-
-    ```
-    The Vault service is not accessible. 
-    Your Autonomous Database could not be started. Please contact Oracle Support.
-    ```
- 
-  To check all the details about this, [please refer to the following documentation link.](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/manage-keys-notes.html)
-
-3. In the real world, the database would be automatically inaccessible after 2 hours. For the purpose of the lab you will, as the Data Manager user, stop the database and try to start it to confirm that it is impossible. 
- Click on your Autonomous Database name: 
- 
- ![Autonomous Database](./images/adb-running.png "Autonomous Database")
- 
- and click **More Actions**, then click **Stop**:
-
-  ![Stop Autonomous Database](./images/stop-adb.png "Stop Autonomous Database")
-
-  A window will prompt you to confirm. Click **Stop**:
-
-  ![Stop Autonomous Database](./images/confirm-stop.png "Stop Autonomous Database")
-
-4. Wait until the database is fully stopped:
+2. As you can see, the database is still stopped as the key was disabled. Now you will try to start the database because the key is enabled again:
 
   ![Stopped Autonomous Database](./images/stopped-adb.png "Stopped Autonomous Database")
 
-5. Try to start again the database by clicking on **More Actions** and **Start**:
+3. Try to start again the database by clicking on **More Actions** and **Start**:
 
   ![Start Autonomous Database](./images/re-start.png "Start Autonomous Database")
 
-  As you can see, it is totally impossible to start the database or do any actions on its content or configuration due to the fact that the Security Operation Manager disabled the key remotely from Thales CipherTrust Manager console:
+  Once you click **Start**, you will see the database is starting:
 
-  ![Start Autonomous Database](./images/try-start-adb.png "Start Autonomous Database")
+  ![Starting Autonomous Database](./images/starting-adb.png "Starting Autonomous Database")
+  
+  Wait until the database is started:
+  
+  ![Autonomous Database available](./images/adb-available.png "Autonomous Database available")
 
-  Clicking *Start** will always bring you back to that screen until the key becomes enabled into OCI Vault, which we will see in the next task.
+  As you can see, now it is possible to start the database as the key is re-enabled and reachable by the autonomous database. 
 
 
+4. In order to ensure the data can be decrypted, let's try to access the data within the database. In order to do that, go to the Database Actions Launchpad:
+
+  ![Database Actions](./images/db-actions.png "Database Actions")
+
+5. Once there, click to SQL under Development:
+
+  ![SQL Development](./images/sql.png "SQL Development")
+
+6. Web SQL Development UI is open and now you can see the data into the table, right click to the table and click **Open**:
+
+  ![Open table](./images/see-data.png "Open table")
+
+7. In the new window, click the tab Data:
+
+  ![See data](./images/data.png "See data")
+
+  As you can see, now you have again complete visibility on the data within the database, as the key was re-enabled.
 
 
 ## Learn More

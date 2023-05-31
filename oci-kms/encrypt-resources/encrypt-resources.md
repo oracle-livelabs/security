@@ -78,7 +78,7 @@ You will upload a file that will be provided to you into the bucket you recently
 
   ![Add Pre-Authenticated Request info](./images/par-info.png "Add Pre-Authenticated Request info")
 
-8. A window will prompt with the URL of the pre-authenticated request. Copy this URL and save it locally. Click **Close**.
+8. A window will prompt with the URL of the pre-authenticated request. Copy this URL and save it locally, you will need it later to perform lab 4 tasks 2 and 5. Click **Close**.
 
   ![Pre-Authenticated Request URL](./images/par-created.png "Pre-Authenticated Request URL")
 
@@ -184,7 +184,7 @@ In this task you will load the previous csv file you loaded into your bucket, in
 
    ![File loaded](./images/upload-done.png "File loaded")
 
-6. Click **CLose**. Refresh the browser and you will be able to see the new created table:
+6. Click **Close**. Refresh the browser and you will be able to see the new created table:
 
   ![Table created](./images/new-table.png "Table created")
 
