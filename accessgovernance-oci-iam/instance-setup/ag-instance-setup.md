@@ -130,6 +130,20 @@ Login to the OCI console using the Identity domain: ag-domain, if not currently 
 
     * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator*. You can now close the window.
 
+    * Now, Notice the *AG User* Role and *AG CloudAccessReviewer* Role listed. Click on the Downward arrow on the right corner for each of them. 
+
+      ![OIG Identity Roles and Access Policies](images/aguser.png)
+
+       ![OIG Identity Roles and Access Policies](images/agreviewer.png)
+
+    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez* and *Harlan Bullard* in *Available Users.* Click on *Assign*
+
+     ![OIG Identity Roles and Access Policies](images/ag-userassign.png)
+
+     ![OIG Identity Roles and Access Policies](images/ag-reviewerassign.png)
+
+    * Mark Hernandez and Harlan Bullard have now been assigned with the *AG User* application role and *AG CloudAccessReviewer*. You can now close the window.
+
 
     You may now **proceed to the next lab.**
 
