@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through configuring a connection between the Thales CipherTrust Maanger and your Oracle Cloud Infrastructure (OCI) cloud tenant. 
+This lab walks you through configuring a connection between the Thales CipherTrust Manager and your Oracle Cloud Infrastructure (OCI) cloud tenant. 
 
 Estimated Time: -- minutes
 
