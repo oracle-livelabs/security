@@ -2,7 +2,9 @@
 
 Estimated Time: 5 minutes
 
-For this workshop, you will be provided with an Oracle Cloud Training Account.
+## Introduction
+
+For the purpose of today's hands-on lab, you have been provided with an OCI Cloud environment. This lab walks you through the steps required in order to gain access to the Oracle Cloud Infrastructure console. Upon entering the Hands-On Lab you should have been given a paper with all the information, including accounts and passwords, which are personal to you to execute this lab. If not please refer to one of the trainer for assitance.
 
 ### Objectives
 
@@ -26,7 +28,7 @@ If you've signed out of the Oracle Cloud, use these steps to sign back in.
 
     ![Click Continue Single Sign-In](./images/cloud-login-tenant.png " ")
 
-3. Enter your Cloud Account credentials and click **Sign In**. 
+3. Enter your Cloud Account credentials and click **Sign In**. For this step please use your user account called "Secops_XXX" where XXX is your training student number. All the account information should have been given to you when you entered the training room, if not please call a trainer to assist. 
 
     ![Sign in](./images/oci-signin.png " ")
 

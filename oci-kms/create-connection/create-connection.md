@@ -2,12 +2,12 @@
 
 ## Introduction
 
-*Describe the lab in one or two sentences, for example:* This lab walks you through the steps to ...
+This lab walks you through configuring a connection between the Thales CipherTrust Maanger and your Oracle Cloud Infrastructure (OCI) cloud tenant. 
 
 Estimated Time: -- minutes
 
-### About <Product/Technology> (Optional)
-Enter background information here about the technology/feature or product used in this lab - no need to repeat what you covered in the introduction. Keep this section fairly concise. If you find yourself needing more than two sections/paragraphs, please utilize the "Learn More" section.
+### About THALES CipherTrust manager
+CipherTrust Manager is hosted outside of OCI. The tenant you have been provided with is a Thales Cloud Solution, but the concept would be exactly the same using a CipherTrust Manager instance you are already running in your Company DataCenter for example. In both cases, using a KMS outside of OCI provides greater segregation of duty which might be required by your company security policy or to answer compliance requirements. 
 
 ### Objectives
 
