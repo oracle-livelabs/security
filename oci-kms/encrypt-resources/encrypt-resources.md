@@ -21,12 +21,12 @@ Let's first create a bucket in OCI Object Storage. To do that, log in to OCI con
  
     ![Buckets](./images/buckets.png "Buckets")
 
-2. Create a bucket in the compartment we used to create the Vault by selecting the compartment and clicking **Create Bucket**.
+2. Create a bucket in the compartment "ocw23-OCI-Vault-HOL" by selecting the compartment on the left in the dropdown list, then by by clicking the **Create Bucket** button.
     
     ![Create bucket](./images/create-bucket.png "Create bucket")
 
 
-3. Name it by following same name convention: ocw23-OCI-bucket-001. Select the option **Encrypt using customer-managed keys**. Once you select that option, new fields to be filled will appear. Select the previously created Vault and the encryption keys that you stored in this Vault. Then click **Create**.
+3. Name it by following the name convention: **"ocw23-OCI-bucket-XXX"** where "XXX" is your student number. Select the option **Encrypt using customer-managed keys**. Once you select that option, new fields to be filled will appear. Select the previously created Vault and the encryption keys that you stored in this Vault. Then click **Create**.
     
     ![Bucket info](./images/bucket-info.png "Bucket info")
 
