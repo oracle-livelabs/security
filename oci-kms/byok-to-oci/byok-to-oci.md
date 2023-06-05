@@ -20,7 +20,7 @@ This lab assumes you have:
 
 ## Task 1: Managing Oracle Vaults From CTM
 
-1. Open the CipherTrust Manager Web UI.
+1. Open the CipherTrust Manager Web UI and click on the "Cloud Key Manager" tile.
 
     ![CTM UI](images/log-in-ctm.png "CTM UI")
 
@@ -28,27 +28,28 @@ This lab assumes you have:
 
     ![Oracle Vaults](images/oracle-vaults.png "Oracle Vaults")
 
-3. Click Add Existing Vault.
+3. Click "Add Existing Vault".
 
     ![Add Vault](images/add-vault.png "Add Vault")
 
-4. Under Add Existing Key Vault configuration, add the following parameters:
-    * Oracle connection - select the connection that was previously created.
-    * Compartment – Select the compartment created with Oracle.
-    * Region - Select your relevant region from the dropdown.
-    * Vault – Select the vault which we created earlier with Oracle.
+4. Under "Add Existing Vault" configuration, add the following parameters:
+    * Oracle connection - select the connection that was previously created, it should be "OCI-Connection_XXX" where "XXX" is your student number.
+    * Compartment – Select the compartment "ocwé"-OCI-Vault-HOL".
+    * Region - Select your relevant region from the dropdown, it should be the same as in the previous lab.
+    * Vault – Select the vault you created earlier, it should be "ocw-OCI-Vault-XXX" where "XXX" is your student number. BE CAREFUL to select your Vault and the one of another student!
+    And then click Next. 
 
     ![Info Vault](images/info-vault.png "Info Vault")
 
-Click Next. 
-
-5. Indeed this configuration does not apply to our lab use case. You can skip it.
+5. The next step "Add Bucket Name, Bucket Namespace" does not apply to our lab use case so we will skip it, go directly to step 6. 
 
      ![Add bucket](images/add-bucket.png "Add bucket")
 
-6. Click Add and add the vault.
+6. click "Add" to add your Vault in your CTM tenant.
 
      ![New Vault](images/created-vault.png "New Vault")
+
+    You should receive a "Success" message and see you Vault listed in the "Oracle Vaults" pane. Congratulations, now you can remotely manage your Oracle Vault from your CTM tenant. 
 
 ## Task 2: Managing Oracle Keys From CTM
 
@@ -56,7 +57,7 @@ Click Next.
 
     ![Oracle keys](images/oracle-keys.png "Oracle keys")
 
-2.	Click on Add Key tab. The Select Material Origin screen of the Add Oracle Key wizard is displayed. Select the key source, in this case we are going to create local key on CipherTrust. 
+2.	Click on the "Add Key" button. The "Select Material Origin" screen of the "Add Oracle Key" wizard is displayed. Select the key source: in this case we are going to create the key locally on CipherTrust so for "Select Method" click on "Create/Upload New Key Material" and then for "Select Source" click on "(Local)":
 
     ![Add key](images/add-key.png "Add key")
 
