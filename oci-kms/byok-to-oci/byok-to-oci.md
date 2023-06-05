@@ -1,4 +1,4 @@
-# Lab 2a - Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)
+# Lab 2 - Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)
 
 ## Introduction
 
@@ -54,22 +54,27 @@ This lab assumes you have:
 
 ## Task 2: Managing Oracle Keys From CTM
 
-1.	On the left pane, click **Cloud Keys > Oracle**.
+1. On the left pane, click **Cloud Keys > Oracle**.
 
     ![Oracle keys](images/oracle-keys.png "Oracle keys")
 
-2.	Click on the "Add Key" button. The "Select Material Origin" screen of the "Add Oracle Key" wizard is displayed. Select the key source: in this case we are going to create the key locally on CipherTrust so for "Select Method" click on "Create/Upload New Key Material" and then for "Select Source" click on "(Local)":
+2. Click on the "Add Key" button. The first step of the "Select Material Origin" screen of the "Add Oracle Key" wizard is displayed. Select the key source: in this case we are going to create the key locally on CipherTrust so for "Select Method" click on "Create/Upload New Key Material" and then for "Select Source" click on "(Local)":
 
     ![Add key](images/add-key.png "Add key")
 
-3. Add Oracle key by providing the following information:
+3. In the second step "Configure CipherTrust Key", create a key for OCI by providing the following information:
     * **Key Name** - Enter "ocw23-AES-256-XXX" where "XXX" is your student number.
     * **Key Type** - Click on "AES".
     * **Key Size** - Click on "256".
 
+    Then click "Next".
+
      ![Add AES key](images/aes-key.png "Add AES key")
 
-4. You need to select existing compartment, Vault and protection mode. 
+4. In the third step "Configure oracle Key", you need to provide the following information:
+    * **Oracle Key Name** - Enter "ocw23-AES-256-XXX" where "XXX" is your student number.
+    * **Oracle Compartment** - Select "ocw23-OCI-Vault-HOL" from the dropdown list.
+    * **Vault** - Select "ocw23-OCI-XXX" where "XXX" is your student number from the dropdown list.
 
     ![Add AES key](images/key-compartment.png "Add AES key")
 
