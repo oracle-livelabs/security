@@ -6,18 +6,11 @@ This lab walks you through configuring a connection between the Thales CipherTru
 
 Estimated Time: -- minutes
 
-### About THALES CipherTrust Manager
-CipherTrust Cloud Key Manager (CCKM) solution is part of the Thales CipherTrust Manager. It is designed to address enterprise needs for encrypting data in the cloud while retaining custodianship of encryption keys, to comply with data security mandates in cloud storage environments. The solution uses an already-installed CipherTrust Manager (CM) as the underlying appliance that generates, stores, and retrieves encryption keys used by the CCKM servers. The keys and CCKM are administered by a Webbased graphic interface (Management Console), Command Line Interfaces (CLI) and command-line utilities. The encryption keys are maintained on the Thales CipherTrust Manager Appliance. CipherTrust Cloud Key Manager is delivered as a virtual appliance that can be
-installed either on-premises or in the Cloud. The features and functionality are the same
-for both deployment scenarios.
-In this lab, CipherTrust Manager is hosted outside of Oracle Cloud Infrastructure. The tenant you have been provided with is a Thales Cloud Solution, but the concept would be exactly the same using a CipherTrust Manager instance you are already running in your Company DataCenter for example. In both cases, using a KMS outside of OCI provides greater segregation of duty which answers advanced compliance mandates contained in your company security policy or compliance requirements.
-
 ### Objectives
 
 In this lab, you will:
-* Connect to your OCI tenant and create your Vault in OCI Vault
-* Set up a link between Thales CipherTrust Manager (created in Lab 1) and OCI Vault
-* Create a Master Encryption Key (MEK) in your Thales HSM via Thales CipherTrust Manager
+* Connect to your OCI tenant and create your own Vault in OCI Vault
+* Set up a link between Thales CipherTrust Manager and OCI Vault
 
 ### Prerequisites
 
@@ -156,10 +149,22 @@ CTM is a hardened appliance (Ubuntu) for optimum security and comprises/integrat
 
 ## Learn More
 
-*(optional - include links to docs, white papers, blogs, etc)*
+### About THALES CipherTrust Manager
+CipherTrust Cloud Key Manager (CCKM) solution is part of the Thales CipherTrust Manager. It is designed to address enterprise needs for encrypting data in the cloud while retaining custodianship of encryption keys, to comply with data security mandates in cloud storage environments. The solution uses an already-installed CipherTrust Manager (CM) as the underlying appliance that generates, stores, and retrieves encryption keys used by the CCKM servers. The keys and CCKM are administered by a Webbased graphic interface (Management Console), Command Line Interfaces (CLI) and command-line utilities. The encryption keys are maintained on the Thales CipherTrust Manager Appliance. CipherTrust Cloud Key Manager is delivered as a virtual appliance that can be
+installed either on-premises or in the Cloud. The features and functionality are the same
+for both deployment scenarios.
+In this lab, CipherTrust Manager is hosted outside of Oracle Cloud Infrastructure. The tenant you have been provided with is a Thales Cloud Solution, but the concept would be exactly the same using a CipherTrust Manager instance you are already running in your Company DataCenter for example. In both cases, using a KMS outside of OCI provides greater segregation of duty which answers advanced compliance mandates contained in your company security policy or compliance requirements.
 
-* [URL text 1](http://docs.oracle.com)
-* [URL text 2](http://docs.oracle.com)
+### About OCI Vault
+Oracle Cloud Infrastructure Vault is a key management service that stores and manages master
+encryption keys and secrets for secure access to resources.
+Vault lets you securely store master encryption keys and secrets that you might otherwise store in
+configuration files or in code. Specifically, depending on the protection mode, vault keys are either stored on the server or they are stored on highly available and durable hardware security modules (HSM) that meet Federal Information Processing Standards (FIPS) 140-2 Security Level 3 security certification.
+The key encryption algorithms that the Vault service supports includes the Advanced Encryption Standard (AES), the Rivest-Shamir-Adleman (RSA) algorithm, and the elliptic curve digital signature algorithm (ECDSA). You can create and use AES symmetric keys and RSA asymmetric keys for encryption and decryption. You can also use RSA or ECDSA asymmetric keys for signing digital messages.
+You can use the Vault service to create and manage the following resources:
+ Vaults
+ Keys
+ Secrets
 
 ## Acknowledgements
 * **Author** - <Name, Title, Group>
