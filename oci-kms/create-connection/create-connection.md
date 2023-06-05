@@ -86,9 +86,11 @@ In this task you will create a connection from your CipherTrust Manager (CTM) te
 
     ![URL creation in address bar](images/CTM-address-bar.png "URL creation in address bar")
 
+    Once you access your login window, please login using your "Secops_XXX" user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you. 
+
     ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
 
-2. Enter the credentials you have been provided with. You are now logged into the CipherTrust Manager web console.
+2. You are now logged into the CipherTrust Manager web console.
 
     ![CipherTrust Manager web console](images/ctm-page.png "CipherTrust Manager web console")
 
@@ -96,15 +98,15 @@ In this task you will create a connection from your CipherTrust Manager (CTM) te
 
     ![Connection](images/create-connection.png "Connection")
 
-4. Click the + Add Connection button to open the Add Connection wizard. The wizard consists of the multiple steps.
+4. Click the "+ Add Connection" button to open the "Add Connection" wizard. The wizard consists of multiple steps.
 
     ![Add connection](images/add-connection.png "Add connection")
 
-5. Select Connection Type : Select “Cloud” : “Oracle Cloud Infrastructure”
+5. Select Connection Type : Select “Cloud” : “Oracle Cloud Infrastructure” and click "Next".
 
      ![Connection type](images/connection-type.png "Connection type")
 
-6. General Info: provide a Name and Description (optional) for the new connection.
+6. General Info: provide a Name following the format : "OCI_Connection_XXX" where XXX is your student number. Add a Description (optional) for the new connection, and click "Next". 
 
     ![Connection name](images/name-connection.png "Connection name")
 
