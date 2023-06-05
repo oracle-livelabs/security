@@ -80,7 +80,7 @@ You will upload a file that will be provided to you into the bucket you recently
 
   ![Pre-Authenticated Request URL](./images/par-created.png "Pre-Authenticated Request URL")
 
-9. To check you have visibility into the file in your bucket, open another browser and go to the URL you copied previoulsy. The file should be automatically downloaded. You have already permissions to donwload and see the file as you have access to your encryption keys created in OCI from CTM.
+9. To check you have visibility into the file in your bucket, open another browser and go to the URL you copied previoulsy. The file should be automatically downloaded and you will be able to open it with Microsoft Excel and look at the content : it's decrypted. A job well done!
 
 ## Task 3: Create an Autonomous Database with your own encryption keys
 
@@ -95,11 +95,13 @@ In order to use customer-managed encryption for Autonomous Database, it is neede
 
   ![Create dynamic group](./images/create-dynamic-group.png "Create dynamic group")
 
-3. Enter a name and a description for the Dynamic Group. Regarding the rule, when you are creating the dynamic group before you provision or clone an Autonomous Database instance, the OCID for the new database is not yet available. For this case, create a dynamic group that specifies the resources in a given compartment by writting the following rule:
+3. Enter a name and a description for the Dynamic Group: 
+* "ocw23-OCI-Vault-ADW-access-XXX" where "XXX" is you student number. 
+  Regarding the rule, when you are creating the dynamic group before you provision or clone an Autonomous Database instance, the OCID for the new database is not yet available. For this case, create a dynamic group that specifies the resources in a given compartment by writting the following rule:
 
-    ```
-    resource.compartment.id = '<your_Compartment_OCID>'
-    ```
+  ```
+  resource.compartment.id = '<your_Compartment_OCID>'
+  ```
   where &lt;your\_Compartment\_OCID&gt; is the OCID of the compartment ocw23-OCI-Vault-HOL.
 
   To find out this OCID, open a new tab and keep in OCI console. In the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Compartments"*. Then click on your compartment ocw23-OCI-Vault-HOL and click the link Copy next to the OCID:
