@@ -62,7 +62,10 @@ This lab assumes you have:
 
     ![Add key](images/add-key.png "Add key")
 
-3. Add Oracle key by providing Key Name, Key Type and Key Size.
+3. Add Oracle key by providing the following information:
+    * **Key Name** - <Enter "ocw23-AES-256-XXX" where "XXX" is your student number.>
+    * **Key Type** - <Click on "AES".>
+    * **Key Size** - <Click on "256".>
 
      ![Add AES key](images/aes-key.png "Add AES key")
 
