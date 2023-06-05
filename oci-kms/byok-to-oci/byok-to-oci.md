@@ -75,28 +75,27 @@ This lab assumes you have:
     * **Oracle Key Name** - Enter "ocw23-AES-256-XXX" where "XXX" is your student number.
     * **Oracle Compartment** - Select "ocw23-OCI-Vault-HOL" from the dropdown list.
     * **Vault** - Select "ocw23-OCI-XXX" where "XXX" is your student number from the dropdown list.
+    Make sure the radio button "HSM" is selected and clieck "Next". 
 
     ![Add AES key](images/key-compartment.png "Add AES key")
 
-5. Click Next.
-
-6. Review the key and click on add key.
+5. Review the key and click on add key.
 
      ![Review key](images/review-key.png "Review key")
 
-7. If the key is created successfully, you will see the following screen:
+6. If the key is created successfully, you will see the following screen:
 
     ![Successfully created key](images/created-key.png "Successfully created key")
 
-8. The key now will appear on the list:
+7. The key now will appear on the list:
 
     ![List of created keys](images/list-key.png "List of created keys")
 
-9. Now you can go back to the OCI Vault and check whether key created from CTM is visible or not. 
+8. Now you can go back to the OCI Vault and check whether key created from CTM is visible or not. 
 
     ![Key in OCI Vault](images/keys-oci.png "Key in OCI Vault")
 
-10. If you click on your recently created key, and check the key versions for this key, you will be able to see the key details, where the Source of the key is shown as External:
+9. If you click on your recently created key, and check the key versions for this key, you will be able to see the key details, where the Source of the key is shown as External:
 
      ![External Key](images/external-key.png "External Key")
 
