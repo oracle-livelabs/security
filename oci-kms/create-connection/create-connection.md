@@ -164,7 +164,7 @@ The key encryption algorithms that the Vault service supports includes the Advan
 You can use the Vault service to create and manage the following resources:
 * **Vaults**
 * **Keys**
-* **Serets**
+* **Secrets**
 
 ## Acknowledgements
 * **Author** - <Name, Title, Group>
