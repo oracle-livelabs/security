@@ -144,7 +144,7 @@ In this task you will create a connection from your CipherTrust Manager (CTM) te
 
     ![Connection ready](images/tested-connection.png "Connection ready")
 
-
+Congratulations, you have successfully created a direct link between your own Thales CipherTrust tenant and the Vault you created in OCI Vault. Now we will see how you will be able to use this to control the encryption in your OCI tenant remotely in Lab 2.
 
 ## Learn More
 
