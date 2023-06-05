@@ -66,8 +66,14 @@ You will upload a file that will be provided to you into the bucket you recently
 
   ![Create Pre-Authenticated Request](./images/create-par.png "Create Pre-Authenticated Request")
 
-7. Fill the parameters as follow and click **Create Pre-Authenticated Request**:
+7. Fill the parameters as follow 
+* Name: enter "ocw23-sample-file"
+* Pre-Authenticated Request target: Click on the "Object" tile
+* Object Name: enter "ocw23-sample-file.csv"
+* Access Type: select "Permit object reads"
+* Expiration: leave the default or choose any time. 
 
+ Then click **Create Pre-Authenticated Request**:
   ![Add Pre-Authenticated Request info](./images/par-info.png "Add Pre-Authenticated Request info")
 
 8. A window will prompt with the URL of the pre-authenticated request. Copy this URL and save it locally, you will need it later in lab 4. Click **Close**.
