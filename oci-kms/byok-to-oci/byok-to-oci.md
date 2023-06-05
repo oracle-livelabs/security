@@ -111,7 +111,7 @@ Once in the OCI console, click on the hamburger menu in the top left and select 
 
      ![External Key](images/external-key.png "External Key")
 
-Congratulations ! You have linked the OCI Vault you created yourself to your own Thales CTM tenant, and you have created a key outside of OCI, which is now usable directly within OCI.
+Congratulations! You have linked the OCI Vault you created yourself to your own Thales CTM tenant, and you have created a key outside of OCI, which is now usable directly within OCI.
 This concludes this lab, in the next lab we will see how it's possible to use this key to encrypt data in OCI native resources.
 
 ## Acknowledgements
