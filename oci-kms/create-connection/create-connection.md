@@ -39,11 +39,15 @@ Each vault has a management endpoint and a cryptography endpoint. To create a Va
 
 	![Go to Vault](images/vault-menu.png)
 
-3. Pick up the compartment in the left menu. Click the display menu and select the already created subcompartment "ocw23-OCI-Vault-HOL". Then click "Create Vault".
+3. Pick up the compartment in the left menu. Click the display menu and select the already created subcompartment "ocw23-OCI-Vault-HOL". 
+
+    ![select compartment](images/select-compartment.png)
+
+    Then click "Create Vault".
 
     ![Create Vault](images/select-compartment-create-vault.png)
 
-4. Enter a name for your Vault. Please follow the naming convention: ocw23-OCI-Vault-XXX where XXX is your number student.
+4. Enter a name for your Vault. Please follow the naming convention: ocw23-OCI-Vault-XXX where XXX is your number student. Do NOT click "Make it a virtual private vault". Click on "Create Vault" button to finish this step. 
 
      ![Enter name for Vault](images/create-name-vault.png)
 
@@ -51,7 +55,7 @@ Each vault has a management endpoint and a cryptography endpoint. To create a Va
 
     ![Vault successfully created](images/vault-created.png)
 
-6. In order to configure CTM Oracle connection, you must add an API Key (a RSA key pair) for your user. CTM will use the private key to make connection to OCI and call its API. To do that, click on the top right user profile icon in OCI console and select **User Settings**
+6. In order to configure the connection between the Vault you just created and Thales CipherTrust manager (CTM), you must add an API Key (a RSA key pair) for your user. CTM will use the private key to make connection to OCI and call its APIs. To do that, click on the top right user profile icon in OCI console and select **User Settings**
 
     ![User Settings](images/user-settings.png)
 
@@ -59,7 +63,8 @@ Each vault has a management endpoint and a cryptography endpoint. To create a Va
 
     ![Add API Key](images/add-apikey.png)
 
-8. A window will prompt asking you how you want to create those API Keys. You can generate the API key pair direclty in this step, or you also have the option to import previously created keys. In this case, we will generate the API key pair in this step and will download the private key. Then select *"Generate API Key Pair"* and *"Download Private Key"*. Save your private key in a local directory, as you will need it later. Click Add.
+8. A window will prompt asking you how you want to create those API Keys. You can generate the API key pair direclty in this step, or you also have the option to import previously created keys. In this case, we will generate the API key pair in this step and will download the private key. 
+    Select *"Generate API Key Pair"* and *"Download Private Key"*. Save your private key in a local directory, as you will need it later. Click Add.
 
     ![Generate API Key](images/generate-apikey.png)
 
