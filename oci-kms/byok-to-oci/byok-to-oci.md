@@ -34,10 +34,11 @@ This lab assumes you have:
 
 4. Under "Add Existing Vault" configuration, add the following parameters:
     * Oracle connection - select the connection that was previously created, it should be "OCI-Connection_XXX" where "XXX" is your student number.
-    * Compartment – Select the compartment "ocwé"-OCI-Vault-HOL".
+    * Compartment – Select the compartment "ocw23-OCI-Vault-HOL".
     * Region - Select your relevant region from the dropdown, it should be the same as in the previous lab.
-    * Vault – Select the vault you created earlier, it should be "ocw-OCI-Vault-XXX" where "XXX" is your student number. BE CAREFUL to select your Vault and the one of another student!
-    And then click Next. 
+    * Vault – Select the vault you created earlier, it should be "ocw23-OCI-Vault-XXX" where "XXX" is your student number.
+    BE CAREFUL to select your Vault and not the one of another student!
+    Then click Next. 
 
     ![Info Vault](images/info-vault.png "Info Vault")
 
