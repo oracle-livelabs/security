@@ -97,7 +97,7 @@ In order to use customer-managed encryption for Autonomous Database, it is neede
 
 3. Enter a name and a description for the Dynamic Group: 
 * "ocw23-OCI-Vault-ADW-access-XXX" where "XXX" is you student number. 
-  Regarding the rule, when you are creating the dynamic group before you provision or clone an Autonomous Database instance, the OCID for the new database is not yet available. For this case, create a dynamic group that specifies the resources in a given compartment by writting the following rule:
+Regarding the rule, when you are creating the dynamic group before you provision or clone an Autonomous Database instance, the OCID for the new database is not yet available. For this case, create a dynamic group that specifies the resources in a given compartment by writting the following rule:
 
   ```
   resource.compartment.id = '<your_Compartment_OCID>'
