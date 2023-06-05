@@ -94,12 +94,12 @@ This lab assumes you have:
     Congratulations! You have created your first key in CTM. This key should have been automatically synchronized with the vault you have created in OCI.
 
 8. Now we will make sure the key is indeed in OCI Vault. 
-In order to do this you will act as the Security operator, using your Secops_XXX user (where "XXX" is your student number) and log in the the OCI console. If required, follow instructions in the preliminary lab "Getting started".
+In order to do this you will act as the Security Operator of your company, using your Secops_XXX user (where "XXX" is your student number) and log in to the OCI console. If required, follow instructions in the preliminary lab "Getting started".
 Once in the OCI console, click on the hamburger menu in the top left and select "Identity & Security" then "Vault".
 
    ![Accessing OCI Vault](images/accessing-oci-vault.png "Accessing OCI Vault")
 
-9. On the main OCI Vault page, you should see you Vault listed. If not, make sure the compartment selected on the left is "ocw23-OCI-Vault-HOL". Once you have located it, click on your Vault name, it should be called "ocw23-OCI-Vault-XXX" where "XXX" is your student number. 
+9. On the main OCI Vault page, you should see your Vault listed. If not, make sure the compartment selected on the left is "ocw23-OCI-Vault-HOL". Once you have located it, click on your Vault name, it should be called "ocw23-OCI-Vault-XXX" where "XXX" is your student number. 
 
    ![OCI Vault](images/oci-vault.png "Vault")
 
