@@ -82,7 +82,9 @@ Copy all the information on notepad as it will be used to create connection betw
 
 In this task you will create a connection from your CipherTrust Manager (CTM) tenant which is in Thales Cloud, outside of Oracle Cloud Infrastructure, to the Vault you just created in OCI. 
 
-1. To access CipherTrust Manager as a Service you will need to create the URL to access your own private tenant. To do this, you need copy and paste this URL : "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM" and append your student number. For example, if your student number is 001, the URL to your own private CTM tenant will be: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001". 
+1. To access CipherTrust Manager as a Service you will need to create the URL to access your own private tenant. To do this, you need to copy and paste this URL: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM" in your browser address bar and add your student number at the end of the URL. For example, if your student number is 001, the complete URL to your own private CTM tenant will be: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001". 
+
+    ![URL creation in address bar](images/ctm-login.png "URL creation in address bar")
 
     ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
 
