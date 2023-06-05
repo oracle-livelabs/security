@@ -2,9 +2,9 @@
 
 ### Introduction
 
-This lab walks you through the creation of different OCI resources and the configuration of their encryption with the key ou created externally to OCI in Thales CipherTrust Manager. 
+This lab walks you through the creation of different OCI resources and the configuration of their encryption with the key you created externally to OCI in Thales CipherTrust Manager. 
 
-You are your Company Data Administrator. You will create a storage space as well as an Autonomous Database. You will select to encrypt those resources with the key you created in Thales CipherTrust Manager during the previous lab. You will upload data to those two resources and access it to make sure the encryption/decryption operations are working correctly. 
+You are your Company Data Manager. You will create a storage space as well as an Autonomous Database. You will select to encrypt those resources with the key you created in Thales CipherTrust Manager during the previous lab. You will upload data to those two resources and access it to make sure the encryption/decryption operations are working correctly. 
 
 Estimated Lab Time: -- minutes
 
@@ -16,8 +16,9 @@ In this lab, you will:
 
 ## Task 1: Create bucket with your own encryption keys
 
-1. Let's first create a bucket in OCI Object Storage. To do that, log in to OCI console and navigate through the main hamburger menu to *"Storage > Object Storage > Buckets"*.
-    
+1. You first need to login to your OCI tenant with the Data_Manager_XXX user where XXX is your student login, please refer to the "Get Started" Lab if required. 
+  Let's first create a bucket in OCI Object Storage. To do that, log in to OCI console and navigate through the main hamburger menu to *"Storage > Object Storage > Buckets"*.
+ 
     ![Buckets](./images/buckets.png "Buckets")
 
 2. Create a bucket in the compartment we used to create the Vault by selecting the compartment and clicking **Create Bucket**.
