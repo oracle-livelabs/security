@@ -162,9 +162,9 @@ Vault lets you securely store master encryption keys and secrets that you might 
 configuration files or in code. Specifically, depending on the protection mode, vault keys are either stored on the server or they are stored on highly available and durable hardware security modules (HSM) that meet Federal Information Processing Standards (FIPS) 140-2 Security Level 3 security certification.
 The key encryption algorithms that the Vault service supports includes the Advanced Encryption Standard (AES), the Rivest-Shamir-Adleman (RSA) algorithm, and the elliptic curve digital signature algorithm (ECDSA). You can create and use AES symmetric keys and RSA asymmetric keys for encryption and decryption. You can also use RSA or ECDSA asymmetric keys for signing digital messages.
 You can use the Vault service to create and manage the following resources:
- Vaults
- Keys
- Secrets
+* **Vaults**
+* **Keys**
+* **Serets**
 
 ## Acknowledgements
 * **Author** - <Name, Title, Group>
