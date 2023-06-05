@@ -103,22 +103,16 @@ Once in the OCI console, click on the hamburger menu in the top left and select 
 
    ![OCI Vault](images/oci-vault.png "Vault")
 
-10. You're now seeing the 
+10. You're now seeing all the keys in the vault you created. You should see the key you created in the Thales CTM interface displayed in your vault. Click on the name of your key. 
 
     ![Key in OCI Vault](images/keys-oci.png "Key in OCI Vault")
 
-9. If you click on your recently created key, and check the key versions for this key, you will be able to see the key details, where the Source of the key is shown as External:
+9. You will see all the details about this key. Now if you click on "Versions" in the "Resources" menu on the left, you will see more key details, including the Key Source which is shown as External:
 
      ![External Key](images/external-key.png "External Key")
 
-This concludes this lab.
-
-## Learn More
-
-*(optional - include links to docs, white papers, blogs, etc)*
-
-* [URL text 1](http://docs.oracle.com)
-* [URL text 2](http://docs.oracle.com)
+Congratulations ! You have linked the OCI Vault you created yourself to your own Thales CTM tenant, and you have created a key outside of OCI, which is now usable directly within OCI.
+This concludes this lab, in the next lab we will see how it's possible to use this key to encrypt data in OCI native resources.
 
 ## Acknowledgements
 * **Author** - <Name, Title, Group>
