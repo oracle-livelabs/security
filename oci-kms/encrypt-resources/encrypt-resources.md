@@ -36,7 +36,7 @@ Select the option **Encrypt using customer-managed keys**. Once you select that 
 Then click **Create**.
     ![Bucket info](./images/bucket-info.png "Bucket info")
 
-4. Now you have already created your bucket with your own ecnryption keys:
+4. Congratulations, you have now created a new storage bucket in OCI where all the data you upload will be automatically encrypted at all times with the encryption key you created on Thales CTM:
 
   ![New Bucket](./images/new-bucket.png "New Bucket")
 
