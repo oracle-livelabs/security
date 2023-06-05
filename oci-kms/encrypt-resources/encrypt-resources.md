@@ -26,7 +26,14 @@ Let's first create a bucket in OCI Object Storage. To do that, log in to OCI con
     ![Create bucket](./images/create-bucket.png "Create bucket")
 
 
-3. Name it by following the name convention: **"ocw23-OCI-bucket-XXX"** where "XXX" is your student number. Select the option **Encrypt using customer-managed keys**. Once you select that option, new fields to be filled will appear. Select the previously created Vault and the encryption keys that you stored in this Vault. Then click **Create**.
+3. Name it by following the name convention: 
+* **"ocw23-OCI-bucket-XXX"** where "XXX" is your student number. 
+
+Select the option **Encrypt using customer-managed keys**. Once you select that option, new fields to be filled will appear.
+* Select the Vault you created in lab 1 called "ocw23-OCI-Vault-XXX" where "XXX" is your student number. 
+* Select the encryption key that you created in Thales CTM, called "ocw23-AES-256-XXX" where "XXX" is your student number.
+
+Then click **Create**.
     
     ![Bucket info](./images/bucket-info.png "Bucket info")
 
