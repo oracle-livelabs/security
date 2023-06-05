@@ -79,19 +79,31 @@ This lab assumes you have:
 
     ![Add AES key](images/key-compartment.png "Add AES key")
 
-5. Review the key and click on add key.
+5. Review the key creation configuration and click on "add key" button.
 
      ![Review key](images/review-key.png "Review key")
 
-6. If the key is created successfully, you will see the following screen:
+6. Once the key is created successfully, you will see the following screen. Click "Close". 
 
     ![Successfully created key](images/created-key.png "Successfully created key")
 
-7. The key now will appear on the list:
+7. The key now appears on the "Oracle Keys" list:
 
     ![List of created keys](images/list-key.png "List of created keys")
 
-8. Now you can go back to the OCI Vault and check whether key created from CTM is visible or not. 
+    Congratulations! You have created your first key in CTM. This key should have been automatically synchronized with the vault you have created in OCI.
+
+8. Now we will make sure the key is indeed in OCI Vault. 
+In order to do this you will act as the Security operator, using your Secops_XXX user (where "XXX" is your student number) and log in the the OCI console. If required, follow instructions in the preliminary lab "Getting started".
+Once in the OCI console, click on the hamburger menu in the top left and select "Identity & Security" then "Vault".
+
+   ![Accessing OCI Vault](images/accessing-oci-vault.png "Accessing OCI Vault")
+
+9. On the main OCI Vault page, you should see you Vault listed. If not, make sure the compartment selected on the left is "ocw23-OCI-Vault-HOL". Once you have located it, click on your Vault name, it should be called "ocw23-OCI-Vault-XXX" where "XXX" is your student number. 
+
+   ![OCI Vault](images/oci-vault.png "Vault")
+
+10. 
 
     ![Key in OCI Vault](images/keys-oci.png "Key in OCI Vault")
 
