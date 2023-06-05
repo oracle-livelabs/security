@@ -2,28 +2,25 @@
 
 ## Introduction
 
-This lab walks you through the steps to ...
+This lab walks you through how to create your own keys outside of OCI in CTM, and bring them to your OCI tenant in your vault.
 
 Estimated Time: -- minutes
-
-### About <Product/Technology> (Optional)
-Enter background information here about the technology/feature or product used in this lab - no need to repeat what you covered in the introduction. Keep this section fairly concise. If you find yourself needing more than two sections/paragraphs, please utilize the "Learn More" section.
 
 ### Objectives
 
 In this lab, you will:
-* Bring Your Own Keys to your OCI Vault
+* Add and manage your own Vault from CTM
+* Create Encryption keys in CTM and manage them in OCI Vault from CTM
 
-### Prerequisites (Optional)
+### Prerequisites
 
 This lab assumes you have:
-* An Oracle Cloud account
+* Access to your OCI and CTM accounts
 * All previous labs successfully completed
-
 
 ## Task 1: Managing Oracle Vaults From CTM
 
-1.	Open the CipherTrust Manager Web UI.
+1. Open the CipherTrust Manager Web UI.
 
     ![CTM UI](images/log-in-ctm.png "CTM UI")
 
