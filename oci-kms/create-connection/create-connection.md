@@ -6,8 +6,11 @@ This lab walks you through configuring a connection between the Thales CipherTru
 
 Estimated Time: -- minutes
 
-### About THALES CipherTrust manager
-CipherTrust Manager is hosted outside of OCI. The tenant you have been provided with is a Thales Cloud Solution, but the concept would be exactly the same using a CipherTrust Manager instance you are already running in your Company DataCenter for example. In both cases, using a KMS outside of OCI provides greater segregation of duty which might be required by your company security policy or to answer compliance requirements. 
+### About THALES CipherTrust Manager
+CipherTrust Cloud Key Manager (CCKM) solution is part of the Thales CipherTrust Manager. It is designed to address enterprise needs for encrypting data in the cloud while retaining custodianship of encryption keys, to comply with data security mandates in cloud storage environments. The solution uses an already-installed CipherTrust Manager (CM) as the underlying appliance that generates, stores, and retrieves encryption keys used by the CCKM servers. The keys and CCKM are administered by a Webbased graphic interface (Management Console), Command Line Interfaces (CLI) and command-line utilities. The encryption keys are maintained on the Thales CipherTrust Manager Appliance. CipherTrust Cloud Key Manager is delivered as a virtual appliance that can be
+installed either on-premises or in the Cloud. The features and functionality are the same
+for both deployment scenarios.
+In this lab, CipherTrust Manager is hosted outside of Oracle Cloud Infrastructure. The tenant you have been provided with is a Thales Cloud Solution, but the concept would be exactly the same using a CipherTrust Manager instance you are already running in your Company DataCenter for example. In both cases, using a KMS outside of OCI provides greater segregation of duty which answers advanced compliance mandates contained in your company security policy or compliance requirements.
 
 ### Objectives
 
