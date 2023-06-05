@@ -103,7 +103,7 @@ Once in the OCI console, click on the hamburger menu in the top left and select 
 
    ![OCI Vault](images/oci-vault.png "Vault")
 
-10. 
+10. You're now seeing the 
 
     ![Key in OCI Vault](images/keys-oci.png "Key in OCI Vault")
 
