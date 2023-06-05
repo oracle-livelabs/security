@@ -59,7 +59,7 @@ Each vault has a management endpoint and a cryptography endpoint. To create a Va
 
     ![User Settings](images/user-settings.png)
 
-7. In the menu left, navigate to Resources and API Keys. Click *"Add API Key"*.
+7. In the left menu, navigate to Resources and API Keys. Click *"Add API Key"*.
 
     ![Add API Key](images/add-apikey.png)
 
@@ -80,12 +80,7 @@ Copy all the information on notepad as it will be used to create connection betw
 
 ## Task 2: Configuring CipherTrust Manager Connection to Oracle
 
-In this task you will create a connection from CipherTrust Manager in Thales platform to Oracle. 
-
-CipherTrust Cloud Key Manager (CTM) solution is part of the Thales CipherTrust Manager. It is designed to address enterprise needs for encrypting data in the cloud while retaining custodianship of encryption keys, to comply with data security mandates in cloud storage environments. The solution uses an already-installed CipherTrust Manager (CM) as the underlying appliance that generates, stores, and retrieves encryption keys used by the CTM servers. The keys and CTM are administered by a Web based graphic interface (Management Console), Command Line Interfaces (CLI) and command-line utilities. The encryption keys are maintained on the Thales CipherTrust Manager Appliance.
-
-CTM is a hardened appliance (Ubuntu) for optimum security and comprises/integrates with MongoDB for secure storage. CipherTrust Cloud Key Manager is delivered as a virtual appliance that can be installed either on-premises (by deploying an .ova file) or on Amazon Web Services (by deploying an Amazon Machine Image (AMI)) or from Azure Marketplace. The features and functionality are the same for both deployment scenarios.
-
+In this task you will create a connection from your CipherTrust Manager (CTM) tenant which is in Thales Cloud, outside of Oracle Cloud Infrastructure, to the Vault you just created in OCI. 
 
 1. Go to the following URL to access CipherTrust Manager as a Service: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM"* and append your student number. For example, if your student number is 001, go to the following URL: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001"*
 
