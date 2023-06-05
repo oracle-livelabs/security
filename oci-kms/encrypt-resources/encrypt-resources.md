@@ -1,33 +1,18 @@
-# Lab 3 - Configure customer managed encryption for OCI resources
+# Lab 3 - Configure OCI resources encryption with an externally managed key
 
-## Introduction
+### Introduction
 
-*Describe the lab in one or two sentences, for example:* This lab walks you through the steps to ...
+This lab walks you through the creation of different OCI resources and the configuration of their encryption with the key ou created externally to OCI in Thales CipherTrust Manager. 
+
+You are your Company Data Administrator. You will create a storage space as well as an Autonomous Database. You will select to encrypt those resources with the key you created in Thales CipherTrust Manager during the previous lab. You will upload data to those two resources and access it to make sure the encryption/decryption operations are working correctly. 
 
 Estimated Lab Time: -- minutes
 
-### About <Product/Technology> (Optional)
-Enter background information here about the technology/feature or product used in this lab - no need to repeat what you covered in the introduction. Keep this section fairly concise. If you find yourself needing more than two sections/paragraphs, please utilize the "Learn More" section.
-
 ### Objectives
-
-*List objectives for this lab using the format below*
 
 In this lab, you will:
 * Connect to your OCI tenant and create an encrypted Storage Bucket and Autonomous Database.
 * Test access to the encrypted data and confirm the right users can correctly access cleartext data in the Storage Bucket and Autonomous Database.
-
-
-### Prerequisites (Optional)
-
-*List the prerequisites for this lab using the format below. Fill in whatever knowledge, accounts, etc. is necessary to complete the lab. Do NOT list each previous lab as a prerequisite.*
-
-This lab assumes you have:
-* An Oracle Cloud account
-* All previous labs successfully completed
-
-
-*This is the "fold" - below items are collapsed by default*
 
 ## Task 1: Create bucket with your own encryption keys
 
