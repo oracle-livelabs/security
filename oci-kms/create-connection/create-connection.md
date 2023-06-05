@@ -102,15 +102,15 @@ In this task you will create a connection from your CipherTrust Manager (CTM) te
 
     ![Add connection](images/add-connection.png "Add connection")
 
-5. Select Connection Type : Select “Cloud” : “Oracle Cloud Infrastructure” and click "Next".
+5. Select Connection Type : Select “Cloud” : “Oracle Cloud Infrastructure” and click **Next**.
 
      ![Connection type](images/connection-type.png "Connection type")
 
-6. General Info: provide a Name following the format : "OCI_Connection_XXX" where XXX is your student number. Add a Description (optional) for the new connection, and click "Next". 
+6. General Info: provide a Name following the format : "OCI_Connection_XXX" where XXX is your student number. Add a Description (optional) for the new connection, and click **Next**. 
 
     ![Connection name](images/name-connection.png "Connection name")
 
-7. After you click **Next**, the step Configure Connection is coming. In this step you have to enter the information you got in your configuration file previously saved, after you created your API key:
+7. You are now in the **Configure Connection** step. You have to enter the information you previoulsy saved when you created the API Key Pair, in the Task 1.9 of this lab. **BE CAREFUL**, the information are not listed in the same order, for example "User OCID" is provided first and "tenancy OCID" comes third, where here "tenancy OCID" is asked first, so you have to make sure you paste the relevant information. You will also need to upload the private key file you saved in the same step.
 
     * Tenancy OCID: OCID of the tenancy.
     * User OCID: OCID of the user.
@@ -130,22 +130,17 @@ In this task you will create a connection from your CipherTrust Manager (CTM) te
 
     ![Successful connection](images/successful-connection.png "Successful connection")
 
+    Then click **Next**. 
 
-
-8. Click Next. The step is Add Products: Use the check boxes in the Products list to select Cloud Key manager.
+8. The last step is "Add Products":use the check boxes in the Products list to select "Cloud Key manager" and click "Add Connection":
 
     ![Add Product](images/add-cloudkeymanager.png "Add Product")
 
-9. Click Add Connection.
-
-
-10. From the connection pane you will get an option to test the connection again:
-
+9. You should receive a "Success" notification and will be redirected to the **Connections** pane of CTM. Here you need to test the connection again by clicking on the three dots at the end of your newly created connection, and click on "Test Connection" in the menu:
     
     ![Test connection](images/test-connection.png "Test connection")
 
-
-11. Your connection state should be **Ready.** 
+10. Your connection state should be **Ready**. 
 
     ![Connection ready](images/tested-connection.png "Connection ready")
 
