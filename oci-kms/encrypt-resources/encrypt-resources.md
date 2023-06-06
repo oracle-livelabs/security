@@ -1,6 +1,6 @@
 # Lab 3 - Configure OCI resources encryption with an externally managed key
 
-### Introduction
+## Introduction
 
 This lab walks you through the creation of different OCI resources and the configuration of their encryption with the key you created externally to OCI in Thales CipherTrust Manager. 
 
