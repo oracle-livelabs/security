@@ -90,15 +90,15 @@ Let's create now the Autonomous Database, and configure it with the key you crea
 
 * In order to use customer-managed encryption for Autonomous Database, it is required to create permissions to allow your Autonomous Database to communicate with the OCI Vault service. For the purpose of this lab, we have pre-configured a Dynamic Group and the associated policy. For you to understand all the steps, you can look at the configuration below, or if you don't have time you can skip directly to step 1 of this lab. 
 
-We have created a dynamic group which automatically contains all the resources of this compartment. To see the configuration, in the Oracle Cloud Infrastructure console click *"Identity & Security"* and under *"Identity"*, click *"Dynamic Groups"*. 
+* We have created a dynamic group which automatically contains all the resources of this compartment. To see the configuration, in the Oracle Cloud Infrastructure console click *"Identity & Security"* and under *"Identity"*, click *"Dynamic Groups"*. 
 
  ![Dynamic Groups](./images/dynamic-groups.png "Dynamic Groups")
 
-Look for a group called "ocw23ToVault" and click on its name to see all the details. 
+* Look for a group called "ocw23ToVault" and click on its name to see all the details. 
 
  ![Dynamic Groups](./images/dynamic-groups.png "Dynamic Groups")
 
-In the details panel, you can see the rule which was created: 
+* In the details panel, you can see the rule which was created: 
   ```
   resource.compartment.id = '<your_Compartment_OCID>'
   ```
@@ -106,9 +106,9 @@ In the details panel, you can see the rule which was created:
 
  ![Dynamic Groups](./images/dynamic-groups.png "Dynamic Groups")
 
-Which means that any new resource created in the "ocw23-OCI-Vault-HOL" compartment will automatically belong to this group. This is a best practice for simplification as all the new Autonomous Database created will be part of it and benefit from the associated policy. Indeed when you are creating the dynamic group, the OCID for the new database is not yet available.
+* Which means that any new resource created in the "ocw23-OCI-Vault-HOL" compartment will automatically belong to this group. This is a best practice for simplification as all the new Autonomous Database created will be part of it and benefit from the associated policy. Indeed when you are creating the dynamic group, the OCID for the new database is not yet available.
 
-Then we needed to write a policy statement for the dynamic group to enable access to OCI Vault resources: Vaults and Keys. To check the policy written for this lab, in the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Policies"*:
+* Then we needed to write a policy statement for the dynamic group to enable access to OCI Vault resources: Vaults and Keys. To check the policy written for this lab, in the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Policies"*:
 
   ![Security policies](./images/policies.png "Security policies")
 
