@@ -118,8 +118,8 @@ Let's create now the Autonomous Database, and configure it with the key you crea
 
   * In the details panel, you can see a policy was written as follows:
   ```
-  Allow dynamic-group ocw23-OCI-Vault-XXX to use vaults in compartment ocw23-OCI-Vault-HOL
-  Allow dynamic-group ocw23-Dynamic-Access-to-Vault-Policyvv to use keys in compartment ocw23-OCI-Vault-HOL
+  Allow dynamic-group ocw23ToVault to use vaults in compartment ocw23-OCI-Vault-HOL
+  Allow dynamic-group ocw23ToVault to use keys in compartment ocw23-OCI-Vault-HOL
   ```
 
    ![Create policy](./images/create-policy.png "Create policy")
