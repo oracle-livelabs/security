@@ -112,29 +112,31 @@ Let's create now the Autonomous Database, and configure it with the key you crea
   ![Security policies](./images/policies.png "Security policies")
 
 
-5. To write policies for a dynamic group, click Create Policy, and enter a Name and a Description. Use the Policy Builder to create a policy for vault and keys in the local tenancy.
+* Look for a policy called "ocw23-Dynamic-Access-to-Vault-Policy" and click on its name to see all the details.
 
+  ![Security policies list](./images/policies-list.png "Security policies list")
+
+  * In the details panel, you can see a policy was written as follows:
   ```
   Allow dynamic-group ocw23-OCI-Vault-XXX to use vaults in compartment ocw23-OCI-Vault-HOL
-  Allow dynamic-group ocw23-OCI-Vault-XXX to use keys in compartment ocw23-OCI-Vault-HOL
+  Allow dynamic-group ocw23-Dynamic-Access-to-Vault-Policyvv to use keys in compartment ocw23-OCI-Vault-HOL
   ```
-  It will look like something similar to:
 
    ![Create policy](./images/create-policy.png "Create policy")
 
-6. Click Create to save the policy.
+This policy configuration is very important. By default, no services can access Vaults and Keys. It is your responsibility as a CISO / Security Administrator of OCI to decide who/what can access which vaults and which encryption keys. This allows you to define a very advanced and granular encryption architecture within OCI, while leveraging your existing KMS/HSM assets on-premise as the key we are using in this lab has been created by you on your company existing Thales CTM tenant, outside of OCI. 
 
-7. Now you can create the Autonomous Database. Navigate through the main hamburger menu to: *"Oracle Database > Autonomous Database"*.
+1. Now you can create the Autonomous Database. Navigate through the main hamburger menu to: *"Oracle Database > Autonomous Database"*.
 
     ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
 
 
-8.	Click Create Autonomous Database:
+2.	Click Create Autonomous Database:
 
     ![Create Autonomous Database](./images/create-autonomous-database.png "Create Autonomous Database")
 
 
-9.	Fill the parameters as follows:
+3.	Fill the parameters as follows:
     * Compartment: ocw23-OCI-Vault-HOL
     *	Display Name: ocw23-OCI-adb-001
     *	Database Name: ocw23OCIadb001
@@ -151,7 +153,7 @@ Let's create now the Autonomous Database, and configure it with the key you crea
     ![Encryption in Autonomous Database](./images/adb-encryption.png "Encryption in Autonomous Database")
 
 
-10. Click **Create Autonomous Database**. Then wait until the database status is set to green and ACTIVE.
+4. Click **Create Autonomous Database**. Then wait until the database status is set to green and ACTIVE.
 
   ![Autonomous Database active](./images/adb-created.png "Autonomous Database active")
 
