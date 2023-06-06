@@ -84,34 +84,31 @@ You will upload a file that will be provided to you into the bucket you recently
 
 ## Task 3: Create an Autonomous Database with your own encryption keys
 
-Let's create now the Autonomous Database.
-In order to use customer-managed encryption for Autonomous Database, it is needed to create permissions to allow OCI Vault service to communicate with your Autonomoous Database. To do that, you need first to create a dynamic group and policies to provide access to the vault and keys for Autonomous Database instance. 
+Let's create now the Autonomous Database, and configure it with the key you created in Thales CTM. 
 
-1. Create a dynamic group to make the master encryption key accessible to the Autonomous Database instance: in the Oracle Cloud Infrastructure console click *"Identity & Security"* and under *"Identity"*, click *"Dynamic Groups"*. 
+# Learn More
+
+* In order to use customer-managed encryption for Autonomous Database, it is required to create permissions to allow your Autonomous Database to communicate with the OCI Vault service. For the purpose of this lab, we have pre-configured a Dynamic Group and the associated policy. For you to understand all the steps, you can look at the configuration below, or if you don't have time you can skip directly to step 1 of this lab. 
+
+We have created a dynamic group which automatically contains all the resources of this compartment. To see the configuration, in the Oracle Cloud Infrastructure console click *"Identity & Security"* and under *"Identity"*, click *"Dynamic Groups"*. 
 
  ![Dynamic Groups](./images/dynamic-groups.png "Dynamic Groups")
 
-2. Click Create Dynamic Group
+Look for a group called "ocw23ToVault" and click on its name to see all the details. 
 
-  ![Create dynamic group](./images/create-dynamic-group.png "Create dynamic group")
+ ![Dynamic Groups](./images/dynamic-groups.png "Dynamic Groups")
 
-3. Enter a name and a description for the Dynamic Group: 
-* "ocw23-OCI-Vault-ADW-access-XXX" where "XXX" is you student number. 
-
-Regarding the rule, when you are creating the dynamic group before you provision or clone an Autonomous Database instance, the OCID for the new database is not yet available. For this case, create a dynamic group that specifies the resources in a given compartment by writting the following rule:
-
+In the details panel, you can see the rule which was created: 
   ```
   resource.compartment.id = '<your_Compartment_OCID>'
   ```
   where &lt;your\_Compartment\_OCID&gt; is the OCID of the compartment ocw23-OCI-Vault-HOL.
 
-  To find out this OCID, open a new tab and keep in OCI console. In the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Compartments"*. Then click on your compartment ocw23-OCI-Vault-HOL and click the link Copy next to the OCID:
-    ![Compartment OCID](./images/compartment-ocid.png "Compartment OCID")
+ ![Dynamic Groups](./images/dynamic-groups.png "Dynamic Groups")
 
-  Once you have your compartment OCID, you will be able to add it in the rule associated to the dynamic group you are about to create. The window with dynamic group information will look like the image below:
-    ![Rule for dynamic group](./images/rule-dynamic-group.png "Rule for dynamic group")
+Which means that any new resource created in the "ocw23-OCI-Vault-HOL" compartment will automatically belong to this group. This is a best practice for simplification as all the new Autonomous Database created will be part of it and benefit from the associated policy. Indeed when you are creating the dynamic group, the OCID for the new database is not yet available.
 
-4. Write policy statements for the dynamic group to enable access to OCI resources (vaults and keys). To do that, in the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Policies"*:
+Then we needed to write a policy statement for the dynamic group to enable access to OCI Vault resources: Vaults and Keys. To check the policy written for this lab, in the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Policies"*:
 
   ![Security policies](./images/policies.png "Security policies")
 
