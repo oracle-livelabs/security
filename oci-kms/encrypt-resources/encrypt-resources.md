@@ -96,7 +96,7 @@ Let's create now the Autonomous Database, and configure it with the key you crea
 
 * Look for a group called "ocw23ToVault" and click on its name to see all the details. 
 
- ![Dynamic Groups](./images/dynamic-groups.png "Dynamic Groups")
+ ![Dynamic Groups list](./images/dynamic-groups-list.png "Dynamic Groups List")
 
 * In the details panel, you can see the rule which was created: 
   ```
