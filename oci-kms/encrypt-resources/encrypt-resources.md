@@ -103,10 +103,9 @@ Let's create now the Autonomous Database, and configure it with the key you crea
   resource.compartment.id = '<your_Compartment_OCID>'
   ```
   where &lt;your\_Compartment\_OCID&gt; is the OCID of the compartment ocw23-OCI-Vault-HOL.
+  This means that any new resource created in the "ocw23-OCI-Vault-HOL" compartment will automatically belong to this group. This is a best practice for simplification as all the new Autonomous Database created will be part of it and benefit from the associated policy. Indeed when you are creating the dynamic group, the OCID for the new database is not yet available.
 
  ![Dynamic Group Details](./images/dynamic-group-details.png "Dynamic Group Details")
-
-* Which means that any new resource created in the "ocw23-OCI-Vault-HOL" compartment will automatically belong to this group. This is a best practice for simplification as all the new Autonomous Database created will be part of it and benefit from the associated policy. Indeed when you are creating the dynamic group, the OCID for the new database is not yet available.
 
 * Then we needed to write a policy statement for the dynamic group to enable access to OCI Vault resources: Vaults and Keys. To check the policy written for this lab, in the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Policies"*:
 
