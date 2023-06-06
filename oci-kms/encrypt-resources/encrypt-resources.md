@@ -86,7 +86,7 @@ You will upload a file that will be provided to you into the bucket you recently
 
 Let's create now the Autonomous Database, and configure it with the key you created in Thales CTM. 
 
-# Learn More
+### Learn More
 
 * In order to use customer-managed encryption for Autonomous Database, it is required to create permissions to allow your Autonomous Database to communicate with the OCI Vault service. For the purpose of this lab, we have pre-configured a Dynamic Group and the associated policy. For you to understand all the steps, you can look at the configuration below, or if you don't have time you can skip directly to step 1 of this lab. 
 
