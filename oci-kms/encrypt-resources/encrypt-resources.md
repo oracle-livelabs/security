@@ -108,7 +108,7 @@ Regarding the rule, when you are creating the dynamic group before you provision
   To find out this OCID, open a new tab and keep in OCI console. In the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Compartments"*. Then click on your compartment ocw23-OCI-Vault-HOL and click the link Copy next to the OCID:
     ![Compartment OCID](./images/compartment-ocid.png "Compartment OCID")
 
-  Once you have your compartment OCID, you will be able to add it in the rule associated to the dynamic group you are about to create. The window with dynamic group information will look like as the image below:
+  Once you have your compartment OCID, you will be able to add it in the rule associated to the dynamic group you are about to create. The window with dynamic group information will look like the image below:
     ![Rule for dynamic group](./images/rule-dynamic-group.png "Rule for dynamic group")
 
 4. Write policy statements for the dynamic group to enable access to OCI resources (vaults and keys). To do that, in the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Policies"*:
