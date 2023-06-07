@@ -27,7 +27,7 @@ This lab assumes you have:
 
     ![Navigate to domains](images/navigate-to-domains.png)
 
-2. Select the *root* compartment in which you will create the identity domain. Click *Create Domain*
+2. Select the *ag-compartment* in which you will create the identity domain. Click *Create Domain*
 
     ![Select Create Identity Domain](images/create-domains.png)
 
