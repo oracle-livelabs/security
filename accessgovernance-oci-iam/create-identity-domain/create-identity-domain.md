@@ -6,6 +6,8 @@ Creation of Identity Domain.
 
 *Estimated Lab Time*: 15 minutes
 
+*Persona*: Default Domain Administrator
+
 
 ### Objectives
 
@@ -21,7 +23,7 @@ This lab assumes you have:
 
 ## Task 1: Create Identity Domain 
 
-1. Open up the hamburger menu in the top left corner. Click Identity and Security, and choose Identity > Domains. 
+1. Login to OCI console as **Default Domain Administrator**. Open up the hamburger menu in the top left corner. Click Identity and Security, and choose Identity > Domains. 
 
     ![Navigate to domains](images/navigate-to-domains.png)
 

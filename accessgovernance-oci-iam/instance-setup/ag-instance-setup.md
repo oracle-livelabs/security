@@ -6,6 +6,8 @@ In this lab we will setup the OAG service instance and make configurations requi
 
 *Estimated Lab Time*: 30 minutes
 
+*Persona*: Identity Domain Administrator
+
 Watch the video below for a quick walk-through of the lab.
 [Access Governance instance setup](videohub:1_x3fb7d7m)
 
@@ -24,7 +26,7 @@ This lab assumes you have:
 
 ## Task 1: Create AG Service instance 
 
-Login to the OCI console using the Identity domain: ag-domain, if not currently not logged in to the Identity domain. 
+Login to the OCI console using the Identity domain: ag-domain as the **Identity Domain Administrator** , if not currently not logged in to the Identity domain. 
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region.
 

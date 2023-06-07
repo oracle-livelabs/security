@@ -5,19 +5,20 @@
 Create group for Access Governance. 
 
 * Estimated Time: 15 minutes
-* Persona: Identity Domain Administrator
+* Persona: Default Domain Administrator
 
 
 ### Objectives
 
 In this lab, you will:
 * Create **group** for Access Governance
-* Create **policies** for Access Governance 
+* Setup **policies** for Access Governance 
+* Setup **policy** to allow Oracle Access Governance to connect OCI
 
 
 ## Task 1: Create AG Group 
 
-1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Domains* from the list of products.
+1. Loin in to the OCI console as the **Default Domain Administrator**, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Domains* from the list of products.
 
     ![Navigate to Domains](images/navigate-select-domain.png)
 
@@ -45,18 +46,39 @@ In this lab, you will:
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Policies* from the list of products.
 
-2. On the Policies page, Click on *Create Policy* to create the policy : ag-access-policy
+2. On the Policies page, Click on *Create Policy* to create the policy : ag-access-policy in the root compartment. 
 
 
     ```
     Name: ag-access-policy
     Description: IAM policy for granting ag-group access to manage access governance instances
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure your  root compartment is selected
     Policy Builder: Select the show manual editor checkbox
-    Statement 1: Allow group ag-domain/ag-group to manage all-resources in tenancy
+    Statement :
     ```
+     ```
+    <copy>Allow group ag-domain/ag-group to manage agcs-instance in compartment ag-compartment
+    Allow group ag-domain/ag-group to read objectstorage-namespace in tenancy</copy>
+      ```  
 
     Click *Create*
+
+    On the Policies page, In the root compartment click on Create Policy to create a policy : oci-iam-policy
+
+    ```
+    Name: oci-iam-policy
+    Description: Allow Oracle Access Governance to connect OCI in tenancy
+    Compartment: Ensure your root compartment is selected
+    Policy Builder: Select the show manual editor checkbox
+    ```
+    ```
+    <copy>allow resource accessgov-agent resource-scanner to read all-resources in tenancy
+    allow resource accessgov-agent resource-manager to manage domains in tenancy
+    allow resource accessgov-agent resource-manager to manage policies in tenancy
+    </copy>
+    ```
+ 
+    Click Create
 
   You may now **proceed to the next lab**. 
 

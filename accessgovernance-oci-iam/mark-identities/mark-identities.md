@@ -5,7 +5,7 @@
 Access Governance Administrators (Pamela Green) will activate the identities.
 
 * Estimated Time: 15 minutes
-* Persona: Administrator
+* Persona: Access Governance Administrator
 
 ### Objectives
 
@@ -16,7 +16,8 @@ In this lab, you will:
 
 1. From your browser, go to the Oracle Access Governance Console.
 
-2. Enter Oracle Access Governance Campaign Administrator or Administrator username and password (Pamela Green)
+
+2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
 
     **Username:**
     ```

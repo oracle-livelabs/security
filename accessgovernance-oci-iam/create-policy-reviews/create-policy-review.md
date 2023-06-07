@@ -5,7 +5,7 @@
 Access Governance Administrators (Pamela Green) can create policy review campaign.
 
 * Estimated Time: 15 minutes
-* Persona: Administrator
+* Persona: Access Governance Administrator
 
 ### Objectives
 
@@ -16,7 +16,28 @@ In this lab, you will:
 
 ## Task 1: Create a Policy Review Campaign
 
-1.  On the **Oracle Access Governance** console home page, scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
+
+
+1. From your browser, go to the Oracle Access Governance Console.
+
+
+2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
+
+    **Username:**
+    ```
+    <copy>pamela.green</copy>
+    ```
+
+    **Password:**
+    ```
+    <copy>Oracl@123456</copy>
+    ```
+
+
+  You will be navigated to the home page of your Oracle Access Governance Console.
+
+
+3.  Scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
 
   ![Access Governance Homepage](images/ag-homepage-campaign.png)
 

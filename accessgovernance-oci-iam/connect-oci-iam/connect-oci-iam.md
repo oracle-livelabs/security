@@ -2,45 +2,22 @@
 
 ## Introduction
 
-As OCI Tenancy Administrators and Access Governance Administrators they can learn to integrate Oracle Access Governance with OCI IAM. 
+As **Access Governance Administrators** they can learn to integrate Oracle Access Governance with OCI IAM. 
 
 * Estimated Time: 15 minutes
-* Persona: Administrator
+* Persona: Access Governance Administrator
 
 ### Objectives
 
 In this lab, you will:
-* Setup Policy to allow Oracle Access Governance to connect OCI
+
 * Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
-## Task 1: Setup Policy to allow Oracle Access Governance to connect OCI
 
-1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
-
-1. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Click Identity and Security in the Navigation menu. Select Policies from the list of products.
-
-2. On the Policies page, In the root compartment click on Create Policy to create a policy : oci-iam-policy
-
-    ```
-    Name: oci-iam-policy
-    Description: Allow Oracle Access Governance to connect OCI in tenancy
-    Compartment: Ensure your root compartment is selected
-    Policy Builder: Select the show manual editor checkbox
-    ```
-    ```
-    <copy>allow resource accessgov-agent resource-scanner to read all-resources in tenancy
-    allow resource accessgov-agent resource-manager to manage domains in tenancy
-    allow resource accessgov-agent resource-manager to manage policies in tenancy
-    </copy>
-    ```
- 
-    Click Create
+## Task 1: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
 
-## Task 2: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
-
-
-1.  In a browser, navigate to the Oracle Access Governance service home page and log in as a user with the Administrator application role.
+1.  In a browser, navigate to the Oracle Access Governance service home page using the URL noted down in *Lab 4: Task 2* and log in as a user with the **Access Governance Administrator** application role. 
 
   Enter Oracle Access Governance Campaign Administrator username and password (Pamela Green)
 
