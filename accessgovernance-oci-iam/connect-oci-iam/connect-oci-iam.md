@@ -28,13 +28,10 @@ In this lab, you will:
     Policy Builder: Select the show manual editor checkbox
     ```
     ```
-    <copy>allow resource accessgov-agent resource-scanner to read all-resources in tenancy</copy>
-    ```
-    ```
-    <copy>allow resource accessgov-agent resource-manager to manage domains in tenancy</copy>
-    ```
-    ```
-    <copy>allow resource accessgov-agent resource-manager to manage policies in tenancy</copy>
+    <copy>allow resource accessgov-agent resource-scanner to read all-resources in tenancy
+    allow resource accessgov-agent resource-manager to manage domains in tenancy
+    allow resource accessgov-agent resource-manager to manage policies in tenancy
+    </copy>
     ```
  
     Click Create
@@ -78,7 +75,7 @@ In this lab, you will:
 
   ![OCI Enter details](images/enter-oci-system-name.png)
 
-7. Enter the Tenancy OCID and Region details. 
+7. Enter the Tenancy OCID and Region Identifier. 
 
   To obtain the Tenancy OCID, navigate to user profile on the top right corner and click on Tenancy. Note the Tenancy OCID for further use. 
 
@@ -86,7 +83,7 @@ In this lab, you will:
 
   ![OCI Enter details](images/tenancy-ocid.png)
 
-  To obtain the Region details, refer to the below mentioned link.
+  To obtain the Region Identifier, refer to the below mentioned link.
 
   https://docs.oracle.com/en/cloud/paas/access-governance/cagsi
 

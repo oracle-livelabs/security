@@ -157,9 +157,8 @@ In this lab, you will:
 
   ![Create Users](images/demo-user2.png)
 
-  ![Create Users](images/createuser-securityadmin.png)
+  ![Create Users](images/user-group-assign.png)
 
-  ![Create Users](images/createuser-networkadmin.png)
 
   **First Name:** demo
 
@@ -175,9 +174,8 @@ In this lab, you will:
 
   ![Create Users](images/demo-user3.png)
 
-   ![Create Users](images/createuser-securityadmin.png)
+  ![Create Users](images/user-group.png)
 
-   ![Create Users](images/createuser-auditor.png)
 
    The *users* have been successfully created.
 
@@ -188,11 +186,11 @@ In this lab, you will:
 
   ![Select Policies](images/policy-page.png)
 
-2. On the Policies page, Click on *Create Policy* each time to create 3 policies : **tf1-auditors-policy, tf2-network-admins-policy and tf3-security-admins-policy**
+2. On the Policies page, Click on *Create Policy* each time to create 3 policies : **auditors-policy, network-admins-policy and security-admins-policy**
 
 
     ```
-    Name: tf1_auditors_policy
+    Name: auditors_policy
     Description: Access Policy for Auditors
     Compartment: Ensure your root compartment is selected
     Policy Builder: Select the show manual editor checkbox
@@ -211,7 +209,7 @@ In this lab, you will:
   ![Create Policy](images/create-policy-auditor.png)
 
     ```
-    Name: tf2_network_admins_policy
+    Name: network_admins_policy
 
     Description: Access Policy for Network Administrators
 
@@ -237,7 +235,7 @@ In this lab, you will:
 
 
     ```
-    Name: tf3_security_admins_policy
+    Name: security_admins_policy
     Description: Access Policy for Security Admins
     Compartment: Ensure your root compartment is selected
     Policy Builder: Select the show manual editor checkbox
