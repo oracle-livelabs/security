@@ -38,7 +38,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
     ```
     Name: ag-service-instance
     Description: Oracle Access Governance service instance
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure your ag-compartment is selected
     ```
     ![Create Service Instance](images/create-service-instance.png)
     

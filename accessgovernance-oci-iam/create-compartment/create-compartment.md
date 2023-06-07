@@ -12,6 +12,7 @@ Creation of Compartment
 
 In this lab, you will:
  * Create a **Compartment**
+ * Create **Domain Admin Policies**
 
 
 ### Prerequisites
