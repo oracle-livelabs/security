@@ -30,9 +30,9 @@ In this lab, you will:
 | Groups         | SecurityAdmins           | SecurityAdmins         |
 |          | NetworkAdmins             | NetworkAdmins        |
 |          | Auditors            | Auditors        | 
-| Policies         | tf1-auditors-policy            | Access Policy for Auditors         |
-|         |  tf2-network-admins-policy            | Access Policy for Network Administrators        |
-|          | tf3-security-admins-policy           | Access Policy for Security Admins         |
+| Policies         | auditors-policy            | Access Policy for Auditors         |
+|         |  network-admins-policy            | Access Policy for Network Administrators        |
+|          | security-admins-policy           | Access Policy for Security Admins         |
 
 
 
