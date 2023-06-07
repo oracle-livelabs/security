@@ -20,10 +20,10 @@ In this lab, you will:
   In this task, you will review and certify OCI IAM review tasks raised by the campaign created in the previous task.
 
 
-1. From your browser, go to the Oracle Access Governance Console.
+1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 4: Task 1* 
 
 
-2. Enter **Oracle Access Governance Campaign Reviewer** username and password (Harlan Bullard))
+2. Enter **Oracle Access Governance Campaign Reviewer** username and password (Harlan Bullard)
 
     **Username:**
     ```
