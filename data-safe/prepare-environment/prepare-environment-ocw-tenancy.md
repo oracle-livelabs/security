@@ -159,7 +159,7 @@ Database Actions provides a way for you to run SQL commands on your target datab
 
     The **Sign-in** page is displayed.
 
-2. Sign in as the `ADMIN` user. 
+2. If required, sign in as the `ADMIN` user. 
 
     A browser tab named **Oracle Database Actions** is opened. *Keep this tab open throughout the workshop.* If your session expires, you can always sign in again.
 
@@ -232,4 +232,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 24, 2023
+- **Last Updated By/Date** - Jody Glover, June 8, 2023
