@@ -170,7 +170,7 @@ This lab assumes you have:
 
     A **Start Audit Trail: UNIFIED\_AUDIT\_TRAIL** dialog box is displayed.
 
-7. Configure a start date based on the data in the **Compute Audit Volume** region of the audit profile that you viewed in task 5 (step 10). For example, if you have one month listed (Feb 2023), you can set the start date to the beginning of January.
+7. Configure a start date based on the data in the **Compute Audit Volume** region of the audit profile that you viewed in task 5 (step 10). For example, if you have one month listed (Feb 2023), you can set the start date to the beginning of February.
 
     ![Start Audit Trail dialog box](images/start-audit-trail-dialog-box.png "Start Audit Trail dialog box")
 
@@ -224,8 +224,8 @@ This lab assumes you have:
 5. Notice that the following custom audit policies are provisioned on your target database, but not yet enabled:
 
     - `APP_USER_NOT_APP_SERVER`
-    - `ADB_OPERATOR_AUDIT`
     - `EMPSEARCH_SELECT_USAGE_BY_PETE`
+    - `ADB_SAAS_ADMIN_AUDIT`
     - `EMP_RECORD_CHANGES`
 
 
@@ -300,6 +300,10 @@ By default, the All Activity report shows audit events for the past one week for
     - Database Schema Changes
     - Data Safe Activity
     - Database Vault Activity
+    - Common User Activity
+    - Database Errors
+    - Data Extraction Activity
+    - Sensitive Data Activity
 
     ![Audit Reports page](images/audit-reports-page.png "Audit Reports page")
 
@@ -383,6 +387,8 @@ By default, the All Activity report shows audit events for the past one week for
 
 12. To close the PDF report, close the browser tab.
 
+13. To close the **Generate Report** dialog box, click **Close**.
+
 
 ## Task 13: View the Audit Report History
 
@@ -405,8 +411,6 @@ Schedule your custom audit report to generate a PDF every Sunday at 11PM UTC.
 2. Under **Related Resources**, click **Audit Reports**.
 
 3. On the right, click the **Custom Reports** tab.
-
-   ![Custom Reports tab](images/auditing-custom-reports-tab.png "Custom Reports tab")
 
 4. In the **Report Name** column in the table, click the name of your custom report.
 
@@ -450,4 +454,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 23, 2023
+* **Last Updated By/Date** - Jody Glover, June 8, 2023

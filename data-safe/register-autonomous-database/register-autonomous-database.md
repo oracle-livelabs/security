@@ -22,7 +22,7 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
+- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment)). *Make sure that you have sample data loaded into your database.*
 
 ### Assumptions
 
@@ -149,4 +149,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, April 11, 2023
+- **Last Updated By/Date** - Jody Glover, June 8, 2023

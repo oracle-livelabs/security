@@ -48,7 +48,7 @@ This lab assumes you have:
 3. At the top of the page, review the **Risk Level** and **Risks by Category** charts.
 
     - The **Risk Level** chart shows you a percentage breakdown of the different risk levels (High, Medium, Low, Advisory, and Evaluate) across all target databases in the selected compartment(s).
-    - The **Risks by Category** chart shows you a percentage breakdown of the different risk categories (User Accounts, Privileges and Roles, Authorization Control, Data Encryption, Fine-Grained Access, Auditing, and Database Configurations) across target databases in the selected compartment(s).
+    - The **Risks by Category** chart shows you percentage breakdowns and counts of the different risk categories (User Accounts, Privileges and Roles, Authorization Control, Data Encryption, Fine-Grained Access, Auditing, and Database Configurations) across target databases in the selected compartment(s).
 
     ![Security Assessment Risk Level and Risks by Category charts for all targets](images/sa_risklevel_risksbycategory.png "Security Assessment Risk Level and Risks by Category charts for all targets")
 
@@ -66,8 +66,8 @@ This lab assumes you have:
 
     - The **Target Summary** tab shows you the security posture of each target database.
     - You can view the number of high, medium, low, advisory, and evaluate risk findings for each target database.
-    - You can view the assessment date and find out if the latest assessment deviates from a baseline (if one is set).
-    - You can access the latest assessment report for each target database.
+    - You can view the latest assessment date and find out if the latest assessment deviates from a baseline (if one is set).
+    - You can access the latest assessment for each target database.
 
     ![Security Assessment Target Summary tab](images/sa-target-summary-tab.png "Security Assessment Target Summary tab")
 
@@ -153,9 +153,6 @@ A baseline assessment shows you data for all your target databases in a selected
 
 1. While you are on the **Assessment History** page for your target database, click the name of your security assessment. The security assessment details are displayed.
 
-    ![First security assessment on Assessment History page](images/first-security-assessment-on-assessment-history-page.png "First security assessment on Assessment History page")
-
-
 2. Click **Set As Baseline**.
 
     The **Set As Baseline?** dialog box is displayed.
@@ -168,7 +165,7 @@ A baseline assessment shows you data for all your target databases in a selected
 
     ![Security Assessment Baseline has been set message](images/sa-baseline-has-been-set-message.png "Security Assessment Baseline has been set message")
 
-5. Click **View History**, and confirm that there is a new row in the table for the baseline assessment. The assessment name starts with **SA_baseline**.
+5. Click **Back** to return to the **Assessment History** page, and confirm that there is a new row in the table for the baseline assessment. The assessment name starts with **SA_baseline**.
 
     ![Assessment history with baseline assessment](images/sa-assessment-history-with-baseline.png "Assessment history with baseline assessment")
 
@@ -343,4 +340,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, May 24, 2023
+* **Last Updated By/Date** - Jody Glover, June 8, 2023

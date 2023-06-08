@@ -62,7 +62,7 @@ Database Actions provides a way for you to run SQL commands on your target datab
 
     The **Sign-in** page is displayed.
 
-2. Sign in as the `ADMIN` user. Be sure to use the database password provided to you by LiveLabs.
+2. If required, sign in as the `ADMIN` user. Be sure to use the database password provided to you by LiveLabs.
 
     A browser tab named **Oracle Database Actions** is opened.
 
@@ -133,4 +133,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 24, 2023
+- **Last Updated By/Date** - Jody Glover, June 8, 2023
