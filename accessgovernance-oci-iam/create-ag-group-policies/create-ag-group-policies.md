@@ -57,8 +57,8 @@ In this lab, you will:
     Statement :
     ```
      ```
-    <copy>Allow group ag-domain/ag-group to manage agcs-instance in compartment ag-compartment
-    Allow group ag-domain/ag-group to read objectstorage-namespace in tenancy</copy>
+    <copy>Allow group ag-domain/Domain-Administrators to manage agcs-instance in compartment ag-compartment
+    Allow group ag-domain/Domain-Administrators to read objectstorage-namespace in tenancy</copy>
       ```  
 
     Click *Create*

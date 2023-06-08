@@ -62,7 +62,7 @@ This lab assumes you have:
     ```
 
     ```
-    <copy>Allow group ag-domain/ag-group to manage all-resources in compartment ag-compartment</copy>
+    <copy>Allow group ag-domain/Domain-Administrators to manage all-resources in compartment ag-compartment</copy>
     ```
 
     Click *Create* 
