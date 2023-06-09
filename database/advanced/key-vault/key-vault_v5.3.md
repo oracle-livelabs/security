@@ -37,6 +37,13 @@ This lab assumes you have:
 | 8| Secret Management with OKV | 10 minutes||
 | 9| Reset the OKV Lab Config | <10 minutes||
 
+<!-- Advanced OKV Labs for 21.7
+| A| DB Account Pwd Management | 5 minutes ||
+| B| Key Management for DBMS_CRYPTO | 5 minutes ||
+| C| Automated Java Keystore rotation | 5 minutes ||
+| D| Non-Extractable Key | 5 minutes ||
+-->
+
 ## Task 1: (Mandatory) TDE Prerequisites
 
 **Before beginning this lab**, make sure you have performed steps 1 to 4 of the Transparent Data Encryption (TDE) Livelabs!

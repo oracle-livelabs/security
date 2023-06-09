@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Databa
 
 Estimated Time: 45 minutes
 
-*Version tested in this lab:* Oracle DB 19.17
+*Version tested in this lab:* Oracle DB 19.19
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Database Vault (May 2022)*" [](youtube:M5Kn-acUHRQ)
@@ -465,4 +465,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Richard Evans
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2023

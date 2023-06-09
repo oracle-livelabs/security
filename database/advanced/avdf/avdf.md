@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 150 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.8
+*Version tested in this lab:* Oracle AVDF 20.9
 
 ### Video Preview
 
@@ -2016,4 +2016,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Nazia Zaidi
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2023

@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Transp
 
 *Estimated Lab Time:* 45 minutes
 
-*Version tested in this lab:* Oracle DB 19.17
+*Version tested in this lab:* Oracle DB 19.19
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
@@ -397,4 +397,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2023
