@@ -2,7 +2,7 @@
 
 ## Introduction
 
-As a user with a **Administrator** role in the identity domain, you can create OCI policies, groups and compartments from the **OCI** console.This lab will show you how to set up the OCI policies,groups and compartments needed to run this OCI-IAM Policy reviews. 
+As a user with a **Identity Domain Administrator** role in the identity domain, you can create OCI policies, groups and compartments from the **OCI** console.This lab will show you how to set up the OCI policies,groups and compartments needed to run this OCI-IAM Policy reviews. 
 
  
 
@@ -15,7 +15,9 @@ As a user with a **Administrator** role in the identity domain, you can create O
 
 In this lab, you will: 
 * Create  OCI Policies, Groups and Compartments manually
+* Note: All the resources we create in this lab are supposed to be created in the **ag-compartment**
 * We create the following resources in this lab:
+
 
 | Resource Type           | Resource    | Description |
 | :-----------   |   :--------:   |  :--------: |
@@ -28,15 +30,15 @@ In this lab, you will:
 | Groups         | SecurityAdmins           | SecurityAdmins         |
 |          | NetworkAdmins             | NetworkAdmins        |
 |          | Auditors            | Auditors        | 
-| Policies         | tf1-auditors-policy            | Access Policy for Auditors         |
-|         |  tf2-network-admins-policy            | Access Policy for Network Administrators        |
-|          | tf3-security-admins-policy           | Access Policy for Security Admins         |
+| Policies         | auditors-policy            | Access Policy for Auditors         |
+|         |  network-admins-policy            | Access Policy for Network Administrators        |
+|          | security-admins-policy           | Access Policy for Security Admins         |
 
 
 
 ## Task 1: Create Compartments
 
-1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator.
+1. Login to the OCI console Identity Domain: ag-domain as the **Identity Domain Administrator**
 
   ![Login to OCI console](images/oci-console.png)
 
@@ -53,7 +55,7 @@ In this lab, you will:
 
   **Description:** Development
 
-  **Parent Compartment:** Select the root compartment 
+  **Parent Compartment:** Select the **ag-compartment** compartment 
 
   Click on *Create Compartment*
 
@@ -63,7 +65,7 @@ In this lab, you will:
 
   **Description:** Quality-Assurance
 
-  **Parent Compartment:** Select the root compartment 
+  **Parent Compartment:** Select the **ag-compartment** compartment 
 
   Click on *Create Compartment*
 
@@ -73,7 +75,7 @@ In this lab, you will:
 
   **Description:** Testing
 
-  **Parent Compartment:** Select the root compartment 
+  **Parent Compartment:** Select the **ag-compartment** compartment 
 
   Click on *Create Compartment* 
 
@@ -192,13 +194,13 @@ In this lab, you will:
     ```
     Name: auditors_policy
     Description: Access Policy for Auditors
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure ag-compartment is selected
     Policy Builder: Select the show manual editor checkbox
 
     ```
 
      ```
-    <copy>Allow group Auditors to inspect all-resources in tenancy
+    <copy>Allow group Auditors to inspect all-resources in compartment Quality-Assurance
     Allow group Auditors to read instances in compartment Quality-Assurance
     Allow group Auditors to read audit-events in compartment Quality-Assurance </copy>
     ```  
@@ -213,14 +215,14 @@ In this lab, you will:
 
     Description: Access Policy for Network Administrators
 
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure ag-compartment is selected
 
     Policy Builder: Select the show manual editor checkbox
 
     ```
 
       ```
-      <copy>Allow group NetworkAdmins to manage virtual-network-family in tenancy	
+      <copy>Allow group NetworkAdmins to manage virtual-network-family in compartment Quality-Assurance	
       Allow group NetworkAdmins to manage load-balancers in compartment Quality-Assurance	
       Allow group NetworkAdmins to manage load-balancers in compartment Development	
       Allow group NetworkAdmins to manage load-balancers in compartment Testing	
@@ -237,7 +239,7 @@ In this lab, you will:
     ```
     Name: security_admins_policy
     Description: Access Policy for Security Admins
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure ag-compartment is selected
     Policy Builder: Select the show manual editor checkbox
 
     ```
