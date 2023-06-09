@@ -1,4 +1,4 @@
-# Manage Who Has Access To What
+# Review Who Has Access To What
 
 ## Introduction
 
@@ -15,7 +15,7 @@ In this lab, you will:
 * Explore **Enterprise Wide Access**
 
 
-## Task 1: Manage Who Has Access to What 
+## Task 1: Review Who Has Access to What 
 
   In this task, you will review **Who has Access to What - MyAccess and Enterprise Wide Access**
 
