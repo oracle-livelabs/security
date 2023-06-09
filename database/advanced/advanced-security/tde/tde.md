@@ -185,13 +185,15 @@ This lab assumes you have:
     - This is an Operating System command that bypasses the database to view the data
     - This is called a 'side-channel attack' because the database is unaware of it
 
-2. Next, **encrypt explicitly** the data by encrypting the entire tablespace using the AES256 encryption algorithm
+2. Next, **encrypt explicitly** the data by encrypting the entire tablespace
 
     ````
     <copy>./tde_encrypt_tbs.sh</copy>
     ````
 
     ![TDE](./images/tde-016.png "TDE")
+
+    **Note:** By default, the syntax is using the AES256 encryption algorithm
 
 3. Now, try the side-channel attack again
 
@@ -270,7 +272,7 @@ This lab assumes you have:
 
     - ...and after
 
-    ![TDE](./images/tde-024.png "TDE")
+    ![TDE](./images/tde-024a.png "TDE")
 
     - You can see the new key generated for the pluggable database
 
@@ -295,12 +297,16 @@ This lab assumes you have:
     ````
     <copy>./tde_view_wallet_on_os.sh</copy>
     ````
+       
+    ![TDE](./images/tde-024b.png "TDE")
 
    - View the keystore data in the database
 
     ````
     <copy>./tde_view_wallet_in_db.sh</copy>
     ````
+
+    ![TDE](./images/tde-024c.png "TDE")
 
 ## Task 9: Restore Before TDE
 
