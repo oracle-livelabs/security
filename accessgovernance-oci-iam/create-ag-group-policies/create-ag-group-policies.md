@@ -1,8 +1,8 @@
-# Create Group and Policies for Access Governance
+# Create  Policies for Access Governance
 
 ## Introduction
 
-Create group for Access Governance. 
+Create policies for Access Governance. 
 
 * Estimated Time: 15 minutes
 * Persona: Default Domain Administrator
@@ -11,37 +11,11 @@ Create group for Access Governance.
 ### Objectives
 
 In this lab, you will:
-* Create **group** for Access Governance
 * Setup **policies** for Access Governance 
 * Setup **policy** to allow Oracle Access Governance to connect OCI
 
 
-## Task 1: Create AG Group 
-
-1. Loin in to the OCI console as the **Default Domain Administrator**, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Domains* from the list of products.
-
-    ![Navigate to Domains](images/navigate-select-domain.png)
-
-2. On the Domains page, Click on *ag-domain* which is the identity domain you have created. Select *Groups*. Click on *Create Group*
-
-    ![Select the Identity Domain](images/select-identity-domain.png)
-
-    ![Select Groups](images/select-groups.png)
-
-    Enter the following details to create the *ag-group* and assign the **Identity Domain Administrator** user to the group. 
-    ```
-    Name: ag-group
-    Description: Access governance group to manage users 
-    Users: Select the Identity Domain Administrator user from the list of users. 
-    ```
-    Click *Create*
-
-    ![Create AG Group](images/create-ag-group.png)
-
-    The *Group* has been created succesfully. 
-
-
-## Task 2 : Create AG Policies 
+## Task 1 : Create AG Policies 
 
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Policies* from the list of products.

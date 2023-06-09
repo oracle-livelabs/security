@@ -49,13 +49,13 @@ In this task, you will select the identities that you want to include in your se
 
 3. Select the below options for the condition to match the identities that you want to include. 
 
-      *  Select attribute: Domain OCID 
+      *  Select attribute: Email
       * Select operator: Contains 
-      * Attribute value: ocid 
+      * Attribute value: example
     
     Hit **Enter**
 
-      ![Manage Identities page](images/condition-identity.png)
+      ![Manage Identities page](images/email-identity.png)
 
 4. Click on **Preview Summary based on the rule above**. The identities that match the rule will be visible. 
 

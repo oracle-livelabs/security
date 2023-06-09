@@ -46,9 +46,20 @@ In this lab, you will:
 
   ![Select Cloud provider](images/select-cloud-providers.png)
 
-  * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
+  * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
 
   ![Select Cloud provider](images/green-tick-cloud-provider.png)
+
+  * Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
+
+  ![Select Cloud provider](images/click-refine.png)
+
+  * Enter the **domain** and **compartment** details mentioned below and click on **Apply**
+
+     - domain: ag-domain
+     - compartment: ag-compartment
+
+  ![Select Cloud provider](images/click-apply-refine.png)
 
   * Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
 
