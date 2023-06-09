@@ -2,45 +2,22 @@
 
 ## Introduction
 
-As OCI Tenancy Administrators and Access Governance Administrators they can learn to integrate Oracle Access Governance with OCI IAM. 
+As **Access Governance Administrators** they can learn to integrate Oracle Access Governance with OCI IAM. 
 
 * Estimated Time: 15 minutes
-* Persona: Administrator
+* Persona: Access Governance Administrator
 
 ### Objectives
 
 In this lab, you will:
-* Setup Policy to allow Oracle Access Governance to connect OCI
+
 * Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
-## Task 1: Setup Policy to allow Oracle Access Governance to connect OCI
 
-1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
-
-1. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Click Identity and Security in the Navigation menu. Select Policies from the list of products.
-
-2. On the Policies page, In the root compartment click on Create Policy to create a policy : oci-iam-policy
-
-    ```
-    Name: oci-iam-policy
-    Description: Allow Oracle Access Governance to connect OCI in tenancy
-    Compartment: Ensure your root compartment is selected
-    Policy Builder: Select the show manual editor checkbox
-    ```
-    ```
-    <copy>allow resource accessgov-agent resource-scanner to read all-resources in tenancy
-    allow resource accessgov-agent resource-manager to manage domains in tenancy
-    allow resource accessgov-agent resource-manager to manage policies in tenancy
-    </copy>
-    ```
- 
-    Click Create
+## Task 1: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
 
-## Task 2: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
-
-
-1.  In a browser, navigate to the Oracle Access Governance service home page and log in as a user with the Administrator application role.
+1.  In a browser, navigate to the Oracle Access Governance service home page using the URL noted down in *Lab 4: Task 1* and log in as a user with the **Access Governance Administrator** application role. 
 
   Enter Oracle Access Governance Campaign Administrator username and password (Pamela Green)
 
@@ -58,9 +35,12 @@ In this lab, you will:
 
 3. Select the **Add a connected system** button from the Connected Systems page.
 
-      ![Select cloud service provider](images/cloud-service-provider.png)
+      ![Select cloud service provider](images/add-system.png)
 
 4.  Select the **Would you like to connect to a cloud service provider?** tile by clicking the Add button.
+ 
+  ![Select cloud service provider](images/select-cloud-provider.png)
+
     
 
 5. In the **Select system** step, select the **Oracle Cloud Infrastructure** tile and then click **Next.**
@@ -75,19 +55,70 @@ In this lab, you will:
 
   ![OCI Enter details](images/enter-oci-system-name.png)
 
-7. Enter the Tenancy OCID and Region Identifier. 
 
-  To obtain the Tenancy OCID, navigate to user profile on the top right corner and click on Tenancy. Note the Tenancy OCID for further use. 
+  ![OCI Enter details](images/enter-data.png)
 
-  ![OCI Enter details](images/navigate-tenancy.png)
 
-  ![OCI Enter details](images/tenancy-ocid.png)
+7. To obtain the fingerprint of OCI user (Pamela Green). Login to the OCI console as user **Pamela Green** using the credentials mentioned below. 
 
-  To obtain the Region Identifier, refer to the below mentioned link.
+  **Username:**
+    ```
+    <copy>pamela.green</copy>
+    ```
 
-  https://docs.oracle.com/en/cloud/paas/access-governance/cagsi
+    **Password:**
+    ```
+    <copy>Oracl@123456</copy>
+    ```
 
-  ![OCI Enter details](images/oci-iam-details.png)
+   Navigate to  user profile on the top right corner and click on **My Profile**.
+   
+    ![OCI Enter details](images/my-profile.png)
+  
+  
+   Scroll down , click on **API keys**
+
+
+     ![OCI Enter details](images/api.png)
+
+  Click on **Add API key** . Click on **Generate API key pair**. 
+  
+    ![OCI Enter details](images/add-api-key.png)
+  
+  Click on **Download private key** and **Download public key**. 
+
+  ![OCI Enter details](images/click-add.png)
+  
+  Click on **Add**. 
+
+  Notedown the **Downloaded private key** in a text editor. This is required for the next step. 
+
+
+  Under **Configuration file preview**, note down the following details which is required for the next step. 
+
+  - User OCID
+  - Fingerprint 
+  - Tenancy OCID 
+  - Region 
+
+  ![OCI Enter details](images/config-file.png)
+
+
+7. Enter the following details mentioned below: 
+
+  **What is the OCI user's OCID?**: Enter the Oracle Cloud Identifier (OCID) for the OCI user (Pamela Green) noted down from the previous step. 
+
+  **What is the OCI user's fingerprint?**: Enter the fingerprint of the public key of the API   Signing Key  noted down from the previous step.
+
+  **What is the OCI user's private SSH key?**: Enter the downloaded private SSH key (.pem file) from previous step for the API Signing Key. 
+
+
+  **What is the OCI tenancy OCID?**: Enter the OCID for the target tenancy  noted down from the previous step.
+
+  **What is the OCI tenancy's home region?**: Enter the home region for the target OCI tenancy, using the region identifier noted down from the previous step.
+
+  ![OCI Enter details](images/details-entered.png)
+
 
 8. Click **Add.** Click on Manage to see the status. If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
 
