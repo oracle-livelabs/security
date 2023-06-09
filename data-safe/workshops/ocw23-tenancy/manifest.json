@@ -45,6 +45,12 @@
         "type": "ocw-livelabs"
       },
       {
+        "title": "Lab 6: Clean Up Your Environment",
+        "description": "This lab shows you how to clean up your Oracle Cloud Infrastructure environment after completing this workshop.",
+        "filename": "../../clean-up-environment/clean-up-environment-ocw.md",
+        "type": "ocw-freetier"
+      },
+      {
         "title": "Oracle CloudWorld 2023 - Get Help",
         "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
         }

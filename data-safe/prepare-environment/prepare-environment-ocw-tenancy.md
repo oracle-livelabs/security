@@ -153,13 +153,13 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
 ## Task 5: Access Oracle Database Actions
 
-Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
+Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. Subsequent labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
 1. At the top of the **Autonomous Database details** page, click **Database actions**. 
 
     The **Sign-in** page is displayed.
 
-2. Sign in as the `ADMIN` user. 
+2. If required, sign in as the `ADMIN` user. 
 
     A browser tab named **Oracle Database Actions** is opened. *Keep this tab open throughout the workshop.* If your session expires, you can always sign in again.
 
@@ -232,4 +232,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 8, 2023
+- **Last Updated By/Date** - Jody Glover, June 8, 2023

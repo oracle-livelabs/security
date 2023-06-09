@@ -21,7 +21,7 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account
-- Prepared your environment for this workshop
+- Prepared your environment for this workshop. *Make sure that you have sample data loaded into your database.*
 
 ### Assumptions
 
@@ -31,9 +31,11 @@ This lab assumes you have:
 
 ## Task 1: Register your database with Oracle Data Safe
 
-1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous Database details** page.
+1. Make sure that you are on the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous Database details** page.
 
-2. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. On this page, there are wizards to register the following types of databases. For an Autonomous Database on Shared Infrastructure with secure access from everywhere, you use the Autonomous Databases wizard.
+2. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
+
+    On this page, there are wizards to register the following types of databases. To register an **Autonomous Database on Shared Infrastructure with secure access from everywhere**, you use the Autonomous Databases wizard.
 
     - Autonomous Databases
     - Oracle Cloud Databases
@@ -41,7 +43,7 @@ This lab assumes you have:
     - Oracle Databases on Compute
     - Oracle Cloud@Customer Databases
 
-    ![Overview page for Oracle Data Safe](images/overview-page.png "Overview page for Oracle Data Safe")
+    ![Registration wizards for Oracle Data Safe](images/registration-wizards.png "Registration wizards for Oracle Data Safe")
 
 3. On the **Autonomous Databases** tile, click **Start Wizard**. 
 
@@ -55,15 +57,15 @@ This lab assumes you have:
 
 7. (Optional) Enter a description for your target database. 
 
-8. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity Option) and 3 ('Add Security Rule') are not necessary and will be skipped.** If your database had a private IP address, you would need to configure an Oracle Data Safe private endpoint and security rules. 
+8. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity Option') and 3 ('Add Security Rule') are not necessary and will be skipped.** If your database had a private IP address, you would need to configure an Oracle Data Safe private endpoint and security rules. 
 
-    ![Autonomous Database registration wizard - Select Database page](images/ADB-wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
+    ![Autonomous Database registration wizard - Select Database page](images/ocw/ADB-wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
 
 9. Click **Next**.    
 
 10. On the **Review and Submit** page, review the information. To make a change, you can return to the **Select Database** page. 
 
-    ![Autonomous Database registration wizard - Review and Submit page](images/ADB-wizard-review-submit.png "Autonomous Database registration wizard - Review and Submit page")
+    ![Autonomous Database registration wizard - Review and Submit page](images/ocw/ADB-wizard-review-submit.png "Autonomous Database registration wizard - Review and Submit page")
 
 11. Click **Register**.
 
@@ -75,7 +77,7 @@ This lab assumes you have:
     - You can view the Oracle Cloud Identifier (OCID), when the target database was registered, the compartment name to where the target database is registered, the database type (Autonomous Database), and the connection protocol (TLS). The information varies depending on the target database type.
     - You have options to edit connection details (choose a connectivity option), move the target database to another compartment, deregister the target database, and add tags.
 
-    ![Target Database Details page](images/target-database-details-page.png "Target Database Details page")
+    ![Target Database Details page](images/ocw/target-database-details-page.png "Target Database Details page")
     
 
 ## Task 2: View your registered target database
@@ -84,10 +86,10 @@ This lab assumes you have:
 
 2. Under **List Scope**, make sure your compartment is selected. Your registered target database is listed on the right.
 
-    - A target database with an **ACTIVE** status means that it is currently registered with Oracle Data Safe.
-    - A target database with a **DELETED** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
+    - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
+    - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
 
-    ![Target Databases page in OCI](images/target-databases-page-oci.png "Target Databases page in OCI")
+    ![Target Databases page in OCI](images/ocw/target-databases-page-oci.png "Target Databases page in OCI")
 
 
 ## Task 3: (Optional) Explore Security Center
@@ -102,9 +104,9 @@ This lab assumes you have:
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security Assessment**, **User Assessment**, **Feature Usage**, and **Operations Summary** charts in the dashboard already have data.
     - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit Trails** chart in the dashboard shows one audit trail with the status **In Transition** for your Autonomous Database.
 
-    ![Initial Dashboard - top half](images/dashboard-initial-top.png "Initial Dashboard - top half")
+    ![Initial Dashboard - top half](images/ocw/dashboard-initial-top.png "Initial Dashboard - top half")
 
-    ![Initial Dashboard - bottom half](images/dashboard-initial-bottom.png "Initial Dashboard - bottom half")
+    ![Initial Dashboard - bottom half](images/ocw/dashboard-initial-bottom.png "Initial Dashboard - bottom half")
 
 You may now **proceed to the next lab**.
 
@@ -117,4 +119,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 8, 2023
+- **Last Updated By/Date** - Jody Glover, June 7, 2023

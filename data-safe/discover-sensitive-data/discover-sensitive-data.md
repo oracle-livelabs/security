@@ -33,8 +33,6 @@ This lab assumes you have:
 
 ## Task 1: Discover sensitive data in your target database by using Data Discovery
 
-In Data Discovery, you can select the sensitive types that you want to discover in your target database. Data Discovery then generates a sensitive data model that lists sensitive columns in your target database.
-
 1. Make sure that you are on the browser tab for Oracle Data Safe. If needed, sign in again.
 
 2. In the breadcrumb at the top of the page, click **Data Safe**.
@@ -44,8 +42,6 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 4. From the **Compartment** drop-down list, select your compartment.
 
     A Data Discovery overview page is displayed with statistics for the top five target databases in your compartment. Your page is most likely empty because this is the first time you are using Data Discovery in this workshop.
-
-    ![Data Discovery dashboard](images/data-discovery-dashboard.png "Data Discovery dashboard")
 
 5. Click **Discover Sensitive Data**.
 
@@ -83,7 +79,7 @@ In Data Discovery, you can select the sensitive types that you want to discover 
     - You can view the selected sensitive types for discovery (click **View Details**).
     - You can view the work request information (click **View Details**).
     - The pie chart shows percentages of sensitive categories and sensitive types.
-    - The **Sensitive Columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
+    - The **Sensitive Columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, sample data (if you chose to retrieve sample data and if it exists), and audit records. Review the sample data to get an idea of what it looks like.
 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
     ![Sensitive Data Model Details page bottom](images/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")
@@ -138,4 +134,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 23, 2023
+- **Last Updated By/Date** - Jody Glover, June 8, 2023

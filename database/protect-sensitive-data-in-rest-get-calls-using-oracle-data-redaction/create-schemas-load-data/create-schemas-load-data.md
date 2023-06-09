@@ -21,12 +21,13 @@ In this lab, you will complete the following tasks:
 
 This lab assumes you have:
 - Oracle Cloud Infrastructure (OCI) tenancy account
+- Completed all of the previous labs in the **Protect sensitive data in REST GET calls using Oracle Data Redaction** LiveLab workshop
 
 ## Task 1: Create an ATP database instance.
 
-1. With OCI open, navigate to the ATP portal by selecting the hamburger menu in the top left corner, which will allow for you to select **Oracle Database** and then, **Autonomous Transaction Processing.**
+1. With the OCI console open, navigate to the ATP portal by selecting the hamburger menu in the top left corner, which will allow for you to select **Oracle Database** and then, **Autonomous Transaction Processing.**
 
-    ![Select ATP from OCI menu](images/select-atp-menu.png) 
+    ![Select ATP from OCI menu](images/select-the-atp-menu.png) 
 
 2. Select **Create Autonomous Database.**
 
@@ -45,10 +46,11 @@ This lab assumes you have:
     ![Enter admin credentials](images/secure-access.png) 
 
 6. Select the licensing option of your choosing, then select **Create Autonomous Database** at the bottom.
+*Note: Spinning up the ADB can take a couple of minutes.*
 
-    ![Create ADB button at the bottom](images/create-atp.png)
+    ![Create ADB button at the bottom](images/create-the-atp.png)
 
-    *Note: Spinning up the ADB can take a couple of minutes.*
+    
 
 ## Task 2: Use the `employee_data_load.sql` script to create the `EMPLOYEESEARCH_PROD` user and upload data.
 
@@ -105,11 +107,11 @@ This lab assumes you have:
 13. Login into **Database Actions** as `EMPLOYEESEARCH_PROD` using the following credentials:
 
     ```
-    Username:<copy>EMPLOYEESEARCH_PROD</copy>   
+    <copy>EMPLOYEESEARCH_PROD</copy>   
     ```
 
     ```
-    Password:<copy>Oracle123+Oracle123+</copy>
+    <copy>Oracle123+Oracle123+</copy>
     ```
 
 You may now **proceed to the next lab.**
@@ -118,4 +120,4 @@ You may now **proceed to the next lab.**
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, January 2023
+- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, February 2023
