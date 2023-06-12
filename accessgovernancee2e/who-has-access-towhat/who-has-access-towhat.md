@@ -1,4 +1,4 @@
-# Manage Who Has Access To What
+# Review Who Has Access To What
 
 ## Introduction
 
@@ -15,9 +15,13 @@ In this lab, you will:
 * Explore **Enterprise Wide Access**
 
 
-## Task 1: Manage Who Has Access to What 
+<<<<<<< Updated upstream
+## Task 1: Review Who Has Access to What 
+=======
+## Task 1: Review Who Has Access to What - MyAccess
+>>>>>>> Stashed changes
 
-  In this task, you will review **Who has Access to What - MyAccess and Enterprise Wide Access**
+  In this task, you will review **Who has Access to What - MyAccess**
 
 
 1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 4: Task 1* 
@@ -54,29 +58,33 @@ In this lab, you will:
 
   ![Access Governance Homepage](images/my-access-page-app.png)
 
-  5. On the Oracle Access Governance Console home page, from the navigation menu, select **Who has Access to What -> Enterprise Wide Access** 
+
+
+## Task 2: Review Who Has Access to What -  Enterprise Wide Access
+
+  1. On the Oracle Access Governance Console home page, from the navigation menu, select **Who has Access to What -> Enterprise Wide Access** 
 
 
   ![Access Governance Enterprise Access](images/enterprise-wide-access.png)
 
 
 
-  6. You can view the all the **Resources** present and the **Identities** that have access to those resources. 
+  2. You can view the all the **Resources** present and the **Identities** that have access to those resources. 
 
 
    ![Access Governance Enterprise Access](images/enterprise-page.png)
 
 
-  7. Click on the right corner dropdown to sort the resources by - resource name or resource type.
+  3. Click on the right corner dropdown to sort the resources by - resource name or resource type.
 
 
 
-  8. Beside the Resource, click on the **Show me the identities that have access** to view the user identities that have access to the particular resources.  
+  4. Beside the Resource, click on the **Show me the identities that have access** to view the user identities that have access to the particular resources.  
 
      ![Access Governance Homepage](images/view-identities.png)
 
 
-  9. To review all of the **user identity access**. Click on **Show me all of the user's accessess**
+  5. To review all of the **user identity access**. Click on **Show me all of the user's accessess**
 
 
       ![Access Governance Homepage](images/identity-details.png)
