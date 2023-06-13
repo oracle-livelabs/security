@@ -1,4 +1,4 @@
-# Create  Policies for Access Governance
+# Create Groups and Policies for Access Governance
 
 ## Introduction
 
@@ -11,11 +11,39 @@ Create policies for Access Governance.
 ### Objectives
 
 In this lab, you will:
+* Setup **groups** for Access Governance 
 * Setup **policies** for Access Governance 
 * Setup **policy** to allow Oracle Access Governance to connect OCI
 
 
-## Task 1 : Create AG Policies 
+## Task 1: Create AG Group 
+
+1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
+
+1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Domains* from the list of products.
+
+    ![Navigate to Domains](images/navigate-select-domain.png)
+
+2. On the Domains page, Click on *ag-domain* which is the identity domain you have created. Select *Groups*. Click on *Create Group*
+
+    ![Select the Identity Domain](images/select-identity-domain.png)
+
+    ![Select Groups](images/select-groups.png)
+
+    Enter the following details to create the *agcs-group* and Assign **Pamela Green** user to the group
+    ```
+    Name: agcs-group
+    Description: Access governance group to manage users 
+    Users: Select the user Pamela Green from the list of users. 
+    ```
+    Click *Create*
+
+    ![Create AG Group](images/agcs-group.png)
+
+    The *Group* has been created succesfully. 
+
+
+## Task 2 : Create AG Policies 
 
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Policies* from the list of products.
@@ -49,6 +77,23 @@ In this lab, you will:
     <copy>allow resource accessgov-agent resource-scanner to read all-resources in tenancy
     allow resource accessgov-agent resource-manager to manage domains in tenancy
     allow resource accessgov-agent resource-manager to manage policies in tenancy
+    </copy>
+    ```
+ 
+    Click Create
+
+    On the Policies page, In the root compartment click on Create Policy to create a policy : agcs-policy
+
+    ```
+    Name: agcs-policy
+    Description: Oracle Access Governance policy 
+    Compartment: Ensure your root compartment is selected
+    Policy Builder: Select the show manual editor checkbox
+    ```
+    ```
+    <copy>ALLOW GROUP agcs-group to read all-resources IN TENANCY
+    ALLOW GROUP agcs-group to manage policies IN TENANCY
+    ALLOW GROUP agcs-group to manage domains IN TENANCY
     </copy>
     ```
  
