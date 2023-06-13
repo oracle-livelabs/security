@@ -15,11 +15,7 @@ In this lab, you will:
 * Explore **Enterprise Wide Access**
 
 
-<<<<<<< Updated upstream
-## Task 1: Review Who Has Access to What 
-=======
 ## Task 1: Review Who Has Access to What - MyAccess
->>>>>>> Stashed changes
 
   In this task, you will review **Who has Access to What - MyAccess**
 
