@@ -37,7 +37,7 @@ This lab assumes you have:
 
 ## Task 1: Grant the Data Masking role on your target database
 
-To use the Data Masking feature with **Autonomous Database on Shared Infrastructure with secure access from everywhere**, you must first grant the Data Masking role to the Oracle Data Safe pre-seeded service account on the database. If you are using a different kind of target database, please refer to the _Administering Oracle Data Safe_ guide for instructions on how to grant the required roles.
+To use the Data Masking feature with **Oracle Autonomous Database Serverless with secure access from everywhere**, you must first grant the Data Masking role to the Oracle Data Safe pre-seeded service account on the database. If you are using a different kind of target database, please refer to the _Administering Oracle Data Safe_ guide for instructions on how to grant the required roles.
 
 1. Access the SQL worksheet in Database Actions. If your session has expired, sign in again as the `ADMIN` user. Clear the worksheet and the **Script Output** tab.
 

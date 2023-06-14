@@ -35,7 +35,7 @@ This lab assumes you have:
 
 2. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
 
-    On this page, there are wizards to register the following types of databases. To register an **Autonomous Database on Shared Infrastructure with secure access from everywhere**, you use the Autonomous Databases wizard.
+    On this page, there are wizards to register the following types of databases:
 
     - Autonomous Databases
     - Oracle Cloud Databases

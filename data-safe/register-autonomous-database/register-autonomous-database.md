@@ -32,7 +32,7 @@ This lab assumes you have:
 
 ## Task 1: Explore target database registration options
 
-You have three options for registering an Autonomous Database on Shared Infrastructure with secure access from everywhere:
+You have three options for registering your Autonomous Database:
 - Use the **Register** link on the **Autonomous Database details** page (one-click method with no interaction).
 - Use the Autonomous Databases wizard on the **Overview** page for the Oracle Data Safe service (guided method with customization options).
 - Manually register your target database from the **Registered Targets** page (advanced method without guidance).
@@ -48,7 +48,7 @@ You have three options for registering an Autonomous Database on Shared Infrastr
 
 3. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
 
-    On this page, there are wizards to register the following types of databases. To register an **Autonomous Database on Shared Infrastructure with secure access from everywhere**, you use the Autonomous Databases wizard.
+    On this page, there are wizards to register the following types of databases:
 
     - Autonomous Databases
     - Oracle Cloud Databases
