@@ -18,14 +18,14 @@
             "filename": "../../create-compartment/create-compartment.md"
         },
         {
-            "title": "Lab 2: Create Access Governance Groups and Policies",
-            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
-            "filename": "../../create-ag-group-policies/create-ag-group-policies.md"
-        },
-        {
-            "title": "Lab 3: Create Identity Domain",
+            "title": "Lab 2: Create Identity Domain",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "../../create-identity-domain/create-identity-domain.md"
+        },
+        {
+            "title": "Lab 3: Create Access Governance Groups and Policies",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "../../create-ag-group-policies/create-ag-group-policies.md"
         },
         {
             "title": "Lab 4: Setup and configure Oracle Access Governance service instance",

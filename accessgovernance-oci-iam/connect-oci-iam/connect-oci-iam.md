@@ -59,21 +59,20 @@ In this lab, you will:
   ![OCI Enter details](images/enter-data.png)
 
 
-7. To obtain the fingerprint of OCI user (Pamela Green). Login to the OCI console as user **Pamela Green** using the credentials mentioned below. 
+7. To obtain the fingerprint of OCI user (agcs-user). Login to the OCI console **Identity Domain: ag-domain** as the **Identity Domain Administrator** . 
 
-  **Username:**
-    ```
-    <copy>pamela.green</copy>
-    ```
 
-    **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+8. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Domains* from the list of products.
 
-   Navigate to  user profile on the top right corner and click on **My Profile**.
-   
-    ![OCI Enter details](images/my-profile.png)
+    ![Navigate to Domains](images/navigate-domains.png)
+
+9. On the Domains page, Click on *ag-domain* which is the identity domain you have created. Ensure the **ag-compartment** is selected. 
+
+    ![Navigate to Domains](images/navigate-ag-domain.png)
+
+10. Select *Users*. Click on *agcs-user*
+
+    ![Create User](images/users-agdomain.png)
   
   
    Scroll down , click on **API keys**
@@ -103,10 +102,9 @@ In this lab, you will:
 
   ![OCI Enter details](images/config-file.png)
 
+11. Go back to Oracle Access Governance and continue to  enter the following details mentioned below: 
 
-7. Enter the following details mentioned below: 
-
-  **What is the OCI user's OCID?**: Enter the Oracle Cloud Identifier (OCID) for the OCI user (Pamela Green) noted down from the previous step. 
+  **What is the OCI user's OCID?**: Enter the Oracle Cloud Identifier (OCID) for the OCI user (agcs-user) noted down from the previous step. 
 
   **What is the OCI user's fingerprint?**: Enter the fingerprint of the public key of the API   Signing Key  noted down from the previous step.
 
@@ -120,7 +118,7 @@ In this lab, you will:
   ![OCI Enter details](images/details-entered.png)
 
 
-8. Click **Add.** Click on Manage to see the status. If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
+12. Click **Add.** Click on Manage to see the status. If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
 
   ![OCI Connection status](images/oci-connection-status.png)
 
