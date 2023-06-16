@@ -218,10 +218,13 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
 2. Click on the **Targets** tab
 
-3. Click on the Target **pdb1**
+3. Click on **Schedule Retrieval Jobs**
+
+    ![AVDF](./images/avdf-010c.png "AVDF")
 
 4. On the target screen, under **Audit Policy** perform the following:
     - Checkbox *Retrieve Immediately*
+    - Checkbox *Create/Update Schedule*
     - Change the **Schedule** radio button to *Enable*
     - Set **Repeat Every** to *1 Days*
     - Click [**Save**] to save and continue
@@ -281,10 +284,11 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
 2. Click on the **Targets** tab
 
-3. Click on the Target **pdb1**
+3. Click on **Schedule Retrieval Jobs**
 
 4. Under **User Entitlements**
     - Checkbox *Retrieve Immediately*
+    - Checkbox *Create/Update Schedule*
     - Change the **Schedule** radio button to *Enable*
     - Set **Repeat Every** to *1 Days*
     - Click [**Save**] to save and continue
