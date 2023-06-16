@@ -434,9 +434,9 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
 5. Login to your GoldenGate Web Console
 
-    - Open a web browser window to *`https://dbsec-lab:50002`*
+    - Open a web browser window to *`http://dbsec-lab:50002`*
 
-        **Note**:If you are not using the remote desktop you can also access this page by going to *`https://<DBSecLab-VM_@IP-Public>:50002`*
+        **Note**:If you are not using the remote desktop you can also access this page by going to *`http://<DBSecLab-VM_@IP-Public>:50002`*
 
     - Login to Golden Gate Web Console as *`OGGADMIN`* with the password "*`Oracle123`*"
 
@@ -706,20 +706,21 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
     ![AVDF](./images/avdf-102.png "AVDF")
 
-5. Check that the **Proxy Port** for **eth0** is set to *`dbfw_proxy(15223)`*
+5. Create a **Proxy Port**
 
-    ![AVDF](./images/avdf-103.png "AVDF")
+    - Click on **ens3**
     
-    **Note**: FYI, follow these instructions to create a Proxy Port:
-    - Click on **eth0**
-    
-        ![AVDF](./images/avdf-104a.png "AVDF")
+        ![AVDF](./images/avdf-103.png "AVDF")
 
     - Click [**Add**]
 
-        ![AVDF](./images/avdf-104b.png "AVDF")
+        ![AVDF](./images/avdf-104a.png "AVDF")
 
     - Name it (here *`dbfw_proxy`*) for the port *`15223`*, then click [**Save**]
+
+        ![AVDF](./images/avdf-104b.png "AVDF")
+
+    - Now, Proxy port is set to **`dbfw_proxy(15223)`**
 
         ![AVDF](./images/avdf-104c.png "AVDF")
 
@@ -737,7 +738,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
         - Database Firewall: *`dbf`*
         - Mode: *`Monitoring / Blocking (Proxy)`*
-        - Network Interface Card: *`eth0`*
+        - Network Interface Card: *`ens3`*
         - Proxy Ports: *`dbfw_proxy (15223)`*
 
             ![AVDF](./images/avdf-106.png "AVDF")
@@ -955,7 +956,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
     **Note**: Sometimes DB Firewall activity may take 5 minutes to appear in the Database Firewall Activity Reports, hence click [**Go**] to refresh this page if needed
 
-24. Click on the details of a query to see more information and notice the following information in the **Event** category:
+24. Click on the details of a query (paper icon) to see more information and notice the following information in the **Event** category:
     - Policy Name: *`Log unique`*
     - Threat Severity: *`minimal`*
     - Location: *`Network`*
@@ -1030,13 +1031,15 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 6. Click [**Create**]
 
+    ![AVDF](./images/avdf-129a.png "AVDF")
+
 7. Create the Database Firewall Policy with the following information
 
     - Policy Name: *`HR Policy`*
     - Target Type: *`Oracle Database`*
     - Description: *`This policy will protect the My HR App`*
 
-        ![AVDF](./images/avdf-129.png "AVDF")
+        ![AVDF](./images/avdf-129b.png "AVDF")
 
     - Click [**Save**]
 
@@ -1410,7 +1413,7 @@ In this lab you will create the policy `PII Exfiltration Monitor` to monitor the
 
     - Click the **Policies** tab
 
-    - Click the **Alert Policies** sub-tab
+    - Click the **Alert Policies** sub-tab on left
 
     - Click [**Create**] and fill out the field as following
 
@@ -1881,7 +1884,7 @@ Important: before performing this lab, you must have:
 
         ![AVDF](./images/avdf-033a.png "AVDF")
 
-    - Stop the "**Extracts**" service by clicking on the "**Actions**" button and selecting "**Stop**"
+    - Stop the "**Extracts**" service by clicking on the "**Actions**" button and selecting "**Force Stop**"
 
         ![AVDF](./images/avdf-259.png "AVDF")
 
