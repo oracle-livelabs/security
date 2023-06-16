@@ -15,6 +15,7 @@ In this lab, you will:
 * Setup **groups** for Access Governance 
 * Setup **policies** for Access Governance 
 * Setup **policy** to allow Oracle Access Governance to connect OCI
+* Setup **policy** for Domain Administrator Access 
 
 ## Task 1: Create AGCS User
 
@@ -24,15 +25,15 @@ In this lab, you will:
 
     ![Navigate to Domains](images/navigate-domains.png)
 
-2. On the Domains page, Click on *ag-domain* which is the identity domain you have created. Ensure the **ag-compartment** is selected. 
+2. On the Domains page, Click on *Default domain* . Ensure the **root compartment** is selected. 
 
-    ![Navigate to Domains](images/navigate-ag-domain.png)
+    ![Navigate to Domains](images/default-domain.png)
 
 3. Select *Users*. Click on *Create User*
 
-    ![Create User](images/users-agdomain.png)
+    ![Create User](images/select-users.png)
 
-    ![Create User](images/createuser-agdomain.png)
+    ![Create User](images/create-user.png)
 
     Enter the following details to create the *agcs-user* 
 
@@ -57,11 +58,11 @@ In this lab, you will:
 
     ![Navigate to Domains](images/navigate-select-domain.png)
 
-3. On the Domains page, Click on *ag-domain* which is the identity domain you have created. Select *Groups*. Click on *Create Group*
+3. On the Domains page, Click on *Default domain*. Ensure the **root compartment** is selected. Select *Groups*. Click on *Create Group*
 
-    ![Select the Identity Domain](images/select-identity-domain.png)
+    ![Select the Identity Domain](images/default-domain.png)
 
-    ![Select Groups](images/select-groups.png)
+    ![Select Groups](images/select-group.png)
 
     Enter the following details to create the *agcs-group* and Assign **agcs-user** user to the group
     ```
@@ -115,6 +116,25 @@ In this lab, you will:
     ```
  
     Click Create
+
+
+   On the Policies page, In the root compartment click on Create Policy to create the policy : domain-admin-policy
+
+
+    ```
+    Name: domain-admin-policy
+    Description: IAM policy (domain-admin-policy) in the COMPARTMENT to give access to the Identity Domain admin for the compartment created
+    Compartment: Ensure your root compartment is selected
+    Policy Builder: Select the show manual editor checkbox
+    Statement :
+    ```
+
+    ```
+    <copy>Allow group ag-domain/Domain-Administrators to manage all-resources in compartment ag-compartment</copy>
+    ```
+
+    Click *Create* 
+
 
   You may now **proceed to the next lab**. 
 

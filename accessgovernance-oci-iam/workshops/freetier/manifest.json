@@ -13,51 +13,46 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Create Compartment",
+            "title": "Lab 1: Create Compartment and Identity Domain",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "../../create-compartment/create-compartment.md"
         },
         {
-            "title": "Lab 2: Create Identity Domain",
-            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
-            "filename": "../../create-identity-domain/create-identity-domain.md"
-        },
-        {
-            "title": "Lab 3: Create Access Governance Groups and Policies",
+            "title": "Lab 2: Create Access Governance Groups and Policies",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "../../create-ag-group-policies/create-ag-group-policies.md"
         },
         {
-            "title": "Lab 4: Setup and configure Oracle Access Governance service instance",
+            "title": "Lab 3: Setup and configure Oracle Access Governance service instance",
             "description": "Setup and configure Oracle Access Governance service instance ",
             "filename": "../../instance-setup/ag-instance-setup.md"
         },
         {
-            "title": "Lab 5: Create OCI Policies, Groups and Compartments ",
+            "title": "Lab 4: Create OCI Policies, Groups and Compartments ",
             "filename": "../../create-oci-resource/create-oci-resource.md"
         },
         {
-            "title": "Lab 6: Integrate Oracle Access Governance with OCI IAM",
+            "title": "Lab 5: Integrate Oracle Access Governance with OCI IAM",
             "filename": "../../connect-oci-iam/connect-oci-iam.md"
         },
         {
-            "title": "Lab 7: Mark the identities",
+            "title": "Lab 6: Mark the identities",
             "filename": "../../mark-identities/mark-identities.md"
         },
         {
-            "title": "Lab 8: Review Who has Access to What",
+            "title": "Lab 7: Review Who has Access to What",
             "filename": "../../who-has-access-towhat/who-has-access-towhat.md"
         },
         {
-            "title": "Lab 9: Create Policy Review Campaigns",
+            "title": "Lab 8: Create Policy Review Campaigns",
             "filename": "../../create-policy-reviews/create-policy-review.md"
         },
         {
-            "title": "Lab 10: Perform Policy Review Campaigns",
+            "title": "Lab 9: Perform Policy Review Campaigns",
             "filename": "../../perform-policy-review/perform-policy-review.md"
         },
         {
-            "title": "Lab 11: Cleanup Access Governance service instance",
+            "title": "Lab 10: Cleanup Access Governance service instance",
             "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
         },
         {

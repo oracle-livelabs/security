@@ -59,20 +59,21 @@ In this lab, you will:
   ![OCI Enter details](images/enter-data.png)
 
 
-7. To obtain the fingerprint of OCI user (agcs-user). Login to the OCI console **Identity Domain: ag-domain** as the **Identity Domain Administrator** . 
+7. To obtain the fingerprint of OCI user (agcs-user). Open a **new private browser window** and login to the OCI console **Default Domain** as the **Domain Administrator** . 
 
 
 8. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Domains* from the list of products.
 
     ![Navigate to Domains](images/navigate-domains.png)
 
-9. On the Domains page, Click on *ag-domain* which is the identity domain you have created. Ensure the **ag-compartment** is selected. 
+9. On the Domains page, Click on *Default domain* 
+   Ensure the **root compartment** is selected. 
 
-    ![Navigate to Domains](images/navigate-ag-domain.png)
+    ![Navigate to Domains](images/default-domain.png)
 
 10. Select *Users*. Click on *agcs-user*
 
-    ![Create User](images/users-agdomain.png)
+    ![Create User](images/select-users.png)
   
   
    Scroll down , click on **API keys**
@@ -102,7 +103,7 @@ In this lab, you will:
 
   ![OCI Enter details](images/config-file.png)
 
-11. Go back to Oracle Access Governance and continue to  enter the following details mentioned below: 
+11. Go back to the browser with Oracle Access Governance and continue to  enter the following details mentioned below: 
 
   **What is the OCI user's OCID?**: Enter the Oracle Cloud Identifier (OCID) for the OCI user (agcs-user) noted down from the previous step. 
 
