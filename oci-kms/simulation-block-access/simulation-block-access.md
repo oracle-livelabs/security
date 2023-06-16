@@ -1,4 +1,4 @@
-# Lab 4 - Emergency simulation test: blocking data access
+# Lab 4 - Emergency simulation test: block data access
 
 ## Introduction
 

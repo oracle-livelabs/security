@@ -148,9 +148,9 @@ This policy configuration is very important. By default, no services can access 
     *	License type: Bring Your Own License (BYOL)
     * Oracle Database Edition: Oracle Database Standard Edition (SE)
   
-  Click the link *"Show advanced options"*. A new section for Encryption Key will appear. Select the option: *"Encrypt using a customer-managed key in this tenancy"* and enter your previously created Vault and Master Encryption Key.
+Click the link *"Show advanced options"*. A new section for Encryption Key will appear. Select the option: *"Encrypt using a customer-managed key in this tenancy"* and enter your previously created Vault and Master Encryption Key.
 
-    ![Encryption in Autonomous Database](./images/adb-encryption.png "Encryption in Autonomous Database")
+![Encryption in Autonomous Database](./images/adb-encryption.png "Encryption in Autonomous Database")
 
 
 4. Click **Create Autonomous Database**. Then wait until the database status is set to green and ACTIVE.

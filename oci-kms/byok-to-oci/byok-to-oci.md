@@ -18,7 +18,7 @@ This lab assumes you have:
 * Access to your OCI and CTM accounts
 * All previous labs successfully completed
 
-## Task 1: Managing Oracle Vaults From CTM
+## Task 1: Manage Oracle Vaults From CTM
 
 1. Open the CipherTrust Manager Web UI and click on the "Cloud Key Manager" tile.
 
@@ -52,7 +52,7 @@ This lab assumes you have:
 
     You should receive a "Success" message and see you Vault listed in the "Oracle Vaults" pane. Congratulations, now you can remotely manage your Oracle Vault from your CTM tenant. 
 
-## Task 2: Managing Oracle Keys From CTM
+## Task 2: Manage Oracle Keys From CTM
 
 1. On the left pane, click **Cloud Keys > Oracle**.
 

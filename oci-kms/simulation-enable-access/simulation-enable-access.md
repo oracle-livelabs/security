@@ -1,4 +1,4 @@
-# Lab 5 - Emergency simulation test: re-enabling data access
+# Lab 5 - Emergency simulation test: re-enable data access
 
 ## Introduction
 

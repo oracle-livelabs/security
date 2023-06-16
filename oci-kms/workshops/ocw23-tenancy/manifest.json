@@ -25,11 +25,11 @@
             "filename": "../../encrypt-resources/encrypt-resources.md"
         },
         {
-            "title": "Lab 4: Emergency simulation test: blocking data access",
+            "title": "Lab 4: Emergency simulation test: block data access",
             "filename": "../../simulation-block-access/simulation-block-access.md"
         },
         {
-            "title": "Lab 5: Emergency simulation test: re-enabling data access",
+            "title": "Lab 5: Emergency simulation test: re-enable data access",
             "filename": "../../simulation-enable-access/simulation-enable-access.md"
         },
         {
