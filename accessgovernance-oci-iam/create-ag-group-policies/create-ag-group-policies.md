@@ -93,8 +93,8 @@ In this lab, you will:
     Statement :
     ```
      ```
-    <copy>Allow group ag-domain/Domain-Administrators to manage agcs-instance in compartment ag-compartment
-    Allow group ag-domain/Domain-Administrators to read objectstorage-namespace in tenancy</copy>
+    <copy>Allow group ag-domain/Domain_Administrators to manage agcs-instance in compartment ag-compartment
+    Allow group ag-domain/Domain_Administrators to read objectstorage-namespace in tenancy</copy>
       ```  
 
     Click *Create*
@@ -130,7 +130,7 @@ In this lab, you will:
     ```
 
     ```
-    <copy>Allow group ag-domain/Domain-Administrators to manage all-resources in compartment ag-compartment</copy>
+    <copy>Allow group ag-domain/Domain_Administrators to manage all-resources in compartment ag-compartment</copy>
     ```
 
     Click *Create* 
@@ -147,4 +147,4 @@ In this lab, you will:
 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Anbu Anbarasu, May 2023
+* **Last Updated By/Date** - Anbu Anbarasu, June 2023

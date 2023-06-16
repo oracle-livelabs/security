@@ -40,7 +40,7 @@ This lab assumes you have:
     Administrator first name: Enter administrator  first name 
     Administrator last name: Enter administrator last name 
     Administrator username/email: Enter the administrator email id
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure ag-compartment compartment is selected
     ```
 
 
