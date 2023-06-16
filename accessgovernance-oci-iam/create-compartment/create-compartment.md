@@ -79,7 +79,6 @@ This lab assumes you have:
 
     ![Active Identity Domain](images/active-identity-domain.png) 
 
-5. Logout of your Cloud Account by clicking on the *User icon* in the top right corner. Click on *Sign out* option. 
 
 ## Task 3: Activate your Account 
 
