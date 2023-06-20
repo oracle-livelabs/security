@@ -84,41 +84,6 @@ In this lab, you will:
 
    The *compartments* have been successfully created. 
 
-## Task 2: Create VCN 
-
-
-1. Navigate to Networking -> Virtual Cloud Networks
-
-   ![Navigate to VCN](images/navigate-vcn.png)
-
-2. Ensure the **ag-compartment** is selected. Click on **Start VCN Wizard**
-
-  ![Navigate to VCN](images/start-wizard.png)
-
-3. Check the box **Create VCN with Internet Connectivity**. Click on **Start VCN Wizard** 
-
-  ![Navigate to VCN](images/wizard-starts.png)
-
-
-4. Under Configuration , provide the below details: 
-
-
-  **VCN name:** ag-vcn 
-
-  **Compartment:** Select the ag-compartment 
-
-    ![Navigate to VCN](images/enter-vcn-details.png)
-
-5. Click on **Next**
-
-   ![Navigate to VCN](images/click-next-wizard.png)
-
-6. Verify all the details. Click on **Create**
-
-   ![Navigate to VCN](images/click-create-wizard.png)
-
-    The *VCN* has been successfully created.
-
 
 ## Task 2: Create Groups
 
@@ -293,6 +258,42 @@ In this lab, you will:
 
 
   The *policies* have been successfully created. 
+
+
+## Task 5: Create VCN 
+
+
+1. Navigate to Networking -> Virtual Cloud Networks
+
+   ![Navigate to VCN](images/navigate-vcn.png)
+
+2. Ensure the **ag-compartment** is selected. Click on **Start VCN Wizard**
+
+  ![Navigate to VCN](images/start-wizard.png)
+
+3. Check the box **Create VCN with Internet Connectivity**. Click on **Start VCN Wizard** 
+
+  ![Navigate to VCN](images/wizard-starts.png)
+
+
+4. Under Configuration , provide the below details: 
+
+
+  **VCN name:** ag-vcn 
+
+  **Compartment:** Select the ag-compartment 
+
+    ![Navigate to VCN](images/enter-vcn-details.png)
+
+5. Click on **Next**
+
+   ![Navigate to VCN](images/click-next-wizard.png)
+
+6. Verify all the details. Click on **Create**
+
+   ![Navigate to VCN](images/click-create-wizard.png)
+
+    The *VCN* has been successfully created.
 
   You may now **proceed to the next lab**. 
 

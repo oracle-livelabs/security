@@ -1,8 +1,8 @@
-# Create and Perform Policy Review Campaigns
+# Perform Policy Review Campaigns
 
 ## Introduction
 
-Access Governance Campaign Reviewer (Harlan Bullard) can create policy review campaign and Perform Policy Review tasks. 
+Access Governance Campaign Reviewer (Harlan Bullard) can perform Policy Review tasks. 
 
 * Estimated Time: 15 minutes
 * Persona: Campaign Reviewer
