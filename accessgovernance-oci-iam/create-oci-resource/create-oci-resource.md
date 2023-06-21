@@ -1,8 +1,8 @@
-# Create  OCI Policies, Groups and Compartments
+# Create  OCI Policies, VCN, Groups and Compartments
 
 ## Introduction
 
-As a user with a **Administrator** role in the identity domain, you can create OCI policies, groups and compartments from the **OCI** console.This lab will show you how to set up the OCI policies,groups and compartments needed to run this OCI-IAM Policy reviews. 
+As a user with a **Identity Domain Administrator** role in the identity domain, you can create OCI policies, groups and compartments from the **OCI** console.This lab will show you how to set up the OCI policies,VCN,groups and compartments needed to run this OCI-IAM Policy reviews. 
 
  
 
@@ -14,8 +14,10 @@ As a user with a **Administrator** role in the identity domain, you can create O
 ### Objectives
 
 In this lab, you will: 
-* Create  OCI Policies, Groups and Compartments manually
+* Create  OCI Policies, VCN, Groups and Compartments manually
+* Note: All the resources we create in this lab are supposed to be created in the **ag-compartment**
 * We create the following resources in this lab:
+
 
 | Resource Type           | Resource    | Description |
 | :-----------   |   :--------:   |  :--------: |
@@ -28,15 +30,16 @@ In this lab, you will:
 | Groups         | SecurityAdmins           | SecurityAdmins         |
 |          | NetworkAdmins             | NetworkAdmins        |
 |          | Auditors            | Auditors        | 
-| Policies         | tf1-auditors-policy            | Access Policy for Auditors         |
-|         |  tf2-network-admins-policy            | Access Policy for Network Administrators        |
-|          | tf3-security-admins-policy           | Access Policy for Security Admins         |
+| Policies         | auditors-policy            | Access Policy for Auditors         |
+|         |  network-admins-policy            | Access Policy for Network Administrators        |
+|          | security-admins-policy           | Access Policy for Security Admins         |
+| Virtual Cloud Network    | ag-vcn           | AG Test Virtual Cloud Network       | 
 
 
 
 ## Task 1: Create Compartments
 
-1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator.
+1. Login to the OCI console Identity Domain: ag-domain as the **Identity Domain Administrator**
 
   ![Login to OCI console](images/oci-console.png)
 
@@ -53,7 +56,7 @@ In this lab, you will:
 
   **Description:** Development
 
-  **Parent Compartment:** Select the root compartment 
+  **Parent Compartment:** Select the **ag-compartment** compartment 
 
   Click on *Create Compartment*
 
@@ -63,7 +66,7 @@ In this lab, you will:
 
   **Description:** Quality-Assurance
 
-  **Parent Compartment:** Select the root compartment 
+  **Parent Compartment:** Select the **ag-compartment** compartment 
 
   Click on *Create Compartment*
 
@@ -73,7 +76,7 @@ In this lab, you will:
 
   **Description:** Testing
 
-  **Parent Compartment:** Select the root compartment 
+  **Parent Compartment:** Select the **ag-compartment** compartment 
 
   Click on *Create Compartment* 
 
@@ -192,75 +195,105 @@ In this lab, you will:
     ```
     Name: auditors_policy
     Description: Access Policy for Auditors
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure ag-compartment is selected
     Policy Builder: Select the show manual editor checkbox
 
     ```
 
      ```
-    <copy>Allow group Auditors to inspect all-resources in tenancy
-    Allow group Auditors to read instances in compartment Quality-Assurance
-    Allow group Auditors to read audit-events in compartment Quality-Assurance </copy>
-    ```  
+    <copy>Allow group ag-domain/Auditors to read instances in compartment ag-compartment
+    Allow group ag-domain/Auditors to read audit-events in compartment ag-compartment
+    Allow group ag-domain/Auditors to inspect vaults in compartment ag-compartment
+    Allow group ag-domain/Auditors to inspect virtual-network-family in compartment ag-compartment
+    Allow group ag-domain/Auditors to inspect keys in compartment ag-compartment
+    Allow group ag-domain/Auditors to inspect vaults in compartment ag-compartment
+    Allow group ag-domain/Auditors to inspect virtual-network-family in compartment ag-compartment
+    Allow group ag-domain/Auditors to inspect keys in compartment Quality-Assurance
+    Allow group ag-domain/Auditors to inspect vaults in compartment Development
+    Allow group ag-domain/Auditors to inspect virtual-network-family in compartment Testing
+    </copy>
+      ```  
 
     Click *Create*
 
-
-  ![Create Policy](images/create-policy-auditor.png)
 
     ```
     Name: network_admins_policy
 
     Description: Access Policy for Network Administrators
 
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure ag-compartment is selected
 
     Policy Builder: Select the show manual editor checkbox
 
     ```
 
       ```
-      <copy>Allow group NetworkAdmins to manage virtual-network-family in tenancy	
-      Allow group NetworkAdmins to manage load-balancers in compartment Quality-Assurance	
-      Allow group NetworkAdmins to manage load-balancers in compartment Development	
-      Allow group NetworkAdmins to manage load-balancers in compartment Testing	
-      Allow group NetworkAdmins to manage instances in compartment Quality-Assurance	
-      Allow group NetworkAdmins to manage instances in compartment Development	
-      Allow group NetworkAdmins to manage instances in compartment Testing</copy>
+      <copy>Allow group ag-domain/NetworkAdmins to manage all-resources in compartment ag-compartment</copy>
       ```  
 
     Click *Create*
-
-    ![Create Policy](images/create-policy-networkadmin.png)
 
 
     ```
     Name: security_admins_policy
     Description: Access Policy for Security Admins
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure ag-compartment is selected
     Policy Builder: Select the show manual editor checkbox
 
     ```
 
      ```
-    <copy>Allow group SecurityAdmins to manage bastion in compartment Quality-Assurance
-    Allow group SecurityAdmins to manage bastion-session in compartment Quality-Assurance
-    Allow group SecurityAdmins to read instance-family in compartment Quality-Assurance
-    Allow group SecurityAdmins to read instance-agent-plugins in compartment Quality-Assurance
-    Allow group SecurityAdmins to inspect work-requests in compartment Quality-Assurance
-    Allow group SecurityAdmins to manage bastion in compartment Testing
-    Allow group SecurityAdmins to manage bastion-session in compartment Testing
-    Allow group SecurityAdmins to manage virtual-network-family in compartment Testing
-    Allow group SecurityAdmins to read instance-family in compartment Testing
-    Allow group SecurityAdmins to read instance-agent-plugins in compartment Testing
-    Allow group SecurityAdmins to inspect work-requests in compartment Testing</copy>
+    <copy>Allow group ag-domain/SecurityAdmins to manage virtual-network-family in compartment ag-compartment
+    Allow group ag-domain/SecurityAdmins to manage vaults in compartment ag-compartment
+    Allow group ag-domain/SecurityAdmins to manage secret-family in compartment ag-compartment
+    Allow group ag-domain/SecurityAdmins to manage keys in compartment ag-compartment
+    Allow group ag-domain/SecurityAdmins to inspect work-requests in compartment Quality-Assurance
+    Allow group ag-domain/SecurityAdmins to manage keys in compartment Development
+    Allow group ag-domain/SecurityAdmins to manage bastion in compartment Testing	
+    </copy>
     ```  
 
     Click *Create*
 
-  ![Create Policy](images/create-policy-securityadmin.png)
 
   The *policies* have been successfully created. 
+
+
+## Task 5: Create VCN 
+
+
+1. Navigate to Networking -> Virtual Cloud Networks
+
+   ![Navigate to VCN](images/navigate-vcn.png)
+
+2. Ensure the **ag-compartment** is selected. Click on **Start VCN Wizard**
+
+  ![Navigate to VCN](images/start-wizard.png)
+
+3. Check the box **Create VCN with Internet Connectivity**. Click on **Start VCN Wizard** 
+
+  ![Navigate to VCN](images/wizard-starts.png)
+
+
+4. Under Configuration , provide the below details: 
+
+
+  **VCN name:** ag-vcn 
+
+  **Compartment:** Select the ag-compartment 
+
+    ![Navigate to VCN](images/enter-vcn-details.png)
+
+5. Click on **Next**
+
+   ![Navigate to VCN](images/click-next-wizard.png)
+
+6. Verify all the details. Click on **Create**
+
+   ![Navigate to VCN](images/click-create-wizard.png)
+
+    The *VCN* has been successfully created.
 
   You may now **proceed to the next lab**. 
 
