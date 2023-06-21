@@ -5,7 +5,7 @@
 Access Governance Administrators (Pamela Green) can create policy review campaign.
 
 * Estimated Time: 15 minutes
-* Persona: Access Governance Administrator
+* Persona: Administrator
 
 ### Objectives
 
@@ -16,28 +16,7 @@ In this lab, you will:
 
 ## Task 1: Create a Policy Review Campaign
 
-
-
-1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 4: Task 1*
-
-
-2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
-
-    **Username:**
-    ```
-    <copy>pamela.green</copy>
-    ```
-
-    **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
-
-
-  You will be navigated to the home page of your Oracle Access Governance Console.
-
-
-3.  Scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
+1.  On the **Oracle Access Governance** console home page, scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
 
   ![Access Governance Homepage](images/ag-homepage-campaign.png)
 
@@ -46,20 +25,9 @@ In this lab, you will:
 
   ![Select Cloud provider](images/select-cloud-providers.png)
 
-  * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
+  * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
 
   ![Select Cloud provider](images/green-tick-cloud-provider.png)
-
-  * Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
-
-  ![Select Cloud provider](images/click-refine.png)
-
-  * Enter the **domain** and **compartment** details mentioned below and click on **Apply**
-
-     - domain: ag-domain
-     - compartment: ag-compartment
-
-  ![Select Cloud provider](images/click-apply-refine.png)
 
   * Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
 
