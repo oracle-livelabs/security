@@ -8,8 +8,6 @@ In this lab we will setup the OAG service instance and make configurations requi
 
 *Persona*: Identity Domain Administrator
 
-Watch the video below for a quick walk-through of the lab.
-[Access Governance instance setup](videohub:1_x3fb7d7m)
 
 ### Objectives
 

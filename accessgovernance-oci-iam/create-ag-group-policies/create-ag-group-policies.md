@@ -50,7 +50,7 @@ In this lab, you will:
 
     The *agcs-user* has now been created. 
 
-## Task 1: Create AG Group 
+## Task 2: Create AG Group 
 
 1. Login to the OCI console **Default Domain** as the **Default Domain Administrator** 
 
@@ -77,7 +77,7 @@ In this lab, you will:
     The *Group* has been created succesfully. 
 
 
-## Task 2 : Create AG Policies 
+## Task 3 : Create AG Policies 
 
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Policies* from the list of products.
@@ -87,7 +87,7 @@ In this lab, you will:
 
     ```
     Name: ag-access-policy
-    Description: IAM policy for granting ag-group access to manage access governance instances
+    Description: IAM policy for granting Domain_Administrators access to manage access governance instances
     Compartment: Ensure your  root compartment is selected
     Policy Builder: Select the show manual editor checkbox
     Statement :

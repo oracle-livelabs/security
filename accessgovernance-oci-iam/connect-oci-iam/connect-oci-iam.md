@@ -17,7 +17,7 @@ In this lab, you will:
 ## Task 1: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
 
-1.  In a browser, navigate to the Oracle Access Governance service home page using the URL noted down in *Lab 4: Task 1* and log in as a user with the **Access Governance Administrator** application role. 
+1.  In a browser, navigate to the Oracle Access Governance service home page using the URL noted down in *Lab 3: Task 1* and log in as a user with the **Access Governance Administrator** application role. 
 
   Enter Oracle Access Governance Campaign Administrator username and password (Pamela Green)
 

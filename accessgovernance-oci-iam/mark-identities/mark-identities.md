@@ -14,7 +14,7 @@ In this lab, you will:
 
 ## Task 1: Sign in to Oracle Access Governance Console
 
-1. From your browser, go to the Oracle Access Governance Console using URL mentioned in *Lab 4: Task 1* 
+1. From your browser, go to the Oracle Access Governance Console using URL mentioned in *Lab 3: Task 1* 
 
 
 2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
