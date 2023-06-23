@@ -11,9 +11,9 @@ Based on an OCI architecture, deployed in a few minutes with a simple internet c
 Now, you no longer need important resources on your PC (storage, CPU or memory), nor complex tools to master, making you completely autonomous to discover at your rhythm all new DB Security features.
 
 ### Components
-The complete architecture of the **DB Security Hands-On Labs (v4)** is as following:
+The complete architecture of the **DB Security Hands-On Labs (v5 - January 2023)** is as following:
 
-  ![](./images/dbseclab-archi-v4.png "")
+  ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
 It's composed of 4 VMs:
   - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)
@@ -40,4 +40,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Alan Williams, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2021
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023

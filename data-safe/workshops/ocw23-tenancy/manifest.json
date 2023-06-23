@@ -1,0 +1,58 @@
+{
+    "workshoptitle": "Ensure the security posture of your database with Oracle Data Safe",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+      {
+        "title": "Introduction",
+        "description": "This lab provides information about the workshop.",
+        "filename": "../../introduction/introduction-ocw.md",
+        "type": "ocw-livelabs"
+      },
+      {
+        "title": "Prepare Your Environment",
+        "description": "Prerequisites to run the workshop in your own tenancy.",
+        "filename": "../../prepare-environment/prepare-environment-ocw-tenancy.md",
+        "type": "ocw-livelabs"
+      },
+      {
+        "title": "Lab 1: Register an Autonomous Database with Oracle Data Safe",
+        "description": "This lab shows you how to register an Autonomous Data Warehouse on Shared Exadata Infrastructure with Oracle Data Safe and load sample data into it.",
+        "filename": "../../register-autonomous-database/register-autonomous-database-ocw.md",
+        "type": "ocw-livelabs"
+      },
+      {
+        "title": "Lab 2: Assess Database Configurations",
+        "description": "This lab shows you how to assess database configurations in your Autonomous Database by using the Security Assessment feature in Oracle Data Safe.",
+        "filename": "../../assess-database-configurations/assess-database-configurations-ocw.md",
+        "type": "ocw-livelabs"
+      },
+      {
+        "title": "Lab 3: Assess Database Users",
+        "description": "This lab shows you how to assess database users in your Autonomous Database by using the User Assessment feature in Oracle Data Safe.",
+        "filename": "../../assess-database-users/assess-database-users-ocw.md",
+        "type": "ocw-livelabs"
+      },
+      {
+        "title": "Lab 4: Discover Sensitive Data",
+        "description": "This lab shows you how to discover sensitive data on your target database by using the Data Discovery feature in Oracle Data Safe.",
+        "filename": "../../discover-sensitive-data/discover-sensitive-data-ocw.md",
+        "type": "ocw-livelabs"
+      },
+      {
+        "title": "Lab 5: Mask Sensitive Data",
+        "description": "This lab shows you how to mask sensitive data on your target database by using the Data Masking feature in Oracle Data Safe.",
+        "filename": "../../mask-sensitive-data/mask-sensitive-data-ocw.md",
+        "type": "ocw-livelabs"
+      },
+      {
+        "title": "Lab 6: Clean Up Your Environment",
+        "description": "This lab shows you how to clean up your Oracle Cloud Infrastructure environment after completing this workshop.",
+        "filename": "../../clean-up-environment/clean-up-environment-ocw.md",
+        "type": "ocw-freetier"
+      },
+      {
+        "title": "Oracle CloudWorld 2023 - Get Help",
+        "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+        }
+    ]
+  }
