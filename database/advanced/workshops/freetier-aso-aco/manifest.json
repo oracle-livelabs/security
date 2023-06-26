@@ -6,7 +6,7 @@
       "title": "Introduction",
       "description": "Understand the architecture of this workshop and what it can do",
       "publisheddate": "03/01/2023",
-      "filename": "../../aso-aco/aco/intro-aso-aco.md"
+      "filename": "../../aso-aco/aco/introduction/intro-aso-aco.md"
     },
     {
       "title": "Getting Started",
@@ -36,19 +36,19 @@
       "title": "Lab 4: Sample Schema Setup",
       "description": "Setup Schema",
       "publisheddate": "03/20/2023",
-      "filename": "../../aso-aco/aco/setup.md"
+      "filename": "../../aso-aco/aco/setup/setup.md"
     },
     {
       "title": "Lab 5: Transparent Data Encryption (TDE)",
       "description": "Create new encrypted tablespace which leverages Oracle Transparent Data Encryption (TDE)",
       "publisheddate": "03/20/2023",
-      "filename": "../../aso-aco/aco/tde.md"
+      "filename": "../../aso-aco/aco/tde/tde.md"
     },
     {
       "title": "Lab 6: Enable advanced compression and online redefinition into encrypted tablespace",
       "description": "Online Compression to encrypted tablespace via online redefinition",
       "publisheddate": "03/20/2023",
-      "filename": "../../aso-aco/aco/aco_row_index.md"
+      "filename": "../../aso-aco/aco/aco_row_index/aco_row_index.md"
     },
     {
       "title": "Need Help?",
