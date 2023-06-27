@@ -1,8 +1,8 @@
-# Perform Policy Review Campaigns
+# Perform Policy Review Tasks
 
 ## Introduction
 
-Access Governance Campaign Reviewer (Harlan Bullard) can perform Policy Review tasks. 
+Access Governance Campaign Reviewer (Pamela Green) can perform Policy Review tasks. 
 
 * Estimated Time: 15 minutes
 * Persona: Campaign Reviewer
@@ -23,11 +23,11 @@ In this lab, you will:
 1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 3: Task 1* 
 
 
-2. Enter **Oracle Access Governance Campaign Reviewer** username and password (Harlan Bullard)
+2. Enter **Oracle Access Governance Campaign Reviewer** username and password (Pamela Green)
 
     **Username:**
     ```
-    <copy>harlan.bullard</copy>
+    <copy>pamela.green</copy>
     ```
 
     **Password:**
