@@ -23,7 +23,7 @@ This lab assumes you have:
 
 ## Task 1: Integrate with Oracle Identity Governance
 
-1. On the Oracle Access Governance service home page *refer Lab 6:Task 1*, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
+1. On the Oracle Access Governance service home page, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
 
     ![Access Governance console - Connected Systems](images/connected-systems.png)
 
@@ -58,7 +58,7 @@ This lab assumes you have:
 7. On the **Configure** step, enter connection details for the target system:
 
     **JDBC URL:** 
-    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 5 : Task 3*  for the private ip of your compute instance. 
+    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 3 : Task 3*  for the private ip of your compute instance. 
     ```
     <copy>jdbc:oracle:thin:@//<--privateipofyourcomputeinstance-->:1521/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM</copy>
     ```
