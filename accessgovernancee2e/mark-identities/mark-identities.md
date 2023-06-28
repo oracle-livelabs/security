@@ -5,7 +5,7 @@
 Access Governance Administrators (Pamela Green) will activate the identities.
 
 * Estimated Time: 15 minutes
-* Persona: Administrator
+* Persona: Access Governance Administrator 
 
 ### Objectives
 
@@ -14,9 +14,10 @@ In this lab, you will:
 
 ## Task 1: Sign in to Oracle Access Governance Console
 
-1. From your browser, go to the Oracle Access Governance Console.
+1. From your browser, go to the Oracle Access Governance Console using URL mentioned in *Lab 3: Task 1* 
 
-2. Enter Oracle Access Governance Campaign Administrator or Administrator username and password (Pamela Green)
+
+2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
 
     **Username:**
     ```
@@ -48,13 +49,13 @@ In this task, you will select the identities that you want to include in your se
 
 3. Select the below options for the condition to match the identities that you want to include. 
 
-      *  Select attribute: Domain OCID 
+      *  Select attribute: Status
       * Select operator: Contains 
-      * Attribute value: ocid 
+      * Attribute value: Active
     
     Hit **Enter**
 
-      ![Manage Identities page](images/condition-identity.png)
+      ![Manage Identities page](images/status-rule.png)
 
 4. Click on **Preview Summary based on the rule above**. The identities that match the rule will be visible. 
 
