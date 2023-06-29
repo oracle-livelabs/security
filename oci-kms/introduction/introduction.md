@@ -36,20 +36,16 @@ As of today, HYOK is only compatible with Thales CipherTrust Manager. Hence the 
 ### Prerequisites
 
 This lab assumes you have:
-* An Oracle account
-* A Thales account
+* An Oracle Cloud Infrastructure account
+* A Thales CipherTrust Key Manager as a Service account
 
-
-
+Both environments will be provided to you by the trainers.
 
 ## Learn More
 
-*(optional - include links to docs, white papers, blogs, etc)*
-
-* [URL text 1](http://docs.oracle.com)
-* [URL text 2](http://docs.oracle.com)
+* [Key Management with OCI Vault](https://www.oracle.com/security/cloud-security/key-management/)
+* [Thales CipherTrust Manager](https://cpl.thalesgroup.com/en-gb/encryption/ciphertrust-manager)
 
 ## Acknowledgements
-* **Author** - <Name, Title, Group>
-* **Contributors** -  <Name, Group> -- optional
-* **Last Updated By/Date** - <Name, Month Year>
+* **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist) 
+* **Last Updated By/Date** - Sonia Yuste, June 2023

@@ -115,6 +115,5 @@ Congratulations! You have linked the OCI Vault you created yourself to your own 
 This concludes this lab, in the next lab we will see how it's possible to use this key to encrypt data in OCI native resources.
 
 ## Acknowledgements
-* **Author** - <Name, Title, Group>
-* **Contributors** -  <Name, Group> -- optional
-* **Last Updated By/Date** - <Name, Month Year>
+* **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist)
+* **Last Updated By/Date** - Sonia Yuste, June 2023

@@ -170,7 +170,6 @@ You can use the Vault service to create and manage the following resources:
 * **Secrets**
 
 ## Acknowledgements
-* **Author** - <Name, Title, Group>
-* **Contributors** -  <Name, Group> -- optional
-* **Last Updated By/Date** - <Name, Month Year>
+* **Authors** - Damien Rilliards (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist)
+* **Last Updated By/Date** - Sonia Yuste, June 2023
 

@@ -193,16 +193,15 @@ In this task you will load the previous CSV file you loaded into your bucket, in
 
   ![See data](./images/data.png "See data")
 
-This concludes this lab.
+Congratulations, you have already encrypted your file in Object Storage and your data within Autonomous Database. Now you will see in the next labs the simulation of an emergency due to potential security breach and how your data can be protected in such scenario.
 
 ## Learn More
 
-*(optional - include links to docs, white papers, blogs, etc)*
-
-* [URL text 1](http://docs.oracle.com)
-* [URL text 2](http://docs.oracle.com)
+* [OCI Autonomous Database](https://www.oracle.com/autonomous-database/)
+* [Managing Encryption Keys on Autonomous Database](https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/autonomous-database-shared/doc/autonomous-encrypt-set-rotate-keys.html)
+* [Overview of OCI Object Storage](https://docs.oracle.com/en-us/iaas/Content/Object/Concepts/objectstorageoverview.htm)
+* [Using OCI Object Storage bucket encryption](https://blogs.oracle.com/cloud-infrastructure/post/using-oci-object-storage-bucket-encryption)
 
 ## Acknowledgements
-* **Author** - <Name, Title, Group>
-* **Contributors** -  <Name, Group> -- optional
-* **Last Updated By/Date** - <Name, Month Year>
+* **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist)
+* **Last Updated By/Date** - Sonia Yuste, June 2023

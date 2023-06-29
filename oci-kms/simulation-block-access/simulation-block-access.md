@@ -11,8 +11,6 @@ Enter background information here about the technology/feature or product used i
 
 ### Objectives
 
-*List objectives for this lab using the format below*
-
 In this lab, you will:
 * Simulate an emergency situation where you as a customer want to block access to your data in OCI
 * Disable encryption key from the external CipherTrust Key management console
@@ -20,8 +18,6 @@ In this lab, you will:
 * Re-enable proper access once the alert is over
 
 ### Prerequisites (Optional)
-
-*List the prerequisites for this lab using the format below. Fill in whatever knowledge, accounts, etc. is necessary to complete the lab. Do NOT list each previous lab as a prerequisite.*
 
 This lab assumes you have:
 * An Oracle Cloud account
@@ -141,16 +137,13 @@ You created a pre-authenticated request to access the excel file you uploaded in
 
   Clicking **Start** will always bring you back to that screen until the key becomes enabled into OCI Vault, which we will see in the next lab.
 
-
+Congratulations. You have completed the current lab by blocking the access to your data in an emergency situation. Go to the next lab to enable the access back, once the emergency simulation is over.
 
 ## Learn More
 
-*(optional - include links to docs, white papers, blogs, etc)*
-
-* [URL text 1](http://docs.oracle.com)
-* [URL text 2](http://docs.oracle.com)
+* [Load Data from Local Files with Oracle Database Actions](https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/autonomous-database-shared/doc/load-data-sqldeveloper-web.html)
+* [Load Data to Object Storage](https://docs.oracle.com/en-us/iaas/vision/vision-tutorials/vision/tutorials/Using_Pretrained_Models_in_the_Console/load_data.htm)
 
 ## Acknowledgements
-* **Author** - <Name, Title, Group>
-* **Contributors** -  <Name, Group> -- optional
-* **Last Updated By/Date** - <Name, Month Year>
+* **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist)
+* **Last Updated By/Date** - Sonia Yuste, June 2023

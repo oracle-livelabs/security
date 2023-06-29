@@ -128,15 +128,13 @@ This lab assumes you have:
 
   As you can see, now you have again complete visibility on the data within the database, as the key was re-enabled.
 
+Congratulations, you have completed all the labs!!
 
 ## Learn More
 
-*(optional - include links to docs, white papers, blogs, etc)*
-
-* [URL text 1](http://docs.oracle.com)
-* [URL text 2](http://docs.oracle.com)
+* [Using Your Own Keys in Vault for Server-Sode Encryption](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/encryption.htm#UsingYourKMSKeys)
+* [Managing Encryption Keys on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-encrypt-set-rotate-keys.html#GUID-0795135D-B057-4DBC-92C9-368AF4C82D0A)
 
 ## Acknowledgements
-* **Author** - <Name, Title, Group>
-* **Contributors** -  <Name, Group> -- optional
-* **Last Updated By/Date** - <Name, Month Year>
+* **Authors** - Damien Rilliard (OCI Security Seno#ior Director), Sonia Yuste (OCI Security Specialist)
+* **Last Updated By/Date** - Sonia Yuste, June 2023
