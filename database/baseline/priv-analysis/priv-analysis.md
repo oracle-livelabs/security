@@ -218,4 +218,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Richard Evans
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - July 2023
