@@ -59,7 +59,7 @@ This lab assumes you have:
 
     **Note**: To enable DB Vault, database will be rebooted!
 
-    ![DB Vault](./images/dv-001.png "DB Vault")
+    ![DB Vault](./images/dv-001.png "Enable DB Vault")
 
 4. Next, enable it on the pluggable database. For now, just enable it on **pdb1**
 
@@ -69,7 +69,7 @@ This lab assumes you have:
 
    You should see a status like this:
 
-    ![DB Vault](./images/dv-002.png "DB Vault")
+    ![DB Vault](./images/dv-002.png "Enable DB Vault")
 
 5. Now, Database Vault is enabled in the container database as well as pdb1!
 
@@ -79,7 +79,7 @@ This lab assumes you have:
 
     **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
-    ![DB Vault](./images/dv-029.png "DB Vault")
+    ![DB Vault](./images/dv-029.png "HR App - Login")
 
 2. Login to the application as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -91,15 +91,15 @@ This lab assumes you have:
     <copy>Oracle123</copy>
     ````
 
-    ![DB Vault](./images/dv-030.png "DB Vault")
+    ![DB Vault](./images/dv-030.png "HR App - Login")
 
 3. Click **Search Employee**
 
-    ![DB Vault](./images/dv-031.png "DB Vault")
+    ![DB Vault](./images/dv-031.png "HR App - Search employees")
 
 4. Click [**Search**]
 
-    ![DB Vault](./images/dv-032.png "DB Vault")
+    ![DB Vault](./images/dv-032.png "HR App - Search employees")
 
 5. Go back to your Terminal session and run the command to view the details about the Glassfish session
 
@@ -107,7 +107,7 @@ This lab assumes you have:
     <copy>./dv_query_employee_data.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-003.png "DB Vault")
+    ![DB Vault](./images/dv-003.png "HR App - Employees data")
 
 6. Now, create the **Realm** `PROTECT_EMPLOYEESEARCH_PROD` to protect objects in the `EMPLOYEESEARCH_PROD` schema from malicious activity
 
@@ -115,7 +115,7 @@ This lab assumes you have:
     <copy>./dv_create_realm.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-004.png "DB Vault")
+    ![DB Vault](./images/dv-004.png "Create the Realm PROTECT_EMPLOYEESEARCH_PROD")
 
 7. Add objects to the Realm to protect (here you add all the schema's objects)
 
@@ -123,7 +123,7 @@ This lab assumes you have:
     <copy>./dv_add_obj_to_realm.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-005.png "DB Vault")
+    ![DB Vault](./images/dv-005.png "Add objects to the Realm to protect")
 
 8. Make sure you have an authorized user in the realm. In this step, we will add `EMPLOYEESEARCH_PROD` as a realm authorized owner
 
@@ -131,7 +131,7 @@ This lab assumes you have:
     <copy>./dv_add_auth_to_realm.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-006.png "DB Vault")
+    ![DB Vault](./images/dv-006.png "Add EMPLOYEESEARCH_PROD as a realm authorized owner")
 
 9. Re-execute the SQL query to show that `SYS` now receives the **insufficient privileges** error message
 
@@ -139,7 +139,7 @@ This lab assumes you have:
     <copy>./dv_query_employee_data.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-007a.png "DB Vault")
+    ![DB Vault](./images/dv-007a.png "Now, SYS user receives the insufficient privileges error message")
 
 10. When you have completed this lab, you can drop the Realm
 
@@ -147,17 +147,17 @@ This lab assumes you have:
     <copy>./dv_drop_realm.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-007b.png "DB Vault")
+    ![DB Vault](./images/dv-007b.png "Drop the Realm")
 
 ## Task 3: Create a Trusted Path / Multi-factor Authorization
 
 1. Go back to your Glassfish app and click [**Search Employee**] again
 
-    ![DB Vault](./images/dv-031.png "DB Vault")
+    ![DB Vault](./images/dv-031.png "HR App - Search Employees")
 
 2. And click [**Search**]
 
-    ![DB Vault](./images/dv-032.png "DB Vault")
+    ![DB Vault](./images/dv-032.png "HR App - Search")
 
 3. Go back to your Terminal session and run this query to view the session information associated with the Glassfish application
 
@@ -165,7 +165,7 @@ This lab assumes you have:
     <copy>./dv_query_employeesearch_usage.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-019.png "DB Vault")
+    ![DB Vault](./images/dv-019.png "View the session information associated with the HR app")
 
 4. Now, query the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table with the owner `EMPLOYEESEARCH_PROD` to demonstrate it is accessible
 

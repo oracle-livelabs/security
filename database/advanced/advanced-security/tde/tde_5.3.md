@@ -60,7 +60,7 @@ This lab assumes you have:
     <copy>./tde_backup_db.sh</copy>
     ````
 
-    ![TDE](./images/tde-001.png "TDE")
+    ![TDE](./images/tde-001.png "Backup DB")
 
 4. Once it has completed, it will automatically restart the container and pluggable databases
 
@@ -76,7 +76,7 @@ This lab assumes you have:
     <copy>./tde_create_os_directory.sh</copy>
     ````
 
-    ![TDE](./images/tde-002.png "TDE")
+    ![TDE](./images/tde-002.png "Create the Keystore directories")
 
 2. Use the database parameters to manage TDE. This will require a database restart for one of the parameters to take effect. The script will perform the reboot for you.
 
@@ -84,7 +84,7 @@ This lab assumes you have:
     <copy>./tde_set_tde_parameters.sh</copy>
     ````
 
-    ![TDE](./images/tde-003.png "TDE")
+    ![TDE](./images/tde-003.png "Set TDE parameters")
 
 3. Create the software keystore (**Oracle Wallet**) for the container database. You will see the status result goes from `NOT_AVAILABLE` to `OPEN_NO_MASTER_KEY`.
 
@@ -92,7 +92,7 @@ This lab assumes you have:
     <copy>./tde_create_wallet.sh</copy>
     ````
 
-    ![TDE](./images/tde-004.png "TDE")
+    ![TDE](./images/tde-004.png "Create the software keystore")
 
     **Note:** We create a secret for the Administer password in order to hide it for the next command!
 
@@ -106,7 +106,7 @@ This lab assumes you have:
     <copy>./tde_create_mek_cdb.sh</copy>
     ````
 
-    ![TDE](./images/tde-005.png "TDE")
+    ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
 2. To create a Master Key (MEK) for the pluggable database **pdb1**, run the following command
 
@@ -114,7 +114,7 @@ This lab assumes you have:
     <copy>./tde_create_mek_pdb.sh pdb1</copy>
     ````
 
-    ![TDE](./images/tde-006.png "TDE")
+    ![TDE](./images/tde-006.png "Create a Master Key (MEK)")
 
 3. If you want, you can do the same for **pdb2**... This is not a requirement and it might be helpful to show some databases with TDE and some without
 
@@ -122,7 +122,7 @@ This lab assumes you have:
     <copy>./tde_create_mek_pdb.sh pdb2</copy>
     ````
 
-    ![TDE](./images/tde-007.png "TDE")
+    ![TDE](./images/tde-007.png "Create a Master Key (MEK)")
 
 4. Now, you have a master key and you can begin encrypting tablespaces or column!
 
@@ -134,7 +134,7 @@ This lab assumes you have:
     <copy>./tde_view_wallet_on_os.sh</copy>
     ````
 
-    ![TDE](./images/tde-010.png "TDE")
+    ![TDE](./images/tde-010.png "View the Oracle Wallet content on the OS")
 
 2. You can view what the Oracle Wallet looks like in the database
 
@@ -142,7 +142,7 @@ This lab assumes you have:
     <copy>./tde_view_wallet_in_db.sh</copy>
     ````
 
-    ![TDE](./images/tde-011.png "TDE")
+    ![TDE](./images/tde-011.png "View the Oracle Wallet content on the database")
 
 3. Now, create the **Auto-login Oracle Wallet**
 
@@ -150,7 +150,7 @@ This lab assumes you have:
     <copy>./tde_create_autologin_wallet.sh</copy>
     ````
 
-    ![TDE](./images/tde-012.png "TDE")
+    ![TDE](./images/tde-012.png "Create the Auto-login Oracle Wallet")
 
 4. Run the same queries to view the Oracle Wallet content on the Operating System
 
@@ -158,7 +158,7 @@ This lab assumes you have:
     <copy>./tde_view_wallet_on_os.sh</copy>
     ````   
 
-    ![TDE](./images/tde-013.png "TDE")
+    ![TDE](./images/tde-013.png "View the Oracle Wallet content on the OS")
 
     **Note**: You should now see the **cwallet.sso** file
 
@@ -168,7 +168,7 @@ This lab assumes you have:
     <copy>./tde_view_wallet_in_db.sh</copy>
     ````
 
-    ![TDE](./images/tde-014.png "TDE")
+    ![TDE](./images/tde-014.png "View the Oracle Wallet content on the database")
 
 6. Now your Autologin is created!
 
@@ -180,7 +180,7 @@ This lab assumes you have:
     <copy>./tde_strings_data_empdataprod.sh</copy>
     ````
 
-    ![TDE](./images/tde-015.png "TDE")
+    ![TDE](./images/tde-015.png "View the data in the data file")
 
     **Note:**
     - You can see the data and you are not connected to the database!
@@ -193,7 +193,7 @@ This lab assumes you have:
     <copy>./tde_encrypt_tbs.sh</copy>
     ````
 
-    ![TDE](./images/tde-016.png "TDE")
+    ![TDE](./images/tde-016.png "Encrypt explicitly the data")
 
     **Note:** By default, the syntax is using the AES256 encryption algorithm
 
@@ -203,7 +203,7 @@ This lab assumes you have:
     <copy>./tde_strings_data_empdataprod.sh</copy>
     ````
 
-    ![TDE](./images/tde-017.png "TDE")
+    ![TDE](./images/tde-017.png "Try the side-channel attack again")
 
 4. You see that all of the data is now encrypted and no longer visible!
 
@@ -215,7 +215,7 @@ This lab assumes you have:
     <copy>./tde_check_init_params.sh</copy>
     ````
 
-    ![TDE](./images/tde-018.png "TDE")
+    ![TDE](./images/tde-018.png "Check the existing initialization parameters")
 
 2. Next, change the init parameter `TABLESPACE_ENCRYPTION` to "`AUTO_ENABLE`" to always **encrypt implicitly all new tablespaces**, and the hidden init parameter `_tablespace_encryption_default_algorithm` to use "`AES256`" as default encryption algorithm
 
@@ -223,7 +223,7 @@ This lab assumes you have:
     <copy>./tde_set_encrypt_all_new_tbs.sh</copy>
     ````
 
-    ![TDE](./images/tde-019.png "TDE")
+    ![TDE](./images/tde-019.png "Change the init parameters")
 
     **Note**:
     - The `TABLESPACE_ENCRYPTION` parameter cannot be modified, hence **the database must be restarted**!
@@ -238,7 +238,7 @@ This lab assumes you have:
     <copy>./tde_create_new_tbs.sh</copy>
     ````
 
-    ![TDE](./images/tde-020.png "TDE")
+    ![TDE](./images/tde-020.png "Create and drop a tablespace TEST to check the effect")
 
     **Note**: Despite the fact that the tablespace **TEST** was created without specifying encryption parameters, it's encrypted by default with the AES256 encryption algorithm
 
@@ -254,11 +254,11 @@ This lab assumes you have:
 
     - Have a look on the CDB key before rekeying...
 
-  ![TDE](./images/tde-021.png "TDE")
+  ![TDE](./images/tde-021.png "Before rekeying the container database TDE Master Key (MEK)")
 
     - ...and after
 
-    ![TDE](./images/tde-022.png "TDE")
+    ![TDE](./images/tde-022.png "After rekeying the container database TDE Master Key (MEK)")
 
     - You can see the new key generated for the container
 
@@ -270,11 +270,11 @@ This lab assumes you have:
 
     - Have a look on the pdb1 key before rekeying...
 
-    ![TDE](./images/tde-023.png "TDE")
+    ![TDE](./images/tde-023.png "Before rekeying the pluggable database TDE Master Key (MEK)")
 
     - ...and after
 
-    ![TDE](./images/tde-024a.png "TDE")
+    ![TDE](./images/tde-024a.png "After rekeying the pluggable database TDE Master Key (MEK)")
 
     - You can see the new key generated for the pluggable database
 
@@ -300,7 +300,7 @@ This lab assumes you have:
     <copy>./tde_view_wallet_on_os.sh</copy>
     ````
        
-    ![TDE](./images/tde-024b.png "TDE")
+    ![TDE](./images/tde-024b.png "View the OS files related to the keystore")
 
    - View the keystore data in the database
 
@@ -308,7 +308,7 @@ This lab assumes you have:
     <copy>./tde_view_wallet_in_db.sh</copy>
     ````
 
-    ![TDE](./images/tde-024c.png "TDE")
+    ![TDE](./images/tde-024c.png "View the keystore data in the database")
 
 ## Task 9: Restore Before TDE
 
@@ -318,7 +318,7 @@ This lab assumes you have:
     <copy>./tde_restore_init_parameters.sh</copy>
     ````
 
-    ![TDE](./images/tde-025.png "TDE")
+    ![TDE](./images/tde-025.png "Restore the PFILE")
 
 
 2. Second, restore the database (this may take some time)
@@ -327,7 +327,7 @@ This lab assumes you have:
     <copy>./tde_restore_db.sh</copy>
     ````
 
-    ![TDE](./images/tde-026.png "TDE")
+    ![TDE](./images/tde-026.png "Restore the database")
 
 3. Third, delete the associated Oracle Wallet files
 
@@ -335,7 +335,7 @@ This lab assumes you have:
     <copy>./tde_delete_wallet_files.sh</copy>
     ````
 
-    ![TDE](./images/tde-027.png "TDE")
+    ![TDE](./images/tde-027.png "Delete the associated Oracle Wallet files")
 
 4. Fourth, start the container and pluggable databases
 
@@ -343,7 +343,7 @@ This lab assumes you have:
     <copy>./tde_start_db.sh</copy>
     ````
 
-    ![TDE](./images/tde-028.png "TDE")
+    ![TDE](./images/tde-028.png "Start the databases")
 
     **Note**: This should have restored your database to it's pre-TDE state!
 
@@ -353,7 +353,7 @@ This lab assumes you have:
     <copy>./tde_check_init_params.sh</copy>
     ````
 
-    ![TDE](./images/tde-029.png "TDE")
+    ![TDE](./images/tde-029.png "Check the initialization parameters")
 
 7. Now, your database is restored to the point in time prior to enabling TDE and you can remove your dabase backup (optional)!
 
@@ -361,7 +361,7 @@ This lab assumes you have:
     <copy>./tde_delete_backup_db.sh</copy>
     ````
 
-    ![TDE](./images/tde-030.png "TDE")
+    ![TDE](./images/tde-030.png "Remove your dabase backup (optional)")
 
 You may now proceed to the next lab!
 
@@ -380,7 +380,7 @@ Oracle Database uses authentication, authorization, and auditing mechanisms to s
 
 You can configure Oracle Key Vault as part of the TDE implementation. This enables you to centrally manage TDE keystores (called TDE wallets in Oracle Key Vault) in your enterprise. For example, you can upload a software keystore to Oracle Key Vault and then make the contents of this keystore available to other TDE-enabled databases.
 
-![TDE](./images/aso-concept-tde.png "TDE")
+![TDE](./images/aso-concept-tde.png "TDE concept")
 
 ### **Benefits of Using Transparent Data Encryption**
 - As a security administrator, you can be sure that sensitive data is encrypted and therefore safe in the event that the storage media or data file is stolen
