@@ -851,7 +851,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 1. Go back to Audit Vault Web Console as *`AVADMIN`*"
 
-    ![AVDF](./images/avdf-400.png "AVDF")
+    ![AVDF](./images/avdf-400.png "AVDF - Login")
 
 2. Click the **Database Firewalls** tab
 
@@ -859,7 +859,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 4. Under **Configuration**, click **System Services**
 
-    ![AVDF](./images/avdf-119b.png "AVDF")
+    ![AVDF](./images/avdf-119b.png "System Services Configuration")
 
     **Note**: According to your resources it can take up to several minutes to present the Tabs!
 
@@ -867,11 +867,11 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 6. Ensure the first NTP service is **ON** and the IP is *`169.254.169.254`*, and close the pop-up windows
 
-    ![AVDF](./images/avdf-120.png "AVDF")
+    ![AVDF](./images/avdf-120.png "Set NTP service")
 
 7. Next, set the type of DB Firewall monitoring, so go back to Audit Vault Web Console as *`AVAUDITOR`*
 
-    ![AVDF](./images/avdf-300.png "AVDF")
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 8. On top, click on the **Targets** tab
 
@@ -879,17 +879,17 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 10. On the right, click the **Database Firewall Monitoring** sub-tab section
 
-    ![AVDF](./images/avdf-120b.png "AVDF")
+    ![AVDF](./images/avdf-120b.png "Database Firewall Monitoring")
 
 11. Change the **Database Firewall Policy**
 
     - Edit it by clicking on the **Edit** button
 
-        ![AVDF](./images/avdf-121.png "AVDF")
+        ![AVDF](./images/avdf-121.png "Edit Database Firewall Policy")
 
     - Select "*`Log unique`*"
      
-        ![AVDF](./images/avdf-121b.png "AVDF")
+        ![AVDF](./images/avdf-121b.png "Select Log unique")
 
         **Note:**
         - Log unique policies enable you to log statements for offline analysis that include each distinct source of SQL traffic. Be aware that if you apply this policy, even though it stores fewer statements than if you had chosen to log all statements, it can still use a significant amount of storage for the logged data.
@@ -897,29 +897,29 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 12. Click the **Green Check** to save
 
-    ![AVDF](./images/avdf-122.png "AVDF")
+    ![AVDF](./images/avdf-122.png "Save the config")
 
 13. Now, generate Glassfish Application Traffic
 
     - Go back to your Glassfish App web page and **Logout** explicitly to train the DB Firewall
 
-        ![AVDF](./images/avdf-122b.png "AVDF")
+        ![AVDF](./images/avdf-122b.png "HR App - Logout")
 
     - Login as *`hradmin`* with the password "*`Oracle123`*"
 
-        ![AVDF](./images/avdf-112.png "AVDF")
+        ![AVDF](./images/avdf-112.png "HR App - Login")
 
     - Click **Search Employees**
 
-        ![AVDF](./images/avdf-113.png "AVDF")
+        ![AVDF](./images/avdf-113.png "Search Employees")
 
 14. In the **HR ID** field enter "*`164`*" and click [**Search**]
 
-    ![AVDF](./images/avdf-123.png "AVDF")
+    ![AVDF](./images/avdf-123.png "Search Employee UserID 164")
 
 15. Clear the **HR ID** field and click [**Search**] again to see all rows
 
-    ![AVDF](./images/avdf-114.png "AVDF")
+    ![AVDF](./images/avdf-114.png "Search Employee")
 
 16. Enter the following information in the **Search Employee** fields
 
@@ -932,17 +932,17 @@ In this lab you will use the Glassfish Application to connect through the Oracle
     - Department: *`Marketing`*
     - City: *`London`*
 
-        ![AVDF](./images/avdf-124.png "AVDF")
+        ![AVDF](./images/avdf-124.png "Search Employees Criteria")
 
 17. Click [**Search**]
 
 18. Click on "**Harvey, William**" to view the details of this employee
 
-    ![AVDF](./images/avdf-125.png "AVDF")
+    ![AVDF](./images/avdf-125.png "Search Employee")
 
 19. Now, let's view the Database Firewall Activity, so go back to Audit Vault Web Console as *`AVAUDITOR`*
 
-    ![AVDF](./images/avdf-300.png "AVDF")
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 20. Click **Reports**
 
@@ -952,7 +952,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 23. Your activity should show queries from `EMPLOYEESEARCH_PROD` using a "**JDBC Thin Client**"
 
-    ![AVDF](./images/avdf-126.png "AVDF")
+    ![AVDF](./images/avdf-126.png "JDBC Thin Client activity")
 
     **Note**: Sometimes DB Firewall activity may take 5 minutes to appear in the Database Firewall Activity Reports, hence click [**Go**] to refresh this page if needed
 
@@ -962,8 +962,8 @@ In this lab you will use the Glassfish Application to connect through the Oracle
     - Location: *`Network`*
     - Action Taken: *`Pass`*
 
-        ![AVDF](./images/avdf-127.png "AVDF")
-        ![AVDF](./images/avdf-127b.png "AVDF")
+        ![AVDF](./images/avdf-127.png "Event criteria")
+        ![AVDF](./images/avdf-127b.png "Event criteria")
 
     **Note**:       
       - This information tells us a lot about our Database Firewall policies and why we are capturing this particular query
@@ -977,25 +977,25 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 25. Once you're confortable with these metrics, click [**< Report View**]
 
-    ![AVDF](./images/avdf-127c.png "AVDF")
+    ![AVDF](./images/avdf-127c.png "Go back to Report view")
 
 26. To have a better overview of the activity in this report, add the SQL Text column
 
     - Click [**Actions**] and select **Select Columns**
 
-        ![AVDF](./images/avdf-127d.png "AVDF")
+        ![AVDF](./images/avdf-127d.png "Select Columns")
 
     - Add "**Command Text(Event)**" to the **Display in Report** section, then click [**Apply**]
 
-        ![AVDF](./images/avdf-127e.png "AVDF")
+        ![AVDF](./images/avdf-127e.png "Add Command Text(Event)")
 
     - Now, you should see the SQL statements in a dedicated column
 
-        ![AVDF](./images/avdf-127f.png "AVDF")
+        ![AVDF](./images/avdf-127f.png "See the SQL statements in a dedicated column")
 
     - Sroll down to one of our favorite queries
 
-        ![AVDF](./images/avdf-127g.png "AVDF")
+        ![AVDF](./images/avdf-127g.png "Sroll down to one of our favorite queries")
 
         ````
         select USERID,FIRSTNAME,LASTNAME from DEMO_HR_USERS where ( USERSTATUS is NULL or upper( USERSTATUS ) = '######' ) and upper(USERID) = '#######' and password = '#########'
@@ -1017,13 +1017,13 @@ In this lab you will use the Glassfish Application to connect through the Oracle
     <copy>./dbf_query_fw_policy.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-128.png "AVDF")
+    ![AVDF](./images/avdf-128.png "Check the connectivity through the Database Firewall")
 
     **Note**: You can see all rows!
 
 3. Go back to Audit Vault Web Console as *`AVAUDITOR`* to create a Database Firewall Policy
 
-    ![AVDF](./images/avdf-300.png "AVDF")
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 4. Click the **Policies** tab
 
@@ -1031,7 +1031,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 6. Click [**Create**]
 
-    ![AVDF](./images/avdf-129a.png "AVDF")
+    ![AVDF](./images/avdf-129a.png "Create a Database Firewall Policy")
 
 7. Create the Database Firewall Policy with the following information
 
@@ -1039,17 +1039,17 @@ In this lab you will use the Glassfish Application to connect through the Oracle
     - Target Type: *`Oracle Database`*
     - Description: *`This policy will protect the My HR App`*
 
-        ![AVDF](./images/avdf-129b.png "AVDF")
+        ![AVDF](./images/avdf-129b.png "Database Firewall Policy parameters")
 
     - Click [**Save**]
 
 8. Now, create the context of this policy by clicking [**Sets/Profiles**]
 
-    ![AVDF](./images/avdf-130.png "AVDF")
+    ![AVDF](./images/avdf-130.png "Create the context of this policy")
 
 9. In the **SQL Cluster Sets** subtab, click [**Add**]
 
-    ![AVDF](./images/avdf-131.png "AVDF")
+    ![AVDF](./images/avdf-131.png "Add SQL Cluster Sets")
 
 10. In the **Add SQL Cluster Set** screen, create the list of known queries as following
 
@@ -1059,15 +1059,15 @@ In this lab you will use the Glassfish Application to connect through the Oracle
     - Show cluster for: *`Last 24 Hours`* (or make this `Last Week`)
     - Click [**Go**]
 
-        ![AVDF](./images/avdf-132a.png "AVDF")
+        ![AVDF](./images/avdf-132a.png "SQL Cluster Sets parameters")
 
     - Click [**Actions**] and select "*`ALL`*" in **Row per page** option to display all the results
 
-        ![AVDF](./images/avdf-132b.png "AVDF")
+        ![AVDF](./images/avdf-132b.png "Option to display all the results")
 
     - Check the **Select all** box next to the "**Cluster ID**" Header to add all "trained" queries into the SQL Clusters
 
-        ![AVDF](./images/avdf-132c.png "AVDF")
+        ![AVDF](./images/avdf-132c.png "Select all trained queries to put into the SQL Clusters")
 
     - But please **unselect the SQL*Plus query** run earlier in Step 12-1 to block it (because here we consider that it's not an official HR App query)
 
@@ -1075,17 +1075,17 @@ In this lab you will use the Glassfish Application to connect through the Oracle
         select userid, firstname, lastname, emptype, position, city, ssn, sin, nino from employeesearch_prod.demo_hr_employees where rownum < 00
         ```
 
-        ![AVDF](./images/avdf-133a.png "AVDF")
+        ![AVDF](./images/avdf-133a.png "Unselect the SQLPlus query")
 
     - Click [**Save**]
 
 11. Click [**Back**]
 
-    ![AVDF](./images/avdf-133b.png "AVDF")
+    ![AVDF](./images/avdf-133b.png "Go back")
 
 12. Select the **SQL Statement** sub-tab and click [**Add**]
 
-    ![AVDF](./images/avdf-133c.png "AVDF")
+    ![AVDF](./images/avdf-133c.png "Add SQL Statement")
 
 13. Complete the **SQL Statement** with the following information to allow the **HR SQL Cluster** created previoulsy (here we consider that these queries are official and can be executed)
 
@@ -1096,7 +1096,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
     - Logging Level: *`Don't Log`*
     - Threat Severity: *`Minimal`*
 
-        ![AVDF](./images/avdf-134a.png "AVDF")
+        ![AVDF](./images/avdf-134a.png "SQL Statement parameters")
 
     - Click [**Save**]
 
@@ -1108,11 +1108,11 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 15. Click [**Sets/Profiles**]
 
-    ![AVDF](./images/avdf-134b.png "AVDF")
+    ![AVDF](./images/avdf-134b.png "Check Sets/Profiles")
 
 16. Select the **Database User Sets** tab and click [**Add**]
 
-    ![AVDF](./images/avdf-134c.png "AVDF")
+    ![AVDF](./images/avdf-134c.png "Add Database User Sets")
 
 17. Enter the following information:
 
@@ -1120,16 +1120,16 @@ In this lab you will use the Glassfish Application to connect through the Oracle
     - Description: *`Users We Trust`*
     - Sets Values: *`SYSTEM, EMPLOYEESEARCH_PROD`*
 
-        ![AVDF](./images/avdf-135.png "AVDF")
+        ![AVDF](./images/avdf-135.png "Database User Sets parameters")
 
     - Click [**Save**]
     - Click [**Back**]
 
-        ![AVDF](./images/avdf-136.png "AVDF")
+        ![AVDF](./images/avdf-136.png "Save Database User Sets")
 
 18. Finally, select the **Default** tab to specify what the DB Firewall policy has to do you if you are not in the context definied previously (here we will block all the "black-listed" queries and we will return a blank result)
 
-    ![AVDF](./images/avdf-137.png "AVDF")
+    ![AVDF](./images/avdf-137.png "Specify the default action to do by the DB Firewall policy")
 
     - Click on **Default Rule** under the Rule Name, to edit the Default rule, and enter the following information
         - Action: *`Block`*
@@ -1137,19 +1137,19 @@ In this lab you will use the Glassfish Application to connect through the Oracle
         - Threat Severity: *`Moderate`*
         - Substitution SQL: *`SELECT 100 FROM dual WHERE 1=2`*
 
-            ![AVDF](./images/avdf-138.png "AVDF")
+            ![AVDF](./images/avdf-138.png "Default action parameters")
 
     - Click [**Save**]
 
 19. Your HR Policy should look like this:
 
-    ![AVDF](./images/avdf-139.png "AVDF")
+    ![AVDF](./images/avdf-139.png "HR Policy")
 
 20. Click [**Save and Publish**]
 
 21. Once created, the policy is **automatically published**, but now you have to deploy it
 
-    ![AVDF](./images/avdf-140.png "AVDF")
+    ![AVDF](./images/avdf-140.png "HR Policy published")
 
 22. Click the **Targets** tab
 
@@ -1159,24 +1159,24 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 25. Change **Database Firewall Policy** to "*`HR Policy`*"
 
-    ![AVDF](./images/avdf-141a.png "AVDF")
+    ![AVDF](./images/avdf-141a.png "Set the current Database Firewall Policy")
 
 26. Click the **Green Check** to implement this DB Firewall Policy
 
-    ![AVDF](./images/avdf-141b.png "AVDF")
+    ![AVDF](./images/avdf-141b.png "Set the current Database Firewall Policy")
 
 27. Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
     - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
     - Click **Search Employees**
     - Click [**Search**]
 
-        ![AVDF](./images/avdf-114.png "AVDF")
+        ![AVDF](./images/avdf-114.png "Search employees")
 
         **Note**: All rows are returned... Remember, all "official" queries from the HR App have been allowed in **HR SQL Cluter** in your DB Firewall policy
 
 28. Even if you add a search criteria and query again, you can access to the result (here we **filter by "HR ID = 196"** for example)
 
-    ![AVDF](./images/avdf-142.png "AVDF")
+    ![AVDF](./images/avdf-142.png "Filter by HR ID = 196")
 
 29. Now, go back to your Terminal session and run the same script as at the beginning to see the impact of the DB Firewall policy
 
@@ -1184,7 +1184,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
     <copy>./dbf_query_fw_policy.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-143.png "AVDF")
+    ![AVDF](./images/avdf-143.png "Check the impact of the DB Firewall policy")
 
     **Note**:
     - The output should return "**no rows selected**" for the SQL query
