@@ -1803,41 +1803,41 @@ Data Discovery helps you find sensitive data in your databases and Data Masking 
 
         - Click **Target Databases**
 
-            ![Data Safe](./images/ds-300.png "Data Safe")
+            ![Data Safe](./images/ds-300.png "Select the Target database")
 
         - Click on the **Target Name** to deregister (here "*`DBSec_Livelabs_pdb1`*")
 
-            ![Data Safe](./images/ds-301.png "Data Safe")
+            ![Data Safe](./images/ds-301.png "Select the Target database")
 
         - From the **More Actions** menu, click **Deregister**
 
-            ![Data Safe](./images/ds-302.png "Data Safe")
+            ![Data Safe](./images/ds-302.png "Deregister the Target database")
 
         - Click [**Deregister**] to confirm the deregistration
 
-            ![Data Safe](./images/ds-303.png "Data Safe")
+            ![Data Safe](./images/ds-303.png "Confirm the deregistration")
         
         - The target is deregistered when the status is "**DELETED**" 
 
-            ![Data Safe](./images/ds-304.png "Data Safe")
+            ![Data Safe](./images/ds-304.png "Check the target is deregistered")
 
     - Next, delete the On-Premises connector from Data Safe
 
         - In the "**Connectivity Options** sub-menu, click on "**On-Premises Connectors**" 
 
-            ![Data Safe](./images/ds-305.png "Data Safe")
+            ![Data Safe](./images/ds-305.png "Select On-Premises Connectors section")
 
         - Click on your **On-Premises Connector** (here "*`DBSec_Livelabs_DBs`*")
 
-            ![Data Safe](./images/ds-306.png "Data Safe")
+            ![Data Safe](./images/ds-306.png "Select On-Premises Connectors to delete")
 
         - Click [**Delete**]
 
-            ![Data Safe](./images/ds-307.png "Data Safe")
+            ![Data Safe](./images/ds-307.png "Delete the On-Premises Connectors")
 
         - Click [**Delete**] to confirm the deletion
 
-            ![Data Safe](./images/ds-308.png "Data Safe")
+            ![Data Safe](./images/ds-308.png "Confirm the deletion")
         
         - The On-Premises Connector should now have disappeared from the list!
 
@@ -1852,7 +1852,7 @@ Data Discovery helps you find sensitive data in your databases and Data Masking 
         </copy>
         ````
 
-        ![Data Safe](./images/ds-309.png "Data Safe")
+        ![Data Safe](./images/ds-309.png "Delete the On-Premises connector from Database server")
 
     - Drop the Data Safe **DS_ADMIN** user on `pdb1`
 
@@ -1863,7 +1863,7 @@ Data Discovery helps you find sensitive data in your databases and Data Masking 
         </copy>
         ````
 
-        ![Data Safe](./images/ds-310.png "Data Safe")
+        ![Data Safe](./images/ds-310.png "Drop the Data Safe DS_ADMIN user")
 
 3. **Now your Data Safe configuration is correctly reset!**
 
@@ -1874,7 +1874,7 @@ You may now proceed to the next lab!
 
 Oracle Data Safe is Oracle’s platform for securing data in databases. As a native Oracle Cloud Infrastructure service, Oracle Data Safe lets you assess the security of your database configurations, find your sensitive data, mask that data in non-production environments, discover the risks associated with database users, and monitor database activity.
 
-![Data Safe](./images/data-safe-concept-01.png "Data Safe")
+![Data Safe](./images/data-safe-concept-01.png "Data Safe Concept")
 
 ## Want to Learn More?
 Technical Documentation:
