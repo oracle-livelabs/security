@@ -75,7 +75,7 @@ This lab assumes you have:
     <copy>./avs_deploy_avcli.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-001.png "AVDF")
+    ![AVDF](./images/avdf-001.png "Unpack the AVDF utilities")
 
 4. Next, we will use avcli to register the host, dbsec-lab, with Audit Vault. You will see that the commands being run are stored in the `avcli_register_host.av` file. In this step you will see a activation key. **Record this Activation Key for use later in the lab!**
 
@@ -83,7 +83,7 @@ This lab assumes you have:
     <copy>./avs_register_host.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-002.png "AVDF")
+    ![AVDF](./images/avdf-002.png "Register the host")
 
     **Note**:
     - Your output will look similar to this but your **Activation Key** will be different
@@ -95,7 +95,7 @@ This lab assumes you have:
     <copy>./avs_deploy_agent.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-003.png "AVDF")
+    ![AVDF](./images/avdf-003.png "Deploy the Audit Vault Agent")
 
     **Note**: This script will unpack the **agent.jar** file into the **/u01/app/avagent** directory
 
@@ -105,7 +105,7 @@ This lab assumes you have:
     <copy>./avs_activate_agent.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-004.png "AVDF")
+    ![AVDF](./images/avdf-004.png "Activate the Audit Vault Agent")
 
     **Note**:
     - Remember the **Activation Key** we saw above and paste the key when prompted
@@ -117,7 +117,7 @@ This lab assumes you have:
     <copy>./avs_show_host.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-005.png "AVDF")
+    ![AVDF](./images/avdf-005.png "Check the registration")
 
     **Note**:
     - Notice the output should say "**RUNNING**" for the Agent Status column
@@ -139,7 +139,7 @@ This lab assumes you have:
     <copy>Oracle123</copy>
     ````
 
-    ![AVDF](./images/avdf-006.png "AVDF")
+    ![AVDF](./images/avdf-006.png "Register the database")
 
     **Note**:
     - You could also perform this register from the Audit Vault Web Console
@@ -153,7 +153,7 @@ This lab assumes you have:
     <copy>./avs_register_audit_trail.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-007.png "AVDF")
+    ![AVDF](./images/avdf-007.png "Register the Unified Audit Trail")
 
 2. Next, list the Audit Trails for the pluggable database **pdb1**
 
@@ -161,7 +161,7 @@ This lab assumes you have:
     <copy>./avs_list_audit_trails.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-008.png "AVDF")
+    ![AVDF](./images/avdf-008.png "List the Audit Trails")
 
     **Note**:
     - You should see one row returned for the Unified Audit Trail
@@ -184,7 +184,7 @@ This lab assumes you have:
         <copy>T06tron.</copy>
         ````
 
-        ![AVDF](./images/avdf-300.png "AVDF")
+        ![AVDF](./images/avdf-300.png "AVDF - Login")
 
     - Click on the **Reports** tab
     
@@ -192,15 +192,15 @@ This lab assumes you have:
     
     - You should see a report that looks something like this:
 
-        ![AVDF](./images/avdf-009.png "AVDF")
+        ![AVDF](./images/avdf-009.png "AVDF Reports")
 
     - You can click on the **Event** header and select **'LOGON'** to add a filter on this event
 
-        ![AVDF](./images/avdf-010a.png "AVDF")
+        ![AVDF](./images/avdf-010a.png "AVDF Reports - Logon")
 
     - It might look something like this:
 
-        ![AVDF](./images/avdf-010b.png "AVDF")
+        ![AVDF](./images/avdf-010b.png "AVDF Reports - Logon")
 
     **Note**:
       - This was just a small example to verify that audit data was being collected and is visible in Audit Vault
@@ -214,13 +214,13 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
 1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
 
-    ![AVDF](./images/avdf-300.png "AVDF")
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 2. Click on the **Targets** tab
 
 3. Click on **Schedule Retrieval Jobs**
 
-    ![AVDF](./images/avdf-010c.png "AVDF")
+    ![AVDF](./images/avdf-010c.png "Schedule Retrieval Jobs")
 
 4. On the target screen, under **Audit Policy** perform the following:
     - Checkbox *Retrieve Immediately*
@@ -229,7 +229,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
     - Set **Repeat Every** to *1 Days*
     - Click [**Save**] to save and continue
 
-        ![AVDF](./images/avdf-011.png "AVDF")
+        ![AVDF](./images/avdf-011.png "Audit Policy")
 
 5. Next, view the audit policy reports for **pdb1**
     - Click on the **Policies** tab and you will be placed on the **Audit Policies** page
@@ -241,7 +241,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
         - *`All Admin Activity`*
         - *`Center for Internet Security (CIS) Configuration`*
 
-            ![AVDF](./images/avdf-012.png "AVDF")
+            ![AVDF](./images/avdf-012.png "View the audit policy reports")
 
     - Click [**Provision Unified Policy**]
 
@@ -250,11 +250,11 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
     - Click on the **Jobs** section on the left menu bar
     - You should see at least one **Job Type** that says **Unified Audit Policy**
 
-        ![AVDF](./images/avdf-013.png "AVDF")
+        ![AVDF](./images/avdf-013.png "Verify the job completed successfully")
 
     - Refresh the web page  (press [F5] for example) until it shows **Complete** and it was provisioned on **pdb1**
 
-        ![AVDF](./images/avdf-013b.png "AVDF")
+        ![AVDF](./images/avdf-013b.png "Verify the job completed successfully")
 
 7. The next thing you can do is check which Unified Audit Policies exist and which Unified Audit Policies are enabled by using **SQL*Plus**
 
@@ -264,7 +264,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
         <copy>./avs_query_all_unified_policies.sh</copy>
         ````
 
-        ![AVDF](./images/avdf-014.png "AVDF")
+        ![AVDF](./images/avdf-014.png "List all the Unified Audit Policies")
 
     - Next, show the **enabled** Unified Audit policies
 
@@ -272,7 +272,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
         <copy>./avs_query_enabled_unified_policies.sh</copy>
         ````
 
-        ![AVDF](./images/avdf-015.png "AVDF")
+        ![AVDF](./images/avdf-015.png "Show the enabled Unified Audit policies")
 
 8. If you want, you can re-do the previous steps and make changes to the Unified Audit Policies. For example, don't enable the **Center for Internet Security (CIS) Configuration** and re-run the two shell scripts to see what changes!
 
@@ -280,7 +280,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
 1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
 
-    ![AVDF](./images/avdf-300.png "AVDF")
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 2. Click on the **Targets** tab
 
@@ -293,20 +293,20 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
     - Set **Repeat Every** to *1 Days*
     - Click [**Save**] to save and continue
 
-        ![AVDF](./images/avdf-016.png "AVDF")
+        ![AVDF](./images/avdf-016.png "User Entitlements")
 
 5. Click on the **Reports** tab
 
 6. Scroll down and expand the **Entitlement Reports** section
 
-    ![AVDF](./images/avdf-017.png "AVDF")
+    ![AVDF](./images/avdf-017.png "Entitlement Reports")
 
 7. Click on the **User Accounts** report
     - Under **Target Name**, select *`All`*
     - For **Label**, select *`Latest`*
     - Click [**Go**] and you will see a report that looks like this
 
-        ![AVDF](./images/avdf-018.png "AVDF")
+        ![AVDF](./images/avdf-018.png "User Accounts")
 
 ## Task 6: Audit Vault - Access Rights and User Activity on Sensitive Data
 
@@ -328,31 +328,31 @@ In this lab you will use the results from a **Database Security Assessment Tool 
         <copy>T06tron.</copy>
         ````
 
-        ![AVDF](./images/avdf-400.png "AVDF")
+        ![AVDF](./images/avdf-400.png "AVDF - Login")
 
     - Upload the `pdb1_dbsat_discover.csv` file you downloaded earlier into AVDF Console
         - Click the **Targets** tab
         - Click the target name **pdb1**
         - In the right, top, corner of the page click [**Sensitive Objects**]
 
-            ![AVDF](./images/avdf-019c.png "AVDF")
+            ![AVDF](./images/avdf-019c.png "Sensitive Objects")
 
         - Click to the **Browse** icon and load the *`pdb1_dbsat_discover.csv`* file you saved earlier to your local system
 
-            ![AVDF](./images/avdf-019d.png "AVDF")
+            ![AVDF](./images/avdf-019d.png "Load the CSV file")
 
-            ![AVDF](./images/avdf-020.png "AVDF")
+            ![AVDF](./images/avdf-020.png "Load the CSV file")
 
         - Click [**Upload**]
         - If you click [**Sensitive Objects**] again you will see you have the **.csv** file loaded
 
-            ![AVDF](./images/avdf-021.png "AVDF")
+            ![AVDF](./images/avdf-021.png "Check the CSV file loaded")
 
 4. View the Sensitive Data
 
     - Go back to Audit Vault Web Console as *`AVAUDITOR`*
 
-        ![AVDF](./images/avdf-300.png "AVDF")
+        ![AVDF](./images/avdf-300.png "AVDF - Login")
 
     - Click the **Reports** tab
 
@@ -360,25 +360,25 @@ In this lab you will use the results from a **Database Security Assessment Tool 
 
     - Then, click [**Go**] to associate a pluggable database
 
-        ![AVDF](./images/avdf-022a.png "AVDF")
+        ![AVDF](./images/avdf-022a.png "Associate a database to the report")
 
     - Double-click on **pdb1 (Oracle Database)** to associate this database
 
-        ![AVDF](./images/avdf-022b.png "AVDF")
+        ![AVDF](./images/avdf-022b.png "Associate a database to the report")
 
     - Click [**Save**]
 
     - Once you associate the target with the report, click on **Sensitive Data** report
 
-        ![AVDF](./images/avdf-023a.png "AVDF")
+        ![AVDF](./images/avdf-023a.png "Sensitive Data report")
 
-        ![AVDF](./images/avdf-023b.png "AVDF")
+        ![AVDF](./images/avdf-023b.png "Sensitive Data report")
 
         **Note:** Here you can see the Data Privacy report of the Schema, Objects, Object Types, and Column Name and Sensitive Types
 
 5. You can also view additional **Compliance Reports** about Sensitive Data
 
-    ![AVDF](./images/avdf-024.png "AVDF")
+    ![AVDF](./images/avdf-024.png "Compliance Reports")
 
 ## Task 7: Audit Vault - Tracking Data Changes (Auditing "Before-After" Values)
 
@@ -402,7 +402,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
     <copy>./avs_create_oggadmin_db_user.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-025.png "AVDF")
+    ![AVDF](./images/avdf-025.png "Create the Golden Gate Database Administration user")
 
 2. Next, we have to configure the database to have the appropriate `SGA_TARGET` and `STREAMS_POOL_SIZE` values, enable the `ENABLE_GOLDENGATE_REPLICATION` initialization parameter and **Forcing Logging** for redo collection
 
@@ -410,7 +410,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
     <copy>./avs_configure_db_for_ogg.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-026.png "AVDF")
+    ![AVDF](./images/avdf-026.png "Configure the database")
 
      **Note**: This will require a reboot and this script will do this for you
 
@@ -420,7 +420,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
     <copy>./avs_test_dbuser_connectivity.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-027.png "AVDF")
+    ![AVDF](./images/avdf-027.png "Check connectivity to the database")
 
 **Configuring a GoldenGate Extract**
 
@@ -430,7 +430,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
     <copy>./avs_start_ogg.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-028.png "AVDF")
+    ![AVDF](./images/avdf-028.png "Start the Golden Gate Administration Service")
 
 5. Login to your GoldenGate Web Console
 
@@ -448,15 +448,15 @@ The first thing we need to do is to set up the database to be ready for Golden G
         <copy>Oracle123</copy>
         ````
 
-        ![AVDF](./images/avdf-029.png "AVDF")
+        ![AVDF](./images/avdf-029.png "Golden Gate - Login")
 
 6. In the top left corner, open the **Burger menu** and select **Configuration**
 
-    ![AVDF](./images/avdf-030a.png "AVDF")
+    ![AVDF](./images/avdf-030a.png "Select Configuration")
 
 7. Click the [**+**] symbol next to **Credentials**
 
-    ![AVDF](./images/avdf-030b.png "AVDF")
+    ![AVDF](./images/avdf-030b.png "Set credentials")
 
 8. Next, create a new Credential with the following values
 
@@ -466,33 +466,33 @@ The first thing we need to do is to set up the database to be ready for Golden G
     - Password: *`Oracle123`*
     - Verify Password: *`Oracle123`*
 
-        ![AVDF](./images/avdf-030c.png "AVDF")
+        ![AVDF](./images/avdf-030c.png "Create a new Credential")
 
     - Click [**Submit**]
 
 9. Under **Action**, press the **Verify** button for the **cdb1** Domain
 
-    ![AVDF](./images/avdf-031.png "AVDF")
+    ![AVDF](./images/avdf-031.png "Verify connectivity")
 
 10. If your connection was successful, you should now see a **Checkpoint**, a **Transaction Information** and a **Heartbeat** section
 
-    ![AVDF](./images/avdf-032.png "AVDF")
+    ![AVDF](./images/avdf-032.png "Check your connection")
 
 11. Now we will navigate back to the GoldenGate Administration Server dashboard
     - In the top left corner, open the **Burger menu**
     - Select **Overview**
 
-        ![AVDF](./images/avdf-033a.png "AVDF")
+        ![AVDF](./images/avdf-033a.png "Navigate to the GoldenGate Administration Server dashboard")
 
 12. Create a new GoldenGate Extract
 
     - In the **Extracts** section, click the [**+**] symbol
 
-        ![AVDF](./images/avdf-033b.png "AVDF")
+        ![AVDF](./images/avdf-033b.png "Create a new GoldenGate Extract")
 
     - Choose **Integrated Extract** and click [**Next**]
 
-        ![AVDF](./images/avdf-033c.png "AVDF")
+        ![AVDF](./images/avdf-033c.png "Create a new GoldenGate Extract")
 
     - In the **Basic Information** section, fill out the fields with the following values
         - Process Name: *`pdb1`*
@@ -504,12 +504,12 @@ The first thing we need to do is to set up the database to be ready for Golden G
         - Trail Name: *`p1`*
         - Trail Size (MB): *`500`*
 
-            ![AVDF](./images/avdf-034.png "AVDF")
+            ![AVDF](./images/avdf-034.png "Create a new GoldenGate Extract")
 
     - and in the **Registration Information** section
         - Register to PDBs: *`pdb1`*
 
-            ![AVDF](./images/avdf-035.png "AVDF")
+            ![AVDF](./images/avdf-035.png "Create a new GoldenGate Extract")
 
     - Click [**Next**]
 
@@ -529,26 +529,26 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
     - It should look like this now
 
-        ![AVDF](./images/avdf-036.png "AVDF")
+        ![AVDF](./images/avdf-036.png "GoldenGate Extract definition")
 
     - Click [**Create and Run**]
 
     - You will be redirected to the dashboard and you should now have a new Extract in **RUNNING** status
 
-        ![AVDF](./images/avdf-037.png "AVDF")
+        ![AVDF](./images/avdf-037.png "Check status of the new GoldenGate Extract")
 
     **Note**: If it's not running, please start it:
     - On the **PDB1** Extract, click [**Action**] and click [**Start**]
     - Confirm you want to start the Extract process
     - Confirm your Extract now shows **RUNNING**
 
-        ![AVDF](./images/avdf-038.png "AVDF")
+        ![AVDF](./images/avdf-038.png "Start a new GoldenGate Extract")
 
 **Configure a new Audit Trail**
 
 13. Go back to Audit Vault Web Console as *`AVADMIN`*"
 
-    ![AVDF](./images/avdf-400.png "AVDF")
+    ![AVDF](./images/avdf-400.png "AVDF - Login")
 
 14. Click the **Targets** tab
 
@@ -563,13 +563,13 @@ The first thing we need to do is to set up the database to be ready for Golden G
     - Name: *`av.collector.TimeZoneOffset`*
     - Value: `<YOUR_DBSECLAB_VM_TIMEZONE>` (here UTC time "*`0:00`*")
 
-        ![AVDF](./images/avdf-039.png "AVDF")
+        ![AVDF](./images/avdf-039.png "Set Audit Collection Attributes")
 
     - Click [**Save**]
 
 19. In the **Audit Data Collection** section, click [**Add**]
 
-    ![AVDF](./images/avdf-039b.png "AVDF")
+    ![AVDF](./images/avdf-039b.png "Add Audit data Collection")
 
 20. For the new Audit Trail, use the following values
 
@@ -578,13 +578,13 @@ The first thing we need to do is to set up the database to be ready for Golden G
     - Agent Host: *`dbseclab`*
     - Review the inputs for accuracy
 
-        ![AVDF](./images/avdf-040.png "AVDF")
+        ![AVDF](./images/avdf-040.png "Create a new Audit Trail")
 
     - Click [**Save**]
 
 21. The new Audit Trail might say **STOPPED** but if you **refresh the page** then it should switch to **COLLECTING** or **IDLE**.
 
-    ![AVDF](./images/avdf-041.png "AVDF")
+    ![AVDF](./images/avdf-041.png "Status of the new Audit Trail")
 
     **Note:** Attention, don't go to next step while the both **Audit Trail** and **Unified Audit Trail** are not started!
 
@@ -596,21 +596,21 @@ The first thing we need to do is to set up the database to be ready for Golden G
     <copy>./avs_generate_employeesearch_prod_changes.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-042.png "AVDF")
+    ![AVDF](./images/avdf-042.png "Generate data")
 
 23. Go back to Audit Vault Web Console as *`AVAUDITOR`*"
 
-    ![AVDF](./images/avdf-300.png "AVDF")
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 24. Click the **Reports** tab
 
 25. In the **Data Access & Modification** section, click **Data Modification Before-After Values**
 
-    ![AVDF](./images/avdf-043a.png "AVDF")
+    ![AVDF](./images/avdf-043a.png "Data Modification Before-After Values")
 
 26. You should see a "Before-After values" output similar to the following screenshot including the changes just generated previously:
 
-    ![AVDF](./images/avdf-043b.png "AVDF")
+    ![AVDF](./images/avdf-043b.png "See a "Before-After values" output")
 
 **Troubleshooting Issues and Errors**
 
@@ -628,7 +628,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
 1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
 
-    ![AVDF](./images/avdf-300.png "AVDF")
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 2. Click the **Policies** tab
 
@@ -648,11 +648,11 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
 6. Your Alert should look like this
 
-    ![AVDF](./images/avdf-044a.png "AVDF")
+    ![AVDF](./images/avdf-044a.png "AVDF Alerts")
 
 7. Click [**Save**]
 
-    ![AVDF](./images/avdf-044b.png "AVDF")
+    ![AVDF](./images/avdf-044b.png "Confirm creation")
 
     **Note:** Your Alert is automatically started!
 
@@ -662,23 +662,23 @@ In this lab you will modify the Database Firewall connection for the pluggable d
     <copy>./avs_create_users.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-045.png "AVDF")
+    ![AVDF](./images/avdf-045.png "Create users")
 
 9. Go back to the Audit Vault Web Console as *`AVAUDITOR`* to view alerts
 
-    ![AVDF](./images/avdf-300.png "AVDF")
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 10. Click on **Alerts** tab
 
 11. View the Alerts that have occurred related to our user creation SQL commands
 
-    ![AVDF](./images/avdf-046.png "AVDF")
+    ![AVDF](./images/avdf-046.png "View the alerts")
 
     **Note**: If you don't see them, refresh the page because the system catch the alerts every minute
 
 12. Click on the details of one of the alerts
 
-    ![AVDF](./images/avdf-047.png "AVDF")
+    ![AVDF](./images/avdf-047.png "View an alert")
 
 13. Go back to your Terminal session and drop the users we created in the previous script
 
@@ -686,7 +686,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
     <copy>./avs_drop_users.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-048.png "AVDF")
+    ![AVDF](./images/avdf-048.png "Drop the users just created")
 
     **Note**: Once you understand how to create an alert, feel free to create another and test it manually
 
@@ -694,17 +694,17 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
 1. Now, go back to Audit Vault Web Console as *`AVADMIN`*"
 
-    ![AVDF](./images/avdf-400.png "AVDF")
+    ![AVDF](./images/avdf-400.png "AVDF - Login")
 
 2. Click on **Database Firewalls** tab
 
 3. Click on **dbf** Database Firewall Name
 
-    ![AVDF](./images/avdf-101.png "AVDF")
+    ![AVDF](./images/avdf-101.png "Database Firewall page")
 
 4. Under **Configuration**, click **Network Settings**
 
-    ![AVDF](./images/avdf-102.png "AVDF")
+    ![AVDF](./images/avdf-102.png "Configure network settings")
 
 5. Create a **Proxy Port**
 
@@ -714,15 +714,15 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
     - Click [**Add**]
 
-        ![AVDF](./images/avdf-104a.png "AVDF")
+        ![AVDF](./images/avdf-104a.png "Add a new Proxy Port")
 
     - Name it (here *`dbfw_proxy`*) for the port *`15223`*, then click [**Save**]
 
-        ![AVDF](./images/avdf-104b.png "AVDF")
+        ![AVDF](./images/avdf-104b.png "Proxy Port settings")
 
     - Now, Proxy port is set to **`dbfw_proxy(15223)`**
 
-        ![AVDF](./images/avdf-104c.png "AVDF")
+        ![AVDF](./images/avdf-104c.png "The new Proxy Port created")
 
 6. Click [**Close**]
 
@@ -732,7 +732,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
     - In the **Database Firewall Monitoring** section of this page, click [**Add**]
 
-        ![AVDF](./images/avdf-105.png "AVDF")
+        ![AVDF](./images/avdf-105.png "Add a Database Firewall Monitoring")
 
     - Fill out the following details
 
@@ -741,7 +741,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
         - Network Interface Card: *`ens3`*
         - Proxy Ports: *`dbfw_proxy (15223)`*
 
-            ![AVDF](./images/avdf-106.png "AVDF")
+            ![AVDF](./images/avdf-106.png "Database Firewall Monitoring settings")
 
     - Click [**Add**]
 
@@ -750,7 +750,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
         - Port: *`1521`*
         - Service Name: *`pdb1`*
 
-            ![AVDF](./images/avdf-107.png "AVDF")
+            ![AVDF](./images/avdf-107.png "Database Firewall Monitoring settings")
 
             **Note**:
             - Ensure you use the IP Address not the hostname because the DBSecLab VMs are using DNS!
@@ -760,7 +760,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
     - The result should look like this:
 
-        ![AVDF](./images/avdf-108.png "AVDF")
+        ![AVDF](./images/avdf-108.png "The new Database Firewall Monitoring")
 
 8. Now, verify connectivity between the database and the DB Firewall
 
@@ -776,7 +776,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
         <copy>./dbf_sqlplus_without_dbfw.sh</copy>
         ````
 
-        ![AVDF](./images/avdf-109.png "AVDF")
+        ![AVDF](./images/avdf-109.png "Check the connectivity to the database WITHOUT the Database Firewall")
 
         **Note**:
         - This will connect to the pluggable database pdb1 **directly** on the standard listener port **1521**
@@ -788,7 +788,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
         <copy>./dbf_sqlplus_with_dbfw.sh</copy>
         ````
 
-        ![AVDF](./images/avdf-110.png "AVDF")
+        ![AVDF](./images/avdf-110.png "Check the connectivity to the database WITH the Database Firewall")
 
         **Note**:
         - This will connect to the pluggable database pdb1 **through the proxy** on the port **15223** (DB Firewall Monitoring) we just configured
@@ -814,21 +814,21 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>Oracle123</copy>
     ````
 
-    ![AVDF](./images/avdf-111.png "AVDF")
+    ![AVDF](./images/avdf-111.png "HR App - Login")
 
-    ![AVDF](./images/avdf-112.png "AVDF")
+    ![AVDF](./images/avdf-112.png "HR App - Login")
 
 4. In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
 
-    ![AVDF](./images/avdf-115.png "AVDF")
+    ![AVDF](./images/avdf-115.png "HR App - Settings")
 
 5. On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
 
-    ![AVDF](./images/avdf-116.png "AVDF")
+    ![AVDF](./images/avdf-116.png "HR App - Session Details")
 
 6. Logout
 
-    ![AVDF](./images/avdf-117.png "AVDF")
+    ![AVDF](./images/avdf-117.png "AVDF - Logout")
 
 7. Now, go back to your Terminal session and migrate the Glassfish Application connection string to proxy through the Database Firewall
 
@@ -836,7 +836,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./dbf_start_proxy_glassfish.sh</copy>
     ````
 
-    ![AVDF](./images/avdf-118.png "AVDF")
+    ![AVDF](./images/avdf-118.png "Set HR App with Database firewall")
 
 8. Next, verify the application functions as expected
 
@@ -844,7 +844,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     - In the top right hand corner of the App, click on the **Weclome HR Administrator** link to view the **Session Details** page
     - Now, you should see that the **IP Address** row has changed from **10.0.0.150** to **10.0.0.152**, which is the IP Address of the DB Firewall VM
 
-        ![AVDF](./images/avdf-119.png "AVDF")
+        ![AVDF](./images/avdf-119.png "check the application functions as expected")
 
 ## Task 11: DB Firewall - Train the DB Firewall for Expected SQL Traffic
 In this lab you will use the Glassfish Application to connect through the Oracle Database Firewall so we can monitor, and block, SQL commands
