@@ -173,7 +173,7 @@ This lab assumes you have:
     <copy>./dv_query_employee_search.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-020.png "DB Vault")
+    ![DB Vault](./images/dv-020.png "Query tables")
 
 5. Begin protecting the application credentials by creating a Database Vault Rule
 
@@ -181,7 +181,7 @@ This lab assumes you have:
     <copy>./dv_create_rule.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-021.png "DB Vault")
+    ![DB Vault](./images/dv-021.png "Create a Database Vault Rule")
 
     **Note**: We authorize as a Trusted Path app only the access from Glassfish Web App (JDBC Thin Client) through the schema owner `EMPLOYEESEARCH_PROD`!
 
@@ -195,7 +195,7 @@ This lab assumes you have:
     <copy>./dv_create_rule_set.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-022.png "DB Vault")
+    ![DB Vault](./images/dv-022.png "Create a Database Vault Rule Set")
 
 7. Create a Command Rule on "**CONNECT**" to protect the `EMPLOYEESEARCH_PROD` user
 
@@ -203,7 +203,7 @@ This lab assumes you have:
     <copy>./dv_create_command_rule.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-023.png "DB Vault")
+    ![DB Vault](./images/dv-023.png "Create a Command Rule on CONNECT")
 
    **Note**: You can only "`CONNECT`" as `EMPLOYEESEARCH_PROD` if you match the Rule Set we created!
 
@@ -217,7 +217,7 @@ This lab assumes you have:
     <copy>./dv_query_employeesearch_usage.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-024.png "DB Vault")
+    ![DB Vault](./images/dv-024.png "Search employees")
 
 10. Now, try to query the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table with the owner `EMPLOYEESEARCH_PROD`... **You should be blocked**!
 
@@ -225,7 +225,7 @@ This lab assumes you have:
     <copy>./dv_query_employee_search.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-025.png "DB Vault")
+    ![DB Vault](./images/dv-025.png "Query tables")
 
     **Note**: Because you're querying via a non-"Trusted Path" app you can't access the data!
 
@@ -235,7 +235,7 @@ This lab assumes you have:
     <copy>./dv_del_trusted_path.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-026.png "DB Vault")
+    ![DB Vault](./images/dv-026.png "Delete the Trusted Path")
 
 ## Task 4: Simulation Mode
 
@@ -245,7 +245,7 @@ This lab assumes you have:
     <copy>./dv_query_simulation_logs.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-008.png "DB Vault")
+    ![DB Vault](./images/dv-008.png "Query the simulation log")
 
 2. Next, create a Command Rule that will simulate blocking all connections to the database. This is an easy way for us to identify who is connecting and where they are connecting from.
 
@@ -253,7 +253,7 @@ This lab assumes you have:
     <copy>./dv_command_rule_sim_mode.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-009.png "DB Vault")
+    ![DB Vault](./images/dv-009.png "Create a Command Rule")
 
 3. Execute a script to create some db connections and generate some log entries
 
@@ -261,7 +261,7 @@ This lab assumes you have:
     <copy>./dv_run_queries.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-010.png "DB Vault")
+    ![DB Vault](./images/dv-010.png "Generate traffic")
 
 4. Now, we query the simulation log again to see what new entries we have. Remember we created a command rule to simulate blocking user connections!
 
@@ -269,7 +269,7 @@ This lab assumes you have:
     <copy>./dv_query_simulation_logs.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-011.png "DB Vault")
+    ![DB Vault](./images/dv-011.png "Query the simulation log")
 
    The log shows all the users who connected and would have been blocked by the rule. It also shows where they connected from and what client they used to connect
 
@@ -279,7 +279,7 @@ This lab assumes you have:
     <copy>./dv_distinct_users_sim_logs.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-012a.png "DB Vault")
+    ![DB Vault](./images/dv-012a.png "List of distinct usernames present in the simulation logs")
 
 6. Although we only used Simulation mode on a **CONNECT** rule, we could have used this on a Realm to show what violations we would had
 
@@ -289,13 +289,13 @@ This lab assumes you have:
     <copy>./dv_purge_sim_logs.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-012b.png "DB Vault")
+    ![DB Vault](./images/dv-012b.png "Purge the simulation logs")
 
     ````
     <copy>./dv_drop_command_rule.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-012c.png "DB Vault")
+    ![DB Vault](./images/dv-012c.png "Drop the Command Rule")
 
 ## Task 5: Ops Control
 
@@ -305,7 +305,7 @@ This lab assumes you have:
     <copy>./dv_status.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-013.png "DB Vault")
+    ![DB Vault](./images/dv-013.png "Check the Database Vault status")
 
     **Note**: It is not yet configured!
 
@@ -317,7 +317,7 @@ This lab assumes you have:
     <copy>./dv_query_with_debra.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-014.png "DB Vault")
+    ![DB Vault](./images/dv-014.png "Query as DBA DEBRA")
 
     - ... as `C##SEC_DBA_SAL`
 
@@ -325,7 +325,7 @@ This lab assumes you have:
     <copy>./dv_query_with_sal.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-015.png "DB Vault")
+    ![DB Vault](./images/dv-015.png "Query as DBA SAL")
 
     **Note**:
       - The query results are the same
@@ -339,25 +339,25 @@ This lab assumes you have:
     <copy>./dv_enable_ops_control.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-016a.png "DB Vault")
+    ![DB Vault](./images/dv-016a.png "Enable OPS control")
 
     ````
     <copy>./dv_status.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-016b.png "DB Vault")
+    ![DB Vault](./images/dv-016b.png "Check the Database Vault status")
 
     ````
     <copy>./dv_query_with_debra.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-017.png "DB Vault")
+    ![DB Vault](./images/dv-017.png "Query as DBA DEBRA")
 
     ````
     <copy>./dv_query_with_sal.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-018a.png "DB Vault")
+    ![DB Vault](./images/dv-018a.png "Query as DBA SAL")
 
 
 4. When you are have completed this lab, disable Ops Control
@@ -366,7 +366,7 @@ This lab assumes you have:
     <copy>./dv_disable_ops_control.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-018b.png "DB Vault")
+    ![DB Vault](./images/dv-018b.png "Disable OPS control")
 
 ## Task 6: Disabling Database Vault
 
@@ -378,7 +378,7 @@ This lab assumes you have:
 
     **Note**: `DV_ENABLE_STATUS` for pdb1 must be **FALSE**
 
-    ![DB Vault](./images/dv-027.png "DB Vault")
+    ![DB Vault](./images/dv-027.png "Disable Database Vault")
 
 2. Now, disable Database Vault in the container database **cdb1**
 
@@ -386,7 +386,7 @@ This lab assumes you have:
     <copy>./dv_disable_on_cdb.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-028.png "DB Vault")
+    ![DB Vault](./images/dv-028.png "Disable Database Vault")
 
     **Note**:
     - To disable DB Vault, database will be rebooted!
@@ -402,7 +402,7 @@ Oracle Database Vault provides controls to prevent unauthorized privileged users
 
 The Oracle Database Vault security controls protect application data from unauthorized access, and comply with privacy and regulatory requirements.
 
-![DB Vault](./images/dv-concept.png "DB Vault")
+![DB Vault](./images/dv-concept.png "DB Vault Concept")
 
 You can deploy controls to block privileged account access to application data and control sensitive operations inside the database using trusted path authorization.
 

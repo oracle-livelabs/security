@@ -112,7 +112,7 @@ This lab assumes you have:
     <copy>./tde_create_mek_pdb.sh pdb1</copy>
     ````
 
-    ![TDE](./images/tde-006.png "Create a Master Key (MEK)")
+    ![TDE](./images/tde-006.png "Create the pluggable database TDE Master Key")
 
 3. If you want, you can do the same for **pdb2**... This is not a requirement and it might be helpful to show some databases with TDE and some without
 
@@ -120,7 +120,7 @@ This lab assumes you have:
     <copy>./tde_create_mek_pdb.sh pdb2</copy>
     ````
 
-    ![TDE](./images/tde-007.png "Create a Master Key (MEK)")
+    ![TDE](./images/tde-007.png "Create the pluggable database TDE Master Key")
 
 4. Now, you have a master key and you can begin encrypting tablespaces or column!
 
