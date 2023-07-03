@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data S
 
 *Estimated Lab Time:* 120 minutes 
 
-*Version tested in this lab:* Oracle Data Safe on OCI and Oracle DB 19.17
+*Version tested in this lab:* Oracle Data Safe on OCI and Oracle DB 19.19
 
 ### Video Preview
 
@@ -45,32 +45,32 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 2. On the Burger menu, click on **Oracle Database**
 
-    ![Data Safe](./images/ds-001.png "Data Safe")
+    ![Data Safe](./images/ds-001.png "Oracle Database")
  
 3. Then, on "**Data Safe**" section, click on "**Target Databases**"
 
-    ![Data Safe](./images/ds-002.png "Data Safe")
+    ![Data Safe](./images/ds-002.png "Target Databases")
 
 4. On **Connectivity Options** sub-menu, click  on **On-Premises Connectors**
 
-    ![Data Safe](./images/ds-003.png "Data Safe")
+    ![Data Safe](./images/ds-003.png "On-Premises Connectors")
 
 5. Click [**Create On-Premises Connectors**]
 
-    ![Data Safe](./images/ds-003b.png "Data Safe")
+    ![Data Safe](./images/ds-003b.png "Create On-Premises Connectors")
 
 6. Select your Compartment and fill out as following
 
     - Name: `<Your On-Premises Connectors Name>` (here "*`DBSec-Livelab_DBs`*")
     - Decription: *`On-Premises connector for DBSec Livelabs databases`*
 
-       ![Data Safe](./images/ds-004.png "Data Safe")
+       ![Data Safe](./images/ds-004.png "Set OCI")
 
 7. Click [**Create On-Premises Connectors**]
 
 8. Once is created, the On-Premises connector is "**INACTIVE**"
 
-       ![Data Safe](./images/ds-005.png "Data Safe")
+       ![Data Safe](./images/ds-005.png "the On-Premises connector is INACTIVE")
 
 9. Now, let's active it
 
@@ -80,15 +80,15 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         <copy>Oracle12345678!</copy>
         ````
 
-       ![Data Safe](./images/ds-006.png "Data Safe")
+       ![Data Safe](./images/ds-006.png "Download install Bundle")
 
     - OCI Data Safe will generate a unique On-Premises connector and it can take up to one minute
 
-       ![Data Safe](./images/ds-007.png "Data Safe")
+       ![Data Safe](./images/ds-007.png "Generate a unique On-Premises connector")
 
     - Once is generated, select **Save File** and click [**OK**] to download it into your local machine
 
-       ![Data Safe](./images/ds-008.png "Data Safe")
+       ![Data Safe](./images/ds-008.png "Save the generated file")
 
     - Browse the location where you want to store the zip file and click [**Save**]
 
@@ -116,7 +116,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
             </copy>
             ````
 
-               ![Data Safe](./images/ds-009.png "Data Safe")
+               ![Data Safe](./images/ds-009.png "Copy Data Safe on-premises connector uploaded")
 
         - Install Data Safe On-Premises connector (enter the password defined for the zip file above - here *`Oracle12345678!`*)
 
@@ -132,7 +132,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
             <copy>Oracle12345678!</copy>
             ````
 
-               ![Data Safe](./images/ds-010.png "Data Safe")
+               ![Data Safe](./images/ds-010.png "Install Data Safe On-Premises connector")
 
             **Note**: In case of trouble, you can stop or start the Data Safe On-Premises connector with the following command lines:
 
@@ -145,7 +145,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     - Go back to the Data Safe console to verify the status of the Data Safe On-Premises connector
 
-        ![Data Safe](./images/ds-011.png "Data Safe")
+        ![Data Safe](./images/ds-011.png "Check the status of the Data Safe On-Premises connector")
 
         **Note**: It sould be "**ACTIVE**" now!
 
@@ -158,21 +158,21 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
     </copy>
     ````
 
-    ![Data Safe](./images/ds-012.png "Data Safe")
+    ![Data Safe](./images/ds-012.png "Create the Data Safe DS_ADMIN user")
 
 11. On Data Safe Console, register the Target database **pdb1**
 
     - Click on the **On-Premises Connectors** link
     
-    ![Data Safe](./images/ds-013.png "Data Safe")
+    ![Data Safe](./images/ds-013.png "Click on the On-Premises Connectors link")
     
     - Click on **Target Databases** sub-menu
 
-    ![Data Safe](./images/ds-014.png "Data Safe")
+    ![Data Safe](./images/ds-014.png "Click on Target Databases sub-menu")
 
     - Click [**Register Database**]
 
-    ![Data Safe](./images/ds-015.png "Data Safe")
+    ![Data Safe](./images/ds-015.png "Click Register Database")
 
     - Fill out the "Register Target Database" as following
 
@@ -181,7 +181,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - Description: *`On-Premises pluggable database of DBSeclab VM (pdb1)`*
         - Compartment: Select your own Compartment
 
-            ![Data Safe](./images/ds-016.png "Data Safe")
+            ![Data Safe](./images/ds-016.png "Fill out the Register Target Database parameters")
 
         - Choose a connectivity option: *`On-Premises Connector`*
         - Select On-Premises Connector: Select *`DBSec-Livelab_DBs`*
@@ -192,15 +192,15 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - Database User Name: *`DS_ADMIN`* (in uppercase)
         - Database Password: *`Oracle123`*
     
-            ![Data Safe](./images/ds-017.png "Data Safe")
+            ![Data Safe](./images/ds-017.png "Fill out the Register Target Database parameters")
 
     - Click [**Register**] to launch the registration process
 
-        ![Data Safe](./images/ds-018.png "Data Safe")
+        ![Data Safe](./images/ds-018.png "Click Register")
 
     - Once is created, the new target should be "**ACTIVE**"
 
-        ![Data Safe](./images/ds-019.png "Data Safe")
+        ![Data Safe](./images/ds-019.png "New target status")
 
         **Note:**
         - On the **Target Database Details** tab, you can view the target database name and description, OCID, when the target database was registered and the compartment to where the target database was registered.
@@ -210,17 +210,17 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 12. Click on the **Target Databases** link to view the list of registered target databases to which you have access
 
-    ![Data Safe](./images/ds-020.png "Data Safe")
+    ![Data Safe](./images/ds-020.png "View the list of registered target databases")
 
     **Note:** All your registered target databases are listed on the right
 
-    ![Data Safe](./images/ds-021.png "Data Safe")
+    ![Data Safe](./images/ds-021.png "List of registered target databases")
 
 13. Let's have a look on a quick overview of the **Security Center**
 
     - Click on **Security Center** sub-menu
 
-        ![Data Safe](./images/ds-022.png "Data Safe")
+        ![Data Safe](./images/ds-022.png "Click on Security Center sub-menu")
 
         **Note**:
         - Make sure your compartment is still selected under **List Scope**
@@ -228,7 +228,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     - By default, the dashboard is displayed and the **Security Assessment** and **User Assessment** charts are automatically populated
     
-        ![Data Safe](./images/ds-023.png "Data Safe")
+        ![Data Safe](./images/ds-023.png "Data Safe dashboard")
 
         **Note**:
         - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you
@@ -237,7 +237,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - That is why the Audit Trails chart in the dashboard shows one audit trail with the status In Transition for your Autonomous Database
         - Later you start this audit trail to collect audit data into Oracle Data Safe
 
-            ![Data Safe](./images/ds-024.png "Data Safe")
+            ![Data Safe](./images/ds-024.png "Data Safe dashboard")
 
 
 ## Task 2: Audit Database Activity
@@ -1894,5 +1894,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Jody Glover, Bettina Schaeumer, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023
+- **Contributors** - Jody Glover, Bettina Schaeumer
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - July 2023
