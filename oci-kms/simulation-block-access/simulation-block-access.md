@@ -26,7 +26,7 @@ If you lost the link: to access CipherTrust Manager as a Service you will need t
 
   ![URL creation in address bar](images/ctm-address-bar.png "URL creation in address bar")
 
-Once you access your login window, please login using your "Secops_XXX" user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you. 
+  Once you access your login window, please login using your "Secops_XXX" user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you. 
 
   ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
 
