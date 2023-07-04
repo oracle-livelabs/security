@@ -41,23 +41,23 @@ In this lab, you will:
 
 4. Click on the three points on the right of your key line and select **Disable**: 
 
-  ![Disable keys](images/to-disable.png "Disable keys")
+    ![Disable keys](images/to-disable.png "Disable keys")
 
 5. A new window will prompt you to confirm. Click **Disable**:
 
-  ![Disable keys](images/disable.png "Disable keys")
+    ![Disable keys](images/disable.png "Disable keys")
 
 6. Click **Refresh All**:
 
-  ![Refresh all](images/disabling.png "Refresh all")
+    ![Refresh all](images/disabling.png "Refresh all")
 
  a new window will prompt you again to confirm. Click **Refresh All**:
 
-  ![Confirm refresh](images/refresh.png "Confirm refresh")
+    ![Confirm refresh](images/refresh.png "Confirm refresh")
 
 7. Wait until keys are in "Disabled" state:
 
-  ![Disabled keys](images/disabled.png "Disabled keys")
+    ![Disabled keys](images/disabled.png "Disabled keys")
 
 
 ## Task 2: Confirm data access into your bucket is impossible as a result
