@@ -66,14 +66,12 @@ In this lab, you will:
 
    ![Buckets](./images/bucket-visible.png "Buckets")
 
-    If you click on your bucket, you will be able to access:
+    If you click on your bucket, you will be able to access and see the objects inside the bucket listed below:
 
    ![Access](./images/upload-object.png "Access")
 
-    and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerfull key management solution for all of their OCI resources. 
-
 3. Now we will check that the pre-authenticated request (PAR) that you have created is functional again as the key is enabled.
-  Copy the URL you saved in lab 3 task 2 and paste it in your browser again. Confirm you can download the document. 
+  Copy the URL you saved in lab 3 task 2 and paste it in your browser again. Confirm you can download the document.
   Thus we have now confirmed that re-enabling the key from the external CipherTrust Manager instance brings back a fully functional behavior to OCI storage bucket.
 
 
@@ -83,11 +81,11 @@ In this lab, you will:
 
   ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
 
-2. As you can see, the database is still stopped as the key was disabled: 
+2. Here you can have two situations. either the database has alreaady restarted, if the Autonomous Database Service has already checked that the key is enabled again. But most probably the database is still stopped:
 
   ![Stopped Autonomous Database](./images/stopped-adb.png "Stopped Autonomous Database")
 
-3. Now you will try to start the database because the key is enabled again: start again the database by clicking on **More Actions** and **Start**:
+3. So you will try to start the database because the key is enabled again: start again the database by clicking on **More Actions** and **Start**:
 
   ![Start Autonomous Database](./images/re-start.png "Start Autonomous Database")
 
