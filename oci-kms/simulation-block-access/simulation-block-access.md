@@ -5,23 +5,18 @@
 Scenario: 
 You're part of your company Security Operations team. A severe security alert in your company just happenned. After talking to the Company CEO, the CISO has taken the decision to shut down access to data stored in the Cloud. So the CISO is asking you to make sure that all the encrypted data stored in OCI, your Company cloud, is inaccessible.
 
-In order to clock access to the data, you will disable the encryption key that you created at the beginning of this hands-on lab. As this key was used to encrypt data in the bucket you created as well as in  
+In order to block access to the data, you will disable the encryption key that you created at the beginning of this hands-on lab. As this key is used to encrypt data in the bucket you created as well as in the Autonomous Database, this will disable in turn any possibility to access the encrypted data as well as the objects themselves, even for OCI administrators. 
+
+As a Data Administrator, you will test access to the data to realize you can't access the data nor the objects anymore. 
 
 Estimated Lab Time: -- minutes
 
 ### Objectives
 
 In this lab, you will:
-* Simulate an emergency situation where you as a customer want to block access to your data in OCI
+* Simulate an emergency situation where you as a customer want to completely block access to your data in OCI
 * Disable encryption key from the external CipherTrust Key management console
 * Test access to the encrypted data and confirm users cannot access data in the Storage Bucket and Autonomous Database anymore
-* Re-enable proper access once the alert is over
-
-### Prerequisites (Optional)
-
-This lab assumes you have:
-* An Oracle Cloud account
-* All previous labs successfully completed
 
 
 ## Task 1: Disable keys in CipherTrust Manager

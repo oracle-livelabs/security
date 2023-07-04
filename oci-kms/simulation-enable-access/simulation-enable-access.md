@@ -2,30 +2,20 @@
 
 ## Introduction
 
-*Describe the lab in one or two sentences, for example:* This lab walks you through the steps to ...
+Scenario: 
+You're part of your company Security Operations team. The Security alrt is over. After all the required checks, the CISO has taken the decision to re-enable access to data stored in the Cloud. So the CISO is asking you to go ahead and restore normal operations and data access in OCI, your Company Cloud. 
+
+In order to re-enable access to the data, you will re-enable the encryption key that you created at the beginning of this hands-on lab. As this key is used to encrypt data in the bucket you created as well as in the Autonomous Database, this will fully re)enable access to the data. 
+
+As a Data Administrator, you will test proper access to the data is now indeed possible and normal operations can restart, now that the security alert is over. This will mark the end of this hands-on lab! 
 
 Estimated Lab Time: -- minutes
 
-### About <Product/Technology> (Optional)
-Enter background information here about the technology/feature or product used in this lab - no need to repeat what you covered in the introduction. Keep this section fairly concise. If you find yourself needing more than two sections/paragraphs, please utilize the "Learn More" section.
-
 ### Objectives
 
-*List objectives for this lab using the format below*
-
 In this lab, you will:
-* Simulate an emergency situation where you as a customer want to block access to your data in OCI
-* Disable encryption key from the external CipherTrust Key management console
-* Test access to the encrypted data and confirm users cannot access data in the Storage Bucket and Autonomous Database anymore
-* Re-enable proper access once the alert is over
-
-### Prerequisites (Optional)
-
-*List the prerequisites for this lab using the format below. Fill in whatever knowledge, accounts, etc. is necessary to complete the lab. Do NOT list each previous lab as a prerequisite.*
-
-This lab assumes you have:
-* An Oracle Cloud account
-* All previous labs successfully completed
+* As the Security alert is over, you will re-enable the encryption key used in OCI from the external CipherTrust Key management console
+* Test access to the encrypted data and confirm users can access data again in both the Storage Bucket and Autonomous Database
 
 
 ## Task 1: Re-enable key in CipherTrust Manager
