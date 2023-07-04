@@ -3,7 +3,7 @@
 ## Introduction
 
 Scenario: 
-The Security alert is now over. After all the required checks, the CISO has taken the decision to re-enable access to data stored in the Cloud. So the CISO is asking you, as you are your Company Security Operations team maanger, to go ahead and restore normal operations and data access in OCI, your Company Cloud.
+The Security alert is now over. After all the required checks, the CISO has taken the decision to re-enable access to data stored in the Cloud. So the CISO is asking you, as you are your Company Security Operations team manager, to go ahead and restore normal operations and data access in OCI, your Company Cloud.
 
 In order to re-enable access to the data, you will re-enable the encryption key that you created at the beginning of this hands-on lab. As this key is used to encrypt data in the bucket you created as well as in the Autonomous Database, this will fully re)enable access to the data. 
 
@@ -22,36 +22,36 @@ In this lab, you will:
 
 1. Go back to the CipherTrust Manager console. If you closed it, use the following URL to access CipherTrust Manager as a Service: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM"* and append your student number. For example, if your student number is 001, go to the following URL: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001"*
 
-  ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
+    ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
 
-  Enter the credentials you have been provided with. You are now logged into the CipherTrust Manager web console. Click on the Cloud Key Manager icon:
+    Enter the credentials you have been provided with. You are now logged into the CipherTrust Manager web console. Click on the Cloud Key Manager icon:
 
-  ![CipherTrust Manager web console](images/ctm-page.png "CipherTrust Manager web console")
+    ![CipherTrust Manager web console](images/ctm-page.png "CipherTrust Manager web console")
 
 
 2. On the left pane, click **Cloud Keys > Oracle**.
 
-  ![Oracle keys](images/menu-keys.png "Oracle keys")
+    ![Oracle keys](images/menu-keys.png "Oracle keys")
 
 3. Click on the three points on the right of your key line and select **Enable**:
 
-  ![Enable keys](images/to-enable.png "Enable keys")
+   ![Enable keys](images/to-enable.png "Enable keys")
 
 4. A new window will prompt you to confirm. Click **Enable**:
 
-  ![Enable keys](images/enable-key.png "Enable keys")
+    ![Enable keys](images/enable-key.png "Enable keys")
 
 6. Click **Refresh All**: 
 
-  ![Refresh All](images/refresh-all.png "Refresh All")
+    ![Refresh All](images/refresh-all.png "Refresh All")
 
-  a new window will prompt you again to confirm. Click **Refresh All** again:
+    a new window will prompt you again to confirm. Click **Refresh All** again:
 
-  ![Refresh all](images/refresh.png "Refresh all")
+    ![Refresh all](images/refresh.png "Refresh all")
 
 7. Wait until keys are in "Enabled" state:
 
-  ![Enabled keys](images/enabled-key.png "Enabled keys")
+    ![Enabled keys](images/enabled-key.png "Enabled keys")
 
 
 ## Task 2: Confirm data access into your bucket is possible as a result
@@ -64,11 +64,11 @@ In this lab, you will:
 
    ![Buckets](./images/bucket-visible.png "Buckets")
 
-  If you click on your bucket, you will be able to access:
+    If you click on your bucket, you will be able to access:
 
    ![Access](./images/upload-object.png "Access")
 
-  and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerfull key management solution for all of their OCI resources. 
+    and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerfull key management solution for all of their OCI resources. 
 
 3. Now we will check that the pre-authenticated request (PAR) that you have created is functional again as the key is enabled.
   Copy the URL you saved in lab 3 task 2 and paste it in your browser again. Confirm you can download the document. 
@@ -118,13 +118,13 @@ In this lab, you will:
 
   As you can see, now you have again complete visibility on the data within the database, as the key was re-enabled.
 
-Congratulations, you have completed all the labs!!
+Congratulations, you have finished this hands-on lab! Please call one of the trainer to show your completion and ask any questions. We hope you enjoyed it and learned something! the team is here to answer any questions you might have.
 
 ## Learn More
 
-* [Using Your Own Keys in Vault for Server-Sode Encryption](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/encryption.htm#UsingYourKMSKeys)
+* [Using Your Own Keys in Vault for Server-Side Encryption](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/encryption.htm#UsingYourKMSKeys)
 * [Managing Encryption Keys on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-encrypt-set-rotate-keys.html#GUID-0795135D-B057-4DBC-92C9-368AF4C82D0A)
 
 ## Acknowledgements
 * **Authors** - Damien Rilliard (OCI Security Seno#ior Director), Sonia Yuste (OCI Security Specialist)
-* **Last Updated By/Date** - Sonia Yuste, June 2023
+* **Last Updated By/Date** - Damien Rilliard, July 2023
