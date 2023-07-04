@@ -21,7 +21,7 @@ Let's first create a bucket in OCI Object Storage. To do that, log in to OCI con
  
     ![Buckets](./images/buckets.png "Buckets")
 
-2. Create a bucket in the compartment "ocw23-OCI-Vault-HOL" by selecting the compartment on the left in the dropdown list, then by by clicking the **Create Bucket** button.
+2. Create a bucket in the compartment "ocw23-OCI-Vault-HOL" by selecting the compartment on the left in the dropdown list, then by clicking the **Create Bucket** button.
     
     ![Create bucket](./images/create-bucket.png "Create bucket")
 
