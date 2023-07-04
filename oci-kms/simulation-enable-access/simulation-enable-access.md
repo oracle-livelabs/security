@@ -118,7 +118,7 @@ In this lab, you will:
 
     As you can see, now you have again complete visibility on the data within the database, as the key was re-enabled.
 
-Congratulations! You have finished this hands-on lab! Please call one of the trainer to show your completion and ask any questions. We hope you enjoyed it and learned something! the team is here to answer any questions you might have.
+Congratulations! You have finished this hands-on lab! Please call one of the trainer to show your completion and ask any questions. We hope you enjoyed it and learned something! The team is here to answer any questions you might have. And if you liked it, talk about it around you! See you soon!
 
 ## Learn More
 
