@@ -51,9 +51,9 @@ In this lab, you will:
 
     ![Refresh all](images/disabling.png "Refresh all")
 
-  a new window will prompt you again to confirm. Click **Refresh All**:
+    a new window will prompt you again to confirm. Click **Refresh All**:
 
-  ![Confirm refresh](images/refresh.png "Confirm refresh")
+    ![Confirm refresh](images/refresh.png "Confirm refresh")
 
 7. Wait until keys are in "Disabled" state:
 
