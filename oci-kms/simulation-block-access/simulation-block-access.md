@@ -79,9 +79,9 @@ In this lab, you will:
 3. Now we will check that any pre-authenticated request (PAR) that have been created are also non-functional anymore because the key was disabled.
 You created a pre-authenticated request to access the excel file you uploaded in your bucket in lab 3 task 2. Copy the URL you saved and paste it in your browser:
 
-  ![No access to PAR](./images/no-access-par.png "No access to PAR")
+    ![No access to PAR](./images/no-access-par.png "No access to PAR")
 
-  As you can see, the pre-authenticated request does not work anymore, and the error message clearly explains this is due to the key not being accessible to the bucket anymore.  
+    As you can see, the pre-authenticated request does not work anymore, and the error message clearly explains this is due to the key not being accessible to the bucket anymore.  
 
 ## Task 3: Check data access into your Autonomous Database
 
