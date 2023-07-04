@@ -70,11 +70,11 @@ In this lab, you will:
 
    ![Buckets](./images/inaccessible-bucket.png "Buckets")
 
-  If you click on your bucket, you will not be able to access:
+    If you click on your bucket, you will not be able to access:
 
-   ![No access](./images/no-access-to-bucket.png "No access")
+    ![No access](./images/no-access-to-bucket.png "No access")
 
-  and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerfull key management solution for all of their OCI resources. 
+    and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerfull key management solution for all of their OCI resources. 
 
 3. Now we will check that any pre-authenticated request (PAR) that have been created are also non-functional anymore because the key was disabled.
 You created a pre-authenticated request to access the excel file you uploaded in your bucket in lab 3 task 2. Copy the URL you saved and paste it in your browser:
