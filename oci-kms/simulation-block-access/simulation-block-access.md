@@ -123,7 +123,7 @@ You should have saved the URL of a pre-authenticated request to access the excel
 
     Clicking **Start** will always bring you back to that screen until the key becomes enabled into OCI Vault, which we will see in the next lab.
 
-Congratulations. You have completed the current lab by blocking the access to your data in an emergency situation. Go to the next lab to enable the access back, once the emergency simulation is over.
+Congratulations! You have completely blocked access to your Company data stored in OCI, so you're protecting it from any potential threat your CISO was alerted about. Now you can go to the next lab and learn about how to re-enable access when the alert will be over.
 
 ## Learn More
 
