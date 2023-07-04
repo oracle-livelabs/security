@@ -89,24 +89,24 @@ You should have saved the URL of a pre-authenticated request to access the excel
 
     ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
 
-2. As you can see, the database is still running:
+2. Here two situations can heppen. Either you will see your Autonomous Database stopped. This is because the key it uses is in disabled state, and the database has checked the Master Encryption Key status already. The Autonomous Database Services performs this check every 15 minutes.
+So your result at this step may vary depending on how long it took you to between disabling the keys and starting this tasks, and if a check happenned or not. You might have the following result, showing the database is still running:
 
     ![Autonomous Database](./images/adb-running.png "Autonomous Database")
 
 
-
-3. In the real world, the database would be automatically inaccessible after 2 hours. For the purpose of the lab you will, as the Data Manager user, stop the database and try to start it to confirm that it is impossible. 
+3. In this case you can either wait a little if you have time, or the easiest for the purpose of the lab is, as the Data Manager user, to stop the database and try to start it to confirm that it is impossible. 
  Click on your Autonomous Database name: 
  
- ![Autonomous Database](./images/adb-running.png "Autonomous Database")
+   ![Autonomous Database](./images/adb-running.png "Autonomous Database")
  
- and click **More Actions**, then click **Stop**:
+   and click **More Actions**, then click **Stop**:
 
-  ![Stop Autonomous Database](./images/stop-adb.png "Stop Autonomous Database")
+    ![Stop Autonomous Database](./images/stop-adb.png "Stop Autonomous Database")
 
-  A window will prompt you to confirm. Click **Stop**:
+    A window will prompt you to confirm. Click **Stop**:
 
-  ![Stop Autonomous Database](./images/confirm-stop.png "Stop Autonomous Database")
+    ![Stop Autonomous Database](./images/confirm-stop.png "Stop Autonomous Database")
 
 4. Wait until the database is fully stopped:
 
