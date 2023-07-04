@@ -89,9 +89,9 @@ You should have saved the URL of a pre-authenticated request to access the excel
 
     ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
 
-2. Here two situations can happen. Either you will see your Autonomous Database stopped and this is the expected result. This is because the key it uses is in disabled state, and the database has checked the Master Encryption Key status already. If this is the case, congratulations! You have finished this lab, you can skip the end of it and go to the last lab.
+2. Here two situations can happen. Either you will see your Autonomous Database stopped and this is the expected result. This is because the key it uses is in disabled state, and the database has checked the Master Encryption Key status already. If this is the case, congratulations! You have finished this lab, you can skip the end and go to the last lab.
 
-    But as the Autonomous Database Services performs this check every 15 minutes, your result at this step may vary depending on how long it took you between disabling the keys and starting this task, and if a check happenned already or not. So you might have the following screen, showing the database is still running:
+    But as the Autonomous Database Service performs this check every 15 minutes, your result at this step may vary depending on how long it took you between disabling the keys and starting this task, and if a check happenned already or not. So you might have the following screen, showing the database is still running:
 
     ![Autonomous Database](./images/adb-running.png "Autonomous Database")
 
@@ -111,17 +111,17 @@ You should have saved the URL of a pre-authenticated request to access the excel
 
 4. Wait until the database is fully stopped:
 
-  ![Stopped Autonomous Database](./images/stopped-adb.png "Stopped Autonomous Database")
+    ![Stopped Autonomous Database](./images/stopped-adb.png "Stopped Autonomous Database")
 
 5. Try to start again the database by clicking on **More Actions** and **Start**:
 
-  ![Start Autonomous Database](./images/re-start.png "Start Autonomous Database")
+    ![Start Autonomous Database](./images/re-start.png "Start Autonomous Database")
 
-  As you can see, it is totally impossible to start the database or do any actions on its content or configuration due to the fact that the Security Operation Manager disabled the key remotely from Thales CipherTrust Manager console:
+    As you can see, it is totally impossible to start the database or do any actions on its content or configuration due to the fact that the Security Operation Manager disabled the key remotely from Thales CipherTrust Manager console:
 
-  ![Start Autonomous Database](./images/try-start-adb.png "Start Autonomous Database")
+    ![Start Autonomous Database](./images/try-start-adb.png "Start Autonomous Database")
 
-  Clicking **Start** will always bring you back to that screen until the key becomes enabled into OCI Vault, which we will see in the next lab.
+    Clicking **Start** will always bring you back to that screen until the key becomes enabled into OCI Vault, which we will see in the next lab.
 
 Congratulations. You have completed the current lab by blocking the access to your data in an emergency situation. Go to the next lab to enable the access back, once the emergency simulation is over.
 
