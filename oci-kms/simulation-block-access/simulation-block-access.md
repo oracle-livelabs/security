@@ -126,6 +126,8 @@ Congratulations. You have completed the current lab by blocking the access to yo
 
 ## Learn More
 
+* [Load Data from Local Files with Oracle Database Actions](https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/autonomous-database-shared/doc/load-data-sqldeveloper-web.html)
+* [Load Data to Object Storage](https://docs.oracle.com/en-us/iaas/vision/vision-tutorials/vision/tutorials/Using_Pretrained_Models_in_the_Console/load_data.htm)
 * In this example disabling the key made the Database impossible to start. This is by design because the key was actually disabled, and the Autonomous Database service receives a clear answer from the OCI Vault service or external KMS that the key is in a disabled state. 
 This situation is very different from what would happen OCI Vault in itself would be unavailable. In order to protect production databases from any kind of events that would prevent the database to access Oracle Cloud Infrastructure Vault or the External KMS, such as a network outage, then Autonomous Database handles the outage as follows:
 
@@ -143,9 +145,8 @@ This situation is very different from what would happen OCI Vault in itself woul
       ```
  
     To check all the details about this, [please refer to the following documentation link.](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/manage-keys-notes.html)
-* [Load Data from Local Files with Oracle Database Actions](https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/autonomous-database-shared/doc/load-data-sqldeveloper-web.html)
-* [Load Data to Object Storage](https://docs.oracle.com/en-us/iaas/vision/vision-tutorials/vision/tutorials/Using_Pretrained_Models_in_the_Console/load_data.htm)
+
 
 ## Acknowledgements
 * **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist)
-* **Last Updated By/Date** - Sonia Yuste, June 2023
+* **Last Updated By/Date** - Damien Rilliard, July 2023
