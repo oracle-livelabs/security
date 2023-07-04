@@ -87,28 +87,13 @@ You should have saved the URL of a pre-authenticated request to access the excel
 
 1. Navigate through the main hamburger menu to: *"Oracle Database > Autonomous Database"*.
 
-  ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
+    ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
 
 2. As you can see, the database is still running:
 
-  ![Autonomous Database](./images/adb-running.png "Autonomous Database")
+    ![Autonomous Database](./images/adb-running.png "Autonomous Database")
 
-  Indeed, after you switch to customer-managed keys, some database operations will be affected when the Master Encryption Key used for your Autonomous Database instance is in "Disabled" state in Oracle Cloud Infrastructure Vault. But in order to protect production databases from any kind of events that would prevent the database to access Oracle Cloud Infrastructure Vault, such as a network outage, then Autonomous Database handles the outage as follows:
 
-    * There is a 2-hour grace period where the database remains up and running.
-
-    * If Oracle Cloud Infrastructure Vault is not reachable at the end of the 2-hour grace period, the database Lifecycle State is set to Inaccessible. In this state existing connections are dropped and new connections are not allowed.
-
-    * If Autonomous Data Guard is enabled, during or after the 2-hour grace period you can manually try to perform a failover operation. Autonomous Data Guard automatic failover is not triggered when you are using customer-managed encryption keys and the Oracle Cloud Infrastructure Vault is unreachable.
-
-    * If Autonomous Database is stopped, then you cannot start the database when the Oracle Cloud Infrastructure Vault is unreachable. For this case, the work request shown when you click Work Requests on the Oracle Cloud Infrastructure console under Resources shows: 
-
-    ```
-    The Vault service is not accessible. 
-    Your Autonomous Database could not be started. Please contact Oracle Support.
-    ```
- 
-  To check all the details about this, [please refer to the following documentation link.](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/manage-keys-notes.html)
 
 3. In the real world, the database would be automatically inaccessible after 2 hours. For the purpose of the lab you will, as the Data Manager user, stop the database and try to start it to confirm that it is impossible. 
  Click on your Autonomous Database name: 
@@ -141,6 +126,23 @@ Congratulations. You have completed the current lab by blocking the access to yo
 
 ## Learn More
 
+* In this example disabling the key made the Database impossible to start. This is by design because the key was actually disabled, and the Autonomous Database service receives a clear answer from the OCI Vault service or external KMS that the key is in a disabled state. 
+This situation is very different from what would happen OCI Vault in itself would be unavailable. In order to protect production databases from any kind of events that would prevent the database to access Oracle Cloud Infrastructure Vault or the External KMS, such as a network outage, then Autonomous Database handles the outage as follows:
+
+      * There is a 2-hour grace period where the database remains up and running.
+
+      * If Oracle Cloud Infrastructure Vault is not reachable at the end of the 2-hour grace period, the database Lifecycle State is set to Inaccessible. In this state existing connections are dropped and new connections are not allowed.
+
+      * If Autonomous Data Guard is enabled, during or after the 2-hour grace period you can manually try to perform a failover operation. Autonomous Data Guard automatic failover is not triggered when you are using customer-managed encryption keys and the Oracle Cloud Infrastructure Vault is unreachable.
+
+      * If Autonomous Database is stopped, then you cannot start the database when the Oracle Cloud Infrastructure Vault is unreachable. For this case, the work request shown when you click Work Requests on the Oracle Cloud Infrastructure console under Resources shows: 
+
+      ```
+      The Vault service is not accessible. 
+      Your Autonomous Database could not be started. Please contact Oracle Support.
+      ```
+ 
+    To check all the details about this, [please refer to the following documentation link.](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/manage-keys-notes.html)
 * [Load Data from Local Files with Oracle Database Actions](https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/autonomous-database-shared/doc/load-data-sqldeveloper-web.html)
 * [Load Data to Object Storage](https://docs.oracle.com/en-us/iaas/vision/vision-tutorials/vision/tutorials/Using_Pretrained_Models_in_the_Console/load_data.htm)
 
