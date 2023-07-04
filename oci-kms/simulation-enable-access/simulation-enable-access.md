@@ -79,44 +79,44 @@ In this lab, you will:
 
 1. Navigate through the main hamburger menu to: *"Oracle Database > Autonomous Database"*.
 
-  ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
+    ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
 
 2. Here you can have two situations. either the database has alreaady restarted, if the Autonomous Database Service has already checked that the key is enabled again. But most probably the database is still stopped:
 
-  ![Stopped Autonomous Database](./images/stopped-adb.png "Stopped Autonomous Database")
+    ![Stopped Autonomous Database](./images/stopped-adb.png "Stopped Autonomous Database")
 
 3. So you will try to start the database because the key is enabled again: start again the database by clicking on **More Actions** and **Start**:
 
-  ![Start Autonomous Database](./images/re-start.png "Start Autonomous Database")
+      ![Start Autonomous Database](./images/re-start.png "Start Autonomous Database")
 
-  Once you click **Start**, you will see the database is starting:
+      Once you click **Start**, you will see the database is starting:
 
-  ![Starting Autonomous Database](./images/starting-adb.png "Starting Autonomous Database")
-  
-  Wait until the database is started:
-  
-  ![Autonomous Database available](./images/adb-available.png "Autonomous Database available")
+      ![Starting Autonomous Database](./images/starting-adb.png "Starting Autonomous Database")
+      
+      Wait until the database is started:
+      
+      ![Autonomous Database available](./images/adb-available.png "Autonomous Database available")
 
-  As you can see, now it is possible to start the database as the key is re-enabled and reachable by the autonomous database. 
+      As you can see, now it is possible to start the database as the key is re-enabled and reachable by the autonomous database. 
 
 
 4. In order to ensure the data can be decrypted, let's try to access the data within the database. In order to do that, go to the Database Actions Launchpad:
 
-  ![Database Actions](./images/db-actions.png "Database Actions")
+    ![Database Actions](./images/db-actions.png "Database Actions")
 
 5. Once there, click to SQL under Development:
 
-  ![SQL Development](./images/sql.png "SQL Development")
+    ![SQL Development](./images/sql.png "SQL Development")
 
 6. Web SQL Development UI is open and now you can see the data into the table, right click to the table and click **Open**:
 
-  ![Open table](./images/see-data.png "Open table")
+    ![Open table](./images/see-data.png "Open table")
 
 7. In the new window, click the tab Data:
 
-  ![See data](./images/data.png "See data")
+    ![See data](./images/data.png "See data")
 
-  As you can see, now you have again complete visibility on the data within the database, as the key was re-enabled.
+    As you can see, now you have again complete visibility on the data within the database, as the key was re-enabled.
 
 Congratulations, you have finished this hands-on lab! Please call one of the trainer to show your completion and ask any questions. We hope you enjoyed it and learned something! the team is here to answer any questions you might have.
 
