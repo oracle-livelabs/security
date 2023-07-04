@@ -193,7 +193,7 @@ In this task you will load the previous CSV file you loaded into your bucket, in
 
   ![See data](./images/data.png "See data")
 
-Congratulations, you have already encrypted your file in Object Storage and your data within Autonomous Database. Now you will see in the next labs the simulation of an emergency due to potential security breach and how your data can be protected in such scenario.
+Congratulations, you have encrypted your file in Object Storage and your data within Autonomous Database. Now you will see in the next labs the simulation of an emergency due to a potential security breach. We will see together how you can protect your data in such a scenario!
 
 ## Learn More
 
