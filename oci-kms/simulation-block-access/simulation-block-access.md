@@ -145,7 +145,7 @@ This situation is very different from what would happen OCI Vault in itself woul
       Your Autonomous Database could not be started. Please contact Oracle Support.
       ```
  
-    To check all the details about this, [please refer to the following documentation link.](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/manage-keys-notes.html)
+    To check all the details about this, [please refer to the documentation.](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/manage-keys-notes.html)
 
 
 ## Acknowledgements

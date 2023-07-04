@@ -3,18 +3,18 @@
 ## Introduction
 
 Scenario: 
-You're part of your company Security Operations team. The Security alrt is over. After all the required checks, the CISO has taken the decision to re-enable access to data stored in the Cloud. So the CISO is asking you to go ahead and restore normal operations and data access in OCI, your Company Cloud. 
+The Security alert is now over. After all the required checks, the CISO has taken the decision to re-enable access to data stored in the Cloud. So the CISO is asking you, as you are your Company Security Operations team maanger, to go ahead and restore normal operations and data access in OCI, your Company Cloud.
 
 In order to re-enable access to the data, you will re-enable the encryption key that you created at the beginning of this hands-on lab. As this key is used to encrypt data in the bucket you created as well as in the Autonomous Database, this will fully re)enable access to the data. 
 
-As a Data Administrator, you will test proper access to the data is now indeed possible and normal operations can restart, now that the security alert is over. This will mark the end of this hands-on lab! 
+As a Data Administrator, you will test proper access to the data is now indeed possible and normal operations can restart, now that the security alert is over. This will mark the end of this hands-on lab!
 
 Estimated Lab Time: -- minutes
 
 ### Objectives
 
 In this lab, you will:
-* As the Security alert is over, you will re-enable the encryption key used in OCI from the external CipherTrust Key management console
+* Re-enable the encryption key used in OCI from the external CipherTrust Key management console as the Security alert is over
 * Test access to the encrypted data and confirm users can access data again in both the Storage Bucket and Autonomous Database
 
 
