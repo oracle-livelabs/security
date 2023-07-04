@@ -53,7 +53,7 @@ In this lab, you will:
 
   a new window will prompt you again to confirm. Click **Refresh All**:
 
-    ![Confirm refresh](images/refresh.png "Confirm refresh")
+  ![Confirm refresh](images/refresh.png "Confirm refresh")
 
 7. Wait until keys are in "Disabled" state:
 
