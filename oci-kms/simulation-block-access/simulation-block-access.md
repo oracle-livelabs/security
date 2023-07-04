@@ -89,8 +89,9 @@ You should have saved the URL of a pre-authenticated request to access the excel
 
     ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
 
-2. Here two situations can happen. Either you will see your Autonomous Database stopped and this is the expected result. Congratulations! This is because the key it uses is in disabled state, and the database has checked the Master Encryption Key status already. 
-As the Autonomous Database Services performs this check every 15 minutes, your result at this step may vary depending on how long it took you to between disabling the keys and starting this tasks, and if a check happenned or not. You might have the following screen, showing the database is still running:
+2. Here two situations can happen. Either you will see your Autonomous Database stopped and this is the expected result. This is because the key it uses is in disabled state, and the database has checked the Master Encryption Key status already. If this is the case, congratulations! You have finished this lab, you can skip the end of it and go to the last lab.
+
+  But as the Autonomous Database Services performs this check every 15 minutes, your result at this step may vary depending on how long it took you between disabling the keys and starting this task, and if a check happenned already or not. So you might have the following screen, showing the database is still running:
 
     ![Autonomous Database](./images/adb-running.png "Autonomous Database")
 
