@@ -81,11 +81,11 @@ In this lab, you will:
 
     ![Autonomous Database](./images/autonomous-database.png "Autonomous Database")
 
-2. Here you can have two situations. either the database has alreaady restarted, if the Autonomous Database Service has already checked that the key is enabled again. But most probably the database is still stopped:
+2. Here you can have two situations. Either the database has already restarted, if the Autonomous Database Service has already checked that the key is enabled again. Or most probably the database is still stopped:
 
     ![Stopped Autonomous Database](./images/stopped-adb.png "Stopped Autonomous Database")
 
-3. So you will try to start the database because the key is enabled again: start again the database by clicking on **More Actions** and **Start**:
+3. So you will start the database because the key is enabled again by clicking on **More Actions** and **Start**:
 
       ![Start Autonomous Database](./images/re-start.png "Start Autonomous Database")
 
@@ -97,28 +97,28 @@ In this lab, you will:
       
       ![Autonomous Database available](./images/adb-available.png "Autonomous Database available")
 
-      As you can see, now it is possible to start the database as the key is re-enabled and reachable by the autonomous database. 
+      As you can see, now it is possible to start the database as the key is re-enabled and reachable by the Autonomous Database service.
 
 
-4. In order to ensure the data can be decrypted, let's try to access the data within the database. In order to do that, go to the Database Actions Launchpad:
+4. In order to ensure the data can be decrypted, let's try to access the data within the database. In order to do that, click on the **Database actions** launchpad:
 
     ![Database Actions](./images/db-actions.png "Database Actions")
 
-5. Once there, click to SQL under Development:
+5. Once there, click on the **SQL** square under Development:
 
     ![SQL Development](./images/sql.png "SQL Development")
 
-6. Web SQL Development UI is open and now you can see the data into the table, right click to the table and click **Open**:
+6. Web SQL Development UI is open and now you can see the data into the table, right click on the table and click **Open**:
 
     ![Open table](./images/see-data.png "Open table")
 
-7. In the new window, click the tab Data:
+7. In the new window, click the **Data** tab:
 
     ![See data](./images/data.png "See data")
 
     As you can see, now you have again complete visibility on the data within the database, as the key was re-enabled.
 
-Congratulations, you have finished this hands-on lab! Please call one of the trainer to show your completion and ask any questions. We hope you enjoyed it and learned something! the team is here to answer any questions you might have.
+Congratulations! You have finished this hands-on lab! Please call one of the trainer to show your completion and ask any questions. We hope you enjoyed it and learned something! the team is here to answer any questions you might have.
 
 ## Learn More
 
