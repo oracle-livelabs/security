@@ -21,9 +21,14 @@ In this lab, you will:
 
 ## Task 1: Disable keys in CipherTrust Manager
 
-1. Go to the following URL to access CipherTrust Manager as a Service: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM"* and append your student number. For example, if your student number is 001, go to the following URL: *"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001"*
+1. Login to the CipherTrust Manager console. 
+If you lost the link: to access CipherTrust Manager as a Service you will need to create the URL to access your own private tenant. To do this, you need to copy and paste this URL: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM" in your browser address bar and add your student number at the end of the URL. For example, if your student number is 001, the complete URL to your own private CTM tenant will be: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001". 
 
-    ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
+  ![URL creation in address bar](images/ctm-address-bar.png "URL creation in address bar")
+
+    Once you access your login window, please login using your "Secops_XXX" user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you. 
+
+  ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
 
 2. Enter the credentials you have been provided with. You are now logged into the CipherTrust Manager web console. Click on the Cloud Key Manager icon:
 
