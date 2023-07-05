@@ -14,6 +14,12 @@ In this lab, you will:
 * Connect to your OCI tenant and create an encrypted Storage Bucket and Autonomous Database.
 * Test access to the encrypted data and confirm the right users can correctly access cleartext data in the Storage Bucket and Autonomous Database.
 
+### Prerequisites
+
+This lab assumes you have:
+* An Oracle Cloud account
+* All previous labs successfully completed
+
 ## Task 1: Create a bucket with your own encryption keys
 
 1. You first need to login to your OCI tenant with the **Data\_Manager\_XXX** user where XXX is your student login, please refer to the "Get Started" Lab if required. 

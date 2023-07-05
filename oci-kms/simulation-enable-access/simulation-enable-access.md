@@ -17,6 +17,12 @@ In this lab, you will:
 * Re-enable the encryption key used in OCI from the external CipherTrust Key management console as the Security alert is over
 * Test access to the encrypted data and confirm users can access data again in both the Storage Bucket and Autonomous Database
 
+### Prerequisites
+
+This lab assumes you have:
+* An Oracle Cloud account
+* All previous labs successfully completed
+
 
 ## Task 1: Re-enable key in CipherTrust Manager
 
@@ -119,6 +125,7 @@ In this lab, you will:
     As you can see, now you have again complete visibility on the data within the database, as the key was re-enabled.
 
 Congratulations! You have finished this hands-on lab! Please call one of the trainer to show your completion and ask any questions. We hope you enjoyed it and learned something! The team is here to answer any questions you might have. And if you liked it, talk about it around you! See you soon!
+
 
 ## Learn More
 

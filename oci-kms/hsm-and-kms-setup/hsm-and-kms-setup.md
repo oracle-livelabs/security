@@ -15,7 +15,7 @@ For the purpose of this lab, you will work with Thales CipherTrust Data Security
 In this lab, you will:
 * Create an external Thales HSM/Key Management
 
-### Prerequisites (Optional)
+### Prerequisites
 
 This lab assumes you have:
 * An Oracle Cloud account

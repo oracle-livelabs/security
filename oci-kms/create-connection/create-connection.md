@@ -37,40 +37,40 @@ Each vault has a management endpoint and a cryptography endpoint. To create a Va
 
 2. Navigate through the main hamburger menu to *"Identity & Security > Vault"*
 
-	![Go to Vault](images/vault-menu.png)
+	![Go to Vault](images/vault-menu.png "Go to Vault")
 
 3. Pick up the compartment in the left menu. Click the display menu and select the already created subcompartment "ocw23-OCI-Vault-HOL". 
 
-    ![select compartment](images/select-compartment.png)
+    ![select compartment](images/select-compartment.png "select compartment")
 
     Then click "Create Vault".
 
-    ![Create Vault](images/select-compartment-create-vault.png)
+    ![Create Vault](images/select-compartment-create-vault.png "Create Vault")
 
 4. Enter a name for your Vault. Please follow the naming convention: ocw23-OCI-Vault-XXX where XXX is your number student. Do NOT click "Make it a virtual private vault". Click on "Create Vault" button to finish this step. 
 
-     ![Enter name for Vault](images/create-name-vault.png)
+     ![Enter name for Vault](images/create-name-vault.png "Enter name for Vault")
 
 5. Now your Vault will start to be created. Once it is created, the status will appear as Green and Active in your OCI console:
 
-    ![Vault successfully created](images/vault-created.png)
+    ![Vault successfully created](images/vault-created.png "Vault successfully created")
 
 6. In order to configure the connection between the Vault you just created and Thales CipherTrust manager (CTM), you must add an API Key (a RSA key pair) for your user. CTM will use the private key to make connection to OCI and call its APIs. To do that, click on the top right user profile icon in OCI console and select **User Settings**
 
-    ![User Settings](images/user-settings.png)
+    ![User Settings](images/user-settings.png "")
 
 7. In the left menu, navigate to Resources and API Keys. Click *"Add API Key"*.
 
-    ![Add API Key](images/add-apikey.png)
+    ![Add API Key](images/add-apikey.png "User Settings")
 
 8. A window will prompt asking you how you want to create those API Keys. You can generate the API key pair direclty in this step, or you also have the option to import previously created keys. In this case, we will generate the API key pair in this step and will download the private key. 
     Select *"Generate API Key Pair"* and *"Download Private Key"*. Save your private key in a local directory, as you will need it later. Click Add.
 
-    ![Generate API Key](images/generate-apikey.png)
+    ![Generate API Key](images/generate-apikey.png "Generate API Key")
 
 9. After you click *"Add"*, you will be able to see the Configuration File Preview, as following:
 
-    ![Configuration file](images/configuration-file.png)
+    ![Configuration file](images/configuration-file.png "Configuration file")
 
 Copy all the information on notepad as it will be used to create connection between Oracle and CTM.
 
@@ -114,7 +114,7 @@ In this task you will create a connection from your CipherTrust Manager (CTM) te
 
 Copy the following parameters you had in your configuration file:
 
-![Configuration file](images/configuration-file-red-squares.png)
+![Configuration file](images/configuration-file-red-squares.png "Configuration file")
 
    * Tenancy OCID: OCID of the tenancy.
    * User OCID: OCID of the user.

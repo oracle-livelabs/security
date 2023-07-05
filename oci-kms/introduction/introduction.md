@@ -1,6 +1,6 @@
 # Introduction
 
-## About this Workshop
+### About this Workshop
 
 Did you know you can manage your encryption keys outside of OCI? 
 
@@ -40,6 +40,20 @@ This lab assumes you have:
 * A Thales CipherTrust Key Manager as a Service account
 
 Both environments will be provided to you by the trainers.
+
+## Lab breakdown
+
+- **Lab 1:** Link creation between OCI and you HSM and Master Encryption Key creation
+- **Lab 2:** Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)
+- **Lab 3:** Configure Customer Managed Encryption for OCI Resources
+- **Lab 4:** Emergency simulation test: block data access
+- **Lab 5:**  Emergency simulation test: re-enable data access
+
+
+## What's Next?
+
+  You are all set to begin the labs! You may now **proceed to the next lab**.
+
 
 ## Learn More
 

@@ -18,6 +18,12 @@ In this lab, you will:
 * Disable encryption key from the external CipherTrust Key management console
 * Test access to the encrypted data and confirm users cannot access data in the Storage Bucket and Autonomous Database anymore
 
+### Prerequisites
+
+This lab assumes you have:
+* An Oracle Cloud account
+* All previous labs successfully completed
+
 
 ## Task 1: Disable keys in CipherTrust Manager
 
@@ -96,12 +102,11 @@ You should have saved the URL of a pre-authenticated request to access the excel
     ![Autonomous Database](./images/adb-running.png "Autonomous Database")
 
 
-3. In this case you can either wait a little if you have time, or the easiest for the purpose of the lab is, as the Data Manager user, to stop the database and try to start it to confirm that it is impossible. 
- Click on your Autonomous Database name: 
+3. In this case you can either wait a little if you have time, or the easiest for the purpose of the lab is, as the Data Manager user, to stop the database and try to start it to confirm that it is impossible. Click on your Autonomous Database name: 
  
    ![Autonomous Database](./images/adb-running.png "Autonomous Database")
  
-   and click **More Actions**, then click **Stop**:
+    and click **More Actions**, then click **Stop**:
 
     ![Stop Autonomous Database](./images/stop-adb.png "Stop Autonomous Database")
 
