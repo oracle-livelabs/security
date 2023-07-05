@@ -34,8 +34,8 @@
         },
         {
             "title": "Need Help?",
-            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+            "description": "Solutions to Common Problems and Directions for Receiving Help",
+            "filename":"../../need-help-ocw/need-help-ocw.md"
         }
     ]
 }
