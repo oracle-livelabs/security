@@ -224,9 +224,7 @@ This lab assumes you have:
    You can read more about Online Redefnition from MOS note:
   - How to Compress a Table While it is Online (Doc ID 1353967.1)
   - Primary Note: Overview of Online Redefinition of Tables (DBMS_REDEFINITION) (Doc ID 1357825.1)
-  - Online Redefinition using **"DBMS\_REDEFINITION.REDEF\_TABLE"** (Doc ID 2412059.1)
-
-  1. Execute offline compression
+  - Online Redefinition using **"DBMS_REDEFINITION.REDEF_TABLE"** (Doc ID 2412059.1)
    
    ````
    <copy>
@@ -352,41 +350,37 @@ This lab assumes you have:
 
   **Note**: Again, the numbers you get may be different then the screenshot, but the point is to show compression, so if that is still visible, you have done this lab successfully.
 
-  1. View space benefit of Oracle TDE with compression
+   ````
+   <copy>
+   du -hs /u01/oradata/cdb1/pdb1/comp_data_ts.dbf
+   </copy>
+   ````
 
-      ````
-      <copy>
-      du -hs /u01/oradata/cdb1/pdb1/comp_data_ts.dbf
-      </copy>
-      ````
+   ![Show ACO and TDE together](./images/aco-008-1.png "ACO")
 
-      ![Show ACO and TDE together](./images/aco-008-1.png "ACO")
+   As you can see here, we went from a size of 317MB to 143MB which is a significant decrease in size showing successful enablement of advanced compression for an encrypted tablespace. 
 
-      As you can see here, we went from a size of 317MB to 143MB which is a significant decrease in size showing successful enablement of advanced compression for an encrypted tablespace. 
-
-## Task 5: (Optional) Enable session parallelism to speed up compression process via online redefinition
+## (Option) Enable session parallelism to speed up compression process via online redefinition
    **Consider to use parallelism for compress your production database data**
    * Parallelism will use direct-path load, the compression engine can work with a large volume of rows to compress and write out compressed rows to the data blocks in a batch fasion, therefore, it is much efficient than conventional load. 
    * Using Parallelism using direct-path load mechanism, similar to when you use APPEND hint, the data is inserted above the segment high water mark, which potentially can use more space in the datafile. 
 
    **Parallel Online Redefinition For LOB Table (Doc ID 2315184.1)**
+   ````
+   <copy>
+   sqlplus system/Oracle123@localhost:1521/pdb1
+   ALTER SESSION ENABLE PARALLEL DML ;
+   ALTER SESSION FORCE PARALLEL DML PARALLEL 2;
+   ALTER SESSION FORCE PARALLEL QUERY PARALLEL 2;
+   ALTER SESSION ENABLE PARALLEL DDL;
+   ALTER SESSION FORCE PARALLEL DDL PARALLEL 2;
+   exit
+   </copy>
+   ````
 
-   1. Enable session parallelism
-      ````
-      <copy>
-      sqlplus system/Oracle123@localhost:1521/pdb1
-      ALTER SESSION ENABLE PARALLEL DML ;
-      ALTER SESSION FORCE PARALLEL DML PARALLEL 2;
-      ALTER SESSION FORCE PARALLEL QUERY PARALLEL 2;
-      ALTER SESSION ENABLE PARALLEL DDL;
-      ALTER SESSION FORCE PARALLEL DDL PARALLEL 2;
-      exit
-      </copy>
-      ````
+   ![Session Parallelism](./images/aco-009.png "ACO")
 
-      ![Session Parallelism](./images/aco-009.png "ACO")
-
-## Task 6: Restore the database if needed
+## Task 5: Restore the database if needed
 
 1. First, execute this script to restore the pfile
 

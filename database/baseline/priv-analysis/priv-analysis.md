@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Privilege Analysis. It give
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DB 19.19
+*Version tested in this lab:* Oracle DB 19.17
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Privilege Analysis (May 2022)*" [](youtube:OsvxpBIKoOQ)
@@ -51,7 +51,7 @@ This lab assumes you have:
     <copy>./pa_create_capture.sh</copy>
     ````
 
-    ![Privilege Analysis](./images/pa-001.png "Create the Privilege Analysis capture")
+    ![Privilege Analysis](./images/pa-001.png "Privilege Analysis")
 
 4. Next, start the capture
 
@@ -59,7 +59,7 @@ This lab assumes you have:
     <copy>./pa_enable_capture.sh</copy>
     ````
 
-    ![Privilege Analysis](./images/pa-002.png "Start the capture")
+    ![Privilege Analysis](./images/pa-002.png "Privilege Analysis")
 
     **Note**: This will start collecting all of the privileges and/or roles that are being used
 
@@ -69,7 +69,7 @@ This lab assumes you have:
     <copy>./pa_generate_workload.sh</copy>
     ````
 
-    ![Privilege Analysis](./images/pa-003.png "Generate some workload")
+    ![Privilege Analysis](./images/pa-003.png "Privilege Analysis")
 
 6. We can disable the capture when we feel we have enough data
 
@@ -77,7 +77,7 @@ This lab assumes you have:
     <copy>./pa_disable_capture.sh</copy>
     ````
 
-    ![Privilege Analysis](./images/pa-004.png "Disable the capture")
+    ![Privilege Analysis](./images/pa-004.png "Privilege Analysis")
 
 ## Task 2: Analyze the workload captured
 
@@ -87,7 +87,7 @@ This lab assumes you have:
     <copy>./pa_generate_report.sh</copy>
     ````
 
-    ![Privilege Analysis](./images/pa-005.png "Generate the report")
+    ![Privilege Analysis](./images/pa-005.png "Privilege Analysis")
 
     **Note**:
     - It takes all of the privileges and roles that were identified as used during the capture and compares it to the roles and privileges granted to each user
@@ -99,7 +99,7 @@ This lab assumes you have:
     <copy>./pa_review_report.sh</copy>
     ````
 
-    ![Privilege Analysis](./images/pa-006.png "Report results")
+    ![Privilege Analysis](./images/pa-006.png "Privilege Analysis")
 
     **Note**:
     - You can see all the privileges (System and Objects) used and unused by all the active users during the capture
@@ -122,39 +122,39 @@ This lab assumes you have:
         <copy>Oracle123</copy>
         ````
 
-        ![Privilege Analysis](./images/pa-007.png "OEM - Login screen")
+        ![Privilege Analysis - Login screen](./images/pa-007.png "Privilege Analysis - Login screen")
 
     - Expand all the databases and click on **cdb_PDB1**
 
-        ![Privilege Analysis](./images/pa-008.png "OEM - Targets overview")
+        ![OEM Cloud Control - Targets overview](./images/pa-008.png "OEM Cloud Control - Targets overview")
 
     - In the menu, select **Security** and **Privileges Analysis**
 
-        ![Privilege Analysis](./images/pa-009.png "OEM - Privileges Analysis menu")
+        ![OEM Cloud Control - Privileges Analysis menu](./images/pa-009.png "OEM Cloud Control - Privileges Analysis menu")
 
     - Check "**Named**" and select "**PA_ADMIN**" as Credential Name
 
-        ![Privilege Analysis](./images/pa-010.png "OEM - Privileges Analysis login")
+        ![OEM Cloud Control - Privileges Analysis login](./images/pa-010.png "OEM Cloud Control - Privileges Analysis login")
 
     - Click [**Login**]
 
     - Select our report generated during the capture (here "**All database Capture**") and click [**View Report**]
 
-        ![Privilege Analysis](./images/pa-011.png "OEM - Privileges Analysis captures")
+        ![OEM Cloud Control - Privileges Analysis captures](./images/pa-011.png "OEM Cloud Control - Privileges Analysis captures")
 
     - You can see all users that connected to the database during the capture period, along with the privileges used
 
-        ![Privilege Analysis](./images/pa-012.png "OEM - Privileges Analysis global report")
+        ![OEM Cloud Control - Privileges Analysis global report](./images/pa-012.png "OEM Cloud Control - Privileges Analysis global report")
 
     - Click on the "**Used**" tab to see all the privileges used during the capture and by whom
 
-        ![Privilege Analysis](./images/pa-013.png "OEM - Privileges Analysis Used report")
+        ![OEM Cloud Control - Privileges Analysis Used report](./images/pa-013.png "OEM Cloud Control - Privileges Analysis Used report")
 
         **Note**: The Export to Spreadsheet button allows you to provide this information to persons who can make decisions about granting or revoking rights
 
     - You can also view unused privileges – these may be privileges the accounts don't need. If so, removing these unnecessary privileges is an excellent way to shrink the amount of damage these accounts could do if they were compromised. Click on the "**Unused**" tab to see all the privileges that were unused during the capture and by whom
 
-        ![Privilege Analysis](./images/pa-014.png "OEM - Privileges Analysis Unused report")
+        ![OEM Cloud Control - Privileges Analysis Unused report](./images/pa-014.png "OEM Cloud Control - Privileges Analysis Unused report")
 
         **Note**: We can clearly see if a user has too many rights, or rights that they don't need to perform their tasks
 
@@ -167,7 +167,7 @@ This lab assumes you have:
     <copy>./pa_drop_capture.sh</copy>
     ````
 
-    ![Privilege Analysis](./images/pa-015.png "Drop the capture")
+    ![Privilege Analysis](./images/pa-015.png "Privilege Analysis")
 
 You may now proceed to the next lab!
 
@@ -177,7 +177,7 @@ Privilege analysis increases the security of your applications and database oper
 
 Running inside the Oracle Database kernel, privilege analysis helps reduce the attack surface of user, tooling, and application accounts by identifying used and unused privileges to implement the least-privilege model.
 
-![Privilege Analysis](./images/pa-concept.png "Privilege Analysis Concept")
+![Privilege Analysis](./images/pa-concept.png "Privilege Analysis")
 
 Privilege analysis dynamically captures privileges used by database users and applications. The use of privilege analysis can help to quickly and efficiently enforce least privilege guidelines. In the least-privilege model, users are only given the privileges and access they need to do their jobs. Frequently, even though users perform different tasks, users are all granted the same set of powerful privileges. Without privilege analysis, figuring out the privileges that each user must have can be hard work and in many cases, users could end up with some common set of privileges even though they have different tasks. Even in organizations that manage privileges, users tend to accumulate privileges over time and rarely lose any privileges. Separation of duty breaks a single process into separate tasks for different users. Least privileges enforces the separation so users can only do their required tasks. The enforcement of separation of duty is beneficial for internal control, but it also reduces the risk from malicious users who steal privileged credentials.
 
@@ -217,5 +217,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Richard Evans
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - July 2023
+- **Contributors** - Rene Fontcha
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023

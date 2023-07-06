@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the various features and functionality of Oracle Transparent Data Encryption (TDE). It gives the user an opportunity to learn how to configure those features in order to encrypt sensitive data. For the uses of this LiveLab, it wall also give us encrypted tablespaces to apply compression to in the next lab.
 
-*Estimated Time:* 45 minutes
+*Estimated Lab Time:* 45 minutes
 
 *Version tested in this lab:* Oracle DB 19.17
 
@@ -24,7 +24,7 @@ This lab assumes you have:
     - Lab: Initialize Environment
 
 ### Lab Timing (estimated)
-| Task No. | Feature | Approx. Time |
+| Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
 | 1 | Allow DB Restore | 5 minutes  |
 | 2 | Create Keystore | <5 minutes |
