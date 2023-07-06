@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Unified Auditing. It gives 
 
 *Estimated Lab Time:* 35 minutes
 
-*Version tested in this lab:* Oracle DB 19.17
+*Version tested in this lab:* Oracle DB 19.19
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Unified Auditing (May 2022)*" [](youtube:bK26Y0TZANY)
@@ -59,17 +59,17 @@ This lab assumes you have:
 
     - We have already set the environment for you in pure Unified Auditing mode, hence you should see that Unified Audit is set to **TRUE**
 
-        ![Unified Auditing](./images/ua-001.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-001.png "Display the audit settings")
 
         **Note**: This means our database is in "pure" unified auditing mode and you are no longer utilize the traditional auditing capabilities
 
     - The 2nd query shows you how many Unified Audit Policies exist and how many audit-related attributes are associated with each policy
 
-        ![Unified Auditing](./images/ua-002.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-002.png "Display the audit settings")
 
     - The 3rd query of this script shows you which Unified Audit policies are **enabled**
 
-        ![Unified Auditing](./images/ua-003.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-003.png "Display the audit settings")
 
         **Note**:
         - Just because the policy exists in the previous query does not mean it's enabled
@@ -79,7 +79,7 @@ This lab assumes you have:
 
     - The 4th query shows you auditing based on context
 
-        ![Unified Auditing](./images/ua-004.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-004.png "Display the audit settings")
 
         **Note**:
         - We have one policy called `TICKETINFO` that captures an attribute named `TICKET_ID`
@@ -91,7 +91,7 @@ This lab assumes you have:
     <copy>./ua_who_audit_roles.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-005.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-005.png "Display who has the AUDIT_ADMIN and AUDIT_VIEWER roles")
 
 5. Display the existing audit records for the database you connect to (by default, the script will choose **pdb1** as the database to query)
 
@@ -99,7 +99,7 @@ This lab assumes you have:
     <copy>./ua_query_existing_audit_records.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-006.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-006.png "Display the existing audit records")
 
 6. Finally, shows some of the details of the `DBMS_AUDIT_MGMT` package
 
@@ -107,7 +107,7 @@ This lab assumes you have:
     <copy>./ua_dbms_audit_mgmt_settings.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-026.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-026.png "Shows some of the details of the DBMS_AUDIT_MGMT package")
 
     **Note**:
     - The function, `DBMS_AUDIT_MGMT.GET_AUDIT_COMMIT_DELAY`, returns the audit commit delay time as the number of seconds
@@ -123,7 +123,7 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
     <copy>./ua_query_employeesearch_usage.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-007.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-007.png "Identify the connections we trust")
 
     **Note**: When prompted, **DO NOT press [return]** before executing a research in Glassfish as mentioned below!
 
@@ -143,24 +143,24 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
         <copy>Oracle123</copy>
         ````
 
-        ![Unified Auditing](./images/ua-008.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-008.png "Login to the HR Application")
 
-        ![Unified Auditing](./images/ua-009.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-009.png "Login to the HR Application")
 
     - Click on **Search Employees**
 
-        ![Unified Auditing](./images/ua-010.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-010.png "Search Employees")
 
     - Click [**Search**]
 
-        ![Unified Auditing](./images/ua-011.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-011.png "Search Employees")
 
     - Change some of the criteria and Search again
     - **Repeat 2-3 times** to ensure you have enough traffic
 
 3. Go back to your terminal session and **press [return]** when you are ready to see the results
 
-    ![Unified Auditing](./images/ua-012.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-012.png "Press [return] when you are ready to see the results")
 
 4.  Then, run a query to generate traffic from **SQL*Plus** on the host OS
 
@@ -168,7 +168,7 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
     <copy>./ua_query_employeesearch.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-013.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-013.png "Generate traffic")
 
 5. Now, create the **Unified Audit Policy**
 
@@ -176,7 +176,7 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
     <copy>./ua_create_audit_policy.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-014.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-014.png "Create the Unified Audit Policy")
 
     **Note**:
     - The Unified Audit Policy will capture your machine-related details to create the  **WHEN** clause
@@ -194,7 +194,7 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
     <copy>./ua_enable_audit_policy.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-015.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-015.png "Enable Unified Audit Policy")
 
 7. Run additional queries to generate traffic and to see if Audit records are generated
 
@@ -204,24 +204,24 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
         <copy>./ua_query_employeesearch_usage.sh</copy>
         ````
 
-        ![Unified Auditing](./images/ua-007.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-007.png "Generate traffic")
 
         **Note**: When prompted, **DO NOT press [return]** before executing a research in Glassfish as mentioned below!
 
     - Go back to your Glassfish app to generate new activity by clicking on **Search Employees**
 
-        ![Unified Auditing](./images/ua-010.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-010.png "Generate new activity on Glassfish app")
 
     - Click [**Search**]
 
-        ![Unified Auditing](./images/ua-011.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-011.png "Search employees")
 
     - Change some of the criteria and Search again
     - **Repeat 2-3 times** to ensure you have enough traffic
 
     - Then, go back to your terminal session an press **[return]**
 
-        ![Unified Auditing](./images/ua-016.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-016.png "Stop the caature")
 
     - View the results of the audit output for the Audit Policy `AUDIT_EMPLOYEESEARCH_USAGE`
 
@@ -229,7 +229,7 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
         <copy>./ua_query_audit_records.sh</copy>
         ````
 
-        ![Unified Auditing](./images/ua-016b.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-016b.png "View the results of the audit output")
 
 
         **Note**: They should not be generated based on this Unified Audit Policy because we are **excluding** application audit data
@@ -242,7 +242,7 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
         <copy>./ua_query_employeesearch.sh</copy>
         ````
 
-        ![Unified Auditing](./images/ua-013.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-013.png "Search employees")
 
     - Now, view the results of the audit output for the Audit Policy `AUDIT_EMPLOYEESEARCH_USAGE`
 
@@ -250,7 +250,7 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
         <copy>./ua_query_audit_records.sh</copy>
         ````
 
-        ![Unified Auditing](./images/ua-017.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-017.png "View the results of the audit output")
 
         **Note**:
         - You can see we have an entry that corresponds with our use of SQL*Plus while not capturing queries from the Glassfish application
@@ -263,7 +263,7 @@ In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outsi
     <copy>./ua_delete_audit_policy.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-027.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-027.png "Remove the Unified Audit policy")
 
 ## Task 3: Audit Database Role Usage
 When you audit a role, Oracle Database audits all system privileges that are directly granted to the role. You can audit any role, including user-defined roles. If you create a common unified audit policy for roles with the ROLES audit option, then you must specify only common roles in the role list.
@@ -276,7 +276,7 @@ When such a policy is enabled, Oracle Database audits all system privileges that
     <copy>./ua_create_role.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-018.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-018.png "Create the role MGR_ROLE")
 
 2. Create the Audit Policy `AUD_ROLE_POL` to audit the use of the role `MGR_ROLE`
 
@@ -284,7 +284,7 @@ When such a policy is enabled, Oracle Database audits all system privileges that
     <copy>./ua_create_role_audit_policy.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-019.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-019.png "Create the Audit Policy AUD_ROLE_POL")
 
 3. Next, create the `DBA_JUNIOR` user who will be granted the `DBA` role
 
@@ -292,7 +292,7 @@ When such a policy is enabled, Oracle Database audits all system privileges that
     <copy>./ua_create_junior_dba.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-020.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-020.png "Create the DBA_JUNIOR user")
 
 4. Create the policy associated with auditing the use of the `DBA` role
 
@@ -300,7 +300,7 @@ When such a policy is enabled, Oracle Database audits all system privileges that
     <copy>./ua_create_dba_audit_policy.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-021.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-021.png "Create the policy associated")
 
 5. Enable the audit policies for `MGR_ROLE` and `DBA` role usage
 
@@ -308,7 +308,7 @@ When such a policy is enabled, Oracle Database audits all system privileges that
     <copy>./ua_enable_audit_policies.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-022.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-022.png "Enable the audit policies")
 
 6. View the audit policies that are enabled
 
@@ -316,7 +316,7 @@ When such a policy is enabled, Oracle Database audits all system privileges that
     <copy>./ua_view_audit_policies.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-023.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-023.png "Check the audit policies")
 
 7. Execute SQL statements that will show up in the Unified Audit Trail
 
@@ -324,7 +324,7 @@ When such a policy is enabled, Oracle Database audits all system privileges that
     <copy>./ua_generate_audits.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-024.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-024.png "Generate audits")
 
 8. View the Unified Audit Trail output associated with the two audit policies
 
@@ -332,7 +332,7 @@ When such a policy is enabled, Oracle Database audits all system privileges that
     <copy>./ua_review_generated_audits.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-025.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-025.png "View the Unified Audit Trail output")
 
 
 9. When you have completed this lab, you can remove the role usage Unified Audit policies
@@ -341,7 +341,7 @@ When such a policy is enabled, Oracle Database audits all system privileges that
     <copy>./ua_delete_role_audit_policy.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-025b.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-025b.png "Remove the role usage Unified Audit policies")
 
 ## Task 4: Audit Data Pump Usage
 
@@ -353,7 +353,7 @@ In this lab you will configure the Unified Audit Trail and review an audit of Or
     <copy>./ua_audit_datapump_export.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-028.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-028.png "Create the Unified Audit Policy DP_POL")
 
 2. Perform two Data Pump exports of the table `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES`...
 
@@ -363,11 +363,11 @@ In this lab you will configure the Unified Audit Trail and review an audit of Or
 
     - ...as a user authorized (`SYSTEM`): **Successfully** ... and the export file `$DBSEC_LABS/unified-auditing/HR_table.dmp` has been created!
 
-        ![Unified Auditing](./images/ua-029a.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-029a.png "Data Pump exports")
 
     - ...and as a user who is not authorized (`DBSAT_ADMIN`): **In Failure!**
 
-        ![Unified Auditing](./images/ua-029b.png "Unified Auditing")
+        ![Unified Auditing](./images/ua-029b.png "Data Pump exports")
 
     **Note**: Only the successfull export is available!
 
@@ -377,7 +377,7 @@ In this lab you will configure the Unified Audit Trail and review an audit of Or
     <copy>./ua_review_datapump_audit_events.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-030.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-030.png "Review the Unified Audit Trail")
 
 4. When you have completed the lab, you can remove the Data Pump Unified Audit policy
 
@@ -385,7 +385,7 @@ In this lab you will configure the Unified Audit Trail and review an audit of Or
     <copy>./ua_delete_dp_audit_policy.sh</copy>
     ````
 
-    ![Unified Auditing](./images/ua-031.png "Unified Auditing")
+    ![Unified Auditing](./images/ua-031.png "Remove the Data Pump Unified Audit policy")
 
 You may now proceed to the next lab!
 
@@ -427,5 +427,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Angeline Dhanarani, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023
+- **Contributors** - Angeline Dhanarani
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - July 2023
