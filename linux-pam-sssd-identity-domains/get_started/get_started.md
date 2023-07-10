@@ -4,7 +4,7 @@
 
 Oracle Cloud is the industry's broadest and most integrated cloud provider, with deployment options ranging from the public cloud to your data center. Oracle Cloud offers best-in-class services across Software as a Service (SaaS), Platform as a Service (PaaS), and Infrastructure as a Service (IaaS).
 
-Estimated Time: 5 minutes
+*Estimated Lab Time:* 2 minutes
 
 ### Types of Cloud Accounts
 
@@ -28,19 +28,19 @@ If you've signed out of the Oracle Cloud, use these steps to sign back in.
 
 1. Go to [cloud.oracle.com](https://cloud.oracle.com) and enter your Cloud Account Name and click **Next**. This is the name you chose while creating your account in the previous section. It's NOT your email address. If you've forgotten the name, see the confirmation email.
 
-    ![Cloud Account Name](./images/cloud-oracle.png " ")
+    ![Cloud Account Name](./images/cloud-oracle.png "Cloud-Account-Name")
 
 2. Select the **Default Domain** and then click on **Next** .
 
-    ![Click Continue Single Sign-In](./images/domain-select.png " ")
+    ![Click Continue Single Sign-In](./images/domain-select.png "Domain-Select")
 
 3. Enter your Cloud Account credentials and click **Sign In**. Your username is your email address. The password is what you chose when you signed up for an account.
 
-    ![Sign in](./images/signin.png " ")
+    ![Sign in](./images/signin.png "Sign-in")
 
 4. You are now signed in to Oracle Cloud!
 
-    ![OCI Console Home Page](./images/dashboard.png " ")
+    ![OCI Console Home Page](./images/dashboard.png "Dashboard")
 
 You may now **proceed to the next lab**.
 

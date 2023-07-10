@@ -4,38 +4,39 @@
 
 This lab will show you how you can test the Authentication into Linux Server Using OCI IAM.
 
+*Estimated Lab Time:* 5 minutes
 
 ### Objectives
 
--   Change the default password
--	Validate the authentication into Linux Server Using OCI IAM
+-   Change the *default* password.
+-	Validate the authentication into Linux Server Using OCI IAM using *second* factor.
 
 
 ## Task 1: Change Default Password for the OCI IAM POSIX Users
 
 1. Below are the users who were created as sample SSO test users. 
 
-	![Image 2](./images/image2.png "Image 2")
+	![users](./images/image2.png "users")
 	
 	**Default Password** - "Welcome@1234567890"
 
 2. Login to the OCI console using the newly created domain and enter the credentials of the *POSIX* user.
 		
-	![Image 3](./images/image3.png "Image 3")
+	![sign-in](./images/image3.png "sign-in")
 
 3. Reset the default password.
 
-	![Image 4](./images/image4.png "Image 4")
+	![password-reset](./images/image4.png "password-reset")
 
 4. Enable *Secure Verification* and enroll your mobile device.
 
-	![Image 5](./images/image5.png "Image 5")
+	![enable-mfa](./images/image5.png "enable-mfa")
 
-	![Image 6](./images/image6.png "Image 6")
+	![scan-QR](./images/image6.png "scan-QR")
 
 5. Click on **Done** and then proceed with *Task 2*.
 
-	![Image 7](./images/image7.png "Image 7")
+	![enrolled](./images/image7.png "enrolled")
 
 
 
@@ -46,7 +47,7 @@ Once the **Stack 2- Configure** is successfully deployed, kindly carry out the s
 - SSH into your Linux environment where the OCI IAM Linux Pluggable Authentication Module (PAM) is installed.
 - When prompted enter the password for the OCI IAM *POSIX* user. A *PUSH* notification is then sent to the enrolled mobile device. Tap **Allow** on the notification and then hit **Enter** on the screen.
 	
-	![Image 1](./images/image1.png "Image 1")
+	![validate](./images/image1.png "validate")
 
 ## Conclusion
 

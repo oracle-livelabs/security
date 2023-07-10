@@ -5,12 +5,14 @@
 
 Using this stack we will be able to configure **Linux Server and Identity Domain**. As part of this stack, a confidential application will be created under **Identity Domain** and sample users will be created.
 
-## Objectives
+*Estimated Lab Time:* 20 minutes
+
+### Objectives
 
 1.	Install and Configure **Linux-PAM using SSSD**
 2.	Create the **Confidential Application** under **Identity Domain** and create the sample *POSIX* users and a POSIX group.
 
-## Prerequisites
+### Prerequisites
 
 Once the **Stack2- Configure.zip** is downloaded, use the updated **SSH.key** file, which was created while deploying the **Stack1- Deploy.zip**.
 
@@ -18,18 +20,18 @@ Once the **Stack2- Configure.zip** is downloaded, use the updated **SSH.key** fi
 
 1. Once logged in to OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
-![Capture 1](./images/image21.png "Capture 1")
+![stacks](./images/image21.png "stacks")
 	
-![Capture 2](./images/image22.png "Capture 2")
+![create stacks](./images/image22.png "create stacks")
  
 2. On the Create Stack Wizard, select the **Stack 2- Configure.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
-	![Image 1](./images/image1.png "Image 1")
+	![upload](./images/image1.png "upload")
 
 
 3. Now, on the **Configure variables** section, fill in the below mentioned values, then click on **Next**
 
-	![Image 2](./images/image2.png "Image 2")
+	![configure-variables](./images/image2.png "configure-variables")
 
 	1. *Public IP address of the Linux Compute Instance* created earlier
     2. *Identity Domain URL* - Domain URL of the Deployed Domain . **Note** Remove **:443** from the end of the Domain URL.
@@ -39,7 +41,7 @@ Once the **Stack2- Configure.zip** is downloaded, use the updated **SSH.key** fi
 	
 4. Now on the **Review Details** check for the configurations and then click on **Create** . Make sure the **Run Apply** is selected.
 
-	![Image 3](./images/image3.png "Image 3")
+	![review](./images/image3.png "review")
 
 **Note** The stack might take around 15 mins for completion. Please wait until the **job** succeeds.
 

@@ -5,14 +5,15 @@
 
 Using this stack we will be able to deploy  **Linux Server and Identity Domain** using Terraform. The Identity Domain created will be of the type **Oracle Apps Premium**. On the Linux server we will then configure **Linux Pluggable Authentication Module (PAM) module** using another stack in upcoming lab.
 
+*Estimated Lab Time:* 15 minutes
 
-## Objectives
+### Objectives
 
 1.	Deploy a **Linux Server**
 2.	Deploy the **Identity Domain** of the type **Oracle Apps Premium**
 4.	Validate the created resources via web browser and via SSH access.
 
-## Prerequisites
+### Prerequisites
 
 Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace the the content of the **SSH.key** and **SSH.key.pub** file  with your respective content of the private key and public key.
 
@@ -22,31 +23,31 @@ Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace th
 
 1. Once logged in to the OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
-![Capture 1](./images/image21.png "Capture 1")
+![Stacks](./images/image21.png "Stacks")
 	
-![Capture 2](./images/image22.png "Capture 2")
+![Create-Stacks](./images/image22.png "Create-Stacks")
  
 2. On the Create Stack Wizard, select the **.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
-	![Image 1](./images/image1.png "Image 1")
+	![upload-zip](./images/image1.png "upload-zip")
 	
-	![Image 2](./images/image2.png "Image 2")
+	![stack-details](./images/image2.png "stack-details")
 	
 **Note** The Stack Name and Compartment can be changed if required.
 
 3. Now, on the **Configure variables** section, choose the concerned compartment where the VCN resides in **Linux Instance Compartment** section, upload your **SSH Public Key**. Choose the respective **Availability Domain**, **VCN** and **Subnet** where the instance needs to be deployed.
 
-	![Image 3](./images/image3.png "Image 3")
+	![linux-instance-details](./images/image3.png "linux-instance-details")
 	
 **Note** SSH Public Key needs to generated as a prerequisites.	
 	
 4. In the **OCI Identity Domain** section, select the **Identity Domain Compartment** where the domain needs to be created. Then enter the name of the Identity Domain and provide details of the Administrator like **Admin Email Address** , **First Name** and **Last Name**.
 
-	![Image 4](./images/image4.png "Image 4")
+	![identity-domain-details](./images/image4.png "identity-domain-details")
 	
 5. Now on the **Review Details** check for the configurations and then click on **Create** . Make sure the **Run Apply** is selected.
 
-	![Image 5](./images/image5.png "Image 5")
+	![review](./images/image5.png "review")
 
 **Note** The stack might take around 1-2 mins to execute. Please wait until it gets completed successfully. Upon completion, a notification will be sent on the above provided *Admin Email Address* .
 
