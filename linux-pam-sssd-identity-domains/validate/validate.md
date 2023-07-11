@@ -16,27 +16,27 @@ This lab will show you how you can test the Authentication into Linux Server Usi
 
 1. Below are the users who were created as sample SSO test users. 
 
-	![users](./images/image2.png "users")
+	![users](./images/users.png "users")
 	
 	**Default Password** - "Welcome@1234567890"
 
 2. Login to the OCI console using the newly created domain and enter the credentials of the *POSIX* user.
 		
-	![sign-in](./images/image3.png "sign-in")
+	![sign-in](./images/sign-in.png "sign-in")
 
 3. Reset the default password.
 
-	![password-reset](./images/image4.png "password-reset")
+	![password-reset](./images/password-reset.png "password-reset")
 
 4. Enable *Secure Verification* and enroll your mobile device.
 
-	![enable-mfa](./images/image5.png "enable-mfa")
+	![enable-mfa](./images/enable-mfa.png "enable-mfa")
 
-	![scan-QR](./images/image6.png "scan-QR")
+	![scan-QR](./images/scan-QR.png "scan-QR")
 
 5. Click on **Done** and then proceed with *Task 2*.
 
-	![enrolled](./images/image7.png "enrolled")
+	![enrolled](./images/enrolled.png "enrolled")
 
 
 
@@ -47,7 +47,7 @@ Once the **Stack 2- Configure** is successfully deployed, kindly carry out the s
 - SSH into your Linux environment where the OCI IAM Linux Pluggable Authentication Module (PAM) is installed.
 - When prompted enter the password for the OCI IAM *POSIX* user. A *PUSH* notification is then sent to the enrolled mobile device. Tap **Allow** on the notification and then hit **Enter** on the screen.
 	
-	![validate](./images/image1.png "validate")
+	![validate](./images/validate.png "validate")
 
 ## Conclusion
 

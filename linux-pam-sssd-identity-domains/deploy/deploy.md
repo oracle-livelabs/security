@@ -23,31 +23,31 @@ Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace th
 
 1. Once logged in to the OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
-![Stacks](./images/image21.png "Stacks")
+![Stacks](./images/Stacks.png "Stacks")
 	
-![Create-Stacks](./images/image22.png "Create-Stacks")
+![Create-Stacks](./images/Create-Stacks.png "Create-Stacks")
  
 2. On the Create Stack Wizard, select the **.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
-	![upload-zip](./images/image1.png "upload-zip")
+	![upload-zip](./images/upload-zip.png "upload-zip")
 	
-	![stack-details](./images/image2.png "stack-details")
+	![stack-details](./images/stack-details.png "stack-details")
 	
 **Note** The Stack Name and Compartment can be changed if required.
 
 3. Now, on the **Configure variables** section, choose the concerned compartment where the VCN resides in **Linux Instance Compartment** section, upload your **SSH Public Key**. Choose the respective **Availability Domain**, **VCN** and **Subnet** where the instance needs to be deployed.
 
-	![linux-instance-details](./images/image3.png "linux-instance-details")
+	![linux-instance-details](./images/linux-instance-details.png "linux-instance-details")
 	
 **Note** SSH Public Key needs to generated as a prerequisites.	
 	
 4. In the **OCI Identity Domain** section, select the **Identity Domain Compartment** where the domain needs to be created. Then enter the name of the Identity Domain and provide details of the Administrator like **Admin Email Address** , **First Name** and **Last Name**.
 
-	![identity-domain-details](./images/image4.png "identity-domain-details")
+	![identity-domain-details](./images/identity-domain-details.png "identity-domain-details")
 	
 5. Now on the **Review Details** check for the configurations and then click on **Create** . Make sure the **Run Apply** is selected.
 
-	![review](./images/image5.png "review")
+	![review](./images/review.png "review")
 
 **Note** The stack might take around 1-2 mins to execute. Please wait until it gets completed successfully. Upon completion, a notification will be sent on the above provided *Admin Email Address* .
 

@@ -20,18 +20,18 @@ Once the **Stack2- Configure.zip** is downloaded, use the updated **SSH.key** fi
 
 1. Once logged in to OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
-![stacks](./images/image21.png "stacks")
+![stacks](./images/stacks.png "stacks")
 	
-![create stacks](./images/image22.png "create stacks")
+![create-stacks](./images/create-stacks.png "create-stacks")
  
 2. On the Create Stack Wizard, select the **Stack 2- Configure.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
-	![upload](./images/image1.png "upload")
+	![upload](./images/upload.png "upload")
 
 
 3. Now, on the **Configure variables** section, fill in the below mentioned values, then click on **Next**
 
-	![configure-variables](./images/image2.png "configure-variables")
+	![configure-variables](./images/configure-variables.png "configure-variables")
 
 	1. *Public IP address of the Linux Compute Instance* created earlier
     2. *Identity Domain URL* - Domain URL of the Deployed Domain . **Note** Remove **:443** from the end of the Domain URL.
@@ -41,7 +41,7 @@ Once the **Stack2- Configure.zip** is downloaded, use the updated **SSH.key** fi
 	
 4. Now on the **Review Details** check for the configurations and then click on **Create** . Make sure the **Run Apply** is selected.
 
-	![review](./images/image3.png "review")
+	![review](./images/review.png "review")
 
 **Note** The stack might take around 15 mins for completion. Please wait until the **job** succeeds.
 
