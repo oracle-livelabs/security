@@ -23,13 +23,13 @@
             "filename": "../../create-ag-group-policies/create-ag-group-policies.md"
         },
         {
-            "title": "Lab 3: Setup and configure Oracle Access Governance service instance",
-            "description": "Setup and configure Oracle Access Governance service instance ",
-            "filename": "../../instance-setup/ag-instance-setup.md"
+            "title": "Lab 3: Create OCI Policies, Groups, Compartments and OCI IAM Users ",
+            "filename": "../../create-oci-resource/create-oci-resource.md"
         },
         {
-            "title": "Lab 4: Create OCI Policies, Groups and Compartments ",
-            "filename": "../../create-oci-resource/create-oci-resource.md"
+            "title": "Lab 4: Setup and configure Oracle Access Governance service instance",
+            "description": "Setup and configure Oracle Access Governance service instance ",
+            "filename": "../../instance-setup/ag-instance-setup.md"
         },
         {
             "title": "Lab 5: Integrate Oracle Access Governance with OCI IAM",
