@@ -37,7 +37,7 @@ This lab assumes you have:
 
 ## Task 1: Grant the Data Masking role on your target database
 
-To use the Data Masking feature with an Autonomous Database on Shared Infrastructure with secure access from everywhere, you must first grant the Data Masking role to the Oracle Data Safe pre-seeded service account on the database. If you are using a different kind of target database, please refer to the _Administering Oracle Data Safe_ guide for instructions on how to grant the required roles.
+To use the Data Masking feature with **Oracle Autonomous Database Serverless with secure access from everywhere**, you must first grant the Data Masking role to the Oracle Data Safe pre-seeded service account on the database. If you are using a different kind of target database, please refer to the _Administering Oracle Data Safe_ guide for instructions on how to grant the required roles.
 
 1. Access the SQL worksheet in Database Actions. If your session has expired, sign in again as the `ADMIN` user. Clear the worksheet and the **Script Output** tab.
 
@@ -57,7 +57,7 @@ To use the Data Masking feature with an Autonomous Database on Shared Infrastruc
     
     You are now able to mask sensitive data on your target database.
 
-4. Clear the worksheet.
+4. Clear the worksheet and script output.
 
 
 
@@ -148,8 +148,6 @@ After you create a masking policy, you can run a data masking job against your t
 
 1. On the **Masking Policy Details** page, click **Mask Target**.
 
-    ![Mask Target button](images/mask-target-button.png "Mask Target button")
-
     The **Mask Sensitive Data** panel is displayed.
 
 2. From the **Target Database** drop-down list, select your target database, and then click **Mask Data**.
@@ -162,7 +160,7 @@ After you create a masking policy, you can run a data masking job against your t
 
     ![Log messages for data masking work request](images/masking-log-messages.png "Log messages for data masking work request")
 
-4. Wait for the status to read **SUCCEEDED**.
+4. Wait for the status to read as **SUCCEEDED**.
 
     ![Work Request page for masking job succeeded](images/work-request-masking-job-succeeded.png "Work Request page for masking job succeeded")
 
@@ -175,7 +173,7 @@ After you create a masking policy, you can run a data masking job against your t
 
 2. Review the masking report.
 
-    - The **Masking Report Information** tab shows you the target database name, masking policy name (you can click a link to view it), the Oracle Cloud Identifier (OCID) for the masking policy, the date and time when the data masking job started and finished, and the number of masked sensitive types, schemas, tables, columns, and values. There is also a pie chart that shows you the masked value percentages for each sensitive type. You can click a link to view masking options. You can click on a pie slice to drill down into the chart.
+    - The **Masking Report Information** tab shows you the target database name, masking policy name (you can click a link to view it), the Oracle Cloud Identifier (OCID) for the masking report, the date and time when the data masking job started and finished, and the number of masked sensitive types, schemas, tables, columns, and values. You can click a link to view masking options. There is also a pie chart that shows you the masked value percentages for each sensitive type. You can click on a pie slice to drill down into the chart.
     - The **Masked Columns** table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
 
     ![Masking report top](images/masking-report-top2.png "Masking report top")
@@ -198,9 +196,9 @@ After you create a masking policy, you can run a data masking job against your t
 
 ## Task 7: Validate the masked data in your target database
 
-1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. The `SELECT` statement against the `EMPLOYEES` table should be displayed on the worksheet. The **Script Output** tab should still have the original data. Take a moment to examine the data.
+1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. The `SELECT` statement against the `EMPLOYEES` table should be displayed on the worksheet. The **Script Output** tab should still have the original data. Take a moment to examine it.
 
-2. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query.
+2. On the toolbar, click the **Run Statement** button (not the **Run Script** button) to run the query. 
 
 3. Review the masked data on the **Query Result** tab at the bottom of the page. You can resize the panel to view more data and you can scroll down and to the right.
 
@@ -216,4 +214,4 @@ After you create a masking policy, you can run a data masking job against your t
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 23, 2023
+- **Last Updated By/Date** - Jody Glover, June 8, 2023

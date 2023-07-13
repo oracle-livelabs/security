@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data R
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DB 19.17
+*Version tested in this lab:* Oracle DB 19.19
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
@@ -52,7 +52,7 @@ This lab assumes you have:
         <copy>./dr_query_employee_data.sh</copy>
         ````
 
-        ![Data Redaction](./images/dr-001.png "Data Redaction")
+        ![Data Redaction](./images/dr-001.png "See the original data")
     
         **Note**: Depending on the employee, they have a SIN, SSN or NINO number!
 
@@ -72,24 +72,24 @@ This lab assumes you have:
             <copy>Oracle123</copy>
             ````
 
-            ![Data Redaction](./images/dr-002.png "Data Redaction")
-            ![Data Redaction](./images/dr-003.png "Data Redaction")
+            ![Data Redaction](./images/dr-002.png "HR App - Login")
+            ![Data Redaction](./images/dr-003.png "HR App - Login")
 
         - Click on **Search Employees**
 
-            ![Data Redaction](./images/dr-004.png "Data Redaction")
+            ![Data Redaction](./images/dr-004.png "HR App - Search employees")
 
         - We'll filter on the employee "Alice - UserID 77" for example by entering *`77`* as **HR ID** value and click [**Search**]
 
-            ![Data Redaction](./images/dr-005.png "Data Redaction")
+            ![Data Redaction](./images/dr-005.png "HR App - Search employee (UserID 77)")
 
         - Now, click on the **Full Name** link of this employee to see her details
 
-            ![Data Redaction](./images/dr-006.png "Data Redaction")
+            ![Data Redaction](./images/dr-006.png "HR App - Full Name")
 
         - As you can see, even in Glassfish, data from column SIN is also fully redacted
 
-            ![Data Redaction](./images/dr-007.png "Data Redaction")
+            ![Data Redaction](./images/dr-007.png "HR App - SIN value")
 
 4. Go back to your terminal session to create the redaction policy `PROTECT_EMPLOYEES`
 
@@ -97,7 +97,7 @@ This lab assumes you have:
     <copy>./dr_redact_for_all.sh</copy>
     ````
 
-    ![Data Redaction](./images/dr-008.png "Data Redaction")
+    ![Data Redaction](./images/dr-008.png "Create the redaction policy PROTECT_EMPLOYEES")
 
     **Note**: This policy will (**FULL**) redact data on column **SIN** from `DEMO_HR_EMPLOYEES` table, for all queries in every contexts (**Expression "1=1"**)
 
@@ -107,7 +107,7 @@ This lab assumes you have:
     <copy>./dr_query_employee_data.sh</copy>
     ````
 
-    ![Data Redaction](./images/dr-009.png "Data Redaction")
+    ![Data Redaction](./images/dr-009.png "See the redacted data")
 
     **Note**:
     - As you can see, data from column SIN is fully redacted!
@@ -117,7 +117,7 @@ This lab assumes you have:
 
 6. Now, go back to your Glassfish App and just refresh the web page (**press [F5]**)
 
-    ![Data Redaction](./images/dr-010.png "Data Redaction")
+    ![Data Redaction](./images/dr-010.png "HR App - SIN value")
 
     **Note**:
     - Now, even in Glassfish the column SIN is also fully redacted!
@@ -132,7 +132,7 @@ This lab assumes you have:
     <copy>./dr_redact_nonapp_queries.sh</copy>
     ````
 
-    ![Data Redaction](./images/dr-011.png "Data Redaction")
+    ![Data Redaction](./images/dr-011.png "ONLY redact non-Glassfish queries")
 
     **Note**: Now, the same policy will (**FULL**) redact data on column **SIN** from `DEMO_HR_EMPLOYEES` table, but only for the queries where the context is non-authorised
 
@@ -142,7 +142,7 @@ This lab assumes you have:
     <copy>./dr_add_redacted_columns.sh</copy>
     ````
 
-    ![Data Redaction](./images/dr-012.png "Data Redaction")
+    ![Data Redaction](./images/dr-012.png "Modify redaction policy")
 
     **Note**: In a same way, this Data Redaction policy will be also applied for the columns SSN and NINO for the same context
     
@@ -154,13 +154,13 @@ This lab assumes you have:
         <copy>./dr_query_employee_data.sh</copy>
         ````
 
-        ![Data Redaction](./images/dr-013.png "Data Redaction")
+        ![Data Redaction](./images/dr-013.png "See data on SQLPlus")
 
         **Note**: You shouldn't see any sensitive data!
 
     - ... **on your Glassfish App** (the only authorized application from now) by just refreshing the web page (**press [F5]**)
 
-        ![Data Redaction](./images/dr-007.png "Data Redaction")
+        ![Data Redaction](./images/dr-007.png "See data on HR App")
 
         **Note**: Because you're using the only authorized app, you can see the sensitive data now!
 
@@ -172,7 +172,7 @@ This lab assumes you have:
     <copy>./dr_drop_redaction_policy.sh</copy>
     ````
 
-    ![Data Redaction](./images/dr-014.png "Data Redaction")
+    ![Data Redaction](./images/dr-014.png "Drop the redaction policy")
 
 2. Check that all data are now not redacted
 
@@ -180,7 +180,7 @@ This lab assumes you have:
     <copy>./dr_query_employee_data.sh</copy>
     ````
 
-    ![Data Redaction](./images/dr-001.png "Data Redaction")
+    ![Data Redaction](./images/dr-001.png "Check data")
 
 You may now proceed to the next lab!
 
@@ -209,7 +209,7 @@ This option enables you to test the internal operation of your redaction policie
 
 Data Redaction performs the redaction at runtime, that is, the moment that the user tries to view the data. This functionality is ideally suited for dynamic production systems in which data constantly changes. While the data is being redacted, Oracle Database is able to process all of the data normally and to preserve the back-end referential integrity constraints. Data redaction can help you to comply with industry regulations such as Payment Card Industry Data Security Standard (PCI DSS) and the Sarbanes-Oxley Act.
 
-![Data Redaction](./images/aso-concept-dr.png "Data Redaction")
+![Data Redaction](./images/aso-concept-dr.png "Data Redaction Concept")
 
 ### **Benefits of Using Oracle Data Redaction**
 - You have different styles of redaction from which to choose
@@ -227,4 +227,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - July 2023

@@ -22,7 +22,7 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
+- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment)). *Make sure that you have sample data loaded into your database.*
 
 ### Assumptions
 
@@ -32,7 +32,7 @@ This lab assumes you have:
 
 ## Task 1: Explore target database registration options
 
-You have three options for registering an Autonomous Database on Shared Infrastructure with secure access from everywhere:
+You have three options for registering your Autonomous Database:
 - Use the **Register** link on the **Autonomous Database details** page (one-click method with no interaction).
 - Use the Autonomous Databases wizard on the **Overview** page for the Oracle Data Safe service (guided method with customization options).
 - Manually register your target database from the **Registered Targets** page (advanced method without guidance).
@@ -46,7 +46,9 @@ You have three options for registering an Autonomous Database on Shared Infrastr
 
     ![Register option for your database](images/register-database.png "Register option for your database")
 
-3. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. On this page, there are wizards to register the following types of databases. For an Autonomous Database on Shared Infrastructure with secure access from everywhere, you use the Autonomous Databases wizard.
+3. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
+
+    On this page, there are wizards to register the following types of databases:
 
     - Autonomous Databases
     - Oracle Cloud Databases
@@ -54,7 +56,7 @@ You have three options for registering an Autonomous Database on Shared Infrastr
     - Oracle Databases on Compute
     - Oracle Cloud@Customer Databases
 
-    ![Overview page for Oracle Data Safe](images/overview-page.png "Overview page for Oracle Data Safe")
+    ![Registration wizards for Oracle Data Safe](images/registration-wizards.png "Registration wizards for Oracle Data Safe")
 
 4. Under **Data Safe** on the left, click **Target Databases**. 
 
@@ -84,7 +86,7 @@ To register a database other than an ATP database for this workshop, please foll
 
 6. (Optional) Enter a description for your target database. 
 
-7. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity Option) and 3 ('Add Security Rule') are not necessary and will be skipped.** If your database has a private IP address, you need to configure an Oracle Data Safe private endpoint and security rules. 
+7. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity Option') and 3 ('Add Security Rule') are not necessary and will be skipped.** If your database has a private IP address, you need to configure an Oracle Data Safe private endpoint and security rules. 
 
     ![Autonomous Database registration wizard - Select Database page](images/ADB-wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
 
@@ -114,8 +116,8 @@ To register a database other than an ATP database for this workshop, please foll
 
 2. Under **List Scope**, make sure your compartment is selected. Your registered target database is listed on the right.
 
-    - A target database with an **ACTIVE** status means that it is currently registered with Oracle Data Safe.
-    - A target database with a **DELETED** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
+    - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
+    - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
 
     ![Target Databases page in OCI](images/target-databases-page-oci.png "Target Databases page in OCI")
 
@@ -147,4 +149,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, April 11, 2023
+- **Last Updated By/Date** - Jody Glover, June 8, 2023

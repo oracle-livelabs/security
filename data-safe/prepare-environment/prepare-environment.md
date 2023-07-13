@@ -158,9 +158,9 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - **Display name** - Enter a memorable name for the database for display purposes.
     - **Database name** - Enter a database name. It's important to use letters and numbers only, starting with a letter. The maximum length is 14 characters. Underscores are not supported.
     - **Workload type** - Select **Transaction Processing**.
-    - **Deployment type** - Leave **Shared infrastructure** selected.
+    - **Deployment type** - Leave **Serverless** selected.
     - **Always Free** - Select this option by moving the slider to the right.
-    - **Database version** - Leave **19c** selected.
+    - **Database version** - Leave **21c** selected.
     - **OCPU Count** - You get **1** OCPU.
     - **Storage** - You get 0.02TB of storage.
     - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
@@ -217,7 +217,7 @@ Database Actions provides a way for you to run SQL commands on your target datab
 
     The **Sign-in** page is displayed.
 
-2. Sign in as the `ADMIN` user. 
+2. If required, sign in as the `ADMIN` user. 
 
     A browser tab named **Oracle Database Actions** is opened. *Keep this tab open throughout the workshop.* If your session expires, you can always sign in again.
 
@@ -291,4 +291,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 8, 2023
+- **Last Updated By/Date** - Jody Glover, June 8, 2023
