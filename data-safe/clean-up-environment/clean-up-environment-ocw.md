@@ -38,3 +38,9 @@ This lab assumes you have:
 
 6. Enter your database name, and then click **Terminate Autonomous Database**. 
 
+
+## Acknowledgements
+
+- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
+- **Last Updated By/Date** - Jody Glover, July 18, 2023
+

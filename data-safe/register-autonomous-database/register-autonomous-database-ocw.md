@@ -6,7 +6,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 Begin by registering your database by using the Autonomous Databases registration wizard. Next, navigate to Oracle Data Safe and view the list of registered target databases to confirm that yours is listed. Optionally, explore Security Center, which is the central hub for Oracle Data Safe where you can access Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Alerts, and the Oracle Data Safe dashboard.
 
-Estimated Lab Time: 5 minutes
+Estimated Time: 5 minutes
 
 ### Objectives
 
@@ -119,4 +119,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 7, 2023
+- **Last Updated By/Date** - Jody Glover, July 18, 2023
