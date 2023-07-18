@@ -1,0 +1,46 @@
+{
+  "workshoptitle": "DB Security - Advanced Compression with Transparent Data Encryption(TDE)",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Understand the architecture of this workshop and what it can do",
+      "publisheddate": "09/01/2020",
+      "filename": "../../aso-aco/aco/introduction/intro-aso-aco.md"
+    },
+    {
+      "title": "Get Started",
+      "description": "Using noVNC Remote Desktop",
+      "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
+    },
+    {
+      "title": "Lab 1: Initialize Environment",
+      "description": "How to initialize and start all the workshop components",
+      "publisheddate": "10/14/2020",
+      "filename": "../../../common/init-start-env/init-start-env.md"
+    },
+    {
+      "title": "Lab 2: Sample Schema Setup",
+      "description": "Setup Schema",
+      "publisheddate": "03/20/2023",
+      "filename": "../../aso-aco/aco/setup/setup.md"
+    },
+    {
+      "title": "Lab 3: Transparent Data Encryption (TDE)",
+      "description": "Create new encrypted tablespace which leverages Oracle Transparent Data Encryption (TDE)",
+      "publisheddate": "03/20/2023",
+      "filename": "../../aso-aco/aco/tde/tde.md"
+    },
+    {
+      "title": "Lab 4: Enable advanced compression and online redefinition into encrypted tablespace",
+      "description": "Online Compression to encrypted tablespace via online redefinition",
+      "publisheddate": "03/20/2023",
+      "filename": "../../aso-aco/aco/aco_row_index/aco_row_index.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}

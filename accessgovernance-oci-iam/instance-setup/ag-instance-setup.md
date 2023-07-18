@@ -6,15 +6,15 @@ In this lab we will setup the OAG service instance and make configurations requi
 
 *Estimated Lab Time*: 30 minutes
 
-Watch the video below for a quick walk-through of the lab.
-[Access Governance instance setup](videohub:1_x3fb7d7m)
+*Persona*: Identity Domain Administrator
+
 
 ### Objectives
 
 In this lab, you will:
  * Create AG Service Instance
  * Access the AG console url
- * Create Users in OCI IAM
+ * Assign AG Roles to Users in OCI IAM
 
 ### Prerequisites
 This lab assumes you have:
@@ -24,7 +24,7 @@ This lab assumes you have:
 
 ## Task 1: Create AG Service instance 
 
-Login to the OCI console using the Identity domain: ag-domain, if not currently not logged in to the Identity domain. 
+Login to the OCI console using the Identity domain: ag-domain as the **Identity Domain Administrator** , if not currently not logged in to the Identity domain. 
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region.
 
@@ -36,7 +36,7 @@ Login to the OCI console using the Identity domain: ag-domain, if not currently 
     ```
     Name: ag-service-instance
     Description: Oracle Access Governance service instance
-    Compartment: Ensure your root compartment is selected
+    Compartment: Ensure your ag-compartment is selected
     ```
     ![Create Service Instance](images/create-service-instance.png)
     
@@ -53,66 +53,10 @@ Login to the OCI console using the Identity domain: ag-domain, if not currently 
 
     ![Access Governance console](images/ag-console.png)
 
-## Task 2: Create Users in OCI IAM
-
-1. Click the Navigation Menu icon in the top left corner to display the Navigation menu. Click Identity and Security in the Navigation menu. Select Domains from the list of products.
-
-    ![Navigate to Domains](images/navigate-select-domain.png)
+## Task 2: Assign AG Roles to Users in OCI IAM
 
 
-2. On the Domains page, Click on Identity-domain : *ag-domain* you have created. 
-
-    ![Navigate to Identity Domains](images/open-domains.png)
-
-   Select *Users*. Click on *Create User*
-
-     ![Navigate to Users](images/navigate-to-users.png)
-
-3. Uncheck "Use the email address as the username" 
-
-4. Enter the following details to create 3 users - Pamela Green (Campaign Administrator), Harlan Bullard (Manager), Mark Hernandez (Employee User) in IAM. Be sure to use different email IDs for different users.
-
-
-    ```
-    First Name: Pamela
-    Last Name: Green
-    Username: pamela.green
-    Email: Specify unique email-id to which you will be receiving activation mail for password reset for the user. 
-    ```
-    ![Create User](images/user-create-pamela.png)
-
-    Click *Create*
-
-    ```
-    First Name: Harlan
-    Last Name: Bullard
-    Username: harlan.bullard
-    Email: Specify unique email-id to which you will be receiving activation mail for password reset for the user. 
-    ```
-    ![Create User](images/user-create-harlan.png)
-
-    Click *Create*
-
-    ```
-    First Name: Mark
-    Last Name: Hernandez
-    Username: mhernandez
-    Email: Specify unique email-id to which you will be receiving activation mail for password reset for the user. 
-    ```
-    ![Create User](images/user-create-mark.png)
-
-    Click *Create*
-
-5. Sign out from the cloud console.
-
-6. For each user created, an activation mail will be sent to the email-id provided in the *Task 3: Step 4* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 
-    Reset password to the below mentioned password:
-
-    **Password:**
-     ```
-    <copy>Oracl@123456</copy>
-    ```
-7. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
+1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
 
     * In the OCI console, navigate to Identity -> Domains ->  ag-domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
 

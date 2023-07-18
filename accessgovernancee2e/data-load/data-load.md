@@ -22,7 +22,7 @@ This lab assumes you have:
 
 ## Task 1: Perform Data load in OAG console
 
-1.  Log in to Oracle Access Governance console. Refer to *Lab 4: Task 1.4* for the Oracle Access Governance service instance URL. In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Connected Systems.**
+1.  Log in to Oracle Access Governance console. Refer to *Lab 6: Task 1* for the Oracle Access Governance service instance URL. In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Connected Systems.**
 
     ![Naviagte to Service Administration → Connected Systems](images/connected-systems.png) 
     
