@@ -2,24 +2,24 @@
 
 ### About this Workshop
 
-Did you know you can manage your encryption keys outside of OCI? 
+Did you know you can manage your encryption keys outside of Oracle Cloud Infrastructure?
 
-That’s an important security requirement from many customers around the world, specifically to answer Sovereignty requirements. 
+Customer controlled key management is a crucial security requirement for many customers around the world, specifically to answer Sovereignty requirements.
 
-In this HOL, you will learn how to manage your encryption keys outside of OCI using a Thales HSM. With OCI Vault « Bring Your Own Key » and “Hold Your Own Key or External KMS” features, you stay in control of your keys, storing them where you want, and you can still use the advanced IaaS and PaaS features of OCI. 
+In this Hands-On Lab, you will learn how to manage your encryption keys outside of OCI using a Thales HSM. With OCI Vault « Bring Your Own Key » and « Hold Your Own Key » feature, which we call « External KMS », you stay in control of your keys, you store them where you want, and you can still use the advanced IaaS and PaaS features of OCI.
 
 This Hands-On Lab will walk you through how to enable the feature, link your HSM outside of OCI to your OCI tenant and start encrypting data in OCI, for storage encryption and OCI Database encryption through TDE support. Now your Master Encryption Keys never leave your own HSM. You will also simulate an Emergency Situation in which you are being asked to block access to data stored in OCI Storage Buckets or Database Service. You’re in control. 
 
-Estimated Workshop Time: -- hours -- minutes 
+Estimated Workshop Time: 1 hour
 
-*Note* In this lab you will use THALES CipherTrust Key Manager as a Service for the Key Management and HSM service. 
-
+*Note*  In this lab you will truly use an external KMS service: each student will have a Thales CipherTrust Manager tenant, which is a Key management as a Service tenant for Key Management, based on Thales HSM as a service solution.
 
 ### Objectives
 
 In this workshop, you will learn how to:
+* Connect to the two environements you will need to use to perform the lab: an OCI tenant and a Thales CipherTrust Manager
 * Add a connection between your Thales CipherTrust Manager and OCI
-* Create Oracle keys in Thales 
+* Create Oracle keys in Thales
 * Bring Your Own Key (BYOK) to OCI
     > BYOK means “Bring Your Own Key”. It is the concept of bringing into Oracle Cloud Infrastructure (OCI) Encryption Keys which have been created outside of OCI. This might be mandatory to comply with certain regulations mandating that the encryption Key creation ceremony is done outside of the Cloud. 
     BYOK is compatible with any key material you are creating which is compatible with OCI Vault supported key types. 
