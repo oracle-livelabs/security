@@ -1,9 +1,9 @@
-# Prepare Setup
+# Create a SSO Policy to introduce MFA
 
 ## Introduction
 This lab will show you how to add a Single Sign On Policy to include MFA in the rule.
 
-*Estimated Lab Time:* 5 minutes
+*Estimated Time:* 5 minutes
 
 ### Objectives
 
@@ -44,6 +44,6 @@ This lab will show you how to add a Single Sign On Policy to include MFA in the 
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Lead By** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty 
 * **Last Updated By/Date** - Gautam Mishra July 2023
 

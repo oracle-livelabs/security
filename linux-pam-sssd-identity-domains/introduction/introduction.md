@@ -11,7 +11,7 @@ OCI IAM Identity Domains is a comprehensive identity-as-a-service (IDaaS) soluti
 This lab walks you through the steps to get started using **OCI IAM Identity Domains** with the use case - **Authenticate to Linux environment using Linux Pluggable Authentication Module (PAM) module of OCI IAM**. In this workshop, we will follow the steps to deploy a **Linux Server**  on OCI using *Terraform* via **Resource Manager**. Same Stack will also deploy an **OCI IAM Identity Domain**. Once deployed, we will also make some necessary configuration changes in the *Linux Server* and the *Identity Domain* using Terraform. We will carry out some *manual tasks* to complete the configurations in Identity Domains before heading towards the validation of the entire flow. Once validation is done we will be going through the clean up activities/steps using the *Resource Manager*.
 
 
-*Estimated Time:* 1 Hours
+*Estimated Workshop Time:* 1 Hours
 
 
 ### Objectives
@@ -38,5 +38,5 @@ This lab assumes you have:
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Lead By** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty 
 * **Last Updated By/Date** - Gautam Mishra July 2023

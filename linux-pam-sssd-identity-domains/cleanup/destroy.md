@@ -1,9 +1,10 @@
-# Destroy
+# Environment Cleanup
 
 ## Introduction
 
 This lab will show you how you can carry out the cleanup activities for the entire Live Lab.
 
+*Estimated Time:* 10 minutes
 
 ### Objectives
 
@@ -57,5 +58,5 @@ This completes the workshop.
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Lead By** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty 
 * **Last Updated By/Date** - Gautam Mishra July 2023
