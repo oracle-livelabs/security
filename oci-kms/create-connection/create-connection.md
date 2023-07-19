@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through configuring a connection between the Thales CipherTrust Manager and your Oracle Cloud Infrastructure (OCI) cloud tenant. 
+This lab walks you through configuring a connection between the Thales CipherTrust Manager and your Oracle Cloud Infrastructure (OCI) cloud tenant.
 
 Estimated Time: 10 minutes
 
@@ -15,10 +15,9 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab assumes=:
+This lab assumes:
 
 * You properly received your login and password for both environments
-
 
 ## Task 1: Connect to OCI and create your own Vault in OCI Vault
 
@@ -76,9 +75,6 @@ Each vault has a management endpoint and a cryptography endpoint. To create a Va
     ![Configuration file](images/configuration-file.png "Configuration file")
 
 Copy all the information on notepad as it will be used to create connection between Oracle and CTM.
-
-
-
 
 
 ## Task 2: Configuring CipherTrust Manager Connection to Oracle

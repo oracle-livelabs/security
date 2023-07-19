@@ -9,17 +9,19 @@ In order to re-enable access to the data, you will re-enable the encryption key 
 
 As a Data Administrator, you will test proper access to the data is now indeed possible and normal operations can restart, now that the security alert is over. This will mark the end of this hands-on lab!
 
-Estimated Lab Time: -- minutes
+Estimated Lab Time: 10 minutes
 
 ### Objectives
 
 In this lab, you will:
+
 * Re-enable the encryption key used in OCI from the external CipherTrust Key management console as the Security alert is over
 * Test access to the encrypted data and confirm users can access data again in both the Storage Bucket and Autonomous Database
 
 ### Prerequisites
 
 This lab assumes you have:
+
 * An Oracle Cloud account
 * All previous labs successfully completed
 

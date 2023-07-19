@@ -4,17 +4,19 @@
 
 This lab walks you through how to create your own keys outside of OCI in CTM, and bring them to your OCI tenant in your vault.
 
-Estimated Time: -- minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 
 In this lab, you will:
+
 * Add and manage your own Vault from CTM
 * Create Encryption keys in CTM and manage them in OCI Vault from CTM
 
 ### Prerequisites
 
 This lab assumes you have:
+
 * Access to your OCI and CTM accounts
 * All previous labs successfully completed
 

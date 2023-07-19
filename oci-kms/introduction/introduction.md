@@ -17,9 +17,10 @@ Estimated Workshop Time: 1 hour
 ### Objectives
 
 In this workshop, you will learn how to:
-* Connect to the two environements you will need to use to perform the lab: an OCI tenant and a Thales CipherTrust Manager
-* Add a connection between your Thales CipherTrust Manager and OCI
-* Create Oracle keys in Thales
+
+* Connect to the two environments you will need to use to perform the lab: an OCI tenant and a Thales CipherTrust Manager tenant
+* Create a Vault in OCI and add a connection between your Thales CipherTrust Manager and OCI Vault
+* Create Oracle keys in Thales CipherTrust Manager
 * Bring Your Own Key (BYOK) to OCI
     > BYOK means “Bring Your Own Key”. It is the concept of bringing into Oracle Cloud Infrastructure (OCI) Encryption Keys which have been created outside of OCI. This might be mandatory to comply with certain regulations mandating that the encryption Key creation ceremony is done outside of the Cloud. 
     BYOK is compatible with any key material you are creating which is compatible with OCI Vault supported key types. 
@@ -29,17 +30,18 @@ In this workshop, you will learn how to:
 * Emergency simulation test (I): blocking data access
 * Emergency simulation test (II): re-enabling data access
 
-Optionally, you will have an extra lab to perform Hold Your Own Key (HYOK) to OCI. HYOK means “Hold Your Own Key” and is officially called in OCI Vault “External Key management”. It means that your Master Encryption Key (MEK) never leaves your  own HSM located outside of OCI, whether it is in your own Data Center or hosted by a third party. 
-As of today, HYOK is only compatible with Thales CipherTrust Manager. Hence the reason why during this lab you will use THALES CipherTrust Key Manager.
+After this lab, in your own OCI tenant you will find a new feature called « External KMS ». It will allow you to do exactly the same as you did in this lab, except the key will not be syncrhonized between the external Key Management system and OCI Vault. Indeed, the Master Encryption Key will remain at all times in your HSM, whether it is in your own Data Center or hosted by a third party. 
+As of today, « External KMS » or « Hold Your Own Key » as it's often called, is only compatible with Thales CipherTrust Manager. Hence the reason why during this lab you will use THALES CipherTrust Key Manager.
 
 
 ### Prerequisites
 
 This lab assumes you have:
+
 * An Oracle Cloud Infrastructure account
 * A Thales CipherTrust Key Manager as a Service account
 
-Both environments will be provided to you by the trainers.
+Both environments will be provided to you by the trainers. If you haven't received your own set of logins and password, please ask the trainers in the room.
 
 ## Lab breakdown
 
@@ -62,4 +64,4 @@ Both environments will be provided to you by the trainers.
 
 ## Acknowledgements
 * **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist) 
-* **Last Updated By/Date** - Sonia Yuste, June 2023
+* **Last Updated By/Date** - Damien Rilliard, July 2023

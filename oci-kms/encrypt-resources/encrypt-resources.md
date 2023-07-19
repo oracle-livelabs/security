@@ -6,17 +6,19 @@ This lab walks you through the creation of different OCI resources and the confi
 
 You are your Company Data Manager. You will create a storage space as well as an Autonomous Database. You will select to encrypt those resources with the key you created in Thales CipherTrust Manager during the previous lab. You will upload data to those two resources and access it to make sure the encryption/decryption operations are working correctly. 
 
-Estimated Lab Time: -- minutes
+Estimated Lab Time: 15 minutes
 
 ### Objectives
 
 In this lab, you will:
+
 * Connect to your OCI tenant and create an encrypted Storage Bucket and Autonomous Database.
 * Test access to the encrypted data and confirm the right users can correctly access cleartext data in the Storage Bucket and Autonomous Database.
 
 ### Prerequisites
 
 This lab assumes you have:
+
 * An Oracle Cloud account
 * All previous labs successfully completed
 
@@ -210,4 +212,4 @@ Congratulations, you have encrypted your file in Object Storage and your data wi
 
 ## Acknowledgements
 * **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist)
-* **Last Updated By/Date** - Sonia Yuste, June 2023
+* **Last Updated By/Date** - Damien Rilliard, July 2023

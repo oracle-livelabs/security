@@ -11,14 +11,15 @@ For the purpose of today's hands-on lab, you have been provided with an OCI Clou
 - Learn how to log in to your Oracle Cloud Account to perform today's Hands-On Lab
 
 ### Prerequisites
-- Cloud Account Name - The name of your tenancy 
+
+- Cloud Account Name - The name of your tenancy
 - Username
 - Password
 
-These parameters are supplied by the Trainers.
+These parameters are supplied by the trainers.
 
 ## Task 1:  Log in to Oracle Cloud
-If you've signed out of the Oracle Cloud, use these steps to sign back in.
+If you've signed out of Oracle Cloud or haven't signed in yet, use these steps to sign in.
 
 1. Go to [cloud.oracle.com](https://cloud.oracle.com) and enter your Cloud Account Name and click **Next**. 
 
@@ -40,4 +41,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist) 
-- **Last Updated By** - Sonia Yuste, July 2023 
+- **Last Updated By** - Sonia Yuste, July 2023

@@ -2,44 +2,37 @@
 
 ## Introduction
 
-Scenario: 
+Scenario:
 You are your company Security Operations team manager. A severe security alert in your company just happenned. After talking to the Company CEO, the CISO has taken the decision to shut down access to data stored in the Cloud. So the CISO is asking you to make sure that all the encrypted data stored in OCI, your Company cloud, is inaccessible.
 
-In order to block access to the data, you will disable the encryption key that you created at the beginning of this hands-on lab. As this key is used to encrypt data in the bucket you created as well as in the Autonomous Database, this will disable in turn any possibility to access the encrypted data as well as the objects themselves, even for OCI administrators. 
+In order to block access to the data, you will disable the encryption key that you created at the beginning of this hands-on lab. As this key is used to encrypt data in the bucket you created as well as in the Autonomous Database, this will disable in turn any possibility to access the encrypted data as well as the objects themselves, even for OCI administrators.
 
-As a Data Administrator, you will test access to the data to realize you can't access the data nor the objects anymore. 
+As a Data Administrator, you will test access to the data to realize you can't access the data nor the objects anymore.
 
-Estimated Lab Time: -- minutes
+Estimated Lab Time: 10 minutes
 
 ### Objectives
 
 In this lab, you will:
+
 * Simulate an emergency situation where you as a customer want to completely block access to your data in OCI
 * Disable encryption key from the external CipherTrust Key management console
 * Test access to the encrypted data and confirm users cannot access data in the Storage Bucket and Autonomous Database anymore
 
-### Prerequisites
-
-This lab assumes you have:
-* An Oracle Cloud account
-* All previous labs successfully completed
-
-
 ## Task 1: Disable keys in CipherTrust Manager
 
-1. Login to the CipherTrust Manager console. 
+1. Login to the CipherTrust Manager console.
     If you lost the link: to access CipherTrust Manager as a Service you will need to create the URL to access your own private tenant. To do this, you need to copy and paste this URL: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM" in your browser address bar and add your student number at the end of the URL. For example, if your student number is 001, the complete URL to your own private CTM tenant will be: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001". 
 
     ![URL creation in address bar](images/ctm-address-bar.png "URL creation in address bar")
 
-    Once you access your login window, please login using your "Secops_XXX" user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you. 
+    Once you access your login window, please login using your "Secops_XXX" user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you.
 
     ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
 
 2. Enter the credentials you have been provided with. You are now logged into the CipherTrust Manager web console. Click on the Cloud Key Manager icon:
 
     ![CipherTrust Manager web console](images/ctm-page.png "CipherTrust Manager web console")
-
 
 3. On the left pane, click **Cloud Keys > Oracle**.
 
@@ -102,11 +95,12 @@ You should have saved the URL of a pre-authenticated request to access the excel
     ![Autonomous Database](./images/adb-running.png "Autonomous Database")
 
 
-3. In this case you can either wait a little if you have time, or the easiest for the purpose of the lab is, as the Data Manager user, to stop the database and try to start it to confirm that it is impossible. Click on your Autonomous Database name: 
+3. In this case you can either wait a little if you have time, or the easiest for the purpose of the lab is, as the Data Manager user, to stop the database and try to start it to confirm that it is impossible. 
+ Click on your Autonomous Database name: 
  
    ![Autonomous Database](./images/adb-running.png "Autonomous Database")
  
-    and click **More Actions**, then click **Stop**:
+   and click **More Actions**, then click **Stop**:
 
     ![Stop Autonomous Database](./images/stop-adb.png "Stop Autonomous Database")
 
