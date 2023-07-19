@@ -38,9 +38,9 @@
             "filename": "../../instance-setup/ag-instance-setup.md"
         },
         {
-            "title": "Lab 6: Install and configure Oracle Access Governance agent",
+            "title": "Lab 6: Establish Connection between Oracle Database and Oracle Access Governance",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
-            "filename": "../../agent-install/agent-install.md"
+            "filename": "../../integrate-oag-db/integrate-oag-db.md"
         },
         {
             "title": "Lab 7: Cleanup Access Governance service instance",

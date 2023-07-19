@@ -38,16 +38,21 @@
             "filename": "../../instance-setup/ag-instance-setup.md"
         },
         {
-            "title": "Lab 6: Install and configure Oracle Access Governance agent",
+            "title": "Lab 6: Establish Connection between Oracle Database and Oracle Access Governance",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
-            "filename": "../../agent-install/agent-install.md"
+            "filename": "../../integrate-oag-db/integrate-oag-db.md"
         },
         {
-            "title": "Lab 7: Cleanup Access Governance service instance",
+            "title": "Lab 7: Install and configure Oracle Access Governance agent",
+            "description": "Labs that follow the introduction are numbered, starting with Lab ",
+            "filename": "../../install-agent/install-agent.md"
+        },
+        {
+            "title": "Lab 8: Cleanup Access Governance service instance",
             "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
         },
         {
-            "title": "Lab 8: Environment Cleanup",
+            "title": "Lab 9: Environment Cleanup",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "https://oracle-livelabs.github.io/common/labs/cleanup-stack/cleanup-stack.md"
         },
