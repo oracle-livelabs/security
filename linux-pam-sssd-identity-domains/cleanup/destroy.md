@@ -14,7 +14,11 @@ This lab will show you how you can carry out the cleanup activities for the enti
 
 ## Task 1: Deactivate the confidential applications and the Identity Domain
 
-In this task you will be carrying out the prerequisites before destroying both the stacks. You will be *manually deactivating* the applications and Identity Domain on the OCI console.
+In this task you will be carrying out the prerequisites before destroying both the stacks. 
+
+1. *Manually deactivate* both the *Confidential applications* present in the Domains.
+
+2. *Deactivate* the Identity Domain on the OCI console.
 
 ![client-app](./images/client-app.png "client-app")
 

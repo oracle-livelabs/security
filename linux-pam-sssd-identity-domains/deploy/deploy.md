@@ -23,9 +23,9 @@ Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace th
 
 1. Once logged in to the OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
-	![Stacks](./images/stacks.png "Stacks")
+	![Stacks](./images/stack.png "Stacks")
 	
-	![Create-Stacks](./images/create-stacks.png "Create-Stacks")
+	![Create-Stacks](./images/create-stack.png "Create-Stacks")
  
 2. On the Create Stack Wizard, select the **.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 

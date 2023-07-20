@@ -32,7 +32,7 @@ This lab will show you how you can test the Authentication into Linux Server Usi
 
 	![enable-mfa](./images/enable-mfa.png "enable-mfa")
 
-	![scan-QR](./images/scan-qr.png "scan-QR")
+	![scan-QR](./images/scan-qr-code.png "scan-QR")
 
 5. Click on **Done** and then proceed with *Task 2*.
 
