@@ -15,7 +15,7 @@ This lab will show you how to add a Single Sign On Policy to include MFA in the 
 
 1. Sign in to your OCI IAM Identity Domains to access the **OCI console**. Once logged in, **Navigate** to **Domains** under **Identity and Security**. Now select your **Identity Domain** provisioned previously.
 
-	![identity&security](./images/identity&security.png "identity&security")
+	![identity&security](./images/identity-security.png "identity&security")
 
 	![domains](./images/domains.png "domains")
 	
