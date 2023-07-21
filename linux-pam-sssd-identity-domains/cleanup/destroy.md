@@ -14,7 +14,7 @@ This lab will show you how you can carry out the cleanup activities for the enti
 
 ## Task 1: Deactivate the confidential applications and the Identity Domain
 
-In this task you will be carrying out the prerequisites before destroying both the stacks. 
+In this task you will be carrying out the prerequisites before destroying both the stacks.
 
 1. *Manually deactivate* both the *Confidential applications* present in the Domains.
 
