@@ -8,13 +8,13 @@ Using this stack we will be able to deploy  **Linux Server and Identity Domain**
 
 ### Objectives
 
-1.	Deploy a **Linux Server**
-2.	Deploy the **Identity Domain** of the type **Oracle Apps Premium**
-4.	Validate the created resources via web browser and via SSH access.
+*	Deploy a **Linux Server**
+*	Deploy the **Identity Domain** of the type **Oracle Apps Premium**
+*	Validate the created resources via web browser and via SSH access.
 
 ### Prerequisites
 
-Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace the the content of the **SSH.key** and **SSH.key.pub** file  with your respective content of the private key and public key.
+*	Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace the the content of the **SSH.key** and **SSH.key.pub** file  with your respective content of the private key and public key.
 
 **Note** Name of the file should not be changed.
 

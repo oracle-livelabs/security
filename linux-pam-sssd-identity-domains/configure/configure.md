@@ -8,12 +8,12 @@ Using this stack we will be able to configure **Linux Server and Identity Domain
 
 ### Objectives
 
-1.	Install and Configure **Linux-PAM using SSSD**
-2.	Create the **Confidential Application** under **Identity Domain** and create the sample *POSIX* users and a POSIX group.
+*	Install and Configure **Linux-PAM using SSSD**
+*	Create the **Confidential Application** under **Identity Domain** and create the sample *POSIX* users and a POSIX group.
 
 ### Prerequisites
 
-Once the **Stack2- Configure.zip** is downloaded, use the updated **SSH.key** file, which was created while deploying the **Stack1- Deploy.zip**.
+*	Once the **Stack2- Configure.zip** is downloaded, use the updated **SSH.key** file, which was created while deploying the **Stack1- Deploy.zip**.
 
 ## Task 1: Deploy the Configuration Stack via Resource Manager
 

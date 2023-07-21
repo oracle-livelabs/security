@@ -10,8 +10,8 @@ This module will also help you to create a confidential application under the ne
 
 ### Objectives
 
-1.	**Reset** the password for the admin user and login into the newly created Identity Domain.
-2. 	Create a **Confidential application** in OCI IAM with the allowed grant type as *Client Credentials*
+*	**Reset** the password for the admin user and login into the newly created Identity Domain.
+* 	Create a **Confidential application** in OCI IAM with the allowed grant type as *Client Credentials*.
 
 ## Task 1: Reset the password for the admin user and login into the newly created Domain
 
