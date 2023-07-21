@@ -1,4 +1,3 @@
-
 # Deploy ORM stack to configure the Linux PAM module and Identity Domain
 
 ## Introduction
@@ -54,7 +53,7 @@ In this lab, we were able to successfully deploy and configure Linux Pluggable A
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Contributor** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty
 * **Last Updated By/Date** - Gautam Mishra July 2023
 
 

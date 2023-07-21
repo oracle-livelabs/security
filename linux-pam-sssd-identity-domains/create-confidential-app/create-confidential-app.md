@@ -75,7 +75,6 @@ We will register a Confidential Application under newly created OCI-IAM Domain w
 
 	![client-id-secret](./images/client-id-secret.jpg "client-id-secret")
 
-
 ## Conclusion
 
 In this Lab, we activated the Admin user under your newly created Identity Domain of the type- Oracle Apps Premium and then created a confidential application for REST API, which is to be used further in the Terraform scripts. 
@@ -84,5 +83,5 @@ In this Lab, we activated the Admin user under your newly created Identity Domai
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Contributor** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty
 * **Last Updated By/Date** - Gautam Mishra July 2023

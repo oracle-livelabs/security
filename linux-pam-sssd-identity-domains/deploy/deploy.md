@@ -1,4 +1,3 @@
-
 # Deploy ORM stack to create a Linux Server and Identity Domain
 
 ## Introduction
@@ -73,5 +72,5 @@ In this Lab, we were able to successfully deploy and validate a Linux Server and
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Contributor** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty
 * **Last Updated By/Date** - Gautam Mishra July 2023
