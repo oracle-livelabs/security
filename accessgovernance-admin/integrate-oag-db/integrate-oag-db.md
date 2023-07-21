@@ -44,18 +44,12 @@ This lab assumes, you have:
 
 1. Open a terminal session. 
 
-   ![Open terminal](images/open-terminal.png)
-
-   The terminal session has started. 
-
-   ![Terminal window](images/terminal-window.png)
 
 2. Check the version of the docker.
 
     ```
     <copy>docker -v</copy>
     ```
-    ![Check the version of docker](images/docker-version.png)
 
     ```
     Expected output: Docker version 23.0.0, build e92dd87
@@ -68,7 +62,6 @@ This lab assumes, you have:
     <copy>systemctl status docker</copy>
     ```
 
-    ![Validate the status of docker](images/docker-info.png) 
 
      Enter **Ctrl+C** to return to the command prompt
 
@@ -80,15 +73,12 @@ This lab assumes, you have:
     <copy>cd /scratch/idmqa/scripts</copy>
     ```
 
-    ![Move to script files location](images/script-file.png)
 
 2. List the files inside the directory.
 
     ```
     <copy>ls</copy>
     ```
-
-    ![List of files in directory](images/list-files.png)
 
 
 3. Start DB and all servers manually,using below scripts.
@@ -107,12 +97,12 @@ This lab assumes, you have:
     ```
 2. Set environment variables for the Oracle database. 
 
-  ```
-    <copy>ORACLE_HOME=/scratch/idmqa/app/idmqa/product/12.2.0/dbhome_1
-    export ORACLE_HOME
-    ORACLE_SID=orcl
-    export ORACLE_SID</copy>
     ```
+      <copy>ORACLE_HOME=/scratch/idmqa/app/idmqa/product/12.2.0/dbhome_1
+      export ORACLE_HOME
+      ORACLE_SID=orcl
+      export ORACLE_SID</copy>
+      ```
   
 3. Navigate to the ORACL_HOME. 
 
@@ -173,13 +163,13 @@ This lab assumes, you have:
 
 5. On the Configure step of the workflow, enter the configuration details required to allow Oracle Access Governance to connect to the target database.
 
-  - Easy Connect URL for Database: 
+  - Easy Connect URL for Database: jdbc:oracle:thin:@//<—privateipaddressofcomputeinstance-->/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM
 
-  - User Name: 
+  - User Name: sys as sysdba
 
-  - Password: 
+  - Password: Welcome1
 
-  - Confirm password: 
+  - Confirm password: Welcome1
 
 
 6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select Add to create the connected system.
