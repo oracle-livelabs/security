@@ -1,11 +1,10 @@
-
-# Deploy the stack to configure the Linux Server Instance and Identity Domain
+# Deploy ORM stack to configure the Linux PAM module and Identity Domain
 
 ## Introduction
 
 Using this stack we will be able to configure **Linux Server and Identity Domain**. As part of this stack, a confidential application will be created under **Identity Domain** and sample users will be created.
 
-*Estimated Lab Time:* 20 minutes
+*Estimated Time:* 20 minutes
 
 ### Objectives
 
@@ -20,9 +19,9 @@ Once the **Stack2- Configure.zip** is downloaded, use the updated **SSH.key** fi
 
 1. Once logged in to OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
-![stacks](./images/stacks.png "stacks")
+	![stacks](./images/stacks.png "stacks")
 	
-![create-stacks](./images/create-stacks.png "create-stacks")
+	![create-stacks](./images/create-stacks.png "create-stacks")
  
 2. On the Create Stack Wizard, select the **Stack 2- Configure.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
@@ -54,7 +53,7 @@ In this lab, we were able to successfully deploy and configure Linux Pluggable A
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Lead By** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty
 * **Last Updated By/Date** - Gautam Mishra July 2023
 
 

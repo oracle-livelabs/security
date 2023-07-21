@@ -1,10 +1,10 @@
-# Validate
+# Validate the Authentication flow
 
 ## Introduction
 
 This lab will show you how you can test the Authentication into Linux Server Using OCI IAM.
 
-*Estimated Lab Time:* 5 minutes
+*Estimated Time:* 5 minutes
 
 ### Objectives
 
@@ -32,7 +32,7 @@ This lab will show you how you can test the Authentication into Linux Server Usi
 
 	![enable-mfa](./images/enable-mfa.png "enable-mfa")
 
-	![scan-QR](./images/scan-QR.png "scan-QR")
+	![scan-QR](./images/scan-qr-code.png "scan-QR")
 
 5. Click on **Done** and then proceed with *Task 2*.
 
@@ -58,6 +58,6 @@ In this Lab, we were able to successfully change the password of the test user a
  
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Lead By** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty
 * **Last Updated By/Date** - Gautam Mishra July 2023
 

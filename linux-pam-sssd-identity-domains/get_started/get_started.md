@@ -4,7 +4,7 @@
 
 Oracle Cloud is the industry's broadest and most integrated cloud provider, with deployment options ranging from the public cloud to your data center. Oracle Cloud offers best-in-class services across Software as a Service (SaaS), Platform as a Service (PaaS), and Infrastructure as a Service (IaaS).
 
-*Estimated Lab Time:* 2 minutes
+*Estimated Time:* 2 minutes
 
 ### Types of Cloud Accounts
 
@@ -46,7 +46,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Lead By** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty
 * **Last Updated By/Date** - Gautam Mishra July 2023
 
 
