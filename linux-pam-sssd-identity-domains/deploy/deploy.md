@@ -1,21 +1,20 @@
-
-# Deploy the stack to install and Linux Server and Identity Domain
+# Deploy ORM stack to create a Linux Server and Identity Domain
 
 ## Introduction
 
 Using this stack we will be able to deploy  **Linux Server and Identity Domain** using Terraform. The Identity Domain created will be of the type **Oracle Apps Premium**. On the Linux server we will then configure **Linux Pluggable Authentication Module (PAM) module** using another stack in upcoming lab.
 
-*Estimated Lab Time:* 15 minutes
+*Estimated Time:* 15 minutes
 
 ### Objectives
 
-1.	Deploy a **Linux Server**
-2.	Deploy the **Identity Domain** of the type **Oracle Apps Premium**
-4.	Validate the created resources via web browser and via SSH access.
+*	Deploy a **Linux Server**
+*	Deploy the **Identity Domain** of the type **Oracle Apps Premium**
+*	Validate the created resources via web browser and via SSH access.
 
 ### Prerequisites
 
-Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace the the content of the **SSH.key** and **SSH.key.pub** file  with your respective content of the private key and public key.
+*	Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace the the content of the **SSH.key** and **SSH.key.pub** file  with your respective content of the private key and public key.
 
 **Note** Name of the file should not be changed.
 
@@ -23,9 +22,9 @@ Once the **Stack1- Deploy.zip** is downloaded, unzip the zip file and replace th
 
 1. Once logged in to the OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
-![Stacks](./images/Stacks.png "Stacks")
+	![Stacks](./images/stack.png "Stacks")
 	
-![Create-Stacks](./images/Create-Stacks.png "Create-Stacks")
+	![Create-Stacks](./images/create-stack.png "Create-Stacks")
  
 2. On the Create Stack Wizard, select the **.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
@@ -73,5 +72,5 @@ In this Lab, we were able to successfully deploy and validate a Linux Server and
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Lead By** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty
 * **Last Updated By/Date** - Gautam Mishra July 2023

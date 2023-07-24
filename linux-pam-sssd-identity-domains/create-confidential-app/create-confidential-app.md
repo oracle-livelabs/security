@@ -1,4 +1,4 @@
-# Activation of the Identity Domain and Creating a Confidential App for REST API Calls
+# Create a confidential application in OCI IAM
 
 ## Introduction
 
@@ -6,12 +6,12 @@ During the stack execution process, An Oracle Identity Domain of the type of **O
 
 This module will also help you to create a confidential application under the newly created Identity Domain, which will be used for making REST API calls in the backend.
 
-*Estimated Lab Time:* 10 minutes
+*Estimated Time:* 10 minutes
 
 ### Objectives
 
-1.	**Reset** the password for the admin user and login into the newly created Identity Domain.
-2. 	Create a **Confidential application** in OCI IAM with the allowed grant type as *Client Credentials*
+*	**Reset** the password for the admin user and login into the newly created Identity Domain.
+* 	Create a **Confidential application** in OCI IAM with the allowed grant type as *Client Credentials*.
 
 ## Task 1: Reset the password for the admin user and login into the newly created Domain
 
@@ -49,32 +49,31 @@ We will register a Confidential Application under newly created OCI-IAM Domain w
  
 2. Select **Confidential Application** and then click on **Launch Workflow**
  
-![create-confidential-application](./images/create-confidential-application.jpg "create-confidential-application")
+	![create-confidential-application](./images/create-confidential-application.jpg "create-confidential-application")
 
 3. Add the Name to your application and then click of **Next**
 
-![app-name](./images/app-name.jpg "app-name")
+	![app-name](./images/app-name.jpg "app-name")
  
 4. Select **Client Credentials** as the Grant Type and then click on **Next**
 
-![grant-type](./images/grant-type.jpg "grant-type")
+	![grant-type](./images/grant-type.jpg "grant-type")
 
 5. Select **Identity Domain Administrator** from **App Role** and **Add** it.
 
-![app-roles](./images/app-roles.jpg "app-roles")
+	![app-roles](./images/app-roles.jpg "app-roles")
 
 6. Finally click on **Finish** 
 
-![finish](./images/finish.jpg "finish")
+	![finish](./images/finish.jpg "finish")
 
 6. Click on **Activate Application**
 
-![activate](./images/activate.jpg "activate")
+	![activate](./images/activate.jpg "activate")
 
 8. Now grab the **Client ID** and **Secret** for using it in further configurations.
 
-![client-id-secret](./images/client-id-secret.jpg "client-id-secret")
-
+	![client-id-secret](./images/client-id-secret.jpg "client-id-secret")
 
 ## Conclusion
 
@@ -84,5 +83,5 @@ In this Lab, we activated the Admin user under your newly created Identity Domai
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Lead By** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty
 * **Last Updated By/Date** - Gautam Mishra July 2023

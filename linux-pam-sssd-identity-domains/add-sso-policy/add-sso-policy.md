@@ -1,9 +1,10 @@
-# Prepare Setup
+
+# Create a SSO Policy to introduce MFA
 
 ## Introduction
 This lab will show you how to add a Single Sign On Policy to include MFA in the rule.
 
-*Estimated Lab Time:* 5 minutes
+*Estimated Time:* 5 minutes
 
 ### Objectives
 
@@ -15,7 +16,7 @@ This lab will show you how to add a Single Sign On Policy to include MFA in the 
 
 1. Sign in to your OCI IAM Identity Domains to access the **OCI console**. Once logged in, **Navigate** to **Domains** under **Identity and Security**. Now select your **Identity Domain** provisioned previously.
 
-	![identity&security](./images/identity&security.png "identity&security")
+	![identity&security](./images/identity-security.png "identity&security")
 
 	![domains](./images/domains.png "domains")
 	
@@ -44,6 +45,6 @@ This lab will show you how to add a Single Sign On Policy to include MFA in the 
 
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
-* **Lead By** - Deepthi Shetty 
+* **Contributor** - Deepthi Shetty 
 * **Last Updated By/Date** - Gautam Mishra July 2023
 
