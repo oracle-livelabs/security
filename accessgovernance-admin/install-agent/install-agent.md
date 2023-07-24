@@ -49,7 +49,7 @@ In this lab, you will:
 
 
      ```
-    <copy>curl https://raw.githubusercontent.com/oracle/docker-images/main/OracleIdentityGovernance/samples/scripts/agentManagement.sh -o agentManagement.sh ; 
+    <copy>curl https://raw.githubusercontent.com/oracle/docker-images/main/OracleIdentityGovernance/samples/scripts/agentManagement.sh -o agentManagement.sh; 
   </copy>
      ```  
      ```
@@ -59,7 +59,7 @@ In this lab, you will:
 3. Start the agent with the following command: 
 
     ```
-    <copy>curl https://raw.githubusercontent.com/oracle/docker-images/main/OracleIdentityGovernance/samples/scripts/agentManagement.sh -o agentManagement.sh ;
+    <copy>curl https://raw.githubusercontent.com/oracle/docker-images/main/OracleIdentityGovernance/samples/scripts/agentManagement.sh -o agentManagement.sh;
     </copy>
       ```  
       ```

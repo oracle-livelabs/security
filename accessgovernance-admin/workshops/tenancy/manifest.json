@@ -43,11 +43,36 @@
             "filename": "../../integrate-oag-db/integrate-oag-db.md"
         },
         {
-            "title": "Lab 7: Cleanup Access Governance service instance",
+            "title": "Lab 7: Install and configure Oracle Access Governance agent",
+            "description": "Labs that follow the introduction are numbered, starting with Lab ",
+            "filename": "../../install-agent/install-agent.md"
+        },
+        {
+            "title": "Lab 8: Create an Identity Collection",
+            "filename": "../../identity-collection/identity-collection.md"
+        },
+        {
+            "title": "Lab 9: Create an Approval Workflow with parallel escalation rules",
+            "filename": "../../approval-workflow/approval-workflow.md"
+        },
+        {
+            "title": "Lab 10: Create an Access Bundle",
+            "filename": "../../access-bundle/access-bundle.md"
+        },
+        {
+            "title": "Lab 11: Create a Database Role",
+            "filename": "../../create-role/create-role.md"
+        },
+        {
+            "title": "Lab 12: Create a Centralized Policy to provision Access Privileges",
+            "filename": "../../create-policy/create-policy.md"
+        },
+        {
+            "title": "Lab 13: Cleanup Access Governance service instance",
             "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
         },
         {
-            "title": "Lab 8: Environment Cleanup",
+            "title": "Lab 14: Environment Cleanup",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "https://oracle-livelabs.github.io/common/labs/cleanup-stack/cleanup-stack.md"
         },

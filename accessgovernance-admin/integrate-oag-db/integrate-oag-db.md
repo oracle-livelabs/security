@@ -104,7 +104,7 @@ This lab assumes, you have:
       export ORACLE_SID</copy>
       ```
   
-3. Navigate to the ORACL_HOME. 
+3. Navigate to the ORACLE_HOME. 
 
     ```
     <copy>cd /scratch/idmqa/app/idmqa/product/12.2.0/dbhome_1/bin</copy>
