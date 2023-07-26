@@ -4,7 +4,7 @@
 
 Integrate with Database User Management (Oracle)
 
-* Estimated Time: 15 minutes
+*Estimated Time*: 15 minutes
 * Persona: Identity Domain Administrator
 
 
@@ -154,27 +154,27 @@ This lab assumes, you have:
 
 3. On the Select system step of the workflow, Select Database User Management (Oracle DB) and click Next.
 
-4. On the Enter Details step of the workflow, enter the details for the connected system:
+  4. On the Enter Details step of the workflow, enter the details for the connected system:
 
-  -  What do you want to call your database : OAG-DB
-  - How do you want to describe this database: OAG-DB
+          * What do you want to call your database : OAG-DB
+          * How do you want to describe this database: OAG-DB
 
-  Click Next
+      Click Next
 
-5. On the Configure step of the workflow, enter the configuration details required to allow Oracle Access Governance to connect to the target database.
+  5. On the Configure step of the workflow, enter the configuration details required to allow Oracle Access Governance to connect to the target database.
 
-  - Easy Connect URL for Database: jdbc:oracle:thin:@//<—privateipaddressofcomputeinstance-->/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM
+          * Easy Connect URL for Database: jdbc:oracle:thin:@//<—privateipaddressofcomputeinstance-->/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM
 
-  - User Name: sys as sysdba
+          * User Name: sys as sysdba
 
-  - Password: Welcome1
+          * Password: Welcome1
 
-  - Confirm password: Welcome1
+          * Confirm password: Welcome1
 
 
-6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select Add to create the connected system.
+  6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select Add to create the connected system.
 
-7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the Download link to download the agent zip file to the environment in which the agent will run.
+  7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the Download link to download the agent zip file to the environment in which the agent will run.
 
 
   You may now **proceed to the next lab**. 

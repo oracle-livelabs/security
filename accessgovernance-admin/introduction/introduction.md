@@ -18,7 +18,7 @@ This lab walks you through the steps to get started using **Oracle Access Govern
 - **Access Control Administrator** to manage Roles, Identity Collections, Policies, and Approval Workflows.
 
 
-*Estimated Time:* 3 Hours
+*Estimated Workshop Time:* 3 Hours
 
 
 ### Objectives

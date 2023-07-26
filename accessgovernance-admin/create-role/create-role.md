@@ -4,7 +4,7 @@
 
 In this lab we will create a Database Role 
 
-*Estimated Lab Time*: 15 minutes
+*Estimated Time*: 15 minutes
 
 
 ### Objectives

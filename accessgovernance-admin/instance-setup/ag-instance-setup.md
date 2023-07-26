@@ -4,7 +4,7 @@
 
 In this lab we will setup the OAG service instance and make configurations required to successfully run this workshop.
 
-*Estimated Lab Time*: 30 minutes
+*Estimated Time*: 30 minutes
 
 *Persona*: Identity Domain Administrator
 

@@ -4,7 +4,7 @@
 
 In this lab we will create an Approval Workflow with parallel escalation rules
 
-*Estimated Lab Time*: 15 minutes
+*Estimated Time*: 15 minutes
 
 
 ### Objectives

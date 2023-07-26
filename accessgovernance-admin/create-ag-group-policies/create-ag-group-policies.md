@@ -4,7 +4,7 @@
 
 Create policies for Access Governance. 
 
-* Estimated Time: 15 minutes
+*Estimated Time*: 15 minutes
 * Persona: Default Domain Administrator
 
 
@@ -19,7 +19,9 @@ In this lab, you will:
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Policies* from the list of products.
 
-2. On the Policies page, Click on *Create Policy* to create the policy : ag-access-policy in the root compartment. 
+2. On the Policies page - create 2 policies ag-access-policy and domain-admin-policy
+  
+    1. Click on *Create Policy* to create the policy : ag-access-policy in the root compartment. 
 
 
     ```
@@ -34,10 +36,10 @@ In this lab, you will:
     Allow group ag-domain/Domain_Administrators to read objectstorage-namespace in tenancy</copy>
       ```  
 
-    Click *Create*
+      Click *Create*
 
 
-   On the Policies page, In the root compartment click on Create Policy to create the policy : domain-admin-policy
+    2. In the root compartment click on *Create Policy* to create the policy : domain-admin-policy
 
 
     ```

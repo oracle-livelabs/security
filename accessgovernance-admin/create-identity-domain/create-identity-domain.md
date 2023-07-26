@@ -4,7 +4,7 @@
 
 Creation of Compartment 
 
-*Estimated Lab Time*: 15 minutes
+*Estimated Time*: 15 minutes
 * Persona: Default Domain Administrator
 
 
