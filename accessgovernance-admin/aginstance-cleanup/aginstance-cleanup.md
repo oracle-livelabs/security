@@ -5,7 +5,7 @@
 Upon completing your labs, we recommend that you perform a cleanup to dispose the Access Governance service instance. This lab will guide you to properly destroy the resource.
 
 
-*Estimated Lab Time*: 10 minutes
+*Lab Time*: 10 minutes
 
 ### Objectives
 
@@ -54,5 +54,5 @@ This lab assumes you have:
 * [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
-## Acknowledgments
+## Acknowledgements
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 

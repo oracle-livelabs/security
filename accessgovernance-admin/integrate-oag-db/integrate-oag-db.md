@@ -88,6 +88,11 @@ This lab assumes, you have:
     ```
     Wait till DB gets started.
 
+4. Now start the OIG services, using the below command.
+
+    ```
+    <copy>./start_all_servers.sh</copy>
+    ```
 
 
 ## Task 3: Download the Agent
@@ -132,5 +137,5 @@ This lab assumes, you have:
 * [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
-## Acknowledgments
+## Acknowledgements
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
