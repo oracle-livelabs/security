@@ -58,10 +58,6 @@ In this lab, you will:
      ``` 
 3. Start the agent with the following command: 
 
-    ```
-    <copy>curl https://raw.githubusercontent.com/oracle/docker-images/main/OracleIdentityGovernance/samples/scripts/agentManagement.sh -o agentManagement.sh;
-    </copy>
-      ```  
       ```
       <copy>sh agentManagement.sh --volume /home/opc/vol_oag_db --start</copy>
       ``` 
@@ -70,7 +66,7 @@ In this lab, you will:
 
 1. Login to the Oracle Access Governance Console, select the Navigation Menuicon to display the navigation menu. 
 2. In the Oracle Access Governance Console, select Service Administration → Connected Systems from the navigation menu.
-3. On the Connected Systems screen, the tile showing the Identity Data Orchestrator created in Install Agent on Target System shows a status of Waiting for initial connection. Click on Manage → Troubleshooting Checklist.
+3. On the Connected Systems screen, the tile showing the name of the connected system shows a status of Waiting for initial connection. Click on Manage Connection. 
 4. The Activity Log at the bottom of the page will show the status of the Validate operation, Pending while the agent comes up. If the agent does not come up, check the agent install and operation logs for any issues.
 5. Once the agent has come up, the status of the Validate operation will show as Success.
 

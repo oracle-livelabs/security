@@ -88,63 +88,9 @@ This lab assumes, you have:
     ```
     Wait till DB gets started.
 
-## Task 3: Create a Target System User Account for Database User Management (Oracle) Connected System Operations
-
-1. Move to the directory where the script files are located.
-     
-    ```
-    <copy>cd /scratch/idmqa/scripts</copy>
-    ```
-2. Set environment variables for the Oracle database. 
-
-    ```
-      <copy>ORACLE_HOME=/scratch/idmqa/app/idmqa/product/12.2.0/dbhome_1
-      export ORACLE_HOME
-      ORACLE_SID=orcl
-      export ORACLE_SID</copy>
-      ```
-  
-3. Navigate to the ORACLE_HOME. 
-
-    ```
-    <copy>cd /scratch/idmqa/app/idmqa/product/12.2.0/dbhome_1/bin</copy>
-    ```
-
-4. Start the SQL as the DB administrator. 
-
-    ```
-    <copy>./sqlpus 'sys/Welcome1' as sysdba</copy>
-    ```
-5. Create a service user using the following SQL statement:
-
-    ```
-    <copy>CREATE USER agserviceuser IDENTIFIED BY password
-    DEFAULT TABLESPACE users
-    TEMPORARY TABLESPACE temp QUOTA UNLIMITED ON users;</copy>
-    ```
-6. Assign the following permissions and roles to the service user created:
 
 
-    ```
-    <copy>GRANT SELECT on dba_sys_privs TO agserviceuser;
-    GRANT SELECT on dba_ts_quotas TO agserviceuser;
-    GRANT SELECT on dba_tablespaces TO agserviceuser;
-    GRANT SELECT on dba_users TO agserviceuser;
-    GRANT CREATE USER TO agserviceuser;
-    GRANT ALTER ANY TABLE TO agserviceuser;
-    GRANT GRANT ANY PRIVILEGE TO agserviceuser;
-    GRANT GRANT ANY ROLE TO agserviceuser;
-    GRANT DROP USER TO agserviceuser;
-    GRANT SELECT on dba_roles TO agserviceuser;
-    GRANT SELECT ON dba_profiles TO agserviceuser;
-    GRANT ALTER USER TO agserviceuser;
-    GRANT CREATE ANY TABLE TO agserviceuser;
-    GRANT DROP ANY TABLE TO agserviceuser;
-    GRANT CREATE ANY PROCEDURE TO agserviceuser;
-    GRANT DROP ANY PROCEDURE TO agserviceuser;</copy>
-    ```
-
-## Task 4: Download the Agent
+## Task 3: Download the Agent
 
 1. Navigate to the Connected Systems page of the Oracle Access Governance Console, by following these steps:
   From the Oracle Access Governance navigation menu icon Navigation menu, select Service Administration → Connected Systems.
