@@ -4,9 +4,14 @@
 
 In this lab we will setup the OAG service instance and make configurations required to successfully run this workshop.
 
+<<<<<<< Updated upstream
 *Estimated Time*: 30 minutes
+=======
+>>>>>>> Stashed changes
 
-*Persona*: Identity Domain Administrator
+Persona: Identity Domain Administrator
+
+*Estimated Lab Time*: 30 minutes
 
 
 ### Objectives
