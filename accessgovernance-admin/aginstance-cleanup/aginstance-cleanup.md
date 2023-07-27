@@ -5,7 +5,7 @@
 Upon completing your labs, we recommend that you perform a cleanup to dispose the Access Governance service instance. This lab will guide you to properly destroy the resource.
 
 
-*Lab Time*: 10 minutes
+*Estimated Time*: 10 minutes
 
 ### Objectives
 

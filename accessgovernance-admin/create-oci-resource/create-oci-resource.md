@@ -5,11 +5,9 @@
 As a user with a **Identity Domain Administrator** role in the identity domain, you can create OCI policies, groups and compartments, oci iam users from the **OCI** console.This lab will show you how to set up the OCI policies,VCN,groups and compartments needed to run this OCI-IAM Policy reviews. 
 
  
-
-* Estimated Time: 15 minutes
 * Persona: Identity Domain Administrator
 
-
+*Estimated Time*: 15 minutes
 
 ### Objectives
 

@@ -4,8 +4,9 @@
 
 Creation of Compartment 
 
-*Estimated Time*: 15 minutes
 * Persona: Default Domain Administrator
+
+*Estimated Time*: 15 minutes
 
 
 ### Objectives

@@ -4,8 +4,10 @@
 
 Access Governance Administrators (Pamela Green) can create and review policy review campaign.
 
-* Estimated Time: 15 minutes
+
 * Persona: Access Governance Administrator
+
+*Estimated Time*: 15 minutes
 
 ### Objectives
 

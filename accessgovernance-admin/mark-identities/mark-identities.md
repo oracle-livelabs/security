@@ -4,8 +4,10 @@
 
 Access Governance Administrators (Pamela Green) will activate the identities.
 
-* Estimated Time: 15 minutes
+
 * Persona: Access Governance Administrator 
+
+*Estimated Time*: 15 minutes
 
 ### Objectives
 

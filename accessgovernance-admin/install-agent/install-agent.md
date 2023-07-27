@@ -4,8 +4,11 @@
 
 Install Oracle Access Governance Agent 
 
-*Estimated Time*: 15 minutes
+
 * Persona: Identity Domain Administrator
+
+
+*Estimated Time*: 15 minutes
 
 
 ### Objectives

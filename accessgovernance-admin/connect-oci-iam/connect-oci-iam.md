@@ -4,8 +4,10 @@
 
 As **Access Governance Administrators** they can learn to integrate Oracle Access Governance with OCI IAM. 
 
-* Estimated Time: 15 minutes
+
 * Persona: Access Governance Administrator
+
+*Estimated Time*: 15 minutes
 
 ### Objectives
 

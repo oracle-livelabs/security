@@ -4,9 +4,9 @@
 
 Integrate with Database User Management (Oracle)
 
-*Estimated Time*: 15 minutes
 * Persona: Identity Domain Administrator
 
+*Estimated Time*: 15 minutes
 
 ### Objectives
 
