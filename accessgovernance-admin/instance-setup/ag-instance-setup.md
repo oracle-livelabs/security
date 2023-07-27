@@ -1,17 +1,12 @@
-# Setup and configure Oracle Access Governance service instance and Create Users in OCI IAM
+# Setup and configure Oracle Access Governance service instance
 
 ## Introduction
 
 In this lab we will setup the OAG service instance and make configurations required to successfully run this workshop.
 
-<<<<<<< Updated upstream
-*Estimated Time*: 30 minutes
-=======
->>>>>>> Stashed changes
-
 Persona: Identity Domain Administrator
 
-*Estimated Lab Time*: 30 minutes
+*Estimated Time*: 30 minutes
 
 
 ### Objectives
@@ -58,7 +53,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     ![Access Governance console](images/ag-console.png)
 
-## Task 2: Assign AG Roles to Users in OCI IAM
+## Task 2: Assign AG Application Roles to Users 
 
 
 1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 

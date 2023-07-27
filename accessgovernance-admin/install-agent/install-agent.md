@@ -1,4 +1,4 @@
-# Install Agent 
+# Install Oracle Access Governance Agents for OIG and Oracle DB
 
 ## Introduction
 
@@ -14,27 +14,114 @@ Install Oracle Access Governance Agent
 ### Objectives
 
 In this lab, you will:
-* Install Oracle Access Governance Agent 
+* Establish Connection between Oracle Database and Oracle Access Governance 
+* Install Oracle Access Governance Agents for OIG and Oracle DB
+
+## Task 1 : Verify Docker is up and Running 
+
+1. Open a terminal session. 
 
 
-## Task 1 : Install Agent on Target System
+2. Check the version of the docker.
+
+    ```
+    <copy>docker -v</copy>
+    ```
+
+    ```
+    Expected output: Docker version 23.0.0, build e92dd87
+    ```
+    
+
+3. Validate the status to verify if docker service is up/running
+
+    ```
+    <copy>systemctl status docker</copy>
+    ```
+
+
+     Enter **Ctrl+C** to return to the command prompt
+
+## Task 2: Start the Oracle Identity Governance (OIG) DB Service
+
+1. Move to the directory where the script files are located.
+     
+    ```
+    <copy>cd /scratch/idmqa/scripts</copy>
+    ```
+
+
+2. List the files inside the directory.
+
+    ```
+    <copy>ls</copy>
+    ```
+
+
+3. Start DB and all servers manually,using below scripts.
+
+    ```
+    <copy>./start_db.sh</copy>
+    ```
+    Wait till DB gets started.
+
+4. Now start the OIG services, using the below command.
+
+    ```
+    <copy>./start_all_servers.sh</copy>
+    ```
+
+
+## Task 3: Download the Agent
+
+1. Navigate to the Connected Systems page of the Oracle Access Governance Console, by following these steps:
+  From the Oracle Access Governance navigation menu icon Navigation menu, select Service Administration → Connected Systems.
+  Click the Add a connected system button to start the workflow.
+
+2. From the Add a Connected System page, Select the Add button on the Would you like to connect to a database management system? tile.
+
+3. On the Select system step of the workflow, Select Database User Management (Oracle DB) and click Next.
+
+  4. On the Enter Details step of the workflow, enter the details for the connected system:
+
+          * What do you want to call your database : OAG-DB
+          * How do you want to describe this database: OAG-DB
+
+      Click Next
+
+  5. On the Configure step of the workflow, enter the configuration details required to allow Oracle Access Governance to connect to the target database.
+
+          * Easy Connect URL for Database: jdbc:oracle:thin:@//<—privateipaddressofcomputeinstance-->/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM
+
+          * User Name: sys as sysdba
+
+          * Password: Welcome1
+
+          * Confirm password: Welcome1
+
+
+  6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select Add to create the connected system.
+
+  7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the Download link to download the agent zip file to the environment in which the agent will run.
+
+## Task 4 : Install Agent on Target System
 
 
 1. Open the terminal.
 
-2. Move the downloaded zip file (oag.zip) present in the /home/opc/Downloads folder to /home/opc/zip_oag_db folder.
+2. Create the volume.
 
     ```
-    <copy>mv /home/opc/Downloads/OAG-DB.zip /home/opc/zip_oag_db</copy>
+    <copy>mkdir  /home/opc/vol_oag_db</copy>
      ``` 
 
   
 
 
-3. Verify the Agent zip (OAG-DB.zip) is present inside folder zip_oag_db.
+3. Verify the Agent zip (OAG-DB.zip) is present inside folder Downloads.
 
     ```
-    <copy> cd /home/opc/zip_oag_db
+    <copy> cd /home/opc/Downloads
     ls</copy>
      ``` 
 
@@ -56,7 +143,7 @@ In this lab, you will:
   </copy>
      ```  
      ```
-    <copy>sh agentManagement.sh --volume /home/opc/vol_oag_db --agentpackage /home/opc/zip_oag_db/OAG-DB.zip --install 
+    <copy>sh agentManagement.sh --volume /home/opc/vol_oag_db --agentpackage /home/opc/Downloads/OAG-DB.zip --install 
   </copy>
      ``` 
 3. Start the agent with the following command: 
@@ -65,7 +152,7 @@ In this lab, you will:
       <copy>sh agentManagement.sh --volume /home/opc/vol_oag_db --start</copy>
       ``` 
 
-## Task 2 : Verify Agent Installation 
+## Task 5 : Verify Agent Installation 
 
 1. Login to the Oracle Access Governance Console, select the Navigation Menuicon to display the navigation menu. 
 2. In the Oracle Access Governance Console, select Service Administration → Connected Systems from the navigation menu.
