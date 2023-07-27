@@ -4,7 +4,7 @@
 
 In this lab we will setup the OAG service instance and make configurations required to successfully run this workshop.
 
-*Estimated Lab Time*: 30 minutes
+*Estimated Time*: 30 minutes
 
 *Persona*: Identity Domain Administrator
 
@@ -100,5 +100,3 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Contributors** - Edward Lu
-* **Last Updated By/Date** - Anbu Anbarasu, May 2023
