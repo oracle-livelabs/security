@@ -4,8 +4,9 @@
 
 Access reviews can be carried out from the Oracle Access Governance console by users (Mark Hernandez, Harlan Bullard, Jerry Poland) and will be reviewed by the Access Governance Administrator (Pamela Green)
 
-* Estimated Time: 15 minutes
 * Persona: Campaign Reviewer and Campaign Administrator
+
+*Estimated Time*: 15 minutes
 
 ### Objectives
 
@@ -114,7 +115,7 @@ In this lab, you will:
   22. Click on **Submit Request**
 
 
-## Task 2: Login Oracle Access Governance as Access Governance Administrator (Pamela Green) to Create Campaign 
+## Task 2: Login Oracle Access Governance as Access Governance Administrator to Create Campaign 
 
 1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password mentioned below.
 
@@ -148,7 +149,7 @@ In this lab, you will:
 10. Click Create. 
 
 
-## Task 3: Login Oracle Access Governance as Access Governance Administrator (Pamela Green) to approve Access Requests
+## Task 3: Login Oracle Access Governance as Access Governance Administrator to approve Access Requests
 
 
 1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password mentioned below. 
@@ -172,11 +173,6 @@ In this lab, you will:
 3. Approve the 3 Requests. 
 
 
-
-
-
-
-
   You may now **proceed to the next lab**. 
 
 ## Learn More
@@ -188,4 +184,4 @@ In this lab, you will:
 
 ## Acknowledgements
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Anbu Anbarasu, May 2023
+* **Last Updated By/Date** - Anbu Anbarasu, July 2023
