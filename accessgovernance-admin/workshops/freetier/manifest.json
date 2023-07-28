@@ -45,7 +45,7 @@
         {
             "title": "<INDIRA>Lab 7: Connect to OIG and Oracle Database",
             "description": "Add OIG and Oracle DB Connected Systems ",
-            "filename": "../../connect-oig-odb/connect-oig-odb.md"
+            "filename": "../../integrate-oag-db/integrate-oag-db.md"
         },
         {
             "title": "Lab 8: Connect to Oracle Cloud Infrastructure (OCI)",

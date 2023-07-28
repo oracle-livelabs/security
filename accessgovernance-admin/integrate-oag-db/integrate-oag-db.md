@@ -1,8 +1,8 @@
-# Establish Connection between Oracle Database and Oracle Access Governance 
+# To Establish Connection to Oracle Database and Oracle Identity Governance 
 
 ## Introduction
 
-Integrate with Database User Management (Oracle)
+Establish Connection to Oracle Database and Oracle Identity Governance 
 
 * Persona: Identity Domain Administrator
 
@@ -11,33 +11,8 @@ Integrate with Database User Management (Oracle)
 ### Objectives
 
 In this lab, you will:
-* To Establish Connection between Oracle Database and Oracle Access Governance 
+* To Establish Connection to Oracle Database and Oracle Identity Governance 
 
-### Prerequisites
-
-This lab assumes, you have:
-
-  Before you install and configure a Database User Management (Oracle) connected system, you
-  should consider the following pre-requisites and tasks.
-
-* Certified Components:
-  The target system can be any one of the following:
-  
-  Oracle Database 12c as single database, pluggable database (PDB), or Oracle RAC implementation.
-
-
-* Supported Connector Operations
-
-  The Database User Management (Oracle) connected system supports the following connector operations:
-
-    - User Management
-    - Create user
-    - Reset password
-    - Entitlement Grant Management
-    - Add roles
-    - Revoke Roles
-    - Add privileges
-    - Revoke privileges
 
 
 ## Task 1 : Verify Docker is up and Running 
@@ -95,37 +70,6 @@ This lab assumes, you have:
     ```
 
 
-## Task 3: Download the Agent
-
-1. Navigate to the Connected Systems page of the Oracle Access Governance Console, by following these steps:
-  From the Oracle Access Governance navigation menu icon Navigation menu, select Service Administration → Connected Systems.
-  Click the Add a connected system button to start the workflow.
-
-2. From the Add a Connected System page, Select the Add button on the Would you like to connect to a database management system? tile.
-
-3. On the Select system step of the workflow, Select Database User Management (Oracle DB) and click Next.
-
-  4. On the Enter Details step of the workflow, enter the details for the connected system:
-
-          * What do you want to call your database : OAG-DB
-          * How do you want to describe this database: OAG-DB
-
-      Click Next
-
-  5. On the Configure step of the workflow, enter the configuration details required to allow Oracle Access Governance to connect to the target database.
-
-          * Easy Connect URL for Database: jdbc:oracle:thin:@//<—privateipaddressofcomputeinstance-->/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM
-
-          * User Name: sys as sysdba
-
-          * Password: Welcome1
-
-          * Confirm password: Welcome1
-
-
-  6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select Add to create the connected system.
-
-  7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the Download link to download the agent zip file to the environment in which the agent will run.
 
 
   You may now **proceed to the next lab**. 

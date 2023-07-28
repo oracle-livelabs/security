@@ -17,62 +17,9 @@ In this lab, you will:
 * Establish Connection between Oracle Database and Oracle Access Governance 
 * Install Oracle Access Governance Agents for OIG and Oracle DB
 
-## Task 1 : Verify Docker is up and Running 
-
-1. Open a terminal session. 
 
 
-2. Check the version of the docker.
-
-    ```
-    <copy>docker -v</copy>
-    ```
-
-    ```
-    Expected output: Docker version 23.0.0, build e92dd87
-    ```
-    
-
-3. Validate the status to verify if docker service is up/running
-
-    ```
-    <copy>systemctl status docker</copy>
-    ```
-
-
-     Enter **Ctrl+C** to return to the command prompt
-
-## Task 2: Start the Oracle Identity Governance (OIG) DB Service
-
-1. Move to the directory where the script files are located.
-     
-    ```
-    <copy>cd /scratch/idmqa/scripts</copy>
-    ```
-
-
-2. List the files inside the directory.
-
-    ```
-    <copy>ls</copy>
-    ```
-
-
-3. Start DB and all servers manually,using below scripts.
-
-    ```
-    <copy>./start_db.sh</copy>
-    ```
-    Wait till DB gets started.
-
-4. Now start the OIG services, using the below command.
-
-    ```
-    <copy>./start_all_servers.sh</copy>
-    ```
-
-
-## Task 3: Download the Agent
+## Task 1: Download the Agent
 
 1. Navigate to the Connected Systems page of the Oracle Access Governance Console, by following these steps:
   From the Oracle Access Governance navigation menu icon Navigation menu, select Service Administration → Connected Systems.
@@ -104,7 +51,7 @@ In this lab, you will:
 
   7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the Download link to download the agent zip file to the environment in which the agent will run.
 
-## Task 4 : Install Agent on Target System
+## Task 2: Install Agent on Target System
 
 
 1. Open the terminal.
@@ -152,7 +99,7 @@ In this lab, you will:
       <copy>sh agentManagement.sh --volume /home/opc/vol_oag_db --start</copy>
       ``` 
 
-## Task 5 : Verify Agent Installation 
+## Task 3 : Verify Agent Installation 
 
 1. Login to the Oracle Access Governance Console, select the Navigation Menuicon to display the navigation menu. 
 2. In the Oracle Access Governance Console, select Service Administration → Connected Systems from the navigation menu.
