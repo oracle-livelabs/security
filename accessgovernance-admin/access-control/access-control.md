@@ -13,7 +13,6 @@ In this lab, you will:
  * Create an Identity Collection
  * Create an Approval Workflow with parallel escalation rules
  * Create an Access Bundle
- * Create a Database Role
  * Create a centralized policy to provision access privileges
 
 
@@ -80,7 +79,7 @@ In this lab, you will:
 
     Click on *Next*
 
-    ![Identity Collection creation](images/operations-workflow.png)
+    ![Identity Collection creation](images/qa-collection.png)
 
 4. Under Select Identities -> Membership rule , select the below mentioned option.
 
@@ -90,12 +89,12 @@ In this lab, you will:
     Condition: Equals
     Attribute field: Quality Assurance
 
-    ![Identity Collection creation](images/membership-rule.png)
+    ![Identity Collection creation](images/qa-rule.png)
 
 
 5. Click on *Create*
 
-    ![Identity Collection creation](images/click-create-operations-workflow.png)
+    ![Identity Collection creation](images/qa-collection-create.png)
 
 ## Task 3: Create an Approval Workflow 
 
@@ -124,17 +123,19 @@ In this lab, you will:
     •	Click Add
 
 
-    ![Approval Workflow](images/click-add.png) 
+    ![Approval Workflow](images/approval-workflow-id.png) 
 
-    ![Approval Workflow](images/beneficiary-manager.png) 
+    ![Approval Workflow](images/approval-workflow-edit.png) 
+    
+
 
      After confirming your configuration matches the following, click Next
 
 5. On the Add Details page, name your Approval Workflow: Approval-Workflow-IT-Management. Then, provide any description. Click Next to review your configurations so far, then click Publish.
 
-    ![Approval Workflow](images/approval-workflow.png) 
+    ![Approval Workflow](images/approval-workflow-name.png) 
 
-    ![Approval Workflow](images/click-next.png) 
+    ![Approval Workflow](images/approval-workflow-publish.png) 
 
 ## Task 4: Create an Access Bundle
 
@@ -143,17 +144,21 @@ In this lab, you will:
     ![Create Access Bundle](images/navigate-access-bundle.png)
    
 
-2. Click on Create an access bundle. 
+2. Click on Create an access bundle - DB Read Access 
 
      ![Create Access Bundle](images/create-access-bundle.png)
   
 
 3. For your bundle settings, configure your bundle to match the following:
+
     •	Which target is this bundle for?: OAG-DB
+
     •	Who can request this bundle?: Anyone
+
     •	Which approval workflow should be used?: Approval-Workflow-IT-Management
-    i.	You created this approval workflow earlier in this lab
-    Then, Click Next. 
+
+
+     Click Next. 
 
 
     ![Create Access Bundle](images/click-next.png)
@@ -163,40 +168,52 @@ In this lab, you will:
     Which permissions are included in this bundle? : Select the below to be included in the access bundle from the list. 
 
     * READ ANY FILE GROUP
+
     * READ ANY TABLE
 
 
-     ![Create Access Bundle](images/select-permissions.png)
+     ![Create Access Bundle](images/read-permissions.png)
 
     Click Next. 
 
 5. In the Add Details step, configure the following:
 
     •	What is the name of this bundle?: DB Read Access 
+
     •	How do you want to describe this bundle?: DB Read Access 
+
     •	Authentication Type: PASSWORD
+
+    •	TemporaryTablespace: TEMP
+
+    •	Profile Name: DEFAULT
+
     •	Default Tablespace: USERS
+
     •	Leave all other options as default
 
-     ![Create Access Bundle](images/bundle-details.png)
+     ![Create Access Bundle](images/db-read.png)
 
     Then, Click Next.
 
 6. Review your configurations made until this point. It should look like the configurations depicted below, except for the name. Then, click Create. 
 
-     ![Create Access Bundle](images/click-create.png)
+     ![Create Access Bundle](images/db-read-create.png)
 
-7. Click on Create an access bundle. 
+7. Click on Create an access bundle - DB Manage Access 
 
      ![Create Access Bundle](images/create-access-bundle.png)
   
 
 8. For your bundle settings, configure your bundle to match the following:
+
     •	Which target is this bundle for?: OAG-DB
+
     •	Who can request this bundle?: Anyone
+
     •	Which approval workflow should be used?: Approval-Workflow-IT-Management
-    i.	You created this approval workflow earlier in this lab
-    Then, Click Next. 
+
+   Click Next. 
 
 
     ![Create Access Bundle](images/click-next.png)
@@ -206,34 +223,45 @@ In this lab, you will:
     Which permissions are included in this bundle? : Select the below to be included in the access bundle from the list. 
 
     * ADMINISTER ANY SQL TUNING SET
+
     * ADMINISTER DATABASE TRIGGER
+
     * ADMINISTER KEY MANAGEMENT
+
     * ADMINISTER RESOURCE MANAGER
+
     * ADMINISTER SQL MANAGEMENT OBJECT
+
     * ADMINISTER SQL TUNING SET
 
 
-     ![Create Access Bundle](images/select-permissions.png)
+     ![Create Access Bundle](images/administer-permission.png)
 
     Click Next. 
 
 10. In the Add Details step, configure the following:
 
     •	What is the name of this bundle?: DB Manage Access 
+
     •	How do you want to describe this bundle?: DB Manage Access 
+
     •	Authentication Type: PASSWORD
+
     •	TemporaryTablespace: TEMP
+
     •	Profile Name: DEFAULT
+
     •	Default Tablespace: USERS
+
     •	Leave all other options as default
 
-     ![Create Access Bundle](images/bundle-details.png)
+     ![Create Access Bundle](images/db-manage-access.png)
 
     Then, Click Next.
 
 11. Review your configurations made until this point. It should look like the configurations depicted below, except for the name. Then, click Create. 
 
-     ![Create Access Bundle](images/click-create.png)
+     ![Create Access Bundle](images/create-db-manage-access.png)
 
 
 ## Task 5: Create a Centralized Policy to provision Access Privileges
@@ -254,46 +282,48 @@ In this lab, you will:
 3. Give your policy a name and description like the following:
 
     •	What do you want to call this policy?:DB Policy
+
     •	How would you describe this policy?: DB Policy
 
      ![Create Policy](images/build-policy.png)
 
 4. Now on this same page, let’s add an Access Bundle Association. Lower on the page, click the “+” button and select Access Bundle Association. 
 
-     ![Create Policy](images/role-association.png)
+     ![Create Policy](images/policy-access-bundle-association.png)
 
 5. Search for which identity collection you want to allow access : QA Team. Your selection will be marked with a green checkmark. Click Next
 
+     ![Create Policy](images/select-qa.png)
+
 6. Search for which access bundle you want to assign : DB Read Access. Your selection will be marked with a green checkmark.
 
-     ![Create Policy](images/id-collection.png)
+     ![Create Policy](images/select-db-read-access.png)
 
     Then, click Next. 
 
 7. On the Review and submit page, you may click Preview policy association in the bottom right corner before your create it. After, close that sidebar and click Add association. 
 
-     ![Create Policy](images/add-association.png)
+     ![Create Policy](images/click-add-association.png)
 
 8. Finally, click Create.
 
-     ![Create Policy](images/click-create.png)
 
 ## Task 6: Run a Manual Dataload
 
 1. On the Access Governance console home page, navigate to Service Administration -> Connected System. 
 
-   ![Create Policy](images/ag-homepage.png)
-
+   ![Create Policy](images/connected-system.png)
 
 
 2. On the Connected Systems page, select the **OAG-DB** connected system. 
 
-   ![Create Policy](images/create-policy.png)
+   ![Create Policy](images/select-system.png)
 
 3. Click on  Actions -> Load Data Now. This will perform a manual data load. 
 
-4. Once the data load is complete, the status will be shown as Success. 
+    ![Create Policy](images/load-date.png)
 
+4. Once the data load is complete, the status will be shown as Success. 
 
 
 
