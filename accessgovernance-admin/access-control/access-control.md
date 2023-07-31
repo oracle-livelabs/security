@@ -34,8 +34,11 @@ In this lab, you will:
 3. Enter the below mentioned details Under Add Details tab:
 
     What do you want to call this identity collection? : IT-Management
+
     How would you describe this collection? : IT-Management
+
     Who can manage this identity collection : pamela.green
+
     Would you like to add any tags? : approvers
 
     Click on *Next*
@@ -73,8 +76,11 @@ In this lab, you will:
 3. Enter the below mentioned details Under Add Details tab:
 
     What do you want to call this identity collection? : QA Team
+
     How would you describe this collection? : QA Team
+
     Who can manage this identity collection : pamela.green
+
     Would you like to add any tags? : DB, database, operations
 
     Click on *Next*
@@ -86,7 +92,9 @@ In this lab, you will:
     Select the *All* checkbox.
 
     Select attribute: Organization
+
     Condition: Equals
+    
     Attribute field: Quality Assurance
 
     ![Identity Collection creation](images/qa-rule.png)
