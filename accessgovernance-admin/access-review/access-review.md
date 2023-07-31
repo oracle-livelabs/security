@@ -57,7 +57,7 @@ In this lab, you will:
 
     **Username:**
     ```
-    <copy>harry.bullard</copy>
+    <copy>harlan.bullard</copy>
     ```
 
     **Password:**
@@ -83,12 +83,12 @@ In this lab, you will:
 
   15. Click on **Submit Request**
 
-  16. Log in to Oracle Access Governance as an employee user - Mark Hernandez with the username and password mentioned below. 
+  16. Log in to Oracle Access Governance as an employee user - Jerry Poland with the username and password mentioned below. 
 
 
     **Username:**
     ```
-    <copy>mhernandez</copy>
+    <copy>jerry.poland</copy>
     ```
 
     **Password:**
@@ -144,7 +144,7 @@ In this lab, you will:
 
 8. Select **Who is the first reviewer?** -> Owner. Click Save and Click Next
 
-9. Under **How would you like to schedule your campaign?** -> Select **Run now**. Click **Next**
+9. Under **How would you like to schedule your campaign?** -> Select **Run now**.Provide **How do you want to describe this campaign?** and Click **Next**
 
 10. Click Create. 
 

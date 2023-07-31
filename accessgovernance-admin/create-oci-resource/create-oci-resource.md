@@ -343,6 +343,15 @@ In this lab, you will:
 
     Click *Create*
 
+    ```
+    First Name: Jerry
+    Last Name: Poland
+    Username: jerry.poland
+    Email: Specify unique email-id to which you will be receiving activation mail for password reset for the user. 
+    ```
+
+    Click *Create*
+
 5. Sign out from the cloud console.
 
 6. For each user created, an activation mail will be sent to the email-id provided in the *Task 3: Step 4* . Reset the password for the 3 users using the *Activation mail* recieved for each of them. 

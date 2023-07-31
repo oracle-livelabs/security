@@ -57,7 +57,7 @@ In this lab, you will:
 
 
 
-## Task 2: Create an Identity Collection - IT Operations
+## Task 2: Create an Identity Collection - Quality Assurance
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Identity Collections tile. 
 
@@ -73,8 +73,8 @@ In this lab, you will:
 
 3. Enter the below mentioned details Under Add Details tab:
 
-    What do you want to call this identity collection? : IT-Operations
-    How would you describe this collection? : IT-Operations
+    What do you want to call this identity collection? : QA Team
+    How would you describe this collection? : QA Team
     Who can manage this identity collection : pamela.green
     Would you like to add any tags? : DB, database, operations
 
@@ -87,18 +87,10 @@ In this lab, you will:
     Select the *All* checkbox.
 
     Select attribute: Organization
-    Condition: Begins with 
-    Attribute field: Software 
+    Condition: Equals
+    Attribute field: Quality Assurance
 
     ![Identity Collection creation](images/membership-rule.png)
-
-    Under Select Identities -> Included named identities , select the below mentioned option.
-
-    Select *marian.smith*
-
-    Click on *Next*
-
-    ![Identity Collection creation](images/operations-include-identities.png)
 
 
 5. Click on *Create*
@@ -123,8 +115,12 @@ In this lab, you will:
 
 3. Let’s build your approval workflow now. Click the “+” button and configure your approval workflow based on the following:
 
-    •	Which type of approval?: Beneficiary’s Manager 
+    •	Which type of approval?: Identity Collection
+
+    •	Approval Identity Collection: IT Management   
+
     •	For all other fields, leave as default
+
     •	Click Add
 
 
@@ -132,22 +128,7 @@ In this lab, you will:
 
     ![Approval Workflow](images/beneficiary-manager.png) 
 
-
-4. Now let’s define a parallel approval rule. This means you are defining a two-level approval workflow to approve the request. Click Add parallel and configure based on the following:
-
-    ![Approval Workflow](images/add-parallel.png) 
-
-    •	Which type of approval?: Identity Collection
-    •	Approval identity collection: IT Management
-    •	For all other fields, leave as default
-    •	Click Add
-
-    ![Approval Workflow](images/id-collection.png) 
-
-    ![Approval Workflow](images/select-add.png) 
-
-
-    Your approval workflow should look like the depicted image below, except for the name. Be sure to select All above the approval rules. All approvers will be required to approve the request, whereas Any means either approver can approve the request. After confirming your configuration matches the following, click Next
+     After confirming your configuration matches the following, click Next
 
 5. On the Add Details page, name your Approval Workflow: Approval-Workflow-IT-Management. Then, provide any description. Click Next to review your configurations so far, then click Publish.
 
@@ -179,7 +160,11 @@ In this lab, you will:
 
 4. Select the permissions to be included in the access bundle. 
 
-    Which permissions are included in this bundle? : Select 20-30 permissions to be included in the access bundle from the list. 
+    Which permissions are included in this bundle? : Select the below to be included in the access bundle from the list. 
+
+    * READ ANY FILE GROUP
+    * READ ANY TABLE
+
 
      ![Create Access Bundle](images/select-permissions.png)
 
@@ -187,8 +172,8 @@ In this lab, you will:
 
 5. In the Add Details step, configure the following:
 
-    •	What is the name of this bundle?: Access-Bundle-IT-Management
-    •	How do you want to describe this bundle?: Type anything
+    •	What is the name of this bundle?: DB Read Access 
+    •	How do you want to describe this bundle?: DB Read Access 
     •	Authentication Type: PASSWORD
     •	Default Tablespace: USERS
     •	Leave all other options as default
@@ -201,50 +186,57 @@ In this lab, you will:
 
      ![Create Access Bundle](images/click-create.png)
 
-    
-## Task 5: Create a Role 
+7. Click on Create an access bundle. 
 
-1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Roles tile. 
-
-   ![Create a Role](images/navigate-roles.png)
-
-
-2. Click on Create a Role. 
-
-    ![Create a Role](images/click-create-role.png)
-
+     ![Create Access Bundle](images/create-access-bundle.png)
   
 
-3. For your role settings, configure it to match the following:
-    •	Who can request this role?: Anyone 
-    •	Which approval workflow: Approval-Workflow-IT-Management
-    •	Would you like to add any tags to this resource?: DB role
-
+8. For your bundle settings, configure your bundle to match the following:
+    •	Which target is this bundle for?: OAG-DB
+    •	Who can request this bundle?: Anyone
+    •	Which approval workflow should be used?: Approval-Workflow-IT-Management
+    i.	You created this approval workflow earlier in this lab
     Then, Click Next. 
 
 
-     ![Create a Role](images/role-settings.png)
+    ![Create Access Bundle](images/click-next.png)
 
-4. Select the access bundle to be included for the role : Access-Bundle-IT-Management. 
+9. Select the permissions to be included in the access bundle. 
 
-     ![Create a Role](images/access-bundle.png)
+    Which permissions are included in this bundle? : Select the below to be included in the access bundle from the list. 
+
+    * ADMINISTER ANY SQL TUNING SET
+    * ADMINISTER DATABASE TRIGGER
+    * ADMINISTER KEY MANAGEMENT
+    * ADMINISTER RESOURCE MANAGER
+    * ADMINISTER SQL MANAGEMENT OBJECT
+    * ADMINISTER SQL TUNING SET
+
+
+     ![Create Access Bundle](images/select-permissions.png)
 
     Click Next. 
 
-5. In the Add Details step, configure the following:
-    •	What is the name of this role? : AG-Role 
-    •	How do you want to describe this role?: AG Role for Oracle DB
+10. In the Add Details step, configure the following:
 
+    •	What is the name of this bundle?: DB Manage Access 
+    •	How do you want to describe this bundle?: DB Manage Access 
+    •	Authentication Type: PASSWORD
+    •	TemporaryTablespace: TEMP
+    •	Profile Name: DEFAULT
+    •	Default Tablespace: USERS
+    •	Leave all other options as default
 
-     ![Create a Role](images/add-details.png)
+     ![Create Access Bundle](images/bundle-details.png)
 
     Then, Click Next.
 
-6. Click on Create role and assign. 
+11. Review your configurations made until this point. It should look like the configurations depicted below, except for the name. Then, click Create. 
 
-     ![Create a Role](images/create-role-assign.png)
+     ![Create Access Bundle](images/click-create.png)
 
-## Task 6: Create a Centralized Policy to provision Access Privileges
+
+## Task 5: Create a Centralized Policy to provision Access Privileges
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Policies tile. 
 
@@ -262,24 +254,21 @@ In this lab, you will:
 3. Give your policy a name and description like the following:
 
     •	What do you want to call this policy?:DB Policy
-    •	How would you describe this policy?: type anything
+    •	How would you describe this policy?: DB Policy
 
      ![Create Policy](images/build-policy.png)
 
-4. Now on this same page, let’s add a Role Association. Lower on the page, click the “+” button and select Role association. 
+4. Now on this same page, let’s add an Access Bundle Association. Lower on the page, click the “+” button and select Access Bundle Association. 
 
      ![Create Policy](images/role-association.png)
 
-5. Search for the Identity Collection : IT-Operations. Your selection will be marked with a green checkmark.
+5. Search for which identity collection you want to allow access : QA Team. Your selection will be marked with a green checkmark. Click Next
+
+6. Search for which access bundle you want to assign : DB Read Access. Your selection will be marked with a green checkmark.
 
      ![Create Policy](images/id-collection.png)
 
     Then, click Next. 
-
-
-6. Select the Role you want to assign. Select AG-Role and Click Next.
-
-     ![Create Policy](images/ag-role.png)
 
 7. On the Review and submit page, you may click Preview policy association in the bottom right corner before your create it. After, close that sidebar and click Add association. 
 
@@ -288,6 +277,23 @@ In this lab, you will:
 8. Finally, click Create.
 
      ![Create Policy](images/click-create.png)
+
+## Task 6: Run a Manual Dataload
+
+1. On the Access Governance console home page, navigate to Service Administration -> Connected System. 
+
+   ![Create Policy](images/ag-homepage.png)
+
+
+
+2. On the Connected Systems page, select the **OAG-DB** connected system. 
+
+   ![Create Policy](images/create-policy.png)
+
+3. Click on  Actions -> Load Data Now. This will perform a manual data load. 
+
+4. Once the data load is complete, the status will be shown as Success. 
+
 
 
 
