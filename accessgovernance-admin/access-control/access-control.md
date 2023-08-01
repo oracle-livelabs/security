@@ -53,7 +53,7 @@ In this lab, you will:
 
     ![Identity Collection creation](images/include-identities.png)
 
-5. INDIRA Click on *Create*
+5. Click on *Create*
 
 
 
@@ -220,10 +220,7 @@ In this lab, you will:
 
     •	Which approval workflow should be used?: Approval-Workflow-IT-Management
 
-   Click Next. INDIRA - wrong image
-
-
-    ![Create Access Bundle](images/click-next.png)
+   Click Next. 
 
 9. Select the permissions to be included in the access bundle. 
 
@@ -302,7 +299,7 @@ In this lab, you will:
 
      ![Create Policy](images/select-qa.png)
 
-6. Search for which access bundle you want to assign : DB Read Access. Your selection will be marked with a green checkmark. INDIRA - Image is not showing up
+6. Search for which access bundle you want to assign : DB Read Access. Your selection will be marked with a green checkmark. 
 
      ![Create Policy](images/selet-db-read-access.png)
 
