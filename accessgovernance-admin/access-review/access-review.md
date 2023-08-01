@@ -218,6 +218,8 @@ In this lab, you will:
 
      ![Access Review](images/mark-user.png)
 
+4. Under Actions, click on approve and Approve the request for the users Harlan Bullard, Mark Hernandez and Jerry Poland. 
+
 
   You may now **proceed to the next lab**. 
 

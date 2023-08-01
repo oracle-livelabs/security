@@ -55,7 +55,6 @@ In this lab, you will:
 
 5. INDIRA Click on *Create*
 
-    ![Identity Collection creation](images/click-create.png)
 
 
 
@@ -94,7 +93,7 @@ In this lab, you will:
     Select attribute: Organization
 
     Condition: Equals
-    
+
     Attribute field: Quality Assurance
 
     ![Identity Collection creation](images/qa-rule.png)
@@ -305,7 +304,7 @@ In this lab, you will:
 
 6. Search for which access bundle you want to assign : DB Read Access. Your selection will be marked with a green checkmark. INDIRA - Image is not showing up
 
-     ![Create Policy](images/select-db-read-access.png)
+     ![Create Policy](images/selet-db-read-access.png)
 
     Then, click Next. 
 
