@@ -1,9 +1,9 @@
 # Protecting Data with Row-Level and Column-Level Security using Oracle VPD
 
 ## Introduction
-This workshop introduces the functionality of Oracle Transport Layer Security (TLS) network encryption. It gives the user an opportunity to learn how to configure this feature to encrypt and secure its data in-motion.
+Oracle Virtual Private Database enforces security, to a fine level of granularity, directly on database tables, views, or synonyms. Because you attach security policies directly to these database objects, and the policies are automatically applied whenever a user accesses data, there is no way to bypass security.
 
-Description: TLS is the industry-standard for encrypting data in motion. Since TLS provides one-way authentication or mutual two-way authentication, it minimizes the chance of a breach.
+Description: This lab introduces the functionality of Oracle Virtual Private Database (VPD). It gives the user an opportunity to learn how to configure this feature to implement row and column level security. Oracle VPD creates security policies to control database access at the row and column level.
 
 *Estimated Lab Time:* 30 minutes
 
@@ -155,11 +155,7 @@ This lab assumes you have:
 ## **Appendix**: About the Product
 ### **Overview**
 
-Oracle Database provides both native data network encryption and TLS-based encryption to ensure that data in-motion is secure as it travels across the network.
-
-![Network Encryption](./images/nne-concept.png "Network Encryption")
-
-
+Oracle Database gives the user the ability to implement row and column level security with Oracle VPD. 
 
 ## Learn More
 Technical Documentation:
@@ -168,4 +164,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Stephen Stuart & Noah Galloso, Solution Engineers, North America Specialist Hub
 - **Contributors** - Richard C. Evans, Database Security Product Manager 
-- **Last Updated By/Date** - Stephen Stuart & Noah Galloso, July 2023
+- **Last Updated By/Date** - Stephen Stuart & Noah Galloso, August 2023

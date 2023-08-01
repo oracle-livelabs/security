@@ -29,4 +29,4 @@ This lab assumes you have:
 ## Acknowledgements
 - **Author** - Stephen Stuart & Noah Galloso, Solution Engineers, North America Specialist Hub
 - **Contributors** - Richard C. Evans, Database Security Product Manager 
-- **Last Updated By/Date** - Stephen Stuart & Noah Galloso, July 2023
+- **Last Updated By/Date** - Stephen Stuart & Noah Galloso, August 2023
