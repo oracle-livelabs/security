@@ -21,7 +21,40 @@ This lab assumes you have:
     - Lab: Environment Setup
     - Lab: Initialize Environment
 
-## Task 1: Proxy Lab
+## Task 1: Download proxy.tar file to local directory.
+
+1.  Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* and use `cd` command to move to livelabs directory.
+
+    ````
+    <copy>cd livelabs</copy>
+    ````
+
+    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+
+2.  Use the Linux command 'wget' to download a bundled (zipped) file of the commands for the lab. 
+
+    ````
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ZSKnVs6L8sGvA4HkZJjxv2sEFuf-30BYhE1F6jMHeltJ0icC-CBtLUKZzVwNObww/n/oradbclouducm/b/dbsec_rich/o/proxy.tar</copy>
+    ````
+
+3.  Unarchive the downloaded tar to expand the directory and scripts.
+
+    ````
+    <copy>tar xvf proxy.tar</copy>
+    ````
+
+4.   Use `cd` command to move to proxy directory.
+    
+    ````
+    <copy>cd proxy</copy>
+    ````
+
+5.   Use `ls` command to list files. 
+    
+    ````
+    <copy>ls</copy>
+    ``
+## Task 2: Proxy Lab
 
 1.  First, create the developer, `DEV_DAVE`, account. Note that it has no privileges. This account cannot authenticate unless it is proxying as another account.
 
@@ -65,7 +98,7 @@ This lab assumes you have:
     <copy>./proxy_view_audit.sh</copy>
     ````
 
-## Task 2: Optional Lab
+## Task 3: Optional Lab
 
 In this lab, you will demonstrate how you can add additional security factors based on whether the database user is a proxying user or not.  We will prevent proxying users, like `DEV_DAVE` from viewing the social identifier columns (`SSN`, `SIN`, `NINO`) in `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES`. The schema, without a proxy user, should be able to view these sensitive columns.  Create an Oracle Virtual Private Database (VPD) policy, sometimes called row-level security or fine-grain access control, to prevent the social identifier columns from being returned to proxy users. They will return as null values.
 
@@ -104,7 +137,7 @@ In this lab, you will demonstrate how you can add additional security factors ba
     ````
     <copy>./proxy_view_audit.sh</copy>
     ````
-## Task 3: Clean up. 
+## Task 4: Clean up. 
 
 1.  Remove the PL/SQL functions and clean up the proxy.
     
@@ -117,9 +150,6 @@ In this lab, you will demonstrate how you can add additional security factors ba
 
 Proxy Authentication allows a user (the proxy user) to connect to the database on behalf of another user (the target user) and this workshop show developers the proper usage, configuration and best practices with Proxy Authentication. 
 
-![Network Encryption](./images/nne-concept.png "Network Encryption")
-
-
 ## Learn More
 Technical Documentation:
 - [Proxy Authentication](https://docs.oracle.com/en/database/oracle/oracle-database/19/jjdbc/proxy-authentication.html#GUID-07E0AF7F-2C9A-42E9-8B99-F2716DC3B746)
@@ -129,4 +159,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Stephen Stuart & Noah Galloso, Solution Engineers, North America Specialist Hub
 - **Contributors** - Richard C. Evans, Database Security Product Manager 
-- **Last Updated By/Date** - Stephen Stuart & Noah Galloso, July 2023
+- **Last Updated By/Date** - Stephen Stuart & Noah Galloso, August 2023
