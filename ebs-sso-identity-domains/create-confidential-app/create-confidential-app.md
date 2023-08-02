@@ -39,7 +39,7 @@ We will register a Confidential Application under newly created OCI-IAM Domain w
 
 1. Under your newly created **Identity Domain**, Copy the **Identity Domain URL** from the **Domain Information** section. Click on **Applications** from the navigation menu.
 
-	![Image 5](./images/image5.png "Image 5")
+	![Image 5](./images/image5.jpg "Image 5")
 
 	![Capture 6](./images/image6.jpg "Capture 6")
 	

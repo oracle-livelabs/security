@@ -4,14 +4,14 @@
 
 Oracle Data Redaction is an Advanced Security feature that allows you to mask sensitive data in real-time, protecting it from unauthorized disclosure. This feature is included with your Autonomous Database subscription and is particularly useful for read-only scenarios such as displaying sensitive information in reports or sending it to other applications via GET APIs.
 
-The DMBS_REDACT PL/SQL package is used to manage redaction policies and configure the specific columns and redaction formats.
+The `DMBS_REDACT PL/SQL` package is used to manage redaction policies and configure the specific columns and redaction formats.
 
 In this workshop, you will learn how to use Oracle Data Redaction with Oracle Rest Data Services (ORDS) to redact  data in a GET response, ensuring the privacy of sensitive data. The process includes REST enabling the table you want to make available through ORDS, creating redaction policies for specific columns and tables, and specifying the redaction function to be used. You'll be able to contrast the response that contains data in clear vs the one that has sensitive data redacted.
 
 ![Lab architecture](images/lab-architecture.png)
 
 
-Estimated Workshop Time: 27 minutes
+Estimated Workshop Time: 42 minutes
 
 ### Objectives
 
@@ -40,4 +40,4 @@ This workshop assumes that you have:
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, January 2023
+- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, February 2023

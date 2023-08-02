@@ -14,9 +14,9 @@ This lab will show you how to download the Oracle Resource Manager (ORM) stacks 
 This lab assumes you have:
 - An Oracle Cloud account with at least **PAY GO** subscription
 - A Compartment apart from *root*
-- An existing *VCN*
+- An existing *VCN* and an *Internet Gateway* attached to it.
 - A *Public* subnet
-- A *SSH key* pair
+- A *SSH key* pair. A single SSH Key pair to be used for both the servers (Make sure you have the .key and .pem formats of the private key available)
 - A *vault* with an existing secret to store WLS Admin password. The password should adhere to Weblogic's password policy.
 
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file to Deploy 

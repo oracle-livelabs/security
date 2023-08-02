@@ -108,21 +108,21 @@ In this task, you perform activities on your target database in Database Actions
 
 1. Return to the SQL worksheet in Database Actions.
 
-2. If needed, sign out. To do so, from the drop-down list in the upper-right corner, select **Sign Out**, and then in the dialog box, click **Leave page**.
+2. If your session has expired, that's fine. Click **OK** and then click **Leave**. Otherwise, from the drop-down list in the upper-right corner, select **Sign Out**, and then in the dialog box, click **Leave**.
 
-3. Click **Sign in**.
+    The **Sign-in** page is displayed. The username field is pre-populated with the `ADMIN` user.
 
-4. Enter `ADMIN` for the username, and then click **Next**.
+3. Do this twice: Enter an incorrect password, and then click **Sign in**. 
 
-5. Do this twice: Enter an incorrect password, and then click **Sign in**. The message **An invalid user name or password was supplied.**
+    An **Invalid credentials** message is displayed.
 
     ![Invalid database password message](images/invalid-database-password.png "Invalid database password message")
 
-6. Enter the correct password, and click **Sign in**.
+4. Enter the correct password, and click **Sign in**.
 
-7. If needed, under **Development**, click **SQL**.
+5. If needed, under **Development**, click **SQL**.
 
-8. Clear the worksheet, and then paste the following SQL script. Replace `your-password` with a password of your choice. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
+6. Clear the worksheet, and then paste the following SQL script. Replace `your-password` with a password of your choice. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
 
     ```
     <copy>drop user MALFOY cascade;
@@ -130,9 +130,11 @@ In this task, you perform activities on your target database in Database Actions
     grant PDB_DBA to MALFOY;</copy>
     ```
 
-9. On the toolbar, click the **Run Script** button and wait for the script to finish running.
+7. On the toolbar, click the **Run Script** button and wait for the script to finish running. 
 
-10. Return to the browser tab for Oracle Data Safe and wait a couple of minutes for Oracle Data Safe to produce the alerts.
+8. In the script output, verify that the `MALFOY` user was successfully dropped and then recreated.
+
+9. Return to the browser tab for Oracle Data Safe and wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
 
 ## Task 4: Review alerts in Oracle Data Safe
@@ -143,7 +145,7 @@ In this task, you perform activities on your target database in Database Actions
 
 3. Notice that the alerts dashboard now has data.
 
-    - The **Alerts summary** chart shows that there are four alerts. Two are critical risk and two are medium risk.
+    - The **Alerts Summary** chart shows that there are four alerts. Two are critical risk and two are medium risk.
     - The **Open Alerts** chart shows that there are four alerts on the current day.
     - The **Alerts Summary** tab shows the number of critical, high, and medium alerts along with target database counts. It also shows you the total number of alerts and target databases.
     - The **Targets Summary** tab shows the number of open, critical, high, and medium alerts.
@@ -159,14 +161,14 @@ In this task, you perform activities on your target database in Database Actions
 
 6. Review the report.
 
-    - The report currently does not have any filters set. It shows you all alerts for all target databases in the selected compartment.
-    - At the top of the report, you can view several totals, including the total number of target databases; total number of open and closed alerts, and the total number of critical, high, medium, and low alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
+    - The report is automatically filtered to show you all alerts for all target databases in the selected compartment for the past one week. To manually create custom filters, you can use the **SCIM Query Builder**. 
+    - You can view several totals, including the total number of target databases; total number of open and closed alerts, and the total number of critical, high, medium, and low alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
     - At the bottom of the report, you can view the list of alerts. By default, the table shows you the alert name, alert status, alert severity, target databases on which the audited event occurred, and when the alert was created.
     - You have options to create a PDF or XLS report, create a custom report, schedule a custom report, open and close alerts, and specify which table columns you want displayed on the page.
 
     ![All Alerts report](images/all-alerts-report.png "All Alerts report")
 
-7. At the top of the report, click **+ Add Filter**. Create the filter **Target Databases = your-target-database-name**, and click **Apply**.
+7. At the top of the report, click **+ Another Filter**. Create the filter **Target Databases = your-target-database-name**, and click **Apply**.
 
     Only alerts that pertain to your target database are listed in the table.
 
@@ -209,13 +211,10 @@ In this task, you perform activities on your target database in Database Actions
 
 1. In the breadcrumb at the top of the page, click **All Alerts** to return to the All Alerts report.
 
-2. Apply three filters:
+2. In addition to the default filter that is already set, add two more filters:
 
     - **Target Databases = your-target-database-name**
     - **Alert Name = Failed Logins by Admin User**
-    - **Created On After beginning-of-current-day**
-
-    ![Failed Logins by Admin User filter](images/failed-admin-logins-filter.png "Failed Logins by Admin User filter")
 
 3. Click **Create Custom Report**.
 
@@ -240,32 +239,30 @@ In this task, you perform activities on your target database in Database Actions
 
 4. (Optional) For **Description**, enter **Failed logins by Admin user for target database your-target-database-name**.
 
-5. Leave your compartment selected.
+5. Leave your compartment selected, leave the row limit set to 10000, and leave the report start time as is.
 
-6. Leave the report start time as is.
-
-7. Click **Generate Report** and wait until the PDF report is generated.
+6. Click **Generate Report** and wait until the PDF report is generated.
 
     A message is displayed stating that report generation is complete.
 
     ![Generate Report dialog box](images/generate-report-dialog-box.png "Generate Report dialog box")
 
-8. Click the **here** link to download the report.
+7. Click the **here** link to download the report.
 
-9. If needed, choose to save the report to your local computer.
+8. If needed, choose to save the report to your local computer.
 
-10. Open the PDF report and view it. When you are finished, close the browser tab.
+9. Open the PDF report and view it. When you are finished, close the browser tab.
 
     ![Failed Admin Logins PDF report](images/failed-admin-logins-report-pdf.png "Failed Admin Logins PDF report")
 
-11. In the **Generate Report** dialog box, click **Close**.
+10. In the **Generate Report** dialog box, click **Close**.
 
 
 ## Task 8:  View the alert report history
 
 1. Under **Related Resources**, click **Alert Report History**.
 
-2. Notice that your custom report is listed. You can view its lifecycle state, its description, when it was generated, whether it was generated by you (`GENERATED`) or by the scheduler, the file format available for download, and a download icon. Oracle Data Safe keeps your report available for up to three months.
+2. Notice that your custom report is listed. You can view its state, its description, when it was generated, whether it was generated by you (`GENERATED`) or by the scheduler, the file format available for download, and a download icon. Oracle Data Safe keeps your report available for up to three months.
 
     ![Alert report history](images/alert-report-history.png "Alert report history")
 
@@ -279,4 +276,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 23, 2023
+* **Last Updated By/Date** - Jody Glover, June 8, 2023
