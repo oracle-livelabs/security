@@ -36,6 +36,10 @@
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Help",
             "filename":"../../need-help-ocw/need-help-ocw.md"
+        },
+        {
+            "title": "Oracle CloudWorld 2023 - Support",
+            "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
         }
     ]
 }

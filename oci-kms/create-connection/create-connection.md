@@ -35,7 +35,8 @@ You need to create vault in order to store your keys and secrets. There are two 
 * Virtual private vault use an isolated partition on a HSM.
 Each vault has a management endpoint and a cryptography endpoint. To create a Vault, follow the next steps.
 
-1. Log in to your OCI account by following steps in section Get Started
+1. Log in to your OCI account by following steps in section *"Get Started"*.
+    > **Important:** Please notice that you need to log in as a local OCI user, not as a federated user. Please go to the mentioned section for more details.
 
 2. Navigate through the main hamburger menu to *"Identity & Security > Vault"*
 
