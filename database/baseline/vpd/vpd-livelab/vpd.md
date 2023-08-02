@@ -57,41 +57,153 @@ This lab assumes you have:
     <copy>ls</copy>
     ````
 
-6.  Initial query to show that there have not been VPD policies created yet.
+## Task 2: Create row function and policies
+
+1.  Initial query to show that there have not been VPD policies created yet.
     
     ````
     <copy>./vpd_query_policies.sh</copy>
     ````
+    **Output:**
+    ````
+    Show current VPD policies...
 
-7.  Initial query to demonstrate that `EMPLOYEESEARCH_PROD` and `DBA_DEBRA` can see employee-related data.  Note the number of rows and the sensitive data returned in the columns.
+    no rows selected
+    ````
+
+2.  Initial query to demonstrate that `EMPLOYEESEARCH_PROD` and `DBA_DEBRA` can see employee-related data.  Note the number of rows and the sensitive data returned in the columns.
     
     ````
     <copy>./vpd_query_employee_data.sh</copy>
     ````
+    **Output for `EMPLOYEESEARCH_PROD`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
 
-8.  VPD relies on PL/SQL functions for business logic. Create a function that applies a `1=0` predicate (where clause) to the query if the session user is not the application owner, `EMPLOYEESEARCH_PROD`
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    EMPLOYEESEARCH_PROD
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from employeesearch_prod user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    102-20-4997
+	        74  Fred        Stewart	    Paris		    Project Manager		                        MN 33 14 95 E
+	        75  Julie       Reed	    New York	    Clerk		        412-62-2417
+	        76  Ruby        James	    Paris		    End-User	        537-78-8902
+	        77  Alice       Harper	    Toronto         District Manager	            170-042-126
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    553-51-1031
+	        79  Laura       Ryan	    London 	        Project Manager     568-10-8709
+	        80  William     Elliott	    Sunnyvale	    District Manager    787-89-2282
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        FZ 84 80 43 S
+
+    9 rows selected.
+    ````
+    **Output for `DBA_DEBRA`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    DBA_DEBRA
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from dba_debra user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    102-20-4997
+	        74  Fred        Stewart	    Paris		    Project Manager		                        MN 33 14 95 E
+	        75  Julie       Reed	    New York	    Clerk		        412-62-2417
+	        76  Ruby        James	    Paris		    End-User	        537-78-8902
+	        77  Alice       Harper	    Toronto         District Manager	            170-042-126
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    553-51-1031
+	        79  Laura       Ryan	    London 	        Project Manager     568-10-8709
+	        80  William     Elliott	    Sunnyvale	    District Manager    787-89-2282
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        FZ 84 80 43 S
+
+    9 rows selected.
+    ````
+
+3.  VPD relies on PL/SQL functions for business logic. Create a function that applies a `1=0` predicate (where clause) to the query if the session user is not the application owner, `EMPLOYEESEARCH_PROD`
     
     ````
     <copy>./vpd_create_row_function.sh</copy>
     ````
 
-9.  Apply a VPD policy to the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table that will call the PL/SQL function and restrict rows for `SELECT` queries.
+4.  Apply a VPD policy to the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table that will call the PL/SQL function and restrict rows for `SELECT` queries.
     
     ````
     <copy>./vpd_create_row_policy.sh</copy>
     ````
+    **Output:**
+    ````
+    OBJECT_NAME	        POLICY_GROUP POLICY_NAME
+    ------------------- ------------ ---------------------------
+    DEMO_HR_EMPLOYEES   SYS_DEFAULT  VPD_EMPSEARCH_ROWS
 
-10.  Re-run the query to view employee data. With the VPD row policy applies, `EMPLOYEESEARCH_PROD` will still see all rows but `DBA_DEBRA` will no longer be able to see employee data.
+
+    OBJECT_NAME	        POLICY_NAME		        PF_OWNER	        PACKAGE	        FUNCTION
+    ------------------- ----------------------- ------------------- --------------- --------------
+    DEMO_HR_EMPLOYEES   VPD_EMPSEARCH_ROWS 	    EMPLOYEESEARCH_PROD	                VPD_APP_USER
+
+
+    POLICY_NAME		            SEL INS UPD DEL IDX CHK ENABLE STATIC_POLICY POLICY_TYPE
+    --------------------------- --- --- --- --- --- --- ------ ------------- -------------------
+    VPD_EMPSEARCH_ROWS	        YES NO  YES YES NO	NO  YES    NO		     DYNAMIC
+    ````
+
+5.  Re-run the query to view employee data. With the VPD row policy applies, `EMPLOYEESEARCH_PROD` will still see all rows but `DBA_DEBRA` will no longer be able to see employee data.
     
     ````
     <copy>./vpd_query_employee_data.sh</copy>
     ````
-11.  Now that you understand how to use VPD to limit the number of rows returned, we will drop the row policy and move on to protecting column values.
+    **Output for `EMPLOYEESEARCH_PROD`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    EMPLOYEESEARCH_PROD
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from employeesearch_prod user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    102-20-4997
+	        74  Fred        Stewart	    Paris		    Project Manager		                        MN 33 14 95 E
+	        75  Julie       Reed	    New York	    Clerk		        412-62-2417
+	        76  Ruby        James	    Paris		    End-User	        537-78-8902
+	        77  Alice       Harper	    Toronto         District Manager	            170-042-126
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    553-51-1031
+	        79  Laura       Ryan	    London 	        Project Manager     568-10-8709
+	        80  William     Elliott	    Sunnyvale	    District Manager    787-89-2282
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        FZ 84 80 43 S
+
+    9 rows selected.
+    ````
+    **Output for `DBA_DEBRA`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    DBA_DEBRA
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from dba_debra user
+
+    no rows selected.
+    ````
+6.  Now that you understand how to use VPD to limit the number of rows returned, we will drop the row policy and move on to protecting column values.
     
     ````
     <copy>./vpd_drop_row_policy.sh</copy>
     ````
-## Task 2: Create column function and policies. 
+## Task 3: Create column function and policies. 
 1.  Similar to the row function, the PL/SQL function will limit the number of rows returned for users who are not the application schema owner, `EMPLOYEESEARCH_PROD`.  In addition, the the application user, the function will also verify the `CLIENT_IDENTIFIER` value is set in the user's session context. 
     
     ````
@@ -103,11 +215,77 @@ This lab assumes you have:
     ````
     <copy>./vpd_create_col_policy.sh</copy>
     ````
+    **Output:**
+    ````
+    OBJECT_NAME	        POLICY_GROUP POLICY_NAME
+    ------------------- ------------ ---------------------------
+    DEMO_HR_EMPLOYEES   SYS_DEFAULT  VPD_EMPSEARCH_COLS
+
+
+    OBJECT_NAME	        POLICY_NAME		        PF_OWNER	        PACKAGE	        FUNCTION
+    ------------------- ----------------------- ------------------- --------------- --------------
+    DEMO_HR_EMPLOYEES   VPD_EMPSEARCH_ROWS 	    EMPLOYEESEARCH_PROD	                VPD_CLIENT_ID
+
+
+    POLICY_NAME		            SEL INS UPD DEL IDX CHK ENABLE STATIC_POLICY POLICY_TYPE
+    --------------------------- --- --- --- --- --- --- ------ ------------- -------------------
+    VPD_EMPSEARCH_COLS	        YES NO  NO  NO  NO	NO  YES    NO		     DYNAMIC
+    ````
 
 3.  When `EMPLOYEESEARCH_PROD` queries data, 9 rows will be returned but the values for the sensitive columns will not. This is because the VPD policy function will not return the values of these columns until the session user and `CLIENT_IDENTIFIER` session context are both met.
     
     ````
     <copy>./vpd_query_employee_data.sh</copy>
+    ````
+    **Output for `EMPLOYEESEARCH_PROD`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    EMPLOYEESEARCH_PROD
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from employeesearch_prod user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    
+	        74  Fred        Stewart	    Paris		    Project Manager		                        
+	        75  Julie       Reed	    New York	    Clerk		        
+	        76  Ruby        James	    Paris		    End-User	        
+	        77  Alice       Harper	    Toronto         District Manager	            
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    
+	        79  Laura       Ryan	    London 	        Project Manager     
+	        80  William     Elliott	    Sunnyvale	    District Manager    
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        
+
+    9 rows selected.
+    ````
+    **Output for `DBA_DEBRA`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    DBA_DEBRA
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from dba_debra user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    
+	        74  Fred        Stewart	    Paris		    Project Manager		                        
+	        75  Julie       Reed	    New York	    Clerk		        
+	        76  Ruby        James	    Paris		    End-User	        
+	        77  Alice       Harper	    Toronto         District Manager	            
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    
+	        79  Laura       Ryan	    London 	        Project Manager     
+	        80  William     Elliott	    Sunnyvale	    District Manager    
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        
+
+    9 rows selected.
     ````
 
 4.  To demonstrate the results when both session user and `CLIENT_IDENTIFIER` are met, append `hradmin` to the previous query. Sensitive column values will be displayed. However, `DBA_DEBRA` will never see this data because she is not authorized by the PL/SQL function.
@@ -115,11 +293,111 @@ This lab assumes you have:
     ````
     <copy>./vpd_query_employee_data.sh hradmin</copy>
     ````
+    **Output for `EMPLOYEESEARCH_PROD`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    EMPLOYEESEARCH_PROD  hradmin
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from employeesearch_prod user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    102-20-4997
+	        74  Fred        Stewart	    Paris		    Project Manager		                        MN 33 14 95 E
+	        75  Julie       Reed	    New York	    Clerk		        412-62-2417
+	        76  Ruby        James	    Paris		    End-User	        537-78-8902
+	        77  Alice       Harper	    Toronto         District Manager	            170-042-126
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    553-51-1031
+	        79  Laura       Ryan	    London 	        Project Manager     568-10-8709
+	        80  William     Elliott	    Sunnyvale	    District Manager    787-89-2282
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        FZ 84 80 43 S
+
+    9 rows selected.
+    ````
+    **Output for `DBA_DEBRA`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    DBA_DEBRA            hradmin
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from dba_debra user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    
+	        74  Fred        Stewart	    Paris		    Project Manager		                        
+	        75  Julie       Reed	    New York	    Clerk		        
+	        76  Ruby        James	    Paris		    End-User	        
+	        77  Alice       Harper	    Toronto         District Manager	            
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    
+	        79  Laura       Ryan	    London 	        Project Manager     
+	        80  William     Elliott	    Sunnyvale	    District Manager    
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        
+
+    9 rows selected.
+    ````
 
 5.  Altering the query from `hradmin` to `can_candy` will not display any of the sensitive columns because our PL/SQL function does not recognize `can_candy` as a `CLIENT_IDENTIFIER` yet.
     
     ````
     <copy>./vpd_query_employee_data.sh can_candy</copy>
+    ````
+    **Output for `EMPLOYEESEARCH_PROD`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    EMPLOYEESEARCH_PROD  can_candy
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from employeesearch_prod user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    
+	        74  Fred        Stewart	    Paris		    Project Manager		                        
+	        75  Julie       Reed	    New York	    Clerk		        
+	        76  Ruby        James	    Paris		    End-User	        
+	        77  Alice       Harper	    Toronto         District Manager	            
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    
+	        79  Laura       Ryan	    London 	        Project Manager     
+	        80  William     Elliott	    Sunnyvale	    District Manager    
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        
+
+    9 rows selected.
+    ````
+    **Output for `DBA_DEBRA`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    DBA_DEBRA            can_candy
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from dba_debra user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    
+	        74  Fred        Stewart	    Paris		    Project Manager		                        
+	        75  Julie       Reed	    New York	    Clerk		        
+	        76  Ruby        James	    Paris		    End-User	        
+	        77  Alice       Harper	    Toronto         District Manager	            
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    
+	        79  Laura       Ryan	    London 	        Project Manager     
+	        80  William     Elliott	    Sunnyvale	    District Manager    
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        
+
+    9 rows selected.
     ````
 
 6.  Update the PL/SQL function to include an `elsif` to allow `can_candy` to see the sensitive columns for Toronto-based employees.
@@ -133,13 +411,113 @@ This lab assumes you have:
     ````
     <copy>./vpd_query_employee_data.sh hradmin</copy>
     ````
+    **Output for `EMPLOYEESEARCH_PROD`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    EMPLOYEESEARCH_PROD  hradmin
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from employeesearch_prod user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    102-20-4997
+	        74  Fred        Stewart	    Paris		    Project Manager		                        MN 33 14 95 E
+	        75  Julie       Reed	    New York	    Clerk		        412-62-2417
+	        76  Ruby        James	    Paris		    End-User	        537-78-8902
+	        77  Alice       Harper	    Toronto         District Manager	            170-042-126
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    553-51-1031
+	        79  Laura       Ryan	    London 	        Project Manager     568-10-8709
+	        80  William     Elliott	    Sunnyvale	    District Manager    787-89-2282
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        FZ 84 80 43 S
+
+    9 rows selected.
+    ````
+    **Output for `DBA_DEBRA`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    DBA_DEBRA            hradmin
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from dba_debra user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    
+	        74  Fred        Stewart	    Paris		    Project Manager		                        
+	        75  Julie       Reed	    New York	    Clerk		        
+	        76  Ruby        James	    Paris		    End-User	        
+	        77  Alice       Harper	    Toronto         District Manager	            
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    
+	        79  Laura       Ryan	    London 	        Project Manager     
+	        80  William     Elliott	    Sunnyvale	    District Manager    
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        
+
+    9 rows selected.
+    ````
 
 8.  Demonstrate that `can_candy` will see 9 rows and only the sensitive columns for Toronto-based employees.  `DBA_DEBRA` will still not see any sensitive columns.
     
     ````
     <copy>./vpd_query_employee_data.sh can_candy</copy>
     ````
-## Task 3: Clean up. 
+    **Output for `EMPLOYEESEARCH_PROD`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    EMPLOYEESEARCH_PROD  can_candy
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from employeesearch_prod user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    
+	        74  Fred        Stewart	    Paris		    Project Manager		                        
+	        75  Julie       Reed	    New York	    Clerk		        
+	        76  Ruby        James	    Paris		    End-User	        
+	        77  Alice       Harper	    Toronto         District Manager	            170-042-126
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    
+	        79  Laura       Ryan	    London 	        Project Manager     
+	        80  William     Elliott	    Sunnyvale	    District Manager    
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        
+
+    9 rows selected.
+    ````
+    **Output for `DBA_DEBRA`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    DBA_DEBRA            can_candy
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from dba_debra user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    
+	        74  Fred        Stewart	    Paris		    Project Manager		                        
+	        75  Julie       Reed	    New York	    Clerk		        
+	        76  Ruby        James	    Paris		    End-User	        
+	        77  Alice       Harper	    Toronto         District Manager	            
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    
+	        79  Laura       Ryan	    London 	        Project Manager     
+	        80  William     Elliott	    Sunnyvale	    District Manager    
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        
+
+    9 rows selected.
+    ````
+## Task 4: Clean up. 
 
 1.  Remove the PL/SQL functions and drop the VPD-related policies.
     
@@ -151,6 +529,56 @@ This lab assumes you have:
     
     ````
     <copy>./vpd_query_employee_data.sh</copy>
+    ````
+    **Output for `EMPLOYEESEARCH_PROD`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    EMPLOYEESEARCH_PROD
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from employeesearch_prod user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    102-20-4997
+	        74  Fred        Stewart	    Paris		    Project Manager		                        MN 33 14 95 E
+	        75  Julie       Reed	    New York	    Clerk		        412-62-2417
+	        76  Ruby        James	    Paris		    End-User	        537-78-8902
+	        77  Alice       Harper	    Toronto         District Manager	            170-042-126
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    553-51-1031
+	        79  Laura       Ryan	    London 	        Project Manager     568-10-8709
+	        80  William     Elliott	    Sunnyvale	    District Manager    787-89-2282
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        FZ 84 80 43 S
+
+    9 rows selected.
+    ````
+    **Output for `DBA_DEBRA`:**
+    ````
+    . Query current user and client_id from SYS_CONTEXT
+
+    CURRENT_USER	     CLIENT_ID
+    -------------------- --------------------
+    DBA_DEBRA
+
+
+    . Query EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES from dba_debra user
+
+    USERID      FIRSTNAME   LASTNAME	CITY	        POSITION	        SSN	        SIN	        NINO
+    ----------  ----------  ----------  --------------  ----------------    ----------- ----------- -------------
+	        73  Craig       Hunt	    Costa Mesa	    Administrator	    102-20-4997
+	        74  Fred        Stewart	    Paris		    Project Manager		                        MN 33 14 95 E
+	        75  Julie       Reed	    New York	    Clerk		        412-62-2417
+	        76  Ruby        James	    Paris		    End-User	        537-78-8902
+	        77  Alice       Harper	    Toronto         District Manager	            170-042-126
+	        78  Marilyn     Lee	        Sunnyvale	    District Manager    553-51-1031
+	        79  Laura       Ryan	    London 	        Project Manager     568-10-8709
+	        80  William     Elliott	    Sunnyvale	    District Manager    787-89-2282
+	        81  Martha      Carpenter   Berlin 	        Administrator		                        FZ 84 80 43 S
+
+    9 rows selected.
     ````
 ## **Appendix**: About the Product
 ### **Overview**
