@@ -191,11 +191,11 @@ In this lab, you will:
 
     •	Authentication Type: PASSWORD
 
+    •	Default Tablespace: USERS
+
     •	TemporaryTablespace: TEMP
 
     •	Profile Name: DEFAULT
-
-    •	Default Tablespace: USERS
 
     •	Leave all other options as default
 
@@ -251,11 +251,11 @@ In this lab, you will:
 
     •	Authentication Type: PASSWORD
 
+    •	Default Tablespace: USERS
+
     •	TemporaryTablespace: TEMP
 
     •	Profile Name: DEFAULT
-
-    •	Default Tablespace: USERS
 
     •	Leave all other options as default
 
