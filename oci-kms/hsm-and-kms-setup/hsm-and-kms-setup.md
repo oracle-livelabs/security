@@ -1,4 +1,4 @@
-# Lab 1 - HSM (Hardware Security Module) and Key Management Setup
+# HSM (Hardware Security Module) and Key Management Setup
 
 ## Introduction
 

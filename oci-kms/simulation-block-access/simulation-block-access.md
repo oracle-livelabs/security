@@ -1,4 +1,4 @@
-# Lab 4 - Emergency simulation test: block data access
+# Emergency simulation test: block data access
 
 ## Introduction
 
@@ -9,7 +9,7 @@ In order to block access to the data, you will disable the encryption key that y
 
 As a Data Administrator, you will test access to the data to realize you can't access the data nor the objects anymore.
 
-Estimated Lab Time: 10 minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 

@@ -1,4 +1,4 @@
-# Lab 5 - Emergency simulation test: re-enable data access
+# Emergency simulation test: re-enable data access
 
 ## Introduction
 
@@ -9,7 +9,7 @@ In order to re-enable access to the data, you will re-enable the encryption key 
 
 As a Data Administrator, you will test proper access to the data is now indeed possible and normal operations can restart, now that the security alert is over. This will mark the end of this hands-on lab!
 
-Estimated Lab Time: 10 minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 

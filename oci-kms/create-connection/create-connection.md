@@ -1,4 +1,4 @@
-# Lab 1 - Link creation between OCI and your HSM and Master Encryption Key creation
+# Link creation between OCI and your HSM and Master Encryption Key creation
 
 ## Introduction
 

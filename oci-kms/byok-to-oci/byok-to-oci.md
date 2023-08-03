@@ -1,4 +1,4 @@
-# Lab 2 - Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)
+# Bring Your Own Key to Oracle Cloud Infrastructure (BYOK to OCI)
 
 ## Introduction
 

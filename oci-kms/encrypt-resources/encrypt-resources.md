@@ -1,4 +1,4 @@
-# Lab 3 - Configure OCI resources encryption with an externally managed key
+# Configure OCI resources encryption with an externally managed key
 
 ## Introduction
 
@@ -6,7 +6,7 @@ This lab walks you through the creation of different OCI resources and the confi
 
 You are your Company Data Manager. You will create a storage space as well as an Autonomous Database. You will select to encrypt those resources with the key you created in Thales CipherTrust Manager during the previous lab. You will upload data to those two resources and access it to make sure the encryption/decryption operations are working correctly. 
 
-Estimated Lab Time: 15 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 
