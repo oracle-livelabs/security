@@ -41,18 +41,26 @@ In this lab, you will:
   You will be navigated to the home page of your Oracle Access Governance Console.
 
 
-3.  Scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
+3.  Frome the home page of Oracle Access Governance, navigate to **Access Reviews** -> **Campaigns**. 
 
-  ![Access Governance Homepage](images/ag-homepage-campaign.png)
+  ![Access Governance Homepage](images/navigate-campaign.png)
+
+4. Click on **Create a campaign**
+
+  ![Access Governance Homepage](images/create-a-campaign.png)
+
+5. Under **What type of access review campaign you would like to do?** , select review access to **Oracle Cloud Infrastructure**
 
 
-  * In the Selection criteria step, select the **Which cloud providers?** tile. You will see a list of available cloud tenancies.
+  ![Access Governance Homepage](images/select-oci-campaign.png)
 
-  ![Select Cloud provider](images/select-cloud-providers.png)
+  * In the Selection criteria step, select the **Which tenancies?** tile. You will see a list of available cloud tenancies.
+
+  ![Select Cloud provider](images/select-tenancies.png)
 
   * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
 
-  ![Select Cloud provider](images/green-tick-cloud-provider.png)
+  ![Select Cloud provider](images/which-tenancy.png)
 
   * Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
 
