@@ -58,12 +58,11 @@ In this lab, you will:
 
   ![Select Cloud provider](images/click-refine.png)
 
-  * Enter the **domain** and **compartment** details mentioned below and click on **Apply**
+  * Enter the **compartment** details mentioned below and click on **Apply**
 
-     - domain: ag-domain
      - compartment: ag-compartment
 
-  ![Select Cloud provider](images/click-apply-refine.png)
+  ![Select Cloud provider](images/ag-compartment.png)
 
   * Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
 
