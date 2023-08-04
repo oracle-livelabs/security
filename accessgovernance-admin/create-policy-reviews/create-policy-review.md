@@ -52,73 +52,73 @@ In this lab, you will:
 5. Under **What type of access review campaign you would like to do?** , select review access to **Oracle Cloud Infrastructure**
 
 
-  ![Access Governance Homepage](images/select-oci-campaign.png)
+      ![Access Governance Homepage](images/select-oci-campaign.png)
 
-  * In the Selection criteria step, select the **Which tenancies?** tile. You will see a list of available cloud tenancies.
+      * In the Selection criteria step, select the **Which tenancies?** tile. You will see a list of available cloud tenancies.
 
-  ![Select Cloud provider](images/select-tenancies.png)
+      ![Select Cloud provider](images/select-tenancies.png)
 
-  * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
+      * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
 
-  ![Select Cloud provider](images/which-tenancy.png)
+      ![Select Cloud provider](images/which-tenancy.png)
 
-  * Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
+      * Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
 
-  ![Select Cloud provider](images/click-refine.png)
+      ![Select Cloud provider](images/click-refine.png)
 
-  * Enter the **compartment** details mentioned below and click on **Apply**
+      * Enter the **compartment** details mentioned below and click on **Apply**
 
-     - compartment: ag-compartment
+        - compartment: ag-compartment
 
-  ![Select Cloud provider](images/ag-compartment.png)
+      ![Select Cloud provider](images/ag-compartment.png)
 
-  * Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
+      * Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
 
-  ![Access Governance Homepage](images/select-which-policies.png)
+      ![Access Governance Homepage](images/select-which-policies.png)
 
-  * Select the policies that you want to review. In this tutorial, select the following policies and click **Apply my selections.**
+      * Select the policies that you want to review. In this tutorial, select the following policies and click **Apply my selections.**
 
-      - auditors-policy
-      - network-admins-policy
-      - security-admins-policy
+          - auditors-policy
+          - network-admins-policy
+          - security-admins-policy
 
-    ![Access Governance Homepage](images/select-the-policies.png)
-    
+        ![Access Governance Homepage](images/select-the-policies.png)
+        
 
-  * Proceed to the **Assign workflow** step. To do this, click **I’m good, go to workflows.** Here, you can define the approval workflow for your review tasks, click **Next.**
+      * Proceed to the **Assign workflow** step. To do this, click **I’m good, go to workflows.** Here, you can define the approval workflow for your review tasks, click **Next.**
 
-  ![Access Governance Homepage](images/choose-workflow.png)
+      ![Access Governance Homepage](images/choose-workflow.png)
 
-  ![Access Governance Homepage](images/click-next-workflow.png)
-
-
-
-  * In the **Add details** step, you can define the frequency (one-time or periodic) at which to run an access review campaign, give a meaningful name to your campaign, add a supporting description, and assign values to additional attributes, such as who owns it and when the campaign should start or end.
+      ![Access Governance Homepage](images/click-next-workflow.png)
 
 
-  * For this tutorial make the following changes in the **Add details** step:
 
-      **How often do you want this to run?** : One time
-
-      **What do you want to call this campaign?**: Policy-Review-OCI-IAM
-
-      **How do you want to describe this campaign?**: Policy-Review-OCI-IAM
-
-      **Who owns this campaign?**: Me
-
-      **How would you like to schedule your campaign?** : Run now (will start 10 minutes from creation)
+      * In the **Add details** step, you can define the frequency (one-time or periodic) at which to run an access review campaign, give a meaningful name to your campaign, add a supporting description, and assign values to additional attributes, such as who owns it and when the campaign should start or end.
 
 
-  * Click **Next.**
+      * For this tutorial make the following changes in the **Add details** step:
 
-  ![Access Governance Homepage](images/campaign-information.png)
+          **How often do you want this to run?** : One time
 
-  * The **Review and submit** step displays the information you have added in the previous steps. Select **Create** to create the campaign. Your campaign is scheduled and is displayed on the **Campaigns** page. It will run 10 minutes from creation. 
+          **What do you want to call this campaign?**: Policy-Review-OCI-IAM
+
+          **How do you want to describe this campaign?**: Policy-Review-OCI-IAM
+
+          **Who owns this campaign?**: Me
+
+          **How would you like to schedule your campaign?** : Run now (will start 10 minutes from creation)
 
 
-  ![OCI Enter details](images/click-create-new-campaign.png)
+      * Click **Next.**
 
-  ![OCI Enter details](images/campaign-scheduled.png)
+      ![Access Governance Homepage](images/campaign-information.png)
+
+      * The **Review and submit** step displays the information you have added in the previous steps. Select **Create** to create the campaign. Your campaign is scheduled and is displayed on the **Campaigns** page. It will run 10 minutes from creation. 
+
+
+      ![OCI Enter details](images/click-create-new-campaign.png)
+
+      ![OCI Enter details](images/campaign-scheduled.png)
 
 ## Task 2: Perform Policy Review Tasks
 

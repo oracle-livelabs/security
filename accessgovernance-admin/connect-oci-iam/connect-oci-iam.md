@@ -78,32 +78,32 @@ In this lab, you will:
     ![Create User](images/select-users.png)
   
   
-   Scroll down , click on **API keys**
+          Scroll down , click on **API keys**
 
 
-     ![OCI Enter details](images/api.png)
+            ![OCI Enter details](images/api.png)
 
-  Click on **Add API key** . Click on **Generate API key pair**. 
-  
-    ![OCI Enter details](images/add-api-key.png)
-  
-  Click on **Download private key** and **Download public key**. 
+          Click on **Add API key** . Click on **Generate API key pair**. 
+          
+            ![OCI Enter details](images/add-api-key.png)
+          
+          Click on **Download private key** and **Download public key**. 
 
-  ![OCI Enter details](images/click-add.png)
-  
-  Click on **Add**. 
+          ![OCI Enter details](images/click-add.png)
+          
+          Click on **Add**. 
 
-  Notedown the **Downloaded private key** in a text editor. This is required for the next step. 
+          Notedown the **Downloaded private key** in a text editor. This is required for the next step. 
 
 
-  Under **Configuration file preview**, note down the following details which is required for the next step. 
+          Under **Configuration file preview**, note down the following details which is required for the next step. 
 
-  - User OCID
-  - Fingerprint 
-  - Tenancy OCID 
-  - Region 
+          - User OCID
+          - Fingerprint 
+          - Tenancy OCID 
+          - Region 
 
-  ![OCI Enter details](images/config-file.png)
+          ![OCI Enter details](images/config-file.png)
 
 11. Go back to the browser with Oracle Access Governance and continue to  enter the following details mentioned below: 
 
