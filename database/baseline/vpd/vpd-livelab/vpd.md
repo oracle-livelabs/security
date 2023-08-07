@@ -78,11 +78,11 @@ This lab assumes you have:
     ````
     **Output for `EMPLOYEESEARCH_PROD`:**
 
-    ![VPD](./images/vpd_steptwo.png "Initial Query")
+    ![VPD](./images/vpd_initialquery.png "Initial Query")
 
     **Output for `DBA_DEBRA`:**
 
-    ![VPD](./images/vpd_steptwodebra.png "Initial Query")
+    ![VPD](./images/vpd_initialquerydebra.png "Initial Query")
 
 3.  VPD relies on PL/SQL functions for business logic. Create a function that applies a `1=0` predicate (where clause) to the query if the session user is not the application owner, `EMPLOYEESEARCH_PROD`
     
@@ -96,7 +96,8 @@ This lab assumes you have:
     <copy>./vpd_create_row_policy.sh</copy>
     ````
     **Output:**
-![VPD](./images/vpd_stepfour.png "Row Policy")
+
+    ![VPD](./images/vpd_createrowpolicy.png "Row Policy")
 
 5.  Re-run the query to view employee data. With the VPD row policy applies, `EMPLOYEESEARCH_PROD` will still see all rows but `DBA_DEBRA` will no longer be able to see employee data.
     
@@ -105,10 +106,11 @@ This lab assumes you have:
     ````
     **Output for `EMPLOYEESEARCH_PROD`:**
 
-    ![VPD](./images/vpd_steptwo.png "Row Policy Query")
+    ![VPD](./images/vpd_rerunquery.png "Row Policy Query")
     
     **Output for `DBA_DEBRA`:**
-    ![VPD](./images/vpd_stepfive.png "Row Policy Query")
+    ![VPD](./images/vpd_rerunquerydebra.png "Row Policy Query")
+
 6.  Now that you understand how to use VPD to limit the number of rows returned, we will drop the row policy and move on to protecting column values.
     
     ````
@@ -128,7 +130,7 @@ This lab assumes you have:
     ````
     **Output:**
     
-    ![VPD](./images/vpd_taskthreesteptwo.png "Column Policy")
+    ![VPD](./images/vpd_createvpdpolicy.png "Column Policy")
 
 3.  When `EMPLOYEESEARCH_PROD` queries data, 9 rows will be returned but the values for the sensitive columns will not. This is because the VPD policy function will not return the values of these columns until the session user and `CLIENT_IDENTIFIER` session context are both met.
     
@@ -136,11 +138,11 @@ This lab assumes you have:
     <copy>./vpd_query_employee_data.sh</copy>
     ````
     **Output for `EMPLOYEESEARCH_PROD`:**
-    ![VPD](./images/vpd_taskthreestepthree.png "Column Policy Query")
+    ![VPD](./images/vpd_columnpolicyquery.png "Column Policy Query")
 
     **Output for `DBA_DEBRA`:**
 
-    ![VPD](./images/vpd_taskthreestepthreedebra.png "Column Policy Query")
+    ![VPD](./images/vpd_columnpolicyquerydebra.png "Column Policy Query")
 
 4.  To demonstrate the results when both session user and `CLIENT_IDENTIFIER` are met, append `hradmin` to the previous query. Sensitive column values will be displayed. However, `DBA_DEBRA` will never see this data because she is not authorized by the PL/SQL function.
     
@@ -149,11 +151,11 @@ This lab assumes you have:
     ````
     **Output for `EMPLOYEESEARCH_PROD`:**
 
-    ![VPD](./images/vpd_taskthreestepfour.png "Client Identifier Query")
+    ![VPD](./images/vpd_clientidentifierquery.png "Client Identifier Query")
    
     **Output for `DBA_DEBRA`:**
     
-    ![VPD](./images/vpd_taskthreestepfourdebra.png "Client Identifier Query")
+    ![VPD](./images/vpd_clientidentifierquerydebra.png "Client Identifier Query")
 
 5.  Altering the query from `hradmin` to `can_candy` will not display any of the sensitive columns because our PL/SQL function does not recognize `can_candy` as a `CLIENT_IDENTIFIER` yet.
     
@@ -162,11 +164,11 @@ This lab assumes you have:
     ````
     **Output for `EMPLOYEESEARCH_PROD`:**
     
-    ![VPD](./images/vpd_taskthreestepfive.png "Can_Candy Identifier Query")
+    ![VPD](./images/vpd_can_candyidentifierquery.png "Can_Candy Identifier Query")
     
     **Output for `DBA_DEBRA`:**
     
-    ![VPD](./images/vpd_taskthreestepfivedebra.png "Can_Candy Identifier Query")
+    ![VPD](./images/vpd_can_candyidentifierquerydebra.png "Can_Candy Identifier Query")
 
 6.  Update the PL/SQL function to include an `elsif` to allow `can_candy` to see the sensitive columns for Toronto-based employees.
     
@@ -181,11 +183,11 @@ This lab assumes you have:
     ````
     **Output for `EMPLOYEESEARCH_PROD`:**
     
-    ![VPD](./images/vpd_taskthreestepseven.png "Hradmin Identifier Query")
+    ![VPD](./images/vpd_hradminidentifierquery.png "Hradmin Identifier Query")
     
     **Output for `DBA_DEBRA`:**
     
-    ![VPD](./images/vpd_taskthreestepsevendebra.png "Hradmin Identifier Query")
+    ![VPD](./images/vpd_hradminidentifierquerydebra.png "Hradmin Identifier Query")
 
 8.  Demonstrate that `can_candy` will see 9 rows and only the sensitive columns for Toronto-based employees.  `DBA_DEBRA` will still not see any sensitive columns.
     
@@ -194,11 +196,11 @@ This lab assumes you have:
     ````
     **Output for `EMPLOYEESEARCH_PROD`:**
     
-    ![VPD](./images/vpd_taskthreestepeight.png "Updated Can_Candy Query")
+    ![VPD](./images/vpd_updatedcan_candyquery.png "Updated Can_Candy Query")
     
     **Output for `DBA_DEBRA`:**
     
-    ![VPD](./images/vpd_taskthreestepeightdebra.png "Updated Can_Candy Query")
+    ![VPD](./images/vpd_updatedcan_candyquerydebra.png "Updated Can_Candy Query")
 
 ## Task 4: Clean up. 
 
@@ -215,11 +217,11 @@ This lab assumes you have:
     ````
     **Output for `EMPLOYEESEARCH_PROD`:**
     
-    ![VPD](./images/vpd_taskfoursteptwo.png "Cleanup Query")
+    ![VPD](./images/vpd_cleanupquery.png "Cleanup Query")
     
     **Output for `DBA_DEBRA`:**
     
-    ![VPD](./images/vpd_taskfoursteptwodebra.png "Cleanup Query")
+    ![VPD](./images/vpd_cleanupquerydebra.png "Cleanup Query")
 
 ## **Appendix**: About the Product
 ### **Overview**
