@@ -54,29 +54,29 @@ In this lab, you will:
 
       ![Access Governance Homepage](images/select-oci-campaign.png)
 
-      * In the Selection criteria step, select the **Which tenancies?** tile. You will see a list of available cloud tenancies.
+6. In the Selection criteria step, select the **Which tenancies?** tile. You will see a list of available cloud tenancies.
 
       ![Select Cloud provider](images/select-tenancies.png)
 
-      * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
+7. Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
 
       ![Select Cloud provider](images/which-tenancy.png)
 
-      * Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
+8. Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
 
       ![Select Cloud provider](images/click-refine.png)
 
-      * Enter the **compartment** details mentioned below and click on **Apply**
+9. Enter the **compartment** details mentioned below and click on **Apply**
 
-        - compartment: ag-compartment
+      compartment: ag-compartment
 
       ![Select Cloud provider](images/ag-compartment.png)
 
-      * Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
+10. Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
 
       ![Access Governance Homepage](images/select-which-policies.png)
 
-      * Select the policies that you want to review. In this tutorial, select the following policies and click **Apply my selections.**
+11. Select the policies that you want to review. In this tutorial, select the following policies and click **Apply my selections.**
 
           - auditors-policy
           - network-admins-policy
@@ -85,7 +85,7 @@ In this lab, you will:
         ![Access Governance Homepage](images/select-the-policies.png)
         
 
-      * Proceed to the **Assign workflow** step. To do this, click **I’m good, go to workflows.** Here, you can define the approval workflow for your review tasks, click **Next.**
+12. Proceed to the **Assign workflow** step. To do this, click **I’m good, go to workflows.** Here, you can define the approval workflow for your review tasks, click **Next.**
 
       ![Access Governance Homepage](images/choose-workflow.png)
 
@@ -93,10 +93,10 @@ In this lab, you will:
 
 
 
-      * In the **Add details** step, you can define the frequency (one-time or periodic) at which to run an access review campaign, give a meaningful name to your campaign, add a supporting description, and assign values to additional attributes, such as who owns it and when the campaign should start or end.
+13. In the **Add details** step, you can define the frequency (one-time or periodic) at which to run an access review campaign, give a meaningful name to your campaign, add a supporting description, and assign values to additional attributes, such as who owns it and when the campaign should start or end.
 
 
-      * For this tutorial make the following changes in the **Add details** step:
+14. For this tutorial make the following changes in the **Add details** step:
 
           **How often do you want this to run?** : One time
 
@@ -109,11 +109,11 @@ In this lab, you will:
           **How would you like to schedule your campaign?** : Run now (will start 10 minutes from creation)
 
 
-      * Click **Next.**
+15. Click **Next.**
 
       ![Access Governance Homepage](images/campaign-information.png)
 
-      * The **Review and submit** step displays the information you have added in the previous steps. Select **Create** to create the campaign. Your campaign is scheduled and is displayed on the **Campaigns** page. It will run 10 minutes from creation. 
+16. The **Review and submit** step displays the information you have added in the previous steps. Select **Create** to create the campaign. Your campaign is scheduled and is displayed on the **Campaigns** page. It will run 10 minutes from creation. 
 
 
       ![OCI Enter details](images/click-create-new-campaign.png)
