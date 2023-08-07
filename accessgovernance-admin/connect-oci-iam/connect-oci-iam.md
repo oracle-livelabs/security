@@ -75,53 +75,50 @@ In this lab, you will:
 
 10. Select *Users*. Click on *agcs-user*
 
-    ![Create User](images/select-users.png)
+  ![Create User](images/select-users.png)
   
+11. Scroll down , click on **API keys**
+
+  ![OCI Enter details](images/api.png)
+
+12. Click on **Add API key** . Click on **Generate API key pair**. 
   
-          Scroll down , click on **API keys**
+    ![OCI Enter details](images/add-api-key.png)
+  
+13. Click on **Download private key** and **Download public key**. 
+
+  ![OCI Enter details](images/click-add.png)
+  
+14. Click on **Add**. 
+
+15. Notedown the **Downloaded private key** in a text editor. This is required for the next step. 
 
 
-            ![OCI Enter details](images/api.png)
+16. Under **Configuration file preview**, note down the following details which is required for the next step. 
 
-          Click on **Add API key** . Click on **Generate API key pair**. 
-          
-            ![OCI Enter details](images/add-api-key.png)
-          
-          Click on **Download private key** and **Download public key**. 
+    - User OCID
+    - Fingerprint 
+    - Tenancy OCID 
+    - Region 
 
-          ![OCI Enter details](images/click-add.png)
-          
-          Click on **Add**. 
+    ![OCI Enter details](images/config-file.png)
 
-          Notedown the **Downloaded private key** in a text editor. This is required for the next step. 
+17. Go back to the browser with Oracle Access Governance and continue to  enter the following details mentioned below: 
 
+    **What is the OCI user's OCID?**: Enter the Oracle Cloud Identifier (OCID) for the OCI user (agcs-user) noted down from the previous step. 
 
-          Under **Configuration file preview**, note down the following details which is required for the next step. 
+    **What is the OCI user's fingerprint?**: Enter the fingerprint of the public key of the API   Signing Key  noted down from the previous step.
 
-          - User OCID
-          - Fingerprint 
-          - Tenancy OCID 
-          - Region 
-
-          ![OCI Enter details](images/config-file.png)
-
-11. Go back to the browser with Oracle Access Governance and continue to  enter the following details mentioned below: 
-
-  **What is the OCI user's OCID?**: Enter the Oracle Cloud Identifier (OCID) for the OCI user (agcs-user) noted down from the previous step. 
-
-  **What is the OCI user's fingerprint?**: Enter the fingerprint of the public key of the API   Signing Key  noted down from the previous step.
-
-  **What is the OCI user's private SSH key?**: Enter the downloaded private SSH key (.pem file) from previous step for the API Signing Key. 
+    **What is the OCI user's private SSH key?**: Enter the downloaded private SSH key (.pem file) from previous step for the API Signing Key. 
 
 
-  **What is the OCI tenancy OCID?**: Enter the OCID for the target tenancy  noted down from the previous step.
+    **What is the OCI tenancy OCID?**: Enter the OCID for the target tenancy  noted down from the previous step.
 
-  **What is the OCI tenancy's home region?**: Enter the home region for the target OCI tenancy, using the region identifier noted down from the previous step.
+    **What is the OCI tenancy's home region?**: Enter the home region for the target OCI tenancy, using the region identifier noted down from the previous step.
 
-  ![OCI Enter details](images/details-entered.png)
+    ![OCI Enter details](images/details-entered.png)
 
-
-12. Click **Add.** Click on Manage to see the status. If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
+18. Click **Add.** Click on Manage to see the status. If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
 
   ![OCI Connection status](images/oci-connection-status.png)
 
