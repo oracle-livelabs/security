@@ -55,7 +55,6 @@ In this lab, you will:
 
 5. Click on *Create*
 
-    ![Identity Collection creation](images/click-create.png)
 
 
 
@@ -94,7 +93,7 @@ In this lab, you will:
     Select attribute: Organization
 
     Condition: Equals
-    
+
     Attribute field: Quality Assurance
 
     ![Identity Collection creation](images/qa-rule.png)
@@ -166,7 +165,7 @@ In this lab, you will:
     •	Which approval workflow should be used?: Approval-Workflow-IT-Management
 
 
-     Click Next. 
+     Click Next. INDIRA - wrong image
 
 
     ![Create Access Bundle](images/click-next.png)
@@ -192,11 +191,11 @@ In this lab, you will:
 
     •	Authentication Type: PASSWORD
 
+    •	Default Tablespace: USERS
+
     •	TemporaryTablespace: TEMP
 
     •	Profile Name: DEFAULT
-
-    •	Default Tablespace: USERS
 
     •	Leave all other options as default
 
@@ -222,9 +221,6 @@ In this lab, you will:
     •	Which approval workflow should be used?: Approval-Workflow-IT-Management
 
    Click Next. 
-
-
-    ![Create Access Bundle](images/click-next.png)
 
 9. Select the permissions to be included in the access bundle. 
 
@@ -255,11 +251,11 @@ In this lab, you will:
 
     •	Authentication Type: PASSWORD
 
+    •	Default Tablespace: USERS
+
     •	TemporaryTablespace: TEMP
 
     •	Profile Name: DEFAULT
-
-    •	Default Tablespace: USERS
 
     •	Leave all other options as default
 
@@ -303,9 +299,9 @@ In this lab, you will:
 
      ![Create Policy](images/select-qa.png)
 
-6. Search for which access bundle you want to assign : DB Read Access. Your selection will be marked with a green checkmark.
+6. Search for which access bundle you want to assign : DB Read Access. Your selection will be marked with a green checkmark. 
 
-     ![Create Policy](images/select-db-read-access.png)
+     ![Create Policy](images/selet-db-read-access.png)
 
     Then, click Next. 
 

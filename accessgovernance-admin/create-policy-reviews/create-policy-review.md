@@ -41,77 +41,84 @@ In this lab, you will:
   You will be navigated to the home page of your Oracle Access Governance Console.
 
 
-3.  Scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
+3.  Frome the home page of Oracle Access Governance, navigate to **Access Reviews** -> **Campaigns**. 
 
-  ![Access Governance Homepage](images/ag-homepage-campaign.png)
+  ![Access Governance Homepage](images/navigate-campaign.png)
 
+4. Click on **Create a campaign**
 
-  * In the Selection criteria step, select the **Which cloud providers?** tile. You will see a list of available cloud tenancies.
+  ![Access Governance Homepage](images/create-a-campaign.png)
 
-  ![Select Cloud provider](images/select-cloud-providers.png)
-
-  * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
-
-  ![Select Cloud provider](images/green-tick-cloud-provider.png)
-
-  * Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
-
-  ![Select Cloud provider](images/click-refine.png)
-
-  * Enter the **domain** and **compartment** details mentioned below and click on **Apply**
-
-     - domain: ag-domain
-     - compartment: ag-compartment
-
-  ![Select Cloud provider](images/click-apply-refine.png)
-
-  * Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
-
-  ![Access Governance Homepage](images/select-which-policies.png)
-
-  * Select the policies that you want to review. In this tutorial, select the following policies and click **Apply my selections.**
-
-      - auditors-policy
-      - network-admins-policy
-      - security-admins-policy
-
-    ![Access Governance Homepage](images/select-the-policies.png)
-    
-
-  * Proceed to the **Assign workflow** step. To do this, click **I’m good, go to workflows.** Here, you can define the approval workflow for your review tasks, click **Next.**
-
-  ![Access Governance Homepage](images/choose-workflow.png)
-
-  ![Access Governance Homepage](images/click-next-workflow.png)
+5. Under **What type of access review campaign you would like to do?** , select review access to **Oracle Cloud Infrastructure**
 
 
+      ![Access Governance Homepage](images/select-oci-campaign.png)
 
-  * In the **Add details** step, you can define the frequency (one-time or periodic) at which to run an access review campaign, give a meaningful name to your campaign, add a supporting description, and assign values to additional attributes, such as who owns it and when the campaign should start or end.
+6. In the Selection criteria step, select the **Which tenancies?** tile. You will see a list of available cloud tenancies.
+
+      ![Select Cloud provider](images/select-tenancies.png)
+
+7. Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
+
+      ![Select Cloud provider](images/which-tenancy.png)
+
+8. Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
+
+      ![Select Cloud provider](images/click-refine.png)
+
+9. Enter the **compartment** details mentioned below and click on **Apply**
+
+      compartment: ag-compartment
+
+      ![Select Cloud provider](images/ag-compartment.png)
+
+10. Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
+
+      ![Access Governance Homepage](images/select-which-policies.png)
+
+11. Select the policies that you want to review. In this tutorial, select the following policies and click **Apply my selections.**
+
+          - auditors-policy
+          - network-admins-policy
+          - security-admins-policy
+
+        ![Access Governance Homepage](images/select-the-policies.png)
+        
+
+12. Proceed to the **Assign workflow** step. To do this, click **I’m good, go to workflows.** Here, you can define the approval workflow for your review tasks, click **Next.**
+
+      ![Access Governance Homepage](images/choose-workflow.png)
+
+      ![Access Governance Homepage](images/click-next-workflow.png)
 
 
-  * For this tutorial make the following changes in the **Add details** step:
 
-      **How often do you want this to run?** : One time
-
-      **What do you want to call this campaign?**: Policy-Review-OCI-IAM
-
-      **How do you want to describe this campaign?**: Policy-Review-OCI-IAM
-
-      **Who owns this campaign?**: Me
-
-      **How would you like to schedule your campaign?** : Run now (will start 10 minutes from creation)
+13. In the **Add details** step, you can define the frequency (one-time or periodic) at which to run an access review campaign, give a meaningful name to your campaign, add a supporting description, and assign values to additional attributes, such as who owns it and when the campaign should start or end.
 
 
-  * Click **Next.**
+14. For this tutorial make the following changes in the **Add details** step:
 
-  ![Access Governance Homepage](images/campaign-information.png)
+          **How often do you want this to run?** : One time
 
-  * The **Review and submit** step displays the information you have added in the previous steps. Select **Create** to create the campaign. Your campaign is scheduled and is displayed on the **Campaigns** page. It will run 10 minutes from creation. 
+          **What do you want to call this campaign?**: Policy-Review-OCI-IAM
+
+          **How do you want to describe this campaign?**: Policy-Review-OCI-IAM
+
+          **Who owns this campaign?**: Me
+
+          **How would you like to schedule your campaign?** : Run now (will start 10 minutes from creation)
 
 
-  ![OCI Enter details](images/click-create-new-campaign.png)
+15. Click **Next.**
 
-  ![OCI Enter details](images/campaign-scheduled.png)
+      ![Access Governance Homepage](images/campaign-information.png)
+
+16. The **Review and submit** step displays the information you have added in the previous steps. Select **Create** to create the campaign. Your campaign is scheduled and is displayed on the **Campaigns** page. It will run 10 minutes from creation. 
+
+
+      ![OCI Enter details](images/click-create-new-campaign.png)
+
+      ![OCI Enter details](images/campaign-scheduled.png)
 
 ## Task 2: Perform Policy Review Tasks
 
