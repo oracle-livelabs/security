@@ -63,7 +63,7 @@ This lab assumes you have:
     ````
     **Output:**
     
-    ![Proxy](./images/proxy_createdev_dave.png "DEV_DAVE Created")
+    ![DEV_DAVE Created](./images/proxy_createdev_dave.png " ")
 
 2.   Authorize the `DEV_DAVE` account to proxy as if it were the `EMPLOYEESEARCH_PROD` application schema.
 
@@ -72,7 +72,7 @@ This lab assumes you have:
     ````
     **Output:**
     
-    ![Proxy](./images/proxy_tasktwosteptwo.png " Authorize DEV_DAVE")
+    ![Authorize DEV_DAVE](./images/proxy_tasktwosteptwo.png " ")
 
 3.  Create a Unified Audit policy to audit when proxying users access sensitive data in the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table.
 
@@ -81,7 +81,7 @@ This lab assumes you have:
     ````
     **Output:**
 
-    ![Proxy](./images/proxy_createauditpolicy.png "Create Unified Audit Policy")
+    ![Create Unified Audit Policy](./images/proxy_createauditpolicy.png " ")
 
 4.   Remember, you must enable a Unified Audit policy after creating it. This allows you to stage, or prepare, policies in advance.
     
@@ -90,7 +90,7 @@ This lab assumes you have:
     ````
     **Output:**
 
-    ![Proxy](./images/proxy_enableauditpolicy.png "Enable Unified Audit Policy")
+    ![Enable Unified Audit Policy](./images/proxy_enableauditpolicy.png " ")
 
 5.    Verify that `DEV_DAVE` cannot authenticate. This account has no privileges, it will inherit privileges from `EMPLOYEESEARCH_PROD` when it proxies as that user.
     
@@ -99,7 +99,7 @@ This lab assumes you have:
     ````
     **Output:**
     
-    ![Proxy](./images/proxy_proxytestasdave.png "Verify DEV_DAVE cannot authenticate")
+    ![Verify DEV_DAVE cannot authenticate](./images/proxy_proxytestasdave.png " ")
 
 6.  Now, demonstrate that `DEV_DAVE` can proxy as `EMPLOYEESEARCH_PROD`. Dave does not need to know the `EMPLOYEESEARCH_PROD` password, Dave uses his own password. Notice the user information shows the `EMPLOYEESEARCH_PROD` schema. We can verify the proxy user by querying the SYS_CONTEXT attribute `proxy_user`.
     
@@ -108,9 +108,9 @@ This lab assumes you have:
     ````
     **Output:**
 
-    ![Proxy](./images/proxy_dev_daveproxy.png "DEV_DAVE Proxy")
+    ![DEV_DAVE Proxy](./images/proxy_dev_daveproxy.png " ")
 
-    ![Proxy](./images/proxy_dev_daveproxyparttwo.png "DEV_DAVE Proxy2")
+    ![DEV_DAVE Proxy Part Two](./images/proxy_dev_daveproxyparttwo.png " ")
 
 7.  View the audit data created by the proxy user `DEV_DAVE`.
     
@@ -119,7 +119,7 @@ This lab assumes you have:
     ````
     **Output:**
 
-    ![Proxy](./images/proxy_viewauditdata.png "View Audit Data")
+    ![View Audit Data](./images/proxy_viewauditdata.png " ")
 
 ## Task 3: Optional Lab
 
@@ -132,9 +132,9 @@ In this lab, you will demonstrate how you can add additional security factors ba
     ````
     **Output:**
 
-    ![Proxy](./images/proxy_sensitivecolumndata.png "Sesitive Column Data")
+    ![Sensitive Column Data](./images/proxy_sensitivecolumndata.png " ")
 
-    ![Proxy](./images/proxy_sensitivecolumndataparttwo.png "Sensitive Column Data2")
+    ![Sensitive Column Data Part Two](./images/proxy_sensitivecolumndataparttwo.png " ")
 
 2.  Verify there are no current Oracle Virtual Private Database (VPD) policies on our table.
     
@@ -143,7 +143,7 @@ In this lab, you will demonstrate how you can add additional security factors ba
     ````
     **Output:**
 
-    ![Proxy](./images/proxy_verifyvpdpolicies.png "No current VPD policies")
+    ![No current VPD policies](./images/proxy_verifyvpdpolicies.png " ")
 
 3.  Create a PL/SQL function to identify `EMPLOYEESEARCH_PROD` session_user and if the session user is a proxying user. If it is only the schema, the function will not add a predicate to the SQL query. If the session user is a proxying user, it will add `1=0` to the SQL query and return `SSN`, `SIN`, and `NINO` columns as null values.
     
@@ -158,7 +158,7 @@ In this lab, you will demonstrate how you can add additional security factors ba
     ````
     **Output:**
     
-    ![Proxy](./images/proxy_createpolicy.png "Create Policy")
+    ![Create Policy](./images/proxy_createpolicy.png " ")
 
 5.  Verify the `EMPLOYEESEARCH_PROD` schema is able to view the social identifier columns but the proxying user is not.
     
@@ -167,9 +167,9 @@ In this lab, you will demonstrate how you can add additional security factors ba
     ````
     **Output:**
 
-    ![Proxy](./images/proxy_verifyemployeesearch_prodschema.png "Verify EMPLOYEESEARCH_PROD Schema")
+    ![Verify EMPLOYEESEARCH_PROD Schema](./images/proxy_verifyemployeesearch_prodschema.png " ")
 
-    ![Proxy](./images/proxy_verifyemployeesearch_prodschemadave.png "Verify EMPLOYEESEARCH_PROD Schema")
+    ![Verify EMPLOYEESEARCH_PROD Schema for DEV_DAVE](./images/proxy_verifyemployeesearch_prodschemadave.png " ")
 
 6.  View the audit data related to our proxy user queries. Notice the Oracle VPD predicate (`RLS_INFO`) data is available in the Unified Audit trail. You can see the policy type and policy predicate that was applied to the proxying user’s SQL query.
     
@@ -178,7 +178,7 @@ In this lab, you will demonstrate how you can add additional security factors ba
     ````
     **Output:**
     
-    ![Proxy](./images/proxy_viewauditdatarelatedtoproxy.png "View Audit Data")
+    ![View Audit Data](./images/proxy_viewauditdatarelatedtoproxy.png " ")
 
 ## Task 4: Clean up. 
 
@@ -189,7 +189,7 @@ In this lab, you will demonstrate how you can add additional security factors ba
     ````
     **Output:**
 
-    ![Proxy](./images/proxy_cleanup.png "Clean Up")
+    ![Clean Up](./images/proxy_cleanup.png " ")
 
 ## **Appendix**: About the Product
 ### **Overview**
