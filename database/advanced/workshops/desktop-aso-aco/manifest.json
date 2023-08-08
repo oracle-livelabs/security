@@ -35,7 +35,7 @@
       "title": "Lab 4: Enable advanced compression and online redefinition into encrypted tablespace",
       "description": "Online Compression to encrypted tablespace via online redefinition",
       "publisheddate": "03/20/2023",
-      "filename": "../../aso-aco/aco/aco-row-index/aco-row-index.md"
+      "filename": "../../aso-aco/aco/aco_row_index/aco_row_index.md"
     },
     {
       "title": "Need Help?",
