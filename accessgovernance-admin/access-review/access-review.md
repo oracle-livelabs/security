@@ -8,6 +8,11 @@ Access reviews can be carried out from the Oracle Access Governance console by u
 
 *Estimated Time*: 15 minutes
 
+
+
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_0sz90jrj)
+
 ### Objectives
 
 In this lab, you will:
@@ -219,6 +224,23 @@ In this lab, you will:
      ![Access Review](images/mark-user.png)
 
 4. Under Actions, click on approve and Approve the request for the users Harlan Bullard, Mark Hernandez and Jerry Poland. 
+
+## Task 4: Run a Manual Dataload
+
+1. On the Access Governance console home page, navigate to Service Administration -> Connected System. 
+
+   ![Create Policy](images/connected-system.png)
+
+
+2. On the Connected Systems page, select the **OAG-DB** connected system. 
+
+   ![Create Policy](images/select-system.png)
+
+3. Click on  Actions -> Load Data Now. This will perform a manual data load. 
+
+    ![Create Policy](images/load-date.png)
+
+4. Once the data load is complete, the status will be shown as Success. 
 
 
   You may now **proceed to the next lab**. 

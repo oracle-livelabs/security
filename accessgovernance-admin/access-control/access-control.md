@@ -7,6 +7,10 @@ In this lab we will review Access-Control of Access Governance
 *Estimated Time*: 15 minutes
 
 
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_ruy3z0dh)
+
+
 ### Objectives
 
 In this lab, you will:
@@ -125,6 +129,8 @@ In this lab, you will:
 
     •	Approval Identity Collection: IT Management   
 
+    •	Should all members approve? : No      
+
     •	For all other fields, leave as default
 
     •	Click Add
@@ -133,8 +139,6 @@ In this lab, you will:
     ![Approval Workflow](images/approval-workflow-id.png) 
 
     ![Approval Workflow](images/approval-workflow-edit.png) 
-    
-
 
      After confirming your configuration matches the following, click Next
 
@@ -165,7 +169,7 @@ In this lab, you will:
     •	Which approval workflow should be used?: Approval-Workflow-IT-Management
 
 
-     Click Next. INDIRA - wrong image
+     Click Next.
 
 
     ![Create Access Bundle](images/click-next.png)
