@@ -9,6 +9,11 @@ Creation of Compartment
 *Estimated Time*: 15 minutes
 
 
+
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_8rvbi8pv)
+
+
 ### Objectives
 
 In this lab, you will:
@@ -21,6 +26,7 @@ In this lab, you will:
 This lab assumes you have:
 - A valid Oracle OCI tenancy, with OCI administrator privileges.
 
+   
 
 ## Task 1: Create Compartment
 

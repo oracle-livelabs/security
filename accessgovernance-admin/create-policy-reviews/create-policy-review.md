@@ -82,7 +82,8 @@ In this lab, you will:
           - network-admins-policy
           - security-admins-policy
 
-        ![Access Governance Homepage](images/select-the-policies.png)
+      
+      ![Access Governance Homepage](images/select-the-policies.png)
         
 
 12. Proceed to the **Assign workflow** step. To do this, click **I’m good, go to workflows.** Here, you can define the approval workflow for your review tasks, click **Next.**

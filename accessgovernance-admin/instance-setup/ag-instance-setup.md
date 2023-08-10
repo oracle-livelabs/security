@@ -8,6 +8,9 @@ Persona: Identity Domain Administrator
 
 *Estimated Time*: 30 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_21nk0xhx)
+
 
 ### Objectives
 
