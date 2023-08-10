@@ -8,7 +8,10 @@
 
   ![View List of Campaigns](images/oracle-access-governance-overview.png)
 
-This lab walks you through the steps to get started using **Oracle Access Governance** with a popular use case - **access controls**. In this workshop, a ficticious corporation is using Oracle Identity Governance (OIG) and an associated database to manage and govern the application access of its employees and contractors. This lab shows how the database is connected to AG as a target system and implement access control by creating identity collections, approval workflows, roles, access bundles, and centralized policies. 
+
+This lab walks you through the steps to get started using **Oracle Access Governance** with several use cases - **access controls, access reviews, and policy reviews**. In this workshop, a ficticious corporation is using Oracle Access Governance to manage and govern the application access of its employees and contractors. This lab shows how the database is connected to AG as a target system and implement access control by creating identity collections, approval workflows, roles, access bundles, and centralized policies. It also shows how to perform access review and policy review campaigns, and associated review tasks.
+
+
 
 **Oracle Access Governance** allows : 
 - **Administrator** to perform various system, service, and access control administrative tasks
@@ -27,7 +30,10 @@ In this workshop, you will learn how to:
 * Setup and configure Oracle Access Governance service instance
 * Install and configure Oracle Access Governance agents for OIG and Database
 * Perform AG data load and create IAM users
-* Manage Roles, Identity Collections, Policies, and Approval Workflows as **Access Control Administrator or Administrator**
+* Integrate with OCI as a cloud identity provider
+* Manage Identity Collections, Access Bundles, Policies, and Approval Workflows
+* Create Access Review Campaign and perform access reviews tasks for the target database system
+* Create Policy Review Campaign and perform policy review tasks for the OCI IAM policies
 
 
 ### Prerequisites

@@ -60,7 +60,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     * In the OCI console, navigate to Identity -> Domains ->  ag-domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
 
-    * Notice the *AG Administrator* Role and *AG Campaign Administrator* Role listed. Click on the Downward arrow on the right corner for each of them. 
+    * Notice the *AG Administrator* Role , *AG Campaign Administrator* Role and *AG Access Control Admin* Role listed. Click on the Downward arrow on the right corner for each of them. 
 
     ![OIG Identity Roles and Access Policies](images/user-approle.png)
 
@@ -72,7 +72,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     ![OIG Identity Roles and Access Policies](images/user-approle-assign.png)
 
-    * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator*. You can now close the window.
+    * Pamela Green has been assigned with the *AG Administrator* application role, *AG Campaign Administrator* and *AG Access Control Admin* Role . You can now close the window.
 
     * Now, Notice the *AG User* Role and *AG CloudAccessReviewer* Role listed. Click on the Downward arrow on the right corner for each of them. 
 
