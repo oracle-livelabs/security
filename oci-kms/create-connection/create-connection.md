@@ -112,18 +112,18 @@ In this task you will create a connection from your CipherTrust Manager (CTM) te
 
 7. You are now in the **Configure Connection** step. You have to enter the information you previoulsy saved when you created the API Key Pair, in the Task 1.9 of this lab. **BE CAREFUL**, the information are not listed in the same order, for example "User OCID" is provided first and "tenancy OCID" comes third, where here "tenancy OCID" is asked first, so you have to make sure you paste the relevant information. You will also need to upload the private key file you saved in the same step.
 
-Copy the following parameters you had in your configuration file:
+    Copy the following parameters you had in your configuration file:
 
-![Configuration file](images/configuration-file-red-squares.png "Configuration file")
+    ![Configuration file](images/configuration-file-red-squares.png "Configuration file")
 
-   * Tenancy OCID: OCID of the tenancy.
-   * User OCID: OCID of the user.
-   * Region: An Oracle Cloud Infrastructure region.
-   * Fingerprint: Fingerprint of the public key added to this user.
-   * Key File: Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
-   * File Upload: Select and click Upload Private Key to upload the key file from your machine.
-   * Text: Select and paste the certificate content in the text field.
-   * Passphrase: Passphrase of the encrypted key file.
+    * Tenancy OCID: OCID of the tenancy.
+    * User OCID: OCID of the user.
+    * Region: An Oracle Cloud Infrastructure region.
+    * Fingerprint: Fingerprint of the public key added to this user.
+    * Key File: Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
+    * File Upload: Select and click Upload Private Key to upload the key file from your machine.
+    * Text: Select and paste the certificate content in the text field.
+    * Passphrase: Passphrase of the encrypted key file.
     
 
     ![Connection details](images/connection-details.png "Connection details")
