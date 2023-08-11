@@ -9,6 +9,9 @@ As **Access Governance Administrators** they can learn to integrate Oracle Acces
 
 *Estimated Time*: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_cupvwe5w)
+
 ### Objectives
 
 In this lab, you will:

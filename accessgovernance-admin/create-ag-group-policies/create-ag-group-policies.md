@@ -8,6 +8,9 @@ Create policies for Access Governance.
 
 *Estimated Time*: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_x0vzlnhh)
+
 ### Objectives
 
 In this lab, you will:
