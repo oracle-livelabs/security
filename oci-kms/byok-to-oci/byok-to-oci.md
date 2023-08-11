@@ -60,7 +60,7 @@ This lab assumes you have:
 
     ![Oracle keys](images/oracle-keys.png "Oracle keys")
 
-2. Click on the "Add Key" button. The first step of the "Select Material Origin" screen of the "Add Oracle Key" wizard is displayed. Select the key source: in this case we are going to create the key locally on CipherTrust so for "Select Method" click on "Create/Upload New Key Material" and then for "Select Source" click on "(Local)":
+2. Click on the "Add Key" button. The first step of the "Select Material Origin" screen of the "Add Oracle Key" wizard is displayed. Select the key source: in this case we are going to create the key locally on CipherTrust so for "Select Method" click on "Create/Upload New Key Material" and then for "Select Source" click on "CipherTrust":
 
     ![Add key](images/add-key.png "Add key")
 

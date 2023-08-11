@@ -35,13 +35,13 @@ Let's first create a bucket in OCI Object Storage. To do that, log in to OCI con
 
 
 3. Name it by following this naming convention: 
-* **"ocw23-OCI-bucket-XXX"** where "XXX" is your student number. 
+    * **"ocw23-OCI-bucket-XXX"** where "XXX" is your student number. 
 
-Select the option **Encrypt using customer-managed keys**. Once you select that option, new fields to be filled will appear.
-* Select the Vault you created in lab 1 called "ocw23-OCI-Vault-XXX" where "XXX" is your student number. 
-* Select the encryption key that you created in Thales CTM, called "ocw23-AES-256-XXX" where "XXX" is your student number.
+    Select the option **Encrypt using customer-managed keys**. Once you select that option, new fields to be filled will appear.
+    * Select the Vault you created in lab 1 called "ocw23-OCI-Vault-XXX" where "XXX" is your student number. 
+    * Select the encryption key that you created in Thales CTM, called "ocw23-AES-256-XXX" where "XXX" is your student number.
 
-Then click **Create**.
+    Then click **Create**.
     ![Bucket info](./images/bucket-info.png "Bucket info")
 
 4. Congratulations, you have now created a new storage bucket in OCI where all the data you upload will be automatically encrypted at all times with the encryption key you created on Thales CTM:
@@ -75,14 +75,14 @@ You will upload a file that will be provided to you into the bucket you recently
   ![Create Pre-Authenticated Request](./images/create-par.png "Create Pre-Authenticated Request")
 
 7. Fill the parameters as follow 
-* Name: enter "ocw23-sample-file"
-* Pre-Authenticated Request target: Click on the "Object" tile
-* Object Name: enter "ocw23-sample-file.csv"
-* Access Type: select "Permit object reads"
-* Expiration: leave the default or choose any time. 
+    * Name: enter "ocw23-sample-file"
+    * Pre-Authenticated Request target: Click on the "Object" tile
+    * Object Name: enter "ocw23-sample-file.csv"
+    * Access Type: select "Permit object reads"
+    * Expiration: leave the default or choose any time. 
 
- Then click **Create Pre-Authenticated Request**:
-  ![Add Pre-Authenticated Request info](./images/par-info.png "Add Pre-Authenticated Request info")
+    Then click **Create Pre-Authenticated Request**:
+    ![Add Pre-Authenticated Request info](./images/par-info.png "Add Pre-Authenticated Request info")
 
 8. A window will prompt with the URL of the pre-authenticated request. Copy this URL and save it locally, you will need it later in lab 4. Click **Close**.
 
@@ -94,37 +94,35 @@ You will upload a file that will be provided to you into the bucket you recently
 
 Let's create now the Autonomous Database, and configure it with the key you created in Thales CTM. 
 
-### Learn More
+In order to use customer-managed encryption for Autonomous Database, it is required to create permissions to allow your Autonomous Database to communicate with the OCI Vault service. For the purpose of this lab, we have pre-configured a Dynamic Group and the associated policy. For you to understand all the steps, you can look at the configuration below, or if you don't have time you can skip directly to step 1 of this task. 
 
-* In order to use customer-managed encryption for Autonomous Database, it is required to create permissions to allow your Autonomous Database to communicate with the OCI Vault service. For the purpose of this lab, we have pre-configured a Dynamic Group and the associated policy. For you to understand all the steps, you can look at the configuration below, or if you don't have time you can skip directly to step 1 of this lab. 
+We have created a dynamic group which automatically contains all the resources of this compartment. To see the configuration, in the Oracle Cloud Infrastructure console click *"Identity & Security"* and under *"Identity"*, click *"Dynamic Groups"*. 
 
-* We have created a dynamic group which automatically contains all the resources of this compartment. To see the configuration, in the Oracle Cloud Infrastructure console click *"Identity & Security"* and under *"Identity"*, click *"Dynamic Groups"*. 
+  ![Dynamic Groups](./images/dynamic-groups.png "Dynamic Groups")
 
- ![Dynamic Groups](./images/dynamic-groups.png "Dynamic Groups")
+Look for a group called "ocw23ToVault" and click on its name to see all the details. 
 
-* Look for a group called "ocw23ToVault" and click on its name to see all the details. 
+  ![Dynamic Groups list](./images/dynamic-groups-list.png "Dynamic Groups List")
 
- ![Dynamic Groups list](./images/dynamic-groups-list.png "Dynamic Groups List")
-
-* In the details panel, you can see the rule which was created: 
+In the details panel, you can see the rule which was created: 
   ```
   resource.compartment.id = '<your_Compartment_OCID>'
   ```
   where &lt;your\_Compartment\_OCID&gt; is the OCID of the compartment ocw23-OCI-Vault-HOL.
   This means that any new resource created in the "ocw23-OCI-Vault-HOL" compartment will automatically belong to this group. This is a best practice for simplification as all the new Autonomous Database created will be part of it and benefit from the associated policy. Indeed when you are creating the dynamic group, the OCID for the new database is not yet available.
 
- ![Dynamic Group Details](./images/dynamic-group-details.png "Dynamic Group Details")
+  ![Dynamic Group Details](./images/dynamic-group-details.png "Dynamic Group Details")
 
-* Then we needed to write a policy statement for the dynamic group to enable access to OCI Vault resources: Vaults and Keys. To check the policy written for this lab, in the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Policies"*:
+Then we needed to write a policy statement for the dynamic group to enable access to OCI Vault resources: Vaults and Keys. To check the policy written for this lab, in the OCI console click *"Identity & Security"* and under *"Identity"*, click *"Policies"*:
 
   ![Security policies](./images/policies.png "Security policies")
 
 
-* Look for a policy called "ocw23-Dynamic-Access-to-Vault-Policy" and click on its name to see all the details.
+Look for a policy called "ocw23-Dynamic-Access-to-Vault-Policy" and click on its name to see all the details.
 
   ![Security policies list](./images/policies-list.png "Security policies list")
 
-  * In the details panel, you can see a policy was written as follows:
+In the details panel, you can see a policy was written as follows:
   ```
   Allow dynamic-group ocw23ToVault to use vaults in compartment ocw23-OCI-Vault-HOL
   Allow dynamic-group ocw23ToVault to use keys in compartment ocw23-OCI-Vault-HOL
@@ -132,7 +130,7 @@ Let's create now the Autonomous Database, and configure it with the key you crea
 
    ![Create policy](./images/create-policy.png "Create policy")
 
-This policy configuration is very important. By default, no services can access Vaults and Keys. It is your responsibility as a CISO / Security Administrator of OCI to decide who/what can access which vaults and which encryption keys. This allows you to define a very advanced and granular encryption architecture within OCI, while leveraging your existing KMS/HSM assets on-premise as the key we are using in this lab has been created by you on your company existing Thales CTM tenant, outside of OCI. 
+This policy configuration is very important. By default, no services can access Vaults and Keys. It is your responsibility as a CISO / Security Administrator of OCI to decide who/what can access which vaults and which encryption keys. This allows you to define a very advanced and granular encryption architecture within OCI, while leveraging your existing KMS/HSM assets on-premise as the key we are using in this lab has been created by you on your company existing Thales CTM tenant, outside of OCI.
 
 1. Now you can create the Autonomous Database. Navigate through the main hamburger menu to: *"Oracle Database > Autonomous Database"*.
 
@@ -149,16 +147,16 @@ This policy configuration is very important. By default, no services can access 
     *	Display Name: ocw23-OCI-adb-001
     *	Database Name: ocw23OCIadb001
     *	Workload type: Transaction Processing
-    *	Deployment type: Shared Infrastructure
+    *	Deployment type: Serverless
     *	Configure the database: &lt;Leave it as default&gt; 
     *	Administrator credentials: &lt;your ADMIN password&gt; 
     *	Network access: Secure access from everywhere
     *	License type: Bring Your Own License (BYOL)
     * Oracle Database Edition: Oracle Database Standard Edition (SE)
   
-Click the link *"Show advanced options"*. A new section for Encryption Key will appear. Select the option: *"Encrypt using a customer-managed key in this tenancy"* and enter your previously created Vault and Master Encryption Key.
+    Click the link *"Show advanced options"*. A new section for Encryption Key will appear. Select the option: *"Encrypt using a customer-managed key in this tenancy"* and enter your previously created Vault and Master Encryption Key.
 
-![Encryption in Autonomous Database](./images/adb-encryption.png "Encryption in Autonomous Database")
+    ![Encryption in Autonomous Database](./images/adb-encryption.png "Encryption in Autonomous Database")
 
 
 4. Click **Create Autonomous Database**. Then wait until the database status is set to green and ACTIVE.

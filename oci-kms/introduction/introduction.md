@@ -10,9 +10,9 @@ In this Hands-On Lab, you will learn how to manage your encryption keys outside 
 
 This Hands-On Lab will walk you through how to enable the feature, link your HSM outside of OCI to your OCI tenant and start encrypting data in OCI, for storage encryption and OCI Database encryption through TDE support. Now your Master Encryption Keys never leave your own HSM. You will also simulate an Emergency Situation in which you are being asked to block access to data stored in OCI Storage Buckets or Database Service. You’re in control. 
 
-Estimated Workshop Time: 1 hour
+Estimated Time: 1.5 hours
 
-*Note*  In this lab you will truly use an external KMS service: each student will have a Thales CipherTrust Manager tenant, which is a Key management as a Service tenant for Key Management, based on Thales HSM as a service solution.
+> **Note:**  In this lab you will truly use an external KMS service: each student will have a Thales CipherTrust Manager tenant, which is a Key management as a Service tenant for Key Management, based on Thales HSM as a service solution.
 
 ### Objectives
 
