@@ -5,7 +5,7 @@ This workshop introduces the functionality of Proxy Authentication in Oracle's D
 
 Description: Proxy Authentication allows a user (the proxy user) to connect to the database on behalf of another user (the target user) and this workshop show developers the proper usage, configuration and best practices with Proxy Authentication. 
 
-*Estimated Lab Time:* 30 minutes
+*Estimated Time:* 30 minutes
 
 *Version tested in this lab:* Oracle DB 19.17
 

@@ -1,5 +1,5 @@
 {
-   "workshoptitle": "Protecting Data with Row-Level and Column-Level Security using Oracle VPD",
+   "workshoptitle": "Protect Data with Row-Level and Column-Level Security using Oracle VPD",
    "help": "livelabs-help-db_us@oracle.com",
    "tutorials": [
      {
@@ -26,7 +26,7 @@
        "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
      },
      {
-       "title": "Lab 3: Virtual Private Database",
+       "title": "Lab 3: Protect Data with Row-Level and Column-Level Security using Oracle VPD",
        "description": "In this lab you can see how to leverage Oracle Virtual Private Database (VPD)",
        "publisheddate": "10/20/2020",
        "filename": "../../vpd/vpd-livelab/vpd.md"

@@ -20,8 +20,8 @@
       "filename": "../../../common/init-start-env/init-start-env.md"
     },
     {
-      "title": "Lab 2: Proxy Authentication",
-      "description": "In this lab you can see how to leverage Oracle Virtual Private Database (VPD)",
+      "title": "Lab 2: How Developers Could Use Oracle Database Proxy Authentication",
+      "description": "This workshop introduces the functionality of Proxy Authentication in Oracle's Database.",
       "publisheddate": "10/20/2020",
       "filename": "../../proxy/proxy-livelab/proxy.md"
     },
