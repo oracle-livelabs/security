@@ -61,4 +61,4 @@ When using Resource Manager to destroy the environment, you need to execute a **
 - **Author** - Arun Poonia, Principal Solutions Architect
 - **Adapted by** - Oracle
 - **Contributors** - N/A
-- **Last Updated By/Date** - Arun Poonia, Nov 2022
+- **Last Updated By/Date** - Arun Poonia, Aug 2023
