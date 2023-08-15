@@ -193,10 +193,6 @@ In this lab, you will demonstrate how you can add additional security factors ba
 
     ![Clean Up](./images/proxy_cleanup.png " ")
 
-## About the Product
-
-Proxy Authentication allows a user (the proxy user) to connect to the database on behalf of another user (the target user) and this workshop show developers the proper usage, configuration and best practices with Proxy Authentication. 
-
 ## Learn More
 Technical Documentation:
 - [Proxy Authentication](https://docs.oracle.com/en/database/oracle/oracle-database/19/jjdbc/proxy-authentication.html#GUID-07E0AF7F-2C9A-42E9-8B99-F2716DC3B746)

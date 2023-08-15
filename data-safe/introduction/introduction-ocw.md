@@ -10,13 +10,20 @@ Oracle Data Safe is Oracle’s platform for securing data in databases. As a nat
 
 Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:UUc26bpdFnc)
 
-## Objectives
+### Objectives
 
 In this workshop, you learn how to perform the following tasks:
 
 - Register an Autonomous Database with Oracle Data Safe
 - Assess the security of your database configurations and database users using Oracle Data Safe
 - Discover and mask sensitive data on your target database using Oracle Data Safe
+
+### Prerequisites
+
+This workshop has the following prerequisites:
+- To run this workshop in your own tenancy, you require an Oracle Cloud account and you need to be operating within a free trial period.
+- To run this workshop in the LiveLabs sandbox, you require an Oracle Cloud account.
+
 
 ## Learn More
 
@@ -31,4 +38,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, June 8, 2023
+* **Last Updated By/Date** - Jody Glover, July 18, 2023
