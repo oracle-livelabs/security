@@ -33,7 +33,7 @@
       "filename": "../../../common/init-start-env/init-start-env.md"
     },
      {
-       "title": "Lab 3: Virtual Private Database",
+       "title": "Lab 4: Protect Data with Row-Level and Column-Level Security using Oracle VPD",
        "description": "In this lab you can see how to leverage Oracle Virtual Private Database (VPD)",
        "publisheddate": "10/20/2020",
        "filename": "../../vpd/vpd-livelab/vpd.md"
