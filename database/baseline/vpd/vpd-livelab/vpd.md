@@ -221,12 +221,7 @@ This lab assumes you have:
     
     **Output for `DBA_DEBRA`:**
     
-    ![Cleanup Query DBA_DEBRA](./images/vpd_cleanupquerydebra.png " ")
-
-## **Appendix**: About the Product
-### **Overview**
-
-Oracle Database gives the user the ability to implement row and column level security with Oracle VPD. 
+    ![Cleanup Query DBA_DEBRA](./images/vpd_cleanupquerydebra.png " ") 
 
 ## Learn More
 Technical Documentation:

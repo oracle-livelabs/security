@@ -1,13 +1,15 @@
 # How Developers Could Use Oracle Database Proxy Authentication
 
 ## Introduction
-This workshop introduces the functionality of Proxy Authentication in Oracle's Database.
-
-Description: Proxy Authentication allows a user (the proxy user) to connect to the database on behalf of another user (the target user) and this workshop show developers the proper usage, configuration and best practices with Proxy Authentication. 
+This workshop introduces the functionality of Proxy Authentication in Oracle's Database. 
 
 *Estimated Time:* 30 minutes
 
 *Version tested in this lab:* Oracle DB 19.17
+
+### About the Product
+
+Proxy Authentication allows a user (the proxy user) to connect to the database on behalf of another user (the target user) and this workshop show developers the proper usage, configuration and best practices with Proxy Authentication.
 
 ### Objectives
 Allow a developer to access the application data without knowing the application schema password.  The developer created will inherit the privileges of the application schema.
@@ -191,8 +193,7 @@ In this lab, you will demonstrate how you can add additional security factors ba
 
     ![Clean Up](./images/proxy_cleanup.png " ")
 
-## **Appendix**: About the Product
-### **Overview**
+## About the Product
 
 Proxy Authentication allows a user (the proxy user) to connect to the database on behalf of another user (the target user) and this workshop show developers the proper usage, configuration and best practices with Proxy Authentication. 
 
