@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Using OCI Network Firewall Solution on Oracle Cloud Infrastructure",
+    "workshoptitle": "Use OCI Network Firewall Solution on Oracle Cloud Infrastructure",
     "help": "livelabs-help-oci_us@oracle.com",
 	"tutorials": [
         {
@@ -12,7 +12,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 0: Deploy Network Firewall using Oracle Resource Manager",
+            "title": "Lab 0: Deploy Network Firewall with Oracle Resource Manager",
             "filename": "../../common/orm-deploy.md"
         },
         {
@@ -20,7 +20,7 @@
             "filename": "../../common/oci-config.md"
         },
         {
-            "title": "Lab 2: Deploy Network Firewall and Supporting Configuration",
+            "title": "Lab 2: Deploy Network Firewall and Required Configuration",
             "filename": "../../network-firewall/deploy-network-firewall.md"
         },
         {
