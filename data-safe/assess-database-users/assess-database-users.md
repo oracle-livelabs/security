@@ -37,6 +37,8 @@ This lab assumes you have:
 
 - Your data values might be different than those shown in the screenshots.
 
+[Assess Database Users](videohub:1_fvykqng1)
+
 
 ## Task 1: View the overview page for User Assessment
 
