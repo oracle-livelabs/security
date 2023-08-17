@@ -30,7 +30,9 @@ This lab assumes you have:
 | 4 | ??? | <5 minutes |
 | 3 | Reset the SQL Firewall Labs Environment | <5 minutes |
 
-## Task 1: Prepare the TSDP Environment for the Labs
+## Task 1: Enable SQL Firewall to protect Glassfish HR Application
+
+In this lab you will modify the Glassfish connection (instead of connecting directly to the 19c pluggable database pdb1, Glassfish will connect to an Oracle Database 23c so we can monitor, and block, SQL commands)
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -43,16 +45,65 @@ This lab assumes you have:
 2. Go to the scripts directory
 
     ````
-    <copy>cd $DBSEC_LABS/tsdp</copy>
+    <copy>cd $DBSEC_LABS/sqlfw</copy>
     ````
 
-3. Create the TSDP **Admin user**, the TSDP **data owner** and create the **TSDP labs table**
+3. Migrate the Glassfish Application connection string in order to target the 23c database
 
     ````
-    <copy>./tsdp_prepare_env.sh</copy>
+    <copy>./sqlfw_start_db23c_glassfish.sh</copy>
     ````
 
-    ![TSDP](./images/tsdp-001.png "Create the TSDP Admin user")
+    ![SQLFW](./images/sqlfw-001.png "Set HR App with DB23c")
+
+4. Next, verify the application functions as expected
+
+    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
+
+        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+    
+    - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
+
+        ````
+        <copy>hradmin</copy>
+        ````
+
+        ````
+        <copy>Oracle123</copy>
+        ````
+
+        ![SQLFW](./images/sqlfw-002.png "HR App - Login")
+
+        ![SQLFW](./images/sqlfw-003.png "HR App - Login")
+
+    - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
+
+        ![SQLFW](./images/sqlfw-004.png "HR App - Settings")
+
+    - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
+
+        ![SQLFW](./images/sqlfw-005.png "HR App - Session Details")
+
+    - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
+
+        ![SQLFW](./images/sqlfw-006.png "HR App - Check the targetted database")
+
+
+5. Create an administrator (**`dba_tom`**) to manage SQL Firewall
+
+    ````
+    <copy>./sqlfw_crea_admin-user.sh</copy>
+    ````
+
+    ![SQLFW](./images/sqlfw-007.png "Create the SQL Firewall Admin user")
+
+6. Enable SQL Firewall
+
+    ````
+    <copy>./sqlfw_enable.sh</copy>
+    ````
+
+    ![SQLFW](./images/sqlfw-008.png "Enable SQL Firewall")
 
 ## Task 2: Create a TSDP Policy
 
