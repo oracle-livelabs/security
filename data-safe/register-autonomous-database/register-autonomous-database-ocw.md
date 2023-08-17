@@ -28,6 +28,9 @@ This lab assumes you have:
 - Your data values are most likely different than those shown in the screenshots.
 - Please ignore the dates for the data. Screenshots are taken at various times and may differ between labs and within labs.
 
+Watch the video below for a quick walk-through of the lab.
+[Register an Autonomous Database with Oracle Data Safe](videohub:1_hfjj07hm)
+
 
 ## Task 1: Register your database with Oracle Data Safe
 
@@ -119,4 +122,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 18, 2023
+- **Last Updated By/Date** - Jody Glover, August 17, 2023
