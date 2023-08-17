@@ -1,18 +1,17 @@
 # Oracle Transparent Sensitive Data Protection (TSDP)
 
 ## Introduction
-This workshop introduces the functionality of Oracle Transparent Sensitive Data Protection (TSDP). It gives the user an opportunity to learn how to configure those features in order to protect access to sensitive data by redacting them on-the-fly.
+This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure those features in order to protect access to sensitive data.
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DB 19.19
+*Version tested in this lab:* Oracle DB 23.2
 
 ### Video Preview
 No video for the moment
 
 ### Objectives
-- Create a TSDP policy on sensitive data
-- Check the dynamic sensitive data redact to prevent its exposure outside the application
+- Create a SQL Firewall policy to protect sensitive data
 
 ### Prerequisites
 This lab assumes you have:
@@ -25,9 +24,11 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | Prepare the TSDP Environment for the Labs | <5 minutes |
-| 2 | Create a TSDP Policy | 5 minutes |
-| 3 | Reset the TSDP Labs Environment | <5 minutes |
+| 1 | ??? | <5 minutes |
+| 2 | ??? | <5 minutes |
+| 3 | ??? | <5 minutes |
+| 4 | ??? | <5 minutes |
+| 3 | Reset the SQL Firewall Labs Environment | <5 minutes |
 
 ## Task 1: Prepare the TSDP Environment for the Labs
 

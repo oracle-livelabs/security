@@ -5,7 +5,7 @@
     {
       "title": "Introduction",
       "description": "Understand the architecture of this workshop and what it can do",
-      "publisheddate": "09/01/2020",
+      "publisheddate": "08/18/2023",
       "filename": "../../intro/intro-sqlfw.md"
     },
     {
@@ -22,7 +22,7 @@
     {
       "title": "Lab 3: SQL Firewall",
       "description": "In this lab you can see how to leverage Oracle SQL Firewall",
-      "publisheddate": "10/20/2020",
+      "publisheddate": "08/18/2023",
       "filename": "../../sqlfw/sqlfw.md"
     },
     {
