@@ -9,6 +9,10 @@ Access Governance Administrators (Pamela Green) can create and review policy rev
 
 *Estimated Time*: 15 minutes
 
+
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_yivv30ww)
+
 ### Objectives
 
 In this lab, you will:
