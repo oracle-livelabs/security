@@ -168,6 +168,8 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     ![SQLFW](./images/sqlfw-015.png "Generate allow list rule")
 
+    **Note:** Here, we have 4 statements
+
 2. Compare this list to the events we captured
 
     ````
@@ -185,6 +187,8 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     ````
 
     ![SQLFW](./images/sqlfw-017.png "Examine the SQL Firewall allow list rules")
+
+    **Note:** Here, we allow only connections from the Web App (`JDBC ThinClient`) initiated by the user `oracle` on server `10.0.0.150`
 
 4. Set up the audit policies for SQL Firewall violations
 
