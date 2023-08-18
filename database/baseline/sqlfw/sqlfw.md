@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure those features to protect against risks targeting security flaws/vulnerabilities in data-driven web applications, including SQL Injection database attacks.
 
-*Estimated Lab Time:* 45 minutes
+*Estimated Lab Time:* 30 minutes
 
 *Version tested in this lab:* Oracle DB 23.2
 
@@ -26,9 +26,9 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | Enable SQL Firewall to protect Glassfish HR Application | 15 minutes |
-| 2 | Detect an insider threat of stolen credential access with SQL Firewall | 15 minutes |
-| 3 | Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 15 minutes |
+| 1 | Enable SQL Firewall to protect Glassfish HR Application | 10 minutes |
+| 2 | Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
+| 3 | Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
 | 4 | Reset the SQL Firewall Labs Environment | <5 minutes |
 
 ## Task 1: Enable SQL Firewall to protect Glassfish HR Application
