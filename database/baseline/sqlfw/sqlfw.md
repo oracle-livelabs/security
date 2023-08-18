@@ -61,6 +61,8 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     ![SQLFW](./images/sqlfw-001.png "Set HR App with DB23c")
 
+    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** on the **`DB23c`** VM
+
 4. Next, verify the application functions as expected
 
     - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
@@ -87,12 +89,11 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
 
-        ![SQLFW](./images/sqlfw-005.png "HR App - Session Details")
+        ![SQLFW](./images/sqlfw-005.png "HR App - Session details")
 
     - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
 
         ![SQLFW](./images/sqlfw-006.png "HR App - Check the targetted database")
-
 
 5. Create an administrator (**`dba_tom`**) to manage SQL Firewall
 
@@ -109,6 +110,8 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     ````
 
     ![SQLFW](./images/sqlfw-008.png "Enable SQL Firewall")
+
+    **Note**: You must see `ENABLED`
 
 ## Task 1b: Enable SQL Firewall to learn authorized SQL traffic of HR Application user
 
