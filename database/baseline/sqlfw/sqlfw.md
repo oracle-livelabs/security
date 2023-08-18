@@ -146,13 +146,9 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./sqlfw_capture_check.sh</copy>
     ````
 
-    - Check the session logs
-    
-        ![SQLFW](./images/sqlfw-012.png "Check the session logs")
+    ![SQLFW](./images/sqlfw-012.png "Check the sessions and capture logs")
 
-    - Check the capture logs
-
-        ![SQLFW](./images/sqlfw-013.png "Check the capture logs")
+    **Note:** Here, we check the session and capture logs
 
 4. If you are satisfied, stop the SQL workload capture
 
@@ -160,7 +156,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./sqlfw_capture_stop.sh</copy>
     ````
 
-    ![SQLFW](./images/sqlfw-014.png "Stop the SQL workload capture")
+    ![SQLFW](./images/sqlfw-013.png "Stop the SQL workload capture")
 
 ## Task 1c: Generate and enable allow list rules for HR Application user
 
