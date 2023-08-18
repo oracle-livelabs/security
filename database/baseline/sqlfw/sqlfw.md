@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure those features to protect against risks targeting security flaws/vulnerabilities in data-driven web applications, including SQL Injection database attacks.
 
-*Estimated Lab Time:* 25 minutes
+*Estimated Lab Time:* 45 minutes
 
 *Version tested in this lab:* Oracle DB 23.2
 
@@ -12,6 +12,8 @@ Watch a preview of "*Using SQL Firewall with Oracle Database 23c Free (June 2023
 
 ### Objectives
 - Create a SQL Firewall policy to protect sensitive data
+- Detect an insider threat of stolen credential access
+- Mitigate the risk of SQL Injection attacks
 
 ### Prerequisites
 This lab assumes you have:
@@ -24,17 +26,18 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | ??? | <5 minutes |
-| 2 | ??? | <5 minutes |
-| 3 | ??? | <5 minutes |
-| 4 | ??? | <5 minutes |
-| 3 | Reset the SQL Firewall Labs Environment | <5 minutes |
+| 1 | Enable SQL Firewall to protect Glassfish HR Application | 15 minutes |
+| 2 | Detect an insider threat of stolen credential access with SQL Firewall | 15 minutes |
+| 3 | Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 15 minutes |
+| 4 | Reset the SQL Firewall Labs Environment | <5 minutes |
 
 ## Task 1: Enable SQL Firewall to protect Glassfish HR Application
 
-In this lab you will modify the Glassfish connection (instead of connecting directly to the 19c pluggable database pdb1, Glassfish will connect to an Oracle Database 23c so we can monitor, and block, SQL commands)
+??????????
 
-## Task 1a: Setup SQL Firewall in your instance
+## Task 1a: Setup SQL Firewall env
+
+In this lab you will modify the Glassfish connection (instead of connecting directly to the 19c pluggable database pdb1, Glassfish will connect to an Oracle Database 23c so we can monitor, and block, SQL commands)
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -216,6 +219,8 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
 ## Task 3: Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks
 
+??????????
+
 ## Task 3a: Enable the SQL Firewall to block on detection of unauthorized SQL connections / statements
 
 ## Task 3b: SQL Firewall blocks SQL Injection attempts
@@ -239,7 +244,7 @@ You may now proceed to the next lab!
 ## **Appendix**: About the Product
 ### **Overview**
 
-???
+??????????
 
 ## Want to Learn More?
 Technical Documentation:
