@@ -56,7 +56,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 3. Migrate the Glassfish Application connection string in order to target the 23c database
 
     ````
-    <copy>./sqlfw_start_db23c_glassfish.sh</copy>
+    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
     ````
 
     ![SQLFW](./images/sqlfw-001.png "Set HR App with DB23c")
@@ -347,6 +347,14 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     ````
 
     ![SQLFW](./images/sqlfw-050.png "Reset the SQL Firewall Labs Environment")
+
+2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
+
+    ````
+    <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
+    ````
+
+    ![SQLFW](./images/sqlfw-051.png "Set HR App with PDB1")
 
 You may now proceed to the next lab!
 
