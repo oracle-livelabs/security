@@ -196,13 +196,13 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     ![SQLFW](./images/sqlfw-018.png "Set up the audit policies for SQL Firewall violations")
 
 
-5. Enable the allow-list rule for `EMPLOYEESEARCH_PROD` in observation mode
+5. Enable the allow-list rule for `EMPLOYEESEARCH_PROD` in **observation mode**
 
     ````
-    <copy>./sqlfw_allow_list_rule_enable.sh</copy>
+    <copy>./sqlfw_allow_list_rule_enable_monitor.sh</copy>
     ````
 
-    ![SQLFW](./images/sqlfw-019.png "Enable the allow-list rule")
+    ![SQLFW](./images/sqlfw-019.png "Enable the allow-list rule in observation mode")
 
     **Note:** Here, we will observe and not block SQL Firewall violations
 
@@ -210,24 +210,133 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
 ??????????
 
-## Task 2a: Validate that normal application SQL workload is allowed to the database
+1. Validate that normal application SQL workload is allowed to the database
 
-## Task 2b: SQL Firewall detects an insider threat of stolen credential access
+    **Note:** Here we run the normal application workload to show that these already allow-listed SQL statements are allowed into the database
+
+2. Use your Glassfish App to generated activity on your database and perform your normal operations (matched, no violation log): 
+
+    - Login to Glassfish application http://130.162.43.32:8080/myhrapp/index.jsp, 
+
+    - Go back to your web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`*
+    
+        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+    
+    - Click on **Search Employees**
+
+        ![SQLFW](./images/sqlfw-010.png "Search Employees")
+
+    - Click [**Search**]
+
+        ![SQLFW](./images/sqlfw-011.png "Search Employee")
+
+    - Change some of the criteria and Search again
+    - **Repeat 2-3 times** to ensure you have enough traffic
+
+3. Go back to your terminal session to check violation logs and audit records
+
+    ````
+    <copy>./sqlfw_check_events.sh</copy>
+    ````
+
+    ![SQLFW](./images/sqlfw-019.png "Check violation logs and audit records")
+
+    **Note:** No records is found!
+
+4. Now, let's detect an insider threat of stolen credential access
+ 
+     - Here, there is an insider who had access to the stolen credential of HR Apps user `EMPLOYEESEARCH_PROD`, and to bypass the HR application authorization he uses SQL*Plus to gain access to the sensitive employee data
+
+        ````
+        <copy>./sqlfw_select_sensitive_data.sh</copy>
+        ````
+
+        ![SQLFW](./images/sqlfw-020.png "Select sensitive employee data")
+
+    - Check again violation logs and audit records
+
+        ````
+        <copy>./sqlfw_check_events.sh</copy>
+        ````
+
+        ![SQLFW](./images/sqlfw-021.png "Check violation logs and audit records")
+
+        **Note:** SQL Firewall context violation is raised since SQL*Plus is not in the allowed OS program allow list, catching attention of security administrators
 
 
+## Task 3: Enforce allowed SQL and access patterns with SQL Firewall to mitigate the risks of SQL Injection attacks
 
+Here, we will enable the SQL Firewall to block on detection of unauthorized SQL connections / statements
 
-## Task 3: Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks
+1. Update the allow-list rule enforcement to **blocking mode**
 
-??????????
+    ````
+    <copy>./sqlfw_allow_list_rule_enable_block.sh</copy>
+    ````
 
-## Task 3a: Enable the SQL Firewall to block on detection of unauthorized SQL connections / statements
+    ![SQLFW](./images/sqlfw-022.png "Update the allow-list rule to blocking mode")
 
-## Task 3b: SQL Firewall blocks SQL Injection attempts
+    **Note:** SQL Firewall can now block SQL Injection attempts
 
+2. Now, a hacker logs into Glassfish application to perform a SQL injection attack
 
+    - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
 
+    - Click **Search Employees**
 
+        ![SQLFW](./images/sqlfw-010.png "Search employees")
+
+    - Click [**Search**]
+
+        ![SQLFW](./images/sqlfw-011.png "Search employees")
+
+        **Note**: All rows are returned... normal, because, remerber, you allowed everything!
+
+    - Now, tick the **checkbox "Debug"** to see the SQL query behind this form
+
+        ![SQLFW](./images/sqlfw-023.png "See the SQL query executed behind the form")
+
+    - Click [**Search**] again
+
+        ![SQLFW](./images/sqlfw-024.png "Search employees")
+
+        **Note:**
+        - Now, you can see the official SQL query executed by this form which displays the results
+        - This query gives you the information of the number of columns requested, their name, their datatype and their relationship
+
+    - Now, based on this information, you can create our "UNION-based" SQL Injection query to display all sensitive data you want extract directly from the form. Here, we will use this query to extract `USER_ID', 'MEMBER_ID', 'PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from `DEMO_HR_SUPPLEMENTAL_DATA` table.
+
+        ````
+        <copy>
+        ' UNION SELECT userid, ' ID: '|| member_id, 'SQLi', '1', '1', '1', '1', '1', '1', 0, 0, payment_acct_no, routing_number, sysdate, sysdate, '0', 1, '1', '1', 1 FROM demo_hr_supplemental_data --
+        </copy>
+        ````
+
+    - Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form and **tick the "Debug" checkbox**
+
+        ![SQLFW](./images/sqlfw-025.png "Copy/Paste the SQL Injection query")
+
+        **Note:**
+        - Don't forget the "`'`" before the UNION key word to close the SQL clause "LIKE"
+        - Don't forget the "`--`" at the end to disable rest of the query
+
+    - Click [**Search**]
+
+        ![SQLFW](./images/sqlfw-026.png "Search employees")
+
+        **Note:**
+        - The output should return an ORA-failures on these attempts
+        - Remember, this is because the UNION query has not been added into the Allow-list in the SQL Firewall policy... as simple as that!
+
+3. Now, check violation logs and audit records
+
+    ````
+    <copy>./sqlfw_check_events.sh</copy>
+    ````
+
+    ![SQLFW](./images/sqlfw-027.png "Check violation logs and audit records")
+
+    **Note:** SQL Firewall SQL violation is raised, catching attention of security administrators!
 
 ## Task 4: Reset the SQL Firewall Labs Environment
 
@@ -237,7 +346,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./sqlfw_reset_env.sh</copy>
     ````
 
-    ![TSDP](./images/sqlfw-0???????.png "Reset the SQL Firewall Labs Environment")
+    ![SQLFW](./images/sqlfw-050.png "Reset the SQL Firewall Labs Environment")
 
 You may now proceed to the next lab!
 
