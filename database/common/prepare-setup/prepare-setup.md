@@ -23,46 +23,46 @@ This lab assumes you have:
     - [dbsec-mkplc-advanced.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/https:/objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-advanced.zip)
 </if>
 <if type="aso">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-aso.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-aso.zip)
 </if>
 <if type="avdf">
     - [dbsec-mkplc-avdf.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-advf.zip)
 </if>
 <if type="data-masking-subsetting">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-dms.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dms.zip)
 </if>
 <if type="data-safe">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-ds.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-ds.zip)
 </if>
 <if type="database-vault">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-dbv.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbv.zip)
 </if>
 <if type="dbsat">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-dbsat.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbsat.zip)
 </if>
 <if type="key-vault">
     - [dbsec-mkplc-key-vault.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-key-vault.zip)
 </if>
 <if type="label-security">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-ols.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-ols.zip)
 </if>
 <if type="nne">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-nne.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-nne.zip)
 </if>
 <if type="priv-analysis">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-pa.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-pa.zip)
 </if>
 <if type="sqlfw">
-    - [dbsec-mkplc-basics.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-basics.zip)
+    - [dbsec-mkplc-sqlfw.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-sqlfw.zip)
 </if>
 <if type="story-hack">
     - [dbsec-hack-mkplc-freetier.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/InDAlahG9IAtnYwc2-J88zYAjdABvaVOToDPxA3FGawYr1QQcexrQ5ppRgh-4fdB/n/natdsecurity/b/stack/o/dbsec-hack-mkplc-freetier.zip)
 </if>
 <if type="tsdp">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-tsdp.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-tsdp.zip)
 </if>
 <if type="unified-auditing">
-    - [dbsec-mkplc-dbseclab.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-dbseclab.zip)
+    - [dbsec-mkplc-ua.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-ua.zip)
 </if>
 
 2.  Save in your downloads folder.
