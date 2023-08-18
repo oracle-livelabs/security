@@ -1,4 +1,4 @@
-# Oracle Transparent Sensitive Data Protection (TSDP)
+# Oracle SQL Firewall
 
 ## Introduction
 This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure those features to protect against risks targeting security flaws/vulnerabilities in data-driven web applications, including SQL Injection database attacks.
@@ -243,7 +243,7 @@ You may now proceed to the next lab!
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle SQL Firewall 23c](???)
+- [Oracle SQL Firewall 23c](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/using-sql-firewall.html#GUID-F53EAE01-CE78-47F4-80AD-A0091BA3C434)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
