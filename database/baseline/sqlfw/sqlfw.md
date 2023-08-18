@@ -33,11 +33,11 @@ This lab assumes you have:
 
 ## Task 1: Enable SQL Firewall to protect Glassfish HR Application
 
-??????????
+In this lab you will learn how the administrator trains the system to learn the authorized SQL statements and the trusted connection paths of HR application. SQL Firewall policy is generated with allow-lists representing authorized SQL connections and statements, and deployed to the target.
 
 ## Task 1a: Setup SQL Firewall env
 
-In this lab you will modify the Glassfish connection (instead of connecting directly to the 19c pluggable database pdb1, Glassfish will connect to an Oracle Database 23c so we can monitor, and block, SQL commands)
+Here, we will modify the default Glassfish connection to target an Oracle Database 23c, so we can monitor, and block, SQL commands
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -61,7 +61,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     ![SQLFW](./images/sqlfw-001.png "Set HR App with DB23c")
 
-    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** on the **`DB23c`** VM
+    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
 
 4. Next, verify the application functions as expected
 
@@ -166,7 +166,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./sqlfw_allow_list_rule_gen.sh</copy>
     ````
 
-    ![SQLFW](./images/sqlfw-015.png "Generate allow list rule")
+    ![SQLFW](./images/sqlfw-014.png "Generate allow list rule")
 
     **Note:** Here, we have 4 statements
 
@@ -176,7 +176,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./sqlfw_capture_count_events.sh</copy>
     ````
 
-    ![SQLFW](./images/sqlfw-016.png "Count the events captured")
+    ![SQLFW](./images/sqlfw-015.png "Count the events captured")
 
     **Note:** The count matches the count of distinct events we captured
 
@@ -186,7 +186,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./sqlfw_allow_list_rule_exam.sh</copy>
     ````
 
-    ![SQLFW](./images/sqlfw-017.png "Examine the SQL Firewall allow list rules")
+    ![SQLFW](./images/sqlfw-016.png "Examine the SQL Firewall allow list rules")
 
     **Note:** Here, we allow only connections from the Web App (`JDBC ThinClient`) initiated by the user `oracle` on server `10.0.0.150`
 
@@ -196,7 +196,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./sqlfw_setup_audit_policies.sh</copy>
     ````
 
-    ![SQLFW](./images/sqlfw-018.png "Set up the audit policies for SQL Firewall violations")
+    ![SQLFW](./images/sqlfw-017.png "Set up the audit policies for SQL Firewall violations")
 
 
 5. Enable the allow-list rule for `EMPLOYEESEARCH_PROD` in **observation mode**
@@ -205,50 +205,47 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./sqlfw_allow_list_rule_enable_monitor.sh</copy>
     ````
 
-    ![SQLFW](./images/sqlfw-019.png "Enable the allow-list rule in observation mode")
+    ![SQLFW](./images/sqlfw-018.png "Enable the allow-list rule in observation mode")
 
     **Note:** Here, we will observe and not block SQL Firewall violations
 
 ## Task 2: Detect an insider threat of stolen credential access with SQL Firewall
 
-??????????
+Let's assume there is a malicious insider who had access to the stolen credential of HR Apps user `EMPLOYEESEARCH_PROD`, and to bypass the HR application authorization he uses SQL Developer to gain access to the sensitive employee data.
 
-1. Validate that normal application SQL workload is allowed to the database
+1. First, let's validate that normal application SQL workload is allowed to the database
 
-    **Note:** Here we run the normal application workload to show that these already allow-listed SQL statements are allowed into the database
+    - Use your Glassfish App to generated activity on your database and perform your normal operations (matched, no violation log): 
 
-2. Use your Glassfish App to generated activity on your database and perform your normal operations (matched, no violation log): 
-
-    - Login to Glassfish application http://130.162.43.32:8080/myhrapp/index.jsp, 
-
-    - Go back to your web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`*
+        - Go back to your web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`*
     
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+            **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
     
-    - Click on **Search Employees**
+        - Click on **Search Employees**
 
-        ![SQLFW](./images/sqlfw-010.png "Search Employees")
+            ![SQLFW](./images/sqlfw-010.png "Search Employees")
 
-    - Click [**Search**]
+        - Click [**Search**]
 
-        ![SQLFW](./images/sqlfw-011.png "Search Employee")
+            ![SQLFW](./images/sqlfw-011.png "Search Employee")
 
-    - Change some of the criteria and Search again
-    - **Repeat 2-3 times** to ensure you have enough traffic
+        - Change some of the criteria (the same than previously) and Search again
+        
+        - **Repeat 2-3 times** to ensure you have enough traffic
 
-3. Go back to your terminal session to check violation logs and audit records
+    - Now, go back to your terminal session to check violation logs and audit records
 
-    ````
-    <copy>./sqlfw_check_events.sh</copy>
-    ````
+        ````
+        <copy>./sqlfw_check_events.sh</copy>
+        ````
 
-    ![SQLFW](./images/sqlfw-019.png "Check violation logs and audit records")
+        ![SQLFW](./images/sqlfw-019.png "Check violation logs and audit records")
 
-    **Note:** No records is found!
+        **Note:** No records is found because these queries are already listed as SQL statements allowed into the database
 
 4. Now, let's detect an insider threat of stolen credential access
  
-     - Here, there is an insider who had access to the stolen credential of HR Apps user `EMPLOYEESEARCH_PROD`, and to bypass the HR application authorization he uses SQL*Plus to gain access to the sensitive employee data
+     - The insider uses SQL*Plus to gain access to the sensitive employee data
 
         ````
         <copy>./sqlfw_select_sensitive_data.sh</copy>
@@ -269,7 +266,9 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
 ## Task 3: Enforce allowed SQL and access patterns with SQL Firewall to mitigate the risks of SQL Injection attacks
 
-Here, we will enable the SQL Firewall to block on detection of unauthorized SQL connections / statements
+With the suspicious encounter of malicious insider, administrator enables the SQL Firewall in blocking mode to disallow any UN-authorized attempts to access sensitive employee information. Learn how SQL Firewall can enforce allowed patterns including approved SQL statements and database connection paths, and alert on potential SQL injection attacks, and anomalous access of HR apps DB.
+
+Here, we will enable the SQL Firewall to block on detection of unauthorized SQL connections/statements
 
 1. Update the allow-list rule enforcement to **blocking mode**
 
@@ -339,7 +338,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     ![SQLFW](./images/sqlfw-027.png "Check violation logs and audit records")
 
-    **Note:** SQL Firewall SQL violation is raised, catching attention of security administrators!
+    **Note:** SQL violation is raised, catching attention of security administrators!
 
 ## Task 4: Reset the SQL Firewall Labs Environment
 
@@ -359,12 +358,34 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     ![SQLFW](./images/sqlfw-051.png "Set HR App with PDB1")
 
+    **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
+
 You may now proceed to the next lab!
 
 ## **Appendix**: About the Product
 ### **Overview**
 
-??????????
+SQL Firewall is a database security feature embedded within the Oracle Database kernel that inspects all incoming SQL statements and can log or block SQL statements/connections that do not fall within the SQL Firewall allow lists. SQL Firewall ensures that only explicitly authorized SQL is executed. It offers best-in-class protection against risks targeting security flaws/vulnerabilities in data-driven web applications, including SQL Injection attacks.
+
+SQL injection is a common database attack pattern for data-driven web applications. Exploiting vulnerabilities and security flaws in web applications, attackers can potentially modify database information, access sensitive data, execute admin tasks on the database, steal credentials and move laterally to access other sensitive systems.
+
+While other database security features embedded within Oracle Database provide different security controls to monitor/prevent such web application attacks, the SQL Firewall is the only one that inspects all incoming SQL statements and allows only authorized SQL. It logs and blocks unauthorized SQL queries from executing in the database.
+
+SQL Firewall operates within the Oracle Database kernel, in line with all incoming SQL statements irrespective of origin. SQL Firewall can allow, log and optionally block SQL traffic when it detects a violation of its rules.
+
+![SQLFW](./images/sqlfw-concept.png "SQL Firewall concept")
+
+SQL Firewall relies on allow-listing authorized SQL statements and associated trusted database connection paths. You can train the SQL Firewall by capturing authorized SQL statements for an application account, and generate a firewall policy with allow-list rules from the captured SQL activities. Once trained, deploy the firewall policy to prevent or detect potential SQL injection attacks. Unlike signature-based protection mechanisms, SQL Firewall cannot be fooled by encoding the SQL statement or referencing synonyms or dynamically generated object names.
+
+PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and manage the SQL Firewall configuration within Oracle Database. Oracle SQL Firewall is available only for Oracle Database Enterprise Edition (version 23c and later). Oracle SQL Firewall must be licensed for use. There are two paths to its license:
+
+- Oracle SQL Firewall is included with Oracle Database Vault. Database Vault is an extra cost option.
+- Oracle SQL Firewall is included with Oracle Audit Vault and Database Firewall (AVDF). AVDF is a separate product and requires a license.
+
+### **Benefits of using Oracle SQL Firewall**
+- Provides real-time protection against common database attacks on data-driven web applications by restricting database access to only authorized SQL statements/connections.
+- Mitigates risks from SQL injection attacks, anomalous access, and credential theft/abuse.
+- Enforce trusted database connection paths.
 
 ## Want to Learn More?
 Technical Documentation:
