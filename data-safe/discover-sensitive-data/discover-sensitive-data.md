@@ -4,7 +4,7 @@
 
 Data Discovery helps you find sensitive data in your target databases. You tell Data Discovery what kind of sensitive data to search for, and it inspects the actual data in your target database and its data dictionary, and then returns to you a list of sensitive columns. By default, Data Discovery can search for a wide variety of sensitive data pertaining to identification, biographic, IT, financial, healthcare, employment, and academic information.
 
-Start by examining sensitive data in one of the tables on your target database by using Oracle Database Actions. Then, use Oracle Data Safe to discover sensitive data on your target database and generate a sensitive data model. Create a PDF of your sensitive data model.
+Start by examining sensitive data in one of the tables on your target database by using Database Actions. Then, use Oracle Data Safe to discover sensitive data on your target database and generate a sensitive data model. Create a PDF of your sensitive data model.
 
 Estimated Lab Time: 10 minutes
 
@@ -14,7 +14,7 @@ In this lab, you will:
 
 - Discover sensitive data in your target database by using Data Discovery
 - Analyze the sensitive data model
-- (Optional) Create a PDF of the Sensitive Data Model report
+- Create a PDF of the Sensitive Data Model report
 
 
 ### Prerequisites
@@ -28,12 +28,10 @@ This lab assumes you have:
 
 ### Assumptions
 
-- Your data values are most likely different than those shown in the screenshots.
+- Your data values might be different than those shown in the screenshots.
 
 
 ## Task 1: Discover sensitive data in your target database by using Data Discovery
-
-In Data Discovery, you can select the sensitive types that you want to discover in your target database. Data Discovery then generates a sensitive data model that lists sensitive columns in your target database.
 
 1. Make sure that you are on the browser tab for Oracle Data Safe. If needed, sign in again.
 
@@ -43,13 +41,11 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 4. From the **Compartment** drop-down list, select your compartment.
 
-    A Data Discovery dashboard is displayed with statistics for the top five target databases in your compartment. Your dashboard is most likely empty because this is the first time you are using Data Discovery in this workshop.
-
-    ![Data Discovery dashboard](images/data-discovery-dashboard.png "Data Discovery dashboard")
+    A Data Discovery overview page is displayed with statistics for the top five target databases in your compartment. Your page is most likely empty because this is the first time you are using Data Discovery in this workshop.
 
 5. Click **Discover Sensitive Data**.
 
-    The **Create Sensitive Data Model** page is displayed.
+    The **Create Sensitive Data Model** wizard is displayed.
 
 6. On the **Provide Basic Information** page, do the following, and then click **Next**.
 
@@ -79,15 +75,16 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 1. Review the information on the **Sensitive Data Model Details** page.
 
-    - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
-    - You can click the **View Details** link to view the work request information.
-    - The pie chart compares the number of sensitive values per sensitive category and sensitive type.
-    - The **Sensitive Columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
+    - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, the selected schema for discovery (HCM1), the selected sensitive types for discovery (click the **View Details** link), and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
+    - You can view the selected sensitive types for discovery (click **View Details**).
+    - You can view the work request information (click **View Details**).
+    - The pie chart shows percentages of sensitive categories and sensitive types.
+    - The **Sensitive Columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, sample data (if you chose to retrieve sample data and if it exists), and audit records. Review the sample data to get an idea of what it looks like.
 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
     ![Sensitive Data Model Details page bottom](images/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")
 
-2. Position your mouse over the **Identification Information** category in the chart to view its value. Your percentage value may be different than the value shown in the screenshot.
+2. Position your mouse over the **Identification Information** category in the chart to view its value. Your percentage value might be different than the value shown in the screenshot.
 
     ![Identification Information category in sensitive data model chart](images/sdm-chart-identification-information.png "Identification Information category in sensitive data model chart")
 
@@ -104,41 +101,32 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 6. From the drop-down list, select **Schema View** to sort the sensitive columns by table name.
 
-    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the **Parent Column**. For example, `MANAGER_ID` in the `DEPARTMENTS` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
+    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the **Parent Column**. For example, `EMPLOYEE_ID` in the `EMP_EXTENDED` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
 
     ![Schema View of sensitive data model](images/schema-view-sdm1.png "Schema View of sensitive data model")
 
 
-## Task 3 (Optional): Create a PDF of the Sensitive Data Model report
+## Task 3: Create a PDF of the Sensitive Data Model report
 
 1. At the top of the **Sensitive Data Models Details** page, click **Generate Report**.
 
     A **Generate Report** dialog box is displayed.
 
-2. Leave **PDF** selected, click **Generate Report**, and wait for the report to be 100% generated. Click **Close**.
+2. Leave **PDF** selected, click **Generate Report**, and wait for the report to be 100% generated. Click the **here** link to download the report.
 
     ![Generate PDF report of SDM1](images/generate-pdf-report-sdm1.png "Generate PDF report of SDM1")
 
 
-3. At the top of the page, click **Download Report**.
+3. Open the PDF report and review it.
 
-    A **Download Report** dialog box is displayed.
-
-4. Leave **PDF** selected, and click **Download Report**.
-
-    ![Download PDF report of SDM1](images/download-pdf-report-sdm1.png "Download PDF report of SDM1")
-
-
-5. Open the PDF report and review it.
-
-    - The **Summary** table shows totals for columns and values scanned, sensitive types, sensitive tables, sensitive columns, and sensitive values.
+    - The **Summary** table shows totals for columns and values scanned, and counts for sensitive types, sensitive tables, sensitive columns, and sensitive values.
     - The **Sensitive Columns** table lists the sensitive columns in the sensitive data model. For each sensitive column, the table shows you its sensitive type, schema name, table name, column name, sensitive value count, whether the column data was matched (Y or N), whether the column name was matched (Y or N), and whether the column comment was matched (Y or N).
 
     ![PDF report of SDM1](images/pdf-report-sdm1.png "PDF report of SDM1")
 
-6. Close the PDF report and return to Oracle Data Safe.
+4. Close the PDF report and return to Oracle Data Safe.
 
-
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -146,4 +134,4 @@ In Data Discovery, you can select the sensitive types that you want to discover 
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Aug 24, 2022
+- **Last Updated By/Date** - Jody Glover, June 8, 2023

@@ -35,29 +35,29 @@ This lab assumes you have:
 
 2. On the *Web Browser* window on the right preloaded Weblogic 12c console, click on the *Username* field and select the saved credentials to login. These credentials have been saved within *Web Browser* and are provided below for reference.
 
-    - Username
-
     ```
-    <copy>weblogic</copy>
-    ```
-
-    - Password
-
-    ```
-    <copy>Welcome1</copy>
+    Username  weblogic
+    Password  Welcome1
     ```
 
-    ![](images/oiri-vnc.png " ")
+    ![Weblogic console login page](images/oiri-vnc.png " ")
 
 3. Confirm successful login. Please note that it takes about 5 minutes after instance provisioning for all processes to fully start.
     - On the Weblogic console, Click on *Servers* under *Environment* and verify that the Admin server is in the ‘RUNNING’ state.
-    ![](images/oiri-landing.png " ")
+    ![Click on servers under Environment](images/oiri-landing.png " ")
 
     If successful, the page above is displayed and as a result your environment is now ready.  
 
     You may now [proceed to the next lab](#next).
 
-4. If you are still unable to login or the login page is not functioning after reloading from the *Workshop Links* bookmark folder, open a terminal session and proceed as indicated below to validate the services.
+4. If you are still unable to login or the login page is not functioning after reloading from the URL mentioned below, open a terminal  session and proceed as indicated below to validate the services.
+
+       ```
+      URL       http://oiri.livelabs.oraclevcn.com:7001/console/login/
+      Username  weblogic
+      Password  Welcome1
+       ```
+      
 
     - Database and Listener
 
@@ -66,7 +66,7 @@ This lab assumes you have:
       sudo systemctl status oracle-database
       </copy>
       ```
-      ![](images/4-db.png " ")
+      ![Terminal window command to validate database status](images/db.png " ")
 
     - WLS Admin Server And Node Manager
 
@@ -75,14 +75,14 @@ This lab assumes you have:
       sudo systemctl status oiri-weblogic.service
       </copy>
       ```
-      ![](images/oiri-wls-service.png " ")
+      ![Terminal window command to validate WLS Admin Server status](images/oiri-wls-service.png " ")
 
       ```
       <copy>
       sudo systemctl status oiri-node.service
       </copy>
       ```
-      ![](images/oiri-node-service.png " ")
+      ![Terminal window command to validate Node Manager status](images/oiri-node-service.png " ")
 
 5. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
 
@@ -192,4 +192,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 * **Author** - Keerti R, Brijith TG, Anuj Tripathi, NATD Solution Engineering
 * **Contributors** -  Keerti R, Brijith TG, Anuj Tripathi
-* **Last Updated By/Date** - Rene Fontcha, LiveLabs Platform Lead, NA Technology, November 2021
+* **Last Updated By/Date** - Indiradarshni B, NATD Solution Engineering
