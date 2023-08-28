@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Using OCI Vulnerability Scanning Service VSS integration with Qualys",
+    "workshoptitle": "Use OCI VSS Service Integration with Qualys",
     "help": "livelabs-help-oci_us@oracle.com",
 	"tutorials": [
         {
@@ -12,7 +12,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 0: Deploy VSS Integration with Qualys using Oracle Resource Manager",
+            "title": "Lab 0: Deploy VSS Qualys integration with Oracle Resource Manager",
             "filename": "../../common/orm-deploy.md"
         },
         {
@@ -20,11 +20,11 @@
             "filename": "../../common/oci-config.md"
         },
         {
-            "title": "Lab 2: Deploy Vulnerability Scanning Service and Supporting Configuration",
+            "title": "Lab 2: Deploy VSS integration with Qualys and Required Configuration",
             "filename": "../../vss-scanning-qualys/deploy-oci-vss.md"
         },
         {
-            "title": "Lab 3: Explore Scanning and Vulnerabilities Reports",
+            "title": "Lab 3: Explore Scan and Vulnerability Reports",
             "filename": "../../vss-scanning-qualys/scanning-vulnerabilities-reports.md"
         },
         {
