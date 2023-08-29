@@ -22,6 +22,9 @@ This lab assumes you have:
 - Obtained an Oracle Cloud account and signed in to Oracle Cloud Infrastructure
 - Finished doing the labs in this workshop
 
+Watch the video below for a quick walk-through of the lab.
+[Clean Up Your Environment](videohub:1_pxjlxjkf)
+
 ## Task 1: Terminate your target database
 
 1. From Oracle Cloud Infrastructure's navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**.
@@ -42,5 +45,5 @@ This lab assumes you have:
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 18, 2023
+- **Last Updated By/Date** - Jody Glover, August 17, 2023
 
