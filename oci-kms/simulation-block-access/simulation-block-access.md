@@ -11,6 +11,8 @@ As a Data Administrator, you will test access to the data to realize you can't a
 
 Estimated Time: 10 minutes
 
+[Walk Through the Lab](videohub:1_jhm25js1)
+
 ### Objectives
 
 In this lab, you will:
@@ -61,7 +63,7 @@ In this lab, you will:
 
 ## Task 2: Confirm data access into your bucket is impossible as a result
 
-1. Log in to OCI cloud tenant as Data\_Manager\_XXX, where "XXX" is your student number (please go to lab TODO to see how to log in to OCI), and navigate through the main hamburger menu to *"Storage > Object Storage > Buckets"*.
+1. Log in to OCI cloud tenant as Data\_Manager\_XXX, where "XXX" is your student number (please go to section *"Get Started"* to see how to log in to OCI), and navigate through the main hamburger menu to *"Storage > Object Storage > Buckets"*.
     
     ![Buckets](./images/buckets.png "Buckets")
 
@@ -75,8 +77,7 @@ In this lab, you will:
 
     and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerful key management solution for all of their OCI resources. 
 
-3. Now we will check that any pre-authenticated request (PAR) that have been created are also non-functional anymore because the key was disabled.
-You should have saved the URL of a pre-authenticated request to access the excel file you uploaded in your bucket in lab 3 task 2. Copy this URL you saved and paste it in your browser:
+3. Now we will check that any pre-authenticated request (PAR) that have been created are also non-functional anymore because the key was disabled. You should have saved the URL of a pre-authenticated request to access the excel file you uploaded in your bucket in lab 3 task 2. Copy this URL you saved and paste it in your browser:
 
     ![No access to PAR](./images/no-access-par.png "No access to PAR")
 
