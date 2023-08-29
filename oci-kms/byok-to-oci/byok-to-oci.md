@@ -6,6 +6,8 @@ This lab walks you through how to create your own keys outside of OCI in CTM, an
 
 Estimated Time: 15 minutes
 
+[Walk through the Lab](videohub:1_grwhdvvv)
+
 ### Objectives
 
 In this lab, you will:

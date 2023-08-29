@@ -6,6 +6,8 @@ This lab walks you through configuring a connection between the Thales CipherTru
 
 Estimated Time: 10 minutes
 
+[Walkthough the Lab](videohub:1_4f41vj1f)
+
 ### Objectives
 
 In this lab, you will:
@@ -170,6 +172,6 @@ You can use the Vault service to create and manage the following resources:
 * **Secrets**
 
 ## Acknowledgements
-* **Authors** - Damien Rilliards (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist)
-* **Last Updated By/Date** - Sonia Yuste, June 2023
+* **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist)
+* **Last Updated By/Date** - Sonia Yuste, August 2023
 
