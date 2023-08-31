@@ -8,6 +8,8 @@ You are your Company Data Manager. You will create a storage space as well as an
 
 Estimated Time: 15 minutes
 
+[Walk through the Lab](videohub:1_4nvcdn5d)
+
 ### Objectives
 
 In this lab, you will:
