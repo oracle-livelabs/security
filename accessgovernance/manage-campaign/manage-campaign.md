@@ -24,7 +24,7 @@ In this lab, you will:
     - [Oracle Access Governance LiveLabs Group 3](https://accessgov-ocw-03-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/)
     - [Oracle Access Governance LiveLabs Group 4](https://accessgov-ocw04-yzukikevdw6w.access-governance.us-ashburn-1.oci.oraclecloud.com/ui/)
 2. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **accessgov_iam** identity domain selected.
-3. Log in to **Oracle Access Governance** as a **campaign administrator** with a username and password provided by Hands-on Lab instructors. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+3. Log in to **Oracle Access Governance** as a **campaign administrator** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
 	![Access Governance Login](images/ag-logon.png)
 4. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/ag-homepage.png)
@@ -62,5 +62,5 @@ In this lab, you will:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Edward Lu, Abhishek Juneja, Oracle IAM Product Management
-* **Last Updated By/Date** - Edward Lu, Abhishek Juneja, Oracle IAM Product Management, August 2022
+* **Author** - Edward Lu, Abhishek Juneja, Oracle IAM Product Management; Ruben Alejandro Casas, Oracle Security Cloud Platform Enablement 
+* **Last Updated By/Date** - Edward Lu, Oracle IAM Product Management, October 2022
