@@ -128,8 +128,48 @@ In this lab, you will:
 
   22. Click on **Submit Request**
 
+## Task 2: Login Oracle Access Governance as Access Governance Administrator to approve Access Requests
 
-## Task 2: Login Oracle Access Governance as Access Governance Administrator to Create Campaign 
+
+1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password mentioned below. 
+
+
+    **Username:**
+    ```
+    <copy>pamela.green</copy>
+    ```
+
+    **Password:**
+    ```
+    <copy>Oracl@123456</copy>
+    ```
+
+
+  You will be navigated to the home page of your Oracle Access Governance Console.
+
+2. Navigate to MyStuff -> Approvals.You will see requests from user Harlan Bulllard, Mark Hernandez and Jerry Poland for **DB-Manage-Access** . 
+
+3. Under Actions, click on approve and Approve the request for the users Harlan Bullard, Mark Hernandez and Jerry Poland. 
+
+## Task 3: Run a Manual Dataload
+
+1. On the Access Governance console home page, navigate to Service Administration -> Connected System. 
+
+   ![Create Policy](images/connected-system.png)
+
+
+2. On the Connected Systems page, select the **OAG-DB** connected system. 
+
+   ![Create Policy](images/select-system.png)
+
+3. Click on  Actions -> Load Data Now. This will perform a manual data load. 
+
+    ![Create Policy](images/load-date.png)
+
+4. Once the data load is complete, the status will be shown as Success. 
+
+
+## Task 4: Login Oracle Access Governance as Access Governance Administrator to Create Campaign 
 
 1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password mentioned below.
 
@@ -192,55 +232,6 @@ In this lab, you will:
 
   ![Access Review](images/campaign-details.png)
 
-## Task 3: Login Oracle Access Governance as Access Governance Administrator to approve Access Requests
-
-
-1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password mentioned below. 
-
-
-    **Username:**
-    ```
-    <copy>pamela.green</copy>
-    ```
-
-    **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
-
-
-  You will be navigated to the home page of your Oracle Access Governance Console.
-
-2. Navigate to Access Reviews -> My Access Reviews . 
-
-    ![Access Review](images/view-access-review-request.png)
-
-3. You will see requests from user Harlan Bulllard, Mark Hernandez and Jerry Poland for **DB-Manage-Access** . You can either approve or reject the request. To view more about the request . 
-
-   ![Access Review](images/harlan-user.png)
-
-    ![Access Review](images/jerry-user.png)
-
-     ![Access Review](images/mark-user.png)
-
-4. Under Actions, click on approve and Approve the request for the users Harlan Bullard, Mark Hernandez and Jerry Poland. 
-
-## Task 4: Run a Manual Dataload
-
-1. On the Access Governance console home page, navigate to Service Administration -> Connected System. 
-
-   ![Create Policy](images/connected-system.png)
-
-
-2. On the Connected Systems page, select the **OAG-DB** connected system. 
-
-   ![Create Policy](images/select-system.png)
-
-3. Click on  Actions -> Load Data Now. This will perform a manual data load. 
-
-    ![Create Policy](images/load-date.png)
-
-4. Once the data load is complete, the status will be shown as Success. 
 
 
   You may now **proceed to the next lab**. 
