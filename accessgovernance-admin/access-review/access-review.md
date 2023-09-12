@@ -232,6 +232,23 @@ In this lab, you will:
 
   ![Access Review](images/campaign-details.png)
 
+14. Navigate to Access Reviews -> My Access Reviews .
+
+   ![Access Review](images/view-access-review-request.png)
+
+
+15. You will see requests from user Harlan Bulllard, Mark Hernandez and Jerry Poland for DB-Manage-Access . Click on view to review the insights of the requests.
+
+  ![Access Review](images/harlan-user.png)
+
+  ![Access Review](images/jerry-user.png)
+
+  ![Access Review](images/mark-user.png)
+
+
+16. Under Actions, click on Accept and accept the request for the users Harlan Bullard, Mark Hernandez and Jerry Poland.
+
+
 
 
   You may now **proceed to the next lab**. 

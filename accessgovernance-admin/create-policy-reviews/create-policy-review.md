@@ -180,11 +180,11 @@ Here you will review and certify OCI IAM review tasks raised by the campaign cre
 
     **Usecase 1:**  Revoke policy statement from a policy - **auditors-policy**
 
-      - Let’s revoke the policy statement **Allow group Auditors to read audit-events in compartment ag-compartment** from the policy  **auditors-policy**. 
+      - Let’s revoke the policy statement **Allow group ag-domain/Auditors to read audit-events in compartment ag-compartment** from the policy  **auditors-policy**. 
 
       ![Access Governance Homepage](images/auditor-policy.png)
 
-      - Click on the cross button under Actions column for the policy statement **Allow group Auditors to read audit-events in compartment ag-compartment**
+      - Click on the cross button under Actions column for the policy statement **Allow group ag-domain/Auditors to read audit-events in compartment ag-compartment**
 
       ![Access Governance Homepage](images/click-revoke-auditor-policy.png)
 
@@ -225,7 +225,7 @@ Here you will review and certify OCI IAM review tasks raised by the campaign cre
 
    ![Access Governance Homepage](images/after-security-policy.png)
 
-  * Verify the policy statement - **Allow group Auditors to read audit-events in compartment ag-compartment** of the policy -  **auditors-policy** has been revoked successfully. 
+  * Verify the policy statement - **Allow group ag-domain/Auditors to read audit-events in compartment ag-compartment** of the policy -  **auditors-policy** has been revoked successfully. 
 
   Before performing the policy review:
 
