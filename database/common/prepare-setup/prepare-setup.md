@@ -53,7 +53,7 @@ This lab assumes you have:
     - [dbsec-mkplc-pa.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-pa.zip)
 </if>
 <if type="sqlfw">
-    - [dbsec-mkplc-sqlfw.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-sqlfw.zip)
+    - [dbsec-mkplc-sqlfw.zip ](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbsec-mkplc-sqlfw.zip)
 </if>
 <if type="story-hack">
     - [dbsec-hack-mkplc-freetier.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/InDAlahG9IAtnYwc2-J88zYAjdABvaVOToDPxA3FGawYr1QQcexrQ5ppRgh-4fdB/n/natdsecurity/b/stack/o/dbsec-hack-mkplc-freetier.zip)
