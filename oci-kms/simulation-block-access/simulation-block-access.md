@@ -11,6 +11,8 @@ As a Data Administrator, you will test access to the data to realize you can't a
 
 Estimated Time: 10 minutes
 
+[Walk Through the Lab](videohub:1_jhm25js1)
+
 ### Objectives
 
 In this lab, you will:
@@ -22,11 +24,12 @@ In this lab, you will:
 ## Task 1: Disable keys in CipherTrust Manager
 
 1. Login to the CipherTrust Manager console.
-    If you lost the link: to access CipherTrust Manager as a Service you will need to create the URL to access your own private tenant. To do this, you need to copy and paste this URL: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM" in your browser address bar and add your student number at the end of the URL. For example, if your student number is 001, the complete URL to your own private CTM tenant will be: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001". 
+
+    If you lost the link: to access CipherTrust Manager as a Service you will need to create the URL to access your own private tenant. To do this, you need to copy and paste this URL: **"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM"** in your browser address bar and replace **XXX** with your student number. For example, if your student number is 001, the complete URL to your own private CTM tenant will be: **"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001"**. 
 
     ![URL creation in address bar](images/ctm-address-bar.png "URL creation in address bar")
 
-    Once you access your login window, please login using your "Secops_XXX" user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you.
+    Once you access your login window, please login using your **"Secops_XXX"** user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you.
 
     ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
 
@@ -61,7 +64,7 @@ In this lab, you will:
 
 ## Task 2: Confirm data access into your bucket is impossible as a result
 
-1. Log in to OCI cloud tenant as Data\_Manager\_XXX, where "XXX" is your student number (please go to lab TODO to see how to log in to OCI), and navigate through the main hamburger menu to *"Storage > Object Storage > Buckets"*.
+1. Log in to OCI cloud tenant as Data\_Manager\_XXX, where "XXX" is your student number (please go to section *"Get Started"* to see how to log in to OCI), and navigate through the main hamburger menu to *"Storage > Object Storage > Buckets"*.
     
     ![Buckets](./images/buckets.png "Buckets")
 
@@ -75,8 +78,7 @@ In this lab, you will:
 
     and ocw23-resources bucket is still accessible because it has been configured with Oracle-managed keys by design. That is a best practice customers can use when they do not want to manage the keys and key lifecycle for resources that do not contain any sensitive data. This way, OCI enables companies to have a very granular and powerful key management solution for all of their OCI resources. 
 
-3. Now we will check that any pre-authenticated request (PAR) that have been created are also non-functional anymore because the key was disabled.
-You should have saved the URL of a pre-authenticated request to access the excel file you uploaded in your bucket in lab 3 task 2. Copy this URL you saved and paste it in your browser:
+3. Now we will check that any pre-authenticated request (PAR) that have been created are also non-functional anymore because the key was disabled. You should have saved the URL of a pre-authenticated request to access the excel file you uploaded in your bucket in lab 3 task 2. Copy this URL you saved and paste it in your browser:
 
     ![No access to PAR](./images/no-access-par.png "No access to PAR")
 

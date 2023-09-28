@@ -8,6 +8,8 @@ You are your Company Data Manager. You will create a storage space as well as an
 
 Estimated Time: 15 minutes
 
+[Walk through the Lab](videohub:1_4nvcdn5d)
+
 ### Objectives
 
 In this lab, you will:
@@ -24,14 +26,21 @@ This lab assumes you have:
 
 ## Task 1: Create a bucket with your own encryption keys
 
-1. You first need to login to your OCI tenant with the **Data\_Manager\_XXX** user where XXX is your student login, please refer to the "Get Started" Lab if required. 
-Let's first create a bucket in OCI Object Storage. To do that, log in to OCI console and navigate through the main hamburger menu to *"Storage > Object Storage > Buckets"*.
+1. Log out from OCI if you haven't already.
+
+  ![Log out](./images/oci-log-out.png "Log out")
+
+2. Log in to your OCI tenant with the **Data\_Manager\_XXX** user where XXX is your student login, please refer to the "Get Started" Lab if required. For example, if you are student number 007:
+
+  ![Data Manager login](./images/data-manager-login.png "Data Manager login")
+
+3. Let's first create a bucket in OCI Object Storage. To do that, log in to OCI console and navigate through the main hamburger menu to *"Storage > Object Storage & Archive Storage > Buckets"*.
  
-    ![Buckets](./images/buckets.png "Buckets")
+  ![Buckets](./images/buckets.png "Buckets")
 
 2. Create a bucket in the compartment "ocw23-OCI-Vault-HOL" by selecting the compartment on the left in the dropdown list, then by clicking the **Create Bucket** button.
     
-    ![Create bucket](./images/create-bucket.png "Create bucket")
+  ![Create bucket](./images/create-bucket.png "Create bucket")
 
 
 3. Name it by following this naming convention: 
@@ -105,8 +114,9 @@ Look for a group called "ocw23ToVault" and click on its name to see all the deta
   ![Dynamic Groups list](./images/dynamic-groups-list.png "Dynamic Groups List")
 
 In the details panel, you can see the rule which was created: 
+
   ```
-  resource.compartment.id = '<your_Compartment_OCID>'
+  resource.compartment.id = 'your_Compartment_OCID'
   ```
   where &lt;your\_Compartment\_OCID&gt; is the OCID of the compartment ocw23-OCI-Vault-HOL.
   This means that any new resource created in the "ocw23-OCI-Vault-HOL" compartment will automatically belong to this group. This is a best practice for simplification as all the new Autonomous Database created will be part of it and benefit from the associated policy. Indeed when you are creating the dynamic group, the OCID for the new database is not yet available.
@@ -144,8 +154,8 @@ This policy configuration is very important. By default, no services can access 
 
 3.	Fill the parameters as follows:
     * Compartment: ocw23-OCI-Vault-HOL
-    *	Display Name: ocw23-OCI-adb-001
-    *	Database Name: ocw23OCIadb001
+    *	Display Name: ocw23-OCI-adb-XXX where XXX is your student number.
+    *	Database Name: ocw23OCIadbXXX where XXX is your student number.
     *	Workload type: Transaction Processing
     *	Deployment type: Serverless
     *	Configure the database: &lt;Leave it as default&gt; 
@@ -167,19 +177,19 @@ This policy configuration is very important. By default, no services can access 
 
 In this task you will load the previous CSV file you loaded into your bucket, into your previously created Autonomous Database.
 
-1. Navigate to your Autonomous Database page in OCI console and go to the Database Actions Launchpad:
+1. Navigate to your Autonomous Database page in OCI console, go to the Database Actions Launchpad and, in the displayed menu, click SQL:
 
   ![Database Actions](./images/db-actions.png "Database Actions")
 
-2. Once there, click to SQL under Development:
+2. You will be prompted to enter credentials for ADMIN user and password you provided during Autonomous Database creation:
 
-  ![SQL Development](./images/sql.png "SQL Development")
+  ![Admin login](./images/admin-login.png "Admin login")
 
 3. Web SQL Development UI is open and now you can load data into your database by clicking to **Data Load** on the top corner right:
 
   ![Click Data Load](./images/data-load.png "Click Data Load")
 
-4. Drag and drop the file into the prompted window and click the button **Run all**, which is shown as the green button icon on the top-left corner:
+4. Drag and drop the previously downloaded "ocw23-sample-file.csv" file into the prompted window and click the button **Run all**, which is shown as the green button icon on the top-left corner:
 
   ![File loading](./images/drag-and-drop.png "File loading")
 
