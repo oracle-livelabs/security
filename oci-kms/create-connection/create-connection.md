@@ -84,11 +84,11 @@ Copy all the information on notepad as it will be used to create connection betw
 
 In this task you will create a connection from your CipherTrust Manager (CTM) tenant which is in Thales Cloud, outside of Oracle Cloud Infrastructure, to the Vault you just created in OCI. 
 
-1. To access CipherTrust Manager as a Service you will need to create the URL to access your own private tenant. To do this, you need to copy and paste this URL: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM" in your browser address bar and add your student number at the end of the URL. For example, if your student number is 001, the complete URL to your own private CTM tenant will be: "https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001". 
+1. To access CipherTrust Manager as a Service you will need to create the URL to access your own private tenant. To do this, you need to copy and paste this URL: **"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM"** in your browser address bar and replace **XXX** with your student number. For example, if your student number is 001, the complete URL to your own private CTM tenant will be: **"https://us1.ciphertrust.dpondemand.io/?tenant=oracle-OracleCTM001"**. 
 
     ![URL creation in address bar](images/ctm-address-bar.png "URL creation in address bar")
 
-    Once you access your login window, please login using your "Secops_XXX" user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you. 
+    Once you access your login window, please login using your **"Secops_XXX"** user, with the password which has been provided to you. If you can't locate this information, please contact one of the trainer to assist you. 
 
     ![Log in to CipherTrust Manager](images/ctm-login.png "Log in to CipherTrust Manager")
 
@@ -125,7 +125,7 @@ In this task you will create a connection from your CipherTrust Manager (CTM) te
     * Key File: Private key file for the OCI connection in the PEM format. Either upload the key file or paste the file content.
     * File Upload: Select and click Upload Private Key to upload the key file from your machine.
     * Text: Select and paste the certificate content in the text field.
-    * Passphrase: Passphrase of the encrypted key file.
+    * Passphrase: Leave it blank if you didn't set a passphrase for the encrypted key file.
     
 
     ![Connection details](images/connection-details.png "Connection details")
