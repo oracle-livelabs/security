@@ -41,23 +41,23 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
-    ````
+    ```
     <copy>sudo su - oracle</copy>
-    ````
+    ```
 
     **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
 2. Go to the scripts directory
 
-    ````
+    ```
     <copy>cd $DBSEC_LABS/sqlfw</copy>
-    ````
+    ```
 
 3. Migrate the Glassfish Application connection string in order to target the 23c database
 
-    ````
+    ```
     <copy>./sqlfw_glassfish_start_db23c.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-001.png "Set HR App with DB23c")
 
@@ -71,13 +71,13 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     
     - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
 
-        ````
+        ```
         <copy>hradmin</copy>
-        ````
+        ```
 
-        ````
+        ```
         <copy>Oracle123</copy>
-        ````
+        ```
 
         ![SQLFW](./images/sqlfw-002.png "HR App - Login")
 
@@ -97,17 +97,17 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 5. Create an administrator (**`dba_tom`**) to manage SQL Firewall
 
-    ````
+    ```
     <copy>./sqlfw_crea_admin-user.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-007.png "Create the SQL Firewall Admin user")
 
 6. Enable SQL Firewall
 
-    ````
+    ```
     <copy>./sqlfw_enable.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-008.png "Enable SQL Firewall")
 
@@ -117,9 +117,9 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 1. Start the SQL workload capture of the application user EMPLOYEESEARCH_PROD
 
-    ````
+    ```
     <copy>./sqlfw_capture_start.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-009.png "Start the SQL workload capture of the application user")
 
@@ -142,9 +142,9 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 3. Go back to your terminal session to ensure that the application workload SQL statements and connections are appropriately captured
 
-    ````
+    ```
     <copy>./sqlfw_capture_check.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-012.png "Check the sessions and capture logs")
 
@@ -152,9 +152,9 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 4. If you are satisfied, stop the SQL workload capture
 
-    ````
+    ```
     <copy>./sqlfw_capture_stop.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-013.png "Stop the SQL workload capture")
 
@@ -162,9 +162,9 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 1. Generate the allow list rule
 
-    ````
+    ```
     <copy>./sqlfw_allow_list_rule_gen.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-014.png "Generate allow list rule")
 
@@ -172,9 +172,9 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 2. Compare this list to the events we captured
 
-    ````
+    ```
     <copy>./sqlfw_capture_count_events.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-015.png "Count the events captured")
 
@@ -182,9 +182,9 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 3. Now, examine the SQL Firewall allow list rules for trusted database connections and SQL statements
 
-    ````
+    ```
     <copy>./sqlfw_allow_list_rule_exam.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-016.png "Examine the SQL Firewall allow list rules")
 
@@ -192,18 +192,18 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 4. Set up the audit policies for SQL Firewall violations
 
-    ````
+    ```
     <copy>./sqlfw_setup_audit_policies.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-017.png "Set up the audit policies for SQL Firewall violations")
 
 
 5. Enable the allow-list rule for `EMPLOYEESEARCH_PROD` in **observation mode**
 
-    ````
+    ```
     <copy>./sqlfw_allow_list_rule_enable_monitor.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-018.png "Enable the allow-list rule in observation mode")
 
@@ -235,9 +235,9 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
     - Now, go back to your terminal session to check violation logs and audit records
 
-        ````
+        ```
         <copy>./sqlfw_check_events.sh</copy>
-        ````
+        ```
 
         ![SQLFW](./images/sqlfw-019.png "Check violation logs and audit records")
 
@@ -247,17 +247,17 @@ Let's assume there is a malicious insider who had access to the stolen credentia
  
      - The insider uses SQL*Plus to gain access to the sensitive employee data
 
-        ````
+        ```
         <copy>./sqlfw_select_sensitive_data.sh</copy>
-        ````
+        ```
 
         ![SQLFW](./images/sqlfw-020.png "Select sensitive employee data")
 
     - Check again violation logs and audit records
 
-        ````
+        ```
         <copy>./sqlfw_check_events.sh</copy>
-        ````
+        ```
 
         ![SQLFW](./images/sqlfw-021.png "Check violation logs and audit records")
 
@@ -272,9 +272,9 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
 1. Update the allow-list rule enforcement to **blocking mode**
 
-    ````
+    ```
     <copy>./sqlfw_allow_list_rule_enable_block.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-022.png "Update the allow-list rule to blocking mode")
 
@@ -308,11 +308,11 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Now, based on this information, you can create our "UNION-based" SQL Injection query to display all sensitive data you want extract directly from the form. Here, we will use this query to extract `USER_ID', 'MEMBER_ID', 'PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from `DEMO_HR_SUPPLEMENTAL_DATA` table.
 
-        ````
+        ```
         <copy>
         ' UNION SELECT userid, ' ID: '|| member_id, 'SQLi', '1', '1', '1', '1', '1', '1', 0, 0, payment_acct_no, routing_number, sysdate, sysdate, '0', 1, '1', '1', 1 FROM demo_hr_supplemental_data --
         </copy>
-        ````
+        ```
 
     - Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form and **tick the "Debug" checkbox**
 
@@ -332,9 +332,9 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
 3. Now, check violation logs and audit records
 
-    ````
+    ```
     <copy>./sqlfw_check_events.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-027.png "Check violation logs and audit records")
 
@@ -344,17 +344,17 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
 1. Once you are comfortable with the SQL Firewall concept, you can reset the environment
 
-    ````
+    ```
     <copy>./sqlfw_reset_env.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-050.png "Reset the SQL Firewall Labs Environment")
 
 2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
 
-    ````
+    ```
     <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
-    ````
+    ```
 
     ![SQLFW](./images/sqlfw-051.png "Set HR App with PDB1")
 
