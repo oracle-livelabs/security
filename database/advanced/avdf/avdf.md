@@ -68,10 +68,16 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/avdf/avs</copy>
     ````
 
-3. First, download the latest version of the AVDF utilities (**as parameter, enter the new password randomly generated during the deployment of the Livelabs**)
+3. Set the AV users password (*replace '`AVADMIN_PASSWORD`' by the new password randomly generated during the deployment of the Livelabs*)
 
     ````
-    <copy>./avs_download_utilities.sh <AVADMIN_PASSWORD></copy>
+    <copy>export AVUSR_PWD="<AVADMIN_PASSWORD>"</copy>
+    ````
+
+4. First, download the latest version of the AVDF utilities
+
+    ````
+    <copy>./avs_download_utilities.sh $AVUSR_PWD</copy>
     ````
 
     ![AVDF](./images/avdf-000.png "Download the AVDF utilities")
@@ -80,7 +86,7 @@ This lab assumes you have:
     - **avcli.jar** utility to install the Audit Vault Command Line Interface (avcli) so we can automate most of the Agent, host, and Audit Trail deployment
     - **agent.jar** utility to install the Audit Vault Agent
     
-4. Now, unpack the **avcli.jar** utility to install the Audit Vault Command Line Interface (avcli) so we can automate most of the Agent, host, and Audit Trail deployment
+5. Now, unpack the **avcli.jar** utility to install the Audit Vault Command Line Interface (avcli) so we can automate most of the Agent, host, and Audit Trail deployment
 
     ````
     <copy>./avs_deploy_avcli.sh</copy>
@@ -88,7 +94,7 @@ This lab assumes you have:
 
     ![AVDF](./images/avdf-001.png "Unpack the AVDF utilities")
 
-5. Next, we will use avcli to register the host, dbsec-lab, with Audit Vault. You will see that the commands being run are stored in the `avcli_register_host.av` file. In this step you will see a activation key. **Record this Activation Key for use later in the lab!**
+6. Next, we will use avcli to register the host, dbsec-lab, with Audit Vault. You will see that the commands being run are stored in the `avcli_register_host.av` file. In this step you will see a activation key. **Record this Activation Key for use later in the lab!**
 
     ````
     <copy>./avs_register_host.sh</copy>
@@ -100,7 +106,7 @@ This lab assumes you have:
     - Your output will look similar to this but your **Activation Key** will be different
     - Please copy the Activation Key for use later (don't forget the hostname in your copy!)
 
-6. Next, we will deploy the Audit Vault Agent
+7. Next, we will deploy the Audit Vault Agent
 
     ````
     <copy>./avs_deploy_agent.sh</copy>
@@ -110,7 +116,7 @@ This lab assumes you have:
 
     **Note**: This script will unpack the **agent.jar** file into the **/u01/app/avagent** directory
 
-7. Once deployed, we will need to activate the Audit Vault Agent
+8. Once deployed, we will need to activate the Audit Vault Agent
 
     ````
     <copy>./avs_activate_agent.sh</copy>
@@ -122,7 +128,7 @@ This lab assumes you have:
     - Remember the **Activation Key** we saw above and paste the key when prompted
     - Attention, because the Activation Key is enter like a password, it won't show on the screen!
 
-8. Then, we will verify that the dbsec-lab host has been properly registered and is activated with Audit Vault
+9. Then, we will verify that the dbsec-lab host has been properly registered and is activated with Audit Vault
 
     ````
     <copy>./avs_show_host.sh</copy>
@@ -138,7 +144,7 @@ This lab assumes you have:
         <copy>$AV_HOME/bin/agentctl start</copy>
         ````
 
-9. Now, use the avcli utility to register the Unified Audit Trail for the pluggable database **pdb1** to collect audit data
+10. Now, use the avcli utility to register the Unified Audit Trail for the pluggable database **pdb1** to collect audit data
 
     ````
     <copy>./avs_register_audit_trail.sh</copy>
@@ -146,7 +152,7 @@ This lab assumes you have:
 
     ![AVDF](./images/avdf-007.png "Register the Unified Audit Trail")
 
-10. Next, list the Audit Trails for the pluggable database **pdb1**
+11. Next, list the Audit Trails for the pluggable database **pdb1**
 
     ````
     <copy>./avs_list_audit_trails.sh</copy>
@@ -159,7 +165,7 @@ This lab assumes you have:
     - The `STATUS` column should say **COLLECTING** or **IDLE**
     - If it says something else please run the script again and verify it changes state
 
-11. Using the Audit Vault Web Console view audit data collected via the All Activity Report
+12. Using the Audit Vault Web Console view audit data collected via the All Activity Report
 
     - Open a web browser window to *`https://av`*
 
@@ -193,7 +199,7 @@ This lab assumes you have:
       - This was just a small example to verify that audit data was being collected and is visible in Audit Vault
       - There will be more detailed report generation labs later in the workshop
 
-12. You have completed the lab to register the Unified Audit Trail for pdb1 with Audit Vault
+13. You have completed the lab to register the Unified Audit Trail for pdb1 with Audit Vault
 
 ## Task 2: Audit Vault - Manage Unified Audit Settings
 
