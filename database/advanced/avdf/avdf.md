@@ -171,7 +171,7 @@ This lab assumes you have:
 
         **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<AVS-VM_@IP-Public>`*
 
-    - Login to Audit Vault Web Console as *`AVAUDITOR`* (keep it open for the rest of the lab)
+    - Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password randomly generated during the deployment of the Livelabs)
 
         ````
         <copy>AVAUDITOR</copy>
