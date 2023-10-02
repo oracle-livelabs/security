@@ -68,10 +68,10 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/avdf/avs</copy>
     ````
 
-3. First, download the latest version of the AVDF utilities
+3. First, download the latest version of the AVDF utilities (**as parameter, enter the new password randomly generated during the deployment of the Livelabs**)
 
     ````
-    <copy>./avs_download_utilities.sh</copy>
+    <copy>./avs_download_utilities.sh <AVADMIN_PASSWORD></copy>
     ````
 
     ![AVDF](./images/avdf-000.png "Download the AVDF utilities")
@@ -79,7 +79,7 @@ This lab assumes you have:
     **Note**:
     - **avcli.jar** utility to install the Audit Vault Command Line Interface (avcli) so we can automate most of the Agent, host, and Audit Trail deployment
     - **agent.jar** utility to install the Audit Vault Agent
-
+    
 4. Now, unpack the **avcli.jar** utility to install the Audit Vault Command Line Interface (avcli) so we can automate most of the Agent, host, and Audit Trail deployment
 
     ````
@@ -172,10 +172,6 @@ This lab assumes you have:
         ````
 
         ![AVDF](./images/avdf-300.png "AVDF - Login")
-
-        **Note**:
-        - A new password is randomly generated during the deployment of the Livelabs
-        - Please refer to the details of the Livelabs after deploying it to find it!
 
     - Click on the **Reports** tab
     
