@@ -220,9 +220,10 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
     - Checkbox *Create/Update Schedule*
     - Change the **Schedule** radio button to *Enable*
     - Set **Repeat Every** to *1 Days*
-    - Click [**Save**] to save and continue
 
         ![AVDF](./images/avdf-011.png "Audit Policy")
+
+    - Then, click [**Save**] to save and continue
 
 5. Next, view the audit policy reports for **pdb1**
     - Click on the **Policies** tab and you will be placed on the **Audit Policies** page
@@ -245,9 +246,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
         ![AVDF](./images/avdf-013.png "Verify the job completed successfully")
 
-    - Refresh the web page  (press [F5] for example) until it shows **Complete** and it was provisioned on **pdb1**
-
-        ![AVDF](./images/avdf-013b.png "Verify the job completed successfully")
+    - If not, please refresh the web page  (press [F5] for example) until it shows **Complete** and it was provisioned on **pdb1**
 
 7. The next thing you can do is check which Unified Audit Policies exist and which Unified Audit Policies are enabled by using **SQL*Plus**
 
@@ -284,9 +283,10 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
     - Checkbox *Create/Update Schedule*
     - Change the **Schedule** radio button to *Enable*
     - Set **Repeat Every** to *1 Days*
-    - Click [**Save**] to save and continue
 
         ![AVDF](./images/avdf-016.png "User Entitlements")
+
+    - Click [**Save**] to save and continue
 
 5. Click on the **Reports** tab
 
