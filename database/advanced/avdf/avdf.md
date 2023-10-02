@@ -684,7 +684,8 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 ## Task 7: Audit Vault - Securty Assessment
 
 ...
-
+...
+...
 
 
 ## Task 8: DB Firewall - Add the DB Firewall Monitoring
