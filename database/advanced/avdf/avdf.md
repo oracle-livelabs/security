@@ -68,11 +68,20 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/avdf/avs</copy>
     ````
 
-3. Set the AV users password (*replace '`AVADMIN_PASSWORD`' by the new password randomly generated during the deployment of the Livelabs*)
+3. Set the global variable for AV users password
 
     ````
-    <copy>export AVUSR_PWD="<AVADMIN_PASSWORD>"</copy>
+    <copy>export AVUSR_PWD="`cat wui_passphrase`"</copy>
     ````
+
+    **Note**:
+    - A new password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
+    - This passsword is located in the file `wui_passphrase`
+    - Edit and copy it because you'll use it several time in this lab!
+    
+        ````
+        <copy>cat wui_passphrase</copy>
+        ````
 
 4. First, download the latest version of the AVDF utilities
 
@@ -171,7 +180,7 @@ This lab assumes you have:
 
         **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<AVS-VM_@IP-Public>`*
 
-    - Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password randomly generated during the deployment of the Livelabs)
+    - Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password randomly generated available in Step 3 above)
 
         ````
         <copy>AVAUDITOR</copy>
