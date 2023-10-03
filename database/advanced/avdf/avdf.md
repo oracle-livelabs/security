@@ -320,14 +320,10 @@ In this lab you will use the results from a **Database Security Assessment Tool 
 
 2. Load the data from the downloaded DBSAT file
 
-    - Go back to Audit Vault Web Console, logout and login as *`AVADMIN`* with the password "*`T06tron.`*"
+    - Go back to Audit Vault Web Console, logout and login as *`AVADMIN`* (same password than `AVAUDITOR`)
 
         ````
         <copy>AVADMIN</copy>
-        ````
-
-        ````
-        <copy>T06tron.</copy>
         ````
 
         ![AVDF](./images/avdf-400.png "AVDF - Login")
