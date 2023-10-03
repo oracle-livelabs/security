@@ -365,7 +365,7 @@ You may now proceed to the next lab!
 ## **Appendix**: About the Product
 ### **Overview**
 
-SQL Firewall is a database security feature embedded within the Oracle Database kernel that inspects all incoming SQL statements and can log or block SQL statements/connections that do not fall within the SQL Firewall allow lists. SQL Firewall ensures that only explicitly authorized SQL is executed. It offers best-in-class protection against risks targeting security flaws/vulnerabilities in data-driven web applications, including SQL Injection attacks.
+SQL Firewall is a database security feature built into the Oracle Database kernel that inspects all incoming SQL statements and can log or block SQL statements/connections that do not fall within the SQL Firewall allow-list policy. SQL Firewall ensures that only explicitly authorized SQL is executed. It offers best-in-class protection against common database risks such as SQL Injection attacks and compromised accounts.
 
 SQL injection is a common database attack pattern for data-driven web applications. Exploiting vulnerabilities and security flaws in web applications, attackers can potentially modify database information, access sensitive data, execute admin tasks on the database, steal credentials and move laterally to access other sensitive systems.
 
@@ -375,7 +375,9 @@ SQL Firewall operates within the Oracle Database kernel, in line with all incomi
 
 ![SQLFW](./images/sqlfw-concept.png "SQL Firewall concept")
 
-SQL Firewall relies on allow-listing authorized SQL statements and associated trusted database connection paths. You can train the SQL Firewall by capturing authorized SQL statements for an application account, and generate a firewall policy with allow-list rules from the captured SQL activities. Once trained, deploy the firewall policy to prevent or detect potential SQL injection attacks. Unlike signature-based protection mechanisms, SQL Firewall cannot be fooled by encoding the SQL statement or referencing synonyms or dynamically generated object names.
+Figure 1: Oracle SQL Firewall built into Oracle Database kernel
+
+Oracle SQL Firewall policies work at a database account level, whether of an application service account or a direct database user, such as a reporting user or a database administrator. SQL Firewall policy for every database account comprises allow-lists of authorized SQL statements and associated trusted database connection paths. The allow-listing approach provides a higher level of protection against risks such as SQL Injection attacks and compromised accounts. It ensures that only authorized SQL statements from trusted database connections are permitted for execution inside the Oracle database while alerting/blocking any unauthorized attempts at accessing sensitive data stored within them. Unlike signature-based protection mechanisms, SQL Firewall cannot be fooled by encoding the SQL statement or referencing synonyms or dynamically generated object names.
 
 PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and manage the SQL Firewall configuration within Oracle Database. Oracle SQL Firewall is available only for Oracle Database Enterprise Edition (version 23c and later). Oracle SQL Firewall must be licensed for use. There are two paths to its license:
 
@@ -383,7 +385,7 @@ PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and man
 - Oracle SQL Firewall is included with Oracle Audit Vault and Database Firewall (AVDF). AVDF is a separate product and requires a license.
 
 ### **Benefits of using Oracle SQL Firewall**
-- Provides real-time protection against common database attacks on data-driven web applications by restricting database access to only authorized SQL statements/connections.
+- Provides real-time protection against common database attacks by restricting database access to only authorized SQL statements/connections. 
 - Mitigates risks from SQL injection attacks, anomalous access, and credential theft/abuse.
 - Enforce trusted database connection paths.
 
