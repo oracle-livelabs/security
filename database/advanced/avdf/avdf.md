@@ -30,7 +30,7 @@ This lab assumes you have:
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
 || **Audit Vault Labs**||
-|01| Set the Agent | 5 minutes|
+|01| Prequisites | 5 minutes|
 |02| Manage Unified Audit Settings | 5 minutes|
 |03| Retrieve User Entitlements | <5 minutes|
 |04| Access Rights and User Activity on Sensitive Data | 5 minutes|
@@ -52,7 +52,7 @@ This lab assumes you have:
 || **Reset Labs**||
 |18| Reset the AVDF labs config | <5 minutes|
 
-## Task 1: Audit Vault - Set the Agent
+## Task 1: Audit Vault - Prequisites
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -68,20 +68,15 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/avdf/avs</copy>
     ````
 
-3. Set the global variable for AV users password
+3. Learn the AVDF password you will need for the duration of the lab
 
     ````
-    <copy>export AVUSR_PWD="`cat wui_passphrase`"</copy>
+    <copy>echo $AVUSR_PWD</copy>
     ````
 
     **Note**:
     - A new password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
-    - This passsword is located in the file `wui_passphrase`
-    - Edit and copy it because you'll use it several time in this lab!
-    
-        ````
-        <copy>cat wui_passphrase</copy>
-        ````
+    - Remember this command line to display the password whenever you need to connect to the AVDF web console!
 
 4. First, download the latest version of the AVDF utilities
 
@@ -180,7 +175,7 @@ This lab assumes you have:
 
         **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<AVS-VM_@IP-Public>`*
 
-    - Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password randomly generated available in Step 3 above)
+    - Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password randomly generated available in Task1 - Step3)
 
         ````
         <copy>AVAUDITOR</copy>
@@ -320,7 +315,7 @@ In this lab you will use the results from a **Database Security Assessment Tool 
 
 2. Load the data from the downloaded DBSAT file
 
-    - Go back to Audit Vault Web Console, logout and login as *`AVADMIN`* (same password than `AVAUDITOR`)
+    - Go back to Audit Vault Web Console, logout and login as *`AVADMIN`* (use the new password randomly generated available in Task1 - Step3)
 
         ````
         <copy>AVADMIN</copy>
