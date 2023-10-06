@@ -76,7 +76,7 @@ This lab assumes you have:
 
     **Note**:
     - A new password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
-    - Remember this command line to display the password whenever you need to connect to the AVDF web console!
+    - Remember this command line to **display the password whenever you need** to connect to the AVDF web console for this lab!
 
 4. First, download the latest version of the AVDF utilities
 
@@ -355,9 +355,13 @@ In this lab you will use the results from a **Database Security Assessment Tool 
 
         ![AVDF](./images/avdf-022a.png "Associate a database to the report")
 
+        - **Note**: You can check your compliance with the main regulations in force around the world
+
+            ![AVDF](./images/avdf-022b.png "Compliance regulations")
+
     - Double-click on **pdb1 (Oracle Database)** to associate this database
 
-        ![AVDF](./images/avdf-022b.png "Associate a database to the report")
+        ![AVDF](./images/avdf-022c.png "Associate a database to the report")
 
     - Click [**Save**]
 
@@ -597,7 +601,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
 24. Click the **Reports** tab
 
-25. In the **Data Access & Modification** section, click **Data Modification Before-After Values**
+25. Under **Activity Reports**, in the **Data Access & Modification** section, click **Data Modification Before-After Values**
 
     ![AVDF](./images/avdf-043a.png "Data Modification Before-After Values")
 
@@ -685,10 +689,47 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
 ## Task 7: Audit Vault - Securty Assessment
 
-...
-...
-...
+1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
 
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
+
+2. Click on the **Targets** tab
+
+3. Click on **Schedule Retrieval Jobs**
+
+4. Under **Security Assessment**
+    - Checkbox *Retrieve Immediately*
+    - Checkbox *Create/Update Schedule*
+    - Change the **Schedule** radio button to *Enable*
+    - Set **Repeat Every** to *1 Days*
+
+        ![AVDF](./images/avdf-050.png "Security Assessment")
+
+    - Click [**Save**] to save and continue
+
+5. Click on the **Reports** tab
+
+6. Click the **Assessment Reports** sub-menu on left
+
+7. In the **Assessment Reports** section, click on the **Security Assessment Summary by Severity** report
+
+    ![AVDF](./images/avdf-051.png "Assessment Report")
+
+8. For all your targets, you can now see a complete assessment of the risks classified by severity for each category
+
+    ![AVDF](./images/avdf-052.png "Assessment Report - By Severity")
+
+9. For example, click on **High Risk** to see the highest risks detected for all your targets
+
+10. Now, click on one of them to see its details
+
+    ![AVDF](./images/avdf-053.png "Assessment Report - Highest Risks")
+
+11. You can see all the details of this risk, why you're at risk and not compliant and how to remedy it
+
+    ![AVDF](./images/avdf-054a.png "Assessment Report - Risk Details")
+
+    ![AVDF](./images/avdf-054b.png "Assessment Report - Risk Details")
 
 ## Task 8: DB Firewall - Add the DB Firewall Monitoring
 
