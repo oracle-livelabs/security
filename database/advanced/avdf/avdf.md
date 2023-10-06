@@ -737,73 +737,35 @@ In this lab you will modify the Database Firewall connection for the pluggable d
 
     ![AVDF](./images/avdf-400.png "AVDF - Login")
 
-2. Click on **Database Firewalls** tab
+2. Check the prerequisites of the Database Firewall (everything has been preset during the deployment of the Livelabs)
 
-3. Click on **dbf** Database Firewall Name
+    - Click on **Database Firewalls** tab (here dbfw must be up!)
 
-    ![AVDF](./images/avdf-101.png "Database Firewall page")
+        ![AVDF](./images/avdf-101.png "Database Firewall page")
 
-4. Under **Configuration**, click **Network Settings**
-
-    ![AVDF](./images/avdf-102.png "Configure network settings")
-
-5. Create a **Proxy Port**
-
-    - Click on **ens3**
+    - Click on **dbfw**
     
-        ![AVDF](./images/avdf-103.png "AVDF")
+    - Under **Configuration**, click **Network Settings**
 
-    - Click [**Add**]
+        ![AVDF](./images/avdf-102.png "Configure network settings")
+    
+    - The Proxy Port is set to **`dbfw_proxy(15223)`** for ens3 because here we will use the port 15223 to use Database Firewall
+    
+        ![AVDF](./images/avdf-103.png "Proxy Port settings")
 
-        ![AVDF](./images/avdf-104a.png "Add a new Proxy Port")
-
-    - Name it (here *`dbfw_proxy`*) for the port *`15223`*, then click [**Save**]
-
-        ![AVDF](./images/avdf-104b.png "Proxy Port settings")
-
-    - Now, Proxy port is set to **`dbfw_proxy(15223)`**
-
-        ![AVDF](./images/avdf-104c.png "The new Proxy Port created")
-
-6. Click [**Close**]
-
-7. Now, enable DB Firewall Monitoring for `pdb1` using the Proxy Port we just created
+3. Now, check the DB Firewall Monitoring mode for `pdb1`
 
     - Click the **Targets** tab and click **pdb1**
 
-    - In the **Database Firewall Monitoring** section of this page, click [**Add**]
+    - In the **Database Firewall Monitoring** section, check that monitoring is up and running
 
-        ![AVDF](./images/avdf-105.png "Add a Database Firewall Monitoring")
+        ![AVDF](./images/avdf-104.png "The new Database Firewall Monitoring")
 
-    - Fill out the following details
+        **Note**:
+        - Once enabled, Database Firewall monitoring will analyze the traffic from pdb1 through the port 15223
+        - We configured it in "Proxy" mode, so all the SQL traffic will transit by the DB Firewall appliance to be able to block the "bad" traffic if needed
 
-        - Database Firewall: *`dbf`*
-        - Mode: *`Monitoring / Blocking (Proxy)`*
-        - Network Interface Card: *`ens3`*
-        - Proxy Ports: *`dbfw_proxy (15223)`*
-
-            ![AVDF](./images/avdf-106.png "Database Firewall Monitoring settings")
-
-    - Click [**Add**]
-
-    - Fill out the fields as following
-        - Host Name / IP Address: *`10.0.0.150`*
-        - Port: *`1521`*
-        - Service Name: *`pdb1`*
-
-            ![AVDF](./images/avdf-107.png "Database Firewall Monitoring settings")
-
-            **Note**:
-            - Ensure you use the IP Address not the hostname because the DBSecLab VMs are using DNS!
-            - This is a demonstration environment limitation not an AVDF limitation
-
-    - Click [**Save**]
-
-    - The result should look like this:
-
-        ![AVDF](./images/avdf-108.png "The new Database Firewall Monitoring")
-
-8. Now, verify connectivity between the database and the DB Firewall
+4. Now, verify connectivity between the database and the DB Firewall
 
     - Go back to your Terminal session and go to the DBF directoy
 
@@ -817,7 +779,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
         <copy>./dbf_sqlplus_without_dbfw.sh</copy>
         ````
 
-        ![AVDF](./images/avdf-109.png "Check the connectivity to the database WITHOUT the Database Firewall")
+        ![AVDF](./images/avdf-105.png "Check the connectivity to the database WITHOUT the Database Firewall")
 
         **Note**:
         - This will connect to the pluggable database pdb1 **directly** on the standard listener port **1521**
@@ -829,7 +791,7 @@ In this lab you will modify the Database Firewall connection for the pluggable d
         <copy>./dbf_sqlplus_with_dbfw.sh</copy>
         ````
 
-        ![AVDF](./images/avdf-110.png "Check the connectivity to the database WITH the Database Firewall")
+        ![AVDF](./images/avdf-106.png "Check the connectivity to the database WITH the Database Firewall")
 
         **Note**:
         - This will connect to the pluggable database pdb1 **through the proxy** on the port **15223** (DB Firewall Monitoring) we just configured
@@ -896,11 +858,11 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 2. Click the **Database Firewalls** tab
 
-3. Click on the Target name **dbf**
+3. Click on the Target name **dbfw**
 
 4. Under **Configuration**, click **System Services**
 
-    ![AVDF](./images/avdf-119b.png "System Services Configuration")
+    ![AVDF](./images/avdf-120a.png "System Services Configuration")
 
     **Note**: According to your resources it can take up to several minutes to present the Tabs!
 
@@ -908,43 +870,39 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
 6. Ensure the first NTP service is **ON** and the IP is *`169.254.169.254`*, and close the pop-up windows
 
-    ![AVDF](./images/avdf-120.png "Set NTP service")
+    ![AVDF](./images/avdf-120b.png "Set NTP service")
 
 7. Next, set the type of DB Firewall monitoring, so go back to Audit Vault Web Console as *`AVAUDITOR`*
 
     ![AVDF](./images/avdf-300.png "AVDF - Login")
 
-8. On top, click on the **Targets** tab
+8. On top, click on the **Policies** tab
 
-9. Click **pdb1**
+9. Click the **Database Firewall Policies** sub-menu on left
 
-10. On the right, click the **Database Firewall Monitoring** sub-tab section
+    ![AVDF](./images/avdf-120c.png "Database Firewall Monitoring")
 
-    ![AVDF](./images/avdf-120b.png "Database Firewall Monitoring")
+10. Check the **Log unique** option to enable the Database Firewall Policy, then click [**Deploy**]
 
-11. Change the **Database Firewall Policy**
+    ![AVDF](./images/avdf-121a.png "Enable Database Firewall Policy")
 
-    - Edit it by clicking on the **Edit** button
+    **Note:**
+    - Log unique policies enable you to log statements for offline analysis that include each distinct source of SQL traffic. Be aware that if you apply this policy, even though it stores fewer statements than if you had chosen to log all statements, it can still use a significant amount of storage for the logged data.
+    - Log unique policies log SQL traffic specifically for developing a new policy. The logged data enables the Analyzer to understand how client applications use the database and enables rapid development of a policy that reflects actual use of the database and its client applications.
 
-        ![AVDF](./images/avdf-121.png "Edit Database Firewall Policy")
+11. Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
 
-    - Select "*`Log unique`*"
-     
-        ![AVDF](./images/avdf-121b.png "Select Log unique")
+    ![AVDF](./images/avdf-121b.png "Select targets for Database Firewall Policy")
 
-        **Note:**
-        - Log unique policies enable you to log statements for offline analysis that include each distinct source of SQL traffic. Be aware that if you apply this policy, even though it stores fewer statements than if you had chosen to log all statements, it can still use a significant amount of storage for the logged data.
-        - Log unique policies log SQL traffic specifically for developing a new policy. The logged data enables the Analyzer to understand how client applications use the database and enables rapid development of a policy that reflects actual use of the database and its client applications.
+12. Now, refresh the page to see the "Log unique" policy deployed for the target pdb1
 
-12. Click the **Green Check** to save
-
-    ![AVDF](./images/avdf-122.png "Save the config")
+    ![AVDF](./images/avdf-121c.png "Database Firewall Policy deployed for pdb1")
 
 13. Now, generate Glassfish Application Traffic
 
     - Go back to your Glassfish App web page and **Logout** explicitly to train the DB Firewall
 
-        ![AVDF](./images/avdf-122b.png "HR App - Logout")
+        ![AVDF](./images/avdf-122.png "HR App - Logout")
 
     - Login as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -1186,27 +1144,25 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
     ![AVDF](./images/avdf-139.png "HR Policy")
 
-20. Click [**Save and Publish**]
+20. Click [**Save**]
 
 21. Once created, the policy is **automatically published**, but now you have to deploy it
 
     ![AVDF](./images/avdf-140.png "HR Policy published")
 
-22. Click the **Targets** tab
+22. Check the **HR Policy** option, then click [**Deploy**]
 
-23. Click the Target Name **pdb1**
+    ![AVDF](./images/avdf-141a.png "HR Policy deployment")
 
-24. Click the **Database Firewall Monitoring** sub-tab on right
+23. Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
 
-25. Change **Database Firewall Policy** to "*`HR Policy`*"
+    ![AVDF](./images/avdf-141b.png "Select targets for Database Firewall Policy")
 
-    ![AVDF](./images/avdf-141a.png "Set the current Database Firewall Policy")
+24. Now, refresh the page to see the "HR Policy" policy deployed for the target pdb1
 
-26. Click the **Green Check** to implement this DB Firewall Policy
+    ![AVDF](./images/avdf-141c.png "Database Firewall Policy deployed for pdb1")
 
-    ![AVDF](./images/avdf-141b.png "Set the current Database Firewall Policy")
-
-27. Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
+25. Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
     - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
     - Click **Search Employees**
     - Click [**Search**]
@@ -1215,11 +1171,11 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
         **Note**: All rows are returned... Remember, all "official" queries from the HR App have been allowed in **HR SQL Cluter** in your DB Firewall policy
 
-28. Even if you add a search criteria and query again, you can access to the result (here we **filter by "HR ID = 196"** for example)
+26. Even if you add a search criteria and query again, you can access to the result (here we **filter by "HR ID = 196"** for example)
 
     ![AVDF](./images/avdf-142.png "Filter by HR ID = 196")
 
-29. Now, go back to your Terminal session and run the same script as at the beginning to see the impact of the DB Firewall policy
+27. Now, go back to your Terminal session and run the same script as at the beginning to see the impact of the DB Firewall policy
 
     ````
     <copy>./dbf_query_fw_policy.sh</copy>
@@ -1246,19 +1202,21 @@ In this lab you will perform a "**UNION-based**" SQL Injection attack and see ho
 
     ![AVDF](./images/avdf-300.png "AVDF - Login")
 
-2. Click the **Targets** tab
+2. Click on the **Policies** tab
 
-3. Click the Target Name **pdb1**
+3. Click the **Database Firewall Policies** sub-menu on left
 
-4. Click the **Database Firewall Monitoring** sub-tab on right
-
-5. Change **Database Firewall Policy** to "*`Log Unique`*" to allow all traffic, even the bad one... especially the bad one!
+4. Check the **Log unique** option to change the Database Firewall Policy, then click [**Deploy**]
 
     ![AVDF](./images/avdf-160.png "Set the current Database Firewall Policy")
 
-6. Click the **Green Check** to implement this DB Firewall Policy
+5. Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
 
-    ![AVDF](./images/avdf-161.png "Set the current Database Firewall Policy")
+    ![AVDF](./images/avdf-121b.png "Select targets for Database Firewall Policy")
+
+6. Now, refresh the page to see the "Log unique" policy deployed for the target pdb1
+
+    ![AVDF](./images/avdf-161.png "Database Firewall Policy deployed for pdb1")
 
 7. Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
     - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
@@ -1311,19 +1269,21 @@ In this lab you will perform a "**UNION-based**" SQL Injection attack and see ho
 
         ![AVDF](./images/avdf-300.png "AVDF - Login")
 
-    - Click the **Targets** tab
+    - Click the **Policies** tab
+    
+    - Click the **Database Firewall Policies** sub-menu on left
+    
+    - Check the **HR Policy** option, then click [**Deploy**]
 
-    - Click the Target Name **pdb1**
+        ![AVDF](./images/avdf-141a.png "HR Policy deployment")
+    
+    - Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
 
-    - Click the **Database Firewall Monitoring** sub-tab
+        ![AVDF](./images/avdf-141b.png "Select targets for Database Firewall Policy")
+        
+    - Now, refresh the page to see the "HR Policy" policy deployed for the target pdb1
 
-    - Change **Database Firewall Policy** to "*`HR Policy`*" to allow only your trusted traffic as defined previously in Step 12
-
-        ![AVDF](./images/avdf-166.png "Set the current Database Firewall Policy")
-
-    - Click the **Green Check** to implement this DB Firewall Policy
-
-        ![AVDF](./images/avdf-167.png "Set the current Database Firewall Policy")
+        ![AVDF](./images/avdf-141c.png "Database Firewall Policy deployed for pdb1")
 
     - Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
         - Go back to your Glassfish App web page
