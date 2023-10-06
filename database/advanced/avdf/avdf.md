@@ -1344,27 +1344,25 @@ In this lab you will create the policy `PII Exfiltration Monitor` to monitor the
 
     - Click [**Save**]
 
-8. Click [**Save and Publish**]
+8. Click [**Save**]
 
-9. Once created, the policy is **automatically published**
+9. Once created, the policy is **automatically published** but not deployed
 
     ![AVDF](./images/avdf-174.png "Database Firewall Policy published")
 
 10. Now, you have to deploy the policy published
 
-    - Click the **Targets** tab
+    - Check the **PII Exfiltration Monitor** option, then click [**Deploy**]
 
-    - Click the Target Name **pdb1**
+        ![AVDF](./images/avdf-175.png "HR Policy deployment")
+    
+    - Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
 
-    - Click the **Database Firewall Monitoring** sub-tab on right
+        ![AVDF](./images/avdf-176a.png "Select targets for Database Firewall Policy")
+        
+    - Now, refresh the page to see the "HR Policy" policy deployed for the target pdb1
 
-    - Change **Database Firewall Policy** to "*`PII Exfiltration Monitor`*"
-
-        ![AVDF](./images/avdf-175.png "Set the current Database Firewall Policy")
-
-    - Click the **Green Check** to implement this DB Firewall Policy
-
-        ![AVDF](./images/avdf-176.png "Set the current Database Firewall Policy")
+        ![AVDF](./images/avdf-176b.png "Database Firewall Policy deployed for pdb1")
 
 11. Once the DB Firewall Policy is enabled, go back to you Terminal session to generate some SELECT commands on SQL*Plus via the proxy connection
 
@@ -1525,12 +1523,16 @@ The objective of this lab is to collect audit log records from PostgreSQL databa
 
         ![AVDF](./images/avdf-203.png "Target details")
 
-    - Click the **Audit Collection Attributes** sub-tab and add information as following:
+    - Add "Attributes
+    
+        - Click the **Audit Collection Attributes** sub-tab
 
-        - Name: *`av.collector.securedTargetVersion`*  /  Value: *`11.0`*
-        - Name: *`av.collector.timezoneoffset`*  /  Value: `<YOUR_DBSECLAB-VM_TIMEZONE>` (here UTC Time: "*`0:00`*")
+        - Click [**Add**] and enter values as following:
 
-            ![AVDF](./images/avdf-204.png "Audit Collection Attributes")
+            - Name: *`av.collector.securedTargetVersion`*  /  Value: *`11.0`*
+            - Name: *`av.collector.timezoneoffset`*  /  Value: `<YOUR_DBSECLAB-VM_TIMEZONE>` (here UTC Time: "*`0:00`*")
+
+                ![AVDF](./images/avdf-204.png "Audit Collection Attributes")
 
     - Click [**Save**]
 
@@ -1580,7 +1582,7 @@ The objective of this lab is to collect audit log records from PostgreSQL databa
 
     - You might see some failures
 
-        ![AVDF](./images/avdf-211.png "List of FAILURE")
+        ![AVDF](./images/avdf-211a.png "List of FAILURE")
 
     - Click on the **paper icon** for first audit row for **DROP ROLE** and view the details
     
@@ -1618,15 +1620,11 @@ The objective of this lab is to collect audit log records from PostgreSQL databa
 
             ![AVDF](./images/avdf-212e.png "Delete the Audit Trail")
 
-        - Click [**OK**] to confirm the deletion
-
-            ![AVDF](./images/avdf-212f.png "Confirm the deletion")
-
-        - Click "**Targets**" sub-menu
+        - Click "**Targets**" sub-menu on left
 
         - Select "**PostgreSQL**" target and click [**Delete**]
 
-            ![AVDF](./images/avdf-212g.png "Delete the target")
+            ![AVDF](./images/avdf-212f.png "Delete the target")
 
     - Now, go back to your Terminal session and reset the PostgreSQL database auditing
 
@@ -1665,7 +1663,9 @@ The objective of this lab is to collect event log from the Operating System
     - Description: *`Linux OS`*
     - In the **Audit Connection Details** section, Host Name/IP Address: *`dbsec-lab`*
 
-        ![AVDF](./images/avdf-215.png "Register a target")
+        ![AVDF](./images/avdf-215a.png "Register a target")
+
+    - Click [**Save**]
 
 6. In the **Audit Data Collection** section
 
@@ -1715,7 +1715,7 @@ The objective of this lab is to collect event log from the Operating System
 
     - You might see failures for multiple targets
 
-        ![AVDF](./images/avdf-221.png "See failures for multiple targets")
+        ![AVDF](./images/avdf-221a.png "See failures for multiple targets")
 
     - Click on the **paper icon** for first audit row for "`USER_CMD`" and view the details
     
@@ -1795,6 +1795,7 @@ Important: before performing this lab, you must have:
 
 3. Enter the following information
 
+    - Select *`Active Directory (AD)`*
     - Server Name: *`msad`*
     - Port: *`<YOUR_MSAD_PORT_FOR_SSL_CONNECTION>`*
     - Host Name / IP Address: *`<YOUR_MSAD_PRIVATE_IP_ADDRESS_10.0.0.XXX>`*
@@ -1931,6 +1932,7 @@ Important: before performing this lab, you must have:
 
         ![AVDF](./images/avdf-266.png "Delete the Audit Data Collection")
 
+<!--
 4. Next, delete the **target**
 
     - Click the **Targets** tab
@@ -1942,8 +1944,9 @@ Important: before performing this lab, you must have:
     - Now, you should see no rows
 
         ![AVDF](./images/avdf-268.png "List of Target")
+-->
 
-5. Then, delete the Audit Vault **Agent**
+4. Then, delete the Audit Vault **Agent**
 
     - Click the **Agents** tab
 
@@ -1964,21 +1967,21 @@ Important: before performing this lab, you must have:
         ![AVDF](./images/avdf-272.png "Check that the Audit Vault Agent is deleted")
 
 
-6. Finally, reset **AVDF binaries**
+5. Finally, reset **AVDF binaries**
 
     ````
     <copy>
-    rm -Rf $AV_HOME/!(*.jar)
+    rm -Rf $AV_HOME/*
     ll $AV_HOME
 
-    rm -Rf $AVCLI_HOME/!(*.jar)
+    rm -Rf $AVCLI_HOME/*
     ll $AVCLI_HOME
     </copy>
     ````
 
     ![AVDF](./images/avdf-273.png "Reset AVDF binaries")
 
-7. **Now, the AVDF configuration is correctly reset!**
+6. **Now, the AVDF configuration is correctly reset!**
 
 You may now proceed to the next lab!
 
