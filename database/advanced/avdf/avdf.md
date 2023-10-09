@@ -34,9 +34,9 @@ This lab assumes you have:
 |02| Manage Unified Audit Settings | 5 minutes|
 |03| Retrieve User Entitlements | <5 minutes|
 |04| Access Rights and User Activity on Sensitive Data | 5 minutes|
-|05| Tracking Data Changes (Auditing "Before-After" Values) | 15 minutes|
-|06| Create Alert Policies | 5 minutes|
-|07| Security Assessment | 5 minutes|
+|05| Create Alert Policies | 5 minutes|
+|06| Security Assessment | 5 minutes|
+|07| Tracking Data Changes (Auditing "Before-After" Values) | 15 minutes|
 || **DB Firewall Labs**||
 |08| Add the DB Firewall Monitoring | 10 minutes|
 |09| Configure and Verify the Glassfish App to Use the DB Firewall | 5 minutes|
@@ -232,7 +232,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 5. Next, view the audit policy reports for **pdb1**
     - Click on the **Policies** tab and you will be placed on the **Audit Policies** page
     - Click on the Target Name **pdb1**
-    - On this screen, you will see two tabs, **Unified Auditing** and **Traditional Auditing**. Since this is a modern version of Oracle, 12.1 or higher, we want to use Unified Auditing
+    - On this screen, you will see two tabs, "Unified Auditing" and "Traditional Auditing". Since this is a modern version of Oracle, 12.1 or higher, in this lab we are using **Unified Auditing**
     - In the **Unified Auditing** tab, go to the **Core Policies** section and ensure the following options are checkmarked
         - *`Critical Database Activity`*
         - *`Database Schema Changes`*
@@ -377,7 +377,127 @@ In this lab you will use the results from a **Database Security Assessment Tool 
 
     ![AVDF](./images/avdf-024.png "Compliance Reports")
 
-## Task 5: Audit Vault - Tracking Data Changes (Auditing "Before-After" Values)
+## Task 5: Audit Vault - Create Alert Policies
+
+In this lab you will modify the Database Firewall connection for the pluggable database **pdb1**
+
+1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
+
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
+
+2. Click the **Policies** tab
+
+3. Click the **Alert Policies** sub-menu on left
+
+4. Click [**Create**]
+
+5. Enter the following information for our new **Alert**
+
+    - Alert Name: *`CREATE USER`*
+    - Type: *`Oracle Database`*
+    - Description: *`Alert on CREATE USER statements`*
+    - Severity: *`Warning`*
+    - Threshold (times): *`1`*
+    - Condition: *`:EVENT_NAME = 'CREATE USER'`*
+    - Template: *`Alert Notification Template`*
+
+6. Your Alert should look like this
+
+    ![AVDF](./images/avdf-044a.png "AVDF Alerts")
+
+7. Click [**Save**]
+
+    ![AVDF](./images/avdf-044b.png "Confirm creation")
+
+    **Note:** Your Alert is automatically started!
+
+8. Go back to your Terminal session and create users within the **pdb1** pluggable database
+
+    ````
+    <copy>./avs_create_users.sh</copy>
+    ````
+
+    ![AVDF](./images/avdf-045.png "Create users")
+
+9. Go back to the Audit Vault Web Console as *`AVAUDITOR`* to view alerts
+
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
+
+10. Click on **Alerts** tab
+
+11. View the Alerts that have occurred related to our user creation SQL commands
+
+    ![AVDF](./images/avdf-046.png "View the alerts")
+
+    **Note**: If you don't see them, refresh the page because the system catch the alerts every minute
+
+12. Click on the details of one of the alerts
+
+    ![AVDF](./images/avdf-047.png "View an alert")
+
+13. Go back to your Terminal session and drop the users we created in the previous script
+
+    ````
+    <copy>./avs_drop_users.sh</copy>
+    ````
+
+    ![AVDF](./images/avdf-048.png "Drop the users just created")
+
+    **Note**: Once you understand how to create an alert, feel free to create another and test it manually
+
+## Task 6: Audit Vault - Security Assessment
+
+1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
+
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
+
+2. Click on the **Targets** tab
+
+3. Click on **Schedule Retrieval Jobs**
+
+4. Under **Security Assessment**
+    - Checkbox *Retrieve Immediately*
+    - Checkbox *Create/Update Schedule*
+    - Change the **Schedule** radio button to *Enable*
+    - Set **Repeat Every** to *1 Days*
+
+        ![AVDF](./images/avdf-050a.png "Security Assessment")
+
+    - Click [**Save**] to save and continue
+
+5. Click on the **Home** tab
+
+    ![AVDF](./images/avdf-050b.png "Security Assessment")
+
+    **Note**:
+    - Now, you can see the risks for all your taregts directly on the main dashboard
+    - You can access to a risk by clicking on a color risk in the circle of your choice
+
+6. Click on the **Reports** tab
+
+7. Click the **Assessment Reports** sub-menu on left
+
+8. In the **Assessment Reports** section, click on the **Security Assessment Summary by Severity** report
+
+    ![AVDF](./images/avdf-051.png "Assessment Report")
+
+9. For all your targets, you can now see a complete assessment of the risks classified by severity for each category
+
+    ![AVDF](./images/avdf-052.png "Assessment Report - By Severity")
+
+10. For example, click on **High Risk** to see the highest risks detected for all your targets
+
+11. Now, click on one of them to see its details
+
+    ![AVDF](./images/avdf-053.png "Assessment Report - Highest Risks")
+
+12. You can see all the details of this risk, why you're at risk and not compliant and how to remedy it
+
+    ![AVDF](./images/avdf-054a.png "Assessment Report - Risk Details")
+
+    ![AVDF](./images/avdf-054b.png "Assessment Report - Risk Details")
+
+## Task 7: Audit Vault - Tracking Data Changes (Auditing "Before-After" Values)
 
 **About Oracle Audit Vault Transaction Log Audit Trail Collection**
 
@@ -618,118 +738,6 @@ The first thing we need to do is to set up the database to be ready for Golden G
     - Golden Gate Extracts are in a state of `RUNNING` (if not, from the Golden Gate Web Console, click [**Action**] for the `pdb1` extract and set it to start)
     - The Timezone of your Audit Trail is correctly set to your VM Timezone
     - Your Audit Trail is up and running
-
-## Task 6: Audit Vault - Create Alert Policies
-
-In this lab you will modify the Database Firewall connection for the pluggable database **pdb1**
-
-1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
-
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
-
-2. Click the **Policies** tab
-
-3. Click the **Alert Policies** sub-menu on left
-
-4. Click [**Create**]
-
-5. Enter the following information for our new **Alert**
-
-    - Alert Name: *`CREATE USER`*
-    - Type: *`Oracle Database`*
-    - Description: *`Alert on CREATE USER statements`*
-    - Severity: *`Warning`*
-    - Threshold (times): *`1`*
-    - Condition: *`:EVENT_NAME = 'CREATE USER'`*
-    - Template: *`Alert Notification Template`*
-
-6. Your Alert should look like this
-
-    ![AVDF](./images/avdf-044a.png "AVDF Alerts")
-
-7. Click [**Save**]
-
-    ![AVDF](./images/avdf-044b.png "Confirm creation")
-
-    **Note:** Your Alert is automatically started!
-
-8. Go back to your Terminal session and create users within the **pdb1** pluggable database
-
-    ````
-    <copy>./avs_create_users.sh</copy>
-    ````
-
-    ![AVDF](./images/avdf-045.png "Create users")
-
-9. Go back to the Audit Vault Web Console as *`AVAUDITOR`* to view alerts
-
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
-
-10. Click on **Alerts** tab
-
-11. View the Alerts that have occurred related to our user creation SQL commands
-
-    ![AVDF](./images/avdf-046.png "View the alerts")
-
-    **Note**: If you don't see them, refresh the page because the system catch the alerts every minute
-
-12. Click on the details of one of the alerts
-
-    ![AVDF](./images/avdf-047.png "View an alert")
-
-13. Go back to your Terminal session and drop the users we created in the previous script
-
-    ````
-    <copy>./avs_drop_users.sh</copy>
-    ````
-
-    ![AVDF](./images/avdf-048.png "Drop the users just created")
-
-    **Note**: Once you understand how to create an alert, feel free to create another and test it manually
-
-## Task 7: Audit Vault - Securty Assessment
-
-1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
-
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
-
-2. Click on the **Targets** tab
-
-3. Click on **Schedule Retrieval Jobs**
-
-4. Under **Security Assessment**
-    - Checkbox *Retrieve Immediately*
-    - Checkbox *Create/Update Schedule*
-    - Change the **Schedule** radio button to *Enable*
-    - Set **Repeat Every** to *1 Days*
-
-        ![AVDF](./images/avdf-050.png "Security Assessment")
-
-    - Click [**Save**] to save and continue
-
-5. Click on the **Reports** tab
-
-6. Click the **Assessment Reports** sub-menu on left
-
-7. In the **Assessment Reports** section, click on the **Security Assessment Summary by Severity** report
-
-    ![AVDF](./images/avdf-051.png "Assessment Report")
-
-8. For all your targets, you can now see a complete assessment of the risks classified by severity for each category
-
-    ![AVDF](./images/avdf-052.png "Assessment Report - By Severity")
-
-9. For example, click on **High Risk** to see the highest risks detected for all your targets
-
-10. Now, click on one of them to see its details
-
-    ![AVDF](./images/avdf-053.png "Assessment Report - Highest Risks")
-
-11. You can see all the details of this risk, why you're at risk and not compliant and how to remedy it
-
-    ![AVDF](./images/avdf-054a.png "Assessment Report - Risk Details")
-
-    ![AVDF](./images/avdf-054b.png "Assessment Report - Risk Details")
 
 ## Task 8: DB Firewall - Add the DB Firewall Monitoring
 
@@ -1099,6 +1107,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
     - Click [**Save**]
 
+<!--
 14. Next, add database users that we trust to connect to the database through the Database Firewall
 
     **Note**:
@@ -1126,7 +1135,9 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
         ![AVDF](./images/avdf-136.png "Save Database User Sets")
 
-18. Finally, select the **Default** tab to specify what the DB Firewall policy has to do you if you are not in the context definied previously (here we will block all the "black-listed" queries and we will return a blank result)
+-->
+
+14. Finally, select the **Default** tab to specify what the DB Firewall policy has to do you if you are not in the context definied previously (here we will block all the "black-listed" queries and we will return a blank result)
 
     ![AVDF](./images/avdf-137.png "Specify the default action to do by the DB Firewall policy")
 
@@ -1140,29 +1151,29 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
     - Click [**Save**]
 
-19. Your HR Policy should look like this:
+15. Your HR Policy should look like this:
 
     ![AVDF](./images/avdf-139.png "HR Policy")
 
-20. Click [**Save**]
+16. Click [**Save**]
 
-21. Once created, the policy is **automatically published**, but now you have to deploy it
+17. Once created, the policy is **automatically published**, but now you have to deploy it
 
     ![AVDF](./images/avdf-140.png "HR Policy published")
 
-22. Check the **HR Policy** option, then click [**Deploy**]
+18. Check the **HR Policy** option, then click [**Deploy**]
 
     ![AVDF](./images/avdf-141a.png "HR Policy deployment")
 
-23. Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
+19. Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
 
     ![AVDF](./images/avdf-141b.png "Select targets for Database Firewall Policy")
 
-24. Now, refresh the page to see the "HR Policy" policy deployed for the target pdb1
+20. Now, refresh the page to see the "HR Policy" policy deployed for the target pdb1
 
     ![AVDF](./images/avdf-141c.png "Database Firewall Policy deployed for pdb1")
 
-25. Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
+21. Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
     - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
     - Click **Search Employees**
     - Click [**Search**]
@@ -1171,11 +1182,11 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
         **Note**: All rows are returned... Remember, all "official" queries from the HR App have been allowed in **HR SQL Cluter** in your DB Firewall policy
 
-26. Even if you add a search criteria and query again, you can access to the result (here we **filter by "HR ID = 196"** for example)
+22. Even if you add a search criteria and query again, you can access to the result (here we **filter by "HR ID = 196"** for example)
 
     ![AVDF](./images/avdf-142.png "Filter by HR ID = 196")
 
-27. Now, go back to your Terminal session and run the same script as at the beginning to see the impact of the DB Firewall policy
+23. Now, go back to your Terminal session and run the same script as at the beginning to see the impact of the DB Firewall policy
 
     ````
     <copy>./dbf_query_fw_policy.sh</copy>
