@@ -25,7 +25,7 @@ You will be using Terraform to create your lab environment.
 
 1.  Click on the link below to download the zip file which you need to build your environment.  
 
-    - Click here: [oci-network-vss-qualys-live-labs.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/fAx5rXgL1PJ3YMHzw0gM4PuCmeyjBoV3CBwdMJla7GDIhKLkWjSKu3vG22SrbAtp/n/partners/b/files/o/vss-integration-qualys.zip) 
+    - Click here: [oci-network-vss-qualys-live-labs.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/BkK1Z_-xHSgAgdyXQtvmCX2JdW4k3XOGAoAZ9vTZMuL3sIxRBK2-U-na6piBtDau/n/partners/b/files/o/vss-integration-qualys.zip) 
         - Packaged terraform **OCI VSS Qualys** use-case.
         - **PAR URL** is valid until **Dec, 2025**.
 
