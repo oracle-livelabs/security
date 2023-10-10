@@ -7,6 +7,9 @@ Upon completing your labs, we recommend that you perform a cleanup to dispose th
 
 *Estimated Time*: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_ixwlapkq)
+
 ### Objectives
 
 In this lab, you will:

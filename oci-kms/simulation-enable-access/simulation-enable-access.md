@@ -11,6 +11,8 @@ As a Data Administrator, you will test proper access to the data is now indeed p
 
 Estimated Time: 10 minutes
 
+[Walk Through the Lab](videohub:1_cg98w5b0)
+
 ### Objectives
 
 In this lab, you will:
@@ -135,5 +137,5 @@ Congratulations! You have finished this hands-on lab! Please call one of the tra
 * [Managing Encryption Keys on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-encrypt-set-rotate-keys.html#GUID-0795135D-B057-4DBC-92C9-368AF4C82D0A)
 
 ## Acknowledgements
-* **Authors** - Damien Rilliard (OCI Security Seno#ior Director), Sonia Yuste (OCI Security Specialist)
-* **Last Updated By/Date** - Damien Rilliard, July 2023
+* **Authors** - Damien Rilliard (OCI Security Senior Director), Sonia Yuste (OCI Security Specialist)
+* **Last Updated By/Date** - Sonia, August 2023

@@ -1,11 +1,11 @@
-# Protecting Data with Row-Level and Column-Level Security using Oracle VPD
+# Protect Data with Row-Level and Column-Level Security using Oracle VPD
 
 ## Introduction
 Oracle Virtual Private Database enforces security, to a fine level of granularity, directly on database tables, views, or synonyms. Because you attach security policies directly to these database objects, and the policies are automatically applied whenever a user accesses data, there is no way to bypass security.
 
 Description: This lab introduces the functionality of Oracle Virtual Private Database (VPD). It gives the user an opportunity to learn how to configure this feature to implement row and column level security. Oracle VPD creates security policies to control database access at the row and column level.
 
-*Estimated Lab Time:* 30 minutes
+*Estimated Time:* 30 minutes
 
 *Version tested in this lab:* Oracle DB 19.17
 
@@ -221,12 +221,7 @@ This lab assumes you have:
     
     **Output for `DBA_DEBRA`:**
     
-    ![Cleanup Query DBA_DEBRA](./images/vpd_cleanupquerydebra.png " ")
-
-## **Appendix**: About the Product
-### **Overview**
-
-Oracle Database gives the user the ability to implement row and column level security with Oracle VPD. 
+    ![Cleanup Query DBA_DEBRA](./images/vpd_cleanupquerydebra.png " ") 
 
 ## Learn More
 Technical Documentation:

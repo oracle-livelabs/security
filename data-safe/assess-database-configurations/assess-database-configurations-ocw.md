@@ -8,8 +8,6 @@ In this lab, you explore Security Assessment.
 
 Estimated Time: 20 minutes
 
-Watch the video below for a quick walk-through of the lab.
-[Assess Database Configurations](videohub:1_egh1qfyz)
 
 ### Objectives
 
@@ -34,6 +32,9 @@ This lab assumes you have:
 ### Assumptions
 
 - Your data values are most likely different than those shown in the screenshots.
+
+Watch the video below for a quick walk-through of the lab.
+[Assess Database Configurations](videohub:1_f7ijv58k)
 
 
 ## Task 1: View the overview page for Security Assessment
@@ -206,4 +207,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, May 24, 2023
+* **Last Updated By/Date** - Jody Glover, August 17, 2023

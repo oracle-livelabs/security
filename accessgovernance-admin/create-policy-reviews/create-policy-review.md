@@ -9,6 +9,10 @@ Access Governance Administrators (Pamela Green) can create and review policy rev
 
 *Estimated Time*: 15 minutes
 
+
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_yivv30ww)
+
 ### Objectives
 
 In this lab, you will:
@@ -22,8 +26,7 @@ In this lab, you will:
 
 
 
-1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 3: Task 1*
-
+1. From your browser, go to the Oracle Access Governance Console. 
 
 2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
 
@@ -125,7 +128,7 @@ In this lab, you will:
 
 Here you will review and certify OCI IAM review tasks raised by the campaign created in the previous task.
 
-1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 3: Task 1* 
+1. From your browser, go to the Oracle Access Governance Console.
 
 
 2. Enter **Oracle Access Governance Campaign Reviewer** username and password (Pamela Green)
@@ -146,9 +149,9 @@ Here you will review and certify OCI IAM review tasks raised by the campaign cre
   3. On the Oracle Access Governance Console home page, from the navigation menu, select **Access Reviews -> My Access Reviews.** 
 
 
-  4. To view review tasks created by your policy review campaign, click the **Policy review tasks** tab. You will see all policy access review tasks assigned to you as a reviewer. Oracle Access Governance uses in-house analytic-based Intelligence system to provide accept/review recommendations.
+  4. To view review tasks created by your policy review campaign, click the **Access control review tasks** tab. You will see all policy access review tasks assigned to you as a reviewer. Oracle Access Governance uses in-house analytic-based Intelligence system to provide accept/review recommendations.
 
-  ![Access Governance Homepage](images/my-access-reviews.png)
+  ![Access Governance Homepage](images/access-control-review-tasks.png)
 
   5. For this tutorial, let’s check the recommendations given by Oracle Access Governance. 
 
@@ -177,11 +180,11 @@ Here you will review and certify OCI IAM review tasks raised by the campaign cre
 
     **Usecase 1:**  Revoke policy statement from a policy - **auditors-policy**
 
-      - Let’s revoke the policy statement **Allow group Auditors to read audit-events in compartment Quality-Assurance** from the policy  **auditors-policy**. 
+      - Let’s revoke the policy statement **Allow group ag-domain/Auditors to read audit-events in compartment ag-compartment** from the policy  **auditors-policy**. 
 
       ![Access Governance Homepage](images/auditor-policy.png)
 
-      - Click on the cross button under Actions column for the policy statement **Allow group Auditors to read audit-events in compartment Quality-Assurance**
+      - Click on the cross button under Actions column for the policy statement **Allow group ag-domain/Auditors to read audit-events in compartment ag-compartment**
 
       ![Access Governance Homepage](images/click-revoke-auditor-policy.png)
 
@@ -210,7 +213,7 @@ Here you will review and certify OCI IAM review tasks raised by the campaign cre
 
      - Provide justification and then click **Submit.** The closed loop access remediation will take place automatically.
 
-  10. Login to the Identity domain: ag-domain OCI console as the Identity Domain Administrator. Naviagte to Identity & Security -> Identity -> Policies.
+  10. (Optional) Login to the Identity domain: ag-domain OCI console as the Identity Domain Administrator. Naviagte to Identity & Security -> Identity -> Policies.
 
   * Verify the entire policy - **security-admins-policy** has been revoked from the list of policies successfully. 
 
@@ -222,7 +225,7 @@ Here you will review and certify OCI IAM review tasks raised by the campaign cre
 
    ![Access Governance Homepage](images/after-security-policy.png)
 
-  * Verify the policy statement - **Allow group Auditors to read audit-events in compartment Quality-Assurance** of the policy -  **auditors-policy** has been revoked successfully. 
+  * Verify the policy statement - **Allow group ag-domain/Auditors to read audit-events in compartment ag-compartment** of the policy -  **auditors-policy** has been revoked successfully. 
 
   Before performing the policy review:
 

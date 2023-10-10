@@ -10,9 +10,6 @@ Begin by granting the Data Masking role on your target database. Then, mask the 
 
 Estimated Time: 15 minutes
 
-Watch the video below for a quick walk-through of the lab.
-[Mask Sensitive Data](videohub:1_la3bsx6x)
-
 ### Objectives
 
 In this lab, you will:
@@ -39,6 +36,9 @@ This lab assumes you have:
 ### Assumptions
 
 - Your data values are most likely different than those shown in the screenshots.
+
+Watch the video below for a quick walk-through of the lab.
+[Mask Sensitive Data](videohub:1_czbwzq21)
 
 
 ## Task 1: Grant the Data Masking role on your target database
@@ -231,4 +231,4 @@ You can run a data masking job against your target database from the **Masking P
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 24, 2023
+- **Last Updated By/Date** - Jody Glover, August 17, 2023
