@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Key Va
 
 *Estimated Lab Time:* 55 minutes
 
-*Version tested in this lab:* Oracle OKV 21.6
+*Version tested in this lab:* Oracle OKV 21.7
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault (May 2022)*" [](youtube:4VR1bbDpUIA)
@@ -747,4 +747,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - July 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - October 2023
