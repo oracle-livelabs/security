@@ -50,13 +50,7 @@
       "filename": "../../tsdp/tsdp.md"
     },
     {
-      "title": "Lab 7: SQL Firewall",
-      "description": "In this lab you can see how to leverage Oracle SQL Firewall",
-      "publisheddate": "08/18/2023",
-      "filename": "../../sqlfw/sqlfw.md"
-    },
-    {
-      "title": "Lab 8: Data Safe for on-premises database",
+      "title": "Lab 7: Data Safe for on-premises database",
       "description": "In this lab you can see how to leverage Oracle Data Safe",
       "publisheddate": "10/11/2021",
       "filename": "../../data-safe/data-safe.md"
