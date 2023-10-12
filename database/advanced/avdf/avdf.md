@@ -9,7 +9,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 ### Video Preview
 
-Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall (May 2022)*" [](youtube:eLEeOLMAEec)
+Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](youtube:eLEeOLMAEec)
 
 ### Objectives
 - Connect Audit Vault Server to an Oracle DB
@@ -640,6 +640,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
         exttrail p1
         SOURCECATALOG pdb1
         DDL INCLUDE ALL
+        TABLE employeesearch_prod.demo_hr_employees, KEYCOLS (firstname, lastname);
         TABLE employeesearch_prod.*;
         </copy>
         ````
