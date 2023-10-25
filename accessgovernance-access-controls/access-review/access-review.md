@@ -1,4 +1,4 @@
-# Perform Access Review Tasks
+# Perform Access Reviews for database
 
 ## Introduction
 
@@ -107,5 +107,6 @@ In this lab, you will:
 
 ## Acknowledgements
 
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
-* **Last Updated By/Date** - Anbu Anbarasu, July 2023
+* **Authors** - Anuj Tripathi
+* **Contributors** - Anbu Anbarasu
+* **Last Updated By/Date** - Anuj Tripathi, October 2023

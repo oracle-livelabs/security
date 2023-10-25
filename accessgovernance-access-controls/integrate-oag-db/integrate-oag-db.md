@@ -1,4 +1,4 @@
-# To Establish Connection to Oracle Database and Oracle Identity Governance
+# Connect to OIG and Oracle Database
 
 ## Introduction
 
@@ -15,7 +15,7 @@ Watch the video below for a quick walk-through of the lab.
 
 In this lab, you will:
 
-* To Establish Connection to Oracle Database and Oracle Identity Governance
+* Establish Connection to an Oracle Identity Governance and an Oracle Database
 
 ## Task 1 : Verify Docker is up and Running
 
@@ -67,7 +67,25 @@ In this lab, you will:
     <copy>./start_all_servers.sh</copy>
     ```
 
-## Task 3: Integrate with Oracle Identity Governance
+## Task 3: Verify the Private IP address of Compute Instance
+
+1. Launch a browser window. Login to OCI console using the URL mentioned below. The OCI account sign in page appears. Enter the username and password provided during signup.
+
+    ```
+    <copy>https://console.us-ashburn-1.oraclecloud.com/</copy>
+    ```
+
+2. Click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Select *Compute* in the *Navigation menu*. Select *Instances* from the list of products.
+
+    ![OCI Console Compute Instances](images/compute-instance.png)
+
+3. Notedown the Private IP address of the Compute Instance for reference. We will require to use them in the further labs.
+
+      ![List of files in directory](images/private-ip.png)
+
+    You may now **proceed to the next lab.**
+
+## Task 4: Integrate with Oracle Identity Governance
 
 1. On the Oracle Access Governance service home page *refer Lab 6:Task 1*, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
 
@@ -99,7 +117,7 @@ In this lab, you will:
 7. On the **Configure** step, enter connection details for the target system:
 
     **JDBC URL:**
-    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 5 : Task 3*  for the private ip of your compute instance.
+    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Task 3 : Step 3*  above for the private ip of your compute instance.
 
     ```
     <copy>jdbc:oracle:thin:@//<--privateipofyourcomputeinstance-->:1521/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM</copy>
@@ -160,7 +178,7 @@ In this lab, you will:
 
      ![Verify the zip file](images/verify-zip.png)
 
-## Task 4: Install OAG Agent on the Compute Instance and Configure
+## Task 5: Install OAG Agent on the Compute Instance and Configure
 
 1. Open the terminal session.
 
@@ -202,7 +220,7 @@ In this lab, you will:
 
 5. Start the agent
 
-     ```
+    ```
     <copy>sh agentManagement.sh --volume /home/opc/vol_oag --start</copy>
     ```
 
@@ -210,44 +228,67 @@ In this lab, you will:
 
 6. Verify the agent
 
-     ```
+    ```
     <copy>sh agentManagement.sh --volume /home/opc/vol_oag --status</copy>
     ```
 
     ![Verify the agent](images/agent-status.png)
 
-## Task 5: Connect to Oracle Database and download the DB Agent
+## Task 6: Connect to Oracle Database and download the DB Agent
 
-1. Navigate to the Connected Systems page of the Oracle Access Governance Console, by following these steps:
-  From the Oracle Access Governance navigation menu icon Navigation menu, select Service Administration → Connected Systems.
-  Click the Add a connected system button to start the workflow.
+1. Navigate to the **Connected Systems** page of the Oracle Access Governance Console, by following these steps:
+  From the Oracle Access Governance navigation menu icon **Navigation menu**, select **Service Administration** → **Connected Systems**.
+  Click the **Add a connected system** button to start the workflow.
 
-2. From the Add a Connected System page, Select the Add button on the Would you like to connect to a database management system? tile.
+2. From the Add a Connected System page, Select the **Add** button on the **Would you like to connect to a database management system?** tile.
 
-3. On the Select system step of the workflow, Select Database User Management (Oracle DB) and click Next.
+3. On the Select system step of the workflow, Select **Database User Management (Oracle DB)** and click **Next**.
 
-4. On the Enter Details step of the workflow, enter the details for the connected system:
+4. On the **Enter Details** step of the workflow, enter the details for the connected system:
 
-          * What do you want to call your database : OAG-DB
-          * How do you want to describe this database: OAG-DB
+    * **What do you want to call your database** : OAG-DB
+    * **How do you want to describe this database**: OAG-DB
 
-      Click Next
+      Click **Next**
+
+    ![Add an Oracle DBUM Connected System](images/add-db-connected-system.png)
 
 5. On the Configure step of the workflow, enter the configuration details required to allow Oracle Access Governance to connect to the target database.
 
-          * Easy Connect URL for Database: jdbc:oracle:thin:@//<—privateipaddressofcomputeinstance-->/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM
+    **Easy Connect URL for Database**:
 
-          * User Name: sys as sysdba
+    **JDBC URL:**
+    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Task 3 : Step 3*  above for the private ip of your compute instance.
 
-          * Password: Welcome1
+    ```
+    <copy>jdbc:oracle:thin:@//<—privateipaddressofcomputeinstance-->/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM</copy>
+    ```
 
-          * Confirm password: Welcome1
+    **User Name**:
 
-6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select Add to create the connected system.
+    ```
+    <copy>sys as sysdba</copy>
+    ```
 
-7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the Download link to download the agent zip file to the environment in which the agent will run.
+    **Password**:
 
-## Task 6: Install the DB Agent on the Target System
+    ```
+    <copy>Welcome1</copy>
+    ```
+
+    **Confirm password**:
+
+    ```
+    <copy>Welcome1</copy>
+    ```
+
+    ![Enter Details](images/enter-details-connected-system-1.png)
+
+6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select **Add** to create the connected system.
+
+7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the **Download** link to download the agent zip file to the environment in which the agent will run.
+
+## Task 7: Install the DB Agent on the Target System
 
 1. Open the terminal.
 
@@ -274,26 +315,28 @@ In this lab, you will:
 2. Install the agent using the below commands:
 
      ```
-    <copy>curl https://raw.githubusercontent.com/oracle/docker-images/main/OracleIdentityGovernance/samples/scripts/agentManagement.sh -o agentManagement.sh;
+    <copy>curl https://raw.githubusercontent.com/oracle/docker-images/main/OracleIdentityGovernance/samples/scripts/agentManagement.sh -o agentManagement.sh;</copy>
+     ```
 
-  </copy>
-     ```  
      ```
-    <copy>sh agentManagement.sh --volume /home/opc/vol_oag_db --agentpackage /home/opc/Downloads/OAG-DB.zip --install
-  </copy>
+    <copy>sh agentManagement.sh --volume /home/opc/vol_oag_db --agentpackage /home/opc/Downloads/OAG-DB.zip --install</copy>
      ```
+
 3. Start the agent with the following command:
 
-      ```
+     ```
       <copy>sh agentManagement.sh --volume /home/opc/vol_oag_db --start</copy>
-      ``` 
+     ```
 
-## Task 7 : Verify the Agent Installation
+## Task 8: Verify the Agent Installation
 
 1. Login to the Oracle Access Governance Console, select the Navigation Menuicon to display the navigation menu.
 2. In the Oracle Access Governance Console, select Service Administration → Connected Systems from the navigation menu.
 3. On the Connected Systems screen, the tile showing the name of the connected system shows a status of Waiting for initial connection. Click on Manage Connection.
 4. The Activity Log at the bottom of the page will show the status of the Validate operation, Pending while the agent comes up. If the agent does not come up, check the agent install and operation logs for any issues.
+
+![Verify Connected System Configuration on UI](images/connection-succesful.png)
+
 5. Once the agent has come up, the status of the Validate operation will show as Success.
 
   You may now **proceed to the next lab**.
@@ -307,4 +350,5 @@ In this lab, you will:
 
 ## Acknowledgements
 
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
+* **Authors** - Anuj Tripathi, Anbu Anbarasu
+* **Last Updated By/Date** - Anuj Tripathi, October 2023

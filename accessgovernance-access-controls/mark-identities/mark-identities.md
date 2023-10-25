@@ -1,14 +1,12 @@
-# Mark the Identites
+# Mark the Identities for Access Governance
 
 ## Introduction
 
 Access Governance Administrators (Pamela Green) will activate the identities.
 
-
-* Persona: Access Governance Administrator 
+* Persona: Access Governance Administrator
 
 *Estimated Time*: 15 minutes
-
 
 Watch the video below for a quick walk-through of the lab.
 [Oracle Video Hub video with no sizing](videohub:1_ml4wxlqu)
@@ -16,28 +14,28 @@ Watch the video below for a quick walk-through of the lab.
 ### Objectives
 
 In this lab, you will:
+
 * Activate the Identities
 
 ## Task 1: Sign in to Oracle Access Governance Console
 
-1. From your browser, go to the Oracle Access Governance Console using URL mentioned in *Lab 3: Task 1* 
-
+1. From your browser, go to the Oracle Access Governance Console using URL mentioned in *Lab 3: Task 1*
 
 2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
 
     **Username:**
+
     ```
     <copy>pamela.green</copy>
     ```
 
     **Password:**
+
     ```
     <copy>Oracl@123456</copy>
     ```
 
-
   You will be navigated to the home page of your Oracle Access Governance Console.
-
 
   ![Access Governance Homepage](images/ag-homepage.png)
 
@@ -53,23 +51,21 @@ In this task, you will select the identities that you want to include in your se
 
    ![Manage Identities page](images/select-any.png)
 
-3. Select the below options for the condition to match the identities that you want to include. 
+3. Select the below options for the condition to match the identities that you want to include.
 
-      *  Select attribute: Status
-      * Select operator: Contains 
-      * Attribute value: Active 
-    
+      * Select attribute: Status
+      * Select operator: Contains
+      * Attribute value: Active
+
     Hit **Enter**
-    
 
-4. Click on **Preview Summary based on the rule above**. The identities that match the rule will be visible. 
+4. Click on **Preview Summary based on the rule above**. The identities that match the rule will be visible.
 
 5. Close the pop-up and click on **Save**
 
   ![Manage Identities page](images/identities-user.png)
 
-
-  You may now **proceed to the next lab**. 
+  You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -79,5 +75,6 @@ In this task, you will select the identities that you want to include in your se
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgements
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Anbu Anbarasu, May 2023
+
+* **Authors** - Anuj Tripathi, Anbu Anbarasu
+* **Last Updated By/Date** - Anuj Tripathi, October 2023

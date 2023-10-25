@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Implementing Access Controls using Oracle Access Governance",
+    "workshoptitle": "Implement Access Controls using Oracle Access Governance",
     "help": "livelabs-help-oci_us@oracle.com",
     "tutorials": [
         {
@@ -28,14 +28,14 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
         },
         {
-            "title": "Lab 4: Create IAM Policy and Users for Access Governance Instance",
+            "title": "Lab 4: Create IAM Policy and Users for Access Governance",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "../../create-ag-group-policies/create-ag-group-policies.md"
         },
         {
             "title": "Lab 5: Setup and configure Oracle Access Governance service instance",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
-            "filename": "../../instance-setup/ag-instance-setup.md"
+            "filename": "../../ag-instance-setup/ag-instance-setup.md"
         },
         {
             "title": "Lab 6: Connect to OIG and Oracle Database",

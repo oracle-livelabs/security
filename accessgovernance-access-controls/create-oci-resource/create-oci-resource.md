@@ -117,6 +117,5 @@ In this lab, you will:
 
 ## Acknowledgements
 
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
-* **Contributors** - Abhishek Juneja
-* **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
+* **Authors** - Anuj Tripathi, Anbu Anbarasu
+* **Last Updated By/Date** - Anuj Tripathi, October 2023

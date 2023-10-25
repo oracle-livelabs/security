@@ -1,4 +1,4 @@
-# Access Control
+# Define Access Controls for Database
 
 ## Introduction
 
@@ -423,4 +423,6 @@ In this lab, you will:
 
 ## Acknowledgements
 
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
+* **Authors** - Anuj Tripathi
+* **Contributors** - Anbu Anbarasu
+* **Last Updated By/Date** - Anuj Tripathi, October 2023

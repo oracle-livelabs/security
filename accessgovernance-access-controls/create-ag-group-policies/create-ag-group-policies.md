@@ -1,4 +1,4 @@
-# Create Groups and Policies for Access Governance
+# Create IAM Policy and Users for Access Governance
 
 ## Introduction
 
@@ -121,5 +121,5 @@ In this lab, you will:
 
 ## Acknowledgements
 
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu
-* **Last Updated By/Date** - Anbu Anbarasu, June 2023
+* **Authors** - Anuj Tripathi, Anbu Anbarasu
+* **Last Updated By/Date** - Anuj Tripathi, October 2023
