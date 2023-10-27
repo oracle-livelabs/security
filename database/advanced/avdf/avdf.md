@@ -641,7 +641,6 @@ The first thing we need to do is to set up the database to be ready for Golden G
         SOURCECATALOG pdb1
         DDL INCLUDE ALL
         TABLE employeesearch_prod.demo_hr_employees, KEYCOLS (firstname, lastname);
-        TABLE employeesearch_prod.*;
         </copy>
         ````
 
@@ -1826,6 +1825,7 @@ Important: before performing this lab, you must have:
 
 ## Task 18: Reset the AVDF Lab Config
 
+<!--
 1. Delete the **Database Firewall Monitoring** configuration
 
     - Go back to Audit Vault Web Console as *`AVADMIN`*"
@@ -1849,8 +1849,9 @@ Important: before performing this lab, you must have:
     - Select "**10.0.0.150 : 1521 : pdb1**" and click [**Delete**]
 
         ![AVDF](./images/avdf-253.png "Delete the Database Firewall Monitoring")
+-->
 
-2. Reset **Golden Gate** configuration
+1. Reset **Golden Gate** configuration
 
     - In the section **Audit Data Collection**, select "**/u01/app/oracle/product/ogg/var/lib/data**" and click [**Stop**]
 
@@ -1922,7 +1923,7 @@ Important: before performing this lab, you must have:
 
         ![AVDF](./images/avdf-263.png "Reset the Golden Gate configuration")
 
-3. Delete the **Unified Audit Trail** configuration
+2. Delete the **Unified Audit Trail** configuration
 
     - Go back to Audit Vault Web Console as *`AVADMIN`*"
 
@@ -1958,7 +1959,7 @@ Important: before performing this lab, you must have:
         ![AVDF](./images/avdf-268.png "List of Target")
 -->
 
-4. Then, delete the Audit Vault **Agent**
+3. Then, delete the Audit Vault **Agent**
 
     - Click the **Agents** tab
 
@@ -1979,7 +1980,7 @@ Important: before performing this lab, you must have:
         ![AVDF](./images/avdf-272.png "Check that the Audit Vault Agent is deleted")
 
 
-5. Finally, reset **AVDF binaries**
+4. Finally, reset **AVDF binaries**
 
     ````
     <copy>
@@ -1993,7 +1994,7 @@ Important: before performing this lab, you must have:
 
     ![AVDF](./images/avdf-273.png "Reset AVDF binaries")
 
-6. **Now, the AVDF configuration is correctly reset!**
+5. **Now, the AVDF configuration is correctly reset!**
 
 You may now proceed to the next lab!
 
