@@ -1825,8 +1825,7 @@ Important: before performing this lab, you must have:
 
 ## Task 18: Reset the AVDF Lab Config
 
-<!--
-1. Delete the **Database Firewall Monitoring** configuration
+1. Reset **Golden Gate** configuration
 
     - Go back to Audit Vault Web Console as *`AVADMIN`*"
 
@@ -1837,21 +1836,6 @@ Important: before performing this lab, you must have:
     - Click the Target Name **pdb1**
 
         ![AVDF](./images/avdf-250.png "Select the Target Name")
-
-    - In the section **Database Firewall Monitoring**, select "**10.0.0.150 : 1521 : pdb1**" and click [**Stop**]
-
-        ![AVDF](./images/avdf-251.png "Stop the Database Firewall Monitoring")
-
-    - Check that the service is stopped
-
-        ![AVDF](./images/avdf-252.png "Check that the service is stopped")
-
-    - Select "**10.0.0.150 : 1521 : pdb1**" and click [**Delete**]
-
-        ![AVDF](./images/avdf-253.png "Delete the Database Firewall Monitoring")
--->
-
-1. Reset **Golden Gate** configuration
 
     - In the section **Audit Data Collection**, select "**/u01/app/oracle/product/ogg/var/lib/data**" and click [**Stop**]
 
@@ -1945,20 +1929,6 @@ Important: before performing this lab, you must have:
 
         ![AVDF](./images/avdf-266.png "Delete the Audit Data Collection")
 
-<!--
-4. Next, delete the **target**
-
-    - Click the **Targets** tab
-
-    - Select the Target Name **pdb1** and click [**Delete**]
-
-        ![AVDF](./images/avdf-267.png "Delete the Target")
-
-    - Now, you should see no rows
-
-        ![AVDF](./images/avdf-268.png "List of Target")
--->
-
 3. Then, delete the Audit Vault **Agent**
 
     - Click the **Agents** tab
@@ -1978,7 +1948,6 @@ Important: before performing this lab, you must have:
     - Now, the agent is deleted
 
         ![AVDF](./images/avdf-272.png "Check that the Audit Vault Agent is deleted")
-
 
 4. Finally, reset **AVDF binaries**
 
