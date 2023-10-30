@@ -641,6 +641,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
         SOURCECATALOG pdb1
         DDL INCLUDE ALL
         TABLE employeesearch_prod.demo_hr_employees, KEYCOLS (firstname, lastname);
+        TABLE employeesearch_prod.*;
         </copy>
         ````
 
@@ -2009,4 +2010,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Nazia Zaidi
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - October 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023

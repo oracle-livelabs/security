@@ -396,4 +396,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - September 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023
