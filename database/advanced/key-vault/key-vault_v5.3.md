@@ -34,8 +34,9 @@ This lab assumes you have:
 | 5| Migrate to Online Master Key | 5 minutes | To re-configure the database to communicate directly with Oracle Key Vault |
 | 6| Create the OKV SEPS Wallet | <5 minutes||
 | 7| Perform a ReKey Operation | 5 minutes||
-| 8| Secret Management with OKV | 10 minutes||
-| 9| Reset the OKV Lab Config | <10 minutes||
+| 8| SSH Key Management and Remote Server Access Controls with OKV | 10 minutes||
+| 9| Secret Management with OKV | 10 minutes||
+|10| Reset the OKV Lab Config | <10 minutes||
 
 <!-- Advanced OKV Labs for 21.7
 | A| DB Account Pwd Management | 5 minutes ||
@@ -465,7 +466,13 @@ You must create a Master Key for the container database before continuing. Each 
 
 9. Now you have rekeyed the Master Key for the container and pluggable database(s)!
 
-## Task 8: Secret Management with OKV
+## Task 8: SSH Key Management and Remote Server Access Controls
+In this lab, we will introduce remote server access controls by centrally managing users public keys.  In the second part, we will manage users' private keys in OKV making those private keys non-extractable.
+
+1. ...
+
+
+## Task 9: Secret Management with OKV
 In this lab, we will fetch a Database account password from OKV On-Demand
 
 1. Create a new Endpoint for secret management
@@ -568,7 +575,7 @@ Oracle provides deployment recommendations for deployments that have two or more
 
 -->
 
-## Task 9: Reset the OKV Lab Config
+## Task 10: Reset the OKV Lab Config
 
 1. Drop the Endpoint and Wallet created in OKV during this lab
 
