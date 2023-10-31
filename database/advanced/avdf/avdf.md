@@ -731,7 +731,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
     ![AVDF](./images/avdf-043b.png "See a Before-After values output")
 
     **Note:** If you are not seeing Before/After value changes in Audit Vault:
-    - **Restart OGG** (Oracle Golden Gate) Extracts (from the Golden Gate Web Console, click [**Action**] for the `pdb1` extract, stop and start it)
+    - Restart OGG Extracts (from the Golden Gate Web Console, click [**Action**] for the `pdb1` extract, stop and start it)
     - Ensure you properly executed the scripts in `Before_and_After_Changes` folder to create the "`C##GGAVADMIN`" user and setup the database
     - Check if the Timezone of your Audit Trail is correctly set to your VM Timezone
     - Check your Audit Trail is up and running
