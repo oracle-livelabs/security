@@ -535,6 +535,8 @@ In this lab, we will fetch a Database account password from OKV On-Demand
 
 6. Congratulations, now you know how to use and manage a secret with OKV!
 
+-->
+
 <!-- Other OPTIONAL OKV Labs
 
 **STEP XXXX**: (Optional) Create a 2-node Multi-Master Cluster
