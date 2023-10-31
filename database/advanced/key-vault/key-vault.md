@@ -468,6 +468,120 @@ You must create a Master Key for the container database before continuing. Each 
 
 9. Now you have rekeyed the Master Key for the container and pluggable database(s)!
 
+<!--
+
+Task 8: SSH Key Management and Remote Server Access Controls
+In this lab, we will introduce remote server access controls by centrally managing users public keys.  In the second part, we will manage users' private keys in OKV making those private keys non-extractable.
+
+1. ...
+
+
+
+
+Task 9: Secret Management with OKV
+In this lab, we will fetch a Database account password from OKV On-Demand
+
+1. Create a new Endpoint for secret management
+
+    ````
+    <copy>./okv_add_endpoint_secret.sh</copy>
+    ````
+
+    ![Key Vault](./images/okv-030.png "Create a new Endpoint for secret management")
+
+    **Note**:
+    - We create a directory for a non-DB EndPoint, here an Endpoint for DB account
+    - We provision the EndPoint without password and change the Client Config in `$OKV_RESTHOME/conf/okvrestcli.ini` to point to the secret EndPoint wallet directory
+
+2. Create the secret password and upload it into OKV
+
+    ````
+    <copy>./okv_crea_secret_pwd.sh</copy>
+    ````
+
+    ![Key Vault](./images/okv-031.png "Create the secret password into OKV")
+
+    **Note**:
+    - This script generate a JSON file (`$OKV_RESTHOME/sec-reg.json`) to register the secret
+    - Once generated, it will upload the secret password into OKV
+    - OKV will respond with the unique ID of the secret password... **please copy it for later use**!
+    - Because the password is now in OKV, we don’t need anymore the temporary file which contains the secret password, so the script will delete it
+
+3. Now, define the custom attributes to the secret password (please **paste as parameter the unique ID** of the secret copied previously)
+
+    ````
+    <copy>./okv_add_secret_attributes.sh <SECRET_UNIQUE_ID></copy>
+    ````
+
+    ![Key Vault](./images/okv-032.png "Define the custom attributes to the secret password")
+
+    **Note**:
+    - We add the username of the DB user (here `REFRESH_DWH)` and the connect string to the database (here "`dbsec-lab:1521/pdb1`")
+    - A final check confirm that all the custom attributes are correctly set
+
+4. Finally, test your secret configuration by logging to the database with the secret password (with DB user "*`REFRESH_DWH`*" and Connect String "*`dbsec-lab:1521/pdb1`*" as parameters)
+
+    ````
+    <copy>./okv_login_with_secret.sh REFRESH_DWH dbsec-lab:1521/pdb1</copy>
+    ````
+
+    ![Key Vault](./images/okv-033.png "Test your secret configuration")
+
+    **Note**:
+    - As you can see, you can log to your target DB without knowing the password or typing it because this secret is in OKV now!
+    - After 3 seconds, the script break the SQL session and exit automatically
+
+5. When you're confortable with this concept, reset the secret configuration
+
+    ````
+    <copy>./okv_clean_endpoint_secret.sh</copy>
+    ````
+
+    ![Key Vault](./images/okv-034.png "Reset the secret configuration")
+
+6. Congratulations, now you know how to use and manage a secret with OKV!
+
+-->
+
+<!-- Other OPTIONAL OKV Labs
+
+**STEP XXXX**: (Optional) Create a 2-node Multi-Master Cluster
+Oracle provides deployment recommendations for deployments that have two or more nodes.
+
+- **2-Node Deployment Recommendations**
+
+    - Use a 2-node deployments for the following situations
+        - Non-critical environments, such as test and development
+        - Simple deployment of read-write pairs with both nodes active, replacing classic primary-standby
+        - Single data center environments
+
+    - Considerations for a two-node deployment
+        - Availability is provided by multiple nodes
+        - Maintenance will require down time
+        - Good network connectivity between data centers is mandatory
+
+- **3-Node Deployment Recommendations**
+
+    - Use a 3-node deployment for the following situations
+        - Single data center environments with minimal downtime requirement
+        - Single read-write pair with additional read-only node to handle load
+        - One read-only node is available for zero downtime during maintenance
+
+    - Considerations for a three-node deployment
+        - Take regular backups to remove destinations for disaster recovery
+
+- **4 or More Node Deployment Recommendations**
+
+    - Use a deployment of four or more nodes for the the following situations
+        - Large data centers distributed across geographical locations
+        - Deployment of read-write pairs with pair members spanning geography
+
+    - Considerations for a large deployment
+        - Availability is provided by multiple nodes
+        - Additional read-only nodes can be used to handle load
+        - Good network connectivity between data centers is mandatory
+
+-->
 
 ## Task 8: Reset the OKV Lab Config
 
