@@ -474,9 +474,11 @@ Task 8: SSH Key Management and Remote Server Access Controls
 In this lab, we will introduce remote server access controls by centrally managing users public keys.  In the second part, we will manage users' private keys in OKV making those private keys non-extractable.
 
 1. ...
+-->
 
+<!--
+Task 8: Secret Management with OKV
 
-Task 9: Secret Management with OKV
 In this lab, we will fetch a Database account password from OKV On-Demand
 
 1. Create a new Endpoint for secret management
@@ -538,7 +540,6 @@ In this lab, we will fetch a Database account password from OKV On-Demand
     ![Key Vault](./images/okv-034.png "Reset the secret configuration")
 
 6. Congratulations, now you know how to use and manage a secret with OKV!
-
 -->
 
 <!-- Other OPTIONAL OKV Labs
