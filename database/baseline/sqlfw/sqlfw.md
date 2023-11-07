@@ -31,6 +31,206 @@ This lab assumes you have:
 | 3 | Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
 | 4 | Reset the SQL Firewall Labs Environment | <5 minutes |
 
+## Task 1: Register an on-premise Oracle Database
+
+To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe
+
+1. **From your NoVNC Remote Desktop**, open a web browser window to your OCI console and login with your OCI account
+
+2. On the Burger menu, click on **Oracle Database**, then on "**Data Safe - Database Security**"
+
+    ![Data Safe](./images/sqlfw-001.png "Open Data Safe")
+ 
+3. Click on "**Target databases**"
+
+    ![Data Safe](./images/sqlfw-002.png "Add Target Database")
+
+4. On **Connectivity Options** sub-menu, click  on **On-Premises Connectors**
+
+    ![Data Safe](./images/sqlfw-003.png "On-Premises Connectors")
+
+5. Click [**Create On-Premises Connectors**]
+
+    ![Data Safe](./images/sqlfw-004.png "Create On-Premises Connectors")
+
+6. Select your Compartment and fill out as following
+
+    - Name: `<Your On-Premises Connectors Name>` (here "*`DBSeclabs_DB23c`*")
+    - Decription: *`On-Premises connector for DBSec Livelabs 23c databases`*
+
+       ![Data Safe](./images/sqlfw-005.png "Set OCI")
+
+7. Click [**Create On-Premises Connectors**]
+
+8. Once is created, the On-Premises connector is "**INACTIVE**"
+
+       ![Data Safe](./images/sqlfw-006.png "the On-Premises connector is INACTIVE")
+
+9. Now, let's active it
+
+    - Click [**Download install Bundle**] to download the zip file and enter a password of at least 15 characters (here *`Oracle12345678!`*)
+
+        ````
+        <copy>Oracle12345678!</copy>
+        ````
+
+       ![Data Safe](./images/sqlfw-007.png "Download install Bundle")
+
+    - OCI Data Safe will generate a unique On-Premises connector and it can take up to one minute
+
+       ![Data Safe](./images/sqlfw-008.png "Generate a unique On-Premises connector")
+
+    - Once is generated, select **Save File** and click [**OK**] to download it into *`home/opc`*
+
+       ![Data Safe](./images/sqlfw-009.png "Save the generated file")
+
+    - Browse the location where you want to store the zip file and click [**Save**]
+
+        **Note**: The file name proposed a default value (here "*`DBSeclabs_DB23c.zip`*"), please keep going with it
+
+    - Setup the Data Safe On-Premises connector
+
+        - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+
+            ````
+            <copy>sudo su - oracle</copy>
+            ````
+
+            **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+
+        - Copy Data Safe on-premises connector uploaded to your Data Safe directory (here *`$DS_HOME`*)
+
+            ````
+            <copy>
+            sudo mv /home/opc/DBSeclabs_DB23c.zip $DS_HOME
+            sudo chown -R oracle:oinstall $DS_HOME
+            sudo chmod -R 775 $DS_HOME
+            </copy>
+            ````
+
+               ![Data Safe](./images/ds-009.png "Copy Data Safe on-premises connector uploaded")
+
+        - Install Data Safe On-Premises connector (enter the password defined for the zip file above - here *`Oracle12345678!`*)
+
+            ````
+            <copy>
+            cd $DS_HOME
+            unzip DBSeclabs_DB23c.zip
+            python setup.py install --connector-port=1560
+            </copy>
+            ````
+
+            ````
+            <copy>Oracle12345678!</copy>
+            ````
+
+               ![Data Safe](./images/ds-010.png "Install Data Safe On-Premises connector")
+
+            **Note**: In case of trouble, you can stop or start the Data Safe On-Premises connector with the following command lines:
+
+            ````
+            <copy>
+            python $DS_HOME/setup.py stop
+            python $DS_HOME/setup.py start
+            </copy>
+            ````
+
+    - Go back to the Data Safe console to verify the status of the Data Safe On-Premises connector
+
+        ![Data Safe](./images/ds-011.png "Check the status of the Data Safe On-Premises connector")
+
+        **Note**: It sould be "**ACTIVE**" now!
+
+10. Go back to your terminal session to create the Data Safe **DS_ADMIN** user on `pdb1`
+
+    ````
+    <copy>
+    cd $DBSEC_LABS/data-safe
+    ./ds_create_user.sh pdb1
+    </copy>
+    ````
+
+    ![Data Safe](./images/ds-012.png "Create the Data Safe DS_ADMIN user")
+
+11. On Data Safe Console, register the Target database **pdb1**
+
+    - Click on the **On-Premises Connectors** link
+    
+    ![Data Safe](./images/ds-013.png "Click on the On-Premises Connectors link")
+    
+    - Click on **Target Databases** sub-menu
+
+    ![Data Safe](./images/ds-014.png "Click on Target Databases sub-menu")
+
+    - Click [**Register Database**]
+
+    ![Data Safe](./images/ds-015.png "Click Register Database")
+
+    - Fill out the "Register Target Database" as following
+
+        - Database Type: Select *`Oracle On-Premises Database`*
+        - Data Safe Target Display Name: *`DBSec_Livelabs_pdb1`*
+        - Description: *`On-Premises pluggable database of DBSeclab VM (pdb1)`*
+        - Compartment: Select your own Compartment
+
+            ![Data Safe](./images/ds-016.png "Fill out the Register Target Database parameters")
+
+        - Choose a connectivity option: *`On-Premises Connector`*
+        - Select On-Premises Connector: Select *`DBSeclabs_DB23c`*
+        - TCP/TLS: *`TCP`*
+        - Database Service Name: *`pdb1`*
+        - Database IP Address: *`10.0.0.150`*
+        - Database Port Number: *`1521`*
+        - Database User Name: *`DS_ADMIN`* (in uppercase)
+        - Database Password: *`Oracle123`*
+    
+            ![Data Safe](./images/ds-017.png "Fill out the Register Target Database parameters")
+
+    - Click [**Register**] to launch the registration process
+
+        ![Data Safe](./images/ds-018.png "Click Register")
+
+    - Once is created, the new target should be "**ACTIVE**"
+
+        ![Data Safe](./images/ds-019.png "New target status")
+
+        **Note:**
+        - On the **Target Database Details** tab, you can view the target database name and description, OCID, when the target database was registered and the compartment to where the target database was registered.
+        - You can also view connection information, such as database type, database service name, and connection protocol (TCP or TLS). The connection information varies depending on the target database type.
+        - The **Target Database Details** page provides options to edit the target database name and description, edit connection details, update the Oracle Data Safe service account and password on the target database (applicable to non-Autonomous Databases), and download a SQL privilege script that enables features on your target database.
+        - From the **More Actions** menu, you can choose to move the target database to a different compartment, add tags, deactivate your target database, and deregister your target database.
+
+12. Click on the **Target Databases** link to view the list of registered target databases to which you have access
+
+    ![Data Safe](./images/ds-020.png "View the list of registered target databases")
+
+    **Note:** All your registered target databases are listed on the right
+
+    ![Data Safe](./images/ds-021.png "List of registered target databases")
+
+13. Let's have a look on a quick overview of the **Security Center**
+
+    - Click on **Security Center** sub-menu
+
+        ![Data Safe](./images/ds-022.png "Click on Security Center sub-menu")
+
+        **Note**:
+        - Make sure your compartment is still selected under **List Scope**
+        - In Security Center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Alerts, and Settings
+
+    - By default, the dashboard is displayed and the **Security Assessment** and **User Assessment** charts are automatically populated
+    
+        ![Data Safe](./images/ds-023.png "Data Safe dashboard")
+
+        **Note**:
+        - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you
+        - Therefore, the Security Assessment, User Assessment, Feature Usage, and Operations Summary charts in the dashboard already have data
+        - During registration, Oracle Data Safe also discovers audit trails on your target database
+        - That is why the Audit Trails chart in the dashboard shows one audit trail with the status In Transition for your Autonomous Database
+        - Later you start this audit trail to collect audit data into Oracle Data Safe
+
+            ![Data Safe](./images/ds-024.png "Data Safe dashboard")
+
 ## Task 1: Enable SQL Firewall to protect Glassfish HR Application
 
 In this lab you will learn how the administrator trains the system to learn the authorized SQL statements and the trusted connection paths of HR application. SQL Firewall policy is generated with allow-lists representing authorized SQL connections and statements, and deployed to the target.
@@ -59,7 +259,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_glassfish_start_db23c.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-001.png "Set HR App with DB23c")
+    ![SQLFW](./images/sqlfw-101.png "Set HR App with DB23c")
 
     **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
 
@@ -79,21 +279,21 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
         <copy>Oracle123</copy>
         ```
 
-        ![SQLFW](./images/sqlfw-002.png "HR App - Login")
+        ![SQLFW](./images/sqlfw-102.png "HR App - Login")
 
-        ![SQLFW](./images/sqlfw-003.png "HR App - Login")
+        ![SQLFW](./images/sqlfw-103.png "HR App - Login")
 
     - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
 
-        ![SQLFW](./images/sqlfw-004.png "HR App - Settings")
+        ![SQLFW](./images/sqlfw-104.png "HR App - Settings")
 
     - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
 
-        ![SQLFW](./images/sqlfw-005.png "HR App - Session details")
+        ![SQLFW](./images/sqlfw-105.png "HR App - Session details")
 
     - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
 
-        ![SQLFW](./images/sqlfw-006.png "HR App - Check the targetted database")
+        ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
 
 5. Create an administrator (**`dba_tom`**) to manage SQL Firewall
 
@@ -101,7 +301,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_crea_admin-user.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-007.png "Create the SQL Firewall Admin user")
+    ![SQLFW](./images/sqlfw-107.png "Create the SQL Firewall Admin user")
 
 6. Enable SQL Firewall
 
@@ -109,7 +309,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_enable.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-008.png "Enable SQL Firewall")
+    ![SQLFW](./images/sqlfw-108.png "Enable SQL Firewall")
 
     **Note**: You must see `ENABLED`
 
@@ -121,7 +321,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_capture_start.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-009.png "Start the SQL workload capture of the application user")
+    ![SQLFW](./images/sqlfw-109.png "Start the SQL workload capture of the application user")
 
 2. Now, use your Glassfish App to generated activity on your database:
 
@@ -131,11 +331,11 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     
     - Click on **Search Employees**
 
-        ![SQLFW](./images/sqlfw-010.png "Search Employees")
+        ![SQLFW](./images/sqlfw-110.png "Search Employees")
 
     - Click [**Search**]
 
-        ![SQLFW](./images/sqlfw-011.png "Search Employee")
+        ![SQLFW](./images/sqlfw-111.png "Search Employee")
 
     - Change some of the criteria and Search again
     - **Repeat 2-3 times** to ensure you have enough traffic
@@ -146,7 +346,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_capture_check.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-012.png "Check the sessions and capture logs")
+    ![SQLFW](./images/sqlfw-112.png "Check the sessions and capture logs")
 
     **Note:** Here, we check the session and capture logs
 
@@ -156,7 +356,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_capture_stop.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-013.png "Stop the SQL workload capture")
+    ![SQLFW](./images/sqlfw-113.png "Stop the SQL workload capture")
 
 ## Task 1c: Generate and enable allow list rules for HR Application user
 
@@ -166,7 +366,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_allow_list_rule_gen.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-014.png "Generate allow list rule")
+    ![SQLFW](./images/sqlfw-114.png "Generate allow list rule")
 
     **Note:** Here, we have 4 statements
 
@@ -176,7 +376,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_capture_count_events.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-015.png "Count the events captured")
+    ![SQLFW](./images/sqlfw-115.png "Count the events captured")
 
     **Note:** The count matches the count of distinct events we captured
 
@@ -186,7 +386,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_allow_list_rule_exam.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-016.png "Examine the SQL Firewall allow list rules")
+    ![SQLFW](./images/sqlfw-116.png "Examine the SQL Firewall allow list rules")
 
     **Note:** Here, we allow only connections from the Web App (`JDBC ThinClient`) initiated by the user `oracle` on server `10.0.0.150`
 
@@ -196,7 +396,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_setup_audit_policies.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-017.png "Set up the audit policies for SQL Firewall violations")
+    ![SQLFW](./images/sqlfw-117.png "Set up the audit policies for SQL Firewall violations")
 
 
 5. Enable the allow-list rule for `EMPLOYEESEARCH_PROD` in **observation mode**
@@ -205,7 +405,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_allow_list_rule_enable_monitor.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-018.png "Enable the allow-list rule in observation mode")
+    ![SQLFW](./images/sqlfw-118.png "Enable the allow-list rule in observation mode")
 
     **Note:** Here, we will observe and not block SQL Firewall violations
 
@@ -223,11 +423,11 @@ Let's assume there is a malicious insider who had access to the stolen credentia
     
         - Click on **Search Employees**
 
-            ![SQLFW](./images/sqlfw-010.png "Search Employees")
+            ![SQLFW](./images/sqlfw-110.png "Search Employees")
 
         - Click [**Search**]
 
-            ![SQLFW](./images/sqlfw-011.png "Search Employee")
+            ![SQLFW](./images/sqlfw-111.png "Search Employee")
 
         - Change some of the criteria (the same than previously) and Search again
         
@@ -239,7 +439,7 @@ Let's assume there is a malicious insider who had access to the stolen credentia
         <copy>./sqlfw_check_events.sh</copy>
         ```
 
-        ![SQLFW](./images/sqlfw-019.png "Check violation logs and audit records")
+        ![SQLFW](./images/sqlfw-119.png "Check violation logs and audit records")
 
         **Note:** No records is found because these queries are already listed as SQL statements allowed into the database
 
@@ -251,7 +451,7 @@ Let's assume there is a malicious insider who had access to the stolen credentia
         <copy>./sqlfw_select_sensitive_data.sh</copy>
         ```
 
-        ![SQLFW](./images/sqlfw-020.png "Select sensitive employee data")
+        ![SQLFW](./images/sqlfw-120.png "Select sensitive employee data")
 
     - Check again violation logs and audit records
 
@@ -259,7 +459,7 @@ Let's assume there is a malicious insider who had access to the stolen credentia
         <copy>./sqlfw_check_events.sh</copy>
         ```
 
-        ![SQLFW](./images/sqlfw-021.png "Check violation logs and audit records")
+        ![SQLFW](./images/sqlfw-121.png "Check violation logs and audit records")
 
         **Note:** SQL Firewall context violation is raised since SQL*Plus is not in the allowed OS program allow list, catching attention of security administrators
 
@@ -276,7 +476,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_allow_list_rule_enable_block.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-022.png "Update the allow-list rule to blocking mode")
+    ![SQLFW](./images/sqlfw-122.png "Update the allow-list rule to blocking mode")
 
     **Note:** SQL Firewall can now block SQL Injection attempts
 
@@ -286,21 +486,21 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Click **Search Employees**
 
-        ![SQLFW](./images/sqlfw-010.png "Search employees")
+        ![SQLFW](./images/sqlfw-110.png "Search employees")
 
     - Click [**Search**]
 
-        ![SQLFW](./images/sqlfw-011.png "Search employees")
+        ![SQLFW](./images/sqlfw-111.png "Search employees")
 
         **Note**: All rows are returned... normal, because, remerber, you allowed everything!
 
     - Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
-        ![SQLFW](./images/sqlfw-023.png "See the SQL query executed behind the form")
+        ![SQLFW](./images/sqlfw-123.png "See the SQL query executed behind the form")
 
     - Click [**Search**] again
 
-        ![SQLFW](./images/sqlfw-024.png "Search employees")
+        ![SQLFW](./images/sqlfw-124.png "Search employees")
 
         **Note:**
         - Now, you can see the official SQL query executed by this form which displays the results
@@ -316,7 +516,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form and **tick the "Debug" checkbox**
 
-        ![SQLFW](./images/sqlfw-025.png "Copy/Paste the SQL Injection query")
+        ![SQLFW](./images/sqlfw-125.png "Copy/Paste the SQL Injection query")
 
         **Note:**
         - Don't forget the "`'`" before the UNION key word to close the SQL clause "LIKE"
@@ -324,7 +524,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Click [**Search**]
 
-        ![SQLFW](./images/sqlfw-026.png "Search employees")
+        ![SQLFW](./images/sqlfw-126.png "Search employees")
 
         **Note:**
         - The output should return an ORA-failures on these attempts
@@ -336,7 +536,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_check_events.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-027.png "Check violation logs and audit records")
+    ![SQLFW](./images/sqlfw-127.png "Check violation logs and audit records")
 
     **Note:** SQL violation is raised, catching attention of security administrators!
 
@@ -348,7 +548,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_reset_env.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-050.png "Reset the SQL Firewall Labs Environment")
+    ![SQLFW](./images/sqlfw-200.png "Reset the SQL Firewall Labs Environment")
 
 2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
 
@@ -356,7 +556,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-051.png "Set HR App with PDB1")
+    ![SQLFW](./images/sqlfw-201.png "Set HR App with PDB1")
 
     **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
 
