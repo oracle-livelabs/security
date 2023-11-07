@@ -41,15 +41,15 @@ This lab assumes you have:
 
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe
 
-1. Open a web browser window to your OCI console and login with your OCI account
+1. **From your NoVNC Remote Desktop**, open a web browser window to your OCI console and login with your OCI account
 
-2. On the Burger menu, click on **Oracle Database**
+2. On the Burger menu, click on **Oracle Database**, then on "**Data Safe - Database Security**"
 
-    ![Data Safe](./images/ds-001.png "Oracle Database")
+    ![Data Safe](./images/ds-001.png "Open Data Safe")
  
-3. Then, on "**Data Safe**" section, click on "**Target Databases**"
+3. Click on "**Target databases**"
 
-    ![Data Safe](./images/ds-002.png "Target Databases")
+    ![Data Safe](./images/ds-002.png "Add Target Database")
 
 4. On **Connectivity Options** sub-menu, click  on **On-Premises Connectors**
 
@@ -61,7 +61,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 6. Select your Compartment and fill out as following
 
-    - Name: `<Your On-Premises Connectors Name>` (here "*`DBSec-Livelab_DBs`*")
+    - Name: `<Your On-Premises Connectors Name>` (here "*`DBSeclabs_DBs`*")
     - Decription: *`On-Premises connector for DBSec Livelabs databases`*
 
        ![Data Safe](./images/ds-004.png "Set OCI")
@@ -74,7 +74,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 9. Now, let's active it
 
-    - Click [**Download install Bundle**] to download the zip file onto your local machine and enter a password of at least 15 characters (here *`Oracle12345678!`*)
+    - Click [**Download install Bundle**] to download the zip file and enter a password of at least 15 characters (here *`Oracle12345678!`*)
 
         ````
         <copy>Oracle12345678!</copy>
@@ -86,15 +86,13 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
        ![Data Safe](./images/ds-007.png "Generate a unique On-Premises connector")
 
-    - Once is generated, select **Save File** and click [**OK**] to download it into your local machine
+    - Once is generated, select **Save File** and click [**OK**] to download it into *`home/opc`*
 
        ![Data Safe](./images/ds-008.png "Save the generated file")
 
     - Browse the location where you want to store the zip file and click [**Save**]
 
-        **Note**: The file name proposed a default value (here "*`DBSec-Livelab_DBs.zip`*"), please keep going with it
-
-    - Now, upload the zip file downloaded into your DBSecLab VM to *`home/opc`* with a transfer file sottware like scp, filezilla or others
+        **Note**: The file name proposed a default value (here "*`DBSeclabs_DBs.zip`*"), please keep going with it
 
     - Setup the Data Safe On-Premises connector
 
@@ -110,7 +108,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
             ````
             <copy>
-            sudo mv /home/opc/DBSec-Livelab_DBs.zip $DS_HOME
+            sudo mv /home/opc/DBSeclabs_DBs.zip $DS_HOME
             sudo chown -R oracle:oinstall $DS_HOME
             sudo chmod -R 775 $DS_HOME
             </copy>
@@ -123,7 +121,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
             ````
             <copy>
             cd $DS_HOME
-            unzip DBSec-Livelab_DBs.zip
+            unzip DBSeclabs_DBs.zip
             python setup.py install --connector-port=1560
             </copy>
             ````
@@ -184,7 +182,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
             ![Data Safe](./images/ds-016.png "Fill out the Register Target Database parameters")
 
         - Choose a connectivity option: *`On-Premises Connector`*
-        - Select On-Premises Connector: Select *`DBSec-Livelab_DBs`*
+        - Select On-Premises Connector: Select *`DBSeclabs_DBs`*
         - TCP/TLS: *`TCP`*
         - Database Service Name: *`pdb1`*
         - Database IP Address: *`10.0.0.150`*

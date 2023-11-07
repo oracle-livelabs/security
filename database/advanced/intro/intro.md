@@ -13,7 +13,7 @@ Now, you no longer need important resources on your PC (storage, CPU or memory),
 Watch a preview of "*Livelabs - Database Security Advanced (May 2022)*" [](youtube:h4gXFpOxWZU)
 
 ### Components
-The complete architecture of the **DB Security Hands-On Labs (v5.3 - September 2023)** is as following:
+The complete architecture of the **DB Security Hands-On Labs** is as following:
 
   ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
@@ -55,4 +55,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - September 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023
