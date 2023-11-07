@@ -5,9 +5,7 @@
 
 Using this stack we will be able to deploy/install **OAS Application, App Gateway server and Identity Domain**. The Identity Domain created will be of the type **Oracle Apps Premium**.
 
-
 ## Objectives
-
 1.	Deploy and configure **OAS Application**
 2. 	Deploy **App Gateway Server**
 3.	Deploy the **Identity Domain** of the type **Oracle Apps Premium**
@@ -22,8 +20,6 @@ Once the **Stack1- Deploy.zip** is downloaded and keep it ready.
 1. Once logged in to the OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
 **Note** Please do not select the **Root** compartment while creating the stack
-
-	![stacks](./images/stacks.png "stacks")
 	
 	![create-stacks](./images/create-stacks.jpg "create-stacks")
  
@@ -78,7 +74,7 @@ Specify the **Database Administrator Username** from the Oracle VM DB system you
 	
 	![plan-success](./images/plan-success.jpg "plan-success")
 	
-9. From the created stack now click on the **Apply** option. You should get an **Success** output.	
+10. From the created stack now click on the **Apply** option. You should get an **Success** output.	
 
 	![apply-job](./images/apply-job.jpg "apply-job")
 
@@ -89,6 +85,7 @@ Specify the **Database Administrator Username** from the Oracle VM DB system you
 Check the SSH to your OAS instance and App Gateway instance.
 
 *With the Private Key of these instance, you should be able to SSH into these systems*
+
 
 1. Once the **Stack** is successfully deployed, you can SSH in to OAS instance and check below.
 	1. Navigate to the **/u01/app/oas-scripts** directory and look for the file **oas_install.finish**. This file indicates that the OAS Domain installation is complete.
@@ -108,7 +105,7 @@ Try accessing your OAS WebLogic Instance via this url - *http://OAS_Instance_Pub
 
 In this Lab, we were able to successfully deployed and validate OAS Application, App Gateway Server and Identity Domain. 
 
- You may now **proceed to the next lab.**
+You may now **proceed to the next lab.**
 
 ## Acknowledgements
 * **Author** - Sagar Takkar, Chetan Soni
