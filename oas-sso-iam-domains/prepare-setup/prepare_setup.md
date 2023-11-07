@@ -80,9 +80,26 @@ You must use the database connection string format:
 
 *For example: oasdb.subnetname.oasvcn.oraclevcn.com:1512:OASDB_pdb1.subnetname.oasvcn.oraclevcn.com*
 
+## Appendix
+If you wish to change the version then you can make the below parameter changes in the **terraform.tfvars** file of **stack1-Deploy.zip**.
+
+**Note**: Make sure you zip the folder again before deploying it in upcoming steps.
+
+
+| OAS Version           | mp_OAS_listing_resource_version    | 				mp_OAS_listing_image_resource_id 								   |
+| :-----------------:   |   :----------------------------:   |  :----------------------------------------------------------------------------: |
+|OAS 2023 0301			|	2023_0301						 |	ocid1.image.oc1..aaaaaaaauvdpokewuntrs7ewrnspng7tl4ayofiajbiwdhjgaowfukzjcg4q  |
+|OAS 2022 (6.4) 0601	|  	2022_(6.4)_0601					 |	ocid1.image.oc1..aaaaaaaalbzf7wtfpdac6fs4w2pzqqvqmiuex4kaxjhcei6v6e56ewt64jgq  |
+|OAS 2022 (6.4) 0501	|	2022_(6.4)_0501					 |	ocid1.image.oc1..aaaaaaaale4pe5fvrdqvzq7swfgpb3tggnit5lgfmjybxflbit7ypushdgla  |
+|OAS 2023 0201			|	2023_0201						 |	ocid1.image.oc1..aaaaaaaadurqktr6zuz2fezl762s32gftipjodhprgrnxduwx75epvn4dbpa  |
+|OAS 2023 0101			|	2023_0101						 |	ocid1.image.oc1..aaaaaaaazeuqqbs7no5duaqgdwmv4432scjkku7wg3kuat56obfssan2jqia  |
+|OAS 2022(6.4) 0101		|	2022_(6.4)_0101                  |	ocid1.image.oc1..aaaaaaaayk4odypeg54gdkm6yfzadjosswbjtdyiv3rv35nzzo6pin6j5mga  |
+
+**Note**: This live lab considers the version **OAS 2023 0101** as default version.
+
 You may now **proceed to the next lab.**
 
 ## Acknowledgements
-* **Author** - Sagar Takkar, Chetan Sharma
+* **Author** - Sagar Takkar, Chetan Soni
 * **Lead By** - Deepthi Shetty 
-* **Last Updated By/Date** - Sagar Takkar August 2023
+* **Last Updated By/Date** - Sagar Takkar November 2023
