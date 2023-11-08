@@ -153,12 +153,15 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
     <copy>KVRESTADMIN</copy>
     ````
 
-    ````
-    <copy>T06tron.</copy>
-    ````
-
     ![Key Vault](./images/okv-001.png "Key Vault - Login")
 
+    **Note**:
+    - A new password for OKV users is randomly generated during the deployment of the Livelabs and it's available in the Labs details
+    - Remember this **password can be displayed whenever you need** by executing the following command line as *`oracle`* user:
+
+        ````
+        <copy>echo $OKVUSR_PWD</copy>
+        ````
 3. Go to the **Endpoints** tab
 
     ![Key Vault](./images/okv-002.png "Key Vault - Endpoint")
