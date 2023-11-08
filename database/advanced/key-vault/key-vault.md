@@ -143,34 +143,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 ## Task 2: Add an Endpoint
 First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
 
-1. Open a Web Browser to *`https://kv`* to access to Oracle Key Vault Console
-
-    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
-
-2. Login to Oracle Key Vault Web Console using the credentials below
-
-    ````
-    <copy>KVRESTADMIN</copy>
-    ````
-
-    ![Key Vault](./images/okv-001.png "Key Vault - Login")
-
-    **Note**:
-    - A new password for OKV users is randomly generated during the deployment of the Livelabs and it's available in the Labs details
-    - Remember this **password can be displayed whenever you need** by executing the following command line as *`oracle`* user:
-
-        ````
-        <copy>echo $OKVUSR_PWD</copy>
-        ````
-3. Go to the **Endpoints** tab
-
-    ![Key Vault](./images/okv-002.png "Key Vault - Endpoint")
-
-4. You will see that there are no endpoints available
-
-    ![Key Vault](./images/okv-003.png "Key Vault - Endpoint")
-
-5. You will use the **OKVdeploy.tgz** file to deploy the utility to automate the processes
+1. You will use the **OKVdeploy.tgz** file to deploy the utility to automate the processes
 
     - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -237,17 +210,41 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
             ![Key Vault](./images/okv-007.png "Change password")
 
-6. Go back to your OKV Console, refresh screen and now you should see the Endpoint just added
+2. Open a Web Browser to *`https://kv`* to access to Oracle Key Vault Console
+
+    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
+
+3. Login to Key Vault Web Console as *`KVRESTADMIN`*
+
+    ````
+    <copy>KVRESTADMIN</copy>
+    ````
+
+    ![Key Vault](./images/okv-001.png "Key Vault - Login")
+
+    **Note**:
+    - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and it's available in the Labs details
+    - Remember this **password can be displayed whenever you need** by executing the following command line as *`oracle`* user:
+
+        ````
+        <copy>echo $OKVUSR_PWD</copy>
+        ````
+
+4. Go to the **Endpoints** tab
+
+    ![Key Vault](./images/okv-002.png "Key Vault - Endpoint")
+
+5. You should see the Endpoint just added
 
     ![Key Vault](./images/okv-008.png "Key Vault - Endpoint")
 
-7. Click on the Endpoint name (here *`CDB1_ON_DBSECLAB`*)
+6. Click on the Endpoint name (here *`CDB1_ON_DBSECLAB`*)
 
-8. In the **Default Wallet** section, confirm that the Wallet created in OKV is the default Wallet for this Endpoint
+7. In the **Default Wallet** section, confirm that the Wallet created in OKV is the default Wallet for this Endpoint
 
     ![Key Vault](./images/okv-009.png "Default Wallet section")
 
-9. Your Endpoint is now added!
+8. Your Endpoint is now added!
 
 ## Task 3: View the Contents of the OKV Virtual Wallet
 Any time after adding the Endpoint to this host, you can run this script to view the contents of the Virtual Wallet in Oracle Key Vault
