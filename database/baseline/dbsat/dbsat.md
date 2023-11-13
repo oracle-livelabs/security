@@ -185,15 +185,17 @@ Please take a couple of minutes to scroll through the HTML report. You can click
 
 3. At the top of the report, you will find information about the Collector and Reporter run details as the date of data collection and the date of report generation along with the reporter version
 
-- Follows the Database Identity information where you will find details about the target database
-- Then the Summary table presents all the findings per section/domain along with their severity level
+    - Follows the Database Identity information where you will find details about the target database
+    - Then the Summary table presents all the findings per section/domain along with their severity level
 
-    **Note**:
-    - Having a “Total” of less than 110 findings might indicate that there were some issues collecting data
-    - You’ll find more details about the reasons at the bottom of the HTML report
-    - The collector generated JSON file can also be used for further troubleshooting
-    - If you run DBSAT against ADW/ATP or run the collector remotely you will get less than 80 findings
-    - The main reason for this is that we skip the collection of OS related findings and findings that depend on reading files from the operating system
+        **Note**:
+        - Having a “Total” of less than 110 findings might indicate that there were some issues collecting data
+        - You’ll find more details about the reasons at the bottom of the HTML report
+        - The collector generated JSON file can also be used for further troubleshooting
+        - If you run DBSAT against ADW/ATP or run the collector remotely you will get less than 80 findings
+        - The main reason for this is that we skip the collection of OS related findings and findings that depend on reading files from the operating system
+
+4. **Want to take assessment to the next level?** With [Oracle Data Safe](https://www.oracle.com/security/database-security/data-safe/) and [Oracle Audit Vault and Database Firewall](https://blogs.oracle.com/cloudsecurity/post/oracle-audit-vault-and-database-firewall-release-update-9-introduces-security-assessment), you can use the power of DBSAT in a framework that includes dashboards, reports, automated scheduling of assessments, fleet-wide views of risk, configuration drift detection and more
 
 ## Task 5: Analyze the Report - Findings
 
