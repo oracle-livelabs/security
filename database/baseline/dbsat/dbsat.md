@@ -830,14 +830,10 @@ DBSAT uses pattern files and the regexes that are there defined to find sensitiv
 
 3. The first Sensitive Type in the file is the "`US SOCIAL SECURITY NUMBER (SSN)`" Sensitive Type is defined as the following:
 
-    ````
-    <copy>
-    [US SOCIAL SECURITY NUMBER (SSN)]
-    COL_NAME_PATTERN = (^|[_-])SSN#?($|[_-])|^SS#?$|(^|[_-])(SSN|SOC.*SEC.*).?(ID|NO|NUMBERS?|NUM|NBR|#)($|[_-])|^SOCIAL.?SEC(URITY)?#?$
-    COL_COMMENT_PATTERN = \bSS#\b|\bSSN#?\b|SOCIAL SECURITY (ID|NUM|\bNO\b|NBR|#)
-    SENSITIVE_CATEGORY = Identification Info - National IDs
-    </copy>
-    ````
+        [US SOCIAL SECURITY NUMBER (SSN)]
+        COL_NAME_PATTERN = (^|[_-])SSN#?($|[_-])|^SS#?$|(^|[_-])(SSN|SOC.*SEC.*).?(ID|NO|NUMBERS?|NUM|NBR|#)($|[_-])|^SOCIAL.?SEC(URITY)?#?$
+        COL_COMMENT_PATTERN = \bSS#\b|\bSSN#?\b|SOCIAL SECURITY (ID|NUM|\bNO\b|NBR|#)
+        SENSITIVE_CATEGORY = Identification Info - National IDs
 
 4. DBSAT will parse this pattern file and search for matches of the defined regexp patterns
     - In this example, it will search **column names** that match the regex "`(^|[_-])SSN#?($|[_-])|^SS#?$|(^|[_-])(SSN|SOC.*SEC.*).?(ID|NO|NUMBERS?|NUM|NBR|#)($|[_-])|^SOCIAL.?SEC(URITY)?#?$`"
@@ -851,12 +847,12 @@ DBSAT uses pattern files and the regexes that are there defined to find sensitiv
 6. Let’s have a second look at the **dbsat.config** file
 
     ````
-    <copy>cat Discover/conf/dbsat.config</copy>
+    <copy>vi Discover/conf/dbsat.config</copy>
     ````
 
     ![DBSAT](./images/dbsat-049.png "View the DBSAT config file")
 
-7. As you can see, DBSAT includes out-of-the-box, **19 Sensitive Categories**
+7. Scroll to the bottom of the file. You’ll see that DBSAT includes **19 Sensitive Categories** out-of-the-box
 
     |#| Sensitive Category                      	| Description                                                 	|
     |--|-----------------------------------------	|-------------------------------------------------------------	|
@@ -884,35 +880,40 @@ DBSAT uses pattern files and the regexes that are there defined to find sensitiv
     - You can customize or add your own categories and risk levels
     - After being defined in the dbsat.config file, they can be used in the pattern files Sensitive Type Categories
 
-8. Let’s create a **new Sensitive Category** "`Financial Info – Company Data`" and revert other parameters
+8. Now, let’s create a **new Sensitive Category** "`Financial Info – Company Data`" and revert other parameters
 
-    - Edit dbsat.config
+    - Add the new Sensitive Category to the bottom of the file (**don't forget the 4 spaces at the beginning of the line**)
 
         ````
-        <copy>vi Discover/conf/dbsat.config</copy>
+        <copy>Financial Info - Company Data = Medium Risk</copy>
         ````
 
-    - And modify it as following:
+        ![DBSAT](./images/dbsat-050b.png "Add the new sensitive category")
+
+    - And scroll up to modify the parameters as following:
     
         - Let’s revert some parameters back to the original values to get more data in the report:
 
             ````
             <copy>
             SCHEMAS_SCOPE = ALL
+            </copy>
+            ````
+
+            ````
+            <copy>
             MINROWS = 1
+            </copy>
+            ````
+
+            ````
+            <copy>
             EXCLUSION_LIST_FILE =
             </copy>
             ````
 
              ![DBSAT](./images/dbsat-050a.png "Revert some parameters back to the original values")
 
-        - Add the new Sensitive Category to the bottom of the file (**don't forget the 4 spaces at the beginning of the line**)
-
-            ````
-            <copy>Financial Info - Company Data = Medium Risk</copy>
-            ````
-
-             ![DBSAT](./images/dbsat-050b.png "Add the new sensitive category")
     
     - Save the file by typing "*`:wq![Enter]`*"
 
@@ -924,7 +925,7 @@ DBSAT uses pattern files and the regexes that are there defined to find sensitiv
         <copy>vi  Discover/conf/sensitive_en.ini</copy>
         ````
 
-    - And, at the end of the file, add the new Sensitive Type as shown below (When using "**vi**", you can type "**A**" to insert new caracters at the end of a line)
+    - And, at the end of the file, add the new Sensitive Type as shown below (When using "**vi**", you can type "**Shift + G***" to go directly to the end of the file and type "**Shift + A**" to insert a characters at the end of the line)
 
         ````
         <copy>
@@ -1007,9 +1008,6 @@ In this exercise, you will be exposed to the DBSAT utilities ("`dbsat_diff`" & "
     ````
     <copy>unzip dbsat_util.zip -d dbsat30</copy>
     ````
-
-    ![DBSAT](./images/dbsat-054.png "Unzip DBSAT utilities")
-
 
 3. Go to the DBSAT directory
 
@@ -1131,6 +1129,16 @@ In this exercise, you will be exposed to the DBSAT utilities ("`dbsat_diff`" & "
 
          ![DBSAT](./images/dbsat-060.png "Check the differences")
 
+    - Now, you can drop the table just created
+
+        ````
+        <copy>
+        DROP TABLE dbsat_foo;
+        </copy>
+        ````
+
+         ![DBSAT](./images/dbsat-061.png "Drop the table created")
+
     - Type "*`exit`*"
 
         ````
@@ -1151,7 +1159,7 @@ In this exercise, you will be exposed to the DBSAT utilities ("`dbsat_diff`" & "
     <copy>./dbsat_uninstall.sh</copy>
     ````
 
-    ![DBSAT](./images/dbsat-061.png "Uninstall DBSAT")
+    ![DBSAT](./images/dbsat-100.png "Uninstall DBSAT")
 
 You may now proceed to the next lab!
 
@@ -1206,7 +1214,7 @@ After having executed 1000s of Database Security Assessments in our customers ba
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle DBSAT 3.0](https://docs.oracle.com/en/database/oracle/security-assessment-tool/2.2.2/index.html)
+- [Oracle DBSAT 3.0](https://docs.oracle.com/en/database/oracle/security-assessment-tool/3.0.0/satug/)
 
 Video:
 - *Understanding DBSAT (April 2018)*[](youtube:XsPuiCPcyA0)
