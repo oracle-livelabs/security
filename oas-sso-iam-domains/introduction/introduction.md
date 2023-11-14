@@ -7,7 +7,7 @@ OCI IAM Identity Domains is a comprehensive identity-as-a-service (IDaaS) soluti
 
 The following diagram shows the architecture and the login flow when using the App Gateway to integrate Oracle Analytics Server with OCI IAM. 
  
-  ![oas-oci-iam-identity-domains](./images/oas-oci-iam-identity-domains.png "Image 1")
+  ![oas-oci-identity-domains](./images/oas-oci-identity-domains.png "oas-oci-identity-domains")
 
 *In a web browser, a user requests access to an application through a URL exposed by App Gateway.
 *App Gateway intercepts the request, verifies that the user doesn't have a session with IAM, and then redirects the user's browser to the sign-in page. In step 2, if the user has a session with IAM, it means that the user has already signed in. If so, then an access token is sent to App Gateway, and then the remaining steps are skipped.
