@@ -19,7 +19,7 @@ Once the **Stack1- Deploy.zip** is downloaded and keep it ready.
 
 1. Once logged in to the OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**.
 	
-	![create-stacks](./images/create-stacks.jpg "create-stacks")
+	![create-stack](./images/create-stack.jpg "create-stack")
 	
 **Note** Please do not select the **Root** compartment while creating the stack.
 	 
