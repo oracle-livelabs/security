@@ -6,7 +6,7 @@ Using this stack we will be able to configure **OAS, App Gateway and Identity Do
 
 ## Objectives
 
-1.	Configure **OAS Application **
+1.	Configure **OAS Application**
 2. 	Configure **App Gateway**
 3.	Create the **Enterprise Application** under **Identity Domain** 
 
@@ -18,11 +18,13 @@ Once the **Stack2- Configure.zip** is downloaded, unzip the zip file and replace
 
 1. Once logged in to OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
-**Note** Please do not select the **Root** compartment while creating the stack
+**Note** Please do not select the **Root** compartment while creating the stack.
+
 
 	![stacks](./images/stacks.png "stacks")
 	
 	![create-stacks](./images/create-stacks.png "create-stacks")
+	
  
 2. On the Create Stack Wizard, select the **Stack 2- Configure.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
