@@ -25,7 +25,7 @@ This lab assumes you have:
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file to Deploy 
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
-    - [Stack1-Deploy.zip] (https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LIveLab/o/OAS-SSO-IAM-Domains%2FStack1_Deploy.zip)
+    - [Stack1-Deploy.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LIveLab/o/OAS-SSO-IAM-Domains%2FStack1_Deploy.zip)
 	
 	- [Stack2-Configure.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LIveLab/o/OAS-SSO-IAM-Domains%2FStack2_Configure.zip)
 
