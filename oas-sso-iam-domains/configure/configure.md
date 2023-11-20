@@ -4,15 +4,17 @@
 
 Using this stack we will be able to configure **OAS, App Gateway and Identity Domain**. As part of this stack, a Enterprise application will be created under **Identity Domain**.
 
-## Objectives
+*Estimated Lab Time:* 30 minutes
+
+### Objectives
 
 1.	Configure **OAS Application**
 2. 	Configure **App Gateway**
 3.	Create the **Enterprise Application** under **Identity Domain** 
 
-## Prerequisites
+### Prerequisites
 
-Once the **Stack2- Configure.zip** is downloaded, unzip the zip file and replace the the content of the **.pem** files (AppGate_PrivateKey.pem and OAS_PrivateKey.pem) with your respective content of the private key.
+1. Once the **Stack2- Configure.zip** is downloaded, unzip the zip file and replace the the content of the **.pem** files (AppGate\_PrivateKey.pem and OAS\_PrivateKey.pem) with your respective content of the private key.
 
 ## Task 1: Deploy the Configuration Stack via Resource Manager
 

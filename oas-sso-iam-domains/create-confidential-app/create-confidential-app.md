@@ -6,10 +6,17 @@ During the stack execution process, An Oracle Identity Domain of the type of **O
 
 This module will also help you to create a confidential application under the newly created Identity Domain, which will be used for making REST API calls in the backend.
 
-## Objectives
+*Estimated Lab Time:* 10 minutes
+
+### Objectives
 
 1.	**Reset** the password for the admin user and login into the newly created Identity Domain
 2. 	Create a confidential application with the allowed grant type **Client Credentials**
+
+### Prerequisites
+
+1. Complete all the previous labs.
+
 
 ## Task 1: Reset the password for the admin user and login into the newly created Domain
 
