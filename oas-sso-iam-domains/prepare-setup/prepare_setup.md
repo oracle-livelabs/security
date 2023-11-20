@@ -76,9 +76,9 @@ This workshop requires a certain number of ports to be available, a requirement 
 As the part of prerequisites, you should have the VM DB system on OCI and use the same DB system to get the connection string.
 
 You must use the database connection string format:
-```
-<hostname or IP address>:<port>:<PDB_name>.<DB_domain>
-```
+    ```
+    <hostname or IP address>:<port>:<PDB_name>.<DB_domain>
+    ```
 
 *For example: oasdb.subnetname.oasvcn.oraclevcn.com:1512:OASDB_pdb1.subnetname.oasvcn.oraclevcn.com*
 
@@ -88,14 +88,14 @@ If you wish to change the version then you can make the below parameter changes 
 **Note**: Make sure you zip the folder again before deploying it in upcoming steps.
 
 
-| OAS Version           | mp_OAS_listing_resource_version    | 				mp_OAS_listing_image_resource_id 								                         |
+| OAS Version           | mp\_OAS\_listing\_resource\_version    | 				mp\_OAS\_listing\_image\_resource\_id 								                         |
 | :-----------------:   |   :----------------------------:   |  :----------------------------------------------------------------------------: |
-|OAS 2023 0301			    |	  2023_0301						             |	ocid1.image.oc1..aaaaaaaauvdpokewuntrs7ewrnspng7tl4ayofiajbiwdhjgaowfukzjcg4q  |
-|OAS 2022 (6.4) 0601	  |  	2022_(6.4)_0601					         |	ocid1.image.oc1..aaaaaaaalbzf7wtfpdac6fs4w2pzqqvqmiuex4kaxjhcei6v6e56ewt64jgq  |
-|OAS 2022 (6.4) 0501	  |	  2022_(6.4)_0501					         |	ocid1.image.oc1..aaaaaaaale4pe5fvrdqvzq7swfgpb3tggnit5lgfmjybxflbit7ypushdgla  |
-|OAS 2023 0201			    |	  2023_0201						             |	ocid1.image.oc1..aaaaaaaadurqktr6zuz2fezl762s32gftipjodhprgrnxduwx75epvn4dbpa  |
-|OAS 2023 0101			    |	  2023_0101						             |	ocid1.image.oc1..aaaaaaaazeuqqbs7no5duaqgdwmv4432scjkku7wg3kuat56obfssan2jqia  |
-|OAS 2022(6.4) 0101		  |	  2022_(6.4)_0101                  |	ocid1.image.oc1..aaaaaaaayk4odypeg54gdkm6yfzadjosswbjtdyiv3rv35nzzo6pin6j5mga  |
+|OAS 2023 0301			    |	  2023\_0301						             |	ocid1.image.oc1..aaaaaaaauvdpokewuntrs7ewrnspng7tl4ayofiajbiwdhjgaowfukzjcg4q  |
+|OAS 2022 (6.4) 0601	  |  	2022\_(6.4)\_0601					         |	ocid1.image.oc1..aaaaaaaalbzf7wtfpdac6fs4w2pzqqvqmiuex4kaxjhcei6v6e56ewt64jgq  |
+|OAS 2022 (6.4) 0501	  |	  2022\_(6.4)\_0501					         |	ocid1.image.oc1..aaaaaaaale4pe5fvrdqvzq7swfgpb3tggnit5lgfmjybxflbit7ypushdgla  |
+|OAS 2023 0201			    |	  2023\_0201						             |	ocid1.image.oc1..aaaaaaaadurqktr6zuz2fezl762s32gftipjodhprgrnxduwx75epvn4dbpa  |
+|OAS 2023 0101			    |	  2023\_0101						             |	ocid1.image.oc1..aaaaaaaazeuqqbs7no5duaqgdwmv4432scjkku7wg3kuat56obfssan2jqia  |
+|OAS 2022(6.4) 0101		  |	  2022\_(6.4)\_0101                  |	ocid1.image.oc1..aaaaaaaayk4odypeg54gdkm6yfzadjosswbjtdyiv3rv35nzzo6pin6j5mga  |
 
 **Note**: This live lab considers the version **OAS 2023 0101** as default version.
 
