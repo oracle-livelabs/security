@@ -6,6 +6,7 @@ Using this stack we will be able to configure **OAS, App Gateway and Identity Do
 
 *Estimated Lab Time:* 30 minutes
 
+
 ### Objectives
 
 1.	Configure **OAS Application**
