@@ -6,19 +6,19 @@ This lab will show you how to download the Oracle Resource Manager (ORM) stacks 
 *Estimated Lab Time:* 15 minutes
 
 ### Objectives
--   Download ORM stack for deploying the **OAS Application, App Gateway Compute Instance and OCI IAM Identity Domains**
--   Download ORM stack for configuring the **OAS Application, App Gateway Compute Instance and OCI IAM Identity Domains**
--   Configure an existing Virtual Cloud Network (VCN)
--	Get Connection String from Virtual Machine DB system.
+1. Download ORM stack for deploying the **OAS Application, App Gateway Compute Instance and OCI IAM Identity Domains**
+2. Download ORM stack for configuring the **OAS Application, App Gateway Compute Instance and OCI IAM Identity Domains**
+3. Configure an existing Virtual Cloud Network (VCN)
+4. Get Connection String from Virtual Machine DB system.
 
 ### Prerequisites
 This lab assumes you have:
-- An Oracle Cloud account with at least **PAY GO** subscription
-- A Compartment apart from *root*
-- An existing *VCN* and an *Internet Gateway* attached to it.
-- A *Public* subnet`
-- A *SSH key* pair. A single SSH Key pair to be used for both the servers (Make sure you have the .key and .pem formats of the private key available)
-- An Oracle Cloud Database - VM DB System. The database must be deployed in the same region as Oracle Analytics Server and accessible from the VCN where you plan to deploy Oracle Analytics Server. The database edition must be Oracle Database Enterprise Edition (EE) version 12.1, 12.2, 18+, or 19+. The database must be a pluggable database (PDB) on an Oracle Cloud virtual machine DB system.
+1. An Oracle Cloud account with at least **PAY GO** subscription
+2. A Compartment apart from *root*
+3. An existing *VCN* and an *Internet Gateway* attached to it.
+4. A *Public* subnet
+5. A *SSH key* pair. A single SSH Key pair to be used for both the servers (Make sure you have the .key and .pem formats of the private key available)
+6. An Oracle Cloud Database - VM DB System. The database must be deployed in the same region as Oracle Analytics Server and accessible from the VCN where you plan to deploy Oracle Analytics Server. The database edition must be Oracle Database Enterprise Edition (EE) version 12.1, 12.2, 18+, or 19+. The database must be a pluggable database (PDB) on an Oracle Cloud virtual machine DB system.
 
 **Note** - *This Live lab considers all resources along with VM DB in same VCN. If you use different VCNs for OAS and VMDB then please make sure you have setup correct connectivity between them.*
 
@@ -76,7 +76,9 @@ This workshop requires a certain number of ports to be available, a requirement 
 As the part of prerequisites, you should have the VM DB system on OCI and use the same DB system to get the connection string.
 
 You must use the database connection string format:
-**<hostname or IP address>:<port>:<PDB_name>.<DB_domain>**
+```
+<hostname or IP address>:<port>:<PDB_name>.<DB_domain>
+```
 
 *For example: oasdb.subnetname.oasvcn.oraclevcn.com:1512:OASDB_pdb1.subnetname.oasvcn.oraclevcn.com*
 
