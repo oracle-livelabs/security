@@ -60,11 +60,13 @@ Estimated time: 15 minutes.
          - **Entries**: Ensure you enter the correct dynamic group name in our case it’s **vss-demo**
 
    ```
+   <copy>
    Define tenancy ocivssprod as ocid1.tenancy.oc1..aaaaaaaa6zt5ejxod5pgthsq4apr5z2uzde7dmbpduc5ua3mic4zv3g5ttma
    Allow dynamic-group vss-demo to read vaults in tenancy
    Allow dynamic-group vss-demo to read keys in tenancy
    Allow dynamic-group vss-demo to read secret-family in tenancy
    Endorse dynamic-group vss-demo to read objects in tenancy ocivssprod
+   </copy>
    ```
 
    ![Create Dynamic Group Policy](../common/images/create-dynamic-group-policy.png " ")
@@ -243,4 +245,4 @@ You may now **proceed to the next lab**.
 - **Author** - Arun Poonia, Principal Solutions Architect
 - **Adapted by** - Oracle
 - **Contributors** - N/A
-- **Last Updated By/Date** - Arun Poonia, Nov 2022
+- **Last Updated By/Date** - Arun Poonia, Aug 2023

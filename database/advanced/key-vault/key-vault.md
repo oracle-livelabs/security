@@ -5,10 +5,10 @@ This workshop introduces the various features and functionality of Oracle Key Va
 
 *Estimated Lab Time:* 55 minutes
 
-*Version tested in this lab:* Oracle OKV 21.6
+*Version tested in this lab:* Oracle OKV 21.7
 
 ### Video Preview
-Watch a preview of "*LiveLabs - Oracle Key Vault (May 2022)*" [](youtube:4VR1bbDpUIA)
+Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
 
 ### Objectives
 - Connect an Oracle DB (encrypted by TDE) to OKV
@@ -34,8 +34,17 @@ This lab assumes you have:
 | 5| Migrate to Online Master Key | 5 minutes | To re-configure the database to communicate directly with Oracle Key Vault |
 | 6| Create the OKV SEPS Wallet | <5 minutes||
 | 7| Perform a ReKey Operation | 5 minutes||
-| 8| Secret Management with OKV | 10 minutes||
-| 9| Reset the OKV Lab Config | <10 minutes||
+| 8| Secret Management with OKV | 5 minutes||
+| 9| Reset the OKV Lab Config | <5 minutes||
+
+<!--
+Advanced OKV Labs for 21.7
+| A| SSH Key Management and Remote Server Access Controls with OKV | 10 minutes||
+| B| DB Account Pwd Management | 5 minutes ||
+| C| Key Management for DBMS_CRYPTO | 5 minutes ||
+| D| Automated Java Keystore rotation | 5 minutes ||
+| E| Non-Extractable Key | 5 minutes ||
+-->
 
 ## Task 1: (Mandatory) TDE Prerequisites
 
@@ -134,31 +143,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 ## Task 2: Add an Endpoint
 First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
 
-1. Open a Web Browser to *`https://kv`* to access to Oracle Key Vault Console
-
-    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
-
-2. Login to Oracle Key Vault Web Console using the credentials below
-
-    ````
-    <copy>KVRESTADMIN</copy>
-    ````
-
-    ````
-    <copy>T06tron.</copy>
-    ````
-
-    ![Key Vault](./images/okv-001.png "Key Vault - Login")
-
-3. Go to the **Endpoints** tab
-
-    ![Key Vault](./images/okv-002.png "Key Vault - Endpoint")
-
-4. You will see that there are no endpoints available
-
-    ![Key Vault](./images/okv-003.png "Key Vault - Endpoint")
-
-5. You will use the **OKVdeploy.tgz** file to deploy the utility to automate the processes
+1. You will use the **OKVdeploy.tgz** file to deploy the utility to automate the processes
 
     - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -225,17 +210,41 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
             ![Key Vault](./images/okv-007.png "Change password")
 
-6. Go back to your OKV Console, refresh screen and now you should see the Endpoint just added
+2. Open a Web Browser to *`https://kv`* to access to Oracle Key Vault Console
+
+    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
+
+3. Login to Key Vault Web Console as *`KVRESTADMIN`*
+
+    ````
+    <copy>KVRESTADMIN</copy>
+    ````
+
+    ![Key Vault](./images/okv-001.png "Key Vault - Login")
+
+    **Note**:
+    - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and it's available in the Labs details
+    - Remember this **password can be displayed whenever you need** by executing the following command line as *`oracle`* user:
+
+        ````
+        <copy>echo $OKVUSR_PWD</copy>
+        ````
+
+4. Go to the **Endpoints** tab
+
+    ![Key Vault](./images/okv-002.png "Key Vault - Endpoint")
+
+5. You should see the Endpoint just added
 
     ![Key Vault](./images/okv-008.png "Key Vault - Endpoint")
 
-7. Click on the Endpoint name (here *`CDB1_ON_DBSECLAB`*)
+6. Click on the Endpoint name (here *`CDB1_ON_DBSECLAB`*)
 
-8. In the **Default Wallet** section, confirm that the Wallet created in OKV is the default Wallet for this Endpoint
+7. In the **Default Wallet** section, confirm that the Wallet created in OKV is the default Wallet for this Endpoint
 
     ![Key Vault](./images/okv-009.png "Default Wallet section")
 
-9. Your Endpoint is now added!
+8. Your Endpoint is now added!
 
 ## Task 3: View the Contents of the OKV Virtual Wallet
 Any time after adding the Endpoint to this host, you can run this script to view the contents of the Virtual Wallet in Oracle Key Vault
@@ -459,6 +468,7 @@ You must create a Master Key for the container database before continuing. Each 
 9. Now you have rekeyed the Master Key for the container and pluggable database(s)!
 
 ## Task 8: Secret Management with OKV
+
 In this lab, we will fetch a Database account password from OKV On-Demand
 
 1. Create a new Endpoint for secret management
@@ -481,25 +491,13 @@ In this lab, we will fetch a Database account password from OKV On-Demand
 
     ![Key Vault](./images/okv-031.png "Create the secret password into OKV")
 
-    **Note**:
-    - This script generate a JSON file (`$OKV_RESTHOME/sec-reg.json`) to register the secret
-    - Once generated, it will upload the secret password into OKV
-    - OKV will respond with the unique ID of the secret password... **please copy it for later use**!
-    - Because the password is now in OKV, we don’t need anymore the temporary file which contains the secret password, so the script will delete it
+    **Note**: This scripts...
+    - Generates a JSON file (`$OKV_RESTHOME/sec-reg.json`) to register the secret
+    - Creates the DB user `REFRESH_DWH` identified by this secret password
+    - Uploads the secret password into OKV (OKV will respond with the unique ID of the secret password) by setting 2 access attributes - the name of the DB user (here `REFRESH_DWH`) and the connection string (here `dbsec-lab:1521/pdb1`)
+    - Finally, because the password is now in OKV and we don’t need anymore the temporary file which contains the secret password, so the script will delete it
 
-3. Now, define the custom attributes to the secret password (please **paste as parameter the unique ID** of the secret copied previously)
-
-    ````
-    <copy>./okv_add_secret_attributes.sh <SECRET_UNIQUE_ID></copy>
-    ````
-
-    ![Key Vault](./images/okv-032.png "Define the custom attributes to the secret password")
-
-    **Note**:
-    - We add the username of the DB user (here `REFRESH_DWH)` and the connect string to the database (here "`dbsec-lab:1521/pdb1`")
-    - A final check confirm that all the custom attributes are correctly set
-
-4. Finally, test your secret configuration by logging to the database with the secret password (with DB user "*`REFRESH_DWH`*" and Connect String "*`dbsec-lab:1521/pdb1`*" as parameters)
+3. Now, test your secret configuration by logging to the database with the secret password and its attributes as parameters)
 
     ````
     <copy>./okv_login_with_secret.sh REFRESH_DWH dbsec-lab:1521/pdb1</copy>
@@ -511,7 +509,7 @@ In this lab, we will fetch a Database account password from OKV On-Demand
     - As you can see, you can log to your target DB without knowing the password or typing it because this secret is in OKV now!
     - After 3 seconds, the script break the SQL session and exit automatically
 
-5. When you're confortable with this concept, reset the secret configuration
+4. When you're confortable with this concept, reset the secret configuration
 
     ````
     <copy>./okv_clean_endpoint_secret.sh</copy>
@@ -519,9 +517,16 @@ In this lab, we will fetch a Database account password from OKV On-Demand
 
     ![Key Vault](./images/okv-034.png "Reset the secret configuration")
 
-6. Congratulations, now you know how to use and manage a secret with OKV!
+5. Congratulations, now you know how to use and manage a secret with OKV!
 
 <!-- Other OPTIONAL OKV Labs
+
+<!--
+SSH Key Management and Remote Server Access Controls
+In this lab, we will introduce remote server access controls by centrally managing users public keys.  In the second part, we will manage users' private keys in OKV making those private keys non-extractable.
+
+1. ...
+
 
 **STEP XXXX**: (Optional) Create a 2-node Multi-Master Cluster
 Oracle provides deployment recommendations for deployments that have two or more nodes.
@@ -740,4 +745,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - July 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023

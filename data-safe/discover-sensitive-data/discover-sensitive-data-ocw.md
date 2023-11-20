@@ -8,8 +8,6 @@ Use Oracle Data Safe to discover sensitive data on your target database and then
 
 Estimated Time: 10 minutes
 
-Watch the video below for a quick walk-through of the lab.
-[Discover Sensitive Data](videohub:1_1r9jn53a)
 
 ### Objectives
 
@@ -31,6 +29,9 @@ This lab assumes you have:
 ### Assumptions
 
 - Your data values are most likely different than those shown in the screenshots.
+
+Watch the video below for a quick walk-through of the lab.
+[Discover Sensitive Data](videohub:1_d0fz5ep5)
 
 
 ## Task 1: Discover sensitive data in your target database by using Data Discovery
@@ -108,4 +109,4 @@ Remove the `DATE_OF_HIRE` column from the sensitive data model.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 24, 2023
+- **Last Updated By/Date** - Jody Glover, August 17, 2023
