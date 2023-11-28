@@ -26,12 +26,17 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | Enable SQL Firewall to protect Glassfish HR Application | 10 minutes |
-| 2 | Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
-| 3 | Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
-| 4 | Reset the SQL Firewall Labs Environment | <5 minutes |
+| 1 | Use SQL Firewal with Data Safe
+| 1a| Register an on-premise Oracle Database on Data Safe | 10 minutes |
+| 1b| Enable SQL Firewall on Data Safe to protect Glassfish HR Application | 10 minutes |
+| 1c| Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
+| 4 | Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
+| 5 | Enable SQL Firewall to protect Glassfish HR Application | 10 minutes |
+| 6 | Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
+| 7 | Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
+| 8 | Reset the SQL Firewall Labs Environment | <5 minutes |
 
-## Task 1: Register an on-premise Oracle Database
+## Task 1: Register an on-premise Oracle Database on Data Safe
 
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe
 
@@ -208,9 +213,9 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     ![Data Safe](./images/ds-021.png "List of registered target databases")
 
-13. Let's have a look on a quick overview of the **Security Center**
+13. Let's have a look on a quick overview of the Security Center
 
-    - Click on **Security Center** sub-menu
+    - Click on **Overview** sub-menu
 
         ![Data Safe](./images/ds-022.png "Click on Security Center sub-menu")
 
@@ -218,7 +223,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - Make sure your compartment is still selected under **List Scope**
         - In Security Center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Alerts, and Settings
 
-    - By default, the dashboard is displayed and the **Security Assessment** and **User Assessment** charts are automatically populated
+    - Click on **Dashboard**
     
         ![Data Safe](./images/ds-023.png "Data Safe dashboard")
 
