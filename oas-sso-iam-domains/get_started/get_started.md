@@ -4,7 +4,7 @@
 
 Oracle Cloud is the industry's broadest and most integrated cloud provider, with deployment options ranging from the public cloud to your data center. Oracle Cloud offers best-in-class services across Software as a Service (SaaS), Platform as a Service (PaaS), and Infrastructure as a Service (IaaS).
 
-Estimated Time: 5 minutes
+*Estimated Lab Time:* 5 minutes
 
 ### Types of Cloud Accounts
 
@@ -16,12 +16,12 @@ We offer two types of Cloud Accounts:
 
 ### Objectives
 
-- Learn how to log in to your Oracle Cloud Account
+1. Learn how to log in to your Oracle Cloud Account
 
 ### Prerequisites
-- Cloud Account Name - The name of your tenancy of the type *Oracle Cloud Paid Accounts* (supplied by the administrator or in your Oracle Cloud welcome email)
-- Username
-- Password
+1. Cloud Account Name - The name of your tenancy of the type *Oracle Cloud Paid Accounts* (supplied by the administrator or in your Oracle Cloud welcome email)
+2. Username
+3. Password
 
 ## Task 1:  Log in to Oracle Cloud
 If you've signed out of the Oracle Cloud, use these steps to sign back in.

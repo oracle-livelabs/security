@@ -5,15 +5,18 @@
 
 Using this stack we will be able to deploy/install **OAS Application, App Gateway server and Identity Domain**. The Identity Domain created will be of the type **Oracle Apps Premium**.
 
-## Objectives
+*Estimated Lab Time:* 40 minutes
+
+### Objectives
 1.	Deploy and configure **OAS Application**
 2. 	Deploy **App Gateway Server**
 3.	Deploy the **Identity Domain** of the type **Oracle Apps Premium**
 4.	Validate the created resources via web browser and via SSH access.
 
-## Prerequisites
+### Prerequisites
 
-Once the **Stack1- Deploy.zip** is downloaded and keep it ready.
+1. Once the **Stack1- Deploy.zip** is downloaded and keep it ready.
+2. Complete the previous labs.
 
 ## Task 1: Deploy the Stack via Resource Manager
 
@@ -88,12 +91,16 @@ Check the SSH to your OAS instance and App Gateway instance.
 
 
 1. Once the **Stack** is successfully deployed, you can SSH in to OAS instance and check below.
-	1. Navigate to the **/u01/app/oas-scripts** directory and look for the file **oas_install.finish**. This file indicates that the OAS Domain installation is complete.
-	2. Navigate to the **/var/log** directory and check the log files **oas_cloudinit.log** and **oas_create_domain.log** to verify that the domain created successfully.
+	1. Navigate to the **/u01/app/oas-scripts** directory and look for the file **oas\_install.finish**. This file indicates that the OAS Domain installation is complete.
+	2. Navigate to the **/var/log** directory and check the log files **oas\_cloudinit.log** and **oas\_create\_domain.log** to verify that the domain created successfully.
 
 2. Check the OAS WebLogic Instance
 
-Try accessing your OAS WebLogic Instance via this url - *http://OAS_Instance_Public_IP:9500/console*
+Try accessing your OAS WebLogic Instance via this url - 
+
+```
+http://OAS_Instance_Public_IP:9500/console
+```
 
 **Username** - *Analytics Administrator Username*
 
