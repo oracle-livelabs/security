@@ -145,8 +145,8 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     ````
     <copy>
-    cd $DBSEC_LABS/data-safe
-    ./ds_create_user.sh pdb1
+    cd $DBSEC_LABS/sqlfw
+    ./sqlfw_create_user.sh freepdb1
     </copy>
     ````
 
@@ -169,8 +169,8 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
     - Fill out the "Register Target Database" as following
 
         - Database Type: Select *`Oracle On-Premises Database`*
-        - Data Safe Target Display Name: *`DBSec_Livelabs_pdb1`*
-        - Description: *`On-Premises pluggable database of DBSeclab VM (pdb1)`*
+        - Data Safe Target Display Name: *`DBSeclabs_DB23c_freepdb1`*
+        - Description: *`On-Premises pluggable database of DB23c VM (freepdb1)`*
         - Compartment: Select your own Compartment
 
             ![Data Safe](./images/ds-016.png "Fill out the Register Target Database parameters")
@@ -178,11 +178,11 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - Choose a connectivity option: *`On-Premises Connector`*
         - Select On-Premises Connector: Select *`DBSeclabs_DB23c`*
         - TCP/TLS: *`TCP`*
-        - Database Service Name: *`pdb1`*
-        - Database IP Address: *`10.0.0.150`*
+        - Database Service Name: *`freepdb1`*
+        - Database IP Address: *`10.0.0.155`*
         - Database Port Number: *`1521`*
         - Database User Name: *`DS_ADMIN`* (in uppercase)
-        - Database Password: *`Oracle123`*
+        - Database Password: *`Oracle123Oracle123!`*
     
             ![Data Safe](./images/ds-017.png "Fill out the Register Target Database parameters")
 
