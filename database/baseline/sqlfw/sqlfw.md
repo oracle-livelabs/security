@@ -42,11 +42,12 @@ This lab assumes you have:
 | 1b| Enable SQL Firewall on Data Safe to protect Glassfish HR Application | 10 minutes |
 | 1c| Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
 | 1d| Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
+| 1e| Reset the SQL Firewall Labs Environment for Data Safe | <5 minutes |
 | 2 | Use SQL Firewal with PL/SQL API
 | 2a| Enable SQL Firewall to protect Glassfish HR Application | 10 minutes |
 | 2b| Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
 | 2c| Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
-| 3 | Reset the SQL Firewall Labs Environment | <5 minutes |
+| 2d | Reset the SQL Firewall Labs Environment for PL/SQL API | <5 minutes |
 
 ## Task 1: Use SQL Firewall with Data Safe
 
@@ -607,13 +608,37 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
 1. Update the allow-list rule enforcement to **blocking mode**
 
-    ```
-    <copy>./sqlfw_allow_list_rule_enable_block.sh</copy>
-    ```
+    - Click on **SQL Firewall policies** sub-menu
+    
+        ![SQLFW](./images/sqlfw-075.png "SQL Firewall policies sub-menu")
 
-    ![SQLFW](./images/sqlfw-122.png "Update the allow-list rule to blocking mode")
+    - Click on the **`EMPLOYEESEARCH_PROD`** SQL Firewall policy
+    
+        ![SQLFW](./images/sqlfw-076.png "EMPLOYEESEARCH_PROD SQL Firewall policy")
 
-    **Note:** SQL Firewall can now block SQL Injection attempts
+    - Click [**Disable**]
+    
+        ![SQLFW](./images/sqlfw-077.png "Disable SQL Firewall policy")
+
+    - Click [**Disable**] again to confirm
+    
+        ![SQLFW](./images/sqlfw-078.png "Confirm disabling of the SQL Firewall policy")
+
+    - Now, click [**Deploy and enforce**]
+    
+    - Then, select the following options:
+
+        - Enforcement scope: *`All (Session contexts and SQL statements)`*
+        - Action on violations: *`Block and log violations`*
+        - Audit for violations: *`On`*
+
+            ![SQLFW](./images/sqlfw-079.png "Fill out the Deploy SQL Firewall policy")
+        
+        - Click [**Deploy and enforce**]
+
+            ![SQLFW](./images/sqlfw-080.png "Update the SQL Firewall policy to blocking mode")
+
+        **Note:** SQL Firewall can now block SQL Injection attempts!
 
 2. Now, a hacker logs into Glassfish application to perform a SQL injection attack
 
@@ -665,24 +690,69 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         - The output should return an ORA-failures on these attempts
         - Remember, this is because the UNION query has not been added into the Allow-list in the SQL Firewall policy... as simple as that!
 
-3. Now, check violation logs and audit records
+3. SQL violation is raised, catching attention of security administrators!
 
-    ```
-    <copy>./sqlfw_check_events.sh</copy>
-    ```
+    - Go back to the Data Safe session then click on SQL Firewall
 
-    ![SQLFW](./images/sqlfw-127.png "Check violation logs and audit records")
+        ![SQLFW](./images/sqlfw-090.png "Check violation logs")
 
-    **Note:** SQL violation is raised, catching attention of security administrators!
+    - Administrator analyses the SQL violations in Oracle Data Safe to spot abnormal access pattern trends over time and across fleet
 
-<!--
-***********************************************
-***********************************************
-***********************************************
-***********************************************
-***********************************************
-***********************************************
--->
+        ![SQLFW](./images/sqlfw-091.png "Check violation logs")
+
+    - Drill down into violation report to analyse them further and appropriately take action
+
+        ![SQLFW](./images/sqlfw-092.png "Drilldown the violation logs")
+
+## Task 1e: Reset the SQL Firewall Labs Environment for Data Safe
+
+1. Once you are comfortable with the SQL Firewall concept, you can reset the environment:
+
+    - Go back to your terminal session and execute
+    
+        ```
+        <copy>./sqlfw_reset_env_ds.sh</copy>
+        ```
+
+        ![SQLFW](./images/sqlfw-200.png "Reset the SQL Firewall Labs Environment")
+
+    - Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
+
+        ```
+        <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
+        ```
+
+        ![SQLFW](./images/sqlfw-201.png "Set HR App with PDB1")
+
+        **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
+
+2. Go back to the Data Safe session and deregister the Target database
+
+    - Click on **Data Safe**
+
+        ![SQLFW](./images/sqlfw-202.png "Data Safe main page")
+
+    - Click on **Target databases**
+
+        ![SQLFW](./images/sqlfw-203.png "Target databases")
+
+    - Click on the target database **`DBSeclabs_DB23c_freepdb1`**
+
+        ![SQLFW](./images/sqlfw-204.png "Target database to deregister")
+
+    - Click on **More actions** and select **Deregister**
+
+        ![SQLFW](./images/sqlfw-205.png "Deregister the target database")
+
+    - Click [**Deregister**] to confirm
+
+        ![SQLFW](./images/sqlfw-206.png "Confirm the deregistering")
+
+    - Now the target database is deregistered
+
+        ![SQLFW](./images/sqlfw-207.png "The target database is deregistered")
+
+3. Now, you can go to the **Task 1a-10** above if you want to redo this lab!
 
 ## Task 2: Use SQL Firewall with PL/SQL API
 
@@ -997,15 +1067,15 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     **Note:** SQL violation is raised, catching attention of security administrators!
 
-## Task 3: Reset the SQL Firewall Labs Environment
+## Task 2d: Reset the SQL Firewall Labs Environment for PL/SQL API
 
 1. Once you are comfortable with the SQL Firewall concept, you can reset the environment
 
     ```
-    <copy>./sqlfw_reset_env.sh</copy>
+    <copy>./sqlfw_reset_env_api.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-200.png "Reset the SQL Firewall Labs Environment")
+    ![SQLFW](./images/sqlfw-250.png "Reset the SQL Firewall Labs Environment")
 
 2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
 
@@ -1013,9 +1083,11 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-201.png "Set HR App with PDB1")
+    ![SQLFW](./images/sqlfw-251.png "Set HR App with PDB1")
 
     **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
+
+3. Now, you can go to the **Task 2a** above if you want to redo this lab!
 
 You may now proceed to the next lab!
 
