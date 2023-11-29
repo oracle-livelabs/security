@@ -37,7 +37,11 @@ This lab assumes you have:
 | 2c| Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
 | 3 | Reset the SQL Firewall Labs Environment | <5 minutes |
 
-## Task 1: Register an on-premise Oracle Database on Data Safe
+## Task 1: Use SQL Firewal with Data Safe
+
+...Text Angeline...
+
+## Task 1a: Register an on-premise Oracle Database on Data Safe
 
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe
 
@@ -86,7 +90,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
        ![Data Safe](./images/sqlfw-008.png "Generate a unique On-Premises connector")
 
-    - Once is generated, select **Save File** and click [**OK**] to download it into *`home/opc`*
+    - Once is generated, select **Save File** and click [**OK**] to download it into *`home/opc`* in dbseclab VM
 
        ![Data Safe](./images/sqlfw-009.png "Save the generated file")
 
@@ -114,7 +118,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
             </copy>
             ````
 
-               ![Data Safe](./images/ds-009.png "Copy Data Safe on-premises connector uploaded")
+               ![Data Safe](./images/sqlfw-010.png "Copy Data Safe on-premises connector uploaded")
 
         - Install Data Safe On-Premises connector (enter the password defined for the zip file above - here *`Oracle12345678!`*)
 
@@ -130,7 +134,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
             <copy>Oracle12345678!</copy>
             ````
 
-               ![Data Safe](./images/ds-010.png "Install Data Safe On-Premises connector")
+               ![Data Safe](./images/sqlfw-011.png "Install Data Safe On-Premises connector")
 
             **Note**: In case of trouble, you can stop or start the Data Safe On-Premises connector with the following command lines:
 
@@ -143,7 +147,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     - Go back to the Data Safe console to verify the status of the Data Safe On-Premises connector
 
-        ![Data Safe](./images/ds-011.png "Check the status of the Data Safe On-Premises connector")
+        ![Data Safe](./images/sqlfw-012.png "Check the status of the Data Safe On-Premises connector")
 
         **Note**: It sould be "**ACTIVE**" now!
 
@@ -156,21 +160,21 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
     </copy>
     ````
 
-    ![Data Safe](./images/ds-012.png "Create the Data Safe DS_ADMIN user")
+    ![Data Safe](./images/sqlfw-013.png "Create the Data Safe DS_ADMIN user")
 
 11. On Data Safe Console, register the Target database **pdb1**
 
     - Click on the **On-Premises Connectors** link
     
-    ![Data Safe](./images/ds-013.png "Click on the On-Premises Connectors link")
+    ![Data Safe](./images/sqlfw-014.png "Click on the On-Premises Connectors link")
     
     - Click on **Target Databases** sub-menu
 
-    ![Data Safe](./images/ds-014.png "Click on Target Databases sub-menu")
+    ![Data Safe](./images/sqlfw-015.png "Click on Target Databases sub-menu")
 
     - Click [**Register Database**]
 
-    ![Data Safe](./images/ds-015.png "Click Register Database")
+    ![Data Safe](./images/sqlfw-016.png "Click Register Database")
 
     - Fill out the "Register Target Database" as following
 
@@ -179,7 +183,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - Description: *`On-Premises pluggable database of DB23c VM (freepdb1)`*
         - Compartment: Select your own Compartment
 
-            ![Data Safe](./images/ds-016.png "Fill out the Register Target Database parameters")
+            ![Data Safe](./images/sqlfw-017.png "Fill out the Register Target Database parameters")
 
         - Choose a connectivity option: *`On-Premises Connector`*
         - Select On-Premises Connector: Select *`DBSeclabs_DB23c`*
@@ -190,15 +194,15 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - Database User Name: *`DS_ADMIN`* (in uppercase)
         - Database Password: *`Oracle123Oracle123!`*
     
-            ![Data Safe](./images/ds-017.png "Fill out the Register Target Database parameters")
+            ![Data Safe](./images/sqlfw-018.png "Fill out the Register Target Database parameters")
 
     - Click [**Register**] to launch the registration process
 
-        ![Data Safe](./images/ds-018.png "Click Register")
+        ![Data Safe](./images/sqlfw-019.png "Click Register")
 
     - Once is created, the new target should be "**ACTIVE**"
 
-        ![Data Safe](./images/ds-019.png "New target status")
+        ![Data Safe](./images/sqlfw-020.png "New target status")
 
         **Note:**
         - On the **Target Database Details** tab, you can view the target database name and description, OCID, when the target database was registered and the compartment to where the target database was registered.
@@ -208,17 +212,17 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 12. Click on the **Target Databases** link to view the list of registered target databases to which you have access
 
-    ![Data Safe](./images/ds-020.png "View the list of registered target databases")
+    ![Data Safe](./images/sqlfw-021.png "View the list of registered target databases")
 
     **Note:** All your registered target databases are listed on the right
 
-    ![Data Safe](./images/ds-021.png "List of registered target databases")
+    ![Data Safe](./images/sqlfw-022.png "List of registered target databases")
 
 13. Let's have a look on a quick overview of the Security Center
 
     - Click on **Overview** sub-menu
 
-        ![Data Safe](./images/ds-022.png "Click on Security Center sub-menu")
+        ![Data Safe](./images/sqlfw-023.png "Click on Security Center sub-menu")
 
         **Note**:
         - Make sure your compartment is still selected under **List Scope**
@@ -226,22 +230,27 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     - Click on **Dashboard**
     
-        ![Data Safe](./images/ds-023.png "Data Safe dashboard")
+        ![Data Safe](./images/sqlfw-024.png "Data Safe dashboard")
 
         **Note**:
         - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you
         - Therefore, the Security Assessment, User Assessment, Feature Usage, and Operations Summary charts in the dashboard already have data
+        - It can take several minutes to assess all the components, so if you don't see any data, please refresh the page
         - During registration, Oracle Data Safe also discovers audit trails on your target database
         - That is why the Audit Trails chart in the dashboard shows one audit trail with the status In Transition for your Autonomous Database
         - Later you start this audit trail to collect audit data into Oracle Data Safe
 
-            ![Data Safe](./images/ds-024.png "Data Safe dashboard")
+            ![Data Safe](./images/sqlfw-025.png "Data Safe dashboard")
 
-## Task 1: Enable SQL Firewall to protect Glassfish HR Application
+## Task 2: Use SQL Firewal with Data Safe
+
+...Text Angeline...
+
+## Task 2a: Enable SQL Firewall to protect Glassfish HR Application
 
 In this lab you will learn how the administrator trains the system to learn the authorized SQL statements and the trusted connection paths of HR application. SQL Firewall policy is generated with allow-lists representing authorized SQL connections and statements, and deployed to the target.
 
-## Task 1a: Setup SQL Firewall env
+### Step 1: Setup SQL Firewall env
 
 Here, we will modify the default Glassfish connection to target an Oracle Database 23c, so we can monitor, and block, SQL commands
 
@@ -319,7 +328,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
     **Note**: You must see `ENABLED`
 
-## Task 1b: Enable SQL Firewall to learn authorized SQL traffic of HR Application user
+### Step 2: Enable SQL Firewall to learn authorized SQL traffic of HR Application user
 
 1. Start the SQL workload capture of the application user EMPLOYEESEARCH_PROD
 
@@ -364,7 +373,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
     ![SQLFW](./images/sqlfw-113.png "Stop the SQL workload capture")
 
-## Task 1c: Generate and enable allow list rules for HR Application user
+### Step 3: Generate and enable allow list rules for HR Application user
 
 1. Generate the allow list rule
 
@@ -415,7 +424,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
     **Note:** Here, we will observe and not block SQL Firewall violations
 
-## Task 2: Detect an insider threat of stolen credential access with SQL Firewall
+## Task 2b: Detect an insider threat of stolen credential access with SQL Firewall
 
 Let's assume there is a malicious insider who had access to the stolen credential of HR Apps user `EMPLOYEESEARCH_PROD`, and to bypass the HR application authorization he uses SQL Developer to gain access to the sensitive employee data.
 
@@ -449,7 +458,7 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
         **Note:** No records is found because these queries are already listed as SQL statements allowed into the database
 
-4. Now, let's detect an insider threat of stolen credential access
+2. Now, let's detect an insider threat of stolen credential access
  
      - The insider uses SQL*Plus to gain access to the sensitive employee data
 
@@ -470,7 +479,7 @@ Let's assume there is a malicious insider who had access to the stolen credentia
         **Note:** SQL Firewall context violation is raised since SQL*Plus is not in the allowed OS program allow list, catching attention of security administrators
 
 
-## Task 3: Enforce allowed SQL and access patterns with SQL Firewall to mitigate the risks of SQL Injection attacks
+## Task 2c: Enforce allowed SQL and access patterns with SQL Firewall to mitigate the risks of SQL Injection attacks
 
 With the suspicious encounter of malicious insider, administrator enables the SQL Firewall in blocking mode to disallow any UN-authorized attempts to access sensitive employee information. Learn how SQL Firewall can enforce allowed patterns including approved SQL statements and database connection paths, and alert on potential SQL injection attacks, and anomalous access of HR apps DB.
 
@@ -546,7 +555,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     **Note:** SQL violation is raised, catching attention of security administrators!
 
-## Task 4: Reset the SQL Firewall Labs Environment
+## Task 3: Reset the SQL Firewall Labs Environment
 
 1. Once you are comfortable with the SQL Firewall concept, you can reset the environment
 
