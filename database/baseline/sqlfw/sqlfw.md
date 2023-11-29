@@ -1,7 +1,7 @@
 # Oracle SQL Firewall
 
 ## Introduction
-This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure those features to protect against risks targeting security flaws/vulnerabilities in data-driven web applications, including SQL Injection database attacks.
+This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure SQL Firewall to protect against common database risks such as SQL injection attacks and compromised accounts.SQL Firewall helps ensure that only authorized SQL statements from trusted database connections are permitted for execution inside the Oracle Database while blocking and logging unauthorized SQL or database connections.
 
 *Estimated Lab Time:* 30 minutes
 
@@ -14,6 +14,17 @@ Watch a preview of "*Introducing SQL Firewall – a new security capability in O
 - Create a SQL Firewall policy to protect sensitive data
 - Detect an insider threat of stolen credential access
 - Mitigate the risk of SQL Injection attacks
+
+- Train the SQL Firewall to learn the normal activity 
+- Deploy and enforce the firewall policy with allow-lists
+- Use SQL Firewall to protect against common database risks such as SQL injection attacks and compromised accounts
+- Managing SQL Firewall in two ways:
+    - **Oracle Data Safe** enables you to manage your database's SQL Firewalls centrally and provides a comprehensive view of SQL Firewall violations across your fleet of Oracle Databases.
+    - Use **PL/SQL procedures** in `SYS.DBMS_SQL_FIREWALL` package if you wish to manage SQL Firewall within each database instance.
+
+        **Note:**
+        - To learn how to manage SQL Firewall with Oracle Data Safe, proceed to Task 1, skip Task 2.
+        - To learn how to manage SQL Firewall with PL/SQL procedures, proceed to Task 2 skipping Task 1.
 
 ### Prerequisites
 This lab assumes you have:
@@ -39,7 +50,7 @@ This lab assumes you have:
 
 ## Task 1: Use SQL Firewall with Data Safe
 
-...Text Angeline...
+With Data Safe you can manage multiple SQL firewalls centrally and get a comprehensive view of SQL Firewall violations across a fleet of Oracle databases. SQL Firewall administrators can use Data Safe to collect SQL activities of a database user with its associated database connection paths (IP address, OS program, OS user), and monitor the progress of the collection. Data Safe lets you generate and enable the SQL Firewall policy from the collected SQL traffic. Data Safe automatically collects SQL Firewall violation logs and lets you analyze and report on violations.
 
 ## Task 1a: Register an on-premise Oracle Database on Data Safe
 
@@ -156,7 +167,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
     ````
     <copy>
     cd $DBSEC_LABS/sqlfw
-    ./sqlfw_create_user.sh freepdb1
+    ./sqlfw_crea_ds-admin-user.sh freepdb1
     </copy>
     ````
 
@@ -218,6 +229,9 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     ![SQLFW](./images/sqlfw-022.png "List of registered target databases")
 
+13. Now, your target database is registered in Data Safe!
+
+<!--
 13. Let's have a look on a quick overview of the Security Center
 
     - Click on **Overview** sub-menu
@@ -241,6 +255,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - Later you start this audit trail to collect audit data into Oracle Data Safe
 
             ![SQLFW](./images/sqlfw-025.png "Data Safe dashboard")
+-->
 
 ## Task 1b: Enable SQL Firewall to protect Glassfish HR Application
 
@@ -248,16 +263,20 @@ In this lab you will learn how the administrator trains the system to learn the 
 
 ### Step 1: Enable SQL Firewall
 
-1. Click on **SQL Firewall** sub-menu
+1. In Data Safe, click on **Overview** sub-menu
+
+    ![SQLFW](./images/sqlfw-023.png "Click on Security Center sub-menu")
+
+2. Click on **SQL Firewall** sub-menu
 
     ![SQLFW](./images/sqlfw-026.png "Click on SQL Firewall sub-menu")
 
 
-2. Click on the target database **`DBSeclabs_DB23c_freepdb1`**
+3. Click on the target database **`DBSeclabs_DB23c_freepdb1`**
 
     ![SQLFW](./images/sqlfw-027.png "Click on the target DB")
 
-3. Click on **Enable** to enable SQL Firewall for this target db
+4. Click on **Enable** to enable SQL Firewall for this target db
 
     ![SQLFW](./images/sqlfw-028.png "Enable SQL Firewall")
 
@@ -266,30 +285,30 @@ In this lab you will learn how the administrator trains the system to learn the 
 
         ![SQLFW](./images/sqlfw-029.png "SQL Firewall is enabling")
 
-4. Now, SQL Firewall should be **ACTIVE** for this target db
+5. Now, SQL Firewall should be **ACTIVE** for this target db
 
     ![SQLFW](./images/sqlfw-030.png "SQL Firewall is active")
 
-5. Let's create now a SQL collection for the HR apps user `EMPLOYEESEARCH_PROD` by clicking [**Create and start SQL collection**]
+6. Let's create now a SQL collection for the HR apps user `EMPLOYEESEARCH_PROD` by clicking [**Create and start SQL collection**]
 
     ![SQLFW](./images/sqlfw-031.png "Create a SQL collection")
 
-6. Select the **`EMPLOYEESEARCH_PROD`** db user
+7. Select the **`EMPLOYEESEARCH_PROD`** db user
 
     ![SQLFW](./images/sqlfw-032.png "Select db user")
 
-7. Click [**Create and start SQL collection**]
+8. Click [**Create and start SQL collection**]
 
     **Note:**
     - During the process, the status should be "CREATING"
 
         ![SQLFW](./images/sqlfw-033.png "SQL collection is creating")
 
-8. Now, the SQL collection should be succeeded and it's **COLLECTING**
+9. Now, the SQL collection should be succeeded and it's **COLLECTING**
 
     ![SQLFW](./images/sqlfw-034.png "SQL Firewall is collecting")
 
-### Step 2: Setup the Glassfish App
+### Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -347,6 +366,7 @@ In this lab you will learn how the administrator trains the system to learn the 
 
         ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
 
+<!--
 5. Create an administrator (**`dba_tom`**) to manage SQL Firewall
 
     ```
@@ -364,9 +384,11 @@ In this lab you will learn how the administrator trains the system to learn the 
     ![SQLFW](./images/sqlfw-108.png "Enable SQL Firewall")
 
     **Note**: You must see `ENABLED`
+-->
 
 ### Step 3: Enable SQL Firewall to learn authorized SQL traffic of HR Application user
 
+<!--
 1. Start the SQL workload capture of the application user EMPLOYEESEARCH_PROD
 
     ```
@@ -375,12 +397,9 @@ In this lab you will learn how the administrator trains the system to learn the 
 
     ![SQLFW](./images/sqlfw-109.png "Start the SQL workload capture of the application user")
 
-2. Now, use your Glassfish App to generated activity on your database:
+-->
+1. Now, use your Glassfish App to generated activity on your database:
 
-    - Go back to your web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`*
-    
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-    
     - Click on **Search Employees**
 
         ![SQLFW](./images/sqlfw-110.png "Search Employees")
@@ -392,74 +411,135 @@ In this lab you will learn how the administrator trains the system to learn the 
     - Change some of the criteria and Search again
     - **Repeat 2-3 times** to ensure you have enough traffic
 
-3. Go back to your terminal session to ensure that the application workload SQL statements and connections are appropriately captured
+3. Go back to your Data Safe session to ensure that the application workload SQL statements and connections are appropriately captured
 
-    ```
-    <copy>./sqlfw_capture_check.sh</copy>
-    ```
+    - Click on **SQL collection insights** tab
 
-    ![SQLFW](./images/sqlfw-112.png "Check the sessions and capture logs")
+        ![SQLFW](./images/sqlfw-035.png "SQL collections insights tab")
 
-    **Note:** Here, we check the session and capture logs
+    - Click [**Refresh insights**] tab
 
-4. If you are satisfied, stop the SQL workload capture
+        ![SQLFW](./images/sqlfw-036.png "Refresh SQL collections insights")
 
-    ```
-    <copy>./sqlfw_capture_stop.sh</copy>
-    ```
+    - Click [**Refresh insights**] tab
 
-    ![SQLFW](./images/sqlfw-113.png "Stop the SQL workload capture")
+        ![SQLFW](./images/sqlfw-037.png "Refresh SQL collections insights")
+
+4. If you are satisfied, click [**Stop**] to stop the SQL workload capture
+
+    ![SQLFW](./images/sqlfw-038.png "Stop the SQL workload capture")
+
+5. Now, your SQL workload capture is completed
+
+    ![SQLFW](./images/sqlfw-039.png "Stop the SQL workload capture")
 
 ### Step 4: Generate and enable allow list rules for HR Application user
 
-1. Generate the allow list rule
+1. Click [**Generate firewall policy**] to generate the SQL Firewall policy with the allow lists
 
-    ```
-    <copy>./sqlfw_allow_list_rule_gen.sh</copy>
-    ```
+    ![SQLFW](./images/sqlfw-040.png "Generate firewall policy")
 
-    ![SQLFW](./images/sqlfw-114.png "Generate allow list rule")
+    **Note:**
+    - The firewall policy is created
 
-    **Note:** Here, we have 4 statements
+        ![SQLFW](./images/sqlfw-041.png "Generating firewall policy")
 
-2. Compare this list to the events we captured
+2. Scroll down to review the allow-lists in the generated SQL Firewall policy
 
-    ```
-    <copy>./sqlfw_capture_count_events.sh</copy>
-    ```
-
-    ![SQLFW](./images/sqlfw-115.png "Count the events captured")
+    ![SQLFW](./images/sqlfw-042.png "Review allow-lists")
 
     **Note:** The count matches the count of distinct events we captured
 
-3. Now, examine the SQL Firewall allow list rules for trusted database connections and SQL statements
+3. Click [**Deploy and enforce**] to deploy the SQL Firewall policy for `EMPLOYEESEARCH_PROD`
 
-    ```
-    <copy>./sqlfw_allow_list_rule_exam.sh</copy>
-    ```
+    ![SQLFW](./images/sqlfw-043.png "Deploy SQL Firewall policy")
 
-    ![SQLFW](./images/sqlfw-116.png "Examine the SQL Firewall allow list rules")
+    **Note:**
+    - Enforcement to check session attributes and SQL statements, SQL Firewall action set to observe and allow the SQL traffic to the database, while logging any violations
+    - The audit is enabled to track SQL Firewall violations to enable alerting
 
-    **Note:** Here, we allow only connections from the Web App (`JDBC ThinClient`) initiated by the user `oracle` on server `10.0.0.150`
+4. Select the following options:
 
-4. Set up the audit policies for SQL Firewall violations
+    - Enforcement scope: *`All (Session contexts and SQL statements)`*
+    - Action on violations: *`Observe (Allow) and log violations`*
+    - Audit for violations: *`On`*
 
-    ```
-    <copy>./sqlfw_setup_audit_policies.sh</copy>
-    ```
+        ![SQLFW](./images/sqlfw-044.png "Fill out the Deploy SQL Firewall policy")
 
-    ![SQLFW](./images/sqlfw-117.png "Set up the audit policies for SQL Firewall violations")
+5. Click [**Deploy and enforce**]
 
+6. Now, the SQL Firewall policy should be enabled
 
-5. Enable the allow-list rule for `EMPLOYEESEARCH_PROD` in **observation mode**
+    ![SQLFW](./images/sqlfw-045.png "SQL Firewall policy is enabled")
 
-    ```
-    <copy>./sqlfw_allow_list_rule_enable_monitor.sh</copy>
-    ```
+7. Then, start the Unified Audit trail for the target database
 
-    ![SQLFW](./images/sqlfw-118.png "Enable the allow-list rule in observation mode")
+    - Click on **Security center** to go to Security center
 
-    **Note:** Here, we will observe and not block SQL Firewall violations
+        ![SQLFW](./images/sqlfw-046.png "Security Center")
+
+    - Click on **Activity auditing** sub-menu
+
+        ![SQLFW](./images/sqlfw-047.png "Activity auditing sub-menu")
+
+    - Click on **Audit trails** sub-menu
+
+        ![SQLFW](./images/sqlfw-048.png "Audit trails sub-menu")
+
+    - Click on your target database
+
+        ![SQLFW](./images/sqlfw-049.png "Target DB Audit trails")
+
+    - Click [**Start**]
+
+        ![SQLFW](./images/sqlfw-050.png "Start Audit trail")
+
+    - Select a start date and click [**Start**]
+
+        ![SQLFW](./images/sqlfw-051.png "Select a start date")
+
+    - Now, the Audit trail is **COLLECTING**
+
+        ![SQLFW](./images/sqlfw-052.png "Audit trail is COLLECTING")
+
+8. Associate alert policy for trigger alerts for SQL Firewall violations
+
+    - Click on **Security center** to go to Security center
+
+        ![SQLFW](./images/sqlfw-053.png "Security Center")
+
+    - Click on **Alerts** sub-menu
+
+        ![SQLFW](./images/sqlfw-054.png "Alerts sub-menu")
+
+    - Click on **Target-policy associations** sub-menu
+
+        ![SQLFW](./images/sqlfw-055.png "Target-policy associations sub-menu")
+
+    - Click [**Apply policy**]
+
+        ![SQLFW](./images/sqlfw-056.png "Apply policy")
+
+    - Associate the SQL Firewall violation policy to your target database
+    
+        - Select **Selected targets only (up to 10)** and choose *`DBSeclabs_DB23c_freepdb1`*
+        - Select **Selected policies only** and choose *`SQL Firewall violations`*
+
+            ![SQLFW](./images/sqlfw-057.png "Associate the SQL Firewall violation policy")
+
+    - Click [**Apply policy**]
+
+        ![SQLFW](./images/sqlfw-058.png "Apply policy")
+
+    - Once the association is done, you can click on **Close** to close the window
+
+    - Now; you should see your target database associated to the SQL Firewall violations policy
+
+        ![SQLFW](./images/sqlfw-059.png "SQL Firewall violations policy associated")
++
+9. Finally, integrate with OCI Events and Notifications for pro-active notifications
+
+**????**
 
 ## Task 1c: Detect an insider threat of stolen credential access with SQL Firewall
 
@@ -485,19 +565,17 @@ Let's assume there is a malicious insider who had access to the stolen credentia
         
         - **Repeat 2-3 times** to ensure you have enough traffic
 
-    - Now, go back to your terminal session to check violation logs and audit records
+    - Now, go back to your Data Safe session and click on **SQL Firewall** to check the violation logs
 
-        ```
-        <copy>./sqlfw_check_events.sh</copy>
-        ```
+        ![SQLFW](./images/sqlfw-070.png "Check violation logs")
 
-        ![SQLFW](./images/sqlfw-119.png "Check violation logs and audit records")
+        ![SQLFW](./images/sqlfw-071.png "No violation")
 
-        **Note:** No records is found because these queries are already listed as SQL statements allowed into the database
+        **Note:** No violations are reported because the incoming SQL statements and connections are already in allow-list in the SQL Firewall policy
 
 2. Now, let's detect an insider threat of stolen credential access
  
-     - The insider uses SQL*Plus to gain access to the sensitive employee data
+     - The insider uses SQL*Plus to gain access to the sensitive employee data, so go back to your Terminal session and execute
 
         ```
         <copy>./sqlfw_select_sensitive_data.sh</copy>
@@ -505,16 +583,21 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
         ![SQLFW](./images/sqlfw-120.png "Select sensitive employee data")
 
-    - Check again violation logs and audit records
+     - The administrator receives SQL Firewall Context violation alert raising a suspicion that someone has attempted to gain access to HR Apps DB bypassing allowed database connection paths
+     
+        ![SQLFW](./images/sqlfw-072.png "Alert receiving")
 
-        ```
-        <copy>./sqlfw_check_events.sh</copy>
-        ```
+        **Note:** SQL Firewall context violation is raised since SQL Developer is not in the allowed OS program allow list, catching attention of security administrators
 
-        ![SQLFW](./images/sqlfw-121.png "Check violation logs and audit records")
+    - Administrator analyses the SQL Firewall Context violations in Oracle Data Safe to spot abnormal access pattern trend over time and across fleet
+
+        ![SQLFW](./images/sqlfw-073.png "Check violation logs")
 
         **Note:** SQL Firewall context violation is raised since SQL*Plus is not in the allowed OS program allow list, catching attention of security administrators
 
+    - Drilldown into violation report to analyse them further and appropriately take action
+
+        ![SQLFW](./images/sqlfw-074.png "Drilldown the violation logs")
 
 ## Task 1d: Enforce allowed SQL and access patterns with SQL Firewall to mitigate the risks of SQL Injection attacks
 
@@ -603,7 +686,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
 ## Task 2: Use SQL Firewall with PL/SQL API
 
-...Text Angeline...
+With PL/SQL procedures in the `SYS.DBMS_SQL_FIREWALL` package, you can administer and manage SQL Firewall within each database instance.
 
 ## Task 2a: Enable SQL Firewall to protect Glassfish HR Application
 
