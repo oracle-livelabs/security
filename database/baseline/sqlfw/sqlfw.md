@@ -418,11 +418,11 @@ In this lab you will learn how the administrator trains the system to learn the 
 
         ![SQLFW](./images/sqlfw-035.png "SQL collections insights tab")
 
-    - Click [**Refresh insights**] tab
+    - Click [**Refresh insights**]
 
         ![SQLFW](./images/sqlfw-036.png "Refresh SQL collections insights")
 
-    - Click [**Refresh insights**] tab
+    - Click [**Refresh insights**]
 
         ![SQLFW](./images/sqlfw-037.png "Refresh SQL collections insights")
 
@@ -433,6 +433,8 @@ In this lab you will learn how the administrator trains the system to learn the 
 5. Now, your SQL workload capture is completed
 
     ![SQLFW](./images/sqlfw-039.png "Stop the SQL workload capture")
+    
+    **Note:** Click [**Refresh insights**] if you don't see the data populated in the charts
 
 ### Step 4: Generate and enable allow list rules for HR Application user
 
@@ -897,6 +899,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
     **Note:** Here, we have 4 statements
 
+<!--
 2. Compare this list to the events we captured
 
     ```
@@ -906,8 +909,9 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     ![SQLFW](./images/sqlfw-115.png "Count the events captured")
 
     **Note:** The count matches the count of distinct events we captured
+-->
 
-3. Now, examine the SQL Firewall allow list rules for trusted database connections and SQL statements
+2. Examine the SQL Firewall allow list rules for trusted database connections and SQL statements
 
     ```
     <copy>./sqlfw_allow_list_rule_exam.sh</copy>
@@ -917,7 +921,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
     **Note:** Here, we allow only connections from the Web App (`JDBC ThinClient`) initiated by the user `oracle` on server `10.0.0.150`
 
-4. Set up the audit policies for SQL Firewall violations
+3. Set up the audit policies for SQL Firewall violations
 
     ```
     <copy>./sqlfw_setup_audit_policies.sh</copy>
@@ -926,7 +930,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     ![SQLFW](./images/sqlfw-117.png "Set up the audit policies for SQL Firewall violations")
 
 
-5. Enable the allow-list rule for `EMPLOYEESEARCH_PROD` in **observation mode**
+4. Enable the allow-list rule for `EMPLOYEESEARCH_PROD` in **observation mode**
 
     ```
     <copy>./sqlfw_allow_list_rule_enable_monitor.sh</copy>
@@ -990,7 +994,6 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
         **Note:** SQL Firewall context violation is raised since SQL*Plus is not in the allowed OS program allow list, catching attention of security administrators
 
-
 ## Task 2c: Enforce allowed SQL and access patterns with SQL Firewall to mitigate the risks of SQL Injection attacks
 
 With the suspicious encounter of malicious insider, administrator enables the SQL Firewall in blocking mode to disallow any UN-authorized attempts to access sensitive employee information. Learn how SQL Firewall can enforce allowed patterns including approved SQL statements and database connection paths, and alert on potential SQL injection attacks, and anomalous access of HR apps DB.
@@ -1007,7 +1010,25 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     **Note:** SQL Firewall can now block SQL Injection attempts
 
-2. Now, a hacker logs into Glassfish application to perform a SQL injection attack
+2. Now, let's see how SQL Firewall blocks attempts to use stolen credential access
+ 
+    ```
+    <copy>./sqlfw_select_sensitive_data.sh</copy>
+    ```
+
+    ![SQLFW](./images/sqlfw-120.png "Select sensitive employee data")
+
+    - Check again violation logs and audit records
+
+        ```
+        <copy>./sqlfw_check_events.sh</copy>
+        ```
+
+        ![SQLFW](./images/sqlfw-000.png "Check violation logs and audit records")
+
+        **Note:** SQL Firewall now blocks with "ORA-47605: SQL Firewall violation" error and raises context violation
+
+3. Now, a hacker logs into Glassfish application to perform a SQL injection attack
 
     - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -1057,7 +1078,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         - The output should return an ORA-failures on these attempts
         - Remember, this is because the UNION query has not been added into the Allow-list in the SQL Firewall policy... as simple as that!
 
-3. Now, check violation logs and audit records
+4. Now, check violation logs and audit records
 
     ```
     <copy>./sqlfw_check_events.sh</copy>
