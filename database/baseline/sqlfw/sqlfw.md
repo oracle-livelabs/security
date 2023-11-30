@@ -37,13 +37,13 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | Use SQL Firewal with Data Safe
+| 1 | Use SQL Firewall with Data Safe
 | 1a| Register an on-premise Oracle Database on Data Safe | 10 minutes |
 | 1b| Enable SQL Firewall on Data Safe to protect Glassfish HR Application | 10 minutes |
 | 1c| Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
 | 1d| Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
 | 1e| Reset the SQL Firewall Labs Environment for Data Safe | <5 minutes |
-| 2 | Use SQL Firewal with PL/SQL API
+| 2 | Use SQL Firewall with PL/SQL API
 | 2a| Enable SQL Firewall to protect Glassfish HR Application | 10 minutes |
 | 2b| Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
 | 2c| Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
