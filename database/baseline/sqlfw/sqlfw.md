@@ -49,6 +49,66 @@ This lab assumes you have:
 | 2c| Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
 | 2d | Reset the SQL Firewall Labs Environment for PL/SQL API | <5 minutes |
 
+## Task 0 - Prerequisites for the 2 labs below
+
+Here, we will modify the default Glassfish connection to target an Oracle Database 23c, so we can monitor, and block, SQL commands
+
+1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+
+    ```
+    <copy>sudo su - oracle</copy>
+    ```
+
+    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+
+2. Go to the scripts directory
+
+    ```
+    <copy>cd $DBSEC_LABS/sqlfw</copy>
+    ```
+
+3. Migrate the Glassfish Application connection string in order to target the 23c database
+
+    ```
+    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
+    ```
+
+    ![SQLFW](./images/sqlfw-101.png "Set HR App with DB23c")
+
+    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
+
+4. Next, verify the application functions as expected
+
+    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
+
+        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+    
+    - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
+
+        ```
+        <copy>hradmin</copy>
+        ```
+
+        ```
+        <copy>Oracle123</copy>
+        ```
+
+        ![SQLFW](./images/sqlfw-102.png "HR App - Login")
+
+        ![SQLFW](./images/sqlfw-103.png "HR App - Login")
+
+    - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
+
+        ![SQLFW](./images/sqlfw-104.png "HR App - Settings")
+
+    - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
+
+        ![SQLFW](./images/sqlfw-105.png "HR App - Session details")
+
+    - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
+
+        ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
+
 ## Task 1: Use SQL Firewall with Data Safe
 
 With Data Safe you can manage multiple SQL firewalls centrally and get a comprehensive view of SQL Firewall violations across a fleet of Oracle databases. SQL Firewall administrators can use Data Safe to collect SQL activities of a database user with its associated database connection paths (IP address, OS program, OS user), and monitor the progress of the collection. Data Safe lets you generate and enable the SQL Firewall policy from the collected SQL traffic. Data Safe automatically collects SQL Firewall violation logs and lets you analyze and report on violations.
@@ -309,7 +369,8 @@ In this lab you will learn how the administrator trains the system to learn the 
 
     ![SQLFW](./images/sqlfw-034.png "SQL Firewall is collecting")
 
-### Step 2: Setup the Glassfish App to use your target database `freepdb1`
+<!--
+Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -367,38 +428,10 @@ In this lab you will learn how the administrator trains the system to learn the 
 
         ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
 
-<!--
-5. Create an administrator (**`dba_tom`**) to manage SQL Firewall
-
-    ```
-    <copy>./sqlfw_crea_admin-user.sh</copy>
-    ```
-
-    ![SQLFW](./images/sqlfw-107.png "Create the SQL Firewall Admin user")
-
-6. Enable SQL Firewall
-
-    ```
-    <copy>./sqlfw_enable.sh</copy>
-    ```
-
-    ![SQLFW](./images/sqlfw-108.png "Enable SQL Firewall")
-
-    **Note**: You must see `ENABLED`
 -->
 
-### Step 3: Enable SQL Firewall to learn authorized SQL traffic of HR Application user
+### Step 2: Enable SQL Firewall to learn authorized SQL traffic of HR Application user
 
-<!--
-1. Start the SQL workload capture of the application user EMPLOYEESEARCH_PROD
-
-    ```
-    <copy>./sqlfw_capture_start.sh</copy>
-    ```
-
-    ![SQLFW](./images/sqlfw-109.png "Start the SQL workload capture of the application user")
-
--->
 1. Now, use your Glassfish App to generated activity on your database:
 
     - Click on **Search Employees**
@@ -436,7 +469,7 @@ In this lab you will learn how the administrator trains the system to learn the 
     
     **Note:** Click [**Refresh insights**] if you don't see the data populated in the charts
 
-### Step 4: Generate and enable allow list rules for HR Application user
+### Step 3: Generate and enable allow list rules for HR Application user
 
 1. Click [**Generate firewall policy**] to generate the SQL Firewall policy with the allow lists
 
@@ -764,8 +797,9 @@ With PL/SQL procedures in the `SYS.DBMS_SQL_FIREWALL` package, you can administe
 
 In this lab you will learn how the administrator trains the system to learn the authorized SQL statements and the trusted connection paths of HR application. SQL Firewall policy is generated with allow-lists representing authorized SQL connections and statements, and deployed to the target.
 
-### Step 1: Setup SQL Firewall env
+## Step 1: Setup SQL Firewall env
 
+<!--
 Here, we will modify the default Glassfish connection to target an Oracle Database 23c, so we can monitor, and block, SQL commands
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
@@ -824,7 +858,9 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
         ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
 
-5. Create an administrator (**`dba_tom`**) to manage SQL Firewall
+-->
+
+1. Create an administrator (**`dba_tom`**) to manage SQL Firewall
 
     ```
     <copy>./sqlfw_crea_admin-user.sh</copy>
@@ -832,7 +868,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
     ![SQLFW](./images/sqlfw-107.png "Create the SQL Firewall Admin user")
 
-6. Enable SQL Firewall
+2. Enable SQL Firewall
 
     ```
     <copy>./sqlfw_enable.sh</copy>
