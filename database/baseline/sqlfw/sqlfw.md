@@ -45,66 +45,6 @@ This lab assumes you have:
 | 2c| Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
 | 2d | Reset the SQL Firewall Labs Environment for PL/SQL API | <5 minutes |
 
-## Task 0 - Prerequisites for the 2 labs below
-
-Here, we will modify the default Glassfish connection to target an Oracle Database 23c, so we can monitor, and block, SQL commands
-
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
-
-    ```
-    <copy>sudo su - oracle</copy>
-    ```
-
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
-
-2. Go to the scripts directory
-
-    ```
-    <copy>cd $DBSEC_LABS/sqlfw</copy>
-    ```
-
-3. Migrate the Glassfish Application connection string in order to target the 23c database
-
-    ```
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
-    ```
-
-    ![SQLFW](./images/sqlfw-101.png "Set HR App with DB23c")
-
-    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
-
-4. Next, verify the application functions as expected
-
-    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
-
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-    
-    - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
-
-        ```
-        <copy>hradmin</copy>
-        ```
-
-        ```
-        <copy>Oracle123</copy>
-        ```
-
-        ![SQLFW](./images/sqlfw-102.png "HR App - Login")
-
-        ![SQLFW](./images/sqlfw-103.png "HR App - Login")
-
-    - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
-
-        ![SQLFW](./images/sqlfw-104.png "HR App - Settings")
-
-    - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
-
-        ![SQLFW](./images/sqlfw-105.png "HR App - Session details")
-
-    - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
-
-        ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
-
 ## Task 1: Use SQL Firewall with Data Safe
 
 With Data Safe you can manage multiple SQL firewalls centrally and get a comprehensive view of SQL Firewall violations across a fleet of Oracle databases. SQL Firewall administrators can use Data Safe to collect SQL activities of a database user with its associated database connection paths (IP address, OS program, OS user), and monitor the progress of the collection. Data Safe lets you generate and enable the SQL Firewall policy from the collected SQL traffic. Data Safe automatically collects SQL Firewall violation logs and lets you analyze and report on violations.
