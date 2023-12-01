@@ -1,7 +1,7 @@
 # Oracle SQL Firewall
 
 ## Introduction
-This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure SQL Firewall to protect against common database risks such as SQL injection attacks and compromised accounts.SQL Firewall helps ensure that only authorized SQL statements from trusted database connections are permitted for execution inside the Oracle Database while blocking and logging unauthorized SQL or database connections.
+This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure SQL Firewall to protect against common database risks such as SQL injection attacks and compromised accounts. SQL Firewall helps ensure that only authorized SQL statements from trusted database connections are permitted for execution inside the Oracle Database while blocking and logging unauthorized SQL or database connections.
 
 *Estimated Lab Time:* 30 minutes
 
@@ -11,14 +11,10 @@ This workshop introduces the functionality of Oracle SQL Firewall. It gives the 
 Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23c*" [](youtube:aiwb6od3mfo)
 
 ### Objectives
-- Create a SQL Firewall policy to protect sensitive data
-- Detect an insider threat of stolen credential access
-- Mitigate the risk of SQL Injection attacks
-
 - Train the SQL Firewall to learn the normal activity 
 - Deploy and enforce the firewall policy with allow-lists
 - Use SQL Firewall to protect against common database risks such as SQL injection attacks and compromised accounts
-- Managing SQL Firewall in two ways:
+- Manage SQL Firewall in two ways:
     - **Oracle Data Safe** enables you to manage your database's SQL Firewalls centrally and provides a comprehensive view of SQL Firewall violations across your fleet of Oracle Databases.
     - Use **PL/SQL procedures** in `SYS.DBMS_SQL_FIREWALL` package if you wish to manage SQL Firewall within each database instance.
 
@@ -575,7 +571,30 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 +
 9. Finally, integrate with OCI Events and Notifications for pro-active notifications
 
-**????**
+    - Open the Burger menu and click on **Developer Services**, then **Notifications** in the **Application Integration** section
+
+        ![SQLFW](./images/sqlfw-060.png "Notification menu")
+
+    - Click [**Create Topic**]
+
+        ![SQLFW](./images/sqlfw-061.png "Create Topic")
+
+    - Fill out the form as following:
+
+        - Name: *`DBSeclabs_SQLFW_Notif`*
+        - Description: *`Notification of the SQL Firewall alters`*
+
+            ![SQLFW](./images/sqlfw-062.png "Fill out the Notification form")
+
+    - Click [**Create**]
+
+    - Click on the notification just created to edit it
+
+        ![SQLFW](./images/sqlfw-063.png "Edit notification")
+
+    - Click [**Create Subscription**]
+
+        ![SQLFW](./images/sqlfw-064.png "Edit notification")
 
 ## Task 1c: Detect an insider threat of stolen credential access with SQL Firewall
 
