@@ -441,19 +441,19 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
     - Change some of the criteria and Search again
     - **Repeat 2-3 times** to ensure you have enough traffic
 
-3. Go back to your Data Safe session to ensure that the application workload SQL statements and connections are appropriately captured
+3. Go back to your Data Safe session and to ensure that the application workload SQL statements and connections are appropriately captured
 
-    - Click on **SQL collection insights** tab
-
+    - Click on **SQL collection insights** tab 
+    
         ![SQLFW](./images/sqlfw-035.png "SQL collections insights tab")
 
-    - Click [**Refresh insights**]
+    - Now, you should see data in the chart **Unique SQL statements**
 
         ![SQLFW](./images/sqlfw-036.png "Refresh SQL collections insights")
 
-    - Click [**Refresh insights**]
-
-        ![SQLFW](./images/sqlfw-037.png "Refresh SQL collections insights")
+        **Note:** Click [**Refresh insights**] if you don't see any data!
+        
+           ![SQLFW](./images/sqlfw-037.png "Refresh SQL collections insights")
 
 4. If you are satisfied, click [**Stop**] to stop the SQL workload capture
 
