@@ -465,8 +465,7 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
     
     **Note:** Click [**Refresh insights**] if you don't see the data populated in the charts
 
-### Step 3: Generate and enable allow list rules for HR Application user
-
+### SThe administrator receives SQL Firewall Context violation
 1. Click [**Generate firewall policy**] to generate the SQL Firewall policy with the allow lists
 
     ![SQLFW](./images/sqlfw-040.png "Generate firewall policy")
@@ -563,7 +562,7 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
     - Once the association is done, you can click on **Close** to close the window
 
-    - Now; you should see your target database associated to the SQL Firewall violations policy
+    - Now, you should see your target database associated to the SQL Firewall violations policy
 
         ![SQLFW](./images/sqlfw-059.png "SQL Firewall violations policy associated")
 +
@@ -732,6 +731,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     
         ![SQLFW](./images/sqlfw-076.png "EMPLOYEESEARCH_PROD SQL Firewall policy")
 
+    <!--
     - Click [**Disable**]
     
         ![SQLFW](./images/sqlfw-077.png "Disable SQL Firewall policy")
@@ -740,6 +740,8 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     
         ![SQLFW](./images/sqlfw-078.png "Confirm disabling of the SQL Firewall policy")
 
+    -->
+    
     - Now, click [**Deploy and enforce**]
     
     - Then, select the following options:
@@ -756,7 +758,17 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         **Note:** SQL Firewall can now block SQL Injection attempts!
 
-2. Now, a hacker logs into Glassfish application to perform a SQL injection attack
+2. Go back to your Terminal session to see how SQL Firewall blocks attempts to use stolen credential access
+ 
+    ```
+    <copy>./sqlfw_select_sensitive_data.sh</copy>
+    ```
+
+    ![SQLFW](./images/sqlfw-081.png "Select sensitive employee data")
+
+    **Note:** SQL Firewall now blocks with "ORA-47605: SQL Firewall violation" error and raises context violation
+
+3. Now, a hacker logs into Glassfish application to perform a SQL injection attack
 
     - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -806,13 +818,17 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         - The output should return an ORA-failures on these attempts
         - Remember, this is because the UNION query has not been added into the Allow-list in the SQL Firewall policy... as simple as that!
 
-3. SQL violation is raised, catching attention of security administrators!
+4. SQL violation alert is raised, catching attention of security administrators by email!
+
+    ![SQLFW](./images/sqlfw-082.png "Alert violation email")
+
+5. Administrator analyses the SQL violations in Oracle Data Safe to spot abnormal access pattern trends over time and across fleet
 
     - Go back to the Data Safe session then click on SQL Firewall
 
         ![SQLFW](./images/sqlfw-090.png "Check violation logs")
 
-    - Administrator analyses the SQL violations in Oracle Data Safe to spot abnormal access pattern trends over time and across fleet
+    - You can see the violation report
 
         ![SQLFW](./images/sqlfw-091.png "Check violation logs")
 
@@ -822,17 +838,16 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
 ## Task 1e: Reset the SQL Firewall Labs Environment for Data Safe
 
-1. Once you are comfortable with the SQL Firewall concept, you can reset the environment:
+1. Once you are comfortable with the SQL Firewall concept, go back to your terminal session to reset the environment
 
-    - Go back to your terminal session and execute
-    
-        ```
-        <copy>./sqlfw_reset_env_ds.sh</copy>
-        ```
+    ```
+    <copy>./sqlfw_reset_env_ds.sh</copy>
+    ```
 
-        ![SQLFW](./images/sqlfw-200.png "Reset the SQL Firewall Labs Environment")
+    ![SQLFW](./images/sqlfw-200.png "Reset the SQL Firewall Labs Environment")
 
-    - Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
+<!--
+2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
 
         ```
         <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
@@ -841,6 +856,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         ![SQLFW](./images/sqlfw-201.png "Set HR App with PDB1")
 
         **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
+-->
 
 2. Go back to the Data Safe session and deregister the Target database
 
@@ -1014,8 +1030,6 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
     ![SQLFW](./images/sqlfw-114.png "Generate allow list rule")
 
-    **Note:** Here, we have 4 statements
-
 <!--
 2. Compare this list to the events we captured
 
@@ -1133,19 +1147,19 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_select_sensitive_data.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-120.png "Select sensitive employee data")
+    ![SQLFW](./images/sqlfw-000.png "Select sensitive employee data")
 
-    - Check again violation logs and audit records
+    **Note:** SQL Firewall now blocks with "ORA-47605: SQL Firewall violation" error and raises context violation
 
-        ```
-        <copy>./sqlfw_check_events.sh</copy>
-        ```
+3. Check again violation logs and audit records
 
-        ![SQLFW](./images/sqlfw-000.png "Check violation logs and audit records")
+    ```
+    <copy>./sqlfw_check_events.sh</copy>
+    ```
 
-        **Note:** SQL Firewall now blocks with "ORA-47605: SQL Firewall violation" error and raises context violation
+    ![SQLFW](./images/sqlfw-000.png "Check violation logs and audit records")
 
-3. Now, a hacker logs into Glassfish application to perform a SQL injection attack
+4. Now, a hacker logs into Glassfish application to perform a SQL injection attack
 
     - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -1195,7 +1209,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         - The output should return an ORA-failures on these attempts
         - Remember, this is because the UNION query has not been added into the Allow-list in the SQL Firewall policy... as simple as that!
 
-4. Now, check violation logs and audit records
+5. Now, check violation logs and audit records
 
     ```
     <copy>./sqlfw_check_events.sh</copy>
@@ -1215,6 +1229,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     ![SQLFW](./images/sqlfw-250.png "Reset the SQL Firewall Labs Environment")
 
+<!--
 2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
 
     ```
@@ -1224,8 +1239,9 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     ![SQLFW](./images/sqlfw-251.png "Set HR App with PDB1")
 
     **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
+-->
 
-3. Now, you can go to the **Task 2a** above if you want to redo this lab!
+2. Now, you can go to the **Task 2a** above if you want to redo this lab!
 
 You may now proceed to the next lab!
 
