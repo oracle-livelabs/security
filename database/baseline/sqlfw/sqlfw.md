@@ -401,11 +401,9 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
 5. Now, your SQL workload capture is completed
 
-    ![SQLFW](./images/sqlfw-039.png "Stop the SQL workload capture")
+    ![SQLFW](./images/sqlfw-039.png "SQL workload completed")
     
-    **Note:** Click [**Refresh insights**] if you don't see the data populated in the charts
-
-### SThe administrator receives SQL Firewall Context violation
+### The administrator receives SQL Firewall Context violation
 1. Click [**Generate firewall policy**] to generate the SQL Firewall policy with the allow lists
 
     ![SQLFW](./images/sqlfw-040.png "Generate firewall policy")
@@ -505,7 +503,7 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
     - Now, you should see your target database associated to the SQL Firewall violations policy
 
         ![SQLFW](./images/sqlfw-059.png "SQL Firewall violations policy associated")
-+
+
 9. Finally, integrate with OCI Events and Notifications for pro-active notifications
 
     - Open the Burger menu and click on **Developer Services**, then **Notifications** in the **Application Integration** section
