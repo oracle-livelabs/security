@@ -128,7 +128,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>./sqlfw_glassfish_start_db23c.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-101.png "Set HR App with DB23c")
+    ![SQLFW](./images/init-start-env-sqlfw-001.png "Set HR App with DB23c")
 
     **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
 
@@ -148,21 +148,21 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
         <copy>Oracle123</copy>
         ```
 
-        ![SQLFW](./images/sqlfw-102.png "HR App - Login")
+        ![SQLFW](./images/init-start-env-sqlfw-002.png "HR App - Login")
 
-        ![SQLFW](./images/sqlfw-103.png "HR App - Login")
+        ![SQLFW](./images/init-start-env-sqlfw-003.png "HR App - Login")
 
     - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
 
-        ![SQLFW](./images/sqlfw-104.png "HR App - Settings")
+        ![SQLFW](./images/init-start-env-sqlfw-004.png "HR App - Settings")
 
     - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
 
-        ![SQLFW](./images/sqlfw-105.png "HR App - Session details")
+        ![SQLFW](./images/init-start-env-sqlfw-005.png "HR App - Session details")
 
     - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
 
-        ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
+        ![SQLFW](./images/init-start-env-sqlfw-006.png "HR App - Check the targetted database")
 
 You may now **proceed to the next lab**.
 
