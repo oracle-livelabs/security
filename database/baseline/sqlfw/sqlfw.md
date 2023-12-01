@@ -594,7 +594,71 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
     - Click [**Create Subscription**]
 
-        ![SQLFW](./images/sqlfw-064.png "Edit notification")
+        ![SQLFW](./images/sqlfw-064.png "Create Subscription")
+
+    - Set your email where to send the notifications
+
+        ![SQLFW](./images/sqlfw-065.png "Set email notification")
+
+    - You'll received an email in your mailbox, please **click on the confirmation link** to confirma your email address
+
+    - Now, the status should be **Active**
+
+        ![SQLFW](./images/sqlfw-066.png "Email enabling")
+
+    - On the Burger menu, click on **Oracle Database**, then on "**Data Safe - Database Security**"
+
+        ![SQLFW](./images/sqlfw-001.png "Open Data Safe")
+ 
+    - Click on **Alerts** sub-menu
+
+        ![SQLFW](./images/sqlfw-054.png "Alerts sub-menu")
+
+    - Click on "**Alert policies**"
+
+        ![SQLFW](./images/sqlfw-067a.png "Alert policies")
+
+    - Click on "**SQL Firewall violaions**"
+
+        ![SQLFW](./images/sqlfw-067b.png "SQL Firewall violations policy")
+
+    - Then, copy the OCID of this alert to associate to the rule (just next step)
+
+        ![SQLFW](./images/sqlfw-067c.png "Copy the OCID of the alert")
+
+    - Open the Burger menu and click on **Observability & Management**, then **Rules** in the **Events Service** section
+
+        ![SQLFW](./images/sqlfw-068.png "Events Service Rules")
+
+    - Click [**Create Rule**]
+
+    - Fill out the form as following:
+
+        - Display Name: *`DBSeclabs_SQLFW-Violation_Alert`*
+        - Description: *`Send a notification when SQL Firewall violation occurs`*
+        - **Rule Conditions**
+            - Condition: Select *`Event Type`*
+            - Service Name: Select *`Data Safe`*
+            - Event Type: Select *`Alert Generated`*
+            - Condition: Select *`Attribute`*
+            - Attribute Name: Select *`policyId`*
+            - Attributes Values: **paste the OCID of the alert copied just before**
+        - **Actions**
+            - Action type: Select *`Notifications`*
+            - Notifications Compartment: Select your compartment
+            - Topic: Select your topic just created before (here *`DBSeclabs_SQLFW_Notif`*)
+
+            ![SQLFW](./images/sqlfw-069a.png "Fill out the Rule Notification form")
+
+    - Click [**Create Rule**]
+
+    - Now, the Event Rule is created and Active
+
+        ![SQLFW](./images/sqlfw-069b.png "Events Service Rules")
+
+    - Finally, click on **Actions** to check that the association with the notifaction is enabled
+
+        ![SQLFW](./images/sqlfw-069c.png "Events Service Rules with notification active")
 
 ## Task 1c: Detect an insider threat of stolen credential access with SQL Firewall
 
