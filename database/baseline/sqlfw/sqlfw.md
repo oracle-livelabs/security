@@ -480,15 +480,13 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
     ![SQLFW](./images/sqlfw-042.png "Review allow-lists")
 
-    **Note:** The count matches the count of distinct events we captured
+    **Note:**
+    - Generated Firewall policy remains inactive until deployed
+    - You can generate the report of allowed SQL statements for offline review
 
 3. Click [**Deploy and enforce**] to deploy the SQL Firewall policy for `EMPLOYEESEARCH_PROD`
 
     ![SQLFW](./images/sqlfw-043.png "Deploy SQL Firewall policy")
-
-    **Note:**
-    - Enforcement to check session attributes and SQL statements, SQL Firewall action set to observe and allow the SQL traffic to the database, while logging any violations
-    - The audit is enabled to track SQL Firewall violations to enable alerting
 
 4. Select the following options:
 
@@ -534,7 +532,7 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
         ![SQLFW](./images/sqlfw-052.png "Audit trail is COLLECTING")
 
-8. Associate alert policy for trigger alerts for SQL Firewall violations
+8. Associate alert policy to trigger alerts for SQL Firewall violations
 
     - Click on **Security center** to go to Security center
 
