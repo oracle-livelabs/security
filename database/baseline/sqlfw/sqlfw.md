@@ -403,7 +403,8 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
     ![SQLFW](./images/sqlfw-039.png "SQL workload completed")
     
-### The administrator receives SQL Firewall Context violation
+### Step 3: Generate and enable SQL Firewall policy with allow-lists for HR Application user
+
 1. Click [**Generate firewall policy**] to generate the SQL Firewall policy with the allow lists
 
     ![SQLFW](./images/sqlfw-040.png "Generate firewall policy")
