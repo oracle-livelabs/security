@@ -1213,7 +1213,7 @@ PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and man
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle SQL Firewall 23c](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/using-sql-firewall.html#GUID-F53EAE01-CE78-47F4-80AD-A0091BA3C434)
+- [Oracle SQL Firewall 23c](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/using-sql-firewall.html)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
