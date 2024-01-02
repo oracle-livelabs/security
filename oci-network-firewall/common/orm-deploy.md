@@ -25,7 +25,7 @@ You will be using Terraform to create your lab environment.
 
 1.  Click on the link below to download the zip file which you need to build your environment.  
 
-    - Click here: [oci-network-firewall-live-labs.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/NlkE3VlkA0kwaYKviti6g9Afhy4W2DHpeduNWl63xIKOHWB-87asj2axKTaHdI3L/n/partners/b/files/o/oci-network-firewall.zip) 
+    - Click here: [oci-network-firewall-live-labs.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/o_QTW8EWdtK1mMu-1WIjuKQ-fSz-ofIyGONl0S1oarXlN_Ohbkah99t3Byu7-uy8/n/partners/b/files/o/oci-network-firewall.zip) 
         - Packaged terraform **OCI Network Firewall** use-case.
         - **PAR URL** is valid until **Dec, 2025**.
 

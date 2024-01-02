@@ -6,6 +6,8 @@ This lab walks you through how to create your own keys outside of OCI in CTM, an
 
 Estimated Time: 15 minutes
 
+[Walk through the Lab](videohub:1_grwhdvvv)
+
 ### Objectives
 
 In this lab, you will:
@@ -76,7 +78,7 @@ This lab assumes you have:
 4. In the third step "Configure oracle Key", you need to provide the following information:
     * **Oracle Key Name** - Enter "ocw23-AES-256-XXX" where "XXX" is your student number.
     * **Oracle Compartment** - Select "ocw23-OCI-Vault-HOL" from the dropdown list.
-    * **Vault** - Select "ocw23-OCI-XXX" where "XXX" is your student number from the dropdown list.
+    * **Vault** - Select "ocw23-OCI-Vault-XXX" where "XXX" is your student number from the dropdown list.
     Make sure the radio button "HSM" is selected and clieck "Next". 
 
     ![Add AES key](images/key-compartment.png "Add AES key")
