@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Database Security Assessmen
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle DBSAT 3.0
+*Version tested in this lab:* Oracle DBSAT 3.0 and DBEE 19.21
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Database Security Assessment Tool (DBSAT)*" [](youtube:3XxA1qhNDpQ)
@@ -1224,4 +1224,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Pedro Lopes
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2024

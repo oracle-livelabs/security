@@ -17,40 +17,40 @@ This lab assumes you have:
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
 <if type="basics">
-    - [dbseclabs-v54_init-vm.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm.zip)
+    - [dbseclabs-v55_init-vm.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm.zip)
 </if>
 <if type="advanced">
-    - [dbseclabs-v54_advanced.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_advanced.zip)
+    - [dbseclabs-v55_advanced.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_advanced.zip)
 </if>
 <if type="aso">
-    - [dbseclabs-v54_init-vm-aso.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-aso.zip)
+    - [dbseclabs-v55_init-vm-aso.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-aso.zip)
 </if>
 <if type="avdf">
-    - [dbseclabs-v54_avdf.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_avdf.zip)
+    - [dbseclabs-v55_avdf.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_avdf.zip)
 </if>
 <if type="data-masking-subsetting">
-    - [dbseclabs-v54_init-vm-dms.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-dms.zip)
+    - [dbseclabs-v55_init-vm-dms.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-dms.zip)
 </if>
 <if type="data-safe">
-    - [dbseclabs-v54_init-vm-dsop.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-dsop.zip)
+    - [dbseclabs-v55_init-vm-dsop.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-dsop.zip)
 </if>
 <if type="database-vault">
-    - [dbseclabs-v54_init-vm-dbv.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-dbv.zip)
+    - [dbseclabs-v55_init-vm-dbv.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-dbv.zip)
 </if>
 <if type="dbsat">
-    - [dbseclabs-v54_init-vm-dbsat.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-dbsat.zip)
+    - [dbseclabs-v55_init-vm-dbsat.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-dbsat.zip)
 </if>
 <if type="key-vault">
-    - [dbseclabs-v54_okv.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_okv.zip)
+    - [dbseclabs-v55_okv.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_okv.zip)
 </if>
 <if type="label-security">
-    - [dbseclabs-v54_init-vm-ols.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-ols.zip)
+    - [dbseclabs-v55_init-vm-ols.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-ols.zip)
 </if>
 <if type="nne">
-    - [dbseclabs-v54_init-vm-nne.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-nne.zip)
+    - [dbseclabs-v55_init-vm-nne.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-nne.zip)
 </if>
 <if type="priv-analysis">
-    - [dbseclabs-v54_init-vm-pa.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-pa.zip)
+    - [dbseclabs-v55_init-vm-pa.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-pa.zip)
 </if>
 <if type="sqlfw">
     - [dbseclabs-v55_sqlfw.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_sqlfw.zip)
@@ -59,10 +59,10 @@ This lab assumes you have:
     - [dbseclabs-v45_storyhack.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v45_storyhack.zip)
 </if>
 <if type="tsdp">
-    - [dbseclabs-v54_init-vm-tsdp.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-tsdp.zip)
+    - [dbseclabs-v55_init-vm-tsdp.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-tsdp.zip)
 </if>
 <if type="unified-auditing">
-    - [dbseclabs-v54_init-vm-ua.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v54_init-vm-ua.zip)
+    - [dbseclabs-v55_init-vm-ua.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_init-vm-ua.zip)
 </if>
 
 2.  Save in your downloads folder
@@ -108,4 +108,4 @@ You may now **proceed to the next lab**.
 
 * **Author** - Hakim Loumi, Database Security PM
 * **Contributors** - Rene Fontcha, Master Principal Solutions Architect, NA Technology
-* **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023
+* **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2024
