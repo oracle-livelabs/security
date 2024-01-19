@@ -4,7 +4,7 @@
 
 In this lab, you prepare your environment in Oracle Cloud Infrastructure for the workshop.
 
-*Please read the following instructions carefully!:*
+*Please read the following instructions carefully!*
 
 - For the **Run on Your Tenancy** option: If you are the tenancy administrator, complete all tasks except for 2, 3, and 5. If you are not a tenancy administrator, enlist the help of one in your organization to complete all tasks, except for task 5.
 
@@ -93,7 +93,7 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 
     The **Policies** page in IAM is displayed.
 
-2. On the left under **COMPARTMENT**, leave the **root** compartment selected.
+2. On the left under **COMPARTMENT**, select the **root** compartment.
 
 3. Click **Create Policy**.
 
@@ -160,12 +160,9 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - **Workload type** - Select **Transaction Processing**.
     - **Deployment type** - Leave **Serverless** selected.
     - **Always Free** - Select this option by moving the slider to the right.
-    - **Database version** - Leave **21c** selected.
-    - **OCPU Count** - You get **1** OCPU.
-    - **Storage** - You get 0.02TB of storage.
+    - **Database version** - If possible, select a database version; for example, **21c**.
     - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
     - **Access Type** - Leave **Secure access from everywhere** selected.
-    - **License Type** - Leave **License included** selected.
 
 6. Click **Create Autonomous Database**. 
 
@@ -192,7 +189,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - A compartment of your very own. We refer to this compartment as "your compartment" throughout the workshop. Make note of your compartment's name because you need to select it often throughout the workshop.
     - An Autonomous Database in your compartment. You are provided the password for the `ADMIN` account on your database.
 
-3. Make note of your username and click the **Copy Password** button for Oracle Cloud Infrastructure.
+3. Make note of your Oracle Cloud Infrastructure username and click the **Copy Password** button.
 
 4. On the **Reservation Information** panel, click the **Launch OCI** button.
 
@@ -206,31 +203,23 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
     You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
 
-7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your target database.
+7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your target database.
 
 
 ## Task 6: Access Oracle Database Actions
 
 Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. At the top of the **Autonomous Database details** page, click **Database actions**. 
-
-    The **Sign-in** page is displayed.
+1. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
 
 2. If required, sign in as the `ADMIN` user. 
-
-    A browser tab named **Oracle Database Actions** is opened. *Keep this tab open throughout the workshop.* If your session expires, you can always sign in again.
 
     - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
     - If you are using an Oracle-provided environment, enter the database password provided to you.
 
-3. In the **Development** section, click **SQL**.
+3. Close the warning and help dialog boxes.
 
-    The browser tab name is changed to **SQL | Oracle Database Actions**.
-
-4. Close the warning and help dialog boxes.
-
-5. Review the interface. Here are the ways that you use Database Actions during the workshop:
+4. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
     - In the **Navigator** pane on the left, you select tables from the **HCM1** schema on your target database.
     - On the **Worksheet** on the right, you run SQL commands and scripts.
@@ -276,7 +265,9 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
 6. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
-7. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+7. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. 
+
+8. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
 You may now **proceed to the next lab**.
 
@@ -291,4 +282,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 8, 2023
+- **Last Updated By/Date** - Jody Glover, January 18, 2024
