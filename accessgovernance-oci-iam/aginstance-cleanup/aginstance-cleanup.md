@@ -34,7 +34,7 @@ This lab assumes you have:
     ![Navigate to Access Governance](images/access-governance.png)
 
     
-3. On the Access Governance page, select Service Instances. Click on the Service Instance **service-instance** you created in *Lab 4: Task 1* 
+3. On the Access Governance page, select Service Instances. Click on the Service Instance **service-instance** you created in *Lab 2: Task 1* 
  
 
     ![Validate the status of docker](images/service-instance.png) 
@@ -44,6 +44,28 @@ This lab assumes you have:
     ![Validate the status of docker](images/delete-service-instance.png) 
 
 5. Now the Access Governance service instance has been successfully deleted. 
+
+
+## Task 2: Deactivate Identity Domain
+
+1. Navigate to **Identity -> Domain -> ag-domain**. Click on **More actions -> Deactivate**
+
+    ![Open OCI console](images/deactivate-domain.png)
+
+2. Click on **Deactivate domain**
+
+    ![Open OCI console](images/confirm-deactivate.png)
+
+
+## Task 3: Destroy Terraform Stack 
+
+1. Navigate to **Resource Manager -> Stacks -> Stack details** 
+
+    ![Open OCI console](images/destroy-job.png)
+
+2. Click on **Destroy** job. Once it has completed, Under **More Actions** select **Delete stack**
+
+    ![Open OCI console](images/delete-stack.png)
 
     You may now **proceed to the next lab.**
 

@@ -41,13 +41,13 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
     ![Create Service Instance](images/create-service-instance.png)
     
 
-3. Select the License type : Access Governance for Oracle Workloads. Click on *Create Service Instance*
+3. Select the License type : Access Governance for Oracle Cloud Infrastructure. Click on *Create Service Instance*
 
-    ![Select License type](images/license-type.png)
+    ![Select License type](images/license-select.png)
 
 4. Wait for the service instance to have the *Active* status . Note down this URL as we will be using it in the further labs. 
 
-    ![Service Instance is Active](images/ag-url.png)
+    ![Service Instance is Active](images/ag-url-access.png)
 
 5. Click on the Service Instance to access the URL. 
 
@@ -80,13 +80,13 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
        ![OIG Identity Roles and Access Policies](images/agreviewer.png)
 
-    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez* and *Harlan Bullard* in *Available Users.* Click on *Assign*
+    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez, Jerry Poland and Harlan Bullard* in *Available Users.* Click on *Assign*
 
      ![OIG Identity Roles and Access Policies](images/ag-userassign.png)
 
      ![OIG Identity Roles and Access Policies](images/ag-reviewerassign.png)
 
-    * Mark Hernandez and Harlan Bullard have now been assigned with the *AG User* application role and *AG CloudAccessReviewer*. You can now close the window.
+    * Mark Hernandez, Jerry Poland and Harlan Bullard have now been assigned with the *AG User* application role and *AG CloudAccessReviewer*. You can now close the window.
 
 
     You may now **proceed to the next lab.**

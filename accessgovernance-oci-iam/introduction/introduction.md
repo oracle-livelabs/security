@@ -26,7 +26,7 @@ In this workshop, you will learn how to:
 * Create OCI groups and policies needed
 * Integrate OCI IAM with Access Governance
 * Create policy review campaigns as a **campaign administrator**
-* Perform policy review tasks 
+* Perform policy review tasks - **Review the OCI IAM policies and based on the review decision you can either revoke or accept the entire policy or the actionable statements within the policy**
 * Monitor and manage policy review campaigns as a **campaign administrator**
 
 ### Prerequisites
