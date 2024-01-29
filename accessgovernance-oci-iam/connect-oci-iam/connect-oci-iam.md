@@ -4,7 +4,7 @@
 
 As **Access Governance Administrators** they can learn to integrate Oracle Access Governance with OCI IAM. 
 
-* Estimated Time: 15 minutes
+* Estimated Time: 10 minutes
 * Persona: Access Governance Administrator
 
 ### Objectives
@@ -17,7 +17,7 @@ In this lab, you will:
 ## Task 1: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
 
-1.  In a browser, navigate to the Oracle Access Governance service home page using the URL noted down in *Lab 2: Task 1* and log in as a user with the **Access Governance Administrator** application role. 
+1.  In a browser, navigate to the Oracle Access Governance service home page using the URL noted down in *Lab 2: Task 1: Step 4* and log in as a user with the **Access Governance Administrator** application role. 
 
    ![Homepage AG](images/ag-home.png)
 

@@ -4,7 +4,7 @@
 
 Access Governance Campaign Reviewer (Pamela Green) can perform Policy Review tasks. 
 
-* Estimated Time: 15 minutes
+* Estimated Time: 5 minutes
 * Persona: Campaign Reviewer
 
 ### Objectives
@@ -26,7 +26,7 @@ In this lab, you will:
   In this task, you will review and certify OCI IAM review tasks raised by the campaign created in the previous task.
 
 
-1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 2: Task 1* 
+1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 2: Task 1: Step 4* 
 
 
 2. Enter **Oracle Access Governance Campaign Reviewer** username and password (Pamela Green)
@@ -100,8 +100,6 @@ In this lab, you will:
 
       - Let's revoke the entire policy **security-admins-policy** 
 
-       ![Access Governance Homepage](images/security-policy.png)
-
       - Click on the Revoke All button. 
 
        ![Access Governance Homepage](images/revoke-all.png)
@@ -118,22 +116,27 @@ In this lab, you will:
 
    Before performing the policy review:
 
-  ![Access Governance Homepage](images/before-security-policy.png)
+     ![Access Governance Homepage](images/policy-before.png)
+
+ 
    
    After performing the policy review: 
 
-   ![Access Governance Homepage](images/after-security-policy.png)
+      ![Access Governance Homepage](images/policy-after.png)
+
 
   * Verify the policy statement - **Allow group Auditors to read audit-events in compartment Quality-Assurance** of the policy -  **auditors-policy** has been revoked successfully. 
 
   Before performing the policy review:
 
-   ![Access Governance Homepage](images/before-auditor-policy.png)
+   ![Access Governance Homepage](images/statement-before.png)
    
 
   After performing the policy review: 
 
-   ![Access Governance Homepage](images/after-auditor-policy.png)
+    ![Access Governance Homepage](images/statement-after.png)
+
+
 
 
   This concludes the tutorial on create and perform OCI IAM policy reviews. 

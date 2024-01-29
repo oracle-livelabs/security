@@ -4,7 +4,7 @@
 
 In this lab we will setup the OAG service instance and make configurations required to successfully run this workshop.
 
-*Estimated Lab Time*: 30 minutes
+*Estimated Lab Time*: 5 minutes
 
 *Persona*: Identity Domain Administrator
 
@@ -19,12 +19,12 @@ In this lab, you will:
 ### Prerequisites
 This lab assumes you have:
 - A valid Oracle OCI tenancy, with OCI administrator privileges. 
-- Choose a region where Access Governance is available. 
+- **Choose a region where Access Governance is available**
 
 
 ## Task 1: Create AG Service instance 
 
-Login to the OCI console using the Identity domain: ag-domain as the **Identity Domain Administrator** , if not currently not logged in to the Identity domain. 
+Login to the OCI console using the Identity domain: ag-domain as the **Identity Domain Administrator** which is **idd-admin** as per our lab , if not currently not logged in to the Identity domain. 
 
 1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region.
 
@@ -43,7 +43,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
 3. Select the License type : Access Governance for Oracle Cloud Infrastructure. Click on *Create Service Instance*
 
-    ![Select License type](images/license-select.png)
+    ![Select License type](images/license.png)
 
 4. Wait for the service instance to have the *Active* status . Note down this URL as we will be using it in the further labs. 
 
@@ -60,7 +60,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     * In the OCI console, navigate to Identity -> Domains ->  ag-domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
 
-    * Notice the *AG Administrator* Role and *AG Campaign Administrator* Role listed. Click on the Downward arrow on the right corner for each of them. 
+    * Notice the *AG Administrator* Role and *AG Campaign Administrator* Role listed. Click on the Downward arrow on the right corner to assign Pamela to these roles. 
 
     ![OIG Identity Roles and Access Policies](images/user-approle.png)
 
@@ -74,7 +74,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator*. You can now close the window.
 
-    * Now, Notice the *AG User* Role and *AG CloudAccessReviewer* Role listed. Click on the Downward arrow on the right corner for each of them. 
+    * Now, Notice the *AG User* Role and *AG CloudAccessReviewer* Role listed. Click on the Downward arrow on the right corner to assign Pamela to these roles. 
 
       ![OIG Identity Roles and Access Policies](images/aguser.png)
 

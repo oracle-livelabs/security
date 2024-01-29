@@ -11,16 +11,24 @@ In this lab we will use pre-configured terraform scripts to resources - Compartm
 ### Objectives
 
 In this lab, you will: 
-* Create  OCI Policies, VCN, Groups and Compartments, OCI IAM Users manually
+
 * Note: All the resources we create in this lab are supposed to be created in the **ag-compartment**
-* We create the following resources in this lab:
+* We create the following resources in this lab using Terraform stack:
 
 
   ![OCI IAM Lab Architecture](images/oci-iam-lab.png)
 
+## Task 1: Download Oracle Resource Manager (ORM) stack zip file
+
+1. Click on the link below to download the Resource Manager zip file you need to build your environment:
+
+    
+   <oracleaccessgovernance_stack.zip>
 
 
-## Task 1: Deploying Infrastructure using Terraform
+2. Save in your downloads folder.
+
+## Task 2: Deploying Infrastructure using Terraform
 
 
 1. Login to the OCI console **Default Domain** as the **Default Domain Administrator**
@@ -40,7 +48,7 @@ In this lab, you will:
 
   **Stack Configuration -> Terraform Configuration Source** Select .zip file
 
-  Browse the Downloaded stack file and upload it. 
+  Browse the Downloaded stack file from previous step and upload it. 
 
   ![Upload zip file](images/upload-zip.png)
 
@@ -48,7 +56,7 @@ In this lab, you will:
 
   Enter Unique Email IDS for each of the users and Click *Next*.
 
-   ![Enter Email IDs](images/enter-email-id.png)
+   ![Enter Email IDs](images/email-id.png)
 
   Click on *Create*.
 
@@ -69,7 +77,7 @@ In this lab, you will:
 
 
 
-5. The resources should have been created successfully by the terraform script. Please verify the resources created. 
+5. The resources should have been created successfully by the terraform script. Please verify the resources created. You will receive activation mails for the users created and ensure you reset the password at least for user Pamela Green.  
 
 
 

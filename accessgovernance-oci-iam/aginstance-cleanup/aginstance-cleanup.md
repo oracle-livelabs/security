@@ -5,26 +5,19 @@
 Upon completing your labs, we recommend that you perform a cleanup to dispose the Access Governance service instance. This lab will guide you to properly destroy the resource.
 
 
-*Estimated Lab Time*: 10 minutes
+*Estimated Lab Time*: 5 minutes
 
 ### Objectives
 
 In this lab, you will:
- * Destroy the Access Governance service instance
+
+ * Delete the Access Governance service instance
 
 
-### Prerequisites
-This lab assumes you have:
 
-   * An Oracle Cloud account
-   * You have completed:
-       - Lab: Prepare Setup
-       - Lab: Environment Setup
+## Task 1: Delete the Access Governance service instance
 
-
-## Task 1: Destroy the Access Governance service instance
-
-1. Log in to Oracle Cloud
+1. Log in to Oracle Cloud as the **Default Domain Administrator**
 
    ![Open OCI console](images/open-oci-console.png)
 

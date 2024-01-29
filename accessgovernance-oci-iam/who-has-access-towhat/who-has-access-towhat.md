@@ -4,7 +4,7 @@
 
 Access Governance Administrator (Pamela Green) can view who has access to what. 
 
-* Estimated Time: 15 minutes
+* Estimated Time: 5 minutes
 * Persona: Access Governance Administrator
 
 ### Objectives
@@ -20,7 +20,7 @@ In this lab, you will:
   In this task, you will review **Who has Access to What - MyAccess**
 
 
-1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 2: Task 1* 
+1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 2: Task 1: Step 4* 
 
 
 2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
