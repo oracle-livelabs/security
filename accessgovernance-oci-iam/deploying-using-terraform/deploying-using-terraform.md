@@ -12,8 +12,7 @@ In this lab we will use pre-configured terraform scripts to resources - Compartm
 
 In this lab, you will: 
 
-* Note: All the resources we create in this lab are supposed to be created in the **ag-compartment**
-* We create the following resources in this lab using Terraform stack:
+* Create the following resources using Terraform stack:
 
 
   ![OCI IAM Lab Architecture](images/oci-iam-lab.png)
