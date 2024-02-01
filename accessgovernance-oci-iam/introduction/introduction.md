@@ -8,7 +8,7 @@
 
   ![View List of Campaigns](images/oracle-access-governance-overview.png)
 
-This lab walks you through the steps to get started using **Oracle Access Governance** with a popular use case - **policy review certification campaign**. In this workshop, a ficticious corporation is using **Oracle IAM** to manage and govern their Cloud resources. As part of their cloud strategy, they want to optimize their plicy review certification campaign process with a cloud-native solution. **Oracle Access Governance** SaaS solution is designed for this purpose and serves as a natural extension of **Oracle IAM**. With **Oracle Access Governance**, they can immediately benefit from automated policy review workflows that layer in prescriptive analytics with intuitive dashboards/reports. 
+This lab walks you through the steps to get started using **Oracle Access Governance** with a popular use case - **policy review certification campaign**. In this workshop, a ficticious corporation is using **Oracle IAM** to manage and govern their Cloud resources. As part of their cloud strategy, they want to optimize their policy review certification campaign process with a cloud-native solution. **Oracle Access Governance** SaaS solution is designed for this purpose and serves as a natural extension of **Oracle IAM**. With **Oracle Access Governance**, they can immediately benefit from automated policy review workflows that layer in prescriptive analytics with intuitive dashboards/reports. 
 
 **Oracle Access Governance** allows : 
 - **Campaign administrator** to run intelligent access review campaigns for policy governance and compliance
@@ -16,7 +16,7 @@ This lab walks you through the steps to get started using **Oracle Access Govern
 - **Users** and **user managers** to validate access assigned to self and their direct reports, respectively. 
 
 
-*Estimated Time:* 2 Hours
+*Estimated Time:* 1 Hour
 
 
 ### Objectives
@@ -26,7 +26,7 @@ In this workshop, you will learn how to:
 * Create OCI groups and policies needed
 * Integrate OCI IAM with Access Governance
 * Create policy review campaigns as a **campaign administrator**
-* Perform policy review tasks 
+* Perform policy review tasks - **Review the OCI IAM policies, as part of which you can either revoke or accept the entire policy or specific statements within the policy**
 * Monitor and manage policy review campaigns as a **campaign administrator**
 
 ### Prerequisites
