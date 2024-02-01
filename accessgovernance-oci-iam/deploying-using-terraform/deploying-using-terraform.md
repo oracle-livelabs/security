@@ -15,17 +15,17 @@ In this lab, you will:
 * Create the following resources using Terraform stack:
 
 
-  ![OCI IAM Lab Architecture](images/oci-iam-lab.png)
+  ![OCI IAM Lab Architecture](images/oci-iam-lab-update.png)
 
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 
 1. Click on the link below to download the Resource Manager zip file you need to build your environment:
 
     
-   <oracleaccessgovernance_stack.zip>
+   - [oracle_access_governance-terraform-stack.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/ag-terra.zip)
 
 
-2. Save in your downloads folder.
+  Save in your downloads folder.
 
 ## Task 2: Deploying Infrastructure using Terraform
 
