@@ -1,4 +1,4 @@
-# Download the Latest Security Assessment by using the Oracle Data Safe CLI
+# Download the latest security assessment by using the Oracle Data Safe CLI
 
 [comment]: <> (A policy is required to access Cloud Shell)
 
@@ -244,4 +244,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 5, 2024
+- **Last Updated By/Date** - Jody Glover, February 6, 2024

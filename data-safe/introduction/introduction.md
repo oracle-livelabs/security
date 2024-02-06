@@ -37,4 +37,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, January 18, 2024
+* **Last Updated By/Date** - Jody Glover, February 6, 2024

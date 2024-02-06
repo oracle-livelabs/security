@@ -1,4 +1,4 @@
-# Mask Sensitive Data
+# Mask sensitive data
 
 ## Introduction
 
@@ -228,4 +228,4 @@ You can run a data masking job against your target database from the **Masking p
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 18, 2024
+- **Last Updated By/Date** - Jody Glover, February 6, 2024

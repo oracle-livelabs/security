@@ -1,4 +1,4 @@
-# Copy Audit Data to Object Storage using the Oracle Data Safe REST API
+# Copy audit data to object storage using the Oracle Data Safe REST API
 
 ## Introduction
 

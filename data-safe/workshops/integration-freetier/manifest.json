@@ -15,7 +15,7 @@
       "type": "freetier"
     },
     {
-      "title": "Prepare Your Environment",
+      "title": "Prepare your environment",
       "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
       "filename": "../../prepare-environment/prepare-environment.md",
       "type": "freetier"
@@ -44,7 +44,7 @@
       "type": "freetier"
     },
     {
-      "title": "Lab 5: Get notified about security drift on your target databases by setting up Oracle Data Safe events",
+      "title": "Lab 5: Get notified about security drift on your target databases by setting up notifications in Oracle Data Safe",
       "description": "This lab shows you how to set up events in Oracle Cloud Infrastructure for Oracle Data Safe events.",
       "filename": "../../events/events.md",
       "type": "freetier"

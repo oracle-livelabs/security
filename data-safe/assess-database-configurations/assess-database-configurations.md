@@ -1,4 +1,4 @@
-# Assess Database Configurations
+# Assess database configurations
 
 ## Introduction
 
@@ -206,4 +206,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, January 18, 2024
+* **Last Updated By/Date** - Jody Glover, February 6, 2024

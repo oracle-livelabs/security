@@ -1,4 +1,4 @@
-# Discover Sensitive Data
+# Discover sensitive data
 
 ## Introduction
 
@@ -195,4 +195,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 18, 2024
+- **Last Updated By/Date** - Jody Glover, February 6, 2024

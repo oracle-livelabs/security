@@ -1,6 +1,6 @@
-# Get notified about security drift on your target databases by setting up Oracle Data Safe events
+# Get notified about security drift on your target databases by setting up notifications in Oracle Data Safe
 
-In this lab, you configure the Events service to notify you via email when there is security drift on your target database.
+In this lab, you set up contextual notifications in Oracle Data Safe to notify you via email when there is security drift on your target database.
 
 Estimated Lab Time: 20 minutes
 
@@ -211,4 +211,4 @@ In this task, you create a user on your target database with the `PDB_DBA` role.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Contributors** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 5, 2024
+- **Last Updated By/Date** - Jody Glover, February 6, 2024
