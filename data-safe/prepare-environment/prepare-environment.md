@@ -118,7 +118,7 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
     </copy>
     ```
 
-    - For the **Integrate Oracle Data Safe with Applications and Services** workshop, you require the following permissions. Note that only tenancy administrators have the necessary permissions to do the lab called **Get notified about security drift on your target databases by setting up Oracle Data Safe events**. 
+    - For the **Integrate Oracle Data Safe with Applications and Services** workshop, you require the following permissions: 
 
     ```text
     <copy>
@@ -131,6 +131,11 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
     Allow group {group name} to manage instance-family in compartment {compartment name}
     Allow group {group name} to read app-catalog-listing in tenancy
     Allow group {group name} to manage virtual-network-family in compartment {compartment name}
+    Allow group <user-group> to manage ons-topic in tenancy
+    Allow group <user-group> to manage cloudevents-rules in tenancy
+    Allow group <user-group> to manage alarms in tenancy
+    Allow group <user-group> to read metrics in tenancy
+
     </copy>
     ```
    
@@ -282,4 +287,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 18, 2024
+- **Last Updated By/Date** - Jody Glover, February 5, 2024

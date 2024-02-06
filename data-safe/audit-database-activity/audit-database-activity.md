@@ -216,11 +216,13 @@ This lab assumes you have:
 
 4. On the right, click the name of your target database.
 
-5. Notice that the following custom audit policies are provisioned on your target database, but not yet enabled:
+5. Notice that the following custom audit policies are provisioned on your target database; however, all but one are not enabled yet:
 
+    - `ADB_PARURL_PKG_ACCESS_AUDIT`
     - `APP_USER_NOT_APP_SERVER`
     - `EMPSEARCH_SELECT_USAGE_BY_PETE`
     - `ADB_SAAS_ADMIN_AUDIT`
+    - `ADB_PAR_URL_ACCESS_AUDIT`
     - `EMP_RECORD_CHANGES`
 
 
@@ -230,7 +232,7 @@ This lab assumes you have:
 
 7. Select **Exclude Data Safe user activity**.
 
-8. Under **Basic auditing**, select **Database schema changes** and **Critical database activity**.
+8. Under **Basic auditing**, select **Database schema changes**, **Logon events**, and **Critical database activity**.
 
 9. Under **Admin activity auditing**, select **Admin user activity**.
 
