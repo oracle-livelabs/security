@@ -361,12 +361,13 @@ In this task, you compile a Java program named `DataSafeRestAPIClientExample.jav
     $ <copy>vi DataSafeRestAPIClientExample.java</copy>
     ```
 
-4. In the program, substitute `EU_FRANKFURT_1` on line 73 with your region. You can refer to https://docs.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm to find your region code.
+4. (Temporary fix) In the program, substitute `Region.EU_FRANKFURT_1` with `provider.getRegion()`. You need to make this change on lines 73 and 231. Save the change (press **Escape**, enter **:wq**, and then press **Enter**.)
+
+    This is the correct code:
 
     ```text
-    ...
-    ObjectStorage objStoreClient = ObjectStorageClient.builder().region(Region.EU_FRANKFURT_1).build(provider);
-    ...
+    <copy>ObjectStorage objStoreClient = 
+        ObjectStorageClient.builder().region(provider.getRegion()).build(provider);</copy>
     ```
 
 5. Compile the `DataSafeRestAPIClientExample.java` file. Be sure to use the correct version in the `oci-java-sdk-full-<version>.jar` file name. The example below uses version 3.33.0. It’s very common that a Java program depends on one or more external libraries (JAR files). Use the flag `-classpath` (or `-cp`) to tell the compiler where to look for external libraries. Note that there is no output after the file is compiled. You are simply returned to the prompt.
