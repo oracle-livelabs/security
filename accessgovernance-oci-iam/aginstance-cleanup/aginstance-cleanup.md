@@ -1,4 +1,4 @@
-# Access Governance service instance, OCI Identity domain and OCI Resources cleanup 
+# Cleanup the Environment 
 
 ## Introduction
 
@@ -41,6 +41,8 @@ In this lab, you will:
 
 ## Task 2: Deactivate Identity Domain
 
+   *Note: We are only deactivating the domain here, deletion of the domain will be done in the following lab*
+
 1. Navigate to **Identity -> Domain -> ag-domain**. Click on **More actions -> Deactivate**
 
     ![Open OCI console](images/deactivate-domain.png)
@@ -48,10 +50,6 @@ In this lab, you will:
 2. Click on **Deactivate domain**
 
     ![Open OCI console](images/confirm-deactivate.png)
-
-3. Click on **Delete** to delete the deactivated domain.
-
-    ![Open OCI console](images/confirm-delete.png)
 
 
 

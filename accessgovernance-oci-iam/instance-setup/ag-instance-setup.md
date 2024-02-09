@@ -45,11 +45,11 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     ![Select License type](images/license.png)
 
-4. Wait for the service instance to have the *Active* status . Keep this tab open to access the *Service Instance* from here. 
+4. Wait for the service instance to have the *Active* status . Note this *URL* which we will use to access the *Service Instance* in the further labs. 
 
     ![Service Instance is Active](images/ag-url-access.png)
 
-5. Click on the Service Instance to validate if you are able to access the URL. You will be using it in the subsequent labs.
+5. Click on the Service Instance to validate if you are able to access the URL. Once you see this page, close the browser window. 
 
     ![Access Governance console](images/ag-console.png)
 
