@@ -3,12 +3,12 @@
 ## Introduction
 This workshop introduces the various features and functionality of Oracle Database Vault (DV). It gives the user an opportunity to learn how to configure those features to prevent unauthorized privileged users from accessing sensitive data.
 
-Estimated Time: 60 minutes
+Estimated Time: 45 minutes
 
 *Version tested in this lab:* Oracle DBEE 19.21
 
 ### Video Preview
-Watch a preview of "*LiveLabs - Oracle Database Vault*" [](youtube:M5Kn-acUHRQ)
+Watch a preview of "*LiveLabs - Oracle Database Vault (May 2022)*" [](youtube:M5Kn-acUHRQ)
 
 ### Objectives
 - Enable Database Vault in the container and `PDB1` pluggable database
@@ -28,13 +28,12 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | Enable Database Vault | 10 minutes |
+| 1 | Enable Database Vault | 5 minutes |
 | 2 | Create a Simple Realm | 10 minutes |
 | 3 | Create a Trusted Path / Multi-factor Authorization | 10 minutes |
 | 4 | Simulation Mode | 10 minutes |
-| 5 | Preventing a Mistake in Production | 10 minutes |
-| 6 | Ops Control | 10 minutes |
-| 7 | Disabling Database Vault | <5 minutes |
+| 5 | Ops Control | 5 minutes |
+| 6 | Disabling Database Vault | <5 minutes |
 
 ## Task 1: Enable Database Vault
 
@@ -298,109 +297,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-012c.png "Drop the Command Rule")
 
-## Task 5: Preventing a Mistake in Production
-
-Oracle Database Vault can help prevent or reduce mistakes that may occur on a production database. For example, when do you think anyone, even the schema owning the application data, would need to perform a `TRUNCATE TABLE` or `DROP TABLE`? During maintenance windows or upgrades maybe? Or maybe never? Would you ever delete every row from your company's HR table? Probably not, so let's disable this capability for all users, including the schema owner and  privileged users, like DBAs. 
-
-1. Make a copy of the existing `DEMO_HR_EMPLOYEES` table.
-
-    ````
-    <copy>./dv_copy_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-501.png "Copy existing table")
-
-2. Next, create a Command Rule that will prevent the `TRUNCATE TABLE` command on any object in the `EMPLOYEESEARCH_PROD` schema.
-
-    ````
-    <copy>./dv_create_command_rule_truncate_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-502.png "Create a Command Rule")
-
-3. Attempt to perform the `TRUNCATE TABLE` command, it will be blocked by the Oracle Database Vault command rule you just created. 
-
-    ````
-    <copy>./dv_perform_truncate_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-503.png "Truncate table attempt")
-
-4. Now that we have proven we can prevent `TRUNCATE TABLE`, drop the table to demonstrate that command still works.
-
-    ````
-    <copy>./dv_perform_drop_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-504.png "Drop table")
-
-
-5. Next, create a new command rule to prevent `DROP TABLE` commands from being used on any `EMPLOYEESEARCH_PROD` schema objects
-
-    ````
-    <copy>./dv_create_command_rule_drop_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-505.png "Create a command rule to prevent DROP TABLE")
-
-6. Again, make a copy of the existing `DEMO_HR_EMPLOYEES` table.
-
-    ````
-    <copy>./dv_copy_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-506.png "Copy existing table")
-
-7.  Attempt to perform the `TRUNCATE TABLE` command, it will be blocked by the Oracle Database Vault command rule you just created. 
-
-    ````
-    <copy>./dv_perform_truncate_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-507.png "Truncate table attempt")
-
-
-8.  Attempt to perform the `DROP TABLE` command, this time it will be blocked by the Oracle Database Vault command rule protecting against `DROP TABLE` commands on the `EMPLOYEESEARCH_PROD` schema.  
-
-    ````
-    <copy>./dv_perform_drop_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-508.png "Drop table attempt")
-
-
-9.  Remove the Database Vault Command Rules preventing you from issuing `DROP TABLE` and `TRUNCATE TABLE` and allow the `EMPLOYEESEARCH_PROD` schema to use it's privileges again. 
-
-    ````
-    <copy>./dv_drop_command_rule_drop_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-509a.png "Delete the command rule preventing DROP TABLE use")
-
-
-    ````
-    <copy>./dv_drop_command_rule_truncate_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-509b.png "Delete the command rule preventing TRUNCATE TABLE use")
-
-
-10.  Before moving to the next lab, verify `EMPLOYEESEARCH_PROD` can perform the `TRUNCATE TABLE` and `DROP TABLE` commands now that the Command Rules have been removed.
-
-    ````
-    <copy>./dv_perform_truncate_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-510a.png "Truncate table")
-
-
-    ````
-    <copy>./dv_perform_drop_table.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-510b.png "Drop table")
-
-## Task 6: Ops Control
+## Task 5: Ops Control
 
 1. Check the status of Database Vault and Operations Control
 
@@ -471,7 +368,7 @@ Oracle Database Vault can help prevent or reduce mistakes that may occur on a pr
 
     ![DB Vault](./images/dv-018b.png "Disable OPS control")
 
-## Task 7: Disabling Database Vault
+## Task 6: Disabling Database Vault
 
 1. Disable the pluggable database **pdb1**
 

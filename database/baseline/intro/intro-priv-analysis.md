@@ -15,7 +15,7 @@ The complete architecture of the **DB Security Hands-On Labs** is as following:
 
   ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
-It's composed of 5 VMs:
+It may be composed of as many as five VMs:
   - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)
   - **Audit Vault Server VM** (for Advanced workshop only)
   - **DB Firewall Server VM** (for Advanced workshop only)
@@ -41,4 +41,4 @@ You may now [proceed to the next lab](#next)
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Richard Evans
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - February 2024
