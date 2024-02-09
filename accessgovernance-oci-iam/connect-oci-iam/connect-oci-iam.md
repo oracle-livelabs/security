@@ -17,7 +17,7 @@ In this lab, you will:
 ## Task 1: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
 
-1.  In a browser, navigate to the Oracle Access Governance service home page using the URL noted down in *Lab 2: Task 1: Step 4* and log in as a user with the **Access Governance Administrator** application role. 
+1.  In a browser, navigate to the Oracle Access Governance service home page from the OCI Cloud Console using the URL specified *Lab 2: Task 1: Step 4* and log in as a user with the **Access Governance Administrator** application role. 
 
    ![Homepage AG](images/ag-home.png)
 
@@ -30,7 +30,7 @@ In this lab, you will:
 
     **Password:**
     ```
-    <copy>Oracl@123456</copy>
+    The password you have set for the user
     ```
 
 2.  On the Oracle Access Governance service home page, click on the Navigation Menu icon, and select **Service Administration → Connected Systems**

@@ -26,7 +26,7 @@ This lab assumes you have:
 
 Login to the OCI console using the Identity domain: ag-domain as the **Identity Domain Administrator** which is **idd-admin** as per our lab , if not currently not logged in to the Identity domain. 
 
-1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region.
+1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region - [Oracle Access Governance Availability Regions](https://docs.oracle.com/en/cloud/paas/access-governance/cagsi/index.html#articletitle)
 
     ![Create Service Instance](images/oci-console.png)
 
@@ -45,11 +45,11 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     ![Select License type](images/license.png)
 
-4. Wait for the service instance to have the *Active* status . Note down this URL as we will be using it in the further labs. 
+4. Wait for the service instance to have the *Active* status . Keep this tab open to access the *Service Instance* from here. 
 
     ![Service Instance is Active](images/ag-url-access.png)
 
-5. Click on the Service Instance to access the URL. 
+5. Click on the Service Instance to validate if you are able to access the URL. You will be using it in the subsequent labs.
 
     ![Access Governance console](images/ag-console.png)
 
