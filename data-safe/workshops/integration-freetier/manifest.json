@@ -9,13 +9,13 @@
       "type": "freetier"
     },
     {
-      "title": "Get Started",
+      "title": "Get started",
       "description": "Get an Oracle Cloud account if needed and sign in.",
       "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md",
       "type": "freetier"
     },
     {
-      "title": "Prepare Your Environment",
+      "title": "Prepare your environment",
       "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
       "filename": "../../prepare-environment/prepare-environment.md",
       "type": "freetier"
@@ -44,8 +44,8 @@
       "type": "freetier"
     },
     {
-      "title": "Lab 5: Get notified about security drift on your target databases by setting up Oracle Data Safe events",
-      "description": "This lab shows you how to set up events in Oracle Cloud Infrastructure for Oracle Data Safe events.",
+      "title": "Lab 5: Get notified about security drift on your target databases by setting up notifications in Oracle Data Safe",
+      "description": "This lab shows you how to set up notifications in Oracle Data Safe.",
       "filename": "../../events/events.md",
       "type": "freetier"
     },
