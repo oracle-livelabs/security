@@ -4,7 +4,7 @@
 
 In Oracle Data Safe, you can provision audit policies on your target databases and collect audit data into the Oracle Data Safe repository. There are basic, administrator, user, Oracle pre-defined, and custom audit policies, as well as audit policies designed to help your organization meet compliance standards. When you register a target database, Oracle Data Safe automatically creates an audit profile, audit policy, and audit trails relevant for the target database.
 
-Start by reviewing the global settings in Oracle Data Safe. Then, review the audit profile, audit trail(s), and audit policy that are automatically created for your target database. Start audit data collection on your target database and provision a few audit policies. Analyze the audit events, view reports, create a custom audit report, and download the custom audit report as a PDF.
+Start by reviewing the global settings in Oracle Data Safe. Then, review the audit profile, audit trail(s), and audit policy that are automatically created for your target database. Start audit data collection on your target database and provision a few audit policies. Analyze the audit events and view reports. Create, download, and schedule a custom audit report.
 
 Estimated Lab Time: 20 minutes
 
@@ -216,15 +216,11 @@ This lab assumes you have:
 
 4. On the right, click the name of your target database.
 
-5. Notice that the following custom audit policies are provisioned on your target database; however, all but one are not enabled yet:
+5. Review the custom audit policies that are provisioned on your target database. If the check box is not selected, it means that the policy is not yet enabled. For example, the following are custom audit policies provided with the sample data that you loaded into your target database:
 
-    - `ADB_PARURL_PKG_ACCESS_AUDIT`
     - `APP_USER_NOT_APP_SERVER`
     - `EMPSEARCH_SELECT_USAGE_BY_PETE`
-    - `ADB_SAAS_ADMIN_AUDIT`
-    - `ADB_PAR_URL_ACCESS_AUDIT`
     - `EMP_RECORD_CHANGES`
-
 
 6. Click **Update and provision**.
 
@@ -232,7 +228,7 @@ This lab assumes you have:
 
 7. Select **Exclude Data Safe user activity**.
 
-8. Under **Basic auditing**, select **Database schema changes**, **Logon events**, and **Critical database activity**.
+8. Under **Basic auditing**, select **Database schema changes** and **Critical database activity**.
 
 9. Under **Admin activity auditing**, select **Admin user activity**.
 
@@ -448,4 +444,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 6, 2024
+* **Last Updated By/Date** - Jody Glover, February 12, 2024

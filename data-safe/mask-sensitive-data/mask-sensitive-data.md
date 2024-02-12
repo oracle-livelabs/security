@@ -17,7 +17,8 @@ In this lab, you will:
 - Grant the Data Masking role on your target database
 - View sensitive data in your target database
 - Create a masking policy for your target database
-- Modify the masking policy
+- Modify a masking format to use a fixed number
+- Create a group mask
 - Mask sensitive data in your target database
 - View the Data Masking report
 - Validate the masked data in your target database
@@ -60,7 +61,7 @@ This lab assumes you have:
 
 6. Verify that the script output reads as follows:
 
-    `PL/SQL procedure successfully completed`
+    `PL/SQL procedure successfully completed.`
     
     You are now able to mask sensitive data on your target database.
 
@@ -142,7 +143,7 @@ Data Masking can generate a masking policy for your target database based on you
     ![Masking policy details page for Mask SDM1 bottom](images/masking-policy-details-bottom.png "Masking policy details page for Mask SDM1 bottom")
 
 
-## Task 4: Modify the masking policy
+## Task 4: Modify a masking format to use a fixed number
 
 Set `SALARY` to be a fixed number, such as 50000.
 
@@ -162,12 +163,44 @@ Set `SALARY` to be a fixed number, such as 50000.
 
     Notice that the updated row is highlighted.
     
-    ![Updated row is highlighted](images/ocw/updated-row-is-highlighted.png "Updated row is highlighted")
+    ![Updated row is highlighted](images/updated-row-is-highlighted.png "Updated row is highlighted")
     
 6. To save your update, click **Save masking formats** and wait for the update operation to finish.
 
 
-## Task 5: Mask sensitive data in your target database
+## Task 5: Create a group mask
+
+Use the group masking feature to create a group named `ADDRESS` and apply the `SHUFFLE` masking format to the group.
+
+1. In the list of columns in the masking policy, find `STREET_ADDRESS` from the `LOCATIONS` table, and then select the masking format called **Group Masking**.
+
+    The **Edit masking format** page is displayed.
+
+2. For **Group name**, enter **Address**.
+
+3. From the **Masking format entry** drop-down list, select **Shuffle**.
+
+4. Notice that **STREET_ADDRESS** is listed as a column for the group.
+
+5. For each of the following columns, click **+Another** column and select the column.
+
+    - `CITY`
+    - `STATE_PROVINCE`
+    - `COUNTRY_ABBREV`
+    - `POSTAL_CODE`
+
+    Note: If `COUNTRY_ABBREV` is not available, you need to add it to your sensitive data model first before creating the group mask (see [Discover Sensitive Data](?lab=discover-sensitive-data)). Or, you can leave it out.
+
+    ![Group mask configuration](images/group-mask1.png "Group mask configuration")
+
+6. Click **Continue**.
+
+7. Notice that the masking format for the columns is set to **Address**.
+
+8. Click **Save masking formats**.
+
+
+## Task 6: Mask sensitive data in your target database
 
 You can run a data masking job against your target database from the **Masking policy details** or **Data masking** page.
 
@@ -188,7 +221,7 @@ You can run a data masking job against your target database from the **Masking p
 4. Wait for the status to read as **SUCCEEDED**.
 
  
-## Task 6: View the Data Masking report
+## Task 7: View the Data Masking report
 
 1. While on the **Work request** page, next to **Masking report** on the **Work request information** tab, click **View details**.
 
@@ -203,7 +236,7 @@ You can run a data masking job against your target database from the **Masking p
     ![Masking report bottom](images/masking-report-bottom.png "Masking report bottom")
 
 
-## Task 7: Validate the masked data in your target database
+## Task 8: Validate the masked data in your target database
 
 1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. The `SELECT` statement against the `EMPLOYEES` table should be displayed on the worksheet.
 
@@ -220,6 +253,21 @@ You can run a data masking job against your target database from the **Masking p
 
 4. (Optional) Click the **Script Output** tab to view the original unmasked data.
 
+5. Clear the worksheet.
+
+6. Drag the `LOCATIONS` table to the worksheet.
+
+7. When prompted to choose an insertion type, click **Select**, and then click **Apply**.
+
+8. On the toolbar, click the **Run Script** button.
+
+    ![Run Script button](images/run-script.png "Run Script button")
+
+9. Examine the data on the **Script Output** tab. The data for each `LOCATION_ID` has changed. `STREET_ADDRESS`, `POSTAL_CODE`, `CITY`, `STATE_PROVINCE`, AND `COUNTRY_ABBREV` are shuffled as an entire group to maintain the accuracy of each location. Notice that the `COUNTRY_ID`, which has not been masked and is not included in the screenshot below, is different than the `COUNTRY_ABBREV`.
+
+    ![Addresses shuffled](images/addresses-shuffled.png "Addresses shuffled")
+
+
 
 ## Learn More
 
@@ -228,4 +276,4 @@ You can run a data masking job against your target database from the **Masking p
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 6, 2024
+- **Last Updated By/Date** - Jody Glover, February 12, 2024

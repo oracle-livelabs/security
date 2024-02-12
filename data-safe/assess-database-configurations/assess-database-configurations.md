@@ -17,6 +17,7 @@ In this lab, you will:
 
 - View the overview page for Security Assessment
 - View the latest security assessment for your target database
+- Adjust the risk level of a risk finding
 - Set the latest assessment as the baseline assessment
 - Generate activity on the target database
 - Refresh the latest security assessment and analyze the results
@@ -118,8 +119,26 @@ This lab assumes you have:
 
     ![Transparent Data Encryption finding](images/transparent-data-encryption-finding.png "Transparent Data Encryption finding")
 
+## Task 3: Adjust the risk level of a risk finding
 
-## Task 3: Set the latest assessment as the baseline assessment
+You can defer or change the risk level of a risk finding. In this task, defer the **Sample Schemas** risk finding.
+
+1. Click the pencil icon for the **Sample Schemas** finding.
+
+   ![Adjust risk icon](images/adjust-risk-icon.png "Adjust risk icon")
+
+2. In the **Update risk for finding** panel, leave **Defer risk** selected. Optionally, enter a justification and set an expiration date. Click **Save**.
+
+    Setting an expiration date is optional. Upon expiry, the next assessment resumes evaluating the finding and displays as found. With no expiration date, the risk finding is deferred indefinitely. 
+
+   ![Update risk for finding panel](images/update-risk-for-finding.png "Update risk for finding panel")
+
+3. Notice that the risk finding is recatorized in the **Assessment details** section.
+
+   ![Deferred risk finding](images/deferred-risk-finding.png "Deferred risk finding")
+
+
+## Task 4: Set the latest assessment as the baseline assessment
 
 A baseline assessment shows you data for all your target databases in a selected compartment at a given point in time. However, because we are only dealing with one target database in your compartment, the baseline assessment shows data for only one target database.
 
@@ -136,7 +155,7 @@ A baseline assessment shows you data for all your target databases in a selected
     ![Security Assessment Baseline has been set message](images/sa-baseline-has-been-set-message.png "Security Assessment Baseline has been set message")
 
 
-## Task 4: Generate activity on the target database
+## Task 5: Generate activity on the target database
 
 In this task, you issue a `GRANT` command on your target database so that later, when you refresh the latest security assessment, you can compare assessments.
 
@@ -155,7 +174,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
     ![Run Statement button](images/run-statement-button.png "Run Statement button")
 
 
-## Task 5: Refresh the latest security assessment and analyze the results
+## Task 6: Refresh the latest security assessment and analyze the results
 
 1. Return to the browser tab for Oracle Data Safe.
 
@@ -181,7 +200,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     ![System Privileges Granted to PUBLIC finding](images/system-privileges-granted-to-public.png "System Privileges Granted to PUBLIC finding")
 
-## Task 6: Compare your assessment with the baseline
+## Task 7: Compare your assessment with the baseline
 
 1. With the latest security assessment displayed, under **Resources** on the left, click **Compare with baseline**. Oracle Data Safe automatically begins processing the comparison. 
 
@@ -206,4 +225,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 6, 2024
+* **Last Updated By/Date** - Jody Glover, February 12, 2024

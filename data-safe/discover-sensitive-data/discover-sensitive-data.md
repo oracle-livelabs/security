@@ -63,7 +63,7 @@ This lab assumes you have:
 
     ![Select schemas](images/select-schemas-page.png "Select schemas")
 
-8. On the  **Select sensitive types** page, review the common sensitive types. Scroll down and review the section that shows you all of the sensitive types. Scroll up and select the **All** check box for common sensitive types. Click **Next**.
+8. On the  **Select sensitive types** page, review the list of common sensitive types and then scroll down and review all available sensitive types. Scroll up and select the **All** check box for common sensitive types. Click **Next**.
 
     ![Select all common sensitive types](images/select-all-common-sensitive-types.png "Select all common sensitive types")
 
@@ -81,7 +81,7 @@ This lab assumes you have:
     - The **Sensitive data model information** tab lists information about your sensitive data model, including its name, description, Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, the selected schema for discovery (HCM1), the selected sensitive types for discovery (click the **View details** link), and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
     - You can view the selected sensitive types for discovery (click **View details**).
     - You can view the work request information (click **View details**).
-    - The pie chart shows percentages of sensitive categories and sensitive types.
+    - The bar chart shows you the number of sensitive columns found for the top five sensitive types.
     - The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat view** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, sample data (if you chose to retrieve sample data and if it exists), and audit records. Review the sample data to get an idea of what it looks like.
 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
@@ -121,7 +121,7 @@ Increase the scope of the data discovery job.
 
 7. For **Select discovery options**, select **Collect, display and store sample data**.
 
-8. Click **Run discovery now**, and wait for the discovery to finish.
+8. Click **Run discovery now**, and wait for the message **Incremental discovery completed successfully** to be displayed.
 
 9. Review the additional sensitive data that was discovered. Notice that you can approve and reject incremental discovery results or specific results.
 
@@ -139,7 +139,7 @@ Increase the scope of the data discovery job.
 
     ![Apply to sensitive data model dialog box](images/apply-to-sensitive-data-model.png "Apply to sensitive data model dialog box")
 
-13. Click **Submit**.
+13. Click **Submit** and wait for the message **Sensitive data model updated successfully** to be displayed.
 
     The sensitive data model is updated with the additional sensitive columns.
 
@@ -154,17 +154,17 @@ Remove the `DATE_OF_HIRE` column from the sensitive data model.
 
     The **Remove columns** panel is displayed.
     
-2. In the **Column Name** box, enter **DATE**, and then select **DATE\_OF\_HIRE**.
+3. In the **Column name** box, enter **DATE**, and then select **DATE\_OF\_HIRE**.
 
-3. Click **Search**.
+4. Click **Search**.
 
-4. Select the check box for the **DATE\_OF\_HIRE** column in the **JOB_HISTORY** table, and then click **Remove columns**.
+5. Select the check box for the **DATE\_OF\_HIRE** column in the **JOB_HISTORY** table, and then click **Remove columns**.
 
     ![Remove columns page](images/remove-columns-panel.png "Remove columns page")
 
 ## Task 5: Add a column to the sensitive data model
 
-Add `COUNTRY_ID` to the sensitive data model.
+Add `COUNTRY_ABBREV` to the sensitive data model.
 
 1. Click **Add columns**.
 
@@ -184,7 +184,7 @@ Add `COUNTRY_ID` to the sensitive data model.
 
    ![Add columns page](images/add-columns-page.png "Add columns page")
 
-9. Verify that `COUNTRY_ID` from the `LOCATIONS` table is added to your sensitive data model.
+9. Verify that `COUNTRY_ABBREV` from the `LOCATIONS` table is added to your sensitive data model.
 
 You may now **proceed to the next lab**.
 
@@ -195,4 +195,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 6, 2024
+- **Last Updated By/Date** - Jody Glover, February 12, 2024
