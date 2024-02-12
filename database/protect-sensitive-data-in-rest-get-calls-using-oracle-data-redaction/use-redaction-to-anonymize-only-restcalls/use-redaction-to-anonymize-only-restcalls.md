@@ -119,10 +119,14 @@ This lab assumes you have:
     ![Run Query Again](./images/redacted-call.png)
 ## Task 4: Drop Audit policy and then the Redaction policy.
 1. Since our Unified Audit policy has served its purpose, we can drop it as we do not need to audit every single SELECT statement. As `ADMIN`, run the following script:
+
     ```
-    <copy>noaudit policy audit_hr_select;
-    drop AUDIT POLICY audit_hr_select;</copy>  
+    <copy>
+    noaudit policy audit_hr_select;
+    drop AUDIT POLICY audit_hr_select;
+    /</copy>   
     ```
+
     ![Drop Audit Policy](images/drop-aud-pol.png)
 2. Navigate back to the **SQL window** for `EMPLOYEESEARCH_PROD` and **drop the redaction policy**.
     
@@ -144,4 +148,4 @@ You may now **proceed to the next lab.**
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, February 2023
+- **Last Updated By/Date** - Alpha Diallo & Alexander John, February 2024

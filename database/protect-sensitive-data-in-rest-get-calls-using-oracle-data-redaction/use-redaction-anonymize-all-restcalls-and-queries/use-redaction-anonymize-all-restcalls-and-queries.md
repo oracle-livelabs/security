@@ -77,7 +77,7 @@ When ready, click the **Enable button** in the lower right of the slider.
 
     This is how our data looks before any redaction policy is applied.
 
-3. Add a **redaction policy** to run last name with random chars.
+3. Add a **redaction policy** to run last name with random chars as **EMPLOYEESEARCH_PROD**.
     
     ```
     <copy>begin
@@ -106,7 +106,6 @@ When ready, click the **Enable button** in the lower right of the slider.
             action              => dbms_redact.add_column,
             function_type          => DBMS_REDACT.REGEXP,
             function_parameters    => NULL,
-            expression             => '1=1',
             regexp_pattern         => DBMS_REDACT.RE_PATTERN_EMAIL_ADDRESS,
             regexp_replace_string  => DBMS_REDACT.RE_REDACT_EMAIL_NAME,
             regexp_position        => DBMS_REDACT.RE_BEGINNING,
@@ -149,8 +148,7 @@ When ready, click the **Enable button** in the lower right of the slider.
             policy_name            => 'redact_emp_info', 
             policy_description     => 'Partially redacts the salary column',
             function_type          => DBMS_REDACT.PARTIAL,
-            function_parameters    => '9,1,2',
-            expression             => '1=1');
+            function_parameters    => '9,1,2');
         END;
     /</copy>   
     ```
@@ -173,3 +171,4 @@ Congratulations, You have successfully redacted REST calls using ORDS!
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
 - **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, February 2023
+- **Last Updated By/Date** - Alpha Diallo & Alexander John, February 2024
