@@ -72,8 +72,6 @@ This lab assumes you have:
 
 7. Notice that the table shows **No target-policy associations available**. This is because you have not yet associated the alert policy with your target database. 
 
-    ![No target-policy associations available](images/no-target-policy-associations.png "No target-policy associations available")
-
 
 ## Task 2: Provision alert policies on your target database
 
