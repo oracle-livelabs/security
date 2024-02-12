@@ -45,7 +45,7 @@
     },
     {
       "title": "Lab 5: Get notified about security drift on your target databases by setting up notifications in Oracle Data Safe",
-      "description": "This lab shows you how to set up events in Oracle Cloud Infrastructure for Oracle Data Safe events.",
+      "description": "This lab shows you how to set up notifications in Oracle Data Safe.",
       "filename": "../../events/events.md",
       "type": "freetier"
     },

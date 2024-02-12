@@ -432,7 +432,7 @@ The `DataSafeRestAPIClientExample.class` program requires two inputs, which you 
 3. Review the output. The third last output line tells you the count of audit records copied into object storage. Your value may be different. If your count is equal to zero, delete any cursors in your bucket and repeat step 3.
 
     ```text
-    SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+    <copy>SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
     SLF4J: Defaulting to no-operation (NOP) logger implementation
     SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
     Getting the namespace
@@ -458,7 +458,7 @@ The `DataSafeRestAPIClientExample.class` program requires two inputs, which you 
     Upload complete at  Tue Feb 06 18:46:54 GMT 2024 of auditeventjson2024-02-06T18:46:54.382Z _noofrecords_ 87 Start =2024-02-05T18:46:52.701Z, End=2024-02-06T18:46:52.701Z  OpcRequestId: iad-1:ZzjIHd0Q_vmD6ctGG...
 
 
-    Upload complete at  Tue Feb 06 18:46:55 GMT 2024 of cursor  OpcRequestId: iad-1:gdp3sqAUejDr4RhpGfT6gTB1N7Zz4IKJ7b...
+    Upload complete at  Tue Feb 06 18:46:55 GMT 2024 of cursor  OpcRequestId: iad-1:gdp3sqAUejDr4RhpGfT6gTB1N7Zz4IKJ7b...</copy>
     
     ```
 
@@ -500,5 +500,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Richard Evans, Bettina Schaeumer, Archana Rao, Anna Haikl 
-- **Last Updated By/Date** - Jody Glover, February 6, 2024
+- **Last Updated By/Date** - Jody Glover, February 12, 2024
 
