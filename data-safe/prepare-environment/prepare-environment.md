@@ -264,7 +264,7 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
     - `SUPPLEMENTAL_DATA` - 149 rows
 
 
-    If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
+    If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script.
 
 5. Refresh Database Actions by refreshing the _browser_ page. If prompted, click **Leave page**.
 
@@ -287,4 +287,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 6, 2024
+- **Last Updated By/Date** - Jody Glover, February 12, 2024
