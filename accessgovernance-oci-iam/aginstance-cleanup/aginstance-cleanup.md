@@ -1,4 +1,4 @@
-# Access Governance service instance cleanup 
+# Cleanup the Environment 
 
 ## Introduction
 
@@ -11,7 +11,7 @@ Upon completing your labs, we recommend that you perform a cleanup to dispose th
 
 In this lab, you will:
 
- * Delete the Access Governance service instance
+ * Delete the Access Governance service instance, OCI Identity domain and OCI Resources
 
 
 
@@ -41,6 +41,8 @@ In this lab, you will:
 
 ## Task 2: Deactivate Identity Domain
 
+   *Note: We are only deactivating the domain here, deletion of the domain will be done in the following lab*
+
 1. Navigate to **Identity -> Domain -> ag-domain**. Click on **More actions -> Deactivate**
 
     ![Open OCI console](images/deactivate-domain.png)
@@ -48,6 +50,7 @@ In this lab, you will:
 2. Click on **Deactivate domain**
 
     ![Open OCI console](images/confirm-deactivate.png)
+
 
 
 ## Task 3: Destroy Terraform Stack 
