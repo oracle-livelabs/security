@@ -170,5 +170,4 @@ Congratulations, You have successfully redacted REST calls using ORDS!
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, February 2023
 - **Last Updated By/Date** - Alpha Diallo & Alexander John, February 2024
