@@ -47,7 +47,7 @@ This lab assumes you have:
         end;
     /</copy>   
     ```
-    ![Drop](images/drop.png)
+    ![Drop](images/drop(1).png)
 
 ## Task 2: Drop the EMPLOYEESEARCH_PROD schema and objects
 
