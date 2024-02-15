@@ -35,7 +35,7 @@ This lab assumes you have:
 
     ![Drop Audit Policy](images/drop-aud-pol.png)
    
-3. Navigate back to the **SQL window** for `EMPLOYEESEARCH_PROD` and **drop the redaction policy**.
+2. Navigate back to the **SQL window** for `EMPLOYEESEARCH_PROD` and **drop the redaction policy**.
     
     ```
     <copy>BEGIN
@@ -57,11 +57,11 @@ This lab assumes you have:
 
 2. Click the 3 dots on **EMPLOYEESEARHC_PROD** and click **Delete**
 
-    ![More actions](images/more-actions.png)
+    ![Three_dots](images/more-actions.png)
 
 3. Choose **Cascade** and **Drop REST Services**
 
-    ![Terminate adb](images/terminate.png)
+    ![Cascade_Drop](images/terminate.png)
 
 4. Delete user
 
@@ -98,9 +98,15 @@ select * from redaction_policies where policy_name = 'REDACT_EMP_INFO';
 
 1. Navigate back to your Autonomous Database instance page on OCI.
 
+    ![Database users](images/adb-page.png)
+
 2. At the top menu bar, under More Actions, select Terminate.
 
+   ![More actions](images/more-actions.png)
+
 3. In the pop-up window, type in the name of your database, then select Terminate Autonomous Database.
+
+   ![Terminate adb](images/terminate.png)
 
 ## Acknowledgements
 
