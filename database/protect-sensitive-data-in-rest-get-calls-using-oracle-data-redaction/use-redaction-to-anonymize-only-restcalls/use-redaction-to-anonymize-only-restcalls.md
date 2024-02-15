@@ -117,32 +117,6 @@ This lab assumes you have:
     ![Run Query Again](images/re-run-qry.png)
 3. Also re-run the REST Call. The data should still be redacted.
     ![Run Query Again](./images/redacted-call.png)
-## Task 4: Drop Audit policy and then the Redaction policy.
-1. Since our Unified Audit policy has served its purpose, we can drop it as we do not need to audit every single SELECT statement. As `ADMIN`, run the following script:
-
-    ```
-    <copy>
-    noaudit policy audit_hr_select;
-    drop AUDIT POLICY audit_hr_select;
-    /</copy>   
-    ```
-
-    ![Drop Audit Policy](images/drop-aud-pol.png)
-2. Navigate back to the **SQL window** for `EMPLOYEESEARCH_PROD` and **drop the redaction policy**.
-    
-    ```
-    <copy>BEGIN
-            dbms_redact.drop_policy (
-            object_schema => 'EMPLOYEESEARCH_PROD',
-            object_name   => 'DEMO_HR_EMPLOYEES',
-            policy_name   => 'redact_emp_info'
-            );
-        end;
-    /</copy>   
-    ```
-    ![Drop](images/drop.png)
-
-You may now **proceed to the next lab.**
 
 ## Acknowledgements
 
