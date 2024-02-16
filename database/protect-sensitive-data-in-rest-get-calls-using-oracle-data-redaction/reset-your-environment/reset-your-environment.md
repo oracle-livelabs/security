@@ -61,7 +61,7 @@ This lab assumes you have:
 
 3. Choose **Cascade** and **Drop REST Services**
 
-    ![Cascade_Drop](images/Delete.png)
+    ![Cascade_Drop](images/Check.png)
 
 4. Delete user
 
