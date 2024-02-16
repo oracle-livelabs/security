@@ -70,30 +70,33 @@ This lab assumes you have:
 1. As **ADMIN** in SQL Worksheet, perform the following query to make sure the user has been deleted
 select * from dba_users where username = 'EMPLOYEESEARCH_PROD';
 
- ```
-    <copy>
-    select * from dba_users where username = 'EMPLOYEESEARCH_PROD';
-    /</copy>   
-  ```
+   ```
+      <copy>
+      select * from dba_users where username = 'EMPLOYEESEARCH_PROD';
+      /</copy>   
+    ```
+  ![Delete Employee](images/delete_employee.png)
 
 2. As **ADMIN** in SQL Worksheet, verify the unified audit policy has been deleted.
 select * from AUDIT_UNIFIED_POLICIES where policy_name = 'AUDIT_HR_SELECT';
 
- ```
-    <copy>
-   select * from AUDIT_UNIFIED_POLICIES where policy_name = 'AUDIT_HR_SELECT';
-    /</copy>   
-  ```
+   ```
+      <copy>
+     select * from AUDIT_UNIFIED_POLICIES where policy_name = 'AUDIT_HR_SELECT';
+      /</copy>   
+    ```
+  ![Verify Audit](images/verify_audit.png)
 
 3. As **ADMIN** in SQL Worksheet, verify the Oracle Data redaction policy has been deleted"
 select * from redaction_policies where policy_name = 'REDACT_EMP_INFO';
 
- ```
-    <copy>
-   select * from redaction_policies where policy_name = 'REDACT_EMP_INFO';
-    /</copy>   
-  ```
-
+   ```
+      <copy>
+     select * from redaction_policies where policy_name = 'REDACT_EMP_INFO';
+      /</copy>   
+    ```
+  ![Verify Redaction](images/verify_redaction.png)
+  
 ## Task 4: Terminate the Autonomous Database Instance
 
 1. Navigate back to your Autonomous Database instance page on OCI.
