@@ -53,15 +53,15 @@ This lab assumes you have:
 
 1. As **ADMIN**, navigate to the Database users
 
-    ![Database users](images/adb-page.png)
+    ![Database users](images/Nav_to_users.png)
 
 2. Click the 3 dots on **EMPLOYEESEARHC_PROD** and click **Delete**
 
-    ![Three_dots](images/more-actions.png)
+    ![Three_dots](images/Delete.png)
 
 3. Choose **Cascade** and **Drop REST Services**
 
-    ![Cascade_Drop](images/terminate.png)
+    ![Cascade_Drop](images/Delete.png)
 
 4. Delete user
 
