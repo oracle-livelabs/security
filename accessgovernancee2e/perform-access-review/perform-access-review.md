@@ -23,8 +23,10 @@ In this lab, you will:
 
 ## Task 1: Login Oracle Access Governance as Employee User
 
-1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
-2. Log in to **Oracle Access Governance** as an **employee user - Mark Hernandez** with the username and password mentioned below.
+1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 5: Task 1: Step 4*
+
+
+2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
 
     **Username:**
     ```
@@ -32,11 +34,11 @@ In this lab, you will:
     ```
 
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
-	![Access Governance Login](images/user-ag-logon.png)
+
+  You will be navigated to the home page of your Oracle Access Governance Console.
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/user-ag-homepage.png)
 
@@ -67,21 +69,22 @@ In this lab, you will:
 
 ## Task 3: Login Oracle Access Governance as User Manager
 
-1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
+1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 5: Task 1: Step 4*
 
-2. Log in to **Oracle Access Governance** as a **Manager User - Harlan Bullard** with the username and password mentioned below.
 
-  **Username:**
+2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
+
+    **Username:**
     ```
     <copy>harlan.bullard</copy>
     ```
 
-  **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    **Password:**
+    
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
-	![Manager Access Governance Login](images/manager-ag-logon.png)
+
+  You will be navigated to the home page of your Oracle Access Governance Console.
 
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Manager Access Governance Homepage](images/manager-ag-homepage.png)
