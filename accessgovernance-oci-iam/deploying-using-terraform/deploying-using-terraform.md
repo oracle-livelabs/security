@@ -76,7 +76,7 @@ In this lab, you will:
 
 
 
-5. The resources should have been created successfully by the terraform script. Please verify the resources created. You will receive activation mails for the users created and ensure you reset the password at least for user Pamela Green.  
+5. The resources should have been created successfully by the terraform script. Please verify the resources created. *You will receive activation mails for the users created and ensure you reset the password at least for user Pamela Green*
 
 
 
