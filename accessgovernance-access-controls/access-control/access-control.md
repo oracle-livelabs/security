@@ -80,17 +80,16 @@ In this lab, you will:
 
     Select the *All* checkbox.
 
-    Select attribute: Organization
+    Select attribute: Source Organization
 
     Condition: Equals
 
     Attribute field: Quality Assurance
 
-    ![Identity Collection creation](images/qa-rule.png)
+    ![Identity Collection creation](images/source-organization.png)
 
 5. Click on *Create*
 
-    ![Identity Collection creation](images/qa-collection-create.png)
 
 ## Task 3: Create an Approval Workflow
 

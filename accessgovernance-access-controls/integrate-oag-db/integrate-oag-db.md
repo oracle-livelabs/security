@@ -286,7 +286,12 @@ In this lab, you will:
 
 6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select **Add** to create the connected system.
 
-7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the **Download** link to download the agent zip file to the environment in which the agent will run.
+7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the **Download** link to download the agent zip file to the environment in which the agent will run. Select the **Activate** checkbox. 
+
+
+     ![Enter Details](images/click-activate.png)
+
+
 
 ## Task 7: Install the DB Agent on the Target System
 

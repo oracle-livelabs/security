@@ -20,19 +20,23 @@ In this lab, you will:
 
 ## Task 1: Create a Campaign
 
-1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password mentioned below.
+1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 4: Task 1: Step 4*
+
+
+2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
 
     **Username:**
-
     ```
     <copy>pamela.green</copy>
     ```
 
     **Password:**
+    
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+
+  You will be navigated to the home page of your Oracle Access Governance Console.
+
 
 2. Navigate to Access Reviews -> Campaigns . Click on **Create a Campaign**
 
