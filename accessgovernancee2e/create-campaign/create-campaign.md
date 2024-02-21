@@ -60,7 +60,7 @@ In this lab, you will:
 
 7. Click on **Next**
 
-  ![Access Governance Homepage](images/click-next-approval.png)
+  ![Access Governance Homepage](images/one-approval.png)
 
 8. Enter the following details:
     - What do you want to call this approval process: **One-level-approval**
@@ -68,7 +68,6 @@ In this lab, you will:
     
     Click Next
 
-  ![Access Governance Homepage](images/one-level-approval.png)
 
 9. Click **Publish** and **Approval Workflow** - **One-level-approval** workflow has been created
 
