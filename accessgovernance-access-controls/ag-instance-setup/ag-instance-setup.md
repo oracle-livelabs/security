@@ -65,8 +65,6 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     * Click on the Downward arrow on the right corner for each of them and select *View details* 
 
-    ![OIG Identity Roles and Access Policies](images/user-approle.png)
-
     * Click on *Edit User*. 
 
     * Modify the *Email* field of the users to the following values:
