@@ -13,15 +13,16 @@ Now, you no longer need important resources on your PC (storage, CPU or memory),
 Watch a preview of "*Livelabs - Database Security Basics (May 2022)*" [](youtube:tyyZmW4YyPk)
 
 ### Components
-The complete architecture of the **DB Security Hands-On Labs (v5 - January 2023)** is as following:
+The complete architecture of the **DB Security Hands-On Labs** is as following:
 
   ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
-It's composed of 4 VMs:
+It's composed of 5 VMs:
   - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)
   - **Audit Vault Server VM** (for Advanced workshop only)
   - **DB Firewall Server VM** (for Advanced workshop only)
   - **Key Vault Server VM** (for Advanced workshop only)
+  - **DB23c VM** (for SQL Firewall workshop only)
 
 During this 1st part, you'll use different resources to interact with these VMs:
   - SSH Terminal Client
@@ -40,6 +41,7 @@ In this first part, you will see the Oracle Database Security baseline products 
   - **Oracle Privilege Analysis**
   - **Oracle Unified Auditing**
   - **Oracle Transparent Sensitive Data Protection (TSDP)**
+  - **Oracle SQL Firewall**
   - **Oracle Data Safe for on-premises database**
 
 The entire DB Security PMs Team wishes you an excellent workshop!
@@ -48,5 +50,5 @@ You may now [proceed to the next lab](#next)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2023
+- **Contributors** - Pedro Lopes, Richard Evans, Angeline Dhanarani, Bettina Schaeumer, Jody Glover
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023

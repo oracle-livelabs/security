@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Native Network Encryption (
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DB 19.17
+*Version tested in this lab:* Oracle DB 19.19
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Native Network Encryption (May 2022)*" [](youtube:N6Uz-pVTkaI)
@@ -54,7 +54,7 @@ This lab assumes you have:
 
     **Note**: It should be empty!
 
-   ![Network Encryption](./images/nne-001.png "Network Encryption")
+   ![Network Encryption](./images/nne-001.png "View your SQLNet file content")
 
 4. Check if the network is already encrypted
 
@@ -62,7 +62,7 @@ This lab assumes you have:
     <copy>./nne_is_sess_encrypt.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-002.png "Network Encryption")
+    ![Network Encryption](./images/nne-002.png "Check if the network is already encrypted")
 
     **Note**: You should not see the "Encryption service adapter" row
 
@@ -74,9 +74,9 @@ This lab assumes you have:
     <copy>./nne_tcpdump_traffic.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-003a.png "Network Encryption")
+    ![Network Encryption](./images/nne-003a.png "tcpdump on the traffic")
 
-    ![Network Encryption](./images/nne-003b.png "Network Encryption")
+    ![Network Encryption](./images/nne-003b.png "tcpdump on the traffic")
 
     **Note**:
     - We execute a query on the `DEMO_HR_EMPLOYEES` table
@@ -89,7 +89,7 @@ This lab assumes you have:
     <copy>./nne_tcpdump_extract.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-004.png "Network Encryption")
+    ![Network Encryption](./images/nne-004.png "extract sensitive data from tcpdump file")
 
     **Note**:
     - We extract all rows containing an email or something similar
@@ -103,7 +103,7 @@ This lab assumes you have:
         <copy>./nne_tcpflow_traffic.sh</copy>
         ````
 
-        ![Network Encryption](./images/nne-005.png "Network Encryption")
+        ![Network Encryption](./images/nne-005.png "Begin the capture script")
 
         **Notes:** We will extract all lines containing an email or something similar (see the egrep command)
 
@@ -123,20 +123,20 @@ This lab assumes you have:
             <copy>Oracle123</copy>
             ````
 
-            ![Network Encryption](./images/nne-006.png "Network Encryption")
-            ![Network Encryption](./images/nne-007.png "Network Encryption")
+            ![Network Encryption](./images/nne-006.png "Login to the HR Application")
+            ![Network Encryption](./images/nne-007.png "Login to the HR Application")
 
         - Click on **Search Employees**
 
-            ![Network Encryption](./images/nne-008.png "Network Encryption")
+            ![Network Encryption](./images/nne-008.png "Search Employees")
 
         - Click [**Search**]
 
-            ![Network Encryption](./images/nne-009.png "Network Encryption")
+            ![Network Encryption](./images/nne-009.png "Search Employees")
 
     - Now go back to your terminal session to see traffic content
 
-        ![Network Encryption](./images/nne-010.png "Network Encryption")
+        ![Network Encryption](./images/nne-010.png "See traffic content")
 
 4. When you have seen the un-encrypted data, use "*`[Ctrl]+C`* " to stop the script
 
@@ -152,7 +152,7 @@ You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.EN
     <copy>./nne_enable_requested.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-011.png "Network Encryption")
+    ![Network Encryption](./images/nne-011.png "Enable network encryption")
 
     **Note**: There's an alternative to Native Network Encryption, it's TLS certificates but those require user management and more configuration
 
@@ -162,7 +162,7 @@ You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.EN
     <copy>./nne_is_sess_encrypt.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-012.png "Network Encryption")
+    ![Network Encryption](./images/nne-012.png "Check if the session is encrypted")
 
     **Note**: You should notice an additional line that says "**AES256 Encryption service adapter for Linux**"
 
@@ -172,9 +172,9 @@ You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.EN
     <copy>./nne_tcpdump_traffic.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-003a.png "Network Encryption")
+    ![Network Encryption](./images/nne-003a.png "tcpdump on the traffic")
 
-    ![Network Encryption](./images/nne-003b.png "Network Encryption")
+    ![Network Encryption](./images/nne-003b.png "tcpdump on the traffic")
 
 4. Like previously, extract the same sensitive data from the new tcpdump.pcap file generated
 
@@ -182,7 +182,7 @@ You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.EN
     <copy>./nne_tcpdump_extract.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-013.png "Network Encryption")
+    ![Network Encryption](./images/nne-013.png "Extract sensitive data from the new tcpdump file")
 
     **Note**:
     - We extract all rows containing an email or something similar
@@ -196,25 +196,25 @@ You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.EN
         <copy>./nne_tcpflow_traffic.sh</copy>
         ````
 
-        ![Network Encryption](./images/nne-005.png "Network Encryption")
+        ![Network Encryption](./images/nne-005.png "With tcpflow, capture the traffic generated")
 
     - Go back to your web browser, **logout** the Glassfish application and **login** again as *`hradmin`* to see what happens when we sniff this traffic
 
-        ![Network Encryption](./images/nne-006.png "Network Encryption")
+        ![Network Encryption](./images/nne-006.png "Glassfish application")
 
-        ![Network Encryption](./images/nne-007.png "Network Encryption")
+        ![Network Encryption](./images/nne-007.png "Glassfish application")
 
     - Click on **Search Employees**
 
-        ![Network Encryption](./images/nne-008.png "Network Encryption")
+        ![Network Encryption](./images/nne-008.png "Search Employees")
 
     - Click [**Search**]
 
-        ![Network Encryption](./images/nne-009.png "Network Encryption")
+        ![Network Encryption](./images/nne-009.png "Search Employees")
 
     - Now go back to your terminal session to see traffic content
 
-        ![Network Encryption](./images/nne-005.png "Network Encryption")
+        ![Network Encryption](./images/nne-005.png "See traffic content")
 
     **Note**:
     - You should see no data!
@@ -234,7 +234,7 @@ You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.EN
     <copy>./nne_disable.sh</copy>
     ````
 
-    ![Network Encryption](./images/nne-014.png "Network Encryption")
+    ![Network Encryption](./images/nne-014.png "Disable the network encryption")
 
 You may now proceed to the next lab!
 
@@ -243,7 +243,7 @@ You may now proceed to the next lab!
 
 Oracle Database provides native **data network encryption and integrity** to ensure that data in-motion is secure as it travels across the network.
 
-![Network Encryption](./images/nne-concept.png "Network Encryption")
+![Network Encryption](./images/nne-concept.png "Network Encryption Concept")
 
 The purpose of a secure cryptosystem is to convert plaintext data into unintelligible ciphertext based on a key, in such a way that it is very hard (computationally infeasible) to convert ciphertext back into its corresponding plaintext without knowledge of the correct key.
 
@@ -259,5 +259,5 @@ Technical Documentation:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Richard Evans, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2023
+- **Contributors** - Richard Evans
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023
