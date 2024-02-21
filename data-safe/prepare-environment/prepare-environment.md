@@ -131,10 +131,10 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
     Allow group {group name} to manage instance-family in compartment {compartment name}
     Allow group {group name} to read app-catalog-listing in tenancy
     Allow group {group name} to manage virtual-network-family in compartment {compartment name}
-    Allow group <user-group> to manage ons-topic in tenancy
-    Allow group <user-group> to manage cloudevents-rules in tenancy
-    Allow group <user-group> to manage alarms in tenancy
-    Allow group <user-group> to read metrics in tenancy
+    Allow group {user-group} to manage ons-topic in tenancy
+    Allow group {user-group} to manage cloudevents-rules in tenancy
+    Allow group {user-group} to manage alarms in tenancy
+    Allow group {user-group} to read metrics in tenancy
 
     </copy>
     ```
@@ -287,4 +287,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 12, 2024
+- **Last Updated By/Date** - Jody Glover, February 13, 2024
