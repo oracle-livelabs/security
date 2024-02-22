@@ -38,7 +38,7 @@ This lab assumes you have:
 
 4. Click **Cancel** to exit the wizard.
 
-5. Open the script and copy all of its content.
+5. Open the script and copy all of its content to the clipboard.
 
 6. In Cloud Shell, enter the following command to connect to the compute instance that hosts Oracle Database 23c. Substitute `public-ip-address` with your public IP address for host #2. Enter **yes** when prompted.
 
