@@ -40,7 +40,7 @@ This lab assumes you have:
 
 5. Open the script and copy all of its content.
 
-6. In Cloud Shell, enter the following command to connect to the compute instance that hosts Oracle Database 23c. Substitute `public-ip-address` with your own IP address. Enter **yes** when prompted.
+6. In Cloud Shell, enter the following command to connect to the compute instance that hosts Oracle Database 23c. Substitute `public-ip-address` with your public IP address for host #2. Enter **yes** when prompted.
 
     ```text
     <copy>ssh -i ~/.ssh/cloudshellkey opc@public-ip-address</copy>
