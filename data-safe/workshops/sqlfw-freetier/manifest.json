@@ -1,0 +1,23 @@
+{
+  "workshoptitle": "SQL Firewall and Data Safe - Updated Steps for Hakim",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Prepare your environment",
+      "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
+      "filename": "../../sqlfw-prepare-environment/sqlfw-prepare-environment.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Complete the prerequisites for using SQL Firewall with Data Safe",
+      "description": "This lab shows you how to create a Data Safe user, grant it permissions, and then register an Oracle Database on compute",
+      "filename": "../../sqlfw-complete-prerequisites/sqlfw-complete-prerequisites.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}
