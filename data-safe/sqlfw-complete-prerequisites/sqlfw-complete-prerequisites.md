@@ -57,7 +57,7 @@ This lab assumes you have:
 8. In Cloud Shell, in the `oracle` home directory, enter the following command to create a `datasafe_privileges.sql` file using the vi editor. 
 
     ```text
-    <copy>vi datasafe_privileges.sql</copy>
+    [oracle@dbsec-lab:~$] <copy>vi datasafe_privileges.sql</copy>
     ```
 9. Press `Escape` and then **i** to insert content. Paste the content of the script into the file, and then press **Escape** and **:wq!** to save and close the file. 
 
