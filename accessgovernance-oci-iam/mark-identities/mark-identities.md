@@ -4,7 +4,7 @@
 
 Access Governance Administrators (Pamela Green) will activate the identities.
 
-* Estimated Time: 15 minutes
+* Estimated Time: 5 minutes
 * Persona: Access Governance Administrator 
 
 ### Objectives
@@ -14,8 +14,7 @@ In this lab, you will:
 
 ## Task 1: Sign in to Oracle Access Governance Console
 
-1. From your browser, go to the Oracle Access Governance Console using URL mentioned in *Lab 3: Task 1* 
-
+1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 2: Task 1:Step 4* 
 
 2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
 
@@ -25,15 +24,15 @@ In this lab, you will:
     ```
 
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+  
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+    
 
 
   You will be navigated to the home page of your Oracle Access Governance Console.
 
 
-  ![Access Governance Homepage](images/ag-homepage.png)
+  ![Access Governance Homepage](images/ag-home.png)
 
 ## Task 2: Activate the Identities
 
@@ -41,7 +40,7 @@ In this task, you will select the identities that you want to include in your se
 
 1. In the Oracle Access Governance Console, navigate to Service Administration -> Manage Identities
 
-  ![Navigate Manage Identities](images/navigate-manage-identities.png)
+  ![Navigate Manage Identities](images/manage-identities.png)
 
 2. Select **Any** condition match option.
 
@@ -60,7 +59,7 @@ In this task, you will select the identities that you want to include in your se
 
 5. Close the pop-up and click on **Save**
 
-  ![Manage Identities page](images/identities-user.png)
+  ![Manage Identities page](images/preview-identity.png)
 
 
   You may now **proceed to the next lab**. 

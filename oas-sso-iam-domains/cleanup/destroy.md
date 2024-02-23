@@ -4,12 +4,16 @@
 
 This lab will show you how you can carry out the cleanup activities for the entire Live Lab.
 
+*Estimated Lab Time:* 10 minutes
 
 ### Objectives
 
--   Manual deactivation of the Applications and the Identity Domain
--   Destroy the Stack 1 and 2 for performing the cleanup of the resources.
+1. Manual deactivation of the Applications and the Identity Domain
+2. Destroy the Stack 1 and 2 for performing the cleanup of the resources.
 
+### Prerequisites
+
+1. Complete all the previous labs.
 
 ## Task 1: Deactivate the applications and the Identity Domain
 

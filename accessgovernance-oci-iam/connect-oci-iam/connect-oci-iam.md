@@ -4,7 +4,7 @@
 
 As **Access Governance Administrators** they can learn to integrate Oracle Access Governance with OCI IAM. 
 
-* Estimated Time: 15 minutes
+* Estimated Time: 10 minutes
 * Persona: Access Governance Administrator
 
 ### Objectives
@@ -17,7 +17,9 @@ In this lab, you will:
 ## Task 1: Configure a new OCI IAM Cloud Service Connection in Oracle Access Governance Console
 
 
-1.  In a browser, navigate to the Oracle Access Governance service home page using the URL noted down in *Lab 3: Task 1* and log in as a user with the **Access Governance Administrator** application role. 
+1.  In a browser, navigate to the Oracle Access Governance service home page using the URL specified in *Lab 2: Task 1: Step 4* and log in as a user with the **Access Governance Administrator** application role. 
+
+   ![Homepage AG](images/ag-home.png)
 
   Enter Oracle Access Governance Campaign Administrator username and password (Pamela Green)
 
@@ -27,25 +29,21 @@ In this lab, you will:
     ```
 
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+    
 
 2.  On the Oracle Access Governance service home page, click on the Navigation Menu icon, and select **Service Administration → Connected Systems**
 
+   ![Connected system](images/connected-system.png)
+
 3. Select the **Add a connected system** button from the Connected Systems page.
 
-      ![Select cloud service provider](images/add-system.png)
+      ![Select cloud service provider](images/add-connection.png)
 
-4.  Select the **Would you like to connect to a cloud service provider?** tile by clicking the Add button.
- 
-  ![Select cloud service provider](images/select-cloud-provider.png)
+4. Select **Integrate with Oracle Cloud Infrastructure** under **Select and configure a new connected system** and Click **Next**
 
-    
-
-5. In the **Select system** step, select the **Oracle Cloud Infrastructure** tile and then click **Next.**
-
-  ![Select cloud service provider](images/select-oci.png)
+  ![Select OCI](images/select-oci-iam.png)
 
 6. Enter name  and description of the connected system, and then click **Next.**
 
@@ -55,11 +53,9 @@ In this lab, you will:
 
   ![OCI Enter details](images/enter-oci-system-name.png)
 
+7. To obtain the fingerprint of OCI user (agcs-user). Open a **new private browser window** and login to the OCI console **Default Domain** as the **Domain Administrator** .
 
   ![OCI Enter details](images/enter-data.png)
-
-
-7. To obtain the fingerprint of OCI user (agcs-user). Open a **new private browser window** and login to the OCI console **Default Domain** as the **Domain Administrator** . 
 
 
 8. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Domains* from the list of products.

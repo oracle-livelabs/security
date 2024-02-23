@@ -6,26 +6,26 @@ This lab will show you how to download the Oracle Resource Manager (ORM) stacks 
 *Estimated Lab Time:* 15 minutes
 
 ### Objectives
--   Download ORM stack for deploying the **OAS Application, App Gateway Compute Instance and OCI IAM Identity Domains**
--   Download ORM stack for configuring the **OAS Application, App Gateway Compute Instance and OCI IAM Identity Domains**
--   Configure an existing Virtual Cloud Network (VCN)
--	Get Connection String from Virtual Machine DB system.
+1. Download ORM stack for deploying the **OAS Application, App Gateway Compute Instance and OCI IAM Identity Domains**
+2. Download ORM stack for configuring the **OAS Application, App Gateway Compute Instance and OCI IAM Identity Domains**
+3. Configure an existing Virtual Cloud Network (VCN)
+4. Get Connection String from Virtual Machine DB system.
 
 ### Prerequisites
 This lab assumes you have:
-- An Oracle Cloud account with at least **PAY GO** subscription
-- A Compartment apart from *root*
-- An existing *VCN* and an *Internet Gateway* attached to it.
-- A *Public* subnet`
-- A *SSH key* pair. A single SSH Key pair to be used for both the servers (Make sure you have the .key and .pem formats of the private key available)
-- An Oracle Cloud Database - VM DB System. The database must be deployed in the same region as Oracle Analytics Server and accessible from the VCN where you plan to deploy Oracle Analytics Server. The database edition must be Oracle Database Enterprise Edition (EE) version 12.1, 12.2, 18+, or 19+. The database must be a pluggable database (PDB) on an Oracle Cloud virtual machine DB system.
+1. An Oracle Cloud account with at least **PAY GO** subscription
+2. A Compartment apart from *root*
+3. An existing *VCN* and an *Internet Gateway* attached to it.
+4. A *Public* subnet
+5. A *SSH key* pair. A single SSH Key pair to be used for both the servers (Make sure you have the .key and .pem formats of the private key available)
+6. An Oracle Cloud Database - VM DB System. The database must be deployed in the same region as Oracle Analytics Server and accessible from the VCN where you plan to deploy Oracle Analytics Server. The database edition must be Oracle Database Enterprise Edition (EE) version 12.1, 12.2, 18+, or 19+. The database must be a pluggable database (PDB) on an Oracle Cloud virtual machine DB system.
 
 **Note** - *This Live lab considers all resources along with VM DB in same VCN. If you use different VCNs for OAS and VMDB then please make sure you have setup correct connectivity between them.*
 
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file to Deploy 
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
-    - [Stack1-Deploy.zip] (https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LIveLab/o/OAS-SSO-IAM-Domains%2FStack1_Deploy.zip)
+    - [Stack1-Deploy.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LIveLab/o/OAS-SSO-IAM-Domains%2FStack1_Deploy.zip)
 	
 	- [Stack2-Configure.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LIveLab/o/OAS-SSO-IAM-Domains%2FStack2_Configure.zip)
 
@@ -76,13 +76,32 @@ This workshop requires a certain number of ports to be available, a requirement 
 As the part of prerequisites, you should have the VM DB system on OCI and use the same DB system to get the connection string.
 
 You must use the database connection string format:
-**<hostname or IP address>:<port>:<PDB_name>.<DB_domain>**
+    ```
+    <hostname or IP address>:<port>:<PDB_name>.<DB_domain>
+    ```
 
 *For example: oasdb.subnetname.oasvcn.oraclevcn.com:1512:OASDB_pdb1.subnetname.oasvcn.oraclevcn.com*
+
+## Appendix
+If you wish to change the version then you can make the below parameter changes in the **terraform.tfvars** file of **stack1-Deploy.zip**.
+
+**Note**: Make sure you zip the folder again before deploying it in upcoming steps.
+
+
+| OAS Version           | mp\_OAS\_listing\_resource\_version    | 				mp\_OAS\_listing\_image\_resource\_id 								                         |
+| :-----------------:   |   :----------------------------:   |  :----------------------------------------------------------------------------: |
+|OAS 2023 0301			    |	  2023\_0301						             |	ocid1.image.oc1..aaaaaaaauvdpokewuntrs7ewrnspng7tl4ayofiajbiwdhjgaowfukzjcg4q  |
+|OAS 2022 (6.4) 0601	  |  	2022\_(6.4)\_0601					         |	ocid1.image.oc1..aaaaaaaalbzf7wtfpdac6fs4w2pzqqvqmiuex4kaxjhcei6v6e56ewt64jgq  |
+|OAS 2022 (6.4) 0501	  |	  2022\_(6.4)\_0501					         |	ocid1.image.oc1..aaaaaaaale4pe5fvrdqvzq7swfgpb3tggnit5lgfmjybxflbit7ypushdgla  |
+|OAS 2023 0201			    |	  2023\_0201						             |	ocid1.image.oc1..aaaaaaaadurqktr6zuz2fezl762s32gftipjodhprgrnxduwx75epvn4dbpa  |
+|OAS 2023 0101			    |	  2023\_0101						             |	ocid1.image.oc1..aaaaaaaazeuqqbs7no5duaqgdwmv4432scjkku7wg3kuat56obfssan2jqia  |
+|OAS 2022(6.4) 0101		  |	  2022\_(6.4)\_0101                  |	ocid1.image.oc1..aaaaaaaayk4odypeg54gdkm6yfzadjosswbjtdyiv3rv35nzzo6pin6j5mga  |
+
+**Note**: This live lab considers the version **OAS 2023 0101** as default version.
 
 You may now **proceed to the next lab.**
 
 ## Acknowledgements
-* **Author** - Sagar Takkar, Chetan Sharma
+* **Author** - Sagar Takkar, Chetan Soni
 * **Lead By** - Deepthi Shetty 
-* **Last Updated By/Date** - Sagar Takkar August 2023
+* **Last Updated By/Date** - Sagar Takkar November 2023

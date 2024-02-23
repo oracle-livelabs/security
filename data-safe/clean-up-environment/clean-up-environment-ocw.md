@@ -1,4 +1,4 @@
-# Clean Up Your Environment
+# Clean up your environment
 
 ## Introduction
 

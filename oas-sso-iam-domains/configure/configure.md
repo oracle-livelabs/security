@@ -4,25 +4,29 @@
 
 Using this stack we will be able to configure **OAS, App Gateway and Identity Domain**. As part of this stack, a Enterprise application will be created under **Identity Domain**.
 
-## Objectives
+*Estimated Lab Time:* 30 minutes
 
-1.	Configure **OAS Application **
+
+### Objectives
+
+1.	Configure **OAS Application**
 2. 	Configure **App Gateway**
 3.	Create the **Enterprise Application** under **Identity Domain** 
 
-## Prerequisites
+### Prerequisites
 
-Once the **Stack2- Configure.zip** is downloaded, unzip the zip file and replace the the content of the **.pem** files (AppGate_PrivateKey.pem and OAS_PrivateKey.pem) with your respective content of the private key.
+1. Once the **Stack2- Configure.zip** is downloaded, unzip the zip file and replace the the content of the **.pem** files (AppGate\_PrivateKey.pem and OAS\_PrivateKey.pem) with your respective content of the private key.
 
 ## Task 1: Deploy the Configuration Stack via Resource Manager
 
-1. Once logged in to OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
-
-**Note** Please do not select the **Root** compartment while creating the stack
+1. Once logged in to OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**.
 
 	![stacks](./images/stacks.png "stacks")
 	
 	![create-stacks](./images/create-stacks.png "create-stacks")
+
+**Note** Please do not select the **Root** compartment while creating the stack.
+	
  
 2. On the Create Stack Wizard, select the **Stack 2- Configure.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
@@ -46,7 +50,6 @@ Once the **Stack2- Configure.zip** is downloaded, unzip the zip file and replace
 	8. *OAS Weblogic Admin Username - Same username that you used in Satck one*
 	8. *Enter WebLogic password - Same username that you used in Satck one*
     
-
 
 	![configure_variables](./images/configure_variables.png "configure_variables")
 	

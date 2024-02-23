@@ -4,7 +4,7 @@
 
 In this lab we will setup the OAG service instance and make configurations required to successfully run this workshop.
 
-*Estimated Lab Time*: 30 minutes
+*Estimated Lab Time*: 5 minutes
 
 *Persona*: Identity Domain Administrator
 
@@ -19,14 +19,14 @@ In this lab, you will:
 ### Prerequisites
 This lab assumes you have:
 - A valid Oracle OCI tenancy, with OCI administrator privileges. 
-- Choose a region where Access Governance is available. 
+- **Choose a region where Access Governance is available**
 
 
 ## Task 1: Create AG Service instance 
 
-Login to the OCI console using the Identity domain: ag-domain as the **Identity Domain Administrator** , if not currently not logged in to the Identity domain. 
+Login to the OCI console using the Identity domain: ag-domain as the **Identity Domain Administrator** which is **idd-admin** as per our lab , if not currently not logged in to the Identity domain. 
 
-1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region.
+1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region - [Oracle Access Governance Availability Regions](https://docs.oracle.com/en/cloud/paas/access-governance/cagsi/index.html#articletitle)
 
     ![Create Service Instance](images/oci-console.png)
 
@@ -41,15 +41,15 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
     ![Create Service Instance](images/create-service-instance.png)
     
 
-3. Select the License type : Access Governance for Oracle Workloads. Click on *Create Service Instance*
+3. Select the License type : Access Governance for Oracle Cloud Infrastructure. Click on *Create Service Instance*
 
-    ![Select License type](images/license-type.png)
+    ![Select License type](images/license.png)
 
-4. Wait for the service instance to have the *Active* status . Note down this URL as we will be using it in the further labs. 
+4. Wait for the service instance to have the *Active* status . Note this *URL* which we will use to access the *Service Instance* in the further labs. 
 
-    ![Service Instance is Active](images/ag-url.png)
+    ![Service Instance is Active](images/ag-url-access.png)
 
-5. Click on the Service Instance to access the URL. 
+5. Click on the Service Instance to validate if you are able to access the URL. Once you see this page, close the browser window. 
 
     ![Access Governance console](images/ag-console.png)
 
@@ -60,7 +60,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     * In the OCI console, navigate to Identity -> Domains ->  ag-domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
 
-    * Notice the *AG Administrator* Role and *AG Campaign Administrator* Role listed. Click on the Downward arrow on the right corner for each of them. 
+    * Notice the *AG Administrator* Role and *AG Campaign Administrator* Role listed. Click on the Downward arrow on the right corner to assign Pamela to these roles. 
 
     ![OIG Identity Roles and Access Policies](images/user-approle.png)
 
@@ -74,19 +74,19 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator*. You can now close the window.
 
-    * Now, Notice the *AG User* Role and *AG CloudAccessReviewer* Role listed. Click on the Downward arrow on the right corner for each of them. 
+    * Now, Notice the *AG User* Role and *AG CloudAccessReviewer* Role listed. Click on the Downward arrow on the right corner to assign Pamela to these roles. 
 
       ![OIG Identity Roles and Access Policies](images/aguser.png)
 
        ![OIG Identity Roles and Access Policies](images/agreviewer.png)
 
-    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez* and *Harlan Bullard* in *Available Users.* Click on *Assign*
+    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez, Jerry Poland and Harlan Bullard* in *Available Users.* Click on *Assign*
 
      ![OIG Identity Roles and Access Policies](images/ag-userassign.png)
 
      ![OIG Identity Roles and Access Policies](images/ag-reviewerassign.png)
 
-    * Mark Hernandez and Harlan Bullard have now been assigned with the *AG User* application role and *AG CloudAccessReviewer*. You can now close the window.
+    * Mark Hernandez, Jerry Poland and Harlan Bullard have now been assigned with the *AG User* application role and *AG CloudAccessReviewer*. You can now close the window.
 
 
     You may now **proceed to the next lab.**
