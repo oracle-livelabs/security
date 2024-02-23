@@ -100,7 +100,7 @@ This lab assumes you have:
 
     ![Toggle web access on](images/web-access.png)
 
-12. Open the **Database Actions** portal for `EMPLOYEESEARCH_PROD`.
+12. Open the **Database Actions** portal for `EMPLOYEESEARCH_PROD` by copying the URL and pasting in a new incognito window.
 
     ![Open db actions as emp](images/db-actions-emp.png)
 
@@ -120,4 +120,4 @@ You may now **proceed to the next lab.**
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Ethan Shmargad, February 2023
+- **Last Updated By/Date** - Alpha Diallo & Alexander John, February 2024
