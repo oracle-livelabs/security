@@ -14,6 +14,13 @@ In this lab, you will:
  * Delete the Access Governance service instance, OCI Identity domain and OCI Resources
 
 
+### Prerequisites
+
+This lab assumes you have:
+
+A valid Oracle OCI tenancy, with OCI administrator privileges.
+
+
 
 ## Task 1: Delete the Access Governance service instance
 

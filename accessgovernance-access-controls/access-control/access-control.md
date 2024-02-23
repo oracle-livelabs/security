@@ -18,6 +18,13 @@ In this lab, you will:
 * Create an Access Bundle
 * Create a centralized policy to provision access privileges
 
+
+### Prerequisites
+
+This lab assumes you have:
+
+A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Create an Identity Collection for Approvers
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Identity Collections tile.

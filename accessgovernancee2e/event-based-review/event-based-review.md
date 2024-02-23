@@ -16,6 +16,10 @@ In this lab, you will:
 * View a list of **certification campaigns** you own or created
 * View the progress of **certification campaigns** made by reviewers with **analytics insights**
 
+### Prerequisites
+This lab assumes you have:
+- A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Login Oracle Access Governance as Campaign Administrator
 
 1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 5: Task 1: Step 4*

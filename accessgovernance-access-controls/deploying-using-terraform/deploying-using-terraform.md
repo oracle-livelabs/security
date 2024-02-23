@@ -19,6 +19,12 @@ In this lab, you will:
   - Policies for Access Governance 
   - AG Users: Pamela Green, Mark Hernandez, Harlan Bullard and Jerry Poland
 
+### Prerequisites
+
+  This lab assumes you have:
+  
+  An Oracle Cloud account
+
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 
 1. Click on the link below to download the Resource Manager zip file you need to build your environment:

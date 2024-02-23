@@ -16,6 +16,11 @@ In this lab, you will:
 * View details of the **applications**, **permissions**, and **roles** assigned to my direct reports
 * View details of the **applications**, **permissions**, and **roles** assigned to me
 
+
+### Prerequisites
+This lab assumes you have:
+- A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Login Oracle Access Governance as User Manager
 
 1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 5: Task 1: Step 4*

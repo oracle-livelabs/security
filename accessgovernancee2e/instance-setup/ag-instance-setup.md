@@ -68,7 +68,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
         - pamela.green : pamela.green@orcl.com
         - mhernandez   : mark.hernandez@orcl.com
-        - harlan.bullard : halran.bullard@orcl.com
+        - harlan.bullard : harlan.bullard@orcl.com
         - jerry.poland : jerry.poland@orcl.com
 
    * Click *Save changes*

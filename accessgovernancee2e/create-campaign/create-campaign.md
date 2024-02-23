@@ -18,6 +18,11 @@ In this lab, you will:
 * Run now or schedule an **access review campaign**
 
 
+### Prerequisites
+This lab assumes you have:
+- A valid Oracle OCI tenancy, with OCI administrator privileges.
+
+
 ## Task 1: Create One-Level Approval Workflow
 
 

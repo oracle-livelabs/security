@@ -17,6 +17,12 @@ In this lab, you will:
 
 * Activate the Identities
 
+### Prerequisites
+
+This lab assumes you have:
+
+A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Sign in to Oracle Access Governance Console
 
 1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 4: Task 1: Step 4*

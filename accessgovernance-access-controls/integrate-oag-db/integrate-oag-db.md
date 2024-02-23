@@ -17,6 +17,12 @@ In this lab, you will:
 
 * Establish Connection to an Oracle Identity Governance and an Oracle Database
 
+### Prerequisites
+
+This lab assumes you have:
+
+A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1 : Verify Docker is up and Running
 
 1. Open a terminal session.

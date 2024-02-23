@@ -21,6 +21,11 @@ In this lab, you will:
 * Accept or revoke the **access review task** assigned to me from the **certification campaign** as an **employee user**
 * Accept or revoke the **access review task** assigned to me from the **certification campaign** as a **user manager**
 
+
+### Prerequisites
+This lab assumes you have:
+- A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Login Oracle Access Governance as Employee User
 
 1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 5: Task 1: Step 4*
