@@ -28,7 +28,7 @@ This lab assumes you have:
 1. Click on the link below to download the Resource Manager zip file you need to build your environment:
 
     
-   - [oracle_access_governance-terraform-stack.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4bKtGbEdluykOdyESkSzXnRviCW78C9GiBme6dEelSZ-eUONiwucVLADSw3MmGtj/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oci.zip)
+   - [oracle_access_governance-terraform-stack.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Dun-xvIpEtn-KkhdbP6VFHJr6espycp8U8yBMLfh2S7splId-v4ol6k9yZioEScQ/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oci.zip)
 
 
   Save in your downloads folder.
