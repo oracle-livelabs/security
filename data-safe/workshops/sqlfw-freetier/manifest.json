@@ -5,13 +5,25 @@
     {
       "title": "Prepare your environment",
       "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
-      "filename": "../../sqlfw-prepare-environment/sqlfw-prepare-environment.md",
+      "filename": "../../prepare-db23c-compute-environment/prepare-db23c-compute-environment.md",
       "type": "freetier"
     },
     {
-      "title": "Complete the prerequisites for using SQL Firewall with Data Safe",
-      "description": "This lab shows you how to create a Data Safe user, grant it permissions, and then register an Oracle Database on compute",
-      "filename": "../../sqlfw-complete-prerequisites/sqlfw-complete-prerequisites.md",
+      "title": "Register Oracle Database 23c on a compute instance with Data Safe",
+      "description": "This lab shows you how to register Oracle Database 23c on a compute instance with Data Safe.",
+      "filename": "../../register-db-on-compute/register-db-on-compute.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Deploy a SQL Firewall policy in Data Safe",
+      "description": "This lab shows you how to create and deploy and SQL Firewall policy in Data Safe.",
+      "filename": "../../sqlfw-deploy-sqlfw-policy/sqlfw-deploy-sqlfw-policy.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Get notified about SQL Firewall violations in Data Safe",
+      "description": "This lab shows you to create and deploy and SQL Firewall policy in Data Safe.",
+      "filename": "../../sqlfw-notifications/sqlfw-notifications.md",
       "type": "freetier"
     },
     {

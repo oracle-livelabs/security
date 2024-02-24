@@ -18,14 +18,19 @@ In this lab, you will:
 - (Optional) Add security rules to your existing VCN
 - Create two compute instances using Resource Manager
 - Add your private key to your Cloud Shell instance
-- Set the Glassfish application on host #1 to use Oracle Database 23c on host #2
-
 
 ### Prerequisites
 
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+- You have the following IAM permissions:
+
+    ```text
+    Allow group <your-group-name> to manage data-safe-sql-firewall-family in compartment <your-compartment>
+    NEED TO ADD OTHER PERMISSIONS NEEDED FOR THIS LAB
+    ```
+
 
 
 ## Task 1 (Optional): Add security rules to your existing VCN
@@ -165,31 +170,10 @@ Only perform this task if you are using your own VCN. If you plan to let Resourc
     ```
 
 
-## Task 4: Set the Glassfish application on host #1 to use Oracle Database 23c on host #2
 
-1. On the **Application information** tab, click the **Remote Desktop** link to access host #1 in a web browser. 
 
-2. Open a terminal window on your desktop. By default, you are the OS user `oracle`.
 
-3. Change to the scripts directory.
 
-    ```text
-    <copy>cd $DBSEC_LABS/sqlfw</copy>
-    ```
-
-4. Run the following script to configure the Glassfish application to connect to Oracle Database 23c on host #2.
-
-    ```text
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
-    ```
-
-5. In the Glassfish browser window on the right, click **Login**. Enter the username `hradmin` and the password `Oracle123`.
-
-6. In the top right hand corner, click **Welcome HR Administrator**. 
-
-    A page with session data shows you how the application is connected to the database. 
-
-7. Scroll down and verify that **DB\_NAME** is set to **FREEPDB1** and **SERVER\_HOST** is set to **dbsec-lab**.
 
 You may now proceed to the next lab.
 

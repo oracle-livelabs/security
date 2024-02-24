@@ -1,17 +1,20 @@
-# Complete the prerequisites for using SQL Firewall with Data Safe
+# Register Oracle Database 23c on a compute instance using a Data Safe private endpoint
 
 ## Introduction
 
-SQL Firewall is supported on Oracle Database 23c. Therefore, you need to complete prerequisites on your second compute instance (host #2) so that it will work with Data Safe. 
+In this lab, you use the Data Safe registration wizard to register an Oracle Database 23c on a compute instance with Data Safe. Oracle recommends that you use a Data Safe private endpoint when registering an Oracle database on a compute instance in Oracle Cloud Infrastructure.
 
-Estimated Lab Time: 20 minutes
+Note: For Oracle databases on compute instances outside of Oracle Cloud Infrastructure, Oracle recommends that you use an on-premises connector during registration instead of a private endpoint.
+
+Estimated Lab Time: 10 minutes
 
 ### Objectives
 
 In this lab, you will:
 
-- Create a datasafe_privileges.sql script
-- Create a Data Safe service account in Oracle Database 23c and grant it permissions to use SQL Firewall
+- Copy the datasafe_privileges.sql script to your compute instance
+- Create a Data Safe service account in Oracle Database 23c
+- Grant the Data Safe service account permissions to use all Data Safe features
 - Register Oracle Database 23c with Data Safe using a Data Safe private endpoint
 
 
@@ -20,15 +23,11 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
-- You have the following IAM permission:
-
-    ```text
-    Allow group <your-group-name> to manage data-safe-sql-firewall-family in compartment <your-compartment>
-    ```
+- Permission in IAM to register a target database with Data Safe.
+- You created a private key on your Cloud Shell machine
 
 
-## Task 1: Create a datasafe_privileges.sql script on host #2
-
+## Task 1: Copy the datasafe_privileges.sql script to your compute instance with Oracle Database 23c
 
 1. Navigate to the Data Safe **Overview** page in Oracle Cloud Infrastructure. To do this, from the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**.
 
@@ -40,7 +39,7 @@ This lab assumes you have:
 
 5. Open the script and copy all of its content to the clipboard.
 
-6. In Cloud Shell, enter the following command to connect to the compute instance that hosts Oracle Database 23c. Substitute `public-ip-address` with your public IP address for host #2. Enter **yes** when prompted.
+6. In Cloud Shell, enter the following command to connect to the compute instance that hosts Oracle Database 23c. Substitute `public-ip-address` with your public IP address. Enter **yes** when prompted.
 
     ```text
     <copy>ssh -i ~/.ssh/cloudshellkey opc@public-ip-address</copy>
@@ -62,7 +61,8 @@ This lab assumes you have:
 9. Press `Escape` and then **i** to insert content. Paste the content of the script into the file, and then press **Escape** and **:wq!** to save and close the file. 
 
 
-## Task 2: Create a Data Safe service account in Oracle Database 23c and grant it permissions to use SQL Firewall
+
+## Task 2: Create a Data Safe service account in Oracle Database 23c
 
 1. Run the `set-env-db.sh` script to set the environment variable to the container database (`FREE`) that contains the `FREEPDB1` pluggable database. When prompted, enter **1**.
 
@@ -114,12 +114,18 @@ This lab assumes you have:
     SQL> <copy>GRANT CONNECT, RESOURCE TO DS_ADMIN;</copy>
     ```
 
-5. Run the `datasafe_privileges.sql` script to grant all Data Safe permissions to `DATASAFE$ADMIN`. The following command assumes that the `datasafe_privileges.sql` script is located in the `oracle` home directory. The `ALL` permission includes the `SQL_FIREWALL` permission.
+## Task 3: Grant the Data Safe service account permissions to use all Data Safe features
+
+1. Run the `datasafe_privileges.sql` script to grant all Data Safe permissions to `DATASAFE$ADMIN`. The following command assumes that the `datasafe_privileges.sql` script is located in the `oracle` home directory. The `ALL` permission includes the `SQL_FIREWALL` permission.
 
     ```sql
     SQL> <copy>@datasafe_privileges.sql DS_ADMIN GRANT ALL</copy>
+    ```
 
-    Enter value for USERNAME (case sensitive matching the username from dba_users)
+2. Review the output. Notice all of the Data Safe roles that are now granted to the Data Safe service account on the database.
+
+    ```sql
+    <copy>Enter value for USERNAME (case sensitive matching the username from dba_users)
     Setting USERNAME to DATASAFE$ADMIN
     Enter value for TYPE (grant/revoke)
     Setting TYPE to GRANT
@@ -137,19 +143,19 @@ This lab assumes you have:
 
     Granting ASSESSMENT role to "DATASAFE$ADMIN" ...
     Disconnected from Oracle Database 23c Free, Release 23.0.0.0.0 - Developer-Release
-    Version 23.2.0.0.0
+    Version 23.2.0.0.0</copy>
     ```
 
 
-## Task 3: Register Oracle Database 23c on host #2 with Oracle Data Safe using a Data Safe private endpoint
+## Task 4: Register Oracle Database 23c with Data Safe using a Data Safe private endpoint
 
-When you register the database, choose to create an Oracle Data Safe private endpoint. You need the following details about host #2 during registration:
+When you register the database, choose to create an Oracle Data Safe private endpoint. You need the following details about your compute instance that hosts Oracle Database 23c during registration:
 
-- Host name is *similar* to **db23c-hol-2024-02-16-205833**
-- Private IPv4 address is **10.0.0.155**
-- VCN is called **LLW Network Security Group** (unless you are using your own VCN)
-- Subnet is called **LLW Public Subnet** (unless you are using your own subnet)
-- Network security group is called **LLW Network Security Group** (unless you are using your own security group)
+- Host name: This name is similar to **db23c-hol-2024-02-16-205833**
+- Private IPv4 address: **10.0.0.155**
+- VCN: **LLW Network Security Group** (unless you are using your own VCN)
+- Subnet: **LLW Public Subnet** (unless you are using your own subnet)
+- Network security group: **LLW Network Security Group** (unless you are using your own security group)
 
 
 1. Navigate to the Data Safe **Overview** page in Oracle Cloud Infrastructure. To do this, from the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**.
