@@ -311,7 +311,7 @@ In this lab you will use the results from a **Database Security Assessment Tool 
 
 1. Before beginning the lab, you have to **download to your local computer** the sensitive data file (`pdb1_dbsat_discover.csv`) below that we have generated for you from DBSAT:
 
-    [> Click here to download the CSV file<](https://objectstorage.us-ashburn-1.oraclecloud.com/p/g7HGibfhPXhmVXvyiP5G4yGe_MH3yPGUkiCrccuYhCKewZvgd-mlPycLPxaOAxcC/n/natdsecurity/b/labs-files/o/pdb1_dbsat_discover.csv)
+    [> Click here to download the CSV file<](https://objectstorage.us-ashburn-1.oraclecloud.com/p/ywLofl1hgwfHBhfj3EYj3En8cSSdcyv3_SOkFztUuhOoBDmRwE-ozv1GBhKkarsJ/n/c4u02/b/hosted_workshops/o/stacks/pdb1_dbsat_discover.csv)
 
 2. Load the data from the downloaded DBSAT file
 
