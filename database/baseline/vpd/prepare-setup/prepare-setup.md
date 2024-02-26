@@ -16,7 +16,7 @@ This lab assumes you have:
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
-    - [dbsec-mkplc-basics.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/qiz1dOzRGi3FoiEcFkDWMb860cWlt8MVwt2oGd5sU0lxc4aLk9hI3sPGA9_X2ILz/n/natdsecurity/b/stack/o/dbsec-mkplc-vm01-tls.zip)
+    - [dbsec-mkplc-basics.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Fr3YSNfwZNtfuxJKrJKSJX5p-emCLw-HDzknRdMdiD_SpioZ9MxkZ3G80neSaySZ/n/c4u02/b/hosted_workshops/o/stacks/dbsec-mkplc-vm01-tls.zip)
 
 2.  Save in your downloads folder.
 
