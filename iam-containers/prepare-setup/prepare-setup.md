@@ -17,7 +17,7 @@ This lab assumes you have:
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
 <if type="default">
-    - [iam-container-mkplc-freetier.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/MHI-EI0TdPdOU7LIHiwm6j5A5hgy4nIeY14CnyFEK0noUnYyfAPvQT7tczBJA0Sn/n/natdsecurity/b/stack/o/iam-container-mkplc-freetier.zip)
+    - [iam-container-mkplc-freetier.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/QBLm3q4RchgSrMr61MrRTTS9lRsiMN5-rj1hcRcnX22X7y0oOH0ImW1451ubwTNc/n/c4u02/b/hosted_workshops/o/stacks/iam-container-mkplc-freetier.zip)
 </if>
 
 
