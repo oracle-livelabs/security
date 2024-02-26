@@ -16,6 +16,11 @@ In this lab, you will:
 * View a list of **certification campaigns** you own or created
 * View the progress of **certification campaigns** made by reviewers with **analytics insights**
 
+
+### Prerequisites
+This lab assumes you have:
+- A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Login Oracle Access Governance as Campaign Administrator
 
 1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
@@ -34,8 +39,10 @@ In this lab, you will:
   ![Campaign Progress](images/admin-view-campaign-progress.png)
 4. Click on the button **Additional Details** to see more details of the selected campaign.
   ![Campaign Additional Details](images/admin-additional-details.png)
+   ![Clone Campaign](images/access-review.png)
+   
 5. Click on the drop-down menu of **Actions** and select **View report** to view a report showing the progress details of the selected campaign. If the **campaign progress report** has not yet been generated, pick a previous campaign to view **progress report**.
-  ![Campaign Progress Menu](images/admin-view-campaign-progress-menu.png)
+   ![Clone Campaign](images/access-review-insight.png)
 6. You can review out-of-the-box analytics and reports on campaign progress. You can also download the report as a PDF file. 
   ![Campaign Analytics](images/admin-view-campaign-analytics.png)
 7. Click **Close** and go back to the campaign detail screen, click on the **Actions** drop-down menu. You have the option to **Terminate** the current campaign. You also have the option to **Clone** the current campaign. 
