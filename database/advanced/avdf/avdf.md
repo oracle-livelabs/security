@@ -47,13 +47,39 @@ This lab assumes you have:
 
 ## Task 1: Reset the randomly generated password
 
-You have been given a randomly generated password for the *`AVADMIN`* and *`AVAUDITOR`* user login for the AV console. When you log into the AV console for the first time using these users, you will be asked to change the password by your own one.
+You have been given a randomly generated password for the *`AVADMIN`* and *`AVAUDITOR`* user login for the AV console. When you log into the AV console for the first time using these users, you will be asked to change the password.
 
-1. Open a web browser window to *`https://av`* to access to the Audit Vault Web Console
+1. Where to find the randomly generated password
+
+    - Open a terminal session on your **DBSec-Lab** VM as OS user *oracle*
+
+        ````
+        <copy>sudo su - oracle</copy>
+        ````
+
+        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+
+    - Go to the scripts directory
+
+        ````
+        <copy>cd $DBSEC_LABS/avdf/avs</copy>
+        ````
+
+    - Learn the AVDF password you will need for the duration of the lab
+
+        ````
+        <copy>echo $AVUSR_PWD</copy>
+        ````
+
+        **Note**:
+        - This new password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
+        - At the first login on the AV Console, it will ask you to change this randomly generated password
+
+2. Open a web browser window to *`https://av`* to access to the Audit Vault Web Console
 
     **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<AVS-VM_@IP-Public>`*
 
-2. Login to Audit Vault Web Console as *`AVADMIN`* (use the password randomly generated)
+3. Login to Audit Vault Web Console as *`AVADMIN`* (use the password randomly generated)
 
     ````
     <copy>AVADMIN</copy>
@@ -61,7 +87,7 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
 
     ![AVDF](./images/avdf-400.png "AVDF - Login")
 
-3. Reset the password
+4. Reset the password
 
     - Set your new password
     
@@ -69,7 +95,7 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
     
     - Click [**Submit**]
 
-4. Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password randomly generated)
+5. Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password randomly generated)
 
     ````
     <copy>AVAUDITOR</copy>
@@ -77,7 +103,7 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
 
     ![AVDF](./images/avdf-300.png "AVDF - Login")
 
-5. Reset the password
+6. Reset the password
 
     - Set your new password
     
@@ -174,13 +200,13 @@ In this lab, you will do the following:
 
 4. Now, create the drift from the previous scan
 
-    - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+    - Open a terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
         ````
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+        **Note**: If you are using a remote desktop session, double-click on the *terminal* icon on the desktop to launch a session
 
     - Go to the scripts directory
 
@@ -222,7 +248,7 @@ In this lab, you will do the following:
 
     ![AVDF](./images/avdf-505.png "AVDF - Drift Chart")
 
-8. Now, go back to the Terminal session to mitigate the risk
+8. Now, go back to the terminal session to mitigate the risk
 
     - for **pdb1**
 
@@ -366,7 +392,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
 8. The next thing you can do is check which Unified Audit Policies exist and which Unified Audit Policies are enabled by using **SQL*Plus**
 
-    - Go back to your Terminal session and list **ALL** the Unified Audit Policies in **pdb1**
+    - Go back to your terminal session and list **ALL** the Unified Audit Policies in **pdb1**
 
         ````
         <copy>./avs_query_all_unified_policies.sh</copy>
@@ -504,7 +530,7 @@ In this section, we will only see the change report for **pdb2**, where all the 
 
     - By default, in the dbseclab VM, the Oracle GoldenGate software has been already installed and pre-configured
     
-    - Go back to your Terminal session to ensure the Golden Gate Administration Service is up and running
+    - Go back to your terminal session to ensure the Golden Gate Administration Service is up and running
 
         ````
         <copy>./avs_start_ogg.sh</copy>
@@ -714,7 +740,7 @@ In this lab, we will do the following
 
 4. Now, verify connectivity between the database and the DB Firewall
 
-    - Go back to your Terminal session and go to the DBF directoy
+    - Go back to your terminal session and go to the DBF directoy
 
         ````
         <copy>cd $DBSEC_LABS/avdf/dbf</copy>
@@ -780,7 +806,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     ![AVDF](./images/avdf-117.png "AVDF - Logout")
 
-7. Now, go back to your Terminal session and migrate the Glassfish Application connection string to proxy through the Database Firewall
+7. Now, go back to your terminal session and migrate the Glassfish Application connection string to proxy through the Database Firewall
 
     ````
     <copy>./dbf_start_proxy_glassfish.sh</copy>
@@ -1125,7 +1151,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
     ![AVDF](./images/avdf-142.png "Filter by HR ID = 196")
 
-23. Now, go back to your Terminal session and run the same script as at the beginning to see the impact of the DB Firewall policy
+23. Now, go back to your terminal session and run the same script as at the beginning to see the impact of the DB Firewall policy
 
     ````
     <copy>./dbf_query_fw_policy.sh</copy>
@@ -1314,7 +1340,7 @@ In this lab you will create the policy `PII Exfiltration Monitor` to monitor the
 
         ![AVDF](./images/avdf-176b.png "Database Firewall Policy deployed for pdb1")
 
-11. Once the DB Firewall Policy is enabled, go back to you Terminal session to generate some SELECT commands on SQL*Plus via the proxy connection
+11. Once the DB Firewall Policy is enabled, go back to you terminal session to generate some SELECT commands on SQL*Plus via the proxy connection
 
     ````
     <copy>./dbf_exfiltrate_with_dbfw.sh</copy>
@@ -1359,7 +1385,7 @@ In this lab you will create the policy `PII Exfiltration Monitor` to monitor the
         ![AVDF](./images/avdf-183.png "Check the Row Count number of queries executed previously")
 
 
-18. Once the DB Firewall Alert is created, go back again to your Terminal session to generate the same SELECT commands on SQL*Plus via the proxy connection
+18. Once the DB Firewall Alert is created, go back again to your terminal session to generate the same SELECT commands on SQL*Plus via the proxy connection
 
     ````
     <copy>./dbf_exfiltrate_with_dbfw.sh</copy>
@@ -1428,7 +1454,7 @@ Transaction Log collector takes advantage of **Oracle GoldenGate’s Integrated 
 
 The first thing we need to do is to set up the database to be ready for Golden Gate
 
-1. Go back to your Terminal session on DBSec-Lab VM to create the Golden Gate Database Administration user **C##AVGGADMIN** in the container database **cdb1**
+1. Go back to your terminal session on DBSec-Lab VM to create the Golden Gate Database Administration user **C##AVGGADMIN** in the container database **cdb1**
 
     ````
     <copy>./avs_create_oggadmin_db_user.sh</copy>
@@ -1623,7 +1649,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
 **Generate Changes and View the Audit Vault Reports**
 
-22. Go back to your Terminal session and generate data and object changes with 2 different privileged users
+22. Go back to your terminal session and generate data and object changes with 2 different privileged users
 
     ````
     <copy>./avs_generate_employeesearch_prod_changes.sh</copy>
@@ -1726,7 +1752,7 @@ The objective of this lab is to collect audit log records from PostgreSQL databa
 
     ![AVDF](./images/avdf-207.png "Check the Audit Trail status")
 
-10. Go back to your Terminal session and generate traffic on the PostgreSQL database for auditing
+10. Go back to your terminal session and generate traffic on the PostgreSQL database for auditing
 
     ````
     <copy>./adv_pgsql_generate_traffic.sh</copy>
@@ -1798,7 +1824,7 @@ The objective of this lab is to collect audit log records from PostgreSQL databa
 
             ![AVDF](./images/avdf-212f.png "Delete the target")
 
-    - Now, go back to your Terminal session and reset the PostgreSQL database auditing
+    - Now, go back to your terminal session and reset the PostgreSQL database auditing
 
         ````
         <copy>sudo -u postgres ./adv_pgsql_cleanup.sh</copy>
@@ -1935,7 +1961,7 @@ The objective of this lab is to collect event log from the Operating System
 
             ![AVDF](./images/avdf-228.png "Delete the Target")
 
-    - Go back to your Terminal session and reset the audit collection to the 'root' Linux OS group only
+    - Go back to your terminal session and reset the audit collection to the 'root' Linux OS group only
 
         ````
         <copy>./adv_linux_reset_auditing.sh</copy>
@@ -2061,7 +2087,7 @@ Important: before performing this lab, you must have:
         ![AVDF](./images/avdf-262.png "Confirm the deletion")
 
 <!--
-    - Go back to your Terminal session to reset Golden Gate
+    - Go back to your terminal session to reset Golden Gate
 
         ````
         <copy>$DBSEC_LABS/avdf/avs/avs_reset_ogg.sh</copy>
