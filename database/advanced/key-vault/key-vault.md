@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the various features and functionality of Oracle Key Vault (OKV). It gives the user an opportunity to learn how to configure this appliance to manage keys.
 
-*Estimated Lab Time:* 55 minutes
+*Estimated Lab Time:* 60 minutes
 
 *Version tested in this lab:* Oracle OKV 21.7 and DBEE 19.21
 
@@ -566,7 +566,45 @@ Oracle provides deployment recommendations for deployments that have two or more
 
 -->
 
-## Task 9: Reset the OKV Lab Config
+## Task 9: Generate new Non-extractable key
+
+This task will demonstrate how to create a non-extractable key, meaning a key that does not leave the Oracle Key Vault cluster. The key can be accessed by the approved endpoints but not stored by the endpoint client or the endpoint persistent cache.
+
+1. Generate a new master encryption key for the PDB using the following command:
+    ````
+    <copy>./okv_online_pdb_rekey.sh pdb1</copy>
+    ````
+    ![Generate Key](./images/gen-new-key.png "Key Vault")
+Take note of the tag information so you can identify this key in future steps.
+2. Verify we have the new master encryption key using the following command:
+    ````
+    <copy>echo Oracle123 | okvutil list -a</copy>
+    ````
+3. Identify the MKID from the command in the previous step. Take note that the current extractable value is set to true, meaning it can be stored by the endpoint client software.
+    ![Identify Key](./images/id-key.png "Key Vault")
+4. As KVRESTADMIN, navigate to the Keys & Wallets tab, click <x> and press <y>. Find that key in the OKV UI , mark it so that the extractable value is false and click Save.
+    ![Show UI Key](./images/ui-key.png "Key Vault")
+5. Run the following command again to see that the key is now marked as extractable = false:
+    ````
+    <copy>echo Oracle123 | okvutil list -a</copy>
+    ````
+    ![Find Key](./images/find-key.png "Key Vault")
+
+6. Attempt to download the wallet keys with okvutil. You will see that the okvutil is able to create an ewallet.p12 file but that file cannot contain the non-extractable key. 
+    ````
+    <copy>okvutil download -l . -t wallet</copy>
+    ````
+    Enter the following for the wallet password:
+    ````
+    <copy>Oracle123</copy>
+    ````
+    Enter the following for the Endpoint password:
+    ````
+    <copy>Oracle123</copy>
+    ````
+    ![Download Key](./images/download-key.png "Key Vault")
+
+## Task 10: Reset the OKV Lab Config
 
 1. Drop the Endpoint and Wallet created in OKV during this lab
 
