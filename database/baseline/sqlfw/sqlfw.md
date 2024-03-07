@@ -1218,4 +1218,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - February 2024
