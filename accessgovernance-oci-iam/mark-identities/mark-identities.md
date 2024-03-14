@@ -46,20 +46,18 @@ In this task, you will select the identities that you want to include in your se
 
    ![Manage Identities page](images/select-any.png)
 
-3. Select the below options for the condition to match the identities that you want to include. 
+3. Select the below options for the condition to match the **Test Users** that you want to include. 
 
-      *  Select attribute: Status
-      * Select operator: Contains 
-      * Attribute value: Active 
-    
-    Hit **Enter**
+      *  Select attribute: Location
+      * Select operator: Equals 
+      * Attribute value: NR
+
+   Hit **Enter**
     
 
 4. Click on **Preview Summary based on the rule above**. The identities that match the rule will be visible. 
 
 5. Close the pop-up and click on **Save**
-
-  ![Manage Identities page](images/preview-identity.png)
 
 
   You may now **proceed to the next lab**. 

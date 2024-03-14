@@ -18,6 +18,13 @@ In this lab, you will:
 * Create an Access Bundle
 * Create a centralized policy to provision access privileges
 
+
+### Prerequisites
+
+This lab assumes you have:
+
+A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Create an Identity Collection for Approvers
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Identity Collections tile.
@@ -80,17 +87,16 @@ In this lab, you will:
 
     Select the *All* checkbox.
 
-    Select attribute: Organization
+    Select attribute: Source Organization
 
     Condition: Equals
 
     Attribute field: Quality Assurance
 
-    ![Identity Collection creation](images/qa-rule.png)
+    ![Identity Collection creation](images/source-organization.png)
 
 5. Click on *Create*
 
-    ![Identity Collection creation](images/qa-collection-create.png)
 
 ## Task 3: Create an Approval Workflow
 

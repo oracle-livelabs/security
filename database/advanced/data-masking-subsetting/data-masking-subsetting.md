@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data M
 
 *Estimated Lab Time:* 85 minutes
 
-*Version tested in this lab:* Oracle Enterprise Manager 13.5.0.14
+*Version tested in this lab:* DBEE 19.21 and Oracle Enterprise Manager 13.5.0.19
 
 ### Video Preview
 Watch a preview of "*Understanding Oracle Data Masking & Subsetting (April 2019)*" [](youtube:3zi0Bs_bgEw)
@@ -1624,4 +1624,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024

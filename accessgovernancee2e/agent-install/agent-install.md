@@ -23,16 +23,15 @@ This lab assumes you have:
 
 ## Task 1: Integrate with Oracle Identity Governance
 
-1. On the Oracle Access Governance service home page *refer Lab 6:Task 1*, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
+1. On the Oracle Access Governance service home page *refer Lab 5:Task 1: Step 4*, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
 
-    ![Access Governance console - Connected Systems](images/connected-systems.png)
+     ![Access Governance console - Connected Systems](images/ag-home.png)
+
+    ![Access Governance console - Connected Systems](images/connected-systems-select.png)
 
 2. Click on **Add a connected system**
 
     ![Add - Connected System](images/add-connected-system.png)
-
-3. On the tile labeled **Would you like to connect to an Identity Governance System** select the **Add** button.
-    ![Access Governance console - Connected Systems-Add](images/connected-system-page.png)
 
 4. Click **Close** on the information pop-up to navigate to the **Add an Identity Governance System** page and begin the configuration.
 
@@ -42,7 +41,7 @@ This lab assumes you have:
 5. On the **Select System** step, select the tile for **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
 
 
-    ![Access Governance console - Connected Systems-Next](images/select-oig.png)
+    ![Access Governance console - Connected Systems-Next](images/oig-system.png)
 
 
 6. On the **Enter Details** step, enter the following details:
@@ -75,7 +74,7 @@ This lab assumes you have:
     <copy>Welcome1</copy>
     ```
     **OIG Server URL:** 
-    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 3 : Task 3*  for the private ip of your compute instance. 
+    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 4 : Task 3*  for the private ip of your compute instance. 
     ```
     <copy>http://<--privateipofyourcomputeinstance-->:14000</copy>
     ```
@@ -94,10 +93,15 @@ This lab assumes you have:
 
      ![Configure Details](images/oag-connection-details.png)
 
-8. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
+8. On the Download Agent step, select the *Download link* and download the agent zip file. Select the checkbox *Activate and prepare the dataload with provided defaults*. The zip file is present in: /home/opc/Downloads
 
+    ![Download the agent](images/checkbox-default.png)
 
-    ![Download the agent](images/oag-download-link.png)
+    Click on *Activate*
+
+    ![Download the agent](images/activate-checkbox.png)
+
+    ![Download the agent](images/active-system.png)
 
 9. You can verify the downloaded agent zip file.
 
