@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle SQL Firewall. It gives the 
 
 *Estimated Lab Time:* 30 minutes
 
-*Version tested in this lab:* Oracle DB 23.2
+*Version tested in this lab:* Oracle DBEE 23.2
 
 ### Video Preview
 Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23c*" [](youtube:aiwb6od3mfo)
@@ -43,7 +43,7 @@ This lab assumes you have:
 | 2a| Enable SQL Firewall to protect Glassfish HR Application | 10 minutes |
 | 2b| Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
 | 2c| Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
-| 2d | Reset the SQL Firewall Labs Environment for PL/SQL API | <5 minutes |
+| 2d| Reset the SQL Firewall Labs Environment for PL/SQL API | <5 minutes |
 
 ## Task 1: Use SQL Firewall with Data Safe
 
@@ -1218,4 +1218,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
