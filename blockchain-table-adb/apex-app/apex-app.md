@@ -89,7 +89,7 @@ APEX application will interact with the blockchain tables using REST API through
     Also, notice how clicking on modules shows that there are no modules defined.
     ![](./images/task2-32.png " ")
 
-4. Click [here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/blockchain/ORDS-REST-Blockchain.sql) to download the ORDS-REST-Blockchain.sql file that has the SQL Script to REST Enable this schema and also to create modules for the bank_ledger table with the appropriate handlers.
+4. Click [here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/blockchain/ORDS-REST-Blockchain.sql) to download the ORDS-REST-Blockchain.sql file that has the SQL Script to REST Enable this schema and also to create modules for the bank_ledger table with the appropriate handlers.
 
 5. Let's import the modules by clicking on **Import**.
 
@@ -167,7 +167,7 @@ APEX application will interact with the blockchain tables using REST API through
 
 Now, we have the blockchain module, the handlers, and the templates defined. Let's import the apex application.
 
-1. Click [here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/blockchain/Blockchain-APEX-Application.sql) to download the Blockchain-APEX-Application.sql.
+1. Click [here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/blockchain/Blockchain-APEX-Application.sql) to download the Blockchain-APEX-Application.sql.
 
 2.  Click on the **App Builder** drop-down menu and select **Import**.
 

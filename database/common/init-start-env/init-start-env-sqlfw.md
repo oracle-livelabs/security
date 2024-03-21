@@ -130,7 +130,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
     ![SQLFW](./images/init-start-env-sqlfw-001.png "Set HR App with DB23c")
 
-    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
+    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (installed on the DB23c VM) from the **`dbsec-lab`** VM
 
 4. Next, verify the application functions as expected
 
@@ -160,7 +160,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
         ![SQLFW](./images/init-start-env-sqlfw-005.png "HR App - Session details")
 
-    - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
+    - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **dbsec-lab** as the **HOST**
 
         ![SQLFW](./images/init-start-env-sqlfw-006.png "HR App - Check the targetted database")
 
@@ -254,5 +254,5 @@ If for any reason you want to login from a location that is external to your rem
 
 ## Acknowledgements
 - **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
-- **Contributors** - Hakim Loumi
-- **Last Updated By/Date** - Marion Smith, Technical Program Manager, April 2022
+- **Contributors** - Marion Smith, Technical Program Manager
+* **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2024
