@@ -16,7 +16,7 @@ This lab assumes you have:
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
-    - [oracle_access_governance_stack.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/oracle_access_governance_stack.zip)
+    - [oracle_access_governance_stack.zip](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/oracle_access_governance_stack.zip)
 
 
 2.  Save in your downloads folder.
@@ -27,20 +27,20 @@ We strongly recommend using this stack to create a self-contained/dedicated VCN 
 
 This workshop requires a certain number of ports to be available, a requirement that can be met by using the default ORM stack execution that creates a dedicated VCN. In order to use an existing VCN/subnet, the following rules should be added to the security list.
 
-| Type           | Source Port    | Source CIDR | Destination Port | Protocol | Description                           |
-| :-----------   |   :--------:   |  :--------: |    :----------:  | :----:   | :------------------------------------ |
-| Ingress        | All            | 0.0.0.0/0   | 22               | TCP      | SSH                                   |
-| Ingress        | All            | 0.0.0.0/0   | 80               | TCP      | Remote Desktop using noVNC            |
-| Egress         | All            | N/A         | 80               | TCP      | Outbound HTTP access                  |
-| Egress         | All            | N/A         | 443              | TCP      | Outbound HTTPS access                 |
+| Type    | Source Port | Source CIDR | Destination Port | Protocol | Description                |
+| :------ | :---------: | :---------: | :--------------: | :------: | :------------------------- |
+| Ingress |     All     |  0.0.0.0/0  |        22        |   TCP    | SSH                        |
+| Ingress |     All     |  0.0.0.0/0  |        80        |   TCP    | Remote Desktop using noVNC |
+| Egress  |     All     |     N/A     |        80        |   TCP    | Outbound HTTP access       |
+| Egress  |     All     |     N/A     |       443        |   TCP    | Outbound HTTPS access      |
 {: title="List of Required Network Security Rules"}
 
 <!-- **Notes**: This next table is for reference and should be adapted for the workshop. If optional rules are needed as shown in the example below, then uncomment it and add those optional rules. The first entry is just for illustration and may not fit your workshop -->
 
 <!--
-| Type           | Source Port    | Source CIDR | Destination Port | Protocol | Description                           |
-| :-----------   |   :--------:   |  :--------: |    :----------:  | :----:   | :------------------------------------ |
-| Ingress        | All            | 0.0.0.0/0   | 443               | TCP     | e.g. Remote access for web app        |
+| Type    | Source Port | Source CIDR | Destination Port | Protocol | Description                    |
+| :------ | :---------: | :---------: | :--------------: | :------: | :----------------------------- |
+| Ingress |     All     |  0.0.0.0/0  |       443        |   TCP    | e.g. Remote access for web app |
 {: title="List of Optional Network Security Rules"}
 -->
 
