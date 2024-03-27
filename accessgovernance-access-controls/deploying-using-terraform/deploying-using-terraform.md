@@ -27,10 +27,11 @@ In this lab, you will:
 
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 
-1. Click on the link below to download the Resource Manager zip file you need to build your environment:
+ **NOTE : If you have performed the *Perform OCI IAM Policy Reviews with Oracle Access Governance lab (ID:3704)* then you have already created the resources required to perform this workshop, you can skip this lab and move to the next lab** 
 
+1. Click on the link below to download the Resource Manager zip file you need to build your environment:
     
-   - [oracle_access_governance-terraform-stack.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Dun-xvIpEtn-KkhdbP6VFHJr6espycp8U8yBMLfh2S7splId-v4ol6k9yZioEScQ/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oci.zip)
+   - [oracle_access_governance-terraform-stack-oigdb.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/neoMqFrozbHJSSE1yVNPlhU_yZwoibIYic_3pGxDfyjVFdT8D6VMv6RsfNhwuLg-/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oigdb.zip)
 
 
   Save in your downloads folder.
