@@ -24,8 +24,22 @@ This lab assumes you have:
 ## Task 1: Login Oracle Access Governance as Campaign Administrator
 
 1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
-2. Log in to **Oracle Access Governance** as a **campaign administrator - Pamela Green** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+2. Login to **Oracle Access Governance** and enter **Oracle Access Governance Administrator** username and password (Pamela Green). 
+
+    **Username:**
+    ```
+    <copy>pamela.green</copy>
+    ```
+
+    **Password:**
+    
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+
+
+  You will be navigated to the home page of your Oracle Access Governance Console.
+
 	![Access Governance Login](images/admin-login.png)
+  
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/admin-home.png)
 

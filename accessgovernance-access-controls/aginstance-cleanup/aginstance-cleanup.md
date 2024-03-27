@@ -65,7 +65,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     ![Open OCI console](images/confirm-deactivate.png)
 
-## Task 4: Destroy Terraform Stack  
+## Task 4: Destroy Terraform Stack that was used to create resources - Compartment, Identity Domain, AG Users and Policies for Access Governance 
 
 1. Navigate to **Resource Manager -> Stacks -> Stack details** 
 

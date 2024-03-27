@@ -290,21 +290,19 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 ## Task 6: Create Access Requests
 
-1. Log in to Oracle Access Governance as an employee user - Mark Hernandez with the username and password mentioned below.
+1. Log in to Oracle Access Governance as an employee user - Mark Hernandez with the username and password. 
 
     **Username:**
 
     ```
     <copy>mhernandez</copy>
     ```
-
     **Password:**
 
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    You will be navigated to the home page of your Oracle Access Governance Console.
+
 
   3. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> Request a new access**
 
@@ -328,19 +326,17 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
   8. Click on **Submit Request**
 
-  9. Log in to Oracle Access Governance as an employee user - Harlan Bullard with the username and password mentioned below.
+  9. Log in to Oracle Access Governance as an employee user - Harlan Bullard with the username and password. 
 
     **Username:**
     ```
     <copy>harlan.bullard</copy>
     ```
-
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+
+    You will be navigated to the home page of your Oracle Access Governance Console.
 
   10. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> Request a new access**
 
@@ -354,7 +350,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
   15. Click on **Submit Request**
 
-  16. Log in to Oracle Access Governance as an employee user - Jerry Poland with the username and password mentioned below.
+  16. Log in to Oracle Access Governance as an employee user - Jerry Poland with the username and password. 
 
     **Username:**
     ```
@@ -362,11 +358,11 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     ```
 
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+
+    You will be navigated to the home page of your Oracle Access Governance Console.
+
 
   17. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> Request a new access**
 
@@ -382,7 +378,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 ## Task 7: Approve Access Requests
 
-1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password mentioned below.
+1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password. 
 
     **Username:**
 
@@ -390,13 +386,12 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     <copy>pamela.green</copy>
     ```
 
-    **Password:**
+     **Password:**
 
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    You will be navigated to the home page of your Oracle Access Governance Console.
+
 
 2. Navigate to MyStuff -> Approvals.You will see requests from user Harlan Bulllard, Mark Hernandez and Jerry Poland for **DB-Manage-Access** .
 
