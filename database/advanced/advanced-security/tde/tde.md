@@ -217,6 +217,14 @@ This lab assumes you have:
 
     ![TDE](./images/tde-018.png "Check the existing initialization parameters")
 
+    **Note**:
+    - The `TABLESPACE_ENCRYPTION` parameter is set to `AUTO_ENABLE` and cannot be modified, hence if you want to change it **the database must be restarted**!
+    - This parameter, **introduced in Oracle Database version 19.16**, allows you to specify whether to encrypt newly created user tablespaces
+    - It replace the `ENCRYPT_NEW_TABLESPACES` parameter who is now deprecated
+    - `ENCRYPT_NEW_TABLESPACES` is automatically set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE`
+    - The hidden init parameter `_tablespace_encryption_default_algorithm` uses "`AES256`" as default encryption algorithm
+
+<!--
 2. Next, change the init parameter `TABLESPACE_ENCRYPTION` to "`AUTO_ENABLE`" to always **encrypt implicitly all new tablespaces**, and the hidden init parameter `_tablespace_encryption_default_algorithm` to use "`AES256`" as default encryption algorithm
 
     ````
@@ -231,8 +239,9 @@ This lab assumes you have:
     - Similar to `ENCRYPT_NEW_TABLESPACES`, this parameter allows you to specify whether to encrypt newly created user tablespaces
     - If the behavior specified by the `ENCRYPT_NEW_TABLESPACES` setting conflicts with the behavior specified by the `TABLESPACE_ENCRYPTION` setting, then the `TABLESPACE_ENCRYPTION` behavior takes precedence
     - So, `ENCRYPT_NEW_TABLESPACES` is automatically set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE`
-    
-3. Finally, create and drop a tablespace TEST to check the effect
+-->
+
+2. Finally, create and drop a tablespace TEST to check the effect
 
     ````
     <copy>./tde_create_new_tbs.sh</copy>
@@ -242,7 +251,7 @@ This lab assumes you have:
 
     **Note**: Despite the fact that the tablespace **TEST** was created without specifying encryption parameters, it's encrypted by default with the AES256 encryption algorithm
 
-4. Now, all your new Tablespaces will be encrypted by default!
+3. Now, all your new Tablespaces will be encrypted by default!
 
 ## Task 7: Rekey Master Key
 
@@ -403,4 +412,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - April 2024
