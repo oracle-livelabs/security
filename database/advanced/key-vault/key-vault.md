@@ -208,7 +208,8 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
             **Note**:
             - The script *`okv-ep.sh`* will automate the process to create the Endpoint, the Oracle Wallet and deploy the OKV software
-            - It also downloads the latest version of the RESTful Service utility from OKV server
+            - It downloads the latest version of the RESTful Service utility from OKV server
+            - It also sets into the client wallet the user KVEPADMIN to add the endpoint
 
     - Add your **cdb1** database on DBSec-Lab VM as Endpoint
 
@@ -217,6 +218,10 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
         ````
 
         ![Key Vault](./images/okv-006.png "Add Endpoint")
+
+        **Note**: If necessary, it can ask you to overwrite the library, in that case, accept by entering "**y**"
+
+        ![Key Vault](./images/okv-006b.png "Overwrite the okv library")
 
     - Before finishing, we have to change the Endpoint password
 
@@ -509,10 +514,9 @@ In this lab, we will fetch a Database account password from OKV On-Demand
     ![Key Vault](./images/okv-031.png "Create the secret password into OKV")
 
     **Note**: This scripts...
-    - Generates a JSON file (`$OKV_RESTHOME/sec-reg.json`) to register the secret
     - Creates the DB user `REFRESH_DWH` identified by this secret password
     - Uploads the secret password into OKV (OKV will respond with the unique ID of the secret password) by setting 2 access attributes - the name of the DB user (here `REFRESH_DWH`) and the connection string (here `dbsec-lab:1521/pdb1`)
-    - Finally, because the password is now in OKV and we don’t need anymore the temporary file which contains the secret password, so the script will delete it
+    - Finally, because the password is now in OKV and we don’t need anymore the temporary file which contains the secret password, the script will delete it
 
 3. Now, test your secret configuration by logging to the database with the secret password and its attributes as parameters)
 
