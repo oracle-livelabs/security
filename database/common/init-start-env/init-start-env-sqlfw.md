@@ -152,7 +152,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
         ![SQLFW](./images/init-start-env-sqlfw-003.png "HR App - Login")
 
-    - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
+    - In the top right hand corner of the App, **click** on the **Welcome HR Administrator** link and you will be sent to a page with session data
 
         ![SQLFW](./images/init-start-env-sqlfw-004.png "HR App - Settings")
 
