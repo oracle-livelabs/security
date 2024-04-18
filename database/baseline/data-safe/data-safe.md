@@ -66,10 +66,10 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 9. Now, let's active it
 
-    - Click [**Download install Bundle**] to download the zip file and enter a password of at least 15 characters (here *`Oracle12345678!`*)
+    - Click [**Download install Bundle**] to download the zip file and enter a password of at least 15 characters (here *`Oracle123Oracle123!`*)
 
         ````
-        <copy>Oracle12345678!</copy>
+        <copy>Oracle123Oracle123!</copy>
         ````
 
        ![Data Safe](./images/ds-006.png "Download install Bundle")
@@ -108,7 +108,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
                ![Data Safe](./images/ds-009.png "Copy Data Safe on-premises connector uploaded")
 
-        - Install Data Safe On-Premises connector (enter the password defined for the zip file above - here *`Oracle12345678!`*)
+        - Install Data Safe On-Premises connector (enter the password defined for the zip file above - here *`Oracle123Oracle123!`*)
 
             ````
             <copy>
@@ -119,7 +119,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
             ````
 
             ````
-            <copy>Oracle12345678!</copy>
+            <copy>Oracle123Oracle123!</copy>
             ````
 
                ![Data Safe](./images/ds-010.png "Install Data Safe On-Premises connector")
@@ -180,7 +180,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - Database IP Address: *`10.0.0.150`*
         - Database Port Number: *`1521`*
         - Database User Name: *`DS_ADMIN`* (in uppercase)
-        - Database Password: *`Oracle12345678!`*
+        - Database Password: *`Oracle123Oracle123!`*
     
             ![Data Safe](./images/ds-017.png "Fill out the Register Target Database parameters")
 
