@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Transparent Sensitive Data 
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.21
+*Version tested in this lab:* Oracle DBEE 19.23
 
 ### Video Preview
 No video for the moment
@@ -166,4 +166,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Pedro Lopes
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - April 2024

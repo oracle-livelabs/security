@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Transp
 
 *Estimated Lab Time:* 45 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.21
+*Version tested in this lab:* Oracle DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)

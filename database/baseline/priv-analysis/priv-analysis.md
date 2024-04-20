@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Privilege Analysis. It give
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.21
+*Version tested in this lab:* Oracle DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Privilege Analysis (May 2022)*" [](youtube:OsvxpBIKoOQ)
@@ -218,4 +218,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Richard Evans
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - April 2024

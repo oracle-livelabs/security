@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data S
 
 *Estimated Lab Time:* 25 minutes
 
-*Version tested in this lab:* Oracle Data Safe on OCI and Oracle DBEE 19.21
+*Version tested in this lab:* Oracle Data Safe on OCI and Oracle DBEE 19.23
 
 ### Video Preview
 
