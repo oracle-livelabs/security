@@ -27,10 +27,11 @@ In this lab, you will:
 
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 
-1. Click on the link below to download the Resource Manager zip file you need to build your environment:
+ **NOTE : If you have performed the *Perform OCI IAM Policy Reviews with Oracle Access Governance lab (ID:3704)* then you have already created the resources required to perform this workshop, you can skip this lab and move to the next lab** 
 
+1. Click on the link below to download the Resource Manager zip file you need to build your environment:
     
-   - [oracle_access_governance-terraform-stack.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Dun-xvIpEtn-KkhdbP6VFHJr6espycp8U8yBMLfh2S7splId-v4ol6k9yZioEScQ/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oci.zip)
+   - [oracle_access_governance-terraform-stack-oigdb.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/neoMqFrozbHJSSE1yVNPlhU_yZwoibIYic_3pGxDfyjVFdT8D6VMv6RsfNhwuLg-/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oigdb.zip)
 
 
   Save in your downloads folder.
@@ -61,9 +62,15 @@ In this lab, you will:
 
   Click *Next*
 
-  Enter Unique Email IDS for each of the users and Click *Next*.
+  Enter Unique Email IDS for each of the users
 
-   ![Enter Email IDs](images/email-id.png)
+  Enter the region code
+  
+  **NOTE : Select your home region such that you can host Oracle Access Governance within your geographic region to create and manage service instances. For supported regions code, please refer [Oracle Access Governance Regions ](https://docs.oracle.com/en/cloud/paas/access-governance/cagsi/#GUID-9D3A580D-767A-4C39-8A61-8A14CD045270)** 
+  
+  Click *Next*.
+
+   ![Enter Email IDs](images/email-id-region.png)
 
   Click on *Create*.
 

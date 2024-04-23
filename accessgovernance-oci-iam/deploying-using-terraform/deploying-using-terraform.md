@@ -22,7 +22,7 @@ In this lab, you will:
 1. Click on the link below to download the Resource Manager zip file you need to build your environment:
 
     
-   - [oracle_access_governance-terraform-stack.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Dun-xvIpEtn-KkhdbP6VFHJr6espycp8U8yBMLfh2S7splId-v4ol6k9yZioEScQ/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oci.zip)
+   - [oracle_access_governance-terraform-stack-oci.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/MTsP7W7GaRBSnD_PTcaAMjf5R9fwPxAb-R4QiPuxArhBQgEQA2pOxkXGbraDBKTb/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oci-iam.zip)
 
 
   Save in your downloads folder.
@@ -53,9 +53,15 @@ In this lab, you will:
 
   Click *Next*
 
-  Enter Unique Email IDS for each of the users and Click *Next*.
+  Enter Unique Email IDS for each of the users
 
-   ![Enter Email IDs](images/email-id.png)
+  Enter the region code
+  
+  **NOTE : Select your home region such that you can host Oracle Access Governance within your geographic region to create and manage service instances. For supported regions code, please refer [Oracle Access Governance Regions ](https://docs.oracle.com/en/cloud/paas/access-governance/cagsi/#GUID-9D3A580D-767A-4C39-8A61-8A14CD045270)** 
+
+  Click *Next*.
+
+   ![Enter Email IDs](images/email-id-region.png)
 
   Click on *Create*.
 

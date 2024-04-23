@@ -46,9 +46,16 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 5. Now the Access Governance service instance has been successfully deleted. 
 
 
-## Task 2: Deactivate Identity Domain
+## Task 2: Run the Destroy Job  
 
-   *Note: We are only deactivating the domain here, deletion of the domain will be done in the following lab*
+1. Navigate to **Resource Manager -> Stacks -> Stack details** 
+
+    ![Open OCI console](images/destroy-job.png)
+
+2. Click on **Destroy** job. 
+
+## Task 3: Deactivate Identity Domain
+
 
 1. Navigate to **Identity -> Domain -> ag-domain**. Click on **More actions -> Deactivate**
 
@@ -58,9 +65,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     ![Open OCI console](images/confirm-deactivate.png)
 
-
-
-## Task 3: Destroy Terraform Stack 
+## Task 4: Destroy Terraform Stack that was used to create resources - Compartment, Identity Domain, AG Users and Policies for Access Governance 
 
 1. Navigate to **Resource Manager -> Stacks -> Stack details** 
 
@@ -69,6 +74,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 2. Click on **Destroy** job. Once it has completed, Under **More Actions** select **Delete stack**
 
     ![Open OCI console](images/delete-stack.png)
+
 
     You may now **proceed to the next lab.**
 

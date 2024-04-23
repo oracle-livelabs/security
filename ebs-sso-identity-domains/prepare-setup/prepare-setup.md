@@ -43,6 +43,7 @@ This workshop requires a certain number of ports to be available, a requirement 
 | Ingress        | All            | 0.0.0.0/0   | 7004             | TCP      | For Weblogic Managed Server (SSL)     |
 | Ingress        | All            | 0.0.0.0/0   | 8000             | TCP      | For EBS Application                   |
 | Ingress        | All            | 0.0.0.0/0   | 1521             | TCP      | For EBS Database                      |
+| Ingress        | All            | 0.0.0.0/0   | 9071             | TCP      | For Internal weblogic connections     |
 | Egress         | All            | N/A         | 80               | TCP      | Outbound HTTP access                  |
 | Egress         | All            | N/A         | 443              | TCP      | Outbound HTTPS access                 |
 {: title="List of Required Network Security Rules"}

@@ -106,6 +106,64 @@ This lab assumes you have:
 
 You may now **proceed to the next lab**.
 
+## Task 2 - Set Glassfish to use pdb1 database in the dbseclab VM
+
+Here, we will modify the default Glassfish connection to target an Oracle Database 19c, so we can monitor, and block, SQL commands
+
+1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+
+    ```
+    <copy>sudo su - oracle</copy>
+    ```
+
+    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+
+2. Go to the scripts directory
+
+    ```
+    <copy>cd $DBSEC_LABS/sqlfw</copy>
+    ```
+
+3. Migrate the Glassfish Application connection string in order to target the 19c database
+
+    ```
+    <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
+    ```
+
+    **Note**: Here, we connect Glassfish to the database **`PDB1`** on **`dbsec-lab`** VM
+
+4. Next, verify the application functions as expected
+
+    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
+
+        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+    
+    - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
+
+        ```
+        <copy>hradmin</copy>
+        ```
+
+        ```
+        <copy>Oracle123</copy>
+        ```
+
+        ![SQLFW](./images/init-start-env-sqlfw-002.png "HR App - Login")
+
+        ![SQLFW](./images/init-start-env-sqlfw-003.png "HR App - Login")
+
+    - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
+
+        ![SQLFW](./images/init-start-env-sqlfw-004.png "HR App - Settings")
+
+    - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
+
+        ![SQLFW](./images/init-start-env-sqlfw-005.png "HR App - Session details")
+
+    - Now, you should see **PDB1** as the **`DB_NAME`** and **dbsec-lab** as the **HOST**
+
+You may now **proceed to the next lab**.
+
 ## Appendix 1: Managing Startup Services
 
 1. Database services (All databases and Standard Listener)
