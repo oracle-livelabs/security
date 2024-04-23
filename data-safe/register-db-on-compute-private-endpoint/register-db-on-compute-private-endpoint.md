@@ -39,10 +39,10 @@ This lab assumes you have:
 
 5. Open the script and copy all of its content to the clipboard.
 
-6. In Cloud Shell, enter the following command to connect to the compute instance that hosts Oracle Database 23c. Substitute `public-ip-address` with your public IP address. Enter **yes** when prompted.
+6. In Cloud Shell, enter the following command to connect to the compute instance that hosts Oracle Database 23c. Substitute `private-ip-address` with your private IP address. Enter **yes** when prompted.
 
     ```text
-    <copy>ssh -i ~/.ssh/cloudshellkey opc@public-ip-address</copy>
+    <copy>ssh -i ~/.ssh/cloudshellkey opc@private-ip-address</copy>
     [opc@dbsec-lab:~]$
     ```
 
@@ -88,7 +88,7 @@ This lab assumes you have:
 2. Connect to the `FREE` container database as the `SYS` user using SQL*Plus.
 
     ```text
-    <copy>sqlplus / sysdba</copy>
+    <copy>sqlplus / as sysdba</copy>
 
     SQL*Plus: Release 23.0.0.0.0 - Developer-Release on Fri Feb 16 21:35:59 2024
     Version 23.2.0.0.0
