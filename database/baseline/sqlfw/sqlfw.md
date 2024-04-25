@@ -731,18 +731,6 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     ![SQLFW](./images/sqlfw-200.png "Reset the SQL Firewall Labs Environment")
 
-<!--
-2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
-
-        ```
-        <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
-        ```
-
-        ![SQLFW](./images/sqlfw-201.png "Set HR App with PDB1")
-
-        **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
--->
-
 2. Go back to the Data Safe session and deregister the Target database
 
     - Click on **Data Safe**
@@ -769,7 +757,19 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-207.png "The target database is deregistered")
 
-3. Now, you can go to the **Task 1a-10** above if you want to redo this lab!
+<!--
+3. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
+
+        ```
+        <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
+        ```
+
+        ![SQLFW](./images/sqlfw-208.png "Set HR App with PDB1")
+
+        **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
+-->
+
+3. **Now your Data Safe configuration is correctly reset!**
 
 ## Task 2: Use SQL Firewall with PL/SQL API
 
@@ -1126,7 +1126,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
 -->
 
-2. Now, you can go to the **Task 2a** above if you want to redo this lab!
+2. **Now your Data Safe configuration is correctly reset!**
 
 You may now proceed to the next lab!
 
