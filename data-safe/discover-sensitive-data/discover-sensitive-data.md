@@ -172,11 +172,11 @@ Add `COUNTRY_ABBREV` to the sensitive data model.
 
 3. From the **Table name** drop-down list, select **LOCATIONS**.
 
-4. From the **Column name** drop-down list, select **COUNTRY_ID**.
+4. From the **Column name** drop-down list, select **COUNTRY_ABBREV**.
 
 5. Click **Search**.
 
-6. Select the check box for the `COUNTRY_ID` column.
+6. Select the check box for the `COUNTRY_ABBREV` column.
 
 7. From the **Sensitive type** drop-down list, select **Country** under **Biographic Information > Address**.
 
@@ -195,4 +195,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 12, 2024
+- **Last Updated By/Date** - Jody Glover, April 23, 2024
