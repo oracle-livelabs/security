@@ -131,10 +131,10 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
     Allow group {group name} to manage instance-family in compartment {compartment name}
     Allow group {group name} to read app-catalog-listing in tenancy
     Allow group {group name} to manage virtual-network-family in compartment {compartment name}
-    Allow group {user-group} to manage ons-topic in tenancy
-    Allow group {user-group} to manage cloudevents-rules in tenancy
-    Allow group {user-group} to manage alarms in tenancy
-    Allow group {user-group} to read metrics in tenancy
+    Allow group {user-group} to manage ons-topic in compartment {compartment name}
+    Allow group {user-group} to manage cloudevents-rules in compartment {compartment name}
+    Allow group {user-group} to manage alarms in compartment {compartment name}
+    Allow group {user-group} to read metrics in compartment {compartment name}
 
     </copy>
     ```
@@ -208,7 +208,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
     You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
 
-7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your target database.
+7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
 
 
 ## Task 6: Access Oracle Database Actions
@@ -222,7 +222,7 @@ Database Actions provides a way for you to run SQL commands on your target datab
     - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
     - If you are using an Oracle-provided environment, enter the database password provided to you.
 
-3. Close the warning and help dialog boxes.
+3. Close the **SQL History** and **Warning** dialog boxes.
 
 4. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
@@ -287,4 +287,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 13, 2024
+- **Last Updated By/Date** - Jody Glover, April 25, 2024
