@@ -112,10 +112,43 @@ In this lab, you will:
 
   **What is the OCI tenancy's home region?**: Enter the home region for the target OCI tenancy, using the region identifier noted down from the previous step.
 
+  Click on **Add**
+
   ![OCI Enter details](images/details-entered.png)
 
+  Choose the option **Customize before enabling the system for data loads**. Click on **I'm done** 
 
-12. Click **Add.** Click on Manage to see the status. If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
+  ![OCI Enter details](images/customize-dataload.png)
+
+  Select **Matching Rules -> Manage**
+
+  ![OCI Enter details](images/matching-rules-select.png)
+
+  Under **All** , select the following condition:
+
+  Select connected system attribute: Employee user name
+
+  Select operator: equals
+
+  Select Identity attribute: Employee user name
+
+  Click **Save**
+
+  ![OCI Enter details](images/username-match-rule.png)
+
+  Navigate back to the connected system **OCI-IAM**. Click on the **Activate** on the top-right corner. 
+
+  To confirm, click on **Activate** .
+
+  ![OCI Enter details](images/activate-system.png)
+
+
+  The system is now **Active**. Click on **Load data now** to load the data. 
+
+  ![OCI Enter details](images/load-data.png)
+
+
+12. If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
 
   ![OCI Connection status](images/oci-connection-status.png)
 
