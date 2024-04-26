@@ -166,7 +166,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 You may now **proceed to the next lab**.
 
-## Appendix 1: Managing Startup Services
+## Appendix: Managing Startup Services
 
 1. Database services (All databases and Standard Listener)
 
@@ -218,39 +218,6 @@ You may now **proceed to the next lab**.
     ```
     <copy>sudo systemctl restart oracle-dbsec-lab</copy>
     ```
-
-## Appendix 2: External Web Access
-
-If for any reason you want to login from a location that is external to your remote desktop session such as your workstation/laptop, then refer to the details below.
-
-1.  Enterprise Manager 13c Console
-
-    ```
-    Username: <copy>sysman</copy>
-    ```
-
-    ```
-    Password: <copy>Oracle123</copy>
-    ```
-
-    ```
-    URL: <copy>http://<Your Instance public_ip>:7803/em</copy>
-    ```
-
-    - *Note:* You may see an error on the browser while accessing the Web Console - “*Your connection is not private*” as shown below. Ignore and add the exception to proceed.
-
-    ![Enterprise Manager External Login](images/login-em-external-1.png "Enterprise Manager External Login")
-    ![Enterprise Manager External Login](images/login-em-external-2.png "Enterprise Manager External Login")
-
-2. My HR Applications on Glassfish
-
-    - PDB1
-      - Prod        : `http://<YOUR_DBSECLAB-VM_PUBLIC-IP>:8080/hr_prod_pdb1`
-      - Dev         : `http://<YOUR_DBSECLAB-VM_PUBLIC-IP>:8080/hr_dev_pdb1`   (bg: red)
-    - PDB2
-      - Prod        : `http://<YOUR_DBSECLAB-VM_PUBLIC-IP>:8080/hr_prod_pdb2`  (menu: red)
-      - Dev         : `http://<YOUR_DBSECLAB-VM_PUBLIC-IP>:8080/hr_dev_pdb2`   (bg: red & menu: red)
-
 
 ## Acknowledgements
 - **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology

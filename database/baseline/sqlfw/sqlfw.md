@@ -464,7 +464,7 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
     - Fill out the form as following:
 
         - Name: *`DBSeclabs_SQLFW_Notif`*
-        - Description: *`Notification of the SQL Firewall alters`*
+        - Description: *`Notification of the SQL Firewall alerts`*
 
             ![SQLFW](./images/sqlfw-062.png "Fill out the Notification form")
 
@@ -538,7 +538,7 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
         ![SQLFW](./images/sqlfw-069b.png "Events Service Rules")
 
-    - Finally, click on **Actions** to check that the association with the notifaction is enabled
+    - Finally, click on **Actions** to check that the association with the notification is enabled
 
         ![SQLFW](./images/sqlfw-069c.png "Events Service Rules with notification active")
 
