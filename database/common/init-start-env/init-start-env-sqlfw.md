@@ -24,47 +24,8 @@ This lab assumes you have:
 
     - Database Listener
     - Database Servers (emcdb and cdb1)
-    - Enterprise Manager - Management server (OMS)
-    - Enterprise Manager - Management Agent (emagent)
-    - My HR Applications on Glassfish
 
-2. On the web browser window on the right is a tab preloaded with *Enterprise Manager*, login with the credentials below to validate that it's operational. If the login page is not displayed on first login to the remote desktop, refresh to reload. It takes ~15 minutes for all processes to fully start.
-
-    ```
-    Username: <copy>sysman</copy>
-    ```
-
-    ```
-    Password: <copy>Oracle123</copy>
-    ```
-
-    ![Enterprise Manager Login](images/em-login.png "Enterprise Manager Login")
-
-3. Open new browser tabs and confirm successful rendering of *My HR Applications* listed below.
-
-    - PDB1
-
-    ```
-    Prod: <copy>http://dbsec-lab:8080/hr_prod_pdb1</copy>
-    ```
-
-    ```
-    Dev: <copy>http://dbsec-lab:8080/hr_dev_pdb1</copy>
-    ```
-
-    - PDB2
-
-    ```
-    Prod: <copy>http://dbsec-lab:8080/hr_prod_pdb2</copy>
-    ```
-
-    ```
-    Dev: <copy>http://dbsec-lab:8080/hr_dev_pdb2</copy>
-    ```
-
-    If all are successful, then your environment is ready.  
-
-4. If you are still unable to get all *Enterprise Manager* and all links above to render successfully, open a terminal session and proceed as indicated below to validate the services.
+2. If you are still unable to get all *Enterprise Manager* and all links above to render successfully, open a terminal session and proceed as indicated below to validate the services.
 
     - Database services (All databases and Standard Listener)
 
@@ -86,7 +47,7 @@ This lab assumes you have:
 
         ![DBSecLab Service Status](images/dbsec-lab-service-status.png "DBSecLab Service Status")
 
-5. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
+3. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
 
     - Database and Listener
 
@@ -222,4 +183,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
 - **Contributors** - Marion Smith, Technical Program Manager
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
