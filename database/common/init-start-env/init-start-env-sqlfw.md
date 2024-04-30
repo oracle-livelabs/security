@@ -25,7 +25,7 @@ This lab assumes you have:
     - Database Listener
     - Database Servers (emcdb and cdb1)
 
-2. If you are still unable to get all *Enterprise Manager* and all links above to render successfully, open a terminal session and proceed as indicated below to validate the services.
+2. Check the status of each of them to be sure they are up and running
 
     - Database services (All databases and Standard Listener)
 

@@ -194,22 +194,20 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
         ![Key Vault](./images/okv-004.png "Unpack the Key Vault binary")
 
     - Create OKV utility configuration (when prompted, please enter your new **KVEPADMIN** user password)
-        - Look at the current OKV config file **okvrestcli.ini**
-        - Download **okvrestcli.jar**
-        - Create the automated script **okv-ep.sh** to add Endpoint
 
-            ````
-            <copy>./okv_crea_config_script.sh</copy>
-            ````
+        ````
+        <copy>./okv_crea_config_script.sh</copy>
+        ````
 
-            ![Key Vault](./images/okv-005a.png "Create the OKV config scripts")
-            ![Key Vault](./images/okv-005b.png "Create the OKV config scripts")
-            ![Key Vault](./images/okv-005c.png "Create the OKV config scripts")
+        ![Key Vault](./images/okv-005a.png "Create the OKV config scripts")
+        ![Key Vault](./images/okv-005b.png "Create the OKV config scripts")
+        ![Key Vault](./images/okv-005c.png "Create the Endpoint admin user")
 
-            **Note**:
-            - The script *`okv-ep.sh`* will automate the process to create the Endpoint, the Oracle Wallet and deploy the OKV software
-            - It downloads the latest version of the RESTful Service utility from OKV server
-            - It also sets into the client wallet the user KVEPADMIN to add the endpoint
+        **Note**: This script:
+        - Looks at the current OKV config file **okvrestcli.ini**
+        - Downloads the latest version of the RESTful Service utility **okvrestcli.jar** from OKV server
+        - Creates the automated script *`okv-ep.sh`* to add the Endpoint and the Oracle Wallet, and to deploy the OKV software
+        - Sets also into the client wallet the user KVEPADMIN to add the endpoint
 
     - Add your **cdb1** database on DBSec-Lab VM as Endpoint
 
