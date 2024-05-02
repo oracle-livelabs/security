@@ -8,7 +8,7 @@ This workshop introduces the functionality of Oracle SQL Firewall. It gives the 
 *Version tested in this lab:* Oracle DBEE 23.2
 
 ### Video Preview
-Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23c*" [](youtube:aiwb6od3mfo)
+Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database*" [](youtube:aiwb6od3mfo)
 
 ### Objectives
 - Train the SQL Firewall to learn the normal activity 
@@ -1025,7 +1025,7 @@ Figure 1: Oracle SQL Firewall built into Oracle Database kernel
 
 Oracle SQL Firewall policies work at a database account level, whether of an application service account or a direct database user, such as a reporting user or a database administrator. SQL Firewall policy for every database account comprises allow-lists of authorized SQL statements and associated trusted database connection paths. The allow-listing approach provides a higher level of protection against risks such as SQL Injection attacks and compromised accounts. It ensures that only authorized SQL statements from trusted database connections are permitted for execution inside the Oracle database while alerting/blocking any unauthorized attempts at accessing sensitive data stored within them. Unlike signature-based protection mechanisms, SQL Firewall cannot be fooled by encoding the SQL statement or referencing synonyms or dynamically generated object names.
 
-PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and manage the SQL Firewall configuration within Oracle Database. Oracle SQL Firewall is available only for Oracle Database Enterprise Edition (version 23c and later). Oracle SQL Firewall must be licensed for use. There are two paths to its license:
+PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and manage the SQL Firewall configuration within Oracle Database. Oracle SQL Firewall is available only for Oracle Database Enterprise Edition (version 23.1 and later). Oracle SQL Firewall must be licensed for use. There are two paths to its license:
 
 - Oracle SQL Firewall is included with Oracle Database Vault. Database Vault is an extra cost option.
 - Oracle SQL Firewall is included with Oracle Audit Vault and Database Firewall (AVDF). AVDF is a separate product and requires a license.
@@ -1037,7 +1037,7 @@ PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and man
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle SQL Firewall 23c](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/using-sql-firewall.html)
+- [Oracle SQL Firewall](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/using-sql-firewall.html)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
