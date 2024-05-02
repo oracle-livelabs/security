@@ -13,7 +13,7 @@ Watch a preview of "*Introduction to Oracle Data Safe (September 2019)*" [](yout
 
 ### Objectives
 - Register an on-premise Oracle Database into Oracle Data Safe with a Private endpoint
-- Register an on-premise Oracle Database into Oracle Data Safe with an on-premises connector (**Brown button only!**)
+- Register an on-premise Oracle Database into Oracle Data Safe with an on-premises connector (**On your own tenany only!**)
 
 ### Prerequisites
 This lab assumes you have:
@@ -194,7 +194,7 @@ In this lab, let's see how to register the dabase with a private endpoint
 
 Now, let's see the second option to register the dabase with an on-premises connector.
 
-**Attention: In this Livelabs env, this option is only available if you are using your own OCI account (Brown button)!**
+**Attention: In this Livelabs env, this option is only available if you are using your own OCI tenancy!**
 
 1. Open a web browser window to your OCI console and login with your OCI account
 
