@@ -5,12 +5,12 @@
     {
       "title": "Prepare your environment",
       "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
-      "filename": "../../prepare-db23c-compute-environment/prepare-db23c-compute-environment.md",
+      "filename": "../../prepare-db23ai-compute-environment/prepare-db23ai-compute-environment.md",
       "type": "freetier"
     },
     {
-      "title": "Register Oracle Database 23c on a compute instance with Data Safe",
-      "description": "This lab shows you how to register Oracle Database 23c on a compute instance with Data Safe.",
+      "title": "Register Oracle Database 23ai on a compute instance with Data Safe",
+      "description": "This lab shows you how to register Oracle Database 23ai on a compute instance with Data Safe.",
       "filename": "../../register-db-on-compute/register-db-on-compute.md",
       "type": "freetier"
     },

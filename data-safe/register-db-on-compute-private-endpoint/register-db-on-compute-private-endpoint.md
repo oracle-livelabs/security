@@ -1,8 +1,8 @@
-# Register Oracle Database 23c on a compute instance using a Data Safe private endpoint
+# Register Oracle Database 23ai on a compute instance using a Data Safe private endpoint
 
 ## Introduction
 
-In this lab, you use the Data Safe registration wizard to register an Oracle Database 23c on a compute instance with Data Safe. Oracle recommends that you use a Data Safe private endpoint when registering an Oracle database on a compute instance in Oracle Cloud Infrastructure.
+In this lab, you use the Data Safe registration wizard to register an Oracle Database 23ai on a compute instance with Data Safe. Oracle recommends that you use a Data Safe private endpoint when registering an Oracle database on a compute instance in Oracle Cloud Infrastructure.
 
 Note: For Oracle databases on compute instances outside of Oracle Cloud Infrastructure, Oracle recommends that you use an on-premises connector during registration instead of a private endpoint.
 
@@ -13,9 +13,9 @@ Estimated Lab Time: 10 minutes
 In this lab, you will:
 
 - Copy the datasafe_privileges.sql script to your compute instance
-- Create a Data Safe service account in Oracle Database 23c
+- Create a Data Safe service account in Oracle Database 23ai
 - Grant the Data Safe service account permissions to use all Data Safe features
-- Register Oracle Database 23c with Data Safe using a Data Safe private endpoint
+- Register Oracle Database 23ai with Data Safe using a Data Safe private endpoint
 
 
 ### Prerequisites
@@ -27,7 +27,7 @@ This lab assumes you have:
 - You created a private key on your Cloud Shell machine
 
 
-## Task 1: Copy the datasafe_privileges.sql script to your compute instance with Oracle Database 23c
+## Task 1: Copy the datasafe_privileges.sql script to your compute instance with Oracle Database 23ai
 
 1. Navigate to the Data Safe **Overview** page in Oracle Cloud Infrastructure. To do this, from the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**.
 
@@ -39,7 +39,7 @@ This lab assumes you have:
 
 5. Open the script and copy all of its content to the clipboard.
 
-6. In Cloud Shell, enter the following command to connect to the compute instance that hosts Oracle Database 23c. Substitute `private-ip-address` with your private IP address. Enter **yes** when prompted.
+6. In Cloud Shell, enter the following command to connect to the compute instance that hosts Oracle Database 23ai. Substitute `private-ip-address` with your private IP address. Enter **yes** when prompted.
 
     ```text
     <copy>ssh -i ~/.ssh/cloudshellkey opc@private-ip-address</copy>
@@ -62,7 +62,7 @@ This lab assumes you have:
 
 
 
-## Task 2: Create a Data Safe service account in Oracle Database 23c
+## Task 2: Create a Data Safe service account in Oracle Database 23ai
 
 1. Run the `set-env-db.sh` script to set the environment variable to the container database (`FREE`) that contains the `FREEPDB1` pluggable database. When prompted, enter **1**.
 
@@ -97,7 +97,7 @@ This lab assumes you have:
 
 
     Connected to:
-    Oracle Database 23c Free, Release 23.0.0.0.0 - Developer-Release
+    Oracle Database 23ai Free, Release 23.0.0.0.0 - Developer-Release
     Version 23.2.0.0.0
     ```
 
@@ -142,14 +142,14 @@ This lab assumes you have:
     Granting MASKING role to "DATASAFE$ADMIN" ...
 
     Granting ASSESSMENT role to "DATASAFE$ADMIN" ...
-    Disconnected from Oracle Database 23c Free, Release 23.0.0.0.0 - Developer-Release
+    Disconnected from Oracle Database 23ai Free, Release 23.0.0.0.0 - Developer-Release
     Version 23.2.0.0.0</copy>
     ```
 
 
-## Task 4: Register Oracle Database 23c with Data Safe using a Data Safe private endpoint
+## Task 4: Register Oracle Database 23ai with Data Safe using a Data Safe private endpoint
 
-When you register the database, choose to create an Oracle Data Safe private endpoint. You need the following details about your compute instance that hosts Oracle Database 23c during registration:
+When you register the database, choose to create an Oracle Data Safe private endpoint. You need the following details about your compute instance that hosts Oracle Database 23ai during registration:
 
 - Host name: This name is similar to **db23c-hol-2024-02-16-205833**
 - Private IPv4 address: **10.0.0.155**

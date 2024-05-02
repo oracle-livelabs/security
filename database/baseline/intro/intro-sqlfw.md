@@ -4,7 +4,7 @@
 ### Overview
 *Estimated Time to complete the workshop*: 35 minutes
 
-This workshop is the Hands-On Labs dedicated to the Oracle Database Security features and functionalities for database 23c.
+This workshop is the Hands-On Labs dedicated to the Oracle Database Security features and functionalities for database 23ai.
 
 Based on an OCI architecture, deployed in a few minutes with a simple internet connection, it allows you to test DB Security use cases in a complete environment already pre-configured by the Oracle Database Security Product Manager Team.
 
@@ -20,7 +20,7 @@ It may be composed of as many as five VMs:
   - **Audit Vault Server VM** (for Advanced workshop only)
   - **DB Firewall Server VM** (for Advanced workshop only)
   - **Key Vault Server VM** (for Advanced workshop only)
-  - **DB23c VM** (for SQL Firewall workshop only)
+  - **DB23ai VM** (for SQL Firewall workshop only)
 
 During this mini-lab, you'll use different resources to interact with these VMs:
   - SSH Terminal Client
