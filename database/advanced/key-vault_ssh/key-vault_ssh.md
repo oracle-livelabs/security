@@ -153,12 +153,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 
 13. Repeat this Step 12 for the user *`KVEPADMIN`*
 
-14. Now, your database is ready for the OKV labs!
-
-## Task 2: Add an Endpoint
-First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
-
-1. You will use the **OKVdeploy.tgz** file to deploy the utility to automate the processes
+14. You will use the **OKVdeploy.tgz** file to deploy the utility to automate the processes
 
     - Go back to your terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -223,9 +218,9 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
             ![Key Vault](./images/okv-007.png "Change password")
 
-2. Go back to your Oracle Key Vault Console
+15. Go back to your Oracle Key Vault Console
 
-3. Login to Key Vault Web Console as *`KVRESTADMIN`*
+16. Login to Key Vault Web Console as *`KVRESTADMIN`*
 
     ````
     <copy>KVRESTADMIN</copy>
@@ -233,408 +228,31 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
     ![Key Vault](./images/okv-001.png "Key Vault - Login")
 
-4. Go to the **Endpoints** tab
+17. Go to the **Endpoints** tab
 
     ![Key Vault](./images/okv-002.png "Key Vault - Endpoint")
 
-5. You should see the Endpoint just added
+18. You should see the Endpoint just added
 
     ![Key Vault](./images/okv-008.png "Key Vault - Endpoint")
 
-6. Click on the Endpoint name (here *`CDB1_ON_DBSECLAB`*)
+19. Click on the Endpoint name (here *`CDB1_ON_DBSECLAB`*)
 
-7. In the **Default Wallet** section, confirm that the Wallet created in OKV is the default Wallet for this Endpoint
+20. In the **Default Wallet** section, confirm that the Wallet created in OKV is the default Wallet for this Endpoint
 
     ![Key Vault](./images/okv-009.png "Default Wallet section")
 
-8. Your Endpoint is now added!
+21. Your Endpoint is now added!
 
-## Task 3: View the Contents of the OKV Virtual Wallet
-Any time after adding the Endpoint to this host, you can run this script to view the contents of the Virtual Wallet in Oracle Key Vault
 
-1. Go back to your Terminal session and view the Wallet contents on the **Operating System**
+## Task 2: SSH Key Management and Remote Server Access Controls
 
-    ````
-    <copy>./okv_view_wallet_on_os.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-010.png "View the OKV Wallet content on the OS")
-
-2. ... within the **database**  (in `V$ENCRYPTION_WALLET`)
-
-    ````
-    <copy>./okv_view_wallet_in_db.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-011.png "View the OKV Wallet content on the database")
-
-3. ... and finally in **Key Vault**
-
-    ````
-    <copy>./okv_view_wallet_in_kv.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-012.png "View the OKV Wallet content on Key Vault")
-
-## Task 4: Upload the TDE Wallet
-
-Typically, the first thing that users will do is upload their existing Oracle Wallets (**ewallet.p12** files) to Oracle Key Vault
-
-1. Upload the Oracle Wallet to Oracle Key Vault (as reminder, the password is "*`Oracle123`*")
-
-    ````
-    <copy>./okv_upload_wallet.sh</copy>
-    ````
-
-    ````
-    <copy>Oracle123</copy>
-    ````
-
-    ![Key Vault](./images/okv-013.png "Upload Oracle Wallet to OKV")
-
-2. Now, view the new contents of the virtual Wallet in the database
-
-    ````
-    <copy>./okv_view_wallet_in_db.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-014.png "View the OKV Wallet content on the database")
-
-3. ... and in Key Vault
-
-    ````
-    <copy>./okv_view_wallet_in_kv.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-015.png "View the OKV Wallet content on Key Vault")
-
-4. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look of these information
-
-    ![Key Vault](./images/okv-001.png "KVRESTADMIN user")
-
-5. Go to the **Keys & Wallets** tab and click on *`CDB1`*
-
-    ![Key Vault](./images/okv-016.png "Keys & Wallets section")
-
-6. In the section **Wallet Contents** you can **see all your Wallet contents just uploaded**
-
-    ![Key Vault](./images/okv-017.png "Wallet Contents section")
-
-    **Note:** It's exactly the same as what you can see from the script `okv_view_wallet_in_kv.sh`
-
-## Task 5: Migrate to Online Master Key
-
-Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate from storing our Master Keys in Wallet files to querying them from Oracle Key Vault
-
-1. Go back to your Terminal session and migrate the virtual Wallet to Online Master Key. In this step, we set the `TDE_CONFIGURATION` initialization parameters from `KEYSTORE_CONFIGURATION=FILE` to `KEYSTORE_CONFIGURATION=OKV|FILE`. This is a dynamic parameter so we do not need to restart the database.
-
-    ````
-    <copy>./okv_migrate_wallet_to_kv.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-018.png "Migrate the Oracle Wallet to Online Master Key")
-
-2. Now, view the contents of the Wallet
-
-    - ... in the database
-
-        ````
-        <copy>./okv_view_wallet_in_db.sh</copy>
-        ````
-
-        ![Key Vault](./images/okv-019.png "View the OKV Wallet content on the database")
-
-        **Note:** You will now see rows for OKV!
-
-    - ... and in Key Vault
-
-        ````
-        <copy>./okv_view_wallet_in_kv.sh</copy>
-        ````
-
-        ![Key Vault](./images/okv-020.png "View the OKV Wallet content on Key Vault")
-
-        **Note:** You will now see rows for TDE MEK migrated (lines with MKID)!
-
-3. Once you are comfortable, you can delete the existing Wallet files in `$TDE_HOME`
-
-    ````
-    <copy>./okv_delete_wallet_files.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-021.png "Delete Oracle Wallet")
-
-    **Note**:
-    - To be safe, we will make a temporary backup directory into `$TDE_HOME/backup` and move the wallet-related files to it
-    - If you want to actually delete it after you have verified everything was successful you can
-
-4. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look of these information
-
-    ![Key Vault](./images/okv-001.png "KVRESTADMIN user")
-
-5. Go to the **Keys & Wallets** tab and click on *`CDB1`*
-
-    ![Key Vault](./images/okv-016.png "Keys & Wallets section")
-
-6. In the section **Wallet Contents** you can **see all your Wallet contents just migrated**
-
-    ![Key Vault](./images/okv-022.png "Wallet Contents section")
-
-    **Note:**
-    - It's exactly the same as what you can see from the script `okv_view_wallet_in_kv.sh`
-    - On the right-bottom corner, you see that these 2 new rows have been added to the 9 existing rows
-
-## Task 6: Create the OKV SEPS Wallet
-
-It is often necessary to make connections to the database from shell scripts held on the filesystem. This can be a major security issue if these scripts contain the database connection details. One solution is to use OS Authentication, and Oracle gives you the option of using a **Secure External Password Store (SEPS)** where the Oracle login credentials are stored in a client-side Oracle Wallet. Here, this will enable seperation of duties between DBAs who no longer need to know the OKV password and the OKV administrators!
-
-1. Put the OKV Endpoint password into the SEPS Wallet
-
-    ````
-    <copy>./okv_add_kv_pwd_to_seps.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-023.png "Put the OKV Endpoint password into the SEPS Wallet")
-
-    **Note:** Now, the SEPS Wallet (`${SEPS_WALLET_DIR}/cwallet.sso`) has stored the OKV Password
-
-2. Finish to set the SEPS Wallet in the database by adding secret for OKV autologin keystore
-
-    ````
-    <copy>./okv_setup_external_store.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-024.png "Set the SEPS Wallet in the database")
-
-    **Note:** See the date of the TDE Wallet auto_login (`${TDE_HOME}/cwallet.sso`), now it has stored the OKV password!
-
-3. Now you can manage the keystore by logging in via the external store and without disclosing the password
-
-## Task 7: Perform a Rekey Operation
-
-You must create a Master Key for the container database before continuing. Each pluggable database must have their own master key as well (except for `PDB$SEED`)
-
-1. Go back to your Terminal session and rekey the **container database** TDE Master Key
-
-    ````
-    <copy>./okv_online_cdb_rekey.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-025.png "Rekey the container database TDE Master Key")
-
-    **Note:**
-    - After creating the SEPS Wallet in the previous Lab, now you can log in via the "External Store" command
-    - Don't forget to put an explicit Tag to find your rekey more easily
-
-2. Now, rekey a Master Key for the pluggable database **pdb1**
-
-    ````
-    <copy>./okv_online_pdb_rekey.sh pdb1</copy>
-    ````
-
-    ![Key Vault](./images/okv-026.png "Rekey the pluggable database TDE Master Key")
-
-3. If you want, you can do the same for **pdb2**. This is not a requirement and it might be helpful to show some databases with TDE and some without!
-
-    ````
-    <copy>./okv_online_pdb_rekey.sh pdb2</copy>
-    ````
-
-4. Now, view the new contents of the virtual Wallet in Key Vault
-
-    ````
-    <copy>./okv_view_wallet_in_kv.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-027.png "View the OKV Wallet content on Key Vault")
-
-5. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look of these information
-
-    ![Key Vault](./images/okv-001.png "KVRESTADMIN user")
-
-6. Go to the **Keys & Wallets** tab and click on *`CDB1`*
-
-    ![Key Vault](./images/okv-016.png "Keys & Wallets section")
-
-7. In the section **Wallet Contents**, you can see your rekeyed Master Keys for **cdb1** and **pdb1** (and pdb2 if you did it)
-
-    ![Key Vault](./images/okv-028.png "Wallet Contents section")
-
-    **Note:**
-    - It's exactly the same as what you can see from the script `okv_view_wallet_in_kv.sh`
-    - On the right-bottom corner, you see that these 2 new rows have been added to the 11 existing rows
-
-8. Click on the "**Next**" button to see the 2nd page of results
-
-    ![Key Vault](./images/okv-029.png "Wallet Contents section")
-
-9. Now you have rekeyed the Master Key for the container and pluggable database(s)!
-
-## Task 8: Secret Management with OKV
-
-In this lab, we will fetch a Database account password from OKV On-Demand
-
-1. Create a new Endpoint for secret management
-
-    ````
-    <copy>./okv_add_endpoint_secret.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-030.png "Create a new Endpoint for secret management")
-
-    **Note**:
-    - We create a directory for a non-DB EndPoint, here an Endpoint for DB account
-    - We provision the EndPoint without password and change the Client Config in `$OKV_RESTHOME/conf/okvrestcli.ini` to point to the secret EndPoint wallet directory
-
-2. Create the secret password and upload it into OKV
-
-    ````
-    <copy>./okv_crea_secret_pwd.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-031.png "Create the secret password into OKV")
-
-    **Note**: This scripts...
-    - Creates the DB user `REFRESH_DWH` identified by this secret password
-    - Uploads the secret password into OKV (OKV will respond with the unique ID of the secret password) by setting 2 access attributes - the name of the DB user (here `REFRESH_DWH`) and the connection string (here `dbsec-lab:1521/pdb1`)
-    - Finally, because the password is now in OKV and we don’t need anymore the temporary file which contains the secret password, the script will delete it
-
-3. Now, test your secret configuration by logging to the database with the secret password and its attributes as parameters)
-
-    ````
-    <copy>./okv_login_with_secret.sh REFRESH_DWH dbsec-lab:1521/pdb1</copy>
-    ````
-
-    ![Key Vault](./images/okv-033.png "Test your secret configuration")
-
-    **Note**:
-    - As you can see, you can log to your target DB without knowing the password or typing it because this secret is in OKV now!
-    - After 3 seconds, the script break the SQL session and exit automatically
-
-4. When you're confortable with this concept, reset the secret configuration
-
-    ````
-    <copy>./okv_clean_endpoint_secret.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-034.png "Reset the secret configuration")
-
-5. Congratulations, now you know how to use and manage a secret with OKV!
-
-<!-- Other OPTIONAL OKV Labs -->
-
-<!--
-SSH Key Management and Remote Server Access Controls
 In this lab, we will introduce remote server access controls by centrally managing users public keys.  In the second part, we will manage users' private keys in OKV making those private keys non-extractable.
 
 1. ...
 
 
-**STEP XXXX**: (Optional) Create a 2-node Multi-Master Cluster
-Oracle provides deployment recommendations for deployments that have two or more nodes.
-
-- **2-Node Deployment Recommendations**
-
-    - Use a 2-node deployments for the following situations
-        - Non-critical environments, such as test and development
-        - Simple deployment of read-write pairs with both nodes active, replacing classic primary-standby
-        - Single data center environments
-
-    - Considerations for a two-node deployment
-        - Availability is provided by multiple nodes
-        - Maintenance will require down time
-        - Good network connectivity between data centers is mandatory
-
-- **3-Node Deployment Recommendations**
-
-    - Use a 3-node deployment for the following situations
-        - Single data center environments with minimal downtime requirement
-        - Single read-write pair with additional read-only node to handle load
-        - One read-only node is available for zero downtime during maintenance
-
-    - Considerations for a three-node deployment
-        - Take regular backups to remove destinations for disaster recovery
-
-- **4 or More Node Deployment Recommendations**
-
-    - Use a deployment of four or more nodes for the the following situations
-        - Large data centers distributed across geographical locations
-        - Deployment of read-write pairs with pair members spanning geography
-
-    - Considerations for a large deployment
-        - Availability is provided by multiple nodes
-        - Additional read-only nodes can be used to handle load
-        - Good network connectivity between data centers is mandatory
-
--->
-
-## Task 9: Generate New Non-extractable Key
-
-This task will demonstrate how to create a non-extractable key, meaning a key that does not leave the Oracle Key Vault cluster. The key can be accessed by the approved endpoints but not stored by the endpoint client or the endpoint persistent cache.
-
-1. Generate a new master encryption key for **pdb1** using the following command:
-
-    ````
-    <copy>./okv_online_pdb_rekey.sh pdb1</copy>
-    ````
-
-    ![Key Vault](./images/okv-070.png "Generate Key")
-
-    **Note**: Take note of the tag information so you can identify this key in future steps.
-
-2. Verify we have the new master encryption key in the virtual Wallet
-
-    ````
-    <copy>./okv_view_wallet_in_kv.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-071.png "Check rekey")
-
-    **Note**:
-    - Identify the MKID from the command in the previous step
-    - Take note that the current extractable value is set to true, meaning it can be stored by the endpoint client software
-
-3. Go back to the Oracle Key Vault console as KVRESTADMIN, and navigate to the "**Keys & Wallets**" tab
-
-4. Click on the *CDB1* wallet
-
-    ![Key Vault](./images/okv-072.png "Check the Wallet")
-
-5. Find the key generated and click on it
- 
-    ![Key Vault](./images/okv-073.png "Show the Key")
-
-6. Scroll down to the "Advanced" section and mark it as non-extractable by changing the extractable status to *`False`* 
-
-    ![Key Vault](./images/okv-074.png "Change extractable status")
-
-7. Then scroll up and click [**Save**]
-
-8. Now, verify that the key is now marked as extractable (**FALSE**)
-
-    ````
-    <copy>./okv_view_wallet_in_kv.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-075.png "Extractable status")
-
-9. Attempt to download the OKV keys into a local wallet
-
-    ````
-    <copy>./okv_download_wallet.sh</copy>
-    ````
-
-    The password to enter is:
-
-    ````
-    <copy>Oracle123</copy>
-    ````
-
-    ![Key Vault](./images/okv-076.png "Download Key")
-    
-    **Note**: You can't download the OKV keys because a wallet cannot contain the non-extractable key
-
-## Task 10: Reset the OKV Lab Config
+## Task 3: Reset the OKV Lab Config
 
 1. Drop the Endpoint and Wallet created in OKV during this lab
 

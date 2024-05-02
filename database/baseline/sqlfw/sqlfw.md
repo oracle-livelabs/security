@@ -251,67 +251,6 @@ In this lab you will learn how the administrator trains the system to learn the 
 
     ![SQLFW](./images/sqlfw-034.png "SQL Firewall is collecting")
 
-<!--
-Step 2: Setup the Glassfish App to use your target database `freepdb1`
-
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
-
-    ```
-    <copy>sudo su - oracle</copy>
-    ```
-
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
-
-2. Go to the scripts directory
-
-    ```
-    <copy>cd $DBSEC_LABS/sqlfw</copy>
-    ```
-
-3. Migrate the Glassfish Application connection string in order to target the 23c database
-
-    ```
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
-    ```
-
-    ![SQLFW](./images/sqlfw-101.png "Set HR App with DB23c")
-
-    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
-
-4. Next, verify the application functions as expected
-
-    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
-
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-    
-    - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
-
-        ```
-        <copy>hradmin</copy>
-        ```
-
-        ```
-        <copy>Oracle123</copy>
-        ```
-
-        ![SQLFW](./images/sqlfw-102.png "HR App - Login")
-
-        ![SQLFW](./images/sqlfw-103.png "HR App - Login")
-
-    - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
-
-        ![SQLFW](./images/sqlfw-104.png "HR App - Settings")
-
-    - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
-
-        ![SQLFW](./images/sqlfw-105.png "HR App - Session details")
-
-    - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
-
-        ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
-
--->
-
 ### Step 2: Enable SQL Firewall to learn authorized SQL traffic of HR Application user
 
 1. Now, use your Glassfish App to generated activity on your database:
@@ -761,7 +700,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 3. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
 
         ```
-        <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
+        <copy>./sqlfw_glassfish_stop_db23ai.sh</copy>
         ```
 
         ![SQLFW](./images/sqlfw-208.png "Set HR App with PDB1")
@@ -780,67 +719,6 @@ With PL/SQL procedures in the `SYS.DBMS_SQL_FIREWALL` package, you can administe
 In this lab you will learn how the administrator trains the system to learn the authorized SQL statements and the trusted connection paths of HR application. SQL Firewall policy is generated with allow-lists representing authorized SQL connections and statements, and deployed to the target.
 
 ## Step 1: Setup SQL Firewall env
-
-<!--
-Here, we will modify the default Glassfish connection to target an Oracle Database 23c, so we can monitor, and block, SQL commands
-
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
-
-    ```
-    <copy>sudo su - oracle</copy>
-    ```
-
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
-
-2. Go to the scripts directory
-
-    ```
-    <copy>cd $DBSEC_LABS/sqlfw</copy>
-    ```
-
-3. Migrate the Glassfish Application connection string in order to target the 23c database
-
-    ```
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
-    ```
-
-    ![SQLFW](./images/sqlfw-101.png "Set HR App with DB23c")
-
-    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
-
-4. Next, verify the application functions as expected
-
-    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
-
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-    
-    - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
-
-        ```
-        <copy>hradmin</copy>
-        ```
-
-        ```
-        <copy>Oracle123</copy>
-        ```
-
-        ![SQLFW](./images/sqlfw-102.png "HR App - Login")
-
-        ![SQLFW](./images/sqlfw-103.png "HR App - Login")
-
-    - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
-
-        ![SQLFW](./images/sqlfw-104.png "HR App - Settings")
-
-    - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
-
-        ![SQLFW](./images/sqlfw-105.png "HR App - Session details")
-
-    - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
-
-        ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
-
--->
 
 1. Create an administrator (**`dba_tom`**) to manage SQL Firewall
 
@@ -1118,7 +996,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
 
     ```
-    <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
+    <copy>./sqlfw_glassfish_stop_db23ai.sh</copy>
     ```
 
     ![SQLFW](./images/sqlfw-251.png "Set HR App with PDB1")
