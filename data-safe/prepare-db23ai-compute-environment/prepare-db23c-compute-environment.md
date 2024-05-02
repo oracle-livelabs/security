@@ -116,7 +116,7 @@ Only perform this task if you are using your own VCN. If you plan to let Resourc
     ```
 
 
-5. Click the **Application Information** tab and review the information available for your two compute instances. You can connect to the first host (which has a 19c database on it) by clicking the Remote Desktop link. You can connect to the second host (which has a 23c database on it) by using SSH in Cloud Shell.
+5. Click the **Application Information** tab and review the information available for your two compute instances. You can connect to the first host (which has a 19c database on it) by clicking the Remote Desktop link. You can connect to the second host (which has a 23ai database on it) by using SSH in Cloud Shell.
 
     ```text
     Host-#1 (DBSeclab):
