@@ -3,12 +3,12 @@
 ## Introduction
 This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure SQL Firewall to protect against common database risks such as SQL injection attacks and compromised accounts. SQL Firewall helps ensure that only authorized SQL statements from trusted database connections are permitted for execution inside the Oracle Database while blocking and logging unauthorized SQL or database connections.
 
-*Estimated Lab Time:* 30 minutes
+*Estimated Lab Time:* 80 minutes
 
 *Version tested in this lab:* Oracle DBEE 23.2
 
 ### Video Preview
-Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [](youtube:aiwb6od3mfo)
+Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database*" [](youtube:aiwb6od3mfo)
 
 ### Objectives
 - Train the SQL Firewall to learn the normal activity 
@@ -63,138 +63,86 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     ![SQLFW](./images/sqlfw-002.png "Add Target Database")
 
-4. On **Connectivity Options** sub-menu, click  on **On-Premises Connectors**
+4. On **Connectivity Options** sub-menu, click  on **Private endpoints**
 
-    ![SQLFW](./images/sqlfw-003.png "On-Premises Connectors")
+    ![SQLFW](./images/sqlfw-003.png "Private endpoints")
 
-5. Click [**Create On-Premises Connectors**]
+5. Click [**Create private endpoint**]
 
-    ![SQLFW](./images/sqlfw-004.png "Create On-Premises Connectors")
+    ![SQLFW](./images/sqlfw-004.png "Create private endpoint")
 
-6. Select your Compartment and fill out as following
+6. Fill out as following:
 
-    - Name: `<Your On-Premises Connectors Name>` (here "*`DBSeclabs_DB23ai`*")
-    - Decription: *`On-Premises connector for DBSec Livelabs 23ai databases`*
+    - Name: `<Your Private Endpoint Name>` (here "*`DBSeclabs_DB23c`*")
+    - Compartment: Select your Compartment
+    - Virtual cloud network: Select your VCN
+    - Subnet: Select your Subnet
 
-       ![SQLFW](./images/sqlfw-005.png "Set OCI")
+       ![SQLFW](./images/sqlfw-005.png "Set Private endpoint")
 
-7. Click [**Create On-Premises Connectors**]
+7. Click [**Create private endpoint**]
 
-8. Once is created, the On-Premises connector is "**INACTIVE**"
+8. Once is created, the Private endpoint is "**ACTIVE**"
 
-       ![SQLFW](./images/sqlfw-006.png "the On-Premises connector is INACTIVE")
-
-9. Now, let's active it
-
-    - Click [**Download install Bundle**] to download the zip file and enter a password of at least 15 characters (here *`Oracle12345678!`*)
-
-        ````
-        <copy>Oracle12345678!</copy>
-        ````
-
-       ![SQLFW](./images/sqlfw-007.png "Download install Bundle")
-
-    - OCI Data Safe will generate a unique On-Premises connector and it can take up to one minute
-
-       ![SQLFW](./images/sqlfw-008.png "Generate a unique On-Premises connector")
-
-    - Once is generated, select **Save File** and click [**OK**] to download it into *`home/opc`* in dbseclab VM
-
-       ![SQLFW](./images/sqlfw-009.png "Save the generated file")
-
-    - Browse the location where you want to store the zip file and click [**Save**]
-
-        **Note**: The file name proposed a default value (here "*`DBSeclabs_DB23c.zip`*"), please keep going with it
-
-    - Setup the Data Safe On-Premises connector
-
-        - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
-
-            ````
-            <copy>sudo su - oracle</copy>
-            ````
-
-            **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
-
-        - Copy Data Safe on-premises connector uploaded to your Data Safe directory (here *`$DS_HOME`*)
-
-            ````
-            <copy>
-            sudo mv /home/opc/DBSeclabs_DB23c.zip $DS_HOME
-            sudo chown -R oracle:oinstall $DS_HOME
-            sudo chmod -R 775 $DS_HOME
-            </copy>
-            ````
-
-               ![SQLFW](./images/sqlfw-010.png "Copy Data Safe on-premises connector uploaded")
-
-        - Install Data Safe On-Premises connector (enter the password defined for the zip file above - here *`Oracle12345678!`*)
-
-            ````
-            <copy>
-            cd $DS_HOME
-            unzip DBSeclabs_DB23c.zip
-            python setup.py install --connector-port=1560
-            </copy>
-            ````
-
-            ````
-            <copy>Oracle12345678!</copy>
-            ````
-
-               ![SQLFW](./images/sqlfw-011.png "Install Data Safe On-Premises connector")
-
-            **Note**: In case of trouble, you can stop or start the Data Safe On-Premises connector with the following command lines:
-
-            ````
-            <copy>
-            python $DS_HOME/setup.py stop
-            python $DS_HOME/setup.py start
-            </copy>
-            ````
-
-    - Go back to the Data Safe console to verify the status of the Data Safe On-Premises connector
-
-        ![SQLFW](./images/sqlfw-012.png "Check the status of the Data Safe On-Premises connector")
-
-        **Note**: It sould be "**ACTIVE**" now!
-
-10. Go back to your terminal session to create the Data Safe **DS_ADMIN** user on `pdb1`
-
-    ````
-    <copy>
-    cd $DBSEC_LABS/sqlfw
-    ./sqlfw_crea_ds-admin-user.sh freepdb1
-    </copy>
-    ````
-
-    ![SQLFW](./images/sqlfw-013.png "Create the Data Safe DS_ADMIN user")
-
-11. On Data Safe Console, register the Target database **pdb1**
-
-    - Click on the **On-Premises Connectors** link
+       ![SQLFW](./images/sqlfw-006.png "the Private endpoint is ACTIVE")
     
-    ![SQLFW](./images/sqlfw-014.png "Click on the On-Premises Connectors link")
+    **Note**:
+    - A Private IP is assigned to this Private endpoint (here '10.0.0.113')
+    - There's no target database register by default
+
+9. Now, configure your target database to be registered into Data Safe
+
+    - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+
+        ```
+        <copy>sudo su - oracle</copy>
+        ```
+
+        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+
+    - Go to the scripts directory
+
+        ```
+        <copy>cd $DBSEC_LABS/sqlfw</copy>
+        ```
+
+    - Create the Data Safe **`DS_ADMIN`** user on **`freepdb1`**
+
+        ````
+        <copy>
+        ./sqlfw_crea_ds-admin-user.sh freepdb1
+        </copy>
+        ````
+
+        ![SQLFW](./images/sqlfw-007.png "Create the Data Safe DS_ADMIN user")
+
+        **Note**: The user `DS_ADMIN` is created into your target database with `ALL` the Data Safe admin roles
+
+10. Go back to the Data Safe Console to register the Target database **freepdb1**
+
+    - Click on the **Private endpoints** link
+    
+    ![SQLFW](./images/sqlfw-008.png "Click on the Private endpoints link")
     
     - Click on **Target Databases** sub-menu
 
-    ![SQLFW](./images/sqlfw-015.png "Click on Target Databases sub-menu")
+    ![SQLFW](./images/sqlfw-009.png "Click on Target Databases sub-menu")
 
     - Click [**Register Database**]
 
-    ![SQLFW](./images/sqlfw-016.png "Click Register Database")
+    ![SQLFW](./images/sqlfw-010.png "Click Register Database")
 
     - Fill out the "Register Target Database" as following
 
         - Database Type: Select *`Oracle On-Premises Database`*
-        - Data Safe Target Display Name: *`DBSeclabs_DB23c_freepdb1`*
+        - Data Safe Target Display Name: *`DBSeclabs_DB23c-freepdb1`*
         - Description: *`On-Premises pluggable database of DB23c VM (freepdb1)`*
         - Compartment: Select your own Compartment
 
-            ![SQLFW](./images/sqlfw-017.png "Fill out the Register Target Database parameters")
+            ![SQLFW](./images/sqlfw-011.png "Fill out the Register Target Database parameters")
 
-        - Choose a connectivity option: *`On-Premises Connector`*
-        - Select On-Premises Connector: Select *`DBSeclabs_DB23c`*
+        - Choose a connectivity option: *`Private endpoint`*
+        - Select private endpoint: Select *`DBSeclabs_DB23c`*
         - TCP/TLS: *`TCP`*
         - Database Service Name: *`freepdb1`*
         - Database IP Address: *`10.0.0.155`*
@@ -202,38 +150,36 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - Database User Name: *`DS_ADMIN`* (in uppercase)
         - Database Password: *`Oracle123Oracle123!`*
     
-            ![SQLFW](./images/sqlfw-018.png "Fill out the Register Target Database parameters")
+            ![SQLFW](./images/sqlfw-012.png "Fill out the Register Target Database parameters")
 
     - Click [**Register**] to launch the registration process
 
-        ![SQLFW](./images/sqlfw-019.png "Click Register")
+    - Once is registered, the target database must be "**ACTIVE**"
 
-    - Once is created, the new target should be "**ACTIVE**"
-
-        ![SQLFW](./images/sqlfw-020.png "New target status")
+        ![SQLFW](./images/sqlfw-013.png "Target Database registered")
 
         **Note:**
-        - On the **Target Database Details** tab, you can view the target database name and description, OCID, when the target database was registered and the compartment to where the target database was registered.
+        - On the **Target database information** tab, you can view the target database name and description, OCID, when the target database was registered and the compartment to where the target database was registered.
         - You can also view connection information, such as database type, database service name, and connection protocol (TCP or TLS). The connection information varies depending on the target database type.
-        - The **Target Database Details** page provides options to edit the target database name and description, edit connection details, update the Oracle Data Safe service account and password on the target database (applicable to non-Autonomous Databases), and download a SQL privilege script that enables features on your target database.
+        - The **Target database information** page provides options to edit the target database name and description, edit connection details, update the Oracle Data Safe service account and password on the target database (applicable to non-Autonomous Databases), and download a SQL privilege script that enables features on your target database.
         - From the **More Actions** menu, you can choose to move the target database to a different compartment, add tags, deactivate your target database, and deregister your target database.
 
-12. Click on the **Target Databases** link to view the list of registered target databases to which you have access
+11. Click on the **Target Databases** link to view the list of registered target databases to which you have access
 
-    ![SQLFW](./images/sqlfw-021.png "View the list of registered target databases")
+    ![SQLFW](./images/sqlfw-014.png "View the list of registered target databases")
 
     **Note:** All your registered target databases are listed on the right
 
-    ![SQLFW](./images/sqlfw-022.png "List of registered target databases")
+    ![SQLFW](./images/sqlfw-015.png "List of registered target databases")
 
-13. Now, your target database is registered in Data Safe!
+12. Now, your target database is registered in Data Safe!
 
 <!--
 13. Let's have a look on a quick overview of the Security Center
 
     - Click on **Overview** sub-menu
 
-        ![SQLFW](./images/sqlfw-023.png "Click on Security Center sub-menu")
+        ![SQLFW](./images/sqlfw-016.png "Click on Security Center sub-menu")
 
         **Note**:
         - Make sure your compartment is still selected under **List Scope**
@@ -241,7 +187,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     - Click on **Dashboard**
     
-        ![SQLFW](./images/sqlfw-024.png "Data Safe dashboard")
+        ![SQLFW](./images/sqlfw-017.png "Data Safe dashboard")
 
         **Note**:
         - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you
@@ -251,7 +197,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         - That is why the Audit Trails chart in the dashboard shows one audit trail with the status In Transition for your Autonomous Database
         - Later you start this audit trail to collect audit data into Oracle Data Safe
 
-            ![SQLFW](./images/sqlfw-025.png "Data Safe dashboard")
+            ![SQLFW](./images/sqlfw-018.png "Data Safe dashboard")
 -->
 
 ## Task 1b: Enable SQL Firewall to protect Glassfish HR Application
@@ -269,7 +215,7 @@ In this lab you will learn how the administrator trains the system to learn the 
     ![SQLFW](./images/sqlfw-026.png "Click on SQL Firewall sub-menu")
 
 
-3. Click on the target database **`DBSeclabs_DB23c_freepdb1`**
+3. Click on the target database **`DBSeclabs_DB23c-freepdb1`**
 
     ![SQLFW](./images/sqlfw-027.png "Click on the target DB")
 
@@ -304,67 +250,6 @@ In this lab you will learn how the administrator trains the system to learn the 
 9. Now, the SQL collection should be succeeded and it's **COLLECTING**
 
     ![SQLFW](./images/sqlfw-034.png "SQL Firewall is collecting")
-
-<!--
-Step 2: Setup the Glassfish App to use your target database `freepdb1`
-
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
-
-    ```
-    <copy>sudo su - oracle</copy>
-    ```
-
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
-
-2. Go to the scripts directory
-
-    ```
-    <copy>cd $DBSEC_LABS/sqlfw</copy>
-    ```
-
-3. Migrate the Glassfish Application connection string in order to target the 23c database
-
-    ```
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
-    ```
-
-    ![SQLFW](./images/sqlfw-101.png "Set HR App with DB23c")
-
-    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
-
-4. Next, verify the application functions as expected
-
-    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
-
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-    
-    - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
-
-        ```
-        <copy>hradmin</copy>
-        ```
-
-        ```
-        <copy>Oracle123</copy>
-        ```
-
-        ![SQLFW](./images/sqlfw-102.png "HR App - Login")
-
-        ![SQLFW](./images/sqlfw-103.png "HR App - Login")
-
-    - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
-
-        ![SQLFW](./images/sqlfw-104.png "HR App - Settings")
-
-    - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
-
-        ![SQLFW](./images/sqlfw-105.png "HR App - Session details")
-
-    - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
-
-        ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
-
--->
 
 ### Step 2: Enable SQL Firewall to learn authorized SQL traffic of HR Application user
 
@@ -490,7 +375,7 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
     - Associate the SQL Firewall violation policy to your target database
     
-        - Select **Selected targets only (up to 10)** and choose *`DBSeclabs_DB23c_freepdb1`*
+        - Select **Selected targets only (up to 10)** and choose *`DBSeclabs_DB23c-freepdb1`*
         - Select **Selected policies only** and choose *`SQL Firewall violations`*
 
             ![SQLFW](./images/sqlfw-057.png "Associate the SQL Firewall violation policy")
@@ -518,7 +403,7 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
     - Fill out the form as following:
 
         - Name: *`DBSeclabs_SQLFW_Notif`*
-        - Description: *`Notification of the SQL Firewall alters`*
+        - Description: *`Notification of the SQL Firewall alerts`*
 
             ![SQLFW](./images/sqlfw-062.png "Fill out the Notification form")
 
@@ -592,7 +477,7 @@ Step 2: Setup the Glassfish App to use your target database `freepdb1`
 
         ![SQLFW](./images/sqlfw-069b.png "Events Service Rules")
 
-    - Finally, click on **Actions** to check that the association with the notifaction is enabled
+    - Finally, click on **Actions** to check that the association with the notification is enabled
 
         ![SQLFW](./images/sqlfw-069c.png "Events Service Rules with notification active")
 
@@ -785,18 +670,6 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     ![SQLFW](./images/sqlfw-200.png "Reset the SQL Firewall Labs Environment")
 
-<!--
-2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
-
-        ```
-        <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
-        ```
-
-        ![SQLFW](./images/sqlfw-201.png "Set HR App with PDB1")
-
-        **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
--->
-
 2. Go back to the Data Safe session and deregister the Target database
 
     - Click on **Data Safe**
@@ -807,7 +680,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-203.png "Target databases")
 
-    - Click on the target database **`DBSeclabs_DB23c_freepdb1`**
+    - Click on the target database **`DBSeclabs_DB23c-freepdb1`**
 
         ![SQLFW](./images/sqlfw-204.png "Target database to deregister")
 
@@ -823,7 +696,19 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-207.png "The target database is deregistered")
 
-3. Now, you can go to the **Task 1a-10** above if you want to redo this lab!
+<!--
+3. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
+
+        ```
+        <copy>./sqlfw_glassfish_stop_db23ai.sh</copy>
+        ```
+
+        ![SQLFW](./images/sqlfw-208.png "Set HR App with PDB1")
+
+        **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
+-->
+
+3. **Now your Data Safe configuration is correctly reset!**
 
 ## Task 2: Use SQL Firewall with PL/SQL API
 
@@ -834,67 +719,6 @@ With PL/SQL procedures in the `SYS.DBMS_SQL_FIREWALL` package, you can administe
 In this lab you will learn how the administrator trains the system to learn the authorized SQL statements and the trusted connection paths of HR application. SQL Firewall policy is generated with allow-lists representing authorized SQL connections and statements, and deployed to the target.
 
 ## Step 1: Setup SQL Firewall env
-
-<!--
-Here, we will modify the default Glassfish connection to target an Oracle Database 23c, so we can monitor, and block, SQL commands
-
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
-
-    ```
-    <copy>sudo su - oracle</copy>
-    ```
-
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
-
-2. Go to the scripts directory
-
-    ```
-    <copy>cd $DBSEC_LABS/sqlfw</copy>
-    ```
-
-3. Migrate the Glassfish Application connection string in order to target the 23c database
-
-    ```
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
-    ```
-
-    ![SQLFW](./images/sqlfw-101.png "Set HR App with DB23c")
-
-    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (DB 23c) on the **`db23c`** VM
-
-4. Next, verify the application functions as expected
-
-    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
-
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-    
-    - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
-
-        ```
-        <copy>hradmin</copy>
-        ```
-
-        ```
-        <copy>Oracle123</copy>
-        ```
-
-        ![SQLFW](./images/sqlfw-102.png "HR App - Login")
-
-        ![SQLFW](./images/sqlfw-103.png "HR App - Login")
-
-    - In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
-
-        ![SQLFW](./images/sqlfw-104.png "HR App - Settings")
-
-    - On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
-
-        ![SQLFW](./images/sqlfw-105.png "HR App - Session details")
-
-    - Now, you should see **FREEPDB1** as the **`DB_NAME`** and **db23c** as the **HOST**
-
-        ![SQLFW](./images/sqlfw-106.png "HR App - Check the targetted database")
-
--->
 
 1. Create an administrator (**`dba_tom`**) to manage SQL Firewall
 
@@ -1172,7 +996,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 2. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
 
     ```
-    <copy>./sqlfw_glassfish_stop_db23c.sh</copy>
+    <copy>./sqlfw_glassfish_stop_db23ai.sh</copy>
     ```
 
     ![SQLFW](./images/sqlfw-251.png "Set HR App with PDB1")
@@ -1180,7 +1004,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
 -->
 
-2. Now, you can go to the **Task 2a** above if you want to redo this lab!
+2. **Now your Data Safe configuration is correctly reset!**
 
 You may now proceed to the next lab!
 
@@ -1201,7 +1025,7 @@ Figure 1: Oracle SQL Firewall built into Oracle Database kernel
 
 Oracle SQL Firewall policies work at a database account level, whether of an application service account or a direct database user, such as a reporting user or a database administrator. SQL Firewall policy for every database account comprises allow-lists of authorized SQL statements and associated trusted database connection paths. The allow-listing approach provides a higher level of protection against risks such as SQL Injection attacks and compromised accounts. It ensures that only authorized SQL statements from trusted database connections are permitted for execution inside the Oracle database while alerting/blocking any unauthorized attempts at accessing sensitive data stored within them. Unlike signature-based protection mechanisms, SQL Firewall cannot be fooled by encoding the SQL statement or referencing synonyms or dynamically generated object names.
 
-PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and manage the SQL Firewall configuration within Oracle Database. Oracle SQL Firewall is available only for Oracle Database Enterprise Edition (version 23ai and later). Oracle SQL Firewall must be licensed for use. There are two paths to its license:
+PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and manage the SQL Firewall configuration within Oracle Database. Oracle SQL Firewall is available only for Oracle Database Enterprise Edition (version 23.1 and later). Oracle SQL Firewall must be licensed for use. There are two paths to its license:
 
 - Oracle SQL Firewall is included with Oracle Database Vault. Database Vault is an extra cost option.
 - Oracle SQL Firewall is included with Oracle Audit Vault and Database Firewall (AVDF). AVDF is a separate product and requires a license.
@@ -1213,9 +1037,9 @@ PL/SQL procedures in `SYS.DBMS_SQL_FIREWALL` package lets you administer and man
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle SQL Firewall 23ai](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/using-sql-firewall.html)
+- [Oracle SQL Firewall](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/using-sql-firewall.html)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024

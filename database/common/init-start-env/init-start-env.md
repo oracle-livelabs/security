@@ -106,6 +106,7 @@ This lab assumes you have:
 
 You may now **proceed to the next lab**.
 
+<!--
 ## Task 2 - Set Glassfish to use pdb1 database in the dbseclab VM
 
 Here, we will modify the default Glassfish connection to target an Oracle Database 19c, so we can monitor, and block, SQL commands
@@ -216,6 +217,7 @@ You may now **proceed to the next lab**.
     ```
     <copy>sudo systemctl restart oracle-dbsec-lab</copy>
     ```
+-->
 
 ## Appendix 2: External Web Access
 
@@ -252,5 +254,5 @@ If for any reason you want to login from a location that is external to your rem
 
 ## Acknowledgements
 - **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
-- **Contributors** - Hakim Loumi
-- **Last Updated By/Date** - Marion Smith, Technical Program Manager, April 2022
+- **Contributors** - Marion Smith, Hakim Loumi
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - April 2024
