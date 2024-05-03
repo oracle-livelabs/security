@@ -65,9 +65,9 @@ This lab assumes you have:
         </copy>
         ```
 
-## Task 2 - Set Glassfish to use freepdb1 database in the DB23c VM
+## Task 2 - Set Glassfish to use freepdb1 database in the DB23ai VM
 
-Here, we will modify the default Glassfish connection to target an Oracle Database 23c, so we can monitor, and block, SQL commands
+Here, we will modify the default Glassfish connection to target an Oracle Database 23ai, so we can monitor, and block, SQL commands
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -83,15 +83,15 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
     <copy>cd $DBSEC_LABS/sqlfw</copy>
     ```
 
-3. Migrate the Glassfish Application connection string in order to target the 23c database
+3. Migrate the Glassfish Application connection string in order to target the 23ai database
 
     ```
     <copy>./sqlfw_glassfish_start_db23c.sh</copy>
     ```
 
-    ![SQLFW](./images/init-start-env-sqlfw-001.png "Set HR App with DB23c")
+    ![SQLFW](./images/init-start-env-sqlfw-001.png "Set HR App with DB23ai")
 
-    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (installed on the DB23c VM) from the **`dbsec-lab`** VM
+    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (installed on the DB23ai VM) from the **`dbsec-lab`** VM
 
 4. Next, verify the application functions as expected
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you enable SQL Firewall in Data Safe and create a SQL collection by performing actions in the Glassfish application, which is connected to Oracle Database 23c on host #2. After reviewing the workload capture, you create a SQL Firewall policy, and then deploy and enforce it. With SQL Firewall configured, you then peform actions in the Glassfish application to test SQL Firewall violations and block them.
+In this lab, you enable SQL Firewall in Data Safe and create a SQL collection by performing actions in the Glassfish application, which is connected to Oracle Database 23ai on host #2. After reviewing the workload capture, you create a SQL Firewall policy, and then deploy and enforce it. With SQL Firewall configured, you then peform actions in the Glassfish application to test SQL Firewall violations and block them.
 
 Estimated Lab Time: 10 minutes
 
@@ -12,7 +12,7 @@ In this lab, you will:
 
 - Enable SQL Firewall in Data Safe
 - Create a SQL Collection in Data Safe
-- Set the Glassfish application on host #1 to use Oracle Database 23c on host #2
+- Set the Glassfish application on host #1 to use Oracle Database 23ai on host #2
 - Perform activity in the Glassfish application on host #1
 - Review the workload capture in Data Safe
 - Create, deploy, and enforce a SQL Firewall policy in Data Safe
@@ -28,7 +28,7 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
 - Prepared your environment
-- Registered Oracle Database 23c on a compute instance and granted the `SQL_Firewall` role to the Data Safe service account on Oracle Database 23c.
+- Registered Oracle Database 23ai on a compute instance and granted the `SQL_Firewall` role to the Data Safe service account on Oracle Database 23ai.
 
 
 ## Task 1: Enable SQL Firewall in Data Safe
@@ -61,7 +61,7 @@ This lab assumes you have:
     Now SQL Firewall is set to capture SQL statements issued by the `EMPLOYEESEARCH_PROD` database user in the Glassfish application.
 
 
-## Task 3: Set the Glassfish application on host #1 to use Oracle Database 23c on host #2
+## Task 3: Set the Glassfish application on host #1 to use Oracle Database 23ai on host #2
 
 1. On the **Application information** tab, click the **Remote Desktop** link to access host #1 in a web browser. 
 
@@ -73,7 +73,7 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/sqlfw</copy>
     ```
 
-4. Run the following script to configure the Glassfish application to connect to Oracle Database 23c on host #2.
+4. Run the following script to configure the Glassfish application to connect to Oracle Database 23ai on host #2.
 
     ```text
     <copy>./sqlfw_glassfish_start_db23c.sh</copy>

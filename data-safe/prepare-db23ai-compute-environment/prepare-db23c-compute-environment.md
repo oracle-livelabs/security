@@ -5,7 +5,7 @@
 In this lab, you create two compute instances by using Resource Manager in Oracle Cloud Infrastructure. 
 
 - The first compute instance (referred to as **host #1**) has Oracle Database 19c and a Glassfish java application installed.
-- The second compute instance (referred to as **host #2**) has Oracle Database 23c installed.
+- The second compute instance (referred to as **host #2**) has Oracle Database 23ai installed.
 
 It's highly recommended that you let Resource Manager create the network and compute resources for you. However, if you prefer to reuse an existing VCN of your own, you can find the steps to create the necessary security rules for it in task 1. 
 
@@ -116,7 +116,7 @@ Only perform this task if you are using your own VCN. If you plan to let Resourc
     ```
 
 
-5. Click the **Application Information** tab and review the information available for your two compute instances. You can connect to the first host (which has a 19c database on it) by clicking the Remote Desktop link. You can connect to the second host (which has a 23c database on it) by using SSH in Cloud Shell.
+5. Click the **Application Information** tab and review the information available for your two compute instances. You can connect to the first host (which has a 19c database on it) by clicking the Remote Desktop link. You can connect to the second host (which has a 23ai database on it) by using SSH in Cloud Shell.
 
     ```text
     Host-#1 (DBSeclab):

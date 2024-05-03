@@ -22,7 +22,7 @@ It may be composed of as many as five VMs:
   - **Audit Vault Server VM** (for Advanced workshop only)
   - **DB Firewall Server VM** (for Advanced workshop only)
   - **Key Vault Server VM** (for Advanced workshop only)
-  - **DB23c VM** (for SQL Firewall workshop only)
+  - **DB23ai VM** (for SQL Firewall workshop only)
 
 During this 1st part, you'll use different resources to interact with these VMs:
   - SSH Terminal Client
