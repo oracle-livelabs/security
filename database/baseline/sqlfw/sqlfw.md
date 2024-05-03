@@ -154,7 +154,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     - Click [**Register**] to launch the registration process
 
-    - Once is registered, the target database must be "**ACTIVE**"
+    - Once is registered, the target database must be "**ACTIVE**" 
 
         ![SQLFW](./images/sqlfw-013.png "Target Database registered")
 
