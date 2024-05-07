@@ -53,7 +53,7 @@ With Data Safe you can manage multiple SQL firewalls centrally and get a compreh
 
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe
 
-1. **From your NoVNC Remote Desktop**, open a web browser window to your OCI console and login with your OCI account
+1. Open a web browser window to your OCI console and login with your OCI account
 
 2. On the Burger menu, click on **Oracle Database**, then on "**Data Safe - Database Security**"
 

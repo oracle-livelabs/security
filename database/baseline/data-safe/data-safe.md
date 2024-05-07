@@ -41,7 +41,7 @@ Two options are available:
 
 In this lab, let's see how to register the dabase with a private endpoint
 
-1. **From your NoVNC Remote Desktop**, open a web browser window to your OCI console and login with your OCI account
+1. Open a web browser window to your OCI console and login with your OCI account
 
 2. On the Burger menu, click on **Oracle Database**, then on "**Data Safe - Database Security**"
 
