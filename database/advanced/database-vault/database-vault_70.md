@@ -1,7 +1,6 @@
 # Oracle Database Vault (DV)
 
 ## Introduction
-
 This workshop introduces the various features and functionality of Oracle Database Vault (DV). It gives the user an opportunity to learn how to configure those features to prevent unauthorized privileged users from accessing sensitive data.
 
 Estimated Time: 45 minutes
