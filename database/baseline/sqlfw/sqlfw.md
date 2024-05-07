@@ -697,7 +697,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         ![SQLFW](./images/sqlfw-207.png "The target database is deregistered")
 
 <!--
-3. Migrate the Glassfish Application connection string in order to target the default database (**pdb1**)
+3. Migrate the Glassfish Application connection string in order to target the default database  (**pdb1**)
 
         ```
         <copy>./sqlfw_glassfish_stop_db23ai.sh</copy>
