@@ -37,7 +37,7 @@ This lab assumes you have:
 
         ![DB Service Status](images/db-service-status.png "DB Service Status")
 
-    - DBSec-lab Service (Enterprise Manager 13c and My HR Applications on Glassfish)
+    - DBSec-lab Service (My HR Applications on Glassfish and other components)
 
         ```
         <copy>
@@ -154,7 +154,7 @@ You may now **proceed to the next lab**.
     <copy>sudo systemctl restart oracle-database</copy>
     ```
 
-2. DBSec-lab Service (Enterprise Manager 13c and My HR Applications on Glassfish)
+2. DBSec-lab Service (My HR Applications on Glassfish and other components)
 
     - Start
 
