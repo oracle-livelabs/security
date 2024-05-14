@@ -278,7 +278,7 @@ In this task you will learn how the administrator trains the system to learn the
 
         **Note:** Click [**Refresh insights**] if you don't see any data!
         
-           ![SQLFW](./images/sqlfw-037.png "Refresh SQL collections insights")
+           <!-- ![SQLFW](./images/sqlfw-037.png "Refresh SQL collections insights") -->
 
 4. If you are satisfied, click [**Stop**] to stop the SQL workload capture
 
@@ -376,15 +376,15 @@ In this task you will learn how the administrator trains the system to learn the
     - Associate the SQL Firewall violation policy to your target database
     
         - Select **Selected targets only (up to 10)** and choose *`DBSeclabs_DB23ai-freepdb1`*
-        - Select **Selected policies only** and choose *`SQL Firewall violations`*
+        - Select **Selected policies only** and choose *`All policies`*
 
             ![SQLFW](./images/sqlfw-057.png "Associate the SQL Firewall violation policy")
 
     - Click [**Apply policy**]
 
-        ![SQLFW](./images/sqlfw-058.png "Apply policy")
-
     - Once the association is done, you can click on **Close** to close the window
+
+        ![SQLFW](./images/sqlfw-058.png "Apply policy")
 
     - Now, you should see your target database associated to the SQL Firewall violations policy
 
