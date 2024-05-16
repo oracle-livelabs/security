@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you prepare your environment in Oracle Cloud Infrastructure. The LiveLabs sandbox provides you with a tenancy, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database. Sample data is loaded into your database and your database is registered with Oracle Data Safe.
+In this lab, you access and review your workshop environment in Oracle Cloud Infrastructure. The LiveLabs sandbox provides you with a tenancy, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database. Sample data is loaded into your database and your database is registered with Oracle Data Safe.
 
 
 Estimated Lab Time: 5 minutes
