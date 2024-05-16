@@ -53,7 +53,7 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 
 Create a user group and add your Oracle Cloud account to the group. If you are a tenancy administrator, then you can skip this task; otherwise, enlist the help of one to complete this task.
 
-1. From the navigation menu, select **Identity & Security**, and then **Groups**.
+1. From the navigation menu, select **Identity & Security**, and then **Domains**. Click the name of your domain (for example, **Default**), and then on the left, click **Groups**.
 
     The **Groups** page in IAM is displayed.
 

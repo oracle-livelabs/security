@@ -40,7 +40,7 @@ This lab assumes you have:
 
 3. Make note of your username and click the **Copy Password** button for Oracle Cloud Infrastructure.
 
-4. On the **Reservation Information** panel, click the **Launch OCI** button.
+4. On the **Reservation Information** panel, click the **Launch OCI** button. Leave the default domain selected, and click **Next**.
 
     A new browser tab is opened and the sign in page for the LiveLabs tenancy is displayed.
 
@@ -113,7 +113,7 @@ Database Actions provides a way for you to run SQL commands on your database. Th
 
 6. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. 
 
-7. Return to Data Safe: Click the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed.
+7. Return to Oracle Data Safe: Click the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed.
 
 
 You may now **proceed to the next lab**.

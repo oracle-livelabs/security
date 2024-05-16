@@ -4,7 +4,6 @@
 
 In this lab, you access and review your LiveLabs Sandbox environment in Oracle Cloud Infrastructure. Your environment comes with a tenancy, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database. Sample data is loaded into your database and your database is registered with Oracle Data Safe.
 
-
 Estimated Lab Time: 5 minutes
 
 ### Objectives
@@ -13,7 +12,7 @@ In this lab, you will:
 
 - View your LiveLabs reservation information and sign in
 - Access Oracle Data Safe and view your registered target database
-- (Optional) Explore Security Center
+- Explore Security Center
 - Access Oracle Database Actions
 
 
@@ -40,7 +39,7 @@ This lab assumes you have:
 
 3. Make note of your username and click the **Copy Password** button for Oracle Cloud Infrastructure.
 
-4. On the **Reservation Information** panel, click the **Launch OCI** button.
+4. On the **Reservation Information** panel, click the **Launch OCI** button. Leave the default domain selected, and click **Next**.
 
     A new browser tab is opened and the sign in page for the LiveLabs tenancy is displayed.
 
@@ -69,7 +68,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
     ![Target databases page in OCI](images/target-databases-page-oci.png "Target databases page in OCI")
 
 
-## Task 3 (Optional): Explore Security Center
+## Task 3: Explore Security Center
 
 1. In the breadcrumb at the top of the page, click **Data Safe**.
 
@@ -113,7 +112,7 @@ Database Actions provides a way for you to run SQL commands on your database. Th
 
 6. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. 
 
-7. Return to Data Safe: Click the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed.
+7. Return to Oracle Data Safe: Click the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed.
 
 
 You may now **proceed to the next lab**.
