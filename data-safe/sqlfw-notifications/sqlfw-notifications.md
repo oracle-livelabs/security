@@ -11,7 +11,7 @@ Estimated Lab Time: 10 minutes
 In this lab, you will:
 
 - Configure the SQL Firewall policy to audit for violations
-- Start the audit trail for Oracle Database 23c
+- Start the audit trail for Oracle Database 23ai
 - Associate the SQL Firewall violations alert policy with your target database
 - Obtain the OCID for SQL Firewall violations
 - Create a notification
@@ -24,7 +24,7 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
 - Prepared your environment
-- Registered Oracle Database 23c on a compute instance and granted the `SQL_Firewall` role to the Data Safe service account on Oracle Database 23c
+- Registered Oracle Database 23ai on a compute instance and granted the `SQL_Firewall` role to the Data Safe service account on Oracle Database 23ai
 - Deployed a SQL Firewall policy in Data Safe
 
 
@@ -41,7 +41,7 @@ This lab assumes you have:
 4. Click **Deploy and enforce**.
 
 
-## Task 2: Start the audit trail for Oracle Database 23c
+## Task 2: Start the audit trail for Oracle Database 23ai
 
 1. In the breadcrumb at the top of the page, click **Security center**.
 
@@ -74,7 +74,7 @@ This lab assumes you have:
 
     The **Apply and enable alert policy to target databases** panel is displayed.
 
-5. Select **Selected targets only (up to 10)** and select your 23c target.
+5. Select **Selected targets only (up to 10)** and select your 23ai target.
 
 6. Select **Selected policies only** and select **SQL Firewall violations**.
 

@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Key Va
 
 *Estimated Lab Time:* 60 minutes
 
-*Version tested in this lab:* Oracle OKV 21.7 and DBEE 19.21
+*Version tested in this lab:* Oracle OKV 21.8 and DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
@@ -27,7 +27,7 @@ This lab assumes you have:
 
 | Step No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
-| 1| (Mandatory) TDE Prerequisites | <10 minutes||
+| 1| (Mandatory) Prerequisites | <10 minutes||
 | 2| Add an Endpoint | <10 minutes||
 | 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
 | 4| Upload the TDE Wallet | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
@@ -35,7 +35,8 @@ This lab assumes you have:
 | 6| Create the OKV SEPS Wallet | <5 minutes||
 | 7| Perform a ReKey Operation | 5 minutes||
 | 8| Secret Management with OKV | 5 minutes||
-| 9| Reset the OKV Lab Config | <5 minutes||
+| 9| Generate New Non-extractable Key | 5 minutes||
+|10| Reset the OKV Lab Config | <5 minutes||
 
 <!--
 Advanced OKV Labs for 21.7
@@ -43,10 +44,9 @@ Advanced OKV Labs for 21.7
 | B| DB Account Pwd Management | 5 minutes ||
 | C| Key Management for DBMS_CRYPTO | 5 minutes ||
 | D| Automated Java Keystore rotation | 5 minutes ||
-| E| Non-Extractable Key | 5 minutes ||
 -->
 
-## Task 1: (Mandatory) TDE Prerequisites
+## Task 1: (Mandatory) Prerequisites
 
 **Before beginning this lab**, make sure you have performed steps 1 to 4 of the Transparent Data Encryption (TDE) Livelabs!
 
@@ -138,22 +138,48 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![Key Vault](./images/okv-202.png "View the Oracle Wallet content on the database")
 
-12. Now, your database is ready for the OKV labs!
+12. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
+
+    - Open a web browser window to *`https://kv`* to access to the Key Vault Web Console
+
+        **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
+
+    - Login to Key Vault Web Console as *`KVRESTADMIN`* (use the password randomly generated)
+
+        ````
+        <copy>KVRESTADMIN</copy>
+        ````
+
+        ![Key Vault](./images/okv-001.png "OKV - Login")
+
+        **Note**:
+        - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
+        - This default password is available in the Labs details or by executing the following command line as *`oracle`* user:
+
+            ````
+            <copy>echo $OKVUSR_PWD</copy>
+            ````
+
+    - Set your new password
+    
+        ![Key Vault](./images/okv-001b.png "OKV - Login")
+
+    - Click [**Save**]
+
+    - Logout
+
+13. Repeat this Step 12 for the user *`KVEPADMIN`*
+
+14. Now, your database is ready for the OKV labs!
 
 ## Task 2: Add an Endpoint
 First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
 
 1. You will use the **OKVdeploy.tgz** file to deploy the utility to automate the processes
 
-    - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+    - Go back to your terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
-        ````
-        <copy>sudo su - oracle</copy>
-        ````
-
-        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
-
-    - Go to the scripts directory
+    - Go to the OKV scripts directory
 
         ````
         <copy>cd $DBSEC_LABS/okv</copy>
@@ -167,21 +193,21 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
         ![Key Vault](./images/okv-004.png "Unpack the Key Vault binary")
 
-    - Create the OKV utility config
-        - Look at the current OKV config file **okvrestcli.ini**
-        - Download **okvrestcli.jar**
-        - Create the automated script **okv-ep.sh** to add Endpoint
+    - Create OKV utility configuration (when prompted, please enter your new **KVEPADMIN** user password)
 
-            ````
-            <copy>./okv_crea_config_script.sh</copy>
-            ````
+        ````
+        <copy>./okv_crea_config_script.sh</copy>
+        ````
 
-            ![Key Vault](./images/okv-005a.png "Create the OKV config scripts")
-            ![Key Vault](./images/okv-005b.png "Create the OKV config scripts")
+        ![Key Vault](./images/okv-005a.png "Create the OKV config scripts")
+        ![Key Vault](./images/okv-005b.png "Create the OKV config scripts")
+        ![Key Vault](./images/okv-005c.png "Create the Endpoint admin user")
 
-            **Note**:
-            - The script *`okv-ep.sh`* will automate the process to create the Endpoint, the Oracle Wallet and deploy the OKV software
-            - It also downloads the latest version of the RESTful Service utility from OKV server
+        **Note**: This script:
+        - Looks at the current OKV config file **okvrestcli.ini**
+        - Downloads the latest version of the RESTful Service utility **okvrestcli.jar** from OKV server
+        - Creates the automated script *`okv-ep.sh`* to add the Endpoint and the Oracle Wallet, and to deploy the OKV software
+        - Sets also into the client wallet the user KVEPADMIN to add the endpoint
 
     - Add your **cdb1** database on DBSec-Lab VM as Endpoint
 
@@ -190,6 +216,10 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
         ````
 
         ![Key Vault](./images/okv-006.png "Add Endpoint")
+
+        **Note**: If necessary, it can ask you to overwrite the library, in that case, accept by entering "**y**"
+
+        ![Key Vault](./images/okv-006b.png "Overwrite the okv library")
 
     - Before finishing, we have to change the Endpoint password
 
@@ -210,9 +240,7 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
             ![Key Vault](./images/okv-007.png "Change password")
 
-2. Open a Web Browser to *`https://kv`* to access to Oracle Key Vault Console
-
-    **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
+2. Go back to your Oracle Key Vault Console
 
 3. Login to Key Vault Web Console as *`KVRESTADMIN`*
 
@@ -221,14 +249,6 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
     ````
 
     ![Key Vault](./images/okv-001.png "Key Vault - Login")
-
-    **Note**:
-    - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and it's available in the Labs details
-    - Remember this **password can be displayed whenever you need** by executing the following command line as *`oracle`* user:
-
-        ````
-        <copy>echo $OKVUSR_PWD</copy>
-        ````
 
 4. Go to the **Endpoints** tab
 
@@ -492,10 +512,9 @@ In this lab, we will fetch a Database account password from OKV On-Demand
     ![Key Vault](./images/okv-031.png "Create the secret password into OKV")
 
     **Note**: This scripts...
-    - Generates a JSON file (`$OKV_RESTHOME/sec-reg.json`) to register the secret
     - Creates the DB user `REFRESH_DWH` identified by this secret password
     - Uploads the secret password into OKV (OKV will respond with the unique ID of the secret password) by setting 2 access attributes - the name of the DB user (here `REFRESH_DWH`) and the connection string (here `dbsec-lab:1521/pdb1`)
-    - Finally, because the password is now in OKV and we don’t need anymore the temporary file which contains the secret password, so the script will delete it
+    - Finally, because the password is now in OKV and we don’t need anymore the temporary file which contains the secret password, the script will delete it
 
 3. Now, test your secret configuration by logging to the database with the secret password and its attributes as parameters)
 
@@ -519,7 +538,7 @@ In this lab, we will fetch a Database account password from OKV On-Demand
 
 5. Congratulations, now you know how to use and manage a secret with OKV!
 
-<!-- Other OPTIONAL OKV Labs
+<!-- Other OPTIONAL OKV Labs -->
 
 <!--
 SSH Key Management and Remote Server Access Controls
@@ -566,43 +585,71 @@ Oracle provides deployment recommendations for deployments that have two or more
 
 -->
 
-## Task 9: Generate new Non-extractable key
+## Task 9: Generate New Non-extractable Key
 
 This task will demonstrate how to create a non-extractable key, meaning a key that does not leave the Oracle Key Vault cluster. The key can be accessed by the approved endpoints but not stored by the endpoint client or the endpoint persistent cache.
 
-1. Generate a new master encryption key for the PDB using the following command:
+1. Generate a new master encryption key for **pdb1** using the following command:
+
     ````
     <copy>./okv_online_pdb_rekey.sh pdb1</copy>
     ````
-    ![Generate Key](./images/gen-new-key.png "Key Vault")
-Take note of the tag information so you can identify this key in future steps.
-2. Verify we have the new master encryption key using the following command:
-    ````
-    <copy>echo Oracle123 | okvutil list -a</copy>
-    ````
-3. Identify the MKID from the command in the previous step. Take note that the current extractable value is set to true, meaning it can be stored by the endpoint client software.
-    ![Identify Key](./images/id-key.png "Key Vault")
-4. As KVRESTADMIN, navigate to the Keys & Wallets tab, click <x> and press <y>. Find that key in the OKV UI , mark it so that the extractable value is false and click Save.
-    ![Show UI Key](./images/ui-key.png "Key Vault")
-5. Run the following command again to see that the key is now marked as extractable = false:
-    ````
-    <copy>echo Oracle123 | okvutil list -a</copy>
-    ````
-    ![Find Key](./images/find-key.png "Key Vault")
 
-6. Attempt to download the wallet keys with okvutil. You will see that the okvutil is able to create an ewallet.p12 file but that file cannot contain the non-extractable key. 
+    ![Key Vault](./images/okv-070.png "Generate Key")
+
+    **Note**: Take note of the tag information so you can identify this key in future steps.
+
+2. Verify we have the new master encryption key in the virtual Wallet
+
     ````
-    <copy>okvutil download -l . -t wallet</copy>
+    <copy>./okv_view_wallet_in_kv.sh</copy>
     ````
-    Enter the following for the wallet password:
+
+    ![Key Vault](./images/okv-071.png "Check rekey")
+
+    **Note**:
+    - Identify the MKID from the command in the previous step
+    - Take note that the current extractable value is set to true, meaning it can be stored by the endpoint client software
+
+3. Go back to the Oracle Key Vault console as KVRESTADMIN, and navigate to the "**Keys & Wallets**" tab
+
+4. Click on the *CDB1* wallet
+
+    ![Key Vault](./images/okv-072.png "Check the Wallet")
+
+5. Find the key generated and click on it
+ 
+    ![Key Vault](./images/okv-073.png "Show the Key")
+
+6. Scroll down to the "Advanced" section and mark it as non-extractable by changing the extractable status to *`False`* 
+
+    ![Key Vault](./images/okv-074.png "Change extractable status")
+
+7. Then scroll up and click [**Save**]
+
+8. Now, verify that the key is now marked as extractable (**FALSE**)
+
+    ````
+    <copy>./okv_view_wallet_in_kv.sh</copy>
+    ````
+
+    ![Key Vault](./images/okv-075.png "Extractable status")
+
+9. Attempt to download the OKV keys into a local wallet
+
+    ````
+    <copy>./okv_download_wallet.sh</copy>
+    ````
+
+    The password to enter is:
+
     ````
     <copy>Oracle123</copy>
     ````
-    Enter the following for the Endpoint password:
-    ````
-    <copy>Oracle123</copy>
-    ````
-    ![Download Key](./images/download-key.png "Key Vault")
+
+    ![Key Vault](./images/okv-076.png "Download Key")
+    
+    **Note**: You can't download the OKV keys because a wallet cannot contain the non-extractable key
 
 ## Task 10: Reset the OKV Lab Config
 
@@ -774,8 +821,8 @@ Every node in the cluster can serve endpoints actively and independently while m
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle Key Vault 21](https://docs.oracle.com/en/database/oracle/key-vault/21.3/index.html)
-- [Oracle Key Vault 21 - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.3/okvag/multimaster_concepts.html)
+- [Oracle Key Vault](https://docs.oracle.com/en/database/oracle/key-vault/21.8/index.html)
+- [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/multimaster_concepts.html)
 
 Video:
 - *Introducing Oracle Key Vault 21 (January 2021)* [](youtube:SfXQEwziyw4)
@@ -783,4 +830,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
