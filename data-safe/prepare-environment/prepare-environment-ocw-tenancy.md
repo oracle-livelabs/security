@@ -16,7 +16,7 @@ In this lab, you will:
 - Provision an Autonomous Transaction Processing database
 - Access Oracle Database Actions
 - Load sample data into your database
-- Register your target database with Oracle Data Safe
+- Register your database with Oracle Data Safe
 - Access Oracle Data Safe and view your registered target database
 - (Optional) Explore Security Center
 
@@ -223,7 +223,7 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 7. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
 
-## Task 7: Register your target database with Oracle Data Safe
+## Task 7: Register your database with Oracle Data Safe
 
 A database registered with Oracle Data Safe is referred to as a *target* database in Oracle Data Safe.
 
