@@ -98,7 +98,6 @@ In this lab, let's see how to register the dabase with a private endpoint
 
         ```
         <copy>
-        sudo sed -i -e 's|${DBUSR_PWD2}|"${DBUSR_PWD2}"|g' ds_create_user.sh
         ./ds_create_user.sh pdb1
         </copy>
         ```
