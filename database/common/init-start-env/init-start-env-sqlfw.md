@@ -86,7 +86,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 3. Migrate the Glassfish Application connection string in order to target the 23ai database
 
     ```
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
+    <copy>./sqlfw_glassfish_start_db23ai.sh</copy>
     ```
 
     ![SQLFW](./images/init-start-env-sqlfw-001.png "Set HR App with DB23ai")
