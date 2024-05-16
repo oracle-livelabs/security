@@ -30,8 +30,8 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop
-- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your database on hand.
+- Access to or prepared an environment for this workshop
+- Access to a registered target database. Make sure to have the `ADMIN` password for your database on hand.
 - Created a sensitive data model (see [Discover Sensitive Data](?lab=discover-sensitive-data))
 
 

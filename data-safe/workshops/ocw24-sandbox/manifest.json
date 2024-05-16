@@ -15,9 +15,9 @@
         "type": "ocw-livelabs"
       },
       {
-        "title": "Prepare your environment",
-        "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
-        "filename": "../../prepare-environment/prepare-environment-ocw-sandbox.md",
+        "title": "Access your environment",
+        "description": "Steps to access your prepared environment in LiveLabs sandbox.",
+        "filename": "../../access-environment/access-environment-ocw-sandbox.md",
         "type": "ocw-livelabs"
       },
       {

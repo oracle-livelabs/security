@@ -26,8 +26,8 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop
-- Registered your target database with Oracle Data Safe
+- Access to or prepared an environment for this workshop
+- Access to a registered target database
 - (Optional) Started audit data collection for your target database in Oracle Data Safe. Audit data collection is required if you want to view users' audit records from within User Assessment.
 
 

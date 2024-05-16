@@ -1,4 +1,4 @@
-# Prepare Your Environment
+# Prepare your environment
 
 ## Introduction
 
