@@ -1,6 +1,6 @@
 # Introduction
 
-This workshop is designed to help new users become familiar with the features of Oracle Data Safe. You learn how to register an Autonomous Database with Oracle Data Safe, assess the security of your database configurations and users, and discover and mask sensitive data.
+This workshop is designed to help new users become familiar with the features of Oracle Data Safe. In the LiveLabs Sandbox environment, you learn how to assess the security of your database configurations and users, and discover and mask sensitive data.
 
 Estimated Workshop Time: 90 minutes
 
@@ -14,15 +14,12 @@ Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:U
 
 In this workshop, you learn how to perform the following tasks:
 
-- Register an Autonomous Database with Oracle Data Safe
 - Assess the security of your database configurations and database users using Oracle Data Safe
 - Discover and mask sensitive data on your target database using Oracle Data Safe
 
 ### Prerequisites
 
-This workshop has the following prerequisites:
-- To run this workshop in your own tenancy, you require an Oracle Cloud account and you need to be operating within a free trial period.
-- To run this workshop in the LiveLabs sandbox, you require an Oracle Cloud account.
+- You require an Oracle Cloud account for this workshop.
 
 
 ## Learn More
@@ -38,4 +35,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 18, 2023
+* **Last Updated By/Date** - Jody Glover, May 16, 2024

@@ -123,7 +123,7 @@ Only perform this task if you are using your own VCN. If you plan to let Resourc
     dbsec-hol-2024-02-16-170304 - [public-ip-host1]
     Access: Remote Desktop (https://cloud.oracle.com/jobs/ocid1.ormjob.oc1.iad.amaaaaaaknuwtjiak72pr6p24xlohulbc6tvqcbojbosv3bbwfw4kdhn3xva#)
     
-    Host-#2 (DB23c):
+    Host-#2 (DB23ai):
     db23c-hol-2024-02-16-170304 - [public-ip-host2]
     Auto Generated SSH Private Key:
     <sensitive> click Unlock
