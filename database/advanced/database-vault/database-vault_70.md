@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the various features and functionality of Oracle Database Vault (DV). It gives the user an opportunity to learn how to configure those features to prevent unauthorized privileged users from accessing sensitive data.
 
-Estimated Time: 75 minutes
+Estimated Time: 90 minutes
 
 *Version tested in this lab:* Oracle DBEE 23.4
 
@@ -11,10 +11,11 @@ Estimated Time: 75 minutes
 Watch a preview of "*LiveLabs - Oracle Database Vault (May 2022)*" [](youtube:M5Kn-acUHRQ)
 
 ### Objectives
-- Enable Database Vault in the container and `PDB1` pluggable database
+- Configure and enable Database Vault in the container and `PDB1` pluggable database
 - Protect sensitive data using a Database Vault realm
 - Safeguard service accounts using Trusted Path
 - Prevent accidents in production application schemas
+- Create a break glass role to enable application data access
 - Create unified audit policies
 - Test Database Vault Controls with Simulation mode
 - Protect pluggable databases from Container Admins
@@ -30,16 +31,27 @@ This lab assumes you have:
 ### Lab Timing (estimated 75 minutes)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | Enable Database Vault | 5 minutes |
+| 1 | Configure and enable Database Vault | 5 minutes |
 | 2 | Create a simple realm | 15 minutes |
 | 3 | Create a trusted path / Multi-factor authorization | 15 minutes |
 | 4 | Prevent mistakes | 15 minutes |
-| 5 | Create unified audit policies | 10 minutes |
-| 6 | Simulation mode | 10 minutes |
-| 7 | Ops Control | 5 minutes |
-| 8 | Disabling Database Vault | <5 minutes |
+| 5 |  Create a break glass role to enable application data access | 15 minutes |
+| 6 | Create unified audit policies | 10 minutes |
+| 7 | Simulation mode | 10 minutes |
+| 8 | Ops Control | 10 minutes |
+| 9 | Disabling Database Vault | <5 minutes |
 
-## Task 1: Enable Database Vault
+## Task 1: Configure and enable Database Vault
+
+Oracle Database Vault is already installed in the kernel of the Oracle Database. The only thing for you to do is to create two users and configure it!
+
+The purpose of these two users: 
+- One user will be the Database Vault owner (`DV_OWNER` role), responsible for DV enable/disable and creating DV policies
+- The other user will be the Database Vault account manager (`DV_ACCTMGR` role), responsible for database user creation, modification or deletion as well as database user policy management
+
+    **Note:** Oracle recommends creating at least one additional, backup, database user for each of the roles above. You must always maintain at least one, open and available, user with the `DV_OWNER` role granted `WITH ADMIN OPTION` in order to disable Oracle Database Vault. 
+
+To get started with the tasks you will perform the following steps. 
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -55,15 +67,15 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/database-vault</copy>
     ````
 
-3. Start by enabling Database Vault in the container database **cdb1**
+3. Database Vault must be enabled in the container database before it can be enabled in any of the pluggable databases. As a user with the `DV_OWNER` role, enable it on `CDB1`. 
 
       ````
       <copy>./dv_enable_on_cdb.sh</copy>
       ````
 
-    **Note**: To enable DB Vault, database will be rebooted!
-
     ![DB Vault](./images/dv-001.png "Enable DB Vault")
+
+    **Note**: To enable DB Vault, database will be rebooted. If you are a user of Oracle Real Application Clusters, you can minimize the downtime by performing a RAC-rolling enablement. 
 
 4. Next, enable it on the pluggable database. For now, just enable it on **pdb1**
 
@@ -71,26 +83,40 @@ This lab assumes you have:
     <copy>./dv_enable_on_pdb.sh pdb1</copy>
     ````
 
-   You should see a status like this:
+   You should see a status like this. Notice that Database Vault is enabled on the container database and one pluggable database, not both. This allows you to decide which pluggable databases to start with. 
 
     ![DB Vault](./images/dv-002.png "Enable DB Vault")
 
-5. Now, Database Vault is enabled in the container database as well as pdb1!
+    **Note**: If you are a user of Oracle Real Application Clusters, you can minimize the downtime by performing a RAC-rolling enablement. 
+
+5. Now that Database Vault is configured and enabled, you will look at the database roles related to DV as well as the database users who have been granted these roles:
+
+    ````
+    <copy>./dv_query_dv_roles.sh</copy>
+    ````
+
+    **Note:** This is a limited screenshot. You will see more roles than shown here. 
+
+    ![DB Vault](./images/dv-002b.png "Query DV roles")
+
+You have successfully configured and enabled Oracle Database Vault. 
 
 ## Task 2: Create a Simple Realm
 
-1. Open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
+1. Open a web browser window to `http://dbsec-lab:8080/hr_prod_pdb1` to access to your Glassfish App
 
-    **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+    **Note:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
     ![DB Vault](./images/dv-029.png "HR App - Login")
 
-2. Login to the application as *`hradmin`* with the password "*`Oracle123`*"
+2. Using the web browser, login to the application as an application user. 
 
+    Username:
     ````
     <copy>hradmin</copy>
     ````
 
+    Password: 
     ````
     <copy>Oracle123</copy>
     ````
@@ -113,7 +139,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-003.png "HR App - Employees data")
 
-6. Now, create the **Realm** `PROTECT_EMPLOYEESEARCH_PROD` to protect objects in the `EMPLOYEESEARCH_PROD` schema from malicious activity
+6. Now, create the Database Vault realm named  `PROTECT_EMPLOYEESEARCH_PROD` to protect objects in the `EMPLOYEESEARCH_PROD` schema from curious or malicious users, such as those with `SELECT ANY TABLE` privileges. 
 
     ````
     <copy>./dv_create_realm.sh</copy>
@@ -334,13 +360,26 @@ You have completed the task to minimize human errors such as `DROP TABLE` or `TR
 
 You also have the option to create a Database Vault rule and rule set that allows commands like these to be successful only if they are run from a specific host, during a certain time of day or day of the week, or if a database role is enabled. Think about how you would combine the logic from the Trusted Application Path task to control how destructive commands are used. 
 
-## Task 5: Create unified audit policies
+## Task 5: Create a break glass role to enable application data access
 
-Oracle unified auditing has been available in the Oracle Database since version 12.1. Also available in 12.1 were the roles `AUDIT_ADMIN` and `AUDIT_VIEWER` to separate audit administration from audit record retrieval. For example, you might use Oracle Audit Vault and Database Firewall to collect and centralize your unified audit records but that same account should not be able to provision, modify, or delete unified audit policies.
+There may be times when privileged users need to access application data. This may be to run a query, add a column to a table, or modify rows in a table. To limit day-to-day access to application data, Database Vault can protect the objects and only allow access if particular critieria is met. For example, this criteria may be if the attempt is after business hours or on weekends. The criteria might be if the user is attempting the action from a trusted host, such as a "bastion" or "jump" server. Or the criteria might include a two-person integrity scenario, where two database users are both authenticated at the same time and the action is authorized. 
 
-In Oracle Database 23ai, Database Vault introduces an additional layer of control for audit policies and audit records that requires explicit authorization to use your granted `AUDIT_ADMIN` or `AUDIT_VIEWER` roles. This is to further separate the responsibilities between administrators and data, this time it is audit data. 
+Regardless of the reason, not having unlimited access to query, modify, or drop data and objects available to a user is very similar to the movement away from using `root` on Linux (or `Administrator` on Windows) to perform  day-to-day tasks. Consider this similar to a `sudo` action on Linux.
 
-In this task you will allow `C##SEC_DBA_SAL` manage unified audit policies by granting Sal the `AUDIT_ADMIN` role and the Database Vault authorization to use this role.
+1. Create a Database Vault rule and rule set to setup your criteria for enabling a secure application role. 
+
+2. Create the Database Vault secure application role that can only be enabled if the rule set criteria is met. 
+
+3. 
+
+
+## Task 6: Create unified audit policies
+
+Oracle unified auditing has been available in the Oracle Database since version 12.1. Also available since 12.1 are roles (`AUDIT_ADMIN` and `AUDIT_VIEWER`) to separate audit administration from audit record retrieval. For example, you might have database users who need to view the audit trail but do not need to provision, modify, or drop audit policies. 
+
+In Oracle Database 23ai, Database Vault introduces an additional layer of control for audit policies and audit records that requires explicit authorization to use your granted `AUDIT_ADMIN` or `AUDIT_VIEWER` roles. This adds to Oracle Database Vault's existing separation of duties controls. 
+
+In this task, you will allow `C##SEC_DBA_SAL` manage unified audit policies by granting Sal the `AUDIT_ADMIN` role and the Database Vault authorization to use this role.
 
 1. Grant `C##SEC_DBA_SAL` the `AUDIT_ADMIN` role to use on the container and all pluggable databases. 
 
@@ -357,7 +396,6 @@ In this task you will allow `C##SEC_DBA_SAL` manage unified audit policies by gr
     ````
 
     ![DB Vault](./images/dv-052.png "Create Database Vault realm")
-
 
 3. Attempt to create a unified audit policy as `C##SEC_DBA_SAL` before authorization him to do so with Database Vault. You will see this step fails with `Insufficient Oracle Database Vault authorization`. 
 
@@ -383,16 +421,59 @@ In this task you will allow `C##SEC_DBA_SAL` manage unified audit policies by gr
 
     ![DB Vault](./images/dv-055.png "Create a unified audit policy")
 
-6. Next, you will create a unified audit policy on a Database Vault command rule.  This differs from creating a unified audit policy on a realm in that you create the policy on the rule set not the command rule.  For example, as `C##SEC_DBA_SAL` you will 
+6. Next, you will create a unified audit policy for the rule set associated with the Database Vault command rule. This differs from creating a unified audit policy on a realm in that you create the policy on the rule set not the command rule.  For example, as `C##SEC_DBA_SAL` you will 
 
     ````
-    <copy> ./dv_create_realm_audit_policy.sh </copy>
+    <copy> ./dv_create_command_rule_audit.sh </copy>
     ````
 
-    ![DB Vault](./images/dv-055.png "Create a unified audit policy")
+    ![DB Vault](./images/dv-056.png "Create a unified audit policy")
 
+8. Now you will intentionally violate the rule set associated with the command rule to generate audit records. As you completed in the previous task, you will clone an existing table, create a command rule to prevent `TRUNCATE TABLE`, and then attempt to truncate the table to demonstrate the audit record is collected.
 
-## Task 6: Simulation Mode
+    ````
+    <copy> ./dv_copy_table.sh </copy>
+    ````
+    
+    ````
+    <copy> ./dv_create_command_rule_truncate_table.sh </copy>
+    ````
+
+    ````
+    <copy> ./dv_perform_truncate_table.sh </copy>
+    ````
+
+9. For simplicity sake, view a summary of the audit records as `C##SEC_DBA_SAL`. 
+
+     ````
+    <copy> ./dv_summarize_unified_audit.sh </copy>
+    ````
+
+10. Once you are comfortable with creating audit policies on realms and command rules (rule sets, technically), you clean-up from this task.
+
+     ````
+    <copy> ./dv_drop_command_rule_truncate_table.sh </copy>
+    ````
+
+    ````
+    <copy> ./dv_perform_drop_table.sh </copy>
+    ````
+
+    ````
+    <copy> ./dv_drop_realm_audit_policy.sh </copy>
+    ````
+
+    ````
+    <copy> ./dv_drop_command_rule_audit.sh </copy>
+    ````
+
+    **Optional:** If you wish, you can also revoke authorization from `C##SEC_DBA_SAL` to use the `AUDIT_ADMIN` role he was granted.
+
+    ````
+    <copy> ./dv_revoke_audit_admin_auth.sh </copy>
+    ````
+
+## Task 7: Simulation Mode
 
 Oracle Database Vault simulation mode allows you to simulate the enforcement of realms and command rules. Simulation mode is helpful to let you test your command rules and realms to verify you have identified all of the users who should be authorized to a realm or verify your command rule has accurate logic in the rule(s) in the rule set. 
 
@@ -456,7 +537,7 @@ Simulation mode is an easy way for you to identify who is connecting and where t
 
     ![DB Vault](./images/dv-012c.png "Drop the Command Rule")
 
-## Task 5: Ops Control
+## Task 8: Ops Control
 
 Oracle Database Vault operations control allows you to separate your `C##` users from the application data in pluggable databases. This is especially helpful if you have consolidated databases into an Oracle Multitenant architecture and have several pluggable databases on each container database. 
 
@@ -540,7 +621,7 @@ Now, the database is configured to separate the container-based DBAs from the ap
 
     ![DB Vault](./images/dv-018c.png "Status of OPS control")
 
-## Task 6: Disabling Database Vault
+## Task 9: Disabling Database Vault
 
 Oracle Database Vault can be disabled once you have completed the lab. If this is a database in your environment, you do not need to disable Oracle Database Vault to complete quarterly patching or upgrades. Please see the [Oracle Database Vault Adminstrator's Guide 23ai](https://docs.oracle.com/en/database/oracle/oracle-database/23/dvadm/dba-operations-in-an-oracle-database-vault-environment.html) for more information on DBA operations in a Database Vault environment. 
 
