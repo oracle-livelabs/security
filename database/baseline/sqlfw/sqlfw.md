@@ -5,10 +5,10 @@ This workshop introduces the functionality of Oracle SQL Firewall. It gives the 
 
 *Estimated Lab Time:* 80 minutes
 
-*Version tested in this lab:* Oracle DBEE 23.2
+*Version tested in this lab:* Oracle DBEE 23.4
 
 ### Video Preview
-Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database*" [](youtube:aiwb6od3mfo)
+Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [](youtube:81N23MDhYXU)
 
 ### Objectives
 - Train the SQL Firewall to learn the normal activity 
@@ -53,7 +53,7 @@ With Data Safe you can manage multiple SQL firewalls centrally and get a compreh
 
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe
 
-1. **From your NoVNC Remote Desktop**, open a web browser window to your OCI console and login with your OCI account
+1. Open a web browser window to your OCI console and login with your OCI account
 
 2. On the Burger menu, click on **Oracle Database**, then on "**Data Safe - Database Security**"
 
@@ -73,7 +73,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 6. Fill out as following:
 
-    - Name: `<Your Private Endpoint Name>` (here "*`DBSeclabs_DB23c`*")
+    - Name: `<Your Private Endpoint Name>` (here "*`DBSeclabs_EP_DB23ai`*")
     - Compartment: Select your Compartment
     - Virtual cloud network: Select your VCN
     - Subnet: Select your Subnet
@@ -87,7 +87,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
        ![SQLFW](./images/sqlfw-006.png "the Private endpoint is ACTIVE")
     
     **Note**:
-    - A Private IP is assigned to this Private endpoint (here '10.0.0.113')
+    - A Private IP is assigned to this Private endpoint (here '10.0.0.57')
     - There's no target database register by default
 
 9. Now, configure your target database to be registered into Data Safe
@@ -135,14 +135,14 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
     - Fill out the "Register Target Database" as following
 
         - Database Type: Select *`Oracle On-Premises Database`*
-        - Data Safe Target Display Name: *`DBSeclabs_DB23c-freepdb1`*
-        - Description: *`On-Premises pluggable database of DB23c VM (freepdb1)`*
+        - Data Safe Target Display Name: *`DBSeclabs_DB23ai-freepdb1`*
+        - Description: *`On-Premises pluggable database of DB23ai VM (freepdb1)`*
         - Compartment: Select your own Compartment
 
             ![SQLFW](./images/sqlfw-011.png "Fill out the Register Target Database parameters")
 
         - Choose a connectivity option: *`Private endpoint`*
-        - Select private endpoint: Select *`DBSeclabs_DB23c`*
+        - Select private endpoint: Select *`DBSeclabs_EP_DB23ai`*
         - TCP/TLS: *`TCP`*
         - Database Service Name: *`freepdb1`*
         - Database IP Address: *`10.0.0.155`*
@@ -202,7 +202,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
 ## Task 1b: Enable SQL Firewall to protect Glassfish HR Application
 
-In this lab you will learn how the administrator trains the system to learn the authorized SQL statements and the trusted connection paths of HR application. SQL Firewall policy is generated with allow-lists representing authorized SQL connections and statements, and deployed to the target.
+In this task you will learn how the administrator trains the system to learn the authorized SQL statements and the trusted connection paths of HR application. SQL Firewall policy is generated with allow-lists representing authorized SQL connections and statements, and deployed to the target.
 
 ### Step 1: Enable SQL Firewall
 
@@ -215,7 +215,7 @@ In this lab you will learn how the administrator trains the system to learn the 
     ![SQLFW](./images/sqlfw-026.png "Click on SQL Firewall sub-menu")
 
 
-3. Click on the target database **`DBSeclabs_DB23c-freepdb1`**
+3. Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
 
     ![SQLFW](./images/sqlfw-027.png "Click on the target DB")
 
@@ -278,7 +278,7 @@ In this lab you will learn how the administrator trains the system to learn the 
 
         **Note:** Click [**Refresh insights**] if you don't see any data!
         
-           ![SQLFW](./images/sqlfw-037.png "Refresh SQL collections insights")
+           <!-- ![SQLFW](./images/sqlfw-037.png "Refresh SQL collections insights") -->
 
 4. If you are satisfied, click [**Stop**] to stop the SQL workload capture
 
@@ -375,16 +375,16 @@ In this lab you will learn how the administrator trains the system to learn the 
 
     - Associate the SQL Firewall violation policy to your target database
     
-        - Select **Selected targets only (up to 10)** and choose *`DBSeclabs_DB23c-freepdb1`*
-        - Select **Selected policies only** and choose *`SQL Firewall violations`*
+        - Select **Selected targets only (up to 10)** and choose *`DBSeclabs_DB23ai-freepdb1`*
+        - Select **Selected policies only** and choose *`All policies`*
 
             ![SQLFW](./images/sqlfw-057.png "Associate the SQL Firewall violation policy")
 
     - Click [**Apply policy**]
 
-        ![SQLFW](./images/sqlfw-058.png "Apply policy")
-
     - Once the association is done, you can click on **Close** to close the window
+
+        ![SQLFW](./images/sqlfw-058.png "Apply policy")
 
     - Now, you should see your target database associated to the SQL Firewall violations policy
 
@@ -680,7 +680,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-203.png "Target databases")
 
-    - Click on the target database **`DBSeclabs_DB23c-freepdb1`**
+    - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
 
         ![SQLFW](./images/sqlfw-204.png "Target database to deregister")
 
@@ -718,7 +718,7 @@ With PL/SQL procedures in the `SYS.DBMS_SQL_FIREWALL` package, you can administe
 
 In this lab you will learn how the administrator trains the system to learn the authorized SQL statements and the trusted connection paths of HR application. SQL Firewall policy is generated with allow-lists representing authorized SQL connections and statements, and deployed to the target.
 
-## Step 1: Setup SQL Firewall env
+### Step 1: Setup SQL Firewall env
 
 1. Create an administrator (**`dba_tom`**) to manage SQL Firewall
 

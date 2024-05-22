@@ -9,7 +9,7 @@ This workshop introduces the various features and functionality of Oracle Data S
 
 ### Video Preview
 
-Watch a preview of "*Introduction to Oracle Data Safe (September 2019)*" [](youtube:wU-M5BlU0po)
+Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:UUc26bpdFnc)
 
 ### Objectives
 - Register an on-premise Oracle Database into Oracle Data Safe with a Private endpoint
@@ -41,7 +41,7 @@ Two options are available:
 
 In this lab, let's see how to register the dabase with a private endpoint
 
-1. **From your NoVNC Remote Desktop**, open a web browser window to your OCI console and login with your OCI account
+1. Open a web browser window to your OCI console and login with your OCI account
 
 2. On the Burger menu, click on **Oracle Database**, then on "**Data Safe - Database Security**"
 
@@ -96,12 +96,11 @@ In this lab, let's see how to register the dabase with a private endpoint
 
     - Create the Data Safe **`DS_ADMIN`** user on **`pdb1`**
 
-        ````
+        ```
         <copy>
-        sudo sed -i -e 's|${DBUSR_PWD2}|"${DBUSR_PWD2}"|g' ds_create_user.sh
         ./ds_create_user.sh pdb1
         </copy>
-        ````
+        ```
 
         ![Data Safe](./images/ds-007.png "Create the Data Safe DS_ADMIN user")
 
@@ -231,9 +230,9 @@ Now, let's see the second option to register the dabase with an on-premises conn
 
     - Click [**Download install Bundle**] to download the zip file and enter a password of at least 15 characters (here *`Oracle123Oracle123!`*)
 
-        ````
+        ```
         <copy>Oracle123Oracle123!</copy>
-        ````
+        ```
 
        ![Data Safe](./images/ds-106.png "Download install Bundle")
 
@@ -253,48 +252,48 @@ Now, let's see the second option to register the dabase with an on-premises conn
 
         - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
-            ````
+            ```
             <copy>sudo su - oracle</copy>
-            ````
+            ```
 
             **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
         - Copy Data Safe on-premises connector uploaded to your Data Safe directory (here *`$DS_HOME`*)
 
-            ````
+            ```
             <copy>
             sudo mv /home/opc/DBSeclabs_DBs.zip $DS_HOME
             sudo chown -R oracle:oinstall $DS_HOME
             sudo chmod -R 775 $DS_HOME
             </copy>
-            ````
+            ```
 
                ![Data Safe](./images/ds-109.png "Copy Data Safe on-premises connector uploaded")
 
         - Install Data Safe On-Premises connector (enter the password defined for the zip file above - here *`Oracle123Oracle123!`*)
 
-            ````
+            ```
             <copy>
             cd $DS_HOME
             unzip DBSeclabs_DBs.zip
             python setup.py install --connector-port=1560
             </copy>
-            ````
+            ```
 
-            ````
+            ```
             <copy>Oracle123Oracle123!</copy>
-            ````
+            ```
 
                ![Data Safe](./images/ds-110.png "Install Data Safe On-Premises connector")
 
             **Note**: In case of trouble, you can stop or start the Data Safe On-Premises connector with the following command lines:
 
-            ````
+            ```
             <copy>
             python $DS_HOME/setup.py stop
             python $DS_HOME/setup.py start
             </copy>
-            ````
+            ```
 
     - Go back to the Data Safe console to verify the status of the Data Safe On-Premises connector
 
@@ -312,12 +311,12 @@ Now, let's see the second option to register the dabase with an on-premises conn
 
     - Create the Data Safe **`DS_ADMIN`** user on **`pdb1`**
 
-        ````
+        ```
         <copy>
         sudo sed -i -e 's|${DBUSR_PWD2}|"${DBUSR_PWD2}"|g' ds_create_user.sh
         ./ds_create_user.sh pdb1
         </copy>
-        ````
+        ```
 
     ![Data Safe](./images/ds-112.png "Create the Data Safe DS_ADMIN user")
 
@@ -434,11 +433,11 @@ Now, let's see the second option to register the dabase with an on-premises conn
 
 2. Now, go back to your terminal session to drop the Data Safe **`DS_ADMIN`** user on **`pdb1`**
 
-    ````
+    ```
     <copy>
     ./ds_drop_user.sh pdb1
     </copy>
-    ````
+    ```
 
     ![Data Safe](./images/ds-207.png "Drop the Data Safe DS_ADMIN user")
 
@@ -496,22 +495,22 @@ Now, let's see the second option to register the dabase with an on-premises conn
 
     - Delete the On-Premises connector from Database server
 
-        ````
+        ```
         <copy>
         python $DS_HOME/setup.py stop
         rm -Rf $DS_HOME/*
         </copy>
-        ````
+        ```
 
         ![Data Safe](./images/ds-259.png "Delete the On-Premises connector from Database server")
 
     - Drop the Data Safe **`DS_ADMIN`** user on **`pdb1`**
 
-        ````
+        ```
         <copy>
         ./ds_drop_user.sh pdb1
         </copy>
-        ````
+        ```
 
         ![Data Safe](./images/ds-260.png "Drop the Data Safe DS_ADMIN user")
 
@@ -524,7 +523,7 @@ You may now proceed to the next lab!
 
 Oracle Data Safe is Oracle’s platform for securing data in databases. As a native Oracle Cloud Infrastructure service, Oracle Data Safe lets you assess the security of your database configurations, find your sensitive data, mask that data in non-production environments, discover the risks associated with database users, and monitor database activity.
 
-![Data Safe](./images/data-safe-concept-01.png "Data Safe Concept")
+<!-- ![Data Safe](./images/data-safe-concept-01.png "Data Safe Concept") -->
 
 ## Want to Learn More?
 Technical Documentation:

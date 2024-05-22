@@ -37,7 +37,7 @@ This lab assumes you have:
 
         ![DB Service Status](images/db-service-status.png "DB Service Status")
 
-    - DBSec-lab Service (Enterprise Manager 13c and My HR Applications on Glassfish)
+    - DBSec-lab Service (My HR Applications on Glassfish and other components)
 
         ```
         <copy>
@@ -86,7 +86,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 3. Migrate the Glassfish Application connection string in order to target the 23ai database
 
     ```
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
+    <copy>./sqlfw_glassfish_start_db23ai.sh</copy>
     ```
 
     ![SQLFW](./images/init-start-env-sqlfw-001.png "Set HR App with DB23ai")
@@ -154,7 +154,7 @@ You may now **proceed to the next lab**.
     <copy>sudo systemctl restart oracle-database</copy>
     ```
 
-2. DBSec-lab Service (Enterprise Manager 13c and My HR Applications on Glassfish)
+2. DBSec-lab Service (My HR Applications on Glassfish and other components)
 
     - Start
 
