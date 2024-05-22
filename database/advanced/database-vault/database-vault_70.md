@@ -175,7 +175,7 @@ You have successfully configured and enabled Oracle Database Vault.
 
     ![DB Vault](./images/dv-032.png "HR App - Search employees")
 
-11. When you have completed this lab, you can drop the Database Vault realm and allow any user, with the approprite system privilege or object privileges, to query the `EMPLOYEESEARCH_PROD` objects.
+11. When you have completed this lab, you can drop the Database Vault realm and allow any user, with the approprite system privilege or object privileges, to query the `EMPLOYEESEARCH_PROD` objects again.
 
     ````
     <copy>./dv_drop_realm.sh</copy>
@@ -185,7 +185,9 @@ You have successfully configured and enabled Oracle Database Vault.
 
 ## Task 3: Create a Trusted Path / Multi-factor Authorization
 
-A trusted path between the application and the database helps ensure that only the application can use the application password to authenticate to the database. This can be considered a form of multi-factor authorization because there are multiple factors required to authenticate to the database with the schema username and password.  In this task you will see how to enforce additional factors such as hostname, IP address, or program name, to match your requirement in order for the schema account to authenticate. 
+A trusted path between the application and the database helps ensure that only the application can use the application schema username and password to authenticate to the database. This can be considered a form of multi-factor authorization because there are multiple factors required to authenticate to the database besides the schema username and password.  
+
+In this task you will see how to enforce additional factors such as hostname, IP address, or program name, to match your requirement in order for the application schema to authenticate. 
 
 1. Go back to your Glassfish app and click [**Search Employee**] again
 
