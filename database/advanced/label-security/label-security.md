@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Label 
 
 *Estimated Lab Time:* 30 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.21
+*Version tested in this lab:* Oracle DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Label Security (May 2022)*" [](youtube:7hBsg0ygZt4)
@@ -369,4 +369,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Alan Williams
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024

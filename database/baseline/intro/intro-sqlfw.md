@@ -4,7 +4,7 @@
 ### Overview
 *Estimated Time to complete the workshop*: 35 minutes
 
-This workshop is the Hands-On Labs dedicated to the Oracle Database Security features and functionalities for database 23c.
+This workshop is the Hands-On Labs dedicated to the Oracle Database Security features and functionalities.
 
 Based on an OCI architecture, deployed in a few minutes with a simple internet connection, it allows you to test DB Security use cases in a complete environment already pre-configured by the Oracle Database Security Product Manager Team.
 
@@ -41,4 +41,4 @@ You may now [proceed to the next lab](#next)
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - February 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
