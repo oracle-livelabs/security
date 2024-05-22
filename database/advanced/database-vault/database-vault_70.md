@@ -35,7 +35,7 @@ This lab assumes you have:
 | 2 | Create a simple realm | 15 minutes |
 | 3 | Create a trusted path / Multi-factor authorization | 15 minutes |
 | 4 | Prevent mistakes | 15 minutes |
-| 5 |  Create a break glass role to enable application data access | 15 minutes |
+| 5 | Create a break glass role to enable application data access | 15 minutes |
 | 6 | Create unified audit policies | 10 minutes |
 | 7 | Simulation mode | 10 minutes |
 | 8 | Ops Control | 10 minutes |
@@ -175,13 +175,7 @@ You have successfully configured and enabled Oracle Database Vault.
 
     ![DB Vault](./images/dv-032.png "HR App - Search employees")
 
-11. When you have completed this lab, you can drop the Database Vault realm and allow any user, with the approprite system privilege or object privileges, to query the `EMPLOYEESEARCH_PROD` objects again.
-
-    ````
-    <copy>./dv_drop_realm.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-007b.png "Drop the Realm")
+You have completed this task. You will leave the Database Vault realm in-place, and enabled, and move to the next task. 
 
 ## Task 3: Create a Trusted Path / Multi-factor Authorization
 
@@ -269,14 +263,7 @@ In this task you will see how to enforce additional factors such as hostname, IP
 
     **Note**: Because you're querying via an "untrusted" path, you can't access the data this way. 
 
-
-11. Once you have successfully completed the lab, you can delete the **Command Rule**, **Rule Set**, and **Rule** from Database Vault
-
-    ````
-    <copy>./dv_del_trusted_path.sh</copy>
-    ````
-
-    ![DB Vault](./images/dv-026.png "Delete the Trusted Path")
+You have completed the task. You now have a Database Vault realm protecting the application from privileged users and a command rule in place to prevent the application schema and password from being used by anything other than the application (Trusted Application Path). 
 
 
 ## Task 4: Prevent mistakes
@@ -293,21 +280,37 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
 
     ![DB Vault](./images/dv-041.png "Query the status of Database Vault")
 
+2. Next, you will add `DBA_DEBRA` as a Database Vault realm authorized participant. This will allow you to create a table in the `EMPLOYEESEARCH_PROD` schema without having to use the `EMPLOYEESEARCH_PROD` database account, which is protected by the trusted application path you created in the previous task. 
+
+    ````
+    <copy> ./dv_add_debra_realm_auth.sh </copy>
+    ````
+
+    ![DB Vault](./images/dv-042a.png "Query the status of Database Vault")
+
+3. You will also authorize `DBA_DEBRA` to use her `DDL` privileges on the `EMPLOYEESEARCH_PROD` schema.
+
+    ````
+    <copy> ./dv_ddl_auth_debra.sh </copy>
+    ````
+
+    ![DB Vault](./images/dv-042b.png "Query the status of Database Vault")
+
 2. Next, you will create a Database Vault command rule to disable the `DROP TABLE` command. This command rule will utilized the built-in rule set, `Disabled`, to prevent the `DROP TABLE` command from being used on any objects in the `EMPLOYEESEARCH_PROD` schema. 
 
     ````
     <copy> ./dv_create_command_rule_drop_table.sh </copy>
     ````
 
-    ![DB Vault](./images/dv-042.png "Query the status of Database Vault")
+    ![DB Vault](./images/dv-042.png "Create DV command rule to stop drop table")
 
-3. You will create a copy of the `EMPLOYEESARCH_PROD.   DEMO_HR_EMPLOYEES` table and name it `EMPLOYEESEARCH_PROD.DEMO_HR_EMP_COPY`.  This is the table you will test the command rule against. 
+3. You will create a copy of the `EMPLOYEESARCH_PROD.DEMO_HR_EMPLOYEES` table and name it `EMPLOYEESEARCH_PROD.DEMO_HR_EMP_COPY`.  This is the table you will test the command rule against. Since the schema account cannot be used outside of the application and you have prevented other privileged users from accessing the `EMPLOYEESEARCH_PROD` objects, you will use `DBA_DEBRA` to copy the table. You authorized Debra as a participant in the realm and authorized her to use her DDL privileges (e.g. `CREATE ANY TABLE`) on the application schema. 
 
     ````
-    <copy> ./dv_copy_table.sh </copy>
+    <copy> ./dv_copy_table.sh dba_debra </copy>
     ````
 
-    ![DB Vault](./images/dv-043.png "Query the status of Database Vault")
+    ![DB Vault](./images/dv-043b.png "Create a copy of a table")
 
 4. Attempt to perform `DROP TABLE` as the owner of the table, `EMPLOYEESEARCH_PROD`. This step will fail because this command would vilate the Database Vault command rule. 
 
@@ -315,7 +318,7 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
     <copy> ./dv_perform_drop_table.sh </copy>
     ````
 
-    ![DB Vault](./images/dv-044.png "Query the status of Database Vault")
+    ![DB Vault](./images/dv-044.png "Attempt drop table")
 
     **NOTE:** This command will be blocked by any and all users attempting to perform the `DROP TABLE` command. 
 
@@ -625,9 +628,26 @@ Now, the database is configured to separate the container-based DBAs from the ap
 
     ![DB Vault](./images/dv-018c.png "Status of OPS control")
 
-## Task 9: Disabling Database Vault
+## Task 9: Clean-up and Disable Database Vault
 
 Oracle Database Vault can be disabled once you have completed the lab. If this is a database in your environment, you do not need to disable Oracle Database Vault to complete quarterly patching or upgrades. Please see the [Oracle Database Vault Adminstrator's Guide 23ai](https://docs.oracle.com/en/database/oracle/oracle-database/23/dvadm/dba-operations-in-an-oracle-database-vault-environment.html) for more information on DBA operations in a Database Vault environment. 
+
+1. You can drop the Database Vault realm and allow any user, with the approprite system privilege or object privileges, to query the `EMPLOYEESEARCH_PROD` objects again.
+
+    ````
+    <copy>./dv_drop_realm.sh</copy>
+    ````
+
+    ![DB Vault](./images/dv-007b.png "Drop the Realm")
+
+2. Next, you can delete the **Command Rule**, **Rule Set**, and **Rule** from Database Vault.  This will allow `EMPLOYEESEARCH_PROD` to authenticate from anywhere. 
+
+    ````
+    <copy>./dv_del_trusted_path.sh</copy>
+    ````
+
+    ![DB Vault](./images/dv-026.png "Delete the Trusted Path")
+
 
 1. Disable the pluggable database **pdb1**
 
