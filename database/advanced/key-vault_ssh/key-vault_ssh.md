@@ -1,9 +1,9 @@
-# Oracle Key Vault (OKV) - SSH scenario
+# Oracle Key Vault (OKV) - SSH Key Management
 
 ## Introduction
 This workshop introduces the advanced features and functionality of Oracle Key Vault (OKV). It gives the user an opportunity to learn how to configure this appliance to manage SSH keys.
 
-*Estimated Lab Time:* 35 minutes
+*Estimated Lab Time:* 30 minutes
 
 *Version tested in this lab:* Oracle OKV 21.8 and DBEE 23.4
 
@@ -26,10 +26,9 @@ This lab assumes you have:
 | Step No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
 | 1| (Mandatory) Prerequisites | 5 minutes||
-|2a| Set Remote Server Access Controls with OKV | 10 minutes||
-|2b| Set Remote Client Access Controls with OKV | 10 minutes||
-|2c| SSH Key Management with OKV | 5 minutes||
-| 3| Reset the OKV Lab Config | <5 minutes||
+| 2| Set Remote Server Access Controls with OKV | 10 minutes||
+| 3| Set Remote Client Access Controls with OKV | 10 minutes||
+| 4| SSH Key Management with OKV | 5 minutes||
 
 ## Task 1: (Mandatory) Prerequisites
 
@@ -37,11 +36,17 @@ This lab assumes you have:
 
     - Click on each NoVNC Remote Desktop link available in the Labs details to open a web browser tabs for each of them
 
-        ![Key Vault](./images/okv_ssh-001.png "SSH Server - NoVNC Remote Desktop")
+        - **SSH Server** remote desktop (here *`DBSEC-LAB`* with Private IP *`10.0.0.150`*)
 
-        ![Key Vault](./images/okv_ssh-002.png "SSH Client - NoVNC Remote Desktop")
+            ![Key Vault](./images/okv_ssh-001.png "SSH Server - NoVNC Remote Desktop")
 
-    - On the **SSH Server** remote desktop (here *`DBSEC-LAB`* with private IP *`10.0.0.150`*). This tab will be the main one for the duration of the lab
+            **Note**: This tab will be **the main one** for the duration of the lab
+
+        - **SSH Client** remote desktop (here *`DB23AI`* with Private IP *`10.0.0.155`*)
+
+            ![Key Vault](./images/okv_ssh-002.png "SSH Server - NoVNC Remote Desktop")
+         
+    - On the **SSH Server** remote desktop
 
         - Open a Terminal session as OS user *opc*
 
@@ -63,6 +68,10 @@ This lab assumes you have:
 
             ![Key Vault](./images/okv_ssh-003.png "SSH Server VM access to SSH Client VM")
 
+            **Note**:
+            - Enter *`Yes`* to continue
+            - You must be successfully connected to db23ai VM as opc!
+
         - If so, please close the SSH session
 
             ````
@@ -71,7 +80,7 @@ This lab assumes you have:
             </copy>
             ````
 
-    - On the **SSH Client** remote desktop (here *`DB23AI`* with private IP *`10.0.0.155`*)
+    - On the **SSH Client** remote desktop
 
         - Open a Terminal session as OS user *opc*
 
@@ -92,6 +101,10 @@ This lab assumes you have:
             ````
 
             ![Key Vault](./images/okv_ssh-004.png "SSH Client VM access to SSH Server VM")
+
+            **Note**:
+            - Enter *`Yes`* to continue
+            - You must be successfully connected to dbsec-lab VM as opc!
 
         - If so, please close the SSH session
 
@@ -117,7 +130,7 @@ This lab assumes you have:
         </copy>
         ````
 
-        ![Key Vault](./images/okv_ssh-100.png "OKV - Login")
+        ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
 
         **Note**:
         - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
@@ -132,14 +145,14 @@ This lab assumes you have:
 
     - Set your new password
     
-        ![Key Vault](./images/okv_ssh-101.png "OKV - Login")
+        ![Key Vault](./images/okv_ssh-201.png "OKV - Login")
 
     - Click [**Save**]
 
     - Logout
 
 
-## Task 2a: Set Remote Server Access Controls with OKV
+## Task 2: Set Remote Server Access Controls with OKV
 In this lab, we will introduce remote server access controls by centrally managing users public keys
 
 1. Go back on the **OKV Web Console** and logon as KVRESTADMIN with your new password
@@ -150,79 +163,113 @@ In this lab, we will introduce remote server access controls by centrally managi
     </copy>
     ````
 
-    ![Key Vault](./images/okv_ssh-100.png "OKV - Login")
+    ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
 
 2. Create an SSH Server endpoint dbseclab as KVRESTADMIN
 
-    - Click on "Endpoint" tab
+    - Click on **Endpoints** tab
 
         ![Key Vault](./images/okv_ssh-010.png "OKV Console Endpoint")
 
-    - Click Add
+    - Click [**Add**]
 
         ![Key Vault](./images/okv_ssh-011.png "Add Endpoint")
 
-    - Fill it out: "dbseclab" / "SSH Server" / Hostname : "10.0.0.150" / "Linux"
+    - Fill it out as following:
+    
+        - Endpoint Name: *`dbseclab`*
+        - Type: *`SSH Server`*
+        - SSH Server Hostname: *`10.0.0.150`*
+        - Platform: *`Linux`*
 
-        ![Key Vault](./images/okv_ssh-012.png "Add Endpoint - Form")
+            ![Key Vault](./images/okv_ssh-012.png "Add Endpoint - Form")
 
-    - Click Register
+    - Click [**Register**]
 
 3. Create an SSH Server wallet **`opc_at_dbseclab`**
 
-    - Click on "Key & Wallets" tab
+    - Click on **Key & Wallets** tab
 
         ![Key Vault](./images/okv_ssh-013.png "Key & Wallets tab")
 
-    - Click Create
+    - Click [**Create**]
 
-    - Fill it out: `opc_at_dbseclab` / select `SSH Server` / Host user: `opc`
+        ![Key Vault](./images/okv_ssh-014.png "Create Wallet")
 
-        ![Key Vault](./images/okv_ssh-014.png "Key & Wallets - Form")
+    - Fill it out as following
+    
+        - Name: *`opc_at_dbseclab`*
+        - Description: *`SSH Server wallet holding public keys of all SSH users who log in to "dbsec-lab" VM as "opc"`*
+        - Wallet Type: select *`SSH Server`*
+        - SSH Server Host user: *`opc`*
 
-    - Click Save
+            ![Key Vault](./images/okv_ssh-015.png "Key & Wallets - Form")
 
-    - Click on the "Edit" pencil icon to the right
+    - Click [**Save**]
 
-        ![Key Vault](./images/okv_ssh-014.png "Key & Wallets - Edit")
+    - Click on the **"Edit" pencil icon** to the right
 
-    - Click Add next to Wallet Access Settings
+        ![Key Vault](./images/okv_ssh-016.png "Key & Wallets - Edit")
 
-        ![Key Vault](./images/okv_ssh-015.png "Add Wallet")
+    - Click [**Add**] next to **Wallet Access Settings**
 
-    - Select Endpoints from the drop-down menu
+        ![Key Vault](./images/okv_ssh-017.png "Add Wallet")
 
-        ![Key Vault](./images/okv_ssh-016.png "Add Wallet")
+    - Select *`Endpoints`* from the drop-down menu
 
-    - select the `dbseclab` endpoint, and under **Select Access Level**, click the `Read Only` and `Manage Wallet` radio buttons
+        ![Key Vault](./images/okv_ssh-018.png "Select Endpoints")
 
-        ![Key Vault](./images/okv_ssh-012.png "Wallet - Form")
+    - Tick the *`DBSECLAB`* endpoint checkbox, and under **Select Access Level**, click the *`Read Only`* and *`Manage Wallet`* radio buttons
 
-    - Scroll up and click “Save”
+        ![Key Vault](./images/okv_ssh-019.png "Access to Wallet - Form")
 
-    - Click Endpoint tab
+    - Click [**Save**]
 
 4. Download the OKV Client binaries
 
-    - Copy the Enrollment Token of the "dbseclab" endpoint (here: 6IFiWts18puYDnJH)
-    
-    - Click on the user name "KVRESTADMIN" in the top right corner and select "Logout" from the drop-down menu
+    - Click **Endpoints** tab
 
-    - Back on the Login page, click on "Endpoint Enrollment and Software Download" link
+    - Copy the Enrollment Token of the **dbseclab** endpoint (here: eqczhRuFt5JNyqeU)
     
-    - On this page, paste the enrollment token into the text field
+        ![Key Vault](./images/okv_ssh-020.png "Copy Enrollment Token")
+
+    - Click on the user name **KVRESTADMIN** in the top right corner and select *Logout* from the drop-down menu
+
+        ![Key Vault](./images/okv_ssh-021.png "Logout")
+
+    - Back on the Login page, click on **Endpoint Enrollment and Software Download** link
     
-    - Click on the “Submit Token” button
+        ![Key Vault](./images/okv_ssh-022.png "Software Download")
+
+    - On this page, **paste the enrollment token** into the text field
     
-    - If the token is valid, the other text fields are populated with the information that was entered earlier when the endpoint was created
+        ![Key Vault](./images/okv_ssh-023.png "Paste Enrollment Token")
+
+    - Click [**Submit Token**], then click [**Enroll**]
     
-    - Then click “Enroll”
+        ![Key Vault](./images/okv_ssh-024.png "Logout")
+
+        **Note**: If the token is valid, the other text fields are populated with the information that was entered earlier when the endpoint was created
     
-    - Download the okvclient.jar file into **/tmp** on DBSECLAB VM
+    - Download the **okvclient.jar** file **into /tmp on DBSECLAB VM**
+
+        - Open the Downloads page from your web browser by clicking on the **Download icon** and select the **Open in the folder icon** for the okvclient.jar file
+
+            ![Key Vault](./images/okv_ssh-025.png "Show download folder")
+
+        - Right click on the jar file and select "Move to..." 
+
+            ![Key Vault](./images/okv_ssh-026.png "Move the file")
+
+        - Browse to *`/tmp`* and click [**Select**]
+
+            ![Key Vault](./images/okv_ssh-027.png "Move the file to tmp")
+
+        - Close the file window
 
 5. Go back to **your terminal session on SSH Server** (DBSECLAB VM) as opc to configure the OKV binaries
 
-    - Create okv repo
+    - Create the OKV repo (press "enter" for AUTO-LOGIN)
 
         ````
         <copy>
@@ -232,6 +279,12 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
 
+        ![Key Vault](./images/okv_ssh-028.png "Create OKV repo")
+
+        **Note**:
+        - The directory /opt/okv created will store the OKV binaries
+        - The jar file is deleted after the successfull installation
+
     - Edit okvsshendpoint.conf
     
         ````
@@ -240,7 +293,7 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
 
-    - Uncomment and change these 2 lines [user1] as following:
+    - Uncomment and change these 2 lines [*`user1`*] as following:
 
         ````
         <copy>
@@ -248,6 +301,8 @@ In this lab, we will introduce remote server access controls by centrally managi
         ssh_server_wallet=opc_at_dbseclab
         </copy>
         ````
+
+        ![Key Vault](./images/okv_ssh-029.png "Edit okvsshendpoint.conf")
 
     - Edit sshd_config
     
@@ -266,6 +321,8 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
 
+        ![Key Vault](./images/okv_ssh-030.png "Edit sshed_config")
+
     - Restart sshd service
     
         ````
@@ -273,6 +330,8 @@ In this lab, we will introduce remote server access controls by centrally managi
         sudo systemctl restart sshd
         </copy>
         ````
+
+        ![Key Vault](./images/okv_ssh-031.png "Restart sshd service")
 
     - Check the sshd service for keyscommand
     
@@ -282,9 +341,11 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
 
+        ![Key Vault](./images/okv_ssh-032.png "Check the sshd service for keyscommand")
+
 6. Now, let's register your public key into OKV
 
-    - Extract your public key from the `authorized_keys` file
+    - **Extract your public key** from the `authorized_keys` file
 
         ````
         <copy>
@@ -293,7 +354,9 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
         
-    - Convert Client's existing public key from RSA to PKCS8 format
+        ![Key Vault](./images/okv_ssh-033.png "Extract your public key")
+
+    - **Convert Client's existing public key** from RSA to PKCS8 format
 
         ````
         <copy>
@@ -303,7 +366,9 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
 
-    - Upload your public key (in PKCS8 format) to OKV
+        ![Key Vault](./images/okv_ssh-034.png "Convert public key to PKCS8 format")
+
+    - **Upload your public key** (in PKCS8 format) to OKV
 
         ````
         <copy>
@@ -311,7 +376,9 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
 
-    - Set SELinux to `Permissive` if it is set to `Enforcing`
+        ![Key Vault](./images/okv_ssh-035.png "Upload public key to OKV")
+
+    - **Set SELinux to `Permissive`** if it is set to `Enforcing`
 
         ````
         <copy>
@@ -321,7 +388,9 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
 
-    - Make this change permanent
+        ![Key Vault](./images/okv_ssh-036.png "Set SELinux to Permissive")
+
+    - Make this change **permanent**
 
         ````
         <copy>
@@ -329,33 +398,53 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
 
+        ![Key Vault](./images/okv_ssh-037.png "Make the change permanent")
+
 7. Go back on the **OKV Web Console** to change the Wallet Access mode to Read Only
 
-    - Open Key and Wallets tab
+    - Log on to **OKV Web Console** as KVRESTADMIN
 
-    - Click on the wallet `opc_at_dbseclab` to confirm that your public key is there
+        ````
+        <copy>
+        KVRESTADMIN
+        </copy>
+        ````
 
-    - Click on the Edit pencil next to Access Settings
+        ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
 
-    - Under Wallet Access Settings, click on the Edit pencil
+    - Open **Key and Wallets** tab
 
-    - Deselect the Manage Wallet radio button, and click Save
+    - Click on the wallet *`opc_at_dbseclab`* to confirm that your public key is there
+
+    - Click on the **"Edit" pencil** next to Access Settings
+
+        ![Key Vault](./images/okv_ssh-038.png "Edit Access settings")
+
+    - Under **Wallet Access Settings**, click on the **"Edit" pencil**
+
+        ![Key Vault](./images/okv_ssh-039.png "Edit Wallet Access settings")
+
+    - Deselect the **Manage Wallet** radio button, and click [**Save**]
+
+        ![Key Vault](./images/okv_ssh-040.png "Deselect the Manage Wallet privilege")
 
     - From now on, the dbseclab endpoint has only Read Only privileges on the SSH Server wallet `opc_at_dbseclab`
 
 8. Go back to **your terminal session on SSH Server** (DBSECLAB VM) as opc to remove your SSH key pairs from the VM
 
-    - Move the old authorized_keys file as well as all SSH keys into a backup directory
+    - Move the old authorized_keys file as well as all **SSH keys into a backup directory**
 
         ````
         <copy>
         sudo mkdir -pv ~/.ssh/.backup
-        sudo mv -v ~/.ssh/authorized_keys ~/.ssh/backup
-        sudo mv -v ~/.ssh/id_* ~/.ssh/backup
+        sudo mv -v ~/.ssh/authorized_keys ~/.ssh/.backup
+        sudo mv -v ~/.ssh/id_* ~/.ssh/.backup
         </copy>
         ````
 
-    - Double-check that SSH key pair are no longer available
+        ![Key Vault](./images/okv_ssh-041.png "Backup SSH keys")
+
+    - Double-check that **SSH key pair are no longer available**
 
         ````
         <copy>
@@ -363,28 +452,39 @@ In this lab, we will introduce remote server access controls by centrally managi
         </copy>
         ````
 
+        ![Key Vault](./images/okv_ssh-042.png "Check the SSH key are no longer accessible")
+
+<!--
 9. Go back on the **OKV Web Console** to remove the public key from the SSH Server Wallet
 
-    - Navigate to Keys & Wallets
+    - Open **Keys & Wallets** tab
 
-    - Click on Wallets
+    - Click on the SSH Server wallet’s name *`opc_at_dbseclab`*
 
-    - Click on the SSH Server wallet’s name `opc_at_dbseclab`
-    
+        ![Key Vault](./images/okv_ssh-043.png "Check the Wallet")
+
         **Note**: The Wallet Contents appears
 
-    - Click on the Edit pencil next to Wallet Contents
+    - Click on the **"Edit" pencil** next to Wallet Contents
+
+        ![Key Vault](./images/okv_ssh-044.png "Edit the Wallet")
 
     - Scroll down to see the Wallet Contents
 
+        ![Key Vault](./images/okv_ssh-045.png "See the Wallet content")
+
         **Note**: In this example, now we have only one public keys in the SSH Server wallet: a key created IN OKV by DBSECLAB
 
-    - Click the checkbox of the public key that was created IN OKV by DBSECLAB
+    - Click the checkbox of the public key that was **created in OKV by DBSECLAB**
+    
+        ![Key Vault](./images/okv_ssh-046.png "Edit the Wallet")
 
-    - Then click on Remove Objects to remove the public key from the SSH Server Wallet
+    - Then **select the public key** created by DBSECLAB and click on **Remove Objects** to remove the public key from the SSH Server Wallet
 
+        ![Key Vault](./images/okv_ssh-047.png "Remove the public key from the SSH Server Wallet")
+-->
 
-## Task 2b: Set Remote Server Access Controls with OKV
+## Task 3: Set Remote Client Access Controls with OKV
 In this second part, we will manage users' private keys in OKV making those private keys non-extractable
 
 1. Go back on the **OKV Web Console** and logon as KVRESTADMIN with your new password
@@ -393,90 +493,147 @@ In this second part, we will manage users' private keys in OKV making those priv
     <copy>KVRESTADMIN</copy>
     ````
 
-    ![Key Vault](./images/okv_ssh-100.png "OKV - Login")
+    ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
 
 
 2. Create a Wallet that will store an SSH key pair for you
 
-    - Click on Keys & Wallets tab
+    - Click on **Keys & Wallets** tab; then click [**Create**]
 
-    - Click Create
+        ![Key Vault](./images/okv_ssh-048.png "Create Wallet")
 
-    - Fill it out as following: *`MY_SSH_KEYS`* / "General"
+    - Fill it out as following:
+    
+        - Name: *`MY_SSH_KEYS`*
+        - Descriptio: *Contains my non-extractable private, and public keys to log in to remote machines*
+        - Wallet Type: select *General*
 
-    - Click Save
+        ![Key Vault](./images/okv_ssh-049.png "Create Wallet - Form")
+
+    - Click [**Save**]
 
 3. Create an endpoint for your workstation
 
-    - Click on Endpoints tab
+    - Click on **Endpoints** tab and click [**Add**]
 
-    - Click Add
+        ![Key Vault](./images/okv_ssh-050.png "Create Endpoint")
 
-    - Fill it out as following: "DB23ai" / Other / "Linux"
+    - Fill it out as following:
+    
+        - Endpoint Name: *DB23AI*
+        - type: *Other*
+        - Platform: Select *Linux*
 
-    - Click Register
+        ![Key Vault](./images/okv_ssh-051.png "Create Endpoint - Form")
+
+    - Click [**Register**]
 
 4. Create an SSH Server wallet **`opc_at_dbseclab`**
 
-    - Click on "Keys & Wallets" tab
+    - Click on **Keys & Wallets** tab and click on the wallet name *`MY_SSH_KEYS`*
 
-    - Click on the wallet name *`MY_SSH_KEYS`*
+        ![Key Vault](./images/okv_ssh-052.png "Open the Wallet")
 
-    - Then click on the “Edit” pencil in “Access Settings”
+    - Then click on the **"Edit" pencil** in **Access Settings**
 
-    - In “Wallet Access Settings”, click on “Add”
+        ![Key Vault](./images/okv_ssh-053.png "Edit the Wallet")
 
-    - Select “Endpoints” from the drop-down menu
+    - In **Wallet Access Settings**, click [**Add**]
 
-    - Click the checkbox next to "DB23AI" endpoint and confirm only “Read Only” is selected
+        ![Key Vault](./images/okv_ssh-054.png "Add Wallet Access")
 
-    - Scroll up and click “Save”
+    - Select *Endpoints* from the drop-down menu
 
-    - Navigate to “Keys & Secrets” sub-menu on the left
+        ![Key Vault](./images/okv_ssh-055.png "Select Endpoints")
 
-    - Click on “Create”
+    - Click the checkbox next to *DB23AI* endpoint and confirm **only** *Read Only* is selected
 
-    - Click on “SSH Key Pair”
+        ![Key Vault](./images/okv_ssh-056.png "Set Endpoint")
 
-    - Enter the name "ME" into the first text field, and select the wallet that you just created
+    - Click [**Save**]
+
+    - Open **Keys & Secrets** sub-menu on the left and click [**Create**]
+
+        ![Key Vault](./images/okv_ssh-057.png "Create Keys")
+
+    - Click on **SSH Key Pair**
+
+        ![Key Vault](./images/okv_ssh-058.png "Create Keys")
+
+    - Fill it out as following:
+    
+        - SSH User: *ME*
+        - Wallet Membership:  click [Select Wallet] to select the Wallet that you just created (here *`MY_SSH_KEYS`*)
+
+        ![Key Vault](./images/okv_ssh-059.png "Create Keys - Form")
     
         **Note**:
         - Leave the other values as they are
         - The deactivation time is set to 2 years from now
     
-    - Click on “Create”
+    - Click [**Create**]
     
-    - Click on the Wallets submenu on the left
+    - Click on the **Wallets** submenu on the left, and click on *`MY_SSH_KEYS`*
     
-    - Click on *`MY_SSH_KEYS`*
+        ![Key Vault](./images/okv_ssh-060.png "Open the Wallet")
+
+    - Under **Wallet Contents**, click on the key-ID of the public key
     
-    - Under WALLET CONTENTS, move the horizontal slider to the right to expose the key-ID of the public key; click on the key-ID of the public key
+        ![Key Vault](./images/okv_ssh-061.png "Open the Keys")
+
+    - Click [**Add Wallet Membership**]
     
-    - Click on “Add Wallet Membership”
+        ![Key Vault](./images/okv_ssh-062.png "Add Wallet Membership")
+
+    - Click the check box of the SSH Server wallet *`opc_at_dbseclab`*
     
-    - Click the check box of the SSH Server wallet `opc_at_dbseclab`
-    
-    - Click on the “Add” button
+        ![Key Vault](./images/okv_ssh-063.png "Add the SSH Server Wallet")
+
+    - Click [**Add**]
 
 4. Download the OKV Client binaries
 
-    - Click on Endpoints tab
+    - Click on Endpoints tab, then copy the enrollment token (here: RpaVoiAwxcMbmDF5)
 
-    - Copy the enrollment token (here: 0KOqCvbI8nPqdtri)
+        ![Key Vault](./images/okv_ssh-064.png "Copy enrollment token")
 
-    - Then click on “KVRESTADMIN” in the top right corner and log out
+    - Click on the user name **KVRESTADMIN** in the top right corner and select *Logout* from the drop-down menu
 
-    - On the Login page, click on “Endpoint Enrollment and Software Download”
+        ![Key Vault](./images/okv_ssh-021.png "Logout")
 
-    - Copy the enrollment token into the Enrollment Token text field and click on “Submit Token”. If the token is valid, the remaining fields will be populated with information that was entered when the endpoint was created
+    - Back on the Login page, click on **Endpoint Enrollment and Software Download** link
+    
+        ![Key Vault](./images/okv_ssh-022.png "Software Download")
 
-    - Click on “Enroll”
+    - On this page, **paste the enrollment token** into the text field
+    
+        ![Key Vault](./images/okv_ssh-065.png "Paste Enrollment Token")
 
-    - Download the okvclient.jar file into /tmp **on DBSECLAB VM**
+    - Click [**Submit Token**], then click [**Enroll**]
+    
+        ![Key Vault](./images/okv_ssh-066.png "Logout")
+
+        **Note**: If the token is valid, the other text fields are populated with the information that was entered earlier when the endpoint was created
+    
+    - Download the **okvclient.jar** file **into /tmp on DBSECLAB VM**
+
+        - Open the Downloads page from your web browser by clicking on the **Download icon** and select the **Open in the folder icon** for the okvclient.jar file
+
+            ![Key Vault](./images/okv_ssh-025.png "Show download folder")
+
+        - Right click on the jar file and select "Move to..." 
+
+            ![Key Vault](./images/okv_ssh-026.png "Move the file")
+
+        - Browse to *`/tmp`* and click [**Select**]
+
+            ![Key Vault](./images/okv_ssh-027.png "Move the file to tmp")
+
+        - Close the file window
 
 5. Go back to **your terminal session on SSH Client** (DB23AI VM) as opc to configure the OKV binaries
 
-    - Move okvclient.jar file into /tmp from DBSECLAB VM to DB23AI VM
+    - Move okvclient.jar file **into /tmp from DBSECLAB VM to DB23AI VM**
 
         ````
         <copy>
@@ -485,17 +642,25 @@ In this second part, we will manage users' private keys in OKV making those priv
         </copy>
         ````
 
-    - Install OKV Client software
+        ![Key Vault](./images/okv_ssh-067.png "Move the file to tmp")
+
+        **Note**: The jar file must be downloaded successfully from DBSECLAB VM to DB23AI VM!
+
+    - Install OKV Client software (press "enter" for AUTO-LOGIN)
 
         ````
         <copy>
-        cd /tmp
-        sudo scp -i ~/.ssh/id_rsa opc@10.0.0.150:/tmp/okvclient.jar .
         cd
         export JAVA_HOME=/opt/oracle/product/23ai/dbhomeFree/jdk
-        $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d .
+        sudo $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d .
         </copy>
         ````
+
+        ![Key Vault](./images/okv_ssh-068.png "Install OKV binaries")
+
+        **Note**:
+        - The OKV client binaries will be store on the opc root directory
+        - The jar file is deleted after the successfull installation
 
     - Verify that DB23AI endpoint can see the SSH key pair that KVRESTADMIN created
 
@@ -505,7 +670,11 @@ In this second part, we will manage users' private keys in OKV making those priv
         </copy>
         ````
 
-    - Move the old authorized_keys file as well as all SSH keys into a backup directory
+        ![Key Vault](./images/okv_ssh-069.png "Check SSH Keys")
+
+6. Now, let's remove your SSH key pairs from the VM
+
+    - Move the old authorized_keys file as well as all **SSH keys into a backup directory**
 
         ````
         <copy>
@@ -515,7 +684,9 @@ In this second part, we will manage users' private keys in OKV making those priv
         </copy>
         ````
 
-    - Double-check that SSH key pair are no longer available
+        ![Key Vault](./images/okv_ssh-070.png "Backup SSH Keys")
+
+    - Double-check that **SSH key pair are no longer available**
 
         ````
         <copy>
@@ -523,9 +694,12 @@ In this second part, we will manage users' private keys in OKV making those priv
         </copy>
         ````
 
-## Task 2c: SSH Key Management with OKV
+        ![Key Vault](./images/okv_ssh-071.png "Check the SSH key are no longer accessible")
 
-1. Still on the SSH Client (DB23AI VM) terminal session, logon to **DBSECLAB VM** as opc **with OKV SSH Key** (enter *`NULL`* explicitly as label)
+
+## Task 4: SSH Key Management with OKV
+
+1. Still **on the SSH Client** (DB23AI VM) terminal session, log on to **DBSECLAB VM** as opc **with OKV SSH Key** (enter *`NULL`* **explicitly** as label)
 
     ````
     <copy>
@@ -533,6 +707,8 @@ In this second part, we will manage users' private keys in OKV making those priv
     ssh -I $OKV_HOME/lib/liborapkcs.so opc@10.0.0.150
     </copy>
     ````
+
+    ![Key Vault](./images/okv_ssh-100.png "Check log on to DBSECLAB from DB23AI with SSH OKV key")
 
 2. Then, close the SSH session on DBSECLAB VM to go back to DB23AI workstation
 
@@ -542,7 +718,9 @@ In this second part, we will manage users' private keys in OKV making those priv
     </copy>
     ````
 
-3. Add OKV SSH key (enter *`NULL`* explicitly as passphrase)
+    ![Key Vault](./images/okv_ssh-101.png "Close connection to DBSECLAB from DB23AI")
+
+3. Add OKV SSH key (enter *`NULL`* **explicitly** as passphrase)
 
     ````
     <copy>
@@ -552,6 +730,8 @@ In this second part, we will manage users' private keys in OKV making those priv
     </copy>
     ````
 
+    ![Key Vault](./images/okv_ssh-102.png "Load SSH OKV key")
+
 4. Now, logon to DBSECLAB VM as opc **without OKV SSH Key**
 
     ````
@@ -560,28 +740,78 @@ In this second part, we will manage users' private keys in OKV making those priv
     </copy>
     ````
 
+    ![Key Vault](./images/okv_ssh-103.png "Check log on to DBSECLAB from DB23AI without SSH OKV key")
+
     **Note**: As you can see now, you can connect to DBSECLAB VM directly through OKV, without any local SSH Key pair, neither local OKV SSH Key
 
 5. Then, close the SSH session on DBSECLAB VM to go back to DB23AI workstation
 
+    ````
+    <copy>
+    exit
+    </copy>
+    ````
+
+    ![Key Vault](./images/okv_ssh-101.png "Close connection to DBSECLAB from DB23AI")
+
 6. Go back to the **OKV Web Console** to play with the key registered
 
-    - Navigate to “Keys & Wallets”
+    - Open **Keys & Wallets** tab
 
-    - Click on “Wallets”
+    - Click on the SSH Server wallet’s name *`opc_at_dbseclab`*
 
-    - Click on the SSH Server wallet’s name "opc_at_dbseclab"; the “Wallet Contents” appears
+        ![Key Vault](./images/okv_ssh-104.png "Check the Wallet")
 
-    - Click on the “Edit” pencil next to “Wallet Contents”
+        **Note**: The Wallet Contents appears
+
+    - Click on the **"Edit" pencil** next to Wallet Contents
+
+        ![Key Vault](./images/okv_ssh-105.png "Edit the Wallet")
 
     - Scroll down to see the Wallet Contents
 
-        **Note**: In this example, now we have only one public keys in the SSH Server wallet: a key created IN OKV by KVRESTADMIN
+        ![Key Vault](./images/okv_ssh-106.png "See the Wallet content")
 
-    - Click the checkbox of the public key that was created IN OKV by DBSECLAB
+        **Note**: In this example, now we have two public keys in the SSH Server wallet: one key created in OKV by DBSECLAB and one key created by KVRESTADMIN
+
+    - Now, we can remove the public key created in OKV by DBSECLAB
     
-    - Then click on “Remove Objects” to remove the public key from the SSH Server Wallet
+        - Click the checkbox of the public key that was **created in OKV by DBSECLAB** and click on **Remove Objects** to remove the public key from the SSH Server Wallet
     
+            ![Key Vault](./images/okv_ssh-107.png "Edit the Wallet")
+
+            **Note**: In this example, now we have only one public keys in the SSH Server wallet
+
+            ![Key Vault](./images/okv_ssh-108.png "Remove the public key from the SSH Server Wallet")
+
+    - Go back to your terminal session on DB23AI VM to test the connection to DBSECLAB VM
+    
+        ````
+        <copy>
+        ssh opc@10.0.0.150
+        </copy>
+        ````
+        
+        ````
+        <copy>
+        exit
+        </copy>
+        ````
+
+        ![Key Vault](./images/okv_ssh-109.png "Check log on to DBSECLAB from DB23AI without SSH key")
+
+        **Note**: Public key **authentication is successful**!
+
+    - Now, let's remove the public key created in OKV by KVRESTADMIN
+    
+        - Go back to the OKV console, click the checkbox of the public key that was **created in OKV by KVRESTADMIN** and click on **Remove Objects** to remove the public key from the SSH Server Wallet
+    
+            ![Key Vault](./images/okv_ssh-110.png "Edit the Wallet")
+
+            **Note**: In this example, now haven't got any public key in the SSH Server wallet
+
+            ![Key Vault](./images/okv_ssh-111.png "Remove the public key from the SSH Server Wallet")
+
     - Go back to your terminal session on DB23AI VM to test the connection to DBSECLAB VM
     
         ````
@@ -590,13 +820,19 @@ In this second part, we will manage users' private keys in OKV making those priv
         </copy>
         ````
 
-        **Note**: Public key **authentication fails** because the remote server no longer finds the public key that matches DB23AI private key
+        ![Key Vault](./images/okv_ssh-112.png "Check log on to DBSECLAB from DB23AI without SSH key")
+
+        **Note**: Public key **authentication fails** because the remote server no longer finds the public key that matches DB23AI private key!
     
-    - Back to the OKV Web interface, click on “Add Objects” next to “Wallet Contents”
+    - Back to the OKV Web interface, click [**Add Objects**] next to **Wallet Contents**
     
-    - A list of private and public keys appears, check the checkbox that corresponds to Client public key that was created in OKV by KVRESTADMIN
+        ![Key Vault](./images/okv_ssh-113.png "Add the public key from the SSH Server Wallet")
+
+    - A list of private and public keys appears, check the checkbox that corresponds to Client public key that was created in OKV **by KVRESTADMIN**
     
-    - click on “Save”
+        ![Key Vault](./images/okv_ssh-114.png "Add the public key from the SSH Server Wallet")
+
+    - click [**Save**]
     
     - Go back to your terminal session on DB23AI VM to test the connection to DBSECLAB VM
 
@@ -605,13 +841,16 @@ In this second part, we will manage users' private keys in OKV making those priv
         ssh opc@10.0.0.150
         </copy>
         ````
+        
+        ````
+        <copy>
+        exit
+        </copy>
+        ````
+
+        ![Key Vault](./images/okv_ssh-115.png "Check log on to DBSECLAB from DB23AI without SSH key")
 
         **Note**: Public key **authentication is successful** again!
-
-
-## Task 3: Reset the OKV Lab Config
-
-1. ...
 
 You may now proceed to the next lab!
 
@@ -687,4 +926,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2024
