@@ -236,7 +236,7 @@ In the "Prepare your environment" step you created the user `DBA_DEBRA`. This us
                 
        **Note:** Again, because Database Vault enforces separation of duties, Debra cannot change passwords without the `DV_ACCTMGR` role. You can grant Debra, or another user, the role.
                 
-6. As you continue with the lab, you will use `SEC_ADMIN_OWEN` and `ACCTS_ADMIN_ACE` for all database vault actions. The duties of database administration (done by `DBA_DEBRA`) are now separate from the duties of user administration (`ACCTS_ADMIN_ACE`) and security administration (`SEC_ADMIN_OWEN`)
+6. As you continue with the lab, you will use `SEC_ADMIN_OWEN` and `ACCTS_ADMIN_ACE` for all database vault actions. The duties of database administration (done by `DBA_DEBRA`) are now separate from the duties of user administration (`ACCTS_ADMIN_ACE`) and Database Vault administration (`SEC_ADMIN_OWEN`)
 
    **Note:** If you would like `DBA_DEBRA` to have the ability to manage user accounts and user profiles, you can perform `GRANT DV_ACCTMGR TO DBA_DEBRA` and she will be able to perform account management tasks again. Oracle Database Vault gives you the flexibility to decide which users should use these highly-critical user management privileges and which ones should not. 
 
@@ -249,38 +249,25 @@ A Database Vault realm is a protected zone inside the database where database sc
 1. To demonstrate the effects of this realm, it is important to execute the same SQL query from these 3 users before and after creating the realm:
     - To proceed, **open SQL Worksheet in 3 web-browser pages** connected with a different user (`DBA_DEBRA`, `SH1` and `APPUSER`) as shown in Task 1 previously
    
-       **Note:**
-          -  Attention, only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc) or by using the "Incognito mode"!**
-          - As reminder, the password of these users is the same.
+       **Note:** only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc) or by using the "Incognito mode"!**
+   
+   - As reminder, the password of these users is the same.
     
-             ````
-             <copy>WElcome_123#</copy>
-             ````
+      ````
+      <copy>WElcome_123#</copy>
+      ````
 
-    - Copy/Paste and execute the following query
+   - Copy/Paste and execute the following query
 
       ````
-      <copy>
-         SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
-           FROM sh1.customers
-          WHERE rownum < 10;
+      <copy>SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
+      FROM sh1.customers
+      WHERE rownum < 10;
       </copy>
       ````
  
-       - as `DBA_DEBRA`
-
-          ![](./images/adb-dbv_012.png " ")
-
-       - as `SH1`
-
-          ![](./images/adb-dbv_013.png " ")
-
-       - as `APPUSER`
-
-          ![](./images/adb-dbv_014.png " ")
-
        **Note:**
-          - **These 3 users can see the `SH1.CUSTOMERS` table!**
+          - These 3 users can see the `SH1.CUSTOMERS` table:
           - `SH1` because `SH1` owns it
           -	`DBA_DEBRA` because it has the `DBA` role
           - `APPUSER` because it have the `READ ANY TABLE` system privilege
