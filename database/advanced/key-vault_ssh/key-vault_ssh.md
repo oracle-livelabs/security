@@ -19,7 +19,6 @@ This lab assumes you have:
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
-    - Lab: Initialize Environment
 
 ### Lab Timing (estimated)
 
@@ -29,6 +28,7 @@ This lab assumes you have:
 | 2| Set Remote Server Access Controls with OKV | 10 minutes||
 | 3| Set Remote Client Access Controls with OKV | 10 minutes||
 | 4| SSH Key Management with OKV | 5 minutes||
+| 5| Reset the OKV config | <5 minutes||
 
 ## Task 1: (Mandatory) Prerequisites
 
@@ -863,6 +863,75 @@ In this second part, we will manage users' private keys in OKV making those priv
         ![Key Vault](./images/okv_ssh-116.png "Check log on to DB23AI from DBSECLAB without SSH key")
 
         **Note**: Public key **authentication fails** and that's exactly what we want!
+
+## Task 5: Reset the OKV config
+
+1. Go back to your terminal session **on DBSECLAB VM**
+
+    - Restore the inital keys
+
+        ````
+        <copy>
+        cd /home/opc/.ssh
+        sudo mv .backup/* .
+        </copy>
+        ````
+
+        ![Key Vault](./images/okv_ssh-150.png "Restore keys")
+
+    - Uninstall OKV binaries
+
+        ````
+        <copy>
+        cd
+        sudo rm -Rf /opt/okv
+        </copy>
+        ````
+
+        ![Key Vault](./images/okv_ssh-151.png "Uninstall OKV binaries")
+
+2. Go back to your terminal session **on DB23AI VM**
+
+    - Restore the inital keys
+
+        ````
+        <copy>
+        cd /home/opc/.ssh
+        mv .backup/* .
+        </copy>
+        ````
+
+        ![Key Vault](./images/okv_ssh-152.png "Restore keys")
+
+    - Uninstall OKV client
+
+        ````
+        <copy>
+        cd
+        rm -Rf /home/opc/*
+        ll
+        </copy>
+        ````
+
+        ![Key Vault](./images/okv_ssh-153.png "Uninstall OKV client")
+
+3. Go back to the OKV console to remove all the config
+
+    - Open **Keys & Wallet** tab and click on the **Keys & Secrets** on the left sub-menu
+
+        ![Key Vault](./images/okv_ssh-154.png "Open Keys & Secrets menu")
+
+    - Select the **"Select All" checkbox** and click [**Delete**]
+
+        ![Key Vault](./images/okv_ssh-155.png "Delete all keys")
+
+    - Open the **Wallets** sub-menu on the left, select the **"Select All" checkbox** and click [**Delete**]
+
+        ![Key Vault](./images/okv_ssh-156.png "Delete all Wallets")
+
+    - Open the **Endpoints** tab, select the **"Select All" checkbox** and click [**Delete**]
+
+        ![Key Vault](./images/okv_ssh-157.png "Delete all Endpoints")
 
 You may now proceed to the next lab!
 
