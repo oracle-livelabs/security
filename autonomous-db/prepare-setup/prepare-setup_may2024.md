@@ -79,7 +79,8 @@ Watch the video below for a quick walk-through of the lab.
     - **Network Access:** `Allow secure access from everywhere`
     - **License Type:** `License Included`
 
-         ![](./images/adb-set_008.png "Screenshot of network and license choices")
+         ![](./images/adb-set_008.png "Screenshot of network choices")
+         ![](./images/adb-set_008b.png "Screenshot of license choices")
 
 10. Click [**Create Autonomous Database**]
 
@@ -98,13 +99,21 @@ Although you can connect to your Autonomous Database using local PC desktop tool
 
 2. You should be signed in automatically. If you are not, and you receive a screen like the following, enter your `ADMIN` username and password. 
 
+      ````
+      <copy>ADMIN</copy>
+      ````
+
+      ````
+      <copy>WElcome_123#</copy>
+      ````
+
     ![](./images/adb-set_012.png " ")
 
-3. Once you have logged into `Database Actions | SQL` you should see a worksheet similar to the following.
+3. Once you have logged into **Oracle Database Actions | SQL**, you should see a worksheet similar to the following.
 
     ![](./images/adb-set_012b.png " ")
 
-4. Next, copy and paste the following SQL queries into SQL Worksheet and press `Run Script` or `F5` 
+4. Next, copy and paste the following SQL queries into SQL Worksheet.  
 
     - To create the working schema and working users
 
@@ -157,17 +166,17 @@ Although you can connect to your Autonomous Database using local PC desktop tool
       </copy>
       ````
 
-    - Press [**F5**] or click the "Run Scripts" icon. You should paste all of 
+    - Press [**F5**] or click the "Run Scripts" icon.
 
          ![](./images/adb-set_015.png " ")
 
     - Check that there are no errors
 
-4. **Your environment is ready to use!** and you may now proceed to the next lab
+4. **Your environment is ready to use!** You may now proceed to the next lab. 
 
 ## Want to Learn More?
 
-Click [autonomous workflow](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-workflow.html#GUID-5780368D-6D40-475C-8DEB-DBA14BA675C3) for documentation on the typical workflow for using Autonomous Data Warehouse.
+Click [Oracle Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/) for documentation on the Oracle Autonomous Database. 
 
 ## Acknowledgements
 - **Author** - Richard C. Evans, Database Security PM

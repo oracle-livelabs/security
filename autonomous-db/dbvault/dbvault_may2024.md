@@ -67,7 +67,7 @@ You start by creating two DV user accounts:
 Database Vault tips: 
 - While DV owner can also become DV account manager, Oracle recommends maintaining separation of duties by using two different accounts
 - By default `ADMIN` has `DV_OWNER`, `DV_ADMIN`, `DV_ACCTMGR` and several other significant DV-related roles. Oracle recommends you do not use the `ADMIN` account except when absolutely necessary. You should grant the appropriate roles, such as `DV_ADMIN` or `DV_ACCTMGR` to named database users (e.g. jsmith, kjohnson) to minimize sharing of accounts.
-- You can store the passwords to the users you create during the initial configuration in a pasword vault, or other secure service, and require named accounts for day-to-day operations.
+- You can store the passwords to the users you create during the initial configuration in a pasword vault, or other secure service, and require named accounts (e.g. jsmith, kjohnson) for day-to-day operations.
 
 1. Open a SQL Worksheet on your Autonomous DB as the `ADMIN` database user
     
@@ -82,7 +82,7 @@ Database Vault tips:
    - You should be signed in automatically. If you are not, and you receive a screen like the following, enter your `ADMIN` username and password. 
 
     ````
-    <copy>ADMIN#</copy>
+    <copy>ADMIN</copy>
     ````
 
     ````
@@ -124,16 +124,13 @@ Database Vault tips:
        - Press [**F5**] or click the "Run Scripts" icon
        - Check that there are no errors
 
-       ![](./images/adb-dbv_003.png " ")
+       ![](./images/adb-dbv_003.png "Run the script to create DV-related users, grants, and DB Actions authorizationr")
 
-3. Configure the Database Vault user accounts
+3. Configure the Database Vault user accounts.  You should see **PL/SQL procedure successfully completed.**
 
       ````
       <copy>EXEC DBMS_CLOUD_MACADM.CONFIGURE_DATABASE_VAULT('sec_admin_owen', 'accts_admin_ace');</copy>
       ````
-
-   ![](./images/adb-dbv_004.png " ")
-
 
 4. Verify that Database Vault is configured but not yet enabled
 
@@ -145,25 +142,19 @@ Database Vault tips:
 
     **Note:** `DV_CONFIGURE_STATUS` must be **TRUE**
 
-5. Now, enable Database Vault
+5. Now, enable Database Vault. You should see **PL/SQL procedure successfully completed.**
 
       ````
       <copy>EXEC DBMS_CLOUD_MACADM.ENABLE_DATABASE_VAULT;</copy>
       ````
-
-      ````
-      PL/SQL procedure successfully completed.
-
-      Elapsed: 00:00:00.944
-      ````
     
 6. You must “restart” the database to complete the Database Vault enabling process
 
-    - Restart the database from the console by selecting "**Restart**" in "More Actions" drop-list as shown
+    - Restart the database from the console by selecting "**Restart**" in the "More Actions" drop-list and confirm the restart. 
 
        ![](./images/adb-dbv_007.png " ")
 
-    - Once restart completes, go back to the SQL Worksheet as the `ADMIN` user and verify DV is enabled
+    - Once restart completes, go back to the SQL Worksheet as the `ADMIN` user and verify DV is enabled.
 
          ````
          <copy>SELECT * FROM DBA_DV_STATUS;</copy>
@@ -181,11 +172,35 @@ In Oracle Autonomous Database, the `ADMIN` user has all privileges, including th
 
 In the "Prepare your environment" step you created the user `DBA_DEBRA`. This user has the `DBA` role on the Autonomous DB
 
-1. To demonstrate the effects of the DB Vault SoD on a DBA account, open the SQL Worksheet as the `DBA_DEBRA` user.
-    
+1. To demonstrate the effects of the DB Vault separtion of duties (SoD) on a DBA account, open the SQL Worksheet as the `DBA_DEBRA` user. 
+
+   - To do this, it is easiest to press the name `ADMIN` in the top right of the browser
+
+       ![](./images/adb-dbv_009a.png "Logout of ADMIN")
+
+   - You will see a screen similar to the following image. You must click **Advanced** to expand the **Path** in order to provide `DBA_DEBRA` as the path and the **Username**
+
+       ![](./images/adb-dbv_009b.png "Login as DBA_DEBRA")
+
+      Path:
+      ````
+      <copy>dba_debra</copy>
+      ````
+
+      Username:
+      ````
+      <copy>dba_debra</copy>
+      ````
+
+      Password:
       ````
       <copy>WElcome_123#</copy>
       ````
+
+   - You may need to choose the **SQL worksheet** option. 
+
+       ![](./images/adb-dbv_009c.png "Choose SQL Worksheet")
+
 
 2. View `DBA_DEBRA`'s roles
 
