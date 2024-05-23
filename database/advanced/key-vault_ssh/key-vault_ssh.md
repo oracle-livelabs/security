@@ -720,7 +720,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     ![Key Vault](./images/okv_ssh-101.png "Close connection to DBSECLAB from DB23AI")
 
-3. Add OKV SSH key (enter *`NULL`* **explicitly** as passphrase)
+3. **Add OKV SSH key** (enter *`NULL`* **explicitly** as passphrase)
 
     ````
     <copy>
@@ -732,7 +732,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     ![Key Vault](./images/okv_ssh-102.png "Load SSH OKV key")
 
-4. Now, logon to DBSECLAB VM as opc **without OKV SSH Key**
+4. Now, still from DB23AI VM, log on to **DBSECLAB VM** as opc **without OKV SSH Key**
 
     ````
     <copy>
@@ -784,7 +784,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
             ![Key Vault](./images/okv_ssh-108.png "Remove the public key from the SSH Server Wallet")
 
-    - Go back to your terminal session on DB23AI VM to test the connection to DBSECLAB VM
+    - Go back to your terminal session **on DB23AI VM** to test the connection to DBSECLAB VM
     
         ````
         <copy>
@@ -812,7 +812,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
             ![Key Vault](./images/okv_ssh-111.png "Remove the public key from the SSH Server Wallet")
 
-    - Go back to your terminal session on DB23AI VM to test the connection to DBSECLAB VM
+    - Go back to your terminal session **on DB23AI VM** to test the connection to DBSECLAB VM
     
         ````
         <copy>
@@ -834,7 +834,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - click [**Save**]
     
-    - Go back to your terminal session on DB23AI VM to test the connection to DBSECLAB VM
+    - Go back to your terminal session **on DB23AI VM** to test the connection to DBSECLAB VM
 
         ````
         <copy>
@@ -852,7 +852,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         **Note**: Public key **authentication is successful** again!
 
-    - Now, go back to your terminal session on DBSECLAB VM to test the connection to DB23AI VM
+    - Finally, go back to your terminal session **on DBSECLAB VM** to test the connection to DB23AI VM
     
         ````
         <copy>
