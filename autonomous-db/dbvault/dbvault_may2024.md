@@ -714,13 +714,11 @@ In this task, you will use simulation mode to identify the database users, hosts
       <copy>EXEC DBMS_CLOUD_MACADM.DISABLE_DATABASE_VAULT;</copy>
       ````
   
-3. You must restart the database to complete the Database Vault enabling process
-
-    - Restart the database from the console by selecting "**Restart**" in "More Actions" drop-list as shown here. 
+3. You must restart the database to complete the Database Vault enabling process. Restart the database from the console by selecting "**Restart**" in "More Actions" drop-list as shown here. 
 
        ![](./images/adb-dbv_007.png " ")
 
-    - Once restart completes, log in to SQL Worksheet as the `DBA_DEBRA` user and verify DV is **disabled**. 
+4. Once restart completes, log in to SQL Worksheet as the `DBA_DEBRA` user and verify DV is shows the `DV_ENABLE_STATUS` as `FALSE`. 
 
       ````
       <copy>SELECT * FROM DBA_DV_STATUS;</copy>
@@ -728,9 +726,7 @@ In this task, you will use simulation mode to identify the database users, hosts
 
        ![](./images/adb-dbv_062.png " ")
 
-    **Note:** `DV_ENABLE_STATUS` must be **FALSE**
-
-4. Now, drop the Database Vault owner and account manager users
+5. Now, drop the Database Vault owner and account manager users
 
       ````
       <copy>
@@ -743,7 +739,15 @@ In this task, you will use simulation mode to identify the database users, hosts
 
     **Note:** Because DB Vaut is disabled, SoD is also automatically disabled and you can now drop users with `DBA_DEBRA` user
 
-5. Now, Database Vault is correctly disabled!
+5. Database Vault is disabled and the accounts have been dropped. If you want to, you can drop the users you created for this lab. You will need to perform this action as a privileged user, such as `ADMIN`. 
+
+      ````
+      <copy>
+      DROP USER dba_debra cascade;
+      DROP USER sh1 cascade;
+      DROP USER appuser cascade;
+      </copy>
+      ````
 
 You may now proceed to the next lab!
 
@@ -790,7 +794,6 @@ The rule within a rule set is a PL/SQL expression that evaluates to true or fals
 
 A rule set is a collection of one or more rules that you can associate with a realm authorization, command rule, factor assignment, or secure application role. The rule set evaluates to true or false based on the evaluation of each rule it contains and the evaluation type (All True or Any True).
 
-
 - **Secure application roles**
 
 A Database Vault secure application role is a special Oracle Database role that can be enabled based on the evaluation of an Oracle Database Vault rule set.
@@ -819,6 +822,6 @@ Video:
   - *Oracle Database Vault on ADB - Quick walk through of the Livelabs* [](youtube:O_Hi2-vZ-zU)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Alan Williams, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Author** - Richard C. Evans, Database Security PM
+- **Contributors** - Hakim Loumi, Alan Williams
+- **Last Updated By/Date** - Richard C. Evans, Database Security PM - May 2024
