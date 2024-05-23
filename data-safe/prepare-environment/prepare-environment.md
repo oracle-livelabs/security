@@ -58,7 +58,7 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 
 Create a user group and add your Oracle Cloud account to the group.
 
-1. From the navigation menu, select **Identity & Security**, and then **Groups**.
+1. From the navigation menu, select **Identity & Security**, and then **Domains**. Click the name of your domain (for example, **Default**), and then on the left, click **Groups**.
 
     The **Groups** page in IAM is displayed.
 
@@ -166,7 +166,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - **Deployment type** - Leave **Serverless** selected.
     - **Always Free** - Select this option by moving the slider to the right.
     - **Database version** - If possible, select a database version; for example, **21c**.
-    - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
+    - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. In order for you to later register this database with Data Safe, the password must be between 14 and 30 characters long and must include at least one uppercase letter, one lowercase letter, one numeric character, and one special character. It cannot contain your username or the double quote (") character.
     - **Access Type** - Leave **Secure access from everywhere** selected.
 
 6. Click **Create Autonomous Database**. 
@@ -287,4 +287,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, April 25, 2024
+- **Last Updated By/Date** - Jody Glover, May 16, 2024
