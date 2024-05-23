@@ -387,7 +387,9 @@ A Database Vault realm is a protected zone inside the database where database sc
 
        - `APPUSER` must be the only user who has access to the table from now!**
 
-## Task 4: Create an Audit Policy to Capture Realm Violations
+## Task 4: Reduce mistakes by blocking destructive commands	
+
+## Task 5: Create an Audit Policy to Capture Realm Violations
 
 You may also want to capture an audit trail of unauthorized access attempts to your realm objects. Since the Autonomous Database includes Unified Auditing, you will create a policy to audit database vault activities
 
@@ -518,7 +520,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
 7. Now, you have no longer audit policy and DV realm!
 
-## Task 5: Simulation Mode
+## Task 6: Simulation Mode
 
 you will use simulation mode to find the factors to use for our "trusted path" connection to the `SH1.COUNTRIES` table. you will do that by completely disabling access to the table – but then put the realm policy into simulation mode. Since simulation mode won’t block the actual SQL commands – the SQL commands will work. However, if the SQL command should have been blocked by the new command rule – then it will create an entry in the simulation mode. Then you can review the simulation log to find if it captured the correct violations and the factors and associated rules.
 
@@ -636,7 +638,7 @@ you will use simulation mode to find the factors to use for our "trusted path" c
 
    ![](./images/adb-dbv_032.png " ")
 
-## Task 6: Disable Database Vault
+## Task 7: Disable Database Vault
 
 1. Log as the `SEC_ADMIN_OWEN` user and drop the existing DV realm
 
