@@ -852,6 +852,18 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         **Note**: Public key **authentication is successful** again!
 
+    - Now, go back to your terminal session on DBSECLAB VM to test the connection to DB23AI VM
+    
+        ````
+        <copy>
+        ssh opc@10.0.0.155
+        </copy>
+        ````
+
+        ![Key Vault](./images/okv_ssh-116.png "Check log on to DB23AI from DBSECLAB without SSH key")
+
+        **Note**: Public key **authentication fails** and that's exactly what we want!
+
 You may now proceed to the next lab!
 
 ## **Appendix**: About the Product
