@@ -466,23 +466,34 @@ You have completed this task. You can now see how you can use Oracle Database Va
 
 These are but a few of the scenarios you can implement with the flexability available in Oracle Database Vault. 
 
-
-
 ## Task 5: Create an Audit Policy to Capture Realm Violations
 
 You may also want to capture an audit trail of unauthorized access attempts to your realm objects. Since the Autonomous Database includes Unified Auditing, you will create a policy to audit database vault activities
 
-1. Open a SQL Worksheet as the `ACCTS_ADMIN_ACE` user and authenticate:
-    
+1. You will need to authenticate as `ACCTS_ADMIN_ACE` by logging out of a session in an existing window and authenticating as ACE. 
+
+   ![](./images/adb-dbv_051.png " ")
+
+   Path (this must be in lowercase):  
+      ````
+      <copy>accts_admin_ace</copy>
+      ````
+   Username: 
       ````
       <copy>ACCTS_ADMIN_ACE</copy>
       ````
-
+   Password:
       ````
       <copy>WElcome_123#</copy>
       ````
 
-2. Check that no audit trail log exists
+   ![](./images/adb-dbv_051a.png " ")
+
+   - Select **SQL** and press **Open**. 
+
+   ![](./images/adb-dbv_009c.png "Choose SQL Worksheet")
+
+2. Check that no audit trail log exists. The query should return zero rows or say **mo data found**. 
 
       ````
       <copy>
@@ -492,12 +503,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
        WHERE DV_ACTION_NAME='Realm Violation Audit' order by 3;
       </copy>
       ````
-
-   ![](./images/adb-dbv_021.png " ")
-
-    **Note:** The query should return no rows!
-
-3. Create an audit policy on the DV realm `PROTECT_SH1` created earlier in Step 2
+3. Create an audit policy on the DV realm `PROTECT_SH1` created earlier in the lab. Once created, the audit policy must be enabled. 
 
       ````
       <copy>
@@ -512,7 +518,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
    ![](./images/adb-dbv_022.png " ")
 
-4. Like in Step 2, let's see the effects of the audit
+4. As earlier in the lab, you will return the queries on `SH1.CUSTOMERS` and view the audit records. 
 
     - To proceed, **re-execute the same SQL query in 3 different SQL Worksheet opened in 3 web-browser window** connected with a different user (`DBA_DEBRA`, `SH1` and `APPUSER`)
    
@@ -524,15 +530,15 @@ You may also want to capture an audit trail of unauthorized access attempts to y
              <copy>WElcome_123#</copy>
              ````
 
-    - Copy/Paste and execute the following query
+    - Copy and paste then run the following query
 
-      ````
-      <copy>
-         SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
-           FROM sh1.customers
-          WHERE rownum < 10;
-      </copy>
-      ````
+         ````
+         <copy>
+            SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
+            FROM sh1.customers
+            WHERE rownum < 10;
+         </copy>
+         ````
  
        - as user `DBA_DEBRA`
 
@@ -561,53 +567,38 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
    ![](./images/adb-dbv_023.png " ")
 
-    **Note:** You should see the `DBA_DEBRA` and `SH1` failed attempts
-
-6. When you have completed this lab, sign in as the `SEC_ADMIN_OWEN` user to reset the audit settings
-
-      ````
-      <copy>
-      -- Show the current DV realm
-      SELECT name, description, enabled FROM dba_dv_realm WHERE id# >= 5000 order by 1;
-
-      -- Purge the DB Vault audit trail logs
-      DELETE FROM DVSYS.AUDIT_TRAIL$;
-
-      -- Purge the audit trail logs
-      BEGIN
-          DBMS_AUDIT_MGMT.CLEAN_AUDIT_TRAIL(
-             audit_trail_type         =>  DBMS_AUDIT_MGMT.AUDIT_TRAIL_UNIFIED,
-             use_last_arch_timestamp  =>  FALSE);
-      END;
-      /
-
-      -- Display the audit trail log
-      SELECT os_username, dbusername, event_timestamp, action_name, sql_text 
-        FROM unified_audit_trail
-       WHERE DV_ACTION_NAME='Realm Violation Audit' order by 3;
-       
-      -- Disable the audit policy
-      NOAUDIT POLICY dv_realm_sh1;
-
-      -- Drop the audit policy
-      DROP AUDIT POLICY dv_realm_sh1;
-      
-      </copy>
-      ````
-
-      ![](./images/adb-dbv_024.png " ")
-
-7. Now, you have no longer audit policy and DV realm!
+    **Note:** You should see the `DBA_DEBRA` and `SH1` failed attempts. If you review the values in the `SQL_TEXT` column, you will notice it is not the exact query you submited in your **SQL worksheet**. This is due to how **Database Actions** processes query. Look closer and you will see it embedded as a nested table. 
 
 ## Task 6: Simulation Mode
 
-you will use simulation mode to find the factors to use for our "trusted path" connection to the `SH1.COUNTRIES` table. you will do that by completely disabling access to the table – but then put the realm policy into simulation mode. Since simulation mode won’t block the actual SQL commands – the SQL commands will work. However, if the SQL command should have been blocked by the new command rule – then it will create an entry in the simulation mode. Then you can review the simulation log to find if it captured the correct violations and the factors and associated rules.
+You might be thinking, "I do not know enough about the application to feel comfortable implementing Database Vault realms or command rules." 
 
-1. Open a SQL Worksheet as the `SEC_ADMIN_OWEN` user. 
+To minimize the impact you might have on your application, You can use Oracle Database Vault simulation mode to simulate the enforcement of realms and command rules.
+
+In this task, you will use simulation mode to identify the database users, hosts, programs, and modules used to access objects in the `SH1` schema, particularly the `COUNTRIES` table. 
+
+1. You will once again log out of `ACCTS_ADMIN_ACE` and log in as `SEC_ADMIN_OWEN`. This is because Owen has the `DV_OWNER` role, allowing him to create and modify Database Vault policies. 
     
+   ![](./images/adb-dbv_060a.png " ")
+
+   Path (this must be in lowercase):  
+      ````
+      <copy>sec_admin_owen</copy>
+      ````
+   Username: 
+      ````
+      <copy>SEC_ADMIN_OWEN</copy>
+      ````
+   Password:
       ````
       <copy>WElcome_123#</copy>
       ````
+
+   ![](./images/adb-dbv_061a.png "Login as SEC_ADMIN_OWEN")
+
+   - Select **SQL** and press **Open**. 
+
+   ![](./images/adb-dbv_009c.png "Choose SQL Worksheet")
 
 2. First, query the simulation log to show that it has no current values
 
@@ -620,25 +611,21 @@ you will use simulation mode to find the factors to use for our "trusted path" c
 
    ![](./images/adb-dbv_025.png " ")
 
-3. Next, create a Database Vault command rule that will simulate blocking all `SELECT` commands from the `SH1.COUNTRIES` table
+3. Next, update the Database Vault realm from `ENABLED` to `SIMULATION` mode. This will allow any user, with the apprporiate system or object privileges. to query realm protected objects. Only violators will be logged in the simulation log. 
 
       ````
-      <copy>
-      BEGIN
-          DBMS_MACADM.CREATE_COMMAND_RULE(
-             command 	 => 'SELECT',
-             rule_set_name   => 'Disabled',
-             object_name       => 'COUNTRIES',
-             object_owner       => 'SH1',
-             enabled         => DBMS_MACUTL.G_SIMULATION);
+      <copy>BEGIN
+      DVSYS.DBMS_MACADM.UPDATE_REALM(
+         realm_name => 'PROTECT_SH1'
+         ,description => 'A mandatory realm to protect SH1 tables'
+         ,enabled => DBMS_MACUTL.G_SIMULATION
+         ,audit_options => DBMS_MACUTL.G_REALM_AUDIT_FAIL
+         ,realm_type => 1); 
       END;
-      /
-      </copy>
+      /</copy>
       ````
 
-   ![](./images/adb-dbv_026.png " ")
-
-4. Like in Step 2, let's see now the effects of the simulation
+4. Perform a query similar to task 2. 
 
     - To proceed, **re-execute the same SQL query in 3 different SQL Worksheet opened in 3 web-browser pages** connected with a different user (`DBA_DEBRA`, `SH1` and `APPUSER`)
    
@@ -650,27 +637,20 @@ you will use simulation mode to find the factors to use for our "trusted path" c
              <copy>WElcome_123#</copy>
              ````
 
-    - Copy/Paste and execute several time the following SELECT query to SH1.COUNTRIES table
+    - Copy and paste then run a query against `SH1.CUSTOMERS` using the three users:
+         - `APPUSER`
+         - `DBA_DEBRA`
+         - `SH1`
 
-      ````
-      <copy>
-         SELECT * FROM sh1.countries WHERE rownum < 20;
-      </copy>
-      ````
- 
-       - as user `DBA_DEBRA`
+         ````
+         <copy>
+            SELECT * FROM sh1.customers WHERE rownum < 20;
+         </copy>
+         ````
+   
+         ![](./images/adb-dbv_067.png " ")
 
-       ![](./images/adb-dbv_027.png " ")
-
-       - as user `SH1`
-
-       ![](./images/adb-dbv_028.png " ")
-
-       - as user `APPUSER`
-
-       ![](./images/adb-dbv_029.png " ")
-
-       - **All the users can access the** `SH1.CUSTOMERS` **table!**
+         - All three users can access the `SH1.CUSTOMERS` table becuase the realm is in simulation mode, not enforcement mode. 
       
 5. Now, go back to the SQL Worksheet as the `SEC_ADMIN_OWEN` user to see what new entries you have. Remember you created a command rule to simulate blocking user select!
 
@@ -681,13 +661,14 @@ you will use simulation mode to find the factors to use for our "trusted path" c
       </copy>
       ````
 
-   ![](./images/adb-dbv_030.png " ")
+   ![](./images/adb-dbv_068.png " ")
 
     **Note:**
-      - Although each user can see the results, the log shows all users who selected and would have been blocked by the rule
-      - It also shows where they connected from and what client they used to connect
+      - Only two out of three users who performed the query will show up in the violations log becuase the third user, `APPUSER`, is a realm authorized member. 
+         - `APPUSER` is not violating the realm by performing the query. 
+      - The violation log shows where they connected from and what client they used to connect
 
-6. Before moving to the next lab, you will clean out the simulation logs and remove the Command Rule
+6. Before moving to the next lab, you will clean out the simulation log table. As `SEC_ADMIN_OWEN`, run the following commands. 
 
       ````
       <copy>
@@ -698,28 +679,9 @@ you will use simulation mode to find the factors to use for our "trusted path" c
       SELECT count(*) FROM dba_dv_simulation_log;
       </copy>
       ````
-
-      ![](./images/adb-dbv_031.png " ")
-
-      ````
-      <copy>
-      -- Delete the Command Rule
-      BEGIN
-          DBMS_MACADM.DELETE_COMMAND_RULE(
-             command        => 'SELECT', 
-             object_owner   => 'SH1', 
-             object_name    => 'COUNTRIES',
-             scope          => DBMS_MACUTL.G_SCOPE_LOCAL);
-      END;
-      /
-      </copy>
-      ````
-
-   ![](./images/adb-dbv_032.png " ")
-
 ## Task 7: Disable Database Vault
 
-1. Log as the `SEC_ADMIN_OWEN` user and drop the existing DV realm
+1. As `SEC_ADMIN_OWEN`, drop the realm and command rule you created. 
 
       ````
       <copy>
@@ -729,29 +691,36 @@ you will use simulation mode to find the factors to use for our "trusted path" c
       END;
       /
 
-      -- Show the current DV realm
-      SELECT name, description, enabled FROM dba_dv_realm WHERE id# >= 5000 order by 1;
+      -- There should be no rows returned
+      SELECT name, description, enabled FROM dba_dv_realm WHERE oracle_supplied != 'YES';
 
+      -- Delete the command rule protecting DROP TABLE on SH1.COUNTRIES
+      BEGIN
+          DBMS_MACADM.DELETE_COMMAND_RULE(
+             command 	   => 'DROP TABLE',
+             object_name   => 'COUNTRIES',
+             object_owner  => 'SH1');
+      END;
+      /
+      
+      -- There should be no rows returned
+      SELECT * FROM dba_dv_command_rule WHERE oracle_supplied != 'YES';
       </copy>
       ````
 
-   ![](./images/adb-dbv_060.png " ")
-
-2. Now, disable DB Vault on the Autonomous Database
+2. Now, disable Oracle Database Vault on your Oracle Autonomous Database. This command should return **PL/SQL procedure successfully completed.**
 
       ````
       <copy>EXEC DBMS_CLOUD_MACADM.DISABLE_DATABASE_VAULT;</copy>
       ````
-
-   ![](./images/adb-dbv_061.png " ")
-    
+  
 3. You must restart the database to complete the Database Vault enabling process
 
-    - Restart the database from the console by selecting "**Restart**" in "More Actions" drop-list as shown
+    - Restart the database from the console by selecting "**Restart**" in "More Actions" drop-list as shown here. 
 
        ![](./images/adb-dbv_007.png " ")
 
-    - Once restart completes, log in to SQL Worksheet as the `DBA_DEBRA` user and verify DV is enabled
+    - Once restart completes, log in to SQL Worksheet as the `DBA_DEBRA` user and verify DV is **disabled**. 
 
       ````
       <copy>SELECT * FROM DBA_DV_STATUS;</copy>
