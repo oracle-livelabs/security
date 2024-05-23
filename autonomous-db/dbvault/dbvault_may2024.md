@@ -71,9 +71,9 @@ Database Vault tips:
 
 1. Open a SQL Worksheet on your Autonomous DB as the `ADMIN` database user
     
-    - In Oracle Cloud Infrastructure (OCI), select your `ADBDV` database created during the "Prepare Your Environment" step
+   - In Oracle Cloud Infrastructure (OCI), select your `ADBDV` database created during the "Prepare Your Environment" step
 
-       ![](./images/adb-dbv_002.png "Open ADBDV database")
+   ![](./images/adb-dbv_002.png "Open ADBDV database")
 
    - In your `ADBDV` database's details page, click the `Database Actions` then click `SQL` to navigate to the SQL Worksheet page. 
 
