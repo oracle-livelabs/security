@@ -389,6 +389,85 @@ A Database Vault realm is a protected zone inside the database where database sc
 
 ## Task 4: Reduce mistakes by blocking destructive commands	
 
+You can reduce the possibility of mistakes on production databases by disabling destructive commands. Examples of destrutive commands include, but are not limited to:
+
+- `DROP TABLE`
+- `DROP INDEX`
+- `ALTER TABLE`
+- `ALTER INDEX`
+- `TRUNCATE TABLE`
+
+Some of these commands may need to be used occasionally and, when necessary, the command rules can be disabled, switched to simulation mode, or a rule set can be created to allow very specific use-cases to enable the commands. 
+
+In this task, you will create a command rule to `Disable` the `DROP TABLE` command. This will allow `APPUSER` to perform every operations, using it's system privileges on the `SH1` schema, **except** for `DROP TABLE` commands
+
+
+1. Open a SQL Worksheet as the `SEC_ADMIN_OWEN` user. 
+    
+      ````
+      <copy>WElcome_123#</copy>
+      ````
+
+2. First, query the existing command rules. You will see several command rules created by default. These command rules help protect databaes and Database Vault related objects.  Review the command rules to understand the concept. 
+
+      ````
+      <copy>select * from dba_dv_command_rule;</copy>
+      ````
+
+   ![](./images/adb-dbv_041.png " ")
+
+3. Next, create a Database Vault command rule that will block `DROP TABLE` on the `SH1` schema. You should see **PL/SQL procedure successfully completed.**
+
+   **Note:** You will use a default rule set, *Disabled*, to disable the command for every database user. This is essentially like adding `WHERE 1=0` to a SQL query to return zero rows as 1 can never equal 0. 
+
+      ````
+      <copy>
+      BEGIN
+          DBMS_MACADM.CREATE_COMMAND_RULE(
+             command 	 => 'DROP TABLE',
+             rule_set_name   => 'Disabled',
+             object_name       => 'COUNTRIES',
+             object_owner       => 'SH1',
+             enabled         => DBMS_MACUTL.G_YES);
+      END;
+      /
+      </copy>
+      ````
+
+4. Now, query only the Database Vault command rules that are not in your database by default. 
+
+      ````
+      <copy>select * from dba_dv_command_rule where oracle_supplied != 'YES';</copy>
+      ````
+
+   ![](./images/adb-dbv_044.png " ")
+
+5. Using your other browser windows, attempt to drop the `SH1.COUNTRIES` table. 
+
+   - All three users shoul should recieve a **Command Rule violation** error message:
+
+      - `SH1`
+      - `DBA_DEBRA`
+      - `APPUSER`
+
+      ````
+      <copy>drop table sh1.countries;</copy>
+      ````
+      
+      ![](./images/adb-dbv_045a.png "Command Rule violation by APPUSER")
+
+You have completed this task. You can now see how you can use Oracle Database Vault to mitigate the mistakes made in a production database. You could disable destructive commands, like `DROP TABLE`, like you did in this lab or you could create a Database Vault rule set that contains different logic.  For example, changes could be allowed only if the attempt meets one, or more, of the following criteria: 
+
+   - Weekends
+   - Outside of business hours
+   - Database connection from a jump, bastion, or other trusted system. 
+   - Two-person integrity: two database users are both logged in at the same time in order for a change to be allowed
+   - A database role is granted and enabled
+
+These are but a few of the scenarios you can implement with the flexability available in Oracle Database Vault. 
+
+
+
 ## Task 5: Create an Audit Policy to Capture Realm Violations
 
 You may also want to capture an audit trail of unauthorized access attempts to your realm objects. Since the Autonomous Database includes Unified Auditing, you will create a policy to audit database vault activities
