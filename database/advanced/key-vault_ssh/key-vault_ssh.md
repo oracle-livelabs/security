@@ -3,9 +3,9 @@
 ## Introduction
 This workshop introduces the advanced features and functionality of Oracle Key Vault (OKV). It gives the user an opportunity to learn how to configure this appliance to manage SSH keys.
 
-*Estimated Lab Time:* 20 minutes
+*Estimated Lab Time:* 35 minutes
 
-*Version tested in this lab:* Oracle OKV 21.8 and DBEE 23.2
+*Version tested in this lab:* Oracle OKV 21.8 and DBEE 23.4
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
@@ -25,103 +25,85 @@ This lab assumes you have:
 
 | Step No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
-| 1| (Mandatory) Prerequisites | <10 minutes||
-| 2| SSH Key Management and Remote Server Access Controls with OKV | <10 minutes||
+| 1| (Mandatory) Prerequisites | 5 minutes||
+|2a| Set Remote Server Access Controls with OKV | 10 minutes||
+|2b| Set Remote Client Access Controls with OKV | 10 minutes||
+|2c| SSH Key Management with OKV | 5 minutes||
 | 3| Reset the OKV Lab Config | <5 minutes||
 
 ## Task 1: (Mandatory) Prerequisites
 
-**Before beginning this lab**, make sure you have performed steps 1 to 4 of the Transparent Data Encryption (TDE) Livelabs!
+1. **Before beginning this lab**, make sure you can connect to each VM in both directions with the SSH key paris already set within the VMs!
 
-If you didn't execute them yet, do it right now by following the instructions below:
+    - Click on each NoVNC Remote Desktop link available in the Labs details to open a web browser tabs for each of them
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+        ![Key Vault](./images/okv_ssh-001.png "SSH Server - NoVNC Remote Desktop")
 
-    ````
-    <copy>sudo su - oracle</copy>
-    ````
+        ![Key Vault](./images/okv_ssh-002.png "SSH Client - NoVNC Remote Desktop")
 
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+    - On the **SSH Server** remote desktop (here *`DBSEC-LAB`* with private IP *`10.0.0.150`*). This tab will be the main one for the duration of the lab
 
-2. Go to the TDE scripts directory
+        - Open a Terminal session as OS user *opc*
 
-    ````
-    <copy>cd $DBSEC_LABS/tde</copy>
-    ````
+            ````
+            <copy>
+            sudo su - opc
+            </copy>
+            ````
 
-3. Make sure you have a cold-backup of your database (**the DB will reboot!**)
+            **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
-    ````
-    <copy>./tde_backup_db.sh</copy>
-    ````
+        - Make sure you have access to SSH Client VM (here *`DB23AI`* with private IP *`10.0.0.155`*) as OPC
 
-    ![Key Vault](../advanced-security/tde/images/tde-001.png "Backup DB")
+            ````
+            <copy>
+            ssh -i ~/.ssh/id_rsa opc@10.0.0.155
+            </copy>
+            ````
 
-4. Create the Keystore directories on the Operating System
+            ![Key Vault](./images/okv_ssh-003.png "SSH Server VM access to SSH Client VM")
 
-    ````
-    <copy>./tde_create_os_directory.sh</copy>
-    ````
+        - If so, please close the SSH session
 
-    ![Key Vault](../advanced-security/tde/images/tde-002.png "Create the Keystore directories")
+            ````
+            <copy>
+            exit
+            </copy>
+            ````
 
-5. Use the database parameters to manage TDE (**the DB will reboot!**)
+    - On the **SSH Client** remote desktop (here *`DB23AI`* with private IP *`10.0.0.155`*)
 
-    ````
-    <copy>./tde_set_tde_parameters.sh</copy>
-    ````
+        - Open a Terminal session as OS user *opc*
 
-    ![Key Vault](../advanced-security/tde/images/tde-003.png "Set TDE parameters")
+            ````
+            <copy>
+            sudo su - opc
+            </copy>
+            ````
 
-6. Create the **Oracle Wallet** for the container database
+            **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
-    ````
-    <copy>./tde_create_wallet.sh</copy>
-    ````
+        - Make sure you have access to SSH Client VM (here *`DBSEC-LAB`* with private IP *`10.0.0.150`*) as OPC
 
-    ![Key Vault](../advanced-security/tde/images/tde-004.png "Create the software keystore")
+            ````
+            <copy>
+            ssh -i ~/.ssh/id_rsa opc@10.0.0.150
+            </copy>
+            ````
 
-7. Create the container database TDE Master Key (**MEK**)
+            ![Key Vault](./images/okv_ssh-004.png "SSH Client VM access to SSH Server VM")
 
-    ````
-    <copy>./tde_create_mek_cdb.sh</copy>
-    ````
+        - If so, please close the SSH session
 
-    ![Key Vault](../advanced-security/tde/images/tde-005.png "Create the container database TDE Master Key")
+            ````
+            <copy>
+            exit
+            </copy>
+            ````
 
-8. Create the pluggable database **pdb1** Master Key (MEK)
+    - Now, you can confirm that, with the SSH key pair preset, you can connect to the VMs with the command ssh
 
-    ````
-    <copy>./tde_create_mek_pdb.sh pdb1</copy>
-    ````
-
-    ![Key Vault](../advanced-security/tde/images/tde-006.png "Create the pluggable database TDE Master Key")
-
-9. Ceate the **Auto-login Oracle Wallet**
-
-    ````
-    <copy>./tde_create_autologin_wallet.sh</copy>
-    ````
-
-    ![Key Vault](../advanced-security/tde/images/tde-012.png "Create the Auto-login Oracle Wallet")
-
-10. You should now see all these file, including the **cwallet.sso** file
-
-    ````
-    <copy>./tde_view_wallet_on_os.sh</copy>
-    ````   
-
-    ![Key Vault](./images/okv-201.png "View the Oracle Wallet content on the OS")
-
-11. And the wallet in the database as to be set and available like this
-
-    ````
-    <copy>./tde_view_wallet_in_db.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-202.png "View the Oracle Wallet content on the database")
-
-12. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
+2. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
 
     - Open a web browser window to *`https://kv`* to access to the Key Vault Web Console
 
@@ -130,232 +112,506 @@ If you didn't execute them yet, do it right now by following the instructions be
     - Login to Key Vault Web Console as *`KVRESTADMIN`* (use the password randomly generated)
 
         ````
-        <copy>KVRESTADMIN</copy>
+        <copy>
+        KVRESTADMIN
+        </copy>
         ````
 
-        ![Key Vault](./images/okv-001.png "OKV - Login")
+        ![Key Vault](./images/okv_ssh-100.png "OKV - Login")
 
         **Note**:
         - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
         - This default password is available in the Labs details or by executing the following command line as *`oracle`* user:
 
             ````
-            <copy>echo $OKVUSR_PWD</copy>
+            <copy>
+            sudo - su oracle
+            echo $OKVUSR_PWD
+            </copy>
             ````
 
     - Set your new password
     
-        ![Key Vault](./images/okv-001b.png "OKV - Login")
+        ![Key Vault](./images/okv_ssh-101.png "OKV - Login")
 
     - Click [**Save**]
 
     - Logout
 
-13. Repeat this Step 12 for the user *`KVEPADMIN`*
 
-14. You will use the **OKVdeploy.tgz** file to deploy the utility to automate the processes
+## Task 2a: Set Remote Server Access Controls with OKV
+In this lab, we will introduce remote server access controls by centrally managing users public keys
 
-    - Go back to your terminal session on your **DBSec-Lab** VM as OS user *oracle*
+1. Go back on the **OKV Web Console** and logon as KVRESTADMIN with your new password
 
-    - Go to the OKV scripts directory
+    ````
+    <copy>
+    KVRESTADMIN
+    </copy>
+    ````
+
+    ![Key Vault](./images/okv_ssh-100.png "OKV - Login")
+
+2. Create an SSH Server endpoint dbseclab as KVRESTADMIN
+
+    - Click on "Endpoint" tab
+
+        ![Key Vault](./images/okv_ssh-010.png "OKV Console Endpoint")
+
+    - Click Add
+
+        ![Key Vault](./images/okv_ssh-011.png "Add Endpoint")
+
+    - Fill it out: "dbseclab" / "SSH Server" / Hostname : "10.0.0.150" / "Linux"
+
+        ![Key Vault](./images/okv_ssh-012.png "Add Endpoint - Form")
+
+    - Click Register
+
+3. Create an SSH Server wallet **`opc_at_dbseclab`**
+
+    - Click on "Key & Wallets" tab
+
+        ![Key Vault](./images/okv_ssh-013.png "Key & Wallets tab")
+
+    - Click Create
+
+    - Fill it out: `opc_at_dbseclab` / select `SSH Server` / Host user: `opc`
+
+        ![Key Vault](./images/okv_ssh-014.png "Key & Wallets - Form")
+
+    - Click Save
+
+    - Click on the "Edit" pencil icon to the right
+
+        ![Key Vault](./images/okv_ssh-014.png "Key & Wallets - Edit")
+
+    - Click Add next to Wallet Access Settings
+
+        ![Key Vault](./images/okv_ssh-015.png "Add Wallet")
+
+    - Select Endpoints from the drop-down menu
+
+        ![Key Vault](./images/okv_ssh-016.png "Add Wallet")
+
+    - select the `dbseclab` endpoint, and under **Select Access Level**, click the `Read Only` and `Manage Wallet` radio buttons
+
+        ![Key Vault](./images/okv_ssh-012.png "Wallet - Form")
+
+    - Scroll up and click “Save”
+
+    - Click Endpoint tab
+
+4. Download the OKV Client binaries
+
+    - Copy the Enrollment Token of the "dbseclab" endpoint (here: 6IFiWts18puYDnJH)
+    
+    - Click on the user name "KVRESTADMIN" in the top right corner and select "Logout" from the drop-down menu
+
+    - Back on the Login page, click on "Endpoint Enrollment and Software Download" link
+    
+    - On this page, paste the enrollment token into the text field
+    
+    - Click on the “Submit Token” button
+    
+    - If the token is valid, the other text fields are populated with the information that was entered earlier when the endpoint was created
+    
+    - Then click “Enroll”
+    
+    - Download the okvclient.jar file into **/tmp** on DBSECLAB VM
+
+5. Go back to **your terminal session on SSH Server** (DBSECLAB VM) as opc to configure the OKV binaries
+
+    - Create okv repo
 
         ````
-        <copy>cd $DBSEC_LABS/okv</copy>
+        <copy>
+        sudo mkdir -pvm700 /opt/okv
+        export JAVA_HOME=/opt/oracle/product/23ai/dbhomeFree/jdk
+        sudo $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d /opt/okv        
+        </copy>
         ````
 
-    - Unpack the binary (we have already downloaded the file for you into the DBSecLab VM)
-
+    - Edit okvsshendpoint.conf
+    
         ````
-        <copy>./okv_unpack_restservice.sh</copy>
-        ````
-
-        ![Key Vault](./images/okv-004.png "Unpack the Key Vault binary")
-
-    - Create OKV utility configuration (when prompted, please enter your new **KVEPADMIN** user password)
-
-        ````
-        <copy>./okv_crea_config_script.sh</copy>
+        <copy>
+        sudo vi /opt/okv/conf/okvsshendpoint.conf
+        </copy>
         ````
 
-        ![Key Vault](./images/okv-005a.png "Create the OKV config scripts")
-        ![Key Vault](./images/okv-005b.png "Create the OKV config scripts")
-        ![Key Vault](./images/okv-005c.png "Create the Endpoint admin user")
-
-        **Note**: This script:
-        - Looks at the current OKV config file **okvrestcli.ini**
-        - Downloads the latest version of the RESTful Service utility **okvrestcli.jar** from OKV server
-        - Creates the automated script *`okv-ep.sh`* to add the Endpoint and the Oracle Wallet, and to deploy the OKV software
-        - Sets also into the client wallet the user KVEPADMIN to add the endpoint
-
-    - Add your **cdb1** database on DBSec-Lab VM as Endpoint
+    - Uncomment and change these 2 lines [user1] as following:
 
         ````
-        <copy>./okv_add_endpoint.sh</copy>
+        <copy>
+        [ opc ]
+        ssh_server_wallet=opc_at_dbseclab
+        </copy>
         ````
 
-        ![Key Vault](./images/okv-006.png "Add Endpoint")
+    - Edit sshd_config
+    
+        ````
+        <copy>
+        sudo vi /etc/ssh/sshd_config
+        </copy>
+        ````
 
-        **Note**: If necessary, it can ask you to overwrite the library, in that case, accept by entering "**y**"
+    - Uncomment and change these 2 lines as following:
 
-        ![Key Vault](./images/okv-006b.png "Overwrite the okv library")
+        ````
+        <copy>
+        AuthorizedKeysCommand /opt/okv/bin/okv_ssh_ep_lookup_authorized_keys get_authorized_keys_for_user %u %f %k
+        AuthorizedKeysCommandUser root
+        </copy>
+        ````
 
-    - Before finishing, we have to change the Endpoint password
+    - Restart sshd service
+    
+        ````
+        <copy>
+        sudo systemctl restart sshd
+        </copy>
+        ````
 
-        - This is the password the OKV endpoint client software uses to communicate with the Key Vault Server
-        - Modify the default Wallet password "*`change-on-install`*" by the new one "*`Oracle123`*"
+    - Check the sshd service for keyscommand
+    
+        ````
+        <copy>
+        sudo sshd -T | grep keyscommand
+        </copy>
+        ````
 
-            ````
-            <copy>./okv_change_endpoint_pwd.sh</copy>
-            ````
+6. Now, let's register your public key into OKV
 
-            ````
-            <copy>change-on-install</copy>
-            ````
+    - Extract your public key from the `authorized_keys` file
 
-            ````
-            <copy>Oracle123</copy>
-            ````
+        ````
+        <copy>
+        cd
+        sudo grep "opc@db23ai" /home/opc/.ssh/authorized_keys > /home/opc/.ssh/id_rsa_ME.pub
+        </copy>
+        ````
+        
+    - Convert Client's existing public key from RSA to PKCS8 format
 
-            ![Key Vault](./images/okv-007.png "Change password")
+        ````
+        <copy>
+        sudo cat /home/opc/.ssh/id_rsa_ME.pub
+        sudo ssh-keygen -e -m PKCS8 -f /home/opc/.ssh/id_rsa_ME.pub > /home/opc/.ssh/id_pkcs8_ME.pub
+        sudo cat /home/opc/.ssh/id_pkcs8_ME.pub
+        </copy>
+        ````
 
-15. Go back to your Oracle Key Vault Console
+    - Upload your public key (in PKCS8 format) to OKV
 
-16. Login to Key Vault Web Console as *`KVRESTADMIN`*
+        ````
+        <copy>
+        sudo /opt/okv/bin/okvutil upload -l /home/opc/.ssh/id_pkcs8_ME.pub -t SSH_PUBLIC_KEY -U opc -g opc_at_dbseclab -L 2048
+        </copy>
+        ````
+
+    - Set SELinux to `Permissive` if it is set to `Enforcing`
+
+        ````
+        <copy>
+        sudo getenforce
+        sudo setenforce 0
+        sudo getenforce
+        </copy>
+        ````
+
+    - Make this change permanent
+
+        ````
+        <copy>
+        sudo sed -i 's|SELINUX=enforcing|SELINUX=permissive|' /etc/selinux/config
+        </copy>
+        ````
+
+7. Go back on the **OKV Web Console** to change the Wallet Access mode to Read Only
+
+    - Open Key and Wallets tab
+
+    - Click on the wallet `opc_at_dbseclab` to confirm that your public key is there
+
+    - Click on the Edit pencil next to Access Settings
+
+    - Under Wallet Access Settings, click on the Edit pencil
+
+    - Deselect the Manage Wallet radio button, and click Save
+
+    - From now on, the dbseclab endpoint has only Read Only privileges on the SSH Server wallet `opc_at_dbseclab`
+
+8. Go back to **your terminal session on SSH Server** (DBSECLAB VM) as opc to remove your SSH key pairs from the VM
+
+    - Move the old authorized_keys file as well as all SSH keys into a backup directory
+
+        ````
+        <copy>
+        sudo mkdir -pv ~/.ssh/.backup
+        sudo mv -v ~/.ssh/authorized_keys ~/.ssh/backup
+        sudo mv -v ~/.ssh/id_* ~/.ssh/backup
+        </copy>
+        ````
+
+    - Double-check that SSH key pair are no longer available
+
+        ````
+        <copy>
+        sudo tree -n ~/.ssh
+        </copy>
+        ````
+
+9. Go back on the **OKV Web Console** to remove the public key from the SSH Server Wallet
+
+    - Navigate to Keys & Wallets
+
+    - Click on Wallets
+
+    - Click on the SSH Server wallet’s name `opc_at_dbseclab`
+    
+        **Note**: The Wallet Contents appears
+
+    - Click on the Edit pencil next to Wallet Contents
+
+    - Scroll down to see the Wallet Contents
+
+        **Note**: In this example, now we have only one public keys in the SSH Server wallet: a key created IN OKV by DBSECLAB
+
+    - Click the checkbox of the public key that was created IN OKV by DBSECLAB
+
+    - Then click on Remove Objects to remove the public key from the SSH Server Wallet
+
+
+## Task 2b: Set Remote Server Access Controls with OKV
+In this second part, we will manage users' private keys in OKV making those private keys non-extractable
+
+1. Go back on the **OKV Web Console** and logon as KVRESTADMIN with your new password
 
     ````
     <copy>KVRESTADMIN</copy>
     ````
 
-    ![Key Vault](./images/okv-001.png "Key Vault - Login")
-
-17. Go to the **Endpoints** tab
-
-    ![Key Vault](./images/okv-002.png "Key Vault - Endpoint")
-
-18. You should see the Endpoint just added
-
-    ![Key Vault](./images/okv-008.png "Key Vault - Endpoint")
-
-19. Click on the Endpoint name (here *`CDB1_ON_DBSECLAB`*)
-
-20. In the **Default Wallet** section, confirm that the Wallet created in OKV is the default Wallet for this Endpoint
-
-    ![Key Vault](./images/okv-009.png "Default Wallet section")
-
-21. Your Endpoint is now added!
+    ![Key Vault](./images/okv_ssh-100.png "OKV - Login")
 
 
-## Task 2: SSH Key Management and Remote Server Access Controls
+2. Create a Wallet that will store an SSH key pair for you
 
-In this lab, we will introduce remote server access controls by centrally managing users public keys.  In the second part, we will manage users' private keys in OKV making those private keys non-extractable.
+    - Click on Keys & Wallets tab
 
-1. ...
+    - Click Create
+
+    - Fill it out as following: *`MY_SSH_KEYS`* / "General"
+
+    - Click Save
+
+3. Create an endpoint for your workstation
+
+    - Click on Endpoints tab
+
+    - Click Add
+
+    - Fill it out as following: "DB23ai" / Other / "Linux"
+
+    - Click Register
+
+4. Create an SSH Server wallet **`opc_at_dbseclab`**
+
+    - Click on "Keys & Wallets" tab
+
+    - Click on the wallet name *`MY_SSH_KEYS`*
+
+    - Then click on the “Edit” pencil in “Access Settings”
+
+    - In “Wallet Access Settings”, click on “Add”
+
+    - Select “Endpoints” from the drop-down menu
+
+    - Click the checkbox next to "DB23AI" endpoint and confirm only “Read Only” is selected
+
+    - Scroll up and click “Save”
+
+    - Navigate to “Keys & Secrets” sub-menu on the left
+
+    - Click on “Create”
+
+    - Click on “SSH Key Pair”
+
+    - Enter the name "ME" into the first text field, and select the wallet that you just created
+    
+        **Note**:
+        - Leave the other values as they are
+        - The deactivation time is set to 2 years from now
+    
+    - Click on “Create”
+    
+    - Click on the Wallets submenu on the left
+    
+    - Click on *`MY_SSH_KEYS`*
+    
+    - Under WALLET CONTENTS, move the horizontal slider to the right to expose the key-ID of the public key; click on the key-ID of the public key
+    
+    - Click on “Add Wallet Membership”
+    
+    - Click the check box of the SSH Server wallet `opc_at_dbseclab`
+    
+    - Click on the “Add” button
+
+4. Download the OKV Client binaries
+
+    - Click on Endpoints tab
+
+    - Copy the enrollment token (here: 0KOqCvbI8nPqdtri)
+
+    - Then click on “KVRESTADMIN” in the top right corner and log out
+
+    - On the Login page, click on “Endpoint Enrollment and Software Download”
+
+    - Copy the enrollment token into the Enrollment Token text field and click on “Submit Token”. If the token is valid, the remaining fields will be populated with information that was entered when the endpoint was created
+
+    - Click on “Enroll”
+
+    - Download the okvclient.jar file into /tmp **on DBSECLAB VM**
+
+5. Go back to **your terminal session on SSH Client** (DB23AI VM) as opc to configure the OKV binaries
+
+    - Move okvclient.jar file into /tmp from DBSECLAB VM to DB23AI VM
+
+        ````
+        <copy>
+        cd /tmp
+        sudo scp -i ~/.ssh/id_rsa opc@10.0.0.150:/tmp/okvclient.jar .
+        </copy>
+        ````
+
+    - Install OKV Client software
+
+        ````
+        <copy>
+        cd /tmp
+        sudo scp -i ~/.ssh/id_rsa opc@10.0.0.150:/tmp/okvclient.jar .
+        cd
+        export JAVA_HOME=/opt/oracle/product/23ai/dbhomeFree/jdk
+        $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d .
+        </copy>
+        ````
+
+    - Verify that DB23AI endpoint can see the SSH key pair that KVRESTADMIN created
+
+        ````
+        <copy>
+        ./bin/okvutil list -a
+        </copy>
+        ````
+
+    - Move the old authorized_keys file as well as all SSH keys into a backup directory
+
+        ````
+        <copy>
+        mkdir -pv /home/opc/.ssh/.backup
+        mv -v /home/opc/.ssh/authorized_keys /home/opc/.ssh/.backup
+        mv -v /home/opc/.ssh/id_* /home/opc/.ssh/.backup
+        </copy>
+        ````
+
+    - Double-check that SSH key pair are no longer available
+
+        ````
+        <copy>
+        tree -n /home/opc/.ssh
+        </copy>
+        ````
+
+## Task 2c: SSH Key Management with OKV
+
+1. Still on the SSH Client (DB23AI VM) terminal session, logon to **DBSECLAB VM** as opc **with OKV SSH Key** (enter *`NULL`* explicitly as label)
+
+    ````
+    <copy>
+    export OKV_HOME=/home/opc
+    ssh -I $OKV_HOME/lib/liborapkcs.so opc@10.0.0.150
+    </copy>
+    ````
+
+2. Then, close the SSH session on DBSECLAB VM to go back to DB23AI workstation
+
+    ````
+    <copy>
+    exit
+    </copy>
+    ````
+
+3. Add OKV SSH key (enter *`NULL`* explicitly as passphrase)
+
+    ````
+    <copy>
+    eval `ssh-agent -P "$OKV_HOME/lib/*"`
+    ssh-add -D
+    ssh-add -s $OKV_HOME/lib/liborapkcs.so -t 14400
+    </copy>
+    ````
+
+4. Now, logon to DBSECLAB VM as opc **without OKV SSH Key**
+
+    ````
+    <copy>
+    ssh opc@10.0.0.150
+    </copy>
+    ````
+
+    **Note**: As you can see now, you can connect to DBSECLAB VM directly through OKV, without any local SSH Key pair, neither local OKV SSH Key
+
+5. Then, close the SSH session on DBSECLAB VM to go back to DB23AI workstation
+
+6. Go back to the **OKV Web Console** to play with the key registered
+
+    - Navigate to “Keys & Wallets”
+
+    - Click on “Wallets”
+
+    - Click on the SSH Server wallet’s name "opc_at_dbseclab"; the “Wallet Contents” appears
+
+    - Click on the “Edit” pencil next to “Wallet Contents”
+
+    - Scroll down to see the Wallet Contents
+
+        **Note**: In this example, now we have only one public keys in the SSH Server wallet: a key created IN OKV by KVRESTADMIN
+
+    - Click the checkbox of the public key that was created IN OKV by DBSECLAB
+    
+    - Then click on “Remove Objects” to remove the public key from the SSH Server Wallet
+    
+    - Go back to your terminal session on DB23AI VM to test the connection to DBSECLAB VM
+    
+        ````
+        <copy>
+        ssh opc@10.0.0.150
+        </copy>
+        ````
+
+        **Note**: Public key **authentication fails** because the remote server no longer finds the public key that matches DB23AI private key
+    
+    - Back to the OKV Web interface, click on “Add Objects” next to “Wallet Contents”
+    
+    - A list of private and public keys appears, check the checkbox that corresponds to Client public key that was created in OKV by KVRESTADMIN
+    
+    - click on “Save”
+    
+    - Go back to your terminal session on DB23AI VM to test the connection to DBSECLAB VM
+
+        ````
+        <copy>
+        ssh opc@10.0.0.150
+        </copy>
+        ````
+
+        **Note**: Public key **authentication is successful** again!
 
 
 ## Task 3: Reset the OKV Lab Config
 
-1. Drop the Endpoint and Wallet created in OKV during this lab
-
-    ````
-    <copy>./okv_reset_config.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-050.png "Reset the OKV configuration")
-
-2. Reset OKV binaries
-
-    ````
-    <copy>
-    rm -Rf $OKV_HOME
-    rm -Rf $OKV_RESTHOME/!(*.tgz)
-    ll $OKV_RESTHOME
-    </copy>
-    ````
-
-    ![Key Vault](./images/okv-051.png "Reset OKV binaries")
-
-3. Drop the uploaded keys into Key Vault
-
-    - Go back to the OKV Web Console as *`KVRESTADMIN`*
-
-        ![Key Vault](./images/okv-001.png "Drop the uploaded keys into Key Vault")
-
-    - Go to the **Keys & Wallets** tab and select the sub-menu **Keys & Secrets**
-
-        ![Key Vault](./images/okv-052.png "Keys & Secrets section")
-
-    - Select ALL items and click [**Delete**]
-
-        ![Key Vault](./images/okv-053.png "Delete all items")
-
-    - Confirm deletion by clicking [**OK**]
-
-        ![Key Vault](./images/okv-054.png "Delete all items")
-
-    - Now, your uploaded keys have been removed
-
-        ![Key Vault](./images/okv-055.png "Delete all items")
-
-4. Restore the DB like before-TDE
-
-    - Go to the TDE scripts directory
-
-        ````
-        <copy>cd $DBSEC_LABS/tde</copy>
-        ````
-
-    - First, execute this script to restore the pfile
-
-        ````
-        <copy>./tde_restore_init_parameters.sh</copy>
-        ````
-
-        ![Key Vault](../advanced-security/tde/images/tde-025.png "Restore the PFILE")
-
-
-    - Second, restore the database (this may take some time)
-
-        ````
-        <copy>./tde_restore_db.sh</copy>
-        ````
-
-        ![Key Vault](../advanced-security/tde/images/tde-026.png "Restore the database")
-
-    - Third, delete the associated Oracle Wallet files
-
-        ````
-        <copy>./tde_delete_wallet_files.sh</copy>
-        ````
-
-        ![Key Vault](../advanced-security/tde/images/tde-027.png "Delete the associated Oracle Wallet files")
-
-    - Fourth, start the container and pluggable databases
-
-        ````
-        <copy>./tde_start_db.sh</copy>
-        ````
-
-        ![Key Vault](../advanced-security/tde/images/tde-028.png "Start the databases")
-
-        **Note**: This should have restored your database to it's pre-TDE state!
-
-    - Finally, verify the initialization parameters don't say anything about TDE
-
-        ````
-        <copy>./tde_check_init_params.sh</copy>
-        ````
-
-        ![Key Vault](../advanced-security/tde/images/tde-029.png "Check the initialization parameters")
-
-    - Go back to OKV scripts directory and view the Oracle Wallet contents on the **database**
-
-        ````
-        <copy>$DBSEC_LABS/okv/okv_view_wallet_in_db.sh</copy>
-        ````
-
-        ![Key Vault](./images/okv-056.png "View the Oracle Wallet contents on the database")
-
-5. **Now, you can perform again this lab from TASK 1** (your database is restored to the point in time prior to enabling TDE)!
+1. ...
 
 You may now proceed to the next lab!
 
