@@ -266,11 +266,10 @@ A Database Vault realm is a protected zone inside the database where database sc
       </copy>
       ````
  
-       **Note:**
-          - These 3 users can see the `SH1.CUSTOMERS` table:
-          - `SH1` because `SH1` owns it
-          -	`DBA_DEBRA` because it has the `DBA` role
-          - `APPUSER` because it have the `READ ANY TABLE` system privilege
+       **Note:** These 3 users can see the `SH1.CUSTOMERS` table because:
+      - `SH1` because `SH1` owns the table
+      - `DBA_DEBRA` because it has the `DBA` role
+      - `APPUSER` because it have the `READ ANY TABLE` system privilege
 
 2. Now, let's create a realm to secure `SH1` tables by executing this query below as the `SEC_ADMIN_OWEN` user. So, please **open a 4th web-browser window**
 
@@ -294,9 +293,12 @@ A Database Vault realm is a protected zone inside the database where database sc
 
        ![](./images/adb-dbv_015.png " ")
  
-    **Note:**
-       - Now the Realm `PROTECT_SH1` is **created as mandatory and enabled**!
-       - The difference between a **mandatory vs regular realm** is regular realms block system privileges (and allows direct object grants) while mandatory realms block direct object grants (even by the object owner) in addition to system privileges
+    **Note:** A quick explanation of a realm is:
+       - A realm is a collection of objects to be protected the same way. 
+       - The Database Vault realm you created is enabled and is a mandatory realm. 
+       - The difference between a **mandatory** and **regular** realm: 
+         - Regular realms block system privileges but allows direct object grant. The user **does not** have to be a member of realm authorization list. 
+         - Mandatory realms block direct object grants (even by the object owner) in addition to system privileges. The user **must** have the privileges **and** be a member of the realm authorization list. 
 
 3. Add objects to the realm to protect (here, the `CUSTOMERS` table)
 
@@ -321,33 +323,29 @@ A Database Vault realm is a protected zone inside the database where database sc
 
    ![](./images/adb-dbv_016.png " ")
 
-       **Note:** Now the table `CUSTOMERS` is protected and no one can access on it!
+       **Note:** Now the table `CUSTOMERS` is protected and no one can access on it becuase there are no members of the realm authorization list yet. Even the table owner, `SH1`, cannot access the table. 
 
 4. Check the effect of this realm
    
-      - Execute again the following query in SQL Worsheet of each the 3 users (`DBA_DEBRA`, `SH1` and `APPUSER`)
+      - Execute again the following query in SQL Worksheet of each the 3 users:
+         - `DBA_DEBRA`
+         - `SH1`
+         - `APPUSER`
 
-      ````
-      <copy>
-         SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
-           FROM sh1.customers
-          WHERE rownum < 10;
-      </copy>
-      ````
+         ````
+         <copy>
+            SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
+            FROM sh1.customers
+            WHERE rownum < 10;
+         </copy>
+         ````
  
-       - as user `DBA_DEBRA`
+      - Each user should receive the following output. 
 
-          ![](./images/adb-dbv_017.png " ")
+         ![](./images/adb-dbv_017a.png " ")
 
-       - as user `SH1`
 
-          ![](./images/adb-dbv_018.png " ")
-
-       - as user `APPUSER`
-
-          ![](./images/adb-dbv_019.png " ")
-
-       - **Objects in the realm cannot be accessed by any database users**, including the DBA (`DBA_DEBRA`) and the schema owner (`SH1`)!
+       - **Objects in the realm cannot be accessed by any database users**, including the DBA (`DBA_DEBRA`) and the schema owner (`SH1`). Remember, this is because there are no realm authorized members yet. 
 
 5. Now, go back to SQL Worksheet as the `SEC_ADMIN_OWEN` user and make sure you have an authorized application user (`APPUSER`) in the realm by executing this query
 
