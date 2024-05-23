@@ -1,10 +1,12 @@
-# Download the Latest Security Assessment by using the Oracle Data Safe CLI
+# Download the latest security assessment by using the Oracle Data Safe CLI
+
+[comment]: <> (A policy is required to access Cloud Shell)
 
 ## Introduction
 
  You can use the command line interface (CLI) in Cloud Shell to perform tasks in Oracle Data Safe. Cloud Shell is a small virtual machine running a Linux shell and is accessible in your tenancy in the Oracle Cloud Infrastructure Console. It's ready and free to use in your tenancy (within monthly tenancy limits). If you want to perform complex tasks using the CLI, it's useful to create an SH script that contains all of your CLI commands. 
  
- In this lab, you use the CLI to refresh the latest Security Assessment report for your target database and download it to a directory on your Cloud Shell machine. Begin by familiarizing yourself with the command line interface (CLI) documentation for Oracle Data Safe.
+ In this lab, you use the CLI to refresh the latest Security Assessment report for your target database and download the report to a directory on your Cloud Shell machine. Begin by familiarizing yourself with the command line interface (CLI) documentation for Oracle Data Safe.
 
 Estimated Lab Time: 20 minutes
 
@@ -65,10 +67,13 @@ This lab assumes you have:
 
 1. To open Cloud Shell, in the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Developer tools** icon, and then select **Cloud Shell**.
 
-    When you first open Cloud Shell, your current directory is your home directory; for example, `/home/jody_glove`. For this lab, we can work in the home directory (`~/`).
+2. If prompted to run a tutorial, enter **N** to skip the tutorial.
 
+   Your current directory is your home directory; for example, `/home/jody_glove`. For this lab, we can work in the home directory (`~/`).
 
-2. (Optional) If you use Cloud Shell often and want to start fresh, you can reset it. The following command erases all the data in your `$HOME` directory on your Cloud Shell machine and resets the `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.bash_logout`, and `$HOME/.emacs` files back to their default values. Enter **y** at the prompt to confirm.
+3. To verify your current directory, enter `pwd`.
+
+4. (Optional) If you use Cloud Shell often and want to start fresh, you can reset it. The following command erases all the data in your `$HOME` directory on your Cloud Shell machine and resets the `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.bash_logout`, and `$HOME/.emacs` files back to their default values. Enter **y** at the prompt to confirm.
 
     ```bash
     $ <copy>csreset --all</copy>
@@ -89,7 +94,7 @@ Identify the commands and values that are required for the SH script and test ea
 
 2. Create a variable that defines your Oracle Data Safe target database OCID (not your Autonomous Database OCID!). 
 
-    To do this, first find your target database OCID: From the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Target Databases**. Under **List Scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target Database Details** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-target-database-ocid` with your own OCID.
+    To do this, first find your target database OCID: From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. Under **Data Safe** on the left, click **Target databases**. Under **List scope** on the left, select your compartment. On the right, click the name of your target database. On the **Target database information** tab, click **Copy** next to **OCID**. In Cloud Shell, enter the following command, replacing `your-target-database-ocid` with your own OCID.
 
     ```text
     $ <copy>export target_id=your-target-database-ocid</copy>
@@ -119,7 +124,7 @@ Identify the commands and values that are required for the SH script and test ea
     $ <copy>security_assessment_id=$(oci data-safe security-assessment create --compartment-id $compartment_id --target-id $target_id --query data.id --raw-output)</copy>
     ```
 
-     Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters. If you need to obtain metadata about a resource, you can learn which metadata values are available by including the `--query data` and `--raw-output` parameters. For example, if the above statement used `--query data` instead of `--query data.id`, the output value would include all possible key-value pairs.
+     Notice how we are using the `security-assessment create` CLI command with the `--query data.id` and `--raw-output` parameters. If you need to obtain metadata about a resource, you can learn which metadata values are available by including the `--query data` and `--raw-output` parameters. For example, if the above statement used `--query data` instead of `--query data.id`, the output value would include all possible key-value pairs:
 
      ```json
      <copy>{"compartment-id": "ocid1.compartment.oc1...", "defined-tags": { "Oracle-Tags": { "CreatedBy": "jody.glove..", "CreatedOn": "2023-01-30T20:40:53.671Z" } }, "description": null, "display-name": "SA_1675111253797", "freeform-tags": {}, "id": "ocid1.datasafesecurityassessment.oc1...", "ignored-assessment-ids": null, "ignored-targets": null, "is-baseline": false, "is-deviated-from-baseline": null, "last-compared-baseline-id": null, "lifecycle-details": null, "lifecycle-state": "CREATING", "link": null, "schedule": null, "schedule-security-assessment-id": null, "statistics": null, "system-tags": {}, "target-ids": [ "ocid1.datasafetargetdatabase.oc1..." ], "target-version": null, "time-created": "2023-01-30T20:40:53.797000+00:00", "time-updated": "2023-01-30T20:40:53.797000+00:00", "triggered-by": "USER", "type": "SAVED" }</copy>
@@ -127,7 +132,7 @@ Identify the commands and values that are required for the SH script and test ea
 
 6. Verify that the security assessment is created in Oracle Data Safe. 
 
-    To do this, from the navigation menu, select **Oracle Database**, and then **Data Safe**. Under **Data Safe** on the left, click **Security Assessment**. Click the **Target Summary** tab, locate the line that has your target database, and click **View Report**. At the top of the latest security assessment page, click **View History**. Make sure that your compartment is selected. Find the new security assessment for your target database that was generated by the CLI command in the previous step.
+    To do this, from the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. Under **Data Safe** on the left, click **Security assessment**. Click the **Target summary** tab, locate the line that has your target database, and click **View report**. At the top of the latest security assessment page, click **View history**. Make sure that your compartment is selected. Find the new security assessment for your target database that was generated by the CLI command in the previous step.
     
     You should have at least two security assessments. The first one was automatically created by Oracle Data Safe when you registered your target database. The second one is the one you just created via the command line. If the second one isn't listed, you may need to wait a little longer.
 
@@ -218,13 +223,13 @@ When you run the SH file, the latest security assessment is downloaded to your C
     ```
 4. In the upper-right corner of Cloud Shell, click the **Cloud Shell Menu** icon (cog wheel), and select **Download**.
 
-    A **Download File** dialog box is displayed.
+    A **Download file** dialog box is displayed.
 
 5. Enter the name of your PDF file, and then click **Download**.
 
-    The file is downloaded to the browser. 
+    The file is downloaded to the browser.
 
-6. Open the PDF file and review the assessment report. Close the browser tab when you're finished.
+6. Open the PDF file, if needed, and review the assessment report. Close the browser tab when you're finished.
 
 7. Close Cloud Shell and click **Exit** to confirm.
 
@@ -239,4 +244,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 23, 2023
+- **Last Updated By/Date** - Jody Glover, February 6, 2024

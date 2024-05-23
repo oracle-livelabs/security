@@ -1,4 +1,4 @@
-# Generate Alerts
+# Generate alerts
 
 ## Introduction
 
@@ -6,7 +6,7 @@ An alert is a message that notifies you when a particular audit event happens on
 
 Start by reviewing the predefined alert policies in Oracle Data Safe, and then provision two of them. Using Database Actions, perform activity on your target database to cause alerts in Oracle Data Safe. Review the generated alerts and create a custom alerts report. Download the report as a PDF.
 
-Estimated Lab Time: 20 minutes
+Estimated Lab Time: 15 minutes
 
 ### Objectives
 
@@ -26,78 +26,81 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to Oracle Cloud Infrastructure
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your target database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
+- Prepared your environment for this workshop
+- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your target database on hand.
 - Started audit data collection for your target database in Oracle Data Safe (see [Audit Database Activity](?lab=audit-database-activity))
 
 
 ### Assumptions
 
 - Your data values are most likely different than those shown in the screenshots.
+- Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs.
 
 ## Task 1: Review the Oracle Data Safe alert policies
 
-1. In **Security Center**, click **Alerts**.
+1. In **Security center**, click **Alerts**.
 
     The **Alerts** page is displayed. The alerts dashboard does not have any data because you have not yet enabled any alert policies.
 
-    ![Alerts dashboard without data](images/alerts-dashboard-no-data.png "Alerts dashboard without data")
+    ![Alerts page without data](images/alerts-dashboard-no-data.png "Alerts page without data")
 
-2. Under **Related Resources**, click **Alert Policies**.
+2. Under **Related resources**, click **Alert policies**.
 
 3. Review the list of available alert policies provided by Oracle Data Safe. They are as follows:
 
-    - Failed Logins by Admin User
-    - Profile Changes
-    - Database Parameter Changes
-    - Audit Policy Changes
-    - User Creation/Modification
-    - User Entitlement Changes   
-    - Database Schema Changes
-   
+    - SQL Firewall violations
+    - Profile changes
+    - Failed logins by admin user
+    - Audit policy changes
+    - Database parameter changes
+    - Database schema changes
+    - User entitlement changes   
+    - User creation/modification
+    
 
-    ![Oracle Data Safe alert policies](images/oracle-data-safe-alert-policies.png "Oracle Data Safe alert policies")
+4. Click the **User creation/modification** alert policy and review its details.
 
-4. Click the **User Creation/Modification** alert policy and review its details.
+    The **Alert policy details** page is displayed for the **User creation/modification** alert policy.
 
-    The **Alert Policy Details** page is displayed for the **User Creation/Modification** alert policy.
+    ![User creation modification alert policy details](images/user-creation-modification-alert-policy-details.png "User creation modification alert policy details")
 
-    ![User Creation Modification alert policy details](images/user-creation-modification-alert-policy-details.png "User Creation Modification alert policy details")
+5. Next to **Policy applied on target databases**, click **View list** to view the target databases associated with the alert policy.
 
-5. Next to **Policy Applied On Target Databases**, click **View List** to view the target databases associated with the alert policy.
+    The **Target-policy associations** page is displayed with the **Policy name** filter set to **User creation/modification**.
 
-    The **Target-Policy Associations** page is displayed with the **Policy Name** filter set to **User Creation/Modification**.
-    Because you have not yet associated the alert policy with any target database, the table shows **No Target-Policy Associations Available**.
+6. Under **Filters** on the left, select your target database.
 
-    ![No Target-Policy Associations Available](images/no-target-policy-associations.png "No Target-Policy Associations Available")
+7. Notice that the table shows **No target-policy associations available**. This is because you have not yet associated the alert policy with your target database. 
 
 
 ## Task 2: Provision alert policies on your target database
 
-1. From the **Policy Name** drop-down list under **Filters**, select **All**.
+1. From the **Policy name** drop-down list under **Filters**, select **All**.
 
-2. On the **Target-Policy Associations** page, click **Apply Policy**.
+2. On the **Target-policy associations** page, click **Apply policy**.
 
-    The **Apply And Enable Alert Policy To Target Databases** panel is displayed.
+    The **Apply and enable alert policy to target databases** panel is displayed.
 
-3. Select **Selected Targets Only**.
+3. Select **Selected targets only**.
 
-4. If needed, click **Change Compartment** and select your compartment.
+4. If needed, click **Change compartment** and select your compartment.
 
 5. From the drop-down list, select your target database.
 
-6. Select **Selected Policies Only**.
+6. Select **Selected policies only**.
 
-7. From the drop-down list, one at a time, select the **User Creation/Modification** and **Failed Logins by Admin User** alert policies.
+7. From the drop-down list, one at a time, select the **User creation/modification** and **Failed logins by admin user** alert policies.
 
-8. Click **Apply Policy** and wait until a message states that you can close the panel.
+8. Click **Apply policy** and wait until a message states that you can close the panel.
 
-    ![Apply and Enable Alert Policy To Target Databases panel](images/apply-and-enable-alert-policy-panel.png "Apply and Enable Alert Policy To Target Databases panel")
+    ![Apply and enable alert policy to target databases panel](images/apply-and-enable-alert-policy-panel.png "Apply and enable alert policy to target databases panel")
 
 
 9. Click **Close**.
 
-    The two target-policy associations for your target database are listed on the page and are enabled and active. If a target-policy association is not displayed, please clear the filter for the policy name if it's still set to **User Creation/Modification**.
+    The two target-policy associations for your target database are listed on the page and are enabled.
+    
+10. Wait for the state to change to **Active** for both target-policy associations. If a target-policy association is not displayed, please set the **Policy name** filter to **All**.
 
     ![Two target-policy associations for your target database](images/two-target-policy-associations-for-target.png "Two target-policy associations for your target database")
 
@@ -108,21 +111,23 @@ In this task, you perform activities on your target database in Database Actions
 
 1. Return to the SQL worksheet in Database Actions.
 
-2. If needed, sign out. To do so, from the drop-down list in the upper-right corner, select **Sign Out**, and then in the dialog box, click **Leave page**.
+2. Sign out of Database Actions.
 
-3. Click **Sign in**.
+    The **Sign-in** page is displayed.
 
-4. Enter `ADMIN` for the username, and then click **Next**.
+3. In the **Username** box, enter `ADMIN`.
 
-5. Do this twice: Enter an incorrect password, and then click **Sign in**. The message **An invalid user name or password was supplied.**
+4. Do this twice: Enter an incorrect password, and then click **Sign in**. 
+
+    An **Invalid credentials** message is displayed.
 
     ![Invalid database password message](images/invalid-database-password.png "Invalid database password message")
 
-6. Enter the correct password, and click **Sign in**.
+5. Enter the correct password, and click **Sign in**.
 
-7. If needed, under **Development**, click **SQL**.
+6. If needed, click the **SQL** tile.
 
-8. Clear the worksheet, and then paste the following SQL script. Replace `your-password` with a password of your choice. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
+7. Clear the worksheet, and then paste the following SQL script. Replace `your-password` with a password of your choice. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
 
     ```
     <copy>drop user MALFOY cascade;
@@ -130,47 +135,50 @@ In this task, you perform activities on your target database in Database Actions
     grant PDB_DBA to MALFOY;</copy>
     ```
 
-9. On the toolbar, click the **Run Script** button and wait for the script to finish running.
+
+8. On the toolbar, click the **Run Script** button and wait for the script to finish running. 
+
+9. In the script output, verify that the `MALFOY` user was successfully dropped and then recreated.
 
 10. Return to the browser tab for Oracle Data Safe and wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
 
 ## Task 4: Review alerts in Oracle Data Safe
 
-1. Under **Security Center** on the left, click **Alerts**.
+1. Under **Security center** on the left, click **Alerts**.
 
 2. Under **Filters** on the left, select your target database.
 
 3. Notice that the alerts dashboard now has data.
 
     - The **Alerts summary** chart shows that there are four alerts. Two are critical risk and two are medium risk.
-    - The **Open Alerts** chart shows that there are four alerts on the current day.
-    - The **Alerts Summary** tab shows the number of critical, high, and medium alerts along with target database counts. It also shows you the total number of alerts and target databases.
-    - The **Targets Summary** tab shows the number of open, critical, high, and medium alerts.
+    - The **Open alerts** chart shows that there are four alerts on the current day.
+    - The **Alerts summary** tab shows the number of critical, high, and medium alerts along with target database counts. It also shows you the total number of alerts and target databases. 
+    - The **Targets summary** tab shows the number of open, critical, high, and medium alerts.
 
     ![Alerts dashboard with data](images/alerts-dashboard-with-data.png "Alerts dashboard with data")
-    ![Targets Summary tab](images/targets-summary.png "Targets Summary tab")
+    ![Targets Summary tab](images/targets-summary.png "Targets summary tab")
 
-4. Under **Related Resources**, click **Reports**.
+4. Under **Related resources**, click **Reports**.
 
-5. In the **Report Name** column on the right, click the **All Alerts** report to view it.
+5. In the **Report name** column on the right, click the **All alerts** report to view it.
 
-    ![All Alerts report](images/alerts-reports.png "All Alerts report")
+    ![All alerts report](images/alerts-reports.png "All alerts report")
 
 6. Review the report.
 
-    - The report currently does not have any filters set. It shows you all alerts for all target databases in the selected compartment.
-    - At the top of the report, you can view several totals, including the total number of target databases; total number of open and closed alerts, and the total number of critical, high, medium, and low alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
+    - The report is automatically filtered to show you all alerts for all target databases in the selected compartment for the past one week. To manually create custom filters, you can use the **SCIM query builder**. 
+    - You can view several totals, including the total number of target databases; total number of open and closed alerts, and the total number of critical, high, medium, and low alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
     - At the bottom of the report, you can view the list of alerts. By default, the table shows you the alert name, alert status, alert severity, target databases on which the audited event occurred, and when the alert was created.
     - You have options to create a PDF or XLS report, create a custom report, schedule a custom report, open and close alerts, and specify which table columns you want displayed on the page.
 
-    ![All Alerts report](images/all-alerts-report.png "All Alerts report")
+    ![All alerts report](images/all-alerts-report.png "All alerts report")
 
-7. At the top of the report, click **+ Add Filter**. Create the filter **Target Databases = your-target-database-name**, and click **Apply**.
+7. At the top of the report, click **+ Another filter**. Create the filter **Target databases = your-target-database-name**, and click **Apply**.
 
     Only alerts that pertain to your target database are listed in the table.
 
-8. Click **+ Another Filter**. Create the filter **Alert Name = User Creation/Modification**, and click **Apply**.
+8. Click **+ Another filter**. Create the filter **Alert name = User creation/modification**, and click **Apply**.
 
     Only alerts that pertain to User Creation/Modification are listed in the table.
 
@@ -198,7 +206,7 @@ In this task, you perform activities on your target database in Database Actions
     - Compartment in which the alert resides
     - Operation details
 
-    ![Alert Details page](images/alert-details-page.png "Alert Details page")
+    ![Alert details page](images/alert-details-page.png "Alert details page")
 
 3. To close the alert, click **Close**.
 
@@ -207,65 +215,60 @@ In this task, you perform activities on your target database in Database Actions
 
 ## Task 6: Create a custom alerts report
 
-1. In the breadcrumb at the top of the page, click **All Alerts** to return to the All Alerts report.
+1. In the breadcrumb at the top of the page, click **All alerts** to return to the All alerts report.
 
-2. Apply three filters:
+2. In addition to the default filter that is already set, add two more filters:
 
     - **Target Databases = your-target-database-name**
-    - **Alert Name = Failed Logins by Admin User**
-    - **Created On After beginning-of-current-day**
+    - **Alert Name = Failed logins by admin user**
 
-    ![Failed Logins by Admin User filter](images/failed-admin-logins-filter.png "Failed Logins by Admin User filter")
+3. Click **Create custom report**.
 
-3. Click **Create Custom Report**.
+    The **Create custom report** dialog box is displayed.
 
-    The **Create Custom Report** dialog box is displayed.
+4. For **Display name**, enter **Failed logins by admin user for your-target-database-name**. (Optional) Enter a description. Select your compartment. Click **Create custom report** and wait for the report to generate.
 
-4. For **Display Name**, enter **Failed Logins by Admin User for your-target-database-name**. (Optional) Enter a description. Select your compartment. Click **Create Custom Report** and wait for the report to generate.
-
-    ![Create Custom Report dialog box](images/create-custom-report-dialog-box.png "Create Custom Report dialog box")
+    ![Create custom report dialog box](images/create-custom-report-dialog-box.png "Create custom report dialog box")
 
 5. Click the **click here** link to view the report.
 
 
 ## Task 7: Generate and download a custom alerts report as a PDF
 
-1. On the custom report page, click **Generate Report**.
+1. On the custom report page, click **Generate report**.
 
-    The **Generate Report** dialog box is displayed.
+    The **Generate report** dialog box is displayed.
 
 2. Leave **PDF** selected.
 
-3. Enter the display name **Failed Admin Logins for your-target-database-name**.
+3. Enter the display name **Failed ADMIN logins for your-target-database-name**.
 
-4. (Optional) For **Description**, enter **Failed logins by Admin user for target database your-target-database-name**.
+4. (Optional) For **Description**, enter **Failed logins by ADMIN user for target database your-target-database-name**.
 
-5. Leave your compartment selected.
+5. Leave your compartment selected, leave the row limit set to 10000, and leave the report start time as is.
 
-6. Leave the report start time as is.
-
-7. Click **Generate Report** and wait until the PDF report is generated.
+6. Click **Generate report** and wait until the PDF report is generated.
 
     A message is displayed stating that report generation is complete.
 
-    ![Generate Report dialog box](images/generate-report-dialog-box.png "Generate Report dialog box")
+    ![Generate report dialog box](images/generate-report-dialog-box.png "Generate report dialog box")
 
-8. Click the **here** link to download the report.
+7. Click the **here** link to download the report.
 
-9. If needed, choose to save the report to your local computer.
+8. If needed, choose to save the report to your local computer.
 
-10. Open the PDF report and view it. When you are finished, close the browser tab.
+9. Open the PDF report and view it. When you are finished, close the browser tab.
 
-    ![Failed Admin Logins PDF report](images/failed-admin-logins-report-pdf.png "Failed Admin Logins PDF report")
+    ![Failed admin logins PDF report](images/failed-admin-logins-report-pdf.png "Failed admin logins PDF report")
 
-11. In the **Generate Report** dialog box, click **Close**.
+10. In the **Generate report** dialog box, click **Close**.
 
 
 ## Task 8:  View the alert report history
 
-1. Under **Related Resources**, click **Alert Report History**.
+1. Under **Related resources**, click **Alert report history**.
 
-2. Notice that your custom report is listed. You can view its lifecycle state, its description, when it was generated, whether it was generated by you (`GENERATED`) or by the scheduler, the file format available for download, and a download icon. Oracle Data Safe keeps your report available for up to three months.
+2. Notice that your custom report is listed. You can view its state, its description, when it was generated, whether it was generated by you (`Generated`) or by the scheduler, the file format available for download, and a download button. Oracle Data Safe keeps your report available for up to three months.
 
     ![Alert report history](images/alert-report-history.png "Alert report history")
 
@@ -279,4 +282,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 23, 2023
+* **Last Updated By/Date** - Jody Glover, May 16, 2024

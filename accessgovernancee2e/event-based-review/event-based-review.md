@@ -8,7 +8,7 @@ Users with the **campaign administrator** role can create and manage event based
 * Persona: Campaign Administrator
 
 Watch the video below for a quick walk-through of the lab.
-[Manage Access Review Campaigns](videohub:1_mmcocyjw)
+[Manage Event Based Review Campaigns](videohub:1_1azcpenj)
 
 ### Objectives
 
@@ -16,21 +16,28 @@ In this lab, you will:
 * View a list of **certification campaigns** you own or created
 * View the progress of **certification campaigns** made by reviewers with **analytics insights**
 
+### Prerequisites
+This lab assumes you have:
+- A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Login Oracle Access Governance as Campaign Administrator
 
-1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **Default** identity domain selected.
-2. Log in to **Oracle Access Governance** as a **campaign administrator - Pamela Green** with the username and password mentioned below.
+1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 5: Task 1: Step 4*
 
-  **Username:**
+
+2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
+
+    **Username:**
     ```
     <copy>pamela.green</copy>
     ```
 
-  **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
-  ![Access Governance Login](images/admin-login.png)
+    **Password:**
+    
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+
+
+  You will be navigated to the home page of your Oracle Access Governance Console.
 
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/event-based-setup.png)
@@ -39,17 +46,21 @@ In this lab, you will:
 
 1. Select Event-Based Administration → Event-Based Setup from the Navigation Menu.
   ![Event based setup](images/event-based-setup.png)
-2. Each event type is displayed as a tile with a status of Enabled or Disabled and an Actions drop-down menu, providing the option to Edit or View details. Select Edit for the **Identity Enabled** event-type. 
-  ![Edit Identity Enabled](images/edit-identity-enabled.png)
-3. On the Configure the event type screen:
-  Use the radio button to Enable the event-type.
-  If you want to auto-approve low risk task for this event type, select Yes.
-  
-4. The Oracle Access Governance service provides a suggested optimal workflow for the event-type. You can select Save to accept the suggested workflow.
+2. Each event type is displayed as a tile with a status of Enabled or Disabled and an Actions drop-down menu, providing the option to Edit or View details. 
+   ![Edit Identity Enabled](images/select-event.png)
 
-5. In the **Configure the event type** screen. Select **Save** to keep the changes to your event-type configuration.
- 
- ![Enable Complete](images/enable-complete.png)
+   Select Edit for the **Identity Enabled** event-type. 
+
+   ![Edit Identity Enabled](images/edit-identity.png)
+
+   Select *One-level-approval workflow*.  On the Configure the event type screen:
+  Use the radio button to Enable the event-type.
+  If you want to auto-approve low risk task for this event type, select Yes. Click *Save*
+
+     ![Edit Identity Enabled](images/approval-level.png)
+
+    ![Edit Identity Enabled](images/enable-completed.png)
+
 
 ## Task 3: Disable the user in Oracle Identity Governance
 
@@ -167,6 +178,5 @@ In this lab, you will:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Contributors** - Edward Lu 
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023

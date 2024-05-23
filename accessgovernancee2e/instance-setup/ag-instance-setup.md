@@ -1,136 +1,112 @@
-# Setup and configure Oracle Access Governance service instance
+# Setup and configure Oracle Access Governance service instance and Create Users in OCI IAM
 
 ## Introduction
 
 In this lab we will setup the OAG service instance and make configurations required to successfully run this workshop.
 
-*Estimated Lab Time*: 15 minutes
+*Estimated Lab Time*: 30 minutes
+
+*Persona*: Identity Domain Administrator
+
 
 ### Objectives
 
 In this lab, you will:
  * Create AG Service Instance
  * Access the AG console url
- * Download the Agent to perform the integration with OIG
+ * Assign Application Roles to Users in OCI IAM
 
 ### Prerequisites
 This lab assumes you have:
 - A valid Oracle OCI tenancy, with OCI administrator privileges. 
+- Choose a region where Access Governance is available. 
+
 
 ## Task 1: Create AG Service instance 
 
-1. Launch a browser window. Login to OCI console using the URL mentioned below. The OCI account sign in page appears. Enter the username and password provided during signup. 
-     
-    ```
-    <copy>https://console.us-ashburn-1.oraclecloud.com/</copy>
-    ```
-    ![Create Service Instance](images/oci-login-console.png)
+Login to the OCI console using the Identity domain: ag-domain as the **Identity Domain Administrator** , if not currently not logged in to the Identity domain. 
 
-2. Click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products.
+1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region.
+
     ![Create Service Instance](images/oci-console.png)
 
-3. On the Access Governance page, select *Service Instances.*Click on *Create Service Instance*
+2. On the Access Governance page, select *Service Instances.*
 
 
     ```
-    Name: service-instance
+    Name: ag-service-instance
     Description: Oracle Access Governance service instance
-    Compartment: Ensure your compartment is selected
+    Compartment: Ensure your ag-compartment is selected
     ```
     ![Create Service Instance](images/create-service-instance.png)
-    ![Service Instance details](images/ag-service-instance.png)
+    
+
+3. Select the License type : Access Governance for Oracle Workloads. Click on *Create Service Instance*
+
+    ![Select License type](images/license-type-name.png)
 
 4. Wait for the service instance to have the *Active* status . Note down this URL as we will be using it in the further labs. 
 
     ![Service Instance is Active](images/ag-url.png)
 
-5. Click on the Service Instance to access the URL. 
+5. Click on the Service Instance to access the URL.  Once you see this page, close the browser window.
 
     ![Access Governance console](images/ag-console.png)
 
-## Task 2: Integrate with Oracle Identity Governance
-
-1. On the Oracle Access Governance service home page, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
-
-    ![Access Governance console - Connected Systems](images/connected-systems.png)
-
-2. Click on **Add a connected system**
-
-    ![Add - Connected System](images/add-connected-system.png)
-
-3. On the tile labeled **Would you like to connect to an Identity Governance System** select the **Add** button.
-    ![Access Governance console - Connected Systems-Add](images/connected-system-page.png)
-
-4. Click **Close** on the information pop-up to navigate to the **Add an Identity Governance System** page and begin the configuration.
-
-    ![Close the Pop-up window](images/pop-up.png)
+## Task 2: Modify the Email ID of the Users in OCI IAM
 
 
-5. On the **Select System** step, select the tile for **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
+1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
+
+    * In the OCI console, navigate to Identity -> Domains ->  ag-domain -> Users
+
+    * Click on the Downward arrow on the right corner for each of them and select *View details* 
+
+    * Click on *Edit User*. 
+
+    * Modify the *Email* field of the users to the following values:
+
+        - pamela.green : pamela.green@orcl.com
+        - mhernandez   : mark.hernandez@orcl.com
+        - harlan.bullard : harlan.bullard@orcl.com
+        - jerry.poland : jerry.poland@orcl.com
+
+   * Click *Save changes*
 
 
-    ![Access Governance console - Connected Systems-Next](images/select-oig.png)
+## Task 3: Assign AG Roles to Users in OCI IAM
 
 
-6. On the **Enter Details** step, enter the following details:
+1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
 
-    * **Name:** oag
-    * **Description:** oag
-    * **Click Next.**
+    * In the OCI console, navigate to Identity -> Domains ->  ag-domain -> Oracle Cloud Services -> AG-service-instance -> Application Role. 
 
-    ![Access Governance console - Connected Systems-OIG](images/oag-select-system.png)
+    * Notice the *AG Administrator* Role and *AG Campaign Administrator* Role listed. Click on the Downward arrow on the right corner for each of them. 
 
-   
+    ![OIG Identity Roles and Access Policies](images/user-approle.png)
 
-7. On the **Configure** step, enter connection details for the target system:
+    * Click on *Assigned Users -> Manage*. Select *Pamela Green* in *Available Users.* Click on *Assign*
 
-    **JDBC URL:** 
-    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 3 : Task 3*  for the private ip of your compute instance. 
-    ```
-    <copy>jdbc:oracle:thin:@//<--privateipofyourcomputeinstance-->:1521/ORCL.NETWORKSPEOSUBN.IDMOCICLOU02PHX.ORACLEVCN.COM</copy>
-    ```
-    **OIG Database User Name:**
-    ```
-    <copy>DEV_OIM</copy>
-    ```
-    **Password:**
-    ```
-    <copy>Welcome1</copy>
-    ```
-    **Confirm Password:**
-    ```
-    <copy>Welcome1</copy>
-    ```
-    **OIG Server URL:** 
-    Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Lab 3 : Task 3*  for the private ip of your compute instance. 
-    ```
-    <copy>http://<--privateipofyourcomputeinstance-->:14000</copy>
-    ```
-    **OIG Server User Name:** 
-    ```
-    <copy>xelsysadm</copy>
-    ```
-     **OIG Server User Password:** 
-    ```
-    <copy>Welcome1</copy>
-    ```
-    **OIG Server Confirm Password:** 
-    ```
-    <copy>Welcome1</copy>
-    ```
+    ![OIG Identity Roles and Access Policies](images/user-approle-list.png)
 
-     ![Configure Details](images/oag-connection-details.png)
+    * The user Pamela Green is now visible under *Assigned Users*.
 
-8. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
+    ![OIG Identity Roles and Access Policies](images/user-approle-assign.png)
+
+    * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator*. You can now close the window.
+
+    * Now, Notice the *AG User* Role listed. Click on the Downward arrow on the right corner. 
+
+      ![OIG Identity Roles and Access Policies](images/aguser.png)
 
 
-    ![Download the agent](images/oag-download-link.png)
+    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez* and *Harlan Bullard* in *Available Users.* Click on *Assign*
 
-9. You can verify the downloaded agent zip file.
+     ![OIG Identity Roles and Access Policies](images/ag-userassign.png)
 
-     ![Navigate to file system](images/locate-zip.png)
 
-     ![Verify the zip file](images/verify-zip.png)
+    * Mark Hernandez and Harlan Bullard have now been assigned with the *AG User* application role. You can now close the window.
+
 
     You may now **proceed to the next lab.**
 
@@ -142,6 +118,6 @@ This lab assumes you have:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Author** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
+* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Contributors** - Edward Lu
-* **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
+* **Last Updated By/Date** - Anbu Anbarasu, May 2023

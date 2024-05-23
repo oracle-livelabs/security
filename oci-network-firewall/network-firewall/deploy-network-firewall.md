@@ -252,4 +252,4 @@ You may now **proceed to the next lab**.
 - **Author** - Arun Poonia, Principal Solutions Architect
 - **Adapted by** - Oracle
 - **Contributors** - N/A
-- **Last Updated By/Date** - Arun Poonia, Oct 2022
+- **Last Updated By/Date** - Arun Poonia, Aug 2023

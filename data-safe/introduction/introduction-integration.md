@@ -20,12 +20,13 @@ In this workshop, you learn how to perform the following tasks:
 - Download the latest security assessment by using the Oracle Data Safe CLI
 - Copy audit data to object storage using the Oracle Data Safe REST API
 - Schedule the copying of audit data to object storage using the Oracle Data Safe REST API
-- Get notified about security drift on your target database by setting up an Oracle Data Safe event
+- Get notified about security drift on your target databases by setting up notifications in Oracle Data Safe
 
 ## Learn More
 
 The following links provide more information about Oracle Data Safe:
 
+- [Get Started with Oracle Data Safe Fundamentals Workshop in LiveLabs](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)
 - [Oracle Data Safe website](https://www.oracle.com/database/technologies/security/data-safe.html)
 - [Oracle Data Safe user assistance](https://docs.oracle.com/en/cloud/paas/data-safe/index.html)
 - [Oracle Data Safe data sheet](https://www.oracle.com/a/tech/docs/dbsec/data-safe/ds-security-data-safe.pdf)
@@ -34,4 +35,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 22, 2023
+* **Last Updated By/Date** - Jody Glover, May 8, 2023

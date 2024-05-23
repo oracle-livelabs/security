@@ -1,4 +1,4 @@
-# Clean Up Your Environment
+# Clean up your environment
 
 ## Introduction
 
@@ -22,6 +22,9 @@ This lab assumes you have:
 - Obtained an Oracle Cloud account and signed in to Oracle Cloud Infrastructure
 - Finished doing the labs in this workshop
 
+Watch the video below for a quick walk-through of the lab.
+[Clean Up Your Environment](videohub:1_pxjlxjkf)
+
 ## Task 1: Terminate your target database
 
 1. From Oracle Cloud Infrastructure's navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**.
@@ -37,4 +40,10 @@ This lab assumes you have:
     The **Terminate Autonomous Database** dialog box is displayed.
 
 6. Enter your database name, and then click **Terminate Autonomous Database**. 
+
+
+## Acknowledgements
+
+- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
+- **Last Updated By/Date** - Jody Glover, August 17, 2023
 

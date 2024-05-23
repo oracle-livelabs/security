@@ -1,0 +1,34 @@
+{
+  "workshoptitle": "DB Security - SQL Firewall",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Understand the architecture of this workshop and what it can do",
+      "publisheddate": "08/18/2023",
+      "filename": "../../intro/intro-sqlfw.md"
+    },
+    {
+      "title": "Get Started with noVNC Remote Desktop",
+      "description": "Using noVNC Remote Desktop",
+      "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
+    },
+    {
+      "title": "Lab 1: Initialize Environment",
+      "description": "How to initialize and start all the workshop components",
+      "publisheddate": "10/14/2020",
+      "filename": "../../../common/init-start-env/init-start-env-sqlfw.md"
+    },
+    {
+      "title": "Lab 2: SQL Firewall",
+      "description": "In this lab you can see how to leverage Oracle SQL Firewall",
+      "publisheddate": "08/18/2023",
+      "filename": "../../sqlfw/sqlfw.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 # Introduction
 
-This workshop is designed to help new users become familiar with the features of Oracle Data Safe. You learn how to register an Autonomous Database with Oracle Data Safe, audit database activity, generate alerts, assess the security of your database configurations and users, and discover and mask sensitive data.
+This workshop is designed to help new users become familiar with the features of Oracle Data Safe. You learn how to register a database with Oracle Data Safe, audit database activity, generate alerts, assess the security of your database configurations and users, and discover and mask sensitive data.
 
-You can do this workshop in Oracle's free tier with trial credits, in your own tenancy using a paid Oracle Cloud account, or in an Oracle-provided environment, such as LiveLabs.
+You can do this workshop in your own tenancy or in an Oracle-provided environment, such as a LiveLabs sandbox.
 
 Estimated Workshop Time: 2 hours
 
@@ -32,8 +32,9 @@ The following links provide more information about Oracle Data Safe:
 - [Oracle Data Safe user assistance](https://docs.oracle.com/en/cloud/paas/data-safe/index.html)
 - [Oracle Data Safe data sheet](https://www.oracle.com/a/tech/docs/dbsec/data-safe/ds-security-data-safe.pdf)
 - [Oracle Data Safe frequently asked questions](https://www.oracle.com/a/tech/docs/dbsec/data-safe/faq-security-data-safe.pdf)
+- [Integrate Oracle Data Safe with Applications and Services Workshop in LiveLabs](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3596)
 
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 23, 2023
+* **Last Updated By/Date** - Jody Glover, May 16, 2024
