@@ -83,22 +83,19 @@ This workshop assumes you have:
 
 ## Task 2: Create a New User Using Database Actions
 
-1. On the DEMOATP instance details page, click on the **Tools** tab, select **Database Actions**, a new tab will open up.
+1. On the DEMOATP instance details page, click on the **Tools** tab, copy the URL under **Database Actions** 
     ![](./images/task4-1.png " ")
 
-2. Give the **Username - ADMIN** and click **Next**.
+2. Now open a new browser tab --> Paste the URL --> Enter the **Username - ADMIN** and **Password - _WElcome123##_** for the ADMIN user you created when you provisioned your Oracle Autonomous Database instance and click **Sign in** to sign in to Database Actions.
     ![](./images/task4-2.png " ")
 
-3. Now give the **Password - _WElcome123##_** for the ADMIN user you created when you provisioned your Oracle Autonomous Database instance and click **Sign in** to sign in to Database Actions.
-    ![](./images/task4-3.png " ")
-
-4.  In Oracle Database Actions menu, select **Database Users** under Administration.
+3.  In Oracle Database Actions menu, select **Database Users** under Administration.
     ![](./images/task4-4.png " ")
 
-5. Click on **Create User** to create a new user to access the database.
+4. Click on **Create User** to create a new user to access the database.
     ![](./images/task4-5.png " ")
 
-6. In the Create User page, under User tab, give the following details:
+5. In the Create User page, under User tab, give the following details:
     - **User Name** - Give the new user a User Name. The username is case-sensitive. In the lab, we name the user **Username - DEMOUSER**.
     - **Password** - Give the new user a password and confirm the Password. In this lab, we give the same password as admin user for ease of use, **Password - _WElcome123##_** and confirm the password.
     - **Quota on tablespace DATA** - Set a value for the Quota on tablespace DATA for the user. Click the drop-down and choose **500M**.
@@ -107,20 +104,20 @@ This workshop assumes you have:
 
     ![](./images/task4-6.png " ")
 
-7. In the Create User page, under Granted Roles tab, search for all three of these roles: **CONNECT**, **RESOURCE**, **DWROLE**. Check both the Granted and Default checkboxes for each one.
+6. In the Create User page, under Granted Roles tab, search for all three of these roles: **CONNECT**, **RESOURCE**, **DWROLE**. Check both the Granted and Default checkboxes for each one.
 
     ![](./images/task4-71.png " ")
     ![](./images/task4-72.png " ")
     ![](./images/task4-73.png " ")
 
-8.  Click **Create User**.
+7.  Click **Create User**.
 
     ![](./images/task4-81.png " ")
 
     Notice that the new user is created successfully.
     ![](./images/task4-82.png " ")
 
-9. Click on the copy button for the DEMOUSER REST link and save it in a notepad. Edit the link in the notepad by removing the `/ords/demouser/_sdw/` at the end of the link and save it as Oracle Autonomous Database URL. Make sure the saved URL does not have backslash at the end.
+8. Click on the copy button for the DEMOUSER REST link and save it in a notepad. Edit the link in the notepad by removing the `/ords/demouser/_sdw/` at the end of the link and save it as Oracle Autonomous Database URL. Make sure the saved URL does not have backslash at the end.
 
     The saved link should look like this
 
