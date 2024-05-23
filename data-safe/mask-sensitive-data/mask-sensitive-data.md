@@ -30,8 +30,8 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe. Make sure to have the `ADMIN` password for your database on hand (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database)).
+- Access to or prepared an environment for this workshop
+- Access to a registered target database. Make sure to have the `ADMIN` password for your database on hand.
 - Created a sensitive data model (see [Discover Sensitive Data](?lab=discover-sensitive-data))
 
 
@@ -276,4 +276,4 @@ You can run a data masking job against your target database from the **Masking p
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, April 25, 2024
+- **Last Updated By/Date** - Jody Glover, May 16, 2024

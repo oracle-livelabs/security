@@ -166,7 +166,7 @@ When you register the database, choose to create an Oracle Data Safe private end
 
     - Leave **Oracle Cloud Infrastructure** selected. 
     - Select the name of host #2, which begins with **db23c-hol-**. 
-    - Enter **db23c** for the Data Safe target display name. 
+    - Enter **db23ai** for the Data Safe target display name. 
     - Select your compartment.
     - Enter **FREEPDB1** as the database service name.
     - Enter **DATASAFE$ADMIN** as the Data Safe service account.
