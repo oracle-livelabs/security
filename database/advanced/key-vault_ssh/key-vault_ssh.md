@@ -36,17 +36,17 @@ This lab assumes you have:
 
     - Click on each NoVNC Remote Desktop link available in the Labs details to open a web browser tabs for each of them
 
-        - **SSH Server** remote desktop (here *`DBSEC-LAB`* with Private IP *`10.0.0.150`*)
+        - **SSH Server** remote desktop (here *`dbsec-lab`* with Private IP *`10.0.0.150`*)
 
             ![Key Vault](./images/okv_ssh-001.png "SSH Server - NoVNC Remote Desktop")
 
             **Note**: This tab will be **the main one** for the duration of the lab
 
-        - **SSH Client** remote desktop (here *`DB23AI`* with Private IP *`10.0.0.155`*)
+        - **SSH Client** remote desktop (here *`db23ai`* with Private IP *`10.0.0.155`*)
 
             ![Key Vault](./images/okv_ssh-002.png "SSH Server - NoVNC Remote Desktop")
          
-    - On the **SSH Server** remote desktop
+    - On the **SSH Server** remote desktop (on DBSeclab VM)
 
         - Open a Terminal session as OS user *opc*
 
@@ -58,7 +58,7 @@ This lab assumes you have:
 
             **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
-        - Make sure you have access to SSH Client VM (here *`DB23AI`* with private IP *`10.0.0.155`*) as OPC
+        - Make sure you have access to SSH Client (DB23ai VM) as opc
 
             ````
             <copy>
@@ -70,7 +70,7 @@ This lab assumes you have:
 
             **Note**:
             - Enter *`Yes`* to continue
-            - You must be successfully connected to db23ai VM as opc!
+            - You must be successfully connected to db23ai VM!
 
         - If so, please close the SSH session
 
@@ -80,7 +80,7 @@ This lab assumes you have:
             </copy>
             ````
 
-    - On the **SSH Client** remote desktop
+    - On the **SSH Client** remote desktop (on DB23ai VM)
 
         - Open a Terminal session as OS user *opc*
 
@@ -92,7 +92,7 @@ This lab assumes you have:
 
             **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
-        - Make sure you have access to SSH Client VM (here *`DBSEC-LAB`* with private IP *`10.0.0.150`*) as OPC
+        - Make sure you have access to SSH Server (DBSeclab VM) as opc
 
             ````
             <copy>
@@ -104,7 +104,7 @@ This lab assumes you have:
 
             **Note**:
             - Enter *`Yes`* to continue
-            - You must be successfully connected to dbsec-lab VM as opc!
+            - You must be successfully connected to dbsec-lab VM!
 
         - If so, please close the SSH session
 
@@ -267,9 +267,9 @@ In this lab, we will introduce remote server access controls by centrally managi
 
         - Close the file window
 
-5. Go back to **your terminal session on SSH Server** (DBSECLAB VM) as opc to configure the OKV binaries
+5. Go back to **your terminal session on SSH Server** (DBSeclab VM) as opc to configure the OKV binaries
 
-    - Create the OKV repo (press "enter" for AUTO-LOGIN)
+    - Create the OKV repo (press "*enter*" for AUTO-LOGIN)
 
         ````
         <copy>
@@ -430,7 +430,7 @@ In this lab, we will introduce remote server access controls by centrally managi
 
     - From now on, the dbseclab endpoint has only Read Only privileges on the SSH Server wallet `opc_at_dbseclab`
 
-8. Go back to **your terminal session on SSH Server** (DBSECLAB VM) as opc to remove your SSH key pairs from the VM
+8. Go back to **your terminal session on SSH Server** (DBSeclab VM) as opc to remove your SSH key pairs from the VM
 
     - Move the old authorized_keys file as well as all **SSH keys into a backup directory**
 
@@ -631,9 +631,9 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         - Close the file window
 
-5. Go back to **your terminal session on SSH Client** (DB23AI VM) as opc to configure the OKV binaries
+5. Go back to **your terminal session on SSH Client** (DB23ai VM) as opc to configure the OKV binaries
 
-    - Move okvclient.jar file **into /tmp from DBSECLAB VM to DB23AI VM**
+    - Move okvclient.jar file **into /tmp from DBSeclab VM to DB23ai VM**
 
         ````
         <copy>
@@ -644,7 +644,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         ![Key Vault](./images/okv_ssh-067.png "Move the file to tmp")
 
-        **Note**: The jar file must be downloaded successfully from DBSECLAB VM to DB23AI VM!
+        **Note**: The jar file must be downloaded successfully from DBSeclab VM to DB23ai VM!
 
     - Install OKV Client software (press "enter" for AUTO-LOGIN)
 
@@ -699,7 +699,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
 ## Task 4: SSH Key Management with OKV
 
-1. Still **on the SSH Client** (DB23AI VM) terminal session, log on to **DBSECLAB VM** as opc **with OKV SSH Key** (enter *`NULL`* **explicitly** as label)
+1. Still **on the SSH Client** (DB23ai VM) terminal session, log on **to SSH Server** (DBSeclab VM) as opc **with OKV SSH Key** (enter *`NULL`* **explicitly** as label)
 
     ````
     <copy>
@@ -710,7 +710,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     ![Key Vault](./images/okv_ssh-100.png "Check log on to DBSECLAB from DB23AI with SSH OKV key")
 
-2. Then, close the SSH session on DBSECLAB VM to go back to DB23AI workstation
+2. Then, **close the SSH session** on SSH Server (DBSeclab VM) to go back to SSH Client (DB23ai VM) workstation
 
     ````
     <copy>
@@ -732,7 +732,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     ![Key Vault](./images/okv_ssh-102.png "Load SSH OKV key")
 
-4. Now, still from DB23AI VM, log on to **DBSECLAB VM** as opc **without OKV SSH Key**
+4. Now, still **from the SSH Client** (DB23ai VM), log on **to SSH Server** (DBSeclab VM) as opc **without OKV SSH Key**
 
     ````
     <copy>
@@ -742,9 +742,9 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     ![Key Vault](./images/okv_ssh-103.png "Check log on to DBSECLAB from DB23AI without SSH OKV key")
 
-    **Note**: As you can see now, you can connect to DBSECLAB VM directly through OKV, without any local SSH Key pair, neither local OKV SSH Key
+    **Note**: As you can see now, you can connect to DBSeclab VM directly through OKV, without any local SSH Key pair, neither local OKV SSH Key
 
-5. Then, close the SSH session on DBSECLAB VM to go back to DB23AI workstation
+5. Then, **close the SSH session** on SSH Server (DBSeclab VM) to go back to SSH Client (DB23ai VM) workstation
 
     ````
     <copy>
@@ -784,7 +784,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
             ![Key Vault](./images/okv_ssh-108.png "Remove the public key from the SSH Server Wallet")
 
-    - Go back to your terminal session **on DB23AI VM** to test the connection to DBSECLAB VM
+    - Go back to your terminal session **on SSH Client** (DB23ai VM) to test the connection **to SSH Server** (DBSeclab VM)
     
         ````
         <copy>
@@ -812,7 +812,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
             ![Key Vault](./images/okv_ssh-111.png "Remove the public key from the SSH Server Wallet")
 
-    - Go back to your terminal session **on DB23AI VM** to test the connection to DBSECLAB VM
+    - Go back to your terminal session **on SSH Client** (DB23ai VM) to test the connection **to SSH Server** (DBSeclab VM)
     
         ````
         <copy>
@@ -834,7 +834,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - click [**Save**]
     
-    - Go back to your terminal session **on DB23AI VM** to test the connection to DBSECLAB VM
+    - Go back to your terminal session **on SSH Client** (DB23ai VM) to test the connection **to SSH Server** (DBSeclab VM)
 
         ````
         <copy>
@@ -852,7 +852,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         **Note**: Public key **authentication is successful** again!
 
-    - Finally, go back to your terminal session **on DBSECLAB VM** to test the connection to DB23AI VM
+    - Finally, go back to your terminal session **on SSH Server** (DBSeclab VM) to test the connection **to SSH Client** (DB23ai VM)
     
         ````
         <copy>
@@ -866,7 +866,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
 ## Task 5: Reset the OKV config
 
-1. Go back to your terminal session **on DBSECLAB VM**
+1. Go back to your terminal session **on SSH Server** (DBSeclab VM)
 
     - Restore the inital keys
 
@@ -890,7 +890,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         ![Key Vault](./images/okv_ssh-151.png "Uninstall OKV binaries")
 
-2. Go back to your terminal session **on DB23AI VM**
+2. Go back to your terminal session **on SSH Client** (DB23ai VM)
 
     - Restore the inital keys
 
@@ -934,6 +934,7 @@ In this second part, we will manage users' private keys in OKV making those priv
         ![Key Vault](./images/okv_ssh-157.png "Delete all Endpoints")
 
 You may now proceed to the next lab!
+
 
 ## **Appendix**: About the Product
 ### **Overview**
