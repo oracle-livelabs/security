@@ -395,7 +395,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
     - Go back to your terminal session and list **ALL** the Unified Audit Policies in **pdb1**
 
         ````
-        <copy>./avs_query_all_unified_policies.sh</copy>
+        <copy>./avs_query_all_unified_policies.sh pdb1</copy>
         ````
 
         ![AVDF](./images/avdf-014.png "List all the Unified Audit Policies")
@@ -403,7 +403,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
     - Next, show the **enabled** Unified Audit policies
 
         ````
-        <copy>./avs_query_enabled_unified_policies.sh</copy>
+        <copy>./avs_query_enabled_unified_policies.sh pdb1</copy>
         ````
 
         ![AVDF](./images/avdf-015.png "Show the enabled Unified Audit policies")
@@ -1649,10 +1649,10 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
 **Generate Changes and View the Audit Vault Reports**
 
-22. Go back to your terminal session and generate data and object changes with 2 different privileged users
+22. Go back to your terminal session and generate data and object changes with 2 different privileged users **on pdb1**
 
     ````
-    <copy>./avs_generate_employeesearch_prod_changes.sh</copy>
+    <copy>./avs_generate_employeesearch_prod_changes.sh pdb1</copy>
     ````
 
     ![AVDF](./images/avdf-042.png "Generate data")
@@ -2090,7 +2090,7 @@ Important: before performing this lab, you must have:
     - Go back to your terminal session to reset Golden Gate
 
         ````
-        <copy>$DBSEC_LABS/avdf/avs/avs_reset_ogg.sh</copy>
+        <copy>$DBSEC_LABS/avdf/avs/avs_reset_ogg.sh pdb1</copy>
         ````
 
         ![AVDF](./images/avdf-263.png "Reset the Golden Gate configuration")
@@ -2198,4 +2198,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Nazia Zaidi
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2024
