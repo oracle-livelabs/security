@@ -351,6 +351,8 @@ In this task you will learn how the administrator trains the system to learn the
 
         ![SQLFW](./images/sqlfw-051.png "Select a start date")
 
+        **Note**: The start date is invariably current date (in Sandbox) with no way to go before it!
+
     - Now, the Audit trail is **COLLECTING**
 
         ![SQLFW](./images/sqlfw-052.png "Audit trail is COLLECTING")
@@ -390,6 +392,7 @@ In this task you will learn how the administrator trains the system to learn the
 
         ![SQLFW](./images/sqlfw-059.png "SQL Firewall violations policy associated")
 
+<!--
 9. Finally, integrate with OCI Events and Notifications for pro-active notifications
 
     - Open the Burger menu and click on **Developer Services**, then **Notifications** in the **Application Integration** section
@@ -480,6 +483,7 @@ In this task you will learn how the administrator trains the system to learn the
     - Finally, click on **Actions** to check that the association with the notification is enabled
 
         ![SQLFW](./images/sqlfw-069c.png "Events Service Rules with notification active")
+-->
 
 ## Task 1c: Detect an insider threat of stolen credential access with SQL Firewall
 
@@ -523,11 +527,13 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
         ![SQLFW](./images/sqlfw-120.png "Select sensitive employee data")
 
+<!--
      - The administrator receives SQL Firewall Context violation alert raising a suspicion that someone has attempted to gain access to HR Apps DB bypassing allowed database connection paths
      
         ![SQLFW](./images/sqlfw-072.png "Alert receiving")
 
         **Note:** SQL Firewall context violation is raised since SQL Developer is not in the allowed OS program allow list, catching attention of security administrators
+-->
 
     - Administrator analyses the SQL Firewall Context violations in Oracle Data Safe to spot abnormal access pattern trend over time and across fleet
 
@@ -642,11 +648,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         - The output should return an ORA-failures on these attempts
         - Remember, this is because the UNION query has not been added into the Allow-list in the SQL Firewall policy... as simple as that!
 
-4. SQL violation alert is raised, catching attention of security administrators by email!
-
-    ![SQLFW](./images/sqlfw-082.png "Alert violation email")
-
-5. Administrator analyses the SQL violations in Oracle Data Safe to spot abnormal access pattern trends over time and across fleet
+4. Administrator analyses the SQL violations in Oracle Data Safe to spot abnormal access pattern trends over time and across fleet
 
     - Go back to the Data Safe session then click on SQL Firewall
 
@@ -659,6 +661,27 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     - Drill down into violation report to analyse them further and appropriately take action
 
         ![SQLFW](./images/sqlfw-092.png "Drilldown the violation logs")
+
+<!--
+5. SQL violation alert is raised, catching attention of security administrators by email!
+
+    ![SQLFW](./images/sqlfw-082.png "Alert violation email")
+-->
+
+5. See the SQL Firewall violation alters
+
+    - Go to Alerts Dashboard
+
+        ![SQLFW](./images/sqlfw-083.png "Alerts dashboard")
+
+    - Drilldown into critical alerts to show the SQL Firewall violation alerts raised
+
+        ![SQLFW](./images/sqlfw-084.png "SQL Firewall violation alter")
+
+    - Open the recent SQL Firewall violation alert and highlight the SQL Injection query in the command text of the alert as shown here
+
+        ![SQLFW](./images/sqlfw-085.png "SQL Firewall violation alter")
+
 
 ## Task 1e: Reset the SQL Firewall Labs Environment for Data Safe
 
@@ -1042,4 +1065,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2024
