@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the advanced features and functionality of Oracle Key Vault (OKV). It gives the user an opportunity to learn how to configure this appliance to manage SSH keys.
 
-*Estimated Lab Time:* 30 minutes
+*Estimated Lab Time:* 35 minutes
 
 *Version tested in this lab:* Oracle OKV 21.8 and DBEE 23.4
 
@@ -50,21 +50,21 @@ This lab assumes you have:
 
         - Open a Terminal session as OS user *opc*
 
-            ````
+            ```
             <copy>
             sudo su - opc
             </copy>
-            ````
+            ```
 
             **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
         - Make sure you have access to SSH Client (DB23ai VM) as opc
 
-            ````
+            ```
             <copy>
             ssh -i ~/.ssh/id_rsa opc@10.0.0.155
             </copy>
-            ````
+            ```
 
             ![Key Vault](./images/okv_ssh-003.png "SSH Server VM access to SSH Client VM")
 
@@ -74,31 +74,31 @@ This lab assumes you have:
 
         - If so, please close the SSH session
 
-            ````
+            ```
             <copy>
             exit
             </copy>
-            ````
+            ```
 
     - On the **SSH Client** remote desktop (on DB23ai VM)
 
         - Open a Terminal session as OS user *opc*
 
-            ````
+            ```
             <copy>
             sudo su - opc
             </copy>
-            ````
+            ```
 
             **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
 
         - Make sure you have access to SSH Server (DBSeclab VM) as opc
 
-            ````
+            ```
             <copy>
             ssh -i ~/.ssh/id_rsa opc@10.0.0.150
             </copy>
-            ````
+            ```
 
             ![Key Vault](./images/okv_ssh-004.png "SSH Client VM access to SSH Server VM")
 
@@ -108,11 +108,11 @@ This lab assumes you have:
 
         - If so, please close the SSH session
 
-            ````
+            ```
             <copy>
             exit
             </copy>
-            ````
+            ```
 
     - Now, you can confirm that, with the SSH key pair preset, you can connect to the VMs with the command ssh
 
@@ -124,11 +124,11 @@ This lab assumes you have:
 
     - Login to Key Vault Web Console as *`KVRESTADMIN`* (use the password randomly generated)
 
-        ````
+        ```
         <copy>
         KVRESTADMIN
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
 
@@ -136,12 +136,12 @@ This lab assumes you have:
         - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
         - This default password is available in the Labs details or by executing the following command line as *`oracle`* user:
 
-            ````
+            ```
             <copy>
             sudo - su oracle
             echo $OKVUSR_PWD
             </copy>
-            ````
+            ```
 
     - Set your new password
     
@@ -157,11 +157,11 @@ In this lab, we will introduce remote server access controls by centrally managi
 
 1. Go back on the **OKV Web Console** and logon as KVRESTADMIN with your new password
 
-    ````
+    ```
     <copy>
     KVRESTADMIN
     </copy>
-    ````
+    ```
 
     ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
 
@@ -271,13 +271,13 @@ In this lab, we will introduce remote server access controls by centrally managi
 
     - Create the OKV repo (press "*enter*" for AUTO-LOGIN)
 
-        ````
+        ```
         <copy>
         sudo mkdir -pvm700 /opt/okv
         export JAVA_HOME=/opt/oracle/product/23ai/dbhomeFree/jdk
         sudo $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d /opt/okv        
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-028.png "Create OKV repo")
 
@@ -287,59 +287,59 @@ In this lab, we will introduce remote server access controls by centrally managi
 
     - Edit okvsshendpoint.conf
     
-        ````
+        ```
         <copy>
         sudo vi /opt/okv/conf/okvsshendpoint.conf
         </copy>
-        ````
+        ```
 
     - Uncomment and change these 2 lines [*`user1`*] as following:
 
-        ````
+        ```
         <copy>
         [ opc ]
         ssh_server_wallet=opc_at_dbseclab
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-029.png "Edit okvsshendpoint.conf")
 
     - Edit sshd_config
     
-        ````
+        ```
         <copy>
         sudo vi /etc/ssh/sshd_config
         </copy>
-        ````
+        ```
 
     - Uncomment and change these 2 lines as following:
 
-        ````
+        ```
         <copy>
         AuthorizedKeysCommand /opt/okv/bin/okv_ssh_ep_lookup_authorized_keys get_authorized_keys_for_user %u %f %k
         AuthorizedKeysCommandUser root
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-030.png "Edit sshed_config")
 
     - Restart sshd service
     
-        ````
+        ```
         <copy>
         sudo systemctl restart sshd
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-031.png "Restart sshd service")
 
     - Check the sshd service for keyscommand
     
-        ````
+        ```
         <copy>
         sudo sshd -T | grep keyscommand
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-032.png "Check the sshd service for keyscommand")
 
@@ -347,56 +347,56 @@ In this lab, we will introduce remote server access controls by centrally managi
 
     - **Extract your public key** from the `authorized_keys` file
 
-        ````
+        ```
         <copy>
         cd
         sudo grep "opc@db23ai" /home/opc/.ssh/authorized_keys > /home/opc/.ssh/id_rsa_ME.pub
         </copy>
-        ````
+        ```
         
         ![Key Vault](./images/okv_ssh-033.png "Extract your public key")
 
     - **Convert Client's existing public key** from RSA to PKCS8 format
 
-        ````
+        ```
         <copy>
         sudo cat /home/opc/.ssh/id_rsa_ME.pub
         sudo ssh-keygen -e -m PKCS8 -f /home/opc/.ssh/id_rsa_ME.pub > /home/opc/.ssh/id_pkcs8_ME.pub
         sudo cat /home/opc/.ssh/id_pkcs8_ME.pub
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-034.png "Convert public key to PKCS8 format")
 
     - **Upload your public key** (in PKCS8 format) to OKV
 
-        ````
+        ```
         <copy>
         sudo /opt/okv/bin/okvutil upload -l /home/opc/.ssh/id_pkcs8_ME.pub -t SSH_PUBLIC_KEY -U opc -g opc_at_dbseclab -L 2048
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-035.png "Upload public key to OKV")
 
     - **Set SELinux to `Permissive`** if it is set to `Enforcing`
 
-        ````
+        ```
         <copy>
         sudo getenforce
         sudo setenforce 0
         sudo getenforce
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-036.png "Set SELinux to Permissive")
 
     - Make this change **permanent**
 
-        ````
+        ```
         <copy>
         sudo sed -i 's|SELINUX=enforcing|SELINUX=permissive|' /etc/selinux/config
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-037.png "Make the change permanent")
 
@@ -404,11 +404,11 @@ In this lab, we will introduce remote server access controls by centrally managi
 
     - Log on to **OKV Web Console** as KVRESTADMIN
 
-        ````
+        ```
         <copy>
         KVRESTADMIN
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
 
@@ -434,23 +434,23 @@ In this lab, we will introduce remote server access controls by centrally managi
 
     - Move the old authorized_keys file as well as all **SSH keys into a backup directory**
 
-        ````
+        ```
         <copy>
         sudo mkdir -pv ~/.ssh/.backup
         sudo mv -v ~/.ssh/authorized_keys ~/.ssh/.backup
         sudo mv -v ~/.ssh/id_* ~/.ssh/.backup
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-041.png "Backup SSH keys")
 
     - Double-check that **SSH key pair are no longer available**
 
-        ````
+        ```
         <copy>
         sudo tree -n ~/.ssh
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-042.png "Check the SSH key are no longer accessible")
 
@@ -489,9 +489,9 @@ In this second part, we will manage users' private keys in OKV making those priv
 
 1. Go back on the **OKV Web Console** and logon as KVRESTADMIN with your new password
 
-    ````
+    ```
     <copy>KVRESTADMIN</copy>
-    ````
+    ```
 
     ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
 
@@ -635,12 +635,12 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Move okvclient.jar file **into /tmp from DBSeclab VM to DB23ai VM**
 
-        ````
+        ```
         <copy>
         cd /tmp
         sudo scp -i ~/.ssh/id_rsa opc@10.0.0.150:/tmp/okvclient.jar .
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-067.png "Move the file to tmp")
 
@@ -648,13 +648,13 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Install OKV Client software (press "enter" for AUTO-LOGIN)
 
-        ````
+        ```
         <copy>
         cd
         export JAVA_HOME=/opt/oracle/product/23ai/dbhomeFree/jdk
         sudo $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d .
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-068.png "Install OKV binaries")
 
@@ -664,11 +664,11 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Verify that DB23AI endpoint can see the SSH key pair that KVRESTADMIN created
 
-        ````
+        ```
         <copy>
         ./bin/okvutil list -a
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-069.png "Check SSH Keys")
 
@@ -676,23 +676,23 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Move the old authorized_keys file as well as all **SSH keys into a backup directory**
 
-        ````
+        ```
         <copy>
         mkdir -pv /home/opc/.ssh/.backup
         mv -v /home/opc/.ssh/authorized_keys /home/opc/.ssh/.backup
         mv -v /home/opc/.ssh/id_* /home/opc/.ssh/.backup
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-070.png "Backup SSH Keys")
 
     - Double-check that **SSH key pair are no longer available**
 
-        ````
+        ```
         <copy>
         tree -n /home/opc/.ssh
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-071.png "Check the SSH key are no longer accessible")
 
@@ -701,44 +701,44 @@ In this second part, we will manage users' private keys in OKV making those priv
 
 1. Still **on the SSH Client** (DB23ai VM) terminal session, log on **to SSH Server** (DBSeclab VM) as opc **with OKV SSH Key** (enter *`NULL`* **explicitly** as label)
 
-    ````
+    ```
     <copy>
     export OKV_HOME=/home/opc
     ssh -I $OKV_HOME/lib/liborapkcs.so opc@10.0.0.150
     </copy>
-    ````
+    ```
 
     ![Key Vault](./images/okv_ssh-100.png "Check log on to DBSECLAB from DB23AI with SSH OKV key")
 
 2. Then, **close the SSH session** on SSH Server (DBSeclab VM) to go back to SSH Client (DB23ai VM) workstation
 
-    ````
+    ```
     <copy>
     exit
     </copy>
-    ````
+    ```
 
     ![Key Vault](./images/okv_ssh-101.png "Close connection to DBSECLAB from DB23AI")
 
 3. **Add OKV SSH key** (enter *`NULL`* **explicitly** as passphrase)
 
-    ````
+    ```
     <copy>
     eval `ssh-agent -P "$OKV_HOME/lib/*"`
     ssh-add -D
     ssh-add -s $OKV_HOME/lib/liborapkcs.so -t 14400
     </copy>
-    ````
+    ```
 
     ![Key Vault](./images/okv_ssh-102.png "Load SSH OKV key")
 
 4. Now, still **from the SSH Client** (DB23ai VM), log on **to SSH Server** (DBSeclab VM) as opc **without OKV SSH Key**
 
-    ````
+    ```
     <copy>
     ssh opc@10.0.0.150
     </copy>
-    ````
+    ```
 
     ![Key Vault](./images/okv_ssh-103.png "Check log on to DBSECLAB from DB23AI without SSH OKV key")
 
@@ -746,11 +746,11 @@ In this second part, we will manage users' private keys in OKV making those priv
 
 5. Then, **close the SSH session** on SSH Server (DBSeclab VM) to go back to SSH Client (DB23ai VM) workstation
 
-    ````
+    ```
     <copy>
     exit
     </copy>
-    ````
+    ```
 
     ![Key Vault](./images/okv_ssh-101.png "Close connection to DBSECLAB from DB23AI")
 
@@ -786,17 +786,17 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Go back to your terminal session **on SSH Client** (DB23ai VM) to test the connection **to SSH Server** (DBSeclab VM)
     
-        ````
+        ```
         <copy>
         ssh opc@10.0.0.150
         </copy>
-        ````
+        ```
         
-        ````
+        ```
         <copy>
         exit
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-109.png "Check log on to DBSECLAB from DB23AI without SSH key")
 
@@ -814,11 +814,11 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Go back to your terminal session **on SSH Client** (DB23ai VM) to test the connection **to SSH Server** (DBSeclab VM)
     
-        ````
+        ```
         <copy>
         ssh opc@10.0.0.150
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-112.png "Check log on to DBSECLAB from DB23AI without SSH key")
 
@@ -836,17 +836,17 @@ In this second part, we will manage users' private keys in OKV making those priv
     
     - Go back to your terminal session **on SSH Client** (DB23ai VM) to test the connection **to SSH Server** (DBSeclab VM)
 
-        ````
+        ```
         <copy>
         ssh opc@10.0.0.150
         </copy>
-        ````
+        ```
         
-        ````
+        ```
         <copy>
         exit
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-115.png "Check log on to DBSECLAB from DB23AI without SSH key")
 
@@ -854,11 +854,11 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Finally, go back to your terminal session **on SSH Server** (DBSeclab VM) to test the connection **to SSH Client** (DB23ai VM)
     
-        ````
+        ```
         <copy>
         ssh opc@10.0.0.155
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-116.png "Check log on to DB23AI from DBSECLAB without SSH key")
 
@@ -870,23 +870,23 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Restore the inital keys
 
-        ````
+        ```
         <copy>
         cd /home/opc/.ssh
         sudo mv .backup/* .
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-150.png "Restore keys")
 
     - Uninstall OKV binaries
 
-        ````
+        ```
         <copy>
         cd
         sudo rm -Rf /opt/okv
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-151.png "Uninstall OKV binaries")
 
@@ -894,24 +894,24 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Restore the inital keys
 
-        ````
+        ```
         <copy>
         cd /home/opc/.ssh
         mv .backup/* .
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-152.png "Restore keys")
 
     - Uninstall OKV client
 
-        ````
+        ```
         <copy>
         cd
         rm -Rf /home/opc/*
         ll
         </copy>
-        ````
+        ```
 
         ![Key Vault](./images/okv_ssh-153.png "Uninstall OKV client")
 
@@ -933,7 +933,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         ![Key Vault](./images/okv_ssh-157.png "Delete all Endpoints")
 
-You may now proceed to the next lab!
+You may now **proceed to the next lab**!
 
 
 ## **Appendix**: About the Product
@@ -1001,6 +1001,9 @@ Every node in the cluster can serve endpoints actively and independently while m
 Technical Documentation:
 - [Oracle Key Vault](https://docs.oracle.com/en/database/oracle/key-vault/21.8/index.html)
 - [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/multimaster_concepts.html)
+- [Oracle Key Vault - SSH Key Management](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/management_of_ssh_keys_concepts.html)
+
+    > To learn more about how to use OKV, please refer to the "[DB Security - Key Vault] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
 
 Video:
 - *Introducing Oracle Key Vault 21 (January 2021)* [](youtube:SfXQEwziyw4)
