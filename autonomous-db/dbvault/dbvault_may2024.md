@@ -7,7 +7,7 @@ Managed database services run the risk of 'Admin snooping', allowing privileged 
 
 You can deploy controls to block privileged account access to application data and control sensitive operations inside the database. Trusted paths can be used to add additional security controls to authorized data access and database changes. IP addresses, usernames, client program names and other factors can be used as part of Oracle Database Vault security controls to increase security. **Oracle Database Vault secures existing database environments transparently, eliminating costly and time consuming application changes.**
 
-*Estimated Time:* 50 minutes
+*Estimated Time:* 75 minutes
 
 *Version tested in this lab:* Oracle Autonomous Database 19c
 
