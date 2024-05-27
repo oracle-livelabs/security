@@ -1,4 +1,4 @@
-# Prepare Your Environment
+# Prepare your environment
 
 ## Introduction
 
@@ -16,6 +16,9 @@ In this lab, you will:
 - Provision an Autonomous Transaction Processing database
 - Access Oracle Database Actions
 - Load sample data into your database
+- Register your database with Oracle Data Safe
+- Access Oracle Data Safe and view your registered target database
+- (Optional) Explore Security Center
 
 
 ### Prerequisites
@@ -50,7 +53,7 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 
 Create a user group and add your Oracle Cloud account to the group. If you are a tenancy administrator, then you can skip this task; otherwise, enlist the help of one to complete this task.
 
-1. From the navigation menu, select **Identity & Security**, and then **Groups**.
+1. From the navigation menu, select **Identity & Security**, and then **Domains**. Click the name of your domain (for example, **Default**), and then on the left, click **Groups**.
 
     The **Groups** page in IAM is displayed.
 
@@ -184,7 +187,7 @@ Database Actions provides a way for you to run SQL commands on your target datab
 
 As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also generates database activity for the `ADMIN` user.
 
-1. Download the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad.
+1. Download the [**load-data-safe-sample-data_admin.sql**](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad.
 
 2. Copy the entire script to the clipboard and paste it into the worksheet in Database Actions. The last line of the script is as follows:
 
@@ -211,13 +214,58 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
     - `SUPPLEMENTAL_DATA` - 149 rows
 
 
-    If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
+    If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
 
 5. Refresh Database Actions by refreshing the _browser_ page. If prompted, click **Leave page**.
 
 6. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
 7. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+
+
+## Task 7: Register your database with Oracle Data Safe
+
+A database registered with Oracle Data Safe is referred to as a *target* database in Oracle Data Safe.
+
+1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the Autonomous Database details page.
+
+2. Scroll down to the **Data Safe** section, click **Register**, and wait for the registration to be completed.
+
+
+## Task 8: Access Oracle Data Safe and view your registered target database
+
+A database registered with Oracle Data Safe is referred to as a *target* database in Oracle Data Safe.
+
+1. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
+
+2. On the left, click **Target databases**.
+
+3. Under **List scope**, make sure your compartment is selected. Your registered target database is listed on the right.
+
+    - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
+    - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
+
+    ![Target databases page in OCI](images/target-databases-page-oci.png "Target databases page in OCI")
+
+
+## Task 9 (Optional): Explore Security Center
+
+1. In the breadcrumb at the top of the page, click **Data Safe**.
+
+    The **Overview** page is displayed.
+
+2. Under **Security center** on the left, click **Dashboard** and review the dashboard. Scroll down to view the security controls and feature metrics (charts). Make sure your compartment is selected under **List scope**. From the **Target databases** drop-down list, select your target database so that the data in the dashboard pertains to your target database only.
+
+    - In Security center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, SQL Firewall, and Alerts.
+    - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security assessment**, **User assessment**, **Feature usage**, and **Operations summary** charts in the dashboard already have data.
+    - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail with the status **In transition** for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
+
+    ![Initial Dashboard - security controls](images/dashboard-security-controls.png "Initial Dashboard - security controls")
+
+    ![Initial Dashboard - feature metrics top half](images/feature-metrics-top-half.png "Initial Dashboard - feature metrics top half")
+
+    ![Initial Dashboard - feature metrics bottom half](images/feature-metrics-bottom-half.png "Initial Dashboard - feature metrics bottom half")
+
 
 You may now **proceed to the next lab**.
 
@@ -227,9 +275,11 @@ You may now **proceed to the next lab**.
 - [OCI Cloud Free Tier](https://www.oracle.com/cloud/free/)
 - [Provision Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-provision.html)
 - [Loading Data into an Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/load-data.html)
+- [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
+- [Oracle Data Safe Dashboard](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B4D784B8-F3F7-4020-891D-49D709B9A302)
 
 
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 8, 2023
+- **Last Updated By/Date** - Jody Glover, May 16, 2024

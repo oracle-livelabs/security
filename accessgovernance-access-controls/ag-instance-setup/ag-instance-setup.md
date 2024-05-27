@@ -56,7 +56,27 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     ![Access Governance console](images/ag-console.png)
 
-## Task 2: Assign AG Application Roles to Users
+## Task 2: Modify the Email ID of the Users in OCI IAM
+
+
+1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
+
+    * In the OCI console, navigate to Identity -> Domains ->  ag-domain -> Users
+
+    * Click on the Downward arrow on the right corner for each of them and select *View details* 
+
+    * Click on *Edit User*. 
+
+    * Modify the *Email* field of the users to the following values:
+
+        - pamela.green : pamela.green@orcl.com
+        - mhernandez   : mark.hernandez@orcl.com
+        - harlan.bullard : harlan.bullard@orcl.com
+        - jerry.poland : jerry.poland@orcl.com
+
+   * Click *Save changes*
+
+## Task 3: Assign AG Application Roles to Users
 
 1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator.
 
@@ -76,19 +96,17 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     * Pamela Green has been assigned with the *AG Administrator* application role. You can now close the window.
 
-3. Now, Notice the *AG User* Role and *AG CloudAccessReviewer* Role listed. Assign both these roles to each of the users : *Mark Hernandez*, *Harlan Bullard* and *Jerry Poland*.
+3. Now, Notice the *AG User* Role listed. Assign the role to each of the users : *Mark Hernandez*, *Harlan Bullard* and *Jerry Poland*.
 
     ![OIG Identity Roles and Access Policies](images/aguser.png)
 
-    ![OIG Identity Roles and Access Policies](images/agreviewer.png)
 
     * Click on *Assigned Users -> Manage*. Select *Mark Hernandez*, *Harlan Bullard* and *Jerry Poland* in *Available Users.* Click on *Assign*. The Users appear under *Assigned Users* :
 
     ![OIG Identity Roles and Access Policies](images/ag-userassign.png)
 
-    ![OIG Identity Roles and Access Policies](images/ag-reviewerassign.png)
 
-    * Mark Hernandez, Harlan Bullard and Jerry Poland have now been assigned with the *AG User* and *AG CloudAccessReviewer* application roles. You can now close the window.
+    * Mark Hernandez, Harlan Bullard and Jerry Poland have now been assigned with the *AG User* application role. You can now close the window.
 
     You may now **proceed to the next lab.**
 

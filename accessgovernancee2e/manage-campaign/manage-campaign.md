@@ -16,11 +16,30 @@ In this lab, you will:
 * View a list of **certification campaigns** you own or created
 * View the progress of **certification campaigns** made by reviewers with **analytics insights**
 
+
+### Prerequisites
+This lab assumes you have:
+- A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Login Oracle Access Governance as Campaign Administrator
 
 1. If you are still login as a user from the previous lab, please make sure you log out and log in again. Ensure you have **ag-domain** identity domain selected.
-2. Log in to **Oracle Access Governance** as a **campaign administrator - Pamela Green** with a username and password provided by LiveLabs instruction. **Please note username on LiveLabs step screenshot might be different from the username you received.**
+2. Login to **Oracle Access Governance** and enter **Oracle Access Governance Administrator** username and password (Pamela Green). 
+
+    **Username:**
+    ```
+    <copy>pamela.green</copy>
+    ```
+
+    **Password:**
+    
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+
+
+  You will be navigated to the home page of your Oracle Access Governance Console.
+
 	![Access Governance Login](images/admin-login.png)
+  
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
   ![Access Governance Homepage](images/admin-home.png)
 
@@ -34,8 +53,10 @@ In this lab, you will:
   ![Campaign Progress](images/admin-view-campaign-progress.png)
 4. Click on the button **Additional Details** to see more details of the selected campaign.
   ![Campaign Additional Details](images/admin-additional-details.png)
+   ![Clone Campaign](images/access-review.png)
+   
 5. Click on the drop-down menu of **Actions** and select **View report** to view a report showing the progress details of the selected campaign. If the **campaign progress report** has not yet been generated, pick a previous campaign to view **progress report**.
-  ![Campaign Progress Menu](images/admin-view-campaign-progress-menu.png)
+   ![Clone Campaign](images/access-review-insight.png)
 6. You can review out-of-the-box analytics and reports on campaign progress. You can also download the report as a PDF file. 
   ![Campaign Analytics](images/admin-view-campaign-analytics.png)
 7. Click **Close** and go back to the campaign detail screen, click on the **Actions** drop-down menu. You have the option to **Terminate** the current campaign. You also have the option to **Clone** the current campaign. 

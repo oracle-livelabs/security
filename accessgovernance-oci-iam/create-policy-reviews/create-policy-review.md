@@ -4,7 +4,7 @@
 
 Access Governance Administrators (Pamela Green) can create policy review campaign.
 
-* Estimated Time: 15 minutes
+* Estimated Time: 10 minutes
 * Persona: Access Governance Administrator
 
 ### Objectives
@@ -14,11 +14,10 @@ In this lab, you will:
 
 
 
-## Task 1: Create a Policy Review Campaign
+## Task 1: Create Approval Workflow
 
 
-
-1. From your browser, go to the Oracle Access Governance Console using the URL mentioned in *Lab 3: Task 1*
+1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 2: Task 1: Step 4*
 
 
 2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
@@ -29,41 +28,77 @@ In this lab, you will:
     ```
 
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
 
   You will be navigated to the home page of your Oracle Access Governance Console.
 
+3. Navigate to **Access Controls -> Approval Workflow**
 
-3.  Scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
+  ![Access Governance Homepage](images/navigate-to-approval-workflow.png)
 
-  ![Access Governance Homepage](images/ag-homepage-campaign.png)
+4. Click on **Create Approval Workflow**
 
+  ![Access Governance Homepage](images/create-workflow.png)
 
-  * In the Selection criteria step, select the **Which cloud providers?** tile. You will see a list of available cloud tenancies.
+5. Click **Add**
 
-  ![Select Cloud provider](images/select-cloud-providers.png)
+   ![Access Governance Homepage](images/click-add.png)
+  
+
+6. Under **Add a new approval** 
+    - Which type of approval? : select Custom User 
+    - Which user? : Pamela Green 
+    
+   Select **Add**
+
+  ![Access Governance Homepage](images/custom-user.png)
+
+7. Click on **Next**
+
+  ![Access Governance Homepage](images/click-next-approval.png)
+
+8. Enter the following details:
+    - What do you want to call this approval process: **One-level-approval**
+    - How do you want to describe this approval process: **One-level-approval**
+    
+    Click Next
+
+  ![Access Governance Homepage](images/one-level-approval.png)
+
+9. Click **Publish** and **Approval Workflow** - **One-level-approval** workflow has been created
+  
+## Task 2: Create a Policy Review Campaign
+
+1.  Scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
+
+  ![Access Governance Homepage](images/navigate-campaign.png)
+
+  ![Access Governance Homepage](images/create-new-campaign.png)
+
+  ![Access Governance Homepage](images/ag-campaign.png)
+
+  
+  * In the Selection criteria step, select the **Which tenancies?** tile. You will see a list of available cloud tenancies.
+
+  ![Select Cloud provider](images/select-tenancy.png)
 
   * Select an appropriate cloud tenancy. In this tutorial, select your cloud tenancy. A green tick is marked against your selection. 
 
-  ![Select Cloud provider](images/green-tick-cloud-provider.png)
 
   * Click on **Refine further**. You can further refine your selection by selecting a specific compartment and a domain, to run domain-specific policy reviews.
 
-  ![Select Cloud provider](images/click-refine.png)
 
-  * Enter the **domain** and **compartment** details mentioned below and click on **Apply**
+  * Enter the **compartment** details mentioned below and click on **Apply**
 
-     - domain: ag-domain
      - compartment: ag-compartment
 
-  ![Select Cloud provider](images/click-apply-refine.png)
+  ![Select Cloud provider](images/apply-refine-further.png)
 
   * Move on to the next step to select policies that you want to review. Select **Which policies?** tile. You will see a list of available policies in the domain that you selected.
 
-  ![Access Governance Homepage](images/select-which-policies.png)
+  ![Access Governance Homepage](images/which-policies.png)
 
   * Select the policies that you want to review. In this tutorial, select the following policies and click **Apply my selections.**
 
@@ -71,14 +106,16 @@ In this lab, you will:
       - network-admins-policy
       - security-admins-policy
 
-    ![Access Governance Homepage](images/select-the-policies.png)
+    ![Access Governance Homepage](images/select-policy-to-review.png)
     
 
-  * Proceed to the **Assign workflow** step. To do this, click **I’m good, go to workflows.** Here, you can define the approval workflow for your review tasks, click **Next.**
+  * Proceed to the **Assign workflow** step. Select the following option:
 
-  ![Access Governance Homepage](images/choose-workflow.png)
+      - Which approval workflow should be used? : One-level-approval-workflow
+  
+    Click **Next**
 
-  ![Access Governance Homepage](images/click-next-workflow.png)
+  ![Access Governance Homepage](images/choose-your-workflow.png)
 
 
 
@@ -100,14 +137,14 @@ In this lab, you will:
 
   * Click **Next.**
 
-  ![Access Governance Homepage](images/campaign-information.png)
+   ![Access Governance Homepage](images/click-next-run-workflow.png)
 
   * The **Review and submit** step displays the information you have added in the previous steps. Select **Create** to create the campaign. Your campaign is scheduled and is displayed on the **Campaigns** page. It will run 10 minutes from creation. 
 
 
-  ![OCI Enter details](images/click-create-new-campaign.png)
+  ![OCI Enter details](images/click-create-access-review.png)
 
-  ![OCI Enter details](images/campaign-scheduled.png)
+  ![OCI Enter details](images/review-scheduled.png)
 
 
 

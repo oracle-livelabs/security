@@ -5,13 +5,15 @@ This workshop introduces the functionality of Oracle Database Security Assessmen
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle DBSAT 3.0
+*Version tested in this lab:* Oracle DBSAT 3.1 and DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Database Security Assessment Tool (DBSAT)*" [](youtube:3XxA1qhNDpQ)
 
 ### Objectives
 In this lab, you will be able to play with the DBSAT and understand how it works and the immediate value it provides. Many customers already benefited from running DBSAT and were able to improve their security posture. DBSAT helps you to identify the overall security posture, who are the users and their entitlements, and to know how much and where is sensitive data located.
+
+**Disclaimer:** Please note that the counts of user/role grants, dates (including checks dependent on them), and patching information encountered during the live labs assessment may vary from the details provided in the screenshots below. The information presented in the screenshots is indicative, serving as a general reference.
 
 ### Prerequisites
 This lab assumes you have:
@@ -57,13 +59,13 @@ This lab assumes you have:
 3. Create a directory to install DBSAT
 
     ````
-    <copy>mkdir dbsat30</copy>
+    <copy>mkdir dbsat31</copy>
     ````
 
 4. Unzip the DBSAT zip file
 
     ````
-    <copy>unzip /u01/app/sources/dbsat30.zip -d dbsat30</copy>
+    <copy>unzip /u01/app/sources/dbsat31.zip -d dbsat31</copy>
     ````
 
     ![DBSAT](./images/dbsat-001.png "Unzip the DBSAT zip file")
@@ -77,7 +79,7 @@ This lab assumes you have:
 1. Go to the dbsat directory just created
 
     ````
-    <copy>cd $DBSEC_LABS/dbsat/dbsat30</copy>
+    <copy>cd $DBSEC_LABS/dbsat/dbsat31</copy>
     ````
 
 2. Let's start by examining all DBSAT execution parameters
@@ -225,8 +227,8 @@ The DBSAT reporter resulting analysis is reported in units called Findings, and 
 
     ![DBSAT](./images/dbsat-008.png "Analyze the Report - Findings")
 
-    **Note: What is an Oracle Best Practice (New in DBSAT 3.0)**
-    - From its beginning, DBSAT offered a distillation of decades of security experience, checking configuration issues that might introduce unnecessary risk. Until now, DBSAT clearly identified checks that were related to security frameworks like the DISA STIGs, Center for Internet Security (CIS) benchmarks, or data privacy regulations like GDPR. However, no checks clearly indicated that they were Oracle best practices. DBSAT 3.0 fixes that issue: Findings that are Oracle best practices are now clearly identified.
+    **Note: What is an Oracle Best Practice (New in DBSAT 3.1)**
+    - From its beginning, DBSAT offered a distillation of decades of security experience, checking configuration issues that might introduce unnecessary risk. Until now, DBSAT clearly identified checks that were related to security frameworks like the DISA STIGs, Center for Internet Security (CIS) benchmarks, or data privacy regulations like GDPR. However, no checks clearly indicated that they were Oracle best practices. DBSAT 3.1 fixes that issue: Findings that are Oracle best practices are now clearly identified.
     - A check might exist as an Oracle best practice (OBP) but not be covered by one of the other three categories for a few reasons. One common issue is release cycles. We release new features or capabilities, and it can take years for other organizations to pick those up in their standards. For example, Gradual Password Rollover was introduced in Oracle Database 19c in 2021 but still isn’t reflected in STIG or CIS.
     - Another reason is depth of knowledge. Obviously, we have a very deep understanding of the inner workings of the Oracle Database, and we’re aware that STIG and CIS haven’t picked up on some issues yet. For example, older password verifiers are retained for backward compatibility.
     - Multiple security frameworks cover many findings. In that case, we tag them with all applicable frameworks. For example, both CIS and STIG advocate that database user accounts not have default passwords. In this case, DBSAT maps that specific finding to CIS and STIG. Also considered an Oracle best practice, it’s now also mapped to OBP
@@ -263,7 +265,7 @@ In this exercise, you will be guided by relevant DBSAT findings. This will provi
     - These sample schemas should not be in production databases... Keep this in mind!
 
 4. What else can DBSAT show me on users? I’m curious about `SCOTT` and `HR`... Scroll up or search for **USER.INACTIVE**
-
+expire
     ![DBSAT](./images/dbsat-012.png "INACTIVE USERS finding")
 
     **Note**:
@@ -288,7 +290,9 @@ In this exercise, you will be guided by relevant DBSAT findings. This will provi
 
     ![DBSAT](./images/dbsat-015.png "USER NOEXPIRE finding")
 
-    **Note**: Findings in this section will provide a view on who are the users in my database, their status, password settings and user profiles
+    **Note**:
+    - Findings in this section will provide a view on who are the users in my database, their status, password settings and user profiles
+    - If it's yellow, there are expired user passwords, and if it's green, then the current password is still valid!
 
 7. Let’s get back to the top, but this time we will review what is going on in the **“Privileges and Roles”** section. This section shows the largest number of findings (55). Click **TOP** on the navigation panel (bottom right)
 
@@ -413,7 +417,7 @@ In this exercise, you will learn how to execute DBSAT discoverer. DBSAT discover
 1. Go to the scripts directory
 
     ````
-    <copy>cd $DBSEC_LABS/dbsat/dbsat30/Discover/conf</copy>
+    <copy>cd $DBSEC_LABS/dbsat/dbsat31/Discover/conf</copy>
     ````
 
 2. Copy the provided `sample_dbsat.config`, make the copy writable and open it for editing
@@ -1008,13 +1012,13 @@ In this exercise, you will be exposed to the DBSAT utilities ("`dbsat_diff`" & "
 2. Unzip `dbsat_util.zip`
 
     ````
-    <copy>unzip dbsat_util.zip -d dbsat30</copy>
+    <copy>unzip dbsat_util.zip -d dbsat31</copy>
     ````
 
 3. Go to the DBSAT directory
 
     ````
-    <copy>cd dbsat30</copy>
+    <copy>cd dbsat31</copy>
     ````
 
 4. Using "`dbsat_extract`", extract findings by their identifiers
@@ -1081,7 +1085,7 @@ In this exercise, you will be exposed to the DBSAT utilities ("`dbsat_diff`" & "
     - Create a directory object to read from the dbsat installation directory:
 
         ````
-        <copy>create or replace directory DBSAT_DIR as '/home/oracle/DBSecLab/livelabs/dbsat/dbsat30';</copy>
+        <copy>create or replace directory DBSAT_DIR as '/home/oracle/DBSecLab/livelabs/dbsat/dbsat31';</copy>
         ````
 
          ![DBSAT](./images/dbsat-057.png "Create a directory object")
@@ -1216,7 +1220,7 @@ After having executed 1000s of Database Security Assessments in our customers ba
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle DBSAT 3.0](https://docs.oracle.com/en/database/oracle/security-assessment-tool/3.0.0/satug/)
+- [Oracle DBSAT 3.1](https://docs.oracle.com/en/database/oracle/security-assessment-tool/3.1.0/satug/)
 
 Video:
 - *Understanding DBSAT (April 2018)*[](youtube:XsPuiCPcyA0)
@@ -1224,4 +1228,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Pedro Lopes
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024

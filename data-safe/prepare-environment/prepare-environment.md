@@ -1,10 +1,10 @@
-# Prepare Your Environment
+# Prepare your environment
 
 ## Introduction
 
 In this lab, you prepare your environment in Oracle Cloud Infrastructure for the workshop.
 
-*Please read the following instructions carefully!:*
+*Please read the following instructions carefully!*
 
 - For the **Run on Your Tenancy** option: If you are the tenancy administrator, complete all tasks except for 2, 3, and 5. If you are not a tenancy administrator, enlist the help of one in your organization to complete all tasks, except for task 5.
 
@@ -58,7 +58,7 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 
 Create a user group and add your Oracle Cloud account to the group.
 
-1. From the navigation menu, select **Identity & Security**, and then **Groups**.
+1. From the navigation menu, select **Identity & Security**, and then **Domains**. Click the name of your domain (for example, **Default**), and then on the left, click **Groups**.
 
     The **Groups** page in IAM is displayed.
 
@@ -93,7 +93,7 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 
     The **Policies** page in IAM is displayed.
 
-2. On the left under **COMPARTMENT**, leave the **root** compartment selected.
+2. On the left under **COMPARTMENT**, select the **root** compartment.
 
 3. Click **Create Policy**.
 
@@ -118,7 +118,7 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
     </copy>
     ```
 
-    - For the **Integrate Oracle Data Safe with Applications and Services** workshop, you require the following permissions. Note that only tenancy administrators have the necessary permissions to do the lab called **Get notified about security drift on your target databases by setting up Oracle Data Safe events**. 
+    - For the **Integrate Oracle Data Safe with Applications and Services** workshop, you require the following permissions: 
 
     ```text
     <copy>
@@ -131,6 +131,11 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
     Allow group {group name} to manage instance-family in compartment {compartment name}
     Allow group {group name} to read app-catalog-listing in tenancy
     Allow group {group name} to manage virtual-network-family in compartment {compartment name}
+    Allow group {user-group} to manage ons-topic in compartment {compartment name}
+    Allow group {user-group} to manage cloudevents-rules in compartment {compartment name}
+    Allow group {user-group} to manage alarms in compartment {compartment name}
+    Allow group {user-group} to read metrics in compartment {compartment name}
+
     </copy>
     ```
    
@@ -160,12 +165,9 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - **Workload type** - Select **Transaction Processing**.
     - **Deployment type** - Leave **Serverless** selected.
     - **Always Free** - Select this option by moving the slider to the right.
-    - **Database version** - Leave **21c** selected.
-    - **OCPU Count** - You get **1** OCPU.
-    - **Storage** - You get 0.02TB of storage.
-    - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
+    - **Database version** - If possible, select a database version; for example, **21c**.
+    - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. In order for you to later register this database with Data Safe, the password must be between 14 and 30 characters long and must include at least one uppercase letter, one lowercase letter, one numeric character, and one special character. It cannot contain your username or the double quote (") character.
     - **Access Type** - Leave **Secure access from everywhere** selected.
-    - **License Type** - Leave **License included** selected.
 
 6. Click **Create Autonomous Database**. 
 
@@ -192,7 +194,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - A compartment of your very own. We refer to this compartment as "your compartment" throughout the workshop. Make note of your compartment's name because you need to select it often throughout the workshop.
     - An Autonomous Database in your compartment. You are provided the password for the `ADMIN` account on your database.
 
-3. Make note of your username and click the **Copy Password** button for Oracle Cloud Infrastructure.
+3. Make note of your Oracle Cloud Infrastructure username and click the **Copy Password** button.
 
 4. On the **Reservation Information** panel, click the **Launch OCI** button.
 
@@ -206,31 +208,23 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
     You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
 
-7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your target database.
+7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
 
 
 ## Task 6: Access Oracle Database Actions
 
 Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. At the top of the **Autonomous Database details** page, click **Database actions**. 
-
-    The **Sign-in** page is displayed.
+1. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
 
 2. If required, sign in as the `ADMIN` user. 
-
-    A browser tab named **Oracle Database Actions** is opened. *Keep this tab open throughout the workshop.* If your session expires, you can always sign in again.
 
     - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
     - If you are using an Oracle-provided environment, enter the database password provided to you.
 
-3. In the **Development** section, click **SQL**.
+3. Close the **SQL History** and **Warning** dialog boxes.
 
-    The browser tab name is changed to **SQL | Oracle Database Actions**.
-
-4. Close the warning and help dialog boxes.
-
-5. Review the interface. Here are the ways that you use Database Actions during the workshop:
+4. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
     - In the **Navigator** pane on the left, you select tables from the **HCM1** schema on your target database.
     - On the **Worksheet** on the right, you run SQL commands and scripts.
@@ -243,7 +237,7 @@ Database Actions provides a way for you to run SQL commands on your target datab
 
 As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also generates database activity for the `ADMIN` user.
 
-1. Download the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad.
+1. Download the [**load-data-safe-sample-data_admin.sql**](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad.
 
 2. Copy the entire script to the clipboard and paste it into the worksheet in Database Actions. The last line of the script is as follows:
 
@@ -270,13 +264,15 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
     - `SUPPLEMENTAL_DATA` - 149 rows
 
 
-    If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
+    If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script.
 
 5. Refresh Database Actions by refreshing the _browser_ page. If prompted, click **Leave page**.
 
 6. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
-7. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+7. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. 
+
+8. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
 You may now **proceed to the next lab**.
 
@@ -291,4 +287,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 8, 2023
+- **Last Updated By/Date** - Jody Glover, May 16, 2024

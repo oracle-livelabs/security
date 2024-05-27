@@ -18,6 +18,13 @@ In this lab, you will:
 * Create an Access Bundle
 * Create a centralized policy to provision access privileges
 
+
+### Prerequisites
+
+This lab assumes you have:
+
+A valid Oracle OCI tenancy, with OCI administrator privileges.
+
 ## Task 1: Create an Identity Collection for Approvers
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Identity Collections tile.
@@ -80,17 +87,16 @@ In this lab, you will:
 
     Select the *All* checkbox.
 
-    Select attribute: Organization
+    Select attribute: Source Organization
 
     Condition: Equals
 
     Attribute field: Quality Assurance
 
-    ![Identity Collection creation](images/qa-rule.png)
+    ![Identity Collection creation](images/source-organization.png)
 
 5. Click on *Create*
 
-    ![Identity Collection creation](images/qa-collection-create.png)
 
 ## Task 3: Create an Approval Workflow
 
@@ -284,21 +290,19 @@ In this lab, you will:
 
 ## Task 6: Create Access Requests
 
-1. Log in to Oracle Access Governance as an employee user - Mark Hernandez with the username and password mentioned below.
+1. Log in to Oracle Access Governance as an employee user - Mark Hernandez with the username and password. 
 
     **Username:**
 
     ```
     <copy>mhernandez</copy>
     ```
-
     **Password:**
 
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    You will be navigated to the home page of your Oracle Access Governance Console.
+
 
   3. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> Request a new access**
 
@@ -322,19 +326,17 @@ In this lab, you will:
 
   8. Click on **Submit Request**
 
-  9. Log in to Oracle Access Governance as an employee user - Harlan Bullard with the username and password mentioned below.
+  9. Log in to Oracle Access Governance as an employee user - Harlan Bullard with the username and password. 
 
     **Username:**
     ```
     <copy>harlan.bullard</copy>
     ```
-
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+
+    You will be navigated to the home page of your Oracle Access Governance Console.
 
   10. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> Request a new access**
 
@@ -348,7 +350,7 @@ In this lab, you will:
 
   15. Click on **Submit Request**
 
-  16. Log in to Oracle Access Governance as an employee user - Jerry Poland with the username and password mentioned below.
+  16. Log in to Oracle Access Governance as an employee user - Jerry Poland with the username and password. 
 
     **Username:**
     ```
@@ -356,11 +358,11 @@ In this lab, you will:
     ```
 
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+
+    You will be navigated to the home page of your Oracle Access Governance Console.
+
 
   17. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> Request a new access**
 
@@ -376,7 +378,7 @@ In this lab, you will:
 
 ## Task 7: Approve Access Requests
 
-1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password mentioned below.
+1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password. 
 
     **Username:**
 
@@ -384,13 +386,12 @@ In this lab, you will:
     <copy>pamela.green</copy>
     ```
 
-    **Password:**
+     **Password:**
 
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    You will be navigated to the home page of your Oracle Access Governance Console.
+
 
 2. Navigate to MyStuff -> Approvals.You will see requests from user Harlan Bulllard, Mark Hernandez and Jerry Poland for **DB-Manage-Access** .
 
