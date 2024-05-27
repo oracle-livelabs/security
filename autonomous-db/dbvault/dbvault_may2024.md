@@ -3,11 +3,11 @@
 ## Introduction
 This workshop introduces the various features and functionality of Oracle Database Vault (DV). It gives the user an opportunity to learn how to configure those features in an Autonomous Database to prevent unauthorized privileged users from accessing sensitive data.
 
-Managed database services run the risk of 'Admin snooping', allowing privileged users - and especially compromised privileged user accounts - access to sensitive data. Oracle Autonomous Database with Database Vault provides powerful security controls, restricting access to application data by privileged database users, reducing the risk of insider and outsider threats and addressing common compliance requirements.
+Managed database services run the risk of 'admin snooping', allowing privileged users - and especially compromised privileged user accounts - access to sensitive data. Oracle Autonomous Database with Database Vault provides powerful security controls, restricting access to application data by privileged database users, reducing the risk of insider and outsider threats and addressing common compliance requirements.
 
 You can deploy controls to block privileged account access to application data and control sensitive operations inside the database. Trusted paths can be used to add additional security controls to authorized data access and database changes. IP addresses, usernames, client program names and other factors can be used as part of Oracle Database Vault security controls to increase security. **Oracle Database Vault secures existing database environments transparently, eliminating costly and time consuming application changes.**
 
-*Estimated Time:* 50 minutes
+*Estimated Time:* 75 minutes
 
 *Version tested in this lab:* Oracle Autonomous Database 19c
 
@@ -42,18 +42,20 @@ This lab assumes you have:
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed "Prepare Your Environment" step previously
 
+
 ### Lab Timing (estimated)
+
 | Task No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-| 1 | Enable Database Vault | <5 minutes |
-| 2 | Enable Separation of Duties (SoD) | <5 minutes |
+|---|------------------------------------------------------------|-------------|
+| 1 | Configure and enable Database Vault | <5 minutes |
+| 2 | Demonstrate Separation of Duties (SoD) | <5 minutes |
 | 3 | Create a simple realm to protect application data | 10 minutes |
 | 4 | Reduce mistakes by blocking destructive commands | 10 minutes |
-| 5 | Create unified audit policies to capture Databae Vault violations | 10 minutes |
+| 5 | Create unified audit policies to capture Database Vault violations | 10 minutes |
 | 6 | Test your controls with simulation mode | 10 minutes |
 | 7 | Disable Database Vault | <5 minutes |
 
-## Task 1: Enable Database Vault
+## Task 1: Configure and enable Database Vault
 
 You start by creating two DV user accounts:
 
@@ -166,7 +168,7 @@ Database Vault tips:
 
 7. You have configured and enabled Database Vault. 
 
-## Task 2: Enable Separation of Duties (SoD)
+## Task 2: Demonstrate Separation of Duties (SoD)
 
 In Oracle Autonomous Database, the `ADMIN` user has all privileges, including the privileges required to administer Database Vault security policies. In real life, you may wish to separate security administration, user administration, and database administration into different accounts. From now you will use a DBA account instead of `ADMIN` user because in production that's what you must do.
 
@@ -408,7 +410,7 @@ In this task, you will create a command rule to `Disable` the `DROP TABLE` comma
       <copy>WElcome_123#</copy>
       ````
 
-2. First, query the existing command rules. You will see several command rules created by default. These command rules help protect databaes and Database Vault related objects.  Review the command rules to understand the concept. 
+2. First, query the existing command rules. You will see several command rules created by default. These command rules help protect database and Database Vault related objects.  Review the command rules to understand the concept. 
 
       ````
       <copy>select * from dba_dv_command_rule;</copy>
