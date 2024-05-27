@@ -665,7 +665,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     ![SQLFW](./images/sqlfw-082.png "Alert violation email")
 -->
 
-5. See the SQL Firewall violation alters
+5. Click on **Alerts** sub-menu on the left to see the SQL Firewall violation alerts
 
     - Go to Alerts Dashboard
 
