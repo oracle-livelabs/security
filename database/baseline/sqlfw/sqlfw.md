@@ -532,14 +532,6 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
         ![SQLFW](./images/sqlfw-120.png "Select sensitive employee data")
 
-<!--
-     - The administrator receives SQL Firewall Context violation alert raising a suspicion that someone has attempted to gain access to HR Apps DB bypassing allowed database connection paths
-     
-        ![SQLFW](./images/sqlfw-072.png "Alert receiving")
-
-        **Note:** SQL Firewall context violation is raised since SQL Developer is not in the allowed OS program allow list, catching attention of security administrators
--->
-
     - Administrator analyses the SQL Firewall Context violations in Oracle Data Safe to spot abnormal access pattern trend over time and across fleet
 
         ![SQLFW](./images/sqlfw-073.png "Check violation logs")
