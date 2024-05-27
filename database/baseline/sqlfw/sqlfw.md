@@ -351,7 +351,12 @@ In this task you will learn how the administrator trains the system to learn the
 
         ![SQLFW](./images/sqlfw-051.png "Select a start date")
 
-        **Note**: The start date is invariably current date (in Sandbox) with no way to go before it!
+    <if type="green">
+        **Note**: The start date is invariably current date  with no way to go before it!
+    </if>
+    <if type="brown">
+        **Note**: Choose the appropriate start date
+    </if>
 
     - Now, the Audit trail is **COLLECTING**
 
