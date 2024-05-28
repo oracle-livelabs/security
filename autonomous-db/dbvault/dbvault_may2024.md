@@ -257,6 +257,7 @@ Next, you will create a Database Vault realm to secure the `SH1.CUSTOMERS` table
 A Database Vault realm is a protected zone inside the database where database schemas, objects, and roles can be secured. For example, you can secure a set of schemas, objects, and roles that are related to accounting, sales, or human resources. After you have secured these into a realm, you can use the realm to control the use of system and object privileges by specific accounts or roles. This enables you to enforce context-sensitive access controls for anyone who wants to use these schemas, objects, and roles.
 
 1. To demonstrate the effects of this realm, it is important to execute the same SQL query from these 3 users before and after creating the realm:
+
     - To proceed, **open SQL Worksheet in 3 web-browser pages** connected with a different user (`DBA_DEBRA`, `SH1` and `APPUSER`) as shown in Task 1 previously
    
        **Note:** only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc.) as well as "incognito" or "private" browing mode.**
@@ -356,6 +357,7 @@ A Database Vault realm is a protected zone inside the database where database sc
          ````
          <copy>WElcome_123#</copy>
          ````
+      - This PL/SQL procedure will create a Database Vault realm named `PROTECT_SH1`. It will be `enabled` and it will be a `mandatory realm`. You will learn more about these options in this lab. 
 
          ````
          <copy>
@@ -375,14 +377,17 @@ A Database Vault realm is a protected zone inside the database where database sc
          </copy>
          ````
 
-         ![](./images/adb-dbv_015.png " ")
+   ![](./images/adb-dbv_015.png "Realm creation output")
  
     **Note:** A quick explanation of a realm is:
-       - A realm is a collection of objects to be protected the same way. 
-       - The Database Vault realm you created is enabled and is a mandatory realm. 
+       - A collection of objects to be protected the same way. 
+       - The Database Vault realm you created is enabled, you can choose from
+         - **Enabled** to enforce the protections against the realm protected objects
+         - **Disabled** to not enforce the protection
+         - **Simulation** to simulate enforcement (generate a log entry) but not enforce blocking. You will learn about simulation mode later in this last. 
        - The difference between a **mandatory** and **regular** realm: 
          - Regular realms block system privileges but allows direct object grant. The user **does not** have to be a member of realm authorization list. 
-         - Mandatory realms block direct object grants (even by the object owner) in addition to system privileges. The user **must** have the privileges **and** be a member of the realm authorization list. 
+         - Mandatory realms block direct object grants (even by the object owner) in addition to system privileges. The user **must** have the privileges **and must be a member** of the realm authorization list. 
 
 3. Add objects to the realm to protect (here, the `CUSTOMERS` table)
 
@@ -469,7 +474,8 @@ A Database Vault realm is a protected zone inside the database where database sc
 
           ![](./images/adb-dbv_014.png " ")
 
-       - `APPUSER` must be the only user who has access to the table from now!**
+
+After completing this task, you will see that `APPUSER` is the only user who can access the `SH1.CUSTOMERS` table. You can leave it this way or you can add other database users (e.g. schemas) to the realm authorization list. 
 
 ## Task 4: Reduce mistakes by blocking destructive commands	
 
