@@ -395,7 +395,7 @@ In this task you will learn how the administrator trains the system to learn the
 
     - Now, you should see your target database associated to the SQL Firewall violations policy
 
-        ![SQLFW](./images/sqlfw-059_to-remove.png "SQL Firewall violations policy associated")
+        ![SQLFW](./images/sqlfw-059.png "SQL Firewall violations policy associated")
 
 <!--
 9. Finally, integrate with OCI Events and Notifications for pro-active notifications
