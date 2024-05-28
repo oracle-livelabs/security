@@ -338,7 +338,7 @@ A Database Vault realm is a protected zone inside the database where database sc
             ````
 
 
-2. Now, let's create a realm to secure `SH1` tables by executing this query below as the `SEC_ADMIN_OWEN` user. You will **open a 4th web-browser window** to login as the following:
+2. Now, let's create a realm to secure `SH1` tables by executing this query below as the **`SEC_ADMIN_OWEN`** user. You will **open a 4th web-browser window** to login as the following:
 
       - Path (must be lowercase): 
 
@@ -619,8 +619,8 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
     - To proceed, **re-execute the same SQL query in 3 different SQL Worksheet opened in 3 web-browser window** connected with a different user (`DBA_DEBRA`, `SH1` and `APPUSER`)
    
-       **Note:**
-          -  Attention, only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc) or by using the "Incognito mode"!**
+       **Note:** Only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc.) as well as "incognito" or "private" browing mode.**
+
           - As a reminder, the password of these users is the same.
     
              ````
@@ -668,7 +668,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
 ## Task 6: Simulation Mode
 
-You might be thinking, "I do not know enough about the application to feel comfortable implementing Database Vault realms or command rules." 
+You might be thinking, "I do not know enough about the application to feel comfortable implementing Database Vault realms or command rules." Oracle Database Vault has a feature to help you feel more comfortable. 
 
 To minimize the impact you might have on your application, You can use Oracle Database Vault simulation mode to simulate the enforcement of realms and command rules.
 
@@ -701,8 +701,8 @@ In this task, you will use simulation mode to identify the database users, hosts
 
       ````
       <copy>
-         SELECT violation_type, username, machine, object_owner, object_name, command, dv$_module
-         FROM dba_dv_simulation_log;
+      SELECT violation_type, username, machine, object_owner, object_name, command, dv$_module
+      FROM dba_dv_simulation_log;
       </copy>
       ````
 
@@ -753,8 +753,8 @@ In this task, you will use simulation mode to identify the database users, hosts
 
       ````
       <copy>
-         SELECT violation_type, username, machine, object_owner, object_name, command, dv$_module
-         FROM dba_dv_simulation_log;
+      SELECT violation_type, username, machine, object_owner, object_name, command, dv$_module
+      FROM dba_dv_simulation_log;
       </copy>
       ````
 
@@ -764,6 +764,7 @@ In this task, you will use simulation mode to identify the database users, hosts
       - Only two out of three users who performed the query will show up in the violations log becuase the third user, `APPUSER`, is a realm authorized member. 
          - `APPUSER` is not violating the realm by performing the query. 
       - The violation log shows where they connected from and what client they used to connect
+      - The **machine** may different in your query from the screenshot. This is expected.
 
 6. Before moving to the next lab, you will clean out the simulation log table. As `SEC_ADMIN_OWEN`, run the following commands. 
 
@@ -777,6 +778,8 @@ In this task, you will use simulation mode to identify the database users, hosts
       </copy>
       ````
 ## Task 7: Disable Database Vault
+
+Once you have completed all of the tasks, you can disable Oracle Database Vault.  
 
 1. As `SEC_ADMIN_OWEN`, drop the realm and command rule you created. 
 
