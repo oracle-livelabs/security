@@ -50,11 +50,11 @@ Once the **Stack2-Configure.zip** is downloaded, unzip the zip file and replace 
 	
 	![created_stack](./images/created_stack.png "created_stack")
 	
-9. From the created stack now click on the **Plan** option. You should get a Success output.
+5. From the created stack now click on the **Plan** option. You should get a Success output.
 
 	![initiate_plan](./images/initiate_plan.png "initiate_plan")
 	
-9. From the created stack now click on the **Apply** option. You should get a Success output.	
+6. From the created stack now click on the **Apply** option. You should get a Success output.	
 
 	![initiate_apply](./images/initiate_apply.png "initiate_apply")
 	

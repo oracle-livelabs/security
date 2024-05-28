@@ -65,7 +65,7 @@ We will register a Confidential Application under newly created OCI-IAM Domain w
 
 	![finish](./images/finish.jpg "finish")
 
-6. Click on **Activate Application**
+7. Click on **Activate Application**
 
 	![activate](./images/activate.jpg "activate")
 
