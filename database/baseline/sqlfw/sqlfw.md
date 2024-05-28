@@ -980,7 +980,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_select_sensitive_data.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-000.png "Select sensitive employee data")
+    ![SQLFW](./images/sqlfw-122b.png "Select sensitive employee data")
 
     **Note:** SQL Firewall now blocks with "ORA-47605: SQL Firewall violation" error and raises context violation
 
@@ -990,7 +990,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_check_events.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-000.png "Check violation logs and audit records")
+    ![SQLFW](./images/sqlfw-122c.png "Check violation logs and audit records")
 
 4. Now, a hacker logs into Glassfish application to perform a SQL injection attack
 
