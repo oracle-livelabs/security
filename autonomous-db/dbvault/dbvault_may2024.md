@@ -1,11 +1,13 @@
 # Oracle Database Vault on an Autonomous Database
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Database Vault (DV). It gives the user an opportunity to learn how to configure those features in an Autonomous Database to prevent unauthorized privileged users from accessing sensitive data.
+This workshop will introduce you to the various features and functionality of Oracle Database Vault (DV). You will learn how to configure these features in an Autonomous Database to prevent unauthorized privileged users from accessing sensitive data.
 
-Managed database services run the risk of 'admin snooping', allowing privileged users - and especially compromised privileged user accounts - access to sensitive data. Oracle Autonomous Database with Database Vault provides powerful security controls, restricting access to application data by privileged database users, reducing the risk of insider and outsider threats and addressing common compliance requirements.
+No matter whether it's on-premises, in a managed data center, or the cloud, any type of managed database services run the risk of 'admin snooping', allowing privileged users - and especially compromised privileged user accounts - access to sensitive data. Oracle Autonomous Database with Database Vault provides powerful security controls, restricting access to application data from privileged database users, reducing the risk of internal and external threats and addressing common compliance requirements.
 
 You can deploy controls to block privileged account access to application data and control sensitive operations inside the database. Trusted paths can be used to add additional security controls to authorized data access and database changes. IP addresses, usernames, client program names and other factors can be used as part of Oracle Database Vault security controls to increase security. **Oracle Database Vault secures existing database environments transparently, eliminating costly and time consuming application changes.**
+
+While customers are concerned with threat actors, the most common threat to application data is human error. Mistakes happen for many reasons, including tight deadlines, fatigue, or confusing connections to production for connections to non-production systems. Regardless of the reason, Oracle Database Vault can help you minimize mistakes by allowing you to disable destructive commands such as `DROP TABLE`, `TRUNCATE TABLE`, `DROP INDEX` and many more. 
 
 *Estimated Time:* 75 minutes
 
@@ -60,42 +62,44 @@ This lab assumes you have:
 You start by creating two DV user accounts:
 
 - **Database Vault owner (`SEC_ADMIN_OWEN`)**
-    - This user is mandatory as an owner of DV objects
-    - `SEC_ADMIN_OWEN` has the `DV_OWNER` and `DV_ADMIN` roles and can configure database vault policies
+    - This user is mandatory as an owner of DV objects.
+    - `SEC_ADMIN_OWEN` has the `DV_OWNER` role which can enable or disable Database Vault, and manage policies, and `DV_ADMIN` role, which can configure Database Vault policies but not enable or disable Database Vault.
+    - Oracle recommends you create additional accounts with either the `DV_ADMIN` role for day-to-day use. You should securely store the account created as `DV_OWNER` and only use it when necessary. 
 - **Database Vault account manager (`ACCTS_ADMIN_ACE`)**
     - This user is an optional but recommended to separate responsibilities between users. 
-    - `ACCTS_ADMIN_ACE` has the `DV_ACCTMGR` role and can create users and change user passwords
+    - `ACCTS_ADMIN_ACE` has the `DV_ACCTMGR` role and can create users, change user passwords, drop users, and manage user profiles. 
 
 Database Vault tips: 
 - While DV owner can also become DV account manager, Oracle recommends maintaining separation of duties by using two different accounts
 - By default `ADMIN` has `DV_OWNER`, `DV_ADMIN`, `DV_ACCTMGR` and several other significant DV-related roles. Oracle recommends you do not use the `ADMIN` account except when absolutely necessary. You should grant the appropriate roles, such as `DV_ADMIN` or `DV_ACCTMGR` to named database users (e.g. jsmith, kjohnson) to minimize sharing of accounts.
+- Create at least one additional database account for each of the above users (`SEC_ADMIN_OWEN` and `ACCTS_ADMIN_ACE`) and give each user one of the roles (`DV_OWNER` or `DV_ACCTMGR`) and grant it `WITH ADMIN OPTION` so they can grant or revoke the role from other users. These are your backup accounts. Never lose your primary or backup accounts. 
 - You can store the passwords to the users you create during the initial configuration in a pasword vault, or other secure service, and require named accounts (e.g. jsmith, kjohnson) for day-to-day operations.
 
-1. Open a SQL Worksheet on your Autonomous DB as the `ADMIN` database user
+1. If you are not already in your Oracle Autonomous Databse, open a SQL Worksheet on your Autonomous DB as the `ADMIN` database user
     
-   - In Oracle Cloud Infrastructure (OCI), select your `ADBDV` database created during the "Prepare Your Environment" step
+      - In Oracle Cloud Infrastructure (OCI), select your `ADBDV` database created during the "Prepare Your Environment" step
 
-   ![](./images/adb-dbv_002.png "Open ADBDV database")
+      ![](./images/adb-dbv_002.png "Open ADBDV database")
 
-   - In your `ADBDV` database's details page, click the `Database Actions` then click `SQL` to navigate to the SQL Worksheet page. 
+      - In your `ADBDV` database's details page, click the `Database Actions` then click `SQL` to navigate to the SQL Worksheet page. 
 
-    ![](./images/adb-dbv_010.png "Navigate to Database Actions, SQL")
+      ![](./images/adb-dbv_010.png "Navigate to Database Actions, SQL")
 
-   - You should be signed in automatically. If you are not, and you receive a screen like the following, enter your `ADMIN` username and password. 
+      - You should be signed in automatically. If you are not, and you receive a screen like the following, enter your `ADMIN` username and password. 
 
-    ````
-    <copy>ADMIN</copy>
-    ````
+         ````
+         <copy>ADMIN</copy>
+         ````
 
-    ````
-    <copy>WElcome_123#</copy>
-    ````
+         ````
+         <copy>WElcome_123#</copy>
+         ````
 
-    ![](./images/adb-dbv_012.png " ")
+         ![](./images/adb-dbv_012.png " ")
 
-   - Once you have logged into `Database Actions | SQL` you should see a worksheet similar to the following.
+      - Once you have logged into `Database Actions | SQL` you should see a worksheet similar to the following.
 
-    ![](./images/adb-dbv_012b.png " ")
+      ![](./images/adb-dbv_012b.png " ")
     
 2. Create the Database Vault owner and account manager users
 
@@ -124,17 +128,17 @@ Database Vault tips:
     **Note:**
        - Copy/Paste the following SQL queries into SQL Worksheet
        - Press [**F5**] or click the "Run Scripts" icon
-       - Check that there are no errors
+       - Check the **Script Output** frame to maek sure there are no errors. 
 
        ![](./images/adb-dbv_003.png "Run the script to create DV-related users, grants, and DB Actions authorizationr")
 
-3. Configure the Database Vault user accounts.  You should see **PL/SQL procedure successfully completed.**
+3. Configure the Database Vault with the database user accounts you just created.  You should see **PL/SQL procedure successfully completed.**
 
       ````
       <copy>EXEC DBMS_CLOUD_MACADM.CONFIGURE_DATABASE_VAULT('sec_admin_owen', 'accts_admin_ace');</copy>
       ````
 
-4. Verify that Database Vault is configured but not yet enabled
+4. Verify that Database Vault is configured but not yet enabled. Oracle Database Vault will be enabled in the next 2 steps.
 
       ````
       <copy>SELECT * FROM DBA_DV_STATUS;</copy>
@@ -150,9 +154,9 @@ Database Vault tips:
       <copy>EXEC DBMS_CLOUD_MACADM.ENABLE_DATABASE_VAULT;</copy>
       ````
     
-6. You must “restart” the database to complete the Database Vault enabling process
+6. You must **restart** the database to complete the Database Vault enablement. 
 
-    - Restart the database from the console by selecting "**Restart**" in the "More Actions" drop-list and confirm the restart. 
+    - From the Autonomous Database details page, click **More Actions**, select **Restart**, and **confirm** the restart. 
 
        ![](./images/adb-dbv_007.png " ")
 
@@ -166,7 +170,7 @@ Database Vault tips:
 
       **Note:** `DV_ENABLE_STATUS` should be `TRUE`
 
-7. You have configured and enabled Database Vault. 
+7. You have successfully configured and enabled Database Vault on Oracle Autonomous Database. 
 
 ## Task 2: Demonstrate Separation of Duties (SoD)
 
@@ -184,7 +188,7 @@ In the "Prepare your environment" step you created the user `DBA_DEBRA`. This us
 
        ![](./images/adb-dbv_009b.png "Login as DBA_DEBRA")
 
-      Path:
+      Path (this must be lowercase): 
       ````
       <copy>dba_debra</copy>
       ````
@@ -199,22 +203,25 @@ In the "Prepare your environment" step you created the user `DBA_DEBRA`. This us
       <copy>WElcome_123#</copy>
       ````
 
-   - You may need to choose the **SQL worksheet** option. 
+   - You may need to choose the **SQL worksheet** option. Click the **Development** tab then **SQL** on the left side. 
 
        ![](./images/adb-dbv_009c.png "Choose SQL Worksheet")
 
 
-2. View `DBA_DEBRA`'s roles
+2. View `DBA_DEBRA`'s roles. 
+
+   Notice that `DBA_DEBRA` has several roles, including `PDB_DBA` (the DBA role in an Oracle Autonomous Database) but no DV-related roles.
 
       ````
       <copy>SELECT * FROM session_roles ORDER BY 1;</copy>
       ````
+     
 
        ![](./images/adb-dbv_009.png "DBA_DEBRA session roles ")
 
-    **Note:** Notice that `DBA_DEBRA` has several roles, including `PDB_DBA` (the DBA role in an Oracle Autonomous Database) but no DV-related roles.
+3. Create a test user `DEMO1`. 
 
-3. Create a test user `DEMO1`
+   Notice that `DBA_DEBRA` is not able to create a user, despite having the `DBA` role. This is **because Database Vault is enabled** and Debra does not have the `DV_ACCTMGR` role. 
 
       ````
       <copy>CREATE USER demo1;</copy>
@@ -224,9 +231,10 @@ In the "Prepare your environment" step you created the user `DBA_DEBRA`. This us
       ORA-01031: insufficient privileges
       ````
 
-    **Note:** Notice that `DBA_DEBRA` is not able to create a user, despite having the `DBA` role, **because Database Vault is enabled** and Debra does not have the `DV_ACCTMGR` role. 
-                
-4. Let's try altering the user `APPUSER`
+               
+4. Let's try altering the user `APPUSER`. 
+
+   Again, because Database Vault enforces separation of duties, Debra cannot change passwords without the `DV_ACCTMGR` role. If this is Debra's responsibility, you can grant her, or another user, the role to manage users or manage user profiles. 
 
       ````
       <copy>ALTER USER appuser IDENTIFIED BY WElcome_123456#;</copy>
@@ -234,24 +242,24 @@ In the "Prepare your environment" step you created the user `DBA_DEBRA`. This us
 
       ````
       ORA-01031: insufficient privileges
-      ````
-                
-       **Note:** Again, because Database Vault enforces separation of duties, Debra cannot change passwords without the `DV_ACCTMGR` role. You can grant Debra, or another user, the role.
-                
-6. As you continue with the lab, you will use `SEC_ADMIN_OWEN` and `ACCTS_ADMIN_ACE` for all database vault actions. The duties of database administration (done by `DBA_DEBRA`) are now separate from the duties of user administration (`ACCTS_ADMIN_ACE`) and Database Vault administration (`SEC_ADMIN_OWEN`)
+      ````         
+      
+6. As you continue with the lab, you will use `SEC_ADMIN_OWEN` and `ACCTS_ADMIN_ACE` for all Database Vault actions. The duties of database administration (`DBA_DEBRA`) are now separate from the duties of user administration (`ACCTS_ADMIN_ACE`) and Database Vault administration (`SEC_ADMIN_OWEN`)
 
    **Note:** If you would like `DBA_DEBRA` to have the ability to manage user accounts and user profiles, you can perform `GRANT DV_ACCTMGR TO DBA_DEBRA` and she will be able to perform account management tasks again. Oracle Database Vault gives you the flexibility to decide which users should use these highly-critical user management privileges and which ones should not. 
 
+You have completed this task. You have a basic understanding of how Oracle Database Vault implements separation of duties and helps you use it to meet industry or regulatory controls. 
+
 ## Task 3: Create a Simple Realm
 
-Next, you will create a Database Vault realm to secure the `SH1.CUSTOMERS` table from access by `DBA_DEBRA`, `ADMIN`, and more. You will also prevent the table owner, `SH1`, from accessing the table and only allow the `APPUSER` to access `CUSTOMERS`.
+Next, you will create a Database Vault realm to secure the `SH1.CUSTOMERS` table from access by `DBA_DEBRA`, `ADMIN`, and other privileged users. You can even prevent the table owner, `SH1`, from accessing the table and only allow the `APPUSER` to access `CUSTOMERS`. This task will demonstrate why this might be useful. 
 
 A Database Vault realm is a protected zone inside the database where database schemas, objects, and roles can be secured. For example, you can secure a set of schemas, objects, and roles that are related to accounting, sales, or human resources. After you have secured these into a realm, you can use the realm to control the use of system and object privileges by specific accounts or roles. This enables you to enforce context-sensitive access controls for anyone who wants to use these schemas, objects, and roles.
 
 1. To demonstrate the effects of this realm, it is important to execute the same SQL query from these 3 users before and after creating the realm:
     - To proceed, **open SQL Worksheet in 3 web-browser pages** connected with a different user (`DBA_DEBRA`, `SH1` and `APPUSER`) as shown in Task 1 previously
    
-       **Note:** only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc) or by using the "Incognito mode"!**
+       **Note:** only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc.) as well as "incognito" or "private" browing mode.**
    
    - As reminder, the password of these users is the same.
     
@@ -269,9 +277,65 @@ A Database Vault realm is a protected zone inside the database where database sc
       ````
  
        **Note:** These 3 users can see the `SH1.CUSTOMERS` table because:
-      - `SH1` because `SH1` owns the table
-      - `DBA_DEBRA` because it has the `DBA` role
-      - `APPUSER` because it have the `READ ANY TABLE` system privilege
+      
+      - `SH1` because `SH1` owns the table and has an implicit ability to query it's own tables.
+         - Path (must be lowercase): 
+
+            ````
+            <copy>sh1</copy>
+            ````
+
+         - Username: 
+
+            ````
+            <copy>SH1</copy>
+            ````
+
+         - Password: 
+
+            ````
+            <copy>WElcome_123#</copy>
+            ````
+      - `DBA_DEBRA` because it has the `PDB_DBA` role, which allows it query tables in `SH1` or any other schema. 
+
+         - Path (must be lowercase): 
+
+            ````
+            <copy>dba_debra</copy>
+            ````
+
+         - Username: 
+
+            ````
+            <copy>DBA_DEBRA</copy>
+            ````
+
+         - Password: 
+
+            ````
+            <copy>WElcome_123#</copy>
+            ````
+      
+      - `APPUSER` because it have the `READ ANY TABLE` system privilege, which allows it query tables in `SH1` or any other schema. 
+
+         - Path (must be lowercase): 
+
+            ````
+            <copy>appuser</copy>
+            ````
+
+         - Username: 
+
+            ````
+            <copy>APPUSER</copy>
+            ````
+
+         - Password: 
+
+            ````
+            <copy>WElcome_123#</copy>
+            ````
+
 
 2. Now, let's create a realm to secure `SH1` tables by executing this query below as the `SEC_ADMIN_OWEN` user. So, please **open a 4th web-browser window**
 
