@@ -337,27 +337,45 @@ A Database Vault realm is a protected zone inside the database where database sc
             ````
 
 
-2. Now, let's create a realm to secure `SH1` tables by executing this query below as the `SEC_ADMIN_OWEN` user. So, please **open a 4th web-browser window**
+2. Now, let's create a realm to secure `SH1` tables by executing this query below as the `SEC_ADMIN_OWEN` user. You will **open a 4th web-browser window** to login as the following:
 
-      ````
-      <copy>
-      -- Create the "PROTECT_SH1" DV realm
-         BEGIN
-            DVSYS.DBMS_MACADM.CREATE_REALM(
-                realm_name => 'PROTECT_SH1'
-                ,description => 'A mandatory realm to protect SH1 tables'
-                ,enabled => DBMS_MACUTL.G_YES
-                ,audit_options => DBMS_MACUTL.G_REALM_AUDIT_FAIL
-                ,realm_type => 1); 
-         END;
-         /
+      - Path (must be lowercase): 
 
-      -- Show the current DV realm
-      SELECT name, description, enabled FROM dba_dv_realm WHERE id# >= 5000 ORDER BY 1;
-      </copy>
-      ````
+         ````
+         <copy>sec_admin_owen</copy>
+         ````
 
-       ![](./images/adb-dbv_015.png " ")
+      - Username: 
+
+         ````
+         <copy>SEC_ADMIN_OWEN</copy>
+         ````
+
+      - Password: 
+
+         ````
+         <copy>WElcome_123#</copy>
+         ````
+
+         ````
+         <copy>
+         -- Create the "PROTECT_SH1" DV realm
+            BEGIN
+               DVSYS.DBMS_MACADM.CREATE_REALM(
+                  realm_name => 'PROTECT_SH1'
+                  ,description => 'A mandatory realm to protect SH1 tables'
+                  ,enabled => DBMS_MACUTL.G_YES
+                  ,audit_options => DBMS_MACUTL.G_REALM_AUDIT_FAIL
+                  ,realm_type => 1); 
+            END;
+            /
+
+         -- Show the current DV realm
+         SELECT name, description, enabled FROM dba_dv_realm WHERE id# >= 5000 ORDER BY 1;
+         </copy>
+         ````
+
+         ![](./images/adb-dbv_015.png " ")
  
     **Note:** A quick explanation of a realm is:
        - A realm is a collection of objects to be protected the same way. 
