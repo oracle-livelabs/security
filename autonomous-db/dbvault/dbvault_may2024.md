@@ -193,12 +193,12 @@ In the "Prepare your environment" step you created the user `DBA_DEBRA`. This us
       <copy>dba_debra</copy>
       ````
 
-      Username:
+      Username (case insensitive):
       ````
       <copy>dba_debra</copy>
       ````
 
-      Password:
+      Password (case sensitive):
       ````
       <copy>WElcome_123#</copy>
       ````
@@ -286,13 +286,13 @@ A Database Vault realm is a protected zone inside the database where database sc
             <copy>sh1</copy>
             ````
 
-         - Username: 
+         - Username (case insensitive): 
 
             ````
             <copy>SH1</copy>
             ````
 
-         - Password: 
+         - Password (case sensitive): 
 
             ````
             <copy>WElcome_123#</copy>
@@ -305,13 +305,13 @@ A Database Vault realm is a protected zone inside the database where database sc
             <copy>dba_debra</copy>
             ````
 
-         - Username: 
+         - Username (case insensitive): 
 
             ````
             <copy>DBA_DEBRA</copy>
             ````
 
-         - Password: 
+         - Password (case sensitive): 
 
             ````
             <copy>WElcome_123#</copy>
@@ -325,13 +325,13 @@ A Database Vault realm is a protected zone inside the database where database sc
             <copy>appuser</copy>
             ````
 
-         - Username: 
+         - Username (case insensitive): 
 
             ````
             <copy>APPUSER</copy>
             ````
 
-         - Password: 
+         - Password (case sensitive): 
 
             ````
             <copy>WElcome_123#</copy>
@@ -346,13 +346,13 @@ A Database Vault realm is a protected zone inside the database where database sc
          <copy>sec_admin_owen</copy>
          ````
 
-      - Username: 
+      - Username (case insensitive): 
 
          ````
          <copy>SEC_ADMIN_OWEN</copy>
          ````
 
-      - Password: 
+      - Password (case sensitive): 
 
          ````
          <copy>WElcome_123#</copy>
@@ -558,26 +558,33 @@ These are but a few of the scenarios you can implement with the flexability avai
 
 ## Task 5: Create an Audit Policy to Capture Realm Violations
 
-You may also want to capture an audit trail of unauthorized access attempts to your realm objects. Since the Autonomous Database includes Unified Auditing, you will create a policy to audit database vault activities
+You may also want to capture an audit trail of unauthorized access attempts to your realm objects or command rule violations. Since the Autonomous Database uses Oracle unified auditing, you will create a policy to audit Database Vault activities. 
 
-1. You will need to authenticate as `ACCTS_ADMIN_ACE` by logging out of a session in an existing window and authenticating as ACE. 
+1. You will authenticate as `ACCTS_ADMIN_ACE` by logging out of a session in an existing window and authenticating as ACE. 
 
    ![](./images/adb-dbv_051.png " ")
 
-   Path (this must be in lowercase):  
-      ````
-      <copy>accts_admin_ace</copy>
-      ````
-   Username: 
-      ````
-      <copy>ACCTS_ADMIN_ACE</copy>
-      ````
-   Password:
-      ````
-      <copy>WElcome_123#</copy>
-      ````
-
    ![](./images/adb-dbv_051a.png " ")
+
+     - Path (this must be in lowercase):  
+
+         ````
+         <copy>accts_admin_ace</copy>
+         ````
+
+      - Username (case insensitive):
+
+         ````
+         <copy>ACCTS_ADMIN_ACE</copy>
+         ````
+
+      - Password (case sensitive):
+
+         ````
+         <copy>WElcome_123#</copy>
+         ````
+
+
 
    - Select **SQL** and press **Open**. 
 
@@ -593,7 +600,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
        WHERE DV_ACTION_NAME='Realm Violation Audit' order by 3;
       </copy>
       ````
-3. Create an audit policy on the DV realm `PROTECT_SH1` created earlier in the lab. Once created, the audit policy must be enabled. 
+3. Create an audit policy on the DV realm `PROTECT_SH1` created earlier in the lab. Once created, the audit policy must be enabled.  Click **F5** to run both and view the **Script Output** frame. 
 
       ````
       <copy>
@@ -657,7 +664,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
    ![](./images/adb-dbv_023.png " ")
 
-    **Note:** You should see the `DBA_DEBRA` and `SH1` failed attempts. If you review the values in the `SQL_TEXT` column, you will notice it is not the exact query you submited in your **SQL worksheet**. This is due to how **Database Actions** processes query. Look closer and you will see it embedded as a nested table. 
+    **Note:** You should see the `DBA_DEBRA` and `SH1` failed attempts. If you review the values in the `SQL_TEXT` column, you will notice it is not the exact query you submited in your **SQL worksheet**. Look closer and you will see your query embedded as a nested table. This is due to how **Database Actions** processes queries. 
 
 ## Task 6: Simulation Mode
 
@@ -675,11 +682,11 @@ In this task, you will use simulation mode to identify the database users, hosts
       ````
       <copy>sec_admin_owen</copy>
       ````
-   Username: 
+   Username (case insensitive): 
       ````
       <copy>SEC_ADMIN_OWEN</copy>
       ````
-   Password:
+   Password (case sensitive):
       ````
       <copy>WElcome_123#</copy>
       ````
