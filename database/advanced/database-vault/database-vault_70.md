@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the various features and functionality of Oracle Database Vault (DV). It gives the user an opportunity to learn how to configure those features to prevent unauthorized privileged users from accessing sensitive data.
 
-Estimated Time: 90 minutes
+Estimated Time: 75 minutes
 
 *Version tested in this lab:* Oracle DBEE 23.4
 
@@ -29,6 +29,7 @@ This lab assumes you have:
     - Lab: Initialize Environment
 
 ### Lab Timing (estimated 75 minutes)
+
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
 | 1 | Configure and enable Database Vault | 5 minutes |
