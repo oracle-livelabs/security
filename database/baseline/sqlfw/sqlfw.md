@@ -383,9 +383,9 @@ In this task you will learn how the administrator trains the system to learn the
     - Associate the SQL Firewall violation policy to your target database
     
         - Select **Selected targets only (up to 10)** and choose *`DBSeclabs_DB23ai-freepdb1`*
-        - Select **Selected policies only** and choose *`All policies`*
+        - Select **All policies**
 
-            ![SQLFW](./images/sqlfw-057.png "Associate the SQL Firewall violation policy")
+            ![SQLFW](./images/sqlfw-057_to-remove.png "Associate the SQL Firewall violation policy")
 
     - Click [**Apply policy**]
 
@@ -395,7 +395,13 @@ In this task you will learn how the administrator trains the system to learn the
 
     - Now, you should see your target database associated to the SQL Firewall violations policy
 
-        ![SQLFW](./images/sqlfw-059.png "SQL Firewall violations policy associated")
+        ![SQLFW](./images/sqlfw-059_to-remove.png "SQL Firewall violations policy associated")
+
+<!--
+        - Select **Selected policies only** and choose *`SQL Firewall violations`*
+
+            ![SQLFW](./images/sqlfw-057.png "Associate the SQL Firewall violation policy")
+-->
 
 <!--
 9. Finally, integrate with OCI Events and Notifications for pro-active notifications
@@ -954,7 +960,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-111.png "Search employees")
 
-        **Note**: All rows are returned... normal, because, remerber, you allowed everything!
+        **Note**: All rows are returned... normal, because, remember, you allowed everything!
 
     - Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
