@@ -106,17 +106,17 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         <copy>cd $DBSEC_LABS/sqlfw</copy>
         ```
 
-    - Create the Data Safe **`DS_ADMIN`** user on **`freepdb1`**
+    - Create the Data Safe **`DS_ADMIN`** user
 
         ````
         <copy>
-        ./sqlfw_crea_ds-admin-user.sh freepdb1
+        ./sqlfw_crea_ds-admin-user.sh
         </copy>
         ````
 
         ![SQLFW](./images/sqlfw-007.png "Create the Data Safe DS_ADMIN user")
 
-        **Note**: The user `DS_ADMIN` is created into your target database with `ALL` the Data Safe admin roles
+        **Note**: The user `DS_ADMIN` is created into your target database **`freepdb1`** with `ALL` the Data Safe admin roles
 
 10. Go back to the Data Safe Console to register the Target database **freepdb1**
 
