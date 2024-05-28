@@ -93,7 +93,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
     **Note**:
     - Here, we connect Glassfish to the database **`FREEPDB1`** (installed on the DB23ai VM) from the **`dbsec-lab`** VM
-    - For this lab, we only use the URL `hr_prod_pdb1` that is connected to `FREEPDB1`!
+    - For this lab, **we only use the URL `hr_prod_pdb1` that is connected to `FREEPDB1`**!
 
 4. Next, verify the application functions as expected
 
