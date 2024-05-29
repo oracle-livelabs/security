@@ -183,6 +183,38 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
      ![Navigate to file system](images/locate-zip.png)
 
      ![Verify the zip file](images/verify-zip.png)
+    
+    Choose the option Customize before enabling the system for data loads. Click on **I'm done**
+
+     ![Enter Details](images/custom-data.png)
+
+    Select **Matching Rules -> Manage**
+
+     ![Enter Details](images/match-rule.png)
+
+    Under **All** , select the following condition:
+
+    Select connected system attribute: Employee user name
+
+    Select operator: equals
+
+    Select Identity attribute: Employee user name
+
+    Click **Save**
+
+     ![Enter Details](images/username-match-rule.png)
+
+    Navigate back to the connected system. Click on the Activate on the top-right corner.
+
+    To confirm, click on Activate .
+  
+
+    The system is now **Active**. Click on **Load data** now to load the data.
+
+
+    If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
+
+    ![Enter Details](images/oci-connection-status.png)
 
 ## Task 5: Install OAG Agent on the Compute Instance and Configure
 
@@ -295,6 +327,8 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the **Download** link to download the agent zip file to the environment in which the agent will run. Click on **Activate** and **I'm done**
 
     ![Enter Details](images/click-activate.png)
+
+    
 
 
 ## Task 7: Install the DB Agent on the Target System
