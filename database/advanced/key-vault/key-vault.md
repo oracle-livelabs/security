@@ -25,7 +25,7 @@ This lab assumes you have:
 
 ### Lab Timing (estimated)
 
-| Step No. | Feature | Approx. Time | Details |
+| Task No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
 | 1| (Mandatory) Prerequisites | <10 minutes||
 | 2| Add an Endpoint | <10 minutes||
