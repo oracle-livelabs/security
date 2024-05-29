@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the various features and functionality of Oracle Database Vault (DV). It gives the user an opportunity to learn how to configure those features to prevent unauthorized privileged users from accessing sensitive data.
 
-Estimated Time: 90 minutes
+Estimated Time: 75 minutes
 
 *Version tested in this lab:* Oracle DBEE 23.4
 
@@ -13,12 +13,12 @@ Watch a preview of "*LiveLabs - Oracle Database Vault (May 2022)*" [](youtube:M5
 ### Objectives
 - Configure and enable Database Vault in the container and `PDB1` pluggable database
 - Protect sensitive data using a Database Vault realm
-- Safeguard service accounts using Trusted Path
+- Safeguard service accounts using "trusted path"
 - Prevent accidents in production application schemas
 - Create a break glass role to enable application data access
 - Create unified audit policies
-- Test Database Vault Controls with Simulation mode
-- Protect pluggable databases from Container Admins
+- Test Database Vault controls with simulation mode
+- Protect pluggable databases from container administrators
 
 ### Prerequisites
 This lab assumes you have:
@@ -29,6 +29,7 @@ This lab assumes you have:
     - Lab: Initialize Environment
 
 ### Lab Timing (estimated 75 minutes)
+
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
 | 1 | Configure and enable Database Vault | 5 minutes |
@@ -309,13 +310,13 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
 
     ![DB Vault](./images/dv-043.png "Query the status of Database Vault")
 
-4. Attempt to perform `DROP TABLE` as the owner of the table, `EMPLOYEESEARCH_PROD`. This step will fail because this command would vilate the Database Vault command rule. 
+4. Attempt to perform `DROP TABLE EMPLOYEESEARCH_PROD` as `DBA_DEBRA`. Although Debra has access to the schema and the system privilege `DROP ANY TABLE`, this step will fail because this command would violate the Database Vault command rule. 
 
     ````
-    <copy> ./dv_perform_drop_table.sh </copy>
+    <copy> ./dv_perform_drop_table.sh dba_debra</copy>
     ````
 
-    ![DB Vault](./images/dv-044.png "Query the status of Database Vault")
+    ![DB Vault](./images/dv-044a.png "Query the status of Database Vault")
 
     **NOTE:** This command will be blocked by any and all users attempting to perform the `DROP TABLE` command. 
 

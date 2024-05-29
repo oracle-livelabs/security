@@ -27,9 +27,9 @@ Watch the video below for a quick walk-through of the lab.
 
     ![](./images/adb-set_001.png "Navigate to Oracle Database menu item")
 
-3. The following steps apply similarly to either Autonomous Data Warehouse (ADW) or Autonomous Transaction Processing (ATP). So please **click the provisioning of Autonomous Database of your choice** (here we choose an Oracle Autonomous Data Warehouse but again you can also choose Oracle Autonomous Transaction Processing if you prefer).
+3. The following steps apply similarly to eall Oracle Autonomous Database types. You can choose any of the types, for example select **Autonomous Transaction Processing**. 
 
-    ![](./images/adb-set_002.png "Verify OCI Compartment choice and pick ADB type")
+    ![](./images/adb-set_002.png "Verify OCI Compartment choice and pick AUtonomous Transaction Processing")
 
 4. From the **Compartment** drop-down list, select your compartment
 
@@ -48,8 +48,17 @@ Watch the video below for a quick walk-through of the lab.
 6. On the **Create Autonomous Database** page, provide basic information for your database:
     - **Compartment:** If needed, select your compartment
     - **Display name:** Enter a memorable name for the database for display purposes, for this lab, use `ADBDV`
+
+        ````
+        <copy>ADBDV</copy>
+        ````
     - **Database Name:** Enter `ADBDV`, it's important to use letters and numbers only, starting with a letter (the maximum length is 14 characters and Underscores are not supported)
-    - **Workload Type:** Select the type of your Autonomous Database to match your choice at Step 3 earlier above (here we select `Data Warehouse`)
+
+        ````
+        <copy>ADBDV</copy>
+        ````
+
+    - **Workload Type:** Select the type of your Autonomous Database to match your choice at Step 3 earlier above (here we select `Transaction Processing`)
     - **Deployment Type:** `Shared Infrastructure`
 
          ![](./images/adb-set_005.png "Create ADB choices")
@@ -66,13 +75,13 @@ Watch the video below for a quick walk-through of the lab.
 
 8. Create administrator credentials:
 
-    - **Password** and **Confirm Password** - Specify a password for the ADMIN database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character. You can create your own password, or use the example password, like the following:
+    - **Password** and **Confirm Password** - Specify a password for the ADMIN database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (`"`) character. You can create your own password, or use the example password provided here:
 
-      ````
-      <copy>WElcome_123#</copy>
-      ````
+        ````
+        <copy>WElcome_123#</copy>
+        ````
 
-      ![](./images/adb-set_007.png "Create admin password")
+        ![](./images/adb-set_007.png "Create admin password")
 
 9. Choose the network access and the license type:
 
@@ -91,14 +100,16 @@ Watch the video below for a quick walk-through of the lab.
 
 ## Task 2: Set up Application Schema and Users
 
-Although you can connect to your Autonomous Database using local PC desktop tools like Oracle SQL Developer, you can conveniently access the browser-based SQL Worksheet directly from your Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing
+Although you can connect to your Autonomous Database using local PC desktop tools like Oracle SQL Developer, Microsoft Visual Studio Code, and many more, you can conveniently access the browser-based SQL Worksheet directly from your Oracle Autonomous Database. 
 
 1. In your `ADBDV` database's details page, click the `Database Actions` then click `SQL` to navigate to the SQL Worksheet page. 
 
     ![](./images/adb-set_010.png "Navigate to Database Actions, SQL")
 
-2. You should be signed in automatically. If you are not, and you receive a screen like the following, enter your `ADMIN` username and password. 
+2. **You should be signed in automatically.** If you are not, and you receive a screen like the following, enter your `ADMIN` username and password. 
 
+    ![](./images/adb-set_012.png " ")
+    
       ````
       <copy>ADMIN</copy>
       ````
@@ -107,7 +118,7 @@ Although you can connect to your Autonomous Database using local PC desktop tool
       <copy>WElcome_123#</copy>
       ````
 
-    ![](./images/adb-set_012.png " ")
+
 
 3. Once you have logged into **Oracle Database Actions | SQL**, you should see a worksheet similar to the following.
 
@@ -117,60 +128,60 @@ Although you can connect to your Autonomous Database using local PC desktop tool
 
     - To create the working schema and working users
 
-      ````
-      <copy>
-      -- Create SH1 schema, grant privileges, and authorize it to use DB Actions
-      CREATE USER sh1 IDENTIFIED BY WElcome_123#;
-      GRANT CREATE SESSION, CREATE TABLE TO sh1;
-      GRANT UNLIMITED TABLESPACE TO sh1;
-      BEGIN
-          ORDS_ADMIN.ENABLE_SCHEMA(
-               p_enabled => TRUE
-             , p_schema => UPPER('sh1')
-             , p_url_mapping_type => 'BASE_PATH'
-             , p_url_mapping_pattern => LOWER('sh1')
-             , p_auto_rest_auth => TRUE);
-      END;
-      /
+        ````
+        <copy>
+        -- Create SH1 schema, grant privileges, and authorize it to use DB Actions
+        CREATE USER sh1 IDENTIFIED BY WElcome_123#;
+        GRANT CREATE SESSION, CREATE TABLE TO sh1;
+        GRANT UNLIMITED TABLESPACE TO sh1;
+        BEGIN
+            ORDS_ADMIN.ENABLE_SCHEMA(
+                p_enabled => TRUE
+              , p_schema => UPPER('sh1')
+              , p_url_mapping_type => 'BASE_PATH'
+              , p_url_mapping_pattern => LOWER('sh1')
+              , p_auto_rest_auth => TRUE);
+        END;
+        /
 
-      -- create a copy of the SH tables
-      CREATE TABLE sh1.customers AS SELECT * FROM sh.customers;
-      CREATE TABLE sh1.countries AS SELECT * FROM sh.countries;
+        -- create a copy of the SH tables
+        CREATE TABLE sh1.customers AS SELECT * FROM sh.customers;
+        CREATE TABLE sh1.countries AS SELECT * FROM sh.countries;
 
-     -- Create DBA_DEBRA user, grant privileges, and authorize it to use DB Actions
-      CREATE USER dba_debra IDENTIFIED BY WElcome_123#;
-      GRANT PDB_DBA TO dba_debra;
-      BEGIN
-          ORDS_ADMIN.ENABLE_SCHEMA(
-              p_enabled => TRUE
-            , p_schema => UPPER('dba_debra')
-            , p_url_mapping_type => 'BASE_PATH'
-            , p_url_mapping_pattern => LOWER('dba_debra')
-            , p_auto_rest_auth => TRUE);
-      END;
-      /
+      -- Create DBA_DEBRA user, grant privileges, and authorize it to use DB Actions
+        CREATE USER dba_debra IDENTIFIED BY WElcome_123#;
+        GRANT PDB_DBA TO dba_debra;
+        BEGIN
+            ORDS_ADMIN.ENABLE_SCHEMA(
+                p_enabled => TRUE
+              , p_schema => UPPER('dba_debra')
+              , p_url_mapping_type => 'BASE_PATH'
+              , p_url_mapping_pattern => LOWER('dba_debra')
+              , p_auto_rest_auth => TRUE);
+        END;
+        /
 
-      -- Create APPUSER user, grant privileges, and authorize it to use DB Actions
-      CREATE USER appuser IDENTIFIED BY WElcome_123#;
-      GRANT CREATE SESSION, READ ANY TABLE TO appuser;
-      BEGIN
-          ORDS_ADMIN.ENABLE_SCHEMA(
-              p_enabled => TRUE
-            , p_schema => UPPER('appuser')
-            , p_url_mapping_type => 'BASE_PATH'
-            , p_url_mapping_pattern => LOWER('appuser')
-            , p_auto_rest_auth => TRUE);
-      END;
-      /
+        -- Create APPUSER user, grant privileges, and authorize it to use DB Actions
+        CREATE USER appuser IDENTIFIED BY WElcome_123#;
+        GRANT CREATE SESSION, READ ANY TABLE TO appuser;
+        BEGIN
+            ORDS_ADMIN.ENABLE_SCHEMA(
+                p_enabled => TRUE
+              , p_schema => UPPER('appuser')
+              , p_url_mapping_type => 'BASE_PATH'
+              , p_url_mapping_pattern => LOWER('appuser')
+              , p_auto_rest_auth => TRUE);
+        END;
+        /
 
-      </copy>
-      ````
+        </copy>
+        ````
 
     - Press [**F5**] or click the "Run Scripts" icon.
 
          ![](./images/adb-set_015.png " ")
 
-    - Check that there are no errors
+    - In the **Script Output** frame, verify there are no errors. 
 
 4. **Your environment is ready to use!** You may now proceed to the next lab. 
 
@@ -180,5 +191,5 @@ Click [Oracle Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonom
 
 ## Acknowledgements
 - **Author** - Richard C. Evans, Database Security PM
-- **Contributors** - Hakim Loumi
+- **Contributors** - Hakim Loumi, Database Security PM
 - **Last Updated By/Date** - Richard C. Evans, Database Security PM - May 2024
