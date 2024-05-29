@@ -76,9 +76,9 @@ This workshop requires a certain number of ports to be available, a requirement 
 As the part of prerequisites, you should have the VM DB system on OCI and use the same DB system to get the connection string.
 
 You must use the database connection string format:
-    ```
-    <hostname or IP address>:<port>:<PDB_name>.<DB_domain>
-    ```
+```
+<hostname or IP address>:<port>:<PDB_name>.<DB_domain>
+```
 
 *For example: oasdb.subnetname.oasvcn.oraclevcn.com:1512:OASDB_pdb1.subnetname.oasvcn.oraclevcn.com*
 
