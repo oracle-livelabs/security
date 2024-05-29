@@ -93,7 +93,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 ## Task 4: Integrate with Oracle Identity Governance
 
-1. On the Oracle Access Governance service home page *refer Lab 6:Task 1*, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
+1. On the Oracle Access Governance service home page *refer Lab 2:Task 1*, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
 
     ![Access Governance console - Connected Systems](images/connected-systems.png)
 
@@ -292,11 +292,9 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select **Add** to create the connected system.
 
-7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the **Download** link to download the agent zip file to the environment in which the agent will run. Select the **Activate** checkbox. 
+7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the **Download** link to download the agent zip file to the environment in which the agent will run. Click on **Activate** and **I'm done**
 
-
-     ![Enter Details](images/click-activate.png)
-
+    ![Enter Details](images/click-activate.png)
 
 
 ## Task 7: Install the DB Agent on the Target System

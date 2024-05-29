@@ -66,9 +66,18 @@ In this task, you will review Who has Access to What
 
     ![Identity Collection creation](images/view-identities.png)
 
-    Click on **View Details** to view induvidual user details. 
+    Click on **View Details** to view individual user details. 
 
     ![Identity Collection creation](images/identities-details.png)
+
+    Click on the **Identity Attributes** to view the user's identity attributes. 
+
+     ![Identity Collection creation](images/navigate-identity-attributes.png)
+
+    Here we can view the identity attributes of user **Mark Hernandez**
+
+    ![Identity Collection creation](images/identity-attributes.png)
+
 
 3. Click on **Identity Collections** to view Identity Collections that are present in the system. 
 

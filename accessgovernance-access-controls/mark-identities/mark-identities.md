@@ -25,7 +25,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 ## Task 1: Sign in to Oracle Access Governance Console
 
-1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 4: Task 1: Step 4*
+1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 2: Task 1: Step 4*
 
 
 2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)

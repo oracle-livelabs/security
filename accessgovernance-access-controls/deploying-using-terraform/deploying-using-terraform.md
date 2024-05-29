@@ -62,7 +62,7 @@ In this lab, you will:
 
   Click *Next*
 
-  Enter Unique Email IDS for each of the users
+  Enter Unique Email IDS for each of the users, including a valid email address for idd-admin email and other users where you can receive the activation email. 
 
   Enter the region code
   
