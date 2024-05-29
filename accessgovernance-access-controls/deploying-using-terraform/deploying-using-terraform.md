@@ -1,4 +1,4 @@
-# Deploying Infrastructure Using Terraform
+# Deploy Access Governance Resources Using Terraform
 
 ## Introduction
 
