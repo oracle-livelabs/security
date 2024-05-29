@@ -119,4 +119,4 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 * **Authors** - Anuj Tripathi
 * **Contributors** - Anbu Anbarasu
-* **Last Updated By/Date** - Anuj Tripathi, October 2023
+* **Last Updated By/Date** - Indira Balasundaram  29 May 2024

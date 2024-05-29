@@ -101,4 +101,4 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 ## Acknowledgments
 
 * **Authors** - Anuj Tripathi, Anbu Anbarasu
-* **Last Updated By/Date** - Anuj Tripathi, October 2023
+* **Last Updated By/Date** - Indira Balasundaram 29 May 2024
