@@ -667,7 +667,9 @@ To help you identify who is using your application data, and where they connect 
     <copy>./dv_run_queries.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-010.png "Generate traffic")
+    ![DB Vault](./images/dv-010.png "run SQL queries")
+
+    There will be an error at the end of the following script. This is an acceptable error. The script attempts to query the table but the table no longer exists, thus proving it has been dropped. 
 
     ````
     <copy>./dv_perform_drop_table.sh</copy>
@@ -707,11 +709,15 @@ You have completed the Database Vault simulation mode task. As you can see, simu
 
 ## Task 8: Ops Control
 
-Oracle Database Vault operations control allows you to separate your `C##` users from the application data in pluggable databases. This is especially helpful if you have consolidated databases into an Oracle Multitenant architecture and have several pluggable databases on each container database. 
+Oracle Database Vault operations control allows you to separate your container (`C##`) users from the application data in pluggable databases. This is especially helpful if you have consolidated databases into an Oracle Multitenant architecture and have several pluggable databases on each container database. 
 
 Oracle Database Vault operations control helps you separate "infrastructure database administrators" from "application database administrators" - to enforce separation of responsibilities between database installation, upgrades, and maintenance from application installation, upgrades, and maintenance. 
 
-1. Check the status of Database Vault and Operations Control
+A major advantage of Oracle Database Vault operations control is that Database Vault does *not* need to be configured or enabled in the pluggable database for it to protect your application data. Once it is configured and enabled in the root database, it automatically separates the container (`C##`) users from application data in all pluggable databases attached to the container database. 
+
+In this lab, you are going to enable Database Vault operations control and demonstrate how the controls work in an Oracle Mulitenant environment. 
+
+1. Check the status of Database Vault and Databse Vault operations control
 
     ````
     <copy>./dv_status.sh</copy>
@@ -722,6 +728,8 @@ Oracle Database Vault operations control helps you separate "infrastructure data
     **Note**: The parameter you are looking for is called `DV_APP_PROTECTION`. It is either set to `NOT CONFIGURED` or `DISABLED` in the container and all pluggable databases. 
 
 2. Next, you will run the same queries as both pluggable database **pdb1** and **pdb2**. This will demonstrate that both pluggable and container-based DBAs can query the application data. This is what you will prevent in the next few steps.  
+
+    **Note:** If you completed the previous tasks, your realms and command rules are configured but they are in simulation mode not enforcement mode. 
 
     - ... as `DBA_DEBRA`
 
@@ -743,9 +751,9 @@ Oracle Database Vault operations control helps you separate "infrastructure data
       - The query results are the same. 
       - The common user `C##SEC_DBA_SAL` has access to data in the pluggable databases, just as the pdb admin, `DBA_DEBRA` does.
 
-3. Enable Database Vault 19c **operations control** and run the queries again. Enabling operating control does not require a database restart. It only requires a user with `DV_OWNER` role to run the command. 
+3. Enable Database Vault 19c **operations control** and run the queries again. Enabling operating control does not require a database restart. It only requires a user with **`DV_OWNER`** role to run the command. 
 
-Now, the database is configured to separate the container-based DBAs from the application data in the pluggable database. 
+    Now, the database is configured to separate the container-based DBAs from the application data in the pluggable database. 
     
     ````
     <copy>./dv_enable_ops_control.sh</copy>
@@ -753,13 +761,18 @@ Now, the database is configured to separate the container-based DBAs from the ap
 
     ![DB Vault](./images/dv-016a.png "Enable OPS control")
 
+    When you view the value of the **`DV_APP_PROTECTION`** parameter, you will see it is now set to **`ENABLED`** for the container and both pluggable databases. 
+
+     Notice that Database Vault is not enabled on `PDB2` but the controls implemented by operations control are still enforced. This allows you to implement operations control on pluggable databases without Database Vault enabled. The only requirement is for Database Vault to be configured and enabled on the container database. 
+
     ````
     <copy>./dv_status.sh</copy>
     ````
 
     ![DB Vault](./images/dv-016b.png "Check the Database Vault status")
 
-**Note**: Notice that Database Vault is not enabled on `PDB2` but the controls implemented by operations control are still enforced. This allows you to implement operations control on pluggable databases without Database Vault enabled. The only requirement is for Database Vault to be configured and enabled on the container database. 
+  
+4. When you perform the same queries again as **`DBA_DEBRA`** and **`C##SEC_DBA_SAL`**, you will see that Debra can query the application table but Sal receives an *insufficient privileges* error in both `PDB1` and `PDB2`. 
 
     ````
     <copy>./dv_query_with_debra.sh</copy>
@@ -773,9 +786,8 @@ Now, the database is configured to separate the container-based DBAs from the ap
 
     ![DB Vault](./images/dv-018a.png "Query as DBA SAL")
 
-**Note**: Notice that `SAL` can no longer be able to access data in either `PDB1` or `PDB2` even though `PDB2` does not have Database Vault enabled. 
 
-4. Now that you understand the value of Oracle Database Vault operations contorl, you can disable Ops Control and move on to the next task. You will see that the `DV_APP_PROTECTION` value is set to `DISABLED` for the `CDB$ROOT`, `PDB1`, and `PDB2` databases. 
+5. Now that you understand the value of Oracle Database Vault operations control, you can disable ops control and move on to the next task. You will see that the `DV_APP_PROTECTION` value is set to `DISABLED` for the `CDB$ROOT`, `PDB1`, and `PDB2` databases. 
 
     ````
     <copy>./dv_disable_ops_control.sh</copy>
@@ -801,7 +813,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
 
     ![DB Vault](./images/dv-007b.png "Drop the Realm")
 
-2. Next, you can delete the **Command Rule**, **Rule Set**, and **Rule** from Database Vault.  This will allow `EMPLOYEESEARCH_PROD` to authenticate from anywhere. 
+2. Next, you can delete the **command rule**, **rule set**, and **rule** associated with the *trusted application path* you created to protect `EMPLOYEESEARCH_PROD`.  Now, `EMPLOYEESEARCH_PROD` can authenticate from anywhere using only the username and password. 
 
     ````
     <copy>./dv_del_trusted_path.sh</copy>
@@ -809,27 +821,78 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
 
     ![DB Vault](./images/dv-026.png "Delete the Trusted Path")
 
+3. Next, you will delete the **command rule**, **rule set**, and **rule** you created to protect against destructive commands, like **`DROP TABLE`**. 
 
-1. Disable the pluggable database **pdb1**
+    ````
+    <copy>./dv_drop_command_rule_drop_table.sh</copy>
+    ````
+
+    ![DB Vault](./images/dv-026a.png "Delete the DROP TABLE comamnd rule")
+
+    ````
+    <copy>./dv_drop_command_rule_drop_table.sh</copy>
+    ````
+4. Now, you will delete the **secure application role**, **rule set**, and **rule** you created to provide a *break glass* capability, allowing privileges users to access application data when a boss is logged into the database.  
+ 
+    ````
+    <copy>./dv_del_tpi.sh</copy>
+    ````
+ 
+    ![DB Vault](./images/dv-026b.png "Delete the TPI-related objects")
+
+    You will also delete the boss database accounts. 
+
+    ````
+    <copy>dv_drop_bosses.sh</copy>
+    ````
+
+    ![DB Vault](./images/dv-026c.png "Delete the TPI-related objects")
+
+5. Without the realms and command rules, the unified audit policies are no longer required. You will delete those next:
+
+    - Drop the audit policy associated with the **`PROTECT_EMPLOYEESEARCH`** realm
+
+        ````
+        <copy>dv_drop_realm_audit_policy.sh</copy>
+        ````
+
+        ![DB Vault](./images/dv-026d.png "Delete the realm audit policy")
+
+    - Drop the audit policy associated with the *Disabled* rule set. 
+
+        ````
+        <copy>dv_drop_command_rule_audit.sh</copy>
+        ````
+
+        ![DB Vault](./images/dv-026e.png "Drop audit policy on Disabled rule set ")
+
+    - Drop the audit policy associated with the *trusted application path* rule set. 
+
+        ````
+        <copy>dv_drop_connect_command_rule_audit.sh</copy>
+        ````
+
+        ![DB Vault](./images/dv-026f.png "Drop audit policy on Trusted Application Path rule set ")
+
+
+7. You're almost done, now you will disable the pluggable database **`PDB1`**. After running this command, `DV_ENABLE_STATUS` for `PDB` should show a value of **FALSE**. 
 
     ````
     <copy>./dv_disable_on_pdb.sh pdb1</copy>
     ````
 
-    **Note**: `DV_ENABLE_STATUS` for pdb1 must be **FALSE**
+    ![DB Vault](./images/dv-027.png "Disable Database Vault in PDB1")
 
-    ![DB Vault](./images/dv-027.png "Disable Database Vault")
-
-2. Now, disable Database Vault in the container database **cdb1**
+8. Finally, disable Database Vault in the container database **`CDB1`**. 
 
     ````
     <copy>./dv_disable_on_cdb.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-028.png "Disable Database Vault")
+    ![DB Vault](./images/dv-028.png "Disable Database Vault in CDB root")
 
     **Note**:
-    - To disable DB Vault, database will be rebooted!
+    - To disable Oracle Database Vault, the pluggable database and/or the container must be restarted. 
     - `DV_ENABLE_STATUS` for cdb must be **FALSE**
 
 3. Now, Database Vault is disabled in the container database as well as pdb1!
