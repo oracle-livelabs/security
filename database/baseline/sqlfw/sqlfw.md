@@ -538,7 +538,7 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
         **Note:**
         - SQL Firewall context violation is raised since SQL*Plus is not in the allowed OS program allow list, catching attention of security administrators
-        - Be patient, it can take 1 or 2 minutes to display it in the dashboard!
+        - Be patient, it can take 2 or 3 minutes to display it in the dashboard!
 
     - Drilldown into violation report to analyse them further and appropriately take action
 
@@ -595,7 +595,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
             ![SQLFW](./images/sqlfw-080.png "Update the SQL Firewall policy to blocking mode")
 
-        **Note:** SQL Firewall can now block SQL Injection attempts!
+        **Note:** Please wait until the SQL Firewall shows [**Action on violations: Block and log violations**] to block SQL Injection attempts!
 
 2. Go back to your Terminal session to see how SQL Firewall blocks attempts to use stolen credential access
  
@@ -667,6 +667,10 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-091.png "Check violation logs")
 
+        **Note:**
+        - SQL Firewall violations are raised due to the SQL Injection attempts and login from unauthorized client!
+        - Be patient, it can take 2 or 3 minutes to display it in the dashboard!
+
     - Drilldown into violation report to analyse them further and appropriately take action
 
         - Click on the **Violation reports** sub-menu on the left
@@ -709,19 +713,73 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
 ## Task 1e: Reset the SQL Firewall Labs Environment for Data Safe
 
-1. Once you are comfortable with the SQL Firewall concept, go back to the Data Safe session to deregister the Target database
+1. Once you are comfortable with the SQL Firewall concept, go back to the Data Safe session to stop Activity Auditing
 
     - Click on **Data Safe**
 
-        ![SQLFW](./images/sqlfw-201.png "Data Safe main page")
+        ![SQLFW](./images/sqlfw-201a.png "Data Safe main page")
+
+    - Click on **Activity auditing** sub-menu
+
+        ![SQLFW](./images/sqlfw-047.png "Activity auditing sub-menu")
+
+    - Click on **Audit trails** sub-menu
+
+        ![SQLFW](./images/sqlfw-048.png "Audit trails sub-menu")
+
+    - Click on your target database
+
+        ![SQLFW](./images/sqlfw-059.png "Target DB Audit trails")
+
+    - Click [**Stop**]
+
+    - Wait until the Audit Trail is **INACTIVE**, so it means that the collection is **STOPPED** 
+
+        ![SQLFW](./images/sqlfw-201b.png "Audit Trail Stopped")
+
+    - And delete it
+
+        ![SQLFW](./images/sqlfw-201c.png "Audit Trail Stopped")
+
+2. Now, drop target-association
+
+    - Click on **Data Safe**
+
+        ![SQLFW](./images/sqlfw-201d.png "Data Safe main page")
+
+    - Click on **Alerts** sub-menu
+
+        ![SQLFW](./images/sqlfw-083.png "Alert Sub-Menu")
+
+    - Click on **Target-policy assocation** sub-menu
+
+        ![SQLFW](./images/sqlfw-202a.png "Target-policy assocation Sub-Menu")
+
+    - Click on the target-policy association **`DBSeclabs_DB23ai-freepdb1`**
+
+        ![SQLFW](./images/sqlfw-059.png "Target-policy association to delete")
+
+    - Click [**Delete**]]
+
+        ![SQLFW](./images/sqlfw-202b.png "Delete the Target-policy association")
+
+    - Now the target-policy association is deleted
+
+        ![SQLFW](./images/sqlfw-202c.png "The target database is deregistered")
+
+3. Now, you can deregister the Target database
+
+    - Click on **Data Safe**
+
+        ![SQLFW](./images/sqlfw-203a.png "Data Safe main page")
 
     - Click on **Target databases**
 
-        ![SQLFW](./images/sqlfw-202.png "Target databases")
+        ![SQLFW](./images/sqlfw-203b.png "Target databases")
 
     - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
 
-        ![SQLFW](./images/sqlfw-203.png "Target database to deregister")
+        ![SQLFW](./images/sqlfw-203c.png "Target database to deregister")
 
     - Click on **More actions** and select **Deregister**
 
@@ -735,7 +793,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-206.png "The target database is deregistered")
 
-2. Now, delete the Private Endpoint
+4. Now, let's delete the Private Endpoint
 
     - Click on **Private endpoints** sub-menu
 
@@ -758,7 +816,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         ![SQLFW](./images/sqlfw-210.png "The Private Endpoint is deleted")
 
 
-3. Finally, go back to your terminal session to reset the environment within the database
+5. Finally, go back to your terminal session to reset the environment within the database
 
     ```
     <copy>./sqlfw_reset_env_ds.sh</copy>
@@ -767,7 +825,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     ![SQLFW](./images/sqlfw-211.png "Reset the SQL Firewall Labs Environment")
 
 <!--
-3. Migrate the Glassfish Application connection string in order to target the default database  (**pdb1**)
+6. Migrate the Glassfish Application connection string in order to target the default database  (**pdb1**)
 
         ```
         <copy>./sqlfw_glassfish_stop_db23ai.sh</copy>
@@ -778,7 +836,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
 -->
 
-3. **Now your Data Safe configuration is correctly reset!**
+6. **Now your Data Safe configuration is correctly reset!**
 
 ## Task 2: Use SQL Firewall with PL/SQL API
 
