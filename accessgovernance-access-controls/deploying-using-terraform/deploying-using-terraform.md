@@ -1,4 +1,4 @@
-# Deploying Infrastructure Using Terraform
+# Deploy Access Governance Resources Using Terraform
 
 ## Introduction
 
@@ -62,7 +62,7 @@ In this lab, you will:
 
   Click *Next*
 
-  Enter Unique Email IDS for each of the users
+  Enter Unique Email IDS for each of the users, including a valid email address for idd-admin email and other users where you can receive the activation email. 
 
   Enter the region code
   
@@ -106,4 +106,4 @@ In this lab, you will:
 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Anbu Anbarasu, May 2023
+* **Last Updated By/Date** - Indira Balasundaram 29 May 2024

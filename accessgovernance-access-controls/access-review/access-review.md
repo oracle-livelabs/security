@@ -26,7 +26,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 ## Task 1: Create a Campaign
 
-1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 4: Task 1: Step 4*
+1. From your browser, navigate to the Oracle Access Governance Console using the URL specified in *Lab 2: Task 1: Step 4*
 
 
 2. Enter **Oracle Access Governance Administrator** username and password (Pamela Green)
@@ -119,4 +119,4 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 * **Authors** - Anuj Tripathi
 * **Contributors** - Anbu Anbarasu
-* **Last Updated By/Date** - Anuj Tripathi, October 2023
+* **Last Updated By/Date** - Indira Balasundaram  29 May 2024
