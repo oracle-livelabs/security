@@ -759,7 +759,9 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-059.png "Target-policy association to delete")
 
-    - Click [**Delete**]]
+    - Click [**Disable**]
+
+    - Then click [**Delete**]
 
         ![SQLFW](./images/sqlfw-202b.png "Delete the Target-policy association")
 
@@ -767,7 +769,35 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-202c.png "The target database is deregistered")
 
-3. Now, you can deregister the Target database
+3. Drop SQL Firewall settings
+
+    - Click on **Data Safe**
+
+    - Click on **SQL Firewall** sub-menu
+
+    - Click on **SQL Firewall policies** sub-menu
+
+    - Click on **EMPLOYEESEARCH_PROD** database user **ACTIVE**
+
+    - Click [**Disable**]
+
+    - Then click [**Delete**]
+
+    - Click on **SQL collections** sub-menu
+
+    - Click on **EMPLOYEESEARCH_PROD** database user **ACTIVE**
+
+    - Click [**Stop**]
+
+    - Then click [**Drop**]
+
+    - Click on **SQL Firewall** sub-menu
+
+    - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
+
+    - Click [**Disable**]
+
+4. Now, you can deregister the Target database
 
     - Click on **Data Safe**
 
@@ -793,7 +823,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-206.png "The target database is deregistered")
 
-4. Now, let's delete the Private Endpoint
+5. Now, let's delete the Private Endpoint
 
     - Click on **Private endpoints** sub-menu
 
@@ -816,7 +846,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         ![SQLFW](./images/sqlfw-210.png "The Private Endpoint is deleted")
 
 
-5. Finally, go back to your terminal session to reset the environment within the database
+6. Finally, go back to your terminal session to reset the environment within the database
 
     ```
     <copy>./sqlfw_reset_env_ds.sh</copy>
@@ -825,7 +855,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     ![SQLFW](./images/sqlfw-211.png "Reset the SQL Firewall Labs Environment")
 
 <!--
-6. Migrate the Glassfish Application connection string in order to target the default database  (**pdb1**)
+7. Migrate the Glassfish Application connection string in order to target the default database  (**pdb1**)
 
         ```
         <copy>./sqlfw_glassfish_stop_db23ai.sh</copy>
@@ -836,7 +866,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
 -->
 
-6. **Now your Data Safe configuration is correctly reset!**
+7. **Now your Data Safe configuration is correctly reset!**
 
 ## Task 2: Use SQL Firewall with PL/SQL API
 
