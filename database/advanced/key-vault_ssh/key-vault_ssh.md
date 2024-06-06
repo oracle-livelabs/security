@@ -138,7 +138,7 @@ This lab assumes you have:
 
             ```
             <copy>
-            sudo - su oracle
+            sudo su - oracle
             echo $OKVUSR_PWD
             </copy>
             ```

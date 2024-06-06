@@ -797,6 +797,8 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Click [**Disable**]
 
+
+
 4. Now, you can deregister the Target database
 
     - Click on **Data Safe**
