@@ -382,9 +382,9 @@ In this lab, we will introduce remote server access controls by centrally managi
 
         ```
         <copy>
-        sudo getenforce
+        getenforce
         sudo setenforce 0
-        sudo getenforce
+        getenforce
         </copy>
         ```
 
@@ -430,7 +430,7 @@ In this lab, we will introduce remote server access controls by centrally managi
 
     - From now on, the dbseclab endpoint has only Read Only privileges on the SSH Server wallet `opc_at_dbseclab`
 
-8. Go back to **your terminal session on SSH Server** (DBSeclab VM) as opc to remove your SSH key pairs from the VM
+8. Go back to **your terminal session on SSH Server** (DBSeclab VM) **as opc** to remove your SSH key pairs from the VM
 
     - Move the old authorized_keys file as well as all **SSH keys into a backup directory**
 
@@ -453,6 +453,16 @@ In this lab, we will introduce remote server access controls by centrally managi
         ```
 
         ![Key Vault](./images/okv_ssh-042.png "Check the SSH key are no longer accessible")
+
+9. Go back to the db23ai client machine and log into `dbsec-lab` as the "**opc**" user with the same command that was used at the very beginning of this lab. Even if the public key is no longer in the `authorized_keys` file, the remote server has access to your public key in the SSH Server wallet in OKV, and the login will succeed
+
+    ```
+    <copy>
+    ssh -i ~/.ssh/id_rsa opc@10.0.0.150
+    </copy>
+    ```
+
+    ![Key Vault](./images/okv_ssh-042.png "Check the SSH key are no longer accessible")
 
 <!--
 9. Go back on the **OKV Web Console** to remove the public key from the SSH Server Wallet
@@ -569,6 +579,7 @@ In this second part, we will manage users' private keys in OKV making those priv
     
         **Note**:
         - Leave the other values as they are
+        - Note that the private key is set to NON-EXTRACTABLE by default; it is not allowed to leave the OKV cluster boundary
         - The deactivation time is set to 2 years from now
     
     - Click [**Create**]
@@ -577,7 +588,7 @@ In this second part, we will manage users' private keys in OKV making those priv
     
         ![Key Vault](./images/okv_ssh-060.png "Open the Wallet")
 
-    - Under **Wallet Contents**, click on the key-ID of the public key
+    - Under **Wallet Contents**, click on the key-ID of the **public key**
     
         ![Key Vault](./images/okv_ssh-061.png "Open the Keys")
 
@@ -658,7 +669,7 @@ In this second part, we will manage users' private keys in OKV making those priv
         ![Key Vault](./images/okv_ssh-068.png "Install OKV binaries")
 
         **Note**:
-        - The OKV client binaries will be store on the opc root directory
+        - The OKV client binaries are installed under opc's home directory
         - The jar file is deleted after the successfull installation
 
     - Verify that DB23AI endpoint can see the SSH key pair that KVRESTADMIN created
