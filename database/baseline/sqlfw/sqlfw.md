@@ -791,6 +791,8 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Then click [**More actions**], and select **Drop**
 
+    - Click on **SQL Firewall** link on the top
+
     - Click on **SQL Firewall** sub-menu
 
     - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
