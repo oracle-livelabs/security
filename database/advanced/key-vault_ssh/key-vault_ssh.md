@@ -637,8 +637,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         ```
         <copy>
-        cd /tmp
-        sudo scp -i ~/.ssh/id_rsa opc@10.0.0.150:/tmp/okvclient.jar .
+        scp -i ~/.ssh/id_rsa opc@10.0.0.150:/tmp/okvclient.jar /tmp
         </copy>
         ```
 
@@ -652,7 +651,7 @@ In this second part, we will manage users' private keys in OKV making those priv
         <copy>
         cd
         export JAVA_HOME=/opt/oracle/product/23ai/dbhomeFree/jdk
-        sudo $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d .
+        $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d .
         </copy>
         ```
 
