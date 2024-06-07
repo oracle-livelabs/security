@@ -773,7 +773,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         **Note**: In this example, now we have two public keys in the SSH Server wallet: one key uploaded into OKV in Task 2 from the remote server DBSECLAB and one key created in OKV by KVRESTADMIN
 
-    - Now, we can remove the public key created in OKV by DBSECLAB
+    - Now, we can remove the public key that was uploaded in OKV by DBSECLAB
     
         - Click the checkbox of the public key that was **created in OKV by DBSECLAB** and click on **Remove Objects** to remove the public key from the SSH Server Wallet
     
@@ -783,6 +783,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
             ![Key Vault](./images/okv_ssh-108.png "Remove the public key from the SSH Server Wallet")
 
+<!--
     - Go back to your terminal session **on SSH Client** (DB23ai VM) to test the connection **to SSH Server** (DBSeclab VM)
     
         ```
@@ -800,6 +801,8 @@ In this second part, we will manage users' private keys in OKV making those priv
         ![Key Vault](./images/okv_ssh-109.png "Check log on to DBSECLAB from DB23AI without SSH key")
 
         **Note**: Public key **authentication is successful**!
+
+-->
 
     - Now, let's remove the public key created in OKV by KVRESTADMIN
     
