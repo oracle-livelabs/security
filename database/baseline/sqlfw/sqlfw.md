@@ -781,7 +781,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Click [**Disable**]
 
-    - Then click [**Delete**]
+    - Then click [**Drop**]
 
     - Click on **SQL collections** sub-menu
 
@@ -796,8 +796,6 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
 
     - Click [**Disable**]
-
-
 
 4. Now, you can deregister the Target database
 
@@ -825,7 +823,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-206.png "The target database is deregistered")
 
-5. Now, let's delete the Private Endpoint
+5. Now, let's drop the Private Endpoint
 
     - Click on **Private endpoints** sub-menu
 
