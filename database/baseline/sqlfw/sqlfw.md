@@ -295,13 +295,17 @@ In this task you will learn how the administrator trains the system to learn the
     ![SQLFW](./images/sqlfw-040.png "Generate firewall policy")
 
     **Note:**
-    - The firewall policy is created
+    - The firewall policy is creating
 
         ![SQLFW](./images/sqlfw-041.png "Generating firewall policy")
 
-    - If you see *`sqlplus@dbsec-lab`* in the client program names, click [**Update**] to remove it!
+    - Once it's done, you should see the following context values
+    
+        ![SQLFW](./images/sqlfw-041b.png "Generating firewall policy - Good Session context value")
 
-        ![SQLFW](./images/sqlfw-041b.png "Generating firewall policy - Session context value")
+    - If you see *`sqlplus@dbsec-lab`* in the client program names, you may have run PL*SQL lab prior, so click [**Update**] to remove it!
+
+        ![SQLFW](./images/sqlfw-041c.png "Generating firewall policy - Bad Session context value")
 
 2. Scroll down to review the allow-lists in the generated SQL Firewall policy
 
