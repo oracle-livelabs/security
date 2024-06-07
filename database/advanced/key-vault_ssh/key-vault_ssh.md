@@ -771,7 +771,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         ![Key Vault](./images/okv_ssh-106.png "See the Wallet content")
 
-        **Note**: In this example, now we have two public keys in the SSH Server wallet: one key created in OKV by DBSECLAB and one key created by KVRESTADMIN
+        **Note**: In this example, now we have two public keys in the SSH Server wallet: one key uploaded into OKV in Task 2 from the remote server DBSECLAB and one key created in OKV by KVRESTADMIN
 
     - Now, we can remove the public key created in OKV by DBSECLAB
     
