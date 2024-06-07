@@ -787,9 +787,9 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Click on **EMPLOYEESEARCH_PROD** database user **ACTIVE**
 
-    - Click [**Stop**]
+    - Click [**Purge**]
 
-    - Then click [**Drop**]
+    - Then click [**More actions**], and select **Drop**
 
     - Click on **SQL Firewall** sub-menu
 
