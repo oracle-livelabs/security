@@ -299,6 +299,10 @@ In this task you will learn how the administrator trains the system to learn the
 
         ![SQLFW](./images/sqlfw-041.png "Generating firewall policy")
 
+    - If you see *`sqlplus@dbsec-lab`* in the client program names, click [**Update**] to remove it!
+
+        ![SQLFW](./images/sqlfw-041b.png "Generating firewall policy - Session context value")
+
 2. Scroll down to review the allow-lists in the generated SQL Firewall policy
 
     ![SQLFW](./images/sqlfw-042.png "Review allow-lists")
