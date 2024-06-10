@@ -68,9 +68,7 @@ This lab assumes you have:
 
             ![Key Vault](./images/okv_ssh-003.png "SSH Server VM access to SSH Client VM")
 
-            **Note**:
-            - Enter *`Yes`* to continue
-            - You must be successfully connected to db23ai VM!
+            **Note**: You must be successfully connected to db23ai VM!
 
         - If so, please close the SSH session
 
@@ -102,9 +100,7 @@ This lab assumes you have:
 
             ![Key Vault](./images/okv_ssh-004.png "SSH Client VM access to SSH Server VM")
 
-            **Note**:
-            - Enter *`Yes`* to continue
-            - You must be successfully connected to dbsec-lab VM!
+            **Note**: You must be successfully connected to dbsec-lab VM!
 
         - If so, please close the SSH session
 
