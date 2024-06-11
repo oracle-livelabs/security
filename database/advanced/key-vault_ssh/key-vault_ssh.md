@@ -449,7 +449,7 @@ In this lab, we will introduce remote server access controls by centrally managi
 
         ![Key Vault](./images/okv_ssh-042.png "Check the SSH key are no longer accessible")
 
-9. Go back to the db23ai client machine and log into `dbsec-lab` *as opc* user with the same command that was used at the very beginning of this lab. Even if the public key is no longer in the `authorized_keys` file, the remote server has access to your public key in the SSH Server wallet in OKV, and the login will succeed
+9. Go back to **your terminal session on SSH Client** (DB23ai VM) *as opc* and log into `dbsec-lab` with the same command that was used at the very beginning of this lab
 
     ```
     <copy>
@@ -457,7 +457,9 @@ In this lab, we will introduce remote server access controls by centrally managi
     </copy>
     ```
 
-    ![Key Vault](./images/okv_ssh-042.png "Check the SSH key are no longer accessible")
+    ![Key Vault](./images/okv_ssh-004.png "SSH Client VM access to SSH Server VM")
+
+    **Note**: Even if the public key is no longer in the `authorized_keys` file, the remote server has access to your public key in the SSH Server wallet in OKV, and the login will succeed!
 
 <!--
 9. Go back on the **OKV Web Console** to remove the public key from the SSH Server Wallet
