@@ -154,7 +154,14 @@ If you didn't execute them yet, do it right now by following the instructions be
 
         **Note**:
         - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
-        - This default password is available in the Labs details
+        - This default password is available in the Labs details or by executing the following command line as *`oracle`* user:
+
+            ```
+            <copy>
+            sudo su - oracle
+            echo $OKVUSR_PWD
+            </copy>
+            ```
 
     - Set your new password
     
