@@ -303,10 +303,6 @@ In this task you will learn how the administrator trains the system to learn the
     
         ![SQLFW](./images/sqlfw-041b.png "Generating firewall policy - Good Session context value")
 
-    - If you see *`sqlplus@dbsec-lab`* in the client program names, you may have run PL*SQL lab prior, so click [**Update**] to remove it!
-
-        ![SQLFW](./images/sqlfw-041c.png "Generating firewall policy - Bad Session context value")
-
 2. Scroll down to review the allow-lists in the generated SQL Firewall policy
 
     ![SQLFW](./images/sqlfw-042.png "Review allow-lists")
@@ -737,7 +733,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Click on your target database
 
-        ![SQLFW](./images/sqlfw-059.png "Target DB Audit trails")
+        ![SQLFW](./images/sqlfw-049.png "Target DB Audit trails")
 
     - Click [**Stop**]
 
@@ -749,7 +745,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-201c.png "Audit Trail Stopped")
 
-2. Now, drop target-association
+2. Now, drop target-alert policy association
 
     - Click on **Data Safe**
 
@@ -767,7 +763,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-059.png "Target-policy association to delete")
 
-    - Click [**Disable**]
+    - Click [**Disable policy**]
 
     - Then click [**Delete**]
 
@@ -791,6 +787,8 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Then click [**Drop**]
 
+        ![SQLFW](./images/sqlfw-220.png "Drop SQL Firewall policy")
+
     - Click on **SQL collections** sub-menu
 
     - Click on **EMPLOYEESEARCH_PROD** database user **ACTIVE**
@@ -799,6 +797,8 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     - Then click [**More actions**], and select **Drop**
 
+        ![SQLFW](./images/sqlfw-221.png "Drop SQL collection")
+
     - Click on **SQL Firewall** link on the top
 
     - Click on **SQL Firewall** sub-menu
@@ -806,6 +806,8 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
 
     - Click [**Disable**]
+
+        ![SQLFW](./images/sqlfw-222.png "Disable SQL Firewall")
 
 4. Now, you can deregister the Target database
 
