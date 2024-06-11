@@ -623,7 +623,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-111.png "Search employees")
 
-        **Note**: All rows are returned... normal, because, remerber, you allowed everything!
+        **Note**: All rows are returned... normal, because, remember, you allowed everything!
 
     - Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
