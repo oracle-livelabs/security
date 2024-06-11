@@ -274,45 +274,51 @@ In this lab, we will introduce remote server access controls by centrally managi
         - The directory /opt/okv created will store the OKV binaries
         - The jar file is deleted after the successfull installation
 
-    - Edit okvsshendpoint.conf
+    - Modify OKV config file **okvsshendpoint.conf** to use *`opc_at_dbseclab`* as server wallet *as opc* user
     
         ```
         <copy>
-        sudo vi /opt/okv/conf/okvsshendpoint.conf
+        cat << 'EOF' > /tmp/set_okv_wallet.sh
+        #!/bin/bash
+        echo ==== Original Values in /opt/okv/conf/okvsshendpoint.conf file ====
+        sudo grep -A 1 '\[ user1 \]' /opt/okv/conf/okvsshendpoint.conf
+        echo
+        echo ==== New Values ====
+        sudo sed -i '/\[ user1 \]/,/^$/c\[ opc ]\nssh_server_wallet=opc_at_dbseclab\n' /opt/okv/conf/okvsshendpoint.conf && sudo grep -A 1 '\[ opc \]' /opt/okv/conf/okvsshendpoint.conf
+        EOF
+
+        sudo chmod +x /tmp/set_okv_wallet.sh
+        /tmp/set_okv_wallet.sh
         </copy>
         ```
 
-    - Uncomment and change these 2 lines [*`user1`*] as following:
+        ![Key Vault](./images/okv_ssh-029.png "Modify okvsshendpoint.conf")
 
-        ```
-        <copy>
-        [ opc ]
-        ssh_server_wallet=opc_at_dbseclab
-        </copy>
-        ```
+        **Note** Here we uncomment and change the 2 default lines **`#[ user1 ]`** and **`#ssh_server_wallet=`** to set **`opc`** and **`opc_at_dbseclab`** instead
 
-        ![Key Vault](./images/okv_ssh-029.png "Edit okvsshendpoint.conf")
-
-    - Edit sshd_config
+    - Modify the *`sshd service`* config file to allow OKV to use the authorized keys
     
         ```
         <copy>
-        sudo vi /etc/ssh/sshd_config
+        cat << 'EOF' > /tmp/set_okv_sshd.sh
+        #!/bin/bash
+        echo ==== Original Values in /etc/ssh/sshd_config file ====
+        sudo grep -A 1 'AuthorizedKeysCommand' /etc/ssh/sshd_config
+        echo
+        echo ==== New Values ====
+        sudo sed -i '/AuthorizedKeysCommand none/,/^$/cAuthorizedKeysCommand /opt/okv/bin/okv_ssh_ep_lookup_authorized_keys get_authorized_keys_for_user %u %f %k\nAuthorizedKeysCommandUser root\n' /etc/ssh/sshd_config && sudo grep -A 1 'AuthorizedKeysCommand' /etc/ssh/sshd_config
+        EOF
+
+        sudo chmod +x /tmp/set_okv_sshd.sh
+        /tmp/set_okv_sshd.sh
         </copy>
         ```
 
-    - Uncomment and change these 2 lines as following:
+        ![Key Vault](./images/okv_ssh-030.png "Modify sshed_config")
 
-        ```
-        <copy>
-        AuthorizedKeysCommand /opt/okv/bin/okv_ssh_ep_lookup_authorized_keys get_authorized_keys_for_user %u %f %k
-        AuthorizedKeysCommandUser root
-        </copy>
-        ```
+        **Note** Here we uncomment and change the 2 default lines **`#AuthorizedKeysCommand`** and **`#AuthorizedKeysCommandUser`** to use the authorized keys as **`root`** instead
 
-        ![Key Vault](./images/okv_ssh-030.png "Edit sshed_config")
-
-    - Restart sshd service
+    - Restart sshd service to take account of the new settings
     
         ```
         <copy>
