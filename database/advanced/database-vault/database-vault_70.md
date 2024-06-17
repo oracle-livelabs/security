@@ -843,7 +843,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
     You will also delete the boss database accounts. 
 
     ````
-    <copy>dv_drop_bosses.sh</copy>
+    <copy>dv_drop_tpi_bosses.sh</copy>
     ````
 
     ![DB Vault](./images/dv-026c.png "Delete the TPI-related objects")
