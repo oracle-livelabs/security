@@ -468,7 +468,11 @@ In this task, you will create a Database Vault secure application role that can 
 
     ![DB Vault](./images/dv-066a.png "Open an additional Linux terminal")
 
-    **Note:** If you are not using the Linux graphical user interface, you would open an additional `ssh` session to the host. 
+    **Note:** If you are not using the Linux graphical user interface, you would open an additional `ssh` session to the host, switch to `oracle` and navigate to the Database Vault labs directory. 
+
+    ````
+    <copy> sudo su - oracle</copy>
+    ````
 
     ````
     <copy> cd $DBSEC_LABS/database-vault</copy>
@@ -510,6 +514,13 @@ In this task, you will create a Database Vault secure application role that can 
     ````
 
     ![DB Vault](./images/dv-069a.png "Query as DBA_HARVEY fails because the boss is not logged in")
+
+12. You can exit the second terminal, or SSH session, you opened for this task. 
+
+    ````
+    <copy> exit</copy>
+    ````
+
 
 You have completed the task to create a *break glass* role to enable application data access. Again, this is a very rudimentary scenario. You could create any number of criteria that would allow you to enable a Database Vault secure application role. 
 
