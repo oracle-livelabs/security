@@ -191,7 +191,7 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-- [Data Discovery](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-discovery.html)
+- [Data Discovery Overview](https://docs.oracle.com/en/cloud/paas/data-safe/udscs/data-discovery-overview.html)
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
