@@ -962,4 +962,4 @@ To learn more about the capabilities discussed in this workshop and to learn how
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security Senior Principal PM
 - **Contributors** - Russ Lowenthal
-- **Last Updated By/Date** - Hakim Loumi - August 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023

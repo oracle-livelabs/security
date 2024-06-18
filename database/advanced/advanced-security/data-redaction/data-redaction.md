@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data R
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DB 19.13
+*Version tested in this lab:* Oracle DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
@@ -26,7 +26,7 @@ This lab assumes you have:
 |--|------------------------------------------------------------|-------------|
 | 1 | Create a basic Data Redaction policy | 5 minutes |
 | 2 | Contextualize an existing Data Redaction policy | 5 minutes |
-| 3 | (Optional) Drop the Data Redaction policy | <5 minutes |
+| 3 | Drop the Data Redaction policy | <5 minutes |
 
 ## Task 1: Create a basic Data Redaction policy
 
@@ -52,13 +52,15 @@ This lab assumes you have:
         <copy>./dr_query_employee_data.sh</copy>
         ````
 
-        ![](./images/dr-001.png " ")
+        ![Data Redaction](./images/dr-001.png "See the original data")
     
         **Note**: Depending on the employee, they have a SIN, SSN or NINO number!
 
     - Now, let's have a look **on your Glassfish App**
 
-        - Open a web browser window to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`* to acces to your Glassfish App
+        - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`*
+
+            **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
     
         - Login to the HR Application as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -70,24 +72,24 @@ This lab assumes you have:
             <copy>Oracle123</copy>
             ````
 
-            ![](./images/dr-002.png " ")
-            ![](./images/dr-003.png " ")
+            ![Data Redaction](./images/dr-002.png "HR App - Login")
+            ![Data Redaction](./images/dr-003.png "HR App - Login")
 
         - Click on **Search Employees**
 
-            ![](./images/dr-004.png " ")
+            ![Data Redaction](./images/dr-004.png "HR App - Search employees")
 
         - We'll filter on the employee "Alice - UserID 77" for example by entering *`77`* as **HR ID** value and click [**Search**]
 
-            ![](./images/dr-005.png " ")
+            ![Data Redaction](./images/dr-005.png "HR App - Search employee (UserID 77)")
 
         - Now, click on the **Full Name** link of this employee to see her details
 
-            ![](./images/dr-006.png " ")
+            ![Data Redaction](./images/dr-006.png "HR App - Full Name")
 
         - As you can see, even in Glassfish, data from column SIN is also fully redacted
 
-            ![](./images/dr-007.png " ")
+            ![Data Redaction](./images/dr-007.png "HR App - SIN value")
 
 4. Go back to your terminal session to create the redaction policy `PROTECT_EMPLOYEES`
 
@@ -95,7 +97,7 @@ This lab assumes you have:
     <copy>./dr_redact_for_all.sh</copy>
     ````
 
-    ![](./images/dr-008.png " ")
+    ![Data Redaction](./images/dr-008.png "Create the redaction policy PROTECT_EMPLOYEES")
 
     **Note**: This policy will (**FULL**) redact data on column **SIN** from `DEMO_HR_EMPLOYEES` table, for all queries in every contexts (**Expression "1=1"**)
 
@@ -105,7 +107,7 @@ This lab assumes you have:
     <copy>./dr_query_employee_data.sh</copy>
     ````
 
-    ![](./images/dr-009.png " ")
+    ![Data Redaction](./images/dr-009.png "See the redacted data")
 
     **Note**:
     - As you can see, data from column SIN is fully redacted!
@@ -115,7 +117,7 @@ This lab assumes you have:
 
 6. Now, go back to your Glassfish App and just refresh the web page (**press [F5]**)
 
-    ![](./images/dr-010.png " ")
+    ![Data Redaction](./images/dr-010.png "HR App - SIN value")
 
     **Note**:
     - Now, even in Glassfish the column SIN is also fully redacted!
@@ -130,7 +132,7 @@ This lab assumes you have:
     <copy>./dr_redact_nonapp_queries.sh</copy>
     ````
 
-    ![](./images/dr-011.png " ")
+    ![Data Redaction](./images/dr-011.png "ONLY redact non-Glassfish queries")
 
     **Note**: Now, the same policy will (**FULL**) redact data on column **SIN** from `DEMO_HR_EMPLOYEES` table, but only for the queries where the context is non-authorised
 
@@ -140,7 +142,7 @@ This lab assumes you have:
     <copy>./dr_add_redacted_columns.sh</copy>
     ````
 
-    ![](./images/dr-012.png " ")
+    ![Data Redaction](./images/dr-012.png "Modify redaction policy")
 
     **Note**: In a same way, this Data Redaction policy will be also applied for the columns SSN and NINO for the same context
     
@@ -152,17 +154,17 @@ This lab assumes you have:
         <copy>./dr_query_employee_data.sh</copy>
         ````
 
-        ![](./images/dr-013.png " ")
+        ![Data Redaction](./images/dr-013.png "See data on SQLPlus")
 
         **Note**: You shouldn't see any sensitive data!
 
     - ... **on your Glassfish App** (the only authorized application from now) by just refreshing the web page (**press [F5]**)
 
-        ![](./images/dr-007.png " ")
+        ![Data Redaction](./images/dr-007.png "See data on HR App")
 
         **Note**: Because you're using the only authorized app, you can see the sensitive data now!
 
-## Task 3: (Optional) Drop the Data Redaction policy
+## Task 3: Drop the Data Redaction policy
 
 1. When you are finished with the lab, you can drop the redaction policy
 
@@ -170,7 +172,7 @@ This lab assumes you have:
     <copy>./dr_drop_redaction_policy.sh</copy>
     ````
 
-    ![](./images/dr-014.png " ")
+    ![Data Redaction](./images/dr-014.png "Drop the redaction policy")
 
 2. Check that all data are now not redacted
 
@@ -178,7 +180,7 @@ This lab assumes you have:
     <copy>./dr_query_employee_data.sh</copy>
     ````
 
-    ![](./images/dr-001.png " ")
+    ![Data Redaction](./images/dr-001.png "Check data")
 
 You may now proceed to the next lab!
 
@@ -207,7 +209,7 @@ This option enables you to test the internal operation of your redaction policie
 
 Data Redaction performs the redaction at runtime, that is, the moment that the user tries to view the data. This functionality is ideally suited for dynamic production systems in which data constantly changes. While the data is being redacted, Oracle Database is able to process all of the data normally and to preserve the back-end referential integrity constraints. Data redaction can help you to comply with industry regulations such as Payment Card Industry Data Security Standard (PCI DSS) and the Sarbanes-Oxley Act.
 
-![](./images/aso-concept-dr.png " ")
+![Data Redaction](./images/aso-concept-dr.png "Data Redaction Concept")
 
 ### **Benefits of Using Oracle Data Redaction**
 - You have different styles of redaction from which to choose
@@ -225,4 +227,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2022
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024

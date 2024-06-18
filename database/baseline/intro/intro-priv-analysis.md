@@ -11,18 +11,20 @@ Based on an OCI architecture, deployed in a few minutes with a simple internet c
 Now, you no longer need important resources on your PC (storage, CPU or memory), nor complex tools to master, making you completely autonomous to discover at your rhythm all new DB Security features.
 
 ### Components
-The complete architecture of the **DB Security Hands-On Labs (v4)** is as following:
+The complete architecture of the **DB Security Hands-On Labs** is as following:
 
-  ![](./images/dbseclab-archi-v4.png "")
+  ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
-It's composed of 4 VMs:
+It may be composed of as many as five VMs:
   - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)
   - **Audit Vault Server VM** (for Advanced workshop only)
   - **DB Firewall Server VM** (for Advanced workshop only)
   - **Key Vault Server VM** (for Advanced workshop only)
+  - **DB23ai VM** (for SQL Firewall workshop only)
 
 During this mini-lab, you'll use different resources to interact with these VMs:
   - SSH Terminal Client
+  - Oracle Enterprise Manager 13c
   - (Optionally) SQL Developer
 
 So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set!
@@ -38,5 +40,5 @@ You may now [proceed to the next lab](#next)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2021
+- **Contributors** - Richard Evans
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - February 2024
