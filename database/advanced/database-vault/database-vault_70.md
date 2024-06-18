@@ -854,7 +854,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
     You will also delete the boss database accounts. 
 
     ````
-    <copy>dv_drop_tpi_bosses.sh</copy>
+    <copy>./dv_drop_tpi_bosses.sh</copy>
     ````
 
     ![DB Vault](./images/dv-026c.png "Delete the TPI-related objects")
@@ -864,7 +864,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
     - Drop the audit policy associated with the **`PROTECT_EMPLOYEESEARCH`** realm
 
         ````
-        <copy>dv_drop_realm_audit_policy.sh</copy>
+        <copy>./dv_drop_realm_audit_policy.sh</copy>
         ````
 
         ![DB Vault](./images/dv-026d.png "Delete the realm audit policy")
@@ -872,7 +872,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
     - Drop the audit policy associated with the *Disabled* rule set. 
 
         ````
-        <copy>dv_drop_command_rule_audit.sh</copy>
+        <copy>./dv_drop_command_rule_audit.sh</copy>
         ````
 
         ![DB Vault](./images/dv-026e.png "Drop audit policy on Disabled rule set ")
@@ -880,7 +880,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
     - Drop the audit policy associated with the *trusted application path* rule set. 
 
         ````
-        <copy>dv_drop_connect_command_rule_audit.sh</copy>
+        <copy>./dv_drop_connect_command_rule_audit.sh</copy>
         ````
 
         ![DB Vault](./images/dv-026f.png "Drop audit policy on Trusted Application Path rule set ")

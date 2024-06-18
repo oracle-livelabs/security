@@ -1,13 +1,13 @@
 # Oracle Database Vault on an Autonomous Database
 
 ## Introduction
-This workshop will introduce you to the various features and functionality of Oracle Database Vault (DV). You will learn how to configure these features in an Autonomous Database to prevent unauthorized privileged users from accessing sensitive data.
+This workshop will introduce you to the various features and functionality of Oracle Database Vault (DV). You will learn how to configure these features in an Autonomous Database to prevent unauthorized privileged users from accessing sensitive data, implement separation of duties, and reduce human errors. 
 
-No matter whether it's on-premises, in a managed data center, or the cloud, any type of managed database services run the risk of 'admin snooping', allowing privileged users - and especially compromised privileged user accounts - access to sensitive data. Oracle Autonomous Database with Database Vault provides powerful security controls, restricting access to application data from privileged database users, reducing the risk of internal and external threats and addressing common compliance requirements.
+Whether your data resides on-premises, in a managed data center, or the cloud, any type of database run the risk of 'admin snooping', allowing privileged users - especially compromised privileged user accounts - access to sensitive data. Oracle Autonomous Database with Database Vault provides powerful security controls, restricting access to application data from privileged database users, reducing the risk of internal and external threats and addressing common compliance requirements.
 
-You can deploy controls to block privileged account access to application data and control sensitive operations inside the database. Trusted paths can be used to add additional security controls to authorized data access and database changes. IP addresses, usernames, client program names and other factors can be used as part of Oracle Database Vault security controls to increase security. **Oracle Database Vault secures existing database environments transparently, eliminating costly and time consuming application changes.**
+You can deploy controls to block privileged account access to application data and control sensitive operations inside the database. Database Vault can allow you to create a "trusted path" between the application and the database for application schema account(s). Factors such as IP addresses, usernames, client program names, and more, can be used as Oracle Database Vault security controls. **Oracle Database Vault secures existing database environments transparently, eliminating costly and time consuming application changes.**
 
-While customers are concerned with threat actors, the most common threat to application data is human error. Mistakes happen for many reasons, including tight deadlines, fatigue, or confusing connections to production for connections to non-production systems. Regardless of the reason, Oracle Database Vault can help you minimize mistakes by allowing you to disable destructive commands such as `DROP TABLE`, `TRUNCATE TABLE`, `DROP INDEX` and many more. 
+While customers are concerned with threat actors, the most common threat to application data is human error. Mistakes happen for many reasons, including tight deadlines, fatigue, or not realizing you are connected to a production database instead of non-production database. Regardless of the reason, Oracle Database Vault can help you minimize mistakes by allowing you to disable destructive commands such as `DROP TABLE`, `TRUNCATE TABLE`, `DROP INDEX` and many more. 
 
 *Estimated Time:* 75 minutes
 
@@ -25,13 +25,13 @@ Watch a preview of "*LiveLabs - Prevent unauthorized data access in Autonomous D
 Oracle Database vault comes pre-installed with your Oracle Autonomous Database.
 
 In this lab you will:
-- Enable Database Vault in an Oracle Autonomous Database
+- Configure and enable Database Vault in an Oracle Autonomous Database
 - Protect sensitive data using a Database Vault realm
 - Reduce mistakes on production data with Database Vault command rules
 - Create an audit policy to capture realm and command rule violations
 - Test your controls before implementation with Database Vault simulation mode
 
-You will use the `SH1` schema containing multiple tables such as `CUSTOMERS` or `COUNTRIES` tables which contain sensitive information and need to be protected from privileged users such as the schema owner (`SH1` and DBA (`DBA_DEBRA`). But the data in these tables should be available to the application user (`APPUSER`).
+You will use the `SH1` schema containing multiple tables such as `CUSTOMERS` and `COUNTRIES` tables which contain sensitive information and need to be protected from privileged users such as the schema owner (`SH1` and DBA (`DBA_DEBRA`). But the data in these tables should be available to the application user (`APPUSER`).
 
    ![](./images/adb-dbv_001.png " ")
 
