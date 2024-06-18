@@ -981,6 +981,6 @@ Video:
   - *Understanding Oracle Database Vault (March 2019)* [](youtube:oVidZw7yWIQ)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Richard Evans
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Author** - Richard C. Evans, Database Security PM
+- **Contributors** - Hakim Loumi, Database Security PM, Ethan Shmargad, Cloud Engineer
+- **Last Updated By/Date** - Richard C. Evans, Database Security PM - May 2024
