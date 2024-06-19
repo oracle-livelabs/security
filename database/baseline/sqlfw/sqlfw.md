@@ -24,11 +24,18 @@ Watch a preview of "*Introducing SQL Firewall – a new security capability in O
 
 ### Prerequisites
 This lab assumes you have:
+<if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
+</if>
+<if type="green">
+- An Oracle Cloud account
+- You have completed:
+    - Introduction Tasks
+</if>
 
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
