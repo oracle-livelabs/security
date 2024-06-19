@@ -225,4 +225,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, May 16, 2024
+* **Last Updated By/Date** - Jody Glover, June 17, 2024
