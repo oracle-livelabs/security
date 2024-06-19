@@ -468,7 +468,11 @@ In this task, you will create a Database Vault secure application role that can 
 
     ![DB Vault](./images/dv-066a.png "Open an additional Linux terminal")
 
-    **Note:** If you are not using the Linux graphical user interface, you would open an additional `ssh` session to the host. 
+    **Note:** If you are not using the Linux graphical user interface, you would open an additional `ssh` session to the host, switch to `oracle` and navigate to the Database Vault labs directory. 
+
+    ````
+    <copy> sudo su - oracle</copy>
+    ````
 
     ````
     <copy> cd $DBSEC_LABS/database-vault</copy>
@@ -510,6 +514,13 @@ In this task, you will create a Database Vault secure application role that can 
     ````
 
     ![DB Vault](./images/dv-069a.png "Query as DBA_HARVEY fails because the boss is not logged in")
+
+12. You can exit the second terminal, or SSH session, you opened for this task. 
+
+    ````
+    <copy> exit</copy>
+    ````
+
 
 You have completed the task to create a *break glass* role to enable application data access. Again, this is a very rudimentary scenario. You could create any number of criteria that would allow you to enable a Database Vault secure application role. 
 
@@ -843,7 +854,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
     You will also delete the boss database accounts. 
 
     ````
-    <copy>dv_drop_bosses.sh</copy>
+    <copy>./dv_drop_tpi_bosses.sh</copy>
     ````
 
     ![DB Vault](./images/dv-026c.png "Delete the TPI-related objects")
@@ -853,7 +864,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
     - Drop the audit policy associated with the **`PROTECT_EMPLOYEESEARCH`** realm
 
         ````
-        <copy>dv_drop_realm_audit_policy.sh</copy>
+        <copy>./dv_drop_realm_audit_policy.sh</copy>
         ````
 
         ![DB Vault](./images/dv-026d.png "Delete the realm audit policy")
@@ -861,7 +872,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
     - Drop the audit policy associated with the *Disabled* rule set. 
 
         ````
-        <copy>dv_drop_command_rule_audit.sh</copy>
+        <copy>./dv_drop_command_rule_audit.sh</copy>
         ````
 
         ![DB Vault](./images/dv-026e.png "Drop audit policy on Disabled rule set ")
@@ -869,7 +880,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
     - Drop the audit policy associated with the *trusted application path* rule set. 
 
         ````
-        <copy>dv_drop_connect_command_rule_audit.sh</copy>
+        <copy>./dv_drop_connect_command_rule_audit.sh</copy>
         ````
 
         ![DB Vault](./images/dv-026f.png "Drop audit policy on Trusted Application Path rule set ")
@@ -970,6 +981,6 @@ Video:
   - *Understanding Oracle Database Vault (March 2019)* [](youtube:oVidZw7yWIQ)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Richard Evans
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Author** - Richard C. Evans, Database Security PM
+- **Contributors** - Hakim Loumi, Database Security PM, Ethan Shmargad, Cloud Engineer
+- **Last Updated By/Date** - Richard C. Evans, Database Security PM - May 2024
