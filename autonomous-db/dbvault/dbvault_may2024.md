@@ -610,7 +610,7 @@ These are but a few of the scenarios you can implement with the flexability avai
 
 You may also want to capture an audit trail of unauthorized access attempts to your realm objects or command rule violations. Since the Autonomous Database uses Oracle unified auditing, you will create a policy to audit Database Vault activities. 
 
-1. You will authenticate as `ACCTS_ADMIN_ACE` by logging out of a session in an existing window and authenticating as ACE. 
+1. You will log out of `SEC_ADMIN_OWEN` and authenticate as **`ACCTS_ADMIN_ACE`**. 
 
    ![](./images/adb-dbv_051.png " ")
 
@@ -697,9 +697,8 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
        - as user `APPUSER`
 
-       ![](./images/adb-dbv_014.png " ")
+       ![](./images/adb-dbv_023a.png " ")
 
-       - `DBA_DEBRA` and `SH1` users cannot access the `SH1.CUSTOMERS` table and should generate an audit record of their failed attempt to violate policy. 
 
 5. Go back to the SQL Worksheet as the `ACCTS_ADMIN_ACE` user to review realm violation audit trail 
 
@@ -712,15 +711,15 @@ You may also want to capture an audit trail of unauthorized access attempts to y
       </copy>
       ````
 
-   ![](./images/adb-dbv_023.png " ")
+   ![](./images/adb-dbv_023a.png "Unified Audit Trail audit records displayed for Realm Violation")
 
-    **Note:** You should see the `DBA_DEBRA` and `SH1` failed attempts. If you review the values in the `SQL_TEXT` column, you will notice it is not the exact query you submited in your **SQL worksheet**. Look closer and you will see your query embedded as a nested table. This is due to how **Database Actions** processes queries. 
+    **Note:** You should see the `DBA_DEBRA` failed attempt. If you review the values in the `SQL_TEXT` column, you will notice it is not the exact query you submitted in your **SQL Worksheet**. Look closer and you will see your query embedded as a nested table. This is how **Database Actions** processes queries. 
 
 ## Task 6: Simulation Mode
 
-You might be thinking, *"I do not know enough about the application to feel comfortable implementing Database Vault realms or command rules."*  
+You might be thinking, *_"I do not know enough about the application, and how it accesses data, to feel comfortable implementing Database Vault realms or command rules."_*  
 
-Oracle Database Vault has a feature to help you feel more comfortable. To minimize the impact you might have on your application, you will use Oracle Database Vault simulation mode to simulate the enforcement of realms and command rules.
+Oracle Database Vault has a feature to help you feel more comfortable. To minimize the impact you might have on your application, you will use **Oracle Database Vault simulation mode** to simulate enforcement of realms and command rules.
 
 In this task, you will use simulation mode to identify the database users, hosts, programs, and modules used to access objects in the `SH1` schema, particularly the `CUSTOMERS` table. You will take the Database Vault realm from earlier in the lab and update it to be in **simulation mode** instead of enforcement mode. 
 
@@ -806,11 +805,10 @@ In this task, you will use simulation mode to identify the database users, hosts
       </copy>
       ````
 
-   ![](./images/adb-dbv_068.png "Query simulation log, returnws rows.")
+   ![](./images/adb-dbv_068b.png "Query simulation log, returns rows.")
 
     **Note:**
-      - Only two out of three users who performed the query will show up in the violations log becuase the third user, `APPUSER`, is a realm authorized member and is not violating the realm by performing the query. 
-         - `DBA_DEBRA` and `SH1` are not realm authorized members, they are violating the realm with their queries. 
+      - Only `DBA_DEBRA` is not a realm authorized member and would be violating the realm with their query. 
       - The violation log shows where they connected from and what client they used to connect.
       - The **machine** may different in your query from the screenshot. This is expected.
 
@@ -858,9 +856,9 @@ Once you have completed all of the tasks, you can disable Oracle Database Vault.
 
 2. Now, disable Oracle Database Vault on your Oracle Autonomous Database. This command should return **PL/SQL procedure successfully completed.**
 
-   ````
-   <copy>EXEC DBMS_CLOUD_MACADM.DISABLE_DATABASE_VAULT;</copy>
-   ````
+      ````
+      <copy>EXEC DBMS_CLOUD_MACADM.DISABLE_DATABASE_VAULT;</copy>
+      ````
   
 3. You must restart the database to complete the Database Vault enabling process. Restart the database from the console by selecting "**Restart**" in "More Actions" drop-list as shown here. 
 
@@ -897,7 +895,7 @@ Once you have completed all of the tasks, you can disable Oracle Database Vault.
       </copy>
       ````
 
-You may now proceed to the next lab!
+You're done, you did it! You have completed the introduction to Oracle Database Vault and have a better understanding of how Database Vault can help you **secure and protect your critical data and minimize the impact of human errors**. 
 
 ## **Appendix**: About the Product
 ### **Overview**
@@ -961,7 +959,8 @@ In addition, you can run reports on the activities these components monitor and 
 
 ## Want to Learn More?
 Technical Documentation:
-  - [Oracle Database Vault 19c](https://docs.oracle.com/en/database/oracle/oracle-database/19/dvadm/introduction-to-oracle-database-vault.html#GUID-0C8AF1B2-6CE9-4408-BFB3-7B2C7F9E7284)
+   - [Oracle Database Vault 19c](https://docs.oracle.com/en/database/oracle/oracle-database/19/dvadm/introduction-to-oracle-database-vault.html#GUID-0C8AF1B2-6CE9-4408-BFB3-7B2C7F9E7284)
+   - [Oracle Database Vault 23ai](https://docs.oracle.com/en/database/oracle/oracle-database/23/dvadm/introduction-to-oracle-database-vault.html#GUID-0C8AF1B2-6CE9-4408-BFB3-7B2C7F9E7284)
 
 Video:
   - *Understanding Oracle Database Vault (March 2019)* [](youtube:oVidZw7yWIQ)
@@ -969,6 +968,7 @@ Video:
   - *Oracle Database Vault - Use Cases (Part2) (November 2019)* [](youtube:hh-cX-ubCkY)
   - *Oracle Database Vault Introduction (May 2021)* [](youtube:vSVr7avZ4Hg)
   - *Oracle Database Vault on ADB - Quick walk through of the Livelabs* [](youtube:O_Hi2-vZ-zU)
+  - *Oracle Database Vault Deployment Strategies (October 2022)* [](youtube:w6Z7WQvWKRE)
 
 ## Acknowledgements
 - **Author** - Richard C. Evans, Database Security PM
