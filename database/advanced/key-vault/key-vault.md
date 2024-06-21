@@ -58,7 +58,7 @@ If you didn't execute them yet, do it right now by following the instructions be
     <copy>sudo su - oracle</copy>
     ````
 
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
 2. Go to the TDE scripts directory
 

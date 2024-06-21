@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle SQL Firewall. It gives the 
 
 *Estimated Lab Time:* 30 minutes
 
-*Version tested in this lab:* Oracle DBEE 23.4
+*Version tested in this lab:* Oracle Free Database 23ai (v23.4)
 
 ### Video Preview
 Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [](youtube:81N23MDhYXU)
@@ -24,11 +24,18 @@ Watch a preview of "*Introducing SQL Firewall – a new security capability in O
 
 ### Prerequisites
 This lab assumes you have:
+<if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
+</if>
+<if type="green">
+- An Oracle Cloud account
+- You have completed:
+    - Introduction Tasks
+</if>
 
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
@@ -98,7 +105,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         <copy>sudo su - oracle</copy>
         ```
 
-        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
     - Go to the scripts directory
 
