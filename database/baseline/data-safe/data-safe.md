@@ -86,7 +86,7 @@ In this lab, let's see how to register the dabase with a private endpoint
         <copy>sudo su - oracle</copy>
         ```
 
-        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the *Terminal* icon on the desktop to launch a session as oracle, so **you don't need to exeute this command**!
 
     - Go to the scripts directory
 
@@ -256,7 +256,7 @@ Now, let's see the second option to register the dabase with an on-premises conn
             <copy>sudo su - oracle</copy>
             ```
 
-            **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+            **Note**: Only **if you are using a remote desktop session**, just double-click on the *Terminal* icon on the desktop to launch a session as oracle, so **you don't need to exeute this command**!
 
         - Copy Data Safe on-premises connector uploaded to your Data Safe directory (here *`$DS_HOME`*)
 

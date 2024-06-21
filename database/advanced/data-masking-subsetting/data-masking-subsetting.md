@@ -1089,7 +1089,7 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the *Terminal* icon on the desktop to launch a session as oracle, so **you don't need to exeute this command**!
 
     - Go to the scripts directory
 
@@ -1289,7 +1289,7 @@ Now, let's have a look on few advanced features for Data Masking
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the *Terminal* icon on the desktop to launch a session as oracle, so **you don't need to exeute this command**!
 
     - Go to the scripts directory
 
@@ -1509,7 +1509,7 @@ Now, let's have a look on few advanced features for Data Masking
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the *Terminal* icon on the desktop to launch a session as oracle, so **you don't need to exeute this command**!
 
     - Go to the scripts directory
 

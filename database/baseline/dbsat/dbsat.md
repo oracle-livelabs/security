@@ -48,7 +48,7 @@ This lab assumes you have:
     <copy>sudo su - oracle</copy>
     ````
 
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+    **Note**: Only **if you are using a remote desktop session**, just double-click on the *Terminal* icon on the desktop to launch a session as oracle, so **you don't need to exeute this command**!
 
 2. Go to the scripts directory
 
