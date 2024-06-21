@@ -57,7 +57,7 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: Only **if you are using a remote desktop session**, just double-click on the *Terminal* icon on the desktop to launch a session as oracle, so **you don't need to exeute this command**!
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
     - Go to the scripts directory
 
@@ -206,7 +206,7 @@ In this lab, you will do the following:
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: Only **if you are using a remote desktop session**, just double-click on the *Terminal* icon on the desktop to launch a session as oracle, so **you don't need to exeute this command**!
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
     - Go to the scripts directory
 
