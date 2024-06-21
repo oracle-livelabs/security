@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle SQL Firewall. It gives the 
 
 *Estimated Lab Time:* 30 minutes
 
-*Version tested in this lab:* Oracle Free Database 23ai (23.4)
+*Version tested in this lab:* Oracle Free Database 23ai (v23.4)
 
 ### Video Preview
 Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [](youtube:81N23MDhYXU)
