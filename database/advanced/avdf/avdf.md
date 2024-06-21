@@ -220,11 +220,15 @@ In this lab, you will do the following:
         <copy>./avs_drift-gen.sh pdb1</copy>
         ````
 
+        ![AVDF](./images/avdf-504b.png "Drift Generation on pdb1")
+
     - Generate the drift for **pdb2**
 
         ````
         <copy>./avs_drift-gen.sh pdb2</copy>
         ````
+
+        ![AVDF](./images/avdf-504b.png "Drift Generation on pdb2")
 
         **Note:** Here, we grant to PUBLIC the `DBA` role for **pdb1** and `PDB_DBA` role for **pdb2**
 
@@ -240,7 +244,7 @@ In this lab, you will do the following:
     
     - Do the same for **pdb2**
 
-6. Go back to the Auditor dashboard home and examine the **Security assessment drift graph**
+6. Click **Home** to go back to the Auditor dashboard and examine the **Security assessment drift graph**
 
     **Note:** The graph gives you a clear picture of drifts on all the targets where the baseline has been set
 
@@ -256,11 +260,15 @@ In this lab, you will do the following:
         <copy>./avs_mitigate-risk.sh pdb1</copy>
         ````
 
+        ![AVDF](./images/avdf-504c.png "Mitigate risk on pdb1")
+
     - for **pdb2**
 
         ````
         <copy>./avs_mitigate-risk.sh pdb2</copy>
         ````
+
+        ![AVDF](./images/avdf-504c.png "Mitigate risk on pdb2")
 
 9. Go back to Audit Vault Web Console as *`AVAUDITOR`* to generate an assessment
 
@@ -274,7 +282,7 @@ In this lab, you will do the following:
     
     - Do the same for **pdb2**
 
-10. Go back to the Auditor dashboard home and examine the **Security assessment drift graph** to see if the identified risk has been fixed
+10. Click **Home** to go back to the Auditor dashboard and examine the **Security assessment drift graph** to see if the identified risk has been fixed
 
     ![AVDF](./images/avdf-506.png "AVDF - Drift Chart Mitigated")
 
@@ -336,7 +344,9 @@ In this lab, we will do the following
 
 ### Step 1: Manage and Provision audit policy from AVDF for Oracle databases pdb1 and pdb2
 
-We have already configured the audit trail for the databases pdb1 and pdb2. To showcase AVDF capabilities, we use **agent-based audit collection for pdb1** and **agentless collection for pdb2**.
+We have already configured the audit trail for the databases pdb1 and pdb2.
+
+To showcase AVDF capabilities, we use **agent-based audit collection for pdb1** and **agentless collection for pdb2**.
 
 You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** login)
 
@@ -386,7 +396,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
         ![AVDF](./images/avdf-553.png "Verify the job completed successfully")
 
-    - If not, please refresh the web page  (press [F5] for example) until it shows **Complete** and it was provisioned on **pdb1**
+    - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **pdb1**
 
 7. Repeat the steps 5 and 6 for **pdb2** as well
 
@@ -556,7 +566,7 @@ In this section, we will only see the change report for **pdb2**, where all the 
 
             ![AVDF](./images/avdf-029.png "Golden Gate - Login")
 
-    - **Start OGG** (Oracle Golden Gate) extracts from the OGG Web Console, click [**Action**] for the `pdb2` extract and start it
+    - **Start OGG** (Oracle Golden Gate) extracts from the OGG Web Console, click [**Action**] for the *`pdb2`* extract and start it
 
         ![AVDF](./images/avdf-622.png "Start OGG PDB2 extract Service")
 
