@@ -294,15 +294,7 @@ One of the most common ways data is lost, or an outage occurs, is human error. E
 
 Oracle Database Vault can help minimize the risk of mistakes by allowing you to temporarily disable commands, especially those that are destructive, such as `DROP TABLE`, `TRUNCATE TABLE`, `DROP INDEX`, etc. You can apply this logic to many different database commands but this task will focus on protecting against `DROP TABLE` commands.
 
-1. First, verify Oracle Database Vault is configured and enabled in the `CDB$ROOT` and `PDB1` databases. 
-
-    ````
-    <copy> ./dv_status.sh </copy>
-    ````
-
-    ![DB Vault](./images/dv-041.png "Query the status of Database Vault")
-
-2. Next, you will add `DBA_DEBRA` as a Database Vault realm authorized participant. This will allow you to create a table in the `EMPLOYEESEARCH_PROD` schema without having to use the `EMPLOYEESEARCH_PROD` database account, which is protected by the *trusted application path* you created in the previous task. 
+1. First, you will add `DBA_DEBRA` as a Database Vault realm authorized participant. This will allow you to create a table in the `EMPLOYEESEARCH_PROD` schema without having to use the `EMPLOYEESEARCH_PROD` database account, which is protected by the *trusted application path* you created in the previous task. 
 
     ````
     <copy> ./dv_add_debra_realm_auth.sh </copy>
@@ -310,7 +302,7 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
 
     ![DB Vault](./images/dv-042a.png "Add Debra as a realm participant of PROTECT_EMPLOYEESEARCH_PROD")
 
-3. You will also authorize `DBA_DEBRA` to use her `DDL` privileges on the `EMPLOYEESEARCH_PROD` schema. 
+2. You will also authorize `DBA_DEBRA` to use her `DDL` privileges on the `EMPLOYEESEARCH_PROD` schema. 
 
     ````
     <copy> ./dv_ddl_auth_debra.sh </copy>
@@ -318,7 +310,7 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
 
     ![DB Vault](./images/dv-042b.png "Grant DBA_DEBRA DDL AUTHORIZATION on EMPLOYEESEARCH_PROD schema")
 
-4. Next, you will create a Database Vault command rule to disable the `DROP TABLE` command. This command rule will utilized the built-in rule set, `Disabled`, to prevent the `DROP TABLE` command from being used on any objects in the `EMPLOYEESEARCH_PROD` schema.  
+3. Next, you will create a Database Vault command rule to disable the `DROP TABLE` command. This command rule will utilized the built-in rule set, `Disabled`, to prevent the `DROP TABLE` command from being used on any objects in the `EMPLOYEESEARCH_PROD` schema.  
 
     The rule set, `Disabled`, is like appending a `WHERE 1=2` clause on a SQL query - it will never be true thus it always returned false. If you were implementing this in your database, you could create your own rule and rule set to meet your criteria to perform `DROP TABLE`. 
 
@@ -328,7 +320,7 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
 
     ![DB Vault](./images/dv-042.png "Create DV command rule to stop drop table")
 
-5. You will create a copy of the `EMPLOYEESARCH_PROD.DEMO_HR_EMPLOYEES` table and name it `EMPLOYEESEARCH_PROD.DEMO_HR_EMP_COPY`.  This is the table you will test the command rule against. Since the schema account cannot be used outside of the application and you have prevented other privileged users from accessing the `EMPLOYEESEARCH_PROD` objects, you will use `DBA_DEBRA` to copy the table. You authorized Debra as a participant in the realm and authorized her to use her DDL privileges (e.g. `CREATE ANY TABLE`) on the application schema. 
+4. You will create a copy of the `EMPLOYEESARCH_PROD.DEMO_HR_EMPLOYEES` table and name it `EMPLOYEESEARCH_PROD.DEMO_HR_EMP_COPY`.  This is the table you will test the command rule against. Since the schema account cannot be used outside of the application and you have prevented other privileged users from accessing the `EMPLOYEESEARCH_PROD` objects, you will use `DBA_DEBRA` to copy the table. You authorized Debra as a participant in the realm and authorized her to use her DDL privileges (e.g. `CREATE ANY TABLE`) on the application schema. 
 
     ````
     <copy> ./dv_copy_table.sh dba_debra </copy>
@@ -336,7 +328,7 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
 
     ![DB Vault](./images/dv-043b.png "Create a copy of a table as DBA_DEBRA")
 
-6. Attempt to perform `DROP TABLE` as the owner of the table, `EMPLOYEESEARCH_PROD`. 
+5. Attempt to perform `DROP TABLE` as the owner of the table, `EMPLOYEESEARCH_PROD`. 
 
     This step will fail because this command would violate the Database Vault command rule on `CONNECT` for `EMPLOYEE_SEARCH` - this is the *trusted application path* protecting misuse or abuse of the schema credentials from connecting anywhere other than from the Glassfish application. 
 
@@ -346,7 +338,7 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
 
     ![DB Vault](./images/dv-043c.png "Attempt drop table")
 
-7. Next, attempt to perform **`DROP TABLE`** as the privileged user **`SYSTEM`**.
+6. Next, attempt to perform **`DROP TABLE`** as the privileged user **`SYSTEM`**.
 
     Notice this step will also **fail** but for a different reason. This command would violate the *Database Vault realm* protecting the `EMPLOYEESEARCH_PROD` schema because `SYSTEM` is **not** a *realm authorized owner or participant*. 
 
@@ -357,7 +349,7 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
     ![DB Vault](./images/dv-043d.png "Attempt drop table")
 
 
-8. Finally, attempt to perform **`DROP TABLE`** as the *realm authorized participant* **`DBA_DEBRA`**. 
+7. Finally, attempt to perform **`DROP TABLE`** as the *realm authorized participant* **`DBA_DEBRA`**. 
 
     This will fail because of the **`DROP TABLE`** command rule protecting all objects in the `EMPLOYEESEARCH_PROD` schema. 
 
@@ -368,15 +360,6 @@ Oracle Database Vault can help minimize the risk of mistakes by allowing you to 
     ![DB Vault](./images/dv-044e.png "Attempt drop table")
 
     **NOTE:** This command will be blocked by any and all users attempting to perform the `DROP TABLE` command. 
-
-<!-- 9. Now that you have disabled `DROP TABLE` commands on the production schema `EMPLOYEESEARCH_PROD`, you can clean-up this task. In this step you will drop both Database Vault command rules and then drop the table you created. 
-
-    ````
-    <copy> ./dv_drop_command_rule_drop_table.sh </copy>
-    ````
-
-    ![DB Vault](./images/dv-047a.png "Drop the DROP TABLE command rule")
--->
 
 You have completed the task to minimize human errors such as `DROP TABLE` commands on a production database. You could apply this logic to other destructive commands, such as `TRUNCATE TABLE`, `DROP INDEX` etc.
 
@@ -470,15 +453,21 @@ In this task, you will create a Database Vault secure application role that can 
 
     **Note:** If you are not using the Linux graphical user interface, you would open an additional `ssh` session to the host, switch to `oracle` and navigate to the Database Vault labs directory. 
 
-    ````
-    <copy> sudo su - oracle</copy>
-    ````
+    - Only if setting up second SSH session
+     
+        ````
+        <copy> sudo su - oracle</copy>
+        ````
 
-    ````
-    <copy> cd $DBSEC_LABS/database-vault</copy>
-    ````
+    - Only if setting up second SSH session
 
-    ![DB Vault](./images/dv-066b.png "Navigate to the database-vault lab directory")
+        ````
+        <copy> cd $DBSEC_LABS/database-vault</copy>
+        ````
+
+    - Only if setting up second SSH session
+
+        ![DB Vault](./images/dv-066b.png "Navigate to the database-vault lab directory")
 
 9. In your new terminal, you will run the script to login as a boss user.  This session will stay active for approximately 10 minutes, enough time to let you test your authentication again as `DBA_HARVEY`. 
 
@@ -515,11 +504,20 @@ In this task, you will create a Database Vault secure application role that can 
 
     ![DB Vault](./images/dv-069a.png "Query as DBA_HARVEY fails because the boss is not logged in")
 
-12. You can exit the second terminal, or SSH session, you opened for this task. 
+12. (Optional) If you opened a second SSH session for this task, you can exit it. 
 
-    ````
-    <copy> exit</copy>
-    ````
+    - Exit the `oracle` session
+
+        ````
+        <copy> exit</copy>
+        ````
+
+    - Exit the `opc` session
+
+        ````
+        <copy> exit</copy>
+        ````
+
 
 
 You have completed the task to create a *break glass* role to enable application data access. Again, this is a very rudimentary scenario. You could create any number of criteria that would allow you to enable a Database Vault secure application role. 
@@ -542,15 +540,7 @@ In this task, you will allow `C##SEC_DBA_SAL` manage unified audit policies by g
 
     ![DB Vault](./images/dv-051.png "Grant Sal AUDIT_ADMIN role")
 
-2. **(Optional)** If you removed the Database Vault realm you created in an earlier task, recreate it now. 
-
-    ````
-    <copy> ./dv_create_realm.sh </copy>
-    ````
-
-    ![DB Vault](./images/dv-052.png "Create Database Vault realm")
-
-3. Attempt to create a unified audit policy as `C##SEC_DBA_SAL` before authorization him to do so with Database Vault. You will see this step fails with `Insufficient Oracle Database Vault authorization`. 
+2. Attempt to create a unified audit policy as `C##SEC_DBA_SAL` before authorization him to do so with Database Vault. You will see this step fails with `Insufficient Oracle Database Vault authorization`. 
 
     This is a capability introduced with Oracle Database 23ai. This allows you to have more granular control over which privileged users can view or manage audit-related records and policies. Previously, `SYS` and `SYSTEM` had the ability to view and manage audit-related records and policies. With this capability, you can decide who should have these responsiblities.
 
@@ -565,7 +555,7 @@ In this task, you will allow `C##SEC_DBA_SAL` manage unified audit policies by g
 
     ![DB Vault](./images/dv-053.png "Attempt to create an audit policy")
 
-4. Next, authorize `C##SEC_DBA_SAL` to perform use the `AUDIT_ADMIN` role and it's privileges. This authorization only applies to `PDB1` not the container database or other pluggable databases. This allows you to separate responsibilites between pluggable databases. Sal may be responsible for audit policies in only a handful of pluggable databases in the container database. This authorize will not do anything if Sal hasn't first been granted the `AUDIT_ADMIN` role. 
+3. Now that you have seen the error that occurs without authorization, authorize `C##SEC_DBA_SAL` to use the `AUDIT_ADMIN` role and its privileges. This authorization only applies to `PDB1` not the container database or other pluggable databases. This allows you to separate responsibilites between pluggable databases. Sal may be responsible for audit policies in only a handful of pluggable databases in the container database. This authorize will not do anything if Sal hasn't first been granted the `AUDIT_ADMIN` role. 
 
     In Oracle Database 23ai, Database Vault introduces two authorizations to control the use of `AUDIT_ADMIN` and `AUDIT_VIEWER` roles:
     - `DBMS_MACADM.AUTHORIZE_AUDIT_ADMIN` will enable the user to use the `AUDIT_ADMIN` role they have been granted
@@ -577,7 +567,7 @@ In this task, you will allow `C##SEC_DBA_SAL` manage unified audit policies by g
 
     ![DB Vault](./images/dv-054.png "Grant Sal AUDIT_ADMIN Database Vault authorization")
 
-5. Re-run the command to create the unified audit policy as `C##SEC_DBA_SAL`. 
+4. Re-run the command to create the unified audit policy as `C##SEC_DBA_SAL`. 
 
     ````
     <copy> ./dv_create_realm_audit_policy.sh </copy>
@@ -585,7 +575,7 @@ In this task, you will allow `C##SEC_DBA_SAL` manage unified audit policies by g
 
     ![DB Vault](./images/dv-055.png "Create a unified audit policy")
 
-6. Next, you will create a unified audit policy for the rule set associated with the Database Vault command rule. This differs from creating a unified audit policy on a realm in that you create the policy on the rule set not the command rule.
+5. Next, you will create a unified audit policy for the rule set associated with the Database Vault command rule. This differs from creating a unified audit policy on a realm in that you create the policy on the rule set not the command rule.
 
     You will notice the unified audit policy is created on the **`Disabled`** rule set. This will create an audit record for any command rule, or realm, that uses the **`Disabled`** rule set. 
 
@@ -595,7 +585,7 @@ In this task, you will allow `C##SEC_DBA_SAL` manage unified audit policies by g
 
     ![DB Vault](./images/dv-056.png "Create a unified audit policy on the Disabled rule set")
 
-7. Finally, you will create a unified audit policy on the *Trusted Application Path* rule set you created to control how, and where, the `EMPLOYEESEARCH_PROD` schema can be used to connect. 
+6. Finally, you will create a unified audit policy on the *Trusted Application Path* rule set you created to control how, and where, the `EMPLOYEESEARCH_PROD` schema can be used to connect. 
 
 
     ````
@@ -604,7 +594,7 @@ In this task, you will allow `C##SEC_DBA_SAL` manage unified audit policies by g
 
     ![DB Vault](./images/dv-056a.png "Create a unified audit policy on the Trusted Application Path rule set")
 
-8. Now you will intentionally violate your command rules and your realms to generate audit records. You will violate:
+7. Now you will intentionally violate your command rules and your realms to generate audit records. You will violate:
 
     - the rule set associated with the command rule on **`CONNECT`** for **`EMPLOYEESEARCH_PROD`** to generate an audit record. 
         ````
@@ -623,7 +613,7 @@ In this task, you will allow `C##SEC_DBA_SAL` manage unified audit policies by g
         ````
 
 
-9. For simplicity sake, view a summary of the audit records as `C##SEC_DBA_SAL`. You will see violations of each of your unified audit policies, including the violation type and the object (realm, command rule, or command) that was the cause of the violation. 
+8. For simplicity sake, view a summary of the audit records as `C##SEC_DBA_SAL`. You will see violations of each of your unified audit policies, including the violation type and the object (realm, command rule, or command) that was the cause of the violation. 
 
      ````
     <copy> ./dv_summarize_unified_audit.sh </copy>
@@ -636,9 +626,11 @@ You have completed this task and should have a basic understanding of how Oracle
 
 ## Task 7: Simulation Mode
 
-One thing you might be thinking is: *I do not think I know enough about who uses my application or where they connect from to implement Oracle Database Vault*. 
+One thing that might be going through your head is: *I do not think I know enough about who uses my application, or where they connect from, to implement Oracle Database Vault*. 
 
-To help you identify who is using your application data, and where they connect from, you can implement your realms and command rules in a *simulation mode* before you move to enforcement mode. Oracle Database Vault simulation mode allows you to simulate the enforcement of realms and command rules. Simulation mode is helpful to let you test your command rules and realms to verify you have identified all of the users who should be authorized to a realm or verify your command rule has accurate logic in the rule(s) in the rule set. 
+This is why Oracle Database Vault implemented **simulation mode**. Simulation mode will help you identify who is using your application data, and where they connect from. You can implement a realm or command rule in *simulation mode* before you move to enforcement mode. 
+
+Oracle Database Vault simulation mode allows you to simulate the enforcement of realms and command rules. Simulation mode is helpful to let you test your command rules and realms to verify you have identified all of the users who should be authorized to a realm or verify your command rule has accurate logic in the rule(s) in the rule set. 
 
 1. First, query the simulation log to show that it has no current values
 
@@ -680,13 +672,14 @@ To help you identify who is using your application data, and where they connect 
 
     ![DB Vault](./images/dv-010.png "run SQL queries")
 
-    There will be an error at the end of the following script. This is an acceptable error. The script attempts to query the table but the table no longer exists, thus proving it has been dropped. 
 
     ````
-    <copy>./dv_perform_drop_table.sh</copy>
+    <copy>./dv_perform_drop_table.sh dba_debra</copy>
     ````
 
-    ![DB Vault](./images/dv-010b.png "Generate traffic")
+    ![DB Vault](./images/dv-010c.png "Generate traffic")
+
+    **Note:** There will be an expected error at the end of the previous script. The script attempts to query the table but the table no longer exists, thus proving it has been dropped. 
 
 4. Now, you will query the simulation log again to see what new entries you have. The simulation log only contains records for users who *would have been blocked* from performing the operation due to Database Vault realm or command rules. If the user was allowed, by the realm or command rule, to perform the operation then they will not show up in the simulation log. 
 
@@ -694,9 +687,12 @@ To help you identify who is using your application data, and where they connect 
     <copy>./dv_query_simulation_logs.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-011a.png "Query the simulation log")
+    ![DB Vault](./images/dv-011c.png "Query the simulation log")
 
-   The log shows all the users who connected and would have been blocked by the rule. It also shows where they connected from and what client they used to connect
+   The log shows all the users who connected and would have been blocked by the rule. It also shows where they connected from and what client they used to connect.
+
+ <!--  **Note:** You do not see `DBA_DEBRA` in the list of users who would have violated the simulation log. 
+ !-->
 
 5. Run this script to get a list of distinct usernames present in the simulation logs
 
@@ -704,7 +700,7 @@ To help you identify who is using your application data, and where they connect 
     <copy>./dv_distinct_users_sim_logs.sh</copy>
     ````
 
-    ![DB Vault](./images/dv-012a.png "List of distinct usernames present in the simulation logs")
+    ![DB Vault](./images/dv-012d.png "List of distinct usernames present in the simulation logs")
 
 6. Although you only used Simulation mode on a **CONNECT** rule, you could have used this on a Database Vault realm to show what violations you would had if there were no authorized participants/owners in the realm. 
 
@@ -840,9 +836,7 @@ Oracle Database Vault can be disabled once you have completed the lab. If this i
 
     ![DB Vault](./images/dv-026a.png "Delete the DROP TABLE comamnd rule")
 
-    ````
-    <copy>./dv_drop_command_rule_drop_table.sh</copy>
-    ````
+
 4. Now, you will delete the **secure application role**, **rule set**, and **rule** you created to provide a *break glass* capability, allowing privileges users to access application data when a boss is logged into the database.  
  
     ````
