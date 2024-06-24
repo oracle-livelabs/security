@@ -37,7 +37,7 @@ This lab assumes you have:
 |--|------------------------------------------------------------|-------------|
 || **AVDF Labs**||
 |01| Reset the password | <5 minutes|
-|02| Assess ans Discover | 20 minutes|
+|02| Assess and Discover | 20 minutes|
 |03| Audit and Monitor | 20 minutes|
 |04| Report and Alert | 20 minutes|
 |05| Protect and Prevent | 20 minutes|
