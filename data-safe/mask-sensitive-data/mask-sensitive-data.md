@@ -271,9 +271,9 @@ You can run a data masking job against your target database from the **Masking p
 
 ## Learn More
 
-- [Data Masking](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-masking.html)
+- [Data Masking Overview](https://docs.oracle.com/en/cloud/paas/data-safe/udscs/data-masking-overview.html)
 - [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 16, 2024
+- **Last Updated By/Date** - Jody Glover, June 17, 2024

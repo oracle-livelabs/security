@@ -56,27 +56,8 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     ![Access Governance console](images/ag-console.png)
 
-## Task 2: Modify the Email ID of the Users in OCI IAM
 
-
-1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator. 
-
-    * In the OCI console, navigate to Identity -> Domains ->  ag-domain -> Users
-
-    * Click on the Downward arrow on the right corner for each of them and select *View details* 
-
-    * Click on *Edit User*. 
-
-    * Modify the *Email* field of the users to the following values:
-
-        - pamela.green : pamela.green@orcl.com
-        - mhernandez   : mark.hernandez@orcl.com
-        - harlan.bullard : harlan.bullard@orcl.com
-        - jerry.poland : jerry.poland@orcl.com
-
-   * Click *Save changes*
-
-## Task 3: Assign AG Application Roles to Users
+## Task 2: Assign AG Application Roles to Users
 
 1. Login to the OCI console Identity Domain: ag-domain as the Identity Domain Administrator.
 
@@ -120,4 +101,4 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 ## Acknowledgments
 
 * **Authors** - Anuj Tripathi, Anbu Anbarasu
-* **Last Updated By/Date** - Anuj Tripathi, October 2023
+* **Last Updated By/Date** - Indira Balasundaram 29 May 2024
