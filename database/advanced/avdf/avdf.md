@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.11 and DBEE 19.23
+*Version tested in this lab:* Oracle AVDF 20.12 and DBEE 19.23
 
 ### Video Preview
 

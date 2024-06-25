@@ -10,15 +10,11 @@
       "type": "green"
     },
     {
-      "title": "Get Started",
-      "description": "Verify Setup of compute instance",
-      "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
-    },
-    {
       "title": "Lab 1: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env-sqlfw.md"
+      "filename": "../../../common/init-start-env/init-start-env-sqlfw.md",
+      "type": "green"
     },
     {
       "title": "Lab 2: SQL Firewall",
