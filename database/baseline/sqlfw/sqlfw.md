@@ -41,7 +41,7 @@ This lab assumes you have:
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
 | 1 | Use SQL Firewall with Data Safe
-| 1a| Register an on-premise Oracle Database on Data Safe | 10 minutes |
+| 1a| Validate the on-premise Oracle Database in Data Safe is active | 5 minutes |
 | 1b| Enable SQL Firewall on Data Safe to protect Glassfish HR Application | 10 minutes |
 | 1c| Detect an insider threat of stolen credential access with SQL Firewall | 10 minutes |
 | 1d| Enforce allowed SQL and access patterns with SQL Firewall, mitigating the risk of SQL Injection attacks | 10 minutes |
@@ -56,156 +56,27 @@ This lab assumes you have:
 
 With Data Safe you can manage multiple SQL firewalls centrally and get a comprehensive view of SQL Firewall violations across a fleet of Oracle databases. SQL Firewall administrators can use Data Safe to collect SQL activities of a database user with its associated database connection paths (IP address, OS program, OS user), and monitor the progress of the collection. Data Safe lets you generate and enable the SQL Firewall policy from the collected SQL traffic. Data Safe automatically collects SQL Firewall violation logs and lets you analyze and report on violations.
 
-## Task 1a: Register an on-premise Oracle Database on Data Safe
+**Note**:
+- During the initial deployment of the VM, we have registered Free Oracle Database 23ai (**`DBSeclabs_DB23ai-freepdb1`**) of Glassfish App in Data Safe with private endpoint in this lab
+- You can now proceed to configure protection for SQL Firewall
 
-To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe
+## Task 1a: Validate the on-premise Oracle Database in Data Safe is active
 
 1. Open a web browser window to your OCI console and login with your OCI account
 
 2. On the Burger menu, click on **Oracle Database**, then on "**Data Safe - Database Security**"
 
     ![SQLFW](./images/sqlfw-001.png "Open Data Safe")
- 
+
 3. Click on "**Target databases**"
 
-    ![SQLFW](./images/sqlfw-002.png "Add Target Database")
-
-4. On **Connectivity Options** sub-menu, click on **Private endpoints**
-
-    ![SQLFW](./images/sqlfw-003.png "Private endpoints")
-
-5. Click [**Create private endpoint**]
-
-    ![SQLFW](./images/sqlfw-004.png "Create private endpoint")
-
-6. Fill out as following:
-
-    - Name: `<Your Private Endpoint Name>` (here "*`DBSeclabs_EP_DB23ai`*")
-    - Compartment: Select your Compartment
-    - Virtual cloud network: Select your VCN
-    - Subnet: Select your Subnet
-
-       ![SQLFW](./images/sqlfw-005.png "Set Private endpoint")
-
-7. Click [**Create private endpoint**]
-
-8. Once is created, the Private endpoint is "**ACTIVE**"
-
-       ![SQLFW](./images/sqlfw-006.png "the Private endpoint is ACTIVE")
-    
-    **Note**:
-    - A Private IP is assigned to this Private endpoint (here '10.0.0.57')
-    - There's no target database register by default
-
-9. Now, configure your target database to be registered into Data Safe
-
-    - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
-
-        ```
-        <copy>sudo su - oracle</copy>
-        ```
-
-        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
-
-    - Go to the scripts directory
-
-        ```
-        <copy>cd $DBSEC_LABS/sqlfw</copy>
-        ```
-
-    - Create the Data Safe **`DS_ADMIN`** user
-
-        ````
-        <copy>
-        ./sqlfw_crea_ds-admin-user.sh
-        </copy>
-        ````
-
-        ![SQLFW](./images/sqlfw-007.png "Create the Data Safe DS_ADMIN user")
-
-        **Note**: The user `DS_ADMIN` is created into your target database **`freepdb1`** with `ALL` the Data Safe admin roles
-
-10. Go back to the Data Safe Console to register the Target database **freepdb1**
-
-    - Click on the **Private endpoints** link
-    
-    ![SQLFW](./images/sqlfw-008.png "Click on the Private endpoints link")
-    
-    - Click on **Target Databases** sub-menu
-
-    ![SQLFW](./images/sqlfw-009.png "Click on Target Databases sub-menu")
-
-    - Click [**Register Database**]
-
-    ![SQLFW](./images/sqlfw-010.png "Click Register Database")
-
-    - Fill out the "Register Target Database" as following
-
-        - Database Type: Select *`Oracle On-Premises Database`*
-        - Data Safe Target Display Name: *`DBSeclabs_DB23ai-freepdb1`*
-        - Description: *`On-Premises pluggable database of DB23ai VM (freepdb1)`*
-        - Compartment: Select your own Compartment
-
-            ![SQLFW](./images/sqlfw-011.png "Fill out the Register Target Database parameters")
-
-        - Choose a connectivity option: *`Private endpoint`*
-        - Select private endpoint: Select *`DBSeclabs_EP_DB23ai`*
-        - TCP/TLS: *`TCP`*
-        - Database Service Name: *`freepdb1`*
-        - Database IP Address: *`10.0.0.155`*
-        - Database Port Number: *`1521`*
-        - Database User Name: *`DS_ADMIN`* (in uppercase)
-        - Database Password: *`Oracle123Oracle123!`*
-    
-            ![SQLFW](./images/sqlfw-012.png "Fill out the Register Target Database parameters")
-
-    - Click [**Register**] to launch the registration process
-
-    - Once is registered, the target database must be "**ACTIVE**" 
-
-        ![SQLFW](./images/sqlfw-013.png "Target Database registered")
-
-        **Note:**
-        - On the **Target database information** tab, you can view the target database name and description, OCID, when the target database was registered and the compartment to where the target database was registered.
-        - You can also view connection information, such as database type, database service name, and connection protocol (TCP or TLS). The connection information varies depending on the target database type.
-        - The **Target database information** page provides options to edit the target database name and description, edit connection details, update the Oracle Data Safe service account and password on the target database (applicable to non-Autonomous Databases), and download a SQL privilege script that enables features on your target database.
-        - From the **More Actions** menu, you can choose to move the target database to a different compartment, add tags, deactivate your target database, and deregister your target database.
-
-11. Click on the **Target Databases** link to view the list of registered target databases to which you have access
-
-    ![SQLFW](./images/sqlfw-014.png "View the list of registered target databases")
-
+    ![SQLFW](./images/sqlfw-002.png "Target Databases")
+ 
     **Note:** All your registered target databases are listed on the right
 
     ![SQLFW](./images/sqlfw-015.png "List of registered target databases")
 
-12. Now, your target database is registered in Data Safe!
-
-<!--
-13. Let's have a look on a quick overview of the Security Center
-
-    - Click on **Overview** sub-menu
-
-        ![SQLFW](./images/sqlfw-016.png "Click on Security Center sub-menu")
-
-        **Note**:
-        - Make sure your compartment is still selected under **List Scope**
-        - In Security Center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Alerts, and Settings
-
-    - Click on **Dashboard**
-    
-        ![SQLFW](./images/sqlfw-017.png "Data Safe dashboard")
-
-        **Note**:
-        - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you
-        - Therefore, the Security Assessment, User Assessment, Feature Usage, and Operations Summary charts in the dashboard already have data
-        - It can take several minutes to assess all the components, so if you don't see any data, please refresh the page
-        - During registration, Oracle Data Safe also discovers audit trails on your target database
-        - That is why the Audit Trails chart in the dashboard shows one audit trail with the status In Transition for your Autonomous Database
-        - Later you start this audit trail to collect audit data into Oracle Data Safe
-
-            ![SQLFW](./images/sqlfw-018.png "Data Safe dashboard")
--->
+4. Check that the State of the target database **`DBSeclabs_DB23ai-freepdb1`** is **ACTIVE** in Data Safe
 
 ## Task 1b: Enable SQL Firewall to protect Glassfish HR Application
 
@@ -748,39 +619,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-201b.png "Audit Trail Stopped")
 
-    - And delete it
-
-        ![SQLFW](./images/sqlfw-201c.png "Audit Trail Stopped")
-
-2. Now, drop target-alert policy association
-
-    - Click on **Data Safe**
-
-        ![SQLFW](./images/sqlfw-201d.png "Data Safe main page")
-
-    - Click on **Alerts** sub-menu
-
-        ![SQLFW](./images/sqlfw-083.png "Alert Sub-Menu")
-
-    - Click on **Target-policy assocation** sub-menu
-
-        ![SQLFW](./images/sqlfw-202a.png "Target-policy assocation Sub-Menu")
-
-    - Click on the target-policy association **`DBSeclabs_DB23ai-freepdb1`**
-
-        ![SQLFW](./images/sqlfw-059.png "Target-policy association to delete")
-
-    - Click [**Disable policy**]
-
-    - Then click [**Delete**]
-
-        ![SQLFW](./images/sqlfw-202b.png "Delete the Target-policy association")
-
-    - Now the target-policy association is deleted
-
-        ![SQLFW](./images/sqlfw-202c.png "The target database is deregistered")
-
-3. Drop SQL Firewall settings
+2. Now, let's drop SQL Firewall settings
 
     - Click on **Data Safe**
 
@@ -816,56 +655,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-222.png "Disable SQL Firewall")
 
-4. Now, you can deregister the Target database
-
-    - Click on **Data Safe**
-
-        ![SQLFW](./images/sqlfw-203a.png "Data Safe main page")
-
-    - Click on **Target databases**
-
-        ![SQLFW](./images/sqlfw-203b.png "Target databases")
-
-    - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
-
-        ![SQLFW](./images/sqlfw-203c.png "Target database to deregister")
-
-    - Click on **More actions** and select **Deregister**
-
-        ![SQLFW](./images/sqlfw-204.png "Deregister the target database")
-
-    - Click [**Deregister**] to confirm
-
-        ![SQLFW](./images/sqlfw-205.png "Confirm the deregistering")
-
-    - Now the target database is deregistered
-
-        ![SQLFW](./images/sqlfw-206.png "The target database is deregistered")
-
-5. Now, let's drop the Private Endpoint
-
-    - Click on **Private endpoints** sub-menu
-
-        ![SQLFW](./images/sqlfw-003.png "Private endpoints")
-
-    - Click on the Private Endpoint **`DBSeclabs_EP_DB23ai`**
-
-        ![SQLFW](./images/sqlfw-207.png "Private Endpoint to delete")
-
-    - Click [**Delete**]
-
-        ![SQLFW](./images/sqlfw-208.png "Delete the Private Endpoint")
-
-    - Click [**Delete**] to confirm
-
-        ![SQLFW](./images/sqlfw-209.png "Confirm the deleting")
-
-    - Now the Private Endpoint is deleted
-
-        ![SQLFW](./images/sqlfw-210.png "The Private Endpoint is deleted")
-
-
-6. Finally, go back to your terminal session to reset the environment within the database
+3. Finally, go back to your terminal session to reset the environment within the database
 
     ```
     <copy>./sqlfw_reset_env_ds.sh</copy>
@@ -873,19 +663,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     ![SQLFW](./images/sqlfw-211.png "Reset the SQL Firewall Labs Environment")
 
-<!--
-7. Migrate the Glassfish Application connection string in order to target the default database  (**pdb1**)
-
-        ```
-        <copy>./sqlfw_glassfish_stop_db23ai.sh</copy>
-        ```
-
-        ![SQLFW](./images/sqlfw-212.png "Set HR App with PDB1")
-
-        **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
--->
-
-7. **Now your Data Safe configuration is correctly reset!**
+4. **Now your Data Safe configuration is correctly reset!**
 
 ## Task 2: Use SQL Firewall with PL/SQL API
 
