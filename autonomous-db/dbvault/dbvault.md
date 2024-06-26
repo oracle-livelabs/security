@@ -40,14 +40,14 @@ This lab assumes you have:
 - You have completed "Prepare Your Environment" step previously
 
 ### Lab Timing (estimated)
-| Task No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-| 1 | Enable Database Vault | <5 minutes |
-| 2 | Enable Separation of Duties (SoD) | <5 minutes |
-| 3 | Create a Simple Realm | 10 minutes |
-| 4 | Audit Policy to Capture Realm Violations | 5 minutes |
-| 5 | Simulation Mode | 10 minutes |
-| 6 | Disable Database Vault | <5 minutes |
+| Task No. | Feature | Approx. Time | Details |
+|---|------------------------------------------------------------|-------------||
+| 1 | Enable Database Vault | <5 minutes ||
+| 2 | Enable Separation of Duties (SoD) | <5 minutes ||
+| 3 | Create a Simple Realm | 10 minutes ||
+| 4 | Audit Policy to Capture Realm Violations | 5 minutes ||
+| 5 | Simulation Mode | 10 minutes ||
+| 6 | Disable Database Vault | <5 minutes ||
 
 ## Task 1: Enable Database Vault
 

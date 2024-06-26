@@ -25,7 +25,7 @@ This lab assumes you have:
 
 ### Lab Timing (estimated)
 
-| Step No. | Feature | Approx. Time | Details |
+| Task No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
 | 1| (Mandatory) Prerequisites | <10 minutes||
 | 2| Add an Endpoint | <10 minutes||
@@ -58,7 +58,7 @@ If you didn't execute them yet, do it right now by following the instructions be
     <copy>sudo su - oracle</copy>
     ````
 
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
 2. Go to the TDE scripts directory
 
@@ -156,9 +156,12 @@ If you didn't execute them yet, do it right now by following the instructions be
         - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
         - This default password is available in the Labs details or by executing the following command line as *`oracle`* user:
 
-            ````
-            <copy>echo $OKVUSR_PWD</copy>
-            ````
+            ```
+            <copy>
+            sudo su - oracle
+            echo $OKVUSR_PWD
+            </copy>
+            ```
 
     - Set your new password
     
@@ -823,6 +826,9 @@ Every node in the cluster can serve endpoints actively and independently while m
 Technical Documentation:
 - [Oracle Key Vault](https://docs.oracle.com/en/database/oracle/key-vault/21.8/index.html)
 - [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/multimaster_concepts.html)
+- [Oracle Key Vault - SSH Key Management](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/management_of_ssh_keys_concepts.html)
+
+    > To learn more about how to use OKV to manage SSH keys, please refer to the "[DB Security - Key Vault (SSH Key Management)] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
 
 Video:
 - *Introducing Oracle Key Vault 21 (January 2021)* [](youtube:SfXQEwziyw4)

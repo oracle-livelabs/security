@@ -3,9 +3,9 @@
 ## Introduction
 This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure SQL Firewall to protect against common database risks such as SQL injection attacks and compromised accounts. SQL Firewall helps ensure that only authorized SQL statements from trusted database connections are permitted for execution inside the Oracle Database while blocking and logging unauthorized SQL or database connections.
 
-*Estimated Lab Time:* 80 minutes
+*Estimated Lab Time:* 30 minutes
 
-*Version tested in this lab:* Oracle DBEE 23.2
+*Version tested in this lab:* Oracle Free Database 23ai (v23.4)
 
 ### Video Preview
 Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [](youtube:81N23MDhYXU)
@@ -24,11 +24,18 @@ Watch a preview of "*Introducing SQL Firewall – a new security capability in O
 
 ### Prerequisites
 This lab assumes you have:
+<if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
+</if>
+<if type="green">
+- An Oracle Cloud account
+- You have completed:
+    - Introduction Tasks
+</if>
 
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
@@ -63,7 +70,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
 
     ![SQLFW](./images/sqlfw-002.png "Add Target Database")
 
-4. On **Connectivity Options** sub-menu, click  on **Private endpoints**
+4. On **Connectivity Options** sub-menu, click on **Private endpoints**
 
     ![SQLFW](./images/sqlfw-003.png "Private endpoints")
 
@@ -98,7 +105,7 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         <copy>sudo su - oracle</copy>
         ```
 
-        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
     - Go to the scripts directory
 
@@ -106,17 +113,17 @@ To use a database with Oracle Data Safe, you first need to register it with Orac
         <copy>cd $DBSEC_LABS/sqlfw</copy>
         ```
 
-    - Create the Data Safe **`DS_ADMIN`** user on **`freepdb1`**
+    - Create the Data Safe **`DS_ADMIN`** user
 
         ````
         <copy>
-        ./sqlfw_crea_ds-admin-user.sh freepdb1
+        ./sqlfw_crea_ds-admin-user.sh
         </copy>
         ````
 
         ![SQLFW](./images/sqlfw-007.png "Create the Data Safe DS_ADMIN user")
 
-        **Note**: The user `DS_ADMIN` is created into your target database with `ALL` the Data Safe admin roles
+        **Note**: The user `DS_ADMIN` is created into your target database **`freepdb1`** with `ALL` the Data Safe admin roles
 
 10. Go back to the Data Safe Console to register the Target database **freepdb1**
 
@@ -295,9 +302,13 @@ In this task you will learn how the administrator trains the system to learn the
     ![SQLFW](./images/sqlfw-040.png "Generate firewall policy")
 
     **Note:**
-    - The firewall policy is created
+    - The firewall policy is creating
 
         ![SQLFW](./images/sqlfw-041.png "Generating firewall policy")
+
+    - Once it's done, you should see the following context values
+    
+        ![SQLFW](./images/sqlfw-041b.png "Generating firewall policy - Good Session context value")
 
 2. Scroll down to review the allow-lists in the generated SQL Firewall policy
 
@@ -351,6 +362,13 @@ In this task you will learn how the administrator trains the system to learn the
 
         ![SQLFW](./images/sqlfw-051.png "Select a start date")
 
+    <if type="green">
+        **Note**: The start date is invariably current date  with no way to go before it!
+    </if>
+    <if type="brown">
+        **Note**: Choose the appropriate start date
+    </if>
+
     - Now, the Audit trail is **COLLECTING**
 
         ![SQLFW](./images/sqlfw-052.png "Audit trail is COLLECTING")
@@ -376,7 +394,7 @@ In this task you will learn how the administrator trains the system to learn the
     - Associate the SQL Firewall violation policy to your target database
     
         - Select **Selected targets only (up to 10)** and choose *`DBSeclabs_DB23ai-freepdb1`*
-        - Select **Selected policies only** and choose *`All policies`*
+        - Select **Selected policies only** and choose *`SQL Firewall violations`*
 
             ![SQLFW](./images/sqlfw-057.png "Associate the SQL Firewall violation policy")
 
@@ -390,6 +408,7 @@ In this task you will learn how the administrator trains the system to learn the
 
         ![SQLFW](./images/sqlfw-059.png "SQL Firewall violations policy associated")
 
+<!--
 9. Finally, integrate with OCI Events and Notifications for pro-active notifications
 
     - Open the Burger menu and click on **Developer Services**, then **Notifications** in the **Application Integration** section
@@ -480,6 +499,7 @@ In this task you will learn how the administrator trains the system to learn the
     - Finally, click on **Actions** to check that the association with the notification is enabled
 
         ![SQLFW](./images/sqlfw-069c.png "Events Service Rules with notification active")
+-->
 
 ## Task 1c: Detect an insider threat of stolen credential access with SQL Firewall
 
@@ -523,21 +543,27 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
         ![SQLFW](./images/sqlfw-120.png "Select sensitive employee data")
 
-     - The administrator receives SQL Firewall Context violation alert raising a suspicion that someone has attempted to gain access to HR Apps DB bypassing allowed database connection paths
-     
-        ![SQLFW](./images/sqlfw-072.png "Alert receiving")
-
-        **Note:** SQL Firewall context violation is raised since SQL Developer is not in the allowed OS program allow list, catching attention of security administrators
-
     - Administrator analyses the SQL Firewall Context violations in Oracle Data Safe to spot abnormal access pattern trend over time and across fleet
 
         ![SQLFW](./images/sqlfw-073.png "Check violation logs")
 
-        **Note:** SQL Firewall context violation is raised since SQL*Plus is not in the allowed OS program allow list, catching attention of security administrators
+        **Note:**
+        - SQL Firewall context violation is raised since SQL*Plus is not in the allowed OS program allow list, catching attention of security administrators
+        - Be patient, it can take 2 or 3 minutes to display it in the dashboard!
 
     - Drilldown into violation report to analyse them further and appropriately take action
 
-        ![SQLFW](./images/sqlfw-074.png "Drilldown the violation logs")
+        - Click on the **Violation reports** sub-menu on the left
+
+            ![SQLFW](./images/sqlfw-074a.png "Violation reports sub-menu")
+
+        - Click on the **All violations** report
+
+            ![SQLFW](./images/sqlfw-074b.png "Violation reports - All violation")
+
+        - Now, you can see all the violations detected
+
+            ![SQLFW](./images/sqlfw-074c.png "Violation logs")
 
 ## Task 1d: Enforce allowed SQL and access patterns with SQL Firewall to mitigate the risks of SQL Injection attacks
 
@@ -547,7 +573,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
 1. Update the allow-list rule enforcement to **blocking mode**
 
-    - Click on **SQL Firewall policies** sub-menu
+    - Click on **SQL Firewall policies** sub-menu on the left
     
         ![SQLFW](./images/sqlfw-075.png "SQL Firewall policies sub-menu")
 
@@ -580,7 +606,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
             ![SQLFW](./images/sqlfw-080.png "Update the SQL Firewall policy to blocking mode")
 
-        **Note:** SQL Firewall can now block SQL Injection attempts!
+        **Note:** Please wait until the SQL Firewall shows [**Action on violations: Block and log violations**] to block SQL Injection attempts!
 
 2. Go back to your Terminal session to see how SQL Firewall blocks attempts to use stolen credential access
  
@@ -604,7 +630,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-111.png "Search employees")
 
-        **Note**: All rows are returned... normal, because, remerber, you allowed everything!
+        **Note**: All rows are returned... normal, because, remember, you allowed everything!
 
     - Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
@@ -642,11 +668,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         - The output should return an ORA-failures on these attempts
         - Remember, this is because the UNION query has not been added into the Allow-list in the SQL Firewall policy... as simple as that!
 
-4. SQL violation alert is raised, catching attention of security administrators by email!
-
-    ![SQLFW](./images/sqlfw-082.png "Alert violation email")
-
-5. Administrator analyses the SQL violations in Oracle Data Safe to spot abnormal access pattern trends over time and across fleet
+4. Administrator analyses the SQL violations in Oracle Data Safe to spot abnormal access pattern trends over time and across fleet
 
     - Go back to the Data Safe session then click on SQL Firewall
 
@@ -656,59 +678,214 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-091.png "Check violation logs")
 
-    - Drill down into violation report to analyse them further and appropriately take action
+        **Note:**
+        - SQL Firewall violations are raised due to the SQL Injection attempts and login from unauthorized client!
+        - Be patient, it can take 2 or 3 minutes to display it in the dashboard!
 
-        ![SQLFW](./images/sqlfw-092.png "Drilldown the violation logs")
+    - Drilldown into violation report to analyse them further and appropriately take action
+
+        - Click on the **Violation reports** sub-menu on the left
+
+            ![SQLFW](./images/sqlfw-074a.png "Violation reports sub-menu")
+
+        - Click on the **All violations** report
+
+            ![SQLFW](./images/sqlfw-074b.png "Violation reports - All violation")
+
+        - Now, you can see all the violations detected
+
+            ![SQLFW](./images/sqlfw-092.png "Violation logs")
+
+<!--
+5. SQL violation alert is raised, catching attention of security administrators by email!
+
+    ![SQLFW](./images/sqlfw-082.png "Alert violation email")
+-->
+
+5. Check the SQL Firewall violation alerts
+
+    - Click on **Alerts** sub-menu on the left
+    
+        ![SQLFW](./images/sqlfw-083.png "Alerts sub-menu")
+
+    - Click on **Critical** alerts to show the SQL Firewall violation alerts raised
+
+        ![SQLFW](./images/sqlfw-084.png "Alerts dashboard")
+
+    - Open the recent SQL Firewall violation alert
+
+        ![SQLFW](./images/sqlfw-085.png "SQL Firewall violation alerts")
+
+    - Highlight the SQL Injection query in the command text of the alert as shown here by clicking **Show**
+
+        ![SQLFW](./images/sqlfw-086.png "SQL Firewall violation alers - SQL injection Alert")
+
+        ![SQLFW](./images/sqlfw-087.png "SQL Firewall violation alers - SQL injection Query")
 
 ## Task 1e: Reset the SQL Firewall Labs Environment for Data Safe
 
-1. Once you are comfortable with the SQL Firewall concept, go back to your terminal session to reset the environment
+1. Once you are comfortable with the SQL Firewall concept, go back to the Data Safe session to stop Activity Auditing
+
+    - Click on **Data Safe**
+
+        ![SQLFW](./images/sqlfw-201a.png "Data Safe main page")
+
+    - Click on **Activity auditing** sub-menu
+
+        ![SQLFW](./images/sqlfw-047.png "Activity auditing sub-menu")
+
+    - Click on **Audit trails** sub-menu
+
+        ![SQLFW](./images/sqlfw-048.png "Audit trails sub-menu")
+
+    - Click on your target database
+
+        ![SQLFW](./images/sqlfw-049.png "Target DB Audit trails")
+
+    - Click [**Stop**]
+
+    - Wait until the Audit Trail is **INACTIVE**, so it means that the collection is **STOPPED** 
+
+        ![SQLFW](./images/sqlfw-201b.png "Audit Trail Stopped")
+
+    - And delete it
+
+        ![SQLFW](./images/sqlfw-201c.png "Audit Trail Stopped")
+
+2. Now, drop target-alert policy association
+
+    - Click on **Data Safe**
+
+        ![SQLFW](./images/sqlfw-201d.png "Data Safe main page")
+
+    - Click on **Alerts** sub-menu
+
+        ![SQLFW](./images/sqlfw-083.png "Alert Sub-Menu")
+
+    - Click on **Target-policy assocation** sub-menu
+
+        ![SQLFW](./images/sqlfw-202a.png "Target-policy assocation Sub-Menu")
+
+    - Click on the target-policy association **`DBSeclabs_DB23ai-freepdb1`**
+
+        ![SQLFW](./images/sqlfw-059.png "Target-policy association to delete")
+
+    - Click [**Disable policy**]
+
+    - Then click [**Delete**]
+
+        ![SQLFW](./images/sqlfw-202b.png "Delete the Target-policy association")
+
+    - Now the target-policy association is deleted
+
+        ![SQLFW](./images/sqlfw-202c.png "The target database is deregistered")
+
+3. Drop SQL Firewall settings
+
+    - Click on **Data Safe**
+
+    - Click on **SQL Firewall** sub-menu
+
+    - Click on **SQL Firewall policies** sub-menu
+
+    - Click on **EMPLOYEESEARCH_PROD** database user **ACTIVE**
+
+    - Click [**Disable**]
+
+    - Then click [**Drop**]
+
+        ![SQLFW](./images/sqlfw-220.png "Drop SQL Firewall policy")
+
+    - Click on **SQL collections** sub-menu
+
+    - Click on **EMPLOYEESEARCH_PROD** database user **ACTIVE**
+
+    - Click [**Purge**]
+
+    - Then click [**More actions**], and select **Drop**
+
+        ![SQLFW](./images/sqlfw-221.png "Drop SQL collection")
+
+    - Click on **SQL Firewall** link on the top
+
+    - Click on **SQL Firewall** sub-menu
+
+    - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
+
+    - Click [**Disable**]
+
+        ![SQLFW](./images/sqlfw-222.png "Disable SQL Firewall")
+
+4. Now, you can deregister the Target database
+
+    - Click on **Data Safe**
+
+        ![SQLFW](./images/sqlfw-203a.png "Data Safe main page")
+
+    - Click on **Target databases**
+
+        ![SQLFW](./images/sqlfw-203b.png "Target databases")
+
+    - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
+
+        ![SQLFW](./images/sqlfw-203c.png "Target database to deregister")
+
+    - Click on **More actions** and select **Deregister**
+
+        ![SQLFW](./images/sqlfw-204.png "Deregister the target database")
+
+    - Click [**Deregister**] to confirm
+
+        ![SQLFW](./images/sqlfw-205.png "Confirm the deregistering")
+
+    - Now the target database is deregistered
+
+        ![SQLFW](./images/sqlfw-206.png "The target database is deregistered")
+
+5. Now, let's drop the Private Endpoint
+
+    - Click on **Private endpoints** sub-menu
+
+        ![SQLFW](./images/sqlfw-003.png "Private endpoints")
+
+    - Click on the Private Endpoint **`DBSeclabs_EP_DB23ai`**
+
+        ![SQLFW](./images/sqlfw-207.png "Private Endpoint to delete")
+
+    - Click [**Delete**]
+
+        ![SQLFW](./images/sqlfw-208.png "Delete the Private Endpoint")
+
+    - Click [**Delete**] to confirm
+
+        ![SQLFW](./images/sqlfw-209.png "Confirm the deleting")
+
+    - Now the Private Endpoint is deleted
+
+        ![SQLFW](./images/sqlfw-210.png "The Private Endpoint is deleted")
+
+
+6. Finally, go back to your terminal session to reset the environment within the database
 
     ```
     <copy>./sqlfw_reset_env_ds.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-200.png "Reset the SQL Firewall Labs Environment")
-
-2. Go back to the Data Safe session and deregister the Target database
-
-    - Click on **Data Safe**
-
-        ![SQLFW](./images/sqlfw-202.png "Data Safe main page")
-
-    - Click on **Target databases**
-
-        ![SQLFW](./images/sqlfw-203.png "Target databases")
-
-    - Click on the target database **`DBSeclabs_DB23ai-freepdb1`**
-
-        ![SQLFW](./images/sqlfw-204.png "Target database to deregister")
-
-    - Click on **More actions** and select **Deregister**
-
-        ![SQLFW](./images/sqlfw-205.png "Deregister the target database")
-
-    - Click [**Deregister**] to confirm
-
-        ![SQLFW](./images/sqlfw-206.png "Confirm the deregistering")
-
-    - Now the target database is deregistered
-
-        ![SQLFW](./images/sqlfw-207.png "The target database is deregistered")
+    ![SQLFW](./images/sqlfw-211.png "Reset the SQL Firewall Labs Environment")
 
 <!--
-3. Migrate the Glassfish Application connection string in order to target the default database  (**pdb1**)
+7. Migrate the Glassfish Application connection string in order to target the default database  (**pdb1**)
 
         ```
         <copy>./sqlfw_glassfish_stop_db23ai.sh</copy>
         ```
 
-        ![SQLFW](./images/sqlfw-208.png "Set HR App with PDB1")
+        ![SQLFW](./images/sqlfw-212.png "Set HR App with PDB1")
 
         **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
 -->
 
-3. **Now your Data Safe configuration is correctly reset!**
+7. **Now your Data Safe configuration is correctly reset!**
 
 ## Task 2: Use SQL Firewall with PL/SQL API
 
@@ -910,7 +1087,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_select_sensitive_data.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-000.png "Select sensitive employee data")
+    ![SQLFW](./images/sqlfw-122b.png "Select sensitive employee data")
 
     **Note:** SQL Firewall now blocks with "ORA-47605: SQL Firewall violation" error and raises context violation
 
@@ -920,7 +1097,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     <copy>./sqlfw_check_events.sh</copy>
     ```
 
-    ![SQLFW](./images/sqlfw-000.png "Check violation logs and audit records")
+    ![SQLFW](./images/sqlfw-122c.png "Check violation logs and audit records")
 
 4. Now, a hacker logs into Glassfish application to perform a SQL injection attack
 
@@ -934,7 +1111,7 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
         ![SQLFW](./images/sqlfw-111.png "Search employees")
 
-        **Note**: All rows are returned... normal, because, remerber, you allowed everything!
+        **Note**: All rows are returned... normal, because, remember, you allowed everything!
 
     - Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
@@ -1042,4 +1219,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2024
