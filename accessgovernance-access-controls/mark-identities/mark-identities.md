@@ -53,7 +53,7 @@ In this task, you will select the identities that you want to include in your se
 
 2. Select **Any** condition match option.
 
-   ![Manage Identities page](images/select-any-condition.png)
+   ![Manage Identities page](images/selec-any-condition.png)
 
 3. Select the below options for the condition to match the identities that you want to include.
 
