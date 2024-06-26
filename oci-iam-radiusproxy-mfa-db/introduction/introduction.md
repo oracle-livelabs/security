@@ -7,7 +7,7 @@ OCI IAM Identity Domains is a comprehensive identity-as-a-service (IDaaS) soluti
 
 The following diagram shows the architecture and the login flow when using the Radius Proxy to help authenticate the user for Database Server with OCI IAM. 
  
-  ![db-radius-oci-iam.png](./images/db-radius-oci-iam.png "Image 1")
+  ![db-radius-oci-iam](./images/db-radius-oci-iam.png "db-radius-oci-iam")
 
 *A user with a database client (ex: SQL Plus) tries to connect to database by entering a database connect string (SID). The client system passes this data to the Oracle database server .
 *The Oracle database server (acting as a RADIUS client), collects credentials from the user, passes them to the RADIUS server based on the parameters defined in SQLNET.ora file.
