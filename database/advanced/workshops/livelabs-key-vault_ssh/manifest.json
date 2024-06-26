@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "DB Security - Key Vault SSH scenario",
+  "workshoptitle": "DB Security - Key Vault SSH Key Management",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
@@ -14,14 +14,8 @@
       "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
     },
     {
-      "title": "Lab 2: Initialize Environment",
-      "description": "How to initialize and start all the workshop components",
-      "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env.md"
-    },
-    {
-      "title": "Lab 3: Key Vault (OKV) - SSH scenario",
-      "description": "In this lab you can see how to leverage Oracle Key Vault (OKV)",
+      "title": "Lab 2: Key Vault (OKV) - SSH Key Management",
+      "description": "In this lab you can see how to leverage Oracle Key Vault (OKV) to manage SSH keys",
       "publisheddate": "10/20/2020",
       "filename": "../../key-vault_ssh/key-vault_ssh.md"
     },
