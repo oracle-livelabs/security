@@ -11,61 +11,21 @@ Estimated Time: 10 Minutes.
 
 ### Prerequisites
 This lab assumes you have:
+<if type="brown">
+- A Free Tier, Paid or LiveLabs Oracle Cloud account
+- You have completed:
+    - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
+    - Lab: Environment Setup
+</if>
+<if type="green">
 - An Oracle Cloud account
 - You have completed:
-    - Lab: Prepare Setup 
-    - Lab: Environment Setup
+    - Introduction Tasks
+</if>
 
-## Task 1: Validate That Required Processes are Up and Running.
+## Task 1 - Set Glassfish to use freepdb1 database in the DB23ai VM
 
 **Note:** All screenshots for SSH terminal type tasks featured throughout this workshop were captured using the *MobaXterm* SSH Client as described in this step. As a result when executing such tasks from within the graphical remote desktop session, skip steps requiring you to login as user *oracle* using *sudo su - oracle*, the reason being that the remote desktop session is under user *oracle*.
-
-1. Now with access to your remote desktop session, proceed as indicated below to validate your environment before you start executing the subsequent labs. The following Processes should be up and running:
-
-    - Database Listener
-    - Database Servers (emcdb and cdb1)
-
-2. Check the status of each of them to be sure they are up and running
-
-    - Database services (All databases and Standard Listener)
-
-        ```
-        <copy>
-        sudo systemctl status oracle-database
-        </copy>
-        ```
-
-        ![DB Service Status](images/db-service-status.png "DB Service Status")
-
-    - DBSec-lab Service (My HR Applications on Glassfish and other components)
-
-        ```
-        <copy>
-        sudo systemctl status oracle-dbsec-lab
-        </copy>
-        ```
-
-        ![DBSecLab Service Status](images/dbsec-lab-service-status.png "DBSecLab Service Status")
-
-3. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
-
-    - Database and Listener
-
-        ```
-        <copy>
-        sudo systemctl restart oracle-database
-        </copy>
-        ```
-
-    - DBSec-lab Service
-
-        ```
-        <copy>
-        sudo systemctl restart oracle-dbsec-lab
-        </copy>
-        ```
-
-## Task 2 - Set Glassfish to use freepdb1 database in the DB23ai VM
 
 Here, we will modify the default Glassfish connection to target an Oracle Database 23ai, so we can monitor, and block, SQL commands
 
@@ -86,12 +46,14 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 3. Migrate the Glassfish Application connection string in order to target the 23ai database
 
     ```
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
+    <copy>./sqlfw_glassfish_start_db23ai.sh</copy>
     ```
 
     ![SQLFW](./images/init-start-env-sqlfw-001.png "Set HR App with DB23ai")
 
-    **Note**: Here, we connect Glassfish to the database **`FREEPDB1`** (installed on the DB23ai VM) from the **`dbsec-lab`** VM
+    **Note**:
+    - Here, we connect Glassfish to the database **`FREEPDB1`** (installed on the DB23ai VM) from the **`dbsec-lab`** VM
+    - For this lab, **we only use the URL `hr_prod_pdb1` that is connected to `FREEPDB1`**!
 
 4. Next, verify the application functions as expected
 
