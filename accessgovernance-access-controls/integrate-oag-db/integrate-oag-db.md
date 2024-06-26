@@ -93,34 +93,29 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 ## Task 4: Integrate with Oracle Identity Governance
 
-1. On the Oracle Access Governance service home page *refer Lab 2:Task 1*, click on the Navigation Menu icon and select **Service Administration** and then **Connected Systems.**
+1. On the Oracle Access Governance service home page *refer Lab 2:Task 1*, click on the Navigation Menu icon and select **Service Administration** and then **Orchestrated Systems.**
 
-    ![Access Governance console - Connected Systems](images/connected-systems.png)
+    ![Access Governance console - Connected Systems](images/ag-home.png)
 
-2. Click on **Add a connected system**
+    ![Access Governance console - Connected Systems](images/navigate-orchestrated-system.png)
 
-    ![Add - Connected System](images/add-connected-system.png)
+2. Click on **Add an orchestrated system**
 
-3. On the tile labeled **Would you like to connect to an Identity Governance System** select the **Add** button.
-    ![Access Governance console - Connected Systems-Add](images/connected-system-page.png)
+    ![Add - Connected System](images/add-system.png)
 
-4. Click **Close** on the information pop-up to navigate to the **Add an Identity Governance System** page and begin the configuration.
+3. On the tile labeled **Select and configure a new orchestrated system**, select **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
 
-    ![Close the Pop-up window](images/pop-up.png)
+   ![Add - Connected System](images/select-oig-system.png)
 
-5. On the **Select System** step, select the tile for **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
+4. On the **Enter Details** step, enter the following details:
 
-    ![Access Governance console - Connected Systems-Next](images/select-oig.png)
-
-6. On the **Enter Details** step, enter the following details:
-
-    * **Name:** oag
-    * **Description:** oag
+    * **Name:** oig
+    * **Description:** oig
     * **Click Next.**
 
-    ![Access Governance console - Connected Systems-OIG](images/oag-select-system.png)
+    ![Access Governance console - Connected Systems-OIG](images/enter-oig-system.png)
 
-7. On the **Configure** step, enter connection details for the target system:
+5. On the **Configure** step, enter connection details for the target system:
 
     **JDBC URL:**
     Replace the placeholder in the below url with the private ip of your compute instance. Refer to *Task 3 : Step 3*  above for the private ip of your compute instance.
@@ -172,17 +167,14 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     <copy>Welcome1</copy>
     ```
 
-     ![Configure Details](images/oag-connection-details.png)
+     ![Configure Details](images/oig-connection-details.png)
 
-8. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
+6. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
 
-    ![Download the agent](images/oag-download-link.png)
+    ![Download the agent](images/oig-download-link.png)
 
-9. You can verify the downloaded agent zip file.
+7. You can verify the downloaded agent zip file.
 
-     ![Navigate to file system](images/locate-zip.png)
-
-     ![Verify the zip file](images/verify-zip.png)
     
     Choose the option Customize before enabling the system for data loads. Click on **I'm done**
 
@@ -204,7 +196,70 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
      ![Enter Details](images/username-match-rule.png)
 
-    Navigate back to the connected system. Click on the Activate on the top-right corner.
+    Navigate back to the orchestrated system. It is in draft status. 
+
+    ![Enter Details](images/activate-oig.png)
+
+    Click on **Activate**. Confirm the Activation of oig in the pop-up dialog box. 
+
+
+## Task 5: Install OIG Agent on the Compute Instance and Configure
+
+1. Open the terminal session.
+
+    ![Open terminal session](images/open-terminal-window.png)
+
+2. Move the downloaded zip file (oig.zip) present in the /home/opc/Downloads folder to /home/opc/zip_oag folder.
+
+    ```
+    <copy>mv /home/opc/Downloads/oig.zip /home/opc/zip_oag</copy>
+    ```
+
+    ![Move the OAG Agent to zip_oag](images/move-file-command.png)
+
+    Verify the Agent zip (oig.zip) is present inside folder zip_oag.
+
+    ```
+    <copy>cd /home/opc/zip_oag</copy>
+    <copy>ls</copy>
+    ```
+
+    
+
+3. Setting the Environment variables using the below command:
+
+    ```
+    <copy>cd ~</copy>
+    <copy>source oag_agent.env</copy>
+    ```
+
+    ![Verify the Agent zip oag.zip](images/environment-setup-command.png)
+
+4. Install the agent
+
+    ```
+    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --agentpackage /home/opc/zip_oag/oig.zip --install</copy>
+    ```
+
+    ![Install the agent](images/agent-install-terminal.png)
+
+5. Start the agent
+
+    ```
+    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --start</copy>
+    ```
+
+    ![Start the agent](images/agent-start-command.png)
+
+6. Verify the agent
+
+    ```
+    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --status</copy>
+    ```
+
+    ![Verify the agent](images/agent-status-command.png)
+
+    Navigate back to the orchestrated system. Click on the Activate on the top-right corner.
 
     To confirm, click on Activate .
   
@@ -216,71 +271,15 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     ![Enter Details](images/oci-connection-status.png)
 
-## Task 5: Install OAG Agent on the Compute Instance and Configure
-
-1. Open the terminal session.
-
-    ![Open terminal session](images/open-terminal-window.png)
-
-2. Move the downloaded zip file (oag.zip) present in the /home/opc/Downloads folder to /home/opc/zip_oag folder.
-
-    ```
-    <copy>mv /home/opc/Downloads/oag.zip /home/opc/zip_oag</copy>
-    ```
-
-    ![Move the OAG Agent to zip_oag](images/move-oag-agent.png)
-
-    Verify the Agent zip (oag.zip) is present inside folder zip_oag.
-
-    ```
-    <copy>cd /home/opc/zip_oag</copy>
-    <copy>ls</copy>
-    ```
-
-    ![Verify the Agent zip oag.zip](images/env_setup.png)
-
-3. Setting the Environment variables using the below command:
-
-    ```
-    <copy>cd ~</copy>
-    <copy>source oag_agent.env</copy>
-    ```
-
-    ![Initialize the environment variable](images/terminal-oag.png)
-
-4. Install the agent
-
-    ```
-    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --agentpackage /home/opc/zip_oag/oag.zip --install</copy>
-    ```
-
-    ![Install the agent](images/agent-install.png)
-
-5. Start the agent
-
-    ```
-    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --start</copy>
-    ```
-
-    ![Start the agent](images/agent-start.png)
-
-6. Verify the agent
-
-    ```
-    <copy>sh agentManagement.sh --volume /home/opc/vol_oag --status</copy>
-    ```
-
-    ![Verify the agent](images/agent-status.png)
-
 ## Task 6: Connect to Oracle Database and download the DB Agent
 
-1. Navigate to the **Connected Systems** page of the Oracle Access Governance Console, by following these steps:
-  From the Oracle Access Governance navigation menu icon **Navigation menu**, select **Service Administration** → **Connected Systems**.
-  Click the **Add a connected system** button to start the workflow.
+1. Navigate to the **Orchestrated Systems** page of the Oracle Access Governance Console, by following these steps:
+  From the Oracle Access Governance navigation menu icon **Navigation menu**, select **Service Administration** → **Orchestrated  Systems**.
+  Click the **Add an orchestrated system** button to start the workflow.
 
-2. From the Add a Connected System page, Select the **Add** button on the **Would you like to connect to a database management system?** tile.
+2. From the **Select and configure a new orchestrated system** page, select **Database User Management (Oracle DB)** and click **Next**.
 
-3. On the Select system step of the workflow, Select **Database User Management (Oracle DB)** and click **Next**.
+    ![Enter Details](images/select-oracle-db.png)
 
 4. On the **Enter Details** step of the workflow, enter the details for the connected system:
 
@@ -289,7 +288,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
       Click **Next**
 
-    ![Add an Oracle DBUM Connected System](images/add-db-connected-system.png)
+    ![Add an Oracle DBUM Connected System](images/name-oracle-db.png)
 
 5. On the Configure step of the workflow, enter the configuration details required to allow Oracle Access Governance to connect to the target database.
 
@@ -320,13 +319,13 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     <copy>Welcome1</copy>
     ```
 
-    ![Enter Details](images/enter-details-connected-system-1.png)
+    ![Enter Details](images/configure-db.png)
 
 6. Check the right hand pane to view What I've selected. If you are happy with the details entered, select **Add** to create the connected system.
 
 7. On the Finish Up step of the workflow, you are asked to download the agent you will use to interface between Oracle Access Governance and Oracle Database. Select the **Download** link to download the agent zip file to the environment in which the agent will run. Click on **Activate** and **I'm done**
 
-    ![Enter Details](images/click-activate.png)
+    ![Enter Details](images/activate-db.png)
 
     
 
@@ -374,13 +373,30 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 ## Task 8: Verify the Agent Installation
 
 1. Login to the Oracle Access Governance Console, select the Navigation Menuicon to display the navigation menu.
-2. In the Oracle Access Governance Console, select Service Administration → Connected Systems from the navigation menu.
-3. On the Connected Systems screen, the tile showing the name of the connected system shows a status of Waiting for initial connection. Click on Manage Connection.
-4. The Activity Log at the bottom of the page will show the status of the Validate operation, Pending while the agent comes up. If the agent does not come up, check the agent install and operation logs for any issues.
+2. In the Oracle Access Governance Console, select Service Administration → Orchestrated Systems from the navigation menu.
+3. Click on **Activate**
 
-![Verify Connected System Configuration on UI](images/connection-succesful.png)
+    ![Verify Connected System Configuration on UI](images/activate-oag-db.png)
 
-5. Once the agent has come up, the status of the Validate operation will show as Success.
+4. Confirm **Activate** the orchestrated system.
+
+    ![Verify Connected System Configuration on UI](images/confirm-activate.png)
+
+5. The Orchestrated system is now in **Active** status. 
+
+    ![Verify Connected System Configuration on UI](images/active-db.png)
+
+6. Click **Load Data** and confirm. 
+
+    ![Verify Connected System Configuration on UI](images/confirm-load-data.png)
+
+7. On the Orchestrated Systems screen, the tile showing the name of the orchestrated system shows a status of Waiting for initial connection. Click on Manage Connection.
+
+8. The Activity Log at the bottom of the page will show the status of the Validate operation, Pending while the agent comes up. If the agent does not come up, check the agent install and operation logs for any issues.
+
+![Verify Connected System Configuration on UI](images/data-load-complete.png)
+
+9. Once the agent has come up, the status of the Validate operation will show as Success.Full Dataload has also been completed with status Success. 
 
   You may now **proceed to the next lab**.
 

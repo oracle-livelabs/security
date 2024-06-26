@@ -49,11 +49,11 @@ In this task, you will select the identities that you want to include in your se
 
 1. In the Oracle Access Governance Console, navigate to Service Administration -> Manage Identities
 
-  ![Navigate Manage Identities](images/navigate-manage-identities.png)
+  ![Navigate Manage Identities](images/navigate-to-manage-identities.png)
 
 2. Select **Any** condition match option.
 
-   ![Manage Identities page](images/select-any.png)
+   ![Manage Identities page](images/select-any-condition.png)
 
 3. Select the below options for the condition to match the identities that you want to include.
 
@@ -67,7 +67,7 @@ In this task, you will select the identities that you want to include in your se
 
 5. Close the pop-up and click on **Save**
 
-  ![Manage Identities page](images/identities-user.png)
+  ![Manage Identities page](images/preview-identities-user.png)
 
   You may now **proceed to the next lab**.
 
