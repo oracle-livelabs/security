@@ -2,159 +2,180 @@
 
 ## Introduction
 
-As an end-user having access to the sample web application, you can authenticate into the app with Email OTP as the second factor authentication. This lab will walk through the flow of providing username and password along with Email OTP received as part of the email client.
+OUA leverages Oracle Advanced Authentication (OAA) to extend device authentication with MFA, strengthening your organizations security framework, and preventing phishing attacks.
 
-As one of the demo users, which is already pre-seeded in the environment, you will access the sample web application. Upon entering username and password, you would be redirected to choose email OTP for the second factor authentication. You would grab the OTP from the pre-configured web email client. Upon providing the OTP, you would be successfully he sample web application.
+OUA has two software components: a client deployed on the user's devices, such as a desktop computer running Microsoft Windows, and a server component based on a microservices architecture that provides administration, self-service, device runtime support, device platform security, and identity provider gateway services.
 
-* Estimated Time: 15 minutes
+This lab focuses on demonstrating some scenarios specific to the OUA sign-on experience.
+
+* Estimated Time: 30 minutes
 * Persona: End-User
 
 ## Objectives
 
 In this lab, you will:
 
-* Access the sample web application using multi factor authentication
+* First Time Login and Entra ID Domain User Association
 
-  *Note:* All the demo users and apps have been pre-seeded to perform the use-cases
+* Unified SSO with Windows and OAM Protected Applications
+
+* Unified SSO with OAA Step Up Authentication
+
+* Passwordless Authentication with Windows and OAM Protected Applications
 
 ## Prerequisites
 
 This lab assumes you have:
 
-* Oracle Mobile Authenticator installed in your mobile device. Follow the respective link below to install the application :
+* Joined demo Windows Image to Entra ID Domain
 
-     [OMA on Google Store](https://play.google.com/store/apps/details?id=oracle.idm.mobile.authenticator&hl=en_CA&gl=US)
+* Installed and Configured OUA
 
-     [OMA on Apple Store](https://apps.apple.com/us/app/oracle-mobile-authenticator/id835904829)
+* Created OAM User and Registered OUA User Preferences
 
-* A test account registered in OMA. Use the following instructions to do that :
+* Deployed Nox Android Emulator with OMA
 
-    1. Open OMA in your mobile device
+## Task 1: First Time Login and Entra ID Domain User Association
 
-    2. If this is the first time accessing OMA, click on Add Account, otherwise tap the plus (+) icon at the bottom of the screen
+1. Login to the Windows VM using the new OAM user created in the previous use case.
+   Select Login with Oracle at the login window and enter the OAM username created in the previous use case, e.g.:
 
-    3. Then tap on **Enter key manually** link
+    ```
+    Username : pwalker
+    ```
 
-    4. In Select Account Type, choose Oracle. Then, enter the following information:
+   Press the Enter key, then you are prompted to enter the OAM user password and credentials for the Entra ID user:
 
-      Company : **Oracle** 
+    ```
+    Password         : Oracle123
+    Windows Username : azuread\<UPN>
+    Windows Password : <password>
+    ```
 
-      Account
+   Press the Enter key.
 
-        ```
-        <copy>
-        Demo User1
-        </copy>
-        ```
+   Then you are prompted to choose a second factor. select Enter OTP... and press the Arrow key.
 
-      Key
+    ```
+    Choose a method to login : Enter OTP...
+    ```
 
-        ```
-        <copy>
-        DemoAppUsrOne
-        </copy>
-        ```
+  Then use OMA to get the OTP code, enter the code and press the Enter key to login.
 
-    5. Tap on Save button to register the account.
+  *Note :* Entering the OAM and Entra ID user credentials is only required the first time to link the OAM and Entra ID user accounts as well as to store the credentials, subsequent logins will only require the OAM user credential and any configured 2nd factor.
 
-## Task 1: Update host machine to access web console in the demo environment
+2. Once in the Windows desktop, confirm that the logged in user is in fact an Entra ID user. Click in the Windows icon (located in the left of the search box in the taskbar) to see the user name.
 
-1. Login to the OCI console Identity Domain: Choose the right domain and login as the **Identity Domain Administrator**
+## Task 2: Unified SSO with Windows and OAM Protected Applications
 
-  ![Login to OCI console](images/oci-console.png)
+1. Login to the Windows VM using the new OAM user created in the previous use cases.
+   Select Login with Oracle at the login window and enter the OAM user credentials. e.g.:
 
-2. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Under Compute, Click Instances. Select the correct compartment to display the compute instance that was deployed as part of **Lab2**.
+    ```
+    Username : pwalker
+    Password : Oracle123
+    ```
 
-  ![Naviagte to Compartment](images/navigate-compartment.png)
+   Then you are prompted to choose a second factor. select Enter OTP... and press the Arrow key.
 
-3. Add the following entries in your computer's host file.
+    ```
+    Choose a method to login : Enter OTP...
+    ```
 
-   *Note :* In case of Windows, the location is ***C:\Windows\System32\drivers\etc\hosts***. In case of Mac, the location is ***\etc\hosts***
+   Then use OMA to get the OTP code, enter the code and press the Enter key to login.
+
+2. Once in the Windows desktop, proceed to open the Chrome browser. Since the OUA browser plugin was installed during OUA   install, the first time you access Chrome, you must enable the plugin.
+
+3. Click the 3-dots (located at the top right corner of the browser window) and select Extensions -> Manage Extensions. In the Manage Extensions page click in the Enable switch under the Oracle Universal Authenticator tile.
+
+4. Once the plugin is enable, proceed to test SSO with OAM protected applications.
+   E.g. open a new tab in the browser and access sample application Bank App:
 
     ```
     <copy>
-    <PUBLIC_IP>    so92-srv1.oracledemo.com iamdb.oracledemo.com oud.oracledemo.com oam.oracledemo.com aso.oracledemo.com oaa.oracledemo.com ora.oracledemo.com oim.oracledemo.com mail.oracledemo.com
-    <PUBLIC_IP>    oiri.oracledemo.com grafana.oracledemo.com prometheus.oracledemo.com oap.oracledemo.com oudsm.oracledemo.com ade.oracledemo.com demodb.oracledemo.com
+    http://ade.oracledemo.com/bankapp/index.html
     </copy>
     ```
 
-## Task 2: Authenticate into sample web app using email otp
+   You should be able to access the protected application without having to enter the OAM user credentials.
 
-1. Open your preferred browser. Access the **Email Client** using below details. This would be used to receive OTPs :
-   *Note :* You might notice a certificate related warning saying 'Your connection is not private'. This happens because the demo environment uses self-signed certificates. You can click 'Advanced' and 'Proceed to mail.oracledemo.com'.
+  *Note :* Optionally you can enable the plugin in other installed browsers like Microsoft Edge and Mozilla Firefox and test SSO with the protected application.
 
-  Mailu Email Console:
+  *Note :* If the Firefox plugin is not listed under Add-ons and Themes -> Extensions, click in the gear icon and select Install Add-on From File... and choose path C:\Program Files\Oracle\Oracle Universal Authenticator\firefox\<<oua_extension@oracle.com.xpi>> to add the plugin. Then in the plugin tile, click in the 3-dots -> Manage -> Permissions and enable Access your data for all websites.
+
+5. Proceed to close your browser and logout from Windows.
+
+  *Note :* At this point, you should sign out from the application as you would be authenticating again with a different MFA factor.
+
+## Task 3: Passwordless Authentication with Windows and OAM Protected Applications
+
+1. From your Windows desktop click in the shortcut EBSAppsAndroid7 to start the emulator with the Android 7 image.
+
+2. Once the Android emulator is started, within Android click in the Google Chrome icon (located at the bottom of the emulator window).
+
+3. In the browser window enter the URL in the Search or type web address box to access the OUA self-service console.
+  E.g. use the following URL and credentials:
+
     ```
     <copy>
-    https://mail.oracledemo.com/
+    URL         : http://oaa.oracledemo.com/oaa/rui
+    Username    : <oam_user>
+    Password    : <password>
     </copy>
     ```
 
-  User
+4. In the consent page, click in the Allow button to continue.
+
+5. Once in the OUA self-service console, click in the Manage button under My Authenticators tile.
+
+6. In the Authenticator Factors page, click on Add Authenticator Factor list-box and select OMA Push Notification Challenge. Write down the userid number and click on Register here link.
+
+7. In the Login Required window, enter the OAM user and as password the userid number and click the Sign In button.
+   The new user should be added to the Accounts page in OMA.
+
+8. Click in the Tasks icon (located at the bottom of black bar, right side of the emulator window) and select the Chrome browser.
+
+9. Back in the OUA self-service console (Add Mobile Device), click in the Done button.
+
+10. In the Authenticator Factors page, click in the 3-dots under OMA Push Notification Challenge tile and select Set As Default. Make sure Default text with a green circle is listed in the OMA Push Notification Challenge tile.
+
+11. Proceed to logout from the OUA self-service console.
+
+12. Click the Tasks icon and go back to the OMA window in your Android emulator.
+
+13. Login to the Windows VM using the OAM user created in the previous use cases.
+  Select Login with Oracle at the login window and enter the OAM username. e.g.:
+
+    ```
+    Username : <oam_user>
+    ```
+
+    Since OMA Push Notification Challenge is set as default, OUA will not show the list-box to choose a second factor, instead will show a message (see below) and send a notification to OMA and wait for approval.
+
+    ```
+    Approve login on device
+    ```
+
+    Go back to the Android emulator and check if OMA have received a notification (bell icon), if so proceed to open the notification and Allow the request.
+
+    Once the OMA response is processed, back in the Windows VM, the OAM user should be able to access the Windows desktop.
+
+14. Once in the Windows desktop, proceed to open the Chrome browser. If you enable the OUA browser plugin in the previous use case, then skip the next step to enable it.
+
+15. If this is the first accessing Chrome, you must enable the OUA browser plugin. Click the 3-dots (located at the top right corner of the browser window) and select Extensions -> Manage Extensions. In the Manage Extensions page click in the Enable switch under the Oracle Universal Authenticator tile.
+
+16. If the OUA plugin is enable, proceed to test SSO with OAM protected applications.
+    E.g. open a new tab in the browser and enter the following URL:
+
     ```
     <copy>
-    demousr1@oracledemo.com
+    http://ade.oracledemo.com/bankapp/index.html
     </copy>
     ```
 
-  Password
-    ```
-    <copy>
-    Oracle123
-    </copy>
-    ```
+    You should be able to access the protected application without having to enter the OAM user credentials.
 
-  Choose **Sign in Webmail**.
-
-2. Open a new browser tab. Access the sample web app using below details and Click Login :
-
-  Sample Web App:
-    ```
-    <copy>
-    http://ade.oracledemo.com/demoapp/index.html
-    </copy>
-    ```
-
-  User
-    ```
-    <copy>
-    demousr1
-    </copy>
-    ```
-
-  Password
-    ```
-    <copy>
-    Oracle123
-    </copy>
-    ```
-3. Click on the link below 'Email Challenge' to receive email OTP as the second factor :
-
-   ![Select email as MFA factor](images/mfa-email-factor-selection.png)
-
-4. Goto the email client to receive the newly delivered OTPs. This might take around 30 secs to a minute for OTP to get delivered. You could try refreshing the mailbox by clicking on **Refresh** button or reloading the browser page itself.
-
-5. Provide the OTP in the login flow. Click Verify
-
-   ![Provide email OTP](images/mfa-email-otp.png)
-
-6. You should be redirected to the sample app landing page after successful authentication
-
-*Note :* At this point, you should sign out from the application as you would be authenticating again with a different MFA factor.
-
-## Task 3: Authenticate into sample web app using otp from OMA app
-
-1. In a new browser window, access the sample web app as described in Task 2: Step 2
-
-2. Click on the link below 'Oracle Mobile Authenticator' to receive OTP on your mobile app
-
-   ![Select OMA as MFA factor](images/mfa-oma-factor-selection.png)
-
-3. Provide the OTP in the login flow. Click Verify
-
-   ![Provide email OTP](images/mfa-oma-otp.png)
-
-4. You should be redirected to the sample app landing page after successful authentication
+17. Proceed to logout from Windows.
 
   You may now **proceed to the next lab**.
 

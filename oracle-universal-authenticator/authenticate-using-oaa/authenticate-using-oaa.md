@@ -1,12 +1,16 @@
-# Create  OCI Policies, VCN, Groups and Compartments
+# Authenticate using Oracle Advanced Authentication
 
 ## Introduction
 
-As an end-user having access to the sample web application, you can authenticate into the app with Email OTP as the second factor authentication. This lab will walk through the flow of providing username and password along with Email OTP received as part of the email client.
+Oracle Advanced Authentication (OAA) is a standalone micro-service that supports establishing and asserting the identity of users. It provides a comprehensive solution that is simple to deploy and use.
 
-As one of the demo users, which is already pre-seeded in the environment, you will access the sample web application. Upon entering username and password, you would be redirected to choose email OTP for the second factor authentication. You would grab the OTP from the pre-configured web email client. Upon providing the OTP, you would be successfully he sample web application.
+OAA provides strong authentication using Multiple Authentication Factors (MFA). A wide range of authentication (challenge) factors are available out-of-the-box for establishing the identity of users.
 
-* Estimated Time: 15 minutes
+It supports integration with Oracle Access Management (OAM) and Oracle RADIUS Agent (ORA) to provide MFA capabilities.
+
+It also can be used with Oracle Universal Authenticator for device authentication with MFA.
+
+* Estimated Time: 30 minutes
 * Persona: End-User
 
 ## Objectives
@@ -61,11 +65,7 @@ This lab assumes you have:
 
 1. Login to the OCI console Identity Domain: Choose the right domain and login as the **Identity Domain Administrator**
 
-  ![Login to OCI console](images/oci-console.png)
-
 2. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Under Compute, Click Instances. Select the correct compartment to display the compute instance that was deployed as part of **Lab2**.
-
-  ![Naviagte to Compartment](images/navigate-compartment.png)
 
 3. Add the following entries in your computer's hosts file.
 
@@ -162,13 +162,12 @@ This lab assumes you have:
 
 ## Learn More
 
-* [Oracle Access Governance Create Access Review Campaign](https://docs.oracle.com/en/cloud/paas/access-governance/pdapg/index.html)
-* [Oracle Access Governance Product Page](https://www.oracle.com/security/cloud-security/access-governance/)
-* [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
-* [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
+* [Oracle Universal Authenticator Product Documentation](https://docs.oracle.com/en/middleware/idm/universal-authenticator/)
+
+* [Oracle Universal Authenticator System Architecture](https://docs.oracle.com/en/middleware/idm/universal-authenticator/ouaad/system-architecture-and-components.html)
 
 ## Acknowledgments
 
 * **Authors** - Anuj Tripathi
 
-* **Last Updated By/Date** - Anuj Tripathi, North America Platform Specialist, June 2024
+* **Last Updated By/Date** - Anuj Tripathi, North America Platform Specialist, July 2024

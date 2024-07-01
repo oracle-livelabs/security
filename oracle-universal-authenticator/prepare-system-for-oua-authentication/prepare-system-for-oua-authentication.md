@@ -1,12 +1,14 @@
-# Create  OCI Policies, VCN, Groups and Compartments
+# Prepare your system for seamless authentication with OUA
 
 ## Introduction
 
-As an end-user having access to the sample web application, you can authenticate into the app with Email OTP as the second factor authentication. This lab will walk through the flow of providing username and password along with Email OTP received as part of the email client.
+Oracle Universal Authenticator (OUA) is a unified authentication solution that provides device authentication and cross-platform single sign-on (SSO) to web-based applications. Users login to their devices using their Oracle Access Management (OAM) credentials with step-up Multi-Factor Authentication (MFA), or alternatively using passwordless login. Users can then access protected applications without the need to enter their single sign-on credentials again.
 
-As one of the demo users, which is already pre-seeded in the environment, you will access the sample web application. Upon entering username and password, you would be redirected to choose email OTP for the second factor authentication. You would grab the OTP from the pre-configured web email client. Upon providing the OTP, you would be successfully he sample web application.
+OUA has two software components: a client deployed on the user's devices, such as a desktop computer running Microsoft Windows, and a server component based on a microservices architecture that provides administration, self-service, device runtime support, device platform security, and identity provider gateway services.
 
-* Estimated Time: 15 minutes
+The server component, along with OAA/OARM and OAM, is already installed and configured as part of the stack deployment in Lab 1. Therefore, this lab focuses on installing and configuring the client machine along with the required components.
+
+* Estimated Time: 60 minutes
 * Persona: End-User
 
 ## Objectives

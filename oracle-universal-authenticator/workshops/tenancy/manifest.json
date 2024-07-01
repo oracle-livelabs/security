@@ -14,7 +14,7 @@
         },
         {
             "title": "Lab 1: Prepare Setup",
-            "description": "How to download your ORM stack and update security rules for an existing VCN",
+            "description": "How to download the ORM stack and update security rules for an existing VCN",
             "filename": "../../prepare-setup/prepare-setup.md"
         },
         {
@@ -23,9 +23,9 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
         },
         {
-            "title": "Lab 3: Authenticate with MFA using OAA",
-            "description": "How to authenticate with MFA using OAA",
-            "filename": "../../authenticate-with-oaa/authenticate-with-oaa.md"
+            "title": "Lab 3: Authenticate using Oracle Advanced Authentication",
+            "description": "How to authenticate using Oracle Advanced Authentication",
+            "filename": "../../authenticate-using-oaa/authenticate-using-oaa.md"
         },
         {
             "title": "Lab 4: Prepare your system for authentication using OUA",
