@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle SQL Firewall. It gives the 
 
 *Estimated Lab Time:* 30 minutes
 
-*Version tested in this lab:* Oracle Free Database 23ai (v23.4)
+*Version tested in this lab:* Oracle Database 23ai Free
 
 ### Video Preview
 Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [](youtube:81N23MDhYXU)
@@ -406,7 +406,21 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
 2. Now, let's detect an insider threat of stolen credential access
  
-     - The insider uses SQL*Plus to gain access to the sensitive employee data, so go back to your Terminal session and execute
+    - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+
+        ```
+        <copy>sudo su - oracle</copy>
+        ```
+
+        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+
+    - Go to the scripts directory
+
+        ```
+        <copy>cd $DBSEC_LABS/sqlfw</copy>
+        ```
+
+    - The insider uses SQL*Plus to gain access to the sensitive employee data, so go back to your Terminal session and execute
 
         ```
         <copy>./sqlfw_select_sensitive_data.sh</copy>
@@ -663,6 +677,19 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
 
     ![SQLFW](./images/sqlfw-211.png "Reset the SQL Firewall Labs Environment")
 
+    **Note**: If you want to redo the entire Task1, please follow these instrcutions:
+    - Execute the following script to create the *`DS_ADMIN`* user
+
+        ```
+        <copy>
+        cd $DBSEC_LABS/sqlfw
+        ./sqlfw_crea_ds-admin-user.sh</copy>
+        ```
+
+    - and click [**Refresh**] in the **SQL Firewall configuration details** page
+
+        ![SQLFW](./images/sqlfw-223.png "refresh SQL Firewall config")
+
 4. **Now your Data Safe configuration is correctly reset!**
 
 ## Task 2: Use SQL Firewall with PL/SQL API
@@ -675,7 +702,21 @@ In this lab you will learn how the administrator trains the system to learn the 
 
 ### Step 1: Setup SQL Firewall env
 
-1. Create an administrator (**`dba_tom`**) to manage SQL Firewall
+1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+
+    ```
+    <copy>sudo su - oracle</copy>
+    ```
+
+    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+
+2. Go to the scripts directory
+
+    ```
+    <copy>cd $DBSEC_LABS/sqlfw</copy>
+    ```
+
+3. Create an administrator (**`dba_tom`**) to manage SQL Firewall
 
     ```
     <copy>./sqlfw_crea_admin-user.sh</copy>
@@ -683,7 +724,7 @@ In this lab you will learn how the administrator trains the system to learn the 
 
     ![SQLFW](./images/sqlfw-107.png "Create the SQL Firewall Admin user")
 
-2. Enable SQL Firewall
+4. Enable SQL Firewall
 
     ```
     <copy>./sqlfw_enable.sh</copy>
@@ -959,9 +1000,9 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
     **Note**: Now, we connect Glassfish to the database **`PDB1`** (DB 19c) on the **`dbsec-lab`** VM
 -->
 
-2. **Now your Data Safe configuration is correctly reset!**
+2. **Now your SQL Firewall configuration is correctly reset!**
 
-You may now proceed to the next lab!
+You may now **proceed to the next lab**
 
 ## **Appendix**: About the Product
 ### **Overview**
@@ -997,4 +1038,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - July 2024
