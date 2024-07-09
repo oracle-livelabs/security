@@ -23,12 +23,12 @@
             "filename": "../../ag-instance-setup/ag-instance-setup.md"
         },
         {
-            "title": "Lab 3: Prepare Setup",
+            "title": "Lab 3: Prepare Setup for OIG",
             "description": "How to download your ORM stack and update security rules for an existing VCN",
             "filename": "../../prepare-setup/prepare-setup.md"
         },
         {
-            "title": "Lab 4: Environment Setup",
+            "title": "Lab 4: Environment Setup for OIG",
             "description": "How to provision the workshop environment and connect to it",
             "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
         },
