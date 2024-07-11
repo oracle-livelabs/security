@@ -79,38 +79,7 @@ In this task, you will review Who has Access to What
     ![Identity Collection creation](images/identity-attributes.png)
 
 
-<<<<<<< HEAD
-2. Click on **Resources** to view the resources associated with the user identities. Click on **View Details** to view the Identities, Permissions , Identity Collection, Roles, Policies and Accounts associated with them. 
-=======
-3. Click on **Identity Collections** to view Identity Collections that are present in the system. 
-
-    ![Identity Collection creation](images/identity-collection.png)
-
-    Click on **View Details** 
-
-    ![Identity Collection creation](images/identity-collection-detail.png)
-
-4. Click on **Permissions** to view Access Bundles and permissions of the user identities.  
-   
-
-    ![Identity Collection creation](images/permission.png)
-
-    Click on **View Details**
-
-    ![Identity Collection creation](images/db-read-access.png)
-
-    ![Identity Collection creation](images/db-read-access-details.png)
-
-5. Click on **Policies** to view Policies created to provision access privileges. 
-
-    ![Identity Collection creation](images/policies.png)
-
-     Click on **View Details**
-
-    ![Identity Collection creation](images/policy-detail.png)
-
-6. Click on **Resources** to view the resources associated with the user identities. Click on **View Details** to view the Identities, Permissions , Identity Collection, Roles, Policies and Accounts associated with them. 
->>>>>>> e5be1d92b3815cd7c8cbdc5bdba652c8441eb68f
+3. Click on **Resources** to view the resources associated with the user identities. Click on **View Details** to view the Identities, Permissions , Identity Collection, Roles, Policies and Accounts associated with them. 
 
      ![Identity Collection creation](images/resources.png)
 
