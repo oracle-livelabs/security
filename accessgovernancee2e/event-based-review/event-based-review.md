@@ -103,12 +103,12 @@ This lab assumes you have:
 
 ## Task 4: Perform Data load in OAG console
 
-1.  In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Connected Systems.**
+1.  In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Orchestrated Systems.**
 
     ![Data Load](images/data-load.png) 
     
     
-2. In the **Connected Systems** screen, select the **Manage** button for the Oracle Access Governance connected system you want to manage.
+2. In the **Orchestrated  Systems** screen, select the **Manage** button for the Oracle Access Governance Orchestrated system you want to manage.
 
 
 3. Select the **Load data now** option from the **Actions** drop-down menu in the top right-hand corner. This will initiate a data load which you can track the status of in the **Activity Log.** Refresh screen and wait for the status to be **Successful**
@@ -141,12 +141,12 @@ This lab assumes you have:
 
 ## Task 6: Again Perform Data load in OAG console
 
-1.  In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Connected Systems.**
+1.  In the Oracle Access Governance Console, access the navigation menu by selecting the Navigation Menu icon. Select **Service Administration → Orchestrated Systems.**
 
     ![Data Load](images/data-load.png) 
     
     
-2. In the **Connected Systems** screen, select the **Manage** button for the Oracle Access Governance connected system you want to manage. 
+2. In the **Orchestrated Systems** screen, select the **Manage** button for the Oracle Access Governance Orchestrated system you want to manage. 
 
 3. Select the **Load data now** option from the **Actions** drop-down menu in the top right-hand corner. This will initiate a data load which you can track the status of in the **Activity Log.** Refresh screen and wait for the status to be **Successful**
 
