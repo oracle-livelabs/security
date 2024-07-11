@@ -79,6 +79,9 @@ In this task, you will review Who has Access to What
     ![Identity Collection creation](images/identity-attributes.png)
 
 
+<<<<<<< HEAD
+2. Click on **Resources** to view the resources associated with the user identities. Click on **View Details** to view the Identities, Permissions , Identity Collection, Roles, Policies and Accounts associated with them. 
+=======
 3. Click on **Identity Collections** to view Identity Collections that are present in the system. 
 
     ![Identity Collection creation](images/identity-collection.png)
@@ -107,6 +110,7 @@ In this task, you will review Who has Access to What
     ![Identity Collection creation](images/policy-detail.png)
 
 6. Click on **Resources** to view the resources associated with the user identities. Click on **View Details** to view the Identities, Permissions , Identity Collection, Roles, Policies and Accounts associated with them. 
+>>>>>>> e5be1d92b3815cd7c8cbdc5bdba652c8441eb68f
 
      ![Identity Collection creation](images/resources.png)
 
