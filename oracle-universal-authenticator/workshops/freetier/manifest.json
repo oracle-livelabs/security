@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Oracle Access Governance with OCI IAM",
+    "workshoptitle": "Access protected applications with Oracle Universal Authenticator",
     "help": "livelabs-help-oci_us@oracle.com",
     "tutorials": [
         {
@@ -13,38 +13,34 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Deploy Infrastructure using Terraform",
-            "description": "Deploy resources using Terraform",
-            "filename": "../../deploying-using-terraform/deploying-using-terraform.md"
+            "title": "Lab 1: Prepare Setup",
+            "description": "How to download the ORM stack and update security rules for an existing VCN",
+            "filename": "../../prepare-setup/prepare-setup.md"
         },
         {
-            "title": "Lab 2: Setup and configure Oracle Access Governance service instance",
-            "description": "Setup and configure Oracle Access Governance service instance ",
-            "filename": "../../instance-setup/ag-instance-setup.md"
+            "title": "Lab 2: Environment Setup",
+            "description": "How to provision the workshop environment and connect to it",
+            "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
         },
         {
-            "title": "Lab 3: Integrate Oracle Access Governance with OCI IAM",
-            "filename": "../../connect-oci-iam/connect-oci-iam.md"
+            "title": "Lab 3: Authenticate using Oracle Advanced Authentication",
+            "description": "How to authenticate using Oracle Advanced Authentication",
+            "filename": "../../authenticate-using-oaa/authenticate-using-oaa.md"
         },
         {
-            "title": "Lab 4: Mark the identities",
-            "filename": "../../mark-identities/mark-identities.md"
+            "title": "Lab 4: Prepare your system for authentication using OUA",
+            "description": "How to authenticate with MFA using OAA",
+            "filename": "../../prepare-system-for-oua-authentication/prepare-system-for-oua-authentication.md"
         },
         {
-            "title": "Lab 5: Review Who has Access to What",
-            "filename": "../../who-has-access-towhat/who-has-access-towhat.md"
+            "title": "Lab 5: Authenticate into Windows Device, web app and desktop app using OUA",
+            "description": "How to authenticate across devices and apps using OUA",
+            "filename": "../../authenticate-with-oua/authenticate-with-oua.md"
         },
         {
-            "title": "Lab 6: Create Policy Review Campaigns",
-            "filename": "../../create-policy-reviews/create-policy-review.md"
-        },
-        {
-            "title": "Lab 7: Perform Policy Review Tasks",
-            "filename": "../../perform-policy-review/perform-policy-review.md"
-        },
-        {
-            "title": "Lab 8: Cleanup the Environment",
-            "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
+            "title": "Lab 6: Cleanup the Environment",
+            "description": "How to clean up resources deployed as part of the lab",
+            "filename": "../../cleanup-environment/cleanup-env.md"
         },
         {
             "title": "Need Help?",

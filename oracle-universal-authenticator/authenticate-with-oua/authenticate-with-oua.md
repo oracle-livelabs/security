@@ -15,7 +15,7 @@ This lab focuses on demonstrating some scenarios specific to the OUA sign-on exp
 
 In this lab, you will:
 
-* First Time Login and Entra ID Domain User Association
+* Perform first time Login and OAM user association with Entra ID user
 
 * Unified SSO with Windows and OAM Protected Applications
 
@@ -27,7 +27,7 @@ In this lab, you will:
 
 This lab assumes you have:
 
-* Joined demo Windows Image to Entra ID Domain
+* Joined demo Windows Image to an Entra ID Domain
 
 * Installed and Configured OUA
 
@@ -37,7 +37,7 @@ This lab assumes you have:
 
 ## Task 1: First Time Login and Entra ID Domain User Association
 
-1. Login to the Windows VM using the new OAM user created in the previous use case.
+1. Login to the Windows guest VM using the new OAM user created in the previous use case.
    Select Login with Oracle at the login window and enter the OAM username created in the previous use case, e.g.:
 
     ```
@@ -47,9 +47,9 @@ This lab assumes you have:
    Press the Enter key, then you are prompted to enter the OAM user password and credentials for the Entra ID user:
 
     ```
-    Password         : Oracle123
-    Windows Username : azuread\<UPN>
-    Windows Password : <password>
+    Password: Oracle123
+    Windows Username: azuread\<UPN>
+    Windows Password: <password>
     ```
 
    Press the Enter key.
@@ -60,11 +60,11 @@ This lab assumes you have:
     Choose a method to login : Enter OTP...
     ```
 
-  Then use OMA to get the OTP code, enter the code and press the Enter key to login.
+  Then use OMA from your mobile device to get the OTP code, enter the code and press the Enter key to login.
 
   *Note :* Entering the OAM and Entra ID user credentials is only required the first time to link the OAM and Entra ID user accounts as well as to store the credentials, subsequent logins will only require the OAM user credential and any configured 2nd factor.
 
-2. Once in the Windows desktop, confirm that the logged in user is in fact an Entra ID user. Click in the Windows icon (located in the left of the search box in the taskbar) to see the user name.
+2. Once logged in to Windows guest desktop, confirm that the logged in user is in fact an Entra ID user. Click on the Windows icon (located in the left of the search box in the taskbar) to see the user name.
 
 ## Task 2: Unified SSO with Windows and OAM Protected Applications
 
@@ -82,13 +82,13 @@ This lab assumes you have:
     Choose a method to login : Enter OTP...
     ```
 
-   Then use OMA to get the OTP code, enter the code and press the Enter key to login.
+   Then use OMA on your mobile device get the OTP code, enter the code and press Enter key to login.
 
-2. Once in the Windows desktop, proceed to open the Chrome browser. Since the OUA browser plugin was installed during OUA   install, the first time you access Chrome, you must enable the plugin.
+2. Once in the Windows desktop, proceed to open the Chrome browser. Since the OUA browser plugin was installed previously, the first time you access Chrome, you must enable the plugin.
 
 3. Click the 3-dots (located at the top right corner of the browser window) and select Extensions -> Manage Extensions. In the Manage Extensions page click in the Enable switch under the Oracle Universal Authenticator tile.
 
-4. Once the plugin is enable, proceed to test SSO with OAM protected applications.
+4. Once the plugin is enabled, proceed to test SSO with OAM protected applications.
    E.g. open a new tab in the browser and access sample application Bank App:
 
     ```
@@ -109,11 +109,11 @@ This lab assumes you have:
 
 ## Task 3: Passwordless Authentication with Windows and OAM Protected Applications
 
-1. From your Windows desktop click in the shortcut EBSAppsAndroid7 to start the emulator with the Android 7 image.
+1. From your Windows desktop click on the shortcut <<Emulator Shortcut>> to start the emulator with the Android 7 image.
 
-2. Once the Android emulator is started, within Android click in the Google Chrome icon (located at the bottom of the emulator window).
+2. Once the Android emulator is started, within Android click on the Google Chrome icon (located at the bottom of the emulator window).
 
-3. In the browser window enter the URL in the Search or type web address box to access the OUA self-service console.
+3. In the browser window, enter the URL in the Search or type web address box to access the OUA self-service console.
   E.g. use the following URL and credentials:
 
     ```
@@ -126,16 +126,16 @@ This lab assumes you have:
 
 4. In the consent page, click in the Allow button to continue.
 
-5. Once in the OUA self-service console, click in the Manage button under My Authenticators tile.
+5. Once in the OUA self-service console, click on the Manage button under My Authenticators tile.
 
 6. In the Authenticator Factors page, click on Add Authenticator Factor list-box and select OMA Push Notification Challenge. Write down the userid number and click on Register here link.
 
 7. In the Login Required window, enter the OAM user and as password the userid number and click the Sign In button.
    The new user should be added to the Accounts page in OMA.
 
-8. Click in the Tasks icon (located at the bottom of black bar, right side of the emulator window) and select the Chrome browser.
+8. Click on the Tasks icon (located at the bottom of black bar, right side of the emulator window) and select the Chrome browser.
 
-9. Back in the OUA self-service console (Add Mobile Device), click in the Done button.
+9. Back in the OUA self-service console (Add Mobile Device), click Done.
 
 10. In the Authenticator Factors page, click in the 3-dots under OMA Push Notification Challenge tile and select Set As Default. Make sure Default text with a green circle is listed in the OMA Push Notification Challenge tile.
 
@@ -156,7 +156,7 @@ This lab assumes you have:
     Approve login on device
     ```
 
-    Go back to the Android emulator and check if OMA have received a notification (bell icon), if so proceed to open the notification and Allow the request.
+    Go back to the Android emulator and check if OMA has received a notification (bell icon), if so proceed to open the notification and Allow the request.
 
     Once the OMA response is processed, back in the Windows VM, the OAM user should be able to access the Windows desktop.
 
@@ -164,7 +164,7 @@ This lab assumes you have:
 
 15. If this is the first accessing Chrome, you must enable the OUA browser plugin. Click the 3-dots (located at the top right corner of the browser window) and select Extensions -> Manage Extensions. In the Manage Extensions page click in the Enable switch under the Oracle Universal Authenticator tile.
 
-16. If the OUA plugin is enable, proceed to test SSO with OAM protected applications.
+16. If the OUA plugin is enabled, proceed to test SSO with OAM protected applications.
     E.g. open a new tab in the browser and enter the following URL:
 
     ```
@@ -181,10 +181,9 @@ This lab assumes you have:
 
 ## Learn More
 
-* [Oracle Access Governance Create Access Review Campaign](https://docs.oracle.com/en/cloud/paas/access-governance/pdapg/index.html)
-* [Oracle Access Governance Product Page](https://www.oracle.com/security/cloud-security/access-governance/)
-* [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
-* [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
+* [Oracle Universal Authenticator Product Documentation](https://docs.oracle.com/en/middleware/idm/universal-authenticator/)
+
+* [Oracle Universal Authenticator System Architecture](https://docs.oracle.com/en/middleware/idm/universal-authenticator/ouaad/system-architecture-and-components.html)
 
 ## Acknowledgments
 

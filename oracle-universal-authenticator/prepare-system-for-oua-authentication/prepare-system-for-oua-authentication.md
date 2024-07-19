@@ -1,4 +1,4 @@
-# Prepare your system for seamless authentication with OUA
+# Prepare your system for Oracle Universal Authenticator
 
 ## Introduction
 
@@ -8,16 +8,14 @@ OUA has two software components: a client deployed on the user's devices, such a
 
 The server component, along with OAA/OARM and OAM, is already installed and configured as part of the stack deployment in Lab 1. Therefore, this lab focuses on installing and configuring the client machine along with the required components.
 
-* Estimated Time: 60 minutes
+* Estimated Time: 120 minutes
 * Persona: End-User
 
 ## Objectives
 
 In this lab, you will:
 
-* Deploy VirtualBox Demo Windows Image for OUA
-
-* Deploy Nox Android Emulator with OMA
+* Configure Nox Android Emulator with OMA
 
 * Join Demo Windows Image to Entra ID Domain
 
@@ -29,88 +27,98 @@ In this lab, you will:
 
 This lab assumes you have:
 
-* You have a Windows 10 computer with the latest version of VirtualBox installed and at least 100GB of free disk space, 32 GB of RAM and 4 cores in order to deploy the VM Demo Windows Image.
+* You have a **Windows 10 computer** with Internet connectivity and the latest version of VirtualBox installed with at least 100GB of free disk space, 32 GB of RAM and 4 cores in order to deploy the VM Demo Windows Image.
 
-* You have administrative access to a Microsoft Entra ID domain in order to create Entra ID users.
+* You have installed [7-Zip](https://www.7-zip.org/) utility in your Windows host machine.
+
+* You have a **Windows 11 virtual image** running as a VM inside VirtualBox.
+
+* You have administrative access to a **Microsoft Entra ID domain** in order to create Entra ID users.
+
+* You have downloaded **Nox Android Emulator** in your host Windows computer.
+  This is required in order to perform the passwordless authentication use case which requires OMA push notifications.
+
+  You can download the Nox emulator with support for Android 7 (e.g. V7.0.3.9) from here : [Nox Android Emulator](https://support.bignox.com/en/win-release)
 
 * Optionally, you have administrative access to a Microsoft Office 365 subscription in order to assign Office 365 licenses to Entra ID users.
 
-* You must deploy the Nox Android Emulator with OMA in order to perform the passwordless authentication use case which requires OMA push notifications.
+  ***Note*** :The deployment of VirtualBox and Nox Android Emulator was tested on a Windows 10 machine. Although, you can use a Mac computer to deploy those components, the instructions in this document only apply to Windows OS.
 
-  *Note:* The deployment of Virtual and Nox Android Emulator were tested on a Windows 10 machine. Although, you can use a Mac computer to deploy those components, the instructions in this document only apply to Windows OS.
+## Task 1: Configuring Nox Android Emulator for OMA
 
-## Task 1: Deploy VirtualBox Demo Windows Image for OUA
-
-1. Download the VirtualBox Demo Window Image in your Windows computer. Do so by opening a PowerShell command window as administrator.
-
-    ```
-    <copy>
-    wget -Outfile demo-oua-win11.ova https://objectstorage.us-ashburn-1.oraclecloud.com/p/JTOVmxD0o83oc6kTfGXaJhyfj2dnAQ_95EGdom3CwK9AHZt1hxsKJ5LogXvBPsIR/n/orasenatdpltsecitom05/b/so92-bucket/o/demo-oua-win11.ova
-    </copy>
-    ```
-
-    *Note:* Depending on your internet speed, the download can take 60 minutes or more.
-
-2. Once downloaded, start VirtualBox and from the menu, select File -> Import Appliance.
-
-3. Select image demo-oua-win11.ova, click Next and then accept the default values or made changes as needed to the memory and CPU cores assigned to the new VM.
-
-4. Click Finish to start the import process.
-
-5. Once the the VM is imported. Check the VM networking settings: select the VM, from the menu click on Settings -> Network -> Adapter 1. Make sure the Bridge adapter is linked to your existing network interface or wireless connection and save the changes.
-
-6. Start the imported VM. Login to Window 11 as administrator using the administrator credentials.
-
-    Windows User
+1. Nox Player use adware, so a way to prevent this from happening, add below firewall rules.
+E.g. in your Windows taskbar, click on Start icon and type cmd.exe, make sure to select Run as administrator. Then, in the command window run the following commands:
 
     ```
-    <copy>
-    admin
-    </copy>
+      <copy>
+      netsh advfirewall firewall add rule name="Nox Block In" dir=in action=block remoteip=220.181.0.0-220.181.255.255,183.128.0.0-183.143.255.255,182.92.0.0-182.92.255.255,101.200.0.0-101.201.255.255,211.151.0.0-211.151.255.255,198.11.128.0-198.11.191.255,124.160.0.0-124.160.255.255,140.205.0.0-140.205.255.255,110.173.192.0-110.173.223.255,121.52.224.0-121.52.255.255,178.162.216.0-178.162.219.255
+
+      netsh advfirewall firewall add rule name="Nox Block Out" dir=out action=block remoteip=220.181.0.0-220.181.255.255,183.128.0.0-183.143.255.255,182.92.0.0-182.92.255.255,101.200.0.0-101.201.255.255,211.151.0.0-211.151.255.255,198.11.128.0-198.11.191.255,124.160.0.0-124.160.255.255,140.205.0.0-140.205.255.255,110.173.192.0-110.173.223.255,121.52.224.0-121.52.255.255,178.162.216.0-178.162.219.255
+      </copy>
     ```
 
-    Password
+    Type exit to close cmd.exe
+
+2. Proceed to unpack the zip file.
+E.g. unpacking the zip file will result in the following files:
 
     ```
-    <copy>
-    #demOr@cle6699
-    </copy>
+    nox_setup_v7.0.3.9_full_intl.exe
+    EBSAppsAndroid7.npbk
     ```
 
-## Task 2: Deploy Nox Android Emulator with OMA [CHECK IT : OPTIONAL/INCOMPLETE FOR NOW]
+3. Use the 7-Zip utility to unpack file nox\_setup\_v7.0.3.9\_full\_intl.exe in your computer. This will create a folder nox\_setup\_v7.0.3.9\_full\_intl`.
 
-1. Download the Nox Android Emulator and Image in your Windows computer. Do so by opening a PowerShell command window as administrator. Enter the below command :
+4. Go to bin sub-folder and run MultiPlayerManager.exe or Nox Asst
+
+5. Click on Multi-Drive Manager icon located in the left panel. Then click on Add Emulator button and select android 7 64-bit.
+
+6. Once the installation completes, click in the Import button. Select file EBSAppsAndroid7.npbk and click Open to import the file.
+
+7. Once the import completes, a new image name EBSAppsAndroid7 is added. Check this image and click on System settings (gear icon). Make sure to select 540x960 under Resolution setting. Click Save settings.
+
+8. Click on More (3-dots icon) and select Create shortcut. This will add a shortcut to your Windows desktop to directly start the the image with the emulator.Proceed to exit Nox Asst by closing the window.
+
+9. From your Windows desktop click in the shortcut EBSAppsAndroid7 to start the emulator with the Android 7 image.
+
+10. Once the Android emulator is started, within Android click File Manager (folder icon). In File Manager, click in the Hamburger icon and select /Root. Click on etc folder, then scroll down and click on hosts file, and select Open as text.
+  In the Open with... window, click on JUST ONCE. Proceed to enter or paste the hosts entries for OUA server.
+  E.g. add or copy the following entries:
 
     ```
-    <copy>
-    #demOr@cle6699
-    </copy>
+      <PUBLIC_IP>    so92-srv1.oracledemo.com iamdb.oracledemo.com oud.oracledemo.com oam.oracledemo.com aso.oracledemo.com oaa.oracledemo.com ora.oracledemo.com oim.oracledemo.com mail.oracledemo.com
+      <PUBLIC_IP>    oiri.oracledemo.com grafana.oracledemo.com prometheus.oracledemo.com oap.oracledemo.com oudsm.oracledemo.com ade.oracledemo.com demodb.oracledemo.com
     ```
 
-## Task 3: Join Demo Windows Image to Entra ID Domain
+    Note: PUBLIC_IP is the public IP address of the compute instance noted in **Lab 3 -> Task 1**. In Windows, you need to split the hostname entries in two lines due to a length limitation.
 
-1. Once in Windows 11 as administrator, proceed to join your Windows 11 device to an existing Entra ID domain.
+    Click on the Save icon, then close File Explorer (click in the Task icon, located at the bottom of the black bar right to the emulator window). This will minimize the File Explorer window, you can close it by clicking in the X icon.
+    Within Android, click in the Oracle Mobile Authenticator (OMA) application (lock icon). You will need OMA later (use case 4) to register OUA demo users.
 
-    *Note:* If you do not have an existing Entra ID user account, create a new user using Entra ID administrative console.
+## Task 2: Join Demo Windows Image to Entra ID Domain
 
-2. From Window 11 desktop, type settings in the search box located in the taskbar. Open Settings -> Accounts -> Access work or school.
+1. Access the Windows 11 guest VM as administrator, proceed to join your Windows 11 VM to an existing Entra ID domain.
 
-3. Click in the Connect button. In the Set up access work or school account window, clink in the link Join this device to Microsoft Entra ID.
+    ***Note :*** This step presumes you have an Entra ID user account, if not, create a new user using Entra ID administrative console and come back to perform this step.
 
-4. Provide the Entra ID user credentials.
+2. From Window 11 VM, type **settings** in the search box located in the taskbar. **Open Settings -> Accounts -> Access work or school**. Click **Connect**
+
+3. In the Set up access work or school account window, clink on the link **Join this device to Microsoft Entra ID**
+
+4. Provide the Entra ID user credentials (as mentioned in Task 1).
 
     ```
     Entra ID User : <UPN>
     Entra ID User Password  : <user_password>
     ```
 
-5. In the confirmation window, click Join and then click Done.
+5. In the confirmation window, click **Join** and then click **Done**
 
-6. Logout from Windows 11. Proceed to complete the registration by login back again this time using the Entra ID user (select Other user in the Windows login page).
+6. Logout from Windows 11 guest VM. Proceed to complete the registration by logging back this time using the Entra ID user (select **Other user** in the Windows login page).
 
-7. As you login for the first time with an Entra ID user, you will be required to setup a second factor (E.g. using Microsoft Authenticator) and define a PIN for security reasons.
+7. As you login for the first time with the Entra ID user, you will be required to setup a second factor (E.g. using Microsoft Authenticator) and define a PIN for security reasons.
 
-## Task 4: Installing and Configuring OUA
+## Task 3: Installing and Configuring OUA
 
 1. Login to Window 11 as administrator using the administrator credentials as specified below :
 
@@ -128,11 +136,13 @@ This lab assumes you have:
     </copy>
     ```
 
-2. Add the following entries in the hosts file.
+2. Once in the Windows guest VM, type **Notepad++** in the search box located in the taskbar. Open the Notepad++ tool (already installed) to edit the Windows hosts file.
 
-   *Note :* The file location is ***C:\Windows\System32\drivers\etc\hosts***
+  E.g. using Notepad++, edit the following file:
 
-   *Note :* Replace ***PUBLIC_IP*** with the IP of the OUA compute instance noted from the OCI console
+  **C:\Windows\System32\drivers\etc\hosts**
+
+   ***Note :*** Replace **PUBLIC_IP** with the IP of the compute instance noted in **Lab 3 -> Task 1**
 
     ```
     <copy>
@@ -141,7 +151,12 @@ This lab assumes you have:
     </copy>
     ```
 
-3. Proceed to install OUA. Open Windows Explorer and go to folder C:\Temp\V1042569-01. Right-click on file Oracle Universal Authenticator.msi an select Run as Administrator.
+3. Proceed to install OUA by downloading the Oracle\_Universal\_Authenticator_<version>.zip from Oracle Software Delivery Cloud.
+
+  Alternatively, it can be downloaded from the location referenced in document ID 2723908.1 on My Oracle Support.
+  Extract the zip file to a working directory **WORKDIR (e.g. C:\Temp\V1043799-01)** on the installation host. The Oracle Universal Authenticator.msi will be extracted.
+
+  Right-click on zip file **Oracle Universal Authenticator.msi** and select **Run as Administrator**
 
 4. During install, enter the following parameter values :
 
@@ -175,11 +190,11 @@ This lab assumes you have:
     <copy>drssapikeytobesetduringinstallation</copy>
     ```
 
-5. Once the installation completes, click Finish but choose No to not reboot the computer.
+5. Once the installation completes, click **Finish** but choose **No** to not reboot the computer.
 
-6. From Window 11 desktop, type regedit in the search box located in the taskbar. Open Registry Editor.
+6. From Window 11 guest VM, type **regedit** in the search box located in the taskbar. Open Registry Editor.
 
-7. Within Registry Editor, expand Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\Oracle Universal Authenticator and update the parameters as below :
+7. Within Registry Editor, expand **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\Oracle Universal Authenticator** and update the parameters as below :
 
     host
 
@@ -199,55 +214,57 @@ This lab assumes you have:
 
     ```
     <copy>
-    cd C:\Temp\V1042569-01
-    powershell.exe -ExecutionPolicy Bypass "C:\Temp\V1042569-01\AddCertificate.ps1"
+    cd C:\Temp\V1043799-01
+    powershell.exe -ExecutionPolicy Bypass "C:\Temp\V1043799-01\AddCertificate.ps1"
     </copy>
     ```
 
-  *Note :* Kindly ignore the error with source already registered.
+  ***Note :*** Kindly ignore the error with source already registered.
 
 10. Type exit to close cmd.exe. Proceed to reboot the Windows computer.
 
-## Task 5: Creating OAM User and Registering OUA User Preferences
+## Task 4: Creating OAM User and Registering OUA User Preferences
 
-1. OUA users must be created in the OAM directory, e.g. OUD. We will use Oracle Directory Services Manager (ODSM) console to create a new OAM user and added to the OAA-App-User users group.
+1. OUA users must be created in the OAM directory, e.g. OUD. We will use Oracle Directory Services Manager (ODSM) console to create a new OAM user and add it to the **OAA-App-User** users group.
 
-   Using a text editor, modify the following LDIF file and update the attributes corresponding to the new user: dn, givenName, uid, sn, mail, orclSAMAccountName and cn. Update dn and uniquemember for the group membership.
+    ***Note :*** These steps will be performed using the host Windows machine.
 
-    ```
-    <copy>
-    dn: cn=pwalker,cn=users,ou=iam,dc=oracledemo,dc=com
-    changetype: add
-    objectClass: orclUserV2
-    objectClass: oblixorgperson
-    objectClass: person
-    objectClass: inetOrgPerson
-    objectClass: organizationalPerson
-    objectClass: oblixPersonPwdPolicy
-    objectClass: orclAppIDUser
-    objectClass: orclUser
-    objectClass: orclIDXPerson
-    objectClass: top
-    objectClass: OIMPersonPwdPolicy
-    givenName: Paul
-    uid: pwalker
-    orclIsEnabled: ENABLED
-    sn: Walker
-    userPassword: Oracle123
-    mail: pwalker@oracledemo.com
-    orclSAMAccountName: pwalker
-    cn: pwalker
-    postalcode: DemoAppUsrOua
-    obpasswordchangeflag: false
-    obpsftid: true
-    ds-pwp-password-policy-dn: cn=FAPolicy,cn=pwdPolicies,cn=Common,cn=Products,cn=OracleContext,ou=iam,dc=oracledemo,dc=com
+    Using a text editor, modify the following LDIF file and update the attributes corresponding to the new user: **dn, givenName, uid, sn, mail, orclSAMAccountName and cn**. Update **dn** and **uniquemember** for the group membership.
 
-    dn: cn=OAA-App-User,cn=groups,ou=iam,dc=oracledemo,dc=com
-    changetype: modify
-    add: uniquemember
-    uniquemember: cn=pwalker,cn=users,ou=iam,dc=oracledemo,dc=com
-    </copy>
-    ```
+      ```
+      <copy>
+      dn: cn=pwalker,cn=users,ou=iam,dc=oracledemo,dc=com
+      changetype: add
+      objectClass: orclUserV2
+      objectClass: oblixorgperson
+      objectClass: person
+      objectClass: inetOrgPerson
+      objectClass: organizationalPerson
+      objectClass: oblixPersonPwdPolicy
+      objectClass: orclAppIDUser
+      objectClass: orclUser
+      objectClass: orclIDXPerson
+      objectClass: top
+      objectClass: OIMPersonPwdPolicy
+      givenName: Paul
+      uid: pwalker
+      orclIsEnabled: ENABLED
+      sn: Walker
+      userPassword: Oracle123
+      mail: pwalker@oracledemo.com
+      orclSAMAccountName: pwalker
+      cn: pwalker
+      postalcode: DemoAppUsrOua
+      obpasswordchangeflag: false
+      obpsftid: true
+      ds-pwp-password-policy-dn: cn=FAPolicy,cn=pwdPolicies,cn=Common,cn=Products,cn=OracleContext,ou=iam,dc=oracledemo,dc=com
+
+      dn: cn=OAA-App-User,cn=groups,ou=iam,dc=oracledemo,dc=com
+      changetype: modify
+      add: uniquemember
+      uniquemember: cn=pwalker,cn=users,ou=iam,dc=oracledemo,dc=com
+      </copy>
+      ```
 
 2. Login to ODSM console using the below URL and import the LDIF file.
 
@@ -269,11 +286,11 @@ This lab assumes you have:
     <copy>Oracle123</copy>
     ```
 
-3. Within ODSM, click on Data Browser tab. In the Data Tree tab, click the Import LDIF icon (blue arrow pointing down). Select the LDIF file edited in the previous steps and click OK.
+3. Within ODSM, click on **Data Browser** tab. Under **Data Tree**, click the Import LDIF icon (blue arrow pointing down). Select the LDIF file edited in the previous steps and click OK.
 
-4. Once the import is completed, expand Root -> dc=oracledemo,dc=com -> ou=iam -> cn=users, and make sure the new user is listed.
+4. Once the import is completed, expand **Root -> dc=oracledemo,dc=com -> ou=iam -> cn=users**, and make sure the new user is listed.
 
-5. Now, expand Root -> dc=oracledemo,dc=com -> ou=iam -> cn=groups. Select group cn=OAA-App-User. In the right panel expand Member Information, and make sure the new user is listed. Proceed to exit ODSM.
+5. Now, expand **Root -> dc=oracledemo,dc=com -> ou=iam -> cn=groups**. Select group **cn=OAA-App-User**. In the right panel expand Member Information, and make sure the new user is listed. Proceed to exit ODSM.
 
 6. Register the OUA user preferences, do so by running the corresponding REST API endpoint to assign the factors.
 
@@ -334,7 +351,7 @@ This lab assumes you have:
 
 8. Register the TOTP key (omatotpsecretkey) with Oracle Mobile Authenticator (OMA). Use the following instructions:
 
-    * Open OMA in your Android emulator or mobile device
+    * Open OMA on your mobile device
 
     * If this is the first time accessing OMA, click on Add Account, otherwise tap the plus (+) icon at the bottom of the screen
 
@@ -366,10 +383,9 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-* [Oracle Access Governance Create Access Review Campaign](https://docs.oracle.com/en/cloud/paas/access-governance/pdapg/index.html)
-* [Oracle Access Governance Product Page](https://www.oracle.com/security/cloud-security/access-governance/)
-* [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
-* [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
+* [Oracle Universal Authenticator Product Documentation](https://docs.oracle.com/en/middleware/idm/universal-authenticator/)
+
+* [Oracle Universal Authenticator System Architecture](https://docs.oracle.com/en/middleware/idm/universal-authenticator/ouaad/system-architecture-and-components.html)
 
 ## Acknowledgments
 

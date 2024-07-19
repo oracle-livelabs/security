@@ -7,7 +7,6 @@ Oracle Advanced Authentication (OAA) is a standalone micro-service that supports
 OAA provides strong authentication using Multiple Authentication Factors (MFA). A wide range of authentication (challenge) factors are available out-of-the-box for establishing the identity of users.
 
 It supports integration with Oracle Access Management (OAM) and Oracle RADIUS Agent (ORA) to provide MFA capabilities.
-
 It also can be used with Oracle Universal Authenticator for device authentication with MFA.
 
 * Estimated Time: 30 minutes
@@ -17,9 +16,9 @@ It also can be used with Oracle Universal Authenticator for device authenticatio
 
 In this lab, you will:
 
-* Access the sample web application using multi factor authentication
+* Access the sample web application using OAA
 
-  *Note:* All the demo users and apps have been pre-seeded to perform the use-cases
+  ***Note:*** All the demo users and apps have been pre-seeded to perform the use-cases
 
 ## Prerequisites
 
@@ -66,12 +65,13 @@ This lab assumes you have:
 1. Login to the OCI console Identity Domain: Choose the right domain and login as the **Identity Domain Administrator**
 
 2. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Under Compute, Click Instances. Select the correct compartment to display the compute instance that was deployed as part of **Lab2**.
+Note the public IP of the compute VM.
 
-3. Add the following entries in your computer's hosts file.
+3. Open a text editor in your computer in the **Administrator mode** to add following entries in the hosts file.
 
-   *Note :* In case of Windows, the location is ***C:\Windows\System32\drivers\etc\hosts***. In case of Mac, the location is ***\etc\hosts***.
-
-   *Note :* Replace <PUBLIC_IP> with the IP of the OUA compute instance from the OCI console.
+   ***Note :*** In case of Windows, the location is **C:\Windows\System32\drivers\etc\hosts**. In case of Mac, the location is **\etc\hosts**.
+  
+   ***Note :*** Replace **PUBLIC_IP** with the IP of compute instance noted in previous step.
 
     ```
     <copy>
@@ -80,10 +80,11 @@ This lab assumes you have:
     </copy>
     ```
 
-## Task 2: Authenticate into sample web app using email otp
+## Task 2: Authenticate into sample web app using Email OTP
 
 1. Open your preferred browser. Access the **Email Client** using below details. This would be used to receive OTPs :
-   *Note :* You might notice a certificate related warning saying 'Your connection is not private'. This happens because the demo environment uses self-signed certificates. You can click 'Advanced' and 'Proceed to mail.oracledemo.com'.
+
+   ***Note :*** You might notice a certificate related warning saying 'Your connection is not private'. You can click **Advanced** and **Proceed to mail.oracledemo.com**.
 
   Mailu Email Console:
     ```
@@ -130,7 +131,7 @@ This lab assumes you have:
     Oracle123
     </copy>
     ```
-3. Click on the link below 'Email Challenge' to receive email OTP as the second factor :
+3. Click on the link below **Email Challenge** to receive email OTP as the second factor :
 
    ![Select email as MFA factor](images/mfa-email-factor-selection.png)
 
@@ -142,17 +143,17 @@ This lab assumes you have:
 
 6. You should be redirected to the sample app landing page after successful authentication
 
-*Note :* At this point, you should sign out from the application as you would be authenticating again with a different MFA factor.
+***Note :*** At this point, you should sign out from the application and close the browser tab as you would be authenticating again with a different MFA factor.
 
-## Task 3: Authenticate into sample web app using otp from OMA app
+## Task 3: Authenticate into sample web app using OTP from OMA app
 
-1. In a new browser window, access the sample web app as described in Task 2: Step 2
+1. In a new browser window, access the sample web app as described in **Task 2: Step 2**
 
-2. Click on the link below 'Oracle Mobile Authenticator' to receive OTP on your mobile app
+2. Click on the link below **Oracle Mobile Authenticator**
 
    ![Select OMA as MFA factor](images/mfa-oma-factor-selection.png)
 
-3. Provide the OTP in the login flow. Click Verify
+3. Open OMA app in yur phone and note the OTP for account **Demo User1**. Provide the OTP in the login flow and Click Verify
 
    ![Provide email OTP](images/mfa-oma-otp.png)
 
