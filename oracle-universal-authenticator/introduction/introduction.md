@@ -10,13 +10,13 @@ Oracle Universal Authenticator provides phishing-resistant MFA and passwordless 
 
 Key Features:
 
-* Trusted Device Login with SSO: Secure access to all entitled applications from trusted devices.
+* Trusted Device Login with SSO: Secure access to all entitled applications from trusted devices
 
-* Diverse Authentication Methods: Includes MFA, passwordless, adaptive, and mobile authentication for devices and applications.
+* Diverse Authentication Methods: Includes MFA, passwordless, adaptive, and mobile authentication for devices and applications
 
-* Central Self-Service Management: Offers options for self-service authentication factors.
+* Central Self-Service Management: Offers options for self-service authentication factors
 
-* Centralized Administration: Extends OAA Admin console for granular rule management for step-up authentications.
+* Centralized Administration: Extends OAA Admin console for granular rule management for step-up authentications
 
  The graphic below shows the high level architectural flow of Oracle Universal Authenticator.
 
@@ -24,7 +24,7 @@ Key Features:
 
 This workshop walks you through the steps to demonstrate and experience the seamless, flexible and secure authentication flow using **Oracle Universal Authenticator** in combination with **Oracle Advanced Authentication**. In this workshop, a fictitious corporation is using **Oracle IAM solution** to streamline and secure the authentication posture for their applications. As part of their cloud strategy, they want to defend against evolving threats while ensuring a seamless user access experience from various devices. Overall, Oracle Universal Authenticator addresses the evolving security challenges faced by businesses in the digital age, offering a practical solution for ensuring security and usability across various endpoints and applications.
 
-*Estimated Time:* 3 Hours
+*Estimated Time:* 4 Hours
 
 ### Objectives
 
@@ -40,7 +40,7 @@ In this workshop, you will learn how to:
 
 This lab assumes you have:
 
-* A tenancy where you have administrative access
+* An Oracle Cloud account where you have administrative access
 
 ## Learn More
 
@@ -48,8 +48,10 @@ This lab assumes you have:
 
 * [Oracle Universal Authenticator System Architecture](https://docs.oracle.com/en/middleware/idm/universal-authenticator/ouaad/system-architecture-and-components.html)
 
+* [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
+
 ## Acknowledgments
 
-* **Authors** - Anuj Tripathi
+* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi, North America Platform Specialist, July 2024
+* **Last Updated By/Date** - Anuj Tripathi

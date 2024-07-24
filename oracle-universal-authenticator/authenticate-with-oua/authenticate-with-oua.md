@@ -1,4 +1,4 @@
-# Create  OCI Policies, VCN, Groups and Compartments
+# Authenticate with Oracle Universal Authenticator
 
 ## Introduction
 
@@ -25,9 +25,9 @@ In this lab, you will:
 
 ## Prerequisites
 
-This lab assumes you have:
+This lab assumes you have completed the previous lab and:
 
-* Joined demo Windows Image to an Entra ID Domain
+* Joined Windows virtual machine to an Entra ID Domain
 
 * Installed and Configured OUA
 
@@ -62,7 +62,7 @@ This lab assumes you have:
 
   Then use OMA from your mobile device to get the OTP code, enter the code and press the Enter key to login.
 
-  *Note :* Entering the OAM and Entra ID user credentials is only required the first time to link the OAM and Entra ID user accounts as well as to store the credentials, subsequent logins will only require the OAM user credential and any configured 2nd factor.
+  ***Note :*** Entering the OAM and Entra ID user credentials is only required the first time to link the OAM and Entra ID user accounts as well as to store the credentials, subsequent logins will only require the OAM user credential and any configured 2nd factor.
 
 2. Once logged in to Windows guest desktop, confirm that the logged in user is in fact an Entra ID user. Click on the Windows icon (located in the left of the search box in the taskbar) to see the user name.
 
@@ -185,8 +185,10 @@ This lab assumes you have:
 
 * [Oracle Universal Authenticator System Architecture](https://docs.oracle.com/en/middleware/idm/universal-authenticator/ouaad/system-architecture-and-components.html)
 
+* [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
+
 ## Acknowledgments
 
-* **Authors** - Anuj Tripathi
+* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi, North America Platform Specialist, June 2024
+* **Last Updated By/Date** - Anuj Tripathi

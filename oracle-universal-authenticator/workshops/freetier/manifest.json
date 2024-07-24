@@ -13,14 +13,14 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Prepare Setup",
-            "description": "How to download the ORM stack and update security rules for an existing VCN",
-            "filename": "../../prepare-setup/prepare-setup.md"
+            "title": "Lab 1: Prepare environment",
+            "description": "How to download and apply the ORM stack to deploy the environment",
+            "filename": "../../prepare-environment/prepare-env.md"
         },
         {
-            "title": "Lab 2: Environment Setup",
-            "description": "How to provision the workshop environment and connect to it",
-            "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
+            "title": "Lab 2: Start the environment",
+            "description": "How to download the ORM stack and update security rules for an existing VCN",
+            "filename": "../../start-the-environment/start-the-environment.md"
         },
         {
             "title": "Lab 3: Authenticate using Oracle Advanced Authentication",
@@ -30,7 +30,7 @@
         {
             "title": "Lab 4: Prepare your system for authentication using OUA",
             "description": "How to authenticate with MFA using OAA",
-            "filename": "../../prepare-system-for-oua-authentication/prepare-system-for-oua-authentication.md"
+            "filename": "../../prepare-for-oua/prepare-for-oua.md"
         },
         {
             "title": "Lab 5: Authenticate into Windows Device, web app and desktop app using OUA",
@@ -38,7 +38,7 @@
             "filename": "../../authenticate-with-oua/authenticate-with-oua.md"
         },
         {
-            "title": "Lab 6: Cleanup the Environment",
+            "title": "Lab 6: Cleanup the environment",
             "description": "How to clean up resources deployed as part of the lab",
             "filename": "../../cleanup-environment/cleanup-env.md"
         },

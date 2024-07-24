@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Oracle Universal Authenticator (OUA) is a unified authentication solution that provides device authentication and cross-platform single sign-on (SSO) to web-based applications. Users login to their devices using their Oracle Access Management (OAM) credentials with step-up Multi-Factor Authentication (MFA), or alternatively using passwordless login. Users can then access protected applications without the need to enter their single sign-on credentials again.
+  Oracle Universal Authenticator is a unified authentication solution that provides device authentication and cross-platform single-sign on (SSO) to web-based and desktop applications.
 
-OUA has two software components: a client deployed on the user's devices, such as a desktop computer running Microsoft Windows, and a server component based on a microservices architecture that provides administration, self-service, device runtime support, device platform security, and identity provider gateway services.
+  The Oracle Universal Authenticator hands-on lab requires users to have their own Microsoft Windows 10 or Windows 11 licenses. Users also need to have a Microsoft Entra ID subscription and the appropriate user accounts to join the Windows machines to the Entra ID domain. Additionally, an Android emulator, such as Nox Android Emulator, is required to test push notifications. These software and subscriptions are non-Oracle products and must be acquired independently by the lab participants. Please refer to Prerequisites section for more details.
 
-The server component, along with OAA/OARM and OAM, is already installed and configured as part of the stack deployment in Lab 1. Therefore, this lab focuses on installing and configuring the client machine along with the required components.
+  This lab focuses setting and configuring the softwares and the components required to perform device based authentication, along with SSO to web and desktop applications.
 
 * Estimated Time: 120 minutes
 * Persona: End-User
@@ -27,27 +27,26 @@ In this lab, you will:
 
 This lab assumes you have:
 
-* You have a **Windows 10 computer** with Internet connectivity and the latest version of VirtualBox installed with at least 100GB of free disk space, 32 GB of RAM and 4 cores in order to deploy the VM Demo Windows Image.
+* You have a **Windows 10 computer** with Internet connectivity and the latest version of VirtualBox installed with at least 100GB of free disk space, 32 GB of RAM and 4 cores in order to deploy the VM Demo Windows Image
 
-* You have installed [7-Zip](https://www.7-zip.org/) utility in your Windows host machine.
+* You have installed [7-Zip](https://www.7-zip.org/) utility in your Windows host machine
 
-* You have a **Windows 11 virtual image** running as a VM inside VirtualBox.
+* You have a **Windows 10/11 virtual image** running as a VM inside VirtualBox
 
-* You have administrative access to a **Microsoft Entra ID domain** in order to create Entra ID users.
-
-* You have downloaded **Nox Android Emulator** in your host Windows computer.
-  This is required in order to perform the passwordless authentication use case which requires OMA push notifications.
-
-  You can download the Nox emulator with support for Android 7 (e.g. V7.0.3.9) from here : [Nox Android Emulator](https://support.bignox.com/en/win-release)
+* You have administrative access to a **Microsoft Entra ID domain** in order to create Entra ID users
 
 * Optionally, you have administrative access to a Microsoft Office 365 subscription in order to assign Office 365 licenses to Entra ID users.
 
-  ***Note*** :The deployment of VirtualBox and Nox Android Emulator was tested on a Windows 10 machine. Although, you can use a Mac computer to deploy those components, the instructions in this document only apply to Windows OS.
+  ***Note*** :The deployment of VirtualBox and other components was tested on a Windows 10 machine. Although, you can use a Mac computer to deploy those components, the instructions in this document only apply to Windows OS
 
-## Task 1: Configuring Nox Android Emulator for OMA
+## Task 1: Download and Configure Nox Android Emulator for OMA
 
-1. Nox Player use adware, so a way to prevent this from happening, add below firewall rules.
-E.g. in your Windows taskbar, click on Start icon and type cmd.exe, make sure to select Run as administrator. Then, in the command window run the following commands:
+1. Download [Nox Android Emulator](https://support.bignox.com/en/win-release) in your host Windows computer.
+   You can download the one with support for Android 7 (e.g. V7.0.3.9)
+   ***Note :*** This is required in order to perform the passwordless authentication use case which requires OMA push notifications.
+
+2. Nox Player use adware, so a way to prevent this from happening, add below firewall rules
+   In your Windows taskbar, click on Start icon and type cmd.exe, make sure to select Run as administrator. Then, in the command window run the following commands:
 
     ```
       <copy>
@@ -59,29 +58,19 @@ E.g. in your Windows taskbar, click on Start icon and type cmd.exe, make sure to
 
     Type exit to close cmd.exe
 
-2. Proceed to unpack the zip file.
-E.g. unpacking the zip file will result in the following files:
-
-    ```
-    nox_setup_v7.0.3.9_full_intl.exe
-    EBSAppsAndroid7.npbk
-    ```
-
-3. Use the 7-Zip utility to unpack file nox\_setup\_v7.0.3.9\_full\_intl.exe in your computer. This will create a folder nox\_setup\_v7.0.3.9\_full\_intl`.
+3. Use the 7-Zip utility to unpack the file nox\_setup\_v7.0.3.9\_full\_intl.exe in your computer. This will create a folder nox\_setup\_v7.0.3.9\_full\_intl
 
 4. Go to bin sub-folder and run MultiPlayerManager.exe or Nox Asst
 
-5. Click on Multi-Drive Manager icon located in the left panel. Then click on Add Emulator button and select android 7 64-bit.
+5. Click on Multi-Drive Manager icon located in the left panel. Then click on Add Emulator button and select android 7 64-bit
 
-6. Once the installation completes, click in the Import button. Select file EBSAppsAndroid7.npbk and click Open to import the file.
+6. Check this image and click on System settings (gear icon). Make sure to select 540x960 under Resolution setting. Click Save settings, OK.
 
-7. Once the import completes, a new image name EBSAppsAndroid7 is added. Check this image and click on System settings (gear icon). Make sure to select 540x960 under Resolution setting. Click Save settings.
+7. Click on More (3-dots icon) and select Create shortcut. This will add a shortcut to your Windows desktop to directly start the the image with the emulator. Proceed to exit Nox Asst by closing the window.
 
-8. Click on More (3-dots icon) and select Create shortcut. This will add a shortcut to your Windows desktop to directly start the the image with the emulator.Proceed to exit Nox Asst by closing the window.
+8. From your Windows desktop click in the shortcut NoxPlayer to start the emulator with the Android 7 image. Once the emulator is started, using the Google Play Store to install 'Oracle Mobile Authenticator' and 'Google Chrome' mobile apps
 
-9. From your Windows desktop click in the shortcut EBSAppsAndroid7 to start the emulator with the Android 7 image.
-
-10. Once the Android emulator is started, within Android click File Manager (folder icon). In File Manager, click in the Hamburger icon and select /Root. Click on etc folder, then scroll down and click on hosts file, and select Open as text.
+9. From the android emulator, click File Manager (folder icon). In File Manager, click in the Hamburger icon and select /Root. Click on etc folder, then scroll down and click on hosts file, and select Open as text.
   In the Open with... window, click on JUST ONCE. Proceed to enter or paste the hosts entries for OUA server.
   E.g. add or copy the following entries:
 
@@ -90,9 +79,9 @@ E.g. unpacking the zip file will result in the following files:
       <PUBLIC_IP>    oiri.oracledemo.com grafana.oracledemo.com prometheus.oracledemo.com oap.oracledemo.com oudsm.oracledemo.com ade.oracledemo.com demodb.oracledemo.com
     ```
 
-    Note: PUBLIC_IP is the public IP address of the compute instance noted in **Lab 3 -> Task 1**. In Windows, you need to split the hostname entries in two lines due to a length limitation.
+    Note: PUBLIC_IP is the public IP address of the compute instance noted in **Lab 2 -> Task 1**. In Windows, you need to split the hostname entries in two lines due to a length limitation.
 
-    Click on the Save icon, then close File Explorer (click in the Task icon, located at the bottom of the black bar right to the emulator window). This will minimize the File Explorer window, you can close it by clicking in the X icon.
+    Click on the Save icon, then close File Explorer (click in the Task icon, located at the bottom of the black bar right to the emulator window). This will minimize the File Explorer window, you can close it by clicking the X icon.
     Within Android, click in the Oracle Mobile Authenticator (OMA) application (lock icon). You will need OMA later (use case 4) to register OUA demo users.
 
 ## Task 2: Join Demo Windows Image to Entra ID Domain
@@ -142,7 +131,7 @@ E.g. unpacking the zip file will result in the following files:
 
   **C:\Windows\System32\drivers\etc\hosts**
 
-   ***Note :*** Replace **PUBLIC_IP** with the IP of the compute instance noted in **Lab 3 -> Task 1**
+   ***Note :*** Replace **PUBLIC_IP** with the IP of the compute instance noted in **Lab 2 -> Task 1**
 
     ```
     <copy>
@@ -387,8 +376,10 @@ You may now **proceed to the next lab**.
 
 * [Oracle Universal Authenticator System Architecture](https://docs.oracle.com/en/middleware/idm/universal-authenticator/ouaad/system-architecture-and-components.html)
 
+* [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
+
 ## Acknowledgments
 
-* **Authors** - Anuj Tripathi
+* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi, North America Platform Specialist, June 2024
+* **Last Updated By/Date** - Anuj Tripathi

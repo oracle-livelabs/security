@@ -10,18 +10,20 @@ Upon completing your labs, we recommend that you perform a cleanup to dispose th
 
 In this lab, you will:
 
-* Destroy the Stack that was deployed in lab 2
+* Destroy the Stack that was deployed in **Lab 1**
 * Uninstall softwares
 
 ## Task 1: Run the Destroy Job
 
 1. Navigate to **Resource Manager -> Stacks -> Stack details**
 
-    ![Open OCI console](images/destroy-job.png)
+     ![Open OCI console](images/destroy-job.png)
 
 2. Click on **Destroy** job.
 
-3. Proceed to uninstall VirtualBox, Windows VM, and Android Emulator
+## Task 2: Uninstall VirtualBox, Windows 10/11 VM, and Android Emulator
+
+1. Proceed to uninstall VirtualBox, Windows VM, and Android Emulator
 
 ## Learn More
 
@@ -29,8 +31,10 @@ In this lab, you will:
 
 * [Oracle Universal Authenticator System Architecture](https://docs.oracle.com/en/middleware/idm/universal-authenticator/ouaad/system-architecture-and-components.html)
 
+* [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
+
 ## Acknowledgments
 
-* **Authors** - Anuj Tripathi
+* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi, North America Platform Specialist, June 2024
+* **Last Updated By/Date** - Anuj Tripathi

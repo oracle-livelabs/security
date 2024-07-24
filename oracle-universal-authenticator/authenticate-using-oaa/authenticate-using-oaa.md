@@ -2,12 +2,11 @@
 
 ## Introduction
 
-Oracle Advanced Authentication (OAA) is a standalone micro-service that supports establishing and asserting the identity of users. It provides a comprehensive solution that is simple to deploy and use.
+Oracle Advanced Authentication (OAA) is a standalone micro-service that supports establishing and asserting the identity of users. It provides a comprehensive solution that is simple to deploy and use.OAA provides strong authentication using Multiple Authentication Factors (MFA). A wide range of authentication (challenge) factors are available out-of-the-box for establishing the identity of users.
 
-OAA provides strong authentication using Multiple Authentication Factors (MFA). A wide range of authentication (challenge) factors are available out-of-the-box for establishing the identity of users.
+It supports integration with Oracle Access Management (OAM) and Oracle RADIUS Agent (ORA) to provide MFA capabilities. It also can be used with Oracle Universal Authenticator for device authentication with MFA.
 
-It supports integration with Oracle Access Management (OAM) and Oracle RADIUS Agent (ORA) to provide MFA capabilities.
-It also can be used with Oracle Universal Authenticator for device authentication with MFA.
+This lab walks you through a sample web application using multi-factor authentication based on email and OMA app based OTPs.
 
 * Estimated Time: 30 minutes
 * Persona: End-User
@@ -16,7 +15,7 @@ It also can be used with Oracle Universal Authenticator for device authenticatio
 
 In this lab, you will:
 
-* Access the sample web application using OAA
+* Access the sample web application using Oracle Advanced Authentication
 
   ***Note:*** All the demo users and apps have been pre-seeded to perform the use-cases
 
@@ -60,27 +59,7 @@ This lab assumes you have:
 
     5. Tap on Save button to register the account.
 
-## Task 1: Update host machine to access web consoles in the demo environment
-
-1. Login to the OCI console Identity Domain: Choose the right domain and login as the **Identity Domain Administrator**
-
-2. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Under Compute, Click Instances. Select the correct compartment to display the compute instance that was deployed as part of **Lab2**.
-Note the public IP of the compute VM.
-
-3. Open a text editor in your computer in the **Administrator mode** to add following entries in the hosts file.
-
-   ***Note :*** In case of Windows, the location is **C:\Windows\System32\drivers\etc\hosts**. In case of Mac, the location is **\etc\hosts**.
-  
-   ***Note :*** Replace **PUBLIC_IP** with the IP of compute instance noted in previous step.
-
-    ```
-    <copy>
-    <PUBLIC_IP>    so92-srv1.oracledemo.com iamdb.oracledemo.com oud.oracledemo.com oam.oracledemo.com aso.oracledemo.com oaa.oracledemo.com ora.oracledemo.com oim.oracledemo.com mail.oracledemo.com
-    <PUBLIC_IP>    oiri.oracledemo.com grafana.oracledemo.com prometheus.oracledemo.com oap.oracledemo.com oudsm.oracledemo.com ade.oracledemo.com demodb.oracledemo.com
-    </copy>
-    ```
-
-## Task 2: Authenticate into sample web app using Email OTP
+## Task 1: Authenticate into sample web app using Email OTP
 
 1. Open your preferred browser. Access the **Email Client** using below details. This would be used to receive OTPs :
 
@@ -145,7 +124,7 @@ Note the public IP of the compute VM.
 
 ***Note :*** At this point, you should sign out from the application and close the browser tab as you would be authenticating again with a different MFA factor.
 
-## Task 3: Authenticate into sample web app using OTP from OMA app
+## Task 2: Authenticate into sample web app using OTP from OMA app
 
 1. In a new browser window, access the sample web app as described in **Task 2: Step 2**
 
@@ -167,8 +146,10 @@ Note the public IP of the compute VM.
 
 * [Oracle Universal Authenticator System Architecture](https://docs.oracle.com/en/middleware/idm/universal-authenticator/ouaad/system-architecture-and-components.html)
 
+* [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
+
 ## Acknowledgments
 
-* **Authors** - Anuj Tripathi
+* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi, North America Platform Specialist, July 2024
+* **Last Updated By/Date** - Anuj Tripathi
