@@ -7,6 +7,7 @@ Upon completing your labs, we recommend that you perform a cleanup to dispose th
 
 *Estimated Lab Time*: 5 minutes
 
+
 ### Objectives
 
 In this lab, you will:
@@ -85,6 +86,6 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 * [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
-## Acknowledgments
+## Acknowledgements
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Last Updated By/Date** - Anbu Anbarasu, May 2023

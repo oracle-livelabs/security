@@ -9,7 +9,7 @@ Access reviews can be carried out from the Oracle Access Governance console by u
 *Estimated Time*: 15 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Oracle Video Hub video with no sizing](videohub:1_0sz90jrj)
+[Oracle Video Hub video with no sizing](videohub:1_uf74n82i)
 
 ### Objectives
 
