@@ -19,6 +19,7 @@ In this lab, you will:
 - Create a masking policy for your target database
 - Modify a masking format to use a fixed number
 - Create a group mask
+- Perform a pre-masking check
 - Mask sensitive data in your target database
 - View the Data Masking report
 - Validate the masked data in your target database
@@ -200,25 +201,48 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 8. Click **Save masking formats**.
 
 
+## Task 6: Perform a pre-masking check
+
+1. In the breadcrumb at the top of the page, click **Data Masking**.
+
+2. Click **Pre-masking check**.
+
+3. Select your target database.
+
+4. Select your masking policy.
+
+    ![Pre-masking check panel](images/pre-masking-check-panel.png "Pre-masking check panel")
+
+5. Click **Submit**. 
+
+     The **Pre-masking report details** page is displayed.
+
+    ![Pre-masking report details page](images/pre-masking-report-details-page.png "Pre-masking report details page")
+
+6. Review the log messages and verify each check has passed.
+
+
 ## Task 6: Mask sensitive data in your target database
 
-You can run a data masking job against your target database from the **Masking policy details** or **Data masking** page.
+1. On the **Pre-masking report details** page, click the name of your masking policy (**Mask SDM1**). 
 
-1. On the **Masking policy details** page, click **Mask target**.
+    The **Masking policy details** page is displayed.
+
+2. Click **Mask target**.
 
     The **Mask sensitive data** panel is displayed.
 
-2. From the **Target database** drop-down list, select your target database, and then click **Mask data**.
+3. Select your target database, and click **Mask data**.
 
     ![Mask sensitive data panel](images/mask-sensitive-data-panel.png "Mask sensitive data panel")
 
     The **Work request** page is displayed.
 
-3. Monitor the progress of the work request by viewing the log messages in the **Log messages** table.
+4. Monitor the progress of the work request by viewing the log messages in the **Log messages** table.
 
     ![Log messages for data masking work request](images/masking-log-messages.png "Log messages for data masking work request")
 
-4. Wait for the status to read as **SUCCEEDED**.
+5. Wait for the status to read as **SUCCEEDED**.
 
  
 ## Task 7: View the Data Masking report
@@ -276,4 +300,4 @@ You can run a data masking job against your target database from the **Masking p
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 17, 2024
+- **Last Updated By/Date** - Jody Glover, July 25, 2024
