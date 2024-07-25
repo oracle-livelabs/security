@@ -23,17 +23,17 @@
             "filename": "../../start-the-environment/start-the-environment.md"
         },
         {
-            "title": "Lab 3: Authenticate using Oracle Advanced Authentication",
+            "title": "Lab 3: Authenticate with Oracle Advanced Authentication",
             "description": "How to authenticate using Oracle Advanced Authentication",
             "filename": "../../authenticate-using-oaa/authenticate-using-oaa.md"
         },
         {
-            "title": "Lab 4: Prepare your system for authentication using OUA",
+            "title": "Lab 4: Prepare your system for authentication with OUA",
             "description": "How to authenticate with MFA using OAA",
             "filename": "../../prepare-for-oua/prepare-for-oua.md"
         },
         {
-            "title": "Lab 5: Authenticate into Windows Device, web app and desktop app using OUA",
+            "title": "Lab 5: Authenticate into Windows Device, web app and desktop app with OUA",
             "description": "How to authenticate across devices and apps using OUA",
             "filename": "../../authenticate-with-oua/authenticate-with-oua.md"
         },

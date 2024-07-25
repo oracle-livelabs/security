@@ -33,8 +33,8 @@ In this lab, you will:
 
 * [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
 
-## Acknowledgments
+## Acknowledgements
 
-* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
+* **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi
+* **Last Updated By** - Anuj Tripathi, July 2024

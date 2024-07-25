@@ -64,7 +64,7 @@ This lab assumes you have:
     No           0.0.0.0/0       All Protocols
     ```
 
-  ***Note :*** **my\_ip\_v4** is the public IPv4 address assigned by your internet provider. You can find this address by searching **My IP Address** ` in your internet browser.
+  ***Note :*** **my\_ip\_v4** is the public IPv4 address assigned by your internet provider. You can find this address by searching **My IPv4 Address** in your internet browser.
 
 4. Create two regional subnets: public and private. Use the below values:
 
@@ -187,8 +187,8 @@ You may now **proceed to the next lab**.
 
 * [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
 
-## Acknowledgments
+## Acknowledgements
 
-* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
+* **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi
+* **Last Updated By** - Anuj Tripathi, July 2024

@@ -1,6 +1,7 @@
-# Introduction
 
-## About this Workshop
+# About this Workshop
+
+## Introduction
 
 Oracle Universal Authenticator is a unified authentication solution that provides device authentication and cross-platform single-sign on (SSO) to web-based and desktop applications.
 
@@ -50,8 +51,8 @@ This lab assumes you have:
 
 * [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
 
-## Acknowledgments
+## Acknowledgements
 
-* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
+* **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi
+* **Last Updated By** - Anuj Tripathi, July 2024

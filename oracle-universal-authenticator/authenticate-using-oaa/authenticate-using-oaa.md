@@ -11,7 +11,7 @@ This lab walks you through a sample web application using multi-factor authentic
 * Estimated Time: 30 minutes
 * Persona: End-User
 
-## Objectives
+### Objectives
 
 In this lab, you will:
 
@@ -19,7 +19,7 @@ In this lab, you will:
 
   ***Note:*** All the demo users and apps have been pre-seeded to perform the use-cases
 
-## Prerequisites
+### Prerequisites
 
 This lab assumes you have:
 
@@ -148,8 +148,8 @@ This lab assumes you have:
 
 * [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
 
-## Acknowledgments
+## Acknowledgements
 
-* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
+* **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi
+* **Last Updated By** - Anuj Tripathi, July 2024

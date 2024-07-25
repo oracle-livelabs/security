@@ -11,7 +11,7 @@
 * Estimated Time: 120 minutes
 * Persona: End-User
 
-## Objectives
+### Objectives
 
 In this lab, you will:
 
@@ -23,7 +23,7 @@ In this lab, you will:
 
 * Creating OAM User and Registering OUA User Preferences
 
-## Prerequisites
+### Prerequisites
 
 This lab assumes you have:
 
@@ -380,8 +380,8 @@ You may now **proceed to the next lab**.
 
 * [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
 
-## Acknowledgments
+## Acknowledgements
 
-* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
+* **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi
+* **Last Updated By** - Anuj Tripathi, July 2024

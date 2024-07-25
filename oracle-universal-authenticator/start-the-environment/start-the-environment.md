@@ -7,13 +7,13 @@ This lab walks through steps on starting and configuring the components includin
 * Estimated Time: 30 minutes
 * Persona: OCI Administrator
 
-## Objectives
+### Objectives
 
 In this lab, you will:
 
 * Start the components deployed in the previous lab
 
-## Prerequisites
+### Prerequisites
 
 This lab assumes you have:
 
@@ -244,8 +244,8 @@ You may now **proceed to the next lab**.
 
 * [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
 
-## Acknowledgments
+## Acknowledgements
 
-* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
+* **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi
+* **Last Updated By** - Anuj Tripathi, July 2024

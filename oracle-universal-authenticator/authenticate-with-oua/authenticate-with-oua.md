@@ -11,7 +11,7 @@ This lab focuses on demonstrating some scenarios specific to the OUA sign-on exp
 * Estimated Time: 30 minutes
 * Persona: End-User
 
-## Objectives
+### Objectives
 
 In this lab, you will:
 
@@ -23,7 +23,7 @@ In this lab, you will:
 
 * Passwordless Authentication with Windows and OAM Protected Applications
 
-## Prerequisites
+### Prerequisites
 
 This lab assumes you have completed the previous lab and:
 
@@ -186,8 +186,8 @@ This lab assumes you have completed the previous lab and:
 
 * [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
 
-## Acknowledgments
+## Acknowledgements
 
-* **Authors** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
+* **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By/Date** - Anuj Tripathi
+* **Last Updated By** - Anuj Tripathi, July 2024
