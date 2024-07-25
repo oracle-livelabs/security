@@ -7,6 +7,9 @@ In this lab we will use pre-configured terraform scripts to resources - Compartm
 * Estimated Time: 15 minutes
 * Persona: Default Domain Administrator
 
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_pbemrp27)
+
 
 ### Objectives
 
@@ -104,6 +107,6 @@ In this lab, you will:
 * [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
-## Acknowledgments
+## Acknowledgements
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Last Updated By/Date** - Indira Balasundaram 29 May 2024

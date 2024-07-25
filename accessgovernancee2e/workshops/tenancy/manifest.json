@@ -18,34 +18,29 @@
             "filename": "../../deploying-using-terraform/deploying-using-terraform.md"
         },
         {
-            "title": "Lab 2: Prepare Setup",
-            "description": "How to download your ORM stack and update security rules for an existing VCN",
-            "filename": "../../prepare-setup/prepare-setup.md"
-        },
-        {
-            "title": "Lab 3: Environment Setup",
-            "description": "How to provision the workshop environment and connect to it",
-            "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
-        },
-        {
-            "title": "Lab 4: Verify environment and initialize",
-            "description": "Labs that follow the introduction are numbered, starting with Lab ",
-            "filename": "../../environment-initialize/environment-initialize.md"
-        },
-        {
-            "title": "Lab 5: Setup and configure Oracle Access Governance service instance",
+            "title": "Lab 2: Setup and configure Oracle Access Governance service instance",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../instance-setup/ag-instance-setup.md"
         },
         {
-            "title": "Lab 6: Install and configure Oracle Access Governance agent",
+            "title": "Lab 3: Prepare Setup for OIG",
+            "description": "How to download your ORM stack and update security rules for an existing VCN",
+            "filename": "../../prepare-setup/prepare-setup.md"
+        },
+        {
+            "title": "Lab 4: Environment Setup for OIG",
+            "description": "How to provision the workshop environment and connect to it",
+            "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
+        },
+        {
+            "title": "Lab 5: Connect to OIG",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
-            "filename": "../../agent-install/agent-install.md"
+            "filename": "../../integrate-oag-db/integrate-oag-db.md"
         },
         {
             "title": "Lab 7: Mark the Identities",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
-            "filename": "../../mark-identities/mark-identities.md"
+            "filename": "../../manage-identities/manage-identities.md"
         },
         {
             "title": "Lab 8: Create access review campaign",
@@ -54,7 +49,7 @@
         },
         {
             "title": "Lab 9: Review who has access to what",
-            "filename": "../../review-who-has-access/review-who-has-access.md"
+            "filename": "../../who-has-access-to-what/who-has-access-to-what.md"
         },
         {
             "title": "Lab 10: Perform access review",

@@ -1,0 +1,39 @@
+{
+  "workshoptitle": "Prevent unauthorized data access in Autonomous Databases with Database Vault",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+  {
+    "title": "Introduction",
+    "description": "Understand the architecture of this workshop and what it can do",
+    "publisheddate": "09/01/2021",
+    "filename": "../../intro/intro_may2024.md"
+  },
+  {
+    "title": "Get Started",
+    "description": "Get a Free Trial",
+    "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+  },
+  {
+    "title": "Prepare Your Environment",
+    "description": "Prerequisites to run the Oracle DB Security workshop on Autonomous DB in your own tenancy",
+    "publisheddate": "09/01/2021",
+    "filename": "../../prepare-setup/prepare-setup_may2024.md"
+  },
+  {
+    "title": "Lab 1: Database Vault (DV)",
+    "description": "In this lab you can see how to leverage Oracle Database Vault on Autonomous DB",
+    "publisheddate": "09/01/2021",
+    "filename": "../../dbvault/dbvault_may2024.md"
+  },
+  {
+    "title": "Terminate Oracle Autonomous Database",
+    "description": "Terminate an available or stopped Oracle Autonomous Database instance",
+    "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
+  },
+  {
+    "title": "Need Help?",
+    "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+    "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+  }
+]
+}

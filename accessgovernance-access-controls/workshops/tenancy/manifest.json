@@ -18,19 +18,19 @@
             "filename": "../../deploying-using-terraform/deploying-using-terraform.md"
         },
         {
-            "title": "Lab 2: Prepare Setup",
+            "title": "Lab 2: Setup and configure Oracle Access Governance service instance",
+            "description": "Labs that follow the introduction are numbered, starting with Lab ",
+            "filename": "../../ag-instance-setup/ag-instance-setup.md"
+        },
+        {
+            "title": "Lab 3: Prepare Setup for OIG ",
             "description": "How to download your ORM stack and update security rules for an existing VCN",
             "filename": "../../prepare-setup/prepare-setup.md"
         },
         {
-            "title": "Lab 3: Environment Setup",
+            "title": "Lab 4: Environment Setup for OIG ",
             "description": "How to provision the workshop environment and connect to it",
             "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
-        },
-        {
-            "title": "Lab 4: Setup and configure Oracle Access Governance service instance",
-            "description": "Labs that follow the introduction are numbered, starting with Lab ",
-            "filename": "../../ag-instance-setup/ag-instance-setup.md"
         },
         {
             "title": "Lab 5: Connect to OIG and Oracle Database",
@@ -47,16 +47,20 @@
             "filename": "../../access-control/access-control.md"
         },
         {
-            "title": "Lab 8: Perform Access Reviews for database",
+            "title": "Lab 8: Review Who Has Access To What ",
+            "filename": "../../who-has-access-to-what/who-has-access-to-what.md"
+        },
+        {
+            "title": "Lab 9: Perform Access Reviews for database",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../access-review/access-review.md"
         },
         {
-            "title": "Lab 9: Cleanup Access Governance service instance",
+            "title": "Lab 10: Cleanup Access Governance service instance",
             "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
         },
         {
-            "title": "Lab 10: Environment Cleanup",
+            "title": "Lab 11: Environment Cleanup",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "https://oracle-livelabs.github.io/common/labs/cleanup-stack/cleanup-stack.md"
         },
