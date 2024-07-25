@@ -5,7 +5,7 @@
 This lab shows steps on how to download and deploy the Oracle Resource Manager (ORM) stack zip file needed to set up the resources needed to run this workshop.
 
 * Estimated Time: 30 minutes
-* Persona: End-User
+* Persona: OCI Administrator
 
 ### Objectives
 

@@ -5,7 +5,7 @@
 This lab walks through steps on starting and configuring the components including IAM domains and services.
 
 * Estimated Time: 30 minutes
-* Persona: End-User
+* Persona: OCI Administrator
 
 ## Objectives
 
