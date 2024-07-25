@@ -127,8 +127,8 @@ This lab assumes you have:
 
     * Select **Use Existing VCN?:**. Choose VCN as **my-vcn** and subnet as **so-pub-sn1** as created in **Task 2**
 
-  ![Stack Configuration](../main-config-compute-vnc-1.png)
-  ![Stack Configuration](../main-config-compute-vnc-2.png)
+  ![Stack Configuration](./images/main-config-compute-vnc-1.png)
+  ![Stack Configuration](./images/main-config-compute-vnc-2.png)
 
 8. Click **Next** and proceed to next task to Apply the stack.
 
@@ -138,17 +138,14 @@ This lab assumes you have:
 
   ![Run Apply](./images/run-apply.png " ")
 
-2. Your stack has now been created and the *Apply* action triggered is running to deploy your environment!
+2. Your stack has now been created and the *Apply* action triggered is running to deploy your environment.
+   Review the job output.
 
   ![Apply is successful](./images/apply-job-success.png " ")
 
-3. Review the job output.
+3. Congratulations, your environment has been created!  Click the **Application Information** tab to get additional information about what you have just done.
 
-  ![Job output](./images/apply-job-success.png " ")
-
-4. Congratulations, your environment has been created!  Click the **Application Information** tab to get additional information about what you have just done.
-
-3. Your public IP address(es), instance name(s), along with other details will be displayed.
+4. Your public IP address(es), instance name(s), along with other details will be displayed.
 
 ## Appendix 1: Use Auto-generated SSH Keys to Connect to Your Instance via an SSH Terminal
 

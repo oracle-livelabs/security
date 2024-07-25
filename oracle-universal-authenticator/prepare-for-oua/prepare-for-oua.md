@@ -37,12 +37,13 @@ This lab assumes you have:
 
 * Optionally, you have administrative access to a Microsoft Office 365 subscription in order to assign Office 365 licenses to Entra ID users.
 
-  ***Note*** :The deployment of VirtualBox and other components was tested on a Windows 10 machine. Although, you can use a Mac computer to deploy those components, the instructions in this document only apply to Windows OS
+  ***Note*** :The deployment of VirtualBox and other components was tested on a Windows machine. Although, you can use a Mac computer to deploy those components, the instructions in this document only apply to Windows OS
 
 ## Task 1: Download and Configure Nox Android Emulator for OMA
 
 1. Download [Nox Android Emulator](https://support.bignox.com/en/win-release) in your host Windows computer.
-   You can download the one with support for Android 7 (e.g. V7.0.3.9)
+   You can download the one with support for Android 7 (e.g. V7.0.5.9)
+
    ***Note :*** This is required in order to perform the passwordless authentication use case which requires OMA push notifications.
 
 2. Nox Player use adware, so a way to prevent this from happening, add below firewall rules
@@ -58,19 +59,22 @@ This lab assumes you have:
 
     Type exit to close cmd.exe
 
-3. Use the 7-Zip utility to unpack the file nox\_setup\_v7.0.3.9\_full\_intl.exe in your computer. This will create a folder nox\_setup\_v7.0.3.9\_full\_intl
+3. Use the **7-Zip** utility to unpack the file **nox\_setup\_v7.0.5.9\_full\_intl.exe** in your computer. This will create a folder **nox\_setup\_v7.0.5.9\_full\_intl**
 
-4. Go to bin sub-folder and run MultiPlayerManager.exe or Nox Asst
+4. Go to **bin** sub-folder and run **MultiPlayerManager.exe** or Nox Asst
 
-5. Click on Multi-Drive Manager icon located in the left panel. Then click on Add Emulator button and select android 7 64-bit
+5. Click on **Multi-Drive Manager** icon located in the left panel. Then click on **Add Emulator** button and select **Android 7 64-bit**
 
-6. Check this image and click on System settings (gear icon). Make sure to select 540x960 under Resolution setting. Click Save settings, OK.
+6. Select the image and click on System settings (gear icon). Make sure to select **540x960** under **Resolution settings**. Click Save settings, OK.
 
-7. Click on More (3-dots icon) and select Create shortcut. This will add a shortcut to your Windows desktop to directly start the the image with the emulator. Proceed to exit Nox Asst by closing the window.
+7. Under System Settings, navigate inside General, select **Root** checkbox under **Startup Items**. Save the settings.
 
-8. From your Windows desktop click in the shortcut NoxPlayer to start the emulator with the Android 7 image. Once the emulator is started, using the Google Play Store to install 'Oracle Mobile Authenticator' and 'Google Chrome' mobile apps
+8. Click on More (3-dots icon) and select Create shortcut. This will add a shortcut to your Windows desktop to directly start the the image with the emulator. Proceed to exit Nox Asst by closing the window.
 
-9. From the android emulator, click File Manager (folder icon). In File Manager, click in the Hamburger icon and select /Root. Click on etc folder, then scroll down and click on hosts file, and select Open as text.
+9. From your Windows desktop click on the shortcut **NoxPlayer** to start the emulator with the Android 7 image. Once the emulator is started, withing the emulator, use Google Play Store to install **Oracle Mobile Authenticator** and **Google Chrome** mobile apps
+
+10. From the android emulator, click File Manager (folder icon). In File Manager, click in the Hamburger icon and select **/Root**. Go to **etc** folder, then scroll down and click on hosts file, and select **Open as text**.
+
   In the Open with... window, click on JUST ONCE. Proceed to enter or paste the hosts entries for OUA server.
   E.g. add or copy the following entries:
 
@@ -79,10 +83,9 @@ This lab assumes you have:
       <PUBLIC_IP>    oiri.oracledemo.com grafana.oracledemo.com prometheus.oracledemo.com oap.oracledemo.com oudsm.oracledemo.com ade.oracledemo.com demodb.oracledemo.com
     ```
 
-    Note: PUBLIC_IP is the public IP address of the compute instance noted in **Lab 2 -> Task 1**. In Windows, you need to split the hostname entries in two lines due to a length limitation.
+    ***Note :*** PUBLIC_IP is the public IP address of the compute instance noted in **Lab 2 -> Task 1**. In Windows, you need to split the hostname entries in two lines due to a length limitation.
 
     Click on the Save icon, then close File Explorer (click in the Task icon, located at the bottom of the black bar right to the emulator window). This will minimize the File Explorer window, you can close it by clicking the X icon.
-    Within Android, click in the Oracle Mobile Authenticator (OMA) application (lock icon). You will need OMA later (use case 4) to register OUA demo users.
 
 ## Task 2: Join Demo Windows Image to Entra ID Domain
 
@@ -90,7 +93,7 @@ This lab assumes you have:
 
     ***Note :*** This step presumes you have an Entra ID user account, if not, create a new user using Entra ID administrative console and come back to perform this step.
 
-2. From Window 11 VM, type **settings** in the search box located in the taskbar. **Open Settings -> Accounts -> Access work or school**. Click **Connect**
+2. From Window 11 VM, type **Settings** in the search box located in the taskbar. **Open Settings -> Accounts -> Access work or school**. Click **Connect**
 
 3. In the Set up access work or school account window, clink on the link **Join this device to Microsoft Entra ID**
 
@@ -127,7 +130,7 @@ This lab assumes you have:
 
 2. Once in the Windows guest VM, type **Notepad++** in the search box located in the taskbar. Open the Notepad++ tool (already installed) to edit the Windows hosts file.
 
-  E.g. using Notepad++, edit the following file:
+  Using Notepad++, edit the following file:
 
   **C:\Windows\System32\drivers\etc\hosts**
 
@@ -140,7 +143,7 @@ This lab assumes you have:
     </copy>
     ```
 
-3. Proceed to install OUA by downloading the Oracle\_Universal\_Authenticator_<version>.zip from Oracle Software Delivery Cloud.
+3. Proceed to install OUA by downloading the Oracle\_Universal\_Authenticator\_<version.zip\> from [Oracle Software Delivery Cloud](https://edelivery.oracle.com/).
 
   Alternatively, it can be downloaded from the location referenced in document ID 2723908.1 on My Oracle Support.
   Extract the zip file to a working directory **WORKDIR (e.g. C:\Temp\V1043799-01)** on the installation host. The Oracle Universal Authenticator.msi will be extracted.
@@ -183,7 +186,7 @@ This lab assumes you have:
 
 6. From Window 11 guest VM, type **regedit** in the search box located in the taskbar. Open Registry Editor.
 
-7. Within Registry Editor, expand **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\Oracle Universal Authenticator** and update the parameters as below :
+7. Within Registry Editor, expand **Computer\HKEY\_LOCAL\_MACHINE\SOFTWARE\Oracle\Oracle Universal Authenticator** and update the parameters as below :
 
     host
 
@@ -199,11 +202,10 @@ This lab assumes you have:
 
 8. Exit Registry Editor.
 
-9. Register the OUA certificate. In your Windows taskbar, click on Start icon and type cmd.exe, make sure to select Run as administrator. Then, in the command window run the following commands :
+9. Register the OUA certificate. In your Windows taskbar, click on Start icon and type cmd.exe, make sure to select Run as administrator. Change directory to the **WORKDIR** referred in step 3 above and run the following command :
 
     ```
     <copy>
-    cd C:\Temp\V1043799-01
     powershell.exe -ExecutionPolicy Bypass "C:\Temp\V1043799-01\AddCertificate.ps1"
     </copy>
     ```

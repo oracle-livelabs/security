@@ -86,7 +86,7 @@ This lab assumes you have completed the previous lab and:
 
 2. Once in the Windows desktop, proceed to open the Chrome browser. Since the OUA browser plugin was installed previously, the first time you access Chrome, you must enable the plugin.
 
-3. Click the 3-dots (located at the top right corner of the browser window) and select Extensions -> Manage Extensions. In the Manage Extensions page click in the Enable switch under the Oracle Universal Authenticator tile.
+3. Click the 3-dots (located at the top right corner of the browser window) and select **Extensions -> Manage Extensions**. In the Manage Extensions page click in the **Enable** switch under the **Oracle Universal Authenticator** tile.
 
 4. Once the plugin is enabled, proceed to test SSO with OAM protected applications.
    E.g. open a new tab in the browser and access sample application Bank App:
@@ -109,9 +109,9 @@ This lab assumes you have completed the previous lab and:
 
 ## Task 3: Passwordless Authentication with Windows and OAM Protected Applications
 
-1. From your Windows desktop click on the shortcut <<Emulator Shortcut>> to start the emulator with the Android 7 image.
+1. From your Windows desktop click on the shortcut **NoxPlayer** to start the emulator with the Android 7 image
 
-2. Once the Android emulator is started, within Android click on the Google Chrome icon (located at the bottom of the emulator window).
+2. Once the Android emulator is started, within Android click on the Google Chrome icon
 
 3. In the browser window, enter the URL in the Search or type web address box to access the OUA self-service console.
   E.g. use the following URL and credentials:
@@ -124,24 +124,23 @@ This lab assumes you have completed the previous lab and:
     </copy>
     ```
 
-4. In the consent page, click in the Allow button to continue.
+4. In the consent page, click on Allow button to continue.
 
-5. Once in the OUA self-service console, click on the Manage button under My Authenticators tile.
+5. Once in the **OUA self-service** console, click on **Manage** button under **My Authenticators** tile
 
-6. In the Authenticator Factors page, click on Add Authenticator Factor list-box and select OMA Push Notification Challenge. Write down the userid number and click on Register here link.
+6. In the Authenticator Factors page, click on **Add Authenticator** Factor list-box and select **OMA Push Notification Challenge**. Write down the **userid** number and click on **Register here** link
 
-7. In the Login Required window, enter the OAM user and as password the userid number and click the Sign In button.
-   The new user should be added to the Accounts page in OMA.
+7. In the Login Required window, enter the OAM user and as password the userid number and click the Sign In button. The new user should be added to the Accounts page in OMA
 
-8. Click on the Tasks icon (located at the bottom of black bar, right side of the emulator window) and select the Chrome browser.
+8. Click on the Tasks icon (located at the bottom of black bar, right side of the emulator window) and select the Chrome browser
 
-9. Back in the OUA self-service console (Add Mobile Device), click Done.
+9. Back in the OUA self-service console (Add Mobile Device), click Done
 
-10. In the Authenticator Factors page, click in the 3-dots under OMA Push Notification Challenge tile and select Set As Default. Make sure Default text with a green circle is listed in the OMA Push Notification Challenge tile.
+10. In the Authenticator Factors page, click on the **3-dots** under OMA Push Notification Challenge tile and select **Set As Default**. Make sure **Default** text with a green circle is listed in the OMA Push Notification Challenge tile
 
-11. Proceed to logout from the OUA self-service console.
+11. Proceed to logout from the OUA self-service console
 
-12. Click the Tasks icon and go back to the OMA window in your Android emulator.
+12. Click the Tasks icon and go back to the OMA window in your Android emulator
 
 13. Login to the Windows VM using the OAM user created in the previous use cases.
   Select Login with Oracle at the login window and enter the OAM username. e.g.:
@@ -156,13 +155,13 @@ This lab assumes you have completed the previous lab and:
     Approve login on device
     ```
 
-    Go back to the Android emulator and check if OMA has received a notification (bell icon), if so proceed to open the notification and Allow the request.
+    Go back to the Android emulator and check if OMA has received a notification (bell icon), if so, proceed to open the notification and **Allow the request**.
 
-    Once the OMA response is processed, back in the Windows VM, the OAM user should be able to access the Windows desktop.
+    Once the OMA response is processed, back in the Windows VM, the OAM user should be able to access the Windows desktop
 
 14. Once in the Windows desktop, proceed to open the Chrome browser. If you enable the OUA browser plugin in the previous use case, then skip the next step to enable it.
 
-15. If this is the first accessing Chrome, you must enable the OUA browser plugin. Click the 3-dots (located at the top right corner of the browser window) and select Extensions -> Manage Extensions. In the Manage Extensions page click in the Enable switch under the Oracle Universal Authenticator tile.
+15. If this is your first time accessing Chrome, you must enable the OUA browser plugin. Click the **3-dots** (located at the top right corner of the browser window) and select **Extensions -> Manage Extensions**. In the Manage Extensions page click on the Enable switch under the Oracle Universal Authenticator tile.
 
 16. If the OUA plugin is enabled, proceed to test SSO with OAM protected applications.
     E.g. open a new tab in the browser and enter the following URL:
