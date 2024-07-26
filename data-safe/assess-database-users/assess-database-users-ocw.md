@@ -1,4 +1,4 @@
-# Assess Database Users
+# Assess database users
 
 ## Introduction
 
@@ -16,7 +16,6 @@ In this lab, you will:
 - Analyze users in the latest user assessment
 - Change users and entitlements on the target database
 - Refresh the latest user assessment
-- View the user assessment history for your target database
 - Compare the latest user assessment with the initial user assessment
 
 
@@ -25,83 +24,83 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop
-- Registered your target database with Oracle Data Safe
+- Access to or prepared an environment for this workshop
+- Access to a registered target database
+- (Optional) Started audit data collection for your target database in Oracle Data Safe. Audit data collection is required if you want to view users' audit records from within User Assessment.
 
 
 ### Assumptions
 
-- Your data values are most likely different than those shown in the screenshots.
-
-Watch the video below for a quick walk-through of the lab.
-[Assess Database Users](videohub:1_fvykqng1)
+- Your data values might be different than those shown in the screenshots.
+- Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs.
 
 
 ## Task 1: View the overview page for User Assessment
 
-1. Navigate to **User Assessment**. To do this, in the breadcrumb at the top of the page, click **Security Center**. On the left, click **User Assessment**.
+1. In the breadcrumb at the top of the page, click **Security center**. On the left, click **User assessment**.
 
-2. Under **List Scope**, make sure your compartment is selected. Deselect **Include child compartments**.
+2. Under **List scope**, make sure your compartment is selected. Deselect **Include child compartments**.
 
 3. At the top of the overview page, review the four charts.
 
-    - The **Potential User Risk** chart shows you the number and percentage of users who are potentially **Critical Risk**, **High Risk**, **Medium Risk**, and **Low Risk**.
-    - The **User Roles** chart shows you the number of users with the **DBA**, **DV Admin**, and **Audit Admin** roles.
-    - The **Last Password Change** chart shows you the number of users who changed their passwords within the last 30 days, within the last 30-90 days, and 90 days ago or more.
-    - The **Last Login** chart shows you the number of users that signed in to the target database within the last 24 hours, within the last week, within the current month, within the current year, and a year ago or more.
+    - The **Potential user risk** chart shows you the number and percentage of users who are potentially **Critical**, **High**, **Medium**, and **Low** risk.
+    - The **User roles** chart shows you the number of users with the **DBA**, **DV admin**, and **Audit admin** roles.
+    - The **Last password change** chart shows you the number of users who changed their passwords within the last 30 days, within the last 30-90 days, and 90 days ago or more.
+    - The **Last login** chart shows you the number of users that signed in to the target database within the last 24 hours, within the last week, within the current month, within the current year, and a year ago or more.
 
-    ![User Assessment overview page first three charts](images/ocw/ua-dashboard-charts1.png "User Assessment overview page first three charts")
+    ![User Assessment overview page first three charts](images/ua-dashboard-charts1.png "User Assessment overview page first three charts")
 
-    ![User Assessment overview page last chart](images/ocw/ua-dashboard-charts2.png "User Assessment overview page last chart")
+    ![User Assessment overview page last chart](images/ua-dashboard-charts2.png "User Assessment overview page last chart")
 
-4. Review the **Risk Summary** tab.
+4. Review the **Risk summary** tab.
 
-    - The **Risk Summary** tab focuses on potential risks across all selected target databases. It shows you potential risk levels, the number of target databases, the total number of users at each risk level, the total number of privileged users at each risk level, and counts for DBAs, DV Admins, and Audit Admins.
+    - The **Risk summary** tab focuses on potential risks across all selected target databases. It shows you potential risk levels, the number of target databases, the total number of users at each risk level, the total number of privileged users at each risk level, and counts for DBAs, DV admins, and Audit admins.
     - Potential risk levels are categorized as **Critical**, **High**, **Medium**, and **Low**.
 
-    ![User Assessment Risk Summary tab](images/ocw/ua-risk-summary-tab.png "User Assessment Risk Summary tab")
+    ![User Assessment Risk summary tab](images/ua-risk-summary-tab.png "User Assessment Risk summary tab")
 
-5. Click the **Target Summary** tab. This tab provides the following information:
+5. Click the **Target summary** tab. This tab provides the following information:
 
-    - Number of critical and high risk users, DBAs, DV Admins, and Audit Admins
+    - Number of critical and high risk users, DBAs, DV admins, and Audit admins
     - Date and time of the latest user assessment
     - Whether the latest user assessment deviates from the baseline (if one is set)
 
-    ![User Assessment Target Summary tab](images/ocw/ua-target-summary-tab.png "User Assessment Target Summary tab")
+    ![User Assessment Target summary tab](images/ua-target-summary-tab.png "User Assessment Target summary tab")
 
 
 ## Task 2: Analyze users in the latest user assessment
 
 The latest user assessment is the one that was automatically generated by Oracle Data Safe when you registered your target database.
 
-1. On the **Target Summary** tab, click **View Report** to view the latest user assessment for your target database.
+1. On the **Target summary** tab, click **View report** to view the latest user assessment for your target database.
 
-2. At the top of the report on the **Overview** tab, review the **Potential User Risk**, **User Roles**, **Last Password Change**, and **Last Login** charts.
+2. At the top of the report on the **Overview** tab, review the **Potential user risk**, **User roles**, **Top 5 users by schema access**, **Last password change**, and **Last login** charts.
 
-    ![User Assessment Latest charts](images/ocw/ua-latest-charts1.png "User Assessment Latest charts")
+    ![User Assessment Latest charts](images/ua-latest-charts1.png "User Assessment Latest charts")
 
-    ![User Assessment Latest charts](images/ocw/ua-latest-charts2.png "User Assessment Latest charts")
+    ![User Assessment Latest charts](images/ua-latest-charts2.png "User Assessment Latest charts")
 
 3. Click the **Assessment Information** tab and review the details.
 
-    ![Assessment Information tab](images/ocw/ua-assessment-information-tab.png "Assessment Information tab")
+    ![Assessment Information tab](images/ua-assessment-information-tab.png "Assessment Information tab")
 
-4. Scroll down and review the **User Details** section. This table provides the following information about each user:
+4. Scroll down and review the **User details** section. This table provides the following information about each user:
 
     - User name
     - User type (for example, PRIVILEGED, SCHEMA)
-    - Whether the user is a DBA, DV Admin, or Audit Admin
+    - Whether the user is a DBA, DV admin, or Audit admin
     - Potential risk level (for example, LOW, HIGH, or CRITICAL)
     - User's status (for example, OPEN, LOCKED, or EXPIRED\_AND\_LOCKED)
     - Date and time the user last logged in to the target database
+    - Schemas and tables to which the user has access and the privileges granted on them
     - User profile
     - Audit records for the user
 
-    ![User Assessment latest assessment details](images/ocw/ua-latest-assessment-details.png "User Assessment latest assessment details")
+    ![User Assessment latest assessment details](images/ua-latest-assessment-details.png "User Assessment latest assessment details")
 
-5. In the **User Name** column, click a user that is a **CRITICAL** potential risk, for example, **EVIL_RICH**.
+5. In the **User name** column, click a user that is a **CRITICAL** potential risk, for example, **EVIL_RICH**.
 
-    The **User Details** panel shows the following information about the user:
+    The **User details** panel shows the following information about the user:
 
     - Target database name
     - User name
@@ -111,18 +110,18 @@ The latest user assessment is the one that was automatically generated by Oracle
     - Potential risk (for example, CRITICAL) - Hover over the **i** to view what constitutes a critical risk user.
     - Last login date and time
     - Date and time when the user was created
-    - Date and time when the password was changed
+    - Date and time when the password was last changed
     - Privileged roles (the Admin roles granted to the user)
-    - Roles: Expand **All Roles** to view all the roles granted to the user.
-    - Privileges: Expand **All Privileges** to view all the privileges granted to the user.
+    - Roles: Expand **All roles** to view all the roles granted to the user.
+    - Privileges: Expand **All privileges** to view all the privileges granted to the user.
 
-    ![ADMIN user details](images/ocw/ua-admin-user-details.png "ADMIN user details")
+    ![EVIL_RICH user details](images/ua-EVIL_RICH-user-details.png "EVIL_RICH user details")
 
 6. Click **Close**.
 
-7. To filter the report to show potentially critical risk users only, do the following: Click the **Overview** tab. In the **Potential User Risk** chart, click the **CRITICAL** section of the chart. A filter is automatically created.
+7. To filter the report to show potentially critical risk users only, do the following: Click the **Overview** tab. In the **Potential user risk** chart, click the **Critical** section of the chart. A filter is automatically created.
 
-    ![Critical risk users filter](images/ocw/ua-critical-risk-users-filter.png "Critical risk users filter")
+    ![Critical risk users filter](images/ua-critical-risk-users-filter.png "Critical risk users filter")
 
 8. To remove the filter, click the **X** next to the filter.
 
@@ -131,13 +130,13 @@ The latest user assessment is the one that was automatically generated by Oracle
 
 1. Access the SQL worksheet in **Database Actions**.
 
-2. If needed, clear the worksheet and the **Script Output** tab.
+2. Clear the worksheet and the **Script Output** tab.
 
-3. On the SQL worksheet, enter the following commands:
+3. On the SQL worksheet, enter the following commands. Substitute your own password for database-password.
 
     ```
     <copy>DROP USER evil_rich;
-    CREATE USER joe_smith identified by Oracle123_Oracle123;
+    CREATE USER joe_smith identified by database-password;
     GRANT PDB_DBA to joe_smith;</copy>
     ```
 
@@ -150,15 +149,15 @@ The latest user assessment is the one that was automatically generated by Oracle
 
 ## Task 4: Refresh the latest user assessment
 
-1. Return to the browser tab for Oracle Data Safe. You last left off on the **User Assessment Details** page for the latest user assessment.
+1. Return to the browser tab for Oracle Data Safe. You last left off viewing the latest user assessment.
 
-2. Click the **Refresh Now** button.
+2. Click the **Refresh now** button.
 
-    The **Refresh Now** panel is displayed.
+    The **Refresh now** panel is displayed.
 
-3. Keep the default name as is, and click **Refresh Now**. Wait for the status of the latest user assessment to read as **SUCCEEDED**. Oracle Data Safe automatically saves a static copy of the assessment to the Assessment History.
+3. Keep the default name as is, and click **Refresh now**. Wait for the status of the latest user assessment to read as **SUCCEEDED**. Oracle Data Safe automatically saves a static copy of the assessment to the Assessment History.
 
-    ![User Assessment Refresh Now panel](images/ocw/ua-refresh-now-panel.png "User Assessment Refresh Now panel")
+    ![User Assessment Refresh Now panel](images/ua-refresh-now-panel.png "User Assessment Refresh Now panel")
 
 4. Review the refreshed latest assessment.
 
@@ -167,26 +166,26 @@ The latest user assessment is the one that was automatically generated by Oracle
 
 You can select a user assessment to compare with the latest user assessment. With this option, you don't need to set a baseline. This option is only available when you are viewing the latest user assessment. Note that you could have set a baseline and compared the latest assessment to it.
 
-1. While viewing the latest user assessment, on the left under **Resources**, click **Compare Assessments**.
+1. While viewing the latest user assessment, on the left under **Resources**, click **Compare assessments**.
 
-2. Scroll down to the **Comparison With Other Assessments** section.
+2. Scroll down to the **Comparison with other assessments** section.
 
-3. If your compartment isn't shown, click **Change Compartment** and select your compartment.
+3. If your compartment isn't shown, click **Change compartment** and select your compartment.
 
-4. From the **Select Assessment** drop-down list, select the initial assessment for your target database (second one in the list). As soon as you select it, the comparison operation is started.
+4. From the **Select assessment** drop-down list, select the initial assessment for your target database (second one in the list). As soon as you select it, the comparison operation is started.
 
 5. Review the results.
 
     - There is a new user added and a user deleted.
-    - The New User finding is identified as a potential **CRITICIAL** risk.
+    - The New user finding is identified as a potential **CRITICIAL** risk.
 
-    ![User Assessment Comparison report](images/ocw/ua-comparison-report2.png "User Assessment Comparison report")
+    ![User Assessment Comparison report](images/ua-comparison-report2.png "User Assessment Comparison report")
 
-6. In the **Comparison Results** column, click one of the **Open Details** links to view more information.
+6. In the **Comparison results** column, click one of the **Open details** links to view more information.
 
-    The **Comparison Details** panel is displayed.
+    The **Comparison details** panel is displayed.
 
-    ![Comparison Details panel](images/ocw/ua-comparison-details-panel.png "Comparison Details panel")
+    ![Comparison Details panel](images/ua-comparison-details-panel.png "Comparison details panel")
 
 7. Review the information, and then click **Close**. At this point, you might consider setting a baseline assessment.
 
@@ -198,4 +197,4 @@ You can select a user assessment to compare with the latest user assessment. Wit
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, August 17, 2023
+* **Last Updated By/Date** - Jody Glover, July 24, 2024
