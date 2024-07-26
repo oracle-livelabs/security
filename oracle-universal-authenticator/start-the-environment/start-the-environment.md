@@ -56,7 +56,7 @@ This lab assumes you have:
 
     ```
     <copy>
-    sudo su -
+    sudo su - || (sudo sed -i -e 's|root:x:0:0:root:/root:.*$|root:x:0:0:root:/root:/bin/bash|g' /etc/passwd && sudo su -)
     </copy>
     ```
 
@@ -84,7 +84,9 @@ This lab assumes you have:
 3. Run the following command to check the status of cluster nodes:
 
     ```
+    <copy>
     k get nodes
+    </copy>
     ```
 
   The output should be similar to the following:
@@ -133,7 +135,7 @@ This lab assumes you have:
     </copy>
     ```
 
-  Note: you can monitor the pods by running the following commands in a separate terminal (press CTRL+C to exit the watch command).
+  ***Note :*** You can monitor the pods by running the following commands in a separate terminal (press CTRL+C to exit the watch command).
 
   Monitor OAM pods
 
@@ -151,7 +153,9 @@ This lab assumes you have:
     </copy>
     ```
 
-  Note: the OIG pod oim-server1 takes at least 20 minutes to start-up
+  ***Note : It would take around 20 mins for OIG and OAM pods to start. Make sure the all the pods are RUNNING with a READY 1/1 state***. Refer to below screenshot :
+
+  ![OIG-OAG Pods Status](./images/oig-oam-pod-status.png)
 
 6. The Apache HTTP Servers start automatically, run the following command to check the status of the Apache instances.
 
@@ -186,7 +190,7 @@ This lab assumes you have:
     </copy>
     ```
 
-  Replace in the following section the IP addresses with the one obtained from the previous command:
+  Press **i** to enter into insert mode. Replace in the following section the IP addresses with the one obtained from the previous command:
 
     ```
     ...
@@ -201,7 +205,7 @@ This lab assumes you have:
         10.2.1.168 demodb.oracledemo.com
     ...
     ```
-  Press [:] key and type wq! to save the changes
+  Press **[esc]** key and type **:wq!** to save the changes
 
 7. After the OAM domain is started, you must manually restart the fido, admin-ui, spui, kba pods for OAA/OARM. From server so92-srv1, you can use Kubectl to delete these pods which automatically restarts the pods.
 
