@@ -120,10 +120,8 @@ This lab assumes you have:
         **Choose SSH Key Files**: Drag-n-drop or browse and select valid public keys of **openssh** format from your computer
 
     * **Use Flexible Instance Shape with Adjustable OCPU Count?:** Keep this **checked**
-    * **Instance Shape:** Choose **VM.Standard.E4.Flex**.
-    * **Select OCPUs Count per Instance:** Choose **4** and **128GB** of memory.
-
-        ***Note :*** You must adjust the VM.Standard.E4.Flex shape to use 4 OCPU and 128 GB of memory, otherwise you won't be able to start all the components deployed in the server.
+    * **Instance Shape:** Keep the default value : **VM.Standard.E4.Flex**
+    * **Select OCPUs Count per Instance:** Keep the default value : **4**
 
     * Select **Use Existing VCN?:**. Choose VCN as **my-vcn** and subnet as **so-pub-sn1** as created in **Task 2**
 
