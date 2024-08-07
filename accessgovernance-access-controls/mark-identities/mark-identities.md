@@ -9,7 +9,7 @@ Access Governance Administrators (Pamela Green) will activate the identities.
 *Estimated Time*: 15 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Oracle Video Hub video with no sizing](videohub:1_ml4wxlqu)
+[Oracle Video Hub video with no sizing](videohub:1_kch622zw)
 
 ### Objectives
 

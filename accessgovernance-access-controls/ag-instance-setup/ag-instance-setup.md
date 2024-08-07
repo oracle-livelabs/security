@@ -9,7 +9,7 @@ Persona: Identity Domain Administrator
 *Estimated Time*: 30 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Oracle Video Hub video with no sizing](videohub:1_21nk0xhx)
+[Oracle Video Hub video with no sizing](videohub:1_4tnt9xrw)
 
 ### Objectives
 
@@ -98,7 +98,7 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 * [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
-## Acknowledgments
+## Acknowledgements
 
 * **Authors** - Anuj Tripathi, Anbu Anbarasu
 * **Last Updated By/Date** - Indira Balasundaram 29 May 2024

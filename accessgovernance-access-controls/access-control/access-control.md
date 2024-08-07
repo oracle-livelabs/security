@@ -7,7 +7,7 @@ In this lab we will review Access-Control of Access Governance
 *Estimated Time*: 15 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Oracle Video Hub video with no sizing](videohub:1_ruy3z0dh)
+[Oracle Video Hub video with no sizing](videohub:1_wndqhif7)
 
 ### Objectives
 

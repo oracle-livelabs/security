@@ -6,6 +6,8 @@ In this lab, Access Governance Administrator (Pamela Green) can view who has acc
 
 *Estimated Time*: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Oracle Video Hub video with no sizing](videohub:1_k3xmziy7)
 
 ### Objectives
 
