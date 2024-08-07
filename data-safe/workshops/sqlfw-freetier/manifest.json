@@ -1,0 +1,35 @@
+{
+  "workshoptitle": "SQL Firewall and Data Safe - Updated Steps for Hakim",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Prepare your environment",
+      "description": "Prerequisites to run the Oracle Data Safe workshop in your own tenancy.",
+      "filename": "../../prepare-db23ai-compute-environment/prepare-db23ai-compute-environment.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Register Oracle Database 23ai on a compute instance with Data Safe",
+      "description": "This lab shows you how to register Oracle Database 23ai on a compute instance with Data Safe.",
+      "filename": "../../register-db-on-compute/register-db-on-compute.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Deploy a SQL Firewall policy in Data Safe",
+      "description": "This lab shows you how to create and deploy and SQL Firewall policy in Data Safe.",
+      "filename": "../../sqlfw-deploy-sqlfw-policy/sqlfw-deploy-sqlfw-policy.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Get notified about SQL Firewall violations in Data Safe",
+      "description": "This lab shows you to create and deploy and SQL Firewall policy in Data Safe.",
+      "filename": "../../sqlfw-notifications/sqlfw-notifications.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}

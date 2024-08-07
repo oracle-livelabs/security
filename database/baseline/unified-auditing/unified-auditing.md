@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Unified Auditing. It gives 
 
 *Estimated Lab Time:* 35 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.21
+*Version tested in this lab:* Oracle DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Unified Auditing (May 2022)*" [](youtube:bK26Y0TZANY)
@@ -43,7 +43,7 @@ This lab assumes you have:
     <copy>sudo su - oracle</copy>
     ````
 
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
 2. Go to the scripts directory
 
@@ -428,4 +428,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024

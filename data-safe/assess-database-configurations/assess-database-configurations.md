@@ -19,7 +19,7 @@ In this lab, you will:
 - View the latest security assessment for your target database
 - Adjust the risk level of a risk finding
 - Set the latest assessment as the baseline assessment
-- Generate activity on the target database
+- Create a risk on the target database
 - Refresh the latest security assessment and analyze the results
 - Compare your assessment with the baseline
 
@@ -28,8 +28,8 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
+- Access to or prepared an environment for this workshop
+- Access to a registered target database
 
 
 ### Assumptions
@@ -155,7 +155,7 @@ A baseline assessment shows you data for all your target databases in a selected
     ![Security Assessment Baseline has been set message](images/sa-baseline-has-been-set-message.png "Security Assessment Baseline has been set message")
 
 
-## Task 5: Generate activity on the target database
+## Task 5: Create a risk on the target database
 
 In this task, you issue a `GRANT` command on your target database so that later, when you refresh the latest security assessment, you can compare assessments.
 
@@ -225,4 +225,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 12, 2024
+* **Last Updated By/Date** - Jody Glover, June 17, 2024

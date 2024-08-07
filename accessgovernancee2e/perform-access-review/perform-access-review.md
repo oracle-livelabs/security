@@ -2,7 +2,7 @@
 
 ## Introduction
 
-**Access reviews** can be carried out from the **Oracle Access Governance** console by users with the following roles, which are based on data attributes derived from the connected system:
+**Access reviews** can be carried out from the **Oracle Access Governance** console by users with the following roles, which are based on data attributes derived from the Orchestrated system:
 
 * **User** (review access assigned to me/self)
 * **Manager** (review access assigned to users in my team)

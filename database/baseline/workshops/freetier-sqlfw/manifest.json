@@ -6,7 +6,8 @@
       "title": "Introduction",
       "description": "Understand the architecture of this workshop and what it can do",
       "publisheddate": "08/18/2023",
-      "filename": "../../intro/intro-sqlfw.md"
+      "filename": "../../intro/intro-sqlfw.md",
+      "type": "brown"
     },
     {
       "title": "Get Started",
@@ -30,13 +31,15 @@
       "title": "Lab 3: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env-sqlfw.md"
+      "filename": "../../../common/init-start-env/init-start-env-sqlfw.md",
+      "type": "brown"
     },
     {
       "title": "Lab 4: SQL Firewall",
       "description": "In this lab you can see how to leverage Oracle SQL Firewall",
       "publisheddate": "08/18/2023",
-      "filename": "../../sqlfw/sqlfw.md"
+      "filename": "../../sqlfw/sqlfw.md",
+      "type": "brown"
     },
     {
       "title": "Need Help?",

@@ -98,7 +98,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 5. Click on *Create*
 
 
-## Task 3: Create an Approval Workflow
+## Task 3: Create an Approval Workflow - Approval-Workflow-IT-Management
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Manage Approval Workflows tile.
 
@@ -130,9 +130,46 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     ![Approval Workflow](images/approval-workflow-name.png)
 
-    ![Approval Workflow](images/approval-workflow-publish.png)
+    
 
-## Task 4: Create an Access Bundle
+## Task 4: Create an Approval Workflow - One-level-approval 
+
+1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Manage Approval Workflows tile.
+
+   ![Approval Workflow](images/ag-homepage.png)
+
+2. On the Approval Workflows page, your created approval workflows will be listed here. Click Create approval workflow to create your one-level-approval Workflow.
+
+
+3. Let’s build your approval workflow now. Click the “+” button and configure your approval workflow based on the following:
+
+    • Which type of approval?: select Custom User
+
+    • Which user? Pamela Green 
+
+    • Click Add
+
+    ![Approval Workflow](images/custom-user.png)
+
+
+     After confirming your configuration matches the following, click Next
+
+5. On the Add Details page, name your Approval Workflow: One-level-approval. Then, provide any description. Click Next to review your configurations so far, then click Publish and Approval workflow - **One-level-approval** has been created. 
+
+    ![Approval Workflow](images/approval-workflow-custom-user.png)
+
+6. Enter the following details:
+
+    What do you want to call this approval process: One-level-approval
+
+    How do you want to describe this approval process: One-level-approval
+
+    ![Approval Workflow](images/create-one-level.png)
+
+    Click Next and Publish. 
+
+
+## Task 5: Create an Access Bundle
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Access Bundles tile.
 
@@ -248,7 +285,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
      ![Create Access Bundle](images/create-db-manage-access.png)
 
-## Task 5: Create a Policy
+## Task 6: Create a Policy
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Policies tile.
 
@@ -288,23 +325,21 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 8. Finally, click Create.
 
-## Task 6: Create Access Requests
+## Task 7: Create Access Requests
 
-1. Log in to Oracle Access Governance as an employee user - Mark Hernandez with the username and password mentioned below.
+1. Log in to Oracle Access Governance as an employee user - Mark Hernandez with the username and password. 
 
     **Username:**
 
     ```
     <copy>mhernandez</copy>
     ```
-
     **Password:**
 
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    You will be navigated to the home page of your Oracle Access Governance Console.
+
 
   3. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> Request a new access**
 
@@ -328,19 +363,17 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
   8. Click on **Submit Request**
 
-  9. Log in to Oracle Access Governance as an employee user - Harlan Bullard with the username and password mentioned below.
+  9. Log in to Oracle Access Governance as an employee user - Harlan Bullard with the username and password. 
 
     **Username:**
     ```
     <copy>harlan.bullard</copy>
     ```
-
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+
+    You will be navigated to the home page of your Oracle Access Governance Console.
 
   10. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> Request a new access**
 
@@ -354,7 +387,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
   15. Click on **Submit Request**
 
-  16. Log in to Oracle Access Governance as an employee user - Jerry Poland with the username and password mentioned below.
+  16. Log in to Oracle Access Governance as an employee user - Jerry Poland with the username and password. 
 
     **Username:**
     ```
@@ -362,11 +395,11 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     ```
 
     **Password:**
-    ```
-    <copy>Oracl@123456</copy>
-    ```
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
+
+    You will be navigated to the home page of your Oracle Access Governance Console.
+
 
   17. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> Request a new access**
 
@@ -380,9 +413,9 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
   22. Click on **Submit Request**
 
-## Task 7: Approve Access Requests
+## Task 8: Approve Access Requests
 
-1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password mentioned below.
+1. Log in to Oracle Access Governance as an employee user - Pamela Green with the username and password. 
 
     **Username:**
 
@@ -390,19 +423,18 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     <copy>pamela.green</copy>
     ```
 
-    **Password:**
+     **Password:**
 
-    ```
-    <copy>Oracl@123456</copy>
-    ```
+    The password you have set for the user in *Lab 1: Task 2: Step 5*
 
-  You will be navigated to the home page of your Oracle Access Governance Console.
+    You will be navigated to the home page of your Oracle Access Governance Console.
+
 
 2. Navigate to MyStuff -> Approvals.You will see requests from user Harlan Bulllard, Mark Hernandez and Jerry Poland for **DB-Manage-Access** .
 
 3. Under Actions, click on approve and Approve the request for the users Harlan Bullard, Mark Hernandez and Jerry Poland.
 
-## Task 8: Run the Data Load
+## Task 9: Run the Data Load
 
 1. On the Access Governance console home page, navigate to Service Administration -> Connected System.
 

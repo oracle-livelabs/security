@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Label 
 
 *Estimated Lab Time:* 30 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.21
+*Version tested in this lab:* Oracle DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Label Security (May 2022)*" [](youtube:7hBsg0ygZt4)
@@ -63,7 +63,7 @@ Different applications have different purposes:
     <copy>sudo su - oracle</copy>
     ````
 
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
 2. Go to the scripts directory
 
@@ -369,4 +369,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Alan Williams
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024

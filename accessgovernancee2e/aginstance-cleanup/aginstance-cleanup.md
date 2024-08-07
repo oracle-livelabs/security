@@ -38,10 +38,16 @@ In this lab, you will:
 
 5. Now the Access Governance service instance has been successfully deleted. 
 
+## Task 2: Run the Destroy Job  
 
-## Task 2: Deactivate Identity Domain
+1. Navigate to **Resource Manager -> Stacks -> Stack details** 
 
-   *Note: We are only deactivating the domain here, deletion of the domain will be done in the following lab*
+    ![Open OCI console](images/destroy-job.png)
+
+2. Click on **Destroy** job. 
+
+## Task 3: Deactivate Identity Domain
+
 
 1. Navigate to **Identity -> Domain -> ag-domain**. Click on **More actions -> Deactivate**
 
@@ -51,9 +57,7 @@ In this lab, you will:
 
     ![Open OCI console](images/confirm-deactivate.png)
 
-
-
-## Task 3: Destroy Terraform Stack 
+## Task 4: Destroy Terraform Stack that was used to create resources - Compartment, Identity Domain, AG Users and Policies for Access Governance 
 
 1. Navigate to **Resource Manager -> Stacks -> Stack details** 
 

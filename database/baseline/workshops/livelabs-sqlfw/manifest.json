@@ -6,24 +6,22 @@
       "title": "Introduction",
       "description": "Understand the architecture of this workshop and what it can do",
       "publisheddate": "08/18/2023",
-      "filename": "../../intro/intro-sqlfw.md"
+      "filename": "../../intro/intro-sqlfw.md",
+      "type": "green"
     },
     {
-      "title": "Lab 1: Environment Setup",
-      "description": "Verify Setup of compute instance",
-      "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
-    },
-    {
-      "title": "Lab 2: Initialize Environment",
+      "title": "Lab 1: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env-sqlfw.md"
+      "filename": "../../../common/init-start-env/init-start-env-sqlfw.md",
+      "type": "green"
     },
     {
-      "title": "Lab 3: SQL Firewall",
+      "title": "Lab 2: SQL Firewall",
       "description": "In this lab you can see how to leverage Oracle SQL Firewall",
       "publisheddate": "08/18/2023",
-      "filename": "../../sqlfw/sqlfw.md"
+      "filename": "../../sqlfw/sqlfw.md",
+      "type": "green"
     },
     {
       "title": "Need Help?",

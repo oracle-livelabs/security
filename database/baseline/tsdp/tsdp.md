@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Transparent Sensitive Data 
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.21
+*Version tested in this lab:* Oracle DBEE 19.23
 
 ### Video Preview
 No video for the moment
@@ -37,7 +37,7 @@ This lab assumes you have:
     <copy>sudo su - oracle</copy>
     ````
 
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
 2. Go to the scripts directory
 
@@ -166,4 +166,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Pedro Lopes
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024

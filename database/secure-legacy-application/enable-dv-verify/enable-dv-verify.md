@@ -32,7 +32,7 @@ This lab assumes you have:
 
 4. Under the **Development** section, select **SQL**.
 
-   ![Select sql](images/select-sql.png)
+   ![Select sql](images/db-actions-sql.png)
 
 5. Under the **ADMIN** schema, copy and paste the following commands to create the **Database Vault owner**. Select the button **Run Script** to execute the statements. Check the **Script output** at the bottom of the page to make sure the statements executed successfully.
 

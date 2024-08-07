@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.11 and DBEE 19.21
+*Version tested in this lab:* Oracle AVDF 20.12 and DBEE 19.23
 
 ### Video Preview
 
@@ -37,7 +37,7 @@ This lab assumes you have:
 |--|------------------------------------------------------------|-------------|
 || **AVDF Labs**||
 |01| Reset the password | <5 minutes|
-|02| Assess ans Discover | 20 minutes|
+|02| Assess and Discover | 20 minutes|
 |03| Audit and Monitor | 20 minutes|
 |04| Report and Alert | 20 minutes|
 |05| Protect and Prevent | 20 minutes|
@@ -57,7 +57,7 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
     - Go to the scripts directory
 
@@ -206,7 +206,7 @@ In this lab, you will do the following:
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: If you are using a remote desktop session, double-click on the *terminal* icon on the desktop to launch a session
+        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
     - Go to the scripts directory
 
@@ -220,11 +220,15 @@ In this lab, you will do the following:
         <copy>./avs_drift-gen.sh pdb1</copy>
         ````
 
+        ![AVDF](./images/avdf-504b.png "Drift Generation on pdb1")
+
     - Generate the drift for **pdb2**
 
         ````
         <copy>./avs_drift-gen.sh pdb2</copy>
         ````
+
+        ![AVDF](./images/avdf-504b.png "Drift Generation on pdb2")
 
         **Note:** Here, we grant to PUBLIC the `DBA` role for **pdb1** and `PDB_DBA` role for **pdb2**
 
@@ -240,7 +244,7 @@ In this lab, you will do the following:
     
     - Do the same for **pdb2**
 
-6. Go back to the Auditor dashboard home and examine the **Security assessment drift graph**
+6. Click **Home** to go back to the Auditor dashboard and examine the **Security assessment drift graph**
 
     **Note:** The graph gives you a clear picture of drifts on all the targets where the baseline has been set
 
@@ -256,11 +260,15 @@ In this lab, you will do the following:
         <copy>./avs_mitigate-risk.sh pdb1</copy>
         ````
 
+        ![AVDF](./images/avdf-504c.png "Mitigate risk on pdb1")
+
     - for **pdb2**
 
         ````
         <copy>./avs_mitigate-risk.sh pdb2</copy>
         ````
+
+        ![AVDF](./images/avdf-504c.png "Mitigate risk on pdb2")
 
 9. Go back to Audit Vault Web Console as *`AVAUDITOR`* to generate an assessment
 
@@ -274,7 +282,7 @@ In this lab, you will do the following:
     
     - Do the same for **pdb2**
 
-10. Go back to the Auditor dashboard home and examine the **Security assessment drift graph** to see if the identified risk has been fixed
+10. Click **Home** to go back to the Auditor dashboard and examine the **Security assessment drift graph** to see if the identified risk has been fixed
 
     ![AVDF](./images/avdf-506.png "AVDF - Drift Chart Mitigated")
 
@@ -336,7 +344,9 @@ In this lab, we will do the following
 
 ### Step 1: Manage and Provision audit policy from AVDF for Oracle databases pdb1 and pdb2
 
-We have already configured the audit trail for the databases pdb1 and pdb2. To showcase AVDF capabilities, we use **agent-based audit collection for pdb1** and **agentless collection for pdb2**.
+We have already configured the audit trail for the databases pdb1 and pdb2.
+
+To showcase AVDF capabilities, we use **agent-based audit collection for pdb1** and **agentless collection for pdb2**.
 
 You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** login)
 
@@ -386,7 +396,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
         ![AVDF](./images/avdf-553.png "Verify the job completed successfully")
 
-    - If not, please refresh the web page  (press [F5] for example) until it shows **Complete** and it was provisioned on **pdb1**
+    - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **pdb1**
 
 7. Repeat the steps 5 and 6 for **pdb2** as well
 
@@ -395,7 +405,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
     - Go back to your terminal session and list **ALL** the Unified Audit Policies in **pdb1**
 
         ````
-        <copy>./avs_query_all_unified_policies.sh</copy>
+        <copy>./avs_query_all_unified_policies.sh pdb1</copy>
         ````
 
         ![AVDF](./images/avdf-014.png "List all the Unified Audit Policies")
@@ -403,7 +413,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
     - Next, show the **enabled** Unified Audit policies
 
         ````
-        <copy>./avs_query_enabled_unified_policies.sh</copy>
+        <copy>./avs_query_enabled_unified_policies.sh pdb1</copy>
         ````
 
         ![AVDF](./images/avdf-015.png "Show the enabled Unified Audit policies")
@@ -556,7 +566,7 @@ In this section, we will only see the change report for **pdb2**, where all the 
 
             ![AVDF](./images/avdf-029.png "Golden Gate - Login")
 
-    - **Start OGG** (Oracle Golden Gate) extracts from the OGG Web Console, click [**Action**] for the `pdb2` extract and start it
+    - **Start OGG** (Oracle Golden Gate) extracts from the OGG Web Console, click [**Action**] for the *`pdb2`* extract and start it
 
         ![AVDF](./images/avdf-622.png "Start OGG PDB2 extract Service")
 
@@ -1649,10 +1659,10 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
 **Generate Changes and View the Audit Vault Reports**
 
-22. Go back to your terminal session and generate data and object changes with 2 different privileged users
+22. Go back to your terminal session and generate data and object changes with 2 different privileged users **on pdb1**
 
     ````
-    <copy>./avs_generate_employeesearch_prod_changes.sh</copy>
+    <copy>./avs_generate_employeesearch_prod_changes.sh pdb1</copy>
     ````
 
     ![AVDF](./images/avdf-042.png "Generate data")
@@ -2090,7 +2100,7 @@ Important: before performing this lab, you must have:
     - Go back to your terminal session to reset Golden Gate
 
         ````
-        <copy>$DBSEC_LABS/avdf/avs/avs_reset_ogg.sh</copy>
+        <copy>$DBSEC_LABS/avdf/avs/avs_reset_ogg.sh pdb1</copy>
         ````
 
         ![AVDF](./images/avdf-263.png "Reset the Golden Gate configuration")
@@ -2198,4 +2208,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Nazia Zaidi
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - March 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2024

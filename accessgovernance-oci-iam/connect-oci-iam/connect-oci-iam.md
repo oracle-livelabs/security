@@ -33,19 +33,19 @@ In this lab, you will:
     The password you have set for the user in *Lab 1: Task 2: Step 5*
     
 
-2.  On the Oracle Access Governance service home page, click on the Navigation Menu icon, and select **Service Administration → Connected Systems**
+2.  On the Oracle Access Governance service home page, click on the Navigation Menu icon, and select **Service Administration → Orchestrated Systems**
 
-   ![Connected system](images/connected-system.png)
+   ![Connected system](images/navigate-orchestrated-system.png)
 
-3. Select the **Add a connected system** button from the Connected Systems page.
+3. Select the **Add a orchestrated system** button from the Connected Systems page.
 
-      ![Select cloud service provider](images/add-connection.png)
+      ![Select cloud service provider](images/add-system.png)
 
-4. Select **Integrate with Oracle Cloud Infrastructure** under **Select and configure a new connected system** and Click **Next**
+4. Select **Integrate with Oracle Cloud Infrastructure** under **Select and configure a new orchestrated system** and Click **Next**
 
-  ![Select OCI](images/select-oci-iam.png)
+  ![Select OCI](images/select-oci-iam-system.png)
 
-6. Enter name  and description of the connected system, and then click **Next.**
+6. Enter name  and description of the orchestrated system, and then click **Next.**
 
   Name: OCI-IAM
   
@@ -112,10 +112,43 @@ In this lab, you will:
 
   **What is the OCI tenancy's home region?**: Enter the home region for the target OCI tenancy, using the region identifier noted down from the previous step.
 
+  Click on **Add**
+
   ![OCI Enter details](images/details-entered.png)
 
+  Choose the option **Customize before enabling the system for data loads**. Click on **I'm done** 
 
-12. Click **Add.** Click on Manage to see the status. If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this connected system to sync the data.
+  ![OCI Enter details](images/customize-data-load.png)
+
+  Select **Matching Rules -> Manage**
+
+  ![OCI Enter details](images/matching-rule-select.png)
+
+  Under **All** , select the following condition:
+
+  Select connected system attribute: Employee user name
+
+  Select operator: equals
+
+  Select Identity attribute: Employee user name
+
+  Click **Save**
+
+  ![OCI Enter details](images/username-match-rule.png)
+
+  Navigate back to the orchestrated system **OCI-IAM**. Click on the **Activate** on the top-right corner. 
+
+  To confirm, click on **Activate** .
+
+  ![OCI Enter details](images/activate-oci-system.png)
+
+
+  The system is now **Active**. Click on **Load data now** to load the data. 
+
+  ![OCI Enter details](images/load-the-data.png)
+
+
+12. If the connection details are successfully validated, you will see the **Success** status for the **Validate** operation. The Full Data Load operation may take upto a few minutes, depending upon the data available in your OCI tenancy. The incremental data load is run every four hours for this orchestrated system to sync the data.
 
   ![OCI Connection status](images/oci-connection-status.png)
 
