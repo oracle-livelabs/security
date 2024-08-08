@@ -23,7 +23,7 @@ This lab assumes you have:
 
 1. Login to the OCI console Identity Domain: Choose the right domain and login as the **Identity Domain Administrator**
 
-2. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Under Compute, Click Instances. Select the correct compartment to display the compute instance that was deployed as part of **Lab2**.
+2. In the OCI console, click the Navigation Menu icon in the top left corner to display the Navigation menu. Under Compute, Click Instances. Select the correct compartment to display the compute instance that was deployed as part of **Lab1**.
   Note the public IP of the compute VM.
 
 3. Open a text editor in your computer in the **Administrator mode** to add following entries in the hosts file.
@@ -232,7 +232,7 @@ This lab assumes you have:
     </copy>
     ```
 
-  Replace the **pod-name** the below command with the pod names returned from previous commands one at a time:
+  Replace the **pod-name** in the below command with the pod names returned from previous commands one at a time:
 
     ```
     k delete pod <pod_name> -n oracle-oaa-system
