@@ -8,7 +8,7 @@ This workshop introduces the functionality of Oracle SQL Firewall. It gives the 
 *Version tested in this lab:* Oracle Database 23ai Free
 
 ### Video Preview
-Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [](youtube:81N23MDhYXU)
+Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [DB Security - SQL Firewall](videohub:1_gbm8p6ba)
 
 ### Objectives
 - Train the SQL Firewall to learn the normal activity 
@@ -264,6 +264,7 @@ In this task you will learn how the administrator trains the system to learn the
 
     - Associate the SQL Firewall violation policy to your target database
     
+        - Ensure that your compartment is selected, otherwise please click on "**Change Compartment**" 
         - Select **Selected targets only (up to 10)** and choose *`DBSeclabs_DB23ai-freepdb1`*
         - Select **Selected policies only** and choose *`SQL Firewall violations`*
 
@@ -442,6 +443,8 @@ Let's assume there is a malicious insider who had access to the stolen credentia
 
             ![SQLFW](./images/sqlfw-074a.png "Violation reports sub-menu")
 
+        - Ensure that your compartment is selected, otherwise please change it accordingly 
+        
         - Click on the **All violations** report
 
             ![SQLFW](./images/sqlfw-074b.png "Violation reports - All violation")
@@ -572,6 +575,8 @@ Here, we will enable the SQL Firewall to block on detection of unauthorized SQL 
         - Click on the **Violation reports** sub-menu on the left
 
             ![SQLFW](./images/sqlfw-074a.png "Violation reports sub-menu")
+
+        - Ensure that your compartment is selected, otherwise please change it accordingly 
 
         - Click on the **All violations** report
 
@@ -1038,4 +1043,4 @@ Technical Documentation:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - July 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024
