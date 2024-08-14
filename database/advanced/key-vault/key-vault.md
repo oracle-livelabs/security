@@ -27,7 +27,7 @@ This lab assumes you have:
 
 | Task No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
-| 1| Encrypt database with TDE (Mandatory) | <10 minutes||
+| 1| Encrypt database with TDE | <10 minutes||
 | 2| Add an Endpoint | <10 minutes||
 | 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
 | 4| Upload the TDE Wallet | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
@@ -38,7 +38,7 @@ This lab assumes you have:
 | 9| Generate New Non-extractable Key | 5 minutes||
 |10| Reset the OKV Lab Config | <5 minutes||
 
-## Task 1: Encrypt database with TDE (Mandatory)
+## Task 1: Encrypt database with TDE
 
 To enable you to learn about Oracle Key Vault for TDE key management, you need an encrypted database:
 
