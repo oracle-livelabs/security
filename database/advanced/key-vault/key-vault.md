@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Key Va
 
 *Estimated Lab Time:* 60 minutes
 
-*Version tested in this lab:* Oracle OKV 21.8 and DBEE 19.23
+*Version tested in this lab:* Oracle OKV 21.9 and DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
@@ -37,14 +37,6 @@ This lab assumes you have:
 | 8| Secret Management with OKV | 5 minutes||
 | 9| Generate New Non-extractable Key | 5 minutes||
 |10| Reset the OKV Lab Config | <5 minutes||
-
-<!--
-Advanced OKV Labs for 21.7
-| A| SSH Key Management and Remote Server Access Controls with OKV | 10 minutes||
-| B| DB Account Pwd Management | 5 minutes ||
-| C| Key Management for DBMS_CRYPTO | 5 minutes ||
-| D| Automated Java Keystore rotation | 5 minutes ||
--->
 
 ## Task 1: Encrypt database with TDE (Mandatory)
 
@@ -834,4 +826,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024
