@@ -17,7 +17,6 @@ In this lab, you will:
 - (Optional) Review the `ADMIN` user's audit records
 - Change users and entitlements on the target database
 - Refresh the latest user assessment
-- View the user assessment history for your target database
 - Compare the latest user assessment with the initial user assessment
 
 
@@ -221,4 +220,4 @@ You can select a user assessment to compare with the latest user assessment. Wit
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, June 17, 2024
+* **Last Updated By/Date** - Jody Glover, July 24, 2024

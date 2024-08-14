@@ -27,7 +27,7 @@ This lab assumes you have:
 
 | Task No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
-| 1| (Mandatory) Prerequisites | <10 minutes||
+| 1| Encrypt database with TDE (Mandatory) | <10 minutes||
 | 2| Add an Endpoint | <10 minutes||
 | 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
 | 4| Upload the TDE Wallet | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
@@ -46,11 +46,9 @@ Advanced OKV Labs for 21.7
 | D| Automated Java Keystore rotation | 5 minutes ||
 -->
 
-## Task 1: (Mandatory) Prerequisites
+## Task 1: Encrypt database with TDE (Mandatory)
 
-**Before beginning this lab**, make sure you have performed steps 1 to 4 of the Transparent Data Encryption (TDE) Livelabs!
-
-If you didn't execute them yet, do it right now by following the instructions below:
+To enable you to learn about Oracle Key Vault for TDE key management, you need an encrypted database (steps 1 to 4 of the Transparent Data Encryption (TDE) Livelabs):
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
