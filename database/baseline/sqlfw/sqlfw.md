@@ -8,7 +8,7 @@ This workshop introduces the functionality of Oracle SQL Firewall. It gives the 
 *Version tested in this lab:* Oracle Database 23ai Free
 
 ### Video Preview
-Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [](youtube:81N23MDhYXU)
+Watch a preview of "*Introducing SQL Firewall – a new security capability in Oracle Database 23ai*" [DB Security - SQL Firewall](videohub:1_gbm8p6ba)
 
 ### Objectives
 - Train the SQL Firewall to learn the normal activity 
