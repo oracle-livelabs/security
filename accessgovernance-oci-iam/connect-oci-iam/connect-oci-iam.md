@@ -143,7 +143,7 @@ In this lab, you will:
   ![OCI Enter details](images/activate-oci-system.png)
 
 
-  The system is now **Active**. Click on **Load data now** to load the data. 
+  The system is now **Active**. The **Full Data Load** is automatically run. Note: You can click on **Load data now** to load the data manually. 
 
   ![OCI Enter details](images/load-the-data.png)
 

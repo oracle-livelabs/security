@@ -53,11 +53,11 @@ In this lab, you will:
     
    Select **Add**
 
-  ![Access Governance Homepage](images/custom-user.png)
+  ![Access Governance Homepage](images/add-new-approval.png)
 
 7. Click on **Next**
 
-  ![Access Governance Homepage](images/click-next-approval.png)
+  ![Access Governance Homepage](images/click-next.png)
 
 8. Enter the following details:
     - What do you want to call this approval process: **One-level-approval**
@@ -65,10 +65,14 @@ In this lab, you will:
     
     Click Next
 
-  ![Access Governance Homepage](images/one-level-approval.png)
+  ![Access Governance Homepage](images/enter-approval-level.png)
 
 9. Click **Publish** and **Approval Workflow** - **One-level-approval** workflow has been created
+
+  ![Access Governance Homepage](images/workflow-publish.png)
   
+   ![Access Governance Homepage](images/workflow-created.png)
+
 ## Task 2: Create a Policy Review Campaign
 
 1.  Scroll down and select the **“Let’s create some work and define a new campaign”** tile. Alternatively, you can select **Navigation Menu -> Access Reviews -> Campaigns.** On the **Campaigns** page, click the **Create a campaign** button.
