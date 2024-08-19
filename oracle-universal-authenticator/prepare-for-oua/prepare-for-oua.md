@@ -71,9 +71,11 @@ This lab assumes you have:
 
 8. Click on More (3-dots icon) and select Create shortcut. This will add a shortcut to your Windows desktop to directly start the the image with the emulator. Proceed to exit Nox Asst by closing the window.
 
-9. From your Windows desktop click on the shortcut **NoxPlayer** to start the emulator with the Android 7 image. Once the emulator is started, withing the emulator, use Google Play Store to install **Oracle Mobile Authenticator** and **Google Chrome** mobile apps
+9. From your Windows desktop click on the shortcut **NoxPlayer** to start the emulator with the Android 7 image. Once the emulator is started, within the emulator, use Google Play Store to install **Oracle Mobile Authenticator** and **Google Chrome** mobile apps.
 
-10. From the android emulator, click File Manager (folder icon). In File Manager, click in the Hamburger icon and select **/Root**. Go to **etc** folder, then scroll down and click on hosts file, and select **Open as text**.
+    ***Note :*** If the screen auto-rotates, choose More (three dots) present on Android home screen towards the bottom right-side and click on Rotate option to bring it back to the normal mode.
+
+10. From the android emulator, click File Manager (folder icon). In File Assistant, choose **Open Android Folder** and click on the Hamburger icon and select **/Root**. Go to **etc** folder, then scroll down and click on hosts file, and select **Open as text**.
 
   In the Open with... window, click on JUST ONCE. Proceed to enter or paste the hosts entries for OUA server.
   E.g. add or copy the following entries:
@@ -89,7 +91,7 @@ This lab assumes you have:
 
 ## Task 2: Join Demo Windows Image to Entra ID Domain
 
-1. Access the Windows 11 guest VM as administrator, proceed to join your Windows 11 VM to an existing Entra ID domain.
+1. Access the Windows 11 guest VM with an administrator account, proceed to join your Windows 11 VM to an existing Entra ID domain.
 
     ***Note :*** This step presumes you have an Entra ID user account, if not, create a new user using Entra ID administrative console and come back to perform this step.
 
@@ -112,21 +114,7 @@ This lab assumes you have:
 
 ## Task 3: Installing and Configuring OUA
 
-1. Login to Window 11 as administrator using the administrator credentials as specified below :
-
-  Windows User
-    ```
-    <copy>
-    Local\admin
-    </copy>
-    ```
-
-  Password
-    ```
-    <copy>
-    #demOr@cle6699
-    </copy>
-    ```
+1. Login to Window 11 as administrator with an administrator account
 
 2. Once in the Windows guest VM, type **Notepad++** in the search box located in the taskbar. Open the Notepad++ tool (already installed) to edit the Windows hosts file.
 

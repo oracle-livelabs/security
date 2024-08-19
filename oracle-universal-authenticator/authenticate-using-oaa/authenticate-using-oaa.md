@@ -110,7 +110,7 @@ This lab assumes you have:
     Oracle123
     </copy>
     ```
-3. Click on the link below **Email Challenge** to receive email OTP as the second factor :
+3. Click on the link below **Email Challenge** to receive email OTP as the second factor. In case you see multiple options under **Email Challenge**, choose the one that says **Enter OTP sent to ***de\*\*\*\*@\*\*\*\*\*.com***** :
 
    ![Select email as MFA factor](images/mfa-email-factor-selection.png)
 
@@ -126,7 +126,7 @@ This lab assumes you have:
 
 ## Task 2: Authenticate into sample web app using OTP from OMA app
 
-1. In a new browser window, access the sample web app as described in **Task 2: Step 2**
+1. In a new browser window, access the sample web app as described in **Task 1: Step 2**
 
 2. Click on the link below **Oracle Mobile Authenticator**
 
