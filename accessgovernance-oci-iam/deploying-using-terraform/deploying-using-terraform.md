@@ -51,6 +51,10 @@ In this lab, you will:
 
   ![Upload zip file](images/upload-zip.png)
 
+  Under **Create in Compartment** select the **Root compartment**
+
+  ![Upload zip file](images/select-compartment.png)
+
   Click *Next*
 
   Enter Unique Email IDS for each of the users
