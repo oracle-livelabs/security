@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Key Va
 
 *Estimated Lab Time:* 60 minutes
 
-*Version tested in this lab:* Oracle OKV 21.8 and DBEE 19.23
+*Version tested in this lab:* Oracle OKV 21.9 and DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
@@ -27,7 +27,7 @@ This lab assumes you have:
 
 | Task No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
-| 1| (Mandatory) Prerequisites | <10 minutes||
+| 1| Encrypt database with TDE | <10 minutes||
 | 2| Add an Endpoint | <10 minutes||
 | 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
 | 4| Upload the TDE Wallet | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
@@ -38,19 +38,9 @@ This lab assumes you have:
 | 9| Generate New Non-extractable Key | 5 minutes||
 |10| Reset the OKV Lab Config | <5 minutes||
 
-<!--
-Advanced OKV Labs for 21.7
-| A| SSH Key Management and Remote Server Access Controls with OKV | 10 minutes||
-| B| DB Account Pwd Management | 5 minutes ||
-| C| Key Management for DBMS_CRYPTO | 5 minutes ||
-| D| Automated Java Keystore rotation | 5 minutes ||
--->
+## Task 1: Encrypt database with TDE
 
-## Task 1: (Mandatory) Prerequisites
-
-**Before beginning this lab**, make sure you have performed steps 1 to 4 of the Transparent Data Encryption (TDE) Livelabs!
-
-If you didn't execute them yet, do it right now by following the instructions below:
+To enable you to learn about Oracle Key Vault for TDE key management, you need an encrypted database:
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -66,7 +56,7 @@ If you didn't execute them yet, do it right now by following the instructions be
     <copy>cd $DBSEC_LABS/tde</copy>
     ````
 
-3. Make sure you have a cold-backup of your database (**the DB will reboot!**)
+3. Make sure you have a cold-backup of your database (**the DB will restart!**)
 
     ````
     <copy>./tde_backup_db.sh</copy>
@@ -82,7 +72,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![Key Vault](../advanced-security/tde/images/tde-002.png "Create the Keystore directories")
 
-5. Use the database parameters to manage TDE (**the DB will reboot!**)
+5. Use the database parameters to manage TDE (**the DB will restart!**)
 
     ````
     <copy>./tde_set_tde_parameters.sh</copy>
@@ -122,6 +112,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![Key Vault](../advanced-security/tde/images/tde-012.png "Create the Auto-login Oracle Wallet")
 
+<!--
 10. You should now see all these file, including the **cwallet.sso** file
 
     ````
@@ -137,8 +128,18 @@ If you didn't execute them yet, do it right now by following the instructions be
     ````
 
     ![Key Vault](./images/okv-202.png "View the Oracle Wallet content on the database")
+-->
 
-12. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
+10. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
+
+    - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and this default password is available in the Labs details or by executing the following command line as *`oracle`* user:
+
+        ```
+        <copy>
+        sudo su - oracle
+        echo $OKVUSR_PWD
+        </copy>
+        ```
 
     - Open a web browser window to *`https://kv`* to access to the Key Vault Web Console
 
@@ -152,17 +153,6 @@ If you didn't execute them yet, do it right now by following the instructions be
 
         ![Key Vault](./images/okv-001.png "OKV - Login")
 
-        **Note**:
-        - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
-        - This default password is available in the Labs details or by executing the following command line as *`oracle`* user:
-
-            ```
-            <copy>
-            sudo su - oracle
-            echo $OKVUSR_PWD
-            </copy>
-            ```
-
     - Set your new password
     
         ![Key Vault](./images/okv-001b.png "OKV - Login")
@@ -171,9 +161,9 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     - Logout
 
-13. Repeat this Step 12 for the user *`KVEPADMIN`*
+11. Repeat the Step 10 for the user *`KVEPADMIN`*
 
-14. Now, your database is ready for the OKV labs!
+12. Now, your database is ready for the OKV labs!
 
 ## Task 2: Add an Endpoint
 First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
@@ -836,4 +826,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024
