@@ -199,10 +199,10 @@ You can select a user assessment to compare with the latest user assessment. Wit
 
 5. Review the results.
 
-    - There is a new user added and a user deleted.
-    - The New user finding is identified as a potential **CRITICIAL** risk.
+    - There is a new user added and a user deleted. The new user finding is identified as a potential **CRITICAL** risk.
+    - There are user grants modified by the `DS$ADMIN` user. This finding is also identified as a potential **CRITICAL** risk.
 
-    ![User Assessment Comparison report](images/ua-comparison-report2.png "User Assessment Comparison report")
+    ![User Assessment Comparison report](images/ua-comparison-report3.png "User Assessment Comparison report")
 
 6. In the **Comparison results** column, click one of the **Open details** links to view more information.
 
@@ -213,6 +213,8 @@ You can select a user assessment to compare with the latest user assessment. Wit
 7. Review the information, and then click **Close**. At this point, you might consider setting a baseline assessment.
 
 
+You may now **proceed to the next lab**.
+
 ## Learn More
 
 - [User Assessment Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-6BF46EE2-F7B5-4710-A09C-069EA95F8052)
@@ -220,4 +222,4 @@ You can select a user assessment to compare with the latest user assessment. Wit
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, July 24, 2024
+* **Last Updated By/Date** - Jody Glover, August 22, 2024
