@@ -218,6 +218,9 @@ In this task, you issue a `GRANT` command on your target database so that later,
     ![Security Assessment Comparison report bottom](images/sa-comparison-report-bottom3.png "Security Assessment Comparison report bottom")
 
 
+You may now **proceed to the next lab**.
+
+
 ## Learn More
 
 - [Security Assessment Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-030B2A14-272F-49CF-80D2-5559C722E0FF)
@@ -225,4 +228,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, August 21, 2024
+* **Last Updated By/Date** - Jody Glover, August 22, 2024

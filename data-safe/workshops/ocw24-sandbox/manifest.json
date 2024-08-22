@@ -41,7 +41,7 @@
       {
         "title": "Lab 4: Mask sensitive data",
         "description": "This lab shows you how to mask sensitive data on your target database by using the Data Masking feature in Oracle Data Safe.",
-        "filename": "../../mask-sensitive-data/mask-sensitive-data.md",
+        "filename": "../../mask-sensitive-data/mask-sensitive-data-ocw.md",
         "type": "ocw-livelabs"
       },
       {
