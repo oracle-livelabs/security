@@ -10,6 +10,8 @@ Begin by granting the Data Masking role on your target database. Then, create a 
 
 Estimated Time: 20 minutes
 
+[Data Safe](videohub:1_wiu76838)
+
 ### Objectives
 
 In this lab, you will:

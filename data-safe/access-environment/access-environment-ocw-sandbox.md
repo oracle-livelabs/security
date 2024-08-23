@@ -7,6 +7,8 @@ In this lab, you access and review your LiveLabs Sandbox environment in Oracle C
 
 Estimated Lab Time: 5 minutes
 
+[Data Safe](videohub:1_dj98a6we)
+
 ### Objectives
 
 In this lab, you will:

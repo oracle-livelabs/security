@@ -8,6 +8,8 @@ In this lab, you explore User Assessment.
 
 Estimated Time: 20 minutes
 
+[Data Safe](videohub:1_nvfme592)
+
 ### Objectives
 
 In this lab, you will:
