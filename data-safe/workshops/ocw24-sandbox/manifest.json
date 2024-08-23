@@ -29,7 +29,7 @@
       {
         "title": "Lab 2: Assess database users",
         "description": "This lab shows you how to assess database users in your Autonomous Database by using the User Assessment feature in Oracle Data Safe.",
-        "filename": "../../assess-database-users/assess-database-users.md",
+        "filename": "../../assess-database-users/assess-database-users-ocw.md",
         "type": "ocw-livelabs"
       },
       {
