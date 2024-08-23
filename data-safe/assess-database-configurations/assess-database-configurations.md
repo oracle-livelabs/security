@@ -10,6 +10,7 @@ In this lab, you explore Security Assessment.
 
 Estimated Time: 20 minutes
 
+[Data Safe](videohub:1_z96ow7gf)
 
 ### Objectives
 
