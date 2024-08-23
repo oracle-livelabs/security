@@ -114,6 +114,18 @@ This lab assumes you have:
 
 2. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
 
+    - On the **SSH Server** remote desktop (on DBSeclab VM), execute *as opc* OS user top display the default OKV console password
+
+        ```
+        <copy>
+        cat /home/oracle/DBSecLab/livelabs/okv/wui_passphrase
+        </copy>
+        ```
+
+        **Note**: A new password for all the OKV users is randomly generated during the deployment of the Livelabs and stored in the `wui_passphrase` file
+    
+    - Copy the default password
+    
     - Open a web browser window to *`https://kv`* to access to the Key Vault Web Console
 
         **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
@@ -127,10 +139,6 @@ This lab assumes you have:
         ```
 
         ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
-
-        **Note**:
-        - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
-        - This default password is available in the Labs details
 
     - Set your new password
     
@@ -419,7 +427,7 @@ In this lab, we will introduce remote server access controls by centrally managi
 
         ![Key Vault](./images/okv_ssh-039.png "Edit Wallet Access settings")
 
-    - Deselect the **Manage Wallet** radio button, and click [**Save**]
+    - Deselect the **Manage Wallet** checkbox button, and click [**Save**]
 
         ![Key Vault](./images/okv_ssh-040.png "Deselect the Manage Wallet privilege")
 
@@ -513,7 +521,7 @@ In this second part, we will manage users' private keys in OKV making those priv
     - Fill it out as following:
     
         - Name: *`MY_SSH_KEYS`*
-        - Descriptio: *Contains my non-extractable private, and public keys to log in to remote machines*
+        - Description: *Contains my non-extractable private, and public keys to log in to remote machines*
         - Wallet Type: select *General*
 
         ![Key Vault](./images/okv_ssh-049.png "Create Wallet - Form")
@@ -734,6 +742,7 @@ In this second part, we will manage users' private keys in OKV making those priv
     <copy>
     eval `ssh-agent -P "$OKV_HOME/lib/*"`
     ssh-add -D
+    sudo chmod 700 $OKV_HOME/lib/liborapkcs.so
     ssh-add -s $OKV_HOME/lib/liborapkcs.so -t 14400
     </copy>
     ```
@@ -816,7 +825,7 @@ In this second part, we will manage users' private keys in OKV making those priv
     
             ![Key Vault](./images/okv_ssh-110.png "Edit the Wallet")
 
-            **Note**: In this example, now haven't got any public key in the SSH Server wallet
+            **Note**: In this example, now there aren’t any more public keys in this SSH Server wallet
 
             ![Key Vault](./images/okv_ssh-111.png "Remove the public key from the SSH Server Wallet")
 
