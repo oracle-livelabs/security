@@ -17,11 +17,18 @@ Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
 
 ### Prerequisites
 This lab assumes you have:
+<if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
+</if>
+<if type="green">
+- An Oracle Cloud account
+- You have completed:
+    - Introduction Tasks
+</if>
 
 ### Lab Timing (estimated)
 
@@ -44,11 +51,14 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
+<if type="brown">
     ````
     <copy>sudo su - oracle</copy>
     ````
-
-    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
+</if>
+<if type="green">
+    **Note**: Double-click on the Terminal icon on the desktop to launch a session directly as oracle
+</if>
 
 2. Go to the TDE scripts directory
 
@@ -56,6 +66,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     <copy>cd $DBSEC_LABS/tde</copy>
     ````
 
+<!--
 3. Make sure you have a cold-backup of your database (**the DB will restart!**)
 
     ````
@@ -63,8 +74,9 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     ````
 
     ![Key Vault](../advanced-security/tde/images/tde-001.png "Backup DB")
+-->
 
-4. Create the Keystore directories on the Operating System
+3. Create the Keystore directories on the Operating System
 
     ````
     <copy>./tde_create_os_directory.sh</copy>
@@ -72,7 +84,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     ![Key Vault](../advanced-security/tde/images/tde-002.png "Create the Keystore directories")
 
-5. Use the database parameters to manage TDE (**the DB will restart!**)
+4. Use the database parameters to manage TDE (**the DB will restart!**)
 
     ````
     <copy>./tde_set_tde_parameters.sh</copy>
@@ -80,7 +92,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     ![Key Vault](../advanced-security/tde/images/tde-003.png "Set TDE parameters")
 
-6. Create the **Oracle Wallet** for the container database
+5. Create the **Oracle Wallet** for the container database
 
     ````
     <copy>./tde_create_wallet.sh</copy>
@@ -88,7 +100,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     ![Key Vault](../advanced-security/tde/images/tde-004.png "Create the software keystore")
 
-7. Create the container database TDE Master Key (**MEK**)
+6. Create the container database TDE Master Key (**MEK**)
 
     ````
     <copy>./tde_create_mek_cdb.sh</copy>
@@ -96,7 +108,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     ![Key Vault](../advanced-security/tde/images/tde-005.png "Create the container database TDE Master Key")
 
-8. Create the pluggable database **pdb1** Master Key (MEK)
+7. Create the pluggable database **pdb1** Master Key (MEK)
 
     ````
     <copy>./tde_create_mek_pdb.sh pdb1</copy>
@@ -104,7 +116,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     ![Key Vault](../advanced-security/tde/images/tde-006.png "Create the pluggable database TDE Master Key")
 
-9. Ceate the **Auto-login Oracle Wallet**
+8. Ceate the **Auto-login Oracle Wallet**
 
     ````
     <copy>./tde_create_autologin_wallet.sh</copy>
@@ -130,13 +142,12 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     ![Key Vault](./images/okv-202.png "View the Oracle Wallet content on the database")
 -->
 
-10. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
+9. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
 
     - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and this default password is available in the Labs details or by executing the following command line as *`oracle`* user:
 
         ```
         <copy>
-        sudo su - oracle
         echo $OKVUSR_PWD
         </copy>
         ```
@@ -161,9 +172,9 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     - Logout
 
-11. Repeat the Step 10 for the user *`KVEPADMIN`*
+10. Repeat the Step 10 for the user *`KVEPADMIN`*
 
-12. Now, your database is ready for the OKV labs!
+11. Now, your database is ready for the OKV labs!
 
 ## Task 2: Add an Endpoint
 First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
@@ -825,5 +836,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Peter Wahl
+- **Contributors** - Peter Wahl, Rahil Mir
 - **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024
