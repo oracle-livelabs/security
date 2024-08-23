@@ -41,7 +41,7 @@ This lab assumes you have completed the previous lab and:
    Select Login with Oracle at the login window and enter the OAM username created in the previous use case, e.g.:
 
     ```
-    Username : pwalker
+    Username : tuser1
     ```
 
    Press the Enter key, then you are prompted to enter the OAM user password and credentials for the Entra ID user:
@@ -72,7 +72,7 @@ This lab assumes you have completed the previous lab and:
    Select Login with Oracle at the login window and enter the OAM user credentials. e.g.:
 
     ```
-    Username : pwalker
+    Username : tuser1
     Password : Oracle123
     ```
 
@@ -117,11 +117,9 @@ This lab assumes you have completed the previous lab and:
   E.g. use the following URL and credentials:
 
     ```
-    <copy>
     URL         : http://oaa.oracledemo.com/oaa/rui
-    Username    : <oam_user>
-    Password    : <password>
-    </copy>
+    Username    : tuser1
+    Password    : Oracle123
     ```
 
 4. In the consent page, click on Allow button to continue.
@@ -146,7 +144,7 @@ This lab assumes you have completed the previous lab and:
   Select Login with Oracle at the login window and enter the OAM username. e.g.:
 
     ```
-    Username : <oam_user>
+    Username : tuser1
     ```
 
     Since OMA Push Notification Challenge is set as default, OUA will not show the list-box to choose a second factor, instead will show a message (see below) and send a notification to OMA and wait for approval.

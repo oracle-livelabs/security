@@ -10,6 +10,7 @@ In this lab, you explore Security Assessment.
 
 Estimated Time: 20 minutes
 
+[Data Safe](videohub:1_z96ow7gf)
 
 ### Objectives
 
@@ -121,11 +122,11 @@ This lab assumes you have:
 
 ## Task 3: Adjust the risk level of a risk finding
 
-You can defer or change the risk level of a risk finding. In this task, defer the **Sample Schemas** risk finding.
+You can defer or change the risk level of a risk finding. In this task, defer the **Users with Unlimited Concurrent Sessions** risk finding.
 
-1. Click the pencil icon for the **Sample Schemas** finding.
+1. Click the pencil icon for the **Users with Unlimited Concurrent Sessions** finding.
 
-   ![Adjust risk icon](images/adjust-risk-icon.png "Adjust risk icon")
+   ![Adjust risk icon](images/users-with-unlimited-concurrent-sessions.png "Adjust risk icon")
 
 2. In the **Update risk for finding** panel, leave **Defer risk** selected. Optionally, enter a justification and set an expiration date. Click **Save**.
 
@@ -214,8 +215,11 @@ In this task, you issue a `GRANT` command on your target database so that later,
     - In the details table, you can view the risk level for each finding, the category to which the finding belongs, the finding name, and a description of what has changed on your target database. The Comparison Report column is important because it explains what is changed, added, or removed from the target database since the baseline report was generated.
     - Notice that the change you made is noted in the **Comparison report** column.
 
-    ![Security Assessment Comparison report top](images/sa-comparison-report-top2.png "Security Assessment Comparison report top")
-    ![Security Assessment Comparison report bottom](images/sa-comparison-report-bottom2.png "Security Assessment Comparison report bottom")
+    ![Security Assessment Comparison report top](images/sa-comparison-report-top3.png "Security Assessment Comparison report top")
+    ![Security Assessment Comparison report bottom](images/sa-comparison-report-bottom3.png "Security Assessment Comparison report bottom")
+
+
+You may now **proceed to the next lab**.
 
 
 ## Learn More
@@ -225,4 +229,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, June 17, 2024
+* **Last Updated By/Date** - Jody Glover, August 22, 2024
