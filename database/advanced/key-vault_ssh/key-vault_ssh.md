@@ -118,7 +118,7 @@ This lab assumes you have:
 
         ```
         <copy>
-        cat /home/oracle/DBSecLab/livelabs/okv/wui_passphrase
+        sudo cat /home/oracle/DBSecLab/livelabs/okv/wui_passphrase
         </copy>
         ```
 
