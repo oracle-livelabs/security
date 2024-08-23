@@ -11,9 +11,9 @@ This workshop introduces the various features and functionality of Oracle Key Va
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
 
 ### Objectives
-- Connect an Oracle DB (encrypted by TDE) to OKV
-- Manage with OKV the existing DB Wallet
-- Migrate the DB Wallet and manage the Online Keys by OKV
+- Upload the current and retired TDE master keys to Oracle Key Vault
+- Migrate the encrypted database to OKV for centralized TDE key management
+- Delete the old TDE master keys from the encrypting server (PCI requirement)
 
 ### Prerequisites
 This lab assumes you have:
@@ -38,7 +38,7 @@ This lab assumes you have:
 | 1| Encrypt database with TDE | <10 minutes||
 | 2| Add an Endpoint | <10 minutes||
 | 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
-| 4| Upload the TDE Wallet | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
+| 4| Upload current and retired TDE master keys to OKV | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
 | 5| Migrate to Online Master Key | 5 minutes | To re-configure the database to communicate directly with Oracle Key Vault |
 | 6| Create the OKV SEPS Wallet | <5 minutes||
 | 7| Perform a ReKey Operation | 5 minutes||
@@ -52,7 +52,7 @@ This lab assumes you have:
 | 1| Encrypt database with TDE | <10 minutes||
 | 2| Add an Endpoint | <10 minutes||
 | 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
-| 4| Upload the TDE Wallet | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
+| 4| Upload current and retired TDE master keys to OKV | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
 | 5| Migrate to Online Master Key | 5 minutes | To re-configure the database to communicate directly with Oracle Key Vault |
 | 6| Create the OKV SEPS Wallet | <5 minutes||
 | 7| Perform a ReKey Operation | 5 minutes||
@@ -312,9 +312,9 @@ Any time after adding the Endpoint to this host, you can run this script to view
 
     ![Key Vault](./images/okv-012.png "View the OKV Wallet content on Key Vault")
 
-## Task 4: Upload the TDE Wallet
+## Task 4: Upload current and retired TDE master keys to OKV
 
-Typically, the first thing that users will do is upload their existing Oracle Wallets (**ewallet.p12** files) to Oracle Key Vault
+Before migrating the database, upload current and retired TDE master keys to OKV
 
 1. Upload the Oracle Wallet to Oracle Key Vault (as reminder, the password for both the wallet and endpoint is "*`Oracle123`*")
 
@@ -360,7 +360,7 @@ Typically, the first thing that users will do is upload their existing Oracle Wa
 
 ## Task 5: Migrate to Online Master Key
 
-Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate from storing our Master Keys in Wallet files to querying them from Oracle Key Vault
+Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate encrypted database from local, filed-based key management to centralized key management with Oracle Key Vault
 
 1. Go back to your Terminal session and migrate the virtual Wallet to Online Master Key. In this step, we set the `TDE_CONFIGURATION` initialization parameters from `KEYSTORE_CONFIGURATION=FILE` to `KEYSTORE_CONFIGURATION=OKV|FILE`. This is a dynamic parameter so we do not need to restart the database.
 
@@ -448,7 +448,7 @@ Whenever a database accesses an endpoint, the database needs to provide the endp
 
 ## Task 7: Perform a Rekey Operation
 
-You must create a Master Key for the container database before continuing. Each pluggable database must have their own master key as well (except for `PDB$SEED`)
+You must create a master encryption key for the container database before continuing. Each pluggable database must have its own master encryption key as well (except for `PDB$SEED`)
 
 1. Go back to your Terminal session and rekey the **container database** TDE Master Key
 
@@ -459,8 +459,8 @@ You must create a Master Key for the container database before continuing. Each 
     ![Key Vault](./images/okv-025.png "Rekey the container database TDE Master Key")
 
     **Note:**
-    - After creating the SEPS Wallet in the previous Lab, now you can log in via the "External Store" command
-    - Don't forget to put an explicit Tag to find your rekey more easily
+    - After creating the SEPS Wallet in the previous Lab, now you can replace the keystore password with "External Store" parameter
+    - Don't forget to add a Tag to the PDBs master encryption key to find it more easily
 
 2. Now, rekey a Master Key for the pluggable database **pdb1**
 

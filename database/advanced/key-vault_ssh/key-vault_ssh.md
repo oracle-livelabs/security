@@ -15,13 +15,22 @@ Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
 
 ### Prerequisites
 This lab assumes you have:
+<if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
+    - Lab: Initialize Environment
+</if>
+<if type="green">
+- An Oracle Cloud account
+- You have completed:
+    - Introduction Tasks
+</if>
 
 ### Lab Timing (estimated)
 
+<if type="brown">
 | Step No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
 | 1| (Mandatory) Prerequisites | 5 minutes||
@@ -29,6 +38,15 @@ This lab assumes you have:
 | 3| Set Remote Client Access Controls with OKV | 10 minutes||
 | 4| SSH Key Management with OKV | 5 minutes||
 | 5| Reset the OKV config | <5 minutes||
+</if>
+<if type="green">
+| Step No. | Feature | Approx. Time | Details |
+|--|------------------------------------------------------------|-------------|--------------------|
+| 1| (Mandatory) Prerequisites | 5 minutes||
+| 2| Set Remote Server Access Controls with OKV | 10 minutes||
+| 3| Set Remote Client Access Controls with OKV | 10 minutes||
+| 4| SSH Key Management with OKV | 5 minutes||
+</if>
 
 ## Task 1: (Mandatory) Prerequisites
 
@@ -881,6 +899,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         **Note**: Public key **authentication fails** and that's exactly what we want!
 
+<if type="brown">
 ## Task 5: Reset the OKV config
 
 1. Go back to your terminal session **on SSH Server** (DBSeclab VM) *as opc*
@@ -949,9 +968,9 @@ In this second part, we will manage users' private keys in OKV making those priv
     - Open the **Endpoints** tab, select the **"Select All" checkbox** and click [**Delete**]
 
         ![Key Vault](./images/okv_ssh-157.png "Delete all Endpoints")
+</if>
 
 You may now **proceed to the next lab**!
-
 
 ## **Appendix**: About the Product
 ### **Overview**
@@ -1027,5 +1046,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Peter Wahl
+- **Contributors** - Peter Wahl, Rahil Mir
 - **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024
