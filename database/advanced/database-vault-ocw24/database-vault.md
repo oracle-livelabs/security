@@ -8,7 +8,7 @@ Estimated Time: 75 minutes
 *Version tested in this lab:* Oracle DBEE 23.4
 
 ### Video Preview
-Watch a preview of "*LiveLabs - Oracle Database Vault (May 2022)*" [](youtube:M5Kn-acUHRQ)
+Watch a preview of "*LiveLabs - Oracle Database Vault (August 2024)*" [](videohub:1_g87ga2xv)
 
 ### Objectives
 - Configure and enable Database Vault in the container and `PDB1` pluggable database
