@@ -41,7 +41,7 @@ This lab assumes you have:
 
 ### Lab Timing (estimated)
 | Task No. | Feature | Approx. Time | Details |
-|---|------------------------------------------------------------|-------------||
+| -------- | ------- | ------------ ||
 | 1 | Enable Database Vault | <5 minutes ||
 | 2 | Enable Separation of Duties (SoD) | <5 minutes ||
 | 3 | Create a Simple Realm | 10 minutes ||
@@ -743,7 +743,7 @@ In addition, you can run reports on the activities these components monitor and 
 - Protects data against misused or compromised privileged user accounts
 - Design and enforce flexible security policies for your database
 - Addresses Database consolidation and cloud environments concerns to reduce cost and reduce exposure sensitive application data by those without a true need-to-know
-- Protect access to your sensitive data by creating a trusted path (see more by performing the [Full Database Vault lab](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=682&clear=180&session=4531599220675))
+- Protect access to your sensitive data by creating a trusted path (see more by performing the [Full Database Vault lab](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=682&clear=180&session=4531599220675))
 
 ## Want to Learn More?
 Technical Documentation:
