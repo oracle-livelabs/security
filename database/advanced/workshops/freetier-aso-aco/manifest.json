@@ -30,7 +30,7 @@
       "title": "Lab 3: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "03/14/2023",
-      "filename": "../../../common/init-start-env/init-start-env.md"
+      "filename": "../../../common/init-start-env/init-start-env-dbs.md"
     },
     {
       "title": "Lab 4: Sample Schema Setup",

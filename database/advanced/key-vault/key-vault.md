@@ -5,60 +5,75 @@ This workshop introduces the various features and functionality of Oracle Key Va
 
 *Estimated Lab Time:* 60 minutes
 
-*Version tested in this lab:* Oracle OKV 21.8 and DBEE 19.23
+*Version tested in this lab:* Oracle OKV 21.9 and DBEE 19.23
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
 
 ### Objectives
-- Connect an Oracle DB (encrypted by TDE) to OKV
-- Manage with OKV the existing DB Wallet
-- Migrate the DB Wallet and manage the Online Keys by OKV
+- Upload the current and retired TDE master keys to Oracle Key Vault
+- Migrate the encrypted database to OKV for centralized TDE key management
+- Delete the old TDE master keys from the encrypting server (PCI requirement)
 
 ### Prerequisites
 This lab assumes you have:
+<if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
+</if>
+<if type="green">
+- An Oracle Cloud account
+- You have completed:
+    - Introduction Tasks
+</if>
 
 ### Lab Timing (estimated)
 
+<if type="brown">
 | Task No. | Feature | Approx. Time | Details |
 |--|------------------------------------------------------------|-------------|--------------------|
-| 1| (Mandatory) Prerequisites | <10 minutes||
+| 1| Encrypt database with TDE | <10 minutes||
 | 2| Add an Endpoint | <10 minutes||
 | 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
-| 4| Upload the TDE Wallet | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
+| 4| Upload current and retired TDE master keys to OKV | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
 | 5| Migrate to Online Master Key | 5 minutes | To re-configure the database to communicate directly with Oracle Key Vault |
 | 6| Create the OKV SEPS Wallet | <5 minutes||
 | 7| Perform a ReKey Operation | 5 minutes||
 | 8| Secret Management with OKV | 5 minutes||
 | 9| Generate New Non-extractable Key | 5 minutes||
 |10| Reset the OKV Lab Config | <5 minutes||
+</if>
+<if type="green">
+| Task No. | Feature | Approx. Time | Details |
+|--|------------------------------------------------------------|-------------|--------------------|
+| 1| Encrypt database with TDE | <10 minutes||
+| 2| Add an Endpoint | <10 minutes||
+| 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
+| 4| Upload current and retired TDE master keys to OKV | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
+| 5| Migrate to Online Master Key | 5 minutes | To re-configure the database to communicate directly with Oracle Key Vault |
+| 6| Create the OKV SEPS Wallet | <5 minutes||
+| 7| Perform a ReKey Operation | 5 minutes||
+| 8| Secret Management with OKV | 5 minutes||
+| 9| Generate New Non-extractable Key | 5 minutes||
+</if>
 
-<!--
-Advanced OKV Labs for 21.7
-| A| SSH Key Management and Remote Server Access Controls with OKV | 10 minutes||
-| B| DB Account Pwd Management | 5 minutes ||
-| C| Key Management for DBMS_CRYPTO | 5 minutes ||
-| D| Automated Java Keystore rotation | 5 minutes ||
--->
+## Task 1: Encrypt database with TDE
 
-## Task 1: (Mandatory) Prerequisites
-
-**Before beginning this lab**, make sure you have performed steps 1 to 4 of the Transparent Data Encryption (TDE) Livelabs!
-
-If you didn't execute them yet, do it right now by following the instructions below:
+To enable you to learn about Oracle Key Vault for TDE key management, you need an encrypted database:
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
+<if type="brown">
     ````
     <copy>sudo su - oracle</copy>
     ````
-
-    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
+</if>
+<if type="green">
+    **Note**: Double-click on the Terminal icon on the desktop to launch a session directly as oracle
+</if>
 
 2. Go to the TDE scripts directory
 
@@ -66,15 +81,17 @@ If you didn't execute them yet, do it right now by following the instructions be
     <copy>cd $DBSEC_LABS/tde</copy>
     ````
 
-3. Make sure you have a cold-backup of your database (**the DB will reboot!**)
+<!--
+3. Make sure you have a cold-backup of your database (**the DB will restart!**)
 
     ````
     <copy>./tde_backup_db.sh</copy>
     ````
 
     ![Key Vault](../advanced-security/tde/images/tde-001.png "Backup DB")
+-->
 
-4. Create the Keystore directories on the Operating System
+3. Create the Keystore directories on the Operating System
 
     ````
     <copy>./tde_create_os_directory.sh</copy>
@@ -82,7 +99,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![Key Vault](../advanced-security/tde/images/tde-002.png "Create the Keystore directories")
 
-5. Use the database parameters to manage TDE (**the DB will reboot!**)
+4. Use the database parameters to manage TDE (**the DB will restart!**)
 
     ````
     <copy>./tde_set_tde_parameters.sh</copy>
@@ -90,7 +107,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![Key Vault](../advanced-security/tde/images/tde-003.png "Set TDE parameters")
 
-6. Create the **Oracle Wallet** for the container database
+5. Create the **Oracle Wallet** for the container database
 
     ````
     <copy>./tde_create_wallet.sh</copy>
@@ -98,7 +115,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![Key Vault](../advanced-security/tde/images/tde-004.png "Create the software keystore")
 
-7. Create the container database TDE Master Key (**MEK**)
+6. Create the container database TDE Master Key (**MEK**)
 
     ````
     <copy>./tde_create_mek_cdb.sh</copy>
@@ -106,7 +123,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![Key Vault](../advanced-security/tde/images/tde-005.png "Create the container database TDE Master Key")
 
-8. Create the pluggable database **pdb1** Master Key (MEK)
+7. Create the pluggable database **pdb1** Master Key (MEK)
 
     ````
     <copy>./tde_create_mek_pdb.sh pdb1</copy>
@@ -114,7 +131,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![Key Vault](../advanced-security/tde/images/tde-006.png "Create the pluggable database TDE Master Key")
 
-9. Ceate the **Auto-login Oracle Wallet**
+8. Ceate the **Auto-login Oracle Wallet**
 
     ````
     <copy>./tde_create_autologin_wallet.sh</copy>
@@ -122,6 +139,7 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     ![Key Vault](../advanced-security/tde/images/tde-012.png "Create the Auto-login Oracle Wallet")
 
+<!--
 10. You should now see all these file, including the **cwallet.sso** file
 
     ````
@@ -137,8 +155,17 @@ If you didn't execute them yet, do it right now by following the instructions be
     ````
 
     ![Key Vault](./images/okv-202.png "View the Oracle Wallet content on the database")
+-->
 
-12. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
+9. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
+
+    - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and this default password is available in the Labs details or by executing the following command line as *`oracle`* user:
+
+        ```
+        <copy>
+        echo $OKVUSR_PWD
+        </copy>
+        ```
 
     - Open a web browser window to *`https://kv`* to access to the Key Vault Web Console
 
@@ -152,17 +179,6 @@ If you didn't execute them yet, do it right now by following the instructions be
 
         ![Key Vault](./images/okv-001.png "OKV - Login")
 
-        **Note**:
-        - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
-        - This default password is available in the Labs details or by executing the following command line as *`oracle`* user:
-
-            ```
-            <copy>
-            sudo su - oracle
-            echo $OKVUSR_PWD
-            </copy>
-            ```
-
     - Set your new password
     
         ![Key Vault](./images/okv-001b.png "OKV - Login")
@@ -171,9 +187,9 @@ If you didn't execute them yet, do it right now by following the instructions be
 
     - Logout
 
-13. Repeat this Step 12 for the user *`KVEPADMIN`*
+10. Repeat the Step 10 for the user *`KVEPADMIN`*
 
-14. Now, your database is ready for the OKV labs!
+11. Now, your database is ready for the OKV labs!
 
 ## Task 2: Add an Endpoint
 First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
@@ -296,11 +312,11 @@ Any time after adding the Endpoint to this host, you can run this script to view
 
     ![Key Vault](./images/okv-012.png "View the OKV Wallet content on Key Vault")
 
-## Task 4: Upload the TDE Wallet
+## Task 4: Upload current and retired TDE master keys to OKV
 
-Typically, the first thing that users will do is upload their existing Oracle Wallets (**ewallet.p12** files) to Oracle Key Vault
+Before migrating the database, upload current and retired TDE master keys to OKV
 
-1. Upload the Oracle Wallet to Oracle Key Vault (as reminder, the password is "*`Oracle123`*")
+1. Upload the Oracle Wallet to Oracle Key Vault (as reminder, the password for both the wallet and endpoint is "*`Oracle123`*")
 
     ````
     <copy>./okv_upload_wallet.sh</copy>
@@ -328,7 +344,7 @@ Typically, the first thing that users will do is upload their existing Oracle Wa
 
     ![Key Vault](./images/okv-015.png "View the OKV Wallet content on Key Vault")
 
-4. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look of these information
+4. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look at the contents of the  wallet
 
     ![Key Vault](./images/okv-001.png "KVRESTADMIN user")
 
@@ -344,7 +360,7 @@ Typically, the first thing that users will do is upload their existing Oracle Wa
 
 ## Task 5: Migrate to Online Master Key
 
-Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate from storing our Master Keys in Wallet files to querying them from Oracle Key Vault
+Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate encrypted database from local, filed-based key management to centralized key management with Oracle Key Vault
 
 1. Go back to your Terminal session and migrate the virtual Wallet to Online Master Key. In this step, we set the `TDE_CONFIGURATION` initialization parameters from `KEYSTORE_CONFIGURATION=FILE` to `KEYSTORE_CONFIGURATION=OKV|FILE`. This is a dynamic parameter so we do not need to restart the database.
 
@@ -388,7 +404,7 @@ Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate 
     - To be safe, we will make a temporary backup directory into `$TDE_HOME/backup` and move the wallet-related files to it
     - If you want to actually delete it after you have verified everything was successful you can
 
-4. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look of these information
+4. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look at the contents of the  wallet
 
     ![Key Vault](./images/okv-001.png "KVRESTADMIN user")
 
@@ -406,7 +422,7 @@ Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate 
 
 ## Task 6: Create the OKV SEPS Wallet
 
-It is often necessary to make connections to the database from shell scripts held on the filesystem. This can be a major security issue if these scripts contain the database connection details. One solution is to use OS Authentication, and Oracle gives you the option of using a **Secure External Password Store (SEPS)** where the Oracle login credentials are stored in a client-side Oracle Wallet. Here, this will enable seperation of duties between DBAs who no longer need to know the OKV password and the OKV administrators!
+Whenever a database accesses an endpoint, the database needs to provide the endpoint credentials. Instead of entering the endpoint password manually, Oracle gives you the option of using a **Secure External Password Store (SEPS)** where the endpoint credentials are stored in an Oracle Wallet. Doing this enables separation of duties between DBAs who no longer need to know the wallet password and the OKV administrators!
 
 1. Put the OKV Endpoint password into the SEPS Wallet
 
@@ -432,7 +448,7 @@ It is often necessary to make connections to the database from shell scripts hel
 
 ## Task 7: Perform a Rekey Operation
 
-You must create a Master Key for the container database before continuing. Each pluggable database must have their own master key as well (except for `PDB$SEED`)
+You must create a master encryption key for the container database before continuing. Each pluggable database must have its own master encryption key as well (except for `PDB$SEED`)
 
 1. Go back to your Terminal session and rekey the **container database** TDE Master Key
 
@@ -443,8 +459,8 @@ You must create a Master Key for the container database before continuing. Each 
     ![Key Vault](./images/okv-025.png "Rekey the container database TDE Master Key")
 
     **Note:**
-    - After creating the SEPS Wallet in the previous Lab, now you can log in via the "External Store" command
-    - Don't forget to put an explicit Tag to find your rekey more easily
+    - After creating the SEPS Wallet in the previous Lab, now you can replace the keystore password with "External Store" parameter
+    - Don't forget to add a Tag to the PDBs master encryption key to find it more easily
 
 2. Now, rekey a Master Key for the pluggable database **pdb1**
 
@@ -454,13 +470,15 @@ You must create a Master Key for the container database before continuing. Each 
 
     ![Key Vault](./images/okv-026.png "Rekey the pluggable database TDE Master Key")
 
+<!--
 3. If you want, you can do the same for **pdb2**. This is not a requirement and it might be helpful to show some databases with TDE and some without!
 
     ````
     <copy>./okv_online_pdb_rekey.sh pdb2</copy>
     ````
+-->
 
-4. Now, view the new contents of the virtual Wallet in Key Vault
+3. Now, view the new contents of the virtual Wallet in Key Vault
 
     ````
     <copy>./okv_view_wallet_in_kv.sh</copy>
@@ -468,15 +486,15 @@ You must create a Master Key for the container database before continuing. Each 
 
     ![Key Vault](./images/okv-027.png "View the OKV Wallet content on Key Vault")
 
-5. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look of these information
+4. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look at the contents of the  wallet
 
     ![Key Vault](./images/okv-001.png "KVRESTADMIN user")
 
-6. Go to the **Keys & Wallets** tab and click on *`CDB1`*
+5. Go to the **Keys & Wallets** tab and click on *`CDB1`*
 
     ![Key Vault](./images/okv-016.png "Keys & Wallets section")
 
-7. In the section **Wallet Contents**, you can see your rekeyed Master Keys for **cdb1** and **pdb1** (and pdb2 if you did it)
+6. In the section **Wallet Contents**, you can see your rekeyed Master Keys for **cdb1** and **pdb1** (and pdb2 if you did it)
 
     ![Key Vault](./images/okv-028.png "Wallet Contents section")
 
@@ -484,11 +502,11 @@ You must create a Master Key for the container database before continuing. Each 
     - It's exactly the same as what you can see from the script `okv_view_wallet_in_kv.sh`
     - On the right-bottom corner, you see that these 2 new rows have been added to the 11 existing rows
 
-8. Click on the "**Next**" button to see the 2nd page of results
+7. Click on the "**Next**" button to see the 2nd page of results
 
     ![Key Vault](./images/okv-029.png "Wallet Contents section")
 
-9. Now you have rekeyed the Master Key for the container and pluggable database(s)!
+8. Now you have rekeyed the Master Key for the container and pluggable database(s)!
 
 ## Task 8: Secret Management with OKV
 
@@ -654,6 +672,7 @@ This task will demonstrate how to create a non-extractable key, meaning a key th
     
     **Note**: You can't download the OKV keys because a wallet cannot contain the non-extractable key
 
+<if type="brown">
 ## Task 10: Reset the OKV Lab Config
 
 1. Drop the Endpoint and Wallet created in OKV during this lab
@@ -758,6 +777,7 @@ This task will demonstrate how to create a non-extractable key, meaning a key th
         ![Key Vault](./images/okv-056.png "View the Oracle Wallet contents on the database")
 
 5. **Now, you can perform again this lab from TASK 1** (your database is restored to the point in time prior to enabling TDE)!
+</if>
 
 You may now proceed to the next lab!
 
@@ -835,5 +855,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024

@@ -71,16 +71,20 @@ This lab assumes you have:
 
 8. Click on More (3-dots icon) and select Create shortcut. This will add a shortcut to your Windows desktop to directly start the the image with the emulator. Proceed to exit Nox Asst by closing the window.
 
-9. From your Windows desktop click on the shortcut **NoxPlayer** to start the emulator with the Android 7 image. Once the emulator is started, withing the emulator, use Google Play Store to install **Oracle Mobile Authenticator** and **Google Chrome** mobile apps
+9. From your Windows desktop click on the shortcut **NoxPlayer** to start the emulator with the Android 7 image. Once the emulator is started, within the emulator, use Google Play Store to install **Oracle Mobile Authenticator** and **Google Chrome** mobile apps. You'd be asked to sign in with your Google account while installing these apps in android emulator.
 
-10. From the android emulator, click File Manager (folder icon). In File Manager, click in the Hamburger icon and select **/Root**. Go to **etc** folder, then scroll down and click on hosts file, and select **Open as text**.
+    ***Note :*** If the screen auto-rotates, choose More (three dots) present on Android home screen towards the bottom right-side and click on Rotate option to bring it back to the normal mode.
+
+10. From the android emulator, click File Manager (folder icon). In File Assistant, choose **Open Android Folder** and click on the Hamburger icon and select **/Root**. Go to **etc** folder, then scroll down and click on hosts file, and select **Open as text**.
 
   In the Open with... window, click on JUST ONCE. Proceed to enter or paste the hosts entries for OUA server.
   E.g. add or copy the following entries:
 
     ```
+      <copy>
       <PUBLIC_IP>    so92-srv1.oracledemo.com iamdb.oracledemo.com oud.oracledemo.com oam.oracledemo.com aso.oracledemo.com oaa.oracledemo.com ora.oracledemo.com oim.oracledemo.com mail.oracledemo.com
       <PUBLIC_IP>    oiri.oracledemo.com grafana.oracledemo.com prometheus.oracledemo.com oap.oracledemo.com oudsm.oracledemo.com ade.oracledemo.com demodb.oracledemo.com
+      </copy>
     ```
 
     ***Note :*** PUBLIC_IP is the public IP address of the compute instance noted in **Lab 2 -> Task 1**. In Windows, you need to split the hostname entries in two lines due to a length limitation.
@@ -89,7 +93,7 @@ This lab assumes you have:
 
 ## Task 2: Join Demo Windows Image to Entra ID Domain
 
-1. Access the Windows 11 guest VM as administrator, proceed to join your Windows 11 VM to an existing Entra ID domain.
+1. Access the Windows 11 guest VM with an administrator account, proceed to join your Windows 11 VM to an existing Entra ID domain.
 
     ***Note :*** This step presumes you have an Entra ID user account, if not, create a new user using Entra ID administrative console and come back to perform this step.
 
@@ -106,31 +110,20 @@ This lab assumes you have:
 
 5. In the confirmation window, click **Join** and then click **Done**
 
-6. Logout from Windows 11 guest VM. Proceed to complete the registration by logging back this time using the Entra ID user (select **Other user** in the Windows login page).
+6. Logout from Windows 11 guest VM. Proceed to complete the registration by logging back this time using the Entra ID user (select **Other user** in the Windows login page). You must login with your Entra ID user with prefix **azuread**:
+
+    ```
+    Entra ID User           : azuread\<UPN>
+    Entra ID User Password  : <user_password>
+    ```
 
 7. As you login for the first time with the Entra ID user, you will be required to setup a second factor (E.g. using Microsoft Authenticator) and define a PIN for security reasons.
 
 ## Task 3: Installing and Configuring OUA
 
-1. Login to Window 11 as administrator using the administrator credentials as specified below :
+1. Login to Windows VM with an administrator account
 
-  Windows User
-    ```
-    <copy>
-    Local\admin
-    </copy>
-    ```
-
-  Password
-    ```
-    <copy>
-    #demOr@cle6699
-    </copy>
-    ```
-
-2. Once in the Windows guest VM, type **Notepad++** in the search box located in the taskbar. Open the Notepad++ tool (already installed) to edit the Windows hosts file.
-
-  Using Notepad++, edit the following file:
+2. Once in the Windows guest VM, edit the following file using Notepad in Administrator mode:
 
   **C:\Windows\System32\drivers\etc\hosts**
 
@@ -143,19 +136,31 @@ This lab assumes you have:
     </copy>
     ```
 
-3. Proceed to install OUA by downloading the Oracle\_Universal\_Authenticator\_<version.zip\> from [Oracle Software Delivery Cloud](https://edelivery.oracle.com/).
+3. Proceed to install OUA by downloading the Oracle\_Universal\_Authenticator from [Oracle Software Delivery Cloud](https://edelivery.oracle.com/). Sign-in to Software Delivery Cloud, choose the category as **Release** and type in **Oracle Universal Authenticator** in the search bar. Select the file, click continue, accept the license agreements, and Download.
+  This would generate an **.exe** file which upon execution will begin the actual download.
 
-  Alternatively, it can be downloaded from the location referenced in document ID 2723908.1 on My Oracle Support.
-  Extract the zip file to a working directory **WORKDIR (e.g. C:\Temp\V1043799-01)** on the installation host. The Oracle Universal Authenticator.msi will be extracted.
+  Extract the zip file to obtain **Oracle Universal Authenticator.msi**.
 
-  Right-click on zip file **Oracle Universal Authenticator.msi** and select **Run as Administrator**
+4. Start a Command Prompt selecting **Run As Administrator**
 
-4. During install, enter the following parameter values :
+5. Inside the command prompt run the following to set the permissions:
+
+    ```
+      <copy>powershell.exe Set-ExecutionPolicy -ExecutionPolicy RemoteSigned</copy>
+    ```
+
+6. Inside the same command prompt run:
+
+    ```
+      Msiexec.exe /i "%WORKDIR%\Oracle Universal Authenticator.msi"
+    ```
+
+7. During install, enter the following parameter values :
 
     Server
 
     ```
-    <copy>https://so92-srv1.oracledemo.com</copy>
+    <copy>so92-srv1.oracledemo.com</copy>
     ```
 
     Endpoint
@@ -182,11 +187,11 @@ This lab assumes you have:
     <copy>drssapikeytobesetduringinstallation</copy>
     ```
 
-5. Once the installation completes, click **Finish** but choose **No** to not reboot the computer.
+8. Once the installation completes, click **Finish** but choose **No** to not reboot the computer.
 
-6. From Window 11 guest VM, type **regedit** in the search box located in the taskbar. Open Registry Editor.
+9. From Window 11 guest VM, type **regedit** in the search box located in the taskbar. Open Registry Editor.
 
-7. Within Registry Editor, expand **Computer\HKEY\_LOCAL\_MACHINE\SOFTWARE\Oracle\Oracle Universal Authenticator** and update the parameters as below :
+10. Within Registry Editor, expand **Computer\HKEY\_LOCAL\_MACHINE\SOFTWARE\Oracle\Oracle Universal Authenticator** and update the parameters as below :
 
     host
 
@@ -200,19 +205,21 @@ This lab assumes you have:
     <copy>80 (Decimal)</copy>
     ```
 
-8. Exit Registry Editor.
+11. Exit Registry Editor.
 
-9. Register the OUA certificate. In your Windows taskbar, click on Start icon and type cmd.exe, make sure to select Run as administrator. Change directory to the **WORKDIR** referred in step 3 above and run the following command :
+12. Register the OUA certificate. In your Windows taskbar, click on Start icon and type cmd.exe, make sure to select Run as Administrator. Run the following command by replacing the **%WORKDIR%** with the installation location of Oracle Universal Authenticator (typically under Program Files, and Oracle folder) :
+
+  ***Note :*** Include the %WORKDIR% folder location in the System's PATH variable.
 
     ```
-    <copy>
-    powershell.exe -ExecutionPolicy Bypass "C:\Temp\V1043799-01\AddCertificate.ps1"
-    </copy>
+    powershell.exe -ExecutionPolicy Bypass "%WORKDIR%\AddCertificate.ps1"
     ```
 
-  ***Note :*** Kindly ignore the error with source already registered.
+  ***Note :*** Kindly ignore the error with source already registered, if encountered.
 
-10. Type exit to close cmd.exe. Proceed to reboot the Windows computer.
+13. Type exit to close cmd.exe. Proceed to reboot the Windows computer.
+
+14. After a successful OUA installation, you should notice an option of **Login with Oracle** on Windows login screen.
 
 ## Task 4: Creating OAM User and Registering OUA User Preferences
 
@@ -220,11 +227,12 @@ This lab assumes you have:
 
     ***Note :*** These steps will be performed using the host Windows machine.
 
-    Using a text editor, modify the following LDIF file and update the attributes corresponding to the new user: **dn, givenName, uid, sn, mail, orclSAMAccountName and cn**. Update **dn** and **uniquemember** for the group membership.
+    Using a text editor, modify the following LDIF file and update the attributes corresponding to the new user: **dn, givenName, uid, sn, mail, orclSAMAccountName and cn**. **uniquemember** for the group membership.
+    In the example below, a sample user **tuser1** has been added and assigned the **OAA-App-User** group. You can provide user details based on your preferences.
 
       ```
       <copy>
-      dn: cn=pwalker,cn=users,ou=iam,dc=oracledemo,dc=com
+      dn: cn=tuser1,cn=users,ou=iam,dc=oracledemo,dc=com
       changetype: add
       objectClass: orclUserV2
       objectClass: oblixorgperson
@@ -237,14 +245,14 @@ This lab assumes you have:
       objectClass: orclIDXPerson
       objectClass: top
       objectClass: OIMPersonPwdPolicy
-      givenName: Paul
-      uid: pwalker
+      givenName: test1
+      uid: tuser1
       orclIsEnabled: ENABLED
-      sn: Walker
+      sn: user1
       userPassword: Oracle123
-      mail: pwalker@oracledemo.com
-      orclSAMAccountName: pwalker
-      cn: pwalker
+      mail: tuser1@oracledemo.com
+      orclSAMAccountName: tuser1
+      cn: tuser1
       postalcode: DemoAppUsrOua
       obpasswordchangeflag: false
       obpsftid: true
@@ -253,7 +261,7 @@ This lab assumes you have:
       dn: cn=OAA-App-User,cn=groups,ou=iam,dc=oracledemo,dc=com
       changetype: modify
       add: uniquemember
-      uniquemember: cn=pwalker,cn=users,ou=iam,dc=oracledemo,dc=com
+      uniquemember: cn=tuser1,cn=users,ou=iam,dc=oracledemo,dc=com
       </copy>
       ```
 
@@ -283,7 +291,36 @@ This lab assumes you have:
 
 5. Now, expand **Root -> dc=oracledemo,dc=com -> ou=iam -> cn=groups**. Select group **cn=OAA-App-User**. In the right panel expand Member Information, and make sure the new user is listed. Proceed to exit ODSM.
 
-6. Register the OUA user preferences, do so by running the corresponding REST API endpoint to assign the factors.
+6. Create an email account from **Mailu Admin Console** using below details :
+
+    URL
+
+    ```
+    <copy>https://mail.oracledemo.com/admin</copy>
+    ```
+
+    User
+
+    ```
+    <copy>admin@oracledemo.com</copy>
+    ```
+
+    Password
+
+    ```
+    <copy>Oracle123</copy>
+    ```
+
+    Button
+
+    ```
+    Sign in Admin
+    ```
+
+7. Click on **Mail domains** and click on **Users** (**mail/message**) icon under **Manage**. Click **Add User**.
+    Provide Email as **tuser1** (domain is already included) and Password as **Oracle123**. Click **Save**.
+
+8. Register the OUA user preferences, do so by running the corresponding REST API endpoint to assign the factors.
 
   E.g. login as root user to the OUA compute VM and access the OAA management container.
 
@@ -291,7 +328,7 @@ This lab assumes you have:
     <copy>kubectl exec -it oaamgmt-0 -n oracle-oaa-system -- /bin/bash</copy>
     ```
 
-7. Run the following cURL command to register Email and OMA as second factors for a new user. Replace the values for attributes userId , omatotpsecretkey and email with values corresponding to the new user created in the previous steps:
+9. Run the following cURL command to **register Email and OMA as second factors for the new user created above.** Replace the values for attributes **userId** , **omatotpsecretkey** and **email** with values corresponding to the new user created in the previous steps:
 
     ```
     <copy>
@@ -300,7 +337,7 @@ This lab assumes you have:
     --header 'Authorization: Basic b2FhaW5zdGFsbC1vYWE6YXBpa2V5dG9iZXNldGR1cmluZ2luc3RhbGxhdGlvbg==' \
     -d \
     '{
-      "userId": "pwalker",
+      "userId": "tuser1",
       "groupId": "myoaaprotectedapp1",
       "factorsRegistered": [
         {
@@ -327,7 +364,7 @@ This lab assumes you have:
               "factorAttributeName": "email",
               "factorAttributeValue": [
                 {
-                  "value": "pwalker@oracledemo.com",
+                  "value": "tuser1@oracledemo.com",
                   "name": "Device1",
                   "isEnabled": true
                 }
@@ -336,11 +373,11 @@ This lab assumes you have:
           ]
         }
       ]
-    }
+    }'
     </copy>
     ```
 
-8. Register the TOTP key (omatotpsecretkey) with Oracle Mobile Authenticator (OMA). Use the following instructions:
+10. Register the TOTP key (omatotpsecretkey) with Oracle Mobile Authenticator (OMA). Use the following instructions:
 
     * Open OMA on your mobile device
 
@@ -352,23 +389,23 @@ This lab assumes you have:
 
         ```
         Company    : Oracle
-        Account    : <new_user>
+        Account    : tuser1
         Key        : DemoAppUsrOua
         ```
 
     * Tap on Save button to register the account.
 
-9. Proceed to verify the user preferences by logging in to the OUA self-service console with the new user.
+11. Proceed to verify the user preferences by logging in to the OUA self-service console with the new user.
 
       E.g. use the following URL and credentials:
 
       ```
       URL       : http://oaa.oracledemo.com/oaa/rui
-      Username  : <new_user>
-      Password  : <password>
+      Username  : tuser1
+      Password  : Oracle123
       ```
 
-10. Once you verify the factors assigned to the user, proceed to exit from the OUA self-service console.
+12. Once you verify the factors assigned to the user, proceed to exit from the OUA self-service console.
 
 You may now **proceed to the next lab**.
 

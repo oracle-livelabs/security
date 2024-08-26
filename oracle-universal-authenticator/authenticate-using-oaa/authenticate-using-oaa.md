@@ -63,7 +63,7 @@ This lab assumes you have:
 
 1. Open your preferred browser. Access the **Email Client** using below details. This would be used to receive OTPs :
 
-   ***Note :*** You might notice a certificate related warning saying 'Your connection is not private'. You can click **Advanced** and **Proceed to mail.oracledemo.com**.
+   ***Note :*** You might notice a certificate related warning saying 'Your connection is not private'. You can click **Advanced** and **Proceed to mail.oracledemo.com.**
 
   Mailu Email Console:
     ```
@@ -110,25 +110,27 @@ This lab assumes you have:
     Oracle123
     </copy>
     ```
-3. Click on the link below **Email Challenge** to receive email OTP as the second factor :
+3. Click on the link below **Email Challenge** to receive email OTP as the second factor. In case you see multiple options under **Email Challenge**, choose the one that says **Enter OTP sent to ***de\*\*\*\*@\*\*\*\*\*.com***** :
+
+  ***Note :Since this is a fresh deployment so you might see a message*** **Processing Request ....** ***displayed in the browser for a minute or so before being prompted to choose MFA options.***
 
    ![Select email as MFA factor](images/mfa-email-factor-selection.png)
 
-4. Goto the email client to receive the newly delivered OTPs. This might take around 30 secs to a minute for OTP to get delivered. You could try refreshing the mailbox by clicking on **Refresh** button or reloading the browser page itself.
+4. Goto the email client to receive the newly delivered OTPs. ***This might take around 30 secs to a minute for OTP to get delivered.*** You could try refreshing the mailbox by clicking on **Refresh** button or reloading the browser page itself.
 
-5. Provide the OTP in the login flow. Click Verify
+5. Provide the OTP in the login flow. Click Verify.
 
    ![Provide email OTP](images/mfa-email-otp.png)
 
-6. You should be redirected to the sample app landing page after successful authentication
+6. You should be redirected to the sample app landing page after successful authentication.
 
-***Note :*** At this point, you should sign out from the application and close the browser tab as you would be authenticating again with a different MFA factor.
+  ***Note :*** At this point, you should sign out from the application and close the browser tab as you would be authenticating again with a different MFA factor.
 
 ## Task 2: Authenticate into sample web app using OTP from OMA app
 
-1. In a new browser window, access the sample web app as described in **Task 2: Step 2**
+1. In a new browser window, access the sample web app as described in **Task 1: Step 2**.
 
-2. Click on the link below **Oracle Mobile Authenticator**
+2. Click on the link below **Oracle Mobile Authenticator**.
 
    ![Select OMA as MFA factor](images/mfa-oma-factor-selection.png)
 
@@ -136,7 +138,7 @@ This lab assumes you have:
 
    ![Provide email OTP](images/mfa-oma-otp.png)
 
-4. You should be redirected to the sample app landing page after successful authentication
+4. You should be redirected to the sample app landing page after successful authentication.
 
   You may now **proceed to the next lab**.
 
