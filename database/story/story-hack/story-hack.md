@@ -30,11 +30,11 @@ This lab assumes you have:
 
 ### Lab Timing (estimated)
 
-| Task No. | Feature | Approx. Time | Details |
-|--|------------------------------------------------------------|-------------|--------------------|
-| 1| Data exfiltration by bypassing database access controls | <15 minutes||
-| 2| Data exfiltration through an application | <15 minutes||
-| 3| Data exfiltration from the database | <15 minutes||
+| Task No. | Feature                                                 | Approx. Time | Details |
+| -------- | ------------------------------------------------------- | ------------ | ------- |
+| 1        | Data exfiltration by bypassing database access controls | <15 minutes  |         |
+| 2        | Data exfiltration through an application                | <15 minutes  |         |
+| 3        | Data exfiltration from the database                     | <15 minutes  |         |
 
 ## Task 1: Data exfiltration by bypassing database access controls
 
@@ -136,7 +136,7 @@ To see how easy it is to exfiltrate data from an unencrypted network, let's run 
 
 9. We protected the SQL traffic using an encryption feature provided natively by the Oracle database, called **Native Network Encryption (NNE)**. Another option for encrypting network traffic would be Transport Layer Security (TLS). We chose NNE because, unlike TLS, NNE doesn't require any changes in the application.
 
-    > To learn more about how to enable NNE, please refer to the "[DB Security - Native Network Encryption] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=700)" workshop
+    > To learn more about how to enable NNE, please refer to the "[DB Security - Native Network Encryption] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=700)" workshop
 
 ## Task 1b: Prevent data exfiltration from inert and residual files (backups and exports)
 
@@ -271,7 +271,7 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
     - You can encrypt data with zero downtime on production systems by using "Online Table Redefinition," or you can encrypt it offline during maintenance periods (see "Oracle Database Administrator's Guide" for more information about "Online Table Redefinition")
     - Oracle Database automates TDE master encryption key and keystore management operations. The user or application does not need to manage TDE master encryption keys and the keys are never exposed to the clients, reducing the chances for loss or theft of the keys
 
-    > To learn more about how to use TDE, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
+    > To learn more about how to use TDE, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
     ---
 
@@ -358,7 +358,7 @@ Imagine that you decide to refresh your development database every Monday from t
     - Preserve data integrity during masking and subsetting and offers many more unique features
     - Integrate with select Oracle testing, security, and integration products
 
-    > To know more about DMS, please refer to the "[DB Security - Data Masking and Subsetting] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=704)" workshop. The Oracle Data Safe cloud service also provides Data Masking capability. If you'd like more information on using Oracle Data Safe please refer to the "[Get Started with Oracle Data Safe Fundamentals] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)" workshop
+    > To know more about DMS, please refer to the "[DB Security - Data Masking and Subsetting] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=704)" workshop. The Oracle Data Safe cloud service also provides Data Masking capability. If you'd like more information on using Oracle Data Safe please refer to the "[Get Started with Oracle Data Safe Fundamentals] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)" workshop
 
     ---
 
@@ -464,7 +464,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
 
 10. Here, we have used the SQL Firewalling feature provide by **Oracle Audit Vault and Database Firewall (AVDF)**
 
-    > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" workshop
+    > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" workshop
 
 
 ## Task 2b: Detect and mitigate the sensitive data harvesting
@@ -505,7 +505,7 @@ Many older applications expose data to the user that is no longer appropriate. O
     - You can create the Data Redaction policies in one central location and easily manage them from there
     - The Data Redaction policies enable you to create a wide variety of policy conditions based on `SYS_CONTEXT` values, which can be used at runtime to decide when the Data Redaction policies will apply to the results of the application user's query
 
-    > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
+    > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
     ---
 
@@ -569,7 +569,7 @@ Oracle provides you with several easy-to-use and efficient tools that allow you 
     - Data Masking capacity
     - Audit collection, including reporting, analysis, and alerting
 
-    > To learn more about how to use Data Safe and the Database Security Assessment Tool, please refer to the "[Get Started with Oracle Data Safe Fundamentals] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/workshop-attendee-2?p210_workshop_id=598)" or "[DB Security - Database Security Assessment Tool] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/workshop-attendee-2?p210_workshop_id=699)" workshops
+    > To learn more about how to use Data Safe and the Database Security Assessment Tool, please refer to the "[Get Started with Oracle Data Safe Fundamentals] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/workshop-attendee-2?p210_workshop_id=598)" or "[DB Security - Database Security Assessment Tool] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/workshop-attendee-2?p210_workshop_id=699)" workshops
 
     ---
 
@@ -690,7 +690,7 @@ Let's see how this risk could be avoided. Rather than try to guess what privileg
 
 6. In this exercise, we have used a feature provided natively in the Oracle Database, called **Privilege Analysis**
 
-    > To learn more about how to use Privilege Analysis, please refer to the "[DB Security - Privilege Analysis] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=701)" workshop
+    > To learn more about how to use Privilege Analysis, please refer to the "[DB Security - Privilege Analysis] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=701)" workshop
 
 
 ## Task 3c: Prevent insufficient or permissive access controls
@@ -762,7 +762,7 @@ Another way to steal data is to connect directly to the database without going t
 
 4. Here again, we have used **Data Redaction**, a feature of Oracle Advanced Security (ASO)
 
-    > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
+    > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
 ## Task 3d: Detect and prevent abuse of power
 
@@ -824,7 +824,7 @@ Finally, the attackers will take the gloves off and will attack with heavy artil
     
     In addition to being informed of significant activity in near real-time, AVDF allows you to move audit data from the database to a tamper-resistant repository that protects audit data from deletion or alteration. Having a single place to analyze activity across all databases greatly facilitates investigating an incident. AVDF makes it easier to provide reports demonstrating regulatory compliance or even just understanding what happened on the database.
 
-    > To learn more about how to use the features used here, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" and "[DB Security - Unified Auditing] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=702)" workshops
+    > To learn more about how to use the features used here, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" and "[DB Security - Unified Auditing] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=702)" workshops
 
     ---
 
@@ -941,7 +941,7 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
     - Controls the exposure of sensitive application data to those without a true need-to-know
     - Works in a Multitenant Environment, increasing security for consolidation
 
-    > To learn more about how to use Database Vault, please refer to the "[DB Security - Database Vault] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=682)" workshop
+    > To learn more about how to use Database Vault, please refer to the "[DB Security - Database Vault] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=682)" workshop
 
     ---
 
@@ -956,8 +956,8 @@ Read more about ransomware here:
 - [CertNZ (New Zealand)] (https://www.cert.govt.nz/individuals/common-threats/ransomware/)
 
 To learn more about the capabilities discussed in this workshop and to learn how to set them up, you visit these two comprehensive workshops:
-- [DB Security Basics](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=698)
-- [DB Security Advanced](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=726)
+- [DB Security Basics](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=698)
+- [DB Security Advanced](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=726)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security Senior Principal PM
