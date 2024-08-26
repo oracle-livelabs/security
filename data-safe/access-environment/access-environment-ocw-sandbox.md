@@ -7,6 +7,8 @@ In this lab, you access and review your LiveLabs Sandbox environment in Oracle C
 
 Estimated Lab Time: 5 minutes
 
+[Data Safe](videohub:1_dj98a6we)
+
 ### Objectives
 
 In this lab, you will:
@@ -65,7 +67,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
 2. On the left, click **Target databases**.
 
-3. Under **List scope**, make sure your compartment is selected. Your registered target database is listed on the right.
+3. Under **List scope**, browse to and select your compartment. Your registered target database is listed on the right.
 
     - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
     - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
@@ -134,4 +136,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 24, 2024
+- **Last Updated By/Date** - Jody Glover, August 22, 2024

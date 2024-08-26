@@ -4,17 +4,19 @@
 
 Data Masking provides a way for you to mask sensitive data so that the data is safe for non-production purposes. For example, organizations often need to create copies of their production data to support development and test activities. Simply copying the production data exposes sensitive data to new users. To avoid a security risk, you can use Data Masking to replace the sensitive data with realistic, but fictitious data.
 
-The roles granted to the Oracle Data Safe service account on your target database control which Oracle Data Safe features you can use with the database. By default, Autonomous Database Serverless has all Oracle Data Safe roles granted during target database registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
+The roles granted to the Oracle Data Safe service account on your target database control which Oracle Data Safe features you can use with the database. By default, Autonomous Database Serverless has all Oracle Data Safe roles granted during target database registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`). If you are working in your own tenancy, you need to grant the Data Masking role on your target database. 
 
-Begin by granting the Data Masking role on your target database. Then, create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab. View the before and after effect on the masked data by using Oracle Database Actions.
+Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab. View the before and after effect on the masked data by using Oracle Database Actions.
 
 Estimated Time: 20 minutes
+
+[Data Safe](videohub:1_wiu76838)
 
 ### Objectives
 
 In this lab, you will:
 
-- Grant the Data Masking role on your target database
+- (For your tenancy only) Grant the Data Masking role on your target database
 - View sensitive data in your target database
 - Create a masking policy for your target database
 - Modify a masking format to use a fixed number
@@ -42,62 +44,62 @@ This lab assumes you have:
 - Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs.
 
 
-## Task 1: Grant the Data Masking role on your target database
+## Task 1 (For your tenancy only): Grant the Data Masking role on your target database
 
-1. Return to the SQL worksheet in Database Actions.
+Perform this task only if you are working in your own tenancy. If you are using a LiveLabs sandbox, you do not need to perform this task.
 
-2. If you are prompted to sign in to your target database, sign in as the `ADMIN` user.
+1. Return to the SQL worksheet in Database Actions. If you are prompted to sign in to your target database, sign in as the `ADMIN` user. Clear the worksheet and the **Script Output** tab.
 
-3. Clear the worksheet and the **Script Output** tab.
-
-4. On the SQL worksheet, enter the following command to grant the Data Masking role to the Oracle Data Safe service account on your target database.
+2. On the SQL worksheet, enter the following command to grant the Data Masking role to the Oracle Data Safe service account on your target database.
 
     ```
     <copy>EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$DATA_MASKING_ROLE');</copy>
     ```
 
-5. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query. 
+3. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query. 
 
     ![Run Statement button on toolbar](images/run-statement-button.png "Run Statement button on toolbar")
 
-6. Verify that the script output reads as follows:
+4. Verify that the script output reads as follows:
 
     `PL/SQL procedure successfully completed.`
     
     You are now able to mask sensitive data on your target database.
 
-7. Clear the worksheet and script output.  
+5. Clear the worksheet and script output.  
 
 
 ## Task 2: View sensitive data in your target database
 
 View the sensitive data in the `HCM1.EMPLOYEES` table.
 
-1. On the **Navigator** tab in Database Actions, select the **HCM1** schema from the first drop-down list.
+1. (If you didn't perform task 1) Return to the SQL worksheet in Database Actions. If you are prompted to sign in to your target database, sign in as the `ADMIN` user. Clear the worksheet and the **Script Output** tab.
 
-2. Drag the `EMPLOYEES` table to the worksheet.
+2. On the **Navigator** tab in Database Actions, select the **HCM1** schema from the first drop-down list.
+
+3. Drag the `EMPLOYEES` table to the worksheet.
 
     ![EMPLOYEES table](images/drag-employees-table-to-worksheet.png "EMPLOYEES table")
 
-3. When prompted to choose an insertion type, click **Select**, and then click **Apply**.
+4. When prompted to choose an insertion type, click **Select**, and then click **Apply**.
 
     ![Choose the type of insertion dialog box](images/insertion-type-select.png "Choose the type of insertion dialog box")
 
-4. View the SQL query on the worksheet.
+5. View the SQL query on the worksheet.
 
     ![Worksheet tab showing EMPLOYEES table](images/query-employees-table.png "Worksheet tab showing EMPLOYEES table")
 
 
-5. On the toolbar, click the **Run Script** button.
+6. On the toolbar, click the **Run Script** button.
 
     ![Run Script button](images/run-script.png "Run Script button")
 
 
-6. On the **Script Output** tab, review the query results.
+7. On the **Script Output** tab, review the query results.
 
     - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, and `PHONE_NUMBER` are considered sensitive data and should be masked if shared for non-production use.
 
-7. Return to the browser tab for Oracle Data Safe. Keep this browser tab open because you return to it later.
+8. Return to the browser tab for Oracle Data Safe. Keep this browser tab open because you return to it later.
 
 
 ## Task 3: Create a masking policy for your target database
@@ -222,7 +224,7 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 6. Review the log messages and verify each check has passed.
 
 
-## Task 6: Mask sensitive data in your target database
+## Task 7: Mask sensitive data in your target database
 
 1. On the **Pre-masking report details** page, click the name of your masking policy (**Mask SDM1**). 
 
@@ -245,7 +247,7 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 5. Wait for the status to read as **SUCCEEDED**.
 
  
-## Task 7: View the Data Masking report
+## Task 8: View the Data Masking report
 
 1. While on the **Work request** page, next to **Masking report** on the **Work request information** tab, click **View details**.
 
@@ -256,11 +258,11 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
     - The **Masking report information** tab shows you the target database name, masking policy name (you can click a link to view it), the Oracle Cloud Identifier (OCID) for the masking report, the date and time when the data masking job started and finished, and the number of masked sensitive types, schemas, tables, columns, and values. You can click a link to view masking options. There is also a pie chart that shows you the masked value percentages for each sensitive type. You can click on a pie slice to drill down into the chart.
     - The **Masked columns** table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
 
-    ![Masking report top](images/masking-report-top2.png "Masking report top")
+    ![Masking report top](images/masking-report-top3.png "Masking report top")
     ![Masking report bottom](images/masking-report-bottom.png "Masking report bottom")
 
 
-## Task 8: Validate the masked data in your target database
+## Task 9: Validate the masked data in your target database
 
 1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. The `SELECT` statement against the `EMPLOYEES` table should be displayed on the worksheet.
 
@@ -300,4 +302,4 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 25, 2024
+- **Last Updated By/Date** - Jody Glover, August 22, 2024

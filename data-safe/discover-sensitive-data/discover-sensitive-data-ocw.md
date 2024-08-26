@@ -103,10 +103,12 @@ Remove the `DATE_OF_HIRE` column from the sensitive data model.
     ![Remove Columns panel](images/ocw/remove-columns-panel.png "Remove Columns panel")
 
 
+You may now **proceed to the next lab**.
+
 ## Learn More
 
 - [Data Discovery](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-discovery.html)
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 17, 2023
+- **Last Updated By/Date** - Jody Glover, August 22, 2023
