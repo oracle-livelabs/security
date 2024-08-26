@@ -37,4 +37,4 @@ In this lab, you will:
 
 * **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By** - Anuj Tripathi, July 2024
+* **Last Updated By** - Anuj Tripathi, Aug 2024
