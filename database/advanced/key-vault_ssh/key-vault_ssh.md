@@ -15,20 +15,38 @@ Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
 
 ### Prerequisites
 This lab assumes you have:
+<if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
+    - Lab: Initialize Environment
+</if>
+<if type="green">
+- An Oracle Cloud account
+- You have completed:
+    - Introduction Tasks
+</if>
 
 ### Lab Timing (estimated)
 
-| Step No. | Feature | Approx. Time | Details |
-|--|------------------------------------------------------------|-------------|--------------------|
-| 1| (Mandatory) Prerequisites | 5 minutes||
-| 2| Set Remote Server Access Controls with OKV | 10 minutes||
-| 3| Set Remote Client Access Controls with OKV | 10 minutes||
-| 4| SSH Key Management with OKV | 5 minutes||
-| 5| Reset the OKV config | <5 minutes||
+<if type="brown">
+| Step No. | Feature                                    | Approx. Time | Details |
+| -------- | ------------------------------------------ | ------------ | ------- |
+| 1        | (Mandatory) Prerequisites                  | 5 minutes    |         |
+| 2        | Set Remote Server Access Controls with OKV | 10 minutes   |         |
+| 3        | Set Remote Client Access Controls with OKV | 10 minutes   |         |
+| 4        | SSH Key Management with OKV                | 5 minutes    |         |
+| 5        | Reset the OKV config                       | <5 minutes   |         |
+</if>
+<if type="green">
+| Step No. | Feature                                    | Approx. Time | Details |
+| -------- | ------------------------------------------ | ------------ | ------- |
+| 1        | (Mandatory) Prerequisites                  | 5 minutes    |         |
+| 2        | Set Remote Server Access Controls with OKV | 10 minutes   |         |
+| 3        | Set Remote Client Access Controls with OKV | 10 minutes   |         |
+| 4        | SSH Key Management with OKV                | 5 minutes    |         |
+</if>
 
 ## Task 1: (Mandatory) Prerequisites
 
@@ -114,6 +132,18 @@ This lab assumes you have:
 
 2. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
 
+    - On the **SSH Server** remote desktop (on DBSeclab VM), execute *as opc* OS user top display the default OKV console password
+
+        ```
+        <copy>
+        sudo cat /home/oracle/DBSecLab/livelabs/okv/wui_passphrase
+        </copy>
+        ```
+
+        **Note**: A new password for all the OKV users is randomly generated during the deployment of the Livelabs and stored in the `wui_passphrase` file
+    
+    - Copy the default password
+    
     - Open a web browser window to *`https://kv`* to access to the Key Vault Web Console
 
         **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
@@ -127,10 +157,6 @@ This lab assumes you have:
         ```
 
         ![Key Vault](./images/okv_ssh-200.png "OKV - Login")
-
-        **Note**:
-        - A new password for all the OKV users is randomly generated during the deployment of the Livelabs
-        - This default password is available in the Labs details
 
     - Set your new password
     
@@ -419,7 +445,7 @@ In this lab, we will introduce remote server access controls by centrally managi
 
         ![Key Vault](./images/okv_ssh-039.png "Edit Wallet Access settings")
 
-    - Deselect the **Manage Wallet** radio button, and click [**Save**]
+    - Deselect the **Manage Wallet** checkbox button, and click [**Save**]
 
         ![Key Vault](./images/okv_ssh-040.png "Deselect the Manage Wallet privilege")
 
@@ -513,7 +539,7 @@ In this second part, we will manage users' private keys in OKV making those priv
     - Fill it out as following:
     
         - Name: *`MY_SSH_KEYS`*
-        - Descriptio: *Contains my non-extractable private, and public keys to log in to remote machines*
+        - Description: *Contains my non-extractable private, and public keys to log in to remote machines*
         - Wallet Type: select *General*
 
         ![Key Vault](./images/okv_ssh-049.png "Create Wallet - Form")
@@ -734,6 +760,7 @@ In this second part, we will manage users' private keys in OKV making those priv
     <copy>
     eval `ssh-agent -P "$OKV_HOME/lib/*"`
     ssh-add -D
+    sudo chmod 700 $OKV_HOME/lib/liborapkcs.so
     ssh-add -s $OKV_HOME/lib/liborapkcs.so -t 14400
     </copy>
     ```
@@ -816,7 +843,7 @@ In this second part, we will manage users' private keys in OKV making those priv
     
             ![Key Vault](./images/okv_ssh-110.png "Edit the Wallet")
 
-            **Note**: In this example, now haven't got any public key in the SSH Server wallet
+            **Note**: In this example, now there aren’t any more public keys in this SSH Server wallet
 
             ![Key Vault](./images/okv_ssh-111.png "Remove the public key from the SSH Server Wallet")
 
@@ -872,6 +899,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
         **Note**: Public key **authentication fails** and that's exactly what we want!
 
+<if type="brown">
 ## Task 5: Reset the OKV config
 
 1. Go back to your terminal session **on SSH Server** (DBSeclab VM) *as opc*
@@ -940,9 +968,9 @@ In this second part, we will manage users' private keys in OKV making those priv
     - Open the **Endpoints** tab, select the **"Select All" checkbox** and click [**Delete**]
 
         ![Key Vault](./images/okv_ssh-157.png "Delete all Endpoints")
+</if>
 
 You may now **proceed to the next lab**!
-
 
 ## **Appendix**: About the Product
 ### **Overview**
@@ -1011,12 +1039,12 @@ Technical Documentation:
 - [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/multimaster_concepts.html)
 - [Oracle Key Vault - SSH Key Management](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/management_of_ssh_keys_concepts.html)
 
-    > To learn more about how to use OKV, please refer to the "[DB Security - Key Vault] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
+    > To learn more about how to use OKV, please refer to the "[DB Security - Key Vault] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
 
 Video:
 - *Introducing Oracle Key Vault 21 (January 2021)* [](youtube:SfXQEwziyw4)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2024
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024

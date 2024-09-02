@@ -25,11 +25,11 @@ This lab assumes you have:
 
 ### Lab Timing (estimated)
 
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-|01| Register an on-premises Oracle Database with a Private endpoint | 20 minutes|
-|02| Register an on-premises Oracle Database with an on-premises connector | 20 minutes|
-|03| Reset Oracle Data Safe configuration | 5 minutes|
+| Step No. | Feature                                                               | Approx. Time |
+| -------- | --------------------------------------------------------------------- | ------------ |
+| 01       | Register an on-premises Oracle Database with a Private endpoint       | 20 minutes   |
+| 02       | Register an on-premises Oracle Database with an on-premises connector | 20 minutes   |
+| 03       | Reset Oracle Data Safe configuration                                  | 5 minutes    |
 
 ## Task 1: Register an on-premise Oracle Database with a Private endpoint
 
@@ -187,7 +187,7 @@ In this lab, let's see how to register the dabase with a private endpoint
 
             ![Data Safe](./images/ds-018.png "Data Safe dashboard")
 
-14. Now, if you want to know more about the Oracle Data Safe features, please perform the dedicated Livelabs [Get Started with Oracle Data Safe Fundamentals](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=598)
+14. Now, if you want to know more about the Oracle Data Safe features, please perform the dedicated Livelabs [Get Started with Oracle Data Safe Fundamentals](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=598)
 
 ## Task 2: Register an on-premise Oracle Database with an on-premises connector
 
@@ -399,7 +399,7 @@ Now, let's see the second option to register the dabase with an on-premises conn
 
             ![Data Safe](./images/ds-124.png "Data Safe dashboard")
 
-14. Now, if you want to know more about the Oracle Data Safe features, please perform the dedicated Livelabs [Get Started with Oracle Data Safe Fundamentals](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=598)
+14. Now, if you want to know more about the Oracle Data Safe features, please perform the dedicated Livelabs [Get Started with Oracle Data Safe Fundamentals](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=598)
 
 ## Task 3: Reset Oracle Data Safe configuration
 
