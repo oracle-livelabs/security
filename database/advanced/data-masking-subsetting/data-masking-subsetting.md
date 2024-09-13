@@ -416,7 +416,7 @@ c. Risk Reduction: Masking fields such as EmailID and LastName reduces exposure 
 
 d. Compliance: Masked data adheres to privacy regulations (e.g., GDPR, CCPA), facilitating compliant collaboration with third parties.
 
-## Task 10: Create Data Subsetting Definitions
+## Task 10: Data Subsetting- Create Data Subsetting Definitions
 
 1. Lets start by Creating a Subsetting Definition as below:
 
@@ -532,7 +532,7 @@ Navigate to Data Subsetting on the left side as shown below:
 
 14. **Now, your Data Subsetting script is ready to be used!**
 
-## Task 11: Execute Data Subsetting Scripts
+## Task 11: Data Subsetting- Execute Data Subsetting Scripts
 
 Once you've defined all the data subsetting definitions in Step 13, it's time to execute the Subsetting scripts
 
