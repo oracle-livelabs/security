@@ -732,7 +732,7 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
 
 8. As you can see, the new dataset is different from the original sensitive data, it subsetted and masked and you can now share it without worrying!
 
-## Task 17: Reset the Labs Environment
+## Task 13: Reset the Labs Environment
 
 1. Restore the `EMPLOYEESEARCH_DEV` tables on pdb1 by cloning data from `EMPLOYEESEARCH_PROD` schema
 
