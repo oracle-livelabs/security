@@ -43,7 +43,7 @@ This lab assumes you have:
 
     ![DMS](./images/dms-002.png "Application Data Modeling")
 
-4. Briefly review the **Data Masking Workflow** and Subsetting on the Overview page to familiarize yourself with the process:
+4. Briefly review the **Data Masking Workflow** on the Overview page to familiarize yourself with the process:
 
     ![DMS](./images/dms-003.png "Test Data Management diagram")
 
