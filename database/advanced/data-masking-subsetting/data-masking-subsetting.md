@@ -71,7 +71,7 @@ Fill in the following details:
 
 ## Task 3:  Data Discovery- Discover Sensitive Data (Automated)
 
-Now, lets run a **Discover Sensitive Columns** job to identify sensitive data based on the sensitive types you are interested in. In this case, we will focus on finding potential columns containing "Email" using Oracle's Pre-Defined Sensitive Type. The system's algorithm analyzes column data, names, and comments to identify such potential sensitive columns. 
+Now, lets run a **Discover Sensitive Columns** job to identify sensitive data based on the sensitive types you are interested in. In this case, we will focus on finding potential columns containing `EMAIL_ID` using Oracle's Pre-Defined Sensitive Type. The system's algorithm analyzes column data, names, and comments to identify such potential sensitive columns. 
 
 1. Once you've created the ADM in Task 2, highlight the *`Employee_ADM`* Model and go to Actions > Modify > Discover Sensitive Columns.
 
@@ -170,11 +170,8 @@ Lets create a new **Masking Format** for previously discovered Sensitive column 
 2. Notice that **Masking Formats** library appears with predefined formats that Oracle Enterprise Manager Provides. Click on **Create** and fill in the following details:
 
 - Name: EMAIL_ID
-
 - Description: Mask the Oracle Corp email by changing prefix and domain name
-
 - Sensitive Type: `EMAIL_ID`
-
 - Format Entry: Random Strings
 
 Mention the **Start Length** as 6 and **End Length** as 8. Click **ADD format Entry**.
@@ -183,9 +180,9 @@ Mention the **Start Length** as 6 and **End Length** as 8. Click **ADD format En
 
 Format Entry: Fixed String
 
-Mention the fixed doman string such as @ercoal.com and click on **Add format Entry**.
+Mention the fixed doman string such as `@ercoal.com` and click on **Add format Entry**.
 
-    Note: When you will use this masking algorithm, it will replace the initial value by a new value generated from the concatenation of a random string of 6 to 8 characters at the beginning, followed by the fixed value `@ercoal.com`
+    Note: When you will use this masking algorithm, it will replace the initial value by a new value generated from the concatenation of a random string of 6 to 8 characters at the beginning, followed by the fixed value `@ercoal.com`.
 
 4. Click **Create**. 
 
@@ -194,47 +191,47 @@ Here is the newly created Masking Format for EMAIL_ID column.
 
 ## Task 7: Data Masking- Create Masking Definition
 
-Lets create a new Masking Definition where the masking formats will be set for EMAIL, USERID and LASTNAME.
+Lets create a new Masking Definition where the masking formats will be set for `EMAIL_ID`, `USER_ID` and `LAST_NAME`.
 
-1. To create a Masking Definition, navigate to the Masking Definitions page under Data Masking as follow:
+1. To create a Masking Definition, navigate to the **Masking Definitions** page under **Data Masking** as follow:
 
     ![DMS](./images/dms-024.png "Create a masking format in the format library")
 
-2. Click on Create.
+2. Click **Create**.
 
-3. From the Create Masking Definitions screen, fill it as follow:
+3. From the **Create Masking Definitions** screen, fill it as follow:
 
-Name: EMPLOYEE_DATA_MASK
-Application Data Model: Employee_ADM
-Associated Database: 
-Database Named Credentials:
+- Name: `EMPLOYEE_DATA_MASK`
+- Application Data Model: `Employee_ADM`
+- Associated Database: 
+- Database Named Credentials:
 
-Click on the Next.
+Click **Next**.
 
-4. On the next screen, notice the three discovered sensitive columns shown under "Columns Available in Application Data Model":
+4. On the next screen, notice the three discovered sensitive columns shown under **Columns Available in Application Data Model**:
 
     ![DMS](./images/dms-025.png "Format library")
 
-Click on the Define Format and ADD.
+Click **Define Format and ADD**.
 
-5. On the Define Format and ADD page, choose EMAIL_ID (created in task 6) from the "Choose From Masking Formats drop-down box and click on Import.
+5. On the **Define Format and ADD** page, choose `EMAIL_ID` (created in task 6) from the **Choose From Masking Formats** drop-down box and click **Import**.
 
 Notice, Masking Format Entries are automatically populated:
 
 
     ![DMS](./images/dms-026.png "Define a new use defined masking format")
 
-View the Same Data by clicking on Generate:
+View the sample Data by clicking **Generate**:
 
  ![DMS](./images/dms-027.png "Provide required information for the new format")
 
-Click on ADD.
+Click **ADD**.
 
-6. Notice the EMAIL_ID column appeared under "Columns Available in Masking Definition" along with the defined Masking Format:
+6. Notice the `EMAIL_ID` column appeared under **Columns Available in Masking Definition** along with the defined Masking Format:
 
     ![DMS](./images/dms-027.png "Provide required information for the new format")
 
-Similarly, lets define and add the formats for other 2 columns USERID and LASTNAME:
+Similarly, lets define and add the formats for other 2 columns `USER_ID` and `LAST_NAME`:
 
 For USERID, select the USERID Column shown under "Columns Available in Application Data Model":
 
