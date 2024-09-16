@@ -3,7 +3,7 @@
 ## Introduction
 This workshop provides an introduction to the features and functionality of the Oracle Data Masking and Subsetting (DMS) pack for Enterprise Manager. It gives the user an opportunity to learn how to configure those features in order to secure their sensitive data in a Non-Production environment, with a particular focus on **Data Sharing** use case. 
 
-*Estimated Lab Time:* 85 minutes
+*Estimated Lab Time:* 80 minutes
 
 *Version tested in this lab:* DBEE 19.23 and Oracle Enterprise Manager 24.1.
 
