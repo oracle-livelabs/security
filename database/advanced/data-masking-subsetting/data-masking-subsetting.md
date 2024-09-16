@@ -5,7 +5,7 @@ This workshop provides an introduction to the features and functionality of the 
 
 *Estimated Lab Time:* 85 minutes
 
-*Version tested in this lab:* DBEE 19.23 and Oracle Enterprise Manager 13.5.
+*Version tested in this lab:* DBEE 19.23 and Oracle Enterprise Manager 24.1.
 
 ### Objectives
 - Data Discovery: Create an Application Data Model (ADM) with discovered sensitive columns
