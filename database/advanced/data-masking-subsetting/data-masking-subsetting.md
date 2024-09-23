@@ -3,7 +3,7 @@
 ## Introduction
 This workshop provides an introduction to the features and functionality of the Oracle Data Masking and Subsetting (DMS) pack for Enterprise Manager. It gives the user an opportunity to learn how to configure those features in order to secure their sensitive data in a Non-Production environment, with a particular focus on **Data Sharing** use case. 
 
-*Estimated Lab Time:* 80 minutes
+*Estimated Lab Time:* 70 minutes
 
 *Version tested in this lab:* DBEE 19.23 and Oracle Enterprise Manager 24.1.
 
@@ -729,11 +729,25 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
 
 8. As you can see, the new dataset is different from the original sensitive data, it subsetted and masked and you can now share it without worrying!
 
-## Task 13: Reset the Labs Environment
+What You Accomplished: 
 
-1. Restore the `EMPLOYEESEARCH_DEV` tables on pdb1 by cloning data from `EMPLOYEESEARCH_PROD` schema
+## Task 13: Reset the Lab Environment
 
-    - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+**Objective**
+
+Lastly, let's reset the lab by deleting the previously created:
+
+a. Application Data Models
+
+b. Masking Definitions
+
+c. Subsetting Definitions
+
+This task ensures a clean environment for future exercises and prevents any potential conflicts or errors that could arise from leftover configurations. It's essential for maintaining consistency and accuracy in your future discovery, masking and subsetting tasks. 
+
+1. Restore the `EMPLOYEESEARCH_DEV` tables on pdb1 by cloning data from `EMPLOYEESEARCH_PROD` schema.
+
+    - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*.
 
         ````
         <copy>sudo su - oracle</copy>
@@ -741,13 +755,13 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
 
         **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
-    - Go to the scripts directory
+    - Go to the scripts directory.
 
         ````
         <copy>cd $DBSEC_LABS/dms</copy>
         ````
 
-    - Reset the `EMPLOYEESEARCH_DEV` data as it was before masking
+    - Reset the `EMPLOYEESEARCH_DEV` data as it was before masking.
 
         ````
         <copy>./dms_restore_pdb1_dev.sh</copy>
@@ -755,15 +769,15 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
 
         ![DMS](./images/dms-150.png "Reset Data")
 
-2. Now, go back to the OEM Console and remove all definitions created
+2. Now, go back to the OEM Console and remove all definitions created. Please note, you have to first drop Masking Definition and Subsetting Definition before removing the associated Application Data Model.
 
-3. First, **drop the Data Masking definitions**
+3. First, **drop the Data Masking definition**
 
-    - Navigate to the Application Data Models page from the Quality Management submenu by selecting the menu **Enterprise > Quality Management > Data Masking Definitions**
+    - Navigate to the main menu Targets > Databases and select Data Masking under Security.
 
         ![DMS](./images/dms-044.png "Navigate to the Application Data Models")
 
-    - Select **every** Data Masking Definition and click [**Delete**]
+    - Select **all** Data Masking Definition and click [**Delete**]
 
         ![DMS](./images/dms-190.png "Delete all the Data Masking definitions")
 
@@ -771,17 +785,17 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
 
         ![DMS](./images/dms-191.png "Confirm deletion")
 
-    - Now, your Data Masking Definition are dropped!
+    - Now, your Data Masking Definitions are dropped!
 
         ![DMS](./images/dms-192.png "Data Masking Definition are dropped")
 
 4. Next, **drop the Data Subsetting definitions**
 
-    - Navigate to the Application Data Models page from the Quality Management submenu by selecting the menu **Enterprise > Quality Management > Data Subsetting Definitions**
+    - Navigate to the main menu **Targets > Databases** and select Data Subsetting under Security.
 
         ![DMS](./images/dms-130.png "Navigate to the Application Data Models")
 
-    - Select **every** Data Subsetting Definition and click [**Delete**]
+    - Select **all** Data Subsetting Definitions and click [**Delete**]
 
         ![DMS](./images/dms-193.png "Delet all the Data Subsetting Definition")
 
@@ -789,17 +803,17 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
 
         ![DMS](./images/dms-194.png "Confirm deletion")
 
-    - Now, your Data Subsetting Definition are dropped!
+    - Now, your Data Subsetting Definitions are dropped!
 
         ![DMS](./images/dms-195.png "Data Subsetting Definition are dropped")
 
 5. Finally, **drop the Application Data Model (ADM)**
 
-    - Navigate to the Application Data Models page from the Quality Management submenu by selecting the menu **Enterprise > Quality Management > Application Data Modeling**
+    - Navigate to the main menu **Targets > Databases** and select Data Discovery under Security.
 
         ![DMS](./images/dms-002.png "Navigate to the Application Data Models")
 
-    - Select **every** Application Data Model and click [**Delete**]
+    - Select **all** Application Data Model and click [**Delete**]
 
         ![DMS](./images/dms-196.png "Delete all the Application Data Model")
 
@@ -807,49 +821,78 @@ Once you've defined all the data subsetting definitions in Step 13, it's time to
 
         ![DMS](./images/dms-197.png "Confirm deletion")
 
-    - Now, your Data Subsetting Definition are dropped!
+    - Now, your Application Data Models are dropped!
 
         ![DMS](./images/dms-198.png "Application Data Model are dropped")
 
-You may now proceed to the next lab!
+What You Accomplished: The lab has been reset for future exercises.
 
 ## **Appendix**: About the Product
 ### **Overview**
 Oracle Data Masking pack for Enterprise Manager, part of Oracle's comprehensive portfolio of database security solutions, helps organizations comply with data privacy and protection mandates such as Sarbanes-Oxley (SOX), Payment Card Industry (PCI) Data Security Standard (DSS), Health Insurance Portability and Accountability Act (HIPAA), EU General Data Protection Regulation (GDPR), and the upcoming California Consumer Privacy Act (CCPA), and numerous laws that restrict the use of actual customer data. With Oracle Data Masking, sensitive information such as credit card or social security numbers can be replaced with realistic values, allowing production data to be safely used for development, testing, or sharing with out-sourced or off-shore partners for other non-production purposes. Oracle Data Masking uses a library of templates and format rules, consistently transforming data in order to maintain referential integrity for applications.
 
-Data masking (also known as data scrambling and data anonymization) is the process of replacing sensitive information copied from production databases to test or non-production databases with realistic, but scrubbed, data based on masking rules. Data masking is ideal for virtually any situation when confidential or regulated data needs to be shared with other non-production users; for instance, internal users such as application developers, or external business partners, like offshore testing companies or suppliers and customers. These non-production users need to access some of the original data, but do not need to see every column of every table, especially when the information is protected by government regulations.
+### **Data Masking**
+Data masking (also known as data scrambling and data anonymization) is the process of replacing sensitive information copied from production databases to non-production databases with realistic, but scrubbed, data based on masking rules. Data masking is ideal for virtually any situation when confidential or regulated data needs to be shared with other non-production users; for instance, internal users such as application developers, or external business partners, like offshore testing companies or suppliers and customers. These non-production users need to access some of the original data, but do not need to see every column of every table, especially when the information is protected by government regulations.
 
 Data masking allows organizations to generate realistic and fully functional data with similar characteristics as the original data to replace sensitive or confidential information. This contrasts with encryption or Virtual Private Database, which simply hide data, allowing the original data to be retrieved with the appropriate access or key. With data masking, the original sensitive data cannot be retrieved or accessed. Names, addresses, phone numbers, and credit card details are examples of data that require protection of the information content from inappropriate visibility. Live production database environments contain valuable and confidential data — access to this information is tightly controlled. However, each production system usually has replicated development copies, and the controls on such test environments are less stringent. This greatly increases the risks that the data might be used inappropriately. Data masking can modify sensitive database records so that they remain usable, but contain no confidential or personally identifiable information. Yet, the masked test data resembles the original in appearance to ensure the integrity of the application.
 
 ![DMS](./images/dms-concept.png "DMS Concept")
 
-### **Why do I need Data Masking?**
+### **Data Subsetting**
+Data Subsetting helps reduce security risks and minimize storage costs by removing unnecessary data from a database before sharing it for non-production use. Data Subsetting provides goal-based and condition-based subsetting. A goal can be a relative table size, such as extracting a 1% subset of a table containing 10 billion
+rows. A condition can be based on factors such as time, such as discarding all user records created before a particular year. A condition can also be based on region, for example, extracting Asia Pacific information to support the development of a new application.
 
-There are several reasons why you would need it, based on challenges like the ones below
-- Personally Identifiable and sensitive data is being shared with parties that do not have a business need-to-know in development and testing groups.
-- The use of operational databases containing personal information or any other sensitive information is being used for testing purposes. All identified sensitive details and content should be removed or modified beyond recognition before use.
-- There is no established, documented procedure and enforcement of data cleansing standards in masking and cleansing of sensitive production data before distribution to development and QA environments.
-- The steps and process necessary to provide development and QA environments with properly masked data are very time consuming, manual and inconsistent.
+
+### **Why do I need Data Masking and Subsetting?**
+
+**Challenges**
+There are several reasons why your business would need it, based on some of the below mentioned critical challenges:
+•	Multiple Copies of Sensitive Data
+Creating multiple copies of sensitive data for testing, development, and analytics increases the risk of exposure and makes tracking and securing that data across environments more difficult.
+
+•	Increased Vulnerability to Data Breaches
+Without masking or anonymization, sensitive data remains exposed in non-production environments, leaving organizations vulnerable to catastrophic breaches.
+
+•	Regulatory and Compliance Risks
+Failing to protect sensitive data can result in non-compliance with critical regulations like GDPR or CCPA, leading to hefty fines and reputational damage.
+
+•	Complex Data Management
+Managing sensitive data without proper protection solutions increases operational inefficiencies and overhead costs.
+
+**Business Use Cases**
+•	Data Sharing with Third Parties
+When outsourcing or collaborating with third parties, sharing full datasets can pose a risk. Oracle Data Masking and Subsetting ensures that only relevant, non-sensitive data is shared, protecting sensitive details.
+
+•	Secure Application Testing
+Developers need real data for effective testing. Oracle Data Masking and Subsetting allows them to safely use real-world data by obfuscating sensitive information like personal identifiers and financial details. This ensures robust testing without compromising data privacy.
+
+•	Analytics Without Compromise
+By masking sensitive information, businesses can share data securely for analytics without exposing personal data. This enables effective data-driven insights while maintaining privacy and compliance.
+
+•	Regulatory Compliance
+With regulations like GDPR and CCPA, organizations are required to handle sensitive data securely. Oracle’s solution helps anonymize and protect sensitive information in non-production environments, ensuring compliance and minimizing the risk of penalties.
+
+
 
 ### **Benefits of using DMS**
-- Maximize the business value of data by masking sensitive information
-- Minimize the compliance boundary by not proliferating the sensitive production information
-- Lower the storage costs on test and development environments by subsetting data
-- Automate the discovery of sensitive data and parent-child relationships
-- Provide a comprehensive library of masking formats, masking transformations, subsetting techniques, and select application templates
-- Mask and subset data in-Database or on-the-file by extracting the data from a source database
-- Mask and subset both Oracle and non-Oracle databases
-- Mask and subset Oracle Databases hosted on the Oracle cloud
-- Preserve data integrity during masking and subsetting and offers many more unique features
-- Integrate with select Oracle testing, security, and integration products.
+•	Create multiple data copies of production environment safely
+•	Leverage a comprehensive library of Masking Formats, Sensitive Types, Subsetting Techniques, and Application Templates
+•	Minimize the compliance boundary by not proliferating the sensitive production information
+•	Lower the storage costs on test and development environments by subsetting data
+•	Automate the discovery of sensitive data and parent-child relationships
+•	Mask and subset data In-Database or In-Export by extracting the data from a target database
+•	Mask and subset both Oracle and non-Oracle databases
+•	Mask and subset Oracle Databases hosted on the Oracle cloud
+•	Preserve data integrity during masking and subsetting offering many more unique features
+•	Integrate with select Oracle testing, security, and integration products.
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle Data Masking & Subsetting Pack 12.2](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dmksb/intro.html#GUID-24B241AF-F77F-46ED-BEAE-3919BF1BBD80)
+- [Oracle Data Masking & Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dmksb/intro.html#GUID-24B241AF-F77F-46ED-BEAE-3919BF1BBD80)
 
 Video:
-- *
-- *Oracle Data MaUnderstanding Oracle Data Masking & Subsetting (April 2019)* [](youtube:3zi0Bs_bgEw)sking & Subsetting - Advanced Use Cases (June 2019)* [](youtube:06EzV-TM4f4)
+- *Understanding Oracle Data Masking & Subsetting (April 2019)* [](youtube:3zi0Bs_bgEw)
+- *Oracle Data Masking & Subsetting - Advanced Use Cases (June 2019)* [](youtube:06EzV-TM4f4)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
