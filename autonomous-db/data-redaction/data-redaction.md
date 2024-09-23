@@ -1109,12 +1109,12 @@ You can delete the data or you can drop the entire database. If you wish to drop
 
       - As **`ADMIN`**, delete the named expression policies. This is an anonymous PL/SQL block that will iterate through all Data redaction named expression policies and delete them. 
 
-      ````
-      <copy>
+         ````
+         <copy>
          BEGIN
          FOR x in (select * from redaction_policies) LOOP
          BEGIN
-          DBMS_REDACT.DROP_POLICY(
+         DBMS_REDACT.DROP_POLICY(
             object_schema => x.object_owner, 
             object_name => x.object_name,
             policy_name => x.policy_name);
@@ -1122,8 +1122,8 @@ You can delete the data or you can drop the entire database. If you wish to drop
          END LOOP;
          END;
          /
-      </copy>
-      ```
+         </copy>
+         ````
 
       **Expected Result:** `PL/SQL procedure successfully completed.`
 
@@ -1156,6 +1156,43 @@ You can delete the data or you can drop the entire database. If you wish to drop
          ````
 
          **Expected Result:** No rows selected. 
+
+5. (optional) If you are going to keep this database and you want to restore the redacted value to **`0`** when Oracle Database performs full redaction (`DBMS_REDACT.FULL`) on a column of the `NUMBER` data type. 
+
+      - As **`ADMIN`**, check the current value. 
+
+         ````
+         <copy>
+         SELECT NUMBER_VALUE FROM REDACTION_VALUES_FOR_TYPE_FULL;
+         </copy>
+         ````
+
+         **Expected Result:** If you completed Task 6, the output should be **`1`**. 
+
+      - Next, as **`ADMIN`**, update the value from **`-1`** back to the original value of **`0`**.
+
+         ````
+         <copy>
+         EXEC DBMS_REDACT.UPDATE_FULL_REDACTION_VALUES (number_val => 0);
+         </copy>
+         ````
+
+         **Expected Result:** `PL/SQL procedure successfully completed.`
+
+      - Check the value now. It should say **`0`** but it will not be in effect until the ADB has been restarted.
+
+         ````
+         <copy>
+         SELECT NUMBER_VALUE FROM REDACTION_VALUES_FOR_TYPE_FULL;
+         </copy>
+         ````
+
+         **Expected Result:** The output should be **`0`**. 
+
+      - In the OCI Autonomous Database details page, restart the database. Click **More Actions** and click **Restart**. This operation will take 1-2 minutes. Get a cup of coffee and come back!
+
+         ![](./images/adb-dr_061a.png " ")
+
 
 You have completed the lab! Don't you feel amazing? You should, you're awesome. 
 
