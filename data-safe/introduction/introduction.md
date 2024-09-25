@@ -32,7 +32,7 @@ The following links provide more information about Oracle Data Safe:
 - [Oracle Data Safe user assistance](https://docs.oracle.com/en/cloud/paas/data-safe/index.html)
 - [Oracle Data Safe data sheet](https://www.oracle.com/a/tech/docs/dbsec/data-safe/ds-security-data-safe.pdf)
 - [Oracle Data Safe frequently asked questions](https://www.oracle.com/a/tech/docs/dbsec/data-safe/faq-security-data-safe.pdf)
-- [Integrate Oracle Data Safe with Applications and Services Workshop in LiveLabs](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3596)
+- [Integrate Oracle Data Safe with Applications and Services Workshop in LiveLabs](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3596)
 
 ## Acknowledgements
 

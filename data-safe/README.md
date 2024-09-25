@@ -4,7 +4,7 @@ This workshop lets you practice the main features in Oracle Data Safe, including
 
 ## Access the Workshop Using Our Web Interface
 
-**[Click here](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)** to use our easy to navigate HTML format.
+**[Click here](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)** to use our easy to navigate HTML format.
 
 ## Access the Individual Labs in the Repository
 

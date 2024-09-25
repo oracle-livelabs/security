@@ -28,8 +28,8 @@ The following links provide more information about Oracle Data Safe:
 
 - [Using Oracle Data Safe guide](https://docs.oracle.com/en/cloud/paas/data-safe/udscs/index.html)
 - [Administering Oracle Data Safe guide](https://docs.oracle.com/en/cloud/paas/data-safe/admds/index.html)
-- [Get Started with Oracle Data Safe Fundamentals Workshop in LiveLabs](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)
-- [Integrate Oracle Data Safe with Applications and Services Workshop in LiveLabs](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3596)
+- [Get Started with Oracle Data Safe Fundamentals Workshop in LiveLabs](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)
+- [Integrate Oracle Data Safe with Applications and Services Workshop in LiveLabs](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3596)
 
 
 ## Acknowledgements

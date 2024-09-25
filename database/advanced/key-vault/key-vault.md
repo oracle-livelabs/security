@@ -33,31 +33,31 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 
 <if type="brown">
-| Task No. | Feature | Approx. Time | Details |
-|--|------------------------------------------------------------|-------------|--------------------|
-| 1| Encrypt database with TDE | <10 minutes||
-| 2| Add an Endpoint | <10 minutes||
-| 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
-| 4| Upload current and retired TDE master keys to OKV | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
-| 5| Migrate to Online Master Key | 5 minutes | To re-configure the database to communicate directly with Oracle Key Vault |
-| 6| Create the OKV SEPS Wallet | <5 minutes||
-| 7| Perform a ReKey Operation | 5 minutes||
-| 8| Secret Management with OKV | 5 minutes||
-| 9| Generate New Non-extractable Key | 5 minutes||
-|10| Reset the OKV Lab Config | <5 minutes||
+| Task No. | Feature                                           | Approx. Time | Details                                                                    |
+| -------- | ------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
+| 1        | Encrypt database with TDE                         | <10 minutes  |                                                                            |
+| 2        | Add an Endpoint                                   | <10 minutes  |                                                                            |
+| 3        | View the Contents of the OKV Virtual Wallet       | <5 minutes   |                                                                            |
+| 4        | Upload current and retired TDE master keys to OKV | 5 minutes    | To backup the Oracle Wallet into Oracle Key Vault                          |
+| 5        | Migrate to Online Master Key                      | 5 minutes    | To re-configure the database to communicate directly with Oracle Key Vault |
+| 6        | Create the OKV SEPS Wallet                        | <5 minutes   |                                                                            |
+| 7        | Perform a ReKey Operation                         | 5 minutes    |                                                                            |
+| 8        | Secret Management with OKV                        | 5 minutes    |                                                                            |
+| 9        | Generate New Non-extractable Key                  | 5 minutes    |                                                                            |
+| 10       | Reset the OKV Lab Config                          | <5 minutes   |                                                                            |
 </if>
 <if type="green">
-| Task No. | Feature | Approx. Time | Details |
-|--|------------------------------------------------------------|-------------|--------------------|
-| 1| Encrypt database with TDE | <10 minutes||
-| 2| Add an Endpoint | <10 minutes||
-| 3| View the Contents of the OKV Virtual Wallet | <5 minutes||
-| 4| Upload current and retired TDE master keys to OKV | 5 minutes | To backup the Oracle Wallet into Oracle Key Vault |
-| 5| Migrate to Online Master Key | 5 minutes | To re-configure the database to communicate directly with Oracle Key Vault |
-| 6| Create the OKV SEPS Wallet | <5 minutes||
-| 7| Perform a ReKey Operation | 5 minutes||
-| 8| Secret Management with OKV | 5 minutes||
-| 9| Generate New Non-extractable Key | 5 minutes||
+| Task No. | Feature                                           | Approx. Time | Details                                                                    |
+| -------- | ------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
+| 1        | Encrypt database with TDE                         | <10 minutes  |                                                                            |
+| 2        | Add an Endpoint                                   | <10 minutes  |                                                                            |
+| 3        | View the Contents of the OKV Virtual Wallet       | <5 minutes   |                                                                            |
+| 4        | Upload current and retired TDE master keys to OKV | 5 minutes    | To backup the Oracle Wallet into Oracle Key Vault                          |
+| 5        | Migrate to Online Master Key                      | 5 minutes    | To re-configure the database to communicate directly with Oracle Key Vault |
+| 6        | Create the OKV SEPS Wallet                        | <5 minutes   |                                                                            |
+| 7        | Perform a ReKey Operation                         | 5 minutes    |                                                                            |
+| 8        | Secret Management with OKV                        | 5 minutes    |                                                                            |
+| 9        | Generate New Non-extractable Key                  | 5 minutes    |                                                                            |
 </if>
 
 ## Task 1: Encrypt database with TDE
@@ -848,7 +848,7 @@ Technical Documentation:
 - [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/multimaster_concepts.html)
 - [Oracle Key Vault - SSH Key Management](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/management_of_ssh_keys_concepts.html)
 
-    > To learn more about how to use OKV to manage SSH keys, please refer to the "[DB Security - Key Vault (SSH Key Management)] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
+    > To learn more about how to use OKV to manage SSH keys, please refer to the "[DB Security - Key Vault (SSH Key Management)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
 
 Video:
 - *Introducing Oracle Key Vault 21 (January 2021)* [](youtube:SfXQEwziyw4)

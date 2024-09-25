@@ -45,15 +45,15 @@ This lab assumes you have:
 
 ### Lab Timing (estimated)
 
-| Task No. | Feature | Approx. Time |
-|---|------------------------------------------------------------|-------------|
-| 1 | Configure and enable Database Vault | <5 minutes |
-| 2 | Demonstrate Separation of Duties (SoD) | <5 minutes |
-| 3 | Create a simple realm to protect application data | 10 minutes |
-| 4 | Reduce mistakes by blocking destructive commands | 10 minutes |
-| 5 | Create unified audit policies to capture Database Vault violations | 10 minutes |
-| 6 | Test your controls with simulation mode | 10 minutes |
-| 7 | Disable Database Vault | <5 minutes |
+| Task No. | Feature                                                            | Approx. Time |
+| -------- | ------------------------------------------------------------------ | ------------ |
+| 1        | Configure and enable Database Vault                                | <5 minutes   |
+| 2        | Demonstrate Separation of Duties (SoD)                             | <5 minutes   |
+| 3        | Create a simple realm to protect application data                  | 10 minutes   |
+| 4        | Reduce mistakes by blocking destructive commands                   | 10 minutes   |
+| 5        | Create unified audit policies to capture Database Vault violations | 10 minutes   |
+| 6        | Test your controls with simulation mode                            | 10 minutes   |
+| 7        | Disable Database Vault                                             | <5 minutes   |
 
 ## Task 1: Configure and enable Database Vault
 
@@ -955,7 +955,7 @@ In addition, you can run reports on the activities these components monitor and 
 - Protects data against misused or compromised privileged user accounts
 - Design and enforce flexible security policies for your database
 - Addresses Database consolidation and cloud environments concerns to reduce cost and reduce exposure sensitive application data by those without a true need-to-know
-- Protect access to your sensitive data by creating a trusted path (see more by performing the [Full Database Vault lab](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=682&clear=180&session=4531599220675))
+- Protect access to your sensitive data by creating a trusted path (see more by performing the [Full Database Vault lab](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=682&clear=180&session=4531599220675))
 
 ## Want to Learn More?
 Technical Documentation:

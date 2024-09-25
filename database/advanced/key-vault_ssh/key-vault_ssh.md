@@ -31,21 +31,21 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 
 <if type="brown">
-| Step No. | Feature | Approx. Time | Details |
-|--|------------------------------------------------------------|-------------|--------------------|
-| 1| (Mandatory) Prerequisites | 5 minutes||
-| 2| Set Remote Server Access Controls with OKV | 10 minutes||
-| 3| Set Remote Client Access Controls with OKV | 10 minutes||
-| 4| SSH Key Management with OKV | 5 minutes||
-| 5| Reset the OKV config | <5 minutes||
+| Step No. | Feature                                    | Approx. Time | Details |
+| -------- | ------------------------------------------ | ------------ | ------- |
+| 1        | (Mandatory) Prerequisites                  | 5 minutes    |         |
+| 2        | Set Remote Server Access Controls with OKV | 10 minutes   |         |
+| 3        | Set Remote Client Access Controls with OKV | 10 minutes   |         |
+| 4        | SSH Key Management with OKV                | 5 minutes    |         |
+| 5        | Reset the OKV config                       | <5 minutes   |         |
 </if>
 <if type="green">
-| Step No. | Feature | Approx. Time | Details |
-|--|------------------------------------------------------------|-------------|--------------------|
-| 1| (Mandatory) Prerequisites | 5 minutes||
-| 2| Set Remote Server Access Controls with OKV | 10 minutes||
-| 3| Set Remote Client Access Controls with OKV | 10 minutes||
-| 4| SSH Key Management with OKV | 5 minutes||
+| Step No. | Feature                                    | Approx. Time | Details |
+| -------- | ------------------------------------------ | ------------ | ------- |
+| 1        | (Mandatory) Prerequisites                  | 5 minutes    |         |
+| 2        | Set Remote Server Access Controls with OKV | 10 minutes   |         |
+| 3        | Set Remote Client Access Controls with OKV | 10 minutes   |         |
+| 4        | SSH Key Management with OKV                | 5 minutes    |         |
 </if>
 
 ## Task 1: (Mandatory) Prerequisites
@@ -1039,7 +1039,7 @@ Technical Documentation:
 - [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/multimaster_concepts.html)
 - [Oracle Key Vault - SSH Key Management](https://docs.oracle.com/en/database/oracle/key-vault/21.8/okvag/management_of_ssh_keys_concepts.html)
 
-    > To learn more about how to use OKV, please refer to the "[DB Security - Key Vault] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
+    > To learn more about how to use OKV, please refer to the "[DB Security - Key Vault] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
 
 Video:
 - *Introducing Oracle Key Vault 21 (January 2021)* [](youtube:SfXQEwziyw4)
