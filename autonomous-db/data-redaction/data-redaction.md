@@ -32,8 +32,8 @@ In Oracle Autonomous Database the `SH` schema is a shared resource and meant for
 
 **Note:**
 - The PL/SQL package for Oracle Data Redaction, `DBMS_REDACT`, has been granted to the `ADMIN` user, who can forward-grant it to other users. 
-- In Oracle Autonomous Database, the `ADMIN` user is exempt from redaction policy enforcement because it has the `EXEMPT REDACTION POLICY` system privilege.
-- In Oracle Database 23ai, in addition to `EXECUTE` on `DBMS_REDACT`, users must have the `ADMINISTER REDACTION POLICY` system privilege to manage Data Redaction policies. 
+- In Oracle Autonomous Database, the `ADMIN` user is exempt from redaction policy enforcement because it has the `EXEMPT REDACTION POLICY` privilege.
+- In Oracle Database 23ai, in addition to `EXECUTE` on `DBMS_REDACT`, users must have the `ADMINISTER REDACTION POLICY` privilege to manage Data Redaction policies. 
 
 
 ### Prerequisites
@@ -65,45 +65,44 @@ This lab assumes you have:
 
 3. As `ADMIN`, copy and paste the following SQL commands and run them. 
 
-    - Create a copy of the sales history schema
+    - Create a copy of 3 tables from the sales history schema. 
 
-      ````
-      <copy>
-      -- Create SH1 schema
-      CREATE USER sh1 IDENTIFIED BY WElcome_123#;
-      GRANT CREATE SESSION, RESOURCE TO sh1;
-      GRANT UNLIMITED TABLESPACE TO sh1;
-      BEGIN
-          ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('sh1'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('sh1'), p_auto_rest_auth => TRUE);
-      END;
-      /
-      CREATE TABLE sh1.customers AS SELECT * FROM sh.customers;
-      CREATE TABLE sh1.countries AS SELECT * FROM sh.countries;
-      CREATE TABLE sh1.sales AS SELECT * FROM sh.sales;
+         ````
+         <copy>
+         -- Create SH1 schema
+         CREATE USER sh1 IDENTIFIED BY WElcome_123#;
+         GRANT CREATE SESSION, RESOURCE TO sh1;
+         GRANT UNLIMITED TABLESPACE TO sh1;
+         BEGIN
+            ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('sh1'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('sh1'), p_auto_rest_auth => TRUE);
+         END;
+         /
+         CREATE TABLE sh1.customers AS SELECT * FROM sh.customers;
+         CREATE TABLE sh1.countries AS SELECT * FROM sh.countries;
+         CREATE TABLE sh1.sales AS SELECT * FROM sh.sales;
 
-      </copy>
-      ````
+         </copy>
+         ````
 
-    - Create the read only user
+    - Create the read only user. You will grant `SH1_READER` the READ ANY TABLE privilege on `SH1`. This is a 23ai feature called schema-level privileges. 
 
-      ````
-      <copy>
-      -- Create SH1_READER user
-      CREATE USER sh1_reader IDENTIFIED BY WElcome_123#;
-      GRANT CREATE SESSION TO sh1_reader;
-      -- Schema-level privileges available on 23ai
-      GRANT READ ANY TABLE ON SCHEMA sh1 TO sh1_reader;
-      BEGIN
-          ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('sh1_reader'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('sh1_reader'), p_auto_rest_auth => TRUE);
-      END;
-      /
+         ````
+         <copy>
+         -- Create SH1_READER user
+         CREATE USER sh1_reader IDENTIFIED BY WElcome_123#;
+         GRANT CREATE SESSION TO sh1_reader;
+         -- Schema-level privileges available on 23ai
+         GRANT READ ANY TABLE ON SCHEMA sh1 TO sh1_reader;
+         BEGIN
+            ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('sh1_reader'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('sh1_reader'), p_auto_rest_auth => TRUE);
+         END;
+         /
 
-      </copy>
+         </copy>
       ````
 
     - Press [**F5**] or click the "Run Scripts" icon
 
-         ![](./images/adb-dr_003a.png " ")
          ![](./images/adb-dr_004a.png " ")
 
     - Check that there are no errors
@@ -332,14 +331,14 @@ This lab assumes you have:
 
 ## Task 2: Create an Oracle Data Redaction Policy
 
-In Autonomous DB, the `ADMIN` account has all privileges, including the privileges to administer, and be exempted from, Oracle Data Redaction policies. In real life, you should minimize your day-to-day use of any database accounts that have the `EXEMPT REDACTION POLICY` role. 
+In Autonomous DB, the `ADMIN` account has many privileges, including the privileges to administer, and be exempted from, Oracle Data Redaction policies. In a production environment, you should minimize your day-to-day use of any database accounts that have the `EXEMPT REDACTION POLICY` privilege. 
 
-For this lab, you will use the `ADMIN` user because it simplies the exercise. In your environment, you should create a named account (e.g. `JSMITH`) with only the roles and privileges require to perform their job responsibilities. 
+For this lab, you will use the `ADMIN` user because it simplies the exercise. In your environment, you should create a named account (e.g. `JSMITH`) with only the roles and privileges require to perform their day-to-day job responsibilities. 
 
 When you want to create a different user to create and manage Oracle Data Redaction policies, your user must have the following privileges:
    - `EXECUTE` on the `DBMS_REDACT` package.
-   - The system privilege `ADMINISTER REDACTION POLICY` (new in Oracle Database 23ai). 
-      - In 23ai, this new system privilege can be granted as a **schema-level** grant. 
+   - The privilege `ADMINISTER REDACTION POLICY` (new in Oracle Database 23ai). 
+      - In 23ai, this new privilege can be granted as a **schema-level** grant. 
       - For example: `GRANT ADMINISTER REDACTION POLICY ON SCHEMA sh1 TO sh1;`
 
 Oracle also recommends you grant `READ` (or `SELECT`) on the following dictionary views to the user who will be maintaining the Data Redaction policies:
@@ -374,9 +373,9 @@ You will be using some of the procedures in the `DBMS_REDACT` PL/SQL package in 
       SELECT * FROM session_privs ORDER BY 1;
       </copy>
       ````
-   **Expected Result:** Notice that **`ADMIN`** has the system privilege, **`EXEMPT REDACTION POLICY`**, which exempts `ADMIN` from Data Redaction policies. 
+   **Expected Result:** Notice that **`ADMIN`** has the privilege, **`EXEMPT REDACTION POLICY`**, which exempts `ADMIN` from Data Redaction policies. 
 
-2. Run the same query as **`SH1_READER` to verify this user does not have the `EXEMPT REDACXTION POLICY` system privilege. 
+2. Run the same query as **`SH1_READER` to verify this user does not have the `EXEMPT REDACXTION POLICY` privilege. 
 
       ````
       <copy>
@@ -384,7 +383,7 @@ You will be using some of the procedures in the `DBMS_REDACT` PL/SQL package in 
       </copy>
       ````
 
-   **Expected Result:** The only system privilege **`SH1_READER`** should have is **`CREATE SESSION`**. 
+   **Expected Result:** The only privilege **`SH1_READER`** should have is **`CREATE SESSION`**. 
       
 
 3. Query a subset of the `SH1.CUSTOMERS` rows as two users: `ADMIN` and `SH1_READER1`.
@@ -409,8 +408,8 @@ You will be using some of the procedures in the `DBMS_REDACT` PL/SQL package in 
 4. As `ADMIN`, create the Data Redaction policy to redact data for all users **except** the `SH1` user. 
 
       **NOTE:** Redaction occurs when _one or both_ of the following criteria are met:
-	   - the policy expression evaluates to true
-	   - the user does not have `EXEMPT REDACTION POLICY`
+	   - The policy expression evaluates to true (e.g. the user is *not* `SH1`).
+	   - The user does not have `EXEMPT REDACTION POLICY` (`SH1_READER` does not have this privilege).
 
       ````
       <copy>
@@ -428,10 +427,10 @@ END;
 
    **Expected Result:** `PL/SQL procedure successfully completed.`
               
-5. Next, you will add the `CUST_MARITAL_STATUS` column to the redaction policy. This will apply the expression from the policy to redact this column for all users who are not `SH1` or do not have the `EXEMPT REDACTION POLICY` system privilege. 
+5. Next, you will add the `CUST_MARITAL_STATUS` column to the redaction policy. This will apply the expression from the policy to redact this column for all users who are not `SH1` or do not have the `EXEMPT REDACTION POLICY` privilege. 
 
       - As `ADMIN`, add the `CUST_MARITAL_STATUS` column to the Data Redaction policy. Apply a `FULL` redaction policy to the column. 
-      - All users, except `SH1` or users with the `EXEMPT REDACTION POLICY` system privilege, will see redacted data.
+      - All users, except `SH1` or users with the `EXEMPT REDACTION POLICY` privilege, will see redacted data.
          ````
          <copy>
          BEGIN
@@ -485,9 +484,9 @@ END;
          CUST_MARITAL_STATUS    FULL REDACTION
          ````
 
-7. Run the same query again as your two users and notice the `CUST_MARITAL_STATUS` now has redacted data. You will see the following:
+7. As your two users, run the query on `SH1.CUSTOMERS` and notice the `CUST_MARITAL_STATUS` now has redacted data for `SH1_READER`. 
 
-      - As `ADMIN`, the `CUST_MARTIAL_STATUS` column will show full data because `ADMIN` has the `EXEMPT REDACTION POLICY` system privilege. 
+      - As `ADMIN`, the `CUST_MARTIAL_STATUS` column will show full data because `ADMIN` has the `EXEMPT REDACTION POLICY` privilege. 
       
          ````
          <copy>
@@ -507,7 +506,7 @@ END;
          ````
 
       - As `SH1_READER`, the `CUST_MARTIAL_STATUS` column will show redacted data because:
-         - `SH1_READER` does not have the `EXEMPT REDACTION POLICY` system privilege
+         - `SH1_READER` does not have the `EXEMPT REDACTION POLICY` privilege
          - Nor is it included in the redaction policy expression as allowed to see full data (e.g. `expression 	=> 'SYS_CONTEXT(''USERENV'',''SESSION_USER'') != ''SH1'''`)
             - Redacted data is shown when the expression evaluates to _TRUE_. 
 
@@ -572,7 +571,7 @@ END;
 
 9. Query the view as both `ADMIN` and `SH1_READER`. 
 
-      - As `ADMIN`, the `CUST_MARTIAL_STATUS` column will show full data because `ADMIN` has the `EXEMPT REDACTION POLICY` system privilege. 
+      - As `ADMIN`, the `CUST_MARTIAL_STATUS` column will show full data because `ADMIN` has the `EXEMPT REDACTION POLICY` privilege. 
       
          ````
          <copy>
@@ -580,7 +579,7 @@ END;
          </copy>
          ````
 
-      - As `SH1_READER`, the `CUST_MARTIAL_STATUS` column will still show redacted data because `SH1_READER` does not have the system privilege to be exempt nor does it meet the redaction policy expression. 
+      - As `SH1_READER`, the `CUST_MARTIAL_STATUS` column will still show redacted data because `SH1_READER` does not have the privilege to be exempt nor does it meet the redaction policy expression. 
 
          ````
          <copy>
@@ -594,19 +593,36 @@ You have completed this task. Next, you will move on to more advanced Data Redac
 
 In this task, you will use a built-in regular expression function to redact data on a columns. Oracle Data Redaction has several built-in regular expression redaction functions available to you. 
 
-| Function Name | Regular expression redaction function description |
-|--------|-------------|
-| `DBMS_REDACT.RE_REDACT_WITH_SINGLE_X` | Replaces each character of the data with a single X. |
-| `DBMS_REDACT.RE_REDACT_WITH_SINGLE_1` | Replaces each digit of the data with a single 1. |
-| `DBMS_REDACT.RE_REDACT_CC_MIDDLE_DIGITS` | Redacts middle digits of credit card numbers, replacing each with X. |
-| `DBMS_REDACT.RE_REDACT_CCN` | Redacts first 12 digits of non-American Express credit card numbers. |
-| `DBMS_REDACT.RE_REDACT_AMEX_CCN` | Redacts first 10 digits of American Express card numbers. |
-| `DBMS_REDACT.RE_REDACT_PHONE_L7` | Redacts last 7 digits of hyphenated U.S. phone numbers. |
-| `DBMS_REDACT.RE_REDACT_EMAIL_NAME` | Redacts email username with four x characters. |
-| `DBMS_REDACT.RE_REDACT_EMAIL_DOMAIN` | Redacts email domain name with five x characters. |
-| `DBMS_REDACT.RE_REDACT_IP_L3` | Redacts last f digits of IP address. |
+When creating a Data Redaction policy using regular expressions, your `DBMS_REDACT.ADD_POLICY` procedure will include the `REGEXP_PATTERN` and `REGEXP_REPLACE_STRING` parameters for each column.  For rows where the `REGEXP_PATTERN` fails to match, Data Redaction performs `DBMS_REDACT.FULL` redaction. This mitigates the risk of a mistake in the `REGEXP_PATTERN` which causes the regular expression to fail to match all of the values in the column, from showing the actual data for those rows which it failed to match.
 
-1. Your business analyst, `SH1_READER` only needs to see the username portion of the `CUST_EMAIL` column. For example, first.`last@example.com` will become `first.last@xxxx.com`. You will use regular expression pattern matching function to complete this request. 
+
+- This table shows some of the formats for the `REGEXP_PATTERN` parameter. 
+
+   | Format | Description |
+   |--------|-------------|
+   | `DBMS_REDACT.RE_PATTERN_ANY_DIGIT` | Searches for any digit. Replaces the identified pattern with the characters specified by the `regexp_replace_string` parameter. Commonly used with: <br>- `DBMS_REDACT.RE_REDACT_WITH_SINGLE_X` (replaces matched digit with X)<br>- `DBMS_REDACT.RE_REDACT_WITH_SINGLE_1` (replaces matched digit with 1) |
+   | `DBMS_REDACT.RE_PATTERN_CC_L6_T4` | Searches for the middle digits of any credit card (other than American Express) that has 6 leading digits and 4 trailing digits. Used with `DBMS_REDACT.RE_REDACT_CC_MIDDLE_DIGITS` to redact middle digits. |
+   | `DBMS_REDACT.RE_PATTERN_CCN` | Matches credit card numbers other than American Express. Used with `DBMS_REDACT.RE_REDACT_CCN` to redact all digits except the last 4. |
+   | `DBMS_REDACT.RE_PATTERN_AMEX_CCN` | Matches American Express credit card numbers. Used with `DBMS_REDACT.RE_REDACT_AMEX_CCN` to redact all digits except the last 5. |
+   | `DBMS_REDACT.RE_PATTERN_US_PHONE` | Searches for any U.S. telephone number. Used with `DBMS_REDACT.RE_REDACT_US_PHONE_L7` to redact the last 7 digits. |
+   | `DBMS_REDACT.RE_PATTERN_EMAIL_ADDRESS` | Searches for any email address. Can be used with the `regexp_replace_string` choices:<br>- `RE_REDACT_EMAIL_NAME` (redacts email user name)<br>- `RE_REDACT_EMAIL_DOMAIN` (redacts email domain)<br>- `RE_REDACT_EMAIL_ENTIRE` (redacts entire email address) |
+   | `DBMS_REDACT.RE_PATTERN_IP_ADDRESS` | Searches for an IP address. Used with `DBMS_REDACT.RE_REDACT_IP_L3` to replace the last section with '999'. |
+
+- This table shows some of the formats for the `REGEXP_REPLACE_STRING` parameter. 
+
+   | Function Name | Regular expression redaction function description |
+   |--------|-------------|
+   | `DBMS_REDACT.RE_REDACT_WITH_SINGLE_X` | Replaces each character of the data with a single X. |
+   | `DBMS_REDACT.RE_REDACT_WITH_SINGLE_1` | Replaces each digit of the data with a single 1. |
+   | `DBMS_REDACT.RE_REDACT_CC_MIDDLE_DIGITS` | Redacts middle digits of credit card numbers, replacing each with X. |
+   | `DBMS_REDACT.RE_REDACT_CCN` | Redacts first 12 digits of non-American Express credit card numbers. |
+   | `DBMS_REDACT.RE_REDACT_AMEX_CCN` | Redacts first 10 digits of American Express card numbers. |
+   | `DBMS_REDACT.RE_REDACT_PHONE_L7` | Redacts last 7 digits of hyphenated U.S. phone numbers. |
+   | `DBMS_REDACT.RE_REDACT_EMAIL_NAME` | Redacts email username with four x characters. |
+   | `DBMS_REDACT.RE_REDACT_EMAIL_DOMAIN` | Redacts email domain name with five x characters. |
+   | `DBMS_REDACT.RE_REDACT_IP_L3` | Redacts last f digits of IP address. |
+
+1. In this task, your business analyst, `SH1_READER` only needs to see the username portion of the `CUST_EMAIL` column. For example, first.`last@example.com` will become `first.last@xxxx.com`. You will use regular expression pattern matching function to complete this request. 
 
       - As `ADMIN`
 
@@ -646,28 +662,37 @@ In this task, you will use a built-in regular expression function to redact data
          </copy>
       ````
 
-You have demonstrated how to use a built-in regular expression redaction policy. You have also learned there are several built-in regular expression redaction policies you can use on different column values such as credit card, email address, IP address, etc. 
+You have demonstrated how to use a built-in regular expression redaction policy. You have also learned there are several built-in regular expression redaction policies you can use on different column values such as credit card, email address, IP address, etc. You have also learned that Data Redaction, for security reasons, will fully-redact data if the regular expression is not met. 
 
 ## Task 4: Redact data with built-in partial policies
 
 Oracle Data Redaction has several built-in partial redaction policies available to use. In this task, you will learn how to use a couple of the built-in partial redaction policy functions. 
 
-| Function Name | Built-in partial redaction function description |
-|--------|-------------|
-| `DBMS_REDACT.REDACT_US_SSN_L4` | Redacts the last 4 numbers of Social Security numbers when the column is a VARCHAR2 data type.  |
-| `DBMS_REDACT.REDACT_US_SSN_ENTIRE` | Redacts the entire Social Security number when the column is a VARCHAR2 data type. |
-| `DBMS_REDACT.REDACT_SIN_FORMATTED` | Redacts the Canadian Social Insurance Number by replacing the first 6 digits by X (string). |
-| `DBMS_REDACT.REDACT_UK_NIN_FORMATTED` | Redacts the UK National Insurance number by replacing the first 6 digits by X (string) but leaving the alphabetic characters as is. |
-| `DBMS_REDACT.REDACT_CCN_FORMATTED` | Redacts the credit card number (other than American Express) by replacing everything but the last 4 digits by *. |
-| `DBMS_REDACT.REDACT_CCN16_F12` | Redacts a 16-digit credit card number (other than American Express), leaving the last 4 digits displayed. |
-| `DBMS_REDACT.REDACT_AMEX_CCN_NUMBER` | Redacts the American Express Credit Card Number by replacing the digits with 0 except the last 5 digits.|
-| `DBMS_REDACT.REDACT_ZIP_CODE` | Redacts a 5-digit postal code when the column is a VARCHAR2 data type. |
-| `DBMS_REDACT.REDACT_DATE_EPOCH` | Redacts all dates to 01-JAN-70. |
-| `DBMS_REDACT.REDACT_NA_PHONE_FORMATTED` | Redacts the North American phone number by leaving the area code, but replacing everything else with X. |
+In partial data redaction, only a portion of the data, such as the first five digits of an identification number, are redacted. To perform a partial redaction, you will use the parameters:
+   - `FUNCTIONAL_TYPE => DBMS_REDACT.PARTIAL` 
+   - `FUNCTION_PARAMETERS` 
+   
+Instead of the parameters for regular expressions:
+   - `FUNCTIONAL_TYPE => DBMS_REDACT.REGEXP`
+   - `REGEXP_PATTERN` and `REGEXP_REPLACE_STRING`
 
-**Note:** This table is not an exhaustive list but a list of the types that are frequently used. For all types see the Oracle Data Redaction documentation. 
 
-2. First, create a new Data Redaction policy on the `PAYMENTS` base table. As `ADMIN`, run the `ADD_POLICY` procedure. 
+Here is a table that includes some of the most-commonly used partial redaction functions. More can be found in the Oracle Data Redaction documentation. 
+
+   | Function Name | Built-in partial redaction function description |
+   |--------|-------------|
+   | `DBMS_REDACT.REDACT_US_SSN_L4` | Redacts the last 4 numbers of Social Security numbers when the column is a VARCHAR2 data type.  |
+   | `DBMS_REDACT.REDACT_US_SSN_ENTIRE` | Redacts the entire Social Security number when the column is a VARCHAR2 data type. |
+   | `DBMS_REDACT.REDACT_SIN_FORMATTED` | Redacts the Canadian Social Insurance Number by replacing the first 6 digits by X (string). |
+   | `DBMS_REDACT.REDACT_UK_NIN_FORMATTED` | Redacts the UK National Insurance number by replacing the first 6 digits by X (string) but leaving the alphabetic characters as is. |
+   | `DBMS_REDACT.REDACT_CCN_FORMATTED` | Redacts the credit card number (other than American Express) by replacing everything but the last 4 digits by *. |
+   | `DBMS_REDACT.REDACT_CCN16_F12` | Redacts a 16-digit credit card number (other than American Express), leaving the last 4 digits displayed. |
+   | `DBMS_REDACT.REDACT_AMEX_CCN_NUMBER` | Redacts the American Express Credit Card Number by replacing the digits with 0 except the last 5 digits.|
+   | `DBMS_REDACT.REDACT_ZIP_CODE` | Redacts a 5-digit postal code when the column is a VARCHAR2 data type. |
+   | `DBMS_REDACT.REDACT_DATE_EPOCH` | Redacts all dates to 01-JAN-70. |
+   | `DBMS_REDACT.REDACT_NA_PHONE_FORMATTED` | Redacts the North American phone number by leaving the area code, but replacing everything else with X. |
+
+1. First, create a new Data Redaction policy on the `PAYMENTS` base table. As `ADMIN`, run the `ADD_POLICY` procedure. 
 
       ````
       <copy>
@@ -723,7 +748,7 @@ END;
       ````
       **Expected Result:** `PL/SQL procedure successfully completed.`
 
-4. You know **`ADMIN`** will always see full data because it has `EXEMPT REDACTION POLICY` system privilege. Instead, of using `ADMIN`, you will use **`SH1_READER`** and perform two different queries.
+4. You know **`ADMIN`** will always see full data because it has `EXEMPT REDACTION POLICY` privilege. Instead, of using `ADMIN`, you will use **`SH1_READER`** and perform two different queries.
 
    - First, as **`SH1_READER`**, you will query the base table, `PAYMENTS`, to review the credit card related columns.
 
@@ -778,7 +803,7 @@ END;
       **Note:** The `CUSTOMER_SUMMARY` output does not show the asterisks you see when querying the table directly. This is because the view, `CUSTOMER_SUMMARY` uses an Oracle SQL function (`CASE`) to collapse five columns into a single column. For performance, Data Redaction uses a full redaction policy instead. 
 
 
-You have demonstrated how you can create different redaction policies and use different regular expression and partial redaction functions. 
+You have demonstrated how you can create different redaction policies and use different regular expression and partial redaction functions.  You have also learned there are times when Data Redaction applies full redaction for performance or security reasons. 
 
 
 ## Task 5: Run analytics and advanced queries against your redacted data
@@ -794,13 +819,12 @@ For example, in this task, you will show the `CUST_CREDIT_LIMIT` column values t
       ````
       <copy>
 BEGIN
- DBMS_REDACT.CREATE_POLICY_EXPRESSION(
-  policy_expression_name => 'REDACT_UNLESS_ANALYTICS',
-  expression => 'SYS_CONTEXT(''USERENV'', ''CLIENT_IDENTIFIER'') != ''AnalyticsServer'' OR SYS_CONTEXT(''USERENV'',''SESSION_USER'') != ''SH1''',
- policy_expression_description => 'Redact credit limit for non-Analytics and non-SH users'
- );
+  DBMS_REDACT.CREATE_POLICY_EXPRESSION(
+    policy_expression_name => 'REDACT_UNLESS_ANALYTICS',
+    expression => 'SYS_CONTEXT(''USERENV'', ''CLIENT_IDENTIFIER'') != ''AnalyticsServer''');
 END;
 /
+
       </copy>
       ````
 
@@ -1194,7 +1218,7 @@ You can delete the data or you can drop the entire database. If you wish to drop
          ![](./images/adb-dr_061a.png " ")
 
 
-You have completed the lab! Don't you feel amazing? You should, you're awesome. 
+You have completed the lab. Don't you feel amazing? You should, you're awesome!
 
 You have learned a lot about Oracle Data Redaction in the past 60 minutes. For more information, please check out the **Appendix** section which has more links.
 
