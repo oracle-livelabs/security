@@ -17,7 +17,7 @@
     "title": "Prepare Your Environment",
     "description": "Prerequisites to run the Oracle DB Security workshop on Autonomous DB in your own tenancy",
     "publisheddate": "09/01/2021",
-    "filename": "../../data-redaction/prepare-setup/prepare-setup.md"
+    "filename": "../../common/prepare-setup/prepare-setup.md"
   },
   {
     "title": "Lab 1: Data Redaction",
