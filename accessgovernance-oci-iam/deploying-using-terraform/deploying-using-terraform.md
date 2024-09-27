@@ -57,7 +57,7 @@ In this lab, you will:
 
   Click *Next*
 
-  Enter Unique Email IDS for each of the users
+  Enter Unique Email IDS for the users - IDD-admin and Pamela Green 
 
   Enter the region code
   
@@ -65,11 +65,11 @@ In this lab, you will:
 
   Click *Next*.
 
-   ![Enter Email IDs](images/email-id-region.png)
+   ![Enter Email IDs](images/user-email.png)
 
   Click on *Create*.
 
-  ![Click Create](images/click-create.png)
+  
 
 4. The stack has now been created. Click on *Plan job* and once it is completed successful.
 
@@ -86,7 +86,7 @@ In this lab, you will:
 
 
 
-5. The resources should have been created successfully by the terraform script. Please verify the resources created. *You will receive activation mails for the users created and ensure you reset the password at least for user Pamela Green*
+5. The resources should have been created successfully by the terraform script. Please verify the resources created. *You will receive activation mail for the user Pamela Green created and ensure you reset the password*
 
 
 
