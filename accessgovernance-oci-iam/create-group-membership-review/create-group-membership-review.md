@@ -190,7 +190,6 @@ In this lab, you will:
 
   * Verify the group membership of the Users have been been processed successfully. 
 
-  This concludes the tutorial on create and perform Group Membership reviews. 
 
 
   You may now **proceed to the next lab**. 
