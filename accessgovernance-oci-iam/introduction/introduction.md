@@ -12,8 +12,9 @@ This lab walks you through the steps to get started using **Oracle Access Govern
 
 **Oracle Access Governance** allows : 
 - **Campaign administrator** to run intelligent access review campaigns for policy governance and compliance
-- **Cloud Access reviewers** to review identity insights and take informed decisions based on **prescriptive analytics**
+- **Access reviewers** to review identity insights and take informed decisions based on **prescriptive analytics**
 - **Users** and **user managers** to validate access assigned to self and their direct reports, respectively. 
+- **Reviewers** to review OCI group membership and change as needed. 
 
 
 *Estimated Time:* 1 Hour
@@ -44,4 +45,4 @@ This lab assumes you have:
 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
+* **Last Updated By/Date** - Indira Balasundaram , Sept 2024
