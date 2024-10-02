@@ -25,10 +25,10 @@ This lab assumes you have:
 
 ## Task 1: Navigate to DMS
 
-**Objective**
+### Objective
 Access the Oracle Data Masking and Subsetting (DMS) product within the Enterprise Manager console. This task will familiarize users with the interface and ensure they can locate and open the DMS platform, which will be used throughout the workshop for configuring data protection tasks.
 
-**Steps**
+### Steps
 1. On your remote desktop, open a Web Browser to *`https://dbsec-lab:7803/em`* to access to Oracle Enterprise Manager 24c Console
 
     **Notes:** If you are NOT using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:7803/em`* where you can get your YOUR_DBSEC-LAB_VM_PUBLIC_IP from the Stack details page opened in Lab 2 Task 1.
@@ -82,10 +82,10 @@ Execute the subsetting and optional masking rules together.
 
 ## Task 2: Data Discovery- Create Application Data Model (ADM)
 
-**Objective**
+### Objective
 Start by creating an ADM that lists the schemas where your sensitive data is stored. The ADM acts as a central place to keep details about this data, such as which tables or views contain sensitive information, the exact columns that need protection, and how these columns are connected.
 
-**Steps**
+### Steps
 1. Navigate to **Data Discovery > Application Data Models**. Click **Create** to add a new ADM.
 
 Fill in the following details:
@@ -107,10 +107,10 @@ Fill in the following details:
 
 ## Task 3:  Data Discovery- Discover Sensitive Data (Automated)
 
-**Objective**
+### Objective
 Run "Discover Sensitive Columns" job to identify sensitive data based on the sensitive types you are interested in. For instance, in this case, we will focus on finding potential columns containing "Email ID" as a Sensitive Type using Oracle's Pre-Defined Sensitive Type. The Application Data Model's algorithm analyzes column data, names, and comments to identify such potential sensitive columns. 
 
-**Steps**
+### Steps
 1. Once you've created the ADM in Task 2, highlight the *`Employee_ADM`* Model and go to Actions > Modify > Discover Sensitive Columns.
 
     ![DMS](./images/dms-009.png "Edit Employee_ADM Model")
@@ -142,10 +142,10 @@ Click **Submit**. Check the Discovery Job status by refreshing this page (refres
 
 ## Task 4: Data Discovery- Create a New Sensitive Type
 
-**Objective**
+### Objective
 Create customized **Sensitive Type** instead of selecting from the predefined options. In this task, we will create two new Sensitive Types to identify potential **User ID** and **Last Name** columns.
 
-**Steps**
+### Steps
 1. Navigate to **Sensitive Types** under **Data Discovery**. Click **Create**.
 
     ![DMS](./images/dms-002.png "Navigate to the Application Data Models")
@@ -181,10 +181,10 @@ Highlight FIRSTNAME Sensitive Type from the **Sensitive Types** library and go t
 
 ## Task 5: Manage Sensitive Data (Manual)
 
-**Objective**
+### Objective
 Manually add sensitive columns, such as **User ID** and **Last Name**, to the previously created `Employee_ADM`Application Data Model.
 
-**Steps**
+### Steps
 1. Navigate to Application Data Models under Data Discovery. Click **Actions** for previously created `Employee_ADM` and choose **Manage Sensitive Columns** under **Modify** as shown below:
 
     ![DMS](./images/dms-018.png "Navigate to the sub-menu Sensitive column types")
@@ -208,10 +208,10 @@ Please note that how we have followed the steps outlined in the Data Discovery o
 
 ## Task 6: Data Masking- Create a New Masking Format
 
-**Objective**
+### Objective
 Create a new **Masking Format** for previously discovered sensitive column `Email ID` in `Employee_ADM`.
 
-**Steps**
+### Steps
 1. To create a new masking format, navigate to the **Masking Formats** page under **Data Masking** as follow:
 
     ![DMS](./images/dms-021.png "Navigate to the sub-menu Sensitive column types")
@@ -241,10 +241,10 @@ Here is the newly created Masking Format for EMAIL_ID column.
 
 ## Task 7: Data Masking- Create Masking Definition
 
-**Objective**
+### Objective
 Create a new Masking Definition under **Data Masking** where the masking formats will be set for the sensitive columns `EMAIL_ID`, `USER_ID` and `LAST_NAME` in `Employee_ADM` Application Data Model.
 
-**Steps**
+### Steps
 1. To create a Masking Definition, navigate to the **Masking Definitions** page under **Data Masking** as follow:
 
     ![DMS](./images/dms-024.png "Create a masking format in the format library")
@@ -310,10 +310,10 @@ Click **Next**.
 
 ## Task 8: Data Masking- Generate and Execute Masking Script  
 
-**Objective**
+### Objective
 Generate the Masking Script for previously created Masking Definition `EMPLOYEE_DATA_MASK`. The generated script can be exported for performing bulk changes. But, for this task, lets generate and then execute this script to complete the masking job.
 
-**Steps**
+### Steps
 1. Click **Actions** for *`Employee_Data_Mask`* and choose **Manage Masking Script > Generate Masking Script** as shown below:  
 
         ![DMS](./images/dms-028.png "Add the formats entries types")
@@ -437,10 +437,10 @@ Notice that the **Most Recent Job Status** is changed to Masking Job Schedule
 
 ## Task 9: Review the Masked Data and Share with Third-Party
 
-**Objective**
+### Objective
 Query and review the masked data in the Development and Production environments for a before and after comparison. Share the masked data with your third-party analytics collaborator.
 
-**Steps**
+### Steps
 1. Once the masking job successfully completes, query the data in the Production and Development environments for a before and after comparison
     Open **SQL Developer** on your noVNC session and connect to **pdb1 as SYSTEM**
 
@@ -544,10 +544,10 @@ d. Compliance: Masked data adheres to privacy regulations (e.g., GDPR, CCPA), fa
 
 ## Task 10: Data Subsetting- Create Data Subsetting Definitions
 
-**Objective**
+### Objective
 Create Subsetting definitions on previously created Employee_ADM Application Data Model in order to reduce the number of rows to 25% in Demo_Hr and `EMPLOYEESEARCH_DEV` tables part of the Emploee_ADM.
 
-**Steps**
+### Steps
 1. Lets start by Creating a Subsetting Definition as below:
 
 Navigate to Data Subsetting on the left side as shown below:
@@ -664,9 +664,10 @@ Navigate to Data Subsetting on the left side as shown below:
 
 ## Task 11: Data Subsetting- Execute Data Subsetting Scripts
 
-**Objective**
+### Objective
 Restore the `EMPLOYEESEARCH_DEV` tables on **pdb1** by cloning data from `EMPLOYEESEARCH_PROD` schema to have original data as we have masked data in Task 9. Then, generate and execute previously created **Subsetting Definitions** on the cloned data.
 
+### Steps
 1. Lets restore the `EMPLOYEESEARCH_DEV` tables on **pdb1** by cloning data from `EMPLOYEESEARCH_PROD` schema to have original data
 
     - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
@@ -745,10 +746,10 @@ Restore the `EMPLOYEESEARCH_DEV` tables on **pdb1** by cloning data from `EMPLOY
 
 ## Task 12: Review the Subsetted (and Masked) Data and Share with Third-Party
 
-**Objective**
+### Objective
 Query and review the subsetted and masked data in the Production and Development environments for a before and after comparison. Then, review Data Masking and Subsetting use case for **Controlled and Secure Data Sharing with Third-Party Developers for Application Testing**.
 
-**Steps**
+### Steps
 1. Once the masking and subsetting job successfully completes, query the data in the Production and Development environments for a before and after comparison
     Open **SQL Developer** on your noVNC session and connect to **pdb1 as SYSTEM**
 
@@ -889,7 +890,7 @@ e. Risk Reduction: Masking sensitive fields while retaining necessary data helps
 
 ## Task 13: Reset the Lab Environment
 
-**Objective**
+### Objective
 
 Let's reset the lab by deleting the previously created:
 
@@ -901,7 +902,7 @@ c. Subsetting Definitions
 
 This task ensures a clean environment for future exercises and prevents any potential conflicts or errors that could arise from leftover configurations. It's essential for maintaining consistency and accuracy in your future discovery, masking and subsetting tasks. 
 
-**Steps**
+### Steps
 1. Restore the `EMPLOYEESEARCH_DEV` tables on pdb1 by cloning data from `EMPLOYEESEARCH_PROD` schema.
 
     - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*.
