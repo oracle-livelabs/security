@@ -5,12 +5,12 @@ This workshop introduces the core functionality of the **Oracle Data Masking and
 
 *Estimated Lab Time:* 70 minutes
 
-*Version tested in this lab:* DBEE 19.23 and Oracle Enterprise Manager 24.
+*Version tested in this lab:* DBEE 19.23 and Oracle Enterprise Manager 24
 
 ### Objectives
 - Data Discovery: Create an Application Data Model (ADM) with discovered sensitive columns
-- Data Masking: Generate and execute a data masking script to mask sensitive data. 
-- Data Subsetting: Generate and execute the data subsetting script. 
+- Data Masking: Generate and execute a data masking script to mask sensitive data
+- Data Subsetting: Generate and execute the data subsetting script
 
 Finally, we will see how the masked and subsetted data can be used securely for data sharing with third-party collaborators. By ensuring that sensitive information is protected, participants will see how this approach allows for seamless collaboration in testing, development, or analytics while maintaining regulatory compliance and data privacy.
 
