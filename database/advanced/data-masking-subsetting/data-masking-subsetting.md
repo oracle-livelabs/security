@@ -5,7 +5,7 @@ This workshop introduces the core functionality of the **Oracle Data Masking and
 
 *Estimated Lab Time:* 70 minutes
 
-*Version tested in this lab:* DBEE 19.23 and Oracle Enterprise Manager 24c.
+*Version tested in this lab:* DBEE 19.23 and Oracle Enterprise Manager 24.
 
 ### Objectives
 - Data Discovery: Create an Application Data Model (ADM) with discovered sensitive columns
