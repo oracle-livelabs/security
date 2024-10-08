@@ -10,6 +10,8 @@ Create a masking policy using the default settings and then  customize it. Mask 
 
 Estimated Time: 20 minutes
 
+[Data Safe](videohub:1_wiu76838)
+
 ### Objectives
 
 In this lab, you will:
