@@ -95,13 +95,9 @@ This lab assumes you have:
 
     - Details include assessment name, OCID, compartment to which the assessment was saved, target database name, target database version, assessment date and time, schedule, name of the baseline assessment (if one is set), and whether the assessment complies with the baseline (Yes, No, or No baseline set).
 
-    ![Latest security assessment assessment information tab](images/latest-sa-assessment-information-tab.png "Latest security assessment assessment information tab")
+    ![Latest security assessment assessment information tab](images/latest-sa-assessment-information-tab2.png "Latest security assessment assessment information tab")
 
-4. Rename the latest security assessment: Click the pencil icon to the right of **Name**, enter **SA_target-database** (replace **target-database** with the name of your target database), and click the **Save** icon.
-
-    ![Rename latest security assessment](images/rename-latest-sa-assessment.png "Rename latest security assessment")
-
-5. Scroll down and view the **Assessment details** section.
+6. Scroll down and view the **Assessment details** section.
 
     - This section shows you all the findings for each risk category.
     - Risks are color-coded to help you easily identify categories that have high risk findings (red).
@@ -109,14 +105,14 @@ This lab assumes you have:
 
     ![Latest Security Assessment Assessment details section](images/latest-sa-assessment-details-section.png "Latest Security Assessment Assessment details section")
 
-6. Under **Filters by risks** on the left, notice that you can select the risk levels that you want displayed. Also notice on the left that you can filter by references.
+7. Under **Filters by risks** on the left, notice that you can select the risk levels that you want displayed. Also notice on the left that you can filter by references.
 
     ![Security Assessment filters](images/sa-filters.png "Security Assessment filters")
 
 8. On the right, expand categories and review the findings.
 
-    - Each finding shows you the status (risk level), a summary of the finding, details about the finding, remarks to help you to mitigate the risk, and references - whether a finding is recommended by the Center for Internet Security (**CIS**), European Union's General Data Protection Regulation (**GDPR**), Security Technical Implementation Guide (**STIG**), and/or **Oracle best practices**. These references make it easy for you to identify the recommended security controls.
-    - In the example below, the **Transparent Data Encryption** finding has two references: **STIG** and **GDPR**.
+    - Each finding shows you the status (risk level), a summary of the finding, details about the finding, remarks to help you to mitigate the risk, and references - whether a finding is recommended by the Center for Internet Security (**CIS**), European Union's General Data Protection Regulation (**EU GDPR**), Security Technical Implementation Guide (**DISA STIG**), and/or **Oracle best practices**. These references make it easy for you to identify the recommended security controls.
+    - In the example below, the **Transparent Data Encryption** finding has three references: **Oracle Best Practices**, **DISA STIG**, and **GDPR**.
 
     ![Transparent Data Encryption finding](images/transparent-data-encryption-finding.png "Transparent Data Encryption finding")
 
@@ -134,7 +130,7 @@ You can defer or change the risk level of a risk finding. In this task, defer th
 
    ![Update risk for finding panel](images/update-risk-for-finding.png "Update risk for finding panel")
 
-3. Notice that the risk finding is recatorized in the **Assessment details** section.
+3. Notice that the risk finding is recategorized in the **Assessment details** section.
 
    ![Deferred risk finding](images/deferred-risk-finding.png "Deferred risk finding")
 

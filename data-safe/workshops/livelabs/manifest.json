@@ -15,39 +15,33 @@
         "type": "livelabs"
       },
       {
-        "title": "Lab 2: Audit database activity",
-        "description": "This lab shows you how to provision audit policies in Oracle Data Safe.",
-        "filename": "../../audit-database-activity/audit-database-activity.md",
-        "type": "livelabs"
-      },
-      {
-        "title": "Lab 3: Generate alerts",
-        "description": "This lab shows you how to provision alert policies in Oracle Data Safe.",
-        "filename": "../../generate-alerts/generate-alerts.md",
-        "type": "livelabs"
-      },
-      {
-        "title": "Lab 4: Assess database configurations",
+        "title": "Lab 2: Assess database configurations",
         "description": "This lab shows you how to assess database configurations in your Autonomous Database by using the Security Assessment feature in Oracle Data Safe.",
         "filename": "../../assess-database-configurations/assess-database-configurations.md",
         "type": "livelabs"
       },
       {
-        "title": "Lab 5: Assess database users",
+        "title": "Lab 3: Assess database users",
         "description": "This lab shows you how to assess database users in your Autonomous Database by using the User Assessment feature in Oracle Data Safe.",
         "filename": "../../assess-database-users/assess-database-users.md",
         "type": "livelabs"
       },
       {
-        "title": "Lab 6: Discover sensitive data",
+        "title": "Lab 4: Discover sensitive data",
         "description": "This lab shows you how to discover sensitive data on your target database by using the Data Discovery feature in Oracle Data Safe.",
         "filename": "../../discover-sensitive-data/discover-sensitive-data.md",
         "type": "livelabs"
       },
       {
-        "title": "Lab 7: Mask sensitive data",
+        "title": "Lab 5: Mask sensitive data",
         "description": "This lab shows you how to mask sensitive data on your target database by using the Data Masking feature in Oracle Data Safe.",
         "filename": "../../mask-sensitive-data/mask-sensitive-data.md",
+        "type": "livelabs"
+      },
+      {
+        "title": "Lab 6: Audit database activity",
+        "description": "This lab shows you how to provision audit policies and alerts in Oracle Data Safe.",
+        "filename": "../../audit-database-activity/audit-database-activity.md",
         "type": "livelabs"
       },
       {

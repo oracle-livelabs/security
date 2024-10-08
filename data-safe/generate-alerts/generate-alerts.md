@@ -2,7 +2,7 @@
 
 ## Introduction
 
-An alert is a message that notifies you when a particular audit event happens on a target database. In Oracle Data Safe, you can provision alert policies on your target databases, view and manage alerts, view predefined alert reports, and create custom alert reports.
+An alert is a message that notifies you when a particular audit event happens on a target database. In Oracle Data Safe, you can create and provision alert policies on your target databases, view and manage alerts, view predefined alert reports, and create custom alert reports.
 
 Start by reviewing the predefined alert policies in Oracle Data Safe, and then provision two of them. Using Database Actions, perform activity on your target database to cause alerts in Oracle Data Safe. Review the generated alerts and create a custom alerts report. Download the report as a PDF.
 
@@ -42,8 +42,6 @@ This lab assumes you have:
 
     The **Alerts** page is displayed. The alerts dashboard does not have any data because you have not yet enabled any alert policies.
 
-    ![Alerts page without data](images/alerts-dashboard-no-data.png "Alerts page without data")
-
 2. Under **Related resources**, click **Alert policies**.
 
 3. Review the list of available alert policies provided by Oracle Data Safe. They are as follows:
@@ -62,8 +60,6 @@ This lab assumes you have:
 
     The **Alert policy details** page is displayed for the **User creation/modification** alert policy.
 
-    ![User creation modification alert policy details](images/user-creation-modification-alert-policy-details.png "User creation modification alert policy details")
-
 5. Next to **Policy applied on target databases**, click **View list** to view the target databases associated with the alert policy.
 
     The **Target-policy associations** page is displayed with the **Policy name** filter set to **User creation/modification**.
@@ -81,26 +77,20 @@ This lab assumes you have:
 
     The **Apply and enable alert policy to target databases** panel is displayed.
 
-3. Select **Selected targets only**.
+3. From the drop-down list, select your target database.
 
-4. If needed, click **Change compartment** and select your compartment.
+4. From the drop-down list, one at a time, select the **User creation/modification** and **Failed logins by admin user** alert policies.
 
-5. From the drop-down list, select your target database.
-
-6. Select **Selected policies only**.
-
-7. From the drop-down list, one at a time, select the **User creation/modification** and **Failed logins by admin user** alert policies.
-
-8. Click **Apply policy** and wait until a message states that you can close the panel.
+5. Click **Apply policy** and wait until a message states that you can close the panel.
 
     ![Apply and enable alert policy to target databases panel](images/apply-and-enable-alert-policy-panel.png "Apply and enable alert policy to target databases panel")
 
 
-9. Click **Close**.
+6. Click **Close**.
 
     The two target-policy associations for your target database are listed on the page and are enabled.
     
-10. Wait for the state to change to **Active** for both target-policy associations. If a target-policy association is not displayed, please set the **Policy name** filter to **All**.
+7. Wait for the state to change to **Active** for both target-policy associations. If a target-policy association is not displayed, make sure the **Policy name** filter is set to **All**.
 
     ![Two target-policy associations for your target database](images/two-target-policy-associations-for-target.png "Two target-policy associations for your target database")
 
@@ -169,7 +159,7 @@ In this task, you perform activities on your target database in Database Actions
 
     - The report is automatically filtered to show you all alerts for all target databases in the selected compartment for the past one week. To manually create custom filters, you can use the **SCIM query builder**. 
     - You can view several totals, including the total number of target databases; total number of open and closed alerts, and the total number of critical, high, medium, and low alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
-    - At the bottom of the report, you can view the list of alerts. By default, the table shows you the alert name, alert status, alert severity, target databases on which the audited event occurred, and when the alert was created.
+    - At the bottom of the report, you can view the list of alerts. By default, the table shows you the alert name, alert status, alert severity, target databases on which the audited event occurred, when the alert was created, and the alert policy rule name.
     - You have options to create a PDF or XLS report, create a custom report, schedule a custom report, open and close alerts, and specify which table columns you want displayed on the page.
 
     ![All alerts report](images/all-alerts-report.png "All alerts report")
@@ -180,9 +170,9 @@ In this task, you perform activities on your target database in Database Actions
 
 8. Click **+ Another filter**. Create the filter **Alert name = User creation/modification**, and click **Apply**.
 
-    Only alerts that pertain to User Creation/Modification are listed in the table.
+    Only alerts that pertain to User creation/modification are listed in the table.
 
-9. Review the alerts generated for **User Creation/Modification**.
+9. Review the alerts generated for **User creation/modification**.
 
     ![User Creation/Modification alerts](images/alerts-user-creation-modification.png "User Creation/Modification alerts")
 
@@ -198,6 +188,7 @@ In this task, you perform activities on your target database in Database Actions
     - Alert severity
     - Alert status - Whether the alert is open or closed
     - Alert type - Currently all alert types are AUDITING
+    - Alert policy rule
     - Policy that generated the alert
     - User operation that generated the alert
     - Operation time and status

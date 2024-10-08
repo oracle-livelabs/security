@@ -36,11 +36,30 @@ Allow group <group-name> to manage data-safe-sql-firewall-family in compartment
 on database: EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$SQL_FIREWALL_ROLE'); 
 
 
+create a user in database actions
+
+create user joetester identified by Oracle123_Oracle123;
+grant connect, resource to joetester;
+grant unlimited tablespace to joetester;
+grant select any table to joetester;
+
+BEGIN
+ ords_admin.enable_schema(
+  p_enabled => TRUE,
+  p_schema => 'JOETESTER',
+  p_auto_rest_auth => NULL
+ );
+ commit;
+END;
+
+
+
+
 ## Task 1: Enable SQL Firewall in Data Safe
 
 1. Under **Security center** in Data Safe, click **SQL Firewall**.
 
-2. Click the name of your target database, and then click **Enable**. Note - you may need to click Refresh if you just granted the role on the target database.
+2. Click your target database, and then click **Enable**. Note - you may need to click Refresh if you just granted the role on the target database.
 
     The **Configuration details** page for your target database is displayed.
 
@@ -53,9 +72,9 @@ on database: EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$SQL_FIREWALL_ROLE');
 
 ## Task 2: Create a SQL Collection in Data Safe
 
-1. Click **Create and start SQL collection**.
+1. On the same page, click **Create and start SQL collection**.
 
-2. Select the **EMPLOYEESEARCH_PROD** database user.
+2. Select the **ADMIN** database user.
 
 3. Leave **User issued SQL commands** selected for the SQL collection level.
 
@@ -63,61 +82,40 @@ on database: EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$SQL_FIREWALL_ROLE');
 
 5. Wait for status to change to **Collecting**.
 
-    Now SQL Firewall is set to capture SQL statements issued by the `EMPLOYEESEARCH_PROD` database user in the Glassfish application.
-
-
-## Task 3: Set the Glassfish application on host #1 to use Oracle Database 23ai on host #2
-
-1. On the **Application information** tab, click the **Remote Desktop** link to access host #1 in a web browser. 
-
-2. Open a terminal window on your desktop. By default, you are the OS user `oracle`.
-
-3. Change to the scripts directory.
-
-    ```text
-    <copy>cd $DBSEC_LABS/sqlfw</copy>
-    ```
-
-4. Run the following script to configure the Glassfish application to connect to Oracle Database 23ai on host #2.
-
-    ```text
-    <copy>./sqlfw_glassfish_start_db23c.sh</copy>
-    ```
-
-5. In the Glassfish browser window on the right, click **Login**. Enter the username `hradmin` and the password `Oracle123`.
-
-6. In the top right hand corner, click **Welcome HR Administrator**. 
-
-    A page with session data shows you how the application is connected to the database. 
-
-7. Scroll down and verify that **DB\_NAME** is set to **FREEPDB1** and **SERVER\_HOST** is set to **dbsec-lab**.
+    Now SQL Firewall is set to capture SQL statements issued by the `ADMIN` database user.
 
 
 
-## Task 4: Perform activity in the Glassfish application on host #1
 
-1. In the Glassfish application, click **Search Employees**.
 
-2. Click **Search**.
+## Task 4: Perform activity in the database as the ADMIN user.
 
-3. Change criteria and search again. Repeat 2-3 times. (need to document the actions here. It's important to note the 3 things you did here because you do the exact same actions later on.)
+1. Return to Database Actions.
+2. Clear the worksheet.
+3. Refresh the browser page so that you can find the HCM1 schema.
+4. From the first drop-down list, select the HCM1 schema.
+5. Drag the LOCATIONS table to the worksheet. Select **Select**, and click **Apply**.
+6. On the toolbar, click **Run Script**.
+
+
+Also try: Select COUNTRY_ID FROM HCM1.COUNTRIES;
 
 
 ## Task 5: Review the workload capture in Data Safe
 
-1. Under **Security center**, click **SQL Firewall**.
+1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** browser tab.
 
-2. Under **Related resources**, click **SQL collections**.
+2. In the breadcrumb, click **SQL Firewall**. Under **Related resources**, click **SQL collections**.
 
-3. Click the database user **EMPLOYEESEARCH_PROD**.
+3. Click the database user **ADMIN**.
 
-    The **SQL collection details** page is displayed.
+    The **SQL collection details** page is displayed.  (OK, steps 2 and 3 aren't needed because you leave off on this page in the task 2)
 
 4. Click the **SQL collection insights** tab.
 
-5. If needed, click **Refresh insights** button to refresh the page.
+5. Click **Refresh insights** button to refresh the page.
 
-6. Review the SQL statements captured by SQL Firewall.
+6. Review the SQL statements captured by SQL Firewall.  (WHERE??)
 
 
 ## Task 6: Create, deploy, and enforce a SQL Firewall policy in Data Safe
@@ -130,13 +128,13 @@ Generate and enable SQL Firewall policy with allow-list for HR Application user
 
 2. Click **Generate firewall policy** to generate the SQL Firewall policy with the allow list.
 
-    A firewall policy is created, but not yet enabled. The message at top of screen says:  Deploy and enforce the SQL Firewall policy to enable SQL Firewall protection for the user EMPLOYEESEARCH_PROD.
+    A firewall policy is created, but not yet enabled. The message at top of screen says:  Deploy and enforce the SQL Firewall policy to enable SQL Firewall protection for the user ADMIN.
 
 3. Scroll down and review the allow-list in the generated SQL Firewall policy.
 
     Notice that the generated policy remains inactive until you deployed it. You can generate a report of allowed SQL statements for offline review.
 
-4. Click **Deploy and enforce** to deploy the SQL Firewall policy for the `EMPLOYEESEARCH_PROD` user.
+4. Click **Deploy and enforce** to deploy the SQL Firewall policy for the `ADMIN` user.
 
     The **Deploy SQL Firewall policy** dialog box is displayed.
 
@@ -152,24 +150,19 @@ Generate and enable SQL Firewall policy with allow-list for HR Application user
 
 ## Task 7: Test SQL violations
 
-SQL violations represent SQL statements that are initiated on the target database, but are not included in the allowlist in the SQL Firewall policy. In this task, you use SQL Firewall to detect an insider threat of stolen credential access.
+SQL violations represent SQL statements that are initiated on the target database, but are not included in the allow list in the SQL Firewall policy. In this task, you use SQL Firewall to detect an insider threat of stolen credential access.
 
-1. Return to the Glassfish application on host #1. 
+1. Return to the SQL worksheet in Database Actions.
 
-2. Sign in as `hradmin` with the password **Oracle123**.
+2. Repeat the last query:
 
-3. Perform the same actions that you did previous in task 3.
+Select COUNTRY_ID FROM HCM1.COUNTRIES;
+    
+4. Return to the **SQL Firewall** landing page in Data Safe. Click the **View report** link next to **Violation reports**. If you performed the exact same steps that you performed in task 3, there should not be any violations.  
 
-    - Click **Search Employees**.
-    - Click **Search**.
-    - Set a filter on **Paris**. 
-    - Set a filter on **First Name = Victor**.
+5. Return to Database Actions and perform an action that is not part of the SQL collection. For example, 
 
-4. Return to the **SQL Firewall** landing page in Data Safe. If you performed the exact same steps that you performed in task 3, there should not be any violations.
-
-5. Return to the Glassfish application and perform an action that is not part of the SQL collection. For example, 
-
-    - add an action here
+   SELECT FIRST_NAME, LAST_NAME, SALARY FROM HCM1.EMPLOYEES;
     
 6. Return to Data Safe and notice that a violation is generated.
 
