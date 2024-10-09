@@ -2,9 +2,7 @@
 
 ## Introduction
 
-Audit resources for Oracle Data Safe (audit profiles, audit policies, and audit trails) are automatically created for all registered target databases. 
-
-In this lab, you use the auditing wizard to enable alert and audit policies on your target database, start audit data collection in Oracle Data Safe, and configure the retention periods for your audit data. You then perform activity on your target database and review the alerts and audit events generated in Oracle Data Safe.
+In this lab, you use the auditing wizard to enable alert and audit policies on your target database, start audit data collection in Oracle Data Safe, and configure the retention periods for your audit data. Audit resources for Oracle Data Safe (audit profiles, audit policies, and audit trails) are automatically created for all registered target databases. You then perform activity on your target database and review the alerts and audit events generated in Oracle Data Safe.
 
 Estimated Lab Time: 15 minutes
 
@@ -13,6 +11,7 @@ Estimated Lab Time: 15 minutes
 In this lab, you will:
 
 - Configure auditing and alerts for your target database
+- Review the Activity Auditing dashboard and audit policy
 - Perform activities on your target database to generate audit data
 - Review alerts in Oracle Data Safe
 - Review audit events in Oracle Data Safe
@@ -34,6 +33,7 @@ This lab assumes you have:
 - Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs. 
 
 ## Task 1: Configure auditing and alerts for your target database
+
 
 1. In the breadcrumb at the top of the page, click **Data Safe**.
 
@@ -98,7 +98,36 @@ This lab assumes you have:
 10. Click **Close**.
 
 
-## Task 2: Perform activities on your target database to generate audit data
+## Task 2: Review the Activity Auditing dashboard and audit policy
+
+By default, the Activity Auditing dashboard shows you a summary of audit events for the last one week for all target databases in the form of charts and tables. On the left under **List scope** and **Filters**, you can filter by compartment, time period, and target database.
+
+1. On the **Activity auditing** page, on the left under **Filters**, select your target database.
+
+2. Review the charts.
+
+    - The **Audit trails** chart shows you the number of audit trails that are running, stopped, not started, and that need attention.
+    - The **Failed login activity** chart shows you the number of failed logins on your target database for the last one week. You may or may not have any failed logins, depending on how you have interacted in Database Actions so far.
+    - The **Admin activity** chart shows you the number of database schema changes, failed logins, audit setting changes, and entitlement changes on your target database for the last one week.
+    - The **All activity** chart shows you the total count of audit events on your target database for the specified time period.
+
+    ![Activity auditing dashboard charts1](images/aa-dashboard-charts1.png "Activity auditing dashboard charts1")
+        
+    ![Activity auditing dashboard charts2](images/aa-dashboard-charts2.png "Activity auditing dashboard charts2")
+
+
+3. Review the **Events summary** and **Targets summary** tabs.
+
+    - Statistics include the number of target databases that have an audit event in each event category and the total number of events per category. Because you are viewing statistics for your target database only, the **Target databases** column shows ones.
+    - Audit events include the number of login failures, schema changes, entitlement changes, audit settings changes, all activity (all audit events), Database Vault all violations, and Database Vault policy changes.
+
+    ![Events summary tab](images/events-summary-tab3.png "Events summary tab")
+
+    ![Targets summary tab](images/targets-summary-tab3.png "Targets summary tab")  
+
+
+
+## Task 3: Perform activities on your target database to generate audit data
 
 In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, sign in and create a user account.
 
@@ -138,7 +167,7 @@ In this task, you perform activities on your target database in Database Actions
 10. Return to the browser tab for Oracle Data Safe and wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
 
-## Task 3: Review alerts in Oracle Data Safe
+## Task 4: Review alerts in Oracle Data Safe
 
 1. Under **Security center** on the left, click **Alerts**.
 
@@ -170,7 +199,7 @@ In this task, you perform activities on your target database in Database Actions
     ![All alerts report2](images/all-alerts-report2.png "All alerts report2")
 
 
-## Task 4: Review audit events in Oracle Data Safe
+## Task 5: Review audit events in Oracle Data Safe
 
 1. On the left under **Security center**, click **Activity auditing**.
 
@@ -192,4 +221,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, October 9, 2024
+* **Last Updated By/Date** - Jody Glover, October 8, 2024
