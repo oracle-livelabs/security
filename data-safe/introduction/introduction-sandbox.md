@@ -1,6 +1,6 @@
 # Introduction
 
-This workshop is designed to help new users become familiar with the features of Oracle Data Safe. In the LiveLabs Sandbox environment, you learn how to audit database activity, generate alerts, assess the security of your database configurations and users, and discover and mask sensitive data.
+This workshop is designed to help new users become familiar with the features of Oracle Data Safe. In the LiveLabs Sandbox environment, you learn how to audit database activity and generate alerts, assess the security of your database configurations and users, and discover and mask sensitive data.
 
 Estimated Workshop Time: 2 hours
 
@@ -14,10 +14,9 @@ Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:U
 
 In this workshop, you learn how to perform the following tasks:
 
-- Collect audit data from your target database and analyze database activity
-- Generate alerts in Oracle Data Safe to inform you of database activity
 - Assess the security of your database configurations and database users using Oracle Data Safe
 - Discover and mask sensitive data on your target database using Oracle Data Safe
+- Collect and monitor audit data in Oracle Data Safe to inform you of database activity
 
 You may now **proceed to the next lab**.
 
