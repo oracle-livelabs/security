@@ -41,7 +41,7 @@ This lab assumes you have:
 
 3. Click **Configure auditing and alerts** to start the Activity Auditing wizard.
 
-4. For **Alert policy**, do the following, and then click **Next**.
+4. For **Alert policy**, do the following to enable alert policies, and then click **Next**.
 
     a) Select your target database. The list of available alert policies is displayed.
 
@@ -71,7 +71,7 @@ This lab assumes you have:
 
     ![Activity Auditing wizard - Audit trails](images/activity-auditing-wizard-audit-trails.png "Activity Auditing wizard - Audit Trails")
 
-7. For **Audit profile**, leave the default selections for retention period and paid usage as is (see below), and click **Next**.
+7. For **Audit profile**, leave the default selections for the retention periods and paid usage as is (see below), and click **Next**.
 
     - Audit data online retention months = 12
     - Audit data offline retention months = 0
@@ -92,8 +92,6 @@ This lab assumes you have:
     
     ![Activity Auditing wizard - Audit configuration progress](images/activity-auditing-wizard-audit-configuration-progress.png "Activity Auditing wizard - Audit configuration progress")
     
-    ![Activity Auditing wizard - Audit configuration progress errors](images/audit-configuration-progress-errors.png "Activity Auditing wizard - Audit configuration progress errors")
-
 
 10. Click **Close**.
 
@@ -166,8 +164,8 @@ In this task, you perform activities on your target database in Database Actions
     - At the bottom of the report, you can view the list of alerts. By default, the table shows you the alert name, alert status, alert severity, target databases on which the audited event occurred, when the alert was created, and the alert policy rule name.
     - You have options to create a PDF or XLS report, create a custom report, schedule a custom report, open and close alerts, and specify which table columns you want displayed on the page.
 
-    ![All alerts report1](images/all-alerts-report1.png "All alerts report1")
-    ![All alerts report2](images/all-alerts-report2.png "All alerts report2")
+    ![All alerts report top](images/all-alerts-report-top.png "All alerts report top")
+    ![All alerts report bottom](images/all-alerts-report-bottom.png "All alerts report bottom")
 
 
 ## Task 4: Review audit events in Oracle Data Safe
@@ -178,9 +176,9 @@ In this task, you perform activities on your target database in Database Actions
 
 3. On the **Events summary** tab, click one of the event categories, for example, **Login failures by admin** to view more detail.
    
-    ![Login failures](images/login-failures.png "Login failures")
+    ![Login failures report - top](images/login-failures-top.png "Login failures report - top")
+    ![Login failures report - bottom](images/login-failures-bottom.png "Login failures report - bottom")
 
- 
 
 You may now **proceed to the next lab**.
 
@@ -192,4 +190,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, October 9, 2024
+* **Last Updated By/Date** - Jody Glover, October 10, 2024
