@@ -73,7 +73,7 @@ This lab assumes you have:
 1. Run this script to create the Keystore directories on the Operating System
 
     ````
-    <copy>./tde_create_os_directory.sh</copy>
+    <copy>./01_tde_create_os_directory.sh</copy>
     ````
 
     ![TDE](./images/tde-002.png "Create the Keystore directories")
@@ -81,7 +81,7 @@ This lab assumes you have:
 2. Use the database parameters to manage TDE. This will require a database restart for one of the parameters to take effect. The script will perform the reboot for you.
 
     ````
-    <copy>./tde_set_tde_parameters.sh</copy>
+    <copy>./02_tde_set_tde_parameters.sh</copy>
     ````
 
     ![TDE](./images/tde-003.png "Set TDE parameters")
@@ -89,7 +89,7 @@ This lab assumes you have:
 3. Create the software keystore (**Oracle Wallet**) for the container database. You will see the status result goes from `NOT_AVAILABLE` to `OPEN_NO_MASTER_KEY`.
 
     ````
-    <copy>./tde_create_wallet.sh</copy>
+    <copy>./03_tde_create_wallet.sh</copy>
     ````
 
     ![TDE](./images/tde-004.png "Create the software keystore")
@@ -103,7 +103,7 @@ This lab assumes you have:
 1. To create the container database TDE Master Key (**MEK**), run the following command
 
     ````
-    <copy>./tde_create_mek_cdb.sh</copy>
+    <copy>./04_tde_create_mek_cdb.sh</copy>
     ````
 
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
@@ -111,7 +111,7 @@ This lab assumes you have:
 2. To create a Master Key (MEK) for the pluggable database **pdb1**, run the following command
 
     ````
-    <copy>./tde_create_mek_pdb.sh pdb1</copy>
+    <copy>./05_tde_create_mek_pdb.sh pdb1</copy>
     ````
 
     ![TDE](./images/tde-006.png "Create the pluggable database TDE Master Key")
