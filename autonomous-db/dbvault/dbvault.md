@@ -42,12 +42,70 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Task No. | Feature | Approx. Time | Details |
 | -------- | ------- | ------------ ||
-| 1 | Enable Database Vault | <5 minutes ||
-| 2 | Enable Separation of Duties (SoD) | <5 minutes ||
-| 3 | Create a Simple Realm | 10 minutes ||
-| 4 | Audit Policy to Capture Realm Violations | 5 minutes ||
-| 5 | Simulation Mode | 10 minutes ||
-| 6 | Disable Database Vault | <5 minutes ||
+| 1 | Set up Application Schema and Users | <5 minutes ||
+| 2 | Enable Database Vault | <5 minutes ||
+| 3 | Enable Separation of Duties (SoD) | <5 minutes ||
+| 4 | Create a Simple Realm | 10 minutes ||
+| 5 | Audit Policy to Capture Realm Violations | 5 minutes ||
+| 6 | Simulation Mode | 10 minutes ||
+| 7 | Disable Database Vault | <5 minutes ||
+
+## Task 1: Set up Application Schema and Users
+
+Although you can connect to your Autonomous Database using local PC desktop tools like Oracle SQL Developer, you can conveniently access the browser-based SQL Worksheet directly from your Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing
+
+1. In your **`ADBSecurity`** database's details page, click the **Database actions** button then click **SQL**. This will open a SQL worksheet.
+
+    ![](./images/adb-set_010a.png " ")
+
+2. Copy/Paste the following SQL queries and run them into SQL Worksheet
+
+    - To create the working schema
+
+         ```
+         <copy>
+         -- Create SH1 schema
+         CREATE USER sh1 IDENTIFIED BY WElcome_123#;
+         GRANT CREATE SESSION, CREATE TABLE TO sh1;
+         GRANT UNLIMITED TABLESPACE TO sh1;
+         BEGIN
+            ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('sh1'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('sh1'), p_auto_rest_auth => TRUE);
+         END;
+         /
+         CREATE TABLE sh1.customers AS SELECT * FROM sh.customers;
+         CREATE TABLE sh1.countries AS SELECT * FROM sh.countries;
+
+         </copy>
+         ```
+
+    - To create the working users
+
+         ```
+         <copy>
+         -- Create DBA_DEBRA user
+         CREATE USER dba_debra IDENTIFIED BY WElcome_123#;
+         GRANT PDB_DBA TO dba_debra;
+         BEGIN
+            ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('dba_debra'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('dba_debra'), p_auto_rest_auth => TRUE);
+         END;
+         /
+         -- Create APPUSER user
+         CREATE USER appuser IDENTIFIED BY WElcome_123#;
+         GRANT CREATE SESSION, READ ANY TABLE TO appuser;
+         BEGIN
+            ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => UPPER('appuser'), p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => LOWER('appuser'), p_auto_rest_auth => TRUE);
+         END;
+         /
+
+         </copy>
+         ```
+
+    - Press [**F5**] or click the "Run Scripts" icon
+
+         ![](./images/adb-set_015.png " ")
+         ![](./images/adb-set_016.png " ")
+
+    - Check that there are no errors
 
 ## Task 1: Enable Database Vault
 
@@ -81,9 +139,9 @@ We start by creating two DV user accounts:
 
     - Enter the admin Password you specified when creating the database (here *`WElcome_123#`*)
     
-      ````
+      ```
       <copy>WElcome_123#</copy>
-      ````
+      ```
 
     - Click [**Sign in**]
 
@@ -95,7 +153,7 @@ We start by creating two DV user accounts:
 
 2. Create the Database Vault owner and account manager users
 
-      ````
+      ```
       <copy>
       -- Create DV owner
       CREATE USER sec_admin_owen IDENTIFIED BY WElcome_123#;
@@ -115,7 +173,7 @@ We start by creating two DV user accounts:
       END;
       /
       </copy>
-      ````
+      ```
 
     **Note:**
        - Copy/Paste the following SQL queries into SQL Worksheet
@@ -126,18 +184,18 @@ We start by creating two DV user accounts:
 
 3. Configure the Database Vault user accounts
 
-      ````
+      ```
       <copy>EXEC DBMS_CLOUD_MACADM.CONFIGURE_DATABASE_VAULT('sec_admin_owen', 'accts_admin_ace');</copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_004.png " ")
 
 
 4. Verify that Database Vault is configured but not yet enabled
 
-      ````
+      ```
       <copy>SELECT * FROM DBA_DV_STATUS;</copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_005.png " ")
 
@@ -145,9 +203,9 @@ We start by creating two DV user accounts:
 
 5. Now, enable Database Vault
 
-      ````
+      ```
       <copy>EXEC DBMS_CLOUD_MACADM.ENABLE_DATABASE_VAULT;</copy>
-      ````
+      ```
 
        ![](./images/adb-dbv_006.png " ")
     
@@ -159,9 +217,9 @@ We start by creating two DV user accounts:
 
     - Once restart completes, go back to the SQL Worksheet as the `ADMIN` user and verify DV is enabled
 
-      ````
+      ```
       <copy>SELECT * FROM DBA_DV_STATUS;</copy>
-      ````
+      ```
 
        ![](./images/adb-dbv_008.png " ")
 
@@ -177,15 +235,15 @@ In the "Prepare your environment" step you created the user `DBA_DEBRA`. This us
 
 1. To demonstrate the effects of the DB Vault SoD on a DBA account, open the SQL Worksheet as the *`DBA_DEBRA`* user (as reminder, the password is `WElcome_123#`)
     
-      ````
+      ```
       <copy>WElcome_123#</copy>
-      ````
+      ```
 
 2. View `DBA_DEBRA`'s roles
 
-      ````
+      ```
       <copy>SELECT * FROM session_roles ORDER BY 1;</copy>
-      ````
+      ```
 
        ![](./images/adb-dbv_009.png " ")
 
@@ -193,9 +251,9 @@ In the "Prepare your environment" step you created the user `DBA_DEBRA`. This us
 
 3. Create a test user `DEMO1`
 
-      ````
+      ```
       <copy>CREATE USER demo1;</copy>
-      ````
+      ```
 
        ![](./images/adb-dbv_010.png " ")
 
@@ -204,9 +262,9 @@ In the "Prepare your environment" step you created the user `DBA_DEBRA`. This us
                 
 4. Let's try altering the user `APPUSER`
 
-      ````
+      ```
       <copy>ALTER USER appuser IDENTIFIED BY WElcome_123456#;</copy>
-      ````
+      ```
 
        ![](./images/adb-dbv_011.png " ")
                 
@@ -229,19 +287,19 @@ A realm is a protected zone inside the database where database schemas, objects,
           -  Attention, only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc) or by using the "Incognito mode"!**
           - As reminder, the password of these users is the same (here `WElcome_123#`)
     
-             ````
+             ```
              <copy>WElcome_123#</copy>
-             ````
+             ```
 
     - Copy/Paste and execute the following query
 
-      ````
+      ```
       <copy>
          SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
            FROM sh1.customers
           WHERE rownum < 10;
       </copy>
-      ````
+      ```
  
        - as user "**`DBA_DEBRA`**"
 
@@ -263,7 +321,7 @@ A realm is a protected zone inside the database where database schemas, objects,
 
 2. Now, let's create a realm to secure `SH1` tables by executing this query below as the *`SEC_ADMIN_OWEN`* user. So, please **open a 4th web-browser window**
 
-      ````
+      ```
       <copy>
       -- Create the "PROTECT_SH1" DV realm
          BEGIN
@@ -279,7 +337,7 @@ A realm is a protected zone inside the database where database schemas, objects,
       -- Show the current DV realm
       SELECT name, description, enabled FROM dba_dv_realm WHERE id# >= 5000 ORDER BY 1;
       </copy>
-      ````
+      ```
 
        ![](./images/adb-dbv_015.png " ")
  
@@ -289,7 +347,7 @@ A realm is a protected zone inside the database where database schemas, objects,
 
 3. Add objects to the realm to protect (here, the `CUSTOMERS` table)
 
-      ````
+      ```
       <copy>
       -- Set SH1 objects as protected by the DV realm "PROTECT_SH1"
          BEGIN
@@ -306,7 +364,7 @@ A realm is a protected zone inside the database where database schemas, objects,
         FROM dvsys.dba_dv_realm_object
        WHERE realm_name IN (SELECT name FROM dvsys.dv$realm WHERE id# >= 5000);
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_016.png " ")
 
@@ -316,13 +374,13 @@ A realm is a protected zone inside the database where database schemas, objects,
    
       - Execute again the following query in SQL Worsheet of each the 3 users (*`DBA_DEBRA`*, *`SH1`* and *`APPUSER`*)
 
-      ````
+      ```
       <copy>
          SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
            FROM sh1.customers
           WHERE rownum < 10;
       </copy>
-      ````
+      ```
  
        - as user "**`DBA_DEBRA`**"
 
@@ -340,7 +398,7 @@ A realm is a protected zone inside the database where database schemas, objects,
 
 5. Now, go back to SQL Worksheet as the *`SEC_ADMIN_OWEN`* user and make sure you have an authorized application user (`APPUSER`) in the realm by executing this query
 
-      ````
+      ```
       <copy>
       -- Grant access to APPUSER only for the DV realm "PROTECT_SH1"
          BEGIN
@@ -350,19 +408,19 @@ A realm is a protected zone inside the database where database schemas, objects,
          END;
          /
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_020.png " ")
 
 6. Re-execute the SQL query to show that only `APPUSER` now can read the data
 
-      ````
+      ```
       <copy>
          SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
            FROM sh1.customers
           WHERE rownum < 10;
       </copy>
-      ````
+      ```
  
        - as user "**`DBA_DEBRA`**"
 
@@ -384,20 +442,20 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
 1. Open a SQL Worksheet as the *`ACCTS_ADMIN_ACE`* user (as reminder, the password is `WElcome_123#`)
     
-      ````
+      ```
       <copy>WElcome_123#</copy>
-      ````
+      ```
 
 2. Check that no audit trail log exists
 
-      ````
+      ```
       <copy>
       -- Display the audit trail log
       SELECT os_username, dbusername, event_timestamp, action_name, sql_text 
         FROM unified_audit_trail
        WHERE DV_ACTION_NAME='Realm Violation Audit' order by 3;
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_021.png " ")
 
@@ -405,7 +463,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
 3. Create an audit policy on the DV realm `PROTECT_SH1` created earlier in Step 2
 
-      ````
+      ```
       <copy>
       -- Create the Audit Policy
          CREATE AUDIT POLICY dv_realm_sh1
@@ -415,7 +473,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
       -- Enable the Audit Policy
          AUDIT POLICY dv_realm_sh1;
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_022.png " ")
 
@@ -427,19 +485,19 @@ You may also want to capture an audit trail of unauthorized access attempts to y
           -  Attention, only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc) or by using the "Incognito mode"!**
           - As a reminder, the password of these users is the same (here `WElcome_123#`)
     
-             ````
+             ```
              <copy>WElcome_123#</copy>
-             ````
+             ```
 
     - Copy/Paste and execute the following query
 
-      ````
+      ```
       <copy>
          SELECT cust_id, cust_first_name, cust_last_name, cust_email, cust_main_phone_number
            FROM sh1.customers
           WHERE rownum < 10;
       </copy>
-      ````
+      ```
  
        - as user "**`DBA_DEBRA`**"
 
@@ -457,14 +515,14 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
 5. Go back to the SQL Worksheet as the *`ACCTS_ADMIN_ACE`* user to review realm violation audit trail 
 
-      ````
+      ```
       <copy>
       -- Display the audit trail log
       SELECT os_username, dbusername, event_timestamp, action_name, sql_text 
         FROM unified_audit_trail
        WHERE DV_ACTION_NAME='Realm Violation Audit' order by 3;
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_023.png " ")
 
@@ -472,7 +530,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
 
 6. When you have completed this lab, sign in as the *`SEC_ADMIN_OWEN`* user to reset the audit settings
 
-      ````
+      ```
       <copy>
       -- Show the current DV realm
       SELECT name, description, enabled FROM dba_dv_realm WHERE id# >= 5000 order by 1;
@@ -500,7 +558,7 @@ You may also want to capture an audit trail of unauthorized access attempts to y
       DROP AUDIT POLICY dv_realm_sh1;
       
       </copy>
-      ````
+      ```
 
       ![](./images/adb-dbv_024.png " ")
 
@@ -512,24 +570,24 @@ We will use simulation mode to find the factors to use for our "trusted path" co
 
 1. Open a SQL Worksheet as the *`SEC_ADMIN_OWEN`* user (as reminder, the password is `WElcome_123#`)
     
-      ````
+      ```
       <copy>WElcome_123#</copy>
-      ````
+      ```
 
 2. First, query the simulation log to show that it has no current values
 
-      ````
+      ```
       <copy>
          SELECT violation_type, username, machine, object_owner, object_name, command, dv$_module
          FROM dba_dv_simulation_log;
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_025.png " ")
 
 3. Next, create a **Command Rule** that will simulate blocking all `SELECT` from the `SH1.COUNTRIES` table
 
-      ````
+      ```
       <copy>
       BEGIN
           DBMS_MACADM.CREATE_COMMAND_RULE(
@@ -541,7 +599,7 @@ We will use simulation mode to find the factors to use for our "trusted path" co
       END;
       /
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_026.png " ")
 
@@ -553,17 +611,17 @@ We will use simulation mode to find the factors to use for our "trusted path" co
           -  Attention, only one SQL Worksheet session can be open in a standard browser window at the same time, hence **open each of your sessions in a new web-browser window (Mozilla, Chrome, Edge, Safari, etc) or by using the "Incognito mode"!**
           - As reminder, the password of these users is the same (here `WElcome_123#`)
     
-             ````
+             ```
              <copy>WElcome_123#</copy>
-             ````
+             ```
 
     - Copy/Paste and execute several time the following SELECT query to SH1.COUNTRIES table
 
-      ````
+      ```
       <copy>
          SELECT * FROM sh1.countries WHERE rownum < 20;
       </copy>
-      ````
+      ```
  
        - as user "**`DBA_DEBRA`**"
 
@@ -581,12 +639,12 @@ We will use simulation mode to find the factors to use for our "trusted path" co
       
 5. Now, go back to the SQL Worksheet as the *`SEC_ADMIN_OWEN`* user to see what new entries we have. Remember we created a command rule to simulate blocking user select!
 
-      ````
+      ```
       <copy>
          SELECT violation_type, username, machine, object_owner, object_name, command, dv$_module
          FROM dba_dv_simulation_log;
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_030.png " ")
 
@@ -596,7 +654,7 @@ We will use simulation mode to find the factors to use for our "trusted path" co
 
 6. Before moving to the next lab, we will clean out the simulation logs and remove the Command Rule
 
-      ````
+      ```
       <copy>
       -- Purge simulation logs
       DELETE FROM DVSYS.SIMULATION_LOG$;
@@ -604,11 +662,11 @@ We will use simulation mode to find the factors to use for our "trusted path" co
       -- Current simulation logs after purging
       SELECT count(*) FROM dba_dv_simulation_log;
       </copy>
-      ````
+      ```
 
       ![](./images/adb-dbv_031.png " ")
 
-      ````
+      ```
       <copy>
       -- Delete the Command Rule
       BEGIN
@@ -620,7 +678,7 @@ We will use simulation mode to find the factors to use for our "trusted path" co
       END;
       /
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_032.png " ")
 
@@ -628,7 +686,7 @@ We will use simulation mode to find the factors to use for our "trusted path" co
 
 1. Log as the *`SEC_ADMIN_OWEN`* user and drop the existing DV realm
 
-      ````
+      ```
       <copy>
       -- Drop the "PROTECT_SH1" DV realm
       BEGIN
@@ -640,15 +698,15 @@ We will use simulation mode to find the factors to use for our "trusted path" co
       SELECT name, description, enabled FROM dba_dv_realm WHERE id# >= 5000 order by 1;
 
       </copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_060.png " ")
 
 2. Now, disable DB Vault on the Autonomous Database
 
-      ````
+      ```
       <copy>EXEC DBMS_CLOUD_MACADM.DISABLE_DATABASE_VAULT;</copy>
-      ````
+      ```
 
    ![](./images/adb-dbv_061.png " ")
     
@@ -660,9 +718,9 @@ We will use simulation mode to find the factors to use for our "trusted path" co
 
     - Once restart completes, log in to SQL Worksheet as the *`DBA_DEBRA`* user and verify DV is enabled
 
-      ````
+      ```
       <copy>SELECT * FROM DBA_DV_STATUS;</copy>
-      ````
+      ```
 
        ![](./images/adb-dbv_062.png " ")
 
@@ -670,12 +728,12 @@ We will use simulation mode to find the factors to use for our "trusted path" co
 
 4. Now, drop the Database Vault owner and account manager users
 
-      ````
+      ```
       <copy>
       DROP USER sec_admin_owen;
       DROP USER accts_admin_ace;
       </copy>
-      ````
+      ```
 
        ![](./images/adb-dbv_063.png " ")
 

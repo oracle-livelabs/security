@@ -1,12 +1,12 @@
 {
-  "workshoptitle": "Oracle DB Security on Autonomous DB",
+  "workshoptitle": "Oracle Data Redaction on Oracle Autonomous Database",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
   {
     "title": "Introduction",
     "description": "Understand the architecture of this workshop and what it can do",
     "publisheddate": "09/01/2021",
-    "filename": "../../intro/intro.md"
+    "filename": "../../data-redaction/intro/intro.md"
   },
   {
     "title": "Get Started",
@@ -20,10 +20,10 @@
     "filename": "../../common/prepare-setup/prepare-setup.md"
   },
   {
-    "title": "Lab 1: Database Vault (DV)",
-    "description": "In this lab you can see how to leverage Oracle Database Vault on Autonomous DB",
-    "publisheddate": "09/01/2021",
-    "filename": "../../dbvault/dbvault.md"
+    "title": "Lab 1: Data Redaction",
+    "description": "In this lab you can see how to leverage Oracle Data Redaction on Autonomous DB",
+    "publisheddate": "09/01/2024",
+    "filename": "../../data-redaction/data-redaction.md"
   },
   {
     "title": "Terminate Oracle Autonomous Database",
