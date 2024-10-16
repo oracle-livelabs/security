@@ -179,9 +179,9 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     The **Refresh now** panel is displayed.
 
-3. In the **Save latest assessment** box, enter **My Security Assessment**, and then click **Refresh now**. Wait for the status to read as **SUCCEEDED**.
+3. Leave the default name as is, and click **Refresh now**. Wait for the status to read as **SUCCEEDED**.
 
-    - This action updates the data in the latest security assessment for your target database and also saves a copy of the assessment (named My Security Assessment) to the Assessment History.
+    - This action updates the data in the latest security assessment for your target database and also saves a copy of the assessment to the Assessment History.
     - The refresh operation takes about one minute.
 
     ![Security Assessment Refresh now panel](images/sa-refresh-now-panel.png "Security Assessment Refresh now panel")
@@ -190,7 +190,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     ![Security Assessment Assessed on right now](images/sa-assessed-on-right-now.png "Security Assessment assessed on right now")
 
-5. Scroll down and expand **System Privileges Granted to Public**.
+5. Scroll down and expand **System Privileges Granted to PUBLIC**.
 
     - This is a high risk finding.
     - In the **Details** section, you can see that the grant you made in the previous task is identified.
@@ -225,4 +225,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, October 9, 2024
+* **Last Updated By/Date** - Jody Glover, October 16, 2024

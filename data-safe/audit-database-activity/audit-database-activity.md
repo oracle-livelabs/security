@@ -75,14 +75,14 @@ This lab assumes you have:
 
     - Audit data online retention months = 12
     - Audit data offline retention months = 0
-    - Paid usage = selected
+    - Paid usage = not selected
 
     ![Activity Auditing wizard - Audit profile](images/activity-auditing-wizard-audit-profile.png "Activity Auditing wizard - Audit profile")
 
     - Each regional Oracle Data Safe service in a tenancy has global settings for paid usage, online retention period, and archive retention period.
     - Global settings are applied to all target databases unless their audit profiles override them.
     - All initial audit profile settings for your target database are inherited from the global settings for Oracle Data Safe.
-    - By default, paid usage is enabled for all target databases, the online retention period is set to the maximum value of 12 months, and the archive retention period is set to the minimum value of 0 months. Note that you cannot enable paid usage for a free trial account.
+    - By default, paid usage is not enabled for all target databases, the online retention period is set to the maximum value of 12 months, and the archive retention period is set to the minimum value of 0 months. Note that you cannot enable paid usage for a free trial account.
 
 8. For **Review and submit**, review the configuration, and click **Submit** if everything is correct.
 
@@ -90,7 +90,7 @@ This lab assumes you have:
 
 9. For **Audit configuration progress**, wait until the alert and audit policies are provisioned and the audit trail is started. 
     
-    ![Activity Auditing wizard - Audit configuration progress](images/activity-auditing-wizard-audit-configuration-progress.png "Activity Auditing wizard - Audit configuration progress")
+    ![Activity Auditing wizard - Audit configuration progress](images/activity-auditing-wizard-audit-configuration-progress2.png "Activity Auditing wizard - Audit configuration progress")
     
 
 10. Click **Close**.
@@ -190,4 +190,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, October 10, 2024
+* **Last Updated By/Date** - Jody Glover, October 16, 2024
