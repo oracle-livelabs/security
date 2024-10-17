@@ -64,9 +64,9 @@ Watch the video below for a quick walk-through of the lab.
 
     - **Password** and **Confirm Password** - Specify a password for the ADMIN database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character. For example : *`WElcome_123#`*
 
-      ````
+      ```
       <copy>WElcome_123#</copy>
-      ````
+      ```
 
       ![](./images/adb-set_007a.png " ")
 
@@ -105,11 +105,11 @@ Although you can connect to your Autonomous Database using local PC desktop tool
 
     - Query the current user
 
-        ````
+        ```
         <copy>
         select user from dual;
         </copy>
-        ````
+        ```
 
         ![](./images/adb-set_017a.png " ")
 
@@ -117,19 +117,19 @@ Although you can connect to your Autonomous Database using local PC desktop tool
 
     - Query the current user's session roles and privileges
 
-        ````
+        ```
         <copy>
         select * from session_roles order by 1;
         </copy>
-        ````
+        ```
 
         ![](./images/adb-set_018a.png " ")
 
-        ````
+        ```
         <copy>
         select * from session_privs order by 1;
         </copy>
-        ````
+        ```
 
         ![](./images/adb-set_019a.png " ")
         
