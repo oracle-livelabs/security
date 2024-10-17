@@ -122,4 +122,4 @@ This lab assumes you have:
 
 - **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Alexander John, February 2024
+- **Last Updated By/Date** - Alpha Diallo & Alexander John, October 2024
