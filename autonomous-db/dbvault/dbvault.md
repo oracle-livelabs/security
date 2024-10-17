@@ -28,7 +28,7 @@ In this lab you will:
 
 You will use the `SH1` schema containing multiple tables such as `CUSTOMERS` or `COUNTRIES` tables which contain sensitive information and need to be protected from privileged users such as the schema owner (**user `SH1`**) and DBA (**user `DBA_DEBRA`**). But the data in these tables should be available to the application user (**user `APPUSER`**).
 
-   ![](./images/adb-dbv_001.png " ")
+   ![](./images/adb-dbv_001.png "database vault example diagram ")
 
 **Note:**
 - **In this workshop, the Configure/Enable/Disable DV command syntax is only for Autonomous Database Shared.**
