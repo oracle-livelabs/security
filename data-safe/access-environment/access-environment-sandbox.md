@@ -100,7 +100,7 @@ Database Actions provides a way for you to run SQL commands on your database. Th
     - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
     - If you are using an Oracle-provided environment, enter the database password provided to you.
 
-4. Close the **SQL History** and **Warning** dialog boxes.
+4. Close any open dialog boxes.
 
 5. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
@@ -129,4 +129,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 22, 2024
+- **Last Updated By/Date** - Jody Glover, October 16, 2024
