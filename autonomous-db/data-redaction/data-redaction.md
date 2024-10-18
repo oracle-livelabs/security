@@ -376,7 +376,7 @@ You will be using some of the procedures in the `DBMS_REDACT` PL/SQL package in 
       ```
    **Expected Result:** Notice that **`ADMIN`** has the privilege, **`EXEMPT REDACTION POLICY`**, which exempts `ADMIN` from Data Redaction policies. 
 
-2. Run the same query as **`SH1_READER`** to verify this user does not have the `EXEMPT REDACXTION POLICY` privilege. 
+3. Run the same query as **`SH1_READER`** to verify this user does not have the `EXEMPT REDACXTION POLICY` privilege. 
 
       ```
       <copy>
@@ -387,7 +387,7 @@ You will be using some of the procedures in the `DBMS_REDACT` PL/SQL package in 
    **Expected Result:** The only privilege **`SH1_READER`** should have is **`CREATE SESSION`**. 
       
 
-3. Query a subset of the `SH1.CUSTOMERS` rows as two users: `ADMIN` and `SH1_READER1`.
+4. Query a subset of the `SH1.CUSTOMERS` rows as two users: `ADMIN` and `SH1_READER1`.
 
       ```
       <copy>
@@ -406,7 +406,7 @@ You will be using some of the procedures in the `DBMS_REDACT` PL/SQL package in 
        156        Gerry            Leigh           married                           9000
       ```
 
-4. As `ADMIN`, create the Data Redaction policy to redact data for all users **except** the `SH1` user. 
+5. As `ADMIN`, create the Data Redaction policy to redact data for all users **except** the `SH1` user. 
 
       **NOTE:** Redaction occurs when _one or both_ of the following criteria are met:
        - The policy expression evaluates to true (e.g. the user is *not* `SH1`).
@@ -428,7 +428,7 @@ END;
 
    **Expected Result:** `PL/SQL procedure successfully completed.`
               
-5. Next, you will add the `CUST_MARITAL_STATUS` column to the redaction policy. This will apply the expression from the policy to redact this column for all users who are not `SH1` or do not have the `EXEMPT REDACTION POLICY` privilege. 
+6. Next, you will add the `CUST_MARITAL_STATUS` column to the redaction policy. This will apply the expression from the policy to redact this column for all users who are not `SH1` or do not have the `EXEMPT REDACTION POLICY` privilege. 
 
       - As `ADMIN`, add the `CUST_MARITAL_STATUS` column to the Data Redaction policy. Apply a `FULL` redaction policy to the column. 
       - All users, except `SH1` or users with the `EXEMPT REDACTION POLICY` privilege, will see redacted data.
@@ -451,7 +451,7 @@ END;
 
          **Caution:** Sometimes SQL Web will show "Error starting at line 7 Unknown Command". Try highlighting the entire PL/SQL block and running it as a single unit. 
 
-6. As **`ADMIN`**, query the **`REDACTION_POLICIES`** and **`REDACTION_COLUMNS`** views to verify the policy was created and the column was added to the policy. 
+7. As **`ADMIN`**, query the **`REDACTION_POLICIES`** and **`REDACTION_COLUMNS`** views to verify the policy was created and the column was added to the policy. 
 
       - Query the `REDACTION_POLICIES` view. 
 
@@ -485,7 +485,7 @@ END;
          CUST_MARITAL_STATUS    FULL REDACTION
          ```
 
-7. As your two users, run the query on `SH1.CUSTOMERS` and notice the `CUST_MARITAL_STATUS` now has redacted data for `SH1_READER`. 
+8. As your two users, run the query on `SH1.CUSTOMERS` and notice the `CUST_MARITAL_STATUS` now has redacted data for `SH1_READER`. 
 
       - As `ADMIN`, the `CUST_MARTIAL_STATUS` column will show full data because `ADMIN` has the `EXEMPT REDACTION POLICY` privilege. 
       
@@ -528,7 +528,7 @@ END;
          ```
 
 
-8. Next, as `ADMIN`, you will create a view to demontrate the data is redacted even through the view. Notice that this view has aggregate functions, table joins, and a group by function. This is a very complex query and Oracle Data Redaction now handles it seamlessly. 
+9. Next, as `ADMIN`, you will create a view to demontrate the data is redacted even through the view. Notice that this view has aggregate functions, table joins, and a group by function. This is a very complex query and Oracle Data Redaction now handles it seamlessly. 
 
       ```
       <copy>
@@ -570,7 +570,7 @@ END;
       **Expected Result:** `View SH1.CUSTOMER_SUMMARY created.`
 
 
-9. Query the view as both `ADMIN` and `SH1_READER`. 
+10. Query the view as both `ADMIN` and `SH1_READER`. 
 
       - As `ADMIN`, the `CUST_MARTIAL_STATUS` column will show full data because `ADMIN` has the `EXEMPT REDACTION POLICY` privilege. 
       
