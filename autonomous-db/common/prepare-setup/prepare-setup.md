@@ -27,7 +27,7 @@ Watch the video below for a quick walk-through of the lab.
 
 3. The following steps apply similarly to either Autonomous Data Warehouse (ADW) or Autonomous Transaction Processing (ATP). So please **click the provisioning of Autonomous Database of your choice** (here we choose an Oracle Autonomous Data Warehouse but again you can also choose Oracle Autonomous Transaction Processing if you prefer).
 
-    ![](./images/adb-set_002a.png " ")
+    ![](./images/adb-set_002a.png "click the provision autonomous transactional database ")
 
 4. From the **Compartment** drop-down list, select your compartment
 
@@ -46,7 +46,17 @@ Watch the video below for a quick walk-through of the lab.
 6. On the **Create Autonomous Database** page, provide basic information for your database:
     - **Compartment** - If needed, select your compartment
     - **Display name** - Enter a memorable name for the database for display purposes, for this lab, use *`ADBSecurity`*
+
+        ```
+        <copy>ADBSecurity</copy>
+        ```
+
     - **Database Name** - Enter *`ADBSEC01`*, it's important to use letters and numbers only, starting with a letter (the maximum length is 14 characters and Underscores are not supported)
+        
+        ```
+        <copy>ADBSEC01</copy>
+        ```
+
     - **Workload Type** - Select the type of your Autonomous Database to match your choice at Step 3 earlier above (here we select "Transaction Processing")
     - **Deployment Type** - Leave *`Shared Infrastructure`* selected
 
@@ -57,33 +67,32 @@ Watch the video below for a quick walk-through of the lab.
     - **Always Free** - Select this option by moving the slider to the right
     - **Database version** - Select *`23ai`* 
     
-         ![](./images/adb-set_006a.png " ")
+         ![](./images/adb-set_006a.png "select always free and 23ai, if available ")
 
 
 8. Create administrator credentials:
 
     - **Password** and **Confirm Password** - Specify a password for the ADMIN database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character. For example : *`WElcome_123#`*
 
-      ````
-      <copy>WElcome_123#</copy>
-      ````
+        ```
+        <copy>WElcome_123#</copy>
+        ```
 
-      ![](./images/adb-set_007a.png " ")
+        ![](./images/adb-set_007a.png "enter a password that meets the requirements ")
 
 9. Choose the network access and the license type:
 
     - **Network Access** - Leave *`Secure access from everywhere`* selected
     - **License Type** - Select *`License Included`*
-    - **Protect Contacts** - You can leave this blank
+    - **Provide Contacts** - You can leave this blank
 
-         ![](./images/adb-set_008a.png " ")
+         ![](./images/adb-set_008a.png "choose the network type, license type, and provide contact info, if you want. ")
 
 10. Click [**Create Autonomous Database**]
 
 11.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Database is ready to use! Have a look at your instance's details here including its name, database version, OCPU count, and storage size.
 
-    ![](./images/adb-set_009a.png " ")
-
+      ![](./images/adb-set_009a.png "provisioning the instance will take a few minutes ")
 
 ## Task 2: Launch SQL and familiarize yourself with the environment
 
@@ -91,47 +100,47 @@ Although you can connect to your Autonomous Database using local PC desktop tool
 
 1. In your **`ADBSecurity`** database's details page, click the **Database actions** button then click **SQL**. This will open a SQL worksheet.
 
-    ![](./images/adb-set_010a.png " ")
+    ![](./images/adb-set_010a.png "click database actions then SQL ")
 
 2. The SQL worksheet provides you the ability to run SQL statements against your Autonomous Database. Click the **X** on the tutorial and the warning icons. If this was a production environment, you should follow the tutorial and then create your own, named, account instead of using the **`ADMIN`** database user. 
 
-    ![](./images/adb-set_011a.png " ")
+    ![](./images/adb-set_011a.png " close the tutorial windows")
 
 3. The Database Actions SQL worksheet page opens and is ready for you to write or paste your commands. 
 
-    ![](./images/adb-set_014a.png " ")
+    ![](./images/adb-set_014a.png "you will see the SQL worksheet ")
 
 4. In the SQL worksheet, copy and paste the following SQL commands and run them. 
 
     - Query the current user
 
-        ````
+        ```
         <copy>
         select user from dual;
         </copy>
-        ````
+        ```
 
-        ![](./images/adb-set_017a.png " ")
+        ![](./images/adb-set_017a.png "run the command and view the output ")
 
         **Note:** You can hide the left-hand **Navigator** pane by clicking on the **`<`** icon highlighted in red. 
 
     - Query the current user's session roles and privileges
 
-        ````
+        ```
         <copy>
         select * from session_roles order by 1;
         </copy>
-        ````
+        ```
 
-        ![](./images/adb-set_018a.png " ")
+        ![](./images/adb-set_018a.png "run the command and view the output ")
 
-        ````
+        ```
         <copy>
         select * from session_privs order by 1;
         </copy>
-        ````
+        ```
 
-        ![](./images/adb-set_019a.png " ")
+        ![](./images/adb-set_019a.png "run the command and view the output ")
         
 
 5. **Your environment is ready to use!** and you may now proceed to the next lab

@@ -1,4 +1,4 @@
-# Deploying Infrastructure Using Terraform
+# Deploy Infrastructure Using Terraform
 
 ## Introduction
 
@@ -22,7 +22,7 @@ In this lab, you will:
 1. Click on the link below to download the Resource Manager zip file you need to build your environment:
 
     
-   - [oracle_access_governance-terraform-stack-oci.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/BDWFv1fmuSYSGoGKvy0s4OguxeVUzge87iF3rCEleL4r8d0cLAMF3-WgfZNbfFJl/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oci_iam.zip)
+   - [oracle_access_governance-terraform-stack-oci.zip](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/ag-terra-oci_iam.zip)
 
 
   Save in your downloads folder.
@@ -57,7 +57,7 @@ In this lab, you will:
 
   Click *Next*
 
-  Enter Unique Email IDS for each of the users
+  Enter Unique Email IDS for the users - IDD-admin and Pamela Green 
 
   Enter the region code
   
@@ -65,11 +65,11 @@ In this lab, you will:
 
   Click *Next*.
 
-   ![Enter Email IDs](images/email-id-region.png)
+   ![Enter Email IDs](images/user-email.png)
 
   Click on *Create*.
 
-  ![Click Create](images/click-create.png)
+  
 
 4. The stack has now been created. Click on *Plan job* and once it is completed successful.
 
@@ -86,7 +86,7 @@ In this lab, you will:
 
 
 
-5. The resources should have been created successfully by the terraform script. Please verify the resources created. *You will receive activation mails for the users created and ensure you reset the password at least for user Pamela Green*
+5. The resources should have been created successfully by the terraform script. Please verify the resources created. *You will receive activation mail for the user Pamela Green created and ensure you reset the password*
 
 
 
@@ -99,6 +99,6 @@ In this lab, you will:
 * [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
-## Acknowledgments
+## Acknowledgements
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Anbu Anbarasu, May 2023
+* **Last Updated By/Date** - Indira Balasundaram , Sept 2024

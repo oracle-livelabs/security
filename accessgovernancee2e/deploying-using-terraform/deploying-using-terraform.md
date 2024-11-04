@@ -30,7 +30,7 @@ This lab assumes you have:
 1. Click on the link below to download the Resource Manager zip file you need to build your environment:
 
     
-   - [oracle_access_governance-terraform-stack-oigdb.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/neoMqFrozbHJSSE1yVNPlhU_yZwoibIYic_3pGxDfyjVFdT8D6VMv6RsfNhwuLg-/n/id3kvohtwgjy/b/FileStore/o/ag-terra-oigdb.zip) 
+   - [oracle_access_governance-terraform-stack-oigdb.zip](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/ag-terra-oig_integration.zip) 
 
 
   Save in your downloads folder.
