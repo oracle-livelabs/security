@@ -9,7 +9,7 @@ You will perform different scenarios:
 
 ![Story of a hack - Livelab architecture](./images/hack-lab_arch.png "Story of a hack - Livelab architecture")
 
-*Estimated Time:* 40 minutes
+*Estimated Time:* 45 minutes
 
 Watch the video below for a quick walk-through of the lab.
 [Oracle facing a Ransomware attack](videohub:1_n8s28bsk)
@@ -22,11 +22,18 @@ You will learn how to:
 
 ### Prerequisites
 This lab assumes you have:
+<if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
 - You have completed:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
+</if>
+<if type="green">
+- An Oracle Cloud account
+- You have completed:
+    - Introduction Tasks
+</if>
 
 ### Lab Timing (estimated)
 
@@ -961,5 +968,5 @@ To learn more about the capabilities discussed in this workshop and to learn how
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security Senior Principal PM
-- **Contributors** - Russ Lowenthal
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2023
+- **Contributors** - Russ Lowenthal, Database Security VP
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2024

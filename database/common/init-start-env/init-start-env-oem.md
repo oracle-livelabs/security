@@ -29,11 +29,8 @@ This lab assumes you have:
 
 1. Now with access to your remote desktop session, proceed as indicated below to validate your environment before you start executing the subsequent labs. The following Processes should be up and running:
 
-    - Database Listener
-    - Database Servers (emcdb and cdb1)
     - Enterprise Manager - Management server (OMS)
     - Enterprise Manager - Management Agent (emagent)
-    - My HR Applications on Glassfish
 
 2. On the web browser window on the right is a tab preloaded with *Enterprise Manager*, login with the credentials below to validate that it's operational
 
@@ -51,31 +48,7 @@ This lab assumes you have:
     - If the login page is not displayed on first login to the remote desktop, refresh to reload.
     - It takes ~15 minutes for all processes to fully start.
 
-3. Open new browser tabs and confirm successful rendering of *My HR Applications* listed below.
-
-    - PDB1
-
-        ```
-        Prod: <copy>http://dbsec-lab:8080/hr_prod_pdb1</copy>
-        ```
-
-        ```
-        Dev: <copy>http://dbsec-lab:8080/hr_dev_pdb1</copy>
-        ```
-
-    - PDB2
-
-        ```
-        Prod: <copy>http://dbsec-lab:8080/hr_prod_pdb2</copy>
-        ```
-
-        ```
-        Dev: <copy>http://dbsec-lab:8080/hr_dev_pdb2</copy>
-        ```
-
-    **Note**: If all are successful, then your environment is ready.  
-
-4. If you are still unable to get all *Enterprise Manager* and all links above to render successfully, open a terminal session and proceed as indicated below to validate the services.
+3. If you are still unable to get all *Enterprise Manager* and all links above to render successfully, open a terminal session and proceed as indicated below to validate the services.
 
     - Database services (All databases and Standard Listener)
 
@@ -87,7 +60,7 @@ This lab assumes you have:
 
         ![DB Service Status](images/db-service-status.png "DB Service Status")
 
-    - DBSec-lab Service (Enterprise Manager 13c and My HR Applications on Glassfish)
+    - DBSec-lab Service (Enterprise Manager 13c)
 
         ```
         <copy>
@@ -97,7 +70,7 @@ This lab assumes you have:
 
         ![DBSecLab Service Status](images/dbsec-lab-service-status.png "DBSecLab Service Status")
 
-5. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
+4. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
 
     - Database and Listener
 
@@ -140,14 +113,6 @@ If for any reason you want to login from a location that is external to your rem
     ![Enterprise Manager External Login](images/login-em-external-1.png "Enterprise Manager External Login")
     ![Enterprise Manager External Login](images/login-em-external-2.png "Enterprise Manager External Login")
 
-2. My HR Applications on Glassfish
-
-    - PDB1
-      - Prod        : `http://<YOUR_DBSECLAB-VM_PUBLIC-IP>:8080/hr_prod_pdb1`
-      - Dev         : `http://<YOUR_DBSECLAB-VM_PUBLIC-IP>:8080/hr_dev_pdb1`   (bg: red)
-    - PDB2
-      - Prod        : `http://<YOUR_DBSECLAB-VM_PUBLIC-IP>:8080/hr_prod_pdb2`  (menu: red)
-      - Dev         : `http://<YOUR_DBSECLAB-VM_PUBLIC-IP>:8080/hr_dev_pdb2`   (bg: red & menu: red)
 </if>
 
 ## Acknowledgements
