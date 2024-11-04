@@ -29,9 +29,30 @@ This lab assumes you have:
 
 1. Now with access to your remote desktop session, proceed as indicated below to validate your environment before you start executing the subsequent labs. The following Processes should be up and running:
 
+    - Database Listener
+    - Database Servers (emcdb and cdb1)
+    - Enterprise Manager - Management server (OMS)
+    - Enterprise Manager - Management Agent (emagent)
     - My HR Applications on Glassfish
+    - AVDF Web Console
 
-2. Open new browser tabs and confirm successful rendering of *My HR Applications* listed below.
+2. On the web browser window on the right is a tab preloaded with *Enterprise Manager*, login with the credentials below to validate that it's operational
+
+    ```
+    Username: <copy>sysman</copy>
+    ```
+
+    ```
+    Password: <copy>Oracle123</copy>
+    ```
+
+    ![Enterprise Manager Login](images/em-login.png "Enterprise Manager Login")
+
+    **Note**:
+    - If the login page is not displayed on first login to the remote desktop, refresh to reload.
+    - It takes ~15 minutes for all processes to fully start.
+
+3. Open new browser tabs and confirm successful rendering of *My HR Applications* listed below.
 
     - PDB1
 
@@ -53,9 +74,7 @@ This lab assumes you have:
         Dev: <copy>http://dbsec-lab:8080/hr_dev_pdb2</copy>
         ```
 
-    **Note**: If all are successful, then your environment is ready.  
-
-3. If you are still unable to get all links above to render successfully, proceed as indicated below to validate the services.
+4. If you are still unable to get all *Enterprise Manager* and all links above to render successfully, proceed as indicated below to validate the services:
 
     <if type="brown">
     - Open a terminal session with your SSH client on **DBSec-Lab** VM as OS user *oracle*
@@ -95,7 +114,7 @@ This lab assumes you have:
 
         ![DBSecLab Service Status](images/dbsec-lab-service-status.png "DBSecLab Service Status")
 
-4. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
+5. If you see questionable output(s), failure or down component(s), restart the corresponding service(s) accordingly
 
     - Database and Listener
 
@@ -113,13 +132,92 @@ This lab assumes you have:
         </copy>
         ```
 
+6. Set the AVDF Console password
+
+    - Go to the AVDF scripts directory
+
+        ````
+        <copy>cd $DBSEC_LABS/avdf/avs</copy>
+        ````
+
+    - Learn the AVDF password you will need for the duration of the lab
+
+        ````
+        <copy>echo $AVUSR_PWD</copy>
+        ````
+
+        **Note**:
+        - This new password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
+        - At the first login on the AV Console, it will ask you to change this randomly generated password
+
+    - Open a web browser window to *`https://av`* to access to the Audit Vault Web Console
+
+        **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<AVS-VM_@IP-Public>`*
+
+    - Login to Audit Vault Web Console as *`AVADMIN`* (use the password randomly generated)
+
+        ````
+        <copy>AVADMIN</copy>
+        ````
+
+        ![AVDF](./images/init-start-env-avdf-001.png "AVDF - Login")
+
+    - Reset the password
+
+        - Set your new password
+    
+            ![AVDF](./images/init-start-env-avdf-002.png "AVDF - Login")
+    
+        - Click [**Submit**]
+
+    - Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password randomly generated)
+
+        ````
+        <copy>AVAUDITOR</copy>
+        ````
+
+        ![AVDF](./images/init-start-env-avdf-003.png "AVDF - Login")
+
+    - Reset the password
+
+        - Set your new password
+    
+            ![AVDF](./images/init-start-env-avdf-004.png "AVDF - Login")
+    
+        - Click [**Submit**]
+
+7. Login to Audit Vault Web Console as *`AVAUDITOR`* (use the newly reset password)
+
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
+
+    **Note**: If all are successful, then your environment is ready.  
+
 You may now **proceed to the next lab**.
 
 <if type="brown">
 ## Appendix: External access
 If for any reason you want to login from a location that is external to your remote desktop session such as your workstation/laptop, then refer to the details below.
 
-1. My HR Applications on Glassfish
+1.  Enterprise Manager 13c Console
+
+    ```
+    Username: <copy>sysman</copy>
+    ```
+
+    ```
+    Password: <copy>Oracle123</copy>
+    ```
+
+    ```
+    URL: <copy>https://<Your Instance public_ip>:7803/em</copy>
+    ```
+
+    - *Note:* You may see an error on the browser while accessing the Web Console - “*Your connection is not private*” as shown below. Ignore and add the exception to proceed.
+
+    ![Enterprise Manager External Login](images/login-em-external-1.png "Enterprise Manager External Login")
+    ![Enterprise Manager External Login](images/login-em-external-2.png "Enterprise Manager External Login")
+
+2. My HR Applications on Glassfish
 
     - PDB1
       - Prod        : `http://<YOUR_DBSECLAB-VM_PUBLIC-IP>:8080/hr_prod_pdb1`

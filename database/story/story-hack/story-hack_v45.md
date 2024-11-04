@@ -157,10 +157,10 @@ The attacker may be able to retrieve these files from file shares or backup serv
 
 Let's see how this type of attack could focus on an export file, but keep in mind that it would work the same way with a backup file.
 
-1. Let's say that while performing a search, the attacker finds an old, insecure PDB1 export file (`employeesearch_data_PDB1_20241006.dmp`) that was generated for use by a development or support team. The attacker tries to read the file contents
+1. Let's say that while performing a search, the attacker finds an old, insecure PDB1 export file (`employeesearch_data_PDB1_20220505.dmp`) that was generated for use by a development or support team. The attacker tries to read the file contents
 
     ````
-    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp</copy>
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20220505.dmp</copy>
     ````
 
     ![Extract data from UNSECURED export file on PDB1](./images/hack-lab1b-01.png "Extract data from UNSECURED export file on PDB1")
@@ -172,15 +172,15 @@ Let's see how this type of attack could focus on an export file, but keep in min
 2. And if the attacker tries to exfiltrate all the email addresses for example, nothing could be easier with the right command line
 
     ````
-    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20220505.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
     ````
 
     ![Extract emails from UNSECURED export file on PDB1](./images/hack-lab1b-02.png "Extract emails from UNSECURED export file on PDB1")
 
-3. Now, do the same thing on export file from PDB2 (`employeesearch_data_PDB1_20241006.dmp`). Unlike the export from PDB1, this export was encrypted.
+3. Now, do the same thing on export file from PDB2 (`employeesearch_data_PDB2_20220506.dmp`). Unlike the export from PDB1, this export was encrypted.
 
     ````
-    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp</copy>
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB2_20220506.dmp</copy>
     ````
 
     ![Extract data from SECURED export file on PDB2](./images/hack-lab1b-03.png "Extract data from SECURED export file on PDB2")
@@ -192,7 +192,7 @@ Let's see how this type of attack could focus on an export file, but keep in min
 4. And if the attacker tries to exfiltrate all the email addresses, there's nothing but unusable data
 
     ````
-    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB2_20220506.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
     ````
 
     ![Extract emails from SECURED export file on PDB2](./images/hack-lab1b-04.png "Extract emails from SECURED export file on PDB2")
@@ -255,10 +255,10 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
     - Because this datafile is not encrypted, it's easy to extract its entire contents by simply reading it
     - Beware, even if this datafile is located on an encrypted disk array or encrypted by a third-tier software, the content of the file is still available to a privileged user like root or oracle
 
-2. On PDB2, the `EMPDATA_PROD` tablespace is secured and its datafiles associated is also named `empdata_prod.dbf`
+2. On PDB2, the `EMPDATA_PROD` tablespace is secured and its datafiles associated is named `empdata_prod_enc.dbf`
 
     ````
-    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_prod.dbf</copy>
+    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_prod_enc.dbf</copy>
     ````
 
     ![Extract data from SECURED datafile on PDB2](./images/hack-lab1c-02.png "Extract data from SECURED datafile on PDB2")
@@ -392,22 +392,13 @@ Every day someone discovers a new SQLi vulnerability - even in some of the most 
 In this lab, you will perform a "UNION-based" SQL injection attack on an application that is NOT securely developed! You'll see how a SQLi attack works and then see how to block it.
 
 1. First, open 2 Web browser tabs and launch the HR app using these URLs:
-    <if type="green">
-    - **On PDB1** (unsecured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb1`*
-    - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
-    </if>
-    <if type="brown">
     - If you are working from a remote desktop (usually the case for this lab):
         - **On PDB1** (unsecured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb1`*
         - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
     - If you are working through a public IP address (often the case if you launched this lab in your own tenancy):
         - **On PDB1**: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
         - **On PDB2**: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb2`*
-    </if>
-    
-    **Note**:
-    - To help you differentiate between the two applications, the HR App menu is grey on PDB1 and in red on PDB2.
-    - Remember, this application is deliberately poorly developed to allow attacks such as SQL injection attacks.
+    - To help you differentiate between the two applications, the HR App menu is grey on PDB1 and in red on PDB2. Remember, this application is deliberately poorly developed to allow attacks such as SQL injection attacks
 
 2. Login to these 2 applications as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -645,15 +636,9 @@ Let's see how this risk could be avoided. Rather than try to guess what privileg
 
 5. Now, open the DB Admin Console (OEM Cloud Control) to view the report
 
-    <if type="green">
-    - Open a Web Browser at the URL *`https://dbsec-lab:7803/em`*
-    </if>
-
-    <if type="brown">
     - Open a Web Browser at the URL *`https://dbsec-lab:7803/em`*
 
         **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:7803/em`*
-    </if>
 
     - Login to Oracle Enterprise Manager 13c Console as *`SYSMAN`* with the password "*`Oracle123`*"
 
@@ -744,15 +729,9 @@ Another way to steal data is to connect directly to the database without going t
 
 3. To confirm that the `BONUS_AMOUNT` is still there, have a look on the **UserID 6 (Lillian)** and go back to your HR App **on PDB2**
 
-    <if type="green">
-    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb2`*
-    </if>
+    - Open a Web browser tabs to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
 
-    <if type="brown">
-    - Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb2`*
-
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb2`*
-    </if>
+        **Notes:** if you are not using the remote desktop, use this URL *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb2`*
 
     - Login as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -818,22 +797,18 @@ Finally, the attackers will take the gloves off and will attack with heavy artil
 
 2. Next, open the Database Audit Console to check the alert messages
 
-    - On the right web browser window on your remote desktop, switch to the tab preloaded with the Oracle Audit Vault Web Console:
-    
-        <if type="green">
-        - Open a Web Browser at the URL *`https://av`*
-        </if>
+    - On the right web browser window on your remote desktop, switch to the tab preloaded with the Oracle Audit Vault Web Console. If you inadvertently closed it, open a new tab and go to *`https://av`*
 
-        <if type="brown">
-        - Open a Web Browser at the URL *`https://av`*
+        **Note**: If you are not using a remote desktop access the audit console by going to *`https://<YOUR_AVS_VM_PUBLIC_IP>`*
 
-            **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_AVS_VM_PUBLIC_IP>`*
-        </if>
-
-    - Login to Audit Vault Web Console as *`AVAUDITOR`* with your password set in the "**Initialize Environment**" steps
+    - Login to Audit Vault Web Console as *`AVAUDITOR`* with the password "*`T06tron.`*" (note: the period at the end is part of the password)
 
         ````
         <copy>AVAUDITOR</copy>
+        ````
+
+        ````
+        <copy>T06tron.</copy>
         ````
 
         ![Audit Vault web console - Login screen](./images/hack-lab3d-02.png "Audit Vault web console - Login screen")
@@ -994,4 +969,4 @@ To learn more about the capabilities discussed in this workshop and to learn how
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security Senior Principal PM
 - **Contributors** - Russ Lowenthal, Database Security VP
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2022

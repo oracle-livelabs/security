@@ -48,9 +48,27 @@ This lab assumes you have:
     - If the login page is not displayed on first login to the remote desktop, refresh to reload.
     - It takes ~15 minutes for all processes to fully start.
 
-3. If you are still unable to get all *Enterprise Manager* and all links above to render successfully, open a terminal session and proceed as indicated below to validate the services.
+3. If you are still unable to get all *Enterprise Manager* and all links above to render successfully, proceed as indicated below to validate the services.
 
-    - Database services (All databases and Standard Listener)
+    <if type="brown">
+    - Open a terminal session with your SSH client on **DBSec-Lab** VM as OS user *oracle*
+
+        ````
+        <copy>sudo su - oracle</copy>
+        ````
+
+        **Note**:
+        - Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle.
+        - So, in that case **you don't need to execute this command**!
+    </if>
+
+    <if type="green">
+    - Open a terminal session on **DBSec-Lab** VM as OS user *oracle*
+
+        **Note**: Just double-click on the Terminal icon on the desktop to launch a session directly as oracle!
+    </if>
+
+    - Check the Database services status (All databases and Standard Listener)
 
         ```
         <copy>
@@ -60,7 +78,7 @@ This lab assumes you have:
 
         ![DB Service Status](images/db-service-status.png "DB Service Status")
 
-    - DBSec-lab Service (Enterprise Manager 13c)
+    - Check the DBSec-lab Service status (Enterprise Manager 13c and My HR Applications on Glassfish)
 
         ```
         <copy>
