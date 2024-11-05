@@ -180,7 +180,7 @@ Let's see how this type of attack could focus on an export file, but keep in min
 3. Now, do the same thing on export file from PDB2 (`employeesearch_data_PDB1_20241006.dmp`). Unlike the export from PDB1, this export was encrypted.
 
     ```
-    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp</copy>
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB2_20241006.dmp</copy>
     ```
 
     ![Extract data from SECURED export file on PDB2](./images/hack-lab1b-03.png "Extract data from SECURED export file on PDB2")
@@ -192,7 +192,7 @@ Let's see how this type of attack could focus on an export file, but keep in min
 4. And if the attacker tries to exfiltrate all the email addresses, there's nothing but unusable data
 
     ```
-    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
+    <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB2_20241006.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
     ```
 
     ![Extract emails from SECURED export file on PDB2](./images/hack-lab1b-04.png "Extract emails from SECURED export file on PDB2")
