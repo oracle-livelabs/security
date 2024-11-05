@@ -26,7 +26,7 @@ In this workshop, you learn how to perform the following tasks:
 
 The following links provide more information about Oracle Data Safe:
 
-- [Get Started with Oracle Data Safe Fundamentals Workshop in LiveLabs](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)
+- [Get Started with Oracle Data Safe Fundamentals Workshop in LiveLabs](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)
 - [Oracle Data Safe website](https://www.oracle.com/database/technologies/security/data-safe.html)
 - [Oracle Data Safe user assistance](https://docs.oracle.com/en/cloud/paas/data-safe/index.html)
 - [Oracle Data Safe data sheet](https://www.oracle.com/a/tech/docs/dbsec/data-safe/ds-security-data-safe.pdf)

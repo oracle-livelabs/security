@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "DB Security - Key Vault SSH scenario",
+  "workshoptitle": "DB Security - Key Vault SSH Key Management",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
@@ -9,7 +9,7 @@
       "filename": "../../intro/intro-key-vault_ssh.md"
     },
     {
-      "title": "Getting Started",
+      "title": "Get Started",
       "description": "Get a Free Trial",
       "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
     },
@@ -27,16 +27,11 @@
       "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
     },
     {
-      "title": "Lab 3: Initialize Environment",
-      "description": "How to initialize and start all the workshop components",
-      "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env.md"
-    },
-    {
-      "title": "Lab 4: Key Vault (OKV) - SSH scenario",
-      "description": "In this lab you can see how to leverage Oracle Key Vault (OKV)",
+      "title": "Lab 3: Key Vault (OKV) - SSH Key Management",
+      "description": "In this lab you can see how to leverage Oracle Key Vault (OKV) to manage SSH keys",
       "publisheddate": "10/20/2020",
-      "filename": "../../key-vault_ssh/key-vault_ssh.md"
+      "filename": "../../key-vault_ssh/key-vault_ssh.md",
+      "type": "brown"
     },
     {
       "title": "Need Help?",

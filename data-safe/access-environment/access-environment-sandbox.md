@@ -60,7 +60,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
 2. On the left, click **Target databases**.
 
-3. Under **List scope**, make sure your compartment is selected. Your registered target database is listed on the right.
+3. Under **List scope**, browse to and select your compartment. Your registered target database is listed on the right.
 
     - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
     - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
@@ -100,7 +100,7 @@ Database Actions provides a way for you to run SQL commands on your database. Th
     - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
     - If you are using an Oracle-provided environment, enter the database password provided to you.
 
-4. Close the **SQL History** and **Warning** dialog boxes.
+4. Close any open dialog boxes.
 
 5. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
@@ -129,4 +129,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 16, 2024
+- **Last Updated By/Date** - Jody Glover, October 16, 2024

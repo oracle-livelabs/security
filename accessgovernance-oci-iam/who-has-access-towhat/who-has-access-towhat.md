@@ -12,7 +12,7 @@ Access Governance Administrator (Pamela Green) can view who has access to what.
 In this lab, you will:
 
 * Explore **My Access**
-* Explore **Enterprise Wide Access**
+* Explore **Enterprise Wide Browser**
 
 
 ## Task 1: Review Who Has Access to What - MyAccess
@@ -35,48 +35,91 @@ In this lab, you will:
     The password you have set for the user in *Lab 1: Task 2: Step 5*
     
 
-     ![Access Governance Homepage](images/ag-home.png)
+     ![Access Governance Homepage](images/ag-home-page.png)
 
      
   You will be navigated to the home page of your Oracle Access Governance Console.
 
   3. On the Oracle Access Governance Console home page, from the navigation menu, select **My Stuff -> My Access** 
 
-    ![Access Governance My Access](images/navigate-myaccess.png)
+    ![Access Governance My Access](images/ag-myaccess.png)
 
 
-  4. Click on **Group by** to view the **Roles, Cloud Resources, Application** the user **Pamela Green** has access to. 
+  4. Click on **Permissions** to view the **Cloud Resources** the user **Pamela Green** has access to. 
 
-  ![Access Governance My Access Page](images/myaccess-page.png)
+  ![Access Governance My Access Page](images/pamela-green-permission.png)
 
-  Click on the role further , to view the application details. 
+  5. Click on the **Accounts** , to view the user's account details. 
 
-  ![Access Governance Homepage](images/myaccess-page-app.png)
+  ![Access Governance Homepage](images/pamela-green-accounts.png)
+
+  6.  Click on the **Identity Attributes** to view the user's identity attributes.
+
+  ![Access Governance Homepage](images/pamela-identity-attributes.png)
 
 
 
 ## Task 2: Review Who Has Access to What -  Enterprise Wide Access
 
-  1. On the Oracle Access Governance Console home page, from the navigation menu, select **Who has Access to What -> Enterprise Wide Access** 
+  1. On the Oracle Access Governance Console home page, from the navigation menu, select **Who has Access to What -> Enterprise-wide Browser** 
 
 
-  ![Access Governance Enterprise Access](images/enterprisewide-access.png)
+  ![Access Governance Enterprise Access](images/navigate-enterprise.png)
 
 
-
-  2. You can view the all the **Resources** present and the **Identities** that have access to those resources. 
-
-  3. Click on the right corner dropdown to sort the resources by - resource name or resource type. Beside the Resource, click on the **Show me the identities that have access** to view the user identities that have access to the particular resources.  
+  2. Under **Select what you want to browse** , click on **Identities** to view the user identities that have access to particular resources. 
 
 
-   ![Access Governance Enterprise Access](images/enterprisepage.png)
+    ![Access Governance Enterprise Access](images/enterprise-identity.png)
+
+  3. Click on **View details** for user **Mark Hernandez** to view individual user details.
+
+    ![Access Governance Enterprise Access](images/enterprise-identity-mark.png)
+
+  4. You can click on **View Resources details, View Account details,View Permission details** to view them. Clicking on **create access review** will proceed to create an access review campaign for the user. 
+
+    ![Access Governance Enterprise Access](images/view-resource.png)
+
+    ![Access Governance Enterprise Access](images/view-resource-detail.png)
+
+    ![Access Governance Enterprise Access](images/view-account.png)
+
+    ![Access Governance Enterprise Access](images/view-permission.png)
+
+    ![Access Governance Enterprise Access](images/view-permission-detail.png)
 
 
-  5. To review all of the **user identity access**. Click on **Show me all of the user's accessess**
-     ![Access Governance Homepage](images/view-all-access.png)
+  5. Under **Select what you want to browse** , click on **Identity Collections** to view Identity Collections that are present in the system. 
+
+    ![Identity Collection creation](images/enterprise-identity-collection.png)
+
+    Click on **View Details** 
+
+    ![Identity Collection creation](images/enterprise-identity-collection-detail.png)
+
+  6. Under **Select what you want to browse** , click on **Permissions** to view permissions of the user identities.  
+   
+
+    ![Identity Collection creation](images/enterprise-permission.png)
 
 
-      ![Access Governance Homepage](images/identity-details-view.png)
+  7. Under **Select what you want to browse** , click on **Policies** to view Policies present in OCI IAM.  
+
+    ![Identity Collection creation](images/enterprise-policy.png)
+
+     Click on **View Details**
+
+    ![Identity Collection creation](images/enterprise-policy-detail.png)
+
+  6. Under **Select what you want to browse** , click on **Resources** to view the resources associated with the user identities. Click on **View Details** to view all the user identities that have access to the particular resource.  
+
+    ![Identity Collection creation](images/enterprise-resources.png)
+
+ 
+  7. Click on the **view all accesses** to view all the access of user. 
+
+    ![Identity Collection creation](images/enterprise-resource-detail.png)
+
 
 
   You may now **proceed to the next lab**. 
@@ -88,6 +131,6 @@ In this lab, you will:
 * [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
-## Acknowledgments
+## Acknowledgements
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Anbu Anbarasu, May 2023
+* **Last Updated By/Date** - Indira Balasundaram , Sept 2024

@@ -10,6 +10,7 @@ In this lab, you explore Security Assessment.
 
 Estimated Time: 20 minutes
 
+[Data Safe](videohub:1_z96ow7gf)
 
 ### Objectives
 
@@ -94,13 +95,9 @@ This lab assumes you have:
 
     - Details include assessment name, OCID, compartment to which the assessment was saved, target database name, target database version, assessment date and time, schedule, name of the baseline assessment (if one is set), and whether the assessment complies with the baseline (Yes, No, or No baseline set).
 
-    ![Latest security assessment assessment information tab](images/latest-sa-assessment-information-tab.png "Latest security assessment assessment information tab")
+    ![Latest security assessment assessment information tab](images/latest-sa-assessment-information-tab2.png "Latest security assessment assessment information tab")
 
-4. Rename the latest security assessment: Click the pencil icon to the right of **Name**, enter **SA_target-database** (replace **target-database** with the name of your target database), and click the **Save** icon.
-
-    ![Rename latest security assessment](images/rename-latest-sa-assessment.png "Rename latest security assessment")
-
-5. Scroll down and view the **Assessment details** section.
+6. Scroll down and view the **Assessment details** section.
 
     - This section shows you all the findings for each risk category.
     - Risks are color-coded to help you easily identify categories that have high risk findings (red).
@@ -108,24 +105,24 @@ This lab assumes you have:
 
     ![Latest Security Assessment Assessment details section](images/latest-sa-assessment-details-section.png "Latest Security Assessment Assessment details section")
 
-6. Under **Filters by risks** on the left, notice that you can select the risk levels that you want displayed. Also notice on the left that you can filter by references.
+7. Under **Filters by risks** on the left, notice that you can select the risk levels that you want displayed. Also notice on the left that you can filter by references.
 
     ![Security Assessment filters](images/sa-filters.png "Security Assessment filters")
 
 8. On the right, expand categories and review the findings.
 
-    - Each finding shows you the status (risk level), a summary of the finding, details about the finding, remarks to help you to mitigate the risk, and references - whether a finding is recommended by the Center for Internet Security (**CIS**), European Union's General Data Protection Regulation (**GDPR**), Security Technical Implementation Guide (**STIG**), and/or **Oracle best practices**. These references make it easy for you to identify the recommended security controls.
-    - In the example below, the **Transparent Data Encryption** finding has two references: **STIG** and **GDPR**.
+    - Each finding shows you the status (risk level), a summary of the finding, details about the finding, remarks to help you to mitigate the risk, and references - whether a finding is recommended by the Center for Internet Security (**CIS**), European Union's General Data Protection Regulation (**EU GDPR**), Security Technical Implementation Guide (**DISA STIG**), and/or **Oracle best practices**. These references make it easy for you to identify the recommended security controls.
+    - In the example below, the **Transparent Data Encryption** finding has three references: **Oracle Best Practices**, **DISA STIG**, and **GDPR**.
 
     ![Transparent Data Encryption finding](images/transparent-data-encryption-finding.png "Transparent Data Encryption finding")
 
 ## Task 3: Adjust the risk level of a risk finding
 
-You can defer or change the risk level of a risk finding. In this task, defer the **Sample Schemas** risk finding.
+You can defer or change the risk level of a risk finding. In this task, defer the **Users with Unlimited Concurrent Sessions** risk finding.
 
-1. Click the pencil icon for the **Sample Schemas** finding.
+1. Click the pencil icon for the **Users with Unlimited Concurrent Sessions** finding.
 
-   ![Adjust risk icon](images/adjust-risk-icon.png "Adjust risk icon")
+   ![Adjust risk icon](images/users-with-unlimited-concurrent-sessions.png "Adjust risk icon")
 
 2. In the **Update risk for finding** panel, leave **Defer risk** selected. Optionally, enter a justification and set an expiration date. Click **Save**.
 
@@ -133,7 +130,7 @@ You can defer or change the risk level of a risk finding. In this task, defer th
 
    ![Update risk for finding panel](images/update-risk-for-finding.png "Update risk for finding panel")
 
-3. Notice that the risk finding is recatorized in the **Assessment details** section.
+3. Notice that the risk finding is recategorized in the **Assessment details** section.
 
    ![Deferred risk finding](images/deferred-risk-finding.png "Deferred risk finding")
 
@@ -182,9 +179,9 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     The **Refresh now** panel is displayed.
 
-3. In the **Save latest assessment** box, enter **My Security Assessment**, and then click **Refresh now**. Wait for the status to read as **SUCCEEDED**.
+3. Leave the default name as is, and click **Refresh now**. Wait for the status to read as **SUCCEEDED**.
 
-    - This action updates the data in the latest security assessment for your target database and also saves a copy of the assessment (named My Security Assessment) to the Assessment History.
+    - This action updates the data in the latest security assessment for your target database and also saves a copy of the assessment to the Assessment History.
     - The refresh operation takes about one minute.
 
     ![Security Assessment Refresh now panel](images/sa-refresh-now-panel.png "Security Assessment Refresh now panel")
@@ -193,7 +190,7 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
     ![Security Assessment Assessed on right now](images/sa-assessed-on-right-now.png "Security Assessment assessed on right now")
 
-5. Scroll down and expand **System Privileges Granted to Public**.
+5. Scroll down and expand **System Privileges Granted to PUBLIC**.
 
     - This is a high risk finding.
     - In the **Details** section, you can see that the grant you made in the previous task is identified.
@@ -214,8 +211,11 @@ In this task, you issue a `GRANT` command on your target database so that later,
     - In the details table, you can view the risk level for each finding, the category to which the finding belongs, the finding name, and a description of what has changed on your target database. The Comparison Report column is important because it explains what is changed, added, or removed from the target database since the baseline report was generated.
     - Notice that the change you made is noted in the **Comparison report** column.
 
-    ![Security Assessment Comparison report top](images/sa-comparison-report-top2.png "Security Assessment Comparison report top")
-    ![Security Assessment Comparison report bottom](images/sa-comparison-report-bottom2.png "Security Assessment Comparison report bottom")
+    ![Security Assessment Comparison report top](images/sa-comparison-report-top3.png "Security Assessment Comparison report top")
+    ![Security Assessment Comparison report bottom](images/sa-comparison-report-bottom3.png "Security Assessment Comparison report bottom")
+
+
+You may now **proceed to the next lab**.
 
 
 ## Learn More
@@ -225,4 +225,4 @@ In this task, you issue a `GRANT` command on your target database so that later,
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, June 17, 2024
+* **Last Updated By/Date** - Jody Glover, October 16, 2024

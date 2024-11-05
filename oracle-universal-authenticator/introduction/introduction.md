@@ -1,47 +1,58 @@
-# Introduction
 
-## About this Workshop
+# About this Workshop
 
- Oracle Access Governance addresses the growing challenges security owners face in dealing with the increase in advanced security threats and regulations. This cloud native solution helps meet governance and compliance requirements across many applications, workloads, infrastructures, and identity platforms. It provides organizationwide visibility and capabilities to identify anomalies and mitigate security risks across cloud and on-premises environments. Using advanced analytics, Oracle Access Governance offers an intuitive user experience, providing recommendations and insights into access entitlements, behaviors, and risks.
+## Introduction
 
- The graphic below shows the high level architecture of Oracle Access Governance.
+Oracle Universal Authenticator is a unified authentication solution that provides device authentication and cross-platform single-sign on (SSO) to web-based and desktop applications.
 
-  ![View List of Campaigns](images/oracle-access-governance-overview.png)
+Users login to their devices using either password-less login, or with their Oracle Access Management (OAM) credentials. Users can then access protected applications without the need to enter their single-sign on credentials again.
 
-This lab walks you through the steps to get started using **Oracle Access Governance** with a popular use case - **policy review certification campaign**. In this workshop, a ficticious corporation is using **Oracle IAM** to manage and govern their Cloud resources. As part of their cloud strategy, they want to optimize their policy review certification campaign process with a cloud-native solution. **Oracle Access Governance** SaaS solution is designed for this purpose and serves as a natural extension of **Oracle IAM**. With **Oracle Access Governance**, they can immediately benefit from automated policy review workflows that layer in prescriptive analytics with intuitive dashboards/reports. 
+Oracle Universal Authenticator provides phishing-resistant MFA and passwordless protection for devices and applications, strengthening your organization's security framework and preventing phishing attacks. This comprehensive solution works seamlessly with Oracle Access Manager (OAM) by leveraging Oracle Advanced Authentication (OAA) and Oracle Adaptive Risk Management (OARM) as an integrated suite to provide the SSO experience from trusted devices to all entitled applications using various authentication methods.
 
-**Oracle Access Governance** allows : 
-- **Campaign administrator** to run intelligent access review campaigns for policy governance and compliance
-- **Cloud Access reviewers** to review identity insights and take informed decisions based on **prescriptive analytics**
-- **Users** and **user managers** to validate access assigned to self and their direct reports, respectively. 
+Key Features:
 
+* Trusted Device Login with SSO: Secure access to all entitled applications from trusted devices
 
-*Estimated Time:* 1 Hour
+* Diverse Authentication Methods: Includes MFA, passwordless, adaptive, and mobile authentication for devices and applications
 
+* Central Self-Service Management: Offers options for self-service authentication factors
+
+* Centralized Administration: Extends OAA Admin console for granular rule management for step-up authentications
+
+ The graphic below shows the high level architectural flow of Oracle Universal Authenticator.
+
+  ![OUA Architecture](images/oua-flow.png)
+
+This workshop walks you through the steps to demonstrate and experience the seamless, flexible and secure authentication flow using **Oracle Universal Authenticator** in combination with **Oracle Advanced Authentication**. In this workshop, a fictitious corporation is using **Oracle IAM solution** to streamline and secure the authentication posture for their applications. As part of their cloud strategy, they want to defend against evolving threats while ensuring a seamless user access experience from various devices. Overall, Oracle Universal Authenticator addresses the evolving security challenges faced by businesses in the digital age, offering a practical solution for ensuring security and usability across various endpoints and applications.
+
+*Estimated Time:* 4 Hours
 
 ### Objectives
 
 In this workshop, you will learn how to:
-* Setup and configure Oracle Access Governance service instance
-* Create OCI groups and policies needed
-* Integrate OCI IAM with Access Governance
-* Create policy review campaigns as a **campaign administrator**
-* Perform policy review tasks - **Review the OCI IAM policies, as part of which you can either revoke or accept the entire policy or specific statements within the policy**
-* Monitor and manage policy review campaigns as a **campaign administrator**
+
+* Authenticate using OUA
+* Register your device and authenticate using Oracle Mobile Authenticator mobile app
+* Prepare your system for authentication using OUA
+* Authenticate to Windows device using OUA
+* Authenticate to web and desktop app using OUA
 
 ### Prerequisites
-This lab assumes you have:
-* A tenancy where you have administrative access
 
+This lab assumes you have:
+
+* An Oracle Cloud account where you have administrative access
 
 ## Learn More
 
-* [Oracle Access Governance Product Page](https://www.oracle.com/security/cloud-security/access-governance/)
-* [Oracle Access Governance Documentation](https://docs.oracle.com/en/cloud/paas/access-governance/index.html)
-* [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
-* [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
-* [Oracle Access Governance Announcement Blog](https://blogs.oracle.com/cloudsecurity/post/intelligent-cloud-delivered-access-governance-with-prescriptive-analytics)
+* [Oracle Universal Authenticator Product Documentation](https://docs.oracle.com/en/middleware/idm/universal-authenticator/)
 
-## Acknowledgments
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Anbu Anbarasu, Cloud Platform COE, January 2023
+* [Oracle Universal Authenticator System Architecture](https://docs.oracle.com/en/middleware/idm/universal-authenticator/ouaad/system-architecture-and-components.html)
+
+* [Oracle Advanced Authentication](https://docs.oracle.com/en/middleware/idm/advanced-authentication/oaarm/introducing-oaa.html)
+
+## Acknowledgements
+
+* **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
+
+* **Last Updated By** - Anuj Tripathi, Aug 2024

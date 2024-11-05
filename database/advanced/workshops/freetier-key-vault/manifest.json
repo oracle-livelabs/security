@@ -9,7 +9,7 @@
       "filename": "../../intro/intro-key-vault.md"
     },
     {
-      "title": "Getting Started",
+      "title": "Get Started",
       "description": "Get a Free Trial",
       "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
     },
@@ -30,13 +30,14 @@
       "title": "Lab 3: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env.md"
+      "filename": "../../../common/init-start-env/init-start-env-dbs.md"
     },
     {
       "title": "Lab 4: Key Vault (OKV)",
       "description": "In this lab you can see how to leverage Oracle Key Vault (OKV)",
       "publisheddate": "10/20/2020",
-      "filename": "../../key-vault/key-vault.md"
+      "filename": "../../key-vault/key-vault.md",
+      "type": "brown"
     },
     {
       "title": "Need Help?",

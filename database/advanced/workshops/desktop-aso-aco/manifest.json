@@ -9,7 +9,7 @@
       "filename": "../../aso-aco/aco/introduction/intro-aso-aco.md"
     },
     {
-      "title": "Get Started with noVNC Remote Desktop",
+      "title": "Get Started",
       "description": "Using noVNC Remote Desktop",
       "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
     },
@@ -17,7 +17,7 @@
       "title": "Lab 1: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env.md"
+      "filename": "../../../common/init-start-env/init-start-env-dbs.md"
     },
     {
       "title": "Lab 2: Sample Schema Setup",

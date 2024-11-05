@@ -1,0 +1,39 @@
+{
+  "workshoptitle": "Oracle Data Redaction on Oracle Autonomous Database",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+  {
+    "title": "Introduction",
+    "description": "Understand the architecture of this workshop and what it can do",
+    "publisheddate": "09/01/2021",
+    "filename": "../../data-redaction/intro/intro.md"
+  },
+  {
+    "title": "Get Started",
+    "description": "Get a Free Trial",
+    "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+  },
+  {
+    "title": "Prepare Your Environment",
+    "description": "Prerequisites to run the Oracle DB Security workshop on Autonomous DB in your own tenancy",
+    "publisheddate": "09/01/2021",
+    "filename": "../../common/prepare-setup/prepare-setup.md"
+  },
+  {
+    "title": "Lab 1: Data Redaction",
+    "description": "In this lab you can see how to leverage Oracle Data Redaction on Autonomous DB",
+    "publisheddate": "09/01/2024",
+    "filename": "../../data-redaction/data-redaction.md"
+  },
+  {
+    "title": "Terminate Oracle Autonomous Database",
+    "description": "Terminate an available or stopped Oracle Autonomous Database instance",
+    "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
+  },
+  {
+    "title": "Need Help?",
+    "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+    "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+  }
+]
+}

@@ -7,6 +7,8 @@ In this lab, you access and review your LiveLabs Sandbox environment in Oracle C
 
 Estimated Lab Time: 5 minutes
 
+[Data Safe](videohub:1_dj98a6we)
+
 ### Objectives
 
 In this lab, you will:
@@ -42,13 +44,17 @@ This lab assumes you have:
 
 4. On the **Reservation Information** panel, click the **Launch OCI** button. Leave the default domain selected, and click **Next**.
 
-    A new browser tab is opened and the sign in page for the LiveLabs tenancy is displayed.
+    A new browser tab is opened and you are prompted to select an identity domain.
 
-5. Enter your username (if needed) and paste the password into the **Password** box, and then click **Sign In**.
+5. Leave **Default** selected, and click **Next**.
+
+    ![Select an identity domain dialog box](images/sign-in-dialog.png "Select an identity domain dialog box")
+
+6. Enter your username (if needed) and paste the password into the **Password** box, and then click **Sign In**.
 
     The **Change Password** page is displayed.
 
-6. In the **Current Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Note the password requirements, which are provided on the page. Click **Save New Password**.
+7. In the **Current Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Note the password requirements, which are provided on the page. Click **Save New Password**.
 
     You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
 
@@ -61,7 +67,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
 2. On the left, click **Target databases**.
 
-3. Under **List scope**, make sure your compartment is selected. Your registered target database is listed on the right.
+3. Under **List scope**, browse to and select your compartment. Your registered target database is listed on the right.
 
     - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
     - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
@@ -130,4 +136,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 16, 2024
+- **Last Updated By/Date** - Jody Glover, August 22, 2024

@@ -5,13 +5,13 @@ This workshop introduces the functionality of Oracle Database Security Assessmen
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle DBSAT 3.1 and DBEE 19.23
+*Version tested in this lab:* Oracle DBSAT 3.1 and Oracle Database 19c Enterprise Edition.
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Database Security Assessment Tool (DBSAT)*" [](youtube:3XxA1qhNDpQ)
 
 ### Objectives
-In this lab, you will be able to play with the DBSAT and understand how it works and the immediate value it provides. Many customers already benefited from running DBSAT and were able to improve their security posture. DBSAT helps you to identify the overall security posture, who are the users and their entitlements, and to know how much and where is sensitive data located.
+In this lab, you will be able to play with the DBSAT and understand how it works and the immediate value it provides. Many customers already benefited from running DBSAT and were able to improve their security posture. DBSAT helps you to identify the overall security posture, who are the users and their entitlements, and to know how much and where sensitive data is located.
 
 **Disclaimer:** Please note that the counts of user/role grants, dates (including checks dependent on them), and patching information encountered during the live labs assessment may vary from the details provided in the screenshots below. The information presented in the screenshots is indicative, serving as a general reference.
 
@@ -48,7 +48,7 @@ This lab assumes you have:
     <copy>sudo su - oracle</copy>
     ````
 
-    **Note**: If you are using a remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session
+    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
 2. Go to the scripts directory
 
