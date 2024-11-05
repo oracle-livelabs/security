@@ -401,7 +401,7 @@ Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate 
     ![Key Vault](./images/okv-021.png "Delete Oracle Wallet")
 
     **Note**:
-    - To be safe, we will make a temporary backup directory into `$TDE_HOME/backup` and move the wallet-related files to it
+    - To be safe, we will make a hidden backup directory into `$TDE_HOME/.backup` and move the wallets to it
     - If you want to actually delete it after you have verified everything was successful you can
 
 4. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look at the contents of the  wallet
