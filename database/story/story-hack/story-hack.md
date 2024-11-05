@@ -72,23 +72,23 @@ To see how easy it is to exfiltrate data from an unencrypted network, let's run 
 
 1. Open a terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
-    ````
+    ```
     <copy>sudo su - oracle</copy>
-    ````
+    ```
 
     **Note**: If you are using your remote desktop session, double-click on the *Terminal* icon on the desktop to launch a session already logged on as *oracle* user
 
 2. Go to the scripts directory
 
-    ````
+    ```
     <copy>cd $DBSEC_LABS/story-hack</copy>
-    ````
+    ```
 
 3. Execute a SQL query **on PDB1** and run tcpdump to capture and analyze the packets in transit on the network (wait for the end of the execution)
 
-    ````
+    ```
     <copy>./sh_extract_data_from_network.sh pdb1</copy>
-    ````
+    ```
 
     ![Extract data from network on PDB1 (unsecured DB)](./images/hack-lab1a-01.png "Extract data from network on PDB1 (unsecured DB)")
 
@@ -114,9 +114,9 @@ To see how easy it is to exfiltrate data from an unencrypted network, let's run 
 
 6. Execute an SQL query on PDB2 and run tcpdump to capture and analyze the packets in transit on the network (wait for the end of the execution)
 
-    ````
+    ```
     <copy>./sh_extract_data_from_network.sh pdb2</copy>
-    ````
+    ```
 
     **Note**:
     - The script checks if the SQL traffic is encrypted. You can see the connection is encrypted because an encryption algorithm was selected for the session. You can still see the default banner information for the available encryption service and the crypto-checksumming (integrity) service. Now, you can also see the algorithm used is "`AES256 Encryption service adapter for Linux`".
@@ -159,9 +159,9 @@ Let's see how this type of attack could focus on an export file, but keep in min
 
 1. Let's say that while performing a search, the attacker finds an old, insecure PDB1 export file (`employeesearch_data_PDB1_20241006.dmp`) that was generated for use by a development or support team. The attacker tries to read the file contents
 
-    ````
+    ```
     <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp</copy>
-    ````
+    ```
 
     ![Extract data from UNSECURED export file on PDB1](./images/hack-lab1b-01.png "Extract data from UNSECURED export file on PDB1")
 
@@ -171,17 +171,17 @@ Let's see how this type of attack could focus on an export file, but keep in min
 
 2. And if the attacker tries to exfiltrate all the email addresses for example, nothing could be easier with the right command line
 
-    ````
+    ```
     <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
-    ````
+    ```
 
     ![Extract emails from UNSECURED export file on PDB1](./images/hack-lab1b-02.png "Extract emails from UNSECURED export file on PDB1")
 
 3. Now, do the same thing on export file from PDB2 (`employeesearch_data_PDB1_20241006.dmp`). Unlike the export from PDB1, this export was encrypted.
 
-    ````
+    ```
     <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp</copy>
-    ````
+    ```
 
     ![Extract data from SECURED export file on PDB2](./images/hack-lab1b-03.png "Extract data from SECURED export file on PDB2")
 
@@ -191,9 +191,9 @@ Let's see how this type of attack could focus on an export file, but keep in min
 
 4. And if the attacker tries to exfiltrate all the email addresses, there's nothing but unusable data
 
-    ````
+    ```
     <copy>./sh_extract_data_from_file.sh employeesearch_data_PDB1_20241006.dmp |grep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i</copy>
-    ````
+    ```
 
     ![Extract emails from SECURED export file on PDB2](./images/hack-lab1b-04.png "Extract emails from SECURED export file on PDB2")
 
@@ -244,9 +244,9 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
 
 1. On PDB1, the `EMPDATA_PROD` tablespace is unsecured and its associated datafiles is named `empdata_prod.dbf`
 
-    ````
+    ```
     <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_prod.dbf</copy>
-    ````
+    ```
 
     ![Extract data from UNSECURED datafile on PDB1](./images/hack-lab1c-01.png "Extract data from UNSECURED datafile on PDB1")
 
@@ -257,9 +257,9 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
 
 2. On PDB2, the `EMPDATA_PROD` tablespace is secured and its datafiles associated is also named `empdata_prod.dbf`
 
-    ````
+    ```
     <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_prod.dbf</copy>
-    ````
+    ```
 
     ![Extract data from SECURED datafile on PDB2](./images/hack-lab1c-02.png "Extract data from SECURED datafile on PDB2")
 
@@ -296,9 +296,9 @@ Imagine that you decide to refresh your development database every Monday from t
 
 1. Let's **refresh the development from production on PDB1 with no masking script**
 
-    ````
+    ```
     <copy>./sh_refresh_dev_from_prod.sh pdb1 nomasking</copy>
-    ````
+    ```
 
     ![Refresh UNSECURED DEV data on PDB1](./images/hack-lab1c-04.png "Refresh UNSECURED DEV data on PDB1")
 
@@ -306,9 +306,9 @@ Imagine that you decide to refresh your development database every Monday from t
 
 2. Next, for example, **extract only the email of the User 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB1**, as seen in the previous attack
 
-    ````
+    ```
     <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
-    ````
+    ```
 
     ![Extract data from UNSECURED DEV datafile on PDB1](./images/hack-lab1c-05.png "Extract data from UNSECURED DEV datafile on PDB1")
 
@@ -319,9 +319,9 @@ Imagine that you decide to refresh your development database every Monday from t
 
 3. Now, let's see what happens if you **mask the sensitive data during the duplication process in Dev on PDB2**
 
-    ````
+    ```
     <copy>./sh_refresh_dev_from_prod.sh pdb2 masking</copy>
-    ````
+    ```
 
     ![Refresh SECURED DEV data on PDB2](./images/hack-lab1c-06.png "Refresh SECURED DEV data on PDB2")
 
@@ -337,9 +337,9 @@ Imagine that you decide to refresh your development database every Monday from t
 
 4. Next, try again to **extract only the email of the user 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB2**
 
-    ````
+    ```
     <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
-    ````
+    ```
 
     ![Extract data from SECURED DEV datafile on PDB2](./images/hack-lab1c-07.png "Extract data from SECURED DEV datafile on PDB2")
 
@@ -411,13 +411,13 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
 
 2. Login to these 2 applications as *`hradmin`* with the password "*`Oracle123`*"
 
-    ````
+    ```
     <copy>hradmin</copy>
-    ````
+    ```
 
-    ````
+    ```
     <copy>Oracle123</copy>
-    ````
+    ```
 
     ![HR App - Menu](./images/hack-lab2a-01.png "HR App - Menu")
 
@@ -445,11 +445,11 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
 
 7. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID, MEMBER_ID, PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
 
-    ````
+    ```
     <copy>
     ' UNION SELECT userid, ' ID: '|| member_id, 'SQLi', '1', '1', '1', '1', '1', '1', 0, 0, payment_acct_no, routing_number, sysdate, sysdate, '0', 1, '1', '1', 1 FROM demo_hr_supplemental_data --
     </copy>
-    ````
+    ```
 
 8. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form on both Web App and tick the "Debug" checkbox
 
@@ -599,9 +599,9 @@ Let's see how this risk could be avoided. Rather than try to guess what privileg
 
 2. Start a privilege analysis capture **on PDB1**
 
-    ````
+    ```
     <copy>./sh_pa_start_capture.sh pdb1</copy>
-    ````
+    ```
 
     ![Privilege Analysis - Start capture on PDB1](./images/hack-lab3b-01.png "Privilege Analysis - Start capture on PDB1")
 
@@ -615,13 +615,13 @@ Let's see how this risk could be avoided. Rather than try to guess what privileg
 
     - Login as *`hradmin`* with the password "*`Oracle123`*"
 
-        ````
+        ```
         <copy>hradmin</copy>
-        ````
+        ```
 
-        ````
+        ```
         <copy>Oracle123</copy>
-        ````
+        ```
 
         ![HR App - Menu](./images/hack-lab2a-01.png "HR App - Menu")
 
@@ -635,9 +635,9 @@ Let's see how this risk could be avoided. Rather than try to guess what privileg
 
 4. Go back to your terminal session to stop the capture to generate a report
 
-    ````
+    ```
     <copy>./sh_pa_stop_capture.sh pdb1</copy>
-    ````
+    ```
 
     ![Privilege Analysis - Stop capture on PDB1](./images/hack-lab3b-02.png "Privilege Analysis - Stop capture on PDB1")
 
@@ -657,13 +657,13 @@ Let's see how this risk could be avoided. Rather than try to guess what privileg
 
     - Login to Oracle Enterprise Manager 13c Console as *`SYSMAN`* with the password "*`Oracle123`*"
 
-        ````
+        ```
         <copy>SYSMAN</copy>
-        ````
+        ```
 
-        ````
+        ```
         <copy>Oracle123</copy>
-        ````
+        ```
 
         ![Privilege Analysis - Login screen](./images/hack-lab3b-03.png "Privilege Analysis - Login screen")
 
@@ -703,9 +703,9 @@ Let's see how this risk could be avoided. Rather than try to guess what privileg
 
     - Drop the capture **on PDB1**
 
-        ````
+        ```
         <copy>./sh_pa_drop_capture.sh pdb1</copy>
-        ````
+        ```
 
         ![Privilege Analysis - Drop capture on PDB1](./images/hack-lab3b-11.png "Privilege Analysis - Drop capture on PDB1")
 
@@ -721,9 +721,9 @@ Another way to steal data is to connect directly to the database without going t
 
 1. Go back to your terminal session and execute a query on sensitive data **on PDB1** with application User `EMPLOYEESEARCH_PROD`
 
-    ````
+    ```
     <copy>./sh_query_employee_data.sh pdb1 EMPLOYEESEARCH_PROD</copy>
-    ````
+    ```
 
     ![View EMPLOYEESEARCH_PROD sensitive data on PDB1](./images/hack-lab3c-01.png "View EMPLOYEESEARCH_PROD sensitive data on PDB1")
 
@@ -731,9 +731,9 @@ Another way to steal data is to connect directly to the database without going t
 
 2. Now, execute the same query **on PDB2**
 
-    ````
+    ```
     <copy>./sh_query_employee_data.sh pdb2 EMPLOYEESEARCH_PROD</copy>
-    ````
+    ```
 
     ![View EMPLOYEESEARCH_PROD sensitive data on PDB2](./images/hack-lab3c-02.png "View EMPLOYEESEARCH_PROD sensitive data on PDB2")
 
@@ -756,13 +756,13 @@ Another way to steal data is to connect directly to the database without going t
 
     - Login as *`hradmin`* with the password "*`Oracle123`*"
 
-        ````
+        ```
         <copy>hradmin</copy>
-        ````
+        ```
 
-        ````
+        ```
         <copy>Oracle123</copy>
-        ````
+        ```
 
         ![HR App - Menu](./images/hack-lab2a-01.png "HR App - Menu")
 
@@ -802,17 +802,17 @@ Finally, the attackers will take the gloves off and will attack with heavy artil
 
     - **On PDB1**
 
-        ````
+        ```
         <copy>./sh_create_users_alert.sh pdb1</copy>
-        ````
+        ```
 
         ![Create/Grant/Drop users to check alerts On PDB1](./images/hack-lab3d-01.png "Create/Grant/Drop users to check alerts On PDB1")
 
     - **On PDB2**
 
-        ````
+        ```
         <copy>./sh_create_users_alert.sh pdb2</copy>
-        ````
+        ```
 
         ![Create/Grant/Drop users to check alerts on PDB2](./images/hack-lab3d-01.png "Create/Grant/Drop users to check alerts on PDB2")
 
@@ -832,9 +832,9 @@ Finally, the attackers will take the gloves off and will attack with heavy artil
 
     - Login to Audit Vault Web Console as *`AVAUDITOR`* with your password set in the "**Initialize Environment**" steps
 
-        ````
+        ```
         <copy>AVAUDITOR</copy>
-        ````
+        ```
 
         ![Audit Vault web console - Login screen](./images/hack-lab3d-02.png "Audit Vault web console - Login screen")
 
@@ -874,17 +874,17 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
 
         - **As an application user** (the schema owner `EMPLOYEESEARCH_PROD`)
 
-            ````
+            ```
             <copy>./sh_query_employee_data.sh pdb1 EMPLOYEESEARCH_PROD</copy>
-            ````
+            ```
 
             ![View EMPLOYEESEARCH_PROD sensitive data on PDB1](./images/hack-lab3d-05.png "View EMPLOYEESEARCH_PROD sensitive data on PDB1")
 
         - **As DBA** (SYS as sysdba)
 
-            ````
+            ```
             <copy>./sh_query_employee_data.sh pdb1 SYS</copy>
-            ````
+            ```
 
             ![View EMPLOYEESEARCH_PROD sensitive data as DBA on PDB1](./images/hack-lab3d-06.png "View EMPLOYEESEARCH_PROD sensitive data as DBA on PDB1")
 
@@ -894,9 +894,9 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
 
         - **As application user** (the schema owner `EMPLOYEESEARCH_PROD`)
 
-            ````
+            ```
             <copy>./sh_query_employee_data.sh pdb2 EMPLOYEESEARCH_PROD</copy>
-            ````
+            ```
 
             ![View EMPLOYEESEARCH_PROD sensitive data on PDB2](./images/hack-lab3d-07.png "View EMPLOYEESEARCH_PROD sensitive data on PDB2")
 
@@ -904,9 +904,9 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
 
         - **As a DBA** (SYS as sysdba)
 
-            ````
+            ```
             <copy>./sh_query_employee_data.sh pdb2 SYS</copy>
-            ````
+            ```
 
             ![View EMPLOYEESEARCH_PROD sensitive data as DBA on PDB2](./images/hack-lab3d-08.png "View EMPLOYEESEARCH_PROD sensitive data as DBA on PDB2")
 
@@ -914,9 +914,9 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
 
 2. To prevent this attack, let's protect sensitive objects in the `EMPLOYEESEARCH_PROD` schema on PDB2 from malicious activity, even by privileged users like database administrators!
 
-    ````
+    ```
     <copy>./sh_dbv_start_realm.sh pdb2</copy>
-    ````
+    ```
 
     ![DB Vault - Create a REALM to protect EMPLOYEESEARCH_PROD schema on PDB2](./images/hack-lab3d-09.png "DB Vault - Create a REALM to protect EMPLOYEESEARCH_PROD schema on PDB2")
 
@@ -931,9 +931,9 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
 
     - **As an application user** (the schema owner `EMPLOYEESEARCH_PROD`)
 
-        ````
+        ```
         <copy>./sh_query_employee_data.sh pdb2 EMPLOYEESEARCH_PROD</copy>
-        ````
+        ```
 
         ![View EMPLOYEESEARCH_PROD sensitive data on PDB2](./images/hack-lab3c-02.png "View EMPLOYEESEARCH_PROD sensitive data on PDB2")
 
@@ -941,9 +941,9 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
 
     - **As a DBA** (SYS as sysdba)
 
-        ````
+        ```
         <copy>./sh_query_employee_data.sh pdb2 SYS</copy>
-        ````
+        ```
 
         ![View EMPLOYEESEARCH_PROD sensitive data as DBA on PDB2](./images/hack-lab3d-10.png "View EMPLOYEESEARCH_PROD sensitive data as DBA on PDB2")
 
@@ -954,9 +954,9 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
 
 4. When you are ready to continue, you can drop the realm on PDB2
 
-    ````
+    ```
     <copy>./sh_dbv_drop_realm.sh pdb2</copy>
-    ````
+    ```
 
     ![DB Vault - Drop the REALM on PDB2](./images/hack-lab3d-11.png "DB Vault - Drop the REALM on PDB2")
 
