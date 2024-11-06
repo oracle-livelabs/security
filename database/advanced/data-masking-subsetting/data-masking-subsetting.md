@@ -19,16 +19,15 @@ Finally, we will see how the masked and subsetted data can be used securely for 
 ### Prerequisites
 This lab assumes you have:
 - A Free Tier, Paid or LiveLabs Oracle Cloud account.
-- You have completed:
+- Completed:
     - Lab 1: Prepare Setup (*`Free-tier`* and *`Paid Tenants`* only)
     - Lab 2: Environment Setup
     - Lab 3: Initialize Environment
 
-
 ## Task 1: Navigate to DMS
 
 ### Objective
-Access Oracle Data Masking and Subsetting (DMS) within the Oracle Enterprise Manager (OEM) console. This task will familiarize users with the interface and ensure they can locate and open the DMS platform, which will be used throughout the workshop for configuring data protection tasks.
+Access Oracle Data Masking and Subsetting (DMS) within the Oracle Enterprise Manager (OEM) console. This task will familiarize users with the interface and ensure they can locate and open the DMS platform, which will be used throughout the workshop.
 
 ### Steps
 1. On your NoVNC remote desktop, the OEM login page should be open by default. If it’s not, click the **Get Started with your Workshop** icon under Activities on the right. 
@@ -62,13 +61,13 @@ This is the first step and a prerequisite for Data Discovery, Masking, and Subse
 
 **ii. Data Masking Path**
 - Create Masking Definitions: Define masking formats to protect sensitive data.
-- Generate and Execute Masking Job: Apply the defined masking rules to the sensitive data.
+- Generate and Execute Masking Job: Apply the defined masking rules to the sensitive data.  
 **Output:** Data is masked on the non-production database.
 
 **iii. Data Subsetting Path**
 - Create Subsetting Definitions: Define which data subset will be extracted from the production database.
 - Choose Masking Definitions (Optional): Apply masking to the subsetted data before execution.
-- Generate and Execute Subsetting Job: Execute the subsetting and optional masking rules together.
+- Generate and Execute Subsetting Job: Execute the subsetting and optional masking rules together.  
 **Output:** Data is Subsetted (and optionally Masked) on the non-production database.
 
 **What You Accomplished** 
