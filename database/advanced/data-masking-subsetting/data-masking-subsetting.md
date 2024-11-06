@@ -70,7 +70,7 @@ This is the first step and a prerequisite for Data Discovery, Masking, and Subse
 - Generate and Execute Subsetting Job: Execute the subsetting and optional masking rules together.  
 **Output:** Data is Subsetted (and optionally Masked) on the non-production database.
 
-**What You Accomplished** 
+**What You Accomplished**  
 Navigated to Oracle Data Masking and Subsetting on Oracle Enterprise Manager 24 console.
 
 ## Task 2: Data Discovery- Create Application Data Model (ADM)
@@ -90,19 +90,19 @@ Fill in the following details:
 - Schemas: *`Select All`*
 - Relationship Discovery Type: Choose *`Database Level (Dictionary-Based)`*
 
-        ![DMS](./images/dms-004.png "Create an ADM")
+    ![DMS](./images/dms-004.png "Create an ADM")
 
     **Note:** Database Level (Dictionary-Based) automatically identifies relationships within the database using its data dictionary. Refer to the [**documentation**](https://docs.oracle.com/en/database/oracle/oracle-database/19/dmksb/data_modeling.html) for more details on Relationship Discovery Type.
 
-2. Click **Create**. Once the job completes, the `EMPLOYEE_ADM` will no longer be in a locked, uneditable status. Check the status by refreshing this page (**refresh icon**) and move forward when the **Most Recent Jobs Status** of the `Employee_ADM` shows "**Succeeded**"!
+2. Click **Create**. Once the job completes, the *`EMPLOYEE_ADM`* will no longer be in a locked, uneditable status. Check the status by refreshing this page (**refresh icon**) and move forward when the **Most Recent Jobs Status** of the *`EMPLOYEE_ADM`* shows "**Succeeded**"!
 
-**What You Accomplished** 
-Created Application Data Model `EMPLOYEE_ADM` for `cdb_PDB1` target database.
+**What You Accomplished**  
+Created Application Data Model *`EMPLOYEE_ADM`* for *`cdb_PDB1`* target database.
 
 ## Task 3: Data Discovery- Create New Sensitive Types
 
 ### Objective
-Create two new **Sensitive Types** for **UserID** and **Password**: To identify columns containing sensitive data like Email ID, User ID, and Password, we rely on the **Sensitive Types** library in Data Masking and Subsetting. This library includes a range of predefined Sensitive Types representing specific data categories, and it also allows users to add custom types. Since **Email ID** is already available as a predefined Sensitive Type, we’ll need to create two new Sensitive Types for **UserID** and **Password** to complete our requirements.
+Create two new **Sensitive Types** for **UserID** and **Password**: To identify columns containing sensitive data like Email ID, User ID, and Password, we rely on the **Sensitive Types** library in Data Masking and Subsetting. This library includes a range of predefined Sensitive Types representing specific data categories, and it also allows users to add custom types. Since **Email ID** is already available as a predefined Sensitive Type, we would create two new Sensitive Types for **UserID** and **Password** to complete our requirements.
 
 ### Steps
 1. Navigate to **Sensitive Types** under **Data Discovery**. Click **Create**.
@@ -112,15 +112,15 @@ Create two new **Sensitive Types** for **UserID** and **Password**: To identify 
 2. Fill in the details as below:
 
 - Name: **USER ID**.
-- Column Name Pattern: `USERID.*;ID.*`
-- Column Comment Pattern: `USERID.*;ID.*`
+- Column Name Pattern: *`USERID.*;ID.*`*
+- Column Comment Pattern: *`USERID.*;ID.*`*
 
 Optionally, you can also define the Column Data Pattern.
 
-    ![DMS](./images/dms-016.png "List of Sensitive column types")
+![DMS](./images/dms-016.png "List of Sensitive column types")
 Click **Create**.
 
-3. Now, let's create the second **Sensitive Type** for Password. Click **Create** option at the top.
+3. Now, let's create the second Sensitive Type for **Password**. Click **Create** option at the top.
 
 4. Fill in the below details on **Create Sensitive Type** page:
 
@@ -135,8 +135,8 @@ Click **Create**.
 
 5. Click **Create**.
 
-**What You Accomplished** 
-You now have two new customized Sensitive Types **USER ID** and **Password** available in the **Sensitive Types** Library. 
+**What You Accomplished**  
+ You now have two new customized Sensitive Types **User ID** and **Password** available in the **Sensitive Types** Library. 
 
 ## Task 4 Data Discovery- Discover Sensitive Data (Automated)
 
@@ -157,8 +157,8 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 
 4. Fill in the following details on the **Discover Sensitive Columns page**:
 
-- Database Named Credentials: **DMS_ADMIN**.
-- Applications: **EMPLOYEESEARCH_DEV**.
+- Database Named Credentials: *`DMS_ADMIN`*.
+- Applications: *`EMPLOYEESEARCH_DEV`*.
 - Sensitive Types: **Email ID**, **User ID** and **Password** (Choose from the drop-down).
 
 Click **Submit**. Check the Discovery Job status by refreshing this page (**refresh button**) and move forward when status shows **Succeeded**!
@@ -173,13 +173,13 @@ Click **Submit**. Check the Discovery Job status by refreshing this page (**refr
 
     **Note:** 
     - This ADM is later used for Data Masking and Data Subsetting tasks.
-    - Please note how we use the terms Application, Schema, Object, and Table. Find a brief description of each below:
-    a. Application: An application groups related schemas and objects, providing a high-level organizational view for managing data masking and subsetting configurations.
-    b. Schema: A logical collection of database objects, typically associated with a user, that includes tables, views, indexes, and more. 
-    c. Object: Any entity within a schema that holds data or defines a structure, such as a table, view, or index.
+    - Please note how we use the terms Application, Schema, Object, and Table. Find a brief description of each below:  
+    a. Application: An application groups related schemas and objects, providing a high-level organizational view for managing data masking and subsetting configurations.  
+    b. Schema: A logical collection of database objects, typically associated with a user, that includes tables, views, indexes, and more.  
+    c. Object: Any entity within a schema that holds data or defines a structure, such as a table, view, or index.  
     d. Table: A structured set of data organized in rows and columns within a schema. 
 
-**What You Accomplished** 
+**What You Accomplished**  
 Successfully ran the **Discover Sensitive Columns** job to identify and mark sensitive columns. Utilized Oracle's predefined sensitive type, **Email ID**, along with customized types, **User ID** and **Password**.
 
 ## Task 5: Data Masking- Create a New Masking Format
@@ -194,10 +194,10 @@ Create a new **Masking Format** for previously discovered sensitive column `Emai
 
 2. Notice that **Masking Formats** library appears with predefined formats that Oracle Enterprise Manager provides. Click **Create** and fill in the following details:
 
-- Name: **EMAIL_ID**.
+- Name: **Email ID**.
 - Description: *`Mask the corporate email by changing prefix and domain name`*.
-- Sensitive Type: `EMAIL ID`.
-- Format Entry: `Random Strings`.
+- Sensitive Type: *`EMAIL ID`*.
+- Format Entry: *`Random Strings`*.
 - Mention the **Start Length** as 6 and **End Length** as 8. Click **Add Format Entry**.
 
 3. Now, add another **Format Entry** as shown below:
@@ -211,8 +211,8 @@ You can see the newly created Masking Format for the EMAIL_ID column in the libr
 
 ![DMS](./images/dms-024.png "Create a masking format in the format library")
 
-**What You Accomplished:** 
-A new Masking Format **EMAIL_ID** that will be used to replace sensitive data in `Email` columns with new values generated from the concatenation of a random string of 6 to 8 characters at the beginning, followed by the fixed value `@xyz.com`.
+**What You Accomplished:**  
+A new Masking Format **Email ID** that will be used to replace sensitive data in `Email` columns with new values generated from the concatenation of a random string of 6 to 8 characters at the beginning, followed by the fixed value `@xyz.com`.
 
 ## Task 6: Data Masking- Create Masking Definition
 
@@ -235,49 +235,49 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 
 Click **Next**.
 
-4. On the next screen, you can seetwo different sections- **Columns Available in Application Data Model** and **Columns Available in Masking Definition**. Notice the all discovered sensitive columns shown under **Columns Available in Application Data Model** section:
+4. On the next screen, you can see two different sections- **Columns Available in Application Data Model** and **Columns Available in Masking Definition**. Notice the all discovered sensitive columns shown under **Columns Available in Application Data Model** section:
 
     ![DMS](./images/dms-025.png "Format library")
 
 Now, let's define and add the masking formats for all the columns for Email, UserID and Password. 
 
-5. For **Email** columns under **DEMO_HR_EMPLOYEES** and **DEMO_HR_USERS**: Highlight each column one by one and click **Define Format and ADD** option at the top.
+5. For **Email** columns in *`DEMO_HR_EMPLOYEES`* and *`DEMO_HR_USERS`*: Highlight each column one by one and click **Define Format and ADD** option at the top.
 
-6. On the **Define Format and ADD** page, choose `EMAIL ID` (**Masking Format** created in task 6) under **Choose From Masking Formats** drop-down box and click **Import**.
+6. On the **Define Format and ADD** page, choose **Email ID** (**Masking Format** created in task 5) under **Choose From Masking Formats** drop-down box and click **Import**.
 
 Notice, Masking Format Entries are automatically populated:
 
-    ![DMS](./images/dms-026.png "Define a new use defined masking format")
+![DMS](./images/dms-026.png "Define a new use defined masking format")
 
-View the sample Data by clicking **Generate** under **Sample Data**:
+7. View the sample Data by clicking **Generate** under **Sample Data**:
 
  ![DMS](./images/dms-027.png "Provide required information for the new format")
 
-Click **ADD**. Now, repeat the same for the other **Email** column.
+8. Click **ADD**. Now, repeat the same for the other **Email** column.  
 
-6. Notice the `EMAIL` columns now appears under **Columns Available in Masking Definition** along with the defined Masking Format:
+Notice the *`EMAIL`* columns now appear under **Columns Available in Masking Definition** along with the defined Masking Format:
 
-    ![DMS](./images/dms-027.png "Provide required information for the new format")
+![DMS](./images/dms-027.png "Provide required information for the new format")
 
-Stay on the **Create Masking Definitions** page to define and add the formats for the other columns- `USERID` and `Password`as shown in the next steps.
+Stay on the **Create Masking Definitions** page to define and add the formats for the other columns- *`USERID`* and *`Password`* as shown in the next steps.
 
-7. Select the **USERID** column shown under **Columns Available in Application Data Model** and click **Define Format and Add**.
+9. Select the **USERID** column shown under **Columns Available in Application Data Model** and click **Define Format and Add**.
 
-- Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as 101 and 1999.
-- Click **ADD**. Repeat the same for the other three UserID columns.
+- Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
+- Click **ADD**. Repeat the same for the other three **UserID** columns.
         ![DMS](./images/dms-028.png "Add the formats entries types")
 
-8. Now, select the **Password** column shown under **Columns Available in Application Data Model**:
+10. Now, select the **Password** column shown under **Columns Available in Application Data Model**:
 
 - Choose **Custom Format Entry** as **Fixed String** and enter the string as *`123`*. 
 - Click **Add**. 
         ![DMS](./images/dms-028.png "Add the formats entries types")
   
-Notice, all columns **EMAIL**, **USERID** and **Password** are added under **Columns Available in Masking Definitions**:  
+Notice, all columns- **EMAIL**, **USERID** and **Password** are added under **Columns Available in Masking Definitions**:  
         ![DMS](./images/dms-028.png "Add the formats entries types")
 - Click **Next**.
 
-9. Users have an option to add a pre-masking script to export the statistics to a temporary table and restore them with a post-masking script after masking concludes. For this task, however, you can leave it empty.
+11. Users have an option to add a pre-masking script to export the statistics to a temporary table and restore them with a post-masking script after masking concludes. For this task, however, you can leave it empty.
 
 **Note**:
 - Use the **Pre Mask Script** text box to specify any SQL script that must run before masking starts.
@@ -286,7 +286,7 @@ Notice, all columns **EMAIL**, **USERID** and **Password** are added under **Col
 
 Click **Next**.
 
-8. Click **Create** on the next page.
+12. Click **Create** on the next page.
 
 **What You Accomplished:**  
 A new Masking Definition for sensitive columns Email, UserID and Password in the *`Employee_ADM`* is created and shown on the **Masking Definitions** page.
@@ -311,18 +311,18 @@ A new Masking Definition for sensitive columns Email, UserID and Password in the
 
 Fill in the below details:
 
-- Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab)
-- Associated Database: **cdb1_PDB1**
-- Database Named Credential: **DMS_ADMIN**
+- Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab).
+- Associated Database: *`cdb1_PDB1`*.
+- Database Named Credential: *`DMS_ADMIN`*.
 
-3. Click **Generate**.
-To follow the status of the job, refresh the screen by clicking **refresh** icon on the **Masking Definitions** page.
+3. Click **Generate**.  
+To monitor the status of the job, refresh the screen by clicking the **Refresh** icon on the **Masking Definitions** page. 
 
 Notice that **the Most Recent Job Status** is changed to *`Script Generated`* for *`Employee_Data_Mask`*. Now, your Masking script is ready to be used!
 
 **Tips**:
-- This script could be taken and executed on other targets which have exactly the same schema structure.
-- You have the ability to export the script locally by clicking **Export** under **Actions**.
+* This script could be taken and executed on other targets which have exactly the same schema structure.
+* You have the ability to export the script locally by clicking **Export** under **Actions**.
 
 **Note:**
 Pre-Masking Validation Checks:
