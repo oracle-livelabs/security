@@ -318,34 +318,34 @@ Fill in the below details:
 3. Click **Generate**.  
 To monitor the status of the job, refresh the screen by clicking the **Refresh** icon on the **Masking Definitions** page. 
 
+**Tips**:
+- This script could be taken and executed on other targets which have exactly the same schema structure.
+- You have the ability to export the script locally by clicking **Export** under **Actions**.
+
 Notice that **the Most Recent Job Status** is changed to *`Script Generated`* for *`Employee_Data_Mask`*. Now, your Masking script is ready to be used!
 
-**Tips**:
-* This script could be taken and executed on other targets which have exactly the same schema structure.
-* You have the ability to export the script locally by clicking **Export** under **Actions**.
-
-**Note:**
-Pre-Masking Validation Checks:
+**Note:**  
+Pre-Masking Validation Checks
 Oracle Data Masking Pack performs a series of validation checks during script generation to ensure that the Data Masking process proceeds successfully without errors. Once the validation checks listed below are successfully completed, Oracle Data Masking Pack generates a PL/SQL-based masking script, which is then transferred to the target database for execution:
 - Masking Formats: This is a necessary step in the Data Masking process to ensure that the chosen masking formats meet the database and application integrity requirements.
 - Data Constraints: The requirements may include generating unique values for the column being masked because of uniqueness constraints or generating values that meet the column length or type requirements
 
 **Update the Named Credential** 
-4. The Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Named Credential with the new SSH key based on your connection method:
-       **Step 4(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).
+4. The Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Named Credential with the new SSH key based on your connection method:  
+       **Step 4(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).  
        **Step 4(b).** Complete this step only if you are NOT using the embedded remote desktop.
 
-**Step 4(a).** If you are using the embedded remote desktop:
-i. Generate SSH Keys
-* From your noVNC remote desktop session, open a terminal window and run the following to generate the key pair
+**Step 4(a).** If you are using the embedded remote desktop:  
+i. Generate SSH Keys  
+- From your noVNC remote desktop session, open a terminal window and run the following to generate the key pair
     ````
     <copy>
     cd ~
     ssh-keygen -b 2048 -t rsa
     </copy>
     ````
-* Accept defaults for file and passphrase by pressing Enter three times to create a key with no passphrase.
-* Update *`~/.ssh/authorized_keys`* and copy the private key to *`/tmp`*.
+- Accept defaults for file and passphrase by pressing Enter three times to create a key with no passphrase.
+- Update *`~/.ssh/authorized_keys`* and copy the private key to *`/tmp`*.
 
     ````
     <copy>
@@ -357,33 +357,33 @@ i. Generate SSH Keys
 
 ii. Update the Named Credentials with the new SSH Key:
 
-* From the EM Console as SYSMAN, navigate to **Setup menu > Security > Named Credentials** and select *`OS_ORACLE_SSH`* credential.
+- From the EM Console as SYSMAN, navigate to **Setup menu > Security > Named Credentials** and select *`OS_ORACLE_SSH`* credential.
        ![DMS](./images/dms-028.png "Add the formats entries types")
 
 Click *`Edit`*.
 
-* Keep the General section unchanged and update the Credential Properties as followed:
+- Keep the General section unchanged and update the Credential Properties as followed:
 
-- Username: *`oracle`*.
-- Delete any content from SSH Public Key Textbox.
-- Delete any content from Run as Textbox (no delegated sudo privilege needed).
+    - Username: *`oracle`*.
+    - Delete any content from SSH Public Key Textbox.
+    - Delete any content from Run as Textbox (no delegated sudo privilege needed).
         ![DMS](./images/dms-028.png "Add the formats entries types")
-- Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **+Other Locations >> tmp** and select the file *`rsa_priv`*.
+    - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **+Other Locations >> tmp** and select the file *`rsa_priv`*.
 
-* Click **Test and Save**.
+- Click **Test and Save**.
         ![DMS](./images/dms-028.png "Add the formats entries types")
 
-**Step 4(b).**  If you are NOT using the remote desktop embedded:
+**Step 4(b).** If you are NOT using the remote desktop embedded:
 
-* Make sure you can R/W files to your DBSecLab VM from the OEM Console by selecting the menu **Setup > Security > Named Credentials**
-* Select *`OS_ORACLE_SSH`* named credential.
-* Click **Edit**.
+- Make sure you can R/W files to your DBSecLab VM from the OEM Console by selecting the menu **Setup > Security > Named Credentials**
+- Select *`OS_ORACLE_SSH`* named credential.
+- Click **Edit**.
         ![DMS](./images/dms-028.png "Add the formats entries types")
-* We have already pre-configured this Named Credential for you but you have to put your own **SSH Private Key** to enable it.
+- We have already pre-configured this Named Credential for you but you have to put your own **SSH Private Key** to enable it.
          ![DMS](./images/dms-028.png "Add the formats entries types")
 
-* In the section Credential Properties, load your SSH Private Key. Remember, this key must be in RSA format, so please open your own SSH Private Key file, copy the content and paste it here.
-* Click **Test and Save**
+- In the section Credential Properties, load your SSH Private Key. Remember, this key must be in RSA format, so please open your own SSH Private Key file, copy the content and paste it here.
+- Click **Test and Save**.  
 Your connection should be successful, if not please make sure your SSH Private Key is the correct one.
         ![DMS](./images/dms-028.png "Add the formats entries types")
 
@@ -395,9 +395,9 @@ Your connection should be successful, if not please make sure your SSH Private K
 Fill in the following details on the Schedule Data Masking Job page:
 
 - Data Masking Option: **In-Database Masking**.
-- Associated Database: **cdb1_PDB1**.
-- Database Named Credentials: **DMS_ADMIN**.
-- Host Named Credentials: **OS_ORACLE_SSH**
+- Associated Database: *`cdb1_PDB1`*.
+- Database Named Credentials: *`DMS_ADMIN`*.
+- Host Named Credentials: *`OS_ORACLE_SSH`*
 - Select the checkbox for **Selected Database is not a production database**.
 
 7. Click **Next**.
@@ -415,25 +415,25 @@ Observe that the **Most Recent Job Status** changes to **Masking Job Scheduled**
 - Unlike masking processes that are traditionally slow because they perform table updates, Oracle Data Masking Pack takes advantage of the built-in optimizations in the database to disable database logging and execute in parallel to quickly create a masked replacement for the original table.
 - The original table containing sensitive data is dropped from the database completely and is no longer accessible.
 
-**What You Accomplished:** 
+**What You Accomplished:**  
 Generated the Masking Script for the *`EMPLOYEE_DATA_MASK`* definition, with the option to export it for future bulk operations. Updated the required Named Credential and executed the script, successfully completing the masking job.
 
 ## Task 8: Review the Masked Data and Share with Third-Party
 
 ### Objective
-**Query and review the masked data** in the Development and Production environments for a before and after comparison. Share the masked data with your third-party collaborator.
+**Query and review the masked data** in the development and production environments for a before and after comparison. Share the masked data with your third-party collaborator.
 
 ### Steps
-**Query the masked data**
-1. Open **SQL Developer** on your noVNC session and connect to **PDB1_SYSTEM** by double-clicking the connection.
+**Query the masked data:**
+1. Open **SQL Developer** on your noVNC session and connect to *`PDB1_SYSTEM`* by double-clicking the connection.
 
     ![DMS](./images/dms-093.png "Open SQL Developer")
 
-2. You should open two separate worksheets for `PDB1_SYSTEM`. Open the second worksheet by right clicking `PDB1_SYSTEM` shown under `Oracle Connections` and selecting **Open Worksheet**.
+2. You should open two separate worksheets for *`PDB1_SYSTEM`*. Open the second worksheet by right clicking *`PDB1_SYSTEM`* shown under **Oracle Connections** and selecting **Open Worksheet**.
 
     ![DMS](./images/dms-094.png "Open SQL Developer")
 
-3. In the first one, copy the following queries for the **PROD: BEFORE MASKING**
+3. In the first one, copy the following queries for **Production data BEFORE masking**:
 
     ````
     <copy>
@@ -454,7 +454,7 @@ Generated the Masking Script for the *`EMPLOYEE_DATA_MASK`* definition, with the
 
     ![DMS](./images/dms-097.png "Queries for the PROD (BEFORE MASKING)")
 
-4. In the second one, copy the following queries for the **DEV: AFTER MASKING**
+4. In the second one, copy the following queries for the **development data AFTER masking**
 
     ````
     <copy>
@@ -476,32 +476,33 @@ Generated the Masking Script for the *`EMPLOYEE_DATA_MASK`* definition, with the
     ![DMS](./images/dms-098.png "Queries for the DEV (AFTER MASKING)")
 
 **Compare the results:**
-5. Before and after masked data for **DEMO_HR_EMPLOYEES** and **DEMO_HR_USERS** have been shown below:
+5. Before and after masking job comparison for **DEMO_HR_EMPLOYEES** and **DEMO_HR_USERS** have been shown below:
 
     - Employee Data:
-        - **BEFORE masking** (in PROD)
+        - **BEFORE masking** (on prod)
 
             ![DMS](./images/dms-099.png "Employee data BEFORE masking (in PROD)")
 
-        - **AFTER masking** (in DEV)
+        - **AFTER masking** (on dev)
 
             ![DMS](./images/dms-100.png "Employee data AFTER masking (in DEV)")
 
     - Users Data:
-        - **BEFORE masking** (in PROD)
+        - **BEFORE masking** (on prod)
 
             ![DMS](./images/dms-101.png "Users data BEFORE masking (in PROD)")
 
-        - **AFTER masking** (in DEV)
+        - **AFTER masking** (on dev)
 
             ![DMS](./images/dms-102.png "Users data AFTER masking (in DEV)")
 
-As shown, sensitive data has been masked according to the defined formats in the development environment, allowing you to share this environment securely. With sensitive columns like Email, UserID, and Password masked while keeping other non-sensitive columns unmasked, organizations can safely share data with external partners without exposing sensitive information. This ensures secure data sharing while maintaining usability for various purposes, including analytics, as illustrated below:
-*`The third-party analytics firm can perform workforce analysis while protecting privacy by utilizing masked columns like Email, UserID, and Password, alongside unmasked, non-sensitive columns. For example, the firm could examine employee engagement and activity without needing direct identifiers. Suppose the data shows that out of 1000 masked employees in HR_EMPLOYEES, 300 have logged into the system over 50 times in the past month, indicating high engagement. In HR_USERS, masked UserIDs can show 100 distinct users who accessed sensitive internal reports.`*
+As shown, sensitive data has been masked according to the defined formats in the development environment, allowing you to share this environment securely. With sensitive columns like Email, UserID, and Password masked while keeping other non-sensitive columns unmasked, organizations can safely share data with external partners without exposing sensitive information. This ensures secure data sharing while maintaining usability for various purposes, including analytics, as illustrated below:  
+*`The collaborator can perform workforce analysis while protecting privacy by utilizing masked columns like Email, UserID, and Password, alongside unmasked, non-sensitive columns. For example, the firm could examine employee engagement and activity without needing direct identifiers. Suppose the data shows that out of 1000 masked employees in HR_EMPLOYEES, 300 have logged into the system over 50 times in the past month, indicating high engagement. In HR_USERS, masked UserIDs can show 100 distinct users who accessed sensitive internal reports.`*
 
-*`Using these insights, the third party can provide actionable recommendations, such as “Employees with high engagement rates might benefit from targeted skill-building programs,” or “Internal report access patterns suggest a need to audit access controls.” This analysis allows the organization to improve workforce management while safeguarding sensitive information.`*
+*`These insights can provide actionable recommendations, such as “Internal report access patterns suggest a need to audit access controls.” This analysis allows the organization to improve workforce management while safeguarding sensitive information.`*
 
-**What You Accomplished:** Queried and reviewed masked data using Oracle SQL Developer, while also exploring the use case for securely sharing data with a third-party collaborator.
+**What You Accomplished:**  
+Queried and reviewed masked data using Oracle SQL Developer, while also exploring the use case for securely sharing data with a third-party collaborator.
 
 ## Task 9: Data Subsetting- Create Data Subsetting Definition
 
@@ -522,40 +523,40 @@ Subset and mask your sensitive data for secure sharing with external partners. T
 
     ![DMS](./images/dms-130b.png "Begin the process of subsetting data")
 
-3. On the **Data Subsetting Definition Properties** screen, fill it as follows:
-        - Name: *`EMPLOYEE_DATA_SUBSET`*
-        - Description: *`Subset Employee Data`*
-        - Application Data Model: *`Employee_ADM`*
-        - Source Database: *`cdb1_pdb1`*
+3. On the **Data Subsetting Definition Properties** screen, fill it as follows:  
+    - Name: *`EMPLOYEE_DATA_SUBSET`*
+    - Description: *`Subset Employee Data`*
+    - Application Data Model: *`Employee_ADM`*
+    - Source Database: *`cdb1_pdb1`*
 
         ![DMS](./images/dms-131.png "Subsetting Definition Properties")
 
 4. Click **Continue**.  
 
-5. In the **Credentials"** section, select the **Named** radio button, choose the Credential Name as *`DMS_ADMIN`*.
+5. In the **Credentials** section, select the **Named** radio button, choose the **Credential Name** as *`DMS_ADMIN`*.
 
     ![DMS](./images/dms-132.png "Database credentials")
 
-6. Click **Submit**.
+6. Click **Submit**.  
 Now, your Subsetting definition is being created. Please refresh the page until you see **Succeeded** under **Most Recent Job Status**.
 
-    ![DMS](./images/dms-133.png "Subsetting definition is scheduling")
+![DMS](./images/dms-133.png "Subsetting definition is scheduling")
 
 7. Once the subsetting definition is created, select it and click on **Edit**.
 
     ![DMS](./images/dms-134.png "Edit the Subsetting definition")
 
-8. In the "**Applications**" tab, select `EMPLOYEESEARCH_DEV(EMPLOYEESEARCH_DEV)` available in your ADM.
+8. In the **Applications** tab, select *`EMPLOYEESEARCH_DEV(EMPLOYEESEARCH_DEV)`* available in your ADM.
 
     ![DMS](./images/dms-135.png "Select the schema")
 
-**Add Subset (Object) Rules:**
-9. In the "**Object Rules**" tab, define the subset rules by clicking **Create** as many times as needed. Here, we will create **4** Object Rules, so click **Create** and proceed as below:
+**Add Object (Subset) Rules:**
+9. In the **Object Rules** tab, define the subset rules by clicking **Create** as many times as needed. Here, we will create **four** Object Rules, so click **Create** and proceed as below:
 
     ![DMS](./images/dms-136.png "Create all the Subset rules")
 
     - Object Rule 1: For *`DEMO_HR_EMPLOYEES`* table, we will keep only **25% of rows** as this is a dataset table.
-        - In **Objects**, select **Specified** and choose *`DEMO_HR_EMPLOYEES`*
+        - In **Objects**, select **Specified** and choose *`DEMO_HR_EMPLOYEES`*.
         - In **Rows to Include**, select **Some Rows** and enter *`25`*.
         - Check "**Include Related Rows**" and select **Ancestor and Descendant Objects**.
 
@@ -588,10 +589,10 @@ Now, your Subsetting definition is being created. Please refresh the page until 
 
             ![DMS](./images/dms-140.png "... for DEMO_HR_USERS table")
 
-10. Click **OK**.
+10. Click **OK**.  
     Now, all 4 defined Object Rules should show as below:
 
-        ![DMS](./images/dms-141.png "List of your Object Rules")
+    ![DMS](./images/dms-141.png "List of your Object Rules")
 
 11. In the **Space Estimate** tab, expand the **Applications and Objects** list as shown below:
 
@@ -606,18 +607,18 @@ Now, your Subsetting definition is being created. Please refresh the page until 
 **Associate the previously generated Masking Definition**:
 13. In the **Data Masking Definitions** tab, click **Add**.
 
-        ![DMS](./images/dms-143.png "Data Masking Definitions")
+     ![DMS](./images/dms-143.png "Data Masking Definitions")
 
 14. Select the masking définition *`EMPLOYEE_DATA_MASK`* created earlier. Click **OK**.
 
-        ![DMS](./images/dms-144.png "Data Masking Definitions")
+     ![DMS](./images/dms-144.png "Data Masking Definitions")
 
 Now, your Data Masking script is associated with your Data Subsetting definition and it will be executed along with data subsetting. You do not need to execute the masking script separately.
         ![DMS](./images/dms-145.png "Data Masking Definitions is associated")
 
 15. Click **Return** to go to the Data Subsetting Definitions screen.
 
-**What you accomplished:** 
+**What you accomplished:**  
 Data Subsetting Definition is created with defined subsetting and masking rules. Alternatively, you can choose to just define subsetting rules without the masking definition inclusion by skipping step 13 and 14.
 
 ## Task 10: Data Subsetting- Generate and Execute Data Subsetting Script
@@ -625,7 +626,7 @@ Data Subsetting Definition is created with defined subsetting and masking rules.
 ### Objective
 Once the Data Subsetting Definition containing subsetting and masking rules is created, the next step is to:
 
-1. **Restore the development schema** on CDB1_PDB1 target database by cloning data from production schema.
+1. **Restore the development schema** on *`cdb1_pdb1`* target database by cloning data from production schema.
 2. **Generate** and **execute** the Subsetting Script.
 
 ### Steps
@@ -637,7 +638,7 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`*.
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: If you are using a **remote desktop session**, simply double-click the **Terminal** icon on the desktop to launch a session directly as Oracle. 
+**Note**: If you are using a **remote desktop session**, simply double-click the **Terminal** icon on the desktop to launch a session directly as Oracle. 
 
 2. Go to the scripts directory.
 
@@ -645,24 +646,24 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`*.
         <copy>cd $DBSEC_LABS/dms</copy>
         ````
 
-3. Reset the `EMPLOYEESEARCH_DEV` data as it was before masking.
+3. Reset the *`EMPLOYEESEARCH_DEV`* data as it was before masking.
 
         ````
         <copy>./dms_restore_pdb1_dev.sh</copy>
         ````
 
-        ![DMS](./images/dms-150.png "Restore original data")
+    ![DMS](./images/dms-150.png "Restore original data")
 
-**Generate and execute the Subsetting script**
+**Generate and execute the subsetting script:**
 4. Go back to the OEM Console and navigate to the main menu: **Target > Databases**, then choose **Data Subsetting** under **Security**.
 
     ![DMS](./images/dms-130.png "Navigate to the Application Data Models")
 
 5. Select the *`EMPLOYEE_DATA_SUBSET`* subsetting definition, go to **Actions**, and choose **Generate Subset**.
 
-6. On the "**Generate Subset: General**" screen, fill in as shown below:
+6. On the **Generate Subset: General** screen, fill in as shown below:
 
-    - In **Create Subset By**, select **Deleting Data From a Target Database** (this is similar to the  In-Database Masking).
+    - In **Create Subset By**, select **Deleting Data From a Target Database** (similar to the In-Database Masking).
     - In **Database Credentials**, select the **Named** radio button and choose the Credential Name as  *`DMS_ADMIN`*.
     - In **Host Credentials**, select the **Named** radio button and choose the Credential Name as  *`OS_ORACLE_SSH`*.
 
@@ -676,25 +677,25 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`*.
     - Enter this location: *`/home/oracle/DBSecLab/livelabs/dms`*.
     - Select the checkbox *`The selected target is not a production database`*.
 
-            ![DMS](./images/dms-154.png "Generate Subset: Parameters")
+        ![DMS](./images/dms-154.png "Generate Subset: Parameters")
 
 9. Click **Continue**. A warning message tells you that a directory will be created to store the script into the location you mentioned earlier.
 
-        ![DMS](./images/dms-155.png "Warning message")
+    ![DMS](./images/dms-155.png "Warning message")
 
-10. Click **OK**.
+10. Click **OK**.  
 After reviewing that the required space is available, click **Submit** to generate the script.
 
     ![DMS](./images/dms-156.png "Generate the scripts")
 
-    **Note:** The script is generated and automatically executed!
+**Note:** The script is generated and automatically executed!
 
 11. Refresh the **Data Subsetting Definitions** page until you see the **Job Status** as **Succeeded**.
 
     ![DMS](./images/dms-157.png "Job Status as Succeeded")
 
-**What you accomplished:** 
-Data Subsetting script including masking and subsetting rules have been generated and executed in the same process.
+**What you accomplished:**  
+Data Subsetting script including masking and subsetting rules has been generated and executed in the same process.
 
 ## Task 11: Review the Subsetted (and Masked) Data
 
@@ -702,13 +703,13 @@ Data Subsetting script including masking and subsetting rules have been generate
 Review subsetted and masked data across environments to understand how Data Masking and Subsetting enables secure data sharing with third-party collaborators. This includes querying subsetted and masked data in Production and Development environments for a before-and-after comparison.
 
 ### Steps
-1. Lets begin by querying the data in the production and development environments using SQL Developer:
-Open **SQL Developer** on your noVNC session and connect to **pdb1 as SYSTEM**.
+1. Query the data in the production and development environments using SQL Developer:  
+Open **SQL Developer** on your noVNC session.
 
-    ![DMS](./images/dms-093.png "Open SQL Developer")
+![DMS](./images/dms-093.png "Open SQL Developer")
 
-2. You should open two separate worksheets for *`PDB1_SYSTEM`*:
-        - Under the list of **Oracle Connections**, double-click on *`PDB1_SYSTEM`*.
+2. You should open two separate worksheets for *`PDB1_SYSTEM`* connection:  
+        - Under the list of **Oracle Connections**, double-click on *`PDB1_SYSTEM`*.  
         - Open the second worksheet by right-clicking *`PDB1_SYSTEM`* shown under **Oracle Connections** and selecting **Open SQL Worksheet**.
 
     ![DMS](./images/dms-094.png "Open SQL Developer")
@@ -773,42 +774,43 @@ Open **SQL Developer** on your noVNC session and connect to **pdb1 as SYSTEM**.
 
     ![DMS](./images/dms-159.png "Queries for the DEV (AFTER SUBSETTING)")
 
-5. Execute all the above queries and compare the results to confirm your sensitives data have been subsetted and masked as shown below:
+5. Execute all the above queries and compare the results as shown below:
 
-        - Rows count **before subsetting**:
+    - Rows count **before subsetting**:
 
-        ![DMS](./images/dms-160.png "Row count BEFORE subsetting (in PROD)")
+    ![DMS](./images/dms-160.png "Row count BEFORE subsetting (in PROD)")
 
-        - Rows count **after subsetting**:
+    - Rows count **after subsetting**:
 
-        ![DMS](./images/dms-161.png "Row count AFTER subsetting (in DEV)")
+    ![DMS](./images/dms-161.png "Row count AFTER subsetting (in DEV)")
 
-        - Employee Data **before masking**:
+    - Employee Data **before masking**:
 
-            ![DMS](./images/dms-099.png "Employee Data BEFORE masking (in PROD)")
+   ![DMS](./images/dms-099.png "Employee Data BEFORE masking (in PROD)")
 
-        - Employee Data **after masking**
+    - Employee Data **after masking**
 
-            ![DMS](./images/dms-100.png "Employee Data AFTER masking (in DEV)")
+    ![DMS](./images/dms-100.png "Employee Data AFTER masking (in DEV)")
 
-        - Users Data **before masking**
+    - Users Data **before masking**
 
-            ![DMS](./images/dms-101.png "Users Data BEFORE masking (in PROD)")
+    ![DMS](./images/dms-101.png "Users Data BEFORE masking (in PROD)")
 
-        - Users Data **after masking**
+    - Users Data **after masking**
 
-            ![DMS](./images/dms-102.png "Users Data AFTER masking (in DEV)")
+     ![DMS](./images/dms-102.png "Users Data AFTER masking (in DEV)")
 
 As you can see, the sensitive data is subsetted and masked as per the defined object rules and masking definition. 
 
-**Why This Matters:**
-By combining subsetting with masking, the enterprise ensures that the third-party collaborators receive a masked and representative dataset without unnecessary exposure of sensitive or irrelevant data. This approach allows the third-party team to:
+**Why This Matters:**  
+By combining subsetting with masking, the enterprise ensures that the third-party receives a masked and representative dataset without unnecessary exposure of sensitive or irrelevant data. This approach allows the third-party team to:
 
 - Conduct application testing on anonymized data.
-- Maintain the relationships and integrity of reference data, such as roles.
+- Maintain the relationships and integrity of reference data.
 - Ensure compliance with privacy regulations, even when sharing data externally.
 
-**What You Accomplished:** Queried and reviewed subsetted and masked data on production and development environments using Oracle SQL Developer.
+**What You Accomplished:**  
+Queried and reviewed subsetted and masked data on production and development environments using Oracle SQL Developer.
 
 ## Final Task: Reset the Lab Environment
 
@@ -816,22 +818,22 @@ By combining subsetting with masking, the enterprise ensures that the third-part
 
 Lastly, let’s reset the lab by restoring the development environment tables through data cloning from production. Then, delete the previously created:
 
-a. Application Data Model
-b. Masking Definition
-c. Subsetting Definition
+- Application Data Model
+- Masking Definition
+- Subsetting Definition
 
-This task ensures a clean environment for future exercises and prevents any potential conflicts or errors that could arise from leftover configurations.Please note that you must first drop the Masking and Subsetting Definition before dropping the associated Application Data Model.
+This task ensures a clean environment for future exercises and prevents any potential conflicts or errors that could arise from leftover configurations.
 
 ### Steps
-1. Restore the `EMPLOYEESEARCH_DEV` tables on pdb1 by cloning data from `EMPLOYEESEARCH_PROD` schema.
+1. Restore the *`EMPLOYEESEARCH_DEV`* tables by cloning data from *`EMPLOYEESEARCH_PROD`* schema.
 
-    - Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*.
+    - Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`*.
 
         ````
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: If you are using a **remote desktop** session, simply double-click the **Terminal** icon on the desktop to launch a session directly as Oracle. In this case, you do not need to execute this command.
+        **Note**: If you are using a **remote desktop** session, simply double-click the **Terminal** icon on the desktop to launch a session directly as *`oracle`*. In this case, you do not need to execute this command.
 
     - Go to the scripts directory.
 
@@ -839,7 +841,7 @@ This task ensures a clean environment for future exercises and prevents any pote
         <copy>cd $DBSEC_LABS/dms</copy>
         ````
 
-    - Reset the `EMPLOYEESEARCH_DEV` data as it was before masking.
+    - Reset the *`EMPLOYEESEARCH_DEV`* data as it was before masking.
 
         ````
         <copy>./dms_restore_pdb1_dev.sh</copy>
@@ -848,6 +850,8 @@ This task ensures a clean environment for future exercises and prevents any pote
         ![DMS](./images/dms-150.png "Reset Data")
 
 2. Now, go back to the OEM Console and remove all definitions created. 
+
+**Note:** You must first drop the Masking and Subsetting Definition before dropping the associated Application Data Model.
 
 3. First, **drop the Data Masking definition**.
 
@@ -900,7 +904,8 @@ This task ensures a clean environment for future exercises and prevents any pote
 
         ![DMS](./images/dms-198.png "Application Data Model are dropped")
 
-**What you accomplished:** The lab has been reset for future exercises.
+**What you accomplished:**  
+The lab has been reset for future exercises.
 
 ## **Appendix**: About the Product
 ### **Overview**
@@ -919,46 +924,44 @@ Data Subsetting helps reduce security risks and minimize storage costs by removi
 
 ### **Why do I need Data Masking and Subsetting?**
 
-**Challenges**
-There are several reasons why your business may need it, based on the critical challenges outlined below:
-•	Multiple Copies of Sensitive Data
+**Challenges**  
+There are several reasons why your business may need it, based on the critical challenges outlined below:  
+- Multiple Copies of Sensitive Data  
 Creating multiple copies of sensitive data for testing, development, and analytics increases the risk of exposure and makes tracking and securing that data across environments more difficult.
 
-•	Increased Vulnerability to Data Breaches
+- Increased Vulnerability to Data Breaches  
 Without masking or anonymization, sensitive data remains exposed in non-production environments, leaving organizations vulnerable to catastrophic breaches.
 
-•	Regulatory and Compliance Risks
+- Regulatory and Compliance Risks  
 Failing to protect sensitive data can result in non-compliance with critical regulations like GDPR or CCPA, leading to hefty fines and reputational damage.
 
-•	Complex Data Management
+- Complex Data Management  
 Managing sensitive data without proper protection solutions increases operational inefficiencies and overhead costs.
 
 **Business Use Cases**
-•	Data Sharing
+- Data Sharing
 When outsourcing or collaborating with third parties, sharing full datasets can pose a risk. Oracle Data Masking and Subsetting ensures that only relevant, non-sensitive data is shared, protecting sensitive details.
 
-•	Secure Application Testing
+- Secure Application Testing
 Developers need real data for effective testing. Oracle Data Masking and Subsetting allows them to safely use real-world data by obfuscating sensitive information like personal identifiers and financial details. This ensures robust testing without compromising data privacy.
 
-•	Analytics Without Compromise
+- Analytics Without Compromise
 By masking sensitive information, businesses can share data securely for analytics without exposing personal data. This enables effective data-driven insights while maintaining privacy and compliance.
 
-•	Regulatory Compliance
+- Regulatory Compliance
 With regulations like GDPR and CCPA, organizations are required to handle sensitive data securely. Oracle’s solution helps anonymize and protect sensitive information in non-production environments, ensuring compliance and minimizing the risk of penalties.
 
-
-
 ### **Benefits of using DMS**
-•	Create multiple data copies of production environment safely.
-•	Leverage a comprehensive library of Masking Formats, Sensitive Types, Subsetting Techniques, and Application Templates.
-•	Minimize the compliance boundary by not proliferating the sensitive production information.
-•	Lower the storage costs on test and development environments by subsetting data.
-•	Automate the discovery of sensitive data and parent-child relationships.
-•	Mask and subset data In-Database or In-Export by extracting the data from a target database.
-•	Mask and subset both Oracle and non-Oracle databases.
-•	Mask and subset Oracle Databases hosted on the Oracle cloud.
-•	Preserve data integrity during masking and subsetting offering many more unique features.
-•	Integrate with select Oracle testing, security, and integration products.
+- Create multiple data copies of production environment safely.
+- Leverage a comprehensive library of Masking Formats, Sensitive Types, Subsetting Techniques, and Application Templates.
+- Minimize the compliance boundary by not proliferating the sensitive production information.
+- Lower the storage costs on test and development environments by subsetting data.
+- Automate the discovery of sensitive data and parent-child relationships.
+- Mask and subset data In-Database or In-Export by extracting the data from a target database.
+- Mask and subset both Oracle and non-Oracle databases.
+- Mask and subset Oracle Databases hosted on the Oracle cloud.
+- Preserve data integrity during masking and subsetting offering many more unique features.
+- Integrate with select Oracle testing, security, and integration products.
 
 ## Want to Learn More?
 Technical Documentation:
