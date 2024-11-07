@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the core functionality of the **Oracle Data Masking and Subsetting (DMS)** pack for Enterprise Manager 24. Participants will learn how to configure and utilize key features to protect sensitive data in non-production environments. A particular emphasis will be placed on the **Data Sharing** use case, showcasing how DMS ensures secure sharing of data with third parties, such as developers, testers, or external collaborators, by masking or subsetting sensitive information. This approach helps maintain compliance with privacy regulations while ensuring data remains usable for non-production purposes. 
 
-* *`Estimated Lab Time:`* 85 minutes.
+* *`Estimated Lab Time:`* 75 minutes.
 * *`Version tested in this lab:`* DBEE 19.23 and Oracle Enterprise Manager 24.
 
 ### Problem Statement
@@ -82,13 +82,13 @@ Create an ADM and associate it with a target database and schema. This ADM will 
 1. Navigate to **Data Discovery > Application Data Models**. Click **Create** to add a new ADM.
 
 Fill in the following details:
-- Name: *`Employee_ADM`* 
-- Target Type: *`Autonomous Transaction Processing`* 
-- Target Database: *`cdb_PDB1`*
-- Database Named Credentials: *`DMS_ADMIN`*
-- Application Suite: *`Custom (default)`*
-- Schemas: *`Select All`*
-- Relationship Discovery Type: Choose *`Database Level (Dictionary-Based)`*
+- Name: *`Employee_ADM`*.
+- Target Type: *`Autonomous Transaction Processing`*.
+- Target Database: *`cdb_PDB1`*.
+- Database Named Credentials: *`DMS_ADMIN`*.
+- Application Suite: *`Custom (default)`*.
+- Schemas: *`Select All`*.
+- Relationship Discovery Type: Choose *`Database Level (Dictionary-Based)`*.
 
     ![DMS](./images/dms-004.png "Create an ADM")
 
@@ -97,7 +97,7 @@ Fill in the following details:
 2. Click **Create**. Once the job completes, the *`EMPLOYEE_ADM`* will no longer be in a locked, uneditable status. Check the status by refreshing this page (**refresh icon**) and move forward when the **Most Recent Jobs Status** of the *`EMPLOYEE_ADM`* shows "**Succeeded**"!
 
 **What You Accomplished**  
-Created Application Data Model *`EMPLOYEE_ADM`* for *`cdb_PDB1`* target database.
+Created Application Data Model *`EMPLOYEE_ADM`* for *`cdb1_pdb1`* target database.
 
 ## Task 3: Data Discovery- Create New Sensitive Types
 
@@ -144,7 +144,7 @@ Click **Create**.
 Run the **Discover Sensitive Columns** job: To identify sensitive columns, run the Discover Sensitive Columns job, using Oracle's predefined sensitive type, **Email**, along with customized types, **User ID** and **Password**. The Application Data Model’s pattern-matching will analyze column names, comments, and data to locate potential sensitive columns.
 
 ### Steps
-1. Once ADM is created Task 2, highlight *`Employee_ADM`* and go to **Actions > Modify > Discover Sensitive Columns**.
+1. Once ADM is created, highlight *`Employee_ADM`* and go to **Actions > Modify > Discover Sensitive Columns**.
 
     ![DMS](./images/dms-009.png "Edit Employee_ADM Model")
 
@@ -174,10 +174,10 @@ Click **Submit**. Check the Discovery Job status by refreshing this page (**refr
     **Note:** 
     - This ADM is later used for Data Masking and Data Subsetting tasks.
     - Please note how we use the terms Application, Schema, Object, and Table. Find a brief description of each below:  
-    a. Application: An application groups related schemas and objects, providing a high-level organizational view for managing data masking and subsetting configurations.  
-    b. Schema: A logical collection of database objects, typically associated with a user, that includes tables, views, indexes, and more.  
-    c. Object: Any entity within a schema that holds data or defines a structure, such as a table, view, or index.  
-    d. Table: A structured set of data organized in rows and columns within a schema. 
+    a. **Application**: An application groups related schemas and objects, providing a high-level organizational view for managing data masking and subsetting configurations.  
+    b. **Schema**: A logical collection of database objects, typically associated with a user, that includes tables, views, indexes, and more.  
+    c. **Object**: Any entity within a schema that holds data or defines a structure, such as a table, view, or index.  
+    d. **Table**: A structured set of data organized in rows and columns within a schema. 
 
 **What You Accomplished**  
 Successfully ran the **Discover Sensitive Columns** job to identify and mark sensitive columns. Utilized Oracle's predefined sensitive type, **Email ID**, along with customized types, **User ID** and **Password**.
@@ -294,8 +294,8 @@ A new Masking Definition for sensitive columns Email, UserID and Password in the
 ## Task 7: Data Masking- Generate and Execute Masking Script  
 
 ### Objective
-1. **Generate the masking script** for the previously created Masking Definition, *`EMPLOYEE_DATA_MASK`*. If needed, you can also export the script and perform bulk operations for future use.
-2. **Update the Named Credential** required to run the masking job. Then, **execute the generated Masking Script** to complete the masking job on the sensitive data.
+- **Generate the masking script** for the previously created Masking Definition, *`EMPLOYEE_DATA_MASK`*. If needed, you can also export the script and perform bulk operations for future use.
+- **Update the Named Credential** required to run the masking job. Then, **execute the generated Masking Script** to complete the masking job on the sensitive data.
 
 ### Steps
 **Generate the Masking Script**:
@@ -509,9 +509,9 @@ Queried and reviewed masked data using Oracle SQL Developer, while also explorin
 ### Objective
 Subset and mask your sensitive data for secure sharing with external partners. The following tasks will be performed to subset and mask the data together:
 
-1. Create **Data Subsetting Definition**.
-2. Add **Object Rules** to specify the data to be included.
-3. Associate the previously generated **Masking Definition**.
+- Create **Data Subsetting Definition**.
+- Add **Object Rules** to specify the data to be included.
+ Associate the previously generated **Masking Definition**.
 
 ### Steps
 **Create Data Subsetting Definition:**
