@@ -207,7 +207,7 @@ Create a new **Masking Format** for previously discovered sensitive column *`Ema
 
 4. Click **Create**. 
 
-You can see the newly created Masking Format for the EMAIL_ID column in the library.
+You can see the newly created Masking Format for the EMAIL ID column in the library.
 
 ![DMS](./images/dms-024.png "Create a masking format in the format library")
 
@@ -387,7 +387,7 @@ Click *`Edit`*.
 Your connection should be successful, if not please make sure your SSH Private Key is the correct one.
         ![DMS](./images/dms-028.png "Add the formats entries types")
 
-**Schedule Masking Job**:
+**Schedule Masking Job**:  
 5. Now, lets schedule the Masking Script by navigating to **Targets > Databases**. Click **Security** menu and Choose **Data Masking**. 
 
 6. Highlight *`Employee_Data_Mask`* and select **Actions > Schedule Masking**.
@@ -475,7 +475,7 @@ Generated the Masking Script for the *`EMPLOYEE_DATA_MASK`* definition, with the
 
     ![DMS](./images/dms-098.png "Queries for the DEV (AFTER MASKING)")
 
-**Compare the results:**
+**Compare the results:**  
 5. Before and after masking job comparison for **DEMO_HR_EMPLOYEES** and **DEMO_HR_USERS** have been shown below:
 
     - Employee Data:
@@ -550,7 +550,7 @@ Now, your Subsetting definition is being created. Please refresh the page until 
 
     ![DMS](./images/dms-135.png "Select the schema")
 
-**Add Object (Subset) Rules:**
+**Add Object (Subset) Rules:**  
 9. In the **Object Rules** tab, define the subset rules by clicking **Create** as many times as needed. Here, we will create **four** Object Rules, so click **Create** and proceed as below:
 
     ![DMS](./images/dms-136.png "Create all the Subset rules")
@@ -604,7 +604,7 @@ Now, your Subsetting definition is being created. Please refresh the page until 
 
 12.  You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process.
 
-**Associate the previously generated Masking Definition**:
+**Associate the previously generated Masking Definition**:  
 13. In the **Data Masking Definitions** tab, click **Add**.
 
      ![DMS](./images/dms-143.png "Data Masking Definitions")
@@ -626,8 +626,8 @@ Data Subsetting Definition is created with defined subsetting and masking rules.
 ### Objective
 Once the Data Subsetting Definition containing subsetting and masking rules is created, the next step is to:
 
-1. **Restore the development schema** on *`cdb1_PDB1`* target database by cloning data from production schema.
-2. **Generate** and **execute** the Subsetting Script.
+- **Restore the development schema** on *`cdb1_PDB1`* target database by cloning data from production schema.
+- **Generate** and **execute** the Subsetting Script.
 
 ### Steps
 **Restore the development schema**
@@ -654,7 +654,7 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`*.
 
     ![DMS](./images/dms-150.png "Restore original data")
 
-**Generate and execute the subsetting script:**
+**Generate and execute the subsetting script:**  
 4. Go back to the OEM Console and navigate to the main menu: **Target > Databases**, then choose **Data Subsetting** under **Security**.
 
     ![DMS](./images/dms-130.png "Navigate to the Application Data Models")
