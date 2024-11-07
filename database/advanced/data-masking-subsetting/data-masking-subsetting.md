@@ -79,8 +79,7 @@ Navigated to Oracle Data Masking and Subsetting on Oracle Enterprise Manager 24 
 Create an ADM and associate it with a target database and schema. This ADM will serve as a centralized reference, detailing tables with sensitive information.
 
 ### Steps
-1. Navigate to **Data Discovery > Application Data Models**. Click **Create** to add a new ADM.
-
+1. Navigate to **Data Discovery > Application Data Models**. Click **Create** to add a new ADM.  
 Fill in the following details:
 - Name: *`Employee_ADM`*.
 - Target Type: *`Autonomous Transaction Processing`*.
