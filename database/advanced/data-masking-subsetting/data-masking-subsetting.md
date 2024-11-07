@@ -97,7 +97,7 @@ Fill in the following details:
 2. Click **Create**. Once the job completes, the *`EMPLOYEE_ADM`* will no longer be in a locked, uneditable status. Check the status by refreshing this page (**refresh icon**) and move forward when the **Most Recent Jobs Status** of the *`EMPLOYEE_ADM`* shows "**Succeeded**"!
 
 **What You Accomplished**  
-Created Application Data Model *`EMPLOYEE_ADM`* for *`cdb1_pdb1`* target database.
+Created Application Data Model *`EMPLOYEE_ADM`* for *`cdb_PDB1`* target database.
 
 ## Task 3: Data Discovery- Create New Sensitive Types
 
@@ -185,7 +185,7 @@ Successfully ran the **Discover Sensitive Columns** job to identify and mark sen
 ## Task 5: Data Masking- Create a New Masking Format
 
 ### Objective
-Create a new **Masking Format** for previously discovered sensitive column `Email ID`: The **Masking Formats** library, provided by Data Masking and Subsetting, is available for use. However, for this task, we will create a new format specifically for masking the **Email** column. This custom format will be used in the next task when creating the Masking Definitions.
+Create a new **Masking Format** for previously discovered sensitive column *`Email ID`*: The **Masking Formats** library, provided by Data Masking and Subsetting, is available for use. However, for this task, we will create a new format specifically for masking the **Email** column. This custom format will be used in the next task when creating the Masking Definitions.
 
 ### Steps
 1. To create a new masking format, navigate to the **Masking Formats** page under **Data Masking** as follows:
@@ -212,12 +212,12 @@ You can see the newly created Masking Format for the EMAIL_ID column in the libr
 ![DMS](./images/dms-024.png "Create a masking format in the format library")
 
 **What You Accomplished:**  
-A new Masking Format **Email ID** that will be used to replace sensitive data in `Email` columns with new values generated from the concatenation of a random string of 6 to 8 characters at the beginning, followed by the fixed value `@xyz.com`.
+A new Masking Format **Email ID** that will be used to replace sensitive data in *`Email`* columns with new values generated from the concatenation of a random string of 6 to 8 characters at the beginning, followed by the fixed value *`@xyz.com`*.
 
 ## Task 6: Data Masking- Create Masking Definition
 
 ### Objective
-Create a new Masking Definition under **Data Masking** where the masking formats will be set for the sensitive columns `EMAIL`, `USERID` and `Password` in `Employee_ADM` Application Data Model.
+Create a new Masking Definition under **Data Masking** where the masking formats will be set for the sensitive columns *`EMAIL`*, *`USERID`* and *`Password`* in *`Employee_ADM`* Application Data Model.
 
 ### Steps
 1. To create a Masking Definition, navigate to **Masking Definitions** under **Data Masking** as follows:
@@ -527,7 +527,7 @@ Subset and mask your sensitive data for secure sharing with external partners. T
     - Name: *`EMPLOYEE_DATA_SUBSET`*
     - Description: *`Subset Employee Data`*
     - Application Data Model: *`Employee_ADM`*
-    - Source Database: *`cdb1_pdb1`*
+    - Source Database: *`cdb1_PDB1`*
 
         ![DMS](./images/dms-131.png "Subsetting Definition Properties")
 
@@ -573,8 +573,8 @@ Now, your Subsetting definition is being created. Please refresh the page until 
 
         - Click **OK**.
 
-    - Object Rule 3: For `DEMO_HR_ROLES` table, we will keep **100% of rows** as this is a reference table.
-        - In **Objects**, select **Specified** and choose `DEMO_HR_ROLES`.
+    - Object Rule 3: For *`DEMO_HR_ROLES`* table, we will keep **100% of rows** as this is a reference table.
+        - In **Objects**, select **Specified** and choose *`DEMO_HR_ROLES`*.
         - In **Rows to Include**, select **All Rows**.
         - Check **Include Related Rows** and select **Ancestor and Descendant Objects**.
 
@@ -582,8 +582,8 @@ Now, your Subsetting definition is being created. Please refresh the page until 
 
         - Click **OK**.
 
-    - Object Rule 4: For `DEMO_HR_USERS` table, we will keep **100% of rows** as this is a reference table.
-        - In **Objects**, select **Specified** and choose `DEMO_HR_USERS`.
+    - Object Rule 4: For *`DEMO_HR_USERS`* table, we will keep **100% of rows** as this is a reference table.
+        - In **Objects**, select **Specified** and choose *`DEMO_HR_USERS`*.
         - In **Rows to Include**, select **All Rows**.
         - Check **Include Related Rows** and select **Ancestor and Descendant Objects**.
 
@@ -626,7 +626,7 @@ Data Subsetting Definition is created with defined subsetting and masking rules.
 ### Objective
 Once the Data Subsetting Definition containing subsetting and masking rules is created, the next step is to:
 
-1. **Restore the development schema** on *`cdb1_pdb1`* target database by cloning data from production schema.
+1. **Restore the development schema** on *`cdb1_PDB1`* target database by cloning data from production schema.
 2. **Generate** and **execute** the Subsetting Script.
 
 ### Steps
@@ -709,8 +709,8 @@ Open **SQL Developer** on your noVNC session.
 ![DMS](./images/dms-093.png "Open SQL Developer")
 
 2. You should open two separate worksheets for *`PDB1_SYSTEM`* connection:  
-        - Under the list of **Oracle Connections**, double-click on *`PDB1_SYSTEM`*.  
-        - Open the second worksheet by right-clicking *`PDB1_SYSTEM`* shown under **Oracle Connections** and selecting **Open SQL Worksheet**.
+        - Under the list of **Oracle Connections**, double-click on PDB1_SYSTEM.  
+        - Open the second worksheet by right-clicking PDB1_SYSTEM shown under **Oracle Connections** and selecting **Open SQL Worksheet**.
 
     ![DMS](./images/dms-094.png "Open SQL Developer")
 
