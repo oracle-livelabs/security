@@ -44,7 +44,7 @@ Access Oracle Data Masking and Subsetting (DMS) within the Oracle Enterprise Man
     <copy>Oracle123</copy>
     ````
 
-    ![DMS](./images/dms-001.png "OEM Login")
+    ![DMS](./images/dms-001.png "001")
 
 3. Navigate to **Targets > Databases**. Click **Security > Data Masking and Subsetting > Data Discovery** as shown below:
 
