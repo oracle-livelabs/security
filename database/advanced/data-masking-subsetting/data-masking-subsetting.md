@@ -12,7 +12,7 @@ An organization needs to share a development application (EMPLOYEESEARCH_DEV) wi
 ### Objectives
 - Data Discovery: Create an Application Data Model (ADM) with discovered sensitive columns.
 - Data Masking: Generate and execute a data masking script to mask sensitive data.
-- Data Subsetting: Generate and execute the data subsetting script.
+- Data Subsetting: Generate and execute the data subsetting script to create a subset of the data..
 
 Finally, we will see how the masked and subsetted data can be used securely for data sharing with third-party collaborators. By ensuring that sensitive information is protected, participants will see how this approach allows for seamless collaboration in testing, development, or analytics while maintaining regulatory compliance and data privacy.
 
@@ -46,11 +46,11 @@ Access Oracle Data Masking and Subsetting (DMS) within the Oracle Enterprise Man
 
     ![DMS](./images/dms-001.png "OEM Login")
 
-3. Navigate to **Targets > Databases**. Click **Security > Data Discovery** as shown below:
+3. Navigate to **Targets > Databases**. Click **Security > Data Masking and Subsetting > Data Discovery** as shown below:
 
     ![DMS](./images/dms-002.png "Application Data Modeling")
 
-4. Now, go to **Overview** section to review the Data Masking and Subsetting workflow.
+4. Now, navigate to the **Overview** section on the top left, then click on Workflow to review the Data Masking and Subsetting process.
 
     ![DMS](./images/dms-003.png "Test Data Management diagram")
 
@@ -81,19 +81,19 @@ Create an ADM and associate it with a target database and schema. This ADM will 
 ### Steps
 1. Navigate to **Data Discovery > Application Data Models**. Click **Create** to add a new ADM.  
 Fill in the following details:
-- Name: *`Employee_ADM`*.
-- Target Type: *`Autonomous Transaction Processing`*.
-- Target Database: *`cdb_PDB1`*.
-- Database Named Credentials: *`DMS_ADMIN`*.
-- Application Suite: *`Custom (default)`*.
-- Schemas: *`Select All`*.
-- Relationship Discovery Type: Choose *`Database Level (Dictionary-Based)`*.
+ - Name: *`Employee_ADM`*.
+ - Target Type: *`Pluggable Database`*.
+ - Target Database: *`cdb_PDB1`*.
+ - Database Named Credentials: *`DMS_ADMIN`*.
+ - Application Suite: *`Custom (default)`*.
+ - Schemas: *`Select All`*.
+ - Relationship Discovery Type: *`Database Level (Dictionary-Based)`* (Default).
 
     ![DMS](./images/dms-004.png "Create an ADM")
 
-    **Note:** Database Level (Dictionary-Based) automatically identifies relationships within the database using its data dictionary. Refer to the [**documentation**](https://docs.oracle.com/en/database/oracle/oracle-database/19/dmksb/data_modeling.html) for more details on Relationship Discovery Type.  
+    **Note:** Database Level (Dictionary-Based) automatically identifies relationships within the database using its data dictionary. Refer to the [**documentation**](https://docs.oracle.com/en/database/oracle/oracle-database/19/dmksb/data_modeling.html#GUID-CA75BEBB-74DF-46BD-8112-9EFE1164F4CE) for more details on referential relationship type.  
     
-2. Click **Create**. Check the status by refreshing this page (**refresh icon**) and move forward when the **Most Recent Jobs Status** of the *`Employee_ADM `* shows "**Succeeded**"!
+2. Click **Create**. Use the Re-fetch Application Data Models icon to check the status. Proceed once the **Most Recent Jobs Status** for *`Employee_ADM `* displays "**Succeeded**"!
 
 **What You Accomplished**  
 Created Application Data Model *`Employee_ADM `* for *`cdb_PDB1`* target database.
@@ -110,7 +110,7 @@ Create two new **Sensitive Types** for **User ID** and **Password**: To identify
 
 2. Fill in the details as below:
 
-- Name: **USER ID**.
+- Name: *`USER ID`*.
 - Column Name Pattern: *`USERID.*;ID.*`*
 - Column Comment Pattern: *`USERID.*;ID.*`*
 
@@ -123,7 +123,7 @@ Click **Create**.
 
 4. Fill in the below details on **Create Sensitive Type** page:
 
-- Name: **Password**
+- Name: *`Password`*
 - Column Name Pattern: *`PASSWORD.*;PASS.*`*
 - Column Column Pattern: *`PASSWORD.*;PASS.*`*
         ![DMS](./images/dms-017.png "Example of sensitive column type")
@@ -147,28 +147,24 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 
     ![DMS](./images/dms-009.png "Edit Employee_ADM Model")
 
-2. You may be asked for the database credentials. If so, select the **Named** radio button, choose *`DMS_ADMIN`* username and click **Continue**.
-
-    ![DMS](./images/dms-010.png "Database credentials")
-
-3. Now, click **Schedule** shown under **Create Sensitive Column Discovery Job** page:
+2. Now, click **Schedule** shown under **Create Sensitive Column Discovery Jobs** page:
     ![DMS](./images/dms-011.png "List of tables associated with these applications")
 
-4. Fill in the following details on the **Discover Sensitive Columns page**:
+3. Fill in the following details on the **Create Sensitive Column Discovery job** page:
 
 - Database Named Credentials: *`DMS_ADMIN`*.
 - Applications: *`EMPLOYEESEARCH_DEV`*.
 - Sensitive Types: **Email ID**, **User ID** and **Password** (Choose from the drop-down).
 
-Click **Submit**. Check the Discovery Job status by refreshing this page (**refresh button**) and move forward when status shows **Succeeded**!
+Click **Submit**. Check the Discovery Job status by refreshing this page (**Re-fetch button**) and move forward when status shows **Succeeded**!
 
 ![DMS](./images/dms-012.png "View the referential relationships")
 
-5. Highlight the succeeded Discovery Job and notice nine sensitive columns discovered and shown under the **Discovered Columns** section. Next, highlight each row for these nine columns one by one and select **Mark Sensitive** option at the top. Notice that the **Sensitive Status** has been changed from *`Undefined`* to *`Sensitive`*.
+4. Highlight the succeeded Discovery Job and notice thirteen sensitive columns discovered and shown under the **Discovered Columns** section. Next, highlight each row for these thirteen columns one by one and select **Mark Sensitive** option at the top. Notice that the **Sensitive Status** has been changed from *`Undefined`* to *`Sensitive`*.
 
     ![DMS](./images/dms-012.png "View the referential relationships")
 
-6. Click **Close**. Now, your ADM is populated with sensitive columns *`EMAIL`*, *`UserID`* and *`Password`* from different objects.
+5. Click **Close**. Now, your ADM is populated with sensitive columns *`EMAIL`*, *`UserID`* and *`Password`* from different objects.
 
     **Note:** 
     - This ADM is later used for Data Masking and Data Subsetting tasks.
@@ -193,16 +189,16 @@ Create a new **Masking Format** for previously discovered sensitive column *`Ema
 
 2. Notice that **Masking Formats** library appears with predefined masking formats that Oracle Enterprise Manager provides. Click **Create** and fill in the following details:
 
-- Name: **Email ID**.
-- Description: *`Mask the corporate email by changing prefix and domain name`*.
-- Sensitive Type: *`EMAIL ID`*.
-- Format Entry: *`Random Strings`*.
-- Mention the **Start Length** as 6 and **End Length** as 8. Click **Add Format Entry**.
-
+ - Name: *`Email ID`*.
+ - Description: *`Mask the corporate email by changing prefix and domain name`*.
+ - Sensitive Type: *`EMAIL ID`*.
+ - Format Entry: *`Random Strings`*.
+ - Mention the **Start Length** as 6 and **End Length** as 8. Click **Add Format Entry**.  
+ 
 3. Now, add another **Format Entry** as shown below:
  
-- Format Entry: `Fixed String`.
-- Mention the fixed doman string such as `@xyz.com` and click on **Add Format Entry**.
+- Format Entry: *`Fixed String`*.
+- Mention the fixed doman string such as *`@xyz.com`* and click on **Add Format Entry**.
 
 4. Click **Create**. 
 
@@ -225,7 +221,7 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 
 2. Click **Create**.
 
-3. On the **Create Masking Definitions** page, fill it as follows:
+3. On the **Create Masking Definitions page: Basic Details**, fill it as follows:
 
 - Name: *`Employee_Data_Mask.`*
 - Application Data Model: *`Employee_ADM.`*
@@ -240,9 +236,9 @@ Click **Next**.
 
 Now, let's define and add the masking formats for all the columns for Email, UserID and Password. 
 
-5. For **Email** columns in *`DEMO_HR_EMPLOYEES`* and *`DEMO_HR_USERS`*: Highlight each column one by one and click **Define Format and ADD** option at the top.
+5. For **Email** columns in *`DEMO_HR_EMPLOYEES`* and *`DEMO_HR_USERS`*: Highlight each column one by one and click **Define Format and Add** option at the top.
 
-6. On the **Define Format and ADD** page, choose **Email ID** (**Masking Format** created in task 5) under **Choose From Masking Formats** drop-down box and click **Import**.
+6. On the **Define Format and Add** page, choose **Email ID** (**Masking Format** created in task 5) under **Choose From Masking Formats** drop-down box and click **Import**.
 
 Notice, Masking Format Entries are automatically populated:
 
@@ -252,7 +248,7 @@ Notice, Masking Format Entries are automatically populated:
 
  ![DMS](./images/dms-027.png "Provide required information for the new format")
 
-8. Click **ADD**. Now, repeat the same for the other **Email** column.  
+8. Click **Add**. Now, repeat the same for the other **Email** column.  
 
 Notice the *`EMAIL`* columns now appear under **Columns Available in Masking Definition** along with the defined Masking Format:
 
@@ -262,14 +258,14 @@ Stay on the **Create Masking Definitions** page to define and add the formats fo
 
 9. Select the **USERID** column shown under **Columns Available in Application Data Model** and click **Define Format and Add**.
 
-- Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
-- Click **ADD**. Repeat the same for the other three **UserID** columns.
+ - Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
+ - Click **Add Format Entry** and click **Add**. Repeat the same for the other three **UserID** columns.
         ![DMS](./images/dms-028.png "Add the formats entries types")
 
-10. Now, select the **Password** column shown under **Columns Available in Application Data Model**:
+10. Now, select the **Password** column shown under **Columns Available in Application Data Model** and click **Define Format and Add**:
 
-- Choose **Custom Format Entry** as **Fixed String** and enter the string as *`123`*. 
-- Click **Add**. 
+- Choose **Custom Format Entry** as **Fixed String** and enter the string as *`***`*. 
+- Click **Add Format Entry** and click **Add**. 
         ![DMS](./images/dms-028.png "Add the formats entries types")
   
 Notice, all columns- **EMAIL**, **USERID** and **Password** are added under **Columns Available in Masking Definitions**:  
@@ -288,7 +284,7 @@ Click **Next**.
 12. Click **Create** on the next page.
 
 **What You Accomplished:**  
-A new Masking Definition for sensitive columns Email, UserID and Password in the *`Employee_ADM`* is created and shown on the **Masking Definitions** page.
+A new Masking Definition for sensitive columns Email, UserID and Password in the *`Employee_Data_Mask`* is created and shown on the **Masking Definitions** page.
 
 ## Task 7: Data Masking- Generate and Execute Masking Script  
 
@@ -305,21 +301,21 @@ A new Masking Definition for sensitive columns Email, UserID and Password in the
 
 2. On **Generate Masking Script** page, you can choose either of the two options:
 
-- **In-Database Masking**: This performs in-place masking by replacing sensitive data in a database. 
-- **In-Export Masking**: This performs masking while exporting data from a source database using Oracle Data Pump. It is safe to use this option in a production environment because it does not modify any source data.
+ - **In-Database Masking**: This performs in-place masking by replacing sensitive data in a database. 
+ - **In-Export Masking**: This performs masking while exporting data from a source database using Oracle Data Pump. It is safe to use this option in a production environment because it does not modify any source data.
 
 Fill in the below details:
 
-- Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab).
-- Associated Database: *`cdb1_PDB1`*.
-- Database Named Credential: *`DMS_ADMIN`*.
-
+ - Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab).
+ - Associated Database: *`cdb1_PDB1`*.
+ - Database Named Credential: *`DMS_ADMIN`*.  
+ 
 3. Click **Generate**.  
 To monitor the status of the job, refresh the screen by clicking the **Refresh** icon on the **Masking Definitions** page. 
 
 **Tips**:
-- This script could be taken and executed on other targets which have exactly the same schema structure.
-- You have the ability to export the script locally by clicking **Export** under **Actions**.
+ - This script could be taken and executed on other targets which have exactly the same schema structure.
+ - You have the ability to export the script locally by clicking **Export** under **Actions**.
 
 Notice that **the Most Recent Job Status** is changed to *`Script Generated`* for *`Employee_Data_Mask`*. Now, your Masking script is ready to be used!
 
@@ -361,20 +357,20 @@ ii. Update the Named Credentials with the new SSH Key:
 
 Click *`Edit`*.
 
-- Keep the General section unchanged and update the Credential Properties as followed:
+- Keep the General Properties section unchanged and update the Credential Properties as followed:
 
     - Username: *`oracle`*.
     - Delete any content from SSH Public Key Textbox.
     - Delete any content from Run as Textbox (no delegated sudo privilege needed).
         ![DMS](./images/dms-028.png "Add the formats entries types")
-    - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **+Other Locations >> tmp** and select the file *`rsa_priv`*.
+    - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **Other Locations >> tmp** and select the file *`rsa_priv`*.
 
 - Click **Test and Save**.
         ![DMS](./images/dms-028.png "Add the formats entries types")
 
 **Step 4(b).** If you are NOT using the remote desktop embedded:
 
-- Make sure you can R/W files to your DBSecLab VM from the OEM Console by selecting the menu **Setup > Security > Named Credentials**
+- Make sure you can R/W files to your DBSecLab VM from the OEM Console by selecting the menu **Setup > Security > Named Credentials**.
 - Select *`OS_ORACLE_SSH`* named credential.
 - Click **Edit**.
         ![DMS](./images/dms-028.png "Add the formats entries types")
@@ -387,11 +383,11 @@ Your connection should be successful, if not please make sure your SSH Private K
         ![DMS](./images/dms-028.png "Add the formats entries types")
 
 **Schedule Masking Job**:  
-5. Now, lets schedule the Masking Script by navigating to **Targets > Databases**. Click **Security** menu and Choose **Data Masking**. 
+5. Now, lets schedule the Masking Script by navigating to **Targets > Databases**. Click **Security** > **Data Masking and Subsetting** and Choose **Data Masking**. 
 
 6. Highlight *`Employee_Data_Mask`* and select **Actions > Schedule Masking**.
 
-Fill in the following details on the Schedule Data Masking Job page:
+Fill in the following details on the Schedule Data Masking Job: Basic Details page:
 
 - Data Masking Option: **In-Database Masking**.
 - Associated Database: *`cdb1_PDB1`*.
@@ -428,7 +424,7 @@ Generated the Masking Script for the *`Employee_Data_Mask`* definition, with the
 
     ![DMS](./images/dms-093.png "Open SQL Developer")
 
-2. You should open two separate worksheets for *`PDB1_SYSTEM`*. Open the second worksheet by right clicking *`PDB1_SYSTEM`* shown under **Oracle Connections** and selecting **Open Worksheet**.
+2. You should open two separate worksheets for *`PDB1_SYSTEM`*. Open the second worksheet by right clicking *`PDB1_SYSTEM`* shown under **Oracle Connections** and selecting **Open SQL Worksheet**.
 
     ![DMS](./images/dms-094.png "Open SQL Developer")
 
