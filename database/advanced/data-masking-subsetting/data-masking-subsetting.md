@@ -616,8 +616,6 @@ Subset and mask your sensitive data for secure sharing with external partners. T
 
 6. Click **Submit**.  
 
-    ![DMS](./images/dms-059.png "Database credentials")
-
 Now, your Subsetting definition is being created. Please refresh the page until you see **Succeeded** under **Most Recent Job Status**.
 
 ![DMS](./images/dms-060.png "Subsetting definition is scheduling")
@@ -637,48 +635,48 @@ Now, your Subsetting definition is being created. Please refresh the page until 
 **Add Object (Subset) Rules:**  
 10. In the **Object Rules** tab, define the subset rules by clicking **Create** as many times as needed. Here, we will create **four** Object Rules, so click **Create** and proceed as below:
 
-    ![DMS](./images/dms-064.png "Create all the Subset rules")
+![DMS](./images/dms-064.png "Create all the Subset rules")
 
-    - Object Rule 1: For *`DEMO_HR_EMPLOYEES`* table, we will keep only **25% of rows** as this is a dataset table.
-        - In **Objects**, select **Specified** and choose *`DEMO_HR_EMPLOYEES`*.
-        - In **Rows to Include**, select **Some Rows** and enter *`25`*.
-        - Check "**Include Related Rows**" and select **Ancestor and Descendant Objects** (Default).
+- Object Rule 1: For *`DEMO_HR_EMPLOYEES`* table, we will keep only **25% of rows** as this is a dataset table.
+    - In **Objects**, select **Specified** and choose *`DEMO_HR_EMPLOYEES`*.
+    - In **Rows to Include**, select **Some Rows** and enter *`25`*.
+    - Check "**Include Related Rows**" and select **Ancestor and Descendant Objects** (Default).
 
-            ![DMS](./images/dms-065.png "... for DEMO_HR_EMPLOYEES table")
+        ![DMS](./images/dms-065.png "... for DEMO_HR_EMPLOYEES table")
 
-        - Click **OK**.
+    - Click **OK**.
 
-    - Object Rule 2: For *`DEMO_HR_ERROR_LOG`* table, we will keep **0% of rows** as this is a log table.
-        - Click **Create**.
-        - In **Objects**, select **Specified** and choose *`DEMO_HR_ERROR_LOG`*.
-        - In **Rows to Include**, select **Rows Where** and enter *`1=0`* (here, this condition allow to extract 0 rows!).
-        - Uncheck **Include Related Rows**.
+- Object Rule 2: For *`DEMO_HR_ERROR_LOG`* table, we will keep **0% of rows** as this is a log table.
+    - Click **Create**.
+    - In **Objects**, select **Specified** and choose *`DEMO_HR_ERROR_LOG`*.
+    - In **Rows to Include**, select **Rows Where** and enter *`1=0`* (here, this condition allow to extract 0 rows!).
+    - Uncheck **Include Related Rows**.
 
-            ![DMS](./images/dms-066.png "... for DEMO_HR_ERROR_LOG table")
+        ![DMS](./images/dms-066.png "... for DEMO_HR_ERROR_LOG table")
 
-        - Click **OK**.
+    - Click **OK**.
 
-    - Object Rule 3: For *`DEMO_HR_ROLES`* table, we will keep **100% of rows** as this is a reference table.
-        - Click **Create**.
-        - In **Objects**, select **Specified** and choose *`DEMO_HR_ROLES`*.
-        - In **Rows to Include**, select **All Rows**.
-        - Check **Include Related Rows** and select **Ancestor and Descendant Objects** (Default).
+- Object Rule 3: For *`DEMO_HR_ROLES`* table, we will keep **100% of rows** as this is a reference table.
+    - Click **Create**.
+    - In **Objects**, select **Specified** and choose *`DEMO_HR_ROLES`*.
+    - In **Rows to Include**, select **All Rows**.
+    - Check **Include Related Rows** and select **Ancestor and Descendant Objects** (Default).
 
-            ![DMS](./images/dms-067.png "... for DEMO_HR_ROLES table")
+        ![DMS](./images/dms-067.png "... for DEMO_HR_ROLES table")
 
-        - Click **OK**.
+    - Click **OK**.
 
-    - Object Rule 4: For *`DEMO_HR_USERS`* table, we will keep **100% of rows** as this is a reference table.
-        - In **Objects**, select **Specified** and choose *`DEMO_HR_USERS`*.
-        - In **Rows to Include**, select **All Rows**.
-        - Check **Include Related Rows** and select **Ancestor and Descendant Objects**.
-        - Click **OK**.  
+- Object Rule 4: For *`DEMO_HR_USERS`* table, we will keep **100% of rows** as this is a reference table.
+    - In **Objects**, select **Specified** and choose *`DEMO_HR_USERS`*.
+    - In **Rows to Include**, select **All Rows**.
+    - Check **Include Related Rows** and select **Ancestor and Descendant Objects**.
+    - Click **OK**.  
 
-            ![DMS](./images/dms-068.png "... for DEMO_HR_USERS table")
+        ![DMS](./images/dms-068.png "... for DEMO_HR_USERS table")
 
-        Now, all 4 defined Object Rules should show as below:
+Now, all 4 defined Object Rules should show as below:
 
-    ![DMS](./images/dms-069.png "List of your Object Rules")
+![DMS](./images/dms-069.png "List of your Object Rules")
 
 11. In the **Space Estimates** tab, expand the **Applications and Objects** list as shown below:
 
@@ -693,11 +691,11 @@ You may stop here if you only need to subset your data. However, we will proceed
 **Associate the previously generated Masking Definition**:  
 13. In the **Data Masking Definitions** tab, click **Add**.
 
-     ![DMS](./images/dms-071.png "Data Masking Definitions")
+    ![DMS](./images/dms-071.png "Data Masking Definitions")
 
 14. Select the masking definition *`Employee_Data_Mask`* created earlier. Click **OK**.
 
-     ![DMS](./images/dms-072.png "Data Masking Definitions")
+    ![DMS](./images/dms-072.png "Data Masking Definitions")
 
 Now, your Data Masking script is associated with your Data Subsetting definition and it will be executed along with data subsetting. You do not need to execute the masking script separately.
         
@@ -774,8 +772,6 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by runnin
 
 10. Click **OK**.  
 After reviewing that the required space is available, click **Submit** to generate the script.
-
-![DMS](./images/dms-080.png "Generate the scripts")
 
 **Note:** The script is generated and automatically executed!
 
