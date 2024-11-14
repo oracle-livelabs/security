@@ -689,9 +689,9 @@ Now, all 4 defined Object Rules should show as below:
 You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process.
 
 **Associate the previously generated Masking Definition**  
-13. In the **Data Masking Definitions** tab, click **Add**.
+13. In the **Data Masking Definitions** tab, click **Add**.  
 
-    ![DMS](./images/dms-071.png "Data Masking Definitions")
+![DMS](./images/dms-071.png "Data Masking Definitions is associated")
 
 14. Select the masking definition *`Employee_Data_Mask`* created earlier. Click **OK**.
 
