@@ -43,7 +43,11 @@
             "filename": "../../perform-policy-review/perform-policy-review.md"
         },
         {
-            "title": "Lab 8: Cleanup the Environment",
+            "title": "Lab 8: Create and Perform Group Membership Review Campaigns",
+            "filename": "../../create-group-membership-review/create-group-membership-review.md"
+        },
+        {
+            "title": "Lab 9: Cleanup the Environment",
             "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
         },
         {

@@ -1,9 +1,10 @@
 # Oracle Data Safe for on-premises database
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Data Safe. It gives the user an opportunity to learn how to register an on-premise Oracle Database with Oracle Data Safe, provision audit and alert policies on your database, analyze alerts and audit reports, assess the security of your database configurations and users, and discover and mask sensitive data.
+This workshop shows you how to register an Oracle on-premises database with Oracle Data Safe. Once registered, you can access the security of your database configurations and users, discover and mask sensitive data, provision audit and alert policies on your database and analyze alerts and audit reports.
+Please note that you can try out the features in Data Safe in the [Get Started with Oracle Data Safe Fundamentals Livelab.](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=598&clear=RR,180&session=111903874187853)
 
-*Estimated Lab Time:* 25 minutes
+*Estimated Lab Time:* 45 minutes
 
 *Version tested in this lab:* Oracle Data Safe on OCI and Oracle DBEE 19.23
 
@@ -12,8 +13,8 @@ This workshop introduces the various features and functionality of Oracle Data S
 Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:UUc26bpdFnc)
 
 ### Objectives
-- Register an on-premise Oracle Database into Oracle Data Safe with a Private endpoint
-- Register an on-premise Oracle Database into Oracle Data Safe with an on-premises connector (**On your own tenany only!**)
+- Register an on-premise Oracle Database with Oracle Data Safe using a private endpoint
+- Register an on-premise Oracle Database with Oracle Data Safe using an on-premises connector (**On your own tenancy only!**)
 
 ### Prerequisites
 This lab assumes you have:
@@ -35,15 +36,18 @@ This lab assumes you have:
 
 To use a database with Oracle Data Safe, you first need to register it into Oracle Data Safe.
 
-Two options are available:
-- with a Private endpoint
-- with an on-premises connector
+There are two connectivity options available when registering an on-premises database:
+- with an Oracle Data Safe private endpoint
+- with an Oracle Data Safe on-premises connector
+
+Please note: If you have a FastConnect or VPNConnect setup between your environment and the Oracle Cloud Infrastructure (OCI), you can use a private endpoint. If you don't have such a connection setup (or don't want to use it for the registration), you can use an on-premises connector.
+<p>For this LiveLab: If you run the workshop in your own tenancy, you can try both connectivity options (Task 1 and 2). If you run the workshop in the Sandbox environment, you can only use the private endpoint (Task 1).
 
 In this lab, let's see how to register the dabase with a private endpoint
 
 1. Open a web browser window to your OCI console and login with your OCI account
 
-2. On the Burger menu, click on **Oracle Database**, then on "**Data Safe - Database Security**"
+2. On the OCI menu in the upper left corner, click on **Oracle Database**, then on **Data Safe - Database Security**.
 
     ![Data Safe](./images/ds-001.png "Open Data Safe")
  
@@ -51,11 +55,11 @@ In this lab, let's see how to register the dabase with a private endpoint
 
     ![Data Safe](./images/ds-002.png "Add Target Database")
 
-4. On **Connectivity Options** sub-menu, click  on **Private endpoints**
+4. On the **Connectivity Options** sub-menu, click  on **Private endpoints**
 
     ![Data Safe](./images/ds-003.png "Private endpoints")
 
-5. Click [**Create private endpoint**]
+5. Click the **Create private endpoint** button.
 
     ![Data Safe](./images/ds-004.png "Create private endpoint")
 
@@ -68,9 +72,9 @@ In this lab, let's see how to register the dabase with a private endpoint
 
        ![Data Safe](./images/ds-005.png "Set Private endpoint")
 
-7. Click [**Create private endpoint**]
+7. Click **Create private endpoint**
 
-8. Once is created, the Private endpoint is "**ACTIVE**"
+8. Once the private endpoint is created, the status of the private endpoint will go to **ACTIVE**.
 
        ![Data Safe](./images/ds-006.png "the Private endpoint is ACTIVE")
     
