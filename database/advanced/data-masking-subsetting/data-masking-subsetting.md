@@ -379,6 +379,7 @@ Oracle Data Masking Pack performs a series of validation checks during script g
 
 **Update the Host Named Credential** 
 4. The Host Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Host Named Credential with the new SSH key based on your connection method:  
+
        **Step 4(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).  
        **Step 4(b).** Complete this step only if you are NOT using the embedded remote desktop.
 
@@ -388,24 +389,26 @@ i. Generate SSH Keys
 
     ![DMS](./images/dms-122.png "36")
 
- Run the following to generate the key pair:
+ Run the following to generate the key pair:  
+
     ````
     <copy>
-    cd ~
-    ssh-keygen -b 2048 -t rsa
+        cd ~
+        ssh-keygen -b 2048 -t rsa
     </copy>
-    ````
+    ````  
+
 - Accept defaults for file and passphrase by pressing Enter three times to create a key with no passphrase.
-- Update *`~/.ssh/authorized_keys`* and copy the private key to *`/tmp`*.
+- Update *`~/.ssh/authorized_keys`* and copy the private key to *`/tmp`*.  
 
     ````
     <copy>
-    cd .ssh
-    cat id_rsa >/tmp/rsa_priv
-    cat id_rsa.pub >>authorized_keys
-    ````
-    </copy>
-
+        cd .ssh
+        cat id_rsa >/tmp/rsa_priv
+        cat id_rsa.pub >>authorized_keys
+    </copy> 
+    ```` 
+    
 ii. Update the Host Named Credentials with the new SSH Key:
 
 - From the EM Console as SYSMAN, navigate to **Setup menu > Security > Named Credentials**:
@@ -553,25 +556,24 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
     ![DMS](./images/dms-051.png "51")
 
 **Compare the results:**  
-5. Before and after masking job comparison for **DEMO_HR_EMPLOYEES** and **DEMO_HR_USERS** have been shown below:
+5. Before and after masking job comparison for **DEMO_HR_EMPLOYEES** and **DEMO_HR_USERS** have been shown below:  
+- Employee Data:  
+    - **BEFORE masking** (on prod)
 
-    - Employee Data:
-        - **BEFORE masking** (on prod)
+        ![DMS](./images/dms-052.png "Employee data BEFORE masking (in PROD)")
 
-            ![DMS](./images/dms-052.png "Employee data BEFORE masking (in PROD)")
+    - **AFTER masking** (on dev)
 
-        - **AFTER masking** (on dev)
+        ![DMS](./images/dms-053.png "Employee data AFTER masking (in DEV)")
 
-            ![DMS](./images/dms-053.png "Employee data AFTER masking (in DEV)")
+- Users Data:
+    - **BEFORE masking** (on prod)
 
-    - Users Data:
-        - **BEFORE masking** (on prod)
+        ![DMS](./images/dms-54.png "Users data BEFORE masking (in PROD)")
 
-            ![DMS](./images/dms-54.png "Users data BEFORE masking (in PROD)")
+    - **AFTER masking** (on dev)
 
-        - **AFTER masking** (on dev)
-
-            ![DMS](./images/dms-055.png "Users data AFTER masking (in DEV)")
+        ![DMS](./images/dms-055.png "Users data AFTER masking (in DEV)")
 
 As shown, sensitive data has been masked according to the defined formats in the development environment, allowing you to share this environment securely. With sensitive columns like Email, UserID, and Password masked while keeping other non-sensitive columns unmasked, organizations can safely share data with external partners without exposing sensitive information. This ensures secure data sharing while maintaining usability for various purposes, including analytics, as illustrated below:  
 *`The collaborator can perform workforce analysis while protecting privacy by utilizing masked columns like Email, UserID, and Password, alongside unmasked, non-sensitive columns. For example, the firm could examine employee engagement and activity without needing direct identifiers. Suppose the data shows that out of 1000 masked employees in HR_EMPLOYEES, 300 have logged into the system over 50 times in the past month, indicating high engagement. In HR_USERS, masked UserIDs can show 100 distinct users who accessed sensitive internal reports.`*
