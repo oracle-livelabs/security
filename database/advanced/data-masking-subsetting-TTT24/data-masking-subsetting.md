@@ -96,13 +96,13 @@ Fill in the following details:
  - Schemas: *`EMPLOYEESEARCH_DEV`* (Type in the text and select from the drop-down options).
  - Relationship Discovery Type: *`Database Level (Dictionary-Based)`* (Default).
 
-![DMS](./images/dms-006.png "102")
+![DMS](./images/dms-124.png "102")
 
 **Note:** Database Level (Dictionary-Based) automatically identifies relationships within the database using its data dictionary. Refer to the [**documentation**](https://docs.oracle.com/en/database/oracle/oracle-database/19/dmksb/data_modeling.html#GUID-CA75BEBB-74DF-46BD-8112-9EFE1164F4CE) for more details on referential relationship type.  
     
 2. Click **Create**. Use the Re-fetch button to check the status. Proceed once the **Most Recent Jobs Status** for *`Employee_ADM `* displays "**Succeeded**"!
 
-    ![DMS](./images/dms-007.png "103")
+    ![DMS](./images/dms-103.png "103")
 
 **What You Accomplished**  
 Created Application Data Model *`Employee_ADM `* for *`cdb1_PDB1`* target database.
@@ -157,7 +157,7 @@ Create two new **Sensitive Types** for **USERID** and **PASSWORD**: To identify 
 ## Task 4 Data Discovery- Discover Sensitive Data (Automated)
 
 ### Objective
-Run the **Discover Sensitive Columns** job: Run the Discover Sensitive Columns job to identify sensitive columns using Oracle's predefined sensitive type, **EMAIL_ID**, along with user-defined sensitive types, **USER_ID** and **PASSWORD**. Data Discovery uses column name, comment and data patterns from your selected sensitive types to discover potential relationships between columns.
+Run the **Discover Sensitive Columns** job: To identify sensitive columns, run the Discover Sensitive Columns job using Oracle's predefined sensitive type, **EMAIL_ID**, along with user-defined sensitive types, **USER_ID** and **PASSWORD**. Data Discovery uses column name, comment and data patterns from your selected sensitive types to discover potential relationships between columns.
 
 ### Steps
 1. Go to **Application Data Models** page under **Data Discovery**. You can **close left side bar navigation menu** using below icon to enlarge the screen:
@@ -176,7 +176,7 @@ Run the **Discover Sensitive Columns** job: Run the Discover Sensitive Columns j
     - **Sensitive Column Discovery Jobs:** Shows a list of discovery jobs.
     - **Discovered Columns:** When you highlight any discovery job, this section will display a list of discovered columns for that job.
 
-4. Fill in the following details on the **Create Sensitive Column Discovery job** page:
+4. Fill in the following details on the **Create Sensitive Column Discovery Job** page:
 
 - Database Named Credentials: *`DMS_ADMIN`*.
 - Applications: *`EMPLOYEESEARCH_DEV`* (Start typing to select from the drop-down).
@@ -188,7 +188,7 @@ Run the **Discover Sensitive Columns** job: Run the Discover Sensitive Columns j
 
     ![DMS](./images/dms-112.png "16")
 
-6. Highlight the succeeded Discovery Job and notice thirteen sensitive columns discovered and shown under the **Discovered Columns** section. Next, highlight each row with columns EMAIL, USERID or PASSWORD one by one and select **Mark Sensitive** option at the top. Notice that the **Sensitive Status** has been changed from *`Undefined`* to *`Sensitive`* for eight rows.
+6. Highlight the succeeded Discovery Job and notice thirteen sensitive columns discovered and shown under the **Discovered Columns** section. Next, highlight each row with columns EMAIL, USERID or PASSWORD one by one and select **Mark Sensitive** option at the top. Notice that the **Sensitive Status** has been changed from *`UNDEFINED`* to *`SENSITIVE`* for eight rows.
 
     ![DMS](./images/dms-113.png "17")
 
@@ -219,7 +219,7 @@ Create a new **Masking Format** for previously discovered sensitive column *`Ema
 
  - Name: *`Email ID`*.
  - Description: *`Mask the corporate email by changing prefix and domain name`*.
- - Sensitive Type: *`EMAIL ID`*.
+ - Sensitive Type: *`Email ID`*.
  - Format Entry: *`Random Strings`*.
  - Mention the **Start Length** as 6 and **End Length** as 8. Click **Add Format Entry**.  
  
@@ -327,7 +327,7 @@ Stay on the **Create Masking Definitions** page to define and add the formats fo
 
 15. Click **Next**.
 
-16. Click **Create** on the next page.
+16. Click **Create** on the next page. A new Masking Definition is created.
 
     ![DMS](./images/dms-032.png "32")
 
@@ -367,7 +367,7 @@ To monitor the status of the job, refresh the screen by clicking the **Re-fetch
  - You have the ability to export the script locally by clicking **Export** under **Actions**.
  - This exported script can then be executed on other targets with the same schema and sensitive data.
 
-Notice that **the Most Recent Job Status** has changed to *`Script Generated`* for *`Employee_Data_Mask`*. Now, your masking script is ready to be used!
+Notice that the **Most Recent Job Status** has changed to *`Script Generated`* for *`Employee_Data_Mask`*. Now, your masking script is ready to be used!
 
 ![DMS](./images/dms-035.png "35")
 
@@ -377,13 +377,14 @@ Oracle Data Masking Pack performs a series of validation checks during script g
 - Masking Formats: This is a necessary step in the Data Masking process to ensure that the chosen masking formats meet the database and application integrity requirements.
 - Data Constraints: The requirements may include generating unique values for the column being masked because of uniqueness constraints or generating values that meet the column length or type requirements
 
-**Update the Host Named Credential** 
+**Update the Host Named Credential**  
 4. The Host Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Host Named Credential with the new SSH key based on your connection method:  
 
-       **Step 4(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).  
-       **Step 4(b).** Complete this step only if you are NOT using the embedded remote desktop.
+    **Step 4(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).  
+    **Step 4(b).** Complete this step only if you are NOT using the embedded remote desktop.
 
 **Step 4(a).** If you are using the embedded remote desktop:  
+
 i. Generate SSH Keys  
 - From your noVNC remote desktop session, open a **Terminal** session:
 
@@ -409,9 +410,9 @@ i. Generate SSH Keys
     </copy> 
     ```` 
     
-ii. Update the Host Named Credentials with the new SSH Key:
+ii. Update the Host Named Credential with the new SSH Key:
 
-- From the EM Console as SYSMAN, navigate to **Setup menu > Security > Named Credentials**:
+- From the EM Console as SYSMAN, navigate to menu **Setup > Security > Named Credentials**:
     ![DMS](./images/dms-037.png "Add the formats entries types")
 
 - Select *`OS_ORACLE_SSH`* credential and click *`Edit`*.
@@ -434,7 +435,7 @@ ii. Update the Host Named Credentials with the new SSH Key:
 
     ![DMS](./images/dms-041.png "41")
 
-**Step 4(b).** If you are NOT using the remote desktop embedded:
+**Step 4(b).** If you are NOT using the remote desktop embedded:  
 
 - Make sure you can R/W files to your DBSecLab VM from the OEM Console by selecting the menu **Setup > Security > Named Credentials**.
 - Select *`OS_ORACLE_SSH`* named credential.
@@ -452,16 +453,17 @@ Your connection should be successful, if not please make sure your SSH Private K
 
 ![DMS](./images/dms-041.png "41")
 
-**Schedule Masking Job**:  
-5. Now, lets schedule the Masking Script by navigating to **Targets > Databases**. Click **Security** > **Data Masking and Subsetting** and Choose **Data Masking**.  
+**Schedule Masking Job**  
 
-    ![DMS](./images/dms-042.png "42")
+5. Now, lets schedule the Masking job by navigating to **Targets > Databases**. Click **Security** > **Data Masking and Subsetting** and Choose **Data Masking**.  
+
+    ![DMS](./images/dms-042.png "43")
 
 6. Highlight *`Employee_Data_Mask`* and select **Actions > Schedule Masking**.
 
     ![DMS](./images/dms-043.png "43")
 
-Fill in the following details on the Schedule Data Masking Job: Basic Details page:
+Fill in the following details on the **Schedule Data Masking Job: Basic Details page**:
 
 - Data Masking Option: **In-Database Masking**.
 - Tablespace for Temporary Objects: **Default Tablespace** (Default).
@@ -689,11 +691,12 @@ Now, all 4 defined Object Rules should show as below:
 You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process.
 
 **Associate the previously generated Masking Definition**  
-13. In the **Data Masking Definitions** tab, click **Add**.  
 
-![DMS](./images/dms-071.png "Data Masking Definitions is associated")
+12. In the **Data Masking Definitions** tab, click **Add**.  
 
-14. Select the masking definition *`Employee_Data_Mask`* created earlier. Click **OK**.
+    ![DMS](./images/dms-071.png "Data Masking Definitions is associated")
+
+13. Select the masking definition *`Employee_Data_Mask`* created earlier. Click **OK**.
 
     ![DMS](./images/dms-072.png "Data Masking Definitions")
 
@@ -701,7 +704,7 @@ Now, your Data Masking script is associated with your Data Subsetting definition
         
 ![DMS](./images/dms-073.png "Data Masking Definitions is associated")
 
-15. Click **Return** to go to the Data Subsetting Definitions screen.
+14. Click **Return** to go to the Data Subsetting Definitions screen.
 
 **What you accomplished:**  
 Data Subsetting Definition is created with defined subsetting and masking rules. Alternatively, you can choose to just define subsetting rules without the masking definition inclusion by skipping step 13 and 14.
@@ -938,7 +941,7 @@ This task ensures a clean environment for future exercises and prevents any pote
 
 3. First, **drop the Data Masking definition**.
 
-    - Navigate to the main menu: **Targets > Databases**, then select **Data Masking** under **Security**.
+    - Navigate to the main menu: **Targets > Databases**, then select **Security** > **Data Masking and Subsetting** > **Data Masking**.
         ![DMS](./images/dms-092.png "Navigate to the Application Data Models")
 
     - Select each Data Masking Definition, then click **Delete** at the top.
@@ -978,7 +981,7 @@ This task ensures a clean environment for future exercises and prevents any pote
 
         ![DMS](./images/dms-099.png "Delete all the Application Data Model")
 
-    - Click **Delete** to confirm.
+    - Click **Yes** to confirm.
 
         ![DMS](./images/dms-100.png "Confirm deletion")
 
