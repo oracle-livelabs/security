@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.12
+*Version tested in this lab:* Oracle AVDF 20.13
 
 ### Video Preview
 
@@ -157,7 +157,7 @@ In this lab, you will do the following:
 
 7. Click the **Assessment Reports** sub-menu on left
 
-8. In the **Assessment Reports** section, click on the **Security Assessment Summary by Severity** report
+8. In the **Assessment Reports** section, click on the **Summary by Severity** report
 
     ![AVDF](./images/avdf-051.png "Assessment Report")
 
@@ -165,9 +165,9 @@ In this lab, you will do the following:
 
     ![AVDF](./images/avdf-052.png "Assessment Report - By Severity")
 
-10. For example, click on **High Risk** to see the highest risks detected for all your targets
+10. For example, click on **Medium Risk** to see the risks detected for all your targets
 
-11. Now, click on one of them to see its details
+11. Now, click on one of them to see its details. Alternatively, you can also click on one of the assessments and add the exception by changing the severity or deferring the assessment.
 
     ![AVDF](./images/avdf-053.png "Assessment Report - Highest Risks")
 
@@ -206,7 +206,7 @@ In this lab, you will do the following:
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
+        **Note**: Only **if you are using a remote desktop session**, click on "Activities" at the top left of the desktop and click on terminal to launch a session directly as Oracle. In that case **you don't need to execute this command**!
 
     - Go to the scripts directory
 
@@ -282,7 +282,7 @@ In this lab, you will do the following:
     
     - Do the same for **pdb2**
 
-10. Click **Home** to go back to the Auditor dashboard and examine the **Security assessment drift graph** to see if the identified risk has been fixed
+10. Click **Home** to go back to the Auditor dashboard and examine the **Security assessment drift graph** to see if the identified risk has been fixed. You will notice that after revoking the permissions granted at step 4, the risk counts return to their previous state of zero high risk. 
 
     ![AVDF](./images/avdf-506.png "AVDF - Drift Chart Mitigated")
 
@@ -325,7 +325,8 @@ In this lab, you will do the following:
     
         ![AVDF](./images/avdf-523.png "Save Sensitive Objects")
 
-8. Sensitive object set by the name of GDPR_set1 is created. Notice under **In use** it is still **No**, since there is no database firewall policy has been created using this global set. 
+8. A sensitive object set by the name of GDPR_set1 is created. You can use this set in All Activity and GDPR reports. You can also use these sets in your database firewall and alert policy. Notice under **In use**, it is still **No**since this global set has not been used in any alert or database firewall policy yet.
+
     ![AVDF](./images/avdf-524.png "Sensitive Objects Set")
 
 > #### What did we learn in this lab
@@ -388,6 +389,8 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
             ![AVDF](./images/avdf-012.png "View the audit policy reports")
 
     - Click [**Provision Unified Policy**]
+
+
 
 6. Verify the job completed successfully
     - Click on the **Settings** tab
@@ -628,7 +631,7 @@ In this lab we will create 2 alert policies:
         - Click on **Configure email notification** and provide email address
         - **You need to have SMTP server** configured for the email notification
 
-    - Your Alert should look like this
+    - Your Alert should look like this.
 
         ![AVDF](./images/avdf-652.png "AVDF Alerts")
 
@@ -637,6 +640,8 @@ In this lab we will create 2 alert policies:
         **Note:** Your Alert is automatically started!
 
            ![AVDF](./images/avdf-653.png "Confirm creation")
+
+    **Note:** You can also create alert using global sets. 
 
 2. Go back to your terminal session on DBSeclab VM and create users within the **pdb1** and **pdb2** pluggable databases
 
@@ -1737,10 +1742,12 @@ The objective of this lab is to collect audit log records from PostgreSQL databa
 
         - Click [**Add**] and enter values as following:
 
-            - Name: *`av.collector.securedTargetVersion`*  /  Value: *`11.0`*
+            - Name: *`av.collector.securedTargetVersion`*  /  Value: *`15.0`*
             - Name: *`av.collector.timezoneoffset`*  /  Value: `<YOUR_DBSECLAB-VM_TIMEZONE>` (here UTC Time: "*`0:00`*")
 
                 ![AVDF](./images/avdf-204.png "Audit Collection Attributes")
+
+**Note:** If you already have one entry for 11.0 then delete that attribute and add new with the value 15.0.
 
     - Click [**Save**]
 
