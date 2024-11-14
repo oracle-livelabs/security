@@ -569,7 +569,7 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
 - Users Data:
     - **BEFORE masking** (on prod)
 
-        ![DMS](./images/dms-54.png "Users data BEFORE masking (in PROD)")
+        ![DMS](./images/dms-054.png "Users data BEFORE masking (in PROD)")
 
     - **AFTER masking** (on dev)
 
@@ -596,11 +596,11 @@ Subset and mask your sensitive data for secure sharing with external partners. T
 **Create Data Subsetting Definition:**
 1. Go to OEM and navigate to Data Subsetting on the left side as shown below:
 
-    ![DMS](./images/dms-56.png "Navigate to the Application Data Models")
+    ![DMS](./images/dms-056.png "Navigate to the Application Data Models")
 
 2. On the **Data Subsetting Definitions** page, click **Create**.
 
-    ![DMS](./images/dms-57.png "Begin the process of subsetting data")
+    ![DMS](./images/dms-057.png "Begin the process of subsetting data")
 
 3. On the **Data Subsetting Definition Properties** screen, fill it as follows:  
     - Name: *`Employee_Data_Subset`*.
@@ -608,7 +608,7 @@ Subset and mask your sensitive data for secure sharing with external partners. T
     - Application Data Model: *`Employee_ADM`* (Use search option).
     - Source Database: *`cdb1_PDB1`* (Use search option).
 
-        ![DMS](./images/dms-58.png "Subsetting Definition Properties")
+        ![DMS](./images/dms-058.png "Subsetting Definition Properties")
 
 4. Click **Continue**.  
 
@@ -616,19 +616,19 @@ Subset and mask your sensitive data for secure sharing with external partners. T
 
 6. Click **Submit**.  
 
-    ![DMS](./images/dms-59.png "Database credentials")
+    ![DMS](./images/dms-059.png "Database credentials")
 
 Now, your Subsetting definition is being created. Please refresh the page until you see **Succeeded** under **Most Recent Job Status**.
 
-![DMS](./images/dms-60.png "Subsetting definition is scheduling")
+![DMS](./images/dms-060.png "Subsetting definition is scheduling")
 
 7. Once the subsetting definition is created, select it and click on **Edit**.
 
-    ![DMS](./images/dms-62.png "Edit the Subsetting definition")
+    ![DMS](./images/dms-062.png "Edit the Subsetting definition")
 
 8. In the **Database Login** page, select the **Named** radio button, choose the **Credential Name** as *`DMS_ADMIN`*. Click **Continue**.
 
-    ![DMS](./images/dms-61.png "Edit the Subsetting definition")
+    ![DMS](./images/dms-061.png "Edit the Subsetting definition")
 
 9. In the **Applications** tab, select *`EMPLOYEESEARCH_DEV(EMPLOYEESEARCH_DEV)`* available in your ADM.
 
@@ -637,14 +637,14 @@ Now, your Subsetting definition is being created. Please refresh the page until 
 **Add Object (Subset) Rules:**  
 10. In the **Object Rules** tab, define the subset rules by clicking **Create** as many times as needed. Here, we will create **four** Object Rules, so click **Create** and proceed as below:
 
-    ![DMS](./images/dms-64.png "Create all the Subset rules")
+    ![DMS](./images/dms-064.png "Create all the Subset rules")
 
     - Object Rule 1: For *`DEMO_HR_EMPLOYEES`* table, we will keep only **25% of rows** as this is a dataset table.
         - In **Objects**, select **Specified** and choose *`DEMO_HR_EMPLOYEES`*.
         - In **Rows to Include**, select **Some Rows** and enter *`25`*.
         - Check "**Include Related Rows**" and select **Ancestor and Descendant Objects** (Default).
 
-            ![DMS](./images/dms-65.png "... for DEMO_HR_EMPLOYEES table")
+            ![DMS](./images/dms-065.png "... for DEMO_HR_EMPLOYEES table")
 
         - Click **OK**.
 
@@ -654,7 +654,7 @@ Now, your Subsetting definition is being created. Please refresh the page until 
         - In **Rows to Include**, select **Rows Where** and enter *`1=0`* (here, this condition allow to extract 0 rows!).
         - Uncheck **Include Related Rows**.
 
-            ![DMS](./images/dms-66.png "... for DEMO_HR_ERROR_LOG table")
+            ![DMS](./images/dms-066.png "... for DEMO_HR_ERROR_LOG table")
 
         - Click **OK**.
 
@@ -664,7 +664,7 @@ Now, your Subsetting definition is being created. Please refresh the page until 
         - In **Rows to Include**, select **All Rows**.
         - Check **Include Related Rows** and select **Ancestor and Descendant Objects** (Default).
 
-            ![DMS](./images/dms-67.png "... for DEMO_HR_ROLES table")
+            ![DMS](./images/dms-067.png "... for DEMO_HR_ROLES table")
 
         - Click **OK**.
 
@@ -674,15 +674,15 @@ Now, your Subsetting definition is being created. Please refresh the page until 
         - Check **Include Related Rows** and select **Ancestor and Descendant Objects**.
         - Click **OK**.  
 
-            ![DMS](./images/dms-68.png "... for DEMO_HR_USERS table")
+            ![DMS](./images/dms-068.png "... for DEMO_HR_USERS table")
 
         Now, all 4 defined Object Rules should show as below:
 
-    ![DMS](./images/dms-69.png "List of your Object Rules")
+    ![DMS](./images/dms-069.png "List of your Object Rules")
 
 11. In the **Space Estimates** tab, expand the **Applications and Objects** list as shown below:
 
-    ![DMS](./images/dms-70.png "Space Estimate")
+    ![DMS](./images/dms-070.png "Space Estimate")
 
     **Note:**
     - Here, you can see the **Source and Estimated Subset Size** (in MB and number of rows).
@@ -693,15 +693,15 @@ You may stop here if you only need to subset your data. However, we will proceed
 **Associate the previously generated Masking Definition**:  
 13. In the **Data Masking Definitions** tab, click **Add**.
 
-     ![DMS](./images/dms-71.png "Data Masking Definitions")
+     ![DMS](./images/dms-071.png "Data Masking Definitions")
 
 14. Select the masking definition *`Employee_Data_Mask`* created earlier. Click **OK**.
 
-     ![DMS](./images/dms-72.png "Data Masking Definitions")
+     ![DMS](./images/dms-072.png "Data Masking Definitions")
 
 Now, your Data Masking script is associated with your Data Subsetting definition and it will be executed along with data subsetting. You do not need to execute the masking script separately.
         
-![DMS](./images/dms-73.png "Data Masking Definitions is associated")
+![DMS](./images/dms-073.png "Data Masking Definitions is associated")
 
 15. Click **Return** to go to the Data Subsetting Definitions screen.
 
