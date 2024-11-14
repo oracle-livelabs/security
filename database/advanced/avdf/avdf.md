@@ -131,7 +131,7 @@ In this lab, you will do the following:
 
 3. Click on **Schedule Retrieval Jobs** for **pdb1**
 
-    ![AVDF](./images/avdf_501.png "AVDF - Retrieval Jobs")   
+    ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs")   
 
 4. Under **Security Assessment**
     - Checkbox *Assess Immediately*
