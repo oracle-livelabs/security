@@ -22,7 +22,6 @@ This lab assumes you have:
 - Completed:
     - Lab 1: Prepare Setup (*`Free-tier`* and *`Paid Tenants`* only)
     - Lab 2: Environment Setup
-    - Lab 3: Initialize Environment
 
 ## Task 1: Navigate to DMS
 
@@ -46,13 +45,15 @@ Access Oracle Data Masking and Subsetting (DMS) within the Oracle Enterprise Man
 
     ![DMS](./images/dms-001.png "001")
 
-3. Navigate to **Targets > Databases**. Click **Security > Data Masking and Subsetting > Data Discovery** as shown below:
+3. Navigate to **Targets > Databases**. 
 
     ![DMS](./images/dms-002.png "002")  
+
+4. Click **Security > Data Masking and Subsetting > Data Discovery** as shown below: 
     
     ![DMS](./images/dms-003.png "003")
 
-4. Now, navigate to the **Overview** section on the top left:  
+5. Now, navigate to the **Overview** section on the top left:  
 
     ![DMS](./images/dms-004.png "004")
 
@@ -277,7 +278,7 @@ Notice, Masking Format Entries are automatically populated.
 
 8. View the sample data by clicking **Generate** under **Sample Data**:
 
-  ![DMS](./images/dms-025.png "25")
+    ![DMS](./images/dms-025.png "25")
 
 9. Notice the *`EMAIL`* columns now appear under **Columns Available in Masking Definition** along with the defined Masking Format:
 
@@ -449,7 +450,7 @@ Your connection should be successful, if not please make sure your SSH Private K
 ![DMS](./images/dms-041.png "41")
 
 **Schedule Masking Job**:  
-5. Now, lets schedule the Masking Script by navigating to **Targets > Databases**. Click **Security** > **Data Masking and Subsetting** and Choose **Data Masking**. 
+5. Now, lets schedule the Masking Script by navigating to **Targets > Databases**. Click **Security** > **Data Masking and Subsetting** and Choose **Data Masking**.  
 
     ![DMS](./images/dms-042.png "42")
 
