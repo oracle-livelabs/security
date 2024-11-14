@@ -689,7 +689,7 @@ Now, all 4 defined Object Rules should show as below:
 You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process.
 
 **Associate the previously generated Masking Definition**:  
-13. In the **Data Masking Definitions** tab, click **Add**.
+13. In the **Data Masking Definitions** tab, click **Add**.  
 
     ![DMS](./images/dms-071.png "Data Masking Definitions")
 
@@ -740,9 +740,9 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by runnin
     ![DMS](./images/dms-074.png "Restore original data")
 
 **Generate and execute the subsetting script:**  
-4. Go back to the OEM Console and navigate to the main menu: **Target > Databases**, then choose **Security** > **Data Masking and Subsetting** > **Data Subsetting**.  
+4. Go back to the OEM Console and navigate to **Target > Databases**, then choose **Security** > **Data Masking and Subsetting** > **Data Subsetting**.  
 
-    ![DMS](./images/dms-075.png "Navigate to the Application Data Models")
+![DMS](./images/dms-075.png "Navigate to the Application Data Models")
 
 5. Select the *`Employee_Data_Subset`* subsetting definition, go to **Actions**, and choose **Generate Subset**.
 
