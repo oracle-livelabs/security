@@ -29,9 +29,9 @@ This lab assumes you have:
 |2 | Create Local Auto-login Keystore | <5 minutes |
 |3 | Create Master Key | <5 minutes |
 |4 | Encrypt Existing USERS Tablespaces in CDB$ROOT | 5 minutes |
-|5 | Encyrpt Credentials in CDB$ROOT | 5 minutes |
+|5 | Encrypt Credentials in CDB$ROOT | 5 minutes |
 |6 | Encrypt SYSTEM, SYSAUX and USERS Tablespaces in PDB | 5 minutes |
-|7 | Encyrpt All New Tablespaces | 5 minutes |
+|7 | Encrypt All New Tablespaces | 5 minutes |
 |8 | Rekey Master Key | 5 minutes |
 |9| View Keystore Details | 5 minutes |
 |10| Restore Before TDE | 5 minutes |
