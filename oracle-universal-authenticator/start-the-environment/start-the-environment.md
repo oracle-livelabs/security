@@ -252,4 +252,4 @@ You may now **proceed to the next lab**.
 
 * **Created By/Date** - Anuj Tripathi, North America Platform Specialist (IAM/Cloud), July 2024
 
-* **Last Updated By** - Anuj Tripathi, July 2024
+* **Last Updated By** - Anuj Tripathi, Aug 2024
