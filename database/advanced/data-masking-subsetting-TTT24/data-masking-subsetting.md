@@ -12,7 +12,7 @@ An organization needs to share a development application (EMPLOYEESEARCH_DEV) wi
 ### Objectives
 - Data Discovery: Create an Application Data Model (ADM) with discovered sensitive columns.
 - Data Masking: Generate and execute a data masking script to mask sensitive data.
-- Data Subsetting: Generate and execute the data subsetting script to create a subset of the data..
+- Data Subsetting: Generate and execute the data subsetting script to create a subset of the data.
 
 Finally, we will see how the masked and subsetted data can be used securely for data sharing with third-party collaborators. By ensuring that sensitive information is protected, participants will see how this approach allows for seamless collaboration in testing, development, or analytics while maintaining regulatory compliance and data privacy.
 
