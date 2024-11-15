@@ -110,7 +110,7 @@ Created Application Data Model *`Employee_ADM `* for *`cdb1_PDB1`* target databa
 ## Task 3: Data Discovery- Create New Sensitive Types
 
 ### Objective
-Create two new **Sensitive Types** for **USERID** and **PASSWORD**: To identify columns containing sensitive data like Email ID, User ID, and Password, we rely on the **Sensitive Types** library in Data Masking and Subsetting. This library includes a range of predefined Sensitive Types representing specific data categories, and it also allows users to add custom Sensitive Types. Since **EMAIL_ID** is already available as a predefined Sensitive Type, we would create two new Sensitive Types for **USERID** and **PASSWORD** to complete our requirements.
+Create two new **Sensitive Types** for **USERID** and **PASSWORD** columns: To identify columns containing sensitive data like Email ID, User ID, and Password, we rely on the **Sensitive Types** library in Data Masking and Subsetting. This library includes a range of predefined Sensitive Types representing specific data categories, and it also allows users to add custom Sensitive Types. Since **Email ID** is already available as a predefined Sensitive Type, we would create two new Sensitive Types: **USER_ID** and **PASSWORD** to complete our requirements.
 
 ### Steps
 1. Navigate to **Sensitive Types** under **Data Discovery**. 
@@ -157,7 +157,7 @@ Create two new **Sensitive Types** for **USERID** and **PASSWORD**: To identify 
 ## Task 4 Data Discovery- Discover Sensitive Data (Automated)
 
 ### Objective
-Run the **Discover Sensitive Columns** job: To identify sensitive columns, run the Discover Sensitive Columns job using Oracle's predefined sensitive type, **EMAIL_ID**, along with user-defined sensitive types, **USER_ID** and **PASSWORD**. Data Discovery uses column name, comment and data patterns from your selected sensitive types to discover potential relationships between columns.
+Run the **Discover Sensitive Columns** job: To identify sensitive columns, run the Discover Sensitive Columns job using Oracle's predefined sensitive type, **Email ID**, along with user-defined sensitive types, **USER_ID** and **PASSWORD**. Data Discovery uses column name, comment and data patterns from your selected sensitive types to discover potential relationships between columns.
 
 ### Steps
 1. Go to **Application Data Models** page under **Data Discovery**. You can **close left side bar navigation menu** using below icon to enlarge the screen:
@@ -208,7 +208,7 @@ Successfully ran the **Discover Sensitive Columns** job to identify and mark sen
 ## Task 5: Data Masking- Create a New Masking Format
 
 ### Objective
-Create a new **Masking Format** for previously discovered sensitive column *`Email ID`*: The **Masking Formats** library, provided by Data Masking and Subsetting, is available for use. However, for this task, we will create a new masking format to specifically mask the **Email** column. This custom masking format will be used in the next task when creating the Masking Definitions.
+Create a new **Masking Format** for previously discovered sensitive column *`Email ID`*: The **Masking Formats** library, provided by Data Masking and Subsetting, is available for use. However, for this task, we will create a new masking format to specifically mask the **EMAIL** column. This custom masking format will be used in the next task when creating the Masking Definitions.
 
 ### Steps
 1. To create a new masking format, navigate to the **Masking Formats** page under **Data Masking** as follows:
