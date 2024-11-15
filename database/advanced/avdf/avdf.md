@@ -2213,6 +2213,6 @@ Video:
 - *Introducing Oracle Audit Vault and Database Firewall 20.4 (June 2021)* [](youtube:Q90Htb_Lef4)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Nazia Zaidi
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2024
+- **Author** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager
+- **Contributors** - Hakim Loumi - Hakim Loumi, Database Security - Product Manager
+- **Last Updated By/Date** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager - November 2024
