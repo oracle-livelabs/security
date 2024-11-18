@@ -162,11 +162,11 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 ### Steps
 1. Go to **Application Data Models** page under **Data Discovery**. You can **close left side bar navigation menu** using below icon to enlarge the screen:
 
-    ![DMS](./images/dms-012.png "12")
+    ![DMS](./images/dms-212.png "12")
 
 2. Highlight *`Employee_ADM`* created in Task 2 and go to **Actions > Modify > Discover Sensitive Columns**.
 
-    ![DMS](./images/dms-013.png "13")
+    ![DMS](./images/dms-213.png "13")
 
 3. Now, click **Schedule** shown under **Sensitive Column Discovery Jobs** page:
     
