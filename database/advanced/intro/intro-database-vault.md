@@ -2,16 +2,14 @@
 
 ## About this Workshop
 ### Overview
-*Estimated Time to complete the workshop*: 45 minutes
+*Estimated Time to complete the workshop*: 150 minutes
 
-This workshop is the SECOND PART of the Hands-On Labs dedicated to the Oracle Database Security features and functionalities - for the first workshop, please refer to the *DB Security Basics*.
-
-Based on an OCI architecture, deployed in a few minutes with a simple internet connection, it allows you to test DB Security use cases in a complete environment already pre-configured by the Oracle Database Security Product Manager Team.
-
-Now, you no longer need important resources on your PC (storage, CPU or memory), nor complex tools to master, making you completely autonomous to discover at your rhythm all new DB Security features.
+- This workshop is the second part of the Hands-On Labs series on Oracle Database Security. For the first part, see DB Security Basics. 
+- Based on an OCI architecture, deployed in a few minutes with a simple internet connection, it allows you to test DB Security use cases in a complete environment already pre-configured by the Oracle Database Security Product Management Team.
+- No significant PC resources or complex tools are needed, allowing you to explore new features at your own pace.
 
 ### Components
-The complete architecture of the **DB Security Hands-On Labs** is as following:
+The complete architecture of the **DB Security Hands-On Labs** is as follows:
 
   ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
@@ -27,18 +25,16 @@ During this mini-lab, you'll use different resources to interact with these VMs:
   - Glassfish HR App
   - (Optionally) SQL Developer
 
-So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set!
+To ensure the best experience in this workshop, remember to complete the *Lab: Initialize Environment* to verify that all resources are correctly set up!
 
 ### Objectives
-This Hands-On Labs give the user an opportunity to learn how to configure the DB Security features to protect and secure their databases from the Baseline to the Maximum Security Architecture (MSA).
+This mini-lab provides an opportunity to learn how to configure DB Security features to protect and secure databases, from the Baseline to the Maximum Security Architecture (MSA), by exploring Oracle Data Masking and Subsetting (DMS) features.
 
-In this mini-lab, you will learn how to use the **Oracle Database Vault** (DV) features.
+The entire DB Security PM team wishes you an excellent workshop!
 
-The entire DB Security PMs Team wishes you an excellent workshop!
+You may now proceed to the next lab.
 
-You may now **proceed to the next lab**.
-
-## Acknowledgements
+## Acknowledgments
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Alan Williams, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2024
+- **Contributors** - Alan Williams, Rene Fontcha, Kajal Singh
+- **Last Updated By/Date** - Kajal Singh, Data Masking PM - November 2024

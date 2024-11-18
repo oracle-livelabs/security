@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Oracle DB Security on Autonomous DB",
+  "workshoptitle": "Prevent unauthorized data access in Autonomous Databases with Database Vault",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
   {
