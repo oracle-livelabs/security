@@ -355,7 +355,7 @@ Fill in the below details:
 
  - Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab).
  - Associated Database: *`cdb1_PDB1`*.
- - Database Named Credential: *`DMS_ADMIN`*.  
+ - Database Named Credentials: *`DMS_ADMIN`*.  
  
     ![DMS](./images/dms-034.png "34")
 
@@ -394,8 +394,8 @@ i. Generate SSH Keys
 
     ````
     <copy>
-        cd ~
-        ssh-keygen -b 2048 -t rsa
+    cd ~
+    ssh-keygen -b 2048 -t rsa
     </copy>
     ````  
 
@@ -404,9 +404,9 @@ i. Generate SSH Keys
 
     ````
     <copy>
-        cd .ssh
-        cat id_rsa >/tmp/rsa_priv
-        cat id_rsa.pub >>authorized_keys
+    cd .ssh
+    cat id_rsa >/tmp/rsa_priv
+    cat id_rsa.pub >>authorized_keys
     </copy> 
     ```` 
     
@@ -427,7 +427,7 @@ ii. Update the Host Named Credential with the new SSH Key:
         
         ![DMS](./images/dms-039.png "39")
 
-    - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **Other Locations > tmp** and select the file *`rsa_priv`*.
+    - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **Other Locations > Computer > tmp** and select the file *`rsa_priv`*.
 
         ![DMS](./images/dms-040.png "40")
 
@@ -524,11 +524,11 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
     -- -----------------------------
 
     -- EMPLOYEE_DATA
-    SELECT EMAIL, USERID FROM EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES
+    SELECT USERID, EMAIL FROM EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES
      ORDER BY 1;
 
     -- USERS_DATA
-    SELECT EMAIL, USERID, PASSWORD FROM EMPLOYEESEARCH_PROD.DEMO_HR_USERS
+    SELECT USERID, EMAIL, PASSWORD FROM EMPLOYEESEARCH_PROD.DEMO_HR_USERS
      ORDER BY 1;
 
     </copy>
@@ -545,20 +545,20 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
     -- -----------------------------
 
     -- EMPLOYEE_DATA
-    SELECT EMAIL, USERID FROM EMPLOYEESEARCH_DEV.DEMO_HR_EMPLOYEES
+    SELECT USERID, EMAIL FROM EMPLOYEESEARCH_DEV.DEMO_HR_EMPLOYEES
     ORDER BY 1;
 
     -- USERS_DATA
-    SELECT EMAIL, USERID, PASSWORD FROM EMPLOYEESEARCH_DEV.DEMO_HR_USERS
+    SELECT USERID, EMAIL, PASSWORD FROM EMPLOYEESEARCH_DEV.DEMO_HR_USERS
     ORDER BY 1;
 
     </copy>
     ````
 
-    ![DMS](./images/dms-051.png "51")
+    ![DMS](./images/dms-250.png "51")
 
 **Compare the results:**  
-5. Before and after masking job comparison for **DEMO_HR_EMPLOYEES** and **DEMO_HR_USERS** have been shown below:  
+5. Before and after masking job comparison for *`DEMO_HR_EMPLOYEES`* and *`DEMO_HR_USERS`* have been shown below:  
 - Employee Data:  
     - **BEFORE masking** (on prod)
 
@@ -577,7 +577,7 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
 
         ![DMS](./images/dms-055.png "Users data AFTER masking (in DEV)")
 
-As shown, sensitive data has been masked according to the defined formats in the development environment, allowing you to share this environment securely. With sensitive columns like Email, UserID, and Password masked while keeping other non-sensitive columns unmasked, organizations can safely share data with external partners without exposing sensitive information. This ensures secure data sharing while maintaining usability for various purposes, including analytics, as illustrated below:  
+As shown, sensitive data has been masked according to the defined masking formats in the development environment, allowing you to share this environment securely. With sensitive columns like Email, UserID, and Password masked while keeping other non-sensitive columns unmasked, organizations can safely share data with external partners without exposing sensitive information. This ensures secure data sharing while maintaining usability for various purposes, including analytics, as illustrated below:  
 *`The collaborator can perform workforce analysis while protecting privacy by utilizing masked columns like Email, UserID, and Password, alongside unmasked, non-sensitive columns. For example, the firm could examine employee engagement and activity without needing direct identifiers. Suppose the data shows that out of 1000 masked employees in HR_EMPLOYEES, 300 have logged into the system over 50 times in the past month, indicating high engagement. In HR_USERS, masked UserIDs can show 100 distinct users who accessed sensitive internal reports.`*
 
 *`These insights can provide actionable recommendations, such as “Internal report access patterns suggest a need to audit access controls.” This analysis allows the organization to improve workforce management while safeguarding sensitive information.`*
@@ -686,7 +686,7 @@ Now, all 4 defined Object Rules should show as below:
 
     **Note:**
     - Here, you can see the **Source and Estimated Subset Size** (in MB and number of rows).
-    - Since the tables are interdependent, you will see the effects of subsetting on parent-child tables. In this example, *`DEMO_HR_EMPLOYEES`* retains 25% of its rows as previously defined. However, due to its dependency on the *`DEMO_HR_SUPPLEMENTAL_DATA`* table, this table is also affected by the subsetting and will retain 71% of its rows.
+    - Since the tables are interdependent, you will see the effects of subsetting on parent-child tables. In this example, *`DEMO_HR_EMPLOYEES`* retains 25% of its rows as previously defined. However, due to its dependency on the *`DEMO_HR_SUPPLEMENTAL_DATA`* table, this table is also affected by the subsetting and will retain 68% of its rows.
 
 You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process.
 
@@ -722,23 +722,29 @@ Once the Data Subsetting Definition containing subsetting and masking rules is c
 1. Since the data was masked as part of Task 8, lets restore the *`EMPLOYEESEARCH_DEV`* schema on **pdb1** by cloning data from *`EMPLOYEESEARCH_PROD`* schema to have original data.
 Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by running the following command:
 
-        ````
-        <copy>sudo su - oracle</copy>
-        ````
+    ````
+    <copy>
+    sudo su - oracle
+    </copy>
+    ```` 
 
 **Note**: If you are using a **remote desktop session**, simply double-click the **Terminal** icon to launch a session directly as Oracle. 
 
 2. Go to the scripts directory.
 
-        ````
-        <copy>cd $DBSEC_LABS/dms</copy>
-        ````
+    ````
+    <copy>
+    cd $DBSEC_LABS/dms
+    </copy>
+    ````
 
 3. Reset the *`EMPLOYEESEARCH_DEV`* data as it was before masking.
 
-        ````
-        <copy>./dms_restore_pdb1_dev.sh</copy>
-        ````
+    ````
+    <copy>
+    ./dms_restore_pdb1_dev.sh
+    </copy>
+    ````
 
     ![DMS](./images/dms-074.png "Restore original data")
 
