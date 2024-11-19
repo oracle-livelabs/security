@@ -45,13 +45,20 @@ In this lab, you will:
 
   ![Select OCI](images/select-oci-iam-system.png)
 
-6. Enter name  and description of the orchestrated system, and then click **Next.**
+6. Click on Next. Enter name  and description of the orchestrated system, and then click **Next.**
 
   Name: OCI-IAM
   
   Description: OCI-IAM
 
-  ![OCI Enter details](images/enter-oci-system-name.png)
+  ![OCI Enter details](images/oci-the-system.png)
+
+7. Under **Add owners** , select a primary owner and add any additional owners. 
+
+  **Who is the primary owner:** Pamela Green
+
+  Click Next
+   
 
 7. To obtain the fingerprint of OCI user (agcs-user). Open a **new private browser window** and login to the OCI console **Default Domain** as the **Domain Administrator** .
 
@@ -112,9 +119,11 @@ In this lab, you will:
 
   **What is the OCI tenancy's home region?**: Enter the home region for the target OCI tenancy, using the region identifier noted down from the previous step.
 
+  **Which domain names should be included**: If nothing is selected, all the domains will be included. 
+
   Click on **Add**
 
-  ![OCI Enter details](images/details-entered.png)
+  ![OCI Enter details](images/configure-connected-system.png)
 
   Choose the option **Customize before enabling the system for data loads**. Click on **I'm done** 
 
@@ -164,4 +173,4 @@ In this lab, you will:
 
 ## Acknowledgements
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Anbu Anbarasu, May 2023
+* **Last Updated By/Date** - Indira Balasundaram, Nov 2024
