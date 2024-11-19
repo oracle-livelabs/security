@@ -188,7 +188,7 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 
     ![DMS](./images/dms-112.png "16")
 
-6. Highlight the succeeded Discovery Job and notice thirteen sensitive columns discovered and shown under the **Discovered Columns** section. Next, highlight each row with columns EMAIL, USERID or PASSWORD one by one and select **Mark Sensitive** option at the top. Notice that the **Sensitive Status** has been changed from *`UNDEFINED`* to *`SENSITIVE`* for eight rows.
+6. After completion of discovery job, we can selectively mark the discovered columns as *`SENSITIVE`* as required. Highlight the succeeded discovery job and notice thirteen sensitive columns discovered and shown under the **Discovered Columns** section. Next, highlight each row with columns EMAIL, USERID or PASSWORD one by one and select **Mark Sensitive** option at the top. Notice that the **Sensitive Status** has been changed from *`UNDEFINED`* to *`SENSITIVE`* for eight rows.
 
     ![DMS](./images/dms-113.png "17")
 
