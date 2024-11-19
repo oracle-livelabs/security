@@ -47,7 +47,7 @@ Access Oracle Data Masking and Subsetting (DMS) within the Oracle Enterprise Man
 
 3. Navigate to **Targets > Databases**. 
 
-    ![DMS](./images/dms-002.png "002")  
+    ![DMS](./images/dms-003a.png "002")  
 
 4. Click **Security > Data Masking and Subsetting > Data Discovery** as shown below: 
     
@@ -115,7 +115,7 @@ Create two new **Sensitive Types** for **USERID** and **PASSWORD** columns: To i
 ### Steps
 1. Navigate to **Sensitive Types** under **Data Discovery**. 
 
-    ![DMS](./images/dms-008.png "008")
+    ![DMS](./images/dms-008a.png "008")
 
 2. Click **Create**.
 
@@ -123,9 +123,9 @@ Create two new **Sensitive Types** for **USERID** and **PASSWORD** columns: To i
 
 3. Fill in the details as below:
 
-- Name: *`USER_ID`*.
-- Column Name Pattern: *`USERID.*;ID.*`*
-- Column Comment Pattern: *`USERID.*;ID.*`*
+    - Name: *`USER_ID`*.
+    - Column Name Pattern: *`USERID.*;ID.*`*
+    - Column Comment Pattern: *`USERID.*;ID.*`*
 
     ![DMS](./images/dms-106.png "106")  
     
