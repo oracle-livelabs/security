@@ -57,7 +57,7 @@ Access Oracle Data Masking and Subsetting (DMS) within the Oracle Enterprise Man
 
     ![DMS](./images/dms-004a.png "004")
 
-    Click on **Workflow** to review the Data Masking and Subsetting process.  
+6. Click on **Workflow** to review the Data Masking and Subsetting process.  
 
     ![DMS](./images/dms-005.png "005")
 
