@@ -351,7 +351,7 @@ A new Masking Definition for sensitive columns EMAIL, USERID and PASSWORD in the
     - **In-Database Masking**: This performs in-place masking by replacing sensitive data in a database. 
     - **In-Export Masking**: This performs masking while exporting data from a source database using Oracle Data Pump. It is safe to use this option in a production environment because it does not modify any source data.
 
-Fill in the below details:
+3. Fill in the below details:
 
     - Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab).
     - Associated Database: *`cdb1_PDB1`*.
@@ -360,7 +360,7 @@ Fill in the below details:
 ![DMS](./images/dms-034.png "34")
 
 
-3. Click **Generate**.  
+4. Click **Generate**.  
 To monitor the status of the job, refresh the screen by clicking the **Re-fetch** icon on the **Masking Definitions** page. 
 
 **Tips**:
@@ -378,12 +378,12 @@ Oracle Data Masking Pack performs a series of validation checks during script g
 - Data Constraints: The requirements may include generating unique values for the column being masked because of uniqueness constraints or generating values that meet the column length or type requirements
 
 **Update the Host Named Credential**  
-4. The Host Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Host Named Credential with the new SSH key based on your connection method:  
+5. The Host Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Host Named Credential with the new SSH key based on your connection method:  
 
-    **Step 4(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).  
-    **Step 4(b).** Complete this step only if you are NOT using the embedded remote desktop.
+    **Step 5(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).  
+    **Step 5(b).** Complete this step only if you are NOT using the embedded remote desktop.
 
-**Step 4(a).** If you are using the embedded remote desktop:  
+**Step 5(a).** If you are using the embedded remote desktop:  
 
 i. Generate SSH Keys  
 - From your noVNC remote desktop session, open a **Terminal** session:
@@ -435,7 +435,7 @@ ii. Update the Host Named Credential with the new SSH Key:
 
     ![DMS](./images/dms-041.png "41")
 
-**Step 4(b).** If you are NOT using the remote desktop embedded:  
+**Step 5(b).** If you are NOT using the remote desktop embedded:  
 
 - Make sure you can R/W files to your DBSecLab VM from the OEM Console by selecting the menu **Setup > Security > Named Credentials**.
 - Select *`OS_ORACLE_SSH`* named credential.
@@ -455,11 +455,11 @@ Your connection should be successful, if not please make sure your SSH Private K
 
 **Schedule Masking Job**  
 
-5. Now, lets schedule the Masking job by navigating to **Targets > Databases**. Click **Security** > **Data Masking and Subsetting** and Choose **Data Masking**.  
+6. Now, lets schedule the Masking job by navigating to **Targets > Databases**. Click **Security** > **Data Masking and Subsetting** and Choose **Data Masking**.  
 
     ![DMS](./images/dms-042.png "43")
 
-6. Highlight *`Employee_Data_Mask`* and select **Actions > Schedule Masking**.
+7. Highlight *`Employee_Data_Mask`* and select **Actions > Schedule Masking**.
 
     ![DMS](./images/dms-043.png "43")
 
@@ -474,7 +474,7 @@ Fill in the following details on the **Schedule Data Masking Job: Basic Details
 
     ![DMS](./images/dms-044.png "44")
 
-7. Click **Next**.
+8. Click **Next**.
 
 On the next page, mention:
 
@@ -482,7 +482,7 @@ On the next page, mention:
 
 ![DMS](./images/dms-045.png "45")
 
-8. Click **Submit**.
+9. Click **Submit**.
 
 Observe that the **Most Recent Job Status** changes to **Masking Job Scheduled**. Click the **re-fetch** button periodically until the status updates to **Masking Job Succeeded**.
 
