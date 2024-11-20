@@ -55,7 +55,7 @@ Access Oracle Data Masking and Subsetting (DMS) within the Oracle Enterprise Man
 
 5. Now, navigate to the **Overview** section on the top left:  
 
-    ![DMS](./images/dms-004a.png "004")
+    ![DMS](./images/dms-4a.png "004")
 
 6. Click on **Workflow** to review the Data Masking and Subsetting process.  
 
@@ -166,7 +166,7 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 
 2. Highlight *`Employee_ADM`* created in Task 2 and go to **Actions > Modify > Discover Sensitive Columns**.
 
-    ![DMS](./images/dms-213.png "13")
+    ![DMS](./images/dms-213a.png "13")
 
 3. Now, click **Schedule** shown under **Sensitive Column Discovery Jobs** page:
     
@@ -217,17 +217,17 @@ Create a new **Masking Format** for previously discovered sensitive column *`Ema
 
 2. Notice that **Masking Formats** library appears with predefined masking formats that Oracle Enterprise Manager provides. Click **Create** and fill in the following details:
 
- - Name: *`Email ID`*.
- - Description: *`Mask the corporate email by changing prefix and domain name`*.
- - Sensitive Type: *`Email ID`*.
- - Format Entry: *`Random Strings`*.
- - Mention the **Start Length** as 6 and **End Length** as 8. Click **Add Format Entry**.  
+    - Name: *`Email ID`*.
+    - Description: *`Mask the corporate email by changing prefix and domain name`*.
+    - Sensitive Type: *`Email ID`*.
+    - Format Entry: *`Random Strings`*.
+    - Mention the **Start Length** as 6 and **End Length** as 8. Click **Add Format Entry**.  
  
 3. Now, add another **Format Entry** as shown below:
  
-- Format Entry: *`Fixed String`*.
-- Mention the fixed doman string such as *`@xyz.com`* and click on **Add Format Entry**.
-- Optional: You can click Generate to view sample data.
+    - Format Entry: *`Fixed String`*.
+    - Mention the fixed doman string such as *`@xyz.com`* and click on **Add Format Entry**.
+    - Optional: You can click Generate to view sample data.
 
     ![DMS](./images/dms-019.png "19")
 
@@ -254,10 +254,10 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 
 3. On the **Create Masking Definitions page: Basic Details**, fill it as follows:
 
-- Name: *`Employee_Data_Mask.`*
-- Application Data Model: *`Employee_ADM.`*
-- Associated Database: *`cdb1_PDB1.`*
-- Database Named Credentials: *`DMS_ADMIN.`*
+    - Name: *`Employee_Data_Mask.`*
+    - Application Data Model: *`Employee_ADM.`*
+    - Associated Database: *`cdb1_PDB1.`*
+    - Database Named Credentials: *`DMS_ADMIN.`*
 
     ![DMS](./images/dms-022.png "22")
 
@@ -292,28 +292,28 @@ Stay on the **Create Masking Definitions** page to define and add the formats fo
 
     **Note**: You can define masking formats for multiple columns with the same data type.
 
- - Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
- - Click **Add Format Entry**.
+    - Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
+    - Click **Add Format Entry**.
     
     ![DMS](./images/dms-118.png "028")
 
-- click **Add**. 
+    - click **Add**. 
 
 11. Repeat the process for the remaining two **USERID** columns. Select the other two **USERID** columns with the **NUMBER** data type listed under **Columns Available in Application Data Model**, then click **Define Format and Add**.
 
     ![DMS](./images/dms-119.png "29")
 
- - Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
- - Click **Add Format Entry** and click **Add**. 
+    - Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
+    - Click **Add Format Entry** and click **Add**. 
     
 12. Now, select the **PASSWORD** column shown under **Columns Available in Application Data Model** and click **Define Format and Add**:
 
-- Choose **Custom Format Entry** as **Fixed String** and enter the string as *`***`*. 
-- Click **Add Format Entry**. 
+    - Choose **Custom Format Entry** as **Fixed String** and enter the string as *`***`*. 
+    - Click **Add Format Entry**. 
     
     ![DMS](./images/dms-120.png "30")
 
-- Click **Add** and notice, all columns- **EMAIL**, **USERID** and **PASSWORD** are added under **Columns Available in Masking Definitions**:  
+    - Click **Add** and notice, all columns- **EMAIL**, **USERID** and **PASSWORD** are added under **Columns Available in Masking Definitions**:  
         
     ![DMS](./images/dms-121.png "31")
        
@@ -348,16 +348,16 @@ A new Masking Definition for sensitive columns EMAIL, USERID and PASSWORD in the
 
 2. On **Generate Masking Script** page, you can choose either of the two options:
 
- - **In-Database Masking**: This performs in-place masking by replacing sensitive data in a database. 
- - **In-Export Masking**: This performs masking while exporting data from a source database using Oracle Data Pump. It is safe to use this option in a production environment because it does not modify any source data.
+    - **In-Database Masking**: This performs in-place masking by replacing sensitive data in a database. 
+    - **In-Export Masking**: This performs masking while exporting data from a source database using Oracle Data Pump. It is safe to use this option in a production environment because it does not modify any source data.
 
 Fill in the below details:
 
- - Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab).
- - Associated Database: *`cdb1_PDB1`*.
- - Database Named Credentials: *`DMS_ADMIN`*.  
+    - Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab).
+    - Associated Database: *`cdb1_PDB1`*.
+    - Database Named Credentials: *`DMS_ADMIN`*.  
  
-    ![DMS](./images/dms-034.png "34")
+![DMS](./images/dms-034.png "34")
 
 
 3. Click **Generate**.  
@@ -388,7 +388,7 @@ Oracle Data Masking Pack performs a series of validation checks during script g
 i. Generate SSH Keys  
 - From your noVNC remote desktop session, open a **Terminal** session:
 
-    ![DMS](./images/dms-122.png "36")
+    ![DMS](./images/dms-122a.png "36")
 
  Run the following to generate the key pair:  
 
@@ -505,7 +505,7 @@ Generated the Masking Script for the *`Employee_Data_Mask`* definition, with the
 **Query the masked data:**
 1. Launch **SQL Developer** in your noVNC session:
 
-    ![DMS](./images/dms-122.png "47")
+    ![DMS](./images/dms-122b.png "47")
 
 Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
 
@@ -598,7 +598,7 @@ Subset and mask your sensitive data for secure sharing with external partners. T
 **Create Data Subsetting Definition:**
 1. Go to OEM and navigate to Data Subsetting on the left side as shown below:
 
-    ![DMS](./images/dms-056.png "Navigate to the Application Data Models")
+    ![DMS](./images/dms-056a.png "Navigate to the Application Data Models")
 
 2. On the **Data Subsetting Definitions** page, click **Create**.
 
@@ -963,7 +963,7 @@ This task ensures a clean environment for future exercises and prevents any pote
 
     - Navigate to the **Data Subsetting Definitions** by clicking **Data Subsetting**.
 
-        ![DMS](./images/dms-056.png "Navigate to the Application Data Models")
+        ![DMS](./images/dms-056a.png "Navigate to the Application Data Models")
 
     - Select each Data Subsetting Definition and click **Delete** at the top.
         
