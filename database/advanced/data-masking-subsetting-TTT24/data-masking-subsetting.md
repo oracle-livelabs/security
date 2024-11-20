@@ -439,7 +439,7 @@ ii. Update the Host Named Credential with the new SSH Key:
 
 - Make sure you can R/W files to your DBSecLab VM from the OEM Console by selecting the menu **Setup > Security > Named Credentials**.
 - Select *`OS_ORACLE_SSH`* named credential.
-- Click **Edit**.
+- Click **Edit**.  
 
     ![DMS](./images/dms-038.png "38")
 
