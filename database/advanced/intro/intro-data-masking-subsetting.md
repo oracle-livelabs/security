@@ -13,7 +13,7 @@ Now, you no longer need important resources on your PC (storage, CPU or memory),
 ### Components
 The complete architecture of the **DB Security Hands-On Labs** is as following:
 
-  ![DBSec LiveLabs Archi](./images/dbsec_dms.png "DBSec LiveLabs Archi")
+  ![DBSec LiveLabs Archi](./images/dbseclab-archi01.png "DBSec LiveLabs Archi")
 
 It's composed of 5 VMs:
   - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)
