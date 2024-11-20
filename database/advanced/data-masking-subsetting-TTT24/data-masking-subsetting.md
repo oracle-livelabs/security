@@ -6,7 +6,7 @@ This workshop introduces the core functionality of the **Oracle Data Masking and
 * *`Estimated Lab Time:`* 75 minutes.
 * *`Version tested in this lab:`* DBEE 19.23 and Oracle Enterprise Manager 24.
 
-### Problem Statement
+### Problem Statement 
 An organization needs to share a development application (EMPLOYEESEARCH_DEV) with third party collaborator and want to mask sensitive columns that contain Email ID, User ID and Password data before sharing it. They also want to share the subset of the masked data for testing. How can we automatically identify sensitive columns, mask and subset data using Oracle Data Masking and Subsetting?
 
 ### Objectives
