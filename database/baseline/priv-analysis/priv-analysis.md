@@ -37,7 +37,7 @@ This lab assumes you have:
     <copy>sudo su - oracle</copy>
     ````
 
-    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
+    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle. In that case, **you do not need to execute this command**!
 
 2. Go to the scripts directory
 
@@ -45,7 +45,7 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/priv-analysis</copy>
     ````
 
-3. Start by ensuring the user has the "`CAPTURE_ADMIN`" role and creating the Privilege Analysis capture
+3. Start by ensuring the user has the **CAPTURE_ADMIN** role and creating the Privilege Analysis capture
 
     ````
     <copy>./pa_create_capture.sh</copy>
@@ -81,7 +81,7 @@ This lab assumes you have:
 
 ## Task 2: Analyze the workload captured
 
-1.  Generating the report
+1.  Generate the report using the following script
 
     ````
     <copy>./pa_generate_report.sh</copy>
@@ -90,10 +90,10 @@ This lab assumes you have:
     ![Privilege Analysis](./images/pa-005.png "Generate the report")
 
     **Note**:
-    - It takes all of the privileges and roles that were identified as used during the capture and compares it to the roles and privileges granted to each user
-    - It may take a few minutes to generate depending on the volume to be processed
+    - It takes all of the privileges and roles that were identified as used during the capture, then compares it to the roles and privileges granted to each user
+    - It may take a few minutes to generate depending on the volume that needs to be processed
 
-2. Next, view the report results by querying the views associated with the capture output
+2. Next, view the report results by querying the views associated with the capture output with the following script
 
     ````
     <copy>./pa_review_report.sh</copy>
@@ -106,11 +106,10 @@ This lab assumes you have:
     - This step is essential to better understand what happened on your database during this period in order to determine if your users are using their own privileges correctly or if you need to revoke some non-essential ones to avoid any risk of abuse, especially during an identity theft
     - Note that you can run this Privilege Analysis task as many times as necessary... in fact, **it is strongly recommended to do it as often as possible** to always stay in control of your users' activity rights and avoid any privilege elevation attempt by potential attackers
 
-3. Now, open the DB Admin Console (OEM Cloud Control) to view the same report but in a better way
-
+3. Now, open the DB Admin Console (OEM Cloud Control) to view the same report through Enterprise Manager
     - Open a Web Browser at the URL *`https://dbsec-lab:7803/em`*
 
-        **Notes:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:7803/em`*
+        **Note:** If you are not using the remote desktop you can also access this page by going to *`https://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:7803/em`*
 
     - Login to Oracle Enterprise Manager 13c Console as *`SYSMAN`* with the password "*`Oracle123`*"
 
@@ -210,7 +209,7 @@ You can create different types of privilege analysis policies to achieve specifi
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle Privilege Analysis 19c](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/performing-privilege-analysis-find-privilege-use.html#GUID-44CB644B-7B59-4B3B-B375-9F9B96F60186)
+- [Oracle Privilege Analysis Release 23](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/performing-privilege-analysis-identify-privilege-use.html#GUID-44CB644B-7B59-4B3B-B375-9F9B96F60186)
 
 Video:
 - *Understanding Privilege Analysis (January 2019)* [](youtube:3oRODVtWwbg)
@@ -218,4 +217,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Richard Evans
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Last Updated By/Date** - Ethan Shmargad, Database Security PM - November 2024
