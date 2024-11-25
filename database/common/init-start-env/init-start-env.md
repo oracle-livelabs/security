@@ -107,7 +107,7 @@ This lab assumes you have:
 You may now **proceed to the next lab**.
 
 <!--
-## Task 2 - Set Glassfish to use pdb1 database in the dbseclab VM
+Task 2 - Set Glassfish to use pdb1 database in the dbseclab VM
 
 Here, we will modify the default Glassfish connection to target an Oracle Database 19c, so we can monitor, and block, SQL commands
 
