@@ -16,7 +16,7 @@ This lab assumes you have:
     - Lab: Prepare Setup 
     - Lab: Environment Setup
 
-## Task 1: Validate That Required Processes are Up and Running.
+## Task 1: Validate That Required Processes are Up and Running
 
 **Note:** All screenshots for SSH terminal type tasks featured throughout this workshop were captured using the *MobaXterm* SSH Client as described in this step. As a result when executing such tasks from within the graphical remote desktop session, skip steps requiring you to login as user *oracle* using *sudo su - oracle*, the reason being that the remote desktop session is under user *oracle*.
 
