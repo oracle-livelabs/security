@@ -165,7 +165,7 @@ Here, we will modify the default Glassfish connection to target an Oracle Databa
 
 You may now **proceed to the next lab**.
 
-## Appendix 1: Managing Startup Services
+Appendix 1: Managing Startup Services
 
 1. Database services (All databases and Standard Listener)
 
