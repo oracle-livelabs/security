@@ -45,7 +45,7 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/tde</copy>
     ````
     
-2. Run this script to create the TDE-specific sub-directories under WALLET_ROOT
+2. Run the script to create the TDE-specific sub-directories under WALLET_ROOT:
 
 
     ````
