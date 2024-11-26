@@ -109,7 +109,7 @@ This lab assumes you have:
 
     ![TDE](./images/tde-012.png "Create a LOCAL auto-login Oracle Wallet")
 
-The WALLET_TYPE has changed from PASSWORD to LOCAL_AUTOLOGIN.
+`The WALLET_TYPE has changed from PASSWORD to LOCAL_AUTOLOGIN.`
 
 ## Task 4: Data exfiltration from an un-encrypted tablespace
 
