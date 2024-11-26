@@ -31,7 +31,7 @@ This lab assumes you have:
 |4 | Create master key for **united** PDB1 | <5 minutes |
 |5 | Create **local** auto-open TDE wallet | <5 minutes |
 |6 | Data exfiltration from an un-encrypted tablespace | <5 minutes |
-|7 | Avoid attack by encrypting tablespace | <5 minutes |
+|7 | Avoid exfiltration attack by encrypting tablespace | <5 minutes |
 |8 | Encrypt CDB$ROOT tablespaces | <5 minutes |
 |9 | Encrypt remaining tablespaces in PDB1 | 5 minutes |
 |10| Create master key for **isolated** PDB2 | <5 minutes |
