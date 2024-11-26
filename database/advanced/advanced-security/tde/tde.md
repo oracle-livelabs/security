@@ -11,8 +11,8 @@ This workshop introduces the various features and functionality of Oracle Transp
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
 
 ### Objectives
-- Enable Transparent Data Encryption in the database
-- Encrypt data using Transparent Data Encryption
+- Enable Transparent Data Encryption (TDE) in the database
+- Encrypt data using Transparent Data Encryption (TDE)
 
 ### Prerequisites
 This lab assumes you have:
@@ -25,16 +25,17 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-|1 | Create Keystore | <5 minutes |
-|2 | Create Local Auto-login Keystore | <5 minutes |
-|3 | Create Master Key | <5 minutes |
-|4 | Encrypt Existing USERS Tablespaces in CDB$ROOT | 5 minutes |
-|5 | Encrypt Credentials in CDB$ROOT | 5 minutes |
-|6 | Encrypt SYSTEM, SYSAUX and USERS Tablespaces in PDB | 5 minutes |
-|7 | Encrypt All New Tablespaces | 5 minutes |
-|8 | Rekey Master Key | 5 minutes |
-|9| View Keystore Details | 5 minutes |
-|10| Restore Before TDE | 5 minutes |
+|1 | Configure database for TDE | <5 minutes |
+|2 | Create password-protected TDE wallet | <5 minutes |
+|3 | Create master key for CDB$ROOT | <5 minutes |
+|4 | Create master key for **united** PDB1 | <5 minutes |
+|5 | Create **local** auto-open TDE wallet | <5 minutes |
+|6 | Data exfiltration from an un-encrypted tablespace | <5 minutes |
+|7 | Avoid attack by encrypting tablespace | <5 minutes |
+|8 | Encrypt CDB$ROOT tablespaces | <5 minutes |
+|9 | Encrypt remaining tablespaces in PDB1 | 5 minutes |
+|10| Create master key for **isolated** PDB2 | <5 minutes |
+|11| Encrypt tablespaces of **isolated** PDB2 | 5 minutes |
 
 ## Task 1: Create Keystore
 
@@ -44,41 +45,38 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/tde</copy>
     ````
     
-2. Run this script to create the Keystore directories on the Operating System
+2. Run this script to create the TDE-specific sub-directories under WALLET_ROOT
 
 
     ````
-    <copy>./tde_create_os_directory.sh</copy>
+    <copy>./01_tde_create_os_directory.sh</copy>
     ````
 
     ![TDE](./images/tde-002.png "Create the Keystore directories")
 
-3. Set the database parameters to configure your datbaase for TDE. This will require a database restart to take effect. The script will perform the restart for you.
+3. Set the database parameters to configure your database for TDE. This will require a database restart to take effect. The script will perform the restart for you.
 
     ````
-    <copy>./tde_set_tde_parameters.sh</copy>
+    <copy>./02_tde_set_tde_parameters.sh</copy>
     ````
 
     ![TDE](./images/tde-003.png "Set TDE parameters")
 
-4. Create the software keystore (**Oracle Wallet**) for the container database. You will see the status result goes from `NOT_AVAILABLE` to `OPEN_NO_MASTER_KEY`.
-
+4. Create a password-protected TDE wallet for the root container and united PDBs:
     ````
-    <copy>./tde_create_wallet.sh</copy>
+    <copy>./03_tde_create_wallet.sh</copy>
     ````
 
     ![TDE](./images/tde-004.png "Create the software keystore")
 
-    **Note:** We create a secret for the Administer password in order to hide it for the next command!
-
-4. Now, your Oracle Wallet has been created!
+    **Note:** We added the password of the TDE wallet into another local auto-open wallet in <WALLET_ROOT>/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
 
 ## Task 2: Create a master encryption key for the CDB:
 
-1. To create the container database TDE Master Key (**MEK**), run the following command
+1. To create the TDE master key for the container database TDE Master Key, run the following command:
 
     ````
-    <copy>./tde_create_mek_cdb.sh</copy>
+    <copy>./04_tde_create_mek_cdb.sh</copy>
     ````
 
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
@@ -86,74 +84,39 @@ This lab assumes you have:
 2. To create a master encryption key for the pluggable database **pdb1**, run the following command
 
     ````
-    <copy>./tde_create_mek_pdb.sh pdb1</copy>
+    <copy>./05_tde_create_mek_pdb.sh pdb1</copy>
     ````
 
     ![TDE](./images/tde-006.png "Create the pluggable database TDE Master Key")
 
-3. If you want, you can do the same for **pdb2**... This is not a requirement and it might be helpful to show some databases with TDE and some without
-
-    ````
-    <copy>./tde_create_mek_pdb.sh pdb2</copy>
-    ````
-
-    ![TDE](./images/tde-007.png "Create the pluggable database TDE Master Key")
-
-4. Now, you have a master key and you can begin encrypting tablespaces!
+3. Now, you have a master key and you can begin encrypting tablespaces!
 
 ## Task 3: Create Local Auto-login Wallet
 
-1. Run the script to view the Oracle Wallet content on the Operating System
+1. You can view what the Oracle Wallet looks like in the database:
 
     ````
-    <copy>./tde_view_wallet_on_os.sh</copy>
-    ````
-
-    ![TDE](./images/tde-010.png "View the Oracle Wallet content on the OS")
-
-2. You can view what the Oracle Wallet looks like in the database
-
-    ````
-    <copy>./tde_view_wallet_in_db.sh</copy>
+    <copy>./06_tde_view_wallet_in_db.sh</copy>
     ````
 
     ![TDE](./images/tde-011.png "View the Oracle Wallet content on the database")
 
-3. Now, create the **Auto-login Oracle Wallet**
+2. Now, create the **Auto-login Oracle Wallet**
 
     ````
-    <copy>./tde_create_local_autologin_wallet.sh</copy>
+    <copy>./07_tde_create_local_autologin_wallet.sh</copy>
     ````
 
     ![TDE](./images/tde-012.png "Create a LOCAL auto-login Oracle Wallet")
 
-4. Run the same queries to view the Oracle Wallet content on the Operating System
+The WALLET_TYPE has changed from PASSWORD to LOCAL_AUTOLOGIN.
 
-    ````
-    <copy>./tde_view_wallet_on_os.sh</copy>
-    ````   
-
-    ![TDE](./images/tde-013.png "View the Oracle Wallet content on the OS")
-
-    **Note**: You should now see the **cwallet.sso** file
-
-5. And no changes to the Oracle Wallet in the d
-atabase
-
-    ````
-    <copy>./tde_view_wallet_in_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-014.png "View the Oracle Wallet content on the database")
-
-6. Now your local autologin is created!
-
-## Task 4: Encrypt Existing Tablespace
+## Task 4: Data exfiltration from an un-encrypted tablespace
 
 1. Use the Linux command "strings" to view application data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace
 
     ````
-    <copy>./tde_strings_data_empdataprod.sh</copy>
+    <copy>./08_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-015.png "View the data in the data file")
@@ -163,7 +126,7 @@ atabase
     - This is an Operating System command that bypasses the database to view the data
     - This is called a 'side-channel attack' because the database is unaware of it
 
-2. Next, **encrypt explicitly** the data by encrypting the entire tablespace
+2. Encrypt the EMPDATA_PROD tablespace with AS256 (default):
 
     ````
     <copy>./tde_encrypt_tbs.sh</copy>
@@ -171,12 +134,10 @@ atabase
 
     ![TDE](./images/tde-016.png "Encrypt explicitly the data")
 
-    **Note:** By default, the syntax is using the AES256 encryption algorithm
-
 3. Now, try the side-channel attack again
 
     ````
-    <copy>./tde_strings_data_empdataprod.sh</copy>
+    <copy>./10_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-017.png "Try the side-channel attack again")
