@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the core functionality of the **Oracle Data Masking and Subsetting (DMS)** pack for Enterprise Manager 24. Participants will learn how to configure and utilize key features to protect sensitive data in non-production environments. A particular emphasis will be placed on the **Data Sharing** use case, showcasing how DMS ensures secure sharing of data with third parties, such as developers, testers, or external collaborators, by masking or subsetting sensitive information. This approach helps maintain compliance with privacy regulations while ensuring data remains usable for non-production purposes. 
 
-* *`Estimated Lab Time:`* 75 minutes.
+* *`Estimated Lab Time:`* 90 minutes.
 * *`Version tested in this lab:`* DBEE 19.23 and Oracle Enterprise Manager 24.
 
 ### Problem Statement 
@@ -797,9 +797,9 @@ After reviewing that the required space is available, click **Submit** to genera
 Review subsetted and masked data across environments to understand how Data Masking and Subsetting enables secure data sharing with third-party collaborators. This includes querying subsetted and masked data in Production and Development environments for a before-and-after comparison.
 
 ### Steps
-1. Query the data in the production and development environments using SQL Developer: Open **SQL Developer** on your noVNC session.
+1. Query the data in the production and development environments using SQL Developer: Open **SQL Developer** on your noVNC session.  
 
-    ![DMS](./images/dms-122.png "Open SQL Developer")
+    ![DMS](./images/dms-122c.png "Open SQL Developer")
 
 2. You should open two separate worksheets for *`PDB1_SYSTEM`* connection:  
     - Under the list of **Oracle Connections**, double-click on PDB1_SYSTEM.  
