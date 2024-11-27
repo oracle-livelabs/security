@@ -791,9 +791,9 @@ After reviewing that the required space is available, click **Submit** to genera
 Review subsetted and masked data across environments to understand how Data Masking and Subsetting enables secure data sharing with third-party collaborators. This includes querying subsetted and masked data in Production and Development environments for a before-and-after comparison.
 
 ### Steps
-1. Query the data in the production and development environments using SQL Developer: Open **SQL Developer** on your noVNC session.
+1. Query the data in the production and development environments using SQL Developer: Open **SQL Developer** on your noVNC session.  
 
-    ![DMS](./images/dms-122.png "Open SQL Developer")
+    ![DMS](./images/dms-122c.png "Open SQL Developer")
 
 2. You should open two separate worksheets for *`PDB1_SYSTEM`* connection:  
     - Under the list of **Oracle Connections**, double-click on PDB1_SYSTEM.  
