@@ -122,7 +122,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
     
 ## Task 7: Avoid exfiltration attack by encrypting tablespace
 
-1. Encrypt the EMPDATA_PROD tablespace with AS256 (default):
+1. Encrypt the EMPDATA_PROD tablespace with AES256 (default):
 
     ````
     <copy>./tde_encrypt_tbs.sh</copy>
