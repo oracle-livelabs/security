@@ -793,7 +793,7 @@ Review subsetted and masked data across environments to understand how Data Mask
 ### Steps
 1. Query the data in the production and development environments using SQL Developer: Open **SQL Developer** on your noVNC session.  
 
-    ![DMS](./images/dms-122c.png "Open SQL Developer")
+    ![DMS](./images/dms-122.png "122")
 
 2. You should open two separate worksheets for *`PDB1_SYSTEM`* connection:  
     - Under the list of **Oracle Connections**, double-click on PDB1_SYSTEM.  
