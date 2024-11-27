@@ -85,7 +85,7 @@ This lab assumes you have:
 
 The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`   
 
-## Task 4: Create a master encryption key for CDB\$ROOT:
+## Task 4: Create a master encryption key for CDB$ROOT:
 
 1. To create the TDE master key for the container database TDE Master Key, run the following command:
 
@@ -97,7 +97,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
 
 ## Task 5: Create a master encryption key for pluggable database PDB1:
 
-1. To create a master encryption key for the pluggable database **pdb1**, run the following command
+To create a master encryption key for the pluggable database **pdb1**, run the following command
 
     ````
     <copy>./05_tde_create_mek_pdb.sh pdb1</copy>
@@ -107,7 +107,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
 
 ## Task 6: Data exfiltration from an un-encrypted tablespace
 
-1. Use the Linux "strings" command to view application data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace
+Use the Linux "strings" command to view application data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace
 
     ````
     <copy>./08_tde_strings_data_empdataprod.sh</copy>
@@ -125,7 +125,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
 1. Encrypt the EMPDATA_PROD tablespace with AES256 (default):
 
     ````
-    <copy>./tde_encrypt_tbs.sh</copy>
+    <copy>./09_tde_encrypt_tbs.sh</copy>
     ````
 
     ![TDE](./images/tde-016.png "Encrypt explicitly the data")
@@ -138,14 +138,14 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
 
     ![TDE](./images/tde-017.png "Try the side-channel attack again")
 
-4. You see that all of the data is now encrypted and no longer visible!
+You see that all of the data is now encrypted and no longer visible!
 
-## Task 8: Encrypt CDB\$ROOT tablespaces
+## Task 8: Encrypt CDB$ROOT tablespaces
 
-1. First, check the existing initialization parameters
+1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1:
 
     ````
-    <copy>./tde_check_init_params.sh</copy>
+    <copy>./11_tde_encrypt_tbs.sh</copy>
     ````
 
     ![TDE](./images/tde-018.png "Check the existing initialization parameters")
