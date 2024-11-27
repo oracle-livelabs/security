@@ -105,29 +105,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
 
     ![TDE](./images/tde-006.png "Create the TDE Master Key for PDB1")
 
-3. Now, you have a master key and you can begin encrypting tablespaces!
-
-## Task 3: Create Local Auto-login Wallet
-
-1. You can view what the Oracle Wallet looks like in the database:
-
-    ````
-    <copy>./06_tde_view_wallet_in_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-011.png "View the Oracle Wallet content on the database")
-
-2. Now, create the **Auto-login Oracle Wallet**
-
-    ````
-    <copy>./07_tde_create_local_autologin_wallet.sh</copy>
-    ````
-
-    ![TDE](./images/tde-012.png "Create a LOCAL auto-login Oracle Wallet")
-
-The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
-
-## Task 4: Data exfiltration from an un-encrypted tablespace
+## Task 6: Data exfiltration from an un-encrypted tablespace
 
 1. Use the Linux "strings" command to view application data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace
 
@@ -141,8 +119,10 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
     - You can see the data and you are not connected to the database!
     - This is an Operating System command that bypasses the database to view the data
     - This is called a 'side-channel attack' because the database is unaware of it
+    
+## Task 7: Avoid exfiltration attack by encrypting tablespace
 
-2. Encrypt the EMPDATA_PROD tablespace with AS256 (default):
+1. Encrypt the EMPDATA_PROD tablespace with AS256 (default):
 
     ````
     <copy>./tde_encrypt_tbs.sh</copy>
@@ -150,7 +130,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
 
     ![TDE](./images/tde-016.png "Encrypt explicitly the data")
 
-3. Now, try the side-channel attack again
+2. Now, try the side-channel attack again
 
     ````
     <copy>./10_tde_strings_data_empdataprod.sh</copy>
@@ -160,7 +140,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
 
 4. You see that all of the data is now encrypted and no longer visible!
 
-## Task 5: Automatically Encrypt New Tablespaces
+## Task 8: Encrypt CDB\$ROOT tablespaces
 
 1. First, check the existing initialization parameters
 
