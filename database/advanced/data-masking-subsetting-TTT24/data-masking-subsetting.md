@@ -388,7 +388,7 @@ Oracle Data Masking Pack performs a series of validation checks during script g
 i. Generate SSH Keys  
 - From your noVNC remote desktop session, open a **Terminal** session:
 
-    ![DMS](./images/dms-122.png "36")
+![DMS](./images/dms-122.png "36")
 
  Run the following to generate the key pair:  
 
@@ -503,7 +503,7 @@ Generated the Masking Script for the *`Employee_Data_Mask`* definition, with the
 
 ### Steps
 **Query the masked data:**
-1. Launch **SQL Developer** in your noVNC session:
+1. Launch **SQL Developer** in your noVNC session  
 
     ![DMS](./images/dms-122.png "47")
 
