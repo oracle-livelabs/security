@@ -32,8 +32,7 @@ This lab assumes you have:
 |5 | Create master key for **united** PDB1 | <5 minutes |
 |6 | Data exfiltration from an un-encrypted tablespace | <5 minutes |
 |7 | Avoid exfiltration attack by encrypting tablespace | <5 minutes |
-|8 | Encrypt CDB$ROOT tablespaces | <5 minutes |
-|9 | Encrypt remaining tablespaces in PDB1 | 5 minutes |
+|8 | Encrypt remaining tablespaces in CDB$ROOT and PDB1 | 5 minutes |
 |10| Create master key for **isolated** PDB2 | <5 minutes |
 |11| Encrypt tablespaces of **isolated** PDB2 | 5 minutes |
 
@@ -140,9 +139,9 @@ Use the Linux "strings" command to view application data in the data file, `empd
 
 You see that all of the data is now encrypted and no longer visible!
 
-## Task 8: Encrypt CDB$ROOT tablespaces
+## Task 8: Encrypt remaining tablespaces in CDB$ROOT and PDB1
 
-1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1:
+1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1; encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and written into those files in encrypted form.
 
     ````
     <copy>./11_tde_encrypt_tbs.sh</copy>
