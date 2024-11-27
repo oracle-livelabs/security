@@ -27,9 +27,9 @@ This lab assumes you have:
 |--|------------------------------------------------------------|-------------|
 |1 | Configure database for TDE | <5 minutes |
 |2 | Create password-protected TDE wallet | <5 minutes |
-|3 | Create master key for CDB$ROOT | <5 minutes |
-|4 | Create master key for **united** PDB1 | <5 minutes |
-|5 | Create **local** auto-open TDE wallet | <5 minutes |
+|3 | Create **local** auto-open TDE wallet | <5 minutes |
+|4 | Create master key for CDB$ROOT | <5 minutes |
+|5 | Create master key for **united** PDB1 | <5 minutes |
 |6 | Data exfiltration from an un-encrypted tablespace | <5 minutes |
 |7 | Avoid exfiltration attack by encrypting tablespace | <5 minutes |
 |8 | Encrypt CDB$ROOT tablespaces | <5 minutes |
@@ -37,7 +37,7 @@ This lab assumes you have:
 |10| Create master key for **isolated** PDB2 | <5 minutes |
 |11| Encrypt tablespaces of **isolated** PDB2 | 5 minutes |
 
-## Task 1: Create Keystore
+## Task 1: Configure database for TDE
 
 1. Go to the scripts directory
 
@@ -62,7 +62,9 @@ This lab assumes you have:
 
     ![TDE](./images/tde-003.png "Set TDE parameters")
 
-4. Create a password-protected TDE wallet for the root container and united PDBs:
+## Task 2: Create password-protected TDE wallet
+
+1. Create a password-protected TDE wallet for the root container and united PDBs:
     ````
     <copy>./03_tde_create_wallet.sh</copy>
     ````
@@ -71,7 +73,19 @@ This lab assumes you have:
 
     **Note:** We added the password of the TDE wallet into another local auto-open wallet in <WALLET_ROOT>/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
 
-## Task 2: Create a master encryption key for the CDB:
+## Task 3: Create local auto-open TDE wallet
+
+ 2. Now, create a **LOCAL** auto-open TDE wallet
+
+    ````
+    <copy>./04_tde_create_local_autologin_wallet.sh</copy>
+    ````
+
+    ![TDE](./images/tde-012.png "Create a LOCAL auto-login Oracle Wallet")
+
+The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`   
+
+## Task 4: Create a master encryption key for CDB\$ROOT:
 
 1. To create the TDE master key for the container database TDE Master Key, run the following command:
 
@@ -81,13 +95,15 @@ This lab assumes you have:
 
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
-2. To create a master encryption key for the pluggable database **pdb1**, run the following command
+## Task 5: Create a master encryption key for pluggable database PDB1:
+
+1. To create a master encryption key for the pluggable database **pdb1**, run the following command
 
     ````
     <copy>./05_tde_create_mek_pdb.sh pdb1</copy>
     ````
 
-    ![TDE](./images/tde-006.png "Create the pluggable database TDE Master Key")
+    ![TDE](./images/tde-006.png "Create the TDE Master Key for PDB1")
 
 3. Now, you have a master key and you can begin encrypting tablespaces!
 
@@ -109,11 +125,11 @@ This lab assumes you have:
 
     ![TDE](./images/tde-012.png "Create a LOCAL auto-login Oracle Wallet")
 
-`The WALLET_TYPE has changed from PASSWORD to LOCAL_AUTOLOGIN.`
+The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
 
 ## Task 4: Data exfiltration from an un-encrypted tablespace
 
-1. Use the Linux command "strings" to view application data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace
+1. Use the Linux "strings" command to view application data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace
 
     ````
     <copy>./08_tde_strings_data_empdataprod.sh</copy>
