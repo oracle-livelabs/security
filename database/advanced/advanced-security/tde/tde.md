@@ -44,19 +44,10 @@ This lab assumes you have:
     <copy>cd $DBSEC_LABS/tde</copy>
     ````
     
-2. Run the script to create the TDE-specific sub-directories under WALLET_ROOT:
-
-
-    ````
-    <copy>./01_tde_create_os_directory.sh</copy>
-    ````
-
-    ![TDE](./images/tde-002.png "Create the Keystore directories")
-
-3. Set the database parameters to configure your database for TDE. This will require a database restart to take effect. The script will perform the restart for you.
+2. Set the database parameters to configure your database for TDE. This will require a database restart to take effect. The script will perform the restart for you.
 
     ````
-    <copy>./02_tde_set_tde_parameters.sh</copy>
+    <copy>./01_tde_set_tde_parameters.sh</copy>
     ````
 
     ![TDE](./images/tde-003.png "Set TDE parameters")
@@ -65,7 +56,7 @@ This lab assumes you have:
 
 1. Create a password-protected TDE wallet for the root container and united PDBs:
     ````
-    <copy>./03_tde_create_wallet.sh</copy>
+    <copy>./02_tde_create_wallet.sh</copy>
     ````
 
     ![TDE](./images/tde-004.png "Create the software keystore")
@@ -77,7 +68,7 @@ This lab assumes you have:
  2. Now, create a **LOCAL** auto-open TDE wallet
 
     ````
-    <copy>./04_tde_create_local_autologin_wallet.sh</copy>
+    <copy>./03_tde_create_local_autologin_wallet.sh</copy>
     ````
 
     ![TDE](./images/tde-012.png "Create a LOCAL auto-login Oracle Wallet")
@@ -95,21 +86,22 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
 ## Task 5: Create a master encryption key for pluggable database PDB1:
+If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB\$ROOT, automatically making the PDB a united PDB.
 
-To create a master encryption key for the pluggable database **pdb1**, run the following command
+To create a master encryption key for the pluggable database **pdb1**, run the following command:
 
     ````
-    <copy>./05_tde_create_mek_pdb.sh pdb1</copy>
+    <copy>./05_tde_create_mek_pdb.sh</copy>
     ````
 
     ![TDE](./images/tde-006.png "Create the TDE Master Key for PDB1")
 
 ## Task 6: Data exfiltration from an un-encrypted tablespace
 
-Use the Linux "strings" command to view application data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace
+Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
 
     ````
-    <copy>./08_tde_strings_data_empdataprod.sh</copy>
+    <copy>./06_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-015.png "View the data in the data file")
@@ -124,7 +116,7 @@ Use the Linux "strings" command to view application data in the data file, `empd
 1. Encrypt the EMPDATA_PROD tablespace with AES256 (default):
 
     ````
-    <copy>./09_tde_encrypt_tbs.sh</copy>
+    <copy>./07_tde_encrypt_tbs.sh</copy>
     ````
 
     ![TDE](./images/tde-016.png "Encrypt explicitly the data")
@@ -132,7 +124,7 @@ Use the Linux "strings" command to view application data in the data file, `empd
 2. Now, try the side-channel attack again
 
     ````
-    <copy>./10_tde_strings_data_empdataprod.sh</copy>
+    <copy>./08_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-017.png "Try the side-channel attack again")
@@ -144,7 +136,7 @@ You see that all of the data is now encrypted and no longer visible!
 1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1; encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and written into those files in encrypted form.
 
     ````
-    <copy>./11_tde_encrypt_tbs.sh</copy>
+    <copy>./10_tde_encrypt_tbs.sh</copy>
     ````
 
     ![TDE](./images/tde-018.png "Check the existing initialization parameters")
