@@ -182,7 +182,7 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 - Applications: *`EMPLOYEESEARCH_DEV`* (Start typing to select from the drop-down).
 - Sensitive Types: **Email ID**, **USER_ID** and **PASSWORD** (Type in and select from the drop-down for each of the values).
 
-    ![DMS](./images/dms-108.png "15")
+![DMS](./images/dms-108.png "15")  
 
 5. Click **Submit**. Check the discovery job status by pressing the **Refresh** button and move forward when status shows **Succeeded**!
 
@@ -322,9 +322,9 @@ Stay on the **Create Masking Definitions** page to define and add the formats fo
 14. Users have an option to add a pre-masking script and a post-masking script. For this task, however, you can leave it empty.
 
 **Note**:
-- Use the **Pre Mask Script** text box to specify any SQL script that must run before masking starts.
-- Use the **Post Mask Script** text box to specify any SQL script that must run after masking completes. 
-
+    - Use the **Pre Mask Script** text box to specify any SQL script that must run before masking starts.
+    - Use the **Post Mask Script** text box to specify any SQL script that must run after masking completes.  
+    
 15. Click **Next**.
 
 16. Click **Create** on the next page. A new Masking Definition is created.
@@ -465,14 +465,14 @@ Your connection should be successful, if not please make sure your SSH Private K
 
 Fill in the following details on the **Schedule Data Masking Job: Basic Details page**:
 
-- Data Masking Option: **In-Database Masking**.
-- Tablespace for Temporary Objects: **Default Tablespace** (Default).
-- Associated Database: *`cdb1_PDB1`*.
-- Database Named Credentials: *`DMS_ADMIN`*.
-- Host Named Credentials: *`OS_ORACLE_SSH`*
-- Select the checkbox for **Selected Database is not a production database**.
+    - Data Masking Option: **In-Database Masking**.
+    - Tablespace for Temporary Objects: **Default Tablespace** (Default).
+    - Associated Database: *`cdb1_PDB1`*.
+    - Database Named Credentials: *`DMS_ADMIN`*.
+    - Host Named Credentials: *`OS_ORACLE_SSH`*
+    - Select the checkbox for **Selected Database is not a production database**.
 
-    ![DMS](./images/dms-044.png "44")
+![DMS](./images/dms-044.png "44")  
 
 7. Click **Next**.
 
