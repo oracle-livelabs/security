@@ -63,7 +63,7 @@ This lab assumes you have:
 
     **Note:** We added the password of the TDE wallet into another local auto-open wallet in <WALLET_ROOT>/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
 
-## Task 3: Create local auto-open TDE wallet
+## Task 3: Create local auto-open TDE wallet:
 
  2. Now, create a **LOCAL** auto-open TDE wallet
 
@@ -83,7 +83,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
     <copy>./04_tde_create_mek_cdb.sh</copy>
     ````
 
-    ![TDE](/images/tde-005.png "Create the container database TDE Master Key")
+    ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
 ## Task 5: Create a master encryption key for pluggable database PDB1:
 If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
@@ -94,9 +94,9 @@ If the PDB **creates a master key**, that master key can only go into the wallet
     <copy>./05_tde_create_mek_pdb.sh</copy>
     ````
 
-    ![TDE](/images/tde-006.png "Create the TDE Master Key for PDB1")
+    ![TDE](./images/tde-006.png "Create the TDE Master Key for PDB1")
 
-## Task 6: Data exfiltration from an un-encrypted tablespace
+## Task 6: Side-channel attack against an un-encrypted tablespace:
 
 1. Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
 
@@ -111,7 +111,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
     - This is an Operating System command that bypasses the database to view the data
     - This is called a 'side-channel attack' because the database is unaware of it
     
-## Task 7: Avoid exfiltration attack by encrypting tablespace
+## Task 7: Avoid side-channel attack by encrypting tablespace:
 
 1. Encrypt the EMPDATA_PROD tablespace with AES256 (default):
 
@@ -131,7 +131,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
 
 You see that all of the data is now encrypted and no longer visible!
 
-## Task 8: Encrypt remaining tablespaces in CDB$ROOT and PDB1
+## Task 8: Encrypt remaining tablespaces in CDB$ROOT and PDB1:
 
 1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1; encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and written into those files in encrypted form.
 
@@ -177,7 +177,7 @@ You see that all of the data is now encrypted and no longer visible!
 
 3. Now, when tablespaces are created, for example during application install time, those application tablespace will be encrypted, even if the installation commands to not include the encryption keywords of the CREATE TABLESPACE command!
 
-## Task 6: Rekey Master Key
+## Task 6: Rekey Master Key:
 
 1. To rekey the container database TDE Master Key (MEK), run the following command
 
@@ -223,7 +223,7 @@ You see that all of the data is now encrypted and no longer visible!
 
 4. Now that you have a master key, you can begin encrypting tablespaces or column!
 
-## Task 7: View Keystore Details
+## Task 7: View Keystore Details:
 
 1. Once you have a keystore, you can run either of these scripts. You will notice there are multiple copies of the **ewallet.p12** file. Every time you make a change, including create or rekey, the ewallet.p12 file is backed up. You will also see the contents of the Oracle Wallet file by using **orapki**
 
@@ -243,7 +243,7 @@ You see that all of the data is now encrypted and no longer visible!
 
     ![TDE](./images/tde-024c.png "View the keystore data in the database")
 
-## Task 8: Optionally, Restore Before TDE
+## Task 8: Optionally, Restore Before TDE:
 
 1. First, execute this script to restore the pfile
 
