@@ -83,7 +83,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
     <copy>./04_tde_create_mek_cdb.sh</copy>
     ````
 
-    ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
+    ![TDE](/images/tde-005.png "Create the container database TDE Master Key")
 
 ## Task 5: Create a master encryption key for pluggable database PDB1:
 If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
@@ -94,7 +94,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
     <copy>./05_tde_create_mek_pdb.sh</copy>
     ````
 
-    ![TDE](./images/tde-006.png "Create the TDE Master Key for PDB1")
+    ![TDE](/images/tde-006.png "Create the TDE Master Key for PDB1")
 
 ## Task 6: Data exfiltration from an un-encrypted tablespace
 
@@ -107,7 +107,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
     ![TDE](./images/tde-015.png "View the data in the data file")
 
     **Note:**
-    - You can see the data and you are not connected to the database!
+    - You can see the data, bypassing the access controls of the database!
     - This is an Operating System command that bypasses the database to view the data
     - This is called a 'side-channel attack' because the database is unaware of it
     
