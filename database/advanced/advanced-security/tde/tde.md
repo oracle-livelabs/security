@@ -73,7 +73,7 @@ This lab assumes you have:
 
     ![TDE](./images/tde-012.png "Create a LOCAL auto-login Oracle Wallet")
 
-The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`   
+The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`   
 
 ## Task 4: Create a master encryption key for CDB$ROOT:
 
@@ -86,9 +86,9 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN.`
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
 ## Task 5: Create a master encryption key for pluggable database PDB1:
-If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB\$ROOT, automatically making the PDB a united PDB.
+If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
 
-To create a master encryption key for the pluggable database **pdb1**, run the following command:
+1. To create a master encryption key for the pluggable database **pdb1**, run the following command:
 
     ````
     <copy>./05_tde_create_mek_pdb.sh</copy>
@@ -98,7 +98,7 @@ To create a master encryption key for the pluggable database **pdb1**, run the f
 
 ## Task 6: Data exfiltration from an un-encrypted tablespace
 
-Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
+1. Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
 
     ````
     <copy>./06_tde_strings_data_empdataprod.sh</copy>
