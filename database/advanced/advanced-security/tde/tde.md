@@ -65,7 +65,7 @@ This lab assumes you have:
 
 ## Task 3: Create local auto-open TDE wallet:
 
- 2. Now, create a **LOCAL** auto-open TDE wallet
+ 1. Create a **LOCAL** auto-open TDE wallet:
 
     ````
     <copy>./03_tde_create_local_autologin_wallet.sh</copy>
@@ -77,7 +77,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 
 ## Task 4: Create a master encryption key for CDB$ROOT:
 
-1. To create the TDE master key for the container database TDE Master Key, run the following command:
+ 1. To create the TDE master key for the container database TDE Master Key, run the following command:
 
     ````
     <copy>./04_tde_create_mek_cdb.sh</copy>
@@ -88,7 +88,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 ## Task 5: Create a master encryption key for pluggable database PDB1:
 If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
 
-1. To create a master encryption key for the pluggable database **pdb1**, run the following command:
+ 1. To create a master encryption key for the pluggable database **pdb1**, run the following command:
 
     ````
     <copy>./05_tde_create_mek_pdb.sh</copy>
