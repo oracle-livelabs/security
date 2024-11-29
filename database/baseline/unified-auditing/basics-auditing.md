@@ -4,7 +4,7 @@
 This workshop helps you get started with essentials and is the foundation step for anyone getting started with Unified Auditing (or) aiming to achieve parity with default legacy audit settings that is de-supported in Oracle Database 23ai. Learn how you can start auditing the most common security-relevant events that are absolutely critical to monitor in the database or needed to demonstrate compliance with most regulations. This lab will cover the policy provisioning for such essential auditable events in the database and validate that audits are triggered with a workload.
 
 
-*Estimated Lab Time:* 15 minutes
+*Estimated Lab Time:* 20 minutes
 
 *Version tested in this lab:* Oracle DBEE 19.23
 

@@ -24,14 +24,6 @@ This lab assumes you have:
     - Lab: Environment Setup
     - Lab: Initialize Environment
 
-### Lab Timing (estimated)
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-| 1 | Designate a dedicated tablespace for unified audit trail | 5 minutes |
-| 2 | Set reasonable unified audit trail partition interval | 5 minutes |
-| 3 | Archive audit records and purge the unified audit trail | 5 minutes |
-
-
 ## Task 1: Designate a dedicated tablespace for unified audit trail
 Storing audit records in a separate dedicated tablespace will improve system performance. In this task, we will create a dedicated ASSM (auto segment space managed) tablespace for Unified auditing, and relocate the unified audit trail to the newly created one.
 
