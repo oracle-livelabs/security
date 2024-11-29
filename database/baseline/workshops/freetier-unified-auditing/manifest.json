@@ -45,18 +45,6 @@
       "filename": "../../unified-auditing/basics-auditing.md"
     },
     {
-      "title": "Lab 6: Unified Audit Advanced",
-      "description": "In this lab you can take the next steps to detailed auditing",
-      "publisheddate": "10/20/2020",
-      "filename": "../../unified-auditing/advanced-auditing.md"
-    },
-    {
-      "title": "Lab 7: Unified Audit Comprehensive",
-      "description": "In this lab you will go beyond the baseline to deep dive coverage",
-      "publisheddate": "10/20/2020",
-      "filename": "../../unified-auditing/unified-auditing.md"
-    },
-    {
       "title": "Need Help?",
       "description": "Solutions to Common Problems and Directions for Receiving Live Help",
       "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
