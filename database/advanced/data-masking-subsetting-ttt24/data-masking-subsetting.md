@@ -6,7 +6,7 @@ This workshop introduces the core functionality of the **Oracle Data Masking and
 * *`Estimated Lab Time:`* 90 minutes.
 * *`Version tested in this lab:`* DBEE 19.23 and Oracle Enterprise Manager 24.
 
-### Problem Statement
+### Problem Statement 
 An organization needs to share a development application (EMPLOYEESEARCH_DEV) with third party collaborator and want to mask sensitive columns that contain Email ID, User ID and Password data before sharing it. They also want to share the subset of the masked data for testing. How can we automatically identify sensitive columns, mask and subset data using Oracle Data Masking and Subsetting?
 
 ### Objectives
@@ -57,7 +57,7 @@ Access Oracle Data Masking and Subsetting (DMS) within the Oracle Enterprise Man
 
     ![DMS](./images/dms-004.png "004")
 
-    Click on **Workflow** to review the Data Masking and Subsetting process.  
+6. Click on **Workflow** to review the Data Masking and Subsetting process.  
 
     ![DMS](./images/dms-005.png "005")
 
@@ -182,7 +182,7 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 - Applications: *`EMPLOYEESEARCH_DEV`* (Start typing to select from the drop-down).
 - Sensitive Types: **Email ID**, **USER_ID** and **PASSWORD** (Type in and select from the drop-down for each of the values).
 
-![DMS](./images/dms-108.png "15")  
+  ![DMS](./images/dms-108.png "15")  
 
 5. Click **Submit**. Check the discovery job status by pressing the **Refresh** button and move forward when status shows **Succeeded**!
 
@@ -361,6 +361,7 @@ Fill in the below details:
 
 
 3. Click **Generate**.  
+
 To monitor the status of the job, refresh the screen by clicking the **Re-fetch** icon on the **Masking Definitions** page. 
 
 **Tips**:
@@ -554,7 +555,6 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
 
     </copy>
     ````
-
     ![DMS](./images/dms-051.png "51")
 
 **Compare the results:**  
