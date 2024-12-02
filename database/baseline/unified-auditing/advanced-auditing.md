@@ -1,32 +1,22 @@
 # Oracle Unified Auditing
 
 ## Introduction
-This workshop helps you get started on using Unified Auditing in Oracle Database. Unified auditing is enabled by default, and helps you meet the most common security and compliance needs. Learn how you can leverage the always-on, predefined unified audit policies to get started with auditing most common security-relevant events and then gradually build the audit policies for a comprehensive monitoring requirement.
+This workshop helps you take the next steps to advanced auditing. A key driver for the advanced journey include meeting the compliance needs. This level accounts for auditable events in the database that are good to monitor but not absolutely necessary, as other preventive controls might already be deployed in place to reduce the likelihood of such auditable events. In this scenario, the organization accepts that some risks associated with not auditing these events are still within acceptable limits for the organization's objectives. For instance, your corporate security policy might require you to monitor access to sensitive data though there are other preventive controls like Database Vault protecting its unauthorized access in the first place. 
 
 
-*Estimated Lab Time:* 60 minutes
+*Estimated Lab Time:* 30 minutes
 
 *Version tested in this lab:* Oracle DBEE 19.23
 
-### Video Preview
-Watch a preview of "*LiveLabs - Oracle Unified Auditing (May 2022)*" [](youtube:bK26Y0TZANY)
 
 ### Objectives
-- Get started on using Unified Auditing
-- Make the most of the always-on mandatory audits and predefined audits
-- Staircase model to audit planning
+- Take the next steps to advanced auditing
 
     **Note**:
-    The workshop follows the below set of recommended practices to get started with unified auditing:
-    - Make the most of the always-on mandatory audits. 
-        - Certain security-sensitive database activities are mandatorily audited in the Oracle Database and  cannot be disabled. Do not duplicate them.
-    - Use the predefined unified audit policies. 
-        - Oracle Database provides predefined unified audit policies that encompass the standard audit settings that most regulatory agencies require.
-            - The `ORA_SECURECONFIG` and `ORA_LOGIN_LOGOUT` pre-defined unified audit policies are automatically enabled in most deployments. Ensure to enable them if you have not done so already.
-            - Autonomous databases provides numerous predefined audit policies that are enabled by default.
-            - If you are using Oracle Data Safe or Oracle Audit Vault and Database Firewall (AVDF) to monitor the database activity across your enterprise, these products also offer a number of predefined audit policies to provision with a single click.
-    - Create custom audit policies for specialized use cases. 
-        - Oracle Database provides the flexibility to create and enable custom audit policies for your specific needs. You can either define unified audit policies or fine-grained audit policies for specialized needs.
+    The workshop highlights auditing of three categories of auditable events which is found in most complaince and data privacy regulations
+    - Audit local direct or bequeath database access
+    - Audit access to sensitive data
+    - Audit Oracle Data Pump export activity to detect any malicious attempt to exfiltrate
 
 ### Prerequisites
 This lab assumes you have:
@@ -35,16 +25,12 @@ This lab assumes you have:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
+    - Lab: Configure Database for Audit
+    - Lab: Unified Audit Basics: Beginner’s Delight
 
-### Lab Timing (estimated)
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-| 1 | Display the current audit settings | 5 minutes |
-| 2 | Audit Non App Usage | 10 minutes |
-| 3 | Audit Database Role Usage | <10 minutes |
-| 4 | Audit Data Pump Usage | <10 minutes |
 
-## Task 1: Display the current audit settings
+## Task 1: Audit local direct or bequeath database access
+Create and enable audit policy to track local direct or bequeath database access for all users
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -63,68 +49,17 @@ This lab assumes you have:
 3. Display the audit settings
 
     ````
-    <copy>./ua_current_audit_settings.sh</copy>
+    <copy>./ua_create_enable_direct_access.sh</copy>
     ````
+  
 
-    - We have already set the environment for you in pure Unified Auditing mode, hence you should see that Unified Audit is set to **TRUE**
+    ![Unified Auditing](./images/ua-026.png "Create and enable audit policy for direct DB access")
 
-        ![Unified Auditing](./images/ua-001.png "Display the audit settings")
+   
+## Task 2: Audit access to sensitive data
+In this lab, you will identify the sensitive landscape of Glassfish App schema and configure the following audit
+- Audit who is using the `EMPLOYEESEARCH_PROD` sensitive objects outside of the application with application service account credentials
 
-        **Note**: This means our database is in "pure" unified auditing mode and you are no longer utilize the traditional auditing capabilities
-
-    - The 2nd query shows you how many Unified Audit Policies exist and how many audit-related attributes are associated with each policy
-
-        ![Unified Auditing](./images/ua-002.png "Display the audit settings")
-
-    - The 3rd query of this script shows you which Unified Audit policies are **enabled**
-
-        ![Unified Auditing](./images/ua-003.png "Display the audit settings")
-
-        **Note**:
-        - Just because the policy exists in the previous query does not mean it's enabled
-        - It is a two-step process to using a Unified Audit policy:
-            - create the policy: create audit policy <policy_name> ...
-            - enable the policy: audit policy <policy_name>
-
-    - The 4th query shows you auditing based on context
-
-        ![Unified Auditing](./images/ua-004.png "Display the audit settings")
-
-        **Note**:
-        - We have one policy called `TICKETINFO` that captures an attribute named `TICKET_ID`
-        - This information will be viewable in the `APPLICATION_CONTEXTS` column of the `UNIFIED_AUDIT_TRAIL` view
-
-4. Display who has the `AUDIT_ADMIN` and `AUDIT_VIEWER` roles
-
-    ````
-    <copy>./ua_who_audit_roles.sh</copy>
-    ````
-
-    ![Unified Auditing](./images/ua-005.png "Display who has the AUDIT_ADMIN and AUDIT_VIEWER roles")
-
-5. Display the existing audit records for the database you connect to (by default, the script will choose **pdb1** as the database to query)
-
-    ````
-    <copy>./ua_query_existing_audit_records.sh</copy>
-    ````
-
-    ![Unified Auditing](./images/ua-006.png "Display the existing audit records")
-
-6. Finally, shows some of the details of the `DBMS_AUDIT_MGMT` package
-
-    ````
-    <copy>./ua_dbms_audit_mgmt_settings.sh</copy>
-    ````
-
-    ![Unified Auditing](./images/ua-026.png "Shows some of the details of the DBMS_AUDIT_MGMT package")
-
-    **Note**:
-    - The function, `DBMS_AUDIT_MGMT.GET_AUDIT_COMMIT_DELAY`, returns the audit commit delay time as the number of seconds
-    - Audit commit delay time is the maximum time that it takes to COMMIT an audit record to the database audit trail
-    - If it takes more time to COMMIT an audit record than defined by the audit commit delay time, then a copy of the audit record is written to the operating system (OS) audit trail
-
-## Task 2: Audit Non App Usage
-In this lab, you will audit who is using the `EMPLOYEESEARCH_PROD` objects outside of the application
 
 1. Identify the connections we trust. We will generate some activity from the Glassfish application and view the session-related information
 
