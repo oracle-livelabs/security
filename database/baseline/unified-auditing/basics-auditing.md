@@ -1,7 +1,7 @@
 # Unified Audit Basics: Beginner’s Delight
 
 ## Introduction
-This workshop helps you get started with essentials and is the foundation step for anyone getting started with Unified Auditing (or) aiming to achieve parity with default legacy audit settings that is de-supported in Oracle Database 23ai. Learn how you can start auditing the most common security-relevant events that are absolutely critical to monitor in the database or needed to demonstrate compliance with most regulations. This lab will cover the policy provisioning for such essential auditable events in the database and validate that audits are triggered with a workload.
+This workshop helps you get started with essentials and is the foundation step for anyone getting started with Unified Auditing (or) aiming to achieve parity with default legacy(a.k.a tradition) audit settings that is de-supported in Oracle Database 23ai. Learn how you can start auditing the most common security-relevant events that are absolutely critical to monitor in the database or needed to demonstrate compliance with most regulations. This lab will cover the policy provisioning for such essential auditable events in the database and validate that audits are triggered with a workload.
 
 
 *Estimated Lab Time:* 20 minutes
@@ -30,6 +30,8 @@ This lab assumes you have:
 
 ## Task 1: Leverage always-on mandatory audits
 
+Certain security-relevant activities are ALWAYS audited in the Oracle Database, and these include all activities until the database open. For a comprehensive list of such activites, refer to Oracle Database Security Guide section: [Activities That Are Mandatorily Audited](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/administering-the-audit-trail.html#GUID-AA781864-5756-464E-AFB6-675625AF0EF5). In this task you will learn to identify the always-on audited entries in the **`UNIFIED_AUDIT_TRAIL`** view. 
+
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
     ````
@@ -54,26 +56,24 @@ This lab assumes you have:
 
         ![Unified Auditing](./images/ua-001basic.png "Display the mandatorily audited activities")
 
-        **Note**: From 23ai, they will be termed by name **ORA$MANDATORY** in the **`UNIFIED_AUDIT_POLICIES`** column of the **`UNIFIED_AUDIT_TRAIL`** view. Tentatively scheduled to be included from 19.26 DBRU.
+        **Note**: From 23ai, they will be identified by policy name **ORA$MANDATORY** in the **`UNIFIED_AUDIT_POLICIES`** column of the **`UNIFIED_AUDIT_TRAIL`** view. This update is tentatively scheduled to be included in Oracle Database 19c starting with the 19.26 release update. 
          
 
 ## Task 2: Leverage predefined audits
 
-In this lab, you will ensure the following predefined unified audit policies are enabled if not done already
+In this task, you will ensure the following predefined unified audit policies are enabled if not done already. These policies align your audit posture with Oracle's Best Practice baseline for auditing.
 
-| Step No. | Predefined audit policy | Significance |
-|--|------------------------------------------------------------|-------------|
+| Step No. | Predefined audit policy | Significance | Remarks |
+|--|------------------------------------------------------------|-------------|-------------|
 | 1 | `ORA_SECURECONFIG` | Audits secure configuration audit options |
-| 2 | `ORA_LOGON_FAILURES` | Audits logon failures |
-| 3 | `ORA_DV_AUDPOL` | Audits Oracle Database Vault DVSYS and LBACSYS schema objects |
-| 4 | `ORA_DV_AUDPOL2` |  Audits the Oracle Database Vault default realms and command rules |
+| 2 | `ORA_LOGON_FAILURES` | Audits logon failures | Called as `ORA_LOGIN_LOGOUT` in 23ai|
+| 3 | `ORA_DV_AUDPOL` | Audits Oracle Database Vault DVSYS and LBACSYS schema objects | Called as `ORA_DV_SCHEMA_CHANGES` in 23ai |
+| 4 | `ORA_DV_AUDPOL2` |  Audits the Oracle Database Vault default realms and command rules | Called as `ORA_DV_DEFAULT_PROTECTION` in 23ai |
 | 5 | `ORA_ACCOUNT_MGMT` | Audits commonly used user account and privilege settings |
 
 **Note**: The predefined policies **`ORA_SECURECONFIG`** and **`ORA_LOGIN_LOGOUT`** is enabled by default on most of the databases if they are created from 12.2 and above. Depending on database version and flavors such as autonomous, your might see additional predefined audit policies enabled by default.
 
-**Note**: In 23ai, note the name change of some of the predefined audit policies: `ORA_LOGIN_LOGOUT`, `ORA_DV_SCHEMA_CHANGES` and `ORA_DV_DEFAULT_PROTECTION`.
-
-1. Check if the following predefined unified audit policies are enabled by default: **`ORA_SECURECONFIG`, `ORA_LOGON_FAILURES`, `ORA_DV_AUDPOL` and `OORA_DV_AUDPOL2`**. Enable if it is not.
+1. Check if the following predefined unified audit policies are enabled by default: **`ORA_SECURECONFIG`, `ORA_LOGON_FAILURES`, `ORA_DV_AUDPOL` and `OORA_DV_AUDPOL2`**. Enable any of these that are not already enabled.
 
     ````
     <copy>./ua_query_predefined_enabled_policies.sh</copy>
@@ -81,7 +81,7 @@ In this lab, you will ensure the following predefined unified audit policies are
 
        ![Unified Auditing](./images/ua-002basic.png "Check if predefined audit policies are enabled")
 
-    **Note**: If all four of them are not enabled, **EXECUTE the next script** to enable for all users!
+    **Note**: If any of them are not enabled, **EXECUTE the next script** to enable for all users!
 
     ````
     <copy>./ua_enable_predefined_policies.sh</copy>
@@ -93,9 +93,10 @@ In this lab, you will ensure the following predefined unified audit policies are
 
        ![Unified Auditing](./images/ua-004basic.png "Predefined audit policies are enabled")
 
-2. Enable predefined unified audit policy **`ORA_ACCOUNT_MGMT`** for all users
+2. Enable predefined unified audit policy **`ORA_ACCOUNT_MGMT`** for all users 
 
- 
+ -  This policy helps audit account-management events related to users, roles, privileges, grants and revokes. These events need to be closely scrutinized as you are altering who has access to the database.
+
     ````
     <copy>./ua_enable_accountmgmnt_policies.sh</copy>
     ````
@@ -107,6 +108,7 @@ In this lab, you will ensure the following predefined unified audit policies are
 
 1. Create and enable a custom audit policy to audit schema structure modification attempts for all users.
 
+-  This policy helps audit any database schema structure modification events like create/alter/delete of tables/index/views for all users.
 
     ````
     <copy>./ua_enable_schema_mod_attempts.sh</copy>
@@ -120,7 +122,9 @@ In this lab, you will ensure the following predefined unified audit policies are
 1. Create and enable the unified audit policy **`ORA_ALL_TOPLEVEL_ACTIONS`** to audit administrative database user accounts. Enable the policy for the following users
     - Users with administrative SYS* privileges,
     - users granted DBA role,
-    - Non-admin privileged users with virtue of their job function
+    - Any other privileged users with elevated database privileges
+
+    This policy helps audit privileged database user accounts whose primary job responsibility is to work directly with infrastructure. Such accounts typically have database administration privileges enabling direct access to all data including sensitive data and modify configurations. Accounts with such wide access are a popular target for cyber criminals and pose a serious threat if compromised.
 
     ````
     <copy>./ua_audit_admin_users.sh</copy>
@@ -143,7 +147,9 @@ In this lab, you will ensure the following predefined unified audit policies are
 
 ## Task 5: Disable legacy audits if it exists
 
-It is recommended to disable legacy audit settings in the database if it exists. The task highlights the steps to disable the Oracle provided default legacy audit settings in the database.
+It is recommended to disable legacy (a.k.a traditional) audit settings in the database if it exists. 
+
+- The legacy audit settings are desupported from 23ai. It is highly recommended to remove the legacy audit settings before you plan the upgrade to 23ai while you start using unified auditing. The task highlights the steps to disable the Oracle-provided legacy audit settings in the database.
 
 
 1. Check the presence of legacy audit settings in the database
@@ -154,25 +160,29 @@ It is recommended to disable legacy audit settings in the database if it exists.
 
     ![Unified Auditing](./images/ua-009basic.png "Check Legacy audits")
 
-      **Note**: If it is resulting non-zero results, **EXECUTE the next script** to remove them in the database.
+      **Note**: If you see non-zero results, **EXECUTE the next script** to remove the obsolete Oracle-provided legacy audit settings from your database.
 
-2. Remove default legacy audit settings in the database
+2. Remove the Oracle-provided legacy audit settings in the database
 
     ````
-    <copy>./noaudit_default_traditional_audit_options.sql</copy>
+    <copy>./noaudit_default_traditional_audit_options.sh</copy>
     ````
     
     ![Unified Auditing](./images/ua-010basic.png "Noaudit legacy audit settings")
 
+    **Note**: The script removes the obsolete Oracle-provided legacy audit settings from your database. If you have created custom legacy audit settings, ensure that you have created the equivalent unified audit policy prior to doing NOAUDIT.
+
 3. Reset init.ora parameters for legacy audit in the database
 
+- It is essential to reset the legacy init.ora parameters **`audit_trail=NONE` and `audit_sys_operations=FALSE`** so that legacy audit trails will not receive any more audit events.
+
     ````
-    <copy>./disable_traditional_audit_param.sql</copy>
+    <copy>./disable_traditional_audit_param.sh</copy>
     ````
     
     ![Unified Auditing](./images/ua-011basic.png "Reset init.ora parameters for legacy audit")
 
-    **Note**: Reset init.ora parameters in the database requires reboot, the script reboots the database.
+    **Note**: Changing  the old audit parameters requires restarting the database. This is why the script shuts down and restarts the database.
 
 ## Task 6: Generate audit events and validate
 
@@ -193,18 +203,18 @@ It is recommended to disable legacy audit settings in the database if it exists.
 
 Oracle Database provides the industry’s most comprehensive auditing capabilities providing detailed information with Unified Auditing. An audit record gives you full execution context including details of the operation, type of SQL statement executed, use of powerful system privileges, operation performed, database object involved in the operation, and other session details that are useful for demonstrating compliance and for forensic analysis.
 
-In unified auditing, the audit trail captures audit information from a variety of sources, unifying them into one format. Unified audit further enables you to audit selectively by adding various conditions. This helps you to reduce the volume of your audit data, and at the same time helping you detect malicious activities in a timely manner. 
+In unified auditing, the audit trail captures audit information from a variety of sources, unifying them into one format. Unified audit further enables you to audit selectively by adding various conditions. This helps you to reduce the volume of your audit data, and at the same time helps you detect malicious activities in a timely manner. 
 
-Unified audit offers high degree of integrity of audit trail by not allowing users to tamper with the audit trail. Unified audit trail is stored in AUDSYS schema and no one is allowed to login to that schema in the database. AUD$UNIFIED is a specialized table which allows only INSERT activity. Any attempt to directly truncate, delete or update contents of the AUD$UNIFIED table fail, and generate audit records. Audit data is managed using the built-in audit data management `DBMS_AUDIT_MGMT` package.
+Unified audit offers a high degree of integrity of the audit trail by not allowing users to tamper with the audit trail. The unified audit trail is stored in the AUDSYS schema and no one is allowed to login to that schema in the database. AUD$UNIFIED is a specialized table which allows only INSERT activity. Any attempt to directly truncate, delete or update contents of the AUD$UNIFIED table fails and generates audit records. Audit data is managed using the built-in audit data management `DBMS_AUDIT_MGMT` package.
 
-It is recommended to move the audit records from the source system to a remote location to ensure reliability and integrity. Unified Auditing can be intergrated further with Database Activity Monitoring (DAM) solutions like Oracle Data Safe and Oracle AVDF that collect and store the audit data for alert generation, analysis, and reporting. 
+It is recommended to move the audit records from the source system to a remote location to free up valuable space in the database and make analysis and reporting easier. Unified Auditing can be integrated further with Database Activity Monitoring (DAM) solutions like Oracle Data Safe, and Oracle Audit Vault and Database Firewall, that collect and store the audit data for alert generation, analysis, and reporting. 
 
 ### **Performance considerations**
-For typical use cases of auditing privileged users or auditing key database operations, the performance impact is so low that it cannot even be measured due to low audit volume spread throughout the week. 
+For typical use cases of auditing privileged users or auditing key database operations, the performance impact is so low that it usually cannot even be measured due to low audit volume spread throughout the week. 
 
 Internal performance tests using a TPC-C mixed application workload show that with unified audit, you may see a CPU overhead in mid-single digit when auditing up to 360,000 audit records/hour. For extreme audit loads up to 1,800,000 audit records/hour, the additional overhead is still in a single digit.
 
-As auditing is a transactional activity with typical ACID properties to guarantee record of database activitie s, we recommend that you fine-tune your audit policies to collect audit data that is targeted to your needs. Collecting unnecessary audit information impacts database performance, increases storage costs, and may make it more difficult to spot malicious database activity.
+As auditing is a transactional activity with typical ACID properties to guarantee a record of database activities, we recommend that you fine-tune your audit policies to collect audit data that is targeted to your needs. Collecting unnecessary audit information impacts database performance, increases storage costs, and may make it more difficult to spot malicious database activity.
 
 ## Want to Learn More?
 Technical Documentation:
