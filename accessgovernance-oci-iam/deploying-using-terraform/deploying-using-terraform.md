@@ -51,21 +51,29 @@ In this lab, you will:
 
   ![Upload zip file](images/upload-zip.png)
 
-  Under **Create in Compartment** select the **Root compartment**
-
-  ![Upload zip file](images/select-compartment.png)
-
   Click *Next*
 
-  Enter Unique Email IDS for the users - IDD-admin and Pamela Green 
+  Under Access Governance Configuration Parameters, enter the below details. 
 
-  Enter the region code
+  **NOTE:** We will be using **ag-compartment** and **ag-domain** throughout this LiveLab. Kindly use a compartment and domain in your tenancy accordingly. 
+
+  **Identity Domain administrator email:** Enter the Identity Domain administrator email
+
+  **Access Governance Service administrator email:** Enter the Access Governance Service administrator email
+
+  **Access Governance Compartment Name:** Provide name of the compartment to be created for Access Governance and associated resources. (In this LiveLab we are using ag-compartment)
+  
+  **Access Governance OCI Identity Domain Name:** Provide name of the OCI IAM Domain to be created for Access Governance and associated resources. (In this LiveLab we are using ag-domain)
+
+  **AG-OCI Integration Service User:** agcs_user
+
+  **AG-OCI Integration Service Group:** agcs_group
   
   **NOTE : Select your home region such that you can host Oracle Access Governance within your geographic region to create and manage service instances. For supported regions code, please refer [Oracle Access Governance Regions ](https://docs.oracle.com/en/cloud/paas/access-governance/cagsi/#GUID-9D3A580D-767A-4C39-8A61-8A14CD045270)** 
 
   Click *Next*.
 
-   ![Enter Email IDs](images/user-email.png)
+   ![Enter Email IDs](images/ag-configuration.png)
 
   Click on *Create*.
 
@@ -86,7 +94,7 @@ In this lab, you will:
 
 
 
-5. The resources should have been created successfully by the terraform script. Please verify the resources created. *You will receive activation mail for the user Pamela Green created and ensure you reset the password*
+5. The resources should have been created successfully by the terraform script. Please verify the resources created. *You will receive activation mail for the Identity Domain administrator and Access Governance Service administrator. Ensure you reset the password.*
 
 
 
