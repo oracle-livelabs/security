@@ -1,9 +1,10 @@
 # Oracle Unified Auditing
 
 ## Introduction
-This workshop introduces the functionality of Oracle Unified Auditing. It gives the user an opportunity to learn how to configure this feature to audit the database activity.
+This workshop helps you get started on using Unified Auditing in Oracle Database. Unified auditing is enabled by default, and helps you meet the most common security and compliance needs. Learn how you can leverage the always-on, predefined unified audit policies to get started with auditing most common security-relevant events and then gradually build the audit policies for a comprehensive monitoring requirement.
 
-*Estimated Lab Time:* 35 minutes
+
+*Estimated Lab Time:* 60 minutes
 
 *Version tested in this lab:* Oracle DBEE 19.23
 
@@ -11,13 +12,21 @@ This workshop introduces the functionality of Oracle Unified Auditing. It gives 
 Watch a preview of "*LiveLabs - Oracle Unified Auditing (May 2022)*" [](youtube:bK26Y0TZANY)
 
 ### Objectives
-- Enable/Disable Unified Auditing on your database
-- See different auditing use cases
+- Get started on using Unified Auditing
+- Make the most of the always-on mandatory audits and predefined audits
+- Staircase model to audit planning
 
     **Note**:
-    - Mixed mode auditing is the default auditing in a newly installed database. Mixed mode auditing enables both traditional (that is, the audit facility from releases earlier than release 12c) and the new audit facilities (unified auditing).
-    - Mixed mode is intended to introduce unified auditing, so that you can have a feel of how it works and what its nuances and benefits are. Mixed mode enables you to migrate your existing applications and scripts to use unified auditing. Once you have decided to use pure unified auditing, you can relink the oracle binary with the unified audit option turned on and thereby enable it as the one and only audit facility the Oracle database runs. If you decide to revert back to mixed mode, you can.
-    - In this environment, we have already migrated this Oracle Database to pure unified auditing mode.
+    The workshop follows the below set of recommended practices to get started with unified auditing:
+    - Make the most of the always-on mandatory audits. 
+        - Certain security-sensitive database activities are mandatorily audited in the Oracle Database and  cannot be disabled. Do not duplicate them.
+    - Use the predefined unified audit policies. 
+        - Oracle Database provides predefined unified audit policies that encompass the standard audit settings that most regulatory agencies require.
+            - The `ORA_SECURECONFIG` and `ORA_LOGIN_LOGOUT` pre-defined unified audit policies are automatically enabled in most deployments. Ensure to enable them if you have not done so already.
+            - Autonomous databases provides numerous predefined audit policies that are enabled by default.
+            - If you are using Oracle Data Safe or Oracle Audit Vault and Database Firewall (AVDF) to monitor the database activity across your enterprise, these products also offer a number of predefined audit policies to provision with a single click.
+    - Create custom audit policies for specialized use cases. 
+        - Oracle Database provides the flexibility to create and enable custom audit policies for your specific needs. You can either define unified audit policies or fine-grained audit policies for specialized needs.
 
 ### Prerequisites
 This lab assumes you have:
