@@ -2,7 +2,7 @@
 
 ## About this Workshop
 ### Overview
-*Estimated Time to complete the workshop*: 120 minutes
+*Estimated Time to complete the workshop*: 45 minutes
 
 This workshop is the FIRST PART of the Hands-On Labs dedicated to the Oracle Database Security features and functionalities - for the second workshop, please refer to the *DB Security Advanced*.
 
