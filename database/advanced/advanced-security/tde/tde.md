@@ -129,7 +129,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
 
  You see that all of the data is now encrypted and no longer visible!
 
-## Task 8: Encrypt remaining tablespaces in CDB$ROOT and PDB1:
+## Task 8: Encrypt remaining tablespaces in CDB$ROOT and PDB1
 
 1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1.
 Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and written into those files in encrypted form.
@@ -137,16 +137,6 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
     ````
     <copy>./10_tde_encrypt_tbs.sh</copy>
     ````
-
-    ![TDE](./images/tde-018.png "Check the existing initialization parameters")
-
-    **Note**:
-    - The `TABLESPACE_ENCRYPTION` parameter is set to `AUTO_ENABLE` and cannot be modified, hence if you want to change it **the database must be restarted**!
-    - This parameter, **introduced in Oracle Database version 19.16**, allows you to specify whether to encrypt newly created tablespaces
-    - It replaces the `ENCRYPT_NEW_TABLESPACES` parameter which is now deprecated.
-    - `ENCRYPT_NEW_TABLESPACES` follows `TABLESPACE_ENCRYPTION` and is set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE`
-    - The init parameter `_tablespace_encryption_default_algorithm` is set to "`AES256`" and should not be changed to shorter algorithms.
-
 
 ## Task 9: Rekey Master Encryption Keys
 
@@ -156,33 +146,30 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
     <copy>./11_tde_rekey_mek_cdb.sh</copy>
     ````
 
-    - Have a look on the CDB key before rekeying...
+    - See the wallet content before ...
 
-  ![TDE](./images/tde-021.png "Before rekeying the container database TDE Master Key (MEK)")
+  ![TDE](./images/tde-021.png "Before rekeying the TDE Master Key of CDB$ROOT")
 
-    - ... and after:
+    - ... and after re-keying CDB$ROOT:
 
-    ![TDE](./images/tde-022.png "After rekeying the container database TDE Master Key (MEK)")
+    ![TDE](./images/tde-022.png "After rekeying the TDE Master Key of CDB$ROOT")
 
-    - You can see the new key generated for the container
-
+    
 2. To rekey a Master Key (MEK) for the pluggable database **PDB1**, run the following command:
 
     ````
-    <copy>./12_tde_rekey_mek_pdb.sh pdb1</copy>
+    <copy>./12_tde_rekey_mek_pdb.sh</copy>
     ````
 
-    - Have a look on the pdb1 key before rekeying...
+    - See the wallet content before ...
 
     ![TDE](./images/tde-023.png "Before rekeying the pluggable database TDE Master Key (MEK)")
 
-    - ...and after
+    - ... and after re-keying PDB1:
 
     ![TDE](./images/tde-024a.png "After rekeying the pluggable database TDE Master Key (MEK)")
 
-    - You can see the new key for the pluggable database PDB1
-
-## Task 10: Optionally, Restore Before TDE:
+## Task 10: Optionally, Restore Before TDE
 
 1. First, execute this script to restore the pfile
 
