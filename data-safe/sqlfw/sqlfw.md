@@ -1,8 +1,8 @@
-# Deploy a SQL Firewall policy in Data Safe
+# Create and enforce a SQL Firewall policy in Data Safe
 
 ## Introduction
 
-In this lab, you create a SQL Firewall policy for the `APP_USER` database user. You then create a collection of allowed SQL statements for `APP_USER` and test that the user cannot run them on the target database. This collection is referred to as the *allow-list*. Lastly, you add a violation SQL statement to the allow-list.
+In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `APP_USER`. This collection is referred to as the *allow-list*. Next, you test that `APP_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
 
 Estimated Lab Time: 20 minutes
 
@@ -15,7 +15,7 @@ In this lab, you will:
 - Run SQL statements as APP_USER on the target database to generate an allow-list
 - Deploy the SQL Firewall policy for APP_USER
 - Test the SQL Firewall policy
-- Allow a violation SQL statement and test it
+- Add a SQL statement from the violation log to the allow-list
 
 
 ### Prerequisites
@@ -89,18 +89,32 @@ This lab assumes you have:
 
 11. Close any tip dialog boxes.
 
-12. On the worksheet, enter the following commands:
+12. On the worksheet, enter the following command:
 
     ```text
     <copy>SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
-    SELECT LOCATION_ID, STREET_ADDRESS, CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
-    SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
     </copy>
     ```
 
-13. On the toolbar, click **Run Script**.
 
-14. Sign out of Database Actions but keep the tab open. If you don't sign out, you will get the following error in the next task:
+13. On the worksheet, enter the following command:
+
+    ```text
+    <copy>SELECT LOCATION_ID, STREET_ADDRESS, CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
+    </copy>
+    ```
+
+
+14. On the worksheet, enter the following command:
+
+    ```text
+    <copy>SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
+    </copy>
+    ```
+
+15. On the toolbar, click **Run Script**.
+
+16. Sign out of Database Actions but keep the tab open. If you don't sign out, you will get the following error in the next task:
 
     `Generate firewall policy failed for user APP_USER due to Listener refused the connection with the following error: ORA-12530, TNS:listener: rate limit reached.`
 
@@ -109,7 +123,7 @@ This lab assumes you have:
 
 1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
-2. From the navigation menu, select **Oracle Database**, and the **SQL Firewall**.
+2. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
 
 3. Click the name of your target database.
 
@@ -123,7 +137,7 @@ This lab assumes you have:
     
 7. Scroll down and review the collection of SQL statements on the allow-list. 
 
-    With an Autonomous Database, additional SQL statements are added to the allow-list automatically and the SQL statements that you just collected have additional code inserted.
+    Note: Database Actions adds additional SQL statements to the allow-list automatically. The SQL statements that you just collected also have additional code inserted, which you can ignore.
 
 8. To deploy the SQL Firewall policy for the `APP_USER` user, click **Deploy and enforce**.
 
@@ -182,7 +196,7 @@ This lab assumes you have:
 
     ```text
     <copy>
-    SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS;
+    SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS LOCATION_ID='1300';
     </copy>
     ```
     You should not receive an error message.
@@ -196,7 +210,7 @@ This lab assumes you have:
     You should receive an error message.
 
 
-## Task 6: Allow a violation SQL statement and test it
+## Task 6: Add a SQL statement from the violation log to the allow-list
     
 1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** tab.
 
@@ -235,8 +249,7 @@ SELECT * FROM (SELECT Q_.*,ROW_NUMBER () OVER (ORDER BY :"SYS_B_0") RN___ FROM (
     ```
     The query should retrieve data.
 
-
-You may now proceed to the next lab.
+Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals livelab.
 
 ## Acknowledgements
 
