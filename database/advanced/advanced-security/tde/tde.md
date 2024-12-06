@@ -60,7 +60,7 @@ This lab assumes you have:
     ````
 
     ![TDE](./images/tde-004.png "Create the software keystore")
-**Note:** We added the password of the TDE wallet into another local auto-open wallet in <WALLET_ROOT>/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
+**Note:** We added the password of the TDE wallet into another local auto-open wallet in `<`WALLET_ROOT`>`/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
 
 ## Task 3: Create local auto-open TDE wallet
 
@@ -85,7 +85,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
 ## Task 5: Create tagged master key for pluggable database PDB1
-If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
+1. If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
 
  To create a master encryption key for the pluggable database **pdb1**, run the following command:
 
@@ -97,7 +97,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
 
 ## Task 6: Side-channel attack against an un-encrypted tablespace
 
- Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
+1. Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
 
     ````
     <copy>./06_tde_strings_data_empdataprod.sh</copy>
@@ -172,7 +172,7 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
 
 ## Task 10: Optionally, Restore Before TDE
 
-1. First, execute this script to restore the pfile
+1. Execute this script to restore the pfile
 
     ````
     <copy>./tde_restore_init_parameters.sh</copy>
@@ -181,7 +181,7 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
     ![TDE](./images/tde-025.png "Restore the PFILE")
 
 
-2. Second, restore the database (this may take some time)
+2. Restore the database (this may take some time)
 
     ````
     <copy>./tde_restore_db.sh</copy>
