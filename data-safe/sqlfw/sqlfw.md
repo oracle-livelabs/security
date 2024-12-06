@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you create a SQL Firewall policy for the `APP_USER` database user. You then test that `APP_USER` can't run SQL statements that are not on the allow-list. You also add a violation SQL statement to the allow-list.
+In this lab, you create a SQL Firewall policy for the `APP_USER` database user. You then create a collection of allowed SQL statements for `APP_USER` and test that the user cannot run them on the target database. This collection is referred to as the *allow-list*. Lastly, you add a violation SQL statement to the allow-list.
 
 Estimated Lab Time: 20 minutes
 
