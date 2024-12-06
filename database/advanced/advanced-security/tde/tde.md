@@ -147,41 +147,13 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
     - `ENCRYPT_NEW_TABLESPACES` follows `TABLESPACE_ENCRYPTION` and is set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE`
     - The init parameter `_tablespace_encryption_default_algorithm` is set to "`AES256`" and should not be changed to shorter algorithms.
 
-<!--
-2. Next, change the init parameter `TABLESPACE_ENCRYPTION` to "`AUTO_ENABLE`" to always **encrypt implicitly all new tablespaces**, and the hidden init parameter `_tablespace_encryption_default_algorithm` to use "`AES256`" as default encryption algorithm
+
+## Task 9: Rekey Master Encryption Keys
+
+1. To rekey the TDE Master Key (MEK) of the CDB$ROOT, run the following command
 
     ````
-    <copy>./tde_set_encrypt_all_new_tbs.sh</copy>
-    ````
-
-    ![TDE](./images/tde-019.png "Change the init parameters")
-
-    **Note**:
-    - The `TABLESPACE_ENCRYPTION` parameter cannot be modified, hence **the database must be restarted**!
-    - This parameter is **introduced in Oracle Database version 19.16**, as an alternative to the `ENCRYPT_NEW_TABLESPACES` parameter
-    - Similar to `ENCRYPT_NEW_TABLESPACES`, this parameter allows you to specify whether to encrypt newly created user tablespaces
-    - If the behavior specified by the `ENCRYPT_NEW_TABLESPACES` setting conflicts with the behavior specified by the `TABLESPACE_ENCRYPTION` setting, then the `TABLESPACE_ENCRYPTION` behavior takes precedence
-    - So, `ENCRYPT_NEW_TABLESPACES` is automatically set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE`
--->
-
-2. Finally, create and drop a tablespace TEST to check the effect
-
-    ````
-    <copy>./tde_create_new_tbs.sh</copy>
-    ````
-
-    ![TDE](./images/tde-020.png "Create and drop a tablespace TEST to check the effect")
-
-    **Note**: Despite the fact that the tablespace **TEST** was created without specifying encryption parameters, it's encrypted by default with the AES256 encryption algorithm.
-
-3. Now, when tablespaces are created, for example during application install time, those application tablespace will be encrypted, even if the installation commands to not include the encryption keywords of the CREATE TABLESPACE command!
-
-## Task 9: Rekey Master Key:
-
-1. To rekey the container database TDE Master Key (MEK), run the following command
-
-    ````
-    <copy>./tde_rekey_mek_cdb.sh</copy>
+    <copy>./11_tde_rekey_mek_cdb.sh</copy>
     ````
 
     - Have a look on the CDB key before rekeying...
@@ -197,7 +169,7 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
 2. To rekey a Master Key (MEK) for the pluggable database **pdb1**, run the following command
 
     ````
-    <copy>./tde_rekey_mek_pdb.sh pdb1</copy>
+    <copy>./12_tde_rekey_mek_pdb.sh pdb1</copy>
     ````
 
     - Have a look on the pdb1 key before rekeying...
@@ -208,41 +180,9 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
 
     ![TDE](./images/tde-024a.png "After rekeying the pluggable database TDE Master Key (MEK)")
 
-    - You can see the new key generated for the pluggable database
+    - You can see the new key for the pluggable database PDB1
 
-3. If you want, you can do the same for **pdb2**
-
-    ````
-    <copy>./tde_rekey_mek_pdb.sh pdb2</copy>
-    ````
-
-    **Note**:
-    - This is not a requirement though
-    - It might be helpful to show some databases with TDE and some without
-
-4. Now that you have a master key, you can begin encrypting tablespaces or column!
-
-## Task 10: View Keystore Details:
-
-1. Once you have a keystore, you can run either of these scripts. You will notice there are multiple copies of the **ewallet.p12** file. Every time you make a change, including create or rekey, the ewallet.p12 file is backed up. You will also see the contents of the Oracle Wallet file by using **orapki**
-
-   - View the OS files related to the keystore
-
-    ````
-    <copy>./tde_view_wallet_on_os.sh</copy>
-    ````
-       
-    ![TDE](./images/tde-024b.png "View the OS files related to the keystore")
-
-   - View the keystore data in the database
-
-    ````
-    <copy>./tde_view_wallet_in_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-024c.png "View the keystore data in the database")
-
-## Task 11: Optionally, Restore Before TDE:
+## Task 10: Optionally, Restore Before TDE:
 
 1. First, execute this script to restore the pfile
 
