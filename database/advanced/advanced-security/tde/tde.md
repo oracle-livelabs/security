@@ -150,7 +150,7 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
 
 ## Task 9: Rekey Master Encryption Keys
 
-1. To rekey the TDE Master Key (MEK) of the CDB$ROOT, run the following command
+1. To rekey the TDE Master Key (MEK) of the CDB$ROOT, run the following command:
 
     ````
     <copy>./11_tde_rekey_mek_cdb.sh</copy>
@@ -166,7 +166,7 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
 
     - You can see the new key generated for the container
 
-2. To rekey a Master Key (MEK) for the pluggable database **pdb1**, run the following command
+2. To rekey a Master Key (MEK) for the pluggable database **PDB1**, run the following command:
 
     ````
     <copy>./12_tde_rekey_mek_pdb.sh pdb1</copy>
