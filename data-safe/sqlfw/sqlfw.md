@@ -92,9 +92,9 @@ This lab assumes you have:
 12. On the worksheet, enter the following commands:
 
     ```text
-    <copy>SELECT FIRST_NAME,LAST_NAME,EMPLOYEE_ID FROM HCM1.EMPLOYEES;
-    SELECT LOCATION_ID,STREET_ADDRESS,CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
-    SELECT LOCATION_ID,CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
+    <copy>SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
+    SELECT LOCATION_ID, STREET_ADDRESS, CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
+    SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
     </copy>
     ```
 
@@ -137,17 +137,15 @@ This lab assumes you have:
 
     *Be sure to select these options carefully!*
     
-    *NOte to BETTINA: If you don't select "SQL statements only" and select the "All" option, then you later get this message when you try to deploy: "SQL Firewall policy is generated but not enabled yet. Deploy and enforce the SQL Firewall policy to enable SQL Firewall protection for the user APP_USER.*
-    
-9. Click **Deploy and enforce**.
+10. Click **Deploy and enforce**.
 
    ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
 
-10. Notice that the status of the SQL Firewall policy changes to **Enabled**. 
+11. Notice that the status of the SQL Firewall policy changes to **Enabled**. 
 
    ![Unique allowed SQL statements](images/enabled-policy.png "Unique allowed SQL statements")
 
-11. To filter the allow-list, under **Unique allowed SQL statements**, click **+ Add filter**, set **SQL text Like HCM1**, and click **Apply**.
+12. To filter the allow-list, under **Unique allowed SQL statements**, click **+ Add filter**, set **SQL text Like HCM1**, and click **Apply**.
 
     The three SQL statement that you collected earlier are listed.
 
@@ -170,10 +168,6 @@ This lab assumes you have:
     ```
  
     The query should return data. 
-    
-    *BETTINA - I am getting a SQL FIREWALL VIOLATION for all of the commands below*
-
-    ![Unique allowed SQL statements](images/sql-firewall-violation-database-actions.png "Unique allowed SQL statements")
 
 5. Clear the worksheet and try running a SQL statement that isn't on the allow-list, for example:
 
@@ -240,7 +234,6 @@ SELECT * FROM (SELECT Q_.*,ROW_NUMBER () OVER (ORDER BY :"SYS_B_0") RN___ FROM (
     </copy>
     ```
     The query should retrieve data.
-
 
 
 You may now proceed to the next lab.

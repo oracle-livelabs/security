@@ -45,12 +45,6 @@
         "type": "livelabs"
       },
       {
-        "title": "Lab 7: SQL Firewall",
-        "description": "This lab shows you how to get started with SQL Firewall in Data Safe.",
-        "filename": "../../sqlfw/sqlfw.md",
-        "type": "livelabs"
-      },
-      {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",
         "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
