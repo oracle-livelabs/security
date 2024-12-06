@@ -53,18 +53,18 @@ This lab assumes you have:
 
 ## Task 2: Create password-protected TDE wallet
 
- Create a password-protected TDE wallet for the root container and united PDBs:
+1. Create a password-protected TDE wallet for the root container and united PDBs:
+
     ````
     <copy>./02_tde_create_wallet.sh</copy>
     ````
 
     ![TDE](./images/tde-004.png "Create the software keystore")
-
-    **Note:** We added the password of the TDE wallet into another local auto-open wallet in <WALLET_ROOT>/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
+**Note:** We added the password of the TDE wallet into another local auto-open wallet in <WALLET_ROOT>/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
 
 ## Task 3: Create local auto-open TDE wallet
 
- Create a **LOCAL** auto-open TDE wallet from the password-protected TDE wallet:
+1. Create a **LOCAL** auto-open TDE wallet from the password-protected TDE wallet:
 
     ````
     <copy>./03_tde_create_local_autologin_wallet.sh</copy>
@@ -76,7 +76,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 
 ## Task 4: Create tagged master key for CDB$ROOT
 
- To create the TDE master key for the container database TDE Master Key, run the following command:
+1. To create the TDE master key for the container database TDE Master Key, run the following command:
 
     ````
     <copy>./04_tde_create_mek_cdb.sh</copy>

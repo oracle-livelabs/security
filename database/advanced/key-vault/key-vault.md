@@ -81,16 +81,6 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     <copy>cd $DBSEC_LABS/tde</copy>
     ````
 
-<!--
-3. Make sure you have a cold-backup of your database (**the DB will restart!**)
-
-    ````
-    <copy>./tde_backup_db.sh</copy>
-    ````
-
-    ![Key Vault](../advanced-security/tde/images/tde-001.png "Backup DB")
--->
-
 3. Create the Keystore directories on the Operating System
 
     ````
@@ -139,27 +129,9 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     ![Key Vault](../advanced-security/tde/images/tde-012.png "Create the Auto-login Oracle Wallet")
 
-<!--
-10. You should now see all these file, including the **cwallet.sso** file
-
-    ````
-    <copy>./tde_view_wallet_on_os.sh</copy>
-    ````   
-
-    ![Key Vault](./images/okv-201.png "View the Oracle Wallet content on the OS")
-
-11. And the wallet in the database as to be set and available like this
-
-    ````
-    <copy>./tde_view_wallet_in_db.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-202.png "View the Oracle Wallet content on the database")
--->
-
 9. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
 
-    - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and this default password is available in the Labs details or by executing the following command line as *`oracle`* user:
+    - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and this default password is available in the Labs details or by executing the following command as the *`oracle`* user:
 
         ```
         <copy>
@@ -167,11 +139,11 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
         </copy>
         ```
 
-    - Open a web browser window to *`https://kv`* to access to the Key Vault Web Console
+    - Open a web browser window to *`https://kv`* to access the Oracle Key Vault Web Console
 
         **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
 
-    - Login to Key Vault Web Console as *`KVRESTADMIN`* (use the password randomly generated)
+    - Login to Key Vault Web Console as *`KVRESTADMIN`* (use the randomly generated password)
 
         ````
         <copy>KVRESTADMIN</copy>
