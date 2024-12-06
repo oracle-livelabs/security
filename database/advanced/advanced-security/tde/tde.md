@@ -61,7 +61,7 @@ This lab assumes you have:
 
     **Note:** We added the password of the TDE wallet into another local auto-open wallet in <WALLET_ROOT>/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
 
-## Task 3: Create local auto-open TDE wallet:
+## Task 3: Create local auto-open TDE wallet
 
  Create a **LOCAL** auto-open TDE wallet:
 
@@ -73,7 +73,7 @@ This lab assumes you have:
 
 The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`   
 
-## Task 4: Create tagged master key for CDB$ROOT:
+## Task 4: Create tagged master key for CDB$ROOT
 
  To create the TDE master key for the container database TDE Master Key, run the following command:
 
@@ -83,7 +83,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
-## Task 5: Create tagged master key for pluggable database PDB1:
+## Task 5: Create tagged master key for pluggable database PDB1
 If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
 
  To create a master encryption key for the pluggable database **pdb1**, run the following command:
@@ -94,7 +94,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
 
     ![TDE](./images/tde-006.png "Create the TDE Master Key for PDB1")
 
-## Task 6: Side-channel attack against an un-encrypted tablespace:
+## Task 6: Side-channel attack against an un-encrypted tablespace
 
  Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
 
@@ -109,7 +109,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
     - This is an Operating System command that bypasses the database to view the data
     - This is called a 'side-channel attack' because the database is unaware of it
     
-## Task 7: Avoid side-channel attack by encrypting tablespace:
+## Task 7: Avoid side-channel attack by encrypting tablespace
 
  1. Encrypt the EMPDATA_PROD tablespace with AES256 (default):
 
@@ -131,7 +131,8 @@ If the PDB **creates a master key**, that master key can only go into the wallet
 
 ## Task 8: Encrypt remaining tablespaces in CDB$ROOT and PDB1:
 
-1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1; encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and written into those files in encrypted form.
+1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1.
+Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and written into those files in encrypted form.
 
     ````
     <copy>./10_tde_encrypt_tbs.sh</copy>
