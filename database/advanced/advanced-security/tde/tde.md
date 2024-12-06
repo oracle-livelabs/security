@@ -33,8 +33,6 @@ This lab assumes you have:
 |6 | Data exfiltration from an un-encrypted tablespace | <5 minutes |
 |7 | Avoid exfiltration attack by encrypting tablespace | <5 minutes |
 |8 | Encrypt remaining tablespaces in CDB$ROOT and PDB1 | 5 minutes |
-|10| Create master key for **isolated** PDB2 | <5 minutes |
-|11| Encrypt tablespaces of **isolated** PDB2 | 5 minutes |
 
 ## Task 1: Configure database for TDE
 
