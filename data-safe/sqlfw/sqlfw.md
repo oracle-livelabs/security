@@ -89,7 +89,7 @@ This lab assumes you have:
 
 11. Close any tip dialog boxes.
 
-12. On the worksheet, enter the following command:
+12. On the worksheet, enter the following SQL statement:
 
     ```text
     <copy>SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
@@ -97,7 +97,7 @@ This lab assumes you have:
     ```
 
 
-13. On the worksheet, enter the following command:
+13. On the worksheet, enter the following SQL statement:
 
     ```text
     <copy>SELECT LOCATION_ID, STREET_ADDRESS, CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
@@ -105,7 +105,7 @@ This lab assumes you have:
     ```
 
 
-14. On the worksheet, enter the following command:
+14. On the worksheet, enter the following SQL statement:
 
     ```text
     <copy>SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
@@ -161,10 +161,7 @@ This lab assumes you have:
 
 12. To filter the allow-list, under **Unique allowed SQL statements**, click **+ Add filter**, set **SQL text Like HCM1**, and click **Apply**.
 
-    The three SQL statement that you collected earlier are listed.
-
-   ![Unique allowed SQL statements](images/allowed-sql-statements.png "Unique allowed SQL statements")
-
+    The SQL statements that you collected earlier are listed.
 
 ## Task 5: Test the SQL Firewall policy
 

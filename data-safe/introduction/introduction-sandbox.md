@@ -1,12 +1,12 @@
 # Introduction
 
-This workshop is designed to help new users become familiar with the features of Oracle Data Safe. In the LiveLabs Sandbox environment, you learn how to audit database activity and generate alerts, assess the security of your database configurations and users, and discover and mask sensitive data.
+This workshop is designed to help new users become familiar with the features of Oracle Data Safe. In the LiveLabs Sandbox environment, you learn how to assess the security of your database configurations and users, discover and mask sensitive data, audit database activity and generate alerts, and create and deploy a SQL Firewall policy.
 
 Estimated Workshop Time: 2 hours
 
 ## About Oracle Data Safe
 
-Oracle Data Safe is Oracle’s platform for securing data in databases. As a native Oracle Cloud Infrastructure service, Oracle Data Safe lets you assess the security of your database configurations, find your sensitive data, mask that data in non-production environments, discover the risks associated with database users, and monitor database activity.
+Oracle Data Safe is Oracle’s platform for securing data in databases. As a native Oracle Cloud Infrastructure service, Oracle Data Safe lets you assess the security of your database configurations, find your sensitive data, mask that data in non-production environments, discover the risks associated with database users, monitor database activity, and create and enforce SQL Firewall policies for users.
 
 Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:UUc26bpdFnc)
 
@@ -17,6 +17,7 @@ In this workshop, you learn how to perform the following tasks:
 - Assess the security of your database configurations and database users using Oracle Data Safe
 - Discover and mask sensitive data on your target database using Oracle Data Safe
 - Collect and monitor audit data in Oracle Data Safe to inform you of database activity
+- Enable a SQL Firewall with Data Safe to inspect SQL statements on your target databases and protect against risks, such as SQL injections and compromised accounts
 
 You may now **proceed to the next lab**.
 
@@ -33,4 +34,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, May 16, 2024
+* **Last Updated By/Date** - Jody Glover, December 6, 2024
