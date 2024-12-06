@@ -20,7 +20,7 @@ In this workshop, you learn how to perform the following tasks:
 - Assess the security of your database configurations and database users using Oracle Data Safe
 - Discover and mask sensitive data on your target database using Oracle Data Safe
 - Collect and monitor audit data in Oracle Data Safe to inform you of database activity
-- Enable a SQL Firewall with Data Safe to inspect SQL statements on your target databases and protect against risks, such as SQL injections and compromised accounts
+- Create and enforce a SQL Firwall policy to protect your target database from common database attacks like SQL injection
 
 You may now **proceed to the next lab**.
 
