@@ -64,7 +64,7 @@ This lab assumes you have:
 
 ## Task 3: Create local auto-open TDE wallet
 
- Create a **LOCAL** auto-open TDE wallet:
+ Create a **LOCAL** auto-open TDE wallet from the password-protected TDE wallet:
 
     ````
     <copy>./03_tde_create_local_autologin_wallet.sh</copy>
