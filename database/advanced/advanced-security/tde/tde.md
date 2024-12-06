@@ -28,10 +28,10 @@ This lab assumes you have:
 |1 | Configure database for TDE | <5 minutes |
 |2 | Create password-protected TDE wallet | <5 minutes |
 |3 | Create **local** auto-open TDE wallet | <5 minutes |
-|4 | Create master key for CDB$ROOT | <5 minutes |
-|5 | Create master key for **united** PDB1 | <5 minutes |
-|6 | Data exfiltration from an un-encrypted tablespace | <5 minutes |
-|7 | Avoid exfiltration attack by encrypting tablespace | <5 minutes |
+|4 | Create tagged master key for CDB$ROOT | <5 minutes |
+|5 | Create tagged master key for pluggable database PDB1 | <5 minutes |
+|6 | Side-channel attack against an un-encrypted tablespace | <5 minutes |
+|7 | Avoid side-channel attack by encrypting tablespace | <5 minutes |
 |8 | Encrypt remaining tablespaces in CDB$ROOT and PDB1 | 5 minutes |
 
 ## Task 1: Configure database for TDE
@@ -73,7 +73,7 @@ This lab assumes you have:
 
 The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`   
 
-## Task 4: Create a master encryption key for CDB$ROOT:
+## Task 4: Create tagged master key for CDB$ROOT:
 
  To create the TDE master key for the container database TDE Master Key, run the following command:
 
@@ -83,7 +83,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
-## Task 5: Create a master encryption key for pluggable database PDB1:
+## Task 5: Create tagged master key for pluggable database PDB1:
 If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
 
  To create a master encryption key for the pluggable database **pdb1**, run the following command:
@@ -175,7 +175,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
 
 3. Now, when tablespaces are created, for example during application install time, those application tablespace will be encrypted, even if the installation commands to not include the encryption keywords of the CREATE TABLESPACE command!
 
-## Task 6: Rekey Master Key:
+## Task 9: Rekey Master Key:
 
 1. To rekey the container database TDE Master Key (MEK), run the following command
 
@@ -221,7 +221,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
 
 4. Now that you have a master key, you can begin encrypting tablespaces or column!
 
-## Task 7: View Keystore Details:
+## Task 10: View Keystore Details:
 
 1. Once you have a keystore, you can run either of these scripts. You will notice there are multiple copies of the **ewallet.p12** file. Every time you make a change, including create or rekey, the ewallet.p12 file is backed up. You will also see the contents of the Oracle Wallet file by using **orapki**
 
@@ -241,7 +241,7 @@ If the PDB **creates a master key**, that master key can only go into the wallet
 
     ![TDE](./images/tde-024c.png "View the keystore data in the database")
 
-## Task 8: Optionally, Restore Before TDE:
+## Task 11: Optionally, Restore Before TDE:
 
 1. First, execute this script to restore the pfile
 
