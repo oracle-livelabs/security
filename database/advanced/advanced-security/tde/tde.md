@@ -33,6 +33,7 @@ This lab assumes you have:
 |6 | Side-channel attack against an un-encrypted tablespace | <5 minutes |
 |7 | Avoid side-channel attack by encrypting tablespace | <5 minutes |
 |8 | Encrypt remaining tablespaces in CDB$ROOT and PDB1 | 5 minutes |
+|9 | Rekey Master Encryption Keys | 5 minutes |
 
 ## Task 1: Configure database for TDE
 
