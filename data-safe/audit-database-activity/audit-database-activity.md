@@ -35,7 +35,7 @@ This lab assumes you have:
 
 ## Task 1: Configure auditing and alerts for your target database
 
-1. In the breadcrumb at the top of the page, click **Data Safe**.
+1. Return to the browser tab for Oracle Data Safe browser. In the breadcrumb at the top of the page, click **Data Safe**.
 
 2. Under **Data Safe**, click **Activity auditing**.
 
@@ -43,9 +43,11 @@ This lab assumes you have:
 
 4. For **Alert policy**, do the following to enable alert policies, and then click **Next**.
 
-    a) Select your target database. The list of available alert policies is displayed.
+    a) If needed, click **Change Compartment** and select your compartment.
+    
+    b) Select your target database. The list of available alert policies is displayed.
 
-    b) Select the **Failed logins by admin user** and **User creation/modification** alert policies to enable them.
+    c) Select the **Failed logins by admin user** and **User creation/modification** alert policies to enable them.
 
    ![Activity Auditing wizard - Alert Policy](images/activity-auditing-wizard-alert-policy.png "Activity Auditing wizard - Alert Policy")
     
@@ -190,4 +192,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, October 16, 2024
+* **Last Updated By/Date** - Jody Glover, December 9, 2024
