@@ -290,3 +290,9 @@ In this task, you test a context violation and a SQL injection.
 
 You may now proceed to the next lab.
 
+## Acknowledgements
+
+- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
+- **Last Updated By/Date** - Jody Glover, Dec 10, 2024
+
+
