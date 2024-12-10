@@ -51,7 +51,7 @@ This lab assumes you have:
 
     - The **Risk level** chart shows you a percentage breakdown of the different risk levels (High, Medium, Low, Advisory, and Evaluate) across all target databases in the selected compartment(s).
     - The **Risks by category** chart shows you a percentage breakdown of the different risk categories (User accounts, Privileges and roles, Authorization control, Data encryption, Fine-grained access, Auditing, and Database configurations) across target databases in the selected compartment(s).
-    - The **Top 5 common controls** chart shows a bar graph of the number of target databases at each risk level for each of the top five common controls. The top five common controls are the five security controls that Oracle considers the most important to the security of your target databases. Clicking on any of the bars will show you the list of target databases associated with the selected data.
+    - The **Top 5 common security controls** chart shows a bar graph of the number of target databases at each risk level for each of the top five common controls. The top five common controls are the five security controls that Oracle considers the most important to the security of your target databases. Clicking on any of the bars will show you the list of target databases associated with the selected data.
 
      ![Security assessment overview charts for all targets](images/sa_overview_charts.png "Security assessment overview charts for all targets")
 
@@ -80,7 +80,7 @@ This lab assumes you have:
 
     The latest security assessment for your target database is displayed. Notice that **Latest assessment for target database** is displayed at the top of the page.
 
-2. Review the top 5 common controls that Oracle considers to be the most important to the security of your target databases. You can click the links to quickly navigate to more detail below.
+2. Review the top 5 common security controls that Oracle considers to be the most important to the security of your target databases. You can click the links to quickly navigate to more detail below.
 
     ![Top 5 common controls](images/top-5-common-controls.png "Top 5 common controls")
 
@@ -97,7 +97,7 @@ This lab assumes you have:
 
     ![Latest security assessment assessment information tab](images/latest-sa-assessment-information-tab2.png "Latest security assessment assessment information tab")
 
-6. Scroll down and view the **Assessment details** section.
+5. Scroll down and view the **Assessment details** section.
 
     - This section shows you all the findings for each risk category.
     - Risks are color-coded to help you easily identify categories that have high risk findings (red).
@@ -105,11 +105,11 @@ This lab assumes you have:
 
     ![Latest Security Assessment Assessment details section](images/latest-sa-assessment-details-section.png "Latest Security Assessment Assessment details section")
 
-7. Under **Filters by risks** on the left, notice that you can select the risk levels that you want displayed. Also notice on the left that you can filter by references.
+6. Under **Filters by risks** on the left, notice that you can select the risk levels that you want displayed. Also notice on the left that you can filter by references.
 
     ![Security Assessment filters](images/sa-filters.png "Security Assessment filters")
 
-8. On the right, expand categories and review the findings.
+7. On the right, expand categories and review the findings.
 
     - Each finding shows you the status (risk level), a summary of the finding, details about the finding, remarks to help you to mitigate the risk, and references - whether a finding is recommended by the Center for Internet Security (**CIS**), European Union's General Data Protection Regulation (**EU GDPR**), Security Technical Implementation Guide (**DISA STIG**), and/or **Oracle best practices**. These references make it easy for you to identify the recommended security controls.
     - In the example below, the **Transparent Data Encryption** finding has three references: **Oracle Best Practices**, **DISA STIG**, and **GDPR**.
@@ -225,4 +225,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, October 16, 2024
+* **Last Updated By/Date** - Jody Glover, December 6, 2024
