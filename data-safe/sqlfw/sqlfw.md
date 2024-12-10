@@ -10,6 +10,7 @@ Estimated Lab Time: 20 minutes
 
 In this lab, you will:
 
+- (For your tenancy only): Grant the SQL Firewall role on your target database
 - Enable SQL Firewall in Data Safe
 - Create a SQL collection for APP_USER
 - Deploy the SQL Firewall policy for APP_USER
@@ -25,8 +26,33 @@ This lab assumes you have:
 - Prepared your environment
 - A target database that is Oracle Database 23ai
 
+## Task 1 (For your tenancy only): Grant the SQL Firewall role on your target database
 
-## Task 1: Enable SQL Firewall in Data Safe
+Perform this task only if you are working in your own tenancy. If you are using a LiveLabs sandbox, you do not need to perform this task.
+
+1. Return to the SQL worksheet in Database Actions. If you are prompted to sign in to your target database, sign in as the `ADMIN` user. Clear the worksheet and the **Script Output** tab.
+
+2. On the SQL worksheet, enter the following command to grant the SQL Firewall role to the Oracle Data Safe service account on your target database.
+
+    ```
+    <copy>EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$SQL_FIREWALL_ROLE');</copy>
+    ```
+
+3. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query. 
+
+    ![Run Statement button on toolbar](images/run-statement-button.png "Run Statement button on toolbar")
+
+4. Verify that the script output reads as follows:
+
+    `PL/SQL procedure successfully completed.`
+    
+    You are now able to use the SQL Firewall feature with your target database.
+
+5. Clear the worksheet and script output.  
+
+
+
+## Task 2: Enable SQL Firewall in Data Safe
 
 1. Return to the **Data Safe | Oracle Cloud Infrastructure** browser tab.
 
@@ -41,7 +67,7 @@ This lab assumes you have:
 6. Click **Enable** and wait until the status changes to **ACTIVE**.
 
 
-## Task 2: Create a SQL collection for APP_USER
+## Task 3: Create a SQL collection for APP_USER
 
 1. Under **SQL collections**, click **Create and start SQL collection**.
 
@@ -87,7 +113,7 @@ This lab assumes you have:
 
 16. Close any tip dialog boxes.
 
-17. On the worksheet, run the following SQL statement:
+17. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
     <copy>SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
@@ -95,45 +121,48 @@ This lab assumes you have:
     ```
 
 
-18. On the worksheet, run the following SQL statement:
+18. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
     <copy>SELECT LOCATION_ID, STREET_ADDRESS, CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
     </copy>
     ```
 
-19. On the worksheet, run the following SQL statement:
+19. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
     <copy>SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
     </copy>
     ```
 
-## Task 3: Deploy the SQL Firewall policy for APP_USER
+20. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
-1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+21. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
 
-2. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
+22. Click the name of your target database.
 
-3. Click the name of your target database.
+23. Click the SQL collection for `APP_USER`. 
 
-4. Click the SQL collection for `APP_USER`. 
+24. To stop the SQL workload capture of allowed SQL statements, click **Stop**, and wait for the status to change to **COMPLETED**.
 
-5. To stop the SQL workload capture of allowed SQL statements, click **Stop**, and wait for the status to change to **COMPLETED**.
+    The SQL collection is created for `APP_USER`.
 
-6. Click **Generate firewall policy**.
+
+## Task 4: Deploy the SQL Firewall policy for APP_USER
+
+1. On the **SQL collection details** page, click **Generate firewall policy**.
 
     A firewall policy is created, but not yet enabled (deployed). Notice the status of the policy is set to **Disabled**.
     
-7. Scroll down and review the collection of SQL statements on the allow-list. 
+2. Scroll down and review the collection of SQL statements on the allow-list. 
 
     Note: Database Actions adds additional SQL statements to the allow-list automatically. The SQL statements that you just collected also have additional code inserted, which you can ignore.
 
-8. To deploy the SQL Firewall policy for the `APP_USER` user, click **Deploy and enforce**.
+3. To deploy the SQL Firewall policy for the `APP_USER` user, click **Deploy and enforce**.
 
     The **Deploy SQL Firewall policy** dialog box is displayed.
 
-9. Select the following options:
+4. Select the following options:
 
     - Enforcement scope: **SQL statements only**
     - Action on violations: **Block and log violations**
@@ -141,15 +170,15 @@ This lab assumes you have:
 
     *Be sure to select these options carefully!*
     
-10. Click **Deploy and enforce**.
+5. Click **Deploy and enforce**.
 
    ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
 
-11. Notice that the status of the SQL Firewall policy changes to **Enabled**. 
+6. Notice that the status of the SQL Firewall policy changes to **Enabled**. 
 
    ![Unique allowed SQL statements](images/enabled-policy.png "Unique allowed SQL statements")
 
-12. To filter the allow-list, under **Unique allowed SQL statements**, click **+ Add filter**, set **SQL text Like HCM1**, and click **Apply**.
+7. To filter the allow-list, under **Unique allowed SQL statements**, click **+ Add filter**, set **SQL text Like HCM1**, and click **Apply**.
 
     The SQL statements that you collected earlier are listed.
 
@@ -163,7 +192,7 @@ This lab assumes you have:
     ```
 
 
-## Task 4: Test the SQL Firewall policy
+## Task 5: Test the SQL Firewall policy
 
 1. Return to Database Actions as `APP_USER` and clear the worksheet.
 
@@ -189,10 +218,10 @@ This lab assumes you have:
 
     ```text
     <copy>
-    SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS LOCATION_ID='1300';
+    SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1300';
     </copy>
     ```
-    You should receive an error message: ORA-47605: SQL Firewall violation.
+    The query should return data. 
 
 5. Clear the worksheet and try running the SQL statement on the allow-list with its columns in a different order, for example:
 
@@ -203,7 +232,7 @@ This lab assumes you have:
     You should receive an error message: ORA-47605: SQL Firewall violation.
 
 
-## Task 5: Add a SQL statement from the violation log to the allow-list
+## Task 6: Add a SQL statement from the violation log to the allow-list
     
 1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** tab.
 
@@ -211,9 +240,9 @@ This lab assumes you have:
 
     The **Add from violations** page is displayed.
 
-3. Expand the violations and review. Notice that there is additional code added when your target is an Autonomous Database. 
+3. Expand the violations and review.
 
-4. Select the check box for the third sql violation `SELECT * FROM HCM1.EMPLOYEES`.
+4. Select the check box for the third SQL violation: `SELECT * FROM HCM1.EMPLOYEES`.
 
 5. Click **Add violations**. 
 
@@ -238,6 +267,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Dec 9, 2024
+- **Last Updated By/Date** - Jody Glover, Dec 10, 2024
 
 

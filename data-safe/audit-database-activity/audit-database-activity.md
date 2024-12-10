@@ -73,7 +73,7 @@ This lab assumes you have:
 
     ![Activity Auditing wizard - Audit trails](images/activity-auditing-wizard-audit-trails.png "Activity Auditing wizard - Audit Trails")
 
-7. For **Audit profile**, leave the default selections for the retention periods and paid usage as is (see below), and click **Next**.
+7. For **Audit profile**, leave the default selections for the retention periods, deselect paid usage, and click **Next**.
 
     - Audit data online retention months = 12
     - Audit data offline retention months = 0

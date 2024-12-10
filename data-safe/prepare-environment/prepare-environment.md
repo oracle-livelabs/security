@@ -165,7 +165,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - **Workload type** - Select **Transaction Processing**.
     - **Deployment type** - Leave **Serverless** selected.
     - **Always Free** - Select this option by moving the slider to the right.
-    - **Database version** - If possible, select a database version; for example, **21c**.
+    - **Database version** - If possible, select **23ai**.
     - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. In order for you to later register this database with Data Safe, the password must be between 14 and 30 characters long and must include at least one uppercase letter, one lowercase letter, one numeric character, and one special character. It cannot contain your username or the double quote (") character.
     - **Access Type** - Leave **Secure access from everywhere** selected.
 
