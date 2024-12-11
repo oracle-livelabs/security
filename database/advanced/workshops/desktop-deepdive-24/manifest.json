@@ -11,7 +11,7 @@
       "title": "Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
-      "filename": "security/database/common/init-start-env/init-start-env.md"
+      "filename": "database/common/init-start-env/init-start-env.md"
     },
     {
       "title": "Introduction - Story of a hack",
