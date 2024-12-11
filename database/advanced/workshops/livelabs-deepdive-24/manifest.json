@@ -38,7 +38,7 @@
     {
       "title": "Introduction - Data Safe Fundamentals",
       "description": "This lab provides information about the Oracle Data Safe workshop.",
-      "filename": "../data-safe/introduction/introduction-sandbox.md"
+      "filename": "../../../../data-safe/introduction/introduction-sandbox.md"
     },
     {
       "title": "Lab 1: Access your environment",
