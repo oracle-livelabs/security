@@ -11,76 +11,76 @@
       "title": "Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
-      "filename": "../database/common/init-start-env/init-start-env.md"
+      "filename": "../../../common/init-start-env/init-start-env.md"
     },
     {
       "title": "Introduction - Story of a hack",
       "description": "Understand the architecture of this workshop and what it can do",
-      "filename": "security/database/story/intro/intro.md"
+      "filename": "../../../story/intro/intro.md"
     },
     {
       "title": "Lab: Oracle facing a Ransomeware attack",
       "description": "In this lab you can see how to leverage Oracle DB Security solutions against a Ransomware attack",
-      "filename": "security/database/story/story-hack/story-hack.md"
+      "filename": "../../../story/story-hack/story-hack.md"
     },
     {
       "title": "Introduction - Database Vault",
       "description": "In this lab you can see how to leverage Oracle Database Vault (DV)",
       "publisheddate": "09/01/2020",
-      "filename": "security/database/advanced/intro/intro-database-vault.md"
+      "filename": "../../../advanced/intro/intro-database-vault.md"
     },
     {
       "title": "Lab: Database Vault",
       "description": "In this lab you can see how to leverage Oracle Database Vault (DV)",
       "publisheddate": "10/20/2020",
-      "filename": "security/database/advanced/database-vault/database-vault.md"
+      "filename": "../../../advanced/database-vault/database-vault.md"
     },
     {
       "title": "Introduction - Data Safe Fundamentals",
       "description": "This lab provides information about the Oracle Data Safe workshop.",
-      "filename": "security/data-safe/introduction/introduction-sandbox.md",
+      "filename": "../../data-safe/introduction/introduction-sandbox.md",
       "type": "livelabs"
     },
     {
       "title": "Lab 1: Access your environment",
       "description": "Access and review your Sandbox environment.",
-      "filename": "security/data-safe/access-environment/access-environment-sandbox.md",
+      "filename": "../../data-safe/access-environment/access-environment-sandbox.md",
       "type": "livelabs"
     },
     {
       "title": "Lab 2: Assess database configurations",
       "description": "This lab shows you how to assess database configurations in your Autonomous Database by using the Security Assessment feature in Oracle Data Safe.",
-      "filename": "security/data-safe/assess-database-configurations/assess-database-configurations.md",
+      "filename": "../../data-safe/assess-database-configurations/assess-database-configurations.md",
       "type": "livelabs"
     },
     {
       "title": "Lab 3: Assess database users",
       "description": "This lab shows you how to assess database users in your Autonomous Database by using the User Assessment feature in Oracle Data Safe.",
-      "filename": "security/data-safe/assess-database-users/assess-database-users.md",
+      "filename": "../../data-safe/assess-database-users/assess-database-users.md",
       "type": "livelabs"
     },
     {
       "title": "Lab 4: Discover sensitive data",
       "description": "This lab shows you how to discover sensitive data on your target database by using the Data Discovery feature in Oracle Data Safe.",
-      "filename": "security/data-safe/discover-sensitive-data/discover-sensitive-data.md",
+      "filename": "../../data-safe/discover-sensitive-data/discover-sensitive-data.md",
       "type": "livelabs"
     },
     {
       "title": "Lab 5: Mask sensitive data",
       "description": "This lab shows you how to mask sensitive data on your target database by using the Data Masking feature in Oracle Data Safe.",
-      "filename": "security/data-safe/mask-sensitive-data/mask-sensitive-data.md",
+      "filename": "../../data-safe/mask-sensitive-data/mask-sensitive-data.md",
       "type": "livelabs"
     },
     {
       "title": "Lab 6: Audit database activity",
       "description": "This lab shows you how to provision audit policies and alerts in Oracle Data Safe.",
-      "filename": "security/data-safe/audit-database-activity/audit-database-activity.md",
+      "filename": "../../data-safe/audit-database-activity/audit-database-activity.md",
       "type": "livelabs"
     },
     {
       "title": "Lab 7: Create and enforce a SQL Firewall policy in Data Safe",
       "description": "This lab shows you how to use SQL Firewall in Data Safe.",
-      "filename": "security/data-safe/sqlfw/sqlfw.md",
+      "filename": "../../data-safe/sqlfw/sqlfw.md",
       "type": "livelabs"
     },
     {
