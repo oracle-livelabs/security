@@ -562,7 +562,7 @@ In this second part, we will manage users' private keys in OKV making those priv
 
     - Click [**Register**]
 
-4. Create an SSH Server wallet **`opc_at_dbseclab`**
+4. Give the endpoint READ-ONLY access to the wallet **`opc_at_dbseclab`**
 
     - Click on **Keys & Wallets** tab and click on the wallet name *`MY_SSH_KEYS`*
 
