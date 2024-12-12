@@ -87,7 +87,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 ## Task 5: Create tagged master key for pluggable database PDB1
 1. If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
 
- To create a master encryption key for the pluggable database **pdb1**, run the following command:
+ To create a master encryption key for the pluggable database **PDB1**, run the following command:
 
     ````
     <copy>./05_tde_create_mek_pdb.sh</copy>

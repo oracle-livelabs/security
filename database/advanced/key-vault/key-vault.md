@@ -143,10 +143,10 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
         **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
 
-    - Login to Key Vault Web Console as *`KVRESTADMIN`* (use the randomly generated password)
+    - Login to Key Vault Web Console as *`KVEPADMIN`* (use the randomly generated password)
 
         ````
-        <copy>KVRESTADMIN</copy>
+        <copy>KVEPADMIN</copy>
         ````
 
         ![Key Vault](./images/okv-001.png "OKV - Login")
@@ -159,9 +159,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     - Logout
 
-10. Repeat the Step 10 for the user *`KVEPADMIN`*
-
-11. Now, your database is ready for the OKV labs!
+11. Now, we can register the database with OKV!
 
 ## Task 2: Add an Endpoint
 First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
@@ -233,10 +231,10 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
 2. Go back to your Oracle Key Vault Console
 
-3. Login to Key Vault Web Console as *`KVRESTADMIN`*
+3. Login to Key Vault Web Console as *`KVEPADMIN`*
 
     ````
-    <copy>KVRESTADMIN</copy>
+    <copy>KVEPADMIN</copy>
     ````
 
     ![Key Vault](./images/okv-001.png "Key Vault - Login")
@@ -245,7 +243,7 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
     ![Key Vault](./images/okv-002.png "Key Vault - Endpoint")
 
-5. You should see the Endpoint just added
+5. You should see the Endpoint you just added
 
     ![Key Vault](./images/okv-008.png "Key Vault - Endpoint")
 
@@ -255,20 +253,12 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
     ![Key Vault](./images/okv-009.png "Default Wallet section")
 
-8. Your Endpoint is now added!
+8. Your database is now registered with OKV.
 
 ## Task 3: View the Contents of the OKV Virtual Wallet
 Any time after adding the Endpoint to this host, you can run this script to view the contents of the Virtual Wallet in Oracle Key Vault
 
-1. Go back to your Terminal session and view the Wallet contents on the **Operating System**
-
-    ````
-    <copy>./okv_view_wallet_on_os.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-010.png "View the OKV Wallet content on the OS")
-
-2. ... within the **database**  (in `V$ENCRYPTION_WALLET`)
+1. View the Wallet from the **database**  (in `V$ENCRYPTION_WALLET`)
 
     ````
     <copy>./okv_view_wallet_in_db.sh</copy>
