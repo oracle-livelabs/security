@@ -1,11 +1,11 @@
 # Oracle Key Vault (OKV)
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Key Vault (OKV). It gives the user an opportunity to learn how to configure this appliance to manage keys.
+This workshop introduces the various features and functionality of Oracle Key Vault (OKV). It gives the user an opportunity to learn how to configure an encrypted database for online key managemrnt with Oracle Key Vault.
 
 *Estimated Lab Time:* 60 minutes
 
-*Version tested in this lab:* Oracle OKV 21.9 and DBEE 19.23
+*Version tested in this lab:* Oracle OKV 21.10 and DBEE 19.25
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
@@ -78,40 +78,40 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 2. Go to the TDE scripts directory
 
     ````
-    <copy>cd $DBSEC_LABS/tde</copy>
+    <copy>cd $DBSEC_LABS/okv</copy>
     ````
 
-3. Create the Keystore directories on the Operating System
+3. Configure the database for TDE (**the DB will restart!**)
 
     ````
-    <copy>./tde_create_os_directory.sh</copy>
+    <copy>./01_tde_set_tde_parameters.sh</copy>
     ````
 
-    ![Key Vault](../advanced-security/tde/images/tde-002.png "Create the Keystore directories")
+    ![Key Vault](../images/okv_tde_001.png "Set TDE parameters")
 
-4. Use the database parameters to manage TDE (**the DB will restart!**)
-
-    ````
-    <copy>./tde_set_tde_parameters.sh</copy>
-    ````
-
-    ![Key Vault](../advanced-security/tde/images/tde-003.png "Set TDE parameters")
-
-5. Create the **Oracle Wallet** for the container database
+4. Create the **Oracle Wallet** for the container database
 
     ````
-    <copy>./tde_create_wallet.sh</copy>
+    <copy>./02_tde_create_wallet.sh</copy>
     ````
 
-    ![Key Vault](../advanced-security/tde/images/tde-004.png "Create the software keystore")
+    ![Key Vault](../images/okv_tde_002.png "Create the software keystore")
 
-6. Create the container database TDE Master Key (**MEK**)
+5. Create a local auto-open wallet
 
     ````
-    <copy>./tde_create_mek_cdb.sh</copy>
+    <copy>./03_tde_create_local_autologin_wallet.sh</copy>
     ````
 
-    ![Key Vault](../advanced-security/tde/images/tde-005.png "Create the container database TDE Master Key")
+    ![Key Vault](../images/okv_tde_003.png "Create the container database TDE Master Key")
+
+6. Create the first TDE Master Key (**MEK**) for the CDB\$OOT:
+
+    ````
+    <copy>./04_tde_create_mek_cdb.sh</copy>
+    ````
+
+    ![Key Vault](../images/okv_tde_004.png "Create the container database TDE Master Key")
 
 7. Create the pluggable database **pdb1** Master Key (MEK)
 
