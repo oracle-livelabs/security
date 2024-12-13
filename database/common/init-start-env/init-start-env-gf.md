@@ -26,9 +26,9 @@ This lab assumes you have:
     - Database Servers (cdb1)
     - My HR Applications on Glassfish
 
-2. Ignore or minimize the browser tab open with 'Enterprise Manager' as you will not need it for this lab. Open new browser tabs and confirm successful rendering of *My HR Applications* listed below.
+2. In the browser on the right-hand side, make you can load the following URLs (*http://dbsec-lab:8080/hr_prod_pdb1* should already be open for you):
 
-    - PDB1
+    - **PDB1**
 
     ```
     Prod: <copy>http://dbsec-lab:8080/hr_prod_pdb1</copy>
@@ -38,7 +38,12 @@ This lab assumes you have:
     Dev: <copy>http://dbsec-lab:8080/hr_dev_pdb1</copy>
     ```
 
-    - PDB2
+    ![HR app prod pdb1](images/novnc-hrapp-1.png "HR PDB1 Production Application")
+
+    ![HR app dev pdb1](images/novnc-hrapp-2.png "HR PDB1 Development Application")
+
+   
+    - **PDB2**
 
     ```
     Prod: <copy>http://dbsec-lab:8080/hr_prod_pdb2</copy>
@@ -47,6 +52,10 @@ This lab assumes you have:
     ```
     Dev: <copy>http://dbsec-lab:8080/hr_dev_pdb2</copy>
     ```
+
+    ![HR app prod pdb2](images/novnc-hrapp-3.png "HR PDB2 Production Application")
+
+    ![HR app dev pdb2](images/novnc-hrapp-4.png "HR PDB2 Production Application")
 
     If all are successful, then your environment is ready.  
 

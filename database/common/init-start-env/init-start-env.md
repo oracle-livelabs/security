@@ -40,6 +40,7 @@ This lab assumes you have:
 
     ![Enterprise Manager Login](images/em-login.png "Enterprise Manager Login")
 
+
 3. Open new browser tabs and confirm successful rendering of *My HR Applications* listed below.
 
     - PDB1
