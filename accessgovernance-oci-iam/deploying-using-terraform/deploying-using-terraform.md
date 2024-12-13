@@ -72,7 +72,7 @@ In this lab, you will:
 
   Click *Next*.
 
-   ![Enter Email IDs](images/ag-configuration.png)
+   ![Enter Email IDs](images/oci-ag-new.png)
 
   Click on *Create*.
 
