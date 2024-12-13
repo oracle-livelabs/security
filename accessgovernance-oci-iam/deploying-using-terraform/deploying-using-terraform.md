@@ -69,7 +69,6 @@ In this lab, you will:
 
   **AG-OCI Integration Service Group:** agcs_group
   
-  **NOTE : Select your home region such that you can host Oracle Access Governance within your geographic region to create and manage service instances. For supported regions code, please refer [Oracle Access Governance Regions ](https://docs.oracle.com/en/cloud/paas/access-governance/cagsi/#GUID-9D3A580D-767A-4C39-8A61-8A14CD045270)** 
 
   Click *Next*.
 
