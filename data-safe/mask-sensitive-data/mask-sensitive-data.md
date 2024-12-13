@@ -4,7 +4,7 @@
 
 Data Masking provides a way for you to mask sensitive data so that the data is safe for non-production purposes. For example, organizations often need to create copies of their production data to support development and test activities. Simply copying the production data exposes sensitive data to new users. To avoid a security risk, you can use Data Masking to replace the sensitive data with realistic, but fictitious data.
 
-The roles granted to the Oracle Data Safe service account on your target database control which Oracle Data Safe features you can use with the database. By default, Autonomous Database Serverless has all Oracle Data Safe roles granted during target database registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`). If you are working in your own tenancy, you need to grant the Data Masking role on your target database. 
+The roles granted to the Oracle Data Safe service account on your target database control which Oracle Data Safe features you can use with the database. By default, Autonomous Database Serverless has all Oracle Data Safe roles granted during target database registration, except for the Data Masking and SQL Firewall roles. If you are working in your own tenancy, you need to grant the Data Masking role on your target database. 
 
 Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab. View the before and after effect on the masked data by using Oracle Database Actions.
 
@@ -99,7 +99,7 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
 
     - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, and `PHONE_NUMBER` are considered sensitive data and should be masked if shared for non-production use.
 
-8. Return to the browser tab for Oracle Data Safe. Keep this browser tab open because you return to it later.
+8. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe. 
 
 
 ## Task 3: Create a masking policy for your target database
@@ -136,7 +136,7 @@ Data Masking can generate a masking policy for your target database based on you
 
 8. Review the masking policy.
 
-    - On the **Masking policy information** tab, you can view the masking policy name (and edit it), the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, a link to the work request for the masking policy, a link to masking options, the target database and sensitive data model to which the masking policy is associated, and the date/time in which the masking policy was created and last updated.
+    - On the **Masking policy information** tab, you can view the masking policy name (and edit it), a description of the masking policy, the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, when the masking policy was created and updated, the name of the target database, a link to the work request for the masking policy, a link to masking options, the target database and sensitive data model to which the masking policy is associated, and pre/post masking scripts.
     - The **Masking columns** table lists all the masking columns and their masking formats. If needed, you can select a different masking format for any masking column. You can click the pencil icon next to a masking format to edit it.
 
     ![Masking policy details page for Mask SDM1 top](images/masking-policy-details-top.png "Masking policy details page for Mask SDM1 top")
@@ -212,6 +212,8 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 3. Select your target database.
 
 4. Select your masking policy.
+
+5. Select your compartment.
 
     ![Pre-masking check panel](images/pre-masking-check-panel.png "Pre-masking check panel")
 
@@ -302,4 +304,4 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, October 9, 2024
+- **Last Updated By/Date** - Jody Glover, December 9, 2024
