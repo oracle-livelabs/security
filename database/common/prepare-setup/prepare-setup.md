@@ -83,45 +83,31 @@ Task 2B: Create Stack: Compute Only
 2. Log in to Oracle Cloud
 3. Open up the hamburger menu in the top left corner. Click **Developer Services**, and choose **Resource Manager > Stacks**. Choose the compartment in which you would like to install the stack. Click **Create Stack**.
 
-    ![Enterprise Manager External Login](images/login-em-external-1.png "Click Stacks")
-
-    ![Enterprise Manager External Login](images/login-em-external-1.png "Create Stack")
-
 4. Select **My Configuration**, choose the **.Zip file** button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer.
-
-    ![Enterprise Manager External Login](images/login-em-external-1.png "Create Stack")
 
 5. Click **Next**.
 
 6. Enter or select as shown below:
 
-![Enterprise Manager External Login](images/login-em-external-1.png "Create Stack")
+    - **Instance Count:** Accept the default, **1**, unless you intend to create more than one (e.g. for a team)
 
-- **Instance Count:** Accept the default, **1**, unless you intend to create more than one (e.g. for a team)
+    - **Select an availability domain:** Select an availability domain from the dropdown list.
 
-- **Select an availability domain:** Select an availability domain from the dropdown list.
+    - **Need Remote Access via SSH?** In this step you have 3 options to select from:
 
-- **Need Remote Access via SSH?** In this step you have 3 options to select from:
+        - Option (A) - Keep Unchecked for Remote Desktop only Access - The Default
 
-    - Option (A) - Keep Unchecked for Remote Desktop only Access - The Default
+        - Option (B) - Check *Need Remote Access via SSH?* and keep *Auto Generate SSH Key Pair* unchecked to enable remote access via SSH protocol, then provide the SSH public key(s).
 
-    - Option (B) - Check *Need Remote Access via SSH?* and keep *Auto Generate SSH Key Pair* unchecked to enable remote access via SSH protocol, then provide the SSH public key(s).
-
-        - SSH Public Key: Select from the following two options
-            - *Paste SSH Keys:* Paste the plaintext key strings or
-            - *Choose SSH Key Files:* Drag-n-drop or browse and select valid public keys of openssh format from your computer
-
-![Enterprise Manager External Login](images/login-em-external-1.png "Create Stack")
-
-![Enterprise Manager External Login](images/login-em-external-1.png "Create Stack")
+            - SSH Public Key: Select from the following two options
+                - *Paste SSH Keys:* Paste the plaintext key strings or
+                - *Choose SSH Key Files:* Drag-n-drop or browse and select valid public keys of openssh format from your computer
 
 Notes:
 1. This assumes that you already have an RSA-type SSH key pair available on the local system where you will be connecting from. If you don't and for more info on creating and using SSH keys for your specific platform and client, please refer to the guide Generate SSH Keys
 2. If you used the Oracle Cloud Shell to create your key, make sure you paste the pub file in a notepad, and remove any hard returns. The file should be one line or you will not be able to login to your compute instance
 
     - Option (C) - Check *Need Remote Access via SSH?* and *Auto Generate SSH Key Pair* to have the keys auto-generated for you during provisioning. If you select this option you will be provided with the private key post provisioning.
-
-![Enterprise Manager External Login](images/login-em-external-1.png "Create Stack")
 
 Depending on the quota you have in your tenancy you can choose from standard Compute shapes or Flex shapes. Please visit the Appendix: Troubleshooting Tips for instructions on checking your quota
     - **Use Flexible Instance Shape with Adjustable OCPU Count?:** Keep the default as checked (unless you plan on using a fixed shape)
@@ -132,7 +118,6 @@ If don't have the required quota for Flex Shapes or you prefer to use fixed shap
 
 **Use Flexible Instance Shape with Adjustable OCPU Count?:** Unchecked
 **Instance Shape**: Accept the default shown or select from the dropdown. e.g. VM.Standard2.2
-![Enterprise Manager External Login](images/login-em-external-1.png "fixed shapes")
 
 7. For this section we will provision a new VCN with all the appropriate ingress and egress rules needed to run this workshop. If you already have a VCN, make sure it has all of the correct ingress and egress rules and skip to the next section.
 
@@ -141,11 +126,7 @@ If don't have the required quota for Flex Shapes or you prefer to use fixed shap
 
 9. Select **Run Apply** and click **Create**.
 
-![Enterprise Manager External Login](images/login-em-external-1.png "Run apply")
-
 10. Your stack has now been created and the *Apply* action triggered is running to deploy your environment!
-
-![Enterprise Manager External Login](images/login-em-external-1.png "Apply is successful")
 
 You may now proceed to Task 3 (skip Task 2B).
 
@@ -185,8 +166,6 @@ This workshop requires a certain number of ports to be available, a requirement 
 
 1. Review the Stack Job Details.
 
-![Enterprise Manager External Login](images/login-em-external-1.png "Click Stacks")
-
 2. Your public IP address(es), instance name(s), and remote desktop URL are displayed. Congratulations, your environment has been created! 
 
 ## Task 4: Access Remote Desktop  
@@ -195,18 +174,12 @@ For ease of execution of this workshop, your VM instance has been pre-configured
 
 1. Navigate to **Stack Details** -> **Application Information** tab, and click the **Remote Desktop** URL.
 
-    ![Enterprise Manager External Login](images/login-em-external-1.png "Click Stacks")
-
-    ![Enterprise Manager External Login](images/login-em-external-1.png "Click Stacks")
-
 This should take you directly to your remote desktop in a single click.
 
 Remote desktop displayed
 
 Note: While rare, you may see an error on the browser - *“Deceptive Site Ahead”* or similar depending on your browser type as shown below.
 Public IP addresses used for LiveLabs provisioning come from a pool of reusable addresses and this error is because the address was previously used by a compute instance long terminated, but that wasn't properly secured, got bridged, and was flagged. You can safely ignore and proceed by clicking on *Details*, and finally, on *Visit this unsafe site*.
-
-![Enterprise Manager External Login](images/login-em-external-1.png "Click Stacks")
 
 You may now **proceed to the next lab**.
 
