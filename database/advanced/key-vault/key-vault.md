@@ -75,13 +75,13 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     **Note**: Double-click on the Terminal icon on the desktop to launch a session directly as oracle
 </if>
 
-2. Go to the TDE scripts directory
+2. Navigate to the OKV scripts directory:
 
     ````
     <copy>cd $DBSEC_LABS/okv</copy>
     ````
 
-3. Configure the database for TDE (**the DB will restart!**)
+3. Configure the database for TDE (**the DB will restart!**):
 
     ````
     <copy>./01_tde_set_tde_parameters.sh</copy>
@@ -89,7 +89,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     ![Key Vault](../images/okv_tde_001.png "Set TDE parameters")
 
-4. Create the **Oracle Wallet** for the container database
+4. Create the **Oracle Wallet** for the container database:
 
     ````
     <copy>./02_tde_create_wallet.sh</copy>
@@ -97,13 +97,13 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     ![Key Vault](../images/okv_tde_002.png "Create the software keystore")
 
-5. Create a local auto-open wallet
+5. Create a local auto-open wallet:
 
     ````
     <copy>./03_tde_create_local_autologin_wallet.sh</copy>
     ````
 
-    ![Key Vault](../images/okv_tde_003.png "Create the container database TDE Master Key")
+    ![Key Vault](../images/okv_tde_003.png "Create a local auto-open wallet from the password-protected wallet:")
 
 6. Create the first TDE Master Key (**MEK**) for the CDB\$OOT:
 
@@ -111,23 +111,27 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     <copy>./04_tde_create_mek_cdb.sh</copy>
     ````
 
-    ![Key Vault](../images/okv_tde_004.png "Create the container database TDE Master Key")
+    ![Key Vault](../images/okv_tde_004.png "Create the first TDE Master Key for CDB$ROOT")
 
 7. Create the pluggable database **pdb1** Master Key (MEK)
 
     ````
-    <copy>./tde_create_mek_pdb.sh pdb1</copy>
+    <copy>./05_tde_create_mek_pdb.sh</copy>
     ````
 
-    ![Key Vault](../advanced-security/tde/images/tde-006.png "Create the pluggable database TDE Master Key")
+    ![Key Vault](../images/okv_tde_005.png "Create the first TDE Master Key for PDB1")
 
-8. Ceate the **Auto-login Oracle Wallet**
+8. Encrypt all tablespaces in CDB\$ROOT and PDB1, except TEMP and UNDO tablespaces:
 
     ````
-    <copy>./tde_create_autologin_wallet.sh</copy>
+    <copy>./06_tde_encrypt_tbs.sh</copy>
     ````
 
-    ![Key Vault](../advanced-security/tde/images/tde-012.png "Create the Auto-login Oracle Wallet")
+    ![Key Vault](../images/okv_tde_006.png "List of all encrypted tablespaces and their encyption algorithm in PDB1 and CDB\$ROOT:")
+
+
+
+
 
 9. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
 
