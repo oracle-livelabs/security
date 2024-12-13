@@ -69,11 +69,11 @@ This lab assumes you have:
 
     a) Select **UNIFIED\_AUDIT\_TRAIL: NOT_STARTED**.
 
-    b) For the start date, select the beginning of the month.
+    b) For the start date, select the beginning of your current month.
 
     ![Activity Auditing wizard - Audit trails](images/activity-auditing-wizard-audit-trails.png "Activity Auditing wizard - Audit Trails")
 
-7. For **Audit profile**, leave the default selections for the retention periods, deselect paid usage, and click **Next**.
+7. For **Audit profile**, configure the following, and then click **Next**.
 
     - Audit data online retention months = 12
     - Audit data offline retention months = 0
@@ -192,4 +192,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, December 9, 2024
+* **Last Updated By/Date** - Jody Glover, December 13, 2024
