@@ -87,7 +87,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     <copy>./01_tde_set_tde_parameters.sh</copy>
     ````
 
-    ![Key Vault](../images/okv_tde_001.png "Set TDE parameters")
+    ![Key Vault](./images/okv_tde_001.png "Set TDE parameters")
 
 4. Create the **Oracle Wallet** for the container database:
 
@@ -95,7 +95,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     <copy>./02_tde_create_wallet.sh</copy>
     ````
 
-    ![Key Vault](../images/okv_tde_002.png "Create the software keystore")
+    ![Key Vault](./images/okv_tde_002.png "Create the software keystore")
 
 5. Create a local auto-open wallet:
 
@@ -103,7 +103,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     <copy>./03_tde_create_local_autologin_wallet.sh</copy>
     ````
 
-    ![Key Vault](../images/okv_tde_003.png "Create a local auto-open wallet from the password-protected wallet:")
+    ![Key Vault](./images/okv_tde_003.png "Create a local auto-open wallet from the password-protected wallet:")
 
 6. Create the first TDE Master Key (**MEK**) for the CDB\$OOT:
 
@@ -111,7 +111,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     <copy>./04_tde_create_mek_cdb.sh</copy>
     ````
 
-    ![Key Vault](../images/okv_tde_004.png "Create the first TDE Master Key for CDB$ROOT")
+    ![Key Vault](./images/okv_tde_004.png "Create the first TDE Master Key for CDB$ROOT")
 
 7. Create the pluggable database **pdb1** Master Key (MEK)
 
@@ -119,7 +119,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     <copy>./05_tde_create_mek_pdb.sh</copy>
     ````
 
-    ![Key Vault](../images/okv_tde_005.png "Create the first TDE Master Key for PDB1")
+    ![Key Vault](./images/okv_tde_005.png "Create the first TDE Master Key for PDB1")
 
 8. Encrypt all tablespaces in CDB\$ROOT and PDB1, except TEMP and UNDO tablespaces:
 
@@ -127,10 +127,23 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     <copy>./06_tde_encrypt_tbs.sh</copy>
     ````
 
-    ![Key Vault](../images/okv_tde_006.png "List of all encrypted tablespaces and their encyption algorithm in PDB1 and CDB\$ROOT:")
+    ![Key Vault](./images/okv_tde_006.png "List of all encrypted tablespaces and their encyption algorithm in PDB1 and CDB\$ROOT:")
 
+9. Rotate the TDE master key of CDB\$ROOT:
 
+    ````
+    <copy>./07_tde_rekey_mek_cdb.sh</copy>
+    ````
 
+    ![Key Vault](./images/okv_tde_007.png "Show the content of the TDE wallet before and after re-keying the MEK of CDB$ROOT:")
+
+10. Rotate the TDE master key of PDB1:
+
+    ````
+    <copy>./07_tde_rekey_mek_pdb.sh</copy>
+    ````
+
+    ![Key Vault](./images/okv_tde_008.png "Show the content of the TDE wallet before and after re-keying the MEK of PDB1:")
 
 
 9. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
