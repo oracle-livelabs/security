@@ -356,7 +356,7 @@ Imagine that you decide to refresh your development database every Monday from t
     - Of course, here, you exfiltrated only a single email address, but an attacker could exfiltrate any other dataset they wanted by using the same method
     - To be secured, you would need to implement, maintain, and monitor strong security solutions in the development environment
 
-<!--    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy> -->
+<!-- <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy> -->
 
 3. Now, let's see what happens if you **mask the sensitive data during the duplication process in Dev on PDB2**
 
@@ -379,7 +379,7 @@ Imagine that you decide to refresh your development database every Monday from t
 4. Next, try again to **extract only the email of the user 73** (`Craig.Hunt@oracledemo.com`) from the development datafile `empdata_dev.dbf` **on PDB2**
 
     ```
-    <copy>strings ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
+    <copy>strings ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracLedemo.com'</copy>
     ```
 
     ![Extract data from SECURED DEV datafile on PDB2](./images/hack-lab1c-07.png "Extract data from SECURED DEV datafile on PDB2")
@@ -388,7 +388,7 @@ Imagine that you decide to refresh your development database every Monday from t
     - **There's no result!**
     - Although the datafile is still readable as expected - remember, we didn't encrypt the development env - but now, because the data is masked in development, even if the attacker actually connects to the database, there's no longer sensitive data to be stolen!
 
-<!--  <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy> -->
+<!-- <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy> -->
 
 5. Here, we have used the data masking capability provided by the Oracle Database, called **Data Masking and Subsetting (DMS)**.
 
@@ -512,7 +512,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
         - Now, because the source code of the app is exposed to this kind of attack, instead of the results as usual, you can see sensitive information that the application developer never intended to expose to you!
         - Of course, you can modify this UNION query and extract different columns if you want. The key is to ensure the number of returned values continues to match the original source query
 
-    - **On PDB2** (secured)
+    - **On PDB2**, to secure it, you have to configure Database Firewall to allow only the authorized queries
 
         ![HR App - SQL Injection results in Debug mode on PDB2](./images/hack-lab2a-08.png "HR App - SQL Injection results in Debug mode on PDB2")
 
@@ -525,7 +525,8 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
 
     > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" or "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3875)" workshops
 
-## Task 2b: Detect and mitigate the sensitive data harvesting
+<!--
+Task 2b: Detect and mitigate the sensitive data harvesting
 
 Many older applications expose data to the user that is no longer appropriate. Older applications were often developed when privacy concerns were not as important as they are now and when privacy regulations were not as stringent. It may not be practical to modify the applications, but you can still control the display of sensitive data within those applications.
 
@@ -547,7 +548,19 @@ Many older applications expose data to the user that is no longer appropriate. O
 
     - **On PDB2** (secured), even with the same user, the same privileges, the same application, from the same server, the column `SIN` is no longer available!
 
-        ![HR App - SIN value for UserID 77 on PDB2](./images/hack-lab2b-05.png "HR App - SIN value for UserID 77 on PDB2")
+        - Create the policy
+        
+            ```
+            <copy>./sh_create_redact_policy.sh</copy>
+            ```
+
+            **Note**: Here, we'll create a policy to prohibit all access to sensitive data for any connection that does not come from a private IP address
+
+        - check the effect on the App
+        
+            ![HR App - SIN value for UserID 77 on PDB2](./images/hack-lab2b-05.png "HR App - SIN value for UserID 77 on PDB2")
+
+            **Note**: To see the effects, you need to connect to the App from the server's public IP address
 
 4. Here, we have used the data redaction feature provide natively by the Oracle database, called **Data Redaction**
 
@@ -566,6 +579,7 @@ Many older applications expose data to the user that is no longer appropriate. O
     > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
     ---
+-->
 
 ## Task 3: Data exfiltration from the database
 
@@ -771,18 +785,28 @@ Another way to steal data is to connect directly to the database without going t
 
     **Note**: As you can see, outside of the approved HR App, the sensitive data `BONUS_AMOUNT` is still readable!
 
-2. Now, execute the same query **on PDB2**
+2. Now, create a policy to protect the sensitive data, then execute the same query **on PDB2**
 
-    ```
-    <copy>./sh_query_employee_data.sh pdb2 EMPLOYEESEARCH_PROD</copy>
-    ```
+    - Create the policy
+    
+        ```
+        <copy>./sh_create_redact_policy.sh</copy>
+        ```
 
-    ![View EMPLOYEESEARCH_PROD sensitive data on PDB2](./images/hack-lab3c-02.png "View EMPLOYEESEARCH_PROD sensitive data on PDB2")
+        **Note**: Here, we'll create a policy to prohibit all access to sensitive data for any connection that does not come from a private IP address
 
-    **Note**:
-    - A trusted path has been created to be sure that the users will only use the official web app
-    - Sensitive column `BONUS_AMOUNT` columns is invisible to adhoc query tools like SQL*Plus, even for the schema owner!
-    - `SIN` is also redacted for this secured database, we did this earlier to help block the proliferation of sensitive data
+    - Check the effect on the App
+        
+        ```
+        <copy>./sh_query_employee_data.sh pdb2 EMPLOYEESEARCH_PROD</copy>
+        ```
+
+        ![View EMPLOYEESEARCH_PROD sensitive data on PDB2](./images/hack-lab3c-02.png "View EMPLOYEESEARCH_PROD sensitive data on PDB2")
+
+        **Note**:
+        - A trusted path has been created to be sure that the users will only use the official web app
+        - Sensitive column `BONUS_AMOUNT` columns is invisible to adhoc query tools like SQL*Plus, even for the schema owner!
+        - `SIN` is also redacted for this secured database, we did this earlier to help block the proliferation of sensitive data
 
 3. To confirm that the `BONUS_AMOUNT` is still there, have a look on the **UserID 6 (Lillian)** and go back to your HR App **on PDB2**
 
@@ -830,11 +854,26 @@ Another way to steal data is to connect directly to the database without going t
         - `BONUS_AMOUNT` is still readable from within the application because the redaction policy set up for this column displays the data only for the trusted path
         - Connections from outside of the trusted path (like our direct SQL login) are not allowed to see the sensitive data
 
-4. Here again, we have used **Data Redaction**, a feature of Oracle Advanced Security (ASO)
+4. Here, we have used the data redaction feature provide natively by the Oracle database, called **Data Redaction**
+
+    **Note**:
+    - Because we've decided that application users have no need to view extremely sensitive information like `SSN`/`SIN`, we placed a redaction policy on the database table that controls the conditions under which the data is allowed to leave the database
+    - Because Data Redaction is part of the database, there is no need to modify the application to hide this sensitive data. Just create a Data Redaction policy on the table that holds your sensitive column and refresh the application screen to see the effects
+
+    ---
+
+    **Benefits of Using Oracle Data Redaction**
+    - You have different styles of redaction from which to choose
+    - Because the data is redacted at runtime, Data Redaction is well suited to environments in which data is constantly changing
+    - You can create the Data Redaction policies in one central location and easily manage them from there
+    - The Data Redaction policies enable you to create a wide variety of policy conditions based on `SYS_CONTEXT` values, which can be used at runtime to decide when the Data Redaction policies will apply to the results of the application user's query
 
     > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
-## Task 3d: Detect and prevent abuse of power
+    ---
+
+<!--
+Task 3d: Detect and prevent abuse of power
 
 Finally, the attackers will take the gloves off and will attack with heavy artillery, by acting directly on the database to increase their privileges and exfiltrate sensitive data. Their objective is simple, to obtain as many rights as possible to steal the most data possible. They may try to grant additional privileges to accounts they have compromised, or create new accounts to use in follow-on attacks.
 
@@ -902,7 +941,10 @@ Finally, the attackers will take the gloves off and will attack with heavy artil
 
     ---
 
-### **Option 2: Abuse of power**
+-->
+## Task 3d: Prevent abuse of power
+
+<!-- **Option 2: Abuse of power** -->
 
 Attackers want the broadest, most privileged access they can obtain. Database Administrator (DBA) accounts are usually the most privileged accounts in a database.
 
@@ -957,7 +999,10 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
 2. To prevent this attack, let's protect sensitive objects in the `EMPLOYEESEARCH_PROD` schema on PDB2 from malicious activity, even by privileged users like database administrators!
 
     ```
-    <copy>./sh_dbv_start_realm.sh pdb2</copy>
+    <copy>
+    ./sh_dbv_enable_cdb.sh
+    ./sh_dbv_start_realm.sh pdb2
+    </copy>
     ```
 
     ![DB Vault - Create a REALM to protect EMPLOYEESEARCH_PROD schema on PDB2](./images/hack-lab3d-09.png "DB Vault - Create a REALM to protect EMPLOYEESEARCH_PROD schema on PDB2")
@@ -1036,4 +1081,4 @@ To learn more about the capabilities discussed in this workshop and to learn how
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security Senior Principal PM
 - **Contributors** - Russ Lowenthal, Database Security VP
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2024
