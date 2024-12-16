@@ -230,4 +230,4 @@ If for any reason you want to login from a location that is external to your rem
 ## Acknowledgements
 - **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
 - **Contributors** - Marion Smith, Hakim Loumi
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2024
