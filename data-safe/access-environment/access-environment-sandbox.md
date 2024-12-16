@@ -70,7 +70,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
 ## Task 3: Explore Security Center
 
-1. In the breadcrumb at the top of the page, click **Data Safe**.
+1. Under **Data Safe** on the left, click **Overview**.
 
     The **Overview** page is displayed.
 
@@ -129,4 +129,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, October 16, 2024
+- **Last Updated By/Date** - Jody Glover, December 9, 2024
