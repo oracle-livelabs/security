@@ -255,10 +255,49 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
     - Because this datafile is not encrypted, it's easy to extract its entire contents by simply reading it
     - Beware, even if this datafile is located on an encrypted disk array or encrypted by a third-tier software, the content of the file is still available to a privileged user like root or oracle
 
-2. On PDB2, the `EMPDATA_PROD` tablespace is secured and its datafiles associated is also named `empdata_prod.dbf`
+2. On PDB2, encrypt the `EMPDATA_PROD` tablespace to secure it and execute the same extraction command on the datafile to see now if you can exfiltrate sensitive data
 
     ```
-    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_prod.dbf</copy>
+    <copy>
+    sqlplus -s ${DBUSR_SYSTEM}/${DBUSR_PWD}@pdb2 <<EOF
+    set lines 2000
+    col algorithm       format a10
+    col encrypted       format a10
+    col file_name       format a45
+    col pdb_name        format a20
+    col online_status   format a15
+    col tablespace_name format a30
+    col location        format a100
+    
+    prompt
+    prompt . Check if the tablespace EMPDATA_PROD is encrypted or not
+    select tablespace_name, encrypted from dba_tablespaces where tablespace_name = 'EMPDATA_PROD';
+
+    prompt
+    prompt . Encrypt the tablespace EMPDATA_PROD
+    ALTER TABLESPACE empdata_prod ENCRYPTION ONLINE ENCRYPT;
+
+    prompt
+    prompt . Check if the tablespace EMPDATA_PROD is encrypted now
+    select tablespace_name, encrypted from dba_tablespaces where tablespace_name = 'EMPDATA_PROD';
+
+    prompt
+    prompt . Display where to find the new location of the tablespace after encrypting it
+    select b.name tablespace_name, c.ENCRYPTIONALG algorithm, d.name location
+      from v\$tablespace b, v\$encrypted_tablespaces c, v\$datafile d
+     where c.con_id = b.con_id
+       and b.ts# = c.ts#
+       and b.ts# = d.ts#;
+
+    exit;
+    EOF
+    </copy>
+    ```
+    
+    ```
+    <copy>
+    ./sh_extract_data_from_file.sh <encrypted_file_location>
+    </copy>
     ```
 
     ![Extract data from SECURED datafile on PDB2](./images/hack-lab1c-02.png "Extract data from SECURED datafile on PDB2")
