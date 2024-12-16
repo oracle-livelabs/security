@@ -30,7 +30,7 @@ In our scenario, this database contains sensitive data that could be used by the
 
 As your attack protocol progresses, you will test the same commands from the same interfaces, but this time pointing to another Oracle Database named PDB2. Oracle's recommended security controls protect PDB2. You will see how a well-configured database can block the most common attacks used to break in and steal data.
 
-*Versions tested in this lab:* Oracle DB EE 19.23, OEM 13.5, AVDF 20.12
+*Versions tested in this lab:* Oracle DB EE 19.23, OEM 13.5, AVDF 20.13
 
 ### Objectives
 This lab helps you learn to use some of the most important security features of the Oracle Database.
