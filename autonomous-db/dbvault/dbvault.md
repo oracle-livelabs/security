@@ -303,7 +303,7 @@ A realm is a protected zone inside the database where database schemas, objects,
  
        - as user "**`DBA_DEBRA`**"
 
-          ![](./images/adb-dbv_012.png "Query as DBA_DEBRA ")
+          ![](./images/adb-dbv_012c.png "Query as DBA_DEBRA ")
 
        - as user "**`SH1`**"
 
