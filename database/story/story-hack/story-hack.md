@@ -434,7 +434,18 @@ Every day someone discovers a new SQLi vulnerability - even in some of the most 
 
 In this lab, you will perform a "UNION-based" SQL injection attack on an application that is NOT securely developed! You'll see how a SQLi attack works and then see how to block it.
 
-1. First, open 2 Web browser tabs and launch the HR app using these URLs:
+1. First, set a new HR app connection to PDB2 to check the differences in the same app between PDB1 and PDB2
+
+    ```
+    <copy>
+    cd /home/oracle/DBSecLab/admin
+    stop_Glassfish.sh
+    sudo sed -i -e 's|pdb1|pdb2|g' /u01/app/glassfish/hr_prod_pdb2/WEB-INF/classes/hr.properties
+    start_Glassfish.sh
+    </copy>
+    ```
+
+2. Now, open 2 Web browser tabs and launch the HR app using these URLs:
     <if type="green">
     - **On PDB1** (unsecured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb1`*
     - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
@@ -452,7 +463,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     - To help you differentiate between the two applications, the HR App menu is grey on PDB1 and in red on PDB2.
     - Remember, this application is deliberately poorly developed to allow attacks such as SQL injection attacks.
 
-2. Login to these 2 applications as *`hradmin`* with the password "*`Oracle123`*"
+3. Login to these 2 applications as *`hradmin`* with the password "*`Oracle123`*"
 
     ```
     <copy>hradmin</copy>
@@ -466,19 +477,19 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
 
     ![HR App - Login screen](./images/hack-lab2a-02.png "HR App - Login screen")
 
-3. Click **Search Employees**
+4. Click **Search Employees**
 
-4. Click [**Search**]
+5. Click [**Search**]
 
     ![HR App - Search ALL employees](./images/hack-lab2a-03.png "HR App - Search ALL employees")
 
     **Note**: All rows are returned because, remember, you allowed everything!
 
-5. Now, tick the **checkbox "Debug"** to see the SQL query behind this form
+6. Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
     ![HR App - Debug mode](./images/hack-lab2a-04.png "HR App - Debug mode")
 
-6. Click [**Search**] again
+7. Click [**Search**] again
 
     ![HR App - Debug mode results](./images/hack-lab2a-05.png "HR App - Debug mode results")
 
@@ -486,7 +497,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     - Now, you can see the SQL query executed by this form which displays the results
     - This query gives you the information of the number of columns requested, their name, the tables in use, and their relationship. That information helps you know what database columns relate to which columns in the application's user interface.
 
-7. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID, MEMBER_ID, PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
+8. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID, MEMBER_ID, PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
 
     ```
     <copy>
@@ -494,7 +505,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     </copy>
     ```
 
-8. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form on both Web App and tick the "Debug" checkbox
+9. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form on both Web App and tick the "Debug" checkbox
 
     ![HR App - SQL Injection](./images/hack-lab2a-06.png "HR App - SQL Injection")
 
@@ -502,7 +513,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     - Don't forget the "`'`" before the UNION key word to close the SQL clause "LIKE"
     - Don't forget the "`--`" at the end to disable rest of the application's original query
 
-9. Click [**Search**]
+10. Click [**Search**]
 
     - **On PDB1** (unsecured)
 
@@ -521,12 +532,11 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
         - The SQL injection attack was blocked by the Database Firewall mechanisms configured specifically to protect this database from SQLi attacks!
         - Even with a poorly developed application, your data is still protected
 
-10. Here, we have used the SQL Firewalling feature provide by **Oracle Audit Vault and Database Firewall (AVDF)** or **SQL Firewall**
+11. Here, we have used the SQL Firewalling feature provide by **Oracle Audit Vault and Database Firewall (AVDF)** or **Oracle SQL Firewall**
 
     > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" or "[DB Security - Oracle SQL Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3875)" workshops
 
-<!--
-Task 2b: Detect and mitigate the sensitive data harvesting
+## Task 2b: Detect and mitigate the sensitive data harvesting
 
 Many older applications expose data to the user that is no longer appropriate. Older applications were often developed when privacy concerns were not as important as they are now and when privacy regulations were not as stringent. It may not be practical to modify the applications, but you can still control the display of sensitive data within those applications.
 
@@ -579,7 +589,6 @@ Many older applications expose data to the user that is no longer appropriate. O
     > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
     ---
--->
 
 ## Task 3: Data exfiltration from the database
 
@@ -854,19 +863,7 @@ Another way to steal data is to connect directly to the database without going t
         - `BONUS_AMOUNT` is still readable from within the application because the redaction policy set up for this column displays the data only for the trusted path
         - Connections from outside of the trusted path (like our direct SQL login) are not allowed to see the sensitive data
 
-4. Here, we have used the data redaction feature provide natively by the Oracle database, called **Data Redaction**
-
-    **Note**:
-    - Because we've decided that application users have no need to view extremely sensitive information like `SSN`/`SIN`, we placed a redaction policy on the database table that controls the conditions under which the data is allowed to leave the database
-    - Because Data Redaction is part of the database, there is no need to modify the application to hide this sensitive data. Just create a Data Redaction policy on the table that holds your sensitive column and refresh the application screen to see the effects
-
-    ---
-
-    **Benefits of Using Oracle Data Redaction**
-    - You have different styles of redaction from which to choose
-    - Because the data is redacted at runtime, Data Redaction is well suited to environments in which data is constantly changing
-    - You can create the Data Redaction policies in one central location and easily manage them from there
-    - The Data Redaction policies enable you to create a wide variety of policy conditions based on `SYS_CONTEXT` values, which can be used at runtime to decide when the Data Redaction policies will apply to the results of the application user's query
+4. Here again, we have used **Data Redaction**, a feature of Oracle Advanced Security (ASO)
 
     > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
