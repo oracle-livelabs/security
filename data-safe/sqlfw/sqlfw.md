@@ -267,6 +267,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Dec 10, 2024
+- **Last Updated By/Date** - Jody Glover, Dec 13, 2024
 
 

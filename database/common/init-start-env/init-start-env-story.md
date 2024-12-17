@@ -34,6 +34,7 @@ This lab assumes you have:
     - Enterprise Manager - Management server (OMS)
     - Enterprise Manager - Management Agent (emagent)
     - My HR Applications on Glassfish
+    - AVDF Web Console
 
 2. On the web browser window on the right is a tab preloaded with *Enterprise Manager*, login with the credentials below to validate that it's operational
 
@@ -47,12 +48,9 @@ This lab assumes you have:
 
     ![Enterprise Manager Login](images/em-login.png "Enterprise Manager Login")
 
-<<<<<<< HEAD
-=======
     **Note**:
     - If the login page is not displayed on first login to the remote desktop, refresh to reload.
     - It takes ~15 minutes for all processes to fully start.
->>>>>>> eb55f3deb39d8c9dd4544c6b571435a62cb2cd1b
 
 3. Open new browser tabs and confirm successful rendering of *My HR Applications* listed below.
 
@@ -75,8 +73,6 @@ This lab assumes you have:
         ```
         Dev: <copy>http://dbsec-lab:8080/hr_dev_pdb2</copy>
         ```
-
-    **Note**: If all are successful, then your environment is ready.  
 
 4. If you are still unable to get all *Enterprise Manager* and all links above to render successfully, proceed as indicated below to validate the services:
 
@@ -136,6 +132,66 @@ This lab assumes you have:
         </copy>
         ```
 
+6. Set the AVDF Console password
+
+    - Go to the AVDF scripts directory
+
+        ````
+        <copy>cd $DBSEC_LABS/avdf/avs</copy>
+        ````
+
+    - Learn the AVDF password you will need for the duration of the lab
+
+        ````
+        <copy>echo $AVUSR_PWD</copy>
+        ````
+
+        **Note**:
+        - This new password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
+        - At the first login on the AV Console, it will ask you to change this randomly generated password
+
+    - Open a web browser window to *`https://av`* to access to the Audit Vault Web Console
+
+        **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<AVS-VM_@IP-Public>`*
+
+    - Login to Audit Vault Web Console as *`AVADMIN`* (use the password randomly generated)
+
+        ````
+        <copy>AVADMIN</copy>
+        ````
+
+        ![AVDF](./images/init-start-env-avdf-001.png "AVDF - Login")
+
+    - Reset the password
+
+        - Set your new password
+    
+            ![AVDF](./images/init-start-env-avdf-002.png "AVDF - Login")
+    
+        - Click [**Submit**]
+
+    - Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password randomly generated)
+
+        ````
+        <copy>AVAUDITOR</copy>
+        ````
+
+        ![AVDF](./images/init-start-env-avdf-003.png "AVDF - Login")
+
+    - Reset the password
+
+        - Set your new password
+    
+            ![AVDF](./images/init-start-env-avdf-004.png "AVDF - Login")
+    
+        - Click [**Submit**]
+
+7. Login to Audit Vault Web Console as *`AVAUDITOR`* (use the newly reset password)
+
+    ![AVDF](./images/avdf-300.png "AVDF - Login")
+
+    **Note**: If all are successful, then your environment is ready.  
+
 You may now **proceed to the next lab**.
 
 <if type="brown">
@@ -174,4 +230,4 @@ If for any reason you want to login from a location that is external to your rem
 ## Acknowledgements
 - **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
 - **Contributors** - Marion Smith, Hakim Loumi
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - November 2024
+- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2024
