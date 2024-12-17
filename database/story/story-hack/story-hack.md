@@ -1,4 +1,4 @@
-# Oracle DB Security - Story of a hack
+# Attack-Defense scenario
 
 ## Introduction
 In this lab, let's walk through the techniques that attackers use to break into your database and exfiltrate your data.
