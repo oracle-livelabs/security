@@ -47,9 +47,12 @@ This lab assumes you have:
 
     ![Enterprise Manager Login](images/em-login.png "Enterprise Manager Login")
 
+<<<<<<< HEAD
+=======
     **Note**:
     - If the login page is not displayed on first login to the remote desktop, refresh to reload.
     - It takes ~15 minutes for all processes to fully start.
+>>>>>>> eb55f3deb39d8c9dd4544c6b571435a62cb2cd1b
 
 3. Open new browser tabs and confirm successful rendering of *My HR Applications* listed below.
 
