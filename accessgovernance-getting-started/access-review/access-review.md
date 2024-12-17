@@ -52,7 +52,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 3. Under What type of access review campaign would you like to do? -> Select **Review systems managed by Access Governance**.
 
-  ![Access Review](images/access-review-ag.png)
+  ![Access Review](images/access-review-ag-instance.png)
 
 4. Select **Who has access?**. Search for Organization **Quality Assurance**. Click **Apply my selections**
 
@@ -66,11 +66,11 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 6. Select **I'll choose my own workflow**. Click **Next**
 
-7. Select **How many levels of approval do you want?** -> One-level approval workflow
+7. Select **Which approval workflow should be used?** -> One-level approval workflow
 
-8. Select **Who is the first reviewer?** -> Owner. Click Save and Click Next
+8. Click **Next**
 
-  ![Access Review](images/edit-workflow.png)
+  ![Access Review](images/one-level-approval.png)
 
 9. Under **How would you like to schedule your campaign?** -> Select **Run now**.Provide **How do you want to describe this campaign?** and Click **Next**
 
