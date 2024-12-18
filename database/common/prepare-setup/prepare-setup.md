@@ -18,56 +18,50 @@ This lab assumes you have:
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
-<if type="basics">
-    - [`dbseclabs-v62_init-vm.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm.zip)
-</if>
-<if type="advanced">
-    - [`dbseclabs-v62_advanced.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_advanced.zip)
-</if>
 <if type="aso">
-    - [`dbseclabs-v62_init-vm-aso.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-aso.zip)
+    - [`dbseclabs-init-vm-aso.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-aso.zip)
 </if>
 <if type="avdf">
-    - [`dbseclabs-v62_avdf.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_avdf.zip)
+    - [`dbseclabs-avdf.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_avdf.zip)
 </if>
 <if type="data-masking-subsetting">
-    - [`dbseclabs-v90_init-vm-dms.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_[…]rity-library/dbseclabs-v90_init-vm-dms.zip)
+    - [`dbseclabs-init-vm-dms.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_[…]rity-library/dbseclabs-v90_init-vm-dms.zip)
 </if>
 <if type="data-safe">
-    - [`dbseclabs-v62_init-vm-dsop.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-dsop.zip)
+    - [`dbseclabs-init-vm-dsop.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-dsop.zip)
 </if>
 <if type="database-vault">
-    - [`dbseclabs-v62_init-vm-dbv.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-dbv.zip)
+    - [`dbseclabs-init-vm-dbv.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-dbv.zip)
 </if>
 <if type="dbsat">
-    - [`dbseclabs-v62_init-vm-dbsat.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-dbsat.zip)
+    - [`dbseclabs-init-vm-dbsat.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-dbsat.zip)
 </if>
 <if type="key-vault">
-    - [`dbseclabs-v63_okv.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v63_okv.zip)
+    - [`dbseclabs-okv.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v63_okv.zip)
 </if>
 <if type="key-vault_ssh">
-    - [`dbseclabs-v62_okv_ssh.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_okv_ssh.zip)
+    - [`dbseclabs-okv_ssh.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_okv_ssh.zip)
 </if>
 <if type="label-security">
-    - [`dbseclabs-v62_init-vm-ols.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-ols.zip)
+    - [`dbseclabs-init-vm-ols.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-ols.zip)
 </if>
 <if type="nne">
-    - [`dbseclabs-v62_init-vm-nne.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-nne.zip)
+    - [`dbseclabs-init-vm-nne.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-nne.zip)
 </if>
 <if type="priv-analysis">
-    - [`dbseclabs-v62_init-vm-pa.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-pa.zip)
+    - [`dbseclabs-init-vm-pa.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-pa.zip)
 </if>
 <if type="sqlfw">
-    - [`dbseclabs-v63_sqlfw.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v63_sqlfw.zip)
+    - [`dbseclabs-sqlfw.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v63_sqlfw.zip)
 </if>
 <if type="story-hack">
-    - [`dbseclabs-v45_storyhack.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v45_storyhack.zip)
+    - [`dbseclabs-storyhack.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v71_storyhack.zip)
 </if>
 <if type="tsdp">
-    - [`dbseclabs-v62_init-vm-tsdp.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-tsdp.zip)
+    - [`dbseclabs-init-vm-tsdp.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-tsdp.zip)
 </if>
 <if type="unified-auditing">
-    - [`dbseclabs-v62_init-vm-ua.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-ua.zip)
+    - [`dbseclabs-init-vm-ua.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-ua.zip)
 </if>
 
 2.  Save in your downloads folder
@@ -187,4 +181,4 @@ You may now **proceed to the next lab**.
 
 * **Author** - Hakim Loumi, Database Security PM
 * **Contributors** - Rene Fontcha, Master Principal Solutions Architect, NA Technology
-* **Last Updated By/Date** - Kajal Singh, Database Security PM - Nov 2024
+* **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2024
