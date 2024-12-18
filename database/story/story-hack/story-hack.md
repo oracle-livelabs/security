@@ -467,10 +467,11 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
 
     ```
     <copy>
-    cd /home/oracle/DBSecLab/admin
-    stop_Glassfish.sh
+    cd $DBSEC_ADMIN
+    ./stop_Glassfish.sh
     sudo sed -i -e 's|pdb1|pdb2|g' /u01/app/glassfish/hr_prod_pdb2/WEB-INF/classes/hr.properties
-    start_Glassfish.sh
+    ./start_Glassfish.sh
+    cd $DBSEC_LABS/story-hack
     </copy>
     ```
 
