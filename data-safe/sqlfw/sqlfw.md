@@ -120,7 +120,6 @@ Perform this task only if you are working in your own tenancy. If you are using 
     </copy>
     ```
 
-
 18. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
@@ -183,16 +182,17 @@ Perform this task only if you are working in your own tenancy. If you are using 
     The SQL statements that you collected earlier are listed.
 
     ```text
-    <copy>SELECT * FROM (SELECT Q_.*,ROW_NUMBER () OVER (ORDER BY :"SYS_B_0") RN___ FROM (SELECT FIRST_NAME,LAST_NAME,EMPLOYEE_ID FROM HCM1.EMPLOYEES) Q_) WHERE RN___ BETWEEN :1 AND :2
+    SELECT * FROM (SELECT Q_.*,ROW_NUMBER () OVER (ORDER BY :"SYS_B_0") RN___ FROM (SELECT FIRST_NAME,LAST_NAME,EMPLOYEE_ID FROM HCM1.EMPLOYEES) Q_) WHERE RN___ BETWEEN :1 AND :2
     
     SELECT * FROM (SELECT Q_.*,ROW_NUMBER () OVER (ORDER BY :"SYS_B_0") RN___ FROM (SELECT LOCATION_ID,STREET_ADDRESS,CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID) Q_) WHERE RN___ BETWEEN :1 AND :2
 
     SELECT * FROM (SELECT Q_.*,ROW_NUMBER () OVER (ORDER BY :"SYS_B_0") RN___ FROM (SELECT LOCATION_ID,CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID=:"SYS_B_1") Q_) WHERE RN___ BETWEEN :1 AND :2
-    </copy>
     ```
 
 
 ## Task 5: Test the SQL Firewall policy
+
+When you run the SQL statements in this task, use the **Run Statement** button in Database Actions because that is how you previously ran the queries when you created the SQL collection. If you use the **Run Script** button instead, SQL Firewall will block the results.
 
 1. Return to Database Actions as `APP_USER` and clear the worksheet.
 
@@ -203,7 +203,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
     </copy>
     ```
  
-    The query should return data. 
+    The query should return data.
 
 3. Clear the worksheet and try running a SQL statement that isn't on the allow-list, for example:
 
@@ -234,19 +234,19 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 ## Task 6: Add a SQL statement from the violation log to the allow-list
     
-1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** tab.
+1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** tab. You may need to wait a couple of minutes for the violations to show up.
 
 2. Under **Unique allowed SQL statements**, click **Add from violations**.
 
-    The **Add from violations** page is displayed.
+    The **Add from violations** page is displayed showing you Autonomous Database SQL queries.
+
+    ![Add from violations page](images/two-violations.png "Add from violations page")
 
 3. Expand the violations and review.
 
-4. Select the check box for the third SQL violation: `SELECT * FROM HCM1.EMPLOYEES`.
+4. Select the check box for the second SQL violation: `SELECT * FROM HCM1.EMPLOYEES`.
 
 5. Click **Add violations**. 
-
-    ![Add from violations page](images/add-from-violations.png "Add from violations page")
 
     You are returned to the **Firewall policy details** page.
 
@@ -267,6 +267,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Dec 13, 2024
+- **Last Updated By/Date** - Jody Glover, Dec 18, 2024
 
 
