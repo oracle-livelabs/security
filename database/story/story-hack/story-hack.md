@@ -1,4 +1,4 @@
-# Oracle DB Security - Story of a hack
+# Attack-Defense scenario
 
 ## Introduction
 In this lab, let's walk through the techniques that attackers use to break into your database and exfiltrate your data.
@@ -65,8 +65,6 @@ These tools allow an attacker to read or record data passing through a local net
 Tools like tcpdump see everything that passes through the network interface, whether it is the SQL flow between the server and the client. That includes extremely sensitive information like passwords that pass in clear text or any other unencrypted information.
 
 The solution to this problem is to encrypt the network and use secure communication protocols, such as SSH (SFTP, SCP), TLS (HTTPS or FTPS). Unfortunately, all too often internal company networks are not secured and the staff is not sufficiently trained in security aspects. Worse, the network is sometime voluntarily not encrypted because after purchasing some very expensive network probes, these would become useless with an encrypted network and the administrators would no longer be able to carry out their investigations in case of a failure!
-
-<!-- ![Data exfiltration from the network](./images/hack-lab1a.png "Data exfiltration from the network") -->
 
 To see how easy it is to exfiltrate data from an unencrypted network, let's run a simple SQL query on PDB1 (unsecured database) and run tcpdump to analyze its traffic.
 
@@ -153,8 +151,6 @@ The attacker will naturally move closer to the database to get a better idea of 
 
 The attacker may be able to retrieve these files from file shares or backup servers, as email attachments, from tapes, or even from service providers who may have little regard for good security practices or the security implications of these types of files falling into the wrong hands. The attacker can then read the content of those files at their leisure.
 
-<!-- ![Data exfiltration from inert and residual files](./images/hack-lab1b.png "Data exfiltration from inert and residual files") -->
-
 Let's see how this type of attack could focus on an export file, but keep in mind that it would work the same way with a backup file.
 
 1. Let's say that while performing a search, the attacker finds an old, insecure PDB1 export file (`employeesearch_data_PDB1_20241006.dmp`) that was generated for use by a development or support team. The attacker tries to read the file contents
@@ -234,8 +230,6 @@ Here they have two options:
 
 Attacking the production server may seem riskier, but they will attack that target if they don't have enough time or think they can get away with it. Suppose the attackers are not in a hurry. In that case, they can take time to explore non-production servers, which are generally less complete and less up-to-date but have the advantage of being little monitored and rarely with the same level of security as production servers.
 
-<!-- ![Data exfiltration from the datafile](./images/hack-lab1c.png "Data exfiltration from the datafile") -->
-
 The technique remains the same in production or development, so let's take a look at how they might go about it on the production server. We'll see later how to secure the non-production data.
 
 ### **Option 1: The attacker targets the production server**
@@ -255,6 +249,11 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
     - Because this datafile is not encrypted, it's easy to extract its entire contents by simply reading it
     - Beware, even if this datafile is located on an encrypted disk array or encrypted by a third-tier software, the content of the file is still available to a privileged user like root or oracle
 
+<!--
+    !!! BELOW, SECTION TO CHANGE ASAP !!!
+    -----
+    --
+-->
 2. On PDB2, encrypt the `EMPDATA_PROD` tablespace to secure it and execute the same extraction command on the datafile to see now if you can exfiltrate sensitive data
 
     ```
@@ -305,6 +304,11 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
     **Note**:
     - The output is unreadable!
     - Because this datafile is encrypted at the database block level it's impossible to extract its content without going through an authorized, audited, database session
+<!--
+    --
+    -----
+    !!! END OF CHANGE !!!
+-->
 
 3. This time, we have used another database encryption feature provide natively by the Oracle database called **Transparent Data Encryption (TDE)**. TDE is included with all Oracle Database cloud services and is available with Oracle Enterprise Edition databases.
 
@@ -356,7 +360,17 @@ Imagine that you decide to refresh your development database every Monday from t
     - Of course, here, you exfiltrated only a single email address, but an attacker could exfiltrate any other dataset they wanted by using the same method
     - To be secured, you would need to implement, maintain, and monitor strong security solutions in the development environment
 
-<!-- <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy> -->
+<!--
+    !!! BELOW, SECTION TO CHANGE ASAP !!!
+    -----
+    --
+   
+    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb1/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
+    
+    --
+    -----
+    !!! END OF CHANGE !!!
+-->
 
 3. Now, let's see what happens if you **mask the sensitive data during the duplication process in Dev on PDB2**
 
@@ -388,7 +402,17 @@ Imagine that you decide to refresh your development database every Monday from t
     - **There's no result!**
     - Although the datafile is still readable as expected - remember, we didn't encrypt the development env - but now, because the data is masked in development, even if the attacker actually connects to the database, there's no longer sensitive data to be stolen!
 
-<!-- <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy> -->
+<!--
+    !!! BELOW, SECTION TO CHANGE ASAP !!!
+    -----
+    --
+   
+    <copy>./sh_extract_data_from_file.sh ${DATA_DIR}/pdb2/empdata_dev.dbf |grep -o 'Craig.Hunt@oracledemo.com'</copy>
+    
+    --
+    -----
+    !!! END OF CHANGE !!!
+-->
 
 5. Here, we have used the data masking capability provided by the Oracle Database, called **Data Masking and Subsetting (DMS)**.
 
@@ -434,7 +458,29 @@ Every day someone discovers a new SQLi vulnerability - even in some of the most 
 
 In this lab, you will perform a "UNION-based" SQL injection attack on an application that is NOT securely developed! You'll see how a SQLi attack works and then see how to block it.
 
-1. First, open 2 Web browser tabs and launch the HR app using these URLs:
+<!--
+    !!! BELOW, SECTION TO CHANGE ASAP !!!
+    -----
+    --
+-->  
+1. First, set a new HR app connection to PDB2 to check the differences in the same app between PDB1 and PDB2
+
+    ```
+    <copy>
+    cd $DBSEC_ADMIN
+    ./stop_Glassfish.sh
+    sudo sed -i -e 's|pdb1|pdb2|g' /u01/app/glassfish/hr_prod_pdb2/WEB-INF/classes/hr.properties
+    ./start_Glassfish.sh
+    cd $DBSEC_LABS/story-hack
+    </copy>
+    ```
+
+<!--
+    --
+    -----
+    !!! END OF CHANGE !!!
+-->
+2. Now, open 2 Web browser tabs and launch the HR app using these URLs:
     <if type="green">
     - **On PDB1** (unsecured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb1`*
     - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
@@ -452,7 +498,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     - To help you differentiate between the two applications, the HR App menu is grey on PDB1 and in red on PDB2.
     - Remember, this application is deliberately poorly developed to allow attacks such as SQL injection attacks.
 
-2. Login to these 2 applications as *`hradmin`* with the password "*`Oracle123`*"
+3. Login to these 2 applications as *`hradmin`* with the password "*`Oracle123`*"
 
     ```
     <copy>hradmin</copy>
@@ -466,19 +512,19 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
 
     ![HR App - Login screen](./images/hack-lab2a-02.png "HR App - Login screen")
 
-3. Click **Search Employees**
+4. Click **Search Employees**
 
-4. Click [**Search**]
+5. Click [**Search**]
 
     ![HR App - Search ALL employees](./images/hack-lab2a-03.png "HR App - Search ALL employees")
 
     **Note**: All rows are returned because, remember, you allowed everything!
 
-5. Now, tick the **checkbox "Debug"** to see the SQL query behind this form
+6. Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
     ![HR App - Debug mode](./images/hack-lab2a-04.png "HR App - Debug mode")
 
-6. Click [**Search**] again
+7. Click [**Search**] again
 
     ![HR App - Debug mode results](./images/hack-lab2a-05.png "HR App - Debug mode results")
 
@@ -486,7 +532,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     - Now, you can see the SQL query executed by this form which displays the results
     - This query gives you the information of the number of columns requested, their name, the tables in use, and their relationship. That information helps you know what database columns relate to which columns in the application's user interface.
 
-7. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID, MEMBER_ID, PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
+8. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID, MEMBER_ID, PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
 
     ```
     <copy>
@@ -494,7 +540,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     </copy>
     ```
 
-8. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form on both Web App and tick the "Debug" checkbox
+9. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form on both Web App and tick the "Debug" checkbox
 
     ![HR App - SQL Injection](./images/hack-lab2a-06.png "HR App - SQL Injection")
 
@@ -502,7 +548,18 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     - Don't forget the "`'`" before the UNION key word to close the SQL clause "LIKE"
     - Don't forget the "`--`" at the end to disable rest of the application's original query
 
-9. Click [**Search**]
+<!--
+    !!! BELOW, SECTION TO CHANGE ASAP !!!
+    -----
+    --
+   
+    Issue with DB Firewall: the Query Set doesn't exist for PDB2!
+    
+    --
+    -----
+    !!! END OF CHANGE !!!
+-->
+10. Click [**Search**]
 
     - **On PDB1** (unsecured)
 
@@ -512,7 +569,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
         - Now, because the source code of the app is exposed to this kind of attack, instead of the results as usual, you can see sensitive information that the application developer never intended to expose to you!
         - Of course, you can modify this UNION query and extract different columns if you want. The key is to ensure the number of returned values continues to match the original source query
 
-    - **On PDB2**, to secure it, you have to configure Database Firewall to allow only the authorized queries
+    - **On PDB2** (secured)
 
         ![HR App - SQL Injection results in Debug mode on PDB2](./images/hack-lab2a-08.png "HR App - SQL Injection results in Debug mode on PDB2")
 
@@ -521,12 +578,11 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
         - The SQL injection attack was blocked by the Database Firewall mechanisms configured specifically to protect this database from SQLi attacks!
         - Even with a poorly developed application, your data is still protected
 
-10. Here, we have used the SQL Firewalling feature provide by **Oracle Audit Vault and Database Firewall (AVDF)** or **SQL Firewall**
+11. Here, we have used the SQL Firewalling feature provide by **Oracle Audit Vault and Database Firewall (AVDF)** or **Oracle SQL Firewall**
 
-    > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" or "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3875)" workshops
+    > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" or "[DB Security - Oracle SQL Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3875)" workshops
 
-<!--
-Task 2b: Detect and mitigate the sensitive data harvesting
+## Task 2b: Detect and mitigate the sensitive data harvesting
 
 Many older applications expose data to the user that is no longer appropriate. Older applications were often developed when privacy concerns were not as important as they are now and when privacy regulations were not as stringent. It may not be practical to modify the applications, but you can still control the display of sensitive data within those applications.
 
@@ -579,7 +635,6 @@ Many older applications expose data to the user that is no longer appropriate. O
     > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
     ---
--->
 
 ## Task 3: Data exfiltration from the database
 
@@ -854,25 +909,17 @@ Another way to steal data is to connect directly to the database without going t
         - `BONUS_AMOUNT` is still readable from within the application because the redaction policy set up for this column displays the data only for the trusted path
         - Connections from outside of the trusted path (like our direct SQL login) are not allowed to see the sensitive data
 
-4. Here, we have used the data redaction feature provide natively by the Oracle database, called **Data Redaction**
-
-    **Note**:
-    - Because we've decided that application users have no need to view extremely sensitive information like `SSN`/`SIN`, we placed a redaction policy on the database table that controls the conditions under which the data is allowed to leave the database
-    - Because Data Redaction is part of the database, there is no need to modify the application to hide this sensitive data. Just create a Data Redaction policy on the table that holds your sensitive column and refresh the application screen to see the effects
-
-    ---
-
-    **Benefits of Using Oracle Data Redaction**
-    - You have different styles of redaction from which to choose
-    - Because the data is redacted at runtime, Data Redaction is well suited to environments in which data is constantly changing
-    - You can create the Data Redaction policies in one central location and easily manage them from there
-    - The Data Redaction policies enable you to create a wide variety of policy conditions based on `SYS_CONTEXT` values, which can be used at runtime to decide when the Data Redaction policies will apply to the results of the application user's query
+4. Here again, we have used **Data Redaction**, a feature of Oracle Advanced Security (ASO)
 
     > To learn more about how to use Data Redaction, please refer to the "[DB Security - ASO (Transparent Data Encryption & Data Redaction)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=703)" workshop
 
     ---
 
 <!--
+    !!! BELOW, SECTION TO CHANGE ASAP !!!
+    -----
+    --
+   
 Task 3d: Detect and prevent abuse of power
 
 Finally, the attackers will take the gloves off and will attack with heavy artillery, by acting directly on the database to increase their privileges and exfiltrate sensitive data. Their objective is simple, to obtain as many rights as possible to steal the most data possible. They may try to grant additional privileges to accounts they have compromised, or create new accounts to use in follow-on attacks.
@@ -941,7 +988,12 @@ Finally, the attackers will take the gloves off and will attack with heavy artil
 
     ---
 
+
+    --
+    -----
+    !!! END OF CHANGE !!!
 -->
+
 ## Task 3d: Prevent abuse of power
 
 <!-- **Option 2: Abuse of power** -->
@@ -996,6 +1048,17 @@ Fortunately, Oracle Database provides controls to prevent unauthorized privilege
 
         **Note**: DBAs are usually exempt from redaction policies – by default all DBAs have the `EXEMPT_REDACTION_POLICY` privilege. They can even see `SIN` (which we redacted to prevent sensitive data from being shown in an application earlier in this lab).
 
+<!--
+    !!! BELOW, SECTION TO CHANGE ASAP !!!
+    -----
+    --
+   
+    Enable and Start DB Vault automatically or in a script
+    
+    --
+    -----
+    !!! END OF CHANGE !!!
+-->
 2. To prevent this attack, let's protect sensitive objects in the `EMPLOYEESEARCH_PROD` schema on PDB2 from malicious activity, even by privileged users like database administrators!
 
     ```

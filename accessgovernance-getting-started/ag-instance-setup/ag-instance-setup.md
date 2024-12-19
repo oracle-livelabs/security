@@ -77,6 +77,8 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     * Pamela Green has been assigned with the *AG Administrator* application role. You can now close the window.
 
+    * Similarly assign user Pamela Green with the role *AG Campaign Administrator*
+
 3. Now, Notice the *AG User* Role listed. Assign the role to each of the users : *Mark Hernandez*, *Harlan Bullard* and *Jerry Poland*.
 
     ![OIG Identity Roles and Access Policies](images/aguser.png)
