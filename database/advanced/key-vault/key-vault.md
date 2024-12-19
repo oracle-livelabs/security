@@ -1,7 +1,7 @@
 # Oracle Key Vault (OKV)
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Key Vault (OKV). It gives the user an opportunity to learn how to configure this appliance to manage keys.
+This workshop introduces the various features and functionality of Oracle Key Vault (OKV). It gives the user an opportunity to learn how to configure an encrypted database for online key managemrnt with Oracle Key Vault.
 
 *Estimated Lab Time:* 60 minutes
 
@@ -75,91 +75,80 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
     **Note**: Double-click on the Terminal icon on the desktop to launch a session directly as oracle
 </if>
 
-2. Go to the TDE scripts directory
+2. Navigate to the OKV scripts directory:
 
     ````
-    <copy>cd $DBSEC_LABS/tde</copy>
+    <copy>cd $DBSEC_LABS/okv</copy>
     ````
 
-<!--
-3. Make sure you have a cold-backup of your database (**the DB will restart!**)
+3. Configure the database for TDE (**the DB will restart!**):
 
     ````
-    <copy>./tde_backup_db.sh</copy>
+    <copy>./01_tde_set_tde_parameters.sh</copy>
     ````
 
-    ![Key Vault](../advanced-security/tde/images/tde-001.png "Backup DB")
--->
+    ![Key Vault](./images/okv_tde_001.png "Set TDE parameters")
 
-3. Create the Keystore directories on the Operating System
-
-    ````
-    <copy>./tde_create_os_directory.sh</copy>
-    ````
-
-    ![Key Vault](../advanced-security/tde/images/tde-002.png "Create the Keystore directories")
-
-4. Use the database parameters to manage TDE (**the DB will restart!**)
+4. Create the **Oracle Wallet** for the container database:
 
     ````
-    <copy>./tde_set_tde_parameters.sh</copy>
+    <copy>./02_tde_create_wallet.sh</copy>
     ````
 
-    ![Key Vault](../advanced-security/tde/images/tde-003.png "Set TDE parameters")
+    ![Key Vault](./images/okv_tde_002.png "Create the software keystore")
 
-5. Create the **Oracle Wallet** for the container database
-
-    ````
-    <copy>./tde_create_wallet.sh</copy>
-    ````
-
-    ![Key Vault](../advanced-security/tde/images/tde-004.png "Create the software keystore")
-
-6. Create the container database TDE Master Key (**MEK**)
+5. Create a local auto-open wallet:
 
     ````
-    <copy>./tde_create_mek_cdb.sh</copy>
+    <copy>./03_tde_create_local_autologin_wallet.sh</copy>
     ````
 
-    ![Key Vault](../advanced-security/tde/images/tde-005.png "Create the container database TDE Master Key")
+    ![Key Vault](./images/okv_tde_003.png "Create a local auto-open wallet from the password-protected wallet:")
+
+6. Create the first TDE Master Key (**MEK**) for the CDB\$OOT:
+
+    ````
+    <copy>./04_tde_create_mek_cdb.sh</copy>
+    ````
+
+    ![Key Vault](./images/okv_tde_004.png "Create the first TDE Master Key for CDB$ROOT")
 
 7. Create the pluggable database **pdb1** Master Key (MEK)
 
     ````
-    <copy>./tde_create_mek_pdb.sh pdb1</copy>
+    <copy>./05_tde_create_mek_pdb.sh</copy>
     ````
 
-    ![Key Vault](../advanced-security/tde/images/tde-006.png "Create the pluggable database TDE Master Key")
+    ![Key Vault](./images/okv_tde_005.png "Create the first TDE Master Key for PDB1")
 
-8. Ceate the **Auto-login Oracle Wallet**
-
-    ````
-    <copy>./tde_create_autologin_wallet.sh</copy>
-    ````
-
-    ![Key Vault](../advanced-security/tde/images/tde-012.png "Create the Auto-login Oracle Wallet")
-
-<!--
-10. You should now see all these file, including the **cwallet.sso** file
+8. Encrypt all tablespaces in CDB\$ROOT and PDB1, except TEMP and UNDO tablespaces:
 
     ````
-    <copy>./tde_view_wallet_on_os.sh</copy>
-    ````   
-
-    ![Key Vault](./images/okv-201.png "View the Oracle Wallet content on the OS")
-
-11. And the wallet in the database as to be set and available like this
-
-    ````
-    <copy>./tde_view_wallet_in_db.sh</copy>
+    <copy>./06_tde_encrypt_tbs.sh</copy>
     ````
 
-    ![Key Vault](./images/okv-202.png "View the Oracle Wallet content on the database")
--->
+    ![Key Vault](./images/okv_tde_006.png "List of all encrypted tablespaces and their encyption algorithm in PDB1 and CDB\$ROOT:")
+
+9. Rotate the TDE master key of CDB\$ROOT:
+
+    ````
+    <copy>./07_tde_rekey_mek_cdb.sh</copy>
+    ````
+
+    ![Key Vault](./images/okv_tde_007.png "Show the content of the TDE wallet before and after re-keying the MEK of CDB$ROOT:")
+
+10. Rotate the TDE master key of PDB1:
+
+    ````
+    <copy>./07_tde_rekey_mek_pdb.sh</copy>
+    ````
+
+    ![Key Vault](./images/okv_tde_008.png "Show the content of the TDE wallet before and after re-keying the MEK of PDB1:")
+
 
 9. **Reset the randomly generated password** (when you login to the Key Vault console for the first time, you will be asked to change the default password)
 
-    - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and this default password is available in the Labs details or by executing the following command line as *`oracle`* user:
+    - A new password for all the OKV users is randomly generated during the deployment of the Livelabs and this default password is available in the Labs details or by executing the following command as the *`oracle`* user:
 
         ```
         <copy>
@@ -167,14 +156,14 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
         </copy>
         ```
 
-    - Open a web browser window to *`https://kv`* to access to the Key Vault Web Console
+    - Open a web browser window to *`https://kv`* to access the Oracle Key Vault Web Console
 
         **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<OKV-VM_@IP-Public>`*
 
-    - Login to Key Vault Web Console as *`KVRESTADMIN`* (use the password randomly generated)
+    - Login to Key Vault Web Console as *`KVEPADMIN`* (use the randomly generated password)
 
         ````
-        <copy>KVRESTADMIN</copy>
+        <copy>KVEPADMIN</copy>
         ````
 
         ![Key Vault](./images/okv-001.png "OKV - Login")
@@ -187,9 +176,7 @@ To enable you to learn about Oracle Key Vault for TDE key management, you need a
 
     - Logout
 
-10. Repeat the Step 10 for the user *`KVEPADMIN`*
-
-11. Now, your database is ready for the OKV labs!
+11. Now, we can register the database with OKV!
 
 ## Task 2: Add an Endpoint
 First of all, we need Oracle Key Vault to know about our database server. We do this by creating it as an endpoint in OKV
@@ -261,10 +248,10 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
 2. Go back to your Oracle Key Vault Console
 
-3. Login to Key Vault Web Console as *`KVRESTADMIN`*
+3. Login to Key Vault Web Console as *`KVEPADMIN`*
 
     ````
-    <copy>KVRESTADMIN</copy>
+    <copy>KVEPADMIN</copy>
     ````
 
     ![Key Vault](./images/okv-001.png "Key Vault - Login")
@@ -273,7 +260,7 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
     ![Key Vault](./images/okv-002.png "Key Vault - Endpoint")
 
-5. You should see the Endpoint just added
+5. You should see the Endpoint you just added
 
     ![Key Vault](./images/okv-008.png "Key Vault - Endpoint")
 
@@ -283,20 +270,12 @@ First of all, we need Oracle Key Vault to know about our database server. We do 
 
     ![Key Vault](./images/okv-009.png "Default Wallet section")
 
-8. Your Endpoint is now added!
+8. Your database is now registered with OKV.
 
 ## Task 3: View the Contents of the OKV Virtual Wallet
 Any time after adding the Endpoint to this host, you can run this script to view the contents of the Virtual Wallet in Oracle Key Vault
 
-1. Go back to your Terminal session and view the Wallet contents on the **Operating System**
-
-    ````
-    <copy>./okv_view_wallet_on_os.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-010.png "View the OKV Wallet content on the OS")
-
-2. ... within the **database**  (in `V$ENCRYPTION_WALLET`)
+1. View the Wallet from the **database**  (in `V$ENCRYPTION_WALLET`)
 
     ````
     <copy>./okv_view_wallet_in_db.sh</copy>
@@ -401,7 +380,7 @@ Once you have uploaded the Oracle Wallet files into OKV Server, you can migrate 
     ![Key Vault](./images/okv-021.png "Delete Oracle Wallet")
 
     **Note**:
-    - To be safe, we will make a temporary backup directory into `$TDE_HOME/backup` and move the wallet-related files to it
+    - To be safe, we will make a hidden backup directory into `$TDE_HOME/.backup` and move the wallets to it
     - If you want to actually delete it after you have verified everything was successful you can
 
 4. Go back to the OKV Web Console as *`KVRESTADMIN`* to have a look at the contents of the  wallet

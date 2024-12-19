@@ -5,15 +5,14 @@ This workshop introduces the various features and functionality of Oracle Transp
 
 *Estimated Lab Time:* 45 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.23
+*Version used in this lab:* Oracle Database Enterprse Edition 19.25 (October 2024)
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
 
 ### Objectives
-- Take a cold backup of the database to enable db restore if needed
-- Enable Transparent Data Encryption in the database
-- Encrypt data using Transparent Data Encryption
+- Enable Transparent Data Encryption (TDE) in the database
+- Encrypt data using Transparent Data Encryption (TDE)
 
 ### Prerequisites
 This lab assumes you have:
@@ -26,302 +25,154 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-|1 | Allow DB Restore | 5 minutes  |
-|2 | Create Keystore | <5 minutes |
-|3 | Create Local Auto-login Keystore | <5 minutes |
-|4 | Create Master Key | <5 minutes |
-|5 | Encrypt Existing USERS Tablespaces in CDB$ROOT | 5 minutes |
-|6 | Encyrpt Credentials in CDB$ROOT | 5 minutes |
-|7 | Encrypt SYSTEM, SYSAUX and USERS Tablespaces in PDB | 5 minutes |
-|8 | Encyrpt All New Tablespaces | 5 minutes |
-|9 | Rekey Master Key | 5 minutes |
-|10| View Keystore Details | 5 minutes |
-|11| Restore Before TDE | 5 minutes |
+|1 | Configure database for TDE | <5 minutes |
+|2 | Create password-protected TDE wallet | <5 minutes |
+|3 | Create **local** auto-open TDE wallet | <5 minutes |
+|4 | Create tagged master key for CDB$ROOT | <5 minutes |
+|5 | Create tagged master key for pluggable database PDB1 | <5 minutes |
+|6 | Side-channel attack against an un-encrypted tablespace | <5 minutes |
+|7 | Avoid side-channel attack by encrypting tablespace | <5 minutes |
+|8 | Encrypt remaining tablespaces in CDB$ROOT and PDB1 | 5 minutes |
+|9 | Rekey Master Encryption Keys | 5 minutes |
 
-## Task 1: Allow DB Restore
+## Task 1: Configure database for TDE
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
-
-    ````
-    <copy>sudo su - oracle</copy>
-    ````
-
-    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
-
-2. Go to the scripts directory
+1. Go to the scripts directory
 
     ````
     <copy>cd $DBSEC_LABS/tde</copy>
     ````
-
-3. Run the backup command:
-
-    ````
-    <copy>./tde_backup_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-001.png "Backup DB")
-
-4. Once it has completed, it will automatically restart the container and pluggable databases
-
-    **Note**:
-    - If you have executed this script before and there is an existing backup file, the script will not complete
-    - You must manually manage the existing backup (delete or move) before running this script again
-
-## Task 2: Create Keystore
-
-1. Run this script to create the Keystore directories on the Operating System
+    
+2. Set the database parameters to configure your database for TDE. This will require a database restart to take effect. The script will perform the restart for you.
 
     ````
-    <copy>./tde_create_os_directory.sh</copy>
-    ````
-
-    ![TDE](./images/tde-002.png "Create the Keystore directories")
-
-2. Use the database parameters to manage TDE. This will require a database restart for one of the parameters to take effect. The script will perform the reboot for you.
-
-    ````
-    <copy>./tde_set_tde_parameters.sh</copy>
+    <copy>./01_tde_set_tde_parameters.sh</copy>
     ````
 
     ![TDE](./images/tde-003.png "Set TDE parameters")
 
-3. Create the software keystore (**Oracle Wallet**) for the container database. You will see the status result goes from `NOT_AVAILABLE` to `OPEN_NO_MASTER_KEY`.
+## Task 2: Create password-protected TDE wallet
+
+1. Create a password-protected TDE wallet for the root container and united PDBs:
 
     ````
-    <copy>./tde_create_wallet.sh</copy>
+    <copy>./02_tde_create_wallet.sh</copy>
     ````
 
     ![TDE](./images/tde-004.png "Create the software keystore")
+**Note:** We added the password of the TDE wallet into another local auto-open wallet in `<`WALLET_ROOT`>`/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
 
-    **Note:** We create a secret for the Administer password in order to hide it for the next command!
+## Task 3: Create local auto-open TDE wallet
 
-4. Now, your Oracle Wallet has been created!
-
-## Task 3: Create Master Key
-
-1. To create the container database TDE Master Key (**MEK**), run the following command
+1. Create a **LOCAL** auto-open TDE wallet from the password-protected TDE wallet:
 
     ````
-    <copy>./tde_create_mek_cdb.sh</copy>
+    <copy>./03_tde_create_local_autologin_wallet.sh</copy>
+    ````
+
+    ![TDE](./images/tde-012.png "Create a LOCAL auto-login Oracle Wallet")
+
+The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`   
+
+## Task 4: Create tagged master key for CDB$ROOT
+
+1. To create the TDE master key for the container database TDE Master Key, run the following command:
+
+    ````
+    <copy>./04_tde_create_mek_cdb.sh</copy>
     ````
 
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
-2. To create a Master Key (MEK) for the pluggable database **pdb1**, run the following command
+## Task 5: Create tagged master key for pluggable database PDB1
+1. If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
+
+ To create a master encryption key for the pluggable database **PDB1**, run the following command:
 
     ````
-    <copy>./tde_create_mek_pdb.sh pdb1</copy>
+    <copy>./05_tde_create_mek_pdb.sh</copy>
     ````
 
-    ![TDE](./images/tde-006.png "Create the pluggable database TDE Master Key")
+    ![TDE](./images/tde-006.png "Create the TDE Master Key for PDB1")
 
-3. If you want, you can do the same for **pdb2**... This is not a requirement and it might be helpful to show some databases with TDE and some without
+## Task 6: Side-channel attack against an un-encrypted tablespace
 
-    ````
-    <copy>./tde_create_mek_pdb.sh pdb2</copy>
-    ````
-
-    ![TDE](./images/tde-007.png "Create the pluggable database TDE Master Key")
-
-4. Now, you have a master key and you can begin encrypting tablespaces or column!
-
-## Task 4: Create Local Auto-login Wallet
-
-1. Run the script to view the Oracle Wallet content on the Operating System
+1. Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
 
     ````
-    <copy>./tde_view_wallet_on_os.sh</copy>
-    ````
-
-    ![TDE](./images/tde-010.png "View the Oracle Wallet content on the OS")
-
-2. You can view what the Oracle Wallet looks like in the database
-
-    ````
-    <copy>./tde_view_wallet_in_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-011.png "View the Oracle Wallet content on the database")
-
-3. Now, create the **Auto-login Oracle Wallet**
-
-    ````
-    <copy>./tde_create_autologin_wallet.sh</copy>
-    ````
-
-    ![TDE](./images/tde-012.png "Create the Auto-login Oracle Wallet")
-
-4. Run the same queries to view the Oracle Wallet content on the Operating System
-
-    ````
-    <copy>./tde_view_wallet_on_os.sh</copy>
-    ````   
-
-    ![TDE](./images/tde-013.png "View the Oracle Wallet content on the OS")
-
-    **Note**: You should now see the **cwallet.sso** file
-
-5. And no changes to the Oracle Wallet in the database
-
-    ````
-    <copy>./tde_view_wallet_in_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-014.png "View the Oracle Wallet content on the database")
-
-6. Now your Autologin is created!
-
-## Task 5: Encrypt Existing Tablespace
-
-1. Use the Linux command, strings, to view the data in the data file, `empdata_prod.dbf` that is associated with the `EMPDATA_PROD` tablespace
-
-    ````
-    <copy>./tde_strings_data_empdataprod.sh</copy>
+    <copy>./06_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-015.png "View the data in the data file")
 
     **Note:**
-    - You can see the data and you are not connected to the database!
+    - You can see the data, bypassing the access controls of the database!
     - This is an Operating System command that bypasses the database to view the data
     - This is called a 'side-channel attack' because the database is unaware of it
+    
+## Task 7: Avoid side-channel attack by encrypting tablespace
 
-2. Next, **encrypt explicitly** the data by encrypting the entire tablespace
+ 1. Encrypt the EMPDATA_PROD tablespace with AES256 (default):
 
     ````
-    <copy>./tde_encrypt_tbs.sh</copy>
+    <copy>./07_tde_encrypt_tbs.sh</copy>
     ````
 
     ![TDE](./images/tde-016.png "Encrypt explicitly the data")
 
-    **Note:** By default, the syntax is using the AES256 encryption algorithm
-
-3. Now, try the side-channel attack again
+ 2. Now, try the side-channel attack again
 
     ````
-    <copy>./tde_strings_data_empdataprod.sh</copy>
+    <copy>./08_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-017.png "Try the side-channel attack again")
 
-4. You see that all of the data is now encrypted and no longer visible!
+ You see that all of the data is now encrypted and no longer visible!
 
-## Task 6: Encrypt All New Tablespaces
+## Task 8: Encrypt remaining tablespaces in CDB$ROOT and PDB1
 
-1. First, check the existing initialization parameters
-
-    ````
-    <copy>./tde_check_init_params.sh</copy>
-    ````
-
-    ![TDE](./images/tde-018.png "Check the existing initialization parameters")
-
-    **Note**:
-    - The `TABLESPACE_ENCRYPTION` parameter is set to `AUTO_ENABLE` and cannot be modified, hence if you want to change it **the database must be restarted**!
-    - This parameter, **introduced in Oracle Database version 19.16**, allows you to specify whether to encrypt newly created user tablespaces
-    - It replace the `ENCRYPT_NEW_TABLESPACES` parameter who is now deprecated
-    - `ENCRYPT_NEW_TABLESPACES` is automatically set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE`
-    - The hidden init parameter `_tablespace_encryption_default_algorithm` uses "`AES256`" as default encryption algorithm
-
-<!--
-2. Next, change the init parameter `TABLESPACE_ENCRYPTION` to "`AUTO_ENABLE`" to always **encrypt implicitly all new tablespaces**, and the hidden init parameter `_tablespace_encryption_default_algorithm` to use "`AES256`" as default encryption algorithm
+1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1.
+Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and written into those files in encrypted form.
 
     ````
-    <copy>./tde_set_encrypt_all_new_tbs.sh</copy>
+    <copy>./10_tde_encrypt_tbs.sh</copy>
     ````
 
-    ![TDE](./images/tde-019.png "Change the init parameters")
+## Task 9: Rekey Master Encryption Keys
 
-    **Note**:
-    - The `TABLESPACE_ENCRYPTION` parameter cannot be modified, hence **the database must be restarted**!
-    - This parameter is **introduced in Oracle Database version 19.16**, as an alternative to the `ENCRYPT_NEW_TABLESPACES` parameter
-    - Similar to `ENCRYPT_NEW_TABLESPACES`, this parameter allows you to specify whether to encrypt newly created user tablespaces
-    - If the behavior specified by the `ENCRYPT_NEW_TABLESPACES` setting conflicts with the behavior specified by the `TABLESPACE_ENCRYPTION` setting, then the `TABLESPACE_ENCRYPTION` behavior takes precedence
-    - So, `ENCRYPT_NEW_TABLESPACES` is automatically set to `ALWAYS` when `TABLESPACE_ENCRYPTION` is set to `AUTO_ENABLE`
--->
-
-2. Finally, create and drop a tablespace TEST to check the effect
+1. To rekey the TDE Master Key (MEK) of the CDB$ROOT, run the following command:
 
     ````
-    <copy>./tde_create_new_tbs.sh</copy>
+    <copy>./11_tde_rekey_mek_cdb.sh</copy>
     ````
 
-    ![TDE](./images/tde-020.png "Create and drop a tablespace TEST to check the effect")
+    - See the wallet content before ...
 
-    **Note**: Despite the fact that the tablespace **TEST** was created without specifying encryption parameters, it's encrypted by default with the AES256 encryption algorithm
+  ![TDE](./images/tde-021.png "Before rekeying the TDE Master Key of CDB$ROOT")
 
-3. Now, all your new Tablespaces will be encrypted by default!
+    - ... and after re-keying CDB$ROOT:
 
-## Task 7: Rekey Master Key
+    ![TDE](./images/tde-022.png "After rekeying the TDE Master Key of CDB$ROOT")
 
-1. To rekey the container database TDE Master Key (MEK), run the following command
-
-    ````
-    <copy>./tde_rekey_mek_cdb.sh</copy>
-    ````
-
-    - Have a look on the CDB key before rekeying...
-
-  ![TDE](./images/tde-021.png "Before rekeying the container database TDE Master Key (MEK)")
-
-    - ...and after
-
-    ![TDE](./images/tde-022.png "After rekeying the container database TDE Master Key (MEK)")
-
-    - You can see the new key generated for the container
-
-2. To rekey a Master Key (MEK) for the pluggable database **pdb1**, run the following command
+    
+2. To rekey a Master Key (MEK) for the pluggable database **PDB1**, run the following command:
 
     ````
-    <copy>./tde_rekey_mek_pdb.sh pdb1</copy>
+    <copy>./12_tde_rekey_mek_pdb.sh</copy>
     ````
 
-    - Have a look on the pdb1 key before rekeying...
+    - See the wallet content before ...
 
     ![TDE](./images/tde-023.png "Before rekeying the pluggable database TDE Master Key (MEK)")
 
-    - ...and after
+    - ... and after re-keying PDB1:
 
     ![TDE](./images/tde-024a.png "After rekeying the pluggable database TDE Master Key (MEK)")
 
-    - You can see the new key generated for the pluggable database
+## Task 10: Optionally, Restore Before TDE
 
-3. If you want, you can do the same for **pdb2**
-
-    ````
-    <copy>./tde_rekey_mek_pdb.sh pdb2</copy>
-    ````
-
-    **Note**:
-    - This is not a requirement though
-    - It might be helpful to show some databases with TDE and some without
-
-4. Now that you have a master key, you can begin encrypting tablespaces or column!
-
-## Task 8: View Keystore Details
-
-1. Once you have a keystore, you can run either of these scripts. You will notice there are multiple copies of the **ewallet.p12** file. Every time you make a change, including create or rekey, the ewallet.p12 file is backed up. You will also see the contents of the Oracle Wallet file by using **orapki**
-
-   - View the OS files related to the keystore
-
-    ````
-    <copy>./tde_view_wallet_on_os.sh</copy>
-    ````
-       
-    ![TDE](./images/tde-024b.png "View the OS files related to the keystore")
-
-   - View the keystore data in the database
-
-    ````
-    <copy>./tde_view_wallet_in_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-024c.png "View the keystore data in the database")
-
-## Task 9: Restore Before TDE
-
-1. First, execute this script to restore the pfile
+1. Execute this script to restore the pfile
 
     ````
     <copy>./tde_restore_init_parameters.sh</copy>
@@ -330,7 +181,7 @@ This lab assumes you have:
     ![TDE](./images/tde-025.png "Restore the PFILE")
 
 
-2. Second, restore the database (this may take some time)
+2. Restore the database (this may take some time)
 
     ````
     <copy>./tde_restore_db.sh</copy>
@@ -377,7 +228,7 @@ You may now proceed to the next lab!
 ## **Appendix**: About the Product
 ### **Overview**
 
-Hard-coded within the Oracle Database core product, this features is part of the *Advanced Security Option (ASO)*
+Available with the Oracle Database core product, this features is part of the *Advanced Security Option (ASO)*
 
 TDE Enables you to encrypt data so that only an authorized recipient can read it.
 
@@ -411,5 +262,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Peter Wahl
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Contributors** - Peter Wahl, Database Security PM
+- **Last Updated By/Date** - Peter Wahl, Database Security PM for Encryption, Key and Secrets Management - November 2024
