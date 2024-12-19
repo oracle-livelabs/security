@@ -7,7 +7,7 @@ You will perform different scenarios:
 - **as an attacker** - your main objective will be to exfiltrate sensitive data from the target database before encrypting the database as part of a ransomware attack
 - **as a defender** - your main objective will be to prevent, detect and mitigate these attacks
 
-![Story of a hack - Livelab architecture](./images/hack-lab_arch.png "Story of a hack - Livelab architecture")
+![Story of a hack - Architecture](./images/hack-lab_arch.png "Story of a hack - Architecture")
 
 *Estimated Time:* 45 minutes
 
