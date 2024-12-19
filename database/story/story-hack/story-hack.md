@@ -815,19 +815,25 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
         - Unlike PDB1, which returned all sensitive data from the UNION request, **PDB2 returns no rows**.
         - Remember, this is because the UNION query has not been added into the Allow-list in the DB Firewall policy... as simple as that!
 
+18. Now, go back to your terminal session to restore the initial Glassfish Application connection string for PDB2 with DB Firewall
+
+    ```
+    <copy>
+    ./sh_stop_proxy_glassfish.sh
+    </copy>
+    ```
+
+    ![HR App - SQL Injection](./images/hack-lab2a-45.png "Set HR App without Database firewall")
+
+19. Here, we have used the SQL Firewalling feature provide by **Oracle Audit Vault and Database Firewall (AVDF)** or **Oracle SQL Firewall**
+
+    > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" or "[DB Security - Oracle SQL Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3875)" workshops
+
 <!--
 -----------------------------------------------------------------------------
 --                        END OF SECTION TO CHANGE                         --
 -----------------------------------------------------------------------------
 -->
-
-
-
-
-
-18. Here, we have used the SQL Firewalling feature provide by **Oracle Audit Vault and Database Firewall (AVDF)** or **Oracle SQL Firewall**
-
-    > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" or "[DB Security - Oracle SQL Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3875)" workshops
 
 ## Task 2b: Detect and mitigate the sensitive data harvesting
 
