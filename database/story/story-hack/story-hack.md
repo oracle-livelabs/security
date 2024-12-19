@@ -458,47 +458,20 @@ Every day someone discovers a new SQLi vulnerability - even in some of the most 
 
 In this lab, you will perform a "UNION-based" SQL injection attack on an application that is NOT securely developed! You'll see how a SQLi attack works and then see how to block it.
 
-<!--
-    !!! BELOW, SECTION TO CHANGE ASAP !!!
-    -----
-    --
--->  
-1. First, set a new HR app connection to PDB2 to check the differences in the same app between PDB1 and PDB2
-
-    ```
-    <copy>
-    cd $DBSEC_ADMIN
-    ./stop_Glassfish.sh
-    sudo sed -i -e 's|pdb1|pdb2|g' /u01/app/glassfish/hr_prod_pdb2/WEB-INF/classes/hr.properties
-    ./start_Glassfish.sh
-    cd $DBSEC_LABS/story-hack
-    </copy>
-    ```
-
-<!--
-    --
-    -----
-    !!! END OF CHANGE !!!
--->
-2. Now, open 2 Web browser tabs and launch the HR app using these URLs:
+1. Open a new Web browser tab and launch the HR app **On PDB1** (unsecured):
     <if type="green">
     - **On PDB1** (unsecured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb1`*
-    - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
     </if>
     <if type="brown">
     - If you are working from a remote desktop (usually the case for this lab):
         - **On PDB1** (unsecured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb1`*
-        - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
     - If you are working through a public IP address (often the case if you launched this lab in your own tenancy):
         - **On PDB1**: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-        - **On PDB2**: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb2`*
     </if>
     
-    **Note**:
-    - To help you differentiate between the two applications, the HR App menu is grey on PDB1 and in red on PDB2.
-    - Remember, this application is deliberately poorly developed to allow attacks such as SQL injection attacks.
+    **Note**: Remember, this application is deliberately poorly developed to allow attacks such as SQL injection attacks
 
-3. Login to these 2 applications as *`hradmin`* with the password "*`Oracle123`*"
+2. Login to th application as *`hradmin`* with the password "*`Oracle123`*"
 
     ```
     <copy>hradmin</copy>
@@ -512,19 +485,19 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
 
     ![HR App - Login screen](./images/hack-lab2a-02.png "HR App - Login screen")
 
-4. Click **Search Employees**
+3. Click **Search Employees**
 
-5. Click [**Search**]
+4. Click [**Search**]
 
     ![HR App - Search ALL employees](./images/hack-lab2a-03.png "HR App - Search ALL employees")
 
     **Note**: All rows are returned because, remember, you allowed everything!
 
-6. Now, tick the **checkbox "Debug"** to see the SQL query behind this form
+5. Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
     ![HR App - Debug mode](./images/hack-lab2a-04.png "HR App - Debug mode")
 
-7. Click [**Search**] again
+6. Click [**Search**] again
 
     ![HR App - Debug mode results](./images/hack-lab2a-05.png "HR App - Debug mode results")
 
@@ -532,7 +505,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     - Now, you can see the SQL query executed by this form which displays the results
     - This query gives you the information of the number of columns requested, their name, the tables in use, and their relationship. That information helps you know what database columns relate to which columns in the application's user interface.
 
-8. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID, MEMBER_ID, PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
+7. Now, based on this information, you can use a "UNION-based" SQL injection query to display sensitive data you want to extract. Here, we will use this query to extract `USER_ID, MEMBER_ID, PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
 
     ```
     <copy>
@@ -540,7 +513,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     </copy>
     ```
 
-9. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form on both Web App and tick the "Debug" checkbox
+8. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form on both Web App and tick the "Debug" checkbox
 
     ![HR App - SQL Injection](./images/hack-lab2a-06.png "HR App - SQL Injection")
 
@@ -548,37 +521,311 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
     - Don't forget the "`'`" before the UNION key word to close the SQL clause "LIKE"
     - Don't forget the "`--`" at the end to disable rest of the application's original query
 
+9. Click [**Search**]
+
+    ![HR App - SQL Injection results in Debug mode on PDB1](./images/hack-lab2a-07.png "HR App - SQL Injection results in Debug mode on PDB1")
+
+    **Note:**
+    - Now, because the source code of the app is exposed to this kind of attack, instead of the results as usual, you can see sensitive information that the application developer never intended to expose to you!
+    - Of course, you can modify this UNION query and extract different columns if you want.
+    - The key is to ensure the number of returned values continues to match the original source query.
+
+
+
+
+
 <!--
-    !!! BELOW, SECTION TO CHANGE ASAP !!!
-    -----
-    --
-   
-    Issue with DB Firewall: the Query Set doesn't exist for PDB2!
+-----------------------------------------------------------------------------
+--  !!! BELOW, SECTION TO CHANGE ASAP !!!
+-----------------------------------------------------------------------------
+-->  
+10. Now, we will configure **PDB2** to prevent this kind of attack
+
+11. Go back to your terminal session and configure a new Glassfish Application connection string for PDB2 to proxy through the Database Firewall
+
+    ```
+    <copy>
+    sudo sed -i -e 's|pdb1|pdb2|g' /u01/app/glassfish/hr_prod_pdb2/WEB-INF/classes/hr.properties
+    sudo sed -i -e 's|15223|15224|g' /u01/app/glassfish/hr_prod_pdb2/WEB-INF/classes/hr.properties.fw
+    sudo sed -i -e 's|15223|15224|g' /home/oracle/DBSecLab/livelabs/story-hack/hr_prod_pdb2_dbfw.properties
+    ./sh_start_proxy_glassfish.sh
+    </copy>
+    ```
+
+    ![HR App - SQL Injection](./images/hack-lab2a-10.png "Set HR App with Database firewall")
+
+12. Next, open a new Web browser tab and launch the HR app **On PDB2** (secured)
+
+    <if type="green">
+    - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
+    </if>
+    <if type="brown">
+    - If you are working from a remote desktop (usually the case for this lab):
+        - **On PDB2** (secured) to this URL: *`http://dbsec-lab:8080/hr_prod_pdb2`*
+    - If you are working through a public IP address (often the case if you launched this lab in your own tenancy):
+        - **On PDB2**: *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb2`*
+    </if>
     
-    --
-    -----
-    !!! END OF CHANGE !!!
--->
-10. Click [**Search**]
+    **Note**:
+    - To help you differentiate between the applications, the HR App menu is grey on PDB1 and in red on PDB2.
+    - Remember, this application is deliberately poorly developed to allow attacks such as SQL injection attacks.
 
-    - **On PDB1** (unsecured)
+13. Verify the Glassfish Application connection string go through the Database Firewall
+    - Login as *`hradmin`* with the password "*`Oracle123`*"
+    - In the top right hand corner of the App, click on the **Weclome HR Administrator** link to view the **Session Details** page
+    - Now, you should see that the **IP Address** row has changed from **10.0.0.150** to **10.0.0.152**, which is the IP Address of the DB Firewall VM
 
-        ![HR App - SQL Injection results in Debug mode on PDB1](./images/hack-lab2a-07.png "HR App - SQL Injection results in Debug mode on PDB1")
+        ![Story Hack](./images/hack-lab2a-11.png "check the application functions as expected")
+
+14. Train the DB Firewall for Expected SQL Traffic (here, we will train the Oracle Database Firewall so we can monitor, and block, non-authorized SQL commands)
+
+    - Open a web browser window to *`https://av`* to access to the Audit Vault Web Console
+    
+        **Note**: If you are not using the remote desktop you can also access this page by going to *`https://<AVS-VM_@IP-Public>`*
+    
+    - Login to Audit Vault Web Console as *`AVAUDITOR`* (use the new password you did reset in the "Initialize Environment" lab earlier)
+    
+        ````
+        <copy>AVAUDITOR</copy>
+        ````
+    
+        ![AVDF](./images/hack-lab2a-12.png "AVDF - Login")
+
+    - On top, click on the **Policies** tab
+
+    - Click the **Database Firewall Policies** sub-menu on left
+
+        ![AVDF](./images/hack-lab2a-13.png "Database Firewall Monitoring")
+
+    - Check the **Log unique** option to enable the Database Firewall Policy, then click [**Deploy**]
+
+        ![AVDF](./images/hack-lab2a-14.png "Enable Database Firewall Policy")
 
         **Note:**
-        - Now, because the source code of the app is exposed to this kind of attack, instead of the results as usual, you can see sensitive information that the application developer never intended to expose to you!
-        - Of course, you can modify this UNION query and extract different columns if you want. The key is to ensure the number of returned values continues to match the original source query
+        - Log unique policies enable you to log statements for offline analysis that include each distinct source of SQL traffic. Be aware that if you apply this policy, even though it stores fewer statements than if you had chosen to log all statements, it can still use a significant amount of storage for the logged data.
+        - Log unique policies log SQL traffic specifically for developing a new policy. The logged data enables the Analyzer to understand how client applications use the database and enables rapid development of a policy that reflects actual use of the database and its client applications.
 
-    - **On PDB2** (secured)
+    - Select the targets to be covered by this policy (here *`pdb2`*) and click [**Deploy**]
 
-        ![HR App - SQL Injection results in Debug mode on PDB2](./images/hack-lab2a-08.png "HR App - SQL Injection results in Debug mode on PDB2")
+        ![AVDF](./images/hack-lab2a-15.png "Select targets for Database Firewall Policy")
+
+    - Now, refresh the page to see the "Log unique" policy deployed for the target pdb1
+
+        ![AVDF](./images/hack-lab2a-16.png "Database Firewall Policy deployed for pdb1")
+
+    - Now, generate Glassfish Application Traffic
+
+        - Go back to your Glassfish App web page and **Logout** explicitly to train the DB Firewall
+
+            ![AVDF](./images/hack-lab2a-17.png "HR App - Logout")
+
+        - Login as *`hradmin`* with the password "*`Oracle123`*"
+
+            ![AVDF](./images/hack-lab2a-02.png "HR App - Login")
+
+        - Click **Search Employees**
+
+            ![AVDF](./images/hack-lab2a-03.png "Search Employees")
+
+        - In the **HR ID** field enter "*`164`*" and click [**Search**]
+
+            ![AVDF](./images/hack-lab2a-18.png "Search Employee UserID 164")
+
+        - Clear the **HR ID** field and click [**Search**] again to see all rows
+
+            ![AVDF](./images/hack-lab2a-19.png "Search Employee")
+
+        - Enter the following information in the **Search Employee** fields
+
+            - HR ID: *`196`*
+            - Active: *`Active`*
+            - Employee Type: *`Full-Time Employee`*
+            - Position: *`Administrator`*
+            - First Name: *`William`*
+            - Last Name: *`Harvey`*
+            - Department: *`Marketing`*
+            - City: *`London`*
+
+                ![AVDF](./images/hack-lab2a-20.png "Search Employees Criteria")
+
+        - Click [**Search**]
+
+        - Click on "**Harvey, William**" to view the details of this employee
+
+            ![AVDF](./images/hack-lab2a-21.png "Search Employee")
+
+15. Now, build the DB Firewall Allow-List Policy
+
+    - Go back to Audit Vault Web Console as *`AVAUDITOR`* to create a Database Firewall Policy
+
+        ![AVDF](./images/hack-lab2a-12.png "AVDF - Login")
+
+    - Click the **Policies** tab
+
+    - Click the **Database Firewall Policies** sub-menu on left
+
+    - Click [**Create**]
+
+        ![AVDF](./images/hack-lab2a-22.png "Create a Database Firewall Policy")
+
+    - Create the Database Firewall Policy with the following information
+
+        - Policy Name: *`HR Policy`*
+        - Target Type: *`Oracle Database`*
+        - Description: *`This policy will protect the My HR App`*
+
+            ![AVDF](./images/hack-lab2a-23.png "Database Firewall Policy parameters")
+
+        - Click [**Save**]
+
+    - Now, create the context of this policy by clicking [**Sets/Profiles**]
+
+        ![AVDF](./images/hack-lab2a-24.png "Create the context of this policy")
+
+    - In the **SQL Cluster Sets** subtab, click [**Add**]
+
+        ![AVDF](./images/hack-lab2a-25.png "Add SQL Cluster Sets")
+
+    - In the **Add SQL Cluster Set** screen, create the list of known queries as following
+
+        - Name: *`HR SQL Cluster`*
+        - Description: *`Known SQL statements for HR App`*
+        - Target: *`pdb2`*
+        - Show cluster for: *`Last 24 Hours`* (or make this `Last Week`)
+        - Click [**Go**]
+
+            ![AVDF](./images/hack-lab2a-26.png "SQL Cluster Sets parameters")
+
+        - Click [**Actions**] and select "*`ALL`*" in **Row per page** option to display all the results
+
+            ![AVDF](./images/hack-lab2a-27.png "Option to display all the results")
+
+        - Check the **Select all** box next to the "**Cluster ID**" Header to add all "trained" queries into the SQL Clusters
+
+            ![AVDF](./images/hack-lab2a-28.png "Select all trained queries to put into the SQL Clusters")
+
+        - Click [**Save**]
+
+    - Click [**Back**]
+
+        ![AVDF](./images/hack-lab2a-30.png "Go back")
+
+    - Select the **SQL Statement** sub-tab and click [**Add**]
+
+        ![AVDF](./images/hack-lab2a-31.png "Add SQL Statement")
+
+    - Complete the **SQL Statement** with the following information to allow the **HR SQL Cluster** created previoulsy (here we consider that these queries are official and can be executed)
+
+        - Rule Name: *`Allows HR SQL`*
+        - Description: *`Allowed SQL statements for HR App`*
+        - Cluster Set(s): *`HR SQL Cluster`*
+        - Action: *`Pass`*
+        - Logging Level: *`Don't Log`*
+        - Threat Severity: *`Minimal`*
+
+            ![AVDF](./images/hack-lab2a-32.png "SQL Statement parameters")
+
+        - Click [**Save**]
+
+    - Finally, select the **Default** tab to specify what the DB Firewall policy has to do you if you are not in the context definied previously (here we will block all the "black-listed" queries and we will return a blank result)
+
+        ![AVDF](./images/hack-lab2a-33.png "Specify the default action to do by the DB Firewall policy")
+
+        - Click on **Default Rule** under the Rule Name, to edit the Default rule, and enter the following information
+            - Action: *`Block`*
+            - Logging Level: *`One-Per-Session`*
+            - Threat Severity: *`Moderate`*
+            - Substitution SQL: *`SELECT 100 FROM dual WHERE 1=2`*
+
+                ![AVDF](./images/hack-lab2a-34.png "Default action parameters")
+
+        - Click [**Save**]
+
+    - Your HR Policy should look like this:
+
+        ![AVDF](./images/hack-lab2a-35.png "HR Policy")
+
+    - Click [**Save**]
+
+    - Once created, the policy is **automatically published**, but now you have to deploy it
+
+        ![AVDF](./images/hack-lab2a-36.png "HR Policy published")
+
+    - Check the **HR Policy** option, then click [**Deploy**]
+
+        ![AVDF](./images/hack-lab2a-37.png "HR Policy deployment")
+
+    - Select the targets to be covered by this policy (here *`pdb2*) and click [**Deploy**] 
+
+        ![AVDF](./images/hack-lab2a-38.png "Select targets for Database Firewall Policy")
+
+    - Now, refresh the page to see the "HR Policy" policy deployed for the target pdb2
+
+        ![AVDF](./images/hack-lab2a-39.png "Database Firewall Policy deployed for pdb2")
+
+16. Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
+    - Go back to your Glassfish App web page
+    - Logout and login as *`hradmin`* with the password "*`Oracle123`*"
+    - Click **Search Employees**
+    - Click [**Search**]
+
+        ![AVDF](./images/hack-lab2a-19.png "Search employees")
+
+        **Note**: All rows are returned... Remember, all "official" queries from the HR App have been allowed in **HR SQL Cluter** in your DB Firewall policy
+
+    - Even if you add a search criteria and query again, you can access to the result (here we **filter by "HR ID = 196"** for example)
+
+        ![AVDF](./images/hack-lab2a-40.png "Filter by HR ID = 196")
+
+17. Block a SQL Injection Attack
+
+    - Tick the **checkbox "Debug"** to see the SQL query behind this form
+
+        ![AVDF](./images/hack-lab2a-41.png "See the SQL query executed behind the form")
+
+    - Click [**Search**] again
+
+        ![AVDF](./images/hack-lab2a-42.png "Search employees")
+
+        **Note:**
+        - Now, you can see the official SQL query executed by this form which displays the results
+        - This query gives you the information of the number of columns requested, their name, their datatype and their relationship
+
+    - Now, based on this information, you can create our "UNION-based" SQL Injection query to display all sensitive data you want extract directly from the form. Here, we will use this query to extract `USER_ID', 'MEMBER_ID', 'PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from `DEMO_HR_SUPPLEMENTAL_DATA` table.
+
+        ````
+        <copy>
+        ' UNION SELECT userid, ' ID: '|| member_id, 'SQLi', '1', '1', '1', '1', '1', '1', 0, 0, payment_acct_no, routing_number, sysdate, sysdate, '0', 1, '1', '1', 1 FROM demo_hr_supplemental_data --
+        </copy>
+        ````
+
+    - Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form and **tick the "Debug" checkbox**
+
+        ![AVDF](./images/hack-lab2a-43.png "Copy/Paste the SQL Injection query")
+
+        **Note:**
+        - Don't forget the "`'`" before the UNION key word to close the SQL clause "LIKE"
+        - Don't forget the "`--`" at the end to disable rest of the query
+
+    - Click [**Search**]
+
+        ![AVDF](./images/hack-lab2a-44.png "Search employees")
 
         **Note**:
-        - The output returns "**no rows**"
-        - The SQL injection attack was blocked by the Database Firewall mechanisms configured specifically to protect this database from SQLi attacks!
-        - Even with a poorly developed application, your data is still protected
+        - Unlike PDB1, which returned all sensitive data from the UNION request, **PDB2 returns no rows**.
+        - Remember, this is because the UNION query has not been added into the Allow-list in the DB Firewall policy... as simple as that!
 
-11. Here, we have used the SQL Firewalling feature provide by **Oracle Audit Vault and Database Firewall (AVDF)** or **Oracle SQL Firewall**
+<!--
+-----------------------------------------------------------------------------
+--                        END OF SECTION TO CHANGE                         --
+-----------------------------------------------------------------------------
+-->
+
+
+
+
+
+18. Here, we have used the SQL Firewalling feature provide by **Oracle Audit Vault and Database Firewall (AVDF)** or **Oracle SQL Firewall**
 
     > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" or "[DB Security - Oracle SQL Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3875)" workshops
 
