@@ -67,17 +67,15 @@ In this lab, you will:
 
   Enter Unique Email IDS for each of the users, including a valid email address for idd-admin email and other users where you can receive the activation email. 
 
-  Enter the region code
-  
-  **NOTE : Select your home region such that you can host Oracle Access Governance within your geographic region to create and manage service instances. For supported regions code, please refer [Oracle Access Governance Regions ](https://docs.oracle.com/en/cloud/paas/access-governance/cagsi/#GUID-9D3A580D-767A-4C39-8A61-8A14CD045270)** 
+  Enter the Access Governance Compartment Name and Access Governance OCI Identity Domain Name to be created. **NOTE: In this Livelab, we will be using ag-compartment and ag-domain**
   
   Click *Next*.
 
-   ![Enter Email IDs](images/email-id-region.png)
+   ![Enter Email IDs](images/stack-variables.png)
 
   Click on *Create*.
 
-  ![Click Create](images/click-create.png)
+  ![Click Create](images/stack-create.png)
 
 4. The stack has now been created. Click on *Plan job* and once it is completed successful.
 
