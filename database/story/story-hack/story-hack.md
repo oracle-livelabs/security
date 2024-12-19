@@ -815,7 +815,7 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
         - Unlike PDB1, which returned all sensitive data from the UNION request, **PDB2 returns no rows**.
         - Remember, this is because the UNION query has not been added into the Allow-list in the DB Firewall policy... as simple as that!
 
-18. Now, go back to your terminal session to restore the initial Glassfish Application connection string for PDB2 with DB Firewall
+18. Now, go back to your terminal session to restore the initial Glassfish Application connection string for PDB2 without DB Firewall
 
     ```
     <copy>
