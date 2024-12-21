@@ -59,8 +59,8 @@ This lab assumes you have:
     <copy>./02_tde_create_wallet.sh</copy>
     ````
 
-    ![TDE](./images/tde-004.png "Create the software keystore")
-**Note:** We added the password of the TDE wallet into another local auto-open wallet in `<WALLET_ROOT>`/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
+    ![TDE](./images/tde-004.png "Create the TDE wallet")
+**Note:** We added the password of the TDE wallet into another local auto-open wallet in `<WALLET_ROOT>/tde_seps` in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
 
 ## Task 3: Create local auto-open TDE wallet
 
