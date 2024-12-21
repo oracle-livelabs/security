@@ -1,7 +1,7 @@
 # Oracle Transparent Data Encryption (TDE)
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Transparent Data Encryption (TDE). It gives the user an opportunity to learn how to configure those features in order to encrypt sensitive data.
+This workshop introduces you to Oracle Transparent Data Encryption (TDE). You will learn how to configure your database for TDE, and how to encrypt sensitive data.
 
 *Estimated Lab Time:* 45 minutes
 
@@ -11,8 +11,8 @@ This workshop introduces the various features and functionality of Oracle Transp
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
 
 ### Objectives
-- Enable Transparent Data Encryption (TDE) in the database
-- Encrypt data using Transparent Data Encryption (TDE)
+- Enable Transparent Data Encryption (TDE) in your database
+- Encrypt tablespaces with Transparent Data Encryption (TDE)
 
 ### Prerequisites
 This lab assumes you have:
@@ -60,7 +60,7 @@ This lab assumes you have:
     ````
 
     ![TDE](./images/tde-004.png "Create the software keystore")
-**Note:** We added the password of the TDE wallet into another local auto-open wallet in `<`WALLET_ROOT`>`/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
+**Note:** We added the password of the TDE wallet into another local auto-open wallet in `<WALLET_ROOT>`/tde_seps in order to replace the TDE wallet password with "EXTERNAL STORE" on the SQL*Plus command line.
 
 ## Task 3: Create local auto-open TDE wallet
 
@@ -76,7 +76,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 
 ## Task 4: Create tagged master key for CDB$ROOT
 
-1. To create the TDE master key for the container database TDE Master Key, run the following command:
+1. To create the TDE master key for the container database, run the following command:
 
     ````
     <copy>./04_tde_create_mek_cdb.sh</copy>
@@ -238,7 +238,7 @@ After the data is encrypted, this data is transparently decrypted for authorized
 
 Oracle Database uses authentication, authorization, and auditing mechanisms to secure data in the database, but not in the operating system data files where data is stored. To protect these data files, Oracle Database provides Transparent Data Encryption (TDE). TDE encrypts sensitive data stored in data files. To prevent unauthorized decryption, TDE stores the encryption keys in a security module external to the database, called a keystore.
 
-You can configure Oracle Key Vault as part of the TDE implementation. This enables you to centrally manage TDE keystores (called TDE wallets in Oracle Key Vault) in your enterprise. For example, you can upload a software keystore to Oracle Key Vault and then make the contents of this keystore available to other TDE-enabled databases.
+You can configure Oracle Key Vault as part of the TDE implementation. This enables you to centrally manage TDE master encryption keys of your enterprise. 
 
 ![TDE](./images/aso-concept-tde.png "TDE concept")
 
@@ -261,6 +261,5 @@ Video:
 - *Back to basics with Transparent Data Encryption (TDE) (March 2021)* [](youtube:JflshZKgxYs)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Peter Wahl, Database Security PM
-- **Last Updated By/Date** - Peter Wahl, Database Security PM for Encryption, Key and Secrets Management - November 2024
+- **Author** - Peter Wahl, Database Security PM for Encryption, Key and Secrets Management
+- **Last Updated By/Date** - Peter Wahl; December 2024
