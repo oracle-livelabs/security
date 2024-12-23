@@ -28,12 +28,11 @@ This lab assumes you have:
 |1 | Configure database for TDE | <5 minutes |
 |2 | Create password-protected TDE wallet | <5 minutes |
 |3 | Create **local** auto-open TDE wallet | <5 minutes |
-|4 | Create tagged master key for CDB$ROOT | <5 minutes |
-|5 | Create tagged master key for pluggable database PDB1 | <5 minutes |
-|6 | Side-channel attack against an un-encrypted tablespace | <5 minutes |
-|7 | Avoid side-channel attack by encrypting tablespace | <5 minutes |
-|8 | Encrypt remaining tablespaces in CDB$ROOT and PDB1 | 5 minutes |
-|9 | Rekey Master Encryption Keys | 5 minutes |
+|4 | Create tagged master key for your database | <5 minutes |
+|5 | Side-channel attack against an un-encrypted tablespace | <5 minutes |
+|6 | Avoid side-channel attack by encrypting tablespace | <5 minutes |
+|7 | Encrypt remaining tablespaces in CDB$ROOT and PDB1 | 5 minutes |
+|8 | Rekey Master Encryption Keys | <5 minutes |
 
 ## Task 1: Configure database for TDE
 
@@ -70,12 +69,11 @@ This lab assumes you have:
     <copy>./03_tde_create_local_autologin_wallet.sh</copy>
     ````
 
-    ![TDE](./images/tde-012.png "Create a LOCAL auto-login Oracle Wallet")
+    ![TDE](./images/tde-012.png "Create a LOCAL auto-login TDE wallet")
 
 The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`   
 
-## Task 4: Create tagged master key for CDB$ROOT
-
+## Task 4: Create tagged master keys for your database:
 1. To create the TDE master key for the container database, run the following command:
 
     ````
@@ -84,10 +82,9 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
 
-## Task 5: Create tagged master key for pluggable database PDB1
-1. If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
-
- To create a master encryption key for the pluggable database **PDB1**, run the following command:
+2. To create a master encryption key for the pluggable database **PDB1**, run the following command:
+   
+   If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
 
     ````
     <copy>./05_tde_create_mek_pdb.sh</copy>
@@ -95,12 +92,20 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 
     ![TDE](./images/tde-006.png "Create the TDE Master Key for PDB1")
 
-## Task 6: Side-channel attack against an un-encrypted tablespace
+3. Confirm TDE master keys in the TDE wallet:
+
+    ````
+    <copy>./06_tde_view_wallet_in_db.sh</copy>
+    ````
+
+    ![TDE](./images/tde-007.png "View key-ID and tag of the keys that you just created")
+
+## Task 5: Side-channel attack against an un-encrypted tablespace
 
 1. Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
 
     ````
-    <copy>./06_tde_strings_data_empdataprod.sh</copy>
+    <copy>./07_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-015.png "View the data in the data file")
@@ -110,27 +115,27 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
     - This is an Operating System command that bypasses the database to view the data
     - This is called a 'side-channel attack' because the database is unaware of it
     
-## Task 7: Avoid side-channel attack by encrypting tablespace
+## Task 6: Avoid side-channel attack by encrypting tablespace
 
  1. Encrypt the EMPDATA_PROD tablespace with AES256 (default):
 
     ````
-    <copy>./07_tde_encrypt_tbs.sh</copy>
+    <copy>./08_tde_encrypt_tbs.sh</copy>
     ````
 
-    ![TDE](./images/tde-016.png "Encrypt explicitly the data")
+    ![TDE](./images/tde-016.png "Encrypt EMPDATA_PROD tablespace")
 
  2. Now, try the side-channel attack again
 
     ````
-    <copy>./08_tde_strings_data_empdataprod.sh</copy>
+    <copy>./09_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-017.png "Try the side-channel attack again")
 
  You see that all of the data is now encrypted and no longer visible!
 
-## Task 8: Encrypt remaining tablespaces in CDB$ROOT and PDB1
+## Task 7: Encrypt remaining tablespaces in CDB$ROOT and PDB1
 
 1. Encrypt SYSTEM, SYSAUX and USERS tablespaces in CDB$ROOT and all remaining tablespaces in PDB1.
 Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and written into those files in encrypted form.
@@ -138,8 +143,9 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
     ````
     <copy>./10_tde_encrypt_tbs.sh</copy>
     ````
+   ![TDE](./images/tde-018.png "List of encrypted tablespaces.")
 
-## Task 9: Rekey Master Encryption Keys
+## Task 8: Rekey Master Encryption Keys
 
 1. To rekey the TDE Master Key (MEK) of the CDB$ROOT, run the following command:
 
@@ -147,11 +153,7 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
     <copy>./11_tde_rekey_mek_cdb.sh</copy>
     ````
 
-    - See the wallet content before ...
-
-  ![TDE](./images/tde-021.png "Before rekeying the TDE Master Key of CDB$ROOT")
-
-    - ... and after re-keying CDB$ROOT:
+    - See the wallet content before and after re-keying CDB$ROOT:
 
     ![TDE](./images/tde-022.png "After rekeying the TDE Master Key of CDB$ROOT")
 
@@ -162,13 +164,9 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
     <copy>./12_tde_rekey_mek_pdb.sh</copy>
     ````
 
-    - See the wallet content before ...
+    - See the wallet content before and after re-keying PDB1:
 
-    ![TDE](./images/tde-023.png "Before rekeying the pluggable database TDE Master Key (MEK)")
-
-    - ... and after re-keying PDB1:
-
-    ![TDE](./images/tde-024a.png "After rekeying the pluggable database TDE Master Key (MEK)")
+    ![TDE](./images/tde-024.png "After rekeying the pluggable database TDE Master Key (MEK)")
 
 ## Task 10: Optionally, Restore Before TDE
 
