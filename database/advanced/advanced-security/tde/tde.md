@@ -77,7 +77,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 1. To create the TDE master key for the container database, run the following command:
 
     ````
-    <copy>./04_tde_create_mek_cdb.sh</copy>
+    <copy>./04a_tde_create_mek_cdb.sh</copy>
     ````
 
     ![TDE](./images/tde-005.png "Create the container database TDE Master Key")
@@ -87,7 +87,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
    If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
 
     ````
-    <copy>./05_tde_create_mek_pdb.sh</copy>
+    <copy>./04b_tde_create_mek_pdb.sh</copy>
     ````
 
     ![TDE](./images/tde-006.png "Create the TDE Master Key for PDB1")
@@ -95,7 +95,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 3. Confirm TDE master keys in the TDE wallet:
 
     ````
-    <copy>./06_tde_view_wallet_in_db.sh</copy>
+    <copy>./04c_tde_view_wallet_in_db.sh</copy>
     ````
 
     ![TDE](./images/tde-007.png "View key-ID and tag of the keys that you just created")
@@ -105,7 +105,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 1. Use the Linux "strings" command to view application data in the data file `empdata_prod.dbf` which is associated with the `EMPDATA_PROD` tablespace:
 
     ````
-    <copy>./07_tde_strings_data_empdataprod.sh</copy>
+    <copy>./05_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-015.png "View the data in the data file")
@@ -120,7 +120,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
  1. Encrypt the EMPDATA_PROD tablespace with AES256 (default):
 
     ````
-    <copy>./08_tde_encrypt_tbs.sh</copy>
+    <copy>./06a_tde_encrypt_tbs.sh</copy>
     ````
 
     ![TDE](./images/tde-016.png "Encrypt EMPDATA_PROD tablespace")
@@ -128,7 +128,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
  2. Now, try the side-channel attack again
 
     ````
-    <copy>./09_tde_strings_data_empdataprod.sh</copy>
+    <copy>./06b_tde_strings_data_empdataprod.sh</copy>
     ````
 
     ![TDE](./images/tde-017.png "Try the side-channel attack again")
@@ -141,7 +141,7 @@ The `WALLET_TYPE` has changed from PASSWORD to `LOCAL_AUTOLOGIN`
 Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and written into those files in encrypted form.
 
     ````
-    <copy>./10_tde_encrypt_tbs.sh</copy>
+    <copy>./07_tde_encrypt_tbs.sh</copy>
     ````
    ![TDE](./images/tde-018.png "List of encrypted tablespaces.")
 
@@ -150,7 +150,7 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
 1. To rekey the TDE Master Key (MEK) of the CDB$ROOT, run the following command:
 
     ````
-    <copy>./11_tde_rekey_mek_cdb.sh</copy>
+    <copy>./08a_tde_rekey_mek_cdb.sh</copy>
     ````
 
     - See the wallet content before and after re-keying CDB$ROOT:
@@ -161,25 +161,19 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
 2. To rekey a Master Key (MEK) for the pluggable database **PDB1**, run the following command:
 
     ````
-    <copy>./12_tde_rekey_mek_pdb.sh</copy>
+    <copy>./08b_tde_rekey_mek_pdb.sh</copy>
     ````
 
     - See the wallet content before and after re-keying PDB1:
 
     ![TDE](./images/tde-024.png "After rekeying the pluggable database TDE Master Key (MEK)")
 
-## Task 9: Create an isolated PDB (with its own keystore and keystore password)
-
-If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
-If the PDB **creates a keystore**, that configures it to become an isolated PDB:
-
-
-## Task 10: Optionally, Restore Before TDE
+## Task 9: Optionally, Restore Before TDE
 
 1. Execute this script to restore the pfile
 
     ````
-    <copy>./tde_restore_init_parameters.sh</copy>
+    <copy>./99_restore-DB_before_TDE</copy>
     ````
 
     ![TDE](./images/tde-025.png "Restore the PFILE")
