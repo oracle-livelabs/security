@@ -170,58 +170,15 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
 
 ## Task 9: Optionally, Restore Before TDE
 
-1. Execute this script to restore the pfile
+1. Execute this script to restore the database:
 
     ````
     <copy>./99_restore-DB_before_TDE</copy>
     ````
 
-    ![TDE](./images/tde-025.png "Restore the PFILE")
-
-
-2. Restore the database (this may take some time)
-
-    ````
-    <copy>./tde_restore_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-026.png "Restore the database")
-
-3. Third, delete the associated Oracle Wallet files
-
-    ````
-    <copy>./tde_delete_wallet_files.sh</copy>
-    ````
-
-    ![TDE](./images/tde-027.png "Delete the associated Oracle Wallet files")
-
-4. Fourth, start the container and pluggable databases
-
-    ````
-    <copy>./tde_start_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-028.png "Start the databases")
-
-    **Note**: This should have restored your database to it's pre-TDE state!
-
-5. Finally, verify the initialization parameters don't say anything about TDE
-
-    ````
-    <copy>./tde_check_init_params.sh</copy>
-    ````
-
     ![TDE](./images/tde-029.png "Check the initialization parameters")
 
-7. Now, your database is restored to the point in time prior to enabling TDE and you can remove your dabase backup (optional)!
-
-    ````
-    <copy>./tde_delete_backup_db.sh</copy>
-    ````
-
-    ![TDE](./images/tde-030.png "Remove your dabase backup (optional)")
-
-You may now proceed to the next lab!
+You may now repeat this lab!
 
 ## **Appendix**: About the Product
 ### **Overview**
@@ -230,24 +187,24 @@ Available with the Oracle Database core product, this features is part of the *A
 
 TDE Enables you to encrypt data so that only an authorized recipient can read it.
 
-Use encryption to protect sensitive data in a potentially unprotected environment, such as data you placed on backup media that is sent to an off-site storage location. You can encrypt individual columns in a database table, or you can encrypt an entire tablespace.
+Use TDE to protect sensitive data in a potentially unprotected environment, such as data you placed on backup media that is sent to an off-site storage location.
 
 After the data is encrypted, this data is transparently decrypted for authorized users or applications when they access this data. TDE helps protect data stored on media (also called data at rest) in the event that the storage media or data file is stolen.
 
-Oracle Database uses authentication, authorization, and auditing mechanisms to secure data in the database, but not in the operating system data files where data is stored. To protect these data files, Oracle Database provides Transparent Data Encryption (TDE). TDE encrypts sensitive data stored in data files. To prevent unauthorized decryption, TDE stores the encryption keys in a security module external to the database, called a keystore.
+Oracle Database uses authentication, authorization, and auditing mechanisms to secure data in the database, but not in the operating system data files where data is stored. To protect these data files, Oracle Database provides Transparent Data Encryption (TDE). TDE encrypts sensitive data stored in data files. To prevent unauthorized decryption, TDE stores the encryption keys in a security module external to the database (Oracle Wallet, Oracle Key Vault, OCI KMS).
 
 You can configure Oracle Key Vault as part of the TDE implementation. This enables you to centrally manage TDE master encryption keys of your enterprise. 
 
 ![TDE](./images/aso-concept-tde.png "TDE concept")
 
 ### **Benefits of Using Transparent Data Encryption**
-- As a security administrator, you can be sure that sensitive data is encrypted and therefore safe in the event that the storage media or data file is stolen
-- Using TDE helps you address security-related regulatory compliance issues
-- You do not need to create auxiliary tables, triggers, or views to decrypt data for the authorized user or application. Data from tables is transparently decrypted for the database user and application. An application that processes sensitive data can use TDE to provide strong data encryption with little or no change to the application
-- Data is transparently decrypted for database users and applications that access this data. Database users and applications do not need to be aware that the data they are accessing is stored in encrypted form
-- You can encrypt data with zero downtime on production systems by using `Online Table Redefinition` or you can encrypt it offline during maintenance periods (see `Oracle Database Administrator’s Guide` for more information about `Online Table Redefinition`)
-- You do not need to modify your applications to handle the encrypted data. The database manages the data encryption and decryption
-- Oracle Database automates TDE master encryption key and keystore management operations. The user or application does not need to manage TDE master encryption keys
+- As a security administrator, you can be sure that sensitive data is encrypted and therefore safe in the event that the storage media or data file is stolen.
+- Using TDE helps you address security-related regulatory compliance issues.
+- You do not need to create auxiliary tables, triggers, or views to decrypt data for the authorized user or application. Data from tables is transparently decrypted for an authorized database user or application. An application that processes sensitive data can use TDE to provide strong data encryption with no changes to the application.
+- Data is transparently decrypted for database users and applications that access this data. Database users and applications do not need to be aware that the data they are accessing is stored in encrypted form.
+- You can convert un-encrypted tablespaces to encrypted tablespaces either **ONLINE** or **OFFLINE**, depending on your preferences.
+- You do **not need to modify your applications** to handle the encrypted data. The database manages the data encryption and decryption.
+- Oracle Database automates TDE master encryption key and keystore management operations. The user or application does not need to manage TDE master encryption keys.
 
 ## Want to Learn More?
 Technical Documentation
