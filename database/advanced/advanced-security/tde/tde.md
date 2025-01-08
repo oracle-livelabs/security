@@ -168,6 +168,12 @@ Encrypting TEMP and UNDO tablespaces is optional, since all data is tracked and 
 
     ![TDE](./images/tde-024.png "After rekeying the pluggable database TDE Master Key (MEK)")
 
+## Task 9: Create an isolated PDB (with its own keystore and keystore password)
+
+If the PDB **creates a master key**, that master key can only go into the wallet that is owned by the CDB$ROOT, automatically making the PDB a united PDB.
+If the PDB **creates a keystore**, that configures it to become an isolated PDB:
+
+
 ## Task 10: Optionally, Restore Before TDE
 
 1. Execute this script to restore the pfile
