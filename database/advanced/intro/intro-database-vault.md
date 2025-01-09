@@ -28,7 +28,7 @@ During this mini-lab, you'll use different resources to interact with these VMs:
 To ensure the best experience in this workshop, remember to complete the *Lab: Initialize Environment* to verify that all resources are correctly set up!
 
 ### Objectives
-This mini-lab provides an opportunity to learn how to configure DB Security features to protect and secure databases, from the Baseline to the Maximum Security Architecture (MSA), by exploring Oracle Data Masking and Subsetting (DMS) features.
+This mini-lab provides an opportunity to learn how to configure DB Security features to protect and secure the Oracle Database in the context of the Maximum Security Architecture (MSA), specifically exploring Database Vault and how to implement advanced data access controls - including separation of duties, privileged user access controls, and enforcing a trusted path to data.
 
 The entire DB Security PM team wishes you an excellent workshop!
 
@@ -37,4 +37,4 @@ You may now proceed to the next lab.
 ## Acknowledgments
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Alan Williams, Rene Fontcha, Kajal Singh
-- **Last Updated By/Date** - Kajal Singh, Data Masking PM - November 2024
+- **Last Updated By/Date** - Ethan Shmargad, Database Security Product Management - January 2025
