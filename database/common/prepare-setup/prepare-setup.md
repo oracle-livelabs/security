@@ -260,5 +260,5 @@ You may now **proceed to the next lab**.
 <<<<<<< HEAD
 * **Last Updated By/Date** - Kajal Singh, Database Security PM - Nov 2024
 =======
-* **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2024
+* **Last Updated By/Date** - Kajal Singh, Database Security PM - January 2025
 >>>>>>> 8ebf5804c9744d1a375a06f65237b52a0c31f27d

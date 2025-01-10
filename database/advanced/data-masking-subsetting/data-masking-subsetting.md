@@ -1053,6 +1053,6 @@ Video:
 - *Oracle Data Masking & Subsetting - Advanced Use Cases* [](youtube:06EzV-TM4f4)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
+- **Author** - Kajal Singh, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Kajal Singh, Database Security PM - September 2024
+- **Last Updated By/Date** - Kajal Singh, Database Security PM - January 2025
