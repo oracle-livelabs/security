@@ -31,7 +31,7 @@ This lab assumes you have:
     - [`dbseclabs-v62_avdf.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_avdf.zip)
 </if>
 <if type="data-masking-subsetting">
-    - [`dbseclabs-v90_init-vm-dms.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_[…]rity-library/dbseclabs-v90_init-vm-dms.zip)
+    - [`dbseclabs-v90_init-vm-dms.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v90_init-vm-dms.zip)
 </if>
 <if type="data-safe">
     - [`dbseclabs-v62_init-vm-dsop.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-dsop.zip)
