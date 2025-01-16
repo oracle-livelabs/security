@@ -3,7 +3,7 @@
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
-      "title": "Introduction: Audit Vault and DB Firewall (AVDF) ",
+      "title": "Introduction: Audit Vault and Database Firewall (AVDF) ",
       "description": "Understand the architecture of this workshop and what it can do",
       "publisheddate": "09/01/2020",
       "filename": "../../intro/intro-avdf.md"
