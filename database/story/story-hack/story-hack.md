@@ -295,7 +295,7 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
     
     ```
     <copy>
-    ./sh_extract_data_from_file.sh <encrypted_file_location>
+    read -p "File Location: " file_name && ./sh_extract_data_from_file.sh $file_name
     </copy>
     ```
 
@@ -593,6 +593,14 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
         ````
         <copy>AVAUDITOR</copy>
         ````
+
+    **Note**: If you have not retrieved the password for the `AVAUDITOR` user in the AVDF console, you can do so with the following command:
+
+        ```
+        <copy>echo $AVUSR_PWD</copy>
+        ```
+
+    When you paste that default password into the AVDF console login, it will prompt you to reset your password.
     
         ![AVDF - Login](./images/hack-lab2a-12.png "AVDF - Login")
 
