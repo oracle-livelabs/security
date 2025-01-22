@@ -23,21 +23,15 @@ By the end of this LiveLab, participants will not only understand the technical 
 
 Estimated Workshop Time: XX hour, xx minutes 
 
-<if type="odbw">if you would like to watch us do the workshop, click [here](). </if>
-
-### Prerequisites
-
-This workshop assumes you have:
-
-<TODO>
-
 ### Learn More
 
-<TODO>
+* For more information on Immutable Table and other Immutable Table commands, please see [DBMS\_IMMUTABLE\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_immutable_table.html) documentation and SQLcl help section accessed using **`help immutable_table`** in the SQLcl console.
+
+* For more information on Blockchain Table and other Blockchain Table commands, please see [DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html) documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
+
 
 ## Acknowledgements
 
-* **Author** - Amit Ketkar, Database Product Manager
-* **Contributors** - Pavas Navaney, Senior Member of Technical Staff <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vinay Pandhariwal, Member of Technical Staff
+* **Author** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal
+* **Contributors** - Pavas Navaney, Vinay Pandhariwal 
 * **Last Updated By/Date** - Vinay Pandhariwal, Member of Technical Staff

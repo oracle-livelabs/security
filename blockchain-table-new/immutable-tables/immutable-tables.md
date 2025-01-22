@@ -1,0 +1,383 @@
+# Introduction to Immutable Tables
+
+**Immutable Tables** in Oracle Database are designed as read-only tables that safeguard data against unauthorized or accidental modifications. They provide a foundational level of data protection, ensuring that information remains intact and unaltered once written to the table. This capability is particularly useful for scenarios requiring high data integrity, such as maintaining audit logs, transaction histories, or sensitive compliance-related records.
+
+To enforce immutability, Immutable Tables require the specification of **retention periods** at two levels: the table and the individual rows. Rows within the table can only be deleted after their retention period has elapsed, and the table itself can only be dropped if it contains no rows or once the table-level retention period has expired. These strict controls eliminate the possibility of tampering or accidental data loss during the defined retention period, making Immutable Tables a reliable choice for preserving historical data.
+
+#### Key Characteristics of Immutable Tables:
+- **Read-Only Design:** Data is write-once , ensuring that once written, it cannot be updated or deleted until retention conditions are met.
+- **Retention Periods:** Administrators specify retention periods for both the table and its rows, controlling when data becomes eligible for deletion.
+
+#### Practical Use Cases:
+- **Preventing Accidental Modifications:** Immutable Tables protect against human errors that could lead to unintentional data changes.
+- **Regulatory Compliance:** They support industries with stringent data integrity requirements, ensuring records remain tamper-proof for auditing purposes.
+- **Secure Audit Trails:** Immutable Tables provide a trusted, unmodifiable source of truth for monitoring and compliance.
+
+While Immutable Tables deliver robust data immutability and protection, they represent a foundational step in Oracle’s in-database security. For more advanced capabilities, such as cryptographic signing and distributed trust, Blockchain Tables build on this concept, adding additional layers of security and functionality. 
+
+In this LiveLab, we will use **SQLcl** to perform various operations on Immutable Tables, leveraging its intuitive and user-friendly interface. The dedicated command for managing Immutable Tables is **<code> immutable_table | im </code>**. SQLcl offers powerful features such as **Completion Insight (TAB)** for command suggestions, **Command History** to revisit previous commands, and an **In-Line Editor** for easy modifications, ensuring a smooth and efficient workflow. For additional guidance, you can access the help section directly in the SQLcl console by typing **<code>"help immutable_table" </code>** or **<code> "help im" </code>**. This provides a comprehensive overview of all commands and functionalities, making it easier to explore and manage Immutable Tables throughout the LiveLab.
+
+Estimated Time: XX minutes
+
+Watch the video below for a quick introduction to Immutable Tables and a walkthrough of the lab.
+
+[](youtube:)
+
+
+### Objectives
+
+In this lab, you will:
+
+- **Create the Immutable Table**  <br />
+  Learn how to define and set up an Immutable Table, including specifying the retention periods for the table and its rows. 
+
+- **Use SQLcl Commands to Perform Operations**  <br />
+  Explore how SQLcl simplifies interactions with Immutable Tables by using user-friendly commands to manage and query the table.
+
+- **Describe the Details of an Immutable Table**  <br />
+  Retrieve and analyze metadata about the Immutable Table, including retention settings, table structure, and properties.
+
+- **Attempt Premature Operations**  <br />
+  Test the immutability of the table by attempting to prematurely drop the table or delete rows before the retention period expires, and observe the failure scenarios that protect data integrity.
+
+
+## Task 1: Create an Immutable Table
+
+---
+
+1. The `CREATE IMMUTABLE TABLE` statement requires additional attributes. The `NO DROP` and `NO DELETE` clauses are mandatory while `VERSION` clause is optional with default value being `V1` . “NO DELETE LOCKED” means that no rows can be deleted and LOCKED means that this setting can not be changed using ALTER TABLE later. <br/>
+    Copy and paste the command in Oracle Cloud Shell  to create an Immutable table named `bank_ledger` that will maintain a tamper-resistant ledger of current and historical transactions. In the below command, rows of the `bank_ledger` immutable table can never be deleted and the `bank_ledger` table can be dropped only after 16 days of inactivity. 
+
+    ```
+    <copy>
+    CREATE IMMUTABLE TABLE bank_ledger (bank VARCHAR2(128), deposit_date DATE, deposit_amount NUMBER)
+    NO DROP UNTIL 16 DAYS IDLE
+    NO DELETE LOCKED VERSION "V2";
+    </copy>
+    ```
+
+    ![](./images/lab2-task1-1.png)
+
+2. Run the following command to view that the table's clauses and if it is created. Note that the description displays only the visible columns.
+
+    ```
+    <copy>
+    immutable_table desc -table_name bank_ledger
+    </copy>
+     ```
+    ![](./images/lab2-task1-2.png)
+
+## Task 2: Insert Rows into the Immutable Table
+
+---
+
+1. Copy and paste the below code snippet in the worksheet and run them to insert records into the `bank_ledger` immutable table.
+
+    ```
+    <copy>
+    INSERT INTO bank_ledger VALUES ('999',to_date(sysdate,'dd-mm-yyyy'),100);
+    INSERT INTO bank_ledger VALUES ('999',to_date(sysdate,'dd-mm-yyyy'),200);
+    INSERT INTO bank_ledger VALUES ('999',to_date(sysdate,'dd-mm-yyyy'),500);
+    INSERT INTO bank_ledger VALUES ('999',to_date(sysdate,'dd-mm-yyyy'),-200);
+    INSERT INTO bank_ledger VALUES ('888',to_date(sysdate,'dd-mm-yyyy'),100);
+    INSERT INTO bank_ledger VALUES ('888',to_date(sysdate,'dd-mm-yyyy'),200);
+    INSERT INTO bank_ledger VALUES ('888',to_date(sysdate,'dd-mm-yyyy'),500);
+    INSERT INTO bank_ledger VALUES ('888',to_date(sysdate,'dd-mm-yyyy'),-200);
+    commit;
+    </copy>
+    ```
+
+    ![](./images/lab2-task2-1.png " ")
+
+2. Query the `bank_ledger` immutable table to show the records.
+
+    ```
+    <copy>
+    select * from bank_ledger;
+    </copy>
+    ```
+
+    ![](./images/lab2-task2-2.png " ")
+
+## Task 3: View Immutable Tables and Its Internal Columns
+
+---
+
+1. Run the command to view all the immutable tables.
+
+    ```
+    <copy>
+    select * from user_immutable_tables;
+    </copy>
+    ```
+
+    ![](./images/lab2-task3-1.png " ")
+
+2. Use the `USER_TAB_COLS` view to display all internal column names used to store internal information.
+
+    ```
+    <copy>
+    SELECT table_name, internal_column_id "Col ID", SUBSTR(column_name,1,30) "Column Name", SUBSTR(data_type,1,30) "Data Type", data_length "Data Length"
+    FROM user_tab_cols
+    ORDER BY internal_column_id;
+    </copy>
+    ```
+
+    ![](./images/lab2-task3-2.png " ")
+
+    The additional columns ending with $ are Oracle managed to maintain the chained sequence, cryptographic hash values, and support user signing. You can include these columns in your queries by referencing them explicitly.
+
+3. Query the `bank_ledger` immutable table to display all the values in the immutable table including values of internal columns.
+
+    ```
+    <copy>
+    select bank, deposit_date, deposit_amount, ORABCTAB_INST_ID$,
+    ORABCTAB_CHAIN_ID$, ORABCTAB_SEQ_NUM$,
+    ORABCTAB_CREATION_TIME$, ORABCTAB_USER_NUMBER$ from bank_ledger;
+    </copy>
+    ```
+
+    ![](./images/lab2-task3-3.png " ")
+
+## Task 4: Manage Rows in an Immutable Table
+
+---
+
+When you try to manage the rows using update, delete, truncate you get the error `operation not allowed on the immutable table` if the rows are within the retention period.
+
+1. Update a record in the `bank_ledger` immutable table by setting deposit\_amount=0.
+
+    ```
+    <copy>
+    update bank_ledger set deposit_amount=0 where bank=999;
+    </copy>
+    ```
+
+    ![](./images/lab2-task4-1.png " ")
+
+2. Delete a record in the `bank_ledger` immutable table.
+
+    ```
+    <copy>
+    delete from bank_ledger where bank=999;
+    </copy>
+    ```
+
+    ![](./images/lab2-task4-2.png " ")
+
+
+3. Truncating the table `bank_ledger`.
+
+    ```
+    <copy>
+    truncate table bank_ledger;
+    </copy>
+    ```
+
+    ![](./images/lab2-task4-3.png " ")
+
+## Task 5: Manage Immutable Tables
+
+---
+
+Similar to managing rows within the retention period, managing the immutable table using alter, drop will throw an error.
+
+1. Drop the table `bank_ledger`. It will drop successfully if no row exists in the table.
+
+    ```
+    <copy>
+    drop table bank_ledger;
+    </copy>
+    ```
+
+    ![](./images/lab2-task5-1.png " ")
+
+
+2. Alter the table `bank_ledger` to not delete the rows until 20 days after insert. Copy and paste the below query in the worksheet, highlight the query and then execute the query.
+
+    ```
+    <copy>
+    ALTER TABLE bank_ledger NO DELETE UNTIL 20 DAYS AFTER INSERT;
+    </copy>
+    ```
+
+    ![](./images/lab2-task5-2.png " ")
+
+3. Create another table `bank_ledger_2` without `LOCKED` keyword. Run the describe query to view this table.
+
+    ```
+    <copy>
+    CREATE IMMUTABLE TABLE bank_ledger_2 (bank VARCHAR2(128), deposit_date DATE, deposit_amount NUMBER)
+    NO DROP UNTIL 16 DAYS IDLE
+    NO DELETE UNTIL 16 DAYS AFTER INSERT VERSION "v2";
+    </copy>
+    ```
+
+    ![](./images/lab2-task5-3.png " ")
+
+4. ALTER can be used to increase the retention period but not to reduce it. For example, Alter with NO DELETE UNTIL 10 Days After Insert will fail with the error message - “ORA-05731: blockchain or immutable table `<TABLE_NAME>` cannot be altered”.<br />
+
+    Alter the table `bank_ledger_2` by specifying that the rows cannot be deleted until 20 days after they were inserted. Copy and paste the below query in the worksheet, highlight the query and then execute the query.</p>
+
+    ```
+    <copy>
+    ALTER TABLE bank_ledger_2 NO DELETE UNTIL 20 DAYS AFTER INSERT;
+    </copy>
+    ```
+
+    ![](./images/lab2-task5-4.png " ")
+
+
+5. In V2 Immutable tables, ALTER can be used to add new columns and drop existing columns. The dropped columns are marked as hidden, rather than actually being dropped.<br /> 
+    Copy and paste the below set of query and commands in the Cloud Shell.</p>
+
+    i. Adding a column additional_info
+    ```
+    <copy>
+    ALTER TABLE bank_ledger_2 ADD (additional_info varchar2(50));
+    </copy>
+    ```
+
+    ii. View the table and its properties.
+
+    ``` 
+    <copy>
+    im desc -tab bank_ledger_2
+    </copy>
+    ```
+
+    ![](./images/lab2-task5-5.png " ")
+
+    iii. Drop Column deposit_amount
+
+    ```
+    <copy>
+     ALTER TABLE bank_ledger_2 DROP COLUMN deposit_amount ;
+    </copy>
+    ```
+
+    iv. View the table and its properties.
+
+    ``` 
+    <copy>
+    im desc -tab bank_ledger_2
+    </copy>
+    ```
+
+    ![](./images/lab2-task5-6.png " ")
+
+
+6. Run the command to view all the immutable tables.
+
+    ```
+    <copy>
+    select * from user_immutable_tables;
+    </copy>
+    ```
+
+    ![](./images/lab2-task5-7.png " ")
+
+## Task 6: Maintenance of the Immutable Tables.
+
+---
+
+### **Deleting Expired Rows in Immutable Tables**
+
+---
+
+The **`immutable_table delete_expired_rows`** command removes expired rows from an Immutable Table based on the table’s retention policy. This ensures compliance with data lifecycle management while preserving immutability for rows still under retention. This is equivalent to the **`DBMS_IMMUTABLE_TABLE.DELETE_EXPIRED_ROWS`** PL/SQL procedure
+
+#### Usage:
+```
+immutable_table delete_expired_rows {OPTIONS}
+```
+
+#### Options:
+- **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Immutable Table from which expired rows are to be deleted.
+- **`-before_timestamp|-before <before_timestamp>` (Optional):** Deletes rows with timestamps earlier than the specified value. If not provided, all expired rows are deleted.
+- **`-rowcount <rowcount>` (Optional):** Outputs the number of rows deleted.
+
+#### Example:
+To delete all expired rows from the table:
+    ```
+    <copy>
+    immutable_table delete_expired_rows -tab bank_ledger_2;
+    </copy>
+    ```
+
+![](./images/lab2-task6-1.png " ")
+
+#### Example with Timestamp Filter:
+To delete rows that expired before a specific timestamp:
+    ```
+    <copy>
+    immutable_table delete_expired_rows -tab bank_ledger_2 -before '16-JAN-25 01.00.01 AM UTC';
+    </copy>
+    ```
+>NOTE: Timestamps need to be specified as per NLS settings.
+
+#### Example with Row Count Output:
+To delete expired rows and display the number of rows deleted:
+    ```
+    <copy>
+    variable rowCount NUMBER;
+
+    immutable_table delete_expired_rows -tab bank_ledger_2 -rowcount ::rowCount;
+
+    print rowCount
+    </copy>
+    ```
+
+This command simplifies the management of data retention in Immutable Tables, ensuring that expired rows are removed while preserving the integrity of active rows.
+
+
+
+You may now [proceed to the next lab](#next).
+
+## Other Immutable Table Commands
+
+<details>
+<summary><mark>Adding Interval Partitioning to Immutable Tables</mark></summary>
+
+The **`immutable_table add_interval_partitioning`** command adds interval partitioning to an existing, non-partitioned Immutable Table. This feature automatically creates partitions for new data at regular intervals based on the specified settings, streamlining data management. It is supported for **V1** and **V2 Immutable Tables** starting from database version **23ai**.
+
+#### Usage:
+```
+immutable_table add_interval_partitioning {OPTIONS}
+```
+
+<details>
+<summary>**Options:**</summary>
+- **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Immutable Table. The table name can be preceded by its schema name. For case-sensitive schema or table names, enclose the full name in double quotes, and individual parts in double, double quotes.
+- **`-interval_number|-intnum <interval_number>` (Required):** Defines the interval for partition creation. For example, setting `1` creates a partition every 1 unit of the specified frequency.
+- **`-interval_frequency|-intfreq <interval_frequency>` (Required):** Specifies the time unit for the interval. Acceptable values are:
+    - `YEAR`
+    - `MONTH`
+    - `DAY`
+    - `HOUR`
+    - `MINUTE`
+- **`-first_high_timestamp|-firsthigh <first_high_timestamp>` (Required):** A timestamp specifying the upper boundary of the first partition. This timestamp determines the starting point for partition creation.
+</details>
+</br>
+
+#### Key Notes:
+1. This command is equivalent to the **`DBMS_IMMUTABLE_TABLE.ADD_INTERVAL_PARTITIONING`** PL/SQL procedure for programmatic operations.
+2. It is only applicable to non-partitioned Immutable Tables.
+3. Adding interval partitioning automates partition management, reducing manual overhead for handling large datasets.
+
+By using the **`add_interval_partitioning`** command, you can seamlessly manage time-based data in Immutable Tables, ensuring efficient and scalable performance.
+</details>
+</br>
+
+
+
+## Learn more
+
+* For more information on Immutable Table and other Immutable Table commands, please see [DBMS\_IMMUTABLE\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_immutable_table.html) documentation and SQLcl help section accessed using **`help immutable_table`** in the SQLcl console.
+
+
+## Acknowledgements
+
+* **Author** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal
+* **Contributors** - Pavas Navaney, Vinay Pandhariwal 
+* **Last Updated By/Date** - Vinay Pandhariwal, Member of Technical Staff
