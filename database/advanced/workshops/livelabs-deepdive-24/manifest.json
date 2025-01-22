@@ -3,6 +3,11 @@
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
+      "title": "Environment Setup",
+      "description": "Verify Setup of compute instance",
+      "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
+    },
+    {
       "title": "Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
