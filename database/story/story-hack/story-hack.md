@@ -594,14 +594,14 @@ In this lab, you will perform a "UNION-based" SQL injection attack on an applica
         <copy>AVAUDITOR</copy>
         ````
 
-    **Note**: If you have not retrieved the password for the `AVAUDITOR` user in the AVDF console, you can do so with the following command:
+         **Note**: If you have not retrieved the password for the `AVAUDITOR` user in the AVDF console, you can do so with the following command:
 
         ```
         <copy>echo $AVUSR_PWD</copy>
         ```
-
-    When you paste that default password into the AVDF console login, it will prompt you to reset your password.
     
+    - When you paste that default password into the AVDF console login, it will prompt you to reset your password
+
         ![AVDF - Login](./images/hack-lab2a-12.png "AVDF - Login")
 
     - On top, click on the **Policies** tab
