@@ -5,7 +5,7 @@ This workshop introduces you to Oracle Transparent Data Encryption (TDE). You wi
 
 *Estimated Lab Time:* 45 minutes
 
-*Version used in this lab:* Oracle Database Enterprse Edition 19.25 (October 2024)
+*Version used in this lab:* Oracle Database Enterprise Edition 19.25 (October 2024)
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
