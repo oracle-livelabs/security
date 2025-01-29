@@ -88,7 +88,6 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
       ![List of files in directory](images/private-ip.png)
 
-    You may now **proceed to the next lab.**
 
 ## Task 4: Integrate with Oracle Identity Governance
 
