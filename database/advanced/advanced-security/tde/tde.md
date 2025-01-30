@@ -216,5 +216,5 @@ Video:
 - *Back to basics with Transparent Data Encryption (TDE) (March 2021)* [](youtube:JflshZKgxYs)
 
 ## Acknowledgements
-- **Author** - Peter Wahl, Database Security PM for Encryption, Key and Secrets Management
-- **Last Updated By/Date** - Peter Wahl; December 2024
+- **Author** - Peter Wahl, Sr. Principal PM for Encryption, Key and Secrets Management
+- **Last Updated By/Date** - Peter Wahl/January 2025
