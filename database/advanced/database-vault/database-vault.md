@@ -67,6 +67,8 @@ This lab assumes you have:
     <copy>./dv_enable_on_pdb.sh pdb1</copy>
     ```
 
+    **Note**: Remember to add **pdb1** to the end of the command!
+
    You should see a status like this:
 
     ![DB Vault](./images/dv-002.png "Enable DB Vault")
