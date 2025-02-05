@@ -37,7 +37,7 @@ This lab assumes you have:
 
 ## Task 1: Enable Database Vault
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*.
 
     ```
     <copy>sudo su - oracle</copy>
@@ -45,13 +45,38 @@ This lab assumes you have:
 
     **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
-2. Go to the scripts directory
+2. Go to the following directory:
 
     ```
-    <copy>cd $DBSEC_LABS/database-vault</copy>
+    <copy>cd $DBSEC_LABS/livelabs</copy>
     ```
 
-3. Start by enabling Database Vault in the container database **cdb1**
+3. Remove the `database-vault` directory using the following command. We are doing this so we can pull the **new** `database-vault` directory in the following steps.
+
+    ```
+    <copy>rm -rfv database-vault</copy>
+    ```
+4. Retrieve the new `database-vault` lab folder using the following command:
+
+    ```
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/NxOPpqDHeYk1pzcM_fN1PmIZZ2QgIPViHFs8XurI6DPXRSagn3UEysf9jSBP7RPG/n/oradbclouducm/b/database-vault-ll-temporary/o/database-vault.tar</copy>
+    ```
+5. Unzip the `database-vault` folder using the following command:
+
+    ```
+    <copy>tar -xvf database-vault.tar</copy>
+    ```
+6. Go to the `database-vault` directory:
+
+    ```
+    <copy>cd database-vault</copy>
+    ```
+7. Ensure every script has execute privileges:
+
+    ```
+    <copy>chmod +x *.sh</copy>
+    ```
+8. Start by enabling Database Vault in the container database **cdb1**
 
       ```
       <copy>./dv_enable_on_cdb.sh</copy>
@@ -61,7 +86,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-001.png "Enable DB Vault")
 
-4. Next, enable it on the pluggable database. For now, just enable it on **pdb1**
+9. Next, enable it on the pluggable database. For now, just enable it on **pdb1**
 
     ```
     <copy>./dv_enable_on_pdb.sh pdb1</copy>
@@ -73,7 +98,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-002.png "Enable DB Vault")
 
-5. Now, Database Vault is enabled in the container database as well as pdb1!
+10. Now, Database Vault is enabled in the container database as well as pdb1!
 
 ## Task 2: Create a Simple Realm
 
