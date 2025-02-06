@@ -48,7 +48,7 @@ This lab assumes you have:
 2. Go to the following directory:
 
     ```
-    <copy>cd $DBSEC_LABS/livelabs</copy>
+    <copy>cd livelabs</copy>
     ```
 
 3. Remove the `database-vault` directory using the following command. We are doing this so we can pull the **new** `database-vault` directory in the following steps.
