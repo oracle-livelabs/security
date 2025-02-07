@@ -10,7 +10,7 @@ To enforce immutability, Immutable Tables require the specification of **retenti
 
 #### Practical Use Cases:
 - **Preventing Accidental Modifications:** Immutable Tables protect against human errors that could lead to unintentional data changes.
-- **Regulatory Compliance:** They support industries with stringent data integrity requirements, ensuring records remain tamper-proof for auditing purposes.
+- **Regulatory Compliance:** They support industries with stringent data integrity requirements, ensuring records remain tamper-resistant for auditing purposes.
 - **Secure Audit Trails:** Immutable Tables provide a trusted, unmodifiable source of truth for monitoring and compliance.
 
 While Immutable Tables deliver robust data immutability and protection, they represent a foundational step in Oracle’s in-database security. For more advanced capabilities, such as cryptographic signing and distributed trust, Blockchain Tables build on this concept, adding additional layers of security and functionality. 
@@ -58,6 +58,11 @@ In this lab, you will:
 
     ![](./images/lab2-task1-1.png)
 
+    > **Expected Output:**
+    > ```
+    > Immutable TABLE created.```
+
+
 2. Run the following command to view that the table's clauses and if it is created. Note that the description displays only the visible columns.
 
     ```
@@ -66,6 +71,25 @@ In this lab, you will:
     </copy>
      ```
     ![](./images/lab2-task1-2.png)
+
+    > **Expected Output:**
+    > ```
+    > Immutable table 'bank_ledger'
+    > -----------------------------
+    > 
+    > 
+    > COLUMN_NAME     NULL?   DATA_TYPE
+    > --------------  -----   ---------
+    > BANK                    VARCHAR2 
+    > DEPOSIT_DATE            DATE     
+    > DEPOSIT_AMOUNT          NUMBER   
+    > 
+    > Other Attributes: 
+    > ------------------
+    > ROW RETENTION (DAYS)              : 365000
+    > ROW RETENTION LOCKED              : YES
+    > TABLE INACTIVITY RETENTION (DAYS) : 16
+    > TABLE VERSION                     : V2```
 
 ## Task 2: Insert Rows into the Immutable Table
 
@@ -154,6 +178,23 @@ When you try to manage the rows using update, delete, truncate you get the error
     ```
 
     ![](./images/lab2-task4-1.png " ")
+    > **Expected Output:**
+    > ```
+    > 
+    > Error starting at line : 1 in command -
+    > update bank_ledger set deposit_amount=0 where bank=999
+    > Error at Command Line : 1 Column : 8
+    > Error report -
+    > SQL Error: ORA-05715: operation not allowed on the blockchain or immutable table
+    > 
+    > https://docs.oracle.com/error-help/db/ora-05715/05715. 0000 -  "operation not allowed on the blockchain or immutable table" 
+    > *Cause:    An attempt was made to perform update, delete, alter, truncate,
+    >             insert as select, rename, or move operation on a blockchain
+    >             or immutable table.
+    > *Action:   No action required.
+    > 
+    > More Details :
+    > https://docs.oracle.com/error-help/db/ora-05715/```
 
 2. Delete a record in the `bank_ledger` immutable table.
 
@@ -164,6 +205,23 @@ When you try to manage the rows using update, delete, truncate you get the error
     ```
 
     ![](./images/lab2-task4-2.png " ")
+    > **Expected Output:**  
+    > ```
+    > Error starting at line : 1 in command -  
+    > delete from bank_ledger where bank=999  
+    > Error at Command Line : 1 Column : 13  
+    > Error report -  
+    > SQL Error: ORA-05715: operation not allowed on the blockchain or immutable table  
+    >   
+    > https://docs.oracle.com/error-help/db/ora-05715/05715. 0000 -  "operation not allowed on the blockchain or immutable table"  
+    > *Cause:    An attempt was made to perform update, delete, alter, truncate,  
+    >            insert as select, rename, or move operation on a blockchain  
+    >            or immutable table.  
+    > *Action:   No action required.  
+    >   
+    > More Details :  
+    > https://docs.oracle.com/error-help/db/ora-05715/  ```
+
 
 
 3. Truncating the table `bank_ledger`.
@@ -175,6 +233,19 @@ When you try to manage the rows using update, delete, truncate you get the error
     ```
 
     ![](./images/lab2-task4-3.png " ")
+    > **Expected Output:**  
+    > ```
+    > Error starting at line : 1 in command -  
+    > truncate table bank_ledger  
+    > Error report -  
+    > ORA-05715: operation not allowed on the blockchain or immutable table  
+    >   
+    > https://docs.oracle.com/error-help/db/ora-05715/05715. 0000 -  "operation not allowed on the blockchain or immutable table"  
+    > *Cause:    An attempt was made to perform update, delete, alter, truncate,  
+    >            insert as select, rename, or move operation on a blockchain  
+    >            or immutable table.  
+    > *Action:   No action required.  ```
+
 
 ## Task 5: Manage Immutable Tables
 
@@ -191,6 +262,20 @@ Similar to managing rows within the retention period, managing the immutable tab
     ```
 
     ![](./images/lab2-task5-1.png " ")
+    > **Expected Output:**  
+    > ```
+    > Error starting at line : 1 in command -  
+    > drop table bank_ledger  
+    > Error report -  
+    > ORA-05723: dropping BANK_LEDGER, which is a non-empty blockchain or immutable table, is not allowed  
+    >   
+    > https://docs.oracle.com/error-help/db/ora-05723/05723. 0000 -  "dropping %s, which is a non-empty blockchain or immutable table, is not allowed"  
+    > *Cause:    A blockchain or immutable table was created with a NO DROP clause,  
+    >            or its idle period has not yet elapsed.  
+    > *Action:   Do not attempt to drop this blockchain or immutable table, wait  
+    >            until its idle period has elapsed, or wait until all its rows are  
+    >            expired and deleted.  ```
+
 
 
 2. Alter the table `bank_ledger` to not delete the rows until 20 days after insert. Copy and paste the below query in the worksheet, highlight the query and then execute the query.
@@ -202,6 +287,18 @@ Similar to managing rows within the retention period, managing the immutable tab
     ```
 
     ![](./images/lab2-task5-2.png " ")
+    > **Expected Output:**  
+    > ```
+    > Error starting at line : 1 in command -  
+    > ALTER TABLE bank_ledger NO DELETE UNTIL 20 DAYS AFTER INSERT  
+    > Error report -  
+    > ORA-05731: blockchain or immutable table BANK_LEDGER cannot be altered  
+    >   
+    > https://docs.oracle.com/error-help/db/ora-05731/05731. 0000 -  "blockchain or immutable table %s cannot be altered"  
+    > *Cause:    An attempt was made to alter a blockchain or immutable table that  
+    >            could not be altered.  
+    > *Action:   No action required.  ```
+
 
 3. Create another table `bank_ledger_2` without `LOCKED` keyword. Run the describe query to view this table.
 
@@ -214,6 +311,9 @@ Similar to managing rows within the retention period, managing the immutable tab
     ```
 
     ![](./images/lab2-task5-3.png " ")
+    > **Expected Output:**
+    > ```
+    > Immutable TABLE created.```
 
 4. ALTER can be used to increase the retention period but not to reduce it. For example, Alter with NO DELETE UNTIL 10 Days After Insert will fail with the error message - “ORA-05731: blockchain or immutable table `<TABLE_NAME>` cannot be altered”.<br />
 
@@ -226,6 +326,9 @@ Similar to managing rows within the retention period, managing the immutable tab
     ```
 
     ![](./images/lab2-task5-4.png " ")
+    > **Expected Output:**
+    > ```
+    > Table BANK_LEDGER_2 altered.```
 
 
 5. In V2 Immutable tables, ALTER can be used to add new columns and drop existing columns. The dropped columns are marked as hidden, rather than actually being dropped.<br /> 
@@ -237,6 +340,9 @@ Similar to managing rows within the retention period, managing the immutable tab
     ALTER TABLE bank_ledger_2 ADD (additional_info varchar2(50));
     </copy>
     ```
+    > **Expected Output:**
+    > ```
+    > Table BANK_LEDGER_2 altered.```
 
     ii. View the table and its properties.
 
@@ -245,6 +351,24 @@ Similar to managing rows within the retention period, managing the immutable tab
     im desc -tab bank_ledger_2
     </copy>
     ```
+    > **Expected Output:**  
+    > ```
+    > Immutable table 'bank_ledger_2'
+    > -------------------------------
+    > 
+    > COLUMN_NAME     NULL?   DATA_TYPE
+    > --------------- -----   ---------
+    > ADDITIONAL_INFO         VARCHAR2 
+    > BANK                    VARCHAR2 
+    > DEPOSIT_DATE            DATE     
+    > DEPOSIT_AMOUNT          NUMBER   
+    > 
+    > Other Attributes: 
+    > ------------------
+    > ROW RETENTION (DAYS)              : 20
+    > ROW RETENTION LOCKED              : NO
+    > TABLE INACTIVITY RETENTION (DAYS) : 16
+    > TABLE VERSION                     : V2```
 
     ![](./images/lab2-task5-5.png " ")
 
@@ -255,6 +379,9 @@ Similar to managing rows within the retention period, managing the immutable tab
      ALTER TABLE bank_ledger_2 DROP COLUMN deposit_amount ;
     </copy>
     ```
+    > **Expected Output:**
+    > ```
+    > Table BANK_LEDGER_2 altered.```
 
     iv. View the table and its properties.
 
@@ -263,6 +390,24 @@ Similar to managing rows within the retention period, managing the immutable tab
     im desc -tab bank_ledger_2
     </copy>
     ```
+    > **Expected Output:**  
+    > ```
+    > Immutable table 'bank_ledger_2'
+    > -------------------------------
+    > 
+    > COLUMN_NAME     NULL?   DATA_TYPE
+    > --------------- -----   ---------
+    > ADDITIONAL_INFO         VARCHAR2 
+    > BANK                    VARCHAR2 
+    > DEPOSIT_DATE            DATE     
+    > 
+    > Other Attributes: 
+    > ------------------
+    > ROW RETENTION (DAYS)              : 20
+    > ROW RETENTION LOCKED              : NO
+    > TABLE INACTIVITY RETENTION (DAYS) : 16
+    > TABLE VERSION                     : V2```
+
 
     ![](./images/lab2-task5-6.png " ")
 
@@ -306,6 +451,11 @@ To delete all expired rows from the table:
     ```
 
 ![](./images/lab2-task6-1.png " ")
+> **Expected Output:**  
+    > ```
+    > Command executed successfully.  
+    > Deleted 0 expired rows from '"DEMOUSER".bank_ledger_2' immutable table before '2025-02-07T08:02:00.365480Z' timestamp.```
+
 
 #### Example with Timestamp Filter:
 To delete rows that expired before a specific timestamp:
@@ -315,6 +465,11 @@ To delete rows that expired before a specific timestamp:
     </copy>
     ```
 >NOTE: Timestamps need to be specified as per NLS settings.
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Deleted 0 expired rows from '"DEMOUSER".bank_ledger_2' immutable table before '16-JAN-25 01.00.01 AM UTC' timestamp.```
+
 
 #### Example with Row Count Output:
 To delete expired rows and display the number of rows deleted:
@@ -327,6 +482,22 @@ To delete expired rows and display the number of rows deleted:
     print rowCount
     </copy>
     ```
+> **Expected Output:**  
+    > ```
+    > SQL> variable rowCount NUMBER;  
+    > SQL>   
+    > SQL> immutable_table delete_expired_rows -tab bank_ledger_2 -rowcount ::rowCount;  
+    > Command executed successfully.  
+    > Deleted 0 expired rows from '"DEMOUSER".bank_ledger_2' immutable table before '2025-02-07T08:04:59.601858Z' timestamp.  
+    > SQL>   
+    > SQL> print rowCount  
+    >   
+    >   ROWCOUNT  
+    > ----------  
+    >          0  
+    >   
+    > SQL>  ```
+
 
 This command simplifies the management of data retention in Immutable Tables, ensuring that expired rows are removed while preserving the integrity of active rows.
 

@@ -119,20 +119,83 @@ Watch the video below for a quick walk-through of the lab.
     - **autonomous-database-id**: Paste the OCID copied in Step 1 into this field.
     - **file**: Specify the file name for the generated wallet (e.g., **wallet.zip**).
     - **password**: Specify a password for the wallet.
-    ```bash
-    <copy>
-    oci db autonomous-database generate-wallet --autonomous-database-id <OCID> --file <FILE_NAME> --password <PASSWORD>
-    </copy>
-    ```
+
+        Enter your values below. The command will update in real time:
+        - **Autonomous Database OCID:** <input type="text" id="ocid" placeholder="ocid1.autonomousdatabase.oc1..example" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="createWalletCommand()">
+        - **File Name:** <input type="text" id="file_name" placeholder="wallet.zip" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="createWalletCommand()"> <br/>
+        - **Password:** <input type="text" id="password" placeholder="Enter Secure Password" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="createWalletCommand()">
+
+        **Generated Command:**
+        <pre id="code-container" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; position: relative; transition: opacity 0.3s;">
+        <code id="code-text">oci db autonomous-database generate-wallet --autonomous-database-id <OCID> --file <FILE_NAME> --password <PASSWORD></code>
+        <button id="copy-btn" 
+                style="position: absolute; right: 10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
+                onmouseover="this.style.background='grey'; this.style.color='white';" 
+                onmouseout="this.style.background='white'; this.style.color='black';" 
+                onclick="copyToClipboard('code-text','code-container')">Copy</button>
+        </pre>
     ![](./images/lab1-task3-4.png " ")
+    > **Expected Output:**
+    > ```
+    > Downloading file  [####################################]  100%```
+
+<script>
+    function createWalletCommand() {
+        let ocid = document.getElementById('ocid').value || '<OCID>';
+        let fileName = document.getElementById('file_name').value || '<FILE_NAME>';
+        let password = document.getElementById('password').value || '<PASSWORD>';
+
+        let command = `oci db autonomous-database generate-wallet --autonomous-database-id ${ocid} --file ${fileName} --password ${password}`;
+        document.getElementById('code-text').innerText = command;
+        if(fileName != '<FILE_NAME>'){
+            updateFileName()
+        }
+    }
+
+    function pathToUnzippedWallet(){
+        let path = document.getElementById('PathUnzippedWalletinp').value || '<PATH_TO_UNZIPPED_WALLET>';
+
+        let command = `export TNS_ADMIN=${path} \necho $TNS_ADMIN`;
+        document.getElementById('PathUnzippedWallet').innerText = command;
+    }
+
+    function updateFileName(){
+        let fileName = document.getElementById('file_name').value || '<FILE_NAME>';
+        let command = `unzip ${fileName}`;
+        document.getElementById('unzipCmd').innerText = command;
+    }
+
+    function copyToClipboard(elementId,containerId) {
+        let text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text);
+        let codeContainer = document.getElementById(containerId);
+        codeContainer.style.opacity = "0.5"; 
+        setTimeout(() => codeContainer.style.opacity = "1", 200); 
+    }
+</script>
 
 4. After the wallet is downloaded, unzip it using the following command:
-    ```bash
-    <copy>
-    unzip <FILE_NAME>
-    </copy>
-    ```
+    <pre id="code-container1" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; position: relative; transition: opacity 0.3s;">
+        <code id="unzipCmd">unzip <FILE_NAME></code>
+        <button id="copy-btn" 
+                style="position: absolute; right: 10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
+                onmouseover="this.style.background='grey'; this.style.color='white';" 
+                onmouseout="this.style.background='white'; this.style.color='black';" 
+                onclick="copyToClipboard('unzipCmd','code-container1')">Copy</button>
+    </pre>
+
     ![](./images/lab1-task3-5.png " ")
+    > **Expected Output:**
+    > ```
+    > inflating: ewallet.pem
+    > inflating: README                  
+    > inflating: cwallet.sso             
+    > inflating: tnsnames.ora            
+    > inflating: truststore.jks          
+    > inflating: ojdbc.properties        
+    > inflating: sqlnet.ora              
+    > inflating: ewallet.p12             
+    > inflating: keystore.jks```
 
 5. Now, set up the **TNS_ADMIN** environment variable for SQLcl:
     - Run the following command to view the directory where the unzipped wallet is stored:
@@ -142,12 +205,18 @@ Watch the video below for a quick walk-through of the lab.
     </copy>
     ```
     - Replace `<PATH_TO_UNZIPPED_WALLET>` with the output of the previous command and run:
-    ```bash
-    <copy>
-    export TNS_ADMIN=<PATH_TO_UNZIPPED_WALLET>
-    echo $TNS_ADMIN
-    </copy>
-    ```
+        - Enter your values below. The command will update in real time:
+            - **PATH TO UNZIPPED WALLET:** <input type="text" id="PathUnzippedWalletinp" placeholder="PATH TO UNZIPPED WALLET" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="pathToUnzippedWallet()">
+        <pre id="code-container2" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; position: relative; transition: opacity 0.3s;">
+                <code id="PathUnzippedWallet" style="white-space: pre-line;">export TNS_ADMIN=<PATH_TO_UNZIPPED_WALLET>
+                 echo $TNS_ADMIN;</code>
+                <button id="copy-btn" 
+                        style="position: absolute; right: 10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
+                        onmouseover="this.style.background='grey'; this.style.color='white';" 
+                        onmouseout="this.style.background='white'; this.style.color='black';" 
+                        onclick="copyToClipboard('PathUnzippedWallet','code-container2')">Copy</button>
+        </pre>
+
     ![](./images/lab1-task3-6.png " ")
 
 6. To connect to the Autonomous Database instance, use the **mTLS connection string**:
@@ -158,13 +227,40 @@ Watch the video below for a quick walk-through of the lab.
 
 7. In the **Cloud Shell**, run the following command to connect to the Blockchain-Table-Demo ATP instance:
     - Note: `demouser` is the user created in Task 2.
-    ```bash
-    <copy>
-    sql demouser@'<CONNECTION_STRING>'
-    </copy>
-    ```
-    ![](./images/lab1-task3-9.png " ")
+    - Enter your values below. The command will update in real time:
+        - **PATH TO UNZIPPED WALLET:** <input type="text" id="connectionStringInp" placeholder="CONNECTION STRING" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="connectionString()">
+    <pre id="code-container3" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; position: relative; transition: opacity 0.3s;">
+                <code id="connectionString" style="white-space: pre-line;">sql demouser@'<CONNECTION_STRING>'</code>
+                <button id="copy-btn" 
+                        style="position: absolute; right: 10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
+                        onmouseover="this.style.background='grey'; this.style.color='white';" 
+                        onmouseout="this.style.background='white'; this.style.color='black';" 
+                        onclick="copyToClipboard('connectionString','code-container3')">Copy</button>
+    </pre>
     - When the password prompt appears, enter the password for `demouser` set in Task 2, i.e., **Welcome_123#**.
+    ![](./images/lab1-task3-9.png " ")
+    
+    > **Expected Output:**
+    > ```
+    > SQLcl: Release 24.3 Production on 
+    >
+    > Copyright (c) 1982, 2025, Oracle.  All rights reserved.
+    >
+    > Password? (**********?) ************
+    > Connected to:
+    > Oracle Database 23ai Enterprise Edition Release 23.0.0.0.0 - Production
+    > Version 23.7.0.25.02
+    >
+    > SQL> ```
+
+<script>
+    function connectionString(){
+        let CONNECTION_STRING = document.getElementById('connectionStringInp').value || '<PATH_TO_UNZIPPED_WALLET>';
+
+        let command = `sql demouser@'${CONNECTION_STRING}'`;
+        document.getElementById('connectionString').innerText = command;
+    }
+</script>
 
 8. **Your environment is ready to use!** You may now proceed to the next lab.  
     ![](./images/lab1-task3-10.png " ")

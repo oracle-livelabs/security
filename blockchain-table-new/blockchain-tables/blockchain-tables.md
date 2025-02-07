@@ -24,7 +24,7 @@ These tables address critical challenges faced by enterprises and governments in
 2. **Regulatory Compliance:**
    Meet stringent requirements for data transparency and traceability in industries such as finance, healthcare, and government.
    
-3. **Tamper-Proof Ledgers:**
+3. **Tamper-Resistant Ledgers:**
    Maintain a secure and auditable history of transactions, assets, or events, ensuring the integrity of current and historical data.
 
 4. **Trusted Applications Without Distributed Consensus:**
@@ -99,7 +99,7 @@ In this lab, you will:
 		- **`HASHING USING sha2_512`**: Uses the SHA2_512 algorithm to create tamper-resistant rows.
 		
 	- **`VERSION v1`**: Basic blockchain table functionality.
-	- **`VERSION v2`**: Supports additional features like schema evolution, delegate signatures, and countersignatures (available in Oracle 23c).
+	- **`VERSION v2`**: Supports additional features like schema evolution, delegate signatures, and countersignatures (available in Oracle 23ai).
 
 	Run the following command to create a Blockchain Table named **`bank_ledger_bt`**. This table maintains a tamper-resistant ledger of current and historical transactions using the **SHA2_512** hashing algorithm. Rows in this table cannot be deleted, and the table itself can only be dropped after **16 days** of inactivity.
 
@@ -115,6 +115,10 @@ In this lab, you will:
 	HASHING USING "SHA2_512" VERSION "v2";
 	</copy>
 	```
+	> **Expected Output:**  
+	> ```
+	> Blockchain TABLE created.```
+
 
 2. After creating the table, run the following **SQLcl command** to describe the table's clauses and confirm its creation. Note that the description will display only the visible columns of the table:
 	```
@@ -123,6 +127,26 @@ In this lab, you will:
 	</copy>
    ```
    ![](./images/lab4-task1-1.png " ")
+
+> **Expected Output:**  
+	> ```
+	> Blockchain table 'bank_ledger_bt'  
+	> ---------------------------------  
+	>   
+	> COLUMN_NAME     NULL?   DATA_TYPE  
+	> --------------  -----   ---------  
+	> ACCOUNT_NUMBER          VARCHAR2  
+	> DEPOSIT_DATE            DATE  
+	> DEPOSIT_AMOUNT          NUMBER  
+	>   
+	> Other Attributes:  
+	> ------------------  
+	> ROW RETENTION (DAYS)              : 365000  
+	> ROW RETENTION LOCKED              : YES  
+	> TABLE INACTIVITY RETENTION (DAYS) : 16  
+	> HASHING ALGORITHM                 : SHA2_512  
+	> TABLE VERSION                     : V2```
+
 
 ## Task 2: Insert Rows into the Blockchain Table
 
@@ -215,6 +239,23 @@ When you try to manage the rows using update, delete, truncate you get the error
 	```
 
 	![](./images/lab4-task4-1.png " ")
+	> **Expected Output:**  
+	> ```
+	> Error starting at line : 1 in command -  
+	> update bank_ledger_bt set deposit_amount=0 where account_number=999  
+	> Error at Command Line : 1 Column : 8  
+	> Error report -  
+	> SQL Error: ORA-05715: operation not allowed on the blockchain or immutable table  
+	>   
+	> https://docs.oracle.com/error-help/db/ora-05715/05715.0000 - "operation not allowed on the blockchain or immutable table"  
+	> *Cause:    An attempt was made to perform update, delete, alter, truncate,  
+	>            insert as select, rename, or move operation on a blockchain  
+	>            or immutable table.  
+	> *Action:   No action required.  
+	>   
+	> More Details :  
+	> https://docs.oracle.com/error-help/db/ora-05715/```
+
 
 2. Delete a record in the `bank_ledger_bt` blockchain table.
 
@@ -225,6 +266,23 @@ When you try to manage the rows using update, delete, truncate you get the error
 	```
 
 	![](./images/lab4-task4-2.png " ")
+	> **Expected Output:**  
+	> ```
+	> Error starting at line : 1 in command -  
+	> delete from bank_ledger_bt where account_number=999  
+	> Error at Command Line : 1 Column : 13  
+	> Error report -  
+	> SQL Error: ORA-05715: operation not allowed on the blockchain or immutable table  
+	>   
+	> https://docs.oracle.com/error-help/db/ora-05715/05715.0000 - "operation not allowed on the blockchain or immutable table"  
+	> *Cause:    An attempt was made to perform update, delete, alter, truncate,  
+	>            insert as select, rename, or move operation on a blockchain  
+	>            or immutable table.  
+	> *Action:   No action required.  
+	>   
+	> More Details :  
+	> https://docs.oracle.com/error-help/db/ora-05715/  
+	> ```
 
 
 3. Truncating the table `bank_ledger_bt`.
@@ -236,6 +294,19 @@ When you try to manage the rows using update, delete, truncate you get the error
 	```
 
 	![](./images/lab4-task4-3.png " ")
+	> **Expected Output:**  
+	> ```
+	> Error starting at line : 1 in command -  
+	> truncate table bank_ledger_bt  
+	> Error report -  
+	> ORA-05715: operation not allowed on the blockchain or immutable table  
+	>   
+	> https://docs.oracle.com/error-help/db/ora-05715/05715.0000 - "operation not allowed on the blockchain or immutable table"  
+	> *Cause:    An attempt was made to perform update, delete, alter, truncate,  
+	>            insert as select, rename, or move operation on a blockchain  
+	>            or immutable table.  
+	> *Action:   No action required.```
+
 
 
 ## Task 5: Manage Blockchain Tables
@@ -258,6 +329,10 @@ Managing Blockchain Tables involves ensuring their tamper-resistant and immutabl
 	</copy>
 ```
 ![](./images/lab4-task5-1.png " ")
+> **Expected Output:**  
+> ```
+> Blockchain TABLE created.```
+
 
 ### 2. **Alter a Blockchain Table**
 
@@ -273,6 +348,10 @@ The **`ALTER TABLE`** command allows modifications to the `NO DROP` and `NO DELE
 		</copy>
 		```
 	![](./images/lab4-task5-2.png " ")
+	> **Expected Output:**  
+	> ```
+	> Table BANK_LEDGER_BT_2 altered.```
+
 
 	#### Example: Failed Reduction Example : Attempting to reduce the retention period will result in:
 	```
@@ -283,6 +362,17 @@ The **`ALTER TABLE`** command allows modifications to the `NO DROP` and `NO DELE
 		Error: **ORA-05732: retention value cannot be lowered**
 	
 	![](./images/lab4-task5-3.png " ")
+	> **Expected Output:**  
+	> ```
+	> Error starting at line : 1 in command -  
+	> ALTER TABLE bank_ledger_bt_2 NO DELETE UNTIL 17 DAYS AFTER INSERT  
+	> Error report -  
+	> ORA-05732: retention value cannot be lowered  
+	>   
+	> https://docs.oracle.com/error-help/db/ora-05732/05732.0000 - "retention value cannot be lowered"  
+	> *Cause:    An attempt was made to alter a blockchain or immutable table to a  
+	>            lower retention value.  
+	> *Action:   Specify a higher retention value. ```
 		
 	#### Example: Add Columns (V2 Tables Only)
 	Add a new column to a V2 Blockchain Table:
@@ -292,6 +382,9 @@ The **`ALTER TABLE`** command allows modifications to the `NO DROP` and `NO DELE
 			</copy>
 			```
 	![](./images/lab4-task5-4.png " ")
+	> **Expected Output:**  
+	> ```
+	> Table BANK_LEDGER_BT_2 altered. ```
 
 	#### Example: Drop Columns (V2 Tables Only)
 	Drop a column in a V2 Blockchain Table:
@@ -301,6 +394,9 @@ The **`ALTER TABLE`** command allows modifications to the `NO DROP` and `NO DELE
 			</copy>
 		```
 	![](./images/lab4-task5-5.png " ")
+	> **Expected Output:**  
+	> ```
+	> Table BANK_LEDGER_BT_2 altered. ```
 
 ### 3. **Drop a Blockchain Table**
 
@@ -313,6 +409,10 @@ A Blockchain Table can only be dropped if:
 		DROP TABLE bank_ledger_bt_2;
 		</copy>
 		```
+	> **Expected Output:**  
+		> ```
+		> Table BANK_LEDGER_BT_2 dropped. ```
+
 
 - If rows exist or the `NO DROP` retention period is active, the command will fail.
 		The table `bank_ledger_bt` does not get deleted as it contains multiple rows.
@@ -321,6 +421,20 @@ A Blockchain Table can only be dropped if:
 		DROP TABLE bank_ledger_bt;
 		</copy>
 		```
+	> **Expected Output:**  
+		> ```
+		> Error starting at line : 1 in command -  
+		> DROP TABLE bank_ledger_bt  
+		> Error report -  
+		> ORA-05723: dropping BANK_LEDGER_BT, which is a non-empty blockchain or immutable table, is not allowed  
+		>   
+		> https://docs.oracle.com/error-help/db/ora-05723/05723.0000 - "dropping %s, which is a non-empty blockchain or immutable table, is not allowed"  
+		> *Cause:    A blockchain or immutable table was created with a NO DROP clause,  
+		>            or its idle period has not yet elapsed.  
+		> *Action:   Do not attempt to drop this blockchain or immutable table, wait  
+		>            until its idle period has elapsed, or wait until all its rows are  
+		>            expired and deleted. ```
+
 	![](./images/lab4-task5-7.png " ")
 
 ### 4. **Difference between a V1 Blockchain Table and V2 Blockchain Table with Advanced Features**
@@ -437,6 +551,11 @@ To verify all rows in a table:
 ```
 
 ![](./images/lab4-task6-1.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Verified 10 rows from '"DEMOUSER".bank_ledger_bt' table.```
+
 
 #### Example with Timestamp Range:
 To verify rows created between two timestamps:
@@ -448,6 +567,10 @@ To verify rows created between two timestamps:
 >NOTE: Timestamps need to be specified as per NLS settings.
 
 ![](./images/lab4-task6-2.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Verified 0 rows from '"DEMOUSER".bank_ledger_bt' table. ```
 
 #### Example with Signature Skipping:
 To verify rows but skip validating user signatures:
@@ -456,14 +579,18 @@ To verify rows but skip validating user signatures:
 	blockchain_table verify_rows -tab bank_ledger_bt -skip_user_signature -skip_delegate_signature -skip_countersignature
 	</copy>
 ```
-
 ![](./images/lab4-task6-3.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Verified 10 rows from '"DEMOUSER".bank_ledger_bt' table.```
+
 </details>
 
 <details>
 <summary><mark>Independent Verification of Blockchain Table Data (Additional Information, Not Needed for the Lab)</mark></summary>
 
-Oracle Blockchain Tables allow for **independent verification** of their data, ensuring tamper-proof integrity even outside the Oracle Database environment. Oracle provides sample **Java source code** and **configuration files** to facilitate this independent verification process. These samples also demonstrate how to publish Oracle cryptographic hashes to platforms like **Hyperledger Fabric**, enabling cross-platform compatibility.
+Oracle Blockchain Tables allow for **independent verification** of their data, ensuring tamper-resistant integrity even outside the Oracle Database environment. Oracle provides sample **Java source code** and **configuration files** to facilitate this independent verification process. These samples also demonstrate how to publish Oracle cryptographic hashes to platforms like **Hyperledger Fabric**, enabling cross-platform compatibility.
 
 #### Key Features of Independent Verification:
 - **Verify Oracle Blockchain Table Data:** Validate the integrity of blockchain table rows outside the Oracle Database using cryptographic hash checks.
@@ -540,6 +667,70 @@ certificate add -cert_file demouser_cert.crt -cert_guid ::guid
 </copy>
 ```
 ![](./images/lab4-task7-1.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> CERTIFICATE_GUID : <RANDOM_GUID> ```
+
+
+#### Example: Sign a Row Using Key Column Parameters and privatekey file stored in a wallet 
+To sign a specific row in the `bank_ledger_bt` table using key columns. The command access the wallet to retrieve privatekey and generate signature. If the wallet_password is not provided, it will be prompted to enter the password:
+```
+<copy>
+
+bl sign_row -tab bank_ledger_bt  -kc1name "account_number" -kc1val "994" -cert_guid ":guid" -algo "RSA_SHA2_512" -type "USER" -wallet_path . -wallet_password Welcome_123# -wallet_private_key_password Welcome_123#
+
+commit;
+</copy>
+```
+
+![](./images/lab4-task7-5.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Successfully signed row identified by key columns account_number = '994' in table '"DEMOUSER".bank_ledger_bt'. ```
+
+
+#### Example: Sign a Row Using Key Column Parameters and privatekey file
+To sign a specific row in the `bank_ledger_bt` table using key columns. The code internally uses openssl installed on user's local system (here cloudshell) to generate signature:
+```
+<copy>
+
+bl sign_row -tab bank_ledger_bt  -kc1name "account_number" -kc1val "993" -prvtkey demouser_privatekey.pem -cert_guid ":guid" -algo "RSA_SHA2_512" -type "USER"
+
+commit;
+
+</copy>
+```
+![](./images/lab4-task7-4.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Successfully signed row identified by key columns account_number = '993' in table '"DEMOUSER".bank_ledger_bt'. ```
+
+
+#### Example: Sign a Row Using Positional Parameters and privatekey file
+To sign a specific row in the `bank_ledger_bt` table using positional parameters i.e. instance id, chain id and sequence id. The code internally uses openssl installed on user's local system (here cloudshell) to generate signature:
+```
+<copy>
+
+begin
+     select ORABCTAB_INST_ID$, ORABCTAB_CHAIN_ID$, ORABCTAB_SEQ_NUM$, ORABCTAB_HASH$  into :inst_id, :chain_id, :seq_id, :row_hash from bank_ledger_bt where account_number = '992';
+end;
+/
+
+bl sign_row -tab bank_ledger_bt -inst ":inst_id" -ch ":chain_id" -seq ":seq_id"  -prvtkey demouser_privatekey.pem -cert_guid ":guid" -algo "RSA_SHA2_512" -type "USER"
+
+commit;
+</copy>
+```
+
+![](./images/lab4-task7-3.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Successfully signed row at instance id '<INST_ID>', chain id '<CHAIN_ID>' and sequence id '<SEQUENCE_ID>' in table '"DEMOUSER".bank_ledger_bt'. ```
+
 
 #### Example: Sign a Row Using Positional Parameters and openssl
 To sign a specific row in the `bank_ledger_bt` table using positional parameters i.e. instance id, chain id and sequence id:
@@ -562,50 +753,11 @@ commit;
 ```
 
 ![](./images/lab4-task7-2.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Successfully signed row at instance id '2', chain id '20' and sequence id '1' in table '"DEMOUSER".bank_ledger_bt'. ```
 
-#### Example: Sign a Row Using Positional Parameters and privatekey file
-To sign a specific row in the `bank_ledger_bt` table using positional parameters i.e. instance id, chain id and sequence id. The code internally uses openssl installed on user's local system (here cloudshell) to generate signature:
-```
-<copy>
-
-begin
-     select ORABCTAB_INST_ID$, ORABCTAB_CHAIN_ID$, ORABCTAB_SEQ_NUM$, ORABCTAB_HASH$  into :inst_id, :chain_id, :seq_id, :row_hash from bank_ledger_bt where account_number = '992';
-end;
-/
-
-bl sign_row -tab bank_ledger_bt -inst ":inst_id" -ch ":chain_id" -seq ":seq_id"  -prvtkey demouser_privatekey.pem -cert_guid ":guid" -algo "RSA_SHA2_512" -type "USER"
-
-commit;
-</copy>
-```
-
-![](./images/lab4-task7-3.png " ")
-
-#### Example: Sign a Row Using Key Column Parameters and privatekey file
-To sign a specific row in the `bank_ledger_bt` table using key columns. The code internally uses openssl installed on user's local system (here cloudshell) to generate signature:
-```
-<copy>
-
-bl sign_row -tab bank_ledger_bt  -kc1name "account_number" -kc1val "993" -prvtkey demouser_privatekey.pem -cert_guid ":guid" -algo "RSA_SHA2_512" -type "USER"
-
-commit;
-
-</copy>
-```
-![](./images/lab4-task7-4.png " ")
-
-#### Example: Sign a Row Using Key Column Parameters and privatekey file stored in a wallet 
-To sign a specific row in the `bank_ledger_bt` table using key columns. The command access the wallet to retrieve privatekey and generate signature. If the wallet_password is not provided, it will be prompted to enter the password:
-```
-<copy>
-
-bl sign_row -tab bank_ledger_bt  -kc1name "account_number" -kc1val "994" -cert_guid ":guid" -algo "RSA_SHA2_512" -type "USER" -wallet_path . -wallet_password Welcome_123# -wallet_private_key_password Welcome_123#
-
-commit;
-</copy>
-```
-
-![](./images/lab4-task7-5.png " ")
 
 Using the `sign_row` command ensures the authenticity of Blockchain Table data by attaching cryptographic signatures to rows, identified either by chain/sequence or key columns. The inclusion of **`type`** and **`pdb_guid`** options adds flexibility for advanced use cases in multi-tenant environments and delegated signing.
 
@@ -694,6 +846,10 @@ bl get_digest -tab bank_ledger_bt -bytes_file demouser_bytes1.txt -digest_file d
 </copy>
 ```
 ![](./images/lab4-task8-1.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully. ```
+
 
 #### Example: Generate Digest for Specific Rows
 ```
@@ -702,6 +858,9 @@ bl get_digest -tab bank_ledger_bt -selector "account_number=999" -bytes_file dem
 </copy>
 ```
 ![](./images/lab4-task8-2.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully. ```
 
 </details>
 </br>
@@ -791,14 +950,21 @@ Lets first create another digest files using `get_digest` command:
 bl get_digest -tab bank_ledger_bt -bytes_file demouser_bytes3.txt -digest_file demouser_digest3.txt -algorithm "SHA2_384"
 </copy>
 ```
+> **Expected Output:**  
+> ```
+> Command executed successfully. ```
 
 To verify the `bank_ledger_bt` table using starting and ending digests:
 ```
 <copy>
-bl verify_table -end_bytes_file demouser_bytes3.txt -begin_bytes_file demouser_bytes2.txt
+bl verify_table -end_bytes_file demouser_bytes3.txt -begin_bytes_file demouser_bytes1.txt
 </copy>
 ```
 ![](./images/lab4-task8-5.png " ")
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Verified 10 rows. ```
 
 </details>
 

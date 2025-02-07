@@ -1,8 +1,6 @@
-# Blockchain Table Prerequisites : Introduction to Blockchain Table Wallet and Certificates.
+# Blockchain Table Prerequisites : Introduction to Certificates.
 
-Setting up Blockchain Tables in Oracle Database requires configuring certain prerequisites to enable their advanced cryptographic features. A key component of this setup is the creation of a wallet, which securely stores the cryptographic keys and certificates required for signing and verifying data within Blockchain Tables. This wallet ensures that every operation involving cryptographic integrity—such as row signing or digest verification—remains secure and traceable.
-
-By completing these prerequisites, you establish a foundation for Blockchain Table functionality, allowing the database to manage tamper-proof data and support cryptographic operations seamlessly. The setup process is a critical step in preparing your database to support robust, immutable storage with advanced verification capabilities. One critical prerequisite is enabling wallet functionality through the WALLET_ROOT initialization parameter, which specifies the root directory for storing and managing Oracle wallets.
+By completing these prerequisites, you establish a foundation for Blockchain Table functionality, allowing the database to manage tamper-resistant data and support cryptographic operations seamlessly. The setup process is a critical step in preparing your database to support robust, immutable storage with advanced verification capabilities.
 
 Estimated Time: XX minutes
 
@@ -13,15 +11,6 @@ Watch the video below for a quick walk through of the lab.
 ### Objectives
 
 In this lab, you will:
-
-- **Verify or Configure Initialization Parameters for Blockchain Tables** <br />
-  Ensure that the required parameters are properly set for working with Blockchain Tables.
-
-- **Create a Wallet at a Specified Location** <br />
-  Learn how to generate a wallet for secure operations and manage its location.
-
-- **Understand Wallet Locations** <br />
-  Distinguish between the primary wallet at the `WALLET_ROOT` location and a secondary wallet in an alternate location.
 
 - **Execute Test Scripts to Manage Wallets** <br />
   Run scripts to create wallets and add certificates as required for Blockchain Table operations.
@@ -37,93 +26,9 @@ In this lab, you will:
 * LiveLabs Cloud Account
 * Have successfully completed the previous labs
 
-## Task 1: Oracle Initialization Parameters and WALLET_ROOT
+## Task 1: Managing Certificates for Blockchain Tables
 
-Oracle Database uses initialization parameters to configure and manage database behavior. For Blockchain Tables, the WALLET_ROOT parameter plays a pivotal role by defining the directory where Oracle wallets are stored. These wallets act as secure storage for certificates, keys, and other cryptographic material required for Blockchain operations.
-
-### Key Details About `WALLET_ROOT`
-
-- **Definition:** Specifies the root directory for the wallet infrastructure used by the database instance.
-- **Importance for Blockchain Tables:** Ensures the database can store and manage the cryptographic keys and certificates required for Blockchain operations.
-
-1. You will need admin access to check/modify the initilization parameters, please connect to ADMIN user using the command and password set in Lab1-Task 2 -Step 3. in this case password is **Welcome_123#**.
-	- To connect from SQLcl
-	```
-	<copy>
-	connect admin/<ADMIN_PASSWORD>
-	</copy>
-	```
-	![](./images/lab3-task1-1.png " ")
-
-2. Check If WALLET_ROOT Is Already Configured.
-	
-    Before proceeding to configure the WALLET_ROOT parameter, you can check if it has already been set. Use the following SQL command to verify its value:
-
-	```
-	<copy>
-	SELECT value FROM v$parameter WHERE name = 'wallet_root';
-	</copy>
-	```
-	or 
-	```
-	<copy>
-	SHOW PARAMETER wallet_root
-	</copy>
-	```
-	- If the query returns a **valid directory path**, the wallet functionality is already configured, and you can skip the parameter setup step.
-	![](./images/lab3-task1-2.png " ")
-
-    - If the query returns **NULL** or an empty value, proceed with the steps below to configure `WALLET_ROOT`.
-	![](./images/lab3-task1-3.png " ")
-
-3. **Configuring `WALLET_ROOT`:**
-
-	1. Create the wallet directory at a desired path accessible to the database.
-    2. Set the parameter dynamically using the following command:
-     ```
-	 <copy>
-     ALTER SYSTEM SET WALLET_ROOT = '/work/<pdb>/bctable' SCOPE = BOTH;
-	 </copy>
-     ```
-
-By ensuring the WALLET_ROOT parameter is properly configured, you establish a secure cryptographic environment for Blockchain Table functionality. This is the first step in enabling tamper-proof data storage and advanced verification capabilities. If the parameter is already set, you can proceed directly to wallet initialization and certificate management.
-
-## Task 2: Understanding about Oracle Wallets and Blockchain Table wallet.
-
-Oracle Wallets play a critical role in managing the cryptographic credentials required for Blockchain Tables. They securely store the **PKI private key** and **certificate** of the Blockchain Table owner, which are essential for cryptographic operations such as signing and verifying rows. Proper wallet configuration ensures secure and seamless Blockchain Table functionality.
-
-#### Key Requirements for Blockchain Table Wallets:
-
-- **Storing the Wallet**:
-	- The wallet containing the private key and certificate must be stored in a specific directory based on the database configuration:
-		- **Non-CDB Environment:** The wallet must be located in the `WALLET_ROOT/bctable/` directory.
-		- **PDB Environment:** The wallet must be stored in the `WALLET_ROOT/pdb_guid/bctable/` directory, where `pdb_guid` is the unique identifier (GUID) of the PDB that contains the Blockchain Table.
-- **Directory Structure:**
-	- The `WALLET_ROOT` parameter specifies the root directory for wallet storage.
-	- For multi-tenant databases, `WALLET_ROOT` defines a hierarchical structure with subdirectories for each PDB, ensuring logical separation and secure storage of wallets associated with different PDBs.
-
-#### Example Directory Structure:
-
-Assuming `WALLET_ROOT` is set to `/work/pdb/`:
-- For a Non-CDB instance:
-	```
-		/work/pdb/bctable/
-	```
-- For a PDB with GUID `1234567890ABCDEF`:
-	```
-		/work/pdb/1234567890ABCDEF/bctable/
-	```
-
-#### Importance of Wallet Configuration:
-- Ensures that private keys and certificates are securely managed and readily available for Blockchain Table operations.
-- Maintains strict isolation between wallets of different PDBs in multi-tenant environments, enhancing security.
-- Provides a centralized and structured approach to cryptographic key and certificate management.
-
-
-
-## Task 3: Managing Certificates for Blockchain Tables
-
-To enable cryptographic signing and verification in Blockchain Tables, managing certificates is a crucial step. Certificates are used to digitally sign rows and validate the authenticity of data, ensuring tamper-proof and traceable records. The **`DBMS_USER_CERTS`** package provides APIs for adding and deleting certificates, offering database users flexibility in managing the cryptographic credentials required for Blockchain Tables.
+To enable cryptographic signing and verification in Blockchain Tables, managing certificates is a crucial step. Certificates are used to digitally sign rows and validate the authenticity of data, ensuring tamper-resistant and traceable records. The **`DBMS_USER_CERTS`** package provides APIs for adding and deleting certificates, offering database users flexibility in managing the cryptographic credentials required for Blockchain Tables.
 
 ---
 
@@ -134,14 +39,14 @@ To enable cryptographic signing and verification in Blockchain Tables, managing 
 Adding certificates to the database is essential as they form the foundation for enabling signature-based row verification in Blockchain Tables. Certificates represent the identity of the user or system performing the signing, and their cryptographic details are used to generate and validate digital signatures. Here’s why adding certificates is necessary:
 
 - **Digital Signatures for Blockchain Rows**:
-  - Each row in a Blockchain Table can be digitally signed to ensure its integrity and authenticity.
-  - The certificate associated with the signature must be present in the database to verify the validity of the signature.
+	- Each row in a Blockchain Table can be digitally signed to ensure its integrity and authenticity.
+	- The certificate associated with the signature must be present in the database to verify the validity of the signature.
   
 - **Certificate Retention for Historical Data**:
-  - Even if a certificate expires, it must remain in the database until all rows signed with it are deleted. This ensures that historical rows can still be verified.
+  	- Even if a certificate expires, it must remain in the database until all rows signed with it are deleted. This ensures that historical rows can still be verified.
 
 - **Multi-User Scenarios**:
-  - Certificates allow different users or systems to sign and verify rows independently. Each certificate is uniquely identified with a **Global Unique Identifier (GUID)**, enabling clear ownership and usage tracking.
+  	- Certificates allow different users or systems to sign and verify rows independently. Each certificate is uniquely identified with a **Global Unique Identifier (GUID)**, enabling clear ownership and usage tracking.
 
 In this task, we will use **SQLcl commands** to add, drop, and list certificates required for Blockchain Tables. These commands are extensions of the `DBMS_USER_CERTS` PL/SQL package, which provides APIs to manage certificates for cryptographic operations. Certificates are essential for enabling digital signatures and verifying the integrity of data in Blockchain Tables.
 
@@ -265,6 +170,20 @@ Adding certificate using certificate file and storing the guid in a bind variabl
 	```
 
 ![](./images/lab3-task3-4.png)
+> **Expected Output:**  
+> ```
+> SQL> variable guid VARCHAR2;  
+> SQL>   
+> SQL> certificate add -cert_file demouser_cert.crt -cert_guid ::guid  
+> Command executed successfully.  
+> CERTIFICATE_GUID : <RANDOM_GUID>  
+> SQL>   
+> SQL> print guid  
+>   
+> GUID  
+> --------------------------------------------------------------------------------  
+> <RANDOM_GUID>```
+
 
 ---
 
@@ -288,6 +207,12 @@ List Certificates
 	```
 
 ![](./images/lab3-task3-5.png)
+> **Expected Output:**  
+> ```
+> CERTIFICATE_ID                          USER_NAME       DISTINGUISHED_NAME      CERTIFICATE  
+> ----------------------------------------------------------------------------------------------  
+> <RANDOM_GUID>                           DEMOUSER        CN=demouser           2D2D2D2D2D424547494E2043455254494649434154452D2D2D2D2D0A4D4949456E7A4343416F6343435144552B5653516755482F3444414E42676B71686B69473977304241513046414441514D513477  ```
+
 
 ---
 
@@ -312,8 +237,12 @@ Dropping certificate using bind variable used in previous step
 	certificate drop -cert_guid ::guid
 	</copy>
 	```
-	
+
 ![](./images/lab3-task3-6.png)
+> **Expected Output:**  
+> ```
+> Command executed successfully.  
+> Certificate 2D897A3B6BFD4EB9E063F45E000A80E9 dropped successfully.```
 
 Managing certificates is a vital step in enabling secure cryptographic operations in Blockchain Tables. By using SQLcl commands such as `certificate add`, `certificate drop`, and `certificate list`, users can efficiently perform these tasks with minimal complexity. These commands extend the functionality of the `DBMS_USER_CERTS` PL/SQL package, making certificate management accessible and user-friendly for all database users.
 
