@@ -16,18 +16,13 @@
   {
     "title": "Access Your Enviroment",
     "description": "Access your Oracle Cloud infrastructure (OCI) environment and navigate to your Autonomous Database",
-    "filename": "../../access-environment/access-environment.md"
+    "filename": "../../access-environment/access-environment-sandbox.md"
   },
   {
     "title": "Lab 1: Data Redaction",
     "description": "In this lab you can see how to leverage Oracle Data Redaction on Autonomous DB",
     "publisheddate": "09/01/2024",
     "filename": "../../data-redaction/data-redaction.md"
-  },
-  {
-    "title": "Terminate Oracle Autonomous Database",
-    "description": "Terminate an available or stopped Oracle Autonomous Database instance",
-    "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
   },
   {
     "title": "Need Help?",
