@@ -16,7 +16,7 @@
   {
     "title": "Access Your Enviroment",
     "description": "Access your Oracle Cloud infrastructure (OCI) environment and navigate to your Autonomous Database",
-    "filename": "../../access-environment/access-environment-sandbox.md"
+    "filename": "../../data-redaction/access-environment/access-environment-sandbox.md"
   },
   {
     "title": "Lab: Data Redaction",
