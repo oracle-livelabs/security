@@ -25,7 +25,7 @@ This lab assumes you have:
     - [`dbseclabs-avdf.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_avdf.zip)
 </if>
 <if type="data-masking-subsetting">
-    - [`dbseclabs-init-vm-dms.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_[…]rity-library/dbseclabs-v90_init-vm-dms.zip)
+    - [`dbseclabs-init-vm-dms.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v90_init-vm-dms.zip)
 </if>
 <if type="data-safe">
     - [`dbseclabs-init-vm-dsop.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-dsop.zip)
@@ -181,4 +181,4 @@ You may now **proceed to the next lab**.
 
 * **Author** - Hakim Loumi, Database Security PM
 * **Contributors** - Rene Fontcha, Master Principal Solutions Architect, NA Technology
-* **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2024
+* **Last Updated By/Date** - Kajal Singh, Database Security PM - January 2025
