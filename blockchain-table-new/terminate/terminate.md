@@ -5,7 +5,6 @@
 You can permanently delete (terminate) instances that you no longer need. Terminating an Oracle Autonomous Database permanently deletes the database data. However, automatic backups are not deleted if you have chosen Recovery Appliance or NFS as a backup destination. You can delete automatic backups directly from the Recovery Appliance or NFS.
 
 This lab walks you through the steps to terminate an available or stopped Oracle Autonomous Database instance. For the purpose of this lab, an Always Free demo Oracle Autonomous Transaction Processing database instance named DEMOATP is provisioned in a compartment.
->**Note:** While this lab terminates an Oracle Autonomous Transaction Processing database, the steps are the same for terminating an Oracle Autonomous Data Warehouse database.
 
 Estimated Time: 5 minutes
 
@@ -27,7 +26,7 @@ Watch the video below for a quick walk-through of the lab.
 
     ![Select region on the far upper-right corner of the page.](./images/lab5-task1-1.png " ")
 
-2. Click the navigation menu, select **Oracle Database** and choose **Autonomous Transaction Processing** (ATP). While this lab terminates an Oracle Autonomous Transaction Processing database, the steps are the same for terminating an Oracle Autonomous Data Warehouse database.
+2. Click the navigation menu, select **Oracle Database** and choose **Autonomous Transaction Processing** (ATP).
 
     >**Note:** You can also directly access your Oracle Autonomous Transaction Processing service in the **Quick Actions** section of the dashboard.
 

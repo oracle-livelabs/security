@@ -1,5 +1,7 @@
 # Blockchain Tables
 
+## **Introduction**
+
 **Blockchain Tables** in Oracle Database extend the concept of immutability with cryptographic security, enabling organizations to ensure both data integrity and authenticity. They are designed to meet the increasing demand for secure, tamper-resistant, and auditable data storage solutions. Building on the foundation of Immutable Tables, Blockchain Tables introduce advanced features such as **row-level signing**, **digest verification**, and **distributed trust mechanisms**, making them ideal for scenarios where transparency, auditability, and verifiable data authenticity are essential.
 
 At their core, Blockchain Tables are **insert-only tables** that organize rows into cryptographically secure chains. Each inserted row is linked to the previous row using a cryptographic hash, creating an immutable chain of data that ensures any attempt to tamper with or delete rows can be detected. Unlike traditional database tables, Blockchain Tables prohibit updates to rows and restrict deletions based on configurable retention policies, making them a powerful tool for applications requiring a tamper-resistant ledger.
@@ -190,7 +192,7 @@ In this lab, you will:
 
 	```
 	<copy>
-	select * from user_blockchain_tables;
+	select * from user_blockchain_tables WHERE table_name = 'BANK_LEDGER_BT';
 	</copy>
 	```
 
@@ -201,7 +203,8 @@ In this lab, you will:
 	```
 	<copy>
 	SELECT table_name, internal_column_id "Col ID", SUBSTR(column_name,1,30) "Column Name", SUBSTR(data_type,1,30) "Data Type", data_length "Data Length"
-	FROM user_tab_cols WHERE TABLE_NAME = 'BANK_LEDGER_BT'
+	FROM user_tab_cols 
+	WHERE TABLE_NAME = 'BANK_LEDGER_BT'
 	ORDER BY internal_column_id;
 	</copy>
 	```
@@ -228,7 +231,7 @@ In this lab, you will:
 
 ---
 
-When you try to manage the rows using update, delete, truncate you get the error `operation not allowed on the blockchain table` if the rows are within the retention period.
+When you try to manage the rows using update, delete, truncate you get the error `operation not allowed on the blockchain table`.
 
 1. Update a record in the `bank_ledger_bt` blockchain table by setting deposit\_amount=0.
 
@@ -403,7 +406,7 @@ The **`ALTER TABLE`** command allows modifications to the `NO DROP` and `NO DELE
 A Blockchain Table can only be dropped if:
 - **No rows exist** in the table.
 - The table complies with the `NO DROP` clause.
-		The table `bank_ledger_bt_2` gets deleted as it does not contain any row.
+		The table `bank_ledger_bt_2` is dropped as it does not contain any rows.
 		```
 		<copy>
 		DROP TABLE bank_ledger_bt_2;
@@ -472,45 +475,66 @@ V2 Blockchain Table comes with advance feature like ROW VERSION and USER_CHAIN
 
 ### 5. **Advanced Features for V2 Blockchain Tables**
 
-#### **User Chains**
-V2 Blockchain Tables support user-defined chains for logically partitioning data. Chains are defined using up to three columns, creating a separate chain for each unique combination of column values.
-
-##### Example:
-```
-CREATE BLOCKCHAIN TABLE blockchain_table_user_chain (
-   id NUMBER,
-   fruit VARCHAR2(20),
-   quantity NUMBER,
-   created_date DATE
-)
-NO DROP UNTIL 0 DAYS IDLE
-NO DELETE UNTIL 16 DAYS AFTER INSERT
-HASHING USING "SHA2_512"
-WITH USER CHAIN fruit_chain (fruit)
-VERSION "v2";
-```
-
-- We can later use the user specific chains (e.g. fruit_chain) to perform verify operations on a particular set of columns (maximum 3).
-
 #### **Row Versions**
+Blockchain tables do not permit updates to existing rows. Instead, multiple versions of a row can be inserted, representing different stages of the same record. Row versions ensure accurate sequencing of related row inserts for a specified set of columns. Oracle automatically creates a view named **`<Table_Name>_LAST$`** to display only the latest row version for each unique set of values.
 
-Blockchain Tables do not allow updates to rows. Instead, changes are tracked by inserting new rows, and **row versions** help maintain the sequence of these changes. The **`WITH ROW VERSION AND USER CHAIN`** clause is used to create versioned rows and logically partition data based on specified columns.
+To create a blockchain table with row versions, use the **`WITH ROW VERSION`** clause.
 
-#### Example: Create a Blockchain Table with Row Versioning
+##### Example: Create a Blockchain Table with Row Versions
 ```
-CREATE BLOCKCHAIN TABLE blockchain_table_row_version (
-   id NUMBER,
-   fruit VARCHAR2(20),
-   quantity NUMBER,
-   created_date DATE,
-   CONSTRAINT bct_rv_pk PRIMARY KEY (id)
+CREATE BLOCKCHAIN TABLE bank_ledger_version (
+   bank VARCHAR2(128),
+   account_no NUMBER,
+   deposit_date DATE,
+   deposit_amount NUMBER
 )
-NO DROP UNTIL 0 DAYS IDLE
-NO DELETE UNTIL 16 DAYS AFTER INSERT
-HASHING USING "SHA2_512"
-WITH ROW VERSION AND USER CHAIN fruit_chain (fruit)
-VERSION "v2";
+  NO DROP UNTIL 31 DAYS IDLE
+  NO DELETE LOCKED
+  HASHING USING "SHA2_512"
+  WITH ROW VERSION bank_version (bank, account_no)
+  VERSION "v2";
 ```
+
+**Restrictions for Row Versions:**
+- At most **three columns** can be specified.
+- Supported column types: **NUMBER, CHAR, VARCHAR2, RAW**.
+- The primary key columns must not be identical to the set of row version columns.
+- The <row_version_name> must be supplied when creating the table.
+- Row versions cannot be used with version 1 blockchain tables.
+
+---
+
+#### **User Chains**
+In addition to row versions, V2 blockchain tables support **user-defined chains**, which group rows with the same values in up to three specified columns. These chains help logically partition data and are verified separately from system chains.
+To create user chains in blockchain tables, use the following syntax:
+
+- **`WITH USER CHAIN <chain_name> (col1 [, col2 [, col3]])`**: Creates a user-defined chain based on the specified columns.
+
+- **`WITH ROW VERSION AND USER CHAIN <chain_name> (col1 [, col2 [, col3]])`**: Combines row versioning with user chains, ensuring row sequencing within the user chain.
+
+The cryptographic hash for a user chain is stored in the hidden column **`ORABCTAB_USER_CHAIN_HASH$`**, and rows are ordered by **`ORABCTAB_ROW_VERSION$`**.
+
+##### Example: Create a Blockchain Table with User Chains
+```
+CREATE BLOCKCHAIN TABLE bank_ledger (
+   bank VARCHAR2(128),
+   account_no NUMBER,
+   deposit_date DATE,
+   deposit_amount NUMBER
+)
+  NO DROP UNTIL 31 DAYS IDLE
+  NO DELETE LOCKED
+  HASHING USING "SHA2_512"
+  WITH ROW_VERSION AND USER CHAIN bank_accounts (bank, account_no)
+  VERSION "v2";
+```
+
+**Restrictions for User Chains:**
+- At most **three columns** can be specified.
+- Supported column types: **NUMBER, CHAR, VARCHAR2, RAW**.
+- The user chain columns must not be identical to the primary key columns.
+- User chains are not supported in version 1 blockchain tables.
+
 
 ## Task 6: Verifying Rows in Blockchain Tables
 
@@ -624,7 +648,7 @@ blockchain_table sign_row {OPTIONS}
 <summary>**Options:**</summary>
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Blockchain Table containing the row to be signed.
 - **`-instance_id|-inst <instance_id>` (Optional):** Restricts the operation to rows inserted on the specified database instance.
-- **`-chain_id|-ch <chain_id>` (Optional):** Specifies the chain to which the row belongs. By default, there are 32 chains, numbered from 0 to 31.
+- **`-chain_id|-ch <chain_id>` (Optional):** Specifies the chain to which the row belongs. By default, there are 32 chains per database instance, numbered from 0 to 31.
 - **`-sequence_id|-seq <sequence_id>` (Optional):** Specifies the position of the row within the chain.
 - **`-row_hash <row_hash>` (Optional):** Specifies the expected value of the row's hash before signing. Default is `NULL`.
 - **`-keycol1_name|-kc1name <key_column>` (Optional):** Specifies the name of the first key column for identifying the row.
@@ -673,8 +697,8 @@ certificate add -cert_file demouser_cert.crt -cert_guid ::guid
 > CERTIFICATE_GUID : <RANDOM_GUID> ```
 
 
-#### Example: Sign a Row Using Key Column Parameters and privatekey file stored in a wallet 
-To sign a specific row in the `bank_ledger_bt` table using key columns. The command access the wallet to retrieve privatekey and generate signature. If the wallet_password is not provided, it will be prompted to enter the password:
+#### Example: Sign a Row Using Key Column Parameters and private key stored in a wallet 
+To sign a specific row in the `bank_ledger_bt` table using key columns. The command accesses the wallet to retrieve the private key and generate a signature. If the wallet_password is not provided, you will be prompted to enter the password:
 ```
 <copy>
 
@@ -691,8 +715,8 @@ commit;
 > Successfully signed row identified by key columns account_number = '994' in table '"DEMOUSER".bank_ledger_bt'. ```
 
 
-#### Example: Sign a Row Using Key Column Parameters and privatekey file
-To sign a specific row in the `bank_ledger_bt` table using key columns. The code internally uses openssl installed on user's local system (here cloudshell) to generate signature:
+#### Example: Sign a Row Using Key Column Parameters and a private key stored in a file
+To sign a specific row in the `bank_ledger_bt` table using key columns. The code internally uses OpenSSL installed on user's local system (here cloudshell) to generate signature:
 ```
 <copy>
 
@@ -709,8 +733,8 @@ commit;
 > Successfully signed row identified by key columns account_number = '993' in table '"DEMOUSER".bank_ledger_bt'. ```
 
 
-#### Example: Sign a Row Using Positional Parameters and privatekey file
-To sign a specific row in the `bank_ledger_bt` table using positional parameters i.e. instance id, chain id and sequence id. The code internally uses openssl installed on user's local system (here cloudshell) to generate signature:
+#### Example: Sign a Row Using Positional Parameters and a private key stored in a file
+To sign a specific row in the `bank_ledger_bt` table using positional parameters i.e. instance id, chain id and sequence id. The code internally uses OpenSSL installed on user's local system (here cloudshell) to generate signature:
 ```
 <copy>
 
@@ -719,7 +743,7 @@ begin
 end;
 /
 
-bl sign_row -tab bank_ledger_bt -inst ":inst_id" -ch ":chain_id" -seq ":seq_id"  -prvtkey demouser_privatekey.pem -cert_guid ":guid" -algo "RSA_SHA2_512" -type "USER"
+bl sign_row -tab bank_ledger_bt -inst ":inst_id" -ch ":chain_id" -seq ":seq_id"  -prvtkey demouser_privatekey.pem -cert_guid ":guid" -row_hash ":row_hash" -algo "RSA_SHA2_512" -type "USER"
 
 commit;
 </copy>
@@ -732,7 +756,7 @@ commit;
 > Successfully signed row at instance id '<INST_ID>', chain id '<CHAIN_ID>' and sequence id '<SEQUENCE_ID>' in table '"DEMOUSER".bank_ledger_bt'. ```
 
 
-#### Example: Sign a Row Using Positional Parameters and openssl
+#### Example: Sign a Row Using Positional Parameters and OpenSSL
 To sign a specific row in the `bank_ledger_bt` table using positional parameters i.e. instance id, chain id and sequence id:
 ```
 <copy>
@@ -756,7 +780,7 @@ commit;
 > **Expected Output:**  
 > ```
 > Command executed successfully.  
-> Successfully signed row at instance id '2', chain id '20' and sequence id '1' in table '"DEMOUSER".bank_ledger_bt'. ```
+> Successfully signed row at instance id '<INST_ID>', chain id '<CHAIN_ID>' and sequence id '<SEQUENCE_ID>' in table '"DEMOUSER".bank_ledger_bt'. ```
 
 
 Using the `sign_row` command ensures the authenticity of Blockchain Table data by attaching cryptographic signatures to rows, identified either by chain/sequence or key columns. The inclusion of **`type`** and **`pdb_guid`** options adds flexibility for advanced use cases in multi-tenant environments and delegated signing.
@@ -868,7 +892,7 @@ bl get_digest -tab bank_ledger_bt -selector "account_number=999" -bytes_file dem
 <details>
 <summary><mark>Generating a Signed Digest for Blockchain Tables</mark></summary>
 
-The **`blockchain_table get_signed_digest`** command generates and signs a cryptographic hash (digest) for specified rows or the entire Blockchain Table. The signed digest is created using the table owner's private key (stored in Blockchain table wallet), ensuring both integrity and authenticity.
+The **`blockchain_table get_signed_digest`** command generates and signs a cryptographic hash (digest) for specified rows or the entire Blockchain Table. The signed digest is created using the table owner's private key stored in the database wallet, ensuring both integrity and authenticity.
 
 
 #### Usage:
@@ -924,7 +948,7 @@ print cert_guid
 <details open>
 <summary><mark>Verifying an Entire Blockchain Table</mark></summary>
 
-The **`blockchain_table verify_table`** command checks the integrity of all rows in a Blockchain Table between a specified range of digests. This includes verifying signatures, hash chains, and system chains for rows created within the range defined by the provided digest files. This command is equivalent to the **`DBMS_BLOCKCHAIN_TABLE.VERIFY_TABLE`** PL/SQL procedure.
+The **`blockchain_table verify_table`** command checks the integrity of all rows in a Blockchain Table between a specified range of digests. This includes verifying signatures, user chains, and system chains for rows created within the range defined by the provided digest files. This command is equivalent to the **`DBMS_BLOCKCHAIN_TABLE.VERIFY_TABLE_BLOCKCHAIN`** PL/SQL procedure.
 
 
 #### Usage:
@@ -1001,7 +1025,7 @@ blockchain_table add_interval_partitioning {OPTIONS}
 <details>
 <summary><mark>Deleting Expired Rows in Blockchain Tables</mark></summary>
 
-The **`blockchain_table delete_expired_rows`** command deletes expired rows from a Blockchain Table. Expired rows are those that have surpassed the retention period defined during table creation. This command does not perform an automatic commit, allowing users to review the changes before finalizing them.
+The **`blockchain_table delete_expired_rows`** command deletes expired rows from a Blockchain Table. Expired rows are those that have surpassed the retention period defined during table creation.
 
 #### Usage:
 ```
@@ -1013,7 +1037,7 @@ blockchain_table delete_expired_rows {OPTIONS}
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Blockchain Table from which expired rows will be deleted. Use double quotes for case-sensitive table names.
 - **`-before_timestamp|-before <before_timestamp>` (Optional):** Deletes rows with timestamps less than the specified value, formatted as per `NLS_SESSION_PARAMETERS`. Behavior:
 	- If NULL: Deletes all expired rows in the table.
-	- If older than the calculated timestamp: Deletes rows with timestamps less than the specified value.
+	- If older than the calculated timestamp: Deletes expired rows with timestamps less than the specified value.
 	- If younger than the calculated timestamp: Deletes rows based on the retention policy.
 	- Default: `NULL`.
 - **`-rowcount <rowcount>` (Optional):** Specifies the number of rows deleted.
@@ -1036,7 +1060,7 @@ blockchain_table get_bytes_for_row_hash {OPTIONS}
 <summary>**Options:**</summary>
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Blockchain Table. Use double quotes for case-sensitive table names.
 - **`-instance_id|-inst <instance_id>` (Optional):** Restricts the operation to rows inserted on the specified instance.
-- **`-chain_id|-ch <chain_id>` (Optional):** Specifies the chain to which the row belongs. By default, Blockchain Tables have 32 chains numbered from 0 to 31.
+- **`-chain_id|-ch <chain_id>` (Optional):** Specifies the chain to which the row belongs. By default, Blockchain Tables have 32 chains per database instance numbered from 0 to 31.
 - **`-sequence_id|-seq <sequence_id>` (Optional):** Specifies the position of the row within the chain.
 - **`-data_format|-df <data_format>` (Optional, Default: `1`):** Specifies the version of the data layout for the hash. Currently, only `1` is supported.
 - **`-row_data_file <row_data_file>` (Optional):** Specifies the file to save the generated row data bytes.
@@ -1067,7 +1091,7 @@ blockchain_table get_bytes_for_row_signature {OPTIONS}
 <summary>**Options:**</summary>
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Blockchain Table. Use double quotes for case-sensitive table names.
 - **`-instance_id|-inst <instance_id>` (Optional):** Restricts the operation to rows inserted on the specified database instance.
-- **`-chain_id|-ch <chain_id>` (Optional):** Specifies the chain to which the row belongs. By default, Blockchain Tables have 32 chains numbered from 0 to 31.
+- **`-chain_id|-ch <chain_id>` (Optional):** Specifies the chain to which the row belongs. By default, Blockchain Tables have 32 chains per database instance numbered from 0 to 31.
 - **`-sequence_id|-seq <sequence_id>` (Optional):** Specifies the position of the row within the chain.
 - **`-data_format|-df <data_format>` (Optional, Default: `1`):** Specifies the version of the data layout for the hash in the row. Currently, only `1` is supported.
 - **`-row_data_file <row_data_file>` (Optional):** Specifies the file to save the generated row data bytes.

@@ -26,7 +26,7 @@ Watch the video below for a quick walk-through of the lab.
 
     ![](./images/lab1-task1-1.png "In the top left corner, click the 3 lines menu to expand. ")
 
-3. The following steps apply similarly to either Autonomous Data Warehouse (ADW) or Autonomous Transaction Processing (ATP). So please **click the provisioning of Autonomous Database of your choice** (here we choose an Oracle Autonomous Data Warehouse but again you can also choose Oracle Autonomous Transaction Processing if you prefer).
+3. The following steps apply to Autonomous Transaction Processing (ATP). So please **click the provisioning of Autonomous Transaction Processing**.
 
     ![](./images/lab1-task1-2.png "click the provision autonomous transactional database ")
 
@@ -228,7 +228,7 @@ Watch the video below for a quick walk-through of the lab.
 7. In the **Cloud Shell**, run the following command to connect to the Blockchain-Table-Demo ATP instance:
     - Note: `demouser` is the user created in Task 2.
     - Enter your values below. The command will update in real time:
-        - **PATH TO UNZIPPED WALLET:** <input type="text" id="connectionStringInp" placeholder="CONNECTION STRING" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="connectionString()">
+        - **CONNECTION STRING:** <input type="text" id="connectionStringInp" placeholder="CONNECTION STRING" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="connectionString()">
     <pre id="code-container3" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; position: relative; transition: opacity 0.3s;">
                 <code id="connectionString" style="white-space: pre-line;">sql demouser@'<CONNECTION_STRING>'</code>
                 <button id="copy-btn" 

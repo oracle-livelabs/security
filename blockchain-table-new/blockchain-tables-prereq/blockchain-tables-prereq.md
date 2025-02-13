@@ -1,4 +1,6 @@
-# Blockchain Table Prerequisites : Introduction to Certificates.
+# Blockchain Table Prerequisites : Certificates.
+
+## **Introduction**
 
 By completing these prerequisites, you establish a foundation for Blockchain Table functionality, allowing the database to manage tamper-resistant data and support cryptographic operations seamlessly. The setup process is a critical step in preparing your database to support robust, immutable storage with advanced verification capabilities.
 
@@ -75,7 +77,7 @@ We will create a wallet containing certificates and private key pairs in the Clo
 	-- 4. Generate a private key for demouser
 	!openssl genrsa -out demouser_privatekey.pem 4096
 
-	-- 5. Create a CSR and a self-signed certificate using the private key
+	-- 5. Create a certificate signing request (CSR) and a self-signed certificate using the private key
 	!openssl req -new -key demouser_privatekey.pem -out demouser_csr.pem -subj "/CN=demouser"
 	!openssl x509 -req -in demouser_csr.pem -CA ca_cert.pem -CAkey ca_privatekey.pem -CAcreateserial -out demouser_cert.crt -days 3650 -sha512
 
@@ -211,7 +213,7 @@ List Certificates
 > ```
 > CERTIFICATE_ID                          USER_NAME       DISTINGUISHED_NAME      CERTIFICATE  
 > ----------------------------------------------------------------------------------------------  
-> <RANDOM_GUID>                           DEMOUSER        CN=demouser           2D2D2D2D2D424547494E2043455254494649434154452D2D2D2D2D0A4D4949456E7A4343416F6343435144552B5653516755482F3444414E42676B71686B69473977304241513046414441514D513477  ```
+> <RANDOM_GUID>                           DEMOUSER        CN=demouser             <RANDOM_BYTES>  ```
 
 
 ---

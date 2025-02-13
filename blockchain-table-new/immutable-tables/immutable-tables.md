@@ -1,11 +1,13 @@
-# Introduction to Immutable Tables
+# Immutable Tables
 
-**Immutable Tables** in Oracle Database are designed as read-only tables that safeguard data against unauthorized or accidental modifications. They provide a foundational level of data protection, ensuring that information remains intact and unaltered once written to the table. This capability is particularly useful for scenarios requiring high data integrity, such as maintaining audit logs, transaction histories, or sensitive compliance-related records.
+## **Introduction**
 
-To enforce immutability, Immutable Tables require the specification of **retention periods** at two levels: the table and the individual rows. Rows within the table can only be deleted after their retention period has elapsed, and the table itself can only be dropped if it contains no rows or once the table-level retention period has expired. These strict controls eliminate the possibility of tampering or accidental data loss during the defined retention period, making Immutable Tables a reliable choice for preserving historical data.
+**Immutable Tables** in Oracle Database are designed as append-only tables that safeguard data against unauthorized or accidental modifications. They provide a foundational level of data protection, ensuring that information remains intact and unaltered once written to the table. This capability is particularly useful for scenarios requiring high data integrity, such as maintaining audit logs, transaction histories, or sensitive compliance-related records.
+
+To enforce immutability, Immutable Tables require the specification of **retention periods** at two levels: the table and the individual rows. Rows within the table can only be deleted after their retention period has elapsed, and the table itself can only be dropped if it contains no rows or once the table-level retention period has passed with no rows being inserted during that period. These strict controls eliminate the possibility of tampering or accidental data loss during the defined retention period, making Immutable Tables a reliable choice for preserving historical data.
 
 #### Key Characteristics of Immutable Tables:
-- **Read-Only Design:** Data is write-once , ensuring that once written, it cannot be updated or deleted until retention conditions are met.
+- **Append-Only Design:** Data is write-once , ensuring that once written, it cannot be updated or deleted until retention conditions are met.
 - **Retention Periods:** Administrators specify retention periods for both the table and its rows, controlling when data becomes eligible for deletion.
 
 #### Practical Use Cases:
@@ -28,18 +30,17 @@ Watch the video below for a quick introduction to Immutable Tables and a walkthr
 
 In this lab, you will:
 
-- **Create the Immutable Table**  <br />
+* **Create the Immutable Table**  <br />
   Learn how to define and set up an Immutable Table, including specifying the retention periods for the table and its rows. 
 
-- **Use SQLcl Commands to Perform Operations**  <br />
+* **Use SQLcl Commands to Perform Operations**  <br />
   Explore how SQLcl simplifies interactions with Immutable Tables by using user-friendly commands to manage and query the table.
 
-- **Describe the Details of an Immutable Table**  <br />
+* **Describe the Details of an Immutable Table**  <br />
   Retrieve and analyze metadata about the Immutable Table, including retention settings, table structure, and properties.
 
-- **Attempt Premature Operations**  <br />
+* **Attempt Premature Operations**  <br />
   Test the immutability of the table by attempting to prematurely drop the table or delete rows before the retention period expires, and observe the failure scenarios that protect data integrity.
-
 
 ## Task 1: Create an Immutable Table
 
@@ -131,7 +132,7 @@ In this lab, you will:
 
     ```
     <copy>
-    select * from user_immutable_tables;
+    select * from user_immutable_tables where table_name = 'BANK_LEDGER';
     </copy>
     ```
 
@@ -143,6 +144,7 @@ In this lab, you will:
     <copy>
     SELECT table_name, internal_column_id "Col ID", SUBSTR(column_name,1,30) "Column Name", SUBSTR(data_type,1,30) "Data Type", data_length "Data Length"
     FROM user_tab_cols
+    WHERE table_name = 'BANK_LEDGER'
     ORDER BY internal_column_id;
     </copy>
     ```
@@ -420,6 +422,15 @@ Similar to managing rows within the retention period, managing the immutable tab
     </copy>
     ```
 
+
+    The output shows the following tables and their details:
+
+    - **BANK_LEDGER**: The `CURRENT_EPOCH` is **1**, indicating that the table schema has never been changed since its creation.
+    - **BANK\_LEDGER\_2**: The `CURRENT_EPOCH` is **3**, showing that this table’s schema has been revised **twice**, resulting in a total of three epochs.
+
+    >NOTE:    The `CURRENT_EPOCH` column helps track how many times the schema of an immutable table has been updated. This is essential for understanding the versioning and evolution of table structures.
+
+
     ![](./images/lab2-task5-7.png " ")
 
 ## Task 6: Maintenance of the Immutable Tables.
@@ -439,7 +450,7 @@ immutable_table delete_expired_rows {OPTIONS}
 
 #### Options:
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Immutable Table from which expired rows are to be deleted.
-- **`-before_timestamp|-before <before_timestamp>` (Optional):** Deletes rows with timestamps earlier than the specified value. If not provided, all expired rows are deleted.
+- **`-before_timestamp|-before <before_timestamp>` (Optional):** Deletes expired rows with timestamps earlier than the specified value. If not provided, all expired rows are deleted.
 - **`-rowcount <rowcount>` (Optional):** Outputs the number of rows deleted.
 
 #### Example:
