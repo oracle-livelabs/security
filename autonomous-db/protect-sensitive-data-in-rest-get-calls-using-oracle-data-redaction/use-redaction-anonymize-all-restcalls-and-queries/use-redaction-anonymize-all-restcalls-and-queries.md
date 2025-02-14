@@ -94,7 +94,7 @@ This lab assumes you have:
     end;
     /</copy>   
     ```
-    ![Redaction policy](images/dvords-020,png)
+    ![Redaction policy](images/dvords-020.png)
 
 4. Add an **email column** to the redaction policy and redact it using default **regex patterns** that anonymize it with `X`
 
