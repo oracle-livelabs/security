@@ -120,6 +120,6 @@ This lab assumes you have:
 
 ## Acknowledgements
 
-- **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
+- **Authors** - Alpha Diallo & Ethan Shmargad
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Alexander John, October 2024
+- **Last Updated By/Date** - Ethan Shmargad, February 2025
