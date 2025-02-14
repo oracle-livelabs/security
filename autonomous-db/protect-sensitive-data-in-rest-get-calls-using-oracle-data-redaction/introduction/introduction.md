@@ -8,7 +8,7 @@ The `DMBS_REDACT PL/SQL` package is used to manage redaction policies and config
 
 In this workshop, you will learn how to use Oracle Data Redaction with Oracle Rest Data Services (ORDS) to redact  data in a GET response, ensuring the privacy of sensitive data. The process includes REST enabling the table you want to make available through ORDS, creating redaction policies for specific columns and tables, and specifying the redaction function to be used. You'll be able to contrast the response that contains data in clear vs the one that has sensitive data redacted.
 
-![Lab architecture](images/lab-architecture.png)
+![Lab architecture](images/lab-architecture.png "Lab architecture")
 
 
 Estimated Workshop Time: 42 minutes
