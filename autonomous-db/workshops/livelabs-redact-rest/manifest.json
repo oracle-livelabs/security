@@ -13,10 +13,10 @@
          "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
       },
       {
-         "title": "Lab 1: Configure the Autonomous Database environment",
-         "description": "",
-         "filename": "../../protect-sensitive-data-in-rest-get-calls-using-oracle-data-redaction/configure-the-autonomous-database-environment/configure-the-autonomous-database-environment.md"
-      },
+         "title": "Lab 1: Access Your Enviroment",
+         "description": "Access your Oracle Cloud infrastructure (OCI) environment and navigate to your Autonomous Database",
+         "filename": "../../common/prepare-setup/access-environment-sandbox.md"
+       },
       {
          "title": "Lab 2: Use Redaction to anonymize all REST Get calls and queries",
          "description": "",
