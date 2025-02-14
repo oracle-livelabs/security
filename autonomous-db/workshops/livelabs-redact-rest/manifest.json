@@ -5,7 +5,7 @@
       {
          "title": "Introduction",
          "description": "",
-         "filename": "../../introduction/introduction.md"
+         "filename": "../../protect-sensitive-data-in-rest-get-calls-using-oracle-data-redaction/introduction/introduction.md"
       },
       {
          "title": "Get Started",
@@ -15,7 +15,7 @@
       {
          "title": "Lab 1: Access Your Enviroment",
          "description": "Access your Oracle Cloud infrastructure (OCI) environment and navigate to your Autonomous Database",
-         "filename": "../../common/access-environment-sandbox.md"
+         "filename": "../../common/prepare-setup/access-environment-sandbox.md"
        },
       {
          "title": "Lab 2: Use Redaction to anonymize all REST Get calls and queries",
