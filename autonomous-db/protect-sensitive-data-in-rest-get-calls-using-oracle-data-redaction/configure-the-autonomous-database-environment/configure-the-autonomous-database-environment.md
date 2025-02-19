@@ -45,15 +45,15 @@ This lab assumes you have:
 
     ![Enter admin credentials](images/atp-password.png "Enter admin credentials") 
 
-6. Change network access to **allowed IPs and VCNs only** and change IP notation type to **CIDR Block. Input the CIDR value of 0.0.0.0/0 into the blank field.** Make sure that the option for **requiring mutual TLS (mTLS) authentication remains unchecked**.
+6. For network access, choose **Secure access from everywhere**.
 
-    ![Enter admin credentials](images/secure-access.png "Enter admin credentials") 
+    ![Network access](images/adb-network.png "Choose network access")
 
 7. Select the licensing option of your choosing, then select **Create Autonomous Database** at the bottom.
     
     *Note*: Spinning up the ADB can take a couple of minutes.
 
-    ![Create ADB button at the bottom](images/create-the-atp.png "Create ADB button at the bottom")
+    ![Create ADB button at the bottom](images/create-atp.png "Create ADB button at the bottom")
 
     
 
