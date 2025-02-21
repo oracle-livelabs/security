@@ -77,5 +77,5 @@ In this lab, you will:
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Indira Balasundaram , Sept 2024
+* **Authors** - Indiradarshni Balasundaram
+* **Last Updated By/Date** - Indira Balasundaram , Feb 2025

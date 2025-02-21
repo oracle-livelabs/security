@@ -356,7 +356,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 6. Search for which access bundle you want to assign : Service Desk Admin Access. Your selection will be marked with a green checkmark.
 
-     ![Create Policy](images/select-service-bundle.png)
+     ![Create Policy](images/access-bundle-select.png)
 
     Then, click Next.
 
@@ -477,6 +477,6 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 ## Acknowledgements
 
-* **Authors** - Anuj Tripathi
+* **Authors** - Indiradarshi Balasundaram
 * **Contributors** - Anbu Anbarasu
-* **Last Updated By/Date** - Anuj Tripathi, October 2023
+* **Last Updated By/Date** - Indiradarshni Balasundaram Feb 2025
