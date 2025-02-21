@@ -24,15 +24,19 @@ This lab assumes you have:
 
 ## Task 1: REST enable the table
 
-1. From the Database Actions Launchpad for `EMPLOYEESEARCH_PROD` navigate to **SQL** under the **Development section**.
+1. In your `ADBSecurity` database's details page, click the **Database actions** button then click **SQL**. This will open a SQL worksheet.
+
+    ![](./images/adb-dr_001a.png "Click the Database actions button then click SQL to open a SQL worksheet.")
+
+2. From the Database Actions Launchpad for `EMPLOYEESEARCH_PROD` navigate to **SQL** under the **Development section**.
 
     ![Select SQL from Launchpad](images/dvords-014.png "Select SQL from Launchpad") 
 
-2. **REST enabling the table** is simple. To do this, find the table we just created named `DEMO_HR_EMPLOYEES` in the **navigator** on the left of the **SQL Worksheet**. Right click on the table name and select **REST** in the pop up menu then Enable.
+3. **REST enabling the table** is simple. To do this, find the table we just created named `DEMO_HR_EMPLOYEES` in the **navigator** on the left of the **SQL Worksheet**. Right click on the table name and select **REST** in the pop up menu then Enable.
 
     ![Enable REST](images/dvords-015.png "Enable REST")
 
-3. The **REST Enable Object slider** will appear from the right side of the page. We are going to use the defaults for this page but take note and **copy** the Preview URL to a clipboard of your choice. This is the URL we will use to **access the REST enabled table**. This process will also enable ORDS for the table.
+4. The **REST Enable Object slider** will appear from the right side of the page. We are going to use the defaults for this page but take note and **copy** the Preview URL to a clipboard of your choice. This is the URL we will use to **access the REST enabled table**. This process will also enable ORDS for the table.
 
     ![Preview URL](images/dvords-016.png "Preview URL")
 
@@ -41,7 +45,7 @@ This lab assumes you have:
 
     ![Show Code and Enable](images/dvords-017.png "Show Code and Enable")
 
-3. That's it! Your table is **REST enabled**. Open a new browser window or tab and enter **URL** that was copied in the previous step.
+5. That's it! Your table is **REST enabled**. Open a new browser window or tab and enter **URL** that was copied in the previous step.
 
 
     ![Pre-Redaction REST Call](images/pre-redaction-rest.png "Pre-Redaction REST Call")
