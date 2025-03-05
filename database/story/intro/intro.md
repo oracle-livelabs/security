@@ -57,7 +57,7 @@ Cybercriminals are becoming more and more equipped and better prepared. They now
 
 Understanding the attacker's motivation and how to prevent them from being able to use the stolen data against you helps you better survive the attack and makes it more feasible to NOT pay the ransom.
 
-Ransomware is one of the main threats in the world today according to a recent [ENISA report](https://www.enisa.europa.eu/publications/enisa-threat-landscape-2021) (the number of attacks is increasing every day, and all sectors are affected without exception). Ransomware has evolved from its beginnings to become the preferred attack to steal a company's sensitive data.
+Ransomware is one of the main threats in the world today according to a recent [ENISA report](https://www.enisa.europa.eu/topics/cyber-threats/threat-landscape) (the number of attacks is increasing every day, and all sectors are affected without exception). Ransomware has evolved from its beginnings to become the preferred attack to steal a company's sensitive data.
 
 Early ransomware attacks primarily interrupted and blocked a company's activity. As late as 2019, NIST defined ransomware as "**a type of malicious attack where the attackers encrypt the organization's data and demand payment to restore access**". Encrypting data and withholding the encryption key was a prelude to a demand for payment!
 
@@ -123,4 +123,4 @@ Unfortunately, whether you pay the ransom or not, your sensitive data is now out
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security Senior Principal PM
 - **Contributors** - Russ Lowenthal, Database Security VP
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - December 2024
+- **Last Updated By/Date** - Ethan Shmargad, Database Security PM - March 2025

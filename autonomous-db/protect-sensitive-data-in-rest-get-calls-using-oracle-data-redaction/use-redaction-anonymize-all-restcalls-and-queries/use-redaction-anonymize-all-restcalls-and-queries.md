@@ -41,7 +41,7 @@ This lab assumes you have:
 
     ![Show Code and Enable](images/dvords-017.png "Show Code and Enable")
 
-3. That's it! Your table is **REST enabled**. Open a new browser window or tab and enter **URL** that was copied in the previous step.
+4. That's it! Your table is **REST enabled**. Open a new browser window or tab and enter **URL** that was copied in the previous step.
 
 
     ![Pre-Redaction REST Call](images/pre-redaction-rest.png "Pre-Redaction REST Call")

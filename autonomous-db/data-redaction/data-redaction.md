@@ -56,7 +56,7 @@ This lab assumes you have:
 
 ## Task 1: Create the Sales History data and a user account
 
-1. In your "`ADBSecurity`" database's details page, click the **Database actions** button then click **SQL**. This will open a SQL worksheet.
+1. In your `ADBSecurity` database's details page, click the **Database actions** button then click **SQL**. This will open a SQL worksheet.
 
     ![](./images/adb-dr_001a.png "Click the Database actions button then click SQL to open a SQL worksheet.")
 

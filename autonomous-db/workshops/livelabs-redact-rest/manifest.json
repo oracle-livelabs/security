@@ -15,7 +15,7 @@
       {
          "title": "Lab 1: Access Your Enviroment",
          "description": "Access your Oracle Cloud infrastructure (OCI) environment and navigate to your Autonomous Database",
-         "filename": "../../common/prepare-setup/access-environment-sandbox.md"
+         "filename": "../../common/prepare-setup/access-environment-sandbox-restredact.md"
        },
       {
          "title": "Lab 2: Use Redaction to anonymize all REST Get calls and queries",

@@ -3,10 +3,15 @@
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
-      "title": "Initialize Environment",
+      "title": "Get Started",
+      "description": "Using noVNC Remote Desktop",
+      "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
+    },
+    {
+      "title": "Initialize Environment - Story of a Hack",
       "description": "How to initialize and start all the workshop components",
-      "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env.md"
+      "publisheddate": "04/03/2025",
+      "filename": "../../../common/deepdive24/start-env-tales.md"
     },
     {
       "title": "Introduction - Workshop #1 - Story of a hack",
@@ -19,10 +24,10 @@
       "filename": "../../../story/story-hack/story-hack.md"
     },
     {
-      "title": "Introduction - Workshop #2 - Database Vault ",
-      "description": "In this lab you can see how to leverage Oracle Database Vault (DV)",
-      "publisheddate": "09/01/2020",
-      "filename": "../../../advanced/intro/intro-database-vault.md"
+      "title": "Initialize Environment - Database Vault",
+      "description": "How to initialize and start all the workshop components",
+      "publisheddate": "04/03/2025",
+      "filename": "../../../common/deepdive24/start-env-dbv.md"
     },
     {
       "title": "Lab: Database Vault",
