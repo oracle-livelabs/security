@@ -40,34 +40,34 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
      Click **Next**
 
-  4. Under **Select the roles** you want to request, select the role **Service-desk-admin-role**
+  4. Under **Select the roles** you want to request, select the role **oci-admin-role**
 
-    ![Access Review](images/select-role.png)
+    ![Access Review](images/oci-admin-role-request.png)
 
     Click on **Next**
 
   5. Under We need some additional information for this request -> Provide Justification.
 
-     ![Access Review](images/provide-justification.png)
+     ![Access Review](images/provide-reason.png)
 
   6. Click on **Submit Request**
 
-  ![Access Review](images/submit-request.png)
+  ![Access Review](images/submit-admin-request.png)
 
-  ![Access Review](images/request-created.png)
+  ![Access Review](images/request-admin-created.png)
 
 ## Task 2: Approve Access Requests
 
 
-1. Navigate to MyStuff -> Approvals.You will see requests for the user Mark Hernandez for **Service-desk-admin-role** .
+1. Navigate to MyStuff -> Approvals.You will see requests for the user Mark Hernandez for **oci-admin-role** .
 
    ![Access Review](images/navigate-approval.png)
 
 2. Under Actions, click on approve and Approve the request for the user Mark Hernandez. 
 
-   ![Access Review](images/select-approval.png)
+   ![Access Review](images/admin-approval.png)
 
-   ![Access Review](images/confirm-approval.png)
+   ![Access Review](images/confirm-admin-approval.png)
 
 ## Task 3: Run the Data Load
 

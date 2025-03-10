@@ -24,7 +24,7 @@ This lab assumes you have:
 
 A valid Oracle OCI tenancy, with OCI administrator privileges.
 
-## Task 1: Create Identity Collections : IT-Team and Network-Team 
+## Task 1: Create Identity Collections : IT-Team, Network-Team, OCI-Administration
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Identity Collections tile.
 
@@ -94,6 +94,43 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     ![Identity Collection creation](images/network-team-identities.png)
 
     ![Identity Collection creation](images/network-team-create.png)
+    
+9. On the Identity Collections page, your created Identity Collections will be listed here. Click Create identity collection to Create an Identity Collection. Enter the below mentioned details Under Add Details tab:
+
+    Name: OCI-Administration
+
+    Description: OCI-Administration
+
+    Tags: oci-administration
+
+    Click on *Next*
+
+   ![Identity Collection creation](images/click-create-collection.png)
+
+   ![Identity Collection creation](images/oci-administration.png)
+
+7. Under select a primary owner and add any additional owners, select the below mentioned option.
+
+    Who is the primary owner: Pamela Green
+
+    Click on *Next* 
+
+     ![Identity Collection creation](images/primary-owner.png)
+
+8. Under Add identities to your collection by building a membership rule and/or selecting names , select **Included named identities**
+
+    Select users **Pamela Green**
+
+    Click on *Next* and Click on *Create*.
+
+    ![Identity Collection creation](images/user-pamela.png)
+
+    ![Identity Collection creation](images/create-oci-collection.png)
+
+9. The below Identity Collections have been created.
+
+    ![Identity Collection creation](images/identity-list.png)
+
 
 ## Task 2: Create an Approval Workflow : One-level-approval 
 
@@ -138,7 +175,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     ![Approval Workflow](images/publish-workflow.png)
 
 
-## Task 3: Create Access Bundles: Network Admin Access , ServiceDesk Admin Access , Audit Access
+## Task 3: Create Access Bundles: Network Admin Access, Audit Access, ServiceDesk Admin Access, Security Admin Access
  
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Access Bundles tile.
 
@@ -235,9 +272,8 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     * Auditors
 
-    * SecurityAdmins
 
-     ![Create Access Bundle](images/audit-permissions.png)
+     ![Create Access Bundle](images/select-auditor.png)
 
     Click Next.
 
@@ -247,7 +283,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     Click *Next*
 
-    ![Create Access Bundle](images/audit-bundle-owner.png)
+    ![Create Access Bundle](images/audit-owner.png)
 
 5. In the Add Details step, configure the following:
 
@@ -255,13 +291,13 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     • Description: Audit Access
 
-     ![Create Access Bundle](images/audit-access-bundle-name.png)
+     ![Create Access Bundle](images/audit-access.png)
 
     Then, Click Next. 
 
 6. Review your configurations made until this point. It should look like the configurations depicted below, except for the name. Then, click Create.
 
-     ![Create Access Bundle](images/create-audit-bundle.png)
+     ![Create Access Bundle](images/audit-bundle-create.png)
 
 7. Click on Create an access bundle - Service Desk Admin Access
 
@@ -283,20 +319,16 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
      Click Next.
 
-      ![Create Access Bundle](images/service-desk-bundle-settings.png)
+      ![Create Access Bundle](images/service-bundle-create.png)
 
 9. Select the permissions to be included in the access bundle.
 
     Which permissions are included in this bundle? : Select the below to be included in the access bundle from the list.
 
-    * AG Enterprise Wide Access Administrator Role
-
     * AG ServiceDesk Admin
 
-    * AG User
 
-
-     ![Create Access Bundle](images/service-desk-permissions.png)
+     ![Create Access Bundle](images/service-desk-admin-select.png)
 
     Click Next.
 
@@ -306,7 +338,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     Click *Next*
 
-    ![Create Access Bundle](images/service-desk-owner.png)
+    ![Create Access Bundle](images/service-owner-select.png)
 
 11. In the Add Details step, configure the following:
 
@@ -314,15 +346,57 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     • Description: Service Desk Admin Access
 
-     ![Create Access Bundle](images/service-bundle.png)
+     ![Create Access Bundle](images/service-admin-next.png)
 
-    Then, Click Next. 
+    Then, click Next and click Create. 
 
-12. Review your configurations made until this point. It should look like the configurations depicted below, except for the name. Then, click Create.
+    ![Create Access Bundle](images/service-create-admin.png)
 
-    ![Create Access Bundle](images/service-create.png)
+13. Similarly create another Access Bundle - Security Admin.Click on Create an access bundle - Security Admin Access
 
-    ![Create Access Bundle](images/access-bundles.png)
+    ![Create Access Bundle](images/service-create-admin.png)
+
+
+14. For your bundle settings, configure your bundle to match the following:
+
+    • Which system is this bundle for?: OCI-IAM
+
+    • Which domain?: ag-domain
+
+    • Which type of permission?: Group Access
+
+    • Who can request this bundle?: Anyone
+
+    • Which approval workflow should be used?: One-level-approval
+
+    • Tags: security-admin-access-bundle
+
+     Click Next.
+
+    ![Create Access Bundle](images/security-create.png)
+
+
+15. Select the permissions to be included in the access bundle.
+
+    Which permissions are included in this bundle? : Select the below to be included in the access bundle from the list.
+
+    * SecurityAdmins
+
+    ![Create Access Bundle](images/security-permission.png)
+
+    ![Create Access Bundle](images/owner-security.png)
+
+    ![Create Access Bundle](images/security-next.png)
+
+    Click Next and Click Create
+
+     ![Create Access Bundle](images/security-bundle-create.png)
+
+
+16. Review your configurations made until this point. It should look like the configurations depicted below.    
+
+    ![Create Access Bundle](images/bundle-list.png)
+
 
 ## Task 4: Create Policies: Service-Desk-Admin-Policy and Network-Admin-Policy (Group Provisioning)
 
@@ -403,7 +477,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     ![Create Policy](images/create-network-policy.png)
 
-## Task 5: Create a Role: Service-Desk-Admin-Role
+## Task 5: Create a Role: OCI-Admin-Role
 
 1. On the Access Governance console home page, click the Access Controls tab. Then, click Select on the Roles tile.
 
@@ -421,7 +495,14 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     ![Create Policy](images/role-setting.png)
 
-3. Select the access bundle to include in the role: Service Desk Admin Access. Click on *Next*
+3. Select the access bundle to include in the role:
+
+    - Security Admin Access
+    - Network Admin Access
+
+    ![Create Policy](images/select-role-bundle.png)
+
+     Click on *Next*
 
 4. Provide the primary owner and add any additional owners. 
 
@@ -429,41 +510,46 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     Click on *Next*
 
-    ![Create Policy](images/access-bundle-role.png)
+    ![Create Policy](images/select-role-owner.png)
 
-    ![Create Policy](images/role-owner.png)
      
 
 5. Provide the name and description.
 
-    Name: Service-Desk-Admin-Role
+    Name: OCI-Admin-Role
 
-    Description: Service-Desk-Admin-Role
+    Description: OCI-Admin-Role
 
-     ![Create Policy](images/service-role.png)
+     ![Create Policy](images/oci-admin-role-name.png)
 
     Click on *Next*. Review the details and click on *Create role and assign*
 
-     ![Create Policy](images/create-role-assign.png)
+     ![Create Policy](images/create-oci-role.png)
 
 6. Under do you want to assign the role through an existing policy or create a new one? 
 
-    Select *Existing Policy* 
+    Select *Create a new policy* 
 
-    Select the policy to add it to: Service-Desk-Admin-Policy
+    Provide the name and description:
 
-      ![Create Policy](images/role-policy-view.png)
+    Name : OCI-Admin-Role
 
-7. Under do you want to add the role to existing associations or create a new one? 
+    Description: OCI-Admin-Role
 
-    Select *Existing association*
+    Who is the primary owner: Pamela Green
 
-    Select the association to add this role to and green tick will appear. 
+    Select the Identity Collection : OCI-Administration
 
-8. Click on *Add assignment*
+      ![Create Policy](images/create-policy-role.png)
 
-      ![Create Policy](images/role-assignment.png)
 
+7. Click on *Add assignment*
+
+      ![Create Policy](images/select-oci-administration-assignment.png)
+
+8. The role has been created. 
+
+     ![Create Policy](images/role-added.png)
 
 
     You may now **proceed to the next lab.**

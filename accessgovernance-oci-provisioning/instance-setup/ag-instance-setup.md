@@ -75,16 +75,6 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
     * Pamela Green has been assigned with the *AG Administrator* application role and *AG Campaign Administrator*. You can now close the window.
 
-    * Now, Notice the *AG User* Role listed. Click on the Downward arrow on the right corner. 
-
-      ![OIG Identity Roles and Access Policies](images/aguser.png)
-
-
-    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez, Jerry Poland, Harlan Bullard, Jose Walker, John Smith and David Brown* in *Available Users.* Click on *Assign*
-
-
-    * Mark Hernandez, Jerry Poland, Harlan Bullard, Jose Walker, John Smith and David Brown have now been assigned with the *AG User* application role. You can now close the window.
-
 
     You may now **proceed to the next lab.**
 

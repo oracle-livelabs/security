@@ -29,8 +29,7 @@ In this workshop, you will learn how to:
 * Create Access Bundles and Identity Collections for Group and Application Role Provisioning
 * Create Group Provisioning - To Assign multiple OCI IAM groups for an OCI domain from Oracle Access Governance
 * Create Application Role Provisioning - To Assign OCI application roles to OCI identities for services running in an OCI domain
-* Perform Group Access Review Tasks - **Review the identity access reviews for the groups granted through access request by Oracle Access Governance.**
-* Perform Application Role Access Review Tasks - **Review the identity access reviews for the roles granted through access request by Oracle Access Governance**
+
 
 ### Prerequisites
 This lab assumes you have:
