@@ -128,7 +128,7 @@ In this lab, you will:
 
 ---
 
-1. Run the command to view all the immutable tables.
+1. Run the command to view the table details.
 
     ```
     <copy>
