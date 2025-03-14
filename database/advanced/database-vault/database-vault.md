@@ -37,7 +37,7 @@ This lab assumes you have:
 
 ## Task 1: Enable Database Vault
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*.
 
     ```
     <copy>sudo su - oracle</copy>
@@ -45,12 +45,11 @@ This lab assumes you have:
 
     **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
-2. Go to the scripts directory
+2. Go to the following directory:
 
     ```
-    <copy>cd $DBSEC_LABS/database-vault</copy>
+    <copy>cd livelabs/database-vault</copy>
     ```
-
 3. Start by enabling Database Vault in the container database **cdb1**
 
       ```
@@ -66,6 +65,8 @@ This lab assumes you have:
     ```
     <copy>./dv_enable_on_pdb.sh pdb1</copy>
     ```
+
+    **Note**: Remember to add **pdb1** to the end of the command!
 
    You should see a status like this:
 

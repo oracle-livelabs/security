@@ -26,33 +26,35 @@ This lab assumes you have:
 
 1. From the Database Actions Launchpad for `EMPLOYEESEARCH_PROD` navigate to **SQL** under the **Development section**.
 
-    ![Select SQL from Launchpad](images/launchpad-sql.png) 
+    ![Select SQL from Launchpad](images/dvords-014.png "Select SQL from Launchpad") 
 
 2. **REST enabling the table** is simple. To do this, find the table we just created named `DEMO_HR_EMPLOYEES` in the **navigator** on the left of the **SQL Worksheet**. Right click on the table name and select **REST** in the pop up menu then Enable.
 
-    ![Enable REST](images/enable-rest.png)
+    ![Enable REST](images/dvords-015.png "Enable REST")
 
-3. The **REST Enable Object slider** will appear from the right side of the page. We are going to use the defaults for this page but take note and **copy** the Preview URL to a clipboard of your choice. This is the URL we will use to **access the REST enabled table**. This process will also enable ORDS for the table, select the show code option to view the code for this action.
+3. The **REST Enable Object slider** will appear from the right side of the page. We are going to use the defaults for this page but take note and **copy** the Preview URL to a clipboard of your choice. This is the URL we will use to **access the REST enabled table**. This process will also enable ORDS for the table.
 
-    ![Enable ORDS](images/rest-ords.png)
+    ![Preview URL](images/dvords-016.png "Preview URL")
 
-When ready, click the **Enable button** in the lower right of the slider.
-*Warning: Do not enable Require Authentication. This will require that users go through an additional authentication process.*
+    Select the show code option to view the code for this action. When ready, click the **Enable button** in the lower right of the slider.
+    *Warning: Do not enable Require Authentication. This will require that users go through an additional authentication process.*
+
+    ![Show Code and Enable](images/dvords-017.png "Show Code and Enable")
 
 4. That's it! Your table is **REST enabled**. Open a new browser window or tab and enter **URL** that was copied in the previous step.
 
 
-    ![Pre-Redaction REST Call](images/pre-redaction-rest.png)
+    ![Pre-Redaction REST Call](images/pre-redaction-rest.png "Pre-Redaction REST Call")
 
 ## Task 2: Apply the Data Redaction policy to the table
 
-1. Navigate back to the **Database Actions** SQL Development page for `ADMIN`. Grant access for `EMPLOYEESEARCH_PROD` to the `DBMS_REDACT` package by pasting the text below in the worksheet.
+1. Navigate back to the **Database Actions** SQL Development page for `ADMIN`. Clear the worksheet, then grant access for `EMPLOYEESEARCH_PROD` to the `DBMS_REDACT` package by pasting the text below in the worksheet.
 
     ```
-    <copy>grant execute on sys.dbms_redact to EMPLOYEESEARCH_PROD</copy>   
+    <copy>grant execute on sys.dbms_redact to EMPLOYEESEARCH_PROD;</copy>   
     ```
 
-    ![Pre-Redaction REST Call](images/grant-red.png)
+    ![Pre-Redaction REST Call](images/dvords-018.png "Pre-Redaction REST Call")
 
 2. Return to the **Database Actions** SQL Development page for `EMPLOYEESEARCH_PROD` and run the **first query**. View the unredacted results under query results at the **bottom of the page**.
     
@@ -71,7 +73,7 @@ When ready, click the **Enable button** in the lower right of the slider.
         DEMO_HR_EMPLOYEES;</copy>   
     ```
 
-    ![Qry](images/qry.png)
+    ![Query no redaction](images/dvords-019.png "Query no redaction")
     
     Also review the table data in our browser window from the previous task.
 
@@ -92,7 +94,7 @@ When ready, click the **Enable button** in the lower right of the slider.
     end;
     /</copy>   
     ```
-    ![Last Name](images/last-name.png)
+    ![Redaction policy](images/dvords-020.png "Redaction policy")
 
 4. Add an **email column** to the redaction policy and redact it using default **regex patterns** that anonymize it with `X`
 
@@ -116,7 +118,7 @@ When ready, click the **Enable button** in the lower right of the slider.
         END;
     /</copy>   
     ```
-    ![Email](images/email.png)
+    ![Email](images/email.png "Redact Email column")
 
 5. Add the **start date column** to the redaction policy, redacting the day and month.
     
@@ -134,7 +136,7 @@ When ready, click the **Enable button** in the lower right of the slider.
         END;
     /</copy>   
     ```
-    ![Start Date](images/start-date.png)
+    ![Add Start Date](images/dvords-021.png "Add Start Date")
 
 6. Add the **Salary column** to the redaction policy and redact the first two digits making it 99.
     
@@ -152,7 +154,7 @@ When ready, click the **Enable button** in the lower right of the slider.
         END;
     /</copy>   
     ```
-    ![Salary](images/salary.png)
+    ![Salary](images/salary.png "Add Salary solumn")
 
 ## Task 3: See the data come redacted from the REST Get call
 
@@ -162,12 +164,12 @@ When ready, click the **Enable button** in the lower right of the slider.
 
 2. Run the **first query from the previous task** and view the redacted data at the **bottom of the page**.
     
-    ![Redacted REST](images/redacted-qry.png)
+    ![Redacted REST](images/redacted-qry.png "Redacted query")
 
 Congratulations, You have successfully redacted REST calls using ORDS!
 
 ## Acknowledgements
 
-- **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
+- **Authors** - Alpha Diallo & Ethan Shmargad
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Alexander John, October 2024
+- **Last Updated By/Date** - Ethan Shmargad, February 2025

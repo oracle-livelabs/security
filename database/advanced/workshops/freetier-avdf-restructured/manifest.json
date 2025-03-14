@@ -1,0 +1,89 @@
+{
+  "workshoptitle": "DB Security - Audit Vault and DB Firewall (AVDF)",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction: Audit Vault and Database Firewall (AVDF) ",
+      "description": "Understand the architecture of this workshop and what it can do",
+      "publisheddate": "09/01/2020",
+      "filename": "../../intro/intro-avdf.md"
+    },
+    {
+      "title": "Get Started",
+      "description": "Get a Free Trial",
+      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+    },
+    {
+      "title": "Lab 1: Prepare Setup",
+      "description": "How to download your ORM stack and update security rules for an existing VCN",
+      "publisheddate": "09/28/2020",
+      "filename": "../../../common/prepare-setup/prepare-setup.md",
+      "type": "avdf"
+    },
+    {
+      "title": "Lab 2: Environment Setup",
+      "description": "How to provision the workshop environment and connect to it",
+      "publisheddate": "06/30/2020",
+      "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
+    },
+    {
+      "title": "Lab 3: Initialize Environment",
+      "description": "How to initialize and start all the workshop components",
+      "publisheddate": "10/14/2020",
+      "filename": "../../../common/init-start-env/init-start-env-gf-prod.md"
+    },
+    {
+      "title": "Lab 4: Reset the randomly generated password",
+      "description": "In this lab you will learn how to reset the ranndomly generated password in Oracle Audit Vault and DB Firewall (AVDF)",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/reset-password.md"
+    },
+    {
+      "title": "Lab 5: Assess and Discover",
+      "description": "In this lab you will learn how to Assess and Discover in Oracle Audit Vault and DB Firewall (AVDF)",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/assess-discover.md"
+    },
+    {
+      "title": "Lab 6: Audit and Monitor",
+      "description": "In this lab you will learn how to Audit and Monitor Oracle Audit Vault and DB Firewall (AVDF)",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/audit-monitor.md"
+    },
+    {
+      "title": "Lab 7: Report and Alert",
+      "description": "In this lab you will learn how to Report and set Alerts in Oracle Audit Vault and DB Firewall (AVDF)",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/report-alert.md"
+    },
+    {
+      "title": "Lab 8: Protect and Prevent",
+      "description": "In this lab you will learn how to Protect and Prevent in Oracle Audit Vault and DB Firewall (AVDF)",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/protect-prevent.md"
+    },
+    {
+      "title": "Lab 9: Advanced features configuration (optional)",
+      "description": "In this lab you can learn more about advanced configurations in Oracle Audit Vault and DB Firewall (AVDF)",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/advanced-features.md"
+    },
+    {
+      "title": "Lab 10: Reset the AVDF lab configuration",
+      "description": "In this lab you will reset the AVDF lab configuration",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/reset-config.md"
+    },
+    {
+      "title": "Appendix",
+      "description": "Learn more about Oracle Audit Vault and DB Firewall (AVDF)",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/appendix.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}
