@@ -1,14 +1,14 @@
-# Blockchain Table Prerequisites : Certificates.
+# Blockchain Table Prerequisites : Certificates
 
 ## **Introduction**
 
 By completing these prerequisites, you establish a foundation for Blockchain Table functionality, allowing the database to manage tamper-resistant data and support cryptographic operations seamlessly. The setup process is a critical step in preparing your database to support robust, immutable storage with advanced verification capabilities.
 
-Estimated Time: XX minutes
+* Estimated Time: 15 minutes
 
 Watch the video below for a quick walk through of the lab.
 
-[](youtube:)
+[Certificates](youtube:)
 
 ### Objectives
 
@@ -25,8 +25,8 @@ In this lab, you will:
 
 ### Prerequisites
 
-* LiveLabs Cloud Account
-* Have successfully completed the previous labs
+* A Free-Tier or LiveLabs Oracle Cloud account.
+* Have successfully completed the previous labs.
 
 ## Task 1: Managing Certificates for Blockchain Tables
 
@@ -92,11 +92,11 @@ We will create a wallet containing certificates and private key pairs in the Clo
 	</copy>
 ```
 
-![](./images/lab3-task3-1.png)
-![](./images/lab3-task3-2.png)
+![Script1](./images/lab3-task3-1.png)
+![Script2](./images/lab3-task3-2.png)
 
-### Notes:
-
+<pre>
+Notes:
 	- The wallet's password is `Welcome_123#`.
 	- This script above involves:
 		- Creating an Oracle wallet in the local directory.
@@ -110,7 +110,7 @@ We will create a wallet containing certificates and private key pairs in the Clo
 		- Displaying the wallet's contents for verification.
 		- The `demouser` certificate is stored as `demouser_cert.crt`.
 		- The `demouser` private key is stored as `demouser_privatekey.pem`.
-
+</pre>
 ---
 
 ### **Viewing the Wallet Contents**
@@ -119,12 +119,12 @@ We will create a wallet containing certificates and private key pairs in the Clo
 
 You can view the contents of the wallet using the `orapki wallet display` command. Please note the alias for the demouser user certificate for future operations. (i.e. orakey0 in the image below)
 
-```
+```bash
 	<copy>
 	orapki wallet display -wallet . -pwd Welcome_123# -complete
 	</copy>
 ```
-![](./images/lab3-task3-3.png)
+![View wallet contents](./images/lab3-task3-3.png)
 
 ---
 
@@ -148,9 +148,9 @@ These commands simplify certificate management without requiring complex PL/SQL 
 The **`certificate add`** command allows users to add an X.509 certificate, which will be used for signature verification in Blockchain Tables. This is equivalent to the `ADD_CERTIFICATE` PL/SQL procedure.
 
 #### Usage:
-```
+<pre>
 	certificate add {OPTIONS}
-```
+</pre>
 
 #### Options:
 - **`-cert_file|-cf <cert_file>` (Required):** Specifies the X.509 certificate file used for signature verification.
@@ -171,20 +171,20 @@ Adding certificate using certificate file and storing the guid in a bind variabl
 		</copy>
 	```
 
-![](./images/lab3-task3-4.png)
+![Add certificate](./images/lab3-task3-4.png)
 > **Expected Output:**  
-> ```
+> <pre>
 > SQL> variable guid VARCHAR2;  
 > SQL>   
 > SQL> certificate add -cert_file demouser_cert.crt -cert_guid ::guid  
 > Command executed successfully.  
-> CERTIFICATE_GUID : <RANDOM_GUID>  
+> CERTIFICATE_GUID : &lt;RANDOM_GUID&gt;
 > SQL>   
 > SQL> print guid  
 >   
 > GUID  
-> --------------------------------------------------------------------------------  
-> <RANDOM_GUID>```
+> --------------------------------------------------------------------------------~
+> &lt;RANDOM_GUID&gt;</pre>
 
 
 ---
@@ -196,9 +196,9 @@ Adding certificate using certificate file and storing the guid in a bind variabl
 The **`certificate list`** command lists all certificates that have been added to the database and can be used for signature verification in Blockchain Tables.
 
 ### Usage:
-```
+<pre>
 	certificate list|ls
-```
+</pre>
 
 ### Example:
 List Certificates
@@ -208,12 +208,12 @@ List Certificates
 	</copy>
 	```
 
-![](./images/lab3-task3-5.png)
+![list certificate](./images/lab3-task3-5.png)
 > **Expected Output:**  
-> ```
+> <pre>
 > CERTIFICATE_ID                          USER_NAME       DISTINGUISHED_NAME      CERTIFICATE  
-> ----------------------------------------------------------------------------------------------  
-> <RANDOM_GUID>                           DEMOUSER        CN=demouser             <RANDOM_BYTES>  ```
+> ----------------------------------------------------------------------------------------------~
+> &lt;RANDOM_GUID&gt;                           DEMOUSER        CN=demouser             &lt;RANDOM_BYTES&gt;  </pre>
 
 
 ---
@@ -225,9 +225,9 @@ List Certificates
 The **`certificate drop`** command allows users to delete a certificate using its GUID. This command is equivalent to the `DROP_CERTIFICATE` procedure in the `DBMS_USER_CERTS` PL/SQL package.
 
 ### Usage:
-```
+<pre>
 certificate drop {OPTIONS}
-```
+</pre>
 
 ### Options:
 - **`-cert_guid|-cg <cert_guid>` (Required):** The GUID of the certificate to be dropped.
@@ -240,11 +240,11 @@ Dropping certificate using bind variable used in previous step
 	</copy>
 	```
 
-![](./images/lab3-task3-6.png)
+![drop certificate](./images/lab3-task3-6.png)
 > **Expected Output:**  
-> ```
+> <pre>
 > Command executed successfully.  
-> Certificate 2D897A3B6BFD4EB9E063F45E000A80E9 dropped successfully.```
+> Certificate 2D897A3B6BFD4EB9E063F45E000A80E9 dropped successfully.</pre>
 
 Managing certificates is a vital step in enabling secure cryptographic operations in Blockchain Tables. By using SQLcl commands such as `certificate add`, `certificate drop`, and `certificate list`, users can efficiently perform these tasks with minimal complexity. These commands extend the functionality of the `DBMS_USER_CERTS` PL/SQL package, making certificate management accessible and user-friendly for all database users.
 
@@ -259,9 +259,9 @@ You may now [proceed to the next lab](#next).
 The **`certificate add_copy`** command is used to copy an X.509 certificate from one pluggable database to another while retaining its original Global Unique Identifier (GUID). This ensures consistency in signature verification for Blockchain Tables across replicated or migrated environments.
 
 #### Usage:
-```
+<pre>
 certificate add_copy {OPTIONS}
-```
+</pre>
 
 <details>
 <summary>**Options:**</summary>
@@ -279,7 +279,7 @@ By using the **`add_copy`** command, you can ensure seamless integration of cert
 </details>
 </br>
 
-
+You may now [proceed to the next lab](#next).
 
 ## Learn More
 
@@ -288,6 +288,6 @@ By using the **`add_copy`** command, you can ensure seamless integration of cert
 
 ## Acknowledgements
 
-* **Author** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal
-* **Contributors** - Pavas Navaney, Vinay Pandhariwal 
-* **Last Updated By/Date** - Vinay Pandhariwal, Member of Technical Staff
+* **Contributors** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal 
+* **Created By/Date** - Vinay Pandhariwal, March 2025
+* **Last Updated By/Date** - Vinay Pandhariwal, March 2025

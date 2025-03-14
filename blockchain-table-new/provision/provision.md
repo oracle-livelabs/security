@@ -1,13 +1,13 @@
 # Prepare your environment
 
-## Introduction
+## **Introduction**
 
 This lab provides step-by-step instructions to create an Oracle Autonomous Database and connect to it using SQLcl.
 
-Estimated time: 10 minutes
+* Estimated time: 20 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Prepare your environment](videohub:)
+[Prepare your environment](youtube:)
 
 
 ### Objectives
@@ -15,6 +15,10 @@ Watch the video below for a quick walk-through of the lab.
 -   Learn how to provision a new Autonomous Database
 -   Create a new user for demo purpose
 -   Connect to Autonomous Database using Oracle CloudShell and SQLcl
+
+### Prerequisites
+
+* A Free-Tier or LiveLabs Oracle Cloud account.
 
 ## Task 1: Provision an Autonomous Database
 
@@ -24,23 +28,18 @@ Watch the video below for a quick walk-through of the lab.
 
 2. Once you are logged in, you are taken to the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.
 
-    ![](./images/lab1-task1-1.png "In the top left corner, click the 3 lines menu to expand. ")
+    ![Menu](./images/lab1-task1-1.png "In the top left corner, click the 3 lines menu to expand.")
 
-3. The following steps apply to Autonomous Transaction Processing (ATP). So please **click the provisioning of Autonomous Transaction Processing**.
+3. The following steps apply to Autonomous Databases. So please **click the provisioning of Autonomous Database**.
 
-    ![](./images/lab1-task1-2.png "click the provision autonomous transactional database ")
+    ![Provision Autonomous Database](./images/lab1-task1-2.png "click the provision autonomous database.")
 
-4. From the **Compartment** drop-down list, select your compartment and click [**Create Autonomous Database**]
+4. From the **Compartment** filter, select your compartment and click [**Create Autonomous Database**]
 
-  **Note:**
-     - If there were a long list of databases, you could filter the list by the **State** of the databases (Available, Stopped, Terminated, and so on)
-     - You can also sort by **Workload Type** (here, we selected **All**)
-
-         ![](./images/lab1-task1-3.png "Make sure you are in the correct compartment and the workload is either All or Transaction Processing.")
+    ![Check Compartment](./images/lab1-task1-3.png "Make sure you are in the correct compartment.")
 
 
 5. On the **Create Autonomous Database** page, provide basic information for your database:
-    - **Compartment** - If needed, select your compartment
     - **Display name** - Enter a memorable name for the database for display purposes, for this lab, use *`Blockchain-Table-Demo`*
 
         ```
@@ -52,16 +51,16 @@ Watch the video below for a quick walk-through of the lab.
         ```
         <copy>BlockchainTableDemo</copy>
         ```
+    - **Compartment** - If needed, select your compartment
 
-    - **Workload Type** - Select the type of your Autonomous Database to match your choice at Step 3 earlier above (here we select "Transaction Processing")
-    - **Deployment Type** - Leave *`Serverless`* selected
-
-         ![](./images/lab1-task1-4.png "Select the appropriate compartment, display name, database, workload and deployment types. ")
+    - **Workload Type** - Select the type of your Autonomous Database (here we select "Transaction Processing")
 
 6. Configure the database:
 
     - **Always Free** - Select this option by moving the slider to the right
     - **Database version** - Select *`23ai`* 
+
+    ![Basic information](./images/lab1-task1-4.png "Select the appropriate display name, database name, compartment and workload.")
 
 
 7. Create administrator credentials:
@@ -72,28 +71,26 @@ Watch the video below for a quick walk-through of the lab.
         <copy>Welcome_123#</copy>
         ```
 
-        ![](./images/lab1-task1-5.png "select always free and 23ai, if available ")
-
 8. Choose the network access :
 
     - **Network Access** - Leave *`Secure access from everywhere`* selected
     - **Provide Contacts** - You can leave this blank
 
-         ![](./images/lab1-task1-6.png "choose the network type and provide contact info, if you want. ")
+    ![password and network access types](./images/lab1-task1-5.png "choose the network type and provide contact info, if you want. ")
 
-9. Click [**Create Autonomous Database**]
+9. Click [**Create**]
 
-10.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Database is ready to use! Have a look at your instance's details here including its name, database version, OCPU count, and storage size.
+10.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Database is ready to use! Have a look at your instance's details here including its name, database version, OCID, Instance Type amd Mode.
 
-      ![](./images/lab1-task1-7.png "provisioning the instance will take a few minutes ")
+    ![provisioning the instance will take a few minutes ](./images/lab1-task1-6.png "provisioning the instance will take a few minutes")
 
 ## Task 2: Create a New User Using Database Actions
 
 1. On the Blockchain-Table-Demo ATP instance details page, click on the **Database Actions** tab, select **Database Users**, a new tab will open up.
-    ![](./images/lab1-task2-2.png " ")
+    ![click on Database Actions followed by Database users](./images/lab1-task2-2.png "click on Database Actions followed by Database users")
 
 2. Click on **Create User** to create a new user to access the database.
-    ![](./images/lab1-task2-3.png " ")
+    ![click create new user](./images/lab1-task2-3.png "click create new user")
 
 3. In the Create User page, under User tab, give the following details and click **Create User**:
     - **User Name** - Give the new user a User Name. The username is case-sensitive. In the lab, we name the user **Username - DEMOUSER**.
@@ -102,18 +99,18 @@ Watch the video below for a quick walk-through of the lab.
     - **Web Access** - Turn on the Web Access radio button to access the SQL Developer Web.
     - **Web access advanced features** - Expand the Web access advanced features and turn off the Authorization required radio button to disable the authorization for `demouser` REST services
 
-    ![](./images/lab1-task2-4.png " ")
+    ![set username, password, quota, web access and advanced features](./images/lab1-task2-4.png "set username, password, quota, web access and advanced features")
 
 4.  Notice that the new user is created successfully.
-    ![](./images/lab1-task2-5.png " ")
+    ![new user created successfully](./images/lab1-task2-5.png "new user created successfully")
 
 ## Task 3: Connect to Autonomous Database using Oracle CloudShell and SQLcl
 
 1. On the **Blockchain-Table-Demo ATP** instance details page, click on **Copy** to copy the **OCID** of the ATP instance.  
-    ![](./images/lab1-task3-2.png " ")
+    ![instance details page](./images/lab1-task3-2.png "instance details page")
 
 2. In the top-right corner, click on **Developer Tools** and select **Cloud Shell**.  
-    ![](./images/lab1-task3-3.png " ")
+    ![open cloud shell](./images/lab1-task3-3.png "open cloud shell")
 
 3. Once the **Cloud Shell** interface loads, create a wallet for the ATP instance and store it in the root directory of the Cloud Shell:
     - **autonomous-database-id**: Paste the OCID copied in Step 1 into this field.
@@ -127,17 +124,17 @@ Watch the video below for a quick walk-through of the lab.
 
         **Generated Command:**
         <pre id="code-container" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; position: relative; transition: opacity 0.3s;">
-        <code id="code-text">oci db autonomous-database generate-wallet --autonomous-database-id <OCID> --file <FILE_NAME> --password <PASSWORD></code>
+        <copy id="code-text">oci db autonomous-database generate-wallet --autonomous-database-id &lt;OCID&gt; --file &lt;FILE_NAME&gt; --password &lt;PASSWORD&gt;</copy>
         <button id="copy-btn" 
-                style="position: absolute; right: 10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
+                style="position: absolute; right: -10px; top: -10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
                 onmouseover="this.style.background='grey'; this.style.color='white';" 
                 onmouseout="this.style.background='white'; this.style.color='black';" 
                 onclick="copyToClipboard('code-text','code-container')">Copy</button>
         </pre>
-    ![](./images/lab1-task3-4.png " ")
+    ![generate/download wallet](./images/lab1-task3-4.png "generate/download wallet")
+    
     > **Expected Output:**
-    > ```
-    > Downloading file  [####################################]  100%```
+    > <pre>Downloading file  [####################################]  100%</pre>
 
 <script>
     function createWalletCommand() {
@@ -176,17 +173,17 @@ Watch the video below for a quick walk-through of the lab.
 
 4. After the wallet is downloaded, unzip it using the following command:
     <pre id="code-container1" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; position: relative; transition: opacity 0.3s;">
-        <code id="unzipCmd">unzip <FILE_NAME></code>
+        <copy id="unzipCmd">unzip &lt;FILE_NAME&gt;</copy>
         <button id="copy-btn" 
-                style="position: absolute; right: 10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
+                style="position: absolute; right: -10px; top: -10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
                 onmouseover="this.style.background='grey'; this.style.color='white';" 
                 onmouseout="this.style.background='white'; this.style.color='black';" 
                 onclick="copyToClipboard('unzipCmd','code-container1')">Copy</button>
     </pre>
 
-    ![](./images/lab1-task3-5.png " ")
+    ![unzip wallet](./images/lab1-task3-5.png "unzip wallet")
     > **Expected Output:**
-    > ```
+    > <pre>
     > inflating: ewallet.pem
     > inflating: README                  
     > inflating: cwallet.sso             
@@ -195,63 +192,63 @@ Watch the video below for a quick walk-through of the lab.
     > inflating: ojdbc.properties        
     > inflating: sqlnet.ora              
     > inflating: ewallet.p12             
-    > inflating: keystore.jks```
+    > inflating: keystore.jks</pre>
 
 5. Now, set up the **TNS_ADMIN** environment variable for SQLcl:
     - Run the following command to view the directory where the unzipped wallet is stored:
-    ```bash
-    <copy>
-    pwd
-    </copy>
+    ```
+        <copy>
+        pwd
+        </copy>
     ```
     - Replace `<PATH_TO_UNZIPPED_WALLET>` with the output of the previous command and run:
         - Enter your values below. The command will update in real time:
             - **PATH TO UNZIPPED WALLET:** <input type="text" id="PathUnzippedWalletinp" placeholder="PATH TO UNZIPPED WALLET" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="pathToUnzippedWallet()">
-        <pre id="code-container2" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; position: relative; transition: opacity 0.3s;">
-                <code id="PathUnzippedWallet" style="white-space: pre-line;">export TNS_ADMIN=<PATH_TO_UNZIPPED_WALLET>
-                 echo $TNS_ADMIN;</code>
-                <button id="copy-btn" 
-                        style="position: absolute; right: 10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
-                        onmouseover="this.style.background='grey'; this.style.color='white';" 
-                        onmouseout="this.style.background='white'; this.style.color='black';" 
-                        onclick="copyToClipboard('PathUnzippedWallet','code-container2')">Copy</button>
-        </pre>
+    <pre id="code-container2" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px;position: relative; transition: opacity 0.3s;">
+            <copy id="PathUnzippedWallet">export TNS_ADMIN=&lt;PATH_TO_UNZIPPED_WALLET&gt;
+             echo $TNS_ADMIN;</copy>
+            <button id="copy-btn" 
+                    style="position: absolute; right: -10px; top: -10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
+                    onmouseover="this.style.background='grey'; this.style.color='white';" 
+                    onmouseout="this.style.background='white'; this.style.color='black';" 
+                    onclick="copyToClipboard('PathUnzippedWallet','code-container2')">Copy</button>
+    </pre>
 
-    ![](./images/lab1-task3-6.png " ")
+    ![set TNS_ADMIN](./images/lab1-task3-6.png "set TNS_ADMIN")
 
 6. To connect to the Autonomous Database instance, use the **mTLS connection string**:
     - On the **Blockchain-Table-Demo ATP** instance details page, click **Database Connection**.  
-    ![](./images/lab1-task3-7.png " ")
+    ![find connection details](./images/lab1-task3-7.png "find connection details")
     - Select the connection string for the **blockchaintabledemo_medium** TNS name.  
-    ![](./images/lab1-task3-8.png " ")
+    ![choose medium connection string](./images/lab1-task3-8.png "choose medium connection string")
 
 7. In the **Cloud Shell**, run the following command to connect to the Blockchain-Table-Demo ATP instance:
     - Note: `demouser` is the user created in Task 2.
     - Enter your values below. The command will update in real time:
         - **CONNECTION STRING:** <input type="text" id="connectionStringInp" placeholder="CONNECTION STRING" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="connectionString()">
     <pre id="code-container3" style="display: flex; align-items: center; background: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; position: relative; transition: opacity 0.3s;">
-                <code id="connectionString" style="white-space: pre-line;">sql demouser@'<CONNECTION_STRING>'</code>
+                <copy id="connectionString" style="white-space: pre-line;">sql demouser@'&lt;CONNECTION_STRING&gt;'</copy>
                 <button id="copy-btn" 
-                        style="position: absolute; right: 10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
+                        style="position: absolute; right: -10px; top: -10px; background: white; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 15px; border-radius: 3px; transition: background 0.2s, color 0.2s;" 
                         onmouseover="this.style.background='grey'; this.style.color='white';" 
                         onmouseout="this.style.background='white'; this.style.color='black';" 
                         onclick="copyToClipboard('connectionString','code-container3')">Copy</button>
     </pre>
     - When the password prompt appears, enter the password for `demouser` set in Task 2, i.e., **Welcome_123#**.
-    ![](./images/lab1-task3-9.png " ")
+    ![command to connect to autonomous database instance](./images/lab1-task3-9.png "command to connect to autonomous database instance")
     
     > **Expected Output:**
-    > ```
-    > SQLcl: Release 24.3 Production on 
+    > <pre>
+    > SQLcl: Release 24.4 Production on 
     >
     > Copyright (c) 1982, 2025, Oracle.  All rights reserved.
     >
     > Password? (**********?) ************
     > Connected to:
-    > Oracle Database 23ai Enterprise Edition Release 23.0.0.0.0 - Production
-    > Version 23.7.0.25.02
+    > Oracle Database 23ai Enterprise Edition Release 23.0.0.0.0 - for Oracle Cloud and Engineered Systems
+    > Version 23.7.0.25.03
     >
-    > SQL> ```
+    > SQL> </pre>
 
 <script>
     function connectionString(){
@@ -263,9 +260,12 @@ Watch the video below for a quick walk-through of the lab.
 </script>
 
 8. **Your environment is ready to use!** You may now proceed to the next lab.  
-    ![](./images/lab1-task3-10.png " ")
+    ![proceed to next lab](./images/lab1-task3-10.png "proceed to next lab")
+
+You may now [proceed to the next lab](#next).
 
 ## Acknowledgements
-* **Author** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal
-* **Contributors** - Pavas Navaney, Vinay Pandhariwal 
-* **Last Updated By/Date** - Vinay Pandhariwal, Member of Technical Staff
+
+* **Contributors** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal 
+* **Created By/Date** - Vinay Pandhariwal, March 2025
+* **Last Updated By/Date** - Vinay Pandhariwal, March 2025

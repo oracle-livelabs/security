@@ -1,12 +1,12 @@
 # Terminate Oracle Autonomous Database
 
-## Introduction
+## **Introduction**
 
 You can permanently delete (terminate) instances that you no longer need. Terminating an Oracle Autonomous Database permanently deletes the database data. However, automatic backups are not deleted if you have chosen Recovery Appliance or NFS as a backup destination. You can delete automatic backups directly from the Recovery Appliance or NFS.
 
-This lab walks you through the steps to terminate an available or stopped Oracle Autonomous Database instance. For the purpose of this lab, an Always Free demo Oracle Autonomous Transaction Processing database instance named DEMOATP is provisioned in a compartment.
+This lab walks you through the steps to terminate an available or stopped Oracle Autonomous Database instance. For the purpose of this lab, an Always Free demo Oracle Autonomous Transaction Processing database instance named BLOCKCHAIN-TABLE-DEMO is provisioned in a compartment.
 
-Estimated Time: 5 minutes
+* Estimated Time: 5 minutes
 
 Watch the video below for a quick walk-through of the lab.
 [Terminate Oracle Autonomous Database](videohub:)
@@ -18,7 +18,7 @@ Watch the video below for a quick walk-through of the lab.
 ### Prerequisites
 
 - Should have an Oracle Autonomous Database instance provisioned with Lifecycle Status - Available or Stopped.
-- To provision an Oracle Autonomous Database, there are detailed instructions in Lab 1 of [Autonomous Database 15 minute quick start](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=928) workshop.
+- To provision an Oracle Autonomous Database, there are detailed instructions in Lab 1 of this workshop.
 
 ## Task 1: Terminate a Provisioned Oracle Autonomous Database Instance
 
@@ -26,15 +26,13 @@ Watch the video below for a quick walk-through of the lab.
 
     ![Select region on the far upper-right corner of the page.](./images/lab5-task1-1.png " ")
 
-2. Click the navigation menu, select **Oracle Database** and choose **Autonomous Transaction Processing** (ATP).
-
-    >**Note:** You can also directly access your Oracle Autonomous Transaction Processing service in the **Quick Actions** section of the dashboard.
+2. Click the navigation menu, select **Oracle Database** and choose **Autonomous Database**.
 
     ![Select ATP.](./images/lab5-task1-2.png " ")
 
-3. From the compartment drop-down menu select the **Compartment** where your Oracle Autonomous Database resource is provisioned. If there were a long list of databases, you could filter the list by the **State** of the databases (Available, Stopped, Terminated, etc) to view the database you wish to terminate. You can also sort by **Workload Type**.
+3. From the compartment filter select the **Compartment** where your Oracle Autonomous Database resource is provisioned. 
 
-    In this lab, as **BLOCKCHAIN-TABLE-DEMO** is an Oracle Autonomous Transaction Processing database that is already provisioned, we selected the **Transaction Processing** workload type to filter the database.
+    In this lab, as **BLOCKCHAIN-TABLE-DEMO** is an Oracle Autonomous Transaction Processing database that is already provisioned.
 
     ![Choose compartment](./images/lab5-task1-3.png " ")
 
@@ -74,6 +72,6 @@ Watch the video below for a quick walk-through of the lab.
 
 ## Acknowledgements
 
-* **Author** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal
-* **Contributors** - Pavas Navaney, Vinay Pandhariwal 
-* **Last Updated By/Date** - Vinay Pandhariwal, Member of Technical Staff
+* **Contributors** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal 
+* **Created By/Date** - Vinay Pandhariwal, March 2025
+* **Last Updated By/Date** - Vinay Pandhariwal, March 2025
