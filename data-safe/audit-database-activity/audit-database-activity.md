@@ -84,7 +84,7 @@ This lab assumes you have:
     - Each regional Oracle Data Safe service in a tenancy has global settings for paid usage, online retention period, and archive retention period.
     - Global settings are applied to all target databases unless their audit profiles override them.
     - All initial audit profile settings for your target database are inherited from the global settings for Oracle Data Safe.
-    - By default, paid usage is not enabled for all target databases, the online retention period is set to the maximum value of 12 months, and the archive retention period is set to the minimum value of 0 months. Note that you cannot enable paid usage for a free trial account.
+    - By default, paid usage is not enabled for all target databases. You cannot enable paid usage for a free trial account.
 
 8. For **Review and submit**, review the configuration, and click **Submit** if everything is correct.
 

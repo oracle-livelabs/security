@@ -38,37 +38,37 @@
             "filename": "../../integrate-oag-db/integrate-oag-db.md"
         },
         {
-            "title": "Lab 7: Mark the Identities",
+            "title": "Lab 6: Mark the Identities",
             "description": "Labs that follow the introduction are numbered, starting with Lab ",
             "filename": "../../manage-identities/manage-identities.md"
         },
         {
-            "title": "Lab 8: Create access review campaign",
+            "title": "Lab 7: Create access review campaign",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../create-campaign/create-campaign.md"
         },
         {
-            "title": "Lab 9: Review who has access to what",
+            "title": "Lab 8: Review who has access to what",
             "filename": "../../who-has-access-to-what/who-has-access-to-what.md"
         },
         {
-            "title": "Lab 10: Perform access review",
+            "title": "Lab 9: Perform access review",
             "filename": "../../perform-access-review/perform-access-review.md"
         },
         {
-            "title": "Lab 11: Manage access review campaigns",
+            "title": "Lab 10: Manage access review campaigns",
             "filename": "../../manage-campaign/manage-campaign.md"
         },
         {
-            "title": "Lab 12: Manage event based access review campaigns",
+            "title": "Lab 11: Manage event based access review campaigns",
             "filename": "../../event-based-review/event-based-review.md"
         },
         {
-            "title": "Lab 13: Access Governance service instance cleanup",
+            "title": "Lab 12: Access Governance service instance cleanup",
             "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
         },
         {
-            "title": "Lab 14: Environment Cleanup",
+            "title": "Lab 13: Environment Cleanup",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "https://oracle-livelabs.github.io/common/labs/cleanup-stack/cleanup-stack.md"
         },
