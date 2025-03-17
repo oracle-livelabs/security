@@ -57,12 +57,13 @@ SSH in to the DB instance. Follow the below steps to test the authentication.
 		![logindone](./images/logindone.png "logindone")	
 	
 ## Task 3: Validate the logs on the Radius Proxy server
-1. Navigate to the location of the logs on the radius server. The path to the logs in this lab is **/home/opc/oracle_radius_proxy/radius_proxy/log**.
+1. Navigate to the location of the logs on the radius server. The path to the logs in this lab is **/home/opc/oracle\_radius\_proxy/radius\_proxy/log**.
 2. Tail the logs with below command and see the authentication logs from radius side as shown in below screen shot.
 ```
 tail -100f radius_proxy.log
 ```
-	![radiuslogs](./images/radiuslogs.png "radiuslogs")
+
+![radiuslogs](./images/radiuslogs.png "radiuslogs")
 
  You may now **proceed to the next lab.**
 

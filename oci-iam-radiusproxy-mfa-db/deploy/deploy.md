@@ -86,8 +86,8 @@ Check the SSH to your DB instance and Radius Proxy instance.
 
 1. Once the **Stack** is successfully deployed, you can SSH in to DB instance and check below.
 	1. sudo su - oracle.
-	2. cd $ORACLE_HOME. 
-If the above $ORACLE_HOME takes you to the dbhome_1 that means DB is deployed successfully.
+	2. cd $ORACLE\_HOME. 
+If the above $ORACLE\_HOME takes you to the dbhome\_1 that means DB is deployed successfully.
 
 2. Navigate to **Domains** under **Identity and Security** on the OCI console to validate that your Domain of type **Oracle Apps Premium** has been created.
 
