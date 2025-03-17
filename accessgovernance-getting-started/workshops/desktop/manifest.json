@@ -1,0 +1,58 @@
+{
+    "workshoptitle": "Getting Started With Oracle Access Governance",
+    "help": "livelabs-help-oci_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "The Introduction is always first. The title and contents menu title match for the Introduction.",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started with noVNC Remote Desktop",
+            "description": "Using noVNC Remote Desktop",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Setup and configure Oracle Access Governance service instance",
+            "description": "Labs that follow the introduction are numbered, starting with Lab ",
+            "filename": "../../desktop-ag-instance/desktop-instance-setup.md"
+        },
+        {
+            "title": "Lab 2: Connect to OIG and Oracle Database",
+            "description": "Add OIG and Oracle DB Connected Systems ",
+            "filename": "../../desktop-integrate-oag-db/desktop-integrate-oag-db.md"
+        },
+        {
+            "title": "Lab 3: Mark the Identities for Access Governance",
+            "description": "Labs that follow the introduction are numbered, starting with Lab ",
+            "filename": "../../desktop-mark-identities/desktop-mark-identities.md"
+        },
+        {
+            "title": "Lab 4: Define Access Controls for Database ",
+            "filename": "../../desktop-access-control/desktop-access-control.md"
+        },
+        {
+            "title": "Lab 5: Review Who Has Access To What ",
+            "filename": "../../desktop-who-has-access-to-what/desktop-who-has-access-to-what.md"
+        },
+        {
+            "title": "Lab 6: Perform Access Reviews for database",
+            "description": "Labs that follow the introduction are numbered, starting with Lab ",
+            "filename": "../../desktop-access-review/desktop-access-review.md"
+        },
+        {
+            "title": "Lab 7: Cleanup Access Governance service instance",
+            "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
+        },
+        {
+            "title": "Lab 8: Environment Cleanup",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cleanup-stack/cleanup-stack.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
