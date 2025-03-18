@@ -70,9 +70,8 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     ```
     <copy>./start_all_servers.sh</copy>
     ```
-## Task 3: Run Script for LiveLab User Creation
 
-1. To create the LiveLab user in OIG, execute the below command to create a file create_user.sh
+5. To create the LiveLab user in OIG, execute the below command to create a file create_user.sh
 
     ```
     <copy>touch create_user.sh
@@ -80,9 +79,9 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     vi create_user.sh</copy>
     ```
 
-2. Press Ctrl+I to enter into the Insert mode.
+6. Press Ctrl+I to enter into the Insert mode.
 
-3. Paste the below content in the file  create_user.sh
+7. Paste the below content in the file  create_user.sh
 
     ```
     <copy>#!/bin/bash
@@ -137,7 +136,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
         -d @post.json http://oimhost.us.oracle.com:14000/iam/governance/selfservice/api/v1/users</copy>
         ```
 
-3. Execute the **create_user.sh** by replacing the Livelabs username placeholder with the Livelab user you are assigned to in this workshop.
+8. Execute the **create_user.sh** by replacing the Livelabs username placeholder with the Livelab user you are assigned to in this workshop.
 
     ```
     <copy>./create_user.sh <Livelabs_username></copy>
@@ -264,15 +263,14 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     Under **All** , select the following condition:
 
-    Select connected system attribute: Email
+    Select connected system attribute: Employee Username
 
     Select operator: equals
 
-    Select Identity attribute: Email
+    Select Identity attribute: Employee Username
 
     Click **Save**
 
-     ![Enter Details](images/username-match-rule-email.png)
 
     Navigate back to the orchestrated system. It is in draft status. 
 
