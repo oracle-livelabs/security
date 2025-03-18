@@ -1,4 +1,4 @@
-# Blockchain Table Prerequisites : Certificates
+# Blockchain Table Prerequisites: Public Key Infrastructure (PKI) Certificates
 
 ## **Introduction**
 

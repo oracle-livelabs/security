@@ -1,4 +1,4 @@
-# Introduction to the Immutable and Blockchain Tables
+# Prevent and Detect Fraud Using Immutable and Blockchain Tables on Oracle Autonomous Database
 
 ## About this Workshop
 

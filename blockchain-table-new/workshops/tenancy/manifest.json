@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Secure Data Integrity with Immutable and Blockchain Tables: A Hands-On LiveLab Experience",
+    "workshoptitle": "Prevent and Detect Fraud Using Immutable and Blockchain Tables on Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -21,7 +21,7 @@
             "filename": "../../immutable-tables/immutable-tables.md"
         },
         {
-            "title": "Lab 3: Blockchain Table Prerequisites: Prepare the Groundwork for Advanced Data Security",
+            "title": "Lab 3: Blockchain Table Prerequisites: Public Key Infrastructure (PKI) Certificates",
             "filename": "../../blockchain-tables-prereq/blockchain-tables-prereq.md"
         },
         {

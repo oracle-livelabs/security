@@ -1,4 +1,4 @@
-# Blockchain Tables
+# Blockchain Tables: Enhance Data Integrity with Cryptographic Precision and Trust
 
 ## **Introduction**
 
