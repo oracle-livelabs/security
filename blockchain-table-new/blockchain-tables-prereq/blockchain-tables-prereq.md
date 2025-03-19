@@ -8,7 +8,7 @@ By completing these prerequisites, you establish a foundation for Blockchain Tab
 
 Watch the video below for a quick walk through of the lab.
 
-[Certificates](youtube:)
+[Certificates](videohub:1_3u8xev49:medium)
 
 ### Objectives
 

@@ -7,7 +7,7 @@ This lab provides step-by-step instructions to create an Oracle Autonomous Datab
 * Estimated time: 20 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Prepare your environment](youtube:)
+[Prepare your environment](videohub:1_nw8ufqzp:medium)
 
 
 ### Objectives

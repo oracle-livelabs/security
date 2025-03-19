@@ -9,7 +9,7 @@ This lab walks you through the steps to terminate an available or stopped Oracle
 * Estimated Time: 5 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Terminate Oracle Autonomous Database](videohub:)
+[Terminate Oracle Autonomous Database](videohub:1_1j35699z:medium)
 
 ### Objectives
 

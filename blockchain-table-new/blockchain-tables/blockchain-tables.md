@@ -49,7 +49,7 @@ In this lab, we will use SQLcl to perform various operations on Blockchain Table
 
 Watch the video below for a quick walk through of the lab.
 
-[Blockchain Tables](youtube:)
+[Blockchain Tables](videohub:1_w6ghvbpi:medium)
 
 ### Objectives
 

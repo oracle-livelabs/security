@@ -23,7 +23,7 @@ In this LiveLab, we will use **SQLcl** to perform various operations on Immutabl
 
 Watch the video below for a quick introduction to Immutable Tables and a walkthrough of the lab.
 
-[Immutable Tables](youtube:)
+[Immutable Tables](videohub:1_bg8039ja:medium)
 
 
 ### Objectives
