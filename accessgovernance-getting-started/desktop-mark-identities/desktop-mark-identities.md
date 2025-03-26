@@ -55,7 +55,7 @@ In this task, you will select the identities that you want to include in your se
 
   ![Manage Identities page](images/preview-identities-user.png)
 
-## Task 3: Assign the Selected Users as Workforce Users
+## Task 3: Assign the Selected Users as Consumer Users
 
 In this task, you will assign the Livelab User as Workforce user and the remaining users as Consumer users. 
 

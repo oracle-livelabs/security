@@ -143,7 +143,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     ```
     
 
-## Task 4: Verify the Private IP address of Compute Instance
+## Task 3: Verify the Private IP address of Compute Instance
 
 1. Launch a browser window. Login to OCI console using the URL mentioned below. The OCI account sign in page appears. Enter the username and password provided in the *LiveLab* login information. 
 
@@ -161,7 +161,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     You may now **proceed to the next lab.**
 
-## Task 5: Integrate with Oracle Identity Governance
+## Task 4: Integrate with Oracle Identity Governance
 
 1. On the Oracle Access Governance service home page *refer Lab 2:Task 1*, click on the Navigation Menu icon and select **Service Administration** and then **Orchestrated Systems.**
 
@@ -279,7 +279,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     Click on **Activate**. Confirm the Activation of oig in the pop-up dialog box. 
 
 
-## Task 6: Install OIG Agent on the Compute Instance and Configure
+## Task 5: Install OIG Agent on the Compute Instance and Configure
 
 1. Open the terminal session.
 
@@ -347,7 +347,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     ![Enter Details](images/oci-connection-status.png)
 
-## Task 7: Connect to Oracle Database and download the DB Agent
+## Task 6: Connect to Oracle Database and download the DB Agent
 
 1. Navigate to the **Orchestrated Systems** page of the Oracle Access Governance Console, by following these steps:
   From the Oracle Access Governance navigation menu icon **Navigation menu**, select **Service Administration** → **Orchestrated  Systems**.
@@ -406,7 +406,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     
 
 
-## Task 8: Install the DB Agent on the Target System
+## Task 7: Install the DB Agent on the Target System
 
 1. Open the terminal.
 
@@ -446,7 +446,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
       <copy>sh agentManagement.sh --volume /home/opc/vol_oag_db --start</copy>
      ```
 
-## Task 9: Verify the Agent Installation
+## Task 8: Verify the Agent Installation
 
 1. Login to the Oracle Access Governance Console, select the Navigation Menuicon to display the navigation menu.
 2. In the Oracle Access Governance Console, select Service Administration → Orchestrated Systems from the navigation menu.

@@ -37,14 +37,12 @@ Login to the OCI console using the Identity domain: Default domain as the **Live
     ```
     Name: ag-service-instance
     Description: Oracle Access Governance service instance
-    Compartment: Ensure your livelab compartment has been selected
+    Compartment: Ensure your livelab compartment has been selected. It is under <Root>/LiveLabs/<Your username>_COMPARTMENT>
     ```
 
     ![Create Service Instance](images/create-service-instance.png)
 
-3. Select the License type : Access Governance for Oracle Workloads. Click on *Create Service Instance*
-
-    ![Select License type](images/license-type.png)
+3. Select the License type : Access Governance for Oracle Workloads. Click on *Create Service Instance* 
 
 4. Wait for the service instance to have the *Active* status . Note down this URL as we will be using it in the further labs.
 
@@ -70,7 +68,7 @@ Login to the OCI console using the Identity domain: Default domain as the **Live
     ![OIG Identity Roles and Access Policies](images/user-approle-list.png)
 
 
-    * *LiveLab* has been assigned with the *AG Administrator* application role. You can now close the window.
+    * *LiveLab User* has been assigned with the *AG Administrator* application role. You can now close the window.
 
     * Similarly assign the *Livelab user* with the role *AG Campaign Administrator*
 

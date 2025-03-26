@@ -79,14 +79,14 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
     • Click Add
 
-    ![Approval Workflow](images/custom-user.png)
+      ![Approval Workflow](images/livelab-user.png)
 
 
      After confirming your configuration matches the following, click Next
 
 5. On the Add Details page, name your Approval Workflow: One-level-approval. Then, provide any description. Click Next to review your configurations so far, then click Publish and Approval workflow - **One-level-approval** has been created. 
 
-    ![Approval Workflow](images/livelab-user.png)
+  
 
 6. Enter the following details:
 

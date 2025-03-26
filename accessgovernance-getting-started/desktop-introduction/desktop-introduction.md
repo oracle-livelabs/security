@@ -8,10 +8,9 @@ Businesses are challenged every day to enforce appropriate, just-in-time user ac
 
 Oracle Access Governance supports continuous compliance with proper access management and constantly evaluates and reports risks, allowing organizations to avoid big, manual, periodic reviews and significantly reducing the cost and effort of audit responses. Events and access at risk are reviewed regularly, and reviews are informed by built-in intelligence. Oracle Access Governance continuously adds support for orchestrated systems, providing strong insights into access controls across new applications that may span cloud and on-premises environments.
 
-The graphic below shows the high-level functional architecture of Oracle Access Governance.
+ The graphic below shows the high-level functional architecture of Oracle Access Governance.
 
-![List of files in directory](images/desktop-introduction-architecture.png)
-
+ ![View List of Campaigns](images/diagram.png)
 
 Oracle Access Governance is a comprehensive governance solution that supports various provisioning methods, including access requests and approvals, role-based access control (RBAC), attribute-based access control (ABAC), and policy-based access control (PBAC). The service features a conversation-style user experience, offering deep visibility into access permissions across the entire enterprise. It facilitates dynamic, periodic, and automated event-based micro certifications, such as an access review triggered by a job code or manager change. Additionally, it enables near real-time access reviews, providing detailed recommendations with options for reviewers to accept or review an entitlement based on the identified level of risk.
 
