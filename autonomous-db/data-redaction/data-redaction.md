@@ -1200,7 +1200,7 @@ In general, the first step you take is to identify sensitive data. You can use *
 ## Want to Learn More?
 
 Technical Documentation:
-  - [Oracle Data Redaction 23ai](https://docs.us.oracle.com/en/database/oracle/oracle-database/23/dbred/toc.htm)
+  - [Oracle Data Redaction 23ai](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbred/toc.htm)
 
 Video:
   - *Data Redaction - Extend it to multiple columns and Analytics (October 2023)*" [](youtube:Q0K2caAtGIY)
