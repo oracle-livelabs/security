@@ -753,12 +753,10 @@ In this lab, we will do the following
         - Once enabled, Database Firewall monitoring will analyze the traffic from pdb1 through the port 15223
         - We configured it in "Proxy" mode, so all the SQL traffic will transit by the DB Firewall appliance to be able to block the "bad" traffic if needed
 
-    **If you have deployed this lab in "Run on LiveLabs Sandbox" (green button)**
+    *If you have deployed this lab in "Run on LiveLabs Sandbox" (green button)*
         ![AVDF](./images/avdf-104a.png "LiveLabs Green Button")
 
-    **Note:** 
-    
-    In the case of a Green Button, the monitoring point for the database firewall will not be created automatically and will be shown empty. Please perform the following steps to manually add the monitoring point.
+    **Note:** *In the case of a Green Button, the monitoring point for the database firewall will not be created automatically and will be shown empty. Please perform the following steps to manually add the monitoring point.*
         ![AVDF](./images/avdf-104b.png "Empty Database Firewall Monitoring Point")
 
     **To add a monitoring point for pdb1**
@@ -776,7 +774,7 @@ In this lab, we will do the following
         - Port: **1521**
         - Service: **pdb1**
 
-    Optionaly, you may want to repeat the same steps for **pdb2**; however, in this task, we will use **pdb1** to configure the use cases.
+    Optionally, you may want to repeat the same steps for **pdb2**; however, in this task, we will use **pdb1** to configure the use cases.
 
     **To add a monitoring point for pdb2**
     - Login as AVADMIN user
