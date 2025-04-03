@@ -79,10 +79,10 @@ In this lab, you will:
 
     **Usecase 1:**  Revoke policy statement from a policy - **auditors-policy**
 
-      - Let’s revoke the policy statement **Allow group Auditors to read audit-events in compartment Quality-Assurance** from the policy  **auditors-policy**. 
+      - Let’s revoke the policy statement **Allow group Auditors to read audit-events in ag-compartment** from the policy  **auditors-policy**. 
 
 
-      - Click on the cross button under Actions column for the policy statement **Allow group Auditors to read audit-events in compartment Quality-Assurance**
+      - Click on the cross button under Actions column for the policy statement **Allow group Auditors to read audit-events in ag-compartment**
 
       ![Access Governance Homepage](images/revoke-auditor-policy.png)
 
@@ -152,4 +152,4 @@ In this lab, you will:
 
 ## Acknowledgements
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Indira Balasundaram , Sept 2024
+* **Last Updated By/Date** - Indira Balasundaram , Nov 2024

@@ -1,9 +1,7 @@
 # Introduction
 
 ## About this Workshop
-This workshop is a hands-on lab dedicated to the features and functionality of Oracle Database security to prevent, detect and mitigate the most common cyberattacks performed on Oracle Databases - for more details on each of the featured products, please refer to the following workshops:
-- [DB Security Basics](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=698)
-- [DB Security Advanced](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=726) labs.
+This workshop is a hands-on lab dedicated to the features and functionality of Oracle Database security to prevent, detect and mitigate the most common cyberattacks performed on Oracle Databases - for more details on each of the featured products, please refer to the DB Security livelabs.
 
 In this lab, we will use a ransomware attack to explore how attackers operate and what database features you should use to prevent, detect, and mitigate data exfiltration risks.
 
@@ -32,7 +30,7 @@ In our scenario, this database contains sensitive data that could be used by the
 
 As your attack protocol progresses, you will test the same commands from the same interfaces, but this time pointing to another Oracle Database named PDB2. Oracle's recommended security controls protect PDB2. You will see how a well-configured database can block the most common attacks used to break in and steal data.
 
-*Versions tested in this lab:* Oracle DB EE 19.13, OEM 13.5, AVDF 20.5
+*Versions tested in this lab:* Oracle DB EE 19.23, OEM 13.5, AVDF 20.13 an OKV 21.9
 
 ### Objectives
 This lab helps you learn to use some of the most important security features of the Oracle Database.
@@ -44,12 +42,7 @@ You will learn how to:
 
 ### Prerequisites
 This lab assumes you have:
-- An Oracle Cloud Account - Please view this workshop's LiveLabs landing page to see which environments are supported
-
-    *Note:*
-    - *If you have a **Free Trial** account, when your Free Trial expires your account will be converted to an **Always Free** account*
-    - *You will not be able to conduct Free Tier workshops unless the Always Free environment is available*
-    - ***[Click here for the Free Tier FAQ page](https://www.oracle.com/cloud/free/faq.html)***
+- A Free Tier, Paid or LiveLabs Oracle Cloud account - Please view this workshop's LiveLabs landing page to see which environments are supported
 
 - So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set up!
 
@@ -64,7 +57,7 @@ Cybercriminals are becoming more and more equipped and better prepared. They now
 
 Understanding the attacker's motivation and how to prevent them from being able to use the stolen data against you helps you better survive the attack and makes it more feasible to NOT pay the ransom.
 
-Ransomware is one of the main threats in the world today according to a recent [ENISA report](https://www.enisa.europa.eu/publications/enisa-threat-landscape-2021) (the number of attacks is increasing every day, and all sectors are affected without exception). Ransomware has evolved from its beginnings to become the preferred attack to steal a company's sensitive data.
+Ransomware is one of the main threats in the world today according to a recent [ENISA report](https://www.enisa.europa.eu/topics/cyber-threats/threat-landscape) (the number of attacks is increasing every day, and all sectors are affected without exception). Ransomware has evolved from its beginnings to become the preferred attack to steal a company's sensitive data.
 
 Early ransomware attacks primarily interrupted and blocked a company's activity. As late as 2019, NIST defined ransomware as "**a type of malicious attack where the attackers encrypt the organization's data and demand payment to restore access**". Encrypting data and withholding the encryption key was a prelude to a demand for payment!
 
@@ -129,5 +122,5 @@ Unfortunately, whether you pay the ransom or not, your sensitive data is now out
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security Senior Principal PM
-- **Contributors** - Russ Lowenthal
-- **Last Updated By/Date** - Hakim Loumi - August 2022
+- **Contributors** - Russ Lowenthal, Database Security VP
+- **Last Updated By/Date** - Ethan Shmargad, Database Security PM - March 2025

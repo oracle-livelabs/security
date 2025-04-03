@@ -30,7 +30,7 @@
       "title": "Lab 3: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env.md"
+      "filename": "../../../common/init-start-env/init-start-env-gf.md"
     },
     {
       "title": "Lab 4: Transparent Data Encryption (TDE)",

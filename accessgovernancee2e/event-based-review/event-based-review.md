@@ -40,14 +40,13 @@ This lab assumes you have:
   You will be navigated to the home page of your Oracle Access Governance Console.
 
 3. You should see the **Oracle Access Governance** main dashboard. **Please note data on Oracle Access Governance main dashboard in your assigned system might be different from LiveLabs step screenshot.**
-  ![Access Governance Homepage](images/event-based-setup.png)
+
 
 ## Task 2: Enable Event Based Access Review Campaigns
 
-1. Select Event-Based Administration → Event-Based Setup from the Navigation Menu.
-  ![Event based setup](images/event-based-setup.png)
+1. Select **Configure Event Based Reviews** from the Home page of Access Governance.
+  ![Event based setup](images/select-event-review.png)
 2. Each event type is displayed as a tile with a status of Enabled or Disabled and an Actions drop-down menu, providing the option to Edit or View details. 
-   ![Edit Identity Enabled](images/select-event.png)
 
    Select Edit for the **Identity Enabled** event-type. 
 

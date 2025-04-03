@@ -1,33 +1,43 @@
-# Introduction
+# Introduction to the LiveLab: Immutable and Blockchain Tables
 
 ## About this Workshop
 
-In this workshop, you will provision an Oracle Autonomous Database instance, manage blockchain tables and rows in a blockchain table. Then import a simple web application using Application Express (APEX) to see how to manage the rows, verify the rows without the signature in the blockchain table. Finally, you will provision and connect to the compute instance, install and deploy Node.js application in it to sign a row in the blockchain table.
+Data integrity and security are critical in today's digital era, where organizations handle vast amounts of sensitive information. While traditional security mechanisms like passwords, privileges, and encryption focus on keeping unauthorized users out, they often fail to address scenarios where authorized insiders or sophisticated attackers compromise data integrity. To bridge this gap, Oracle introduces **Immutable Tables** and **Blockchain Tables**, two powerful features designed to enhance in-database data security.
 
-Estimated Workshop Time: 1 hour, 15 minutes
+This LiveLab is designed to provide participants with hands-on experience in leveraging these technologies to ensure data remains tamper-proof and cryptographically secure within the database. Through structured exercises and SQLcl commands, participants will explore the unique functionalities of Immutable and Blockchain Tables.
 
-<if type="odbw">If you would like to watch us do the workshop, click [here](https://youtu.be/Frv6V1-gzR8).</if>
+#### Flow of the LiveLab:
+1. **Immutable Tables: Basic Data Immutability**
+   - Understand the core concept of immutability and how Immutable Tables ensure that data cannot be modified or deleted after insertion.
+   - Learn the parameters required to create Immutable Tables, their management commands, and failure scenarios (e.g., trying to delete rows).
 
-### Objectives
+2. **Blockchain Tables: Advanced Cryptographic Security**
+   - Build on the principles of immutability with additional functionalities like row signing and verification.
+   - Understand the prerequisites for Blockchain Tables, such as creating wallets and managing certificates.
+   - Learn advanced commands, such as countersignatures, digest generation, and row-level cryptographic verification.
+   - Use cases: scenarios requiring end-to-end data integrity, transparency, and resistance to impersonation or falsification.
 
-In this workshop, you will:
+In this LiveLab, we will be using **SQLcl commands** [](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/24.3/sqcug/blockchain_table.html) to perform various operations on Immutable and Blockchain Tables, offering a seamless and interactive way to work with these advanced database features. While the same functionality can be achieved through **PL/SQL packages** such as `DBMS_IMMUTABLE_TABLE` and `DBMS_BLOCKCHAIN_TABLE` (as detailed in the [documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html)), SQLcl simplifies the process by providing user-friendly commands tailored for these operations. This approach makes it more convenient for users to create tables, manage certificates, verify data integrity, and perform other tasks without delving into complex PL/SQL scripts. By leveraging SQLcl, participants can focus on understanding the core concepts and functionalities of Immutable and Blockchain Tables while efficiently executing commands.
 
-* Provision an Oracle Autonomous Database Instance
-* Create and manage Blockchain tables and rows in a Blockchain table
-* Import a web application using Application Express (APEX) and test the blockchain tables functionality in the application
-* Generate SSH keys
-* Install and deploy Node.js application in compute instance to sign a row in Blockchain table
+By the end of this LiveLab, participants will not only understand the technical nuances of Immutable and Blockchain Tables but also appreciate their real-world applications in mitigating data tampering risks and ensuring regulatory compliance. Let’s dive in and start building secure, tamper-proof database solutions!
+
+Estimated Workshop Time: XX hour, xx minutes 
+
+<if type="odbw">if you would like to watch us do the workshop, click [here](). </if>
 
 ### Prerequisites
 
 This workshop assumes you have:
 
-* LiveLabs Cloud Account
+<TODO>
 
-You may now proceed to the next lab.
+### Learn More
+
+<TODO>
 
 ## Acknowledgements
 
-* **Author** - Anoosha Pilli, Database Product Manager
-* **Contributors** -  Anoosha Pilli, Database Product Management
-* **Last Updated By/Date** - Marion Smith, Technical Program Manager, April 2022
+* **Author** - Amit Ketkar, Database Product Manager
+* **Contributors** - Pavas Navaney, Senior Member of Technical Staff <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vinay Pandhariwal, Member of Technical Staff
+* **Last Updated By/Date** - Vinay Pandhariwal, Member of Technical Staff

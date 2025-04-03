@@ -35,7 +35,7 @@ This lab assumes you have:
 
 ## Task 1: Configure auditing and alerts for your target database
 
-1. In the breadcrumb at the top of the page, click **Data Safe**.
+1. Return to the browser tab for Oracle Data Safe browser. In the breadcrumb at the top of the page, click **Data Safe**.
 
 2. Under **Data Safe**, click **Activity auditing**.
 
@@ -43,9 +43,11 @@ This lab assumes you have:
 
 4. For **Alert policy**, do the following to enable alert policies, and then click **Next**.
 
-    a) Select your target database. The list of available alert policies is displayed.
+    a) If needed, click **Change Compartment** and select your compartment.
+    
+    b) Select your target database. The list of available alert policies is displayed.
 
-    b) Select the **Failed logins by admin user** and **User creation/modification** alert policies to enable them.
+    c) Select the **Failed logins by admin user** and **User creation/modification** alert policies to enable them.
 
    ![Activity Auditing wizard - Alert Policy](images/activity-auditing-wizard-alert-policy.png "Activity Auditing wizard - Alert Policy")
     
@@ -67,11 +69,11 @@ This lab assumes you have:
 
     a) Select **UNIFIED\_AUDIT\_TRAIL: NOT_STARTED**.
 
-    b) For the start date, select the beginning of the month.
+    b) For the start date, select the beginning of your current month.
 
     ![Activity Auditing wizard - Audit trails](images/activity-auditing-wizard-audit-trails.png "Activity Auditing wizard - Audit Trails")
 
-7. For **Audit profile**, leave the default selections for the retention periods and paid usage as is (see below), and click **Next**.
+7. For **Audit profile**, configure the following, and then click **Next**.
 
     - Audit data online retention months = 12
     - Audit data offline retention months = 0
@@ -82,7 +84,7 @@ This lab assumes you have:
     - Each regional Oracle Data Safe service in a tenancy has global settings for paid usage, online retention period, and archive retention period.
     - Global settings are applied to all target databases unless their audit profiles override them.
     - All initial audit profile settings for your target database are inherited from the global settings for Oracle Data Safe.
-    - By default, paid usage is not enabled for all target databases, the online retention period is set to the maximum value of 12 months, and the archive retention period is set to the minimum value of 0 months. Note that you cannot enable paid usage for a free trial account.
+    - By default, paid usage is not enabled for all target databases. You cannot enable paid usage for a free trial account.
 
 8. For **Review and submit**, review the configuration, and click **Submit** if everything is correct.
 
@@ -190,4 +192,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, October 16, 2024
+* **Last Updated By/Date** - Jody Glover, December 13, 2024

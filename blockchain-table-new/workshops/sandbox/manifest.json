@@ -1,0 +1,41 @@
+{
+    "workshoptitle": "Prevent and Detect Fraud with Immutable and Blockchain Tables on Oracle Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to the Immutable and Blockchain Tables.",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Prerequisites for LiveLabs (Oracle-owned tenancies). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
+            "title": "Lab 1: Prepare your environment",
+            "filename": "../../provision/provision.md"
+        },
+        {
+            "title": "Lab 2: Immutable Tables : Build the Foundation of tamper-resistant Data Storage",
+            "filename": "../../immutable-tables/immutable-tables.md"
+        },
+        {
+            "title": "Lab 3: Blockchain Table Prerequisites: Public Key Infrastructure (PKI) Certificates",
+            "filename": "../../blockchain-tables-prereq/blockchain-tables-prereq.md"
+        },
+        {
+            "title": "Lab 4: Blockchain Tables: Enhance Data Integrity with Cryptographic Precision and Trust",
+            "filename": "../../blockchain-tables/blockchain-tables.md"
+        },
+        {
+            "title": "Lab 5: Terminate Oracle Autonomous Database",
+            "filename": "../../terminate/terminate.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        }
+    ]
+}
