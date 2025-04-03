@@ -753,6 +753,8 @@ In this lab, we will do the following
         - Once enabled, Database Firewall monitoring will analyze the traffic from pdb1 through the port 15223
         - We configured it in "Proxy" mode, so all the SQL traffic will transit by the DB Firewall appliance to be able to block the "bad" traffic if needed
 
+    **If you are using this lab in "Run on LiveLabs Sandbox" 
+
 4. Now, verify connectivity between the database and the DB Firewall
 
     - Go back to your terminal session and go to the DBF directoy
