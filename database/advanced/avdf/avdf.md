@@ -737,7 +737,7 @@ In this lab, we will do the following
 
         ![AVDF](./images/avdf-102.png "Configure network settings")
     
-    - For ens3, the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2, because here we will use these ports to use Database Firewall
+    - For the available network interface card (NIC), the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2. These ports will be used for the Database Firewall monitoring.
     
         ![AVDF](./images/avdf-103.png "Proxy Ports settings")
 
@@ -753,7 +753,45 @@ In this lab, we will do the following
         - Once enabled, Database Firewall monitoring will analyze the traffic from pdb1 through the port 15223
         - We configured it in "Proxy" mode, so all the SQL traffic will transit by the DB Firewall appliance to be able to block the "bad" traffic if needed
 
-    **If you are using this lab in "Run on LiveLabs Sandbox" 
+    **If you have deployed this lab in "Run on LiveLabs Sandbox" (green button)**
+        ![AVDF](./images/avdf-104a.png "LiveLabs Green Button")
+
+    **Note:** 
+    
+    In the case of a Green Button, the monitoring point for the database firewall will not be created automatically and will be shown empty. Please perform the following steps to manually add the monitoring point.
+        ![AVDF](./images/avdf-104b.png "Empty Database Firewall Monitoring Point")
+
+    **To add a monitoring point for pdb1**
+    - Login as AVADMIN user
+    - Click on the **Target** tab and click **pdb1**
+    - Under **Database Firewall Monitoring**, Click on **Add**
+    - Select the following details:
+        - Database Firewall: **dbfw**
+        - Network Interface Card: **enp0s5** (Select from drop-down)
+        - Mode: **Monitoring/ Blocking (Proxy)**
+        - Proxy Port: **Proxy_pdb1(15223)**
+
+    - Click on Add to add the host, port, and service details, and add the following under each column
+        - Host Name / IP Address: **10.0.0.150**
+        - Port: **1521**
+        - Service: **pdb1**
+
+    Optionaly, you may want to repeat the same steps for **pdb2**; however, in this task, we will use **pdb1** to configure the use cases.
+
+    **To add a monitoring point for pdb2**
+    - Login as AVADMIN user
+    - Click on the **Target** tab and click **pdb2**
+    - Under **Database Firewall Monitoring**, Click on **Add**
+    - Select the following details:
+        - Database Firewall: **dbfw**
+        - Network Interface Card: **enp0s5** (Select from drop-down)
+        - Mode: **Monitoring/ Blocking (Proxy)**
+        - Proxy Port: **Proxy_pdb2(15224)**
+
+    - Click on Add to add the host, port, and service details, and add the following under each column
+        - Host Name / IP Address: **10.0.0.150**
+        - Port: **1521**
+        - Service: **pdb2**
 
 4. Now, verify connectivity between the database and the DB Firewall
 
