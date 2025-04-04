@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through the steps to get started using the Oracle Autonomous Database and initialize it to use DB Vault.
+This lab walks you through the steps to get started using the Oracle Autonomous Database and initialize it.
 
 Estimated time: 10 minutes
 
