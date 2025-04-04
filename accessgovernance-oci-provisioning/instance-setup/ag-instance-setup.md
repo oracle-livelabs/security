@@ -1,4 +1,4 @@
-# Setup and configure Oracle Access Governance service instance and Create Users in OCI IAM
+# Setup and configure Oracle Access Governance service instance
 
 ## Introduction
 
@@ -79,10 +79,12 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
 ## Learn More
 
+* [Create Oracle Access Governance Service Instance](https://docs.oracle.com/en/cloud/paas/access-governance/cagsi/)
 * [Oracle Access Governance](https://www.oracle.com/security/cloud-security/access-governance/)
 * [Oracle Access Governance Documentation](https://www.oracle.com/security/cloud-security/access-governance/#documentation)
 * [Oracle Access Governance Product Demo](https://www.oracle.com/security/cloud-security/access-governance/?ytid=GJEPEJlQOmQ)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
+
 
 ## Acknowledgments
 

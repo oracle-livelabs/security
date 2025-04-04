@@ -69,9 +69,12 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
   5. Under Select what should happen if the access guardrail fails: 
 
-      **What should happen when the accessguardrails fails?** High Risk - Block the access immediately
+      **What should happen when the accessguardrails fails?** Low Risk 
 
-     ![Access Review](images/high-risk-access.png)
+      **How many days ?** 7
+
+
+     ![Access Review](images/include-low-risk.png)
 
      Click **Next**
 
@@ -81,7 +84,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
   7. Click on **Create**. 
 
-    ![Access Review](images/create-access-guardrail.png)
+    ![Access Review](images/low-risk-create.png)
 
     The Access Guardrail has been created successfully. 
 
@@ -92,25 +95,62 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
      ![Access Review](images/navigate-access-bundle.png)
 
-2. Select the **Network Admin Access Bundle**. Under **Actions** , click on **Edit**
+2. Select the **Audit Access Bundle**. Under **Actions** , click on **Edit**
 
-    ![Access Review](images/select-network-bundle.png)
+    ![Access Review](images/select-audit-access.png)
 
-    ![Access Review](images/edit-access-bundle.png)
+    ![Access Review](images/edit-audit-bundle.png)
    
-3. Under **Select an accesss guardrail to allow access**, choose the **Security-admin-access-guardrail. 
+3. Under **Select an accesss guardrail to allow access**, choose the **Security-admin-access-guardrail**
 
-   ![Access Review](images/select-guardrail-update.png)
 
 4. Click on **Next** until you reach the **Final review** stage. Here you can view the Access guardrail details by clicking on **View access guardrail**. 
 
-   ![Access Review](images/view-guardrail-details.png)
-
    Click on **Update**. 
 
-   ![Access Review](images/update-bundle.png)
+   ![Access Review](images/update-audit-bundle.png)
 
-   Now we have successfully configured, the Access Bundle **Network Admin Access Bundle** with **NetworkAdmins** permission to block access if the user already has **SecurityAdmins** permission, as defined by the **Security-admin-access-guardrail** Guardrail which checked for **SecurityAdmins** permission.
+## Task 3: Create and Approve Access Requests
+
+1. Navigate to MyStuff -> Request Access
+
+     ![Access Review](images/navigate-request-access.png)
+
+2. Under **Select the type of access you want to reques**, select **Request access bundle**.
+
+    ![Access Review](images/access-bundle-request.png)
+
+3. Under **Is this request for you?**, click on **No** and select the user **Harlan Bullard**. Click **Next**
+
+   ![Access Review](images/select-user-request.png)
+
+4. Select the **Audit Access** access bundle and click on **Next**.
+
+    ![Access Review](images/access-bundle-audit.png)
+
+5. Provide **Justification** and Click on **Submit request**. The request has been submitted. 
+
+   ![Access Review](images/access-request-justification.png)
+
+   ![Access Review](images/submit-request.png)
+
+6. Navigate to MyStuff -> Approvals
+
+   ![Access Review](images/navigate-approval.png)
+
+7. Click on the request to view the request details. Under **Insights** click on **View details** to view the violation details. 
+
+   ![Access Review](images/view-approval.png)
+
+   ![Access Review](images/click-insight.png)
+
+   ![Access Review](images/violation-detail.png)
+
+8. Click on **Reject** to reject the request. Provide the **Justification** and click on **Confirm**.  
+
+   ![Access Review](images/click-reject.png)
+
+   ![Access Review](images/confirm-reject-request.png)
 
    You may now **proceed to the next lab.**
 

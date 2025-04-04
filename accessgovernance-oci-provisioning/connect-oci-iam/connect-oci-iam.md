@@ -166,6 +166,7 @@ In this lab, you will:
 
 ## Learn More
 
+* [Integrate with OCI IAM](https://docs.oracle.com/en/cloud/paas/access-governance/tjrtj/)
 * [Oracle Access Governance](https://www.oracle.com/security/cloud-security/access-governance/)
 * [Oracle Access Governance Documentation](https://www.oracle.com/security/cloud-security/access-governance/#documentation)
 * [Oracle Access Governance Product Demo](https://www.oracle.com/security/cloud-security/access-governance/?ytid=GJEPEJlQOmQ)
