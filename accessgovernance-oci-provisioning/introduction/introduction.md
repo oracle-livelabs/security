@@ -2,48 +2,50 @@
 
 ## About this Workshop
 
- Oracle Access Governance addresses the growing challenges security owners face in dealing with the increase in advanced security threats and regulations. This cloud native solution helps meet governance and compliance requirements across many applications, workloads, infrastructures, and identity platforms. It provides organizationwide visibility and capabilities to identify anomalies and mitigate security risks across cloud and on-premises environments. Using advanced analytics, Oracle Access Governance offers an intuitive user experience, providing recommendations and insights into access entitlements, behaviors, and risks.
+Oracle Access Governance is a cloud native identity governance and administration (IGA) service that provides customers with a simple, easy-to-understand view of what resources individuals can access, whether they should have that access, and how they’re using their access entitlements. 
+Businesses are challenged every day to enforce appropriate, just-in-time user access rights to manage control of their information and address regulatory compliance requirements regarding least-privilege access. By providing immediate and prescriptive guidance about the types of access users should have, Oracle Access Governance makes it easier for administrators to provision new users and deprovision departing users quickly. In addition, machine learning intelligence in Oracle Access Governance can monitor all types of access to identify anomalous behavior patterns and automate remediation actions as required. 
 
- The graphic below shows the high level architecture of Oracle Access Governance.
-
-  ![View List of Campaigns](images/oracle-access-governance-overview.png)
-
-This lab walks you through the steps to get started using **Oracle Access Governance** with a popular use case - **policy review certification campaign**. In this workshop, a ficticious corporation is using **Oracle IAM** to manage and govern their Cloud resources. As part of their cloud strategy, they want to optimize their policy review certification campaign process with a cloud-native solution. **Oracle Access Governance** SaaS solution is designed for this purpose and serves as a natural extension of **Oracle IAM**. With **Oracle Access Governance**, they can immediately benefit from automated policy review workflows that layer in prescriptive analytics with intuitive dashboards/reports. 
-
-**Oracle Access Governance** allows : 
-- **Campaign administrator** to run intelligent access review campaigns for policy governance and compliance
-- **Access reviewers** to review identity insights and take informed decisions based on **prescriptive analytics**
-- **Users** and **user managers** to validate access assigned to self and their direct reports, respectively. 
-- **Reviewers** to review OCI group membership and change as needed. 
+Oracle Access Governance supports continuous compliance with proper access management and constantly evaluates and reports risks, allowing organizations to avoid big, manual, periodic reviews and significantly reducing the cost and effort of audit responses. Events and access at risk are reviewed regularly, and reviews are informed by built-in intelligence. Oracle Access Governance continuously adds support for orchestrated systems, providing strong insights into access controls across new applications that may span cloud and on-premises environments.
+The graphic below shows the high-level functional architecture of Oracle Access Governance.
 
 
-*Estimated Time:* 1 Hour
+  ![View List of Campaigns](images/oci-provisioning.png)
+
+Oracle Access Governance is a comprehensive governance solution that supports various provisioning methods, including access requests and approvals, role-based access control (RBAC), attribute-based access control (ABAC), and policy-based access control (PBAC). The service features a conversation-style user experience, offering deep visibility into access permissions across the entire enterprise. It facilitates dynamic, periodic, and automated event-based micro certifications, such as an access review triggered by a job code or manager change. Additionally, it enables near real-time access reviews, providing detailed recommendations with options for reviewers to accept or review an entitlement based on the identified level of risk.
+
+This workshop walks you through the steps to setup OCI integration and perform group and application role provisioning in OCI. You will also explore the Who Has Access To What functionality through the enterprise-wide browser. In this workshop, as an application owner, you will create several Access Governance objects including Identity Collections, Approval workflows, Access Bundles, Roles, and Policies. The workshop walks you through the steps involved in requesting, approving, and getting the groups and roles provisioned in OCI.
+
+
+*Estimated Time:* 3 hours
 
 
 ### Objectives
 
 In this workshop, you will learn how to:
-* Setup and configure Oracle Access Governance service instance
-* Create OCI groups and policies needed
-* Integrate OCI IAM with Access Governance
-* Create Access Bundles and Identity Collections for Group and Application Role Provisioning
-* Create Group Provisioning - To Assign multiple OCI IAM groups for an OCI domain from Oracle Access Governance
-* Create Application Role Provisioning - To Assign OCI application roles to OCI identities for services running in an OCI domain
+- Setup and configure Oracle Access Governance service instance
+- Install and configure Oracle Access Governance agents for the Oracle Identity Governance and the Oracle Database
+- Perform data load and activate users in Access Governance
+- Define Access Control components including Identity Collections, Access Bundles, Policies, and Approval Workflows
+- Review “Who Has Access To What” using enterprise-wide browser
+- Create Access Review Campaign and perform access reviews for the target database system
 
 
 ### Prerequisites
+
 This lab assumes you have:
-* A tenancy where you have administrative access
+- Familiarity with OCI
+
 
 
 ## Learn More
 
-* [Oracle Access Governance Product Page](https://www.oracle.com/security/cloud-security/access-governance/)
-* [Oracle Access Governance Documentation](https://docs.oracle.com/en/cloud/paas/access-governance/index.html)
-* [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
+* [Oracle Access Governance](https://www.oracle.com/security/cloud-security/access-governance/)
+* [Oracle Access Governance Documentation](https://www.oracle.com/security/cloud-security/access-governance/#documentation)
+* [Oracle Access Governance Product Demo](https://www.oracle.com/security/cloud-security/access-governance/?ytid=GJEPEJlQOmQ)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
-* [Oracle Access Governance Announcement Blog](https://blogs.oracle.com/cloudsecurity/post/intelligent-cloud-delivered-access-governance-with-prescriptive-analytics)
 
 ## Acknowledgments
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Indira Balasundaram , Sept 2024
+
+* **Authors** - Indiradarshni Balasundaram
+* **Contributors** - Anbu Anbarasu, Anuj Tripathi 
+* **Last Updated By/Date** - Indiradarshni Balasundaram , April 2025

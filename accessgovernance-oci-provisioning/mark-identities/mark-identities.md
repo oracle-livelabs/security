@@ -59,7 +59,7 @@ In this task, you will select the identities that you want to include in your se
 
 5. Close the pop-up and click on **Save**
 
-## Task 3: Assign the Selected Users as Workforce Users
+## Task 3: Assign the Selected Users as Consumer Users
 
 In this task, you will assign the users Pamela Green as Workforce users and the remaining users as Consumer users.  
 
@@ -96,11 +96,13 @@ In this task, you will assign the users Pamela Green as Workforce users and the 
 
 ## Learn More
 
-* [Oracle Access Governance Create Access Review Campaign](https://docs.oracle.com/en/cloud/paas/access-governance/pdapg/index.html)
-* [Oracle Access Governance Product Page](https://www.oracle.com/security/cloud-security/access-governance/)
-* [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
+* [Oracle Access Governance](https://www.oracle.com/security/cloud-security/access-governance/)
+* [Oracle Access Governance Documentation](https://www.oracle.com/security/cloud-security/access-governance/#documentation)
+* [Oracle Access Governance Product Demo](https://www.oracle.com/security/cloud-security/access-governance/?ytid=GJEPEJlQOmQ)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgements
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Last Updated By/Date** - Indira Balasundaram , Sept 2024
+
+* **Authors** - Indiradarshni Balasundaram
+* **Contributors** - Anbu Anbarasu, Anuj Tripathi 
+* **Last Updated By/Date** - Indiradarshni Balasundaram , April 2025

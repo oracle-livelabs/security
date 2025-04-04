@@ -39,15 +39,19 @@
             "filename": "../../define-access-controls/define-access-control.md"
         },
         {
-            "title": "Lab 7: Request Access to a Resource",
+            "title": "Lab 7: Provision Group Access",
             "filename": "../../group-provisioning/group-provisioning.md"
         },
         {
-            "title": "Lab 8: Application Role Provisioning ",
+            "title": "Lab 8: Provision Application Role in OCI",
             "filename": "../../application-role-provisioning/application-role-provisioning.md"
         },
         {
-            "title": "Lab 9: Cleanup the Environment",
+            "title": "Lab 9: Configure Access Guardrails",
+            "filename": "../../access-guardrails/access-guardrails.md"
+        },
+        {
+            "title": "Lab 10: Cleanup the Environment",
             "filename": "../../aginstance-cleanup/aginstance-cleanup.md"
         },
         {

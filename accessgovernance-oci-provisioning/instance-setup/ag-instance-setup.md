@@ -19,14 +19,13 @@ In this lab, you will:
 ### Prerequisites
 This lab assumes you have:
 - A valid Oracle OCI tenancy, with OCI administrator privileges. 
-- **Choose a region where Access Governance is available**
 
 
 ## Task 1: Create AG Service instance 
 
 Login to the OCI console using the Identity domain: ag-domain as the **Identity Domain Administrator** which is **idd-admin** as per our lab , if not currently not logged in to the Identity domain. 
 
-1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products. If you don't see the menu option, please check the region selected and make sure that Access Governance is available in that region - [Oracle Access Governance Availability Regions](https://docs.oracle.com/en/cloud/paas/access-governance/cagsi/index.html#articletitle)
+1. In the OCI console, click the Navigation Menu icon in the top left corner to display the *Navigation menu.* Click *Identity and Security* in the *Navigation menu*. Select *Access Governance* from the list of products.
 
     ![Create Service Instance](images/oci-console.png)
 
@@ -80,12 +79,13 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 
 ## Learn More
 
-* [Oracle Access Governance Create Access Review Campaign](https://docs.oracle.com/en/cloud/paas/access-governance/pdapg/index.html)
-* [Oracle Access Governance Product Page](https://www.oracle.com/security/cloud-security/access-governance/)
-* [Oracle Access Governance Product tour](https://www.oracle.com/webfolder/s/quicktours/paas/pt-sec-access-governance/index.html)
+* [Oracle Access Governance](https://www.oracle.com/security/cloud-security/access-governance/)
+* [Oracle Access Governance Documentation](https://www.oracle.com/security/cloud-security/access-governance/#documentation)
+* [Oracle Access Governance Product Demo](https://www.oracle.com/security/cloud-security/access-governance/?ytid=GJEPEJlQOmQ)
 * [Oracle Access Governance FAQ](https://www.oracle.com/security/cloud-security/access-governance/faq/)
 
 ## Acknowledgments
-* **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
-* **Contributors** - Edward Lu
-* **Last Updated By/Date** - Indira Balasundaram , Nov 2024
+
+* **Authors** - Indiradarshni Balasundaram
+* **Contributors** - Anbu Anbarasu, Anuj Tripathi 
+* **Last Updated By/Date** - Indiradarshni Balasundaram , April 2025
