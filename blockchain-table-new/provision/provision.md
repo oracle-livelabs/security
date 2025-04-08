@@ -22,7 +22,7 @@ Watch the video below for a quick walk-through of the lab.
 
 ## Task 1: Provision an Autonomous Database
 
-  **Note:** If you plan to use an existing Autonomous Database in your own tenancy, or you are using an Oracle-provided environment, you can skip the Task 1 and Task 2.
+  **Note:** If you plan to use an Oracle-provided environment, you can skip the Task 1 and Task 2.
 
 1. Log in to the Oracle Cloud Infrastructure
 
@@ -94,7 +94,13 @@ Watch the video below for a quick walk-through of the lab.
 
 3. In the Create User page, under User tab, give the following details and click **Create User**:
     - **User Name** - Give the new user a User Name. The username is case-sensitive. In the lab, we name the user **Username - DEMOUSER**.
+    ```
+        <copy>DEMOUSER</copy>
+    ```
     - **Password** - Give the new user a password and confirm the Password. In this lab, we give the same password as admin user for ease of use, **Password - Welcome_123#** and confirm the password.
+    ```
+        <copy>Welcome_123#</copy>
+    ```
     - **Quota on tablespace DATA** - Set a value for the Quota on tablespace DATA for the user. Choose **500M** for this user.
     - **Web Access** - Turn on the Web Access radio button to access the SQL Developer Web.
     - **Web access advanced features** - Expand the Web access advanced features and turn off the Authorization required radio button to disable the authorization for `demouser` REST services
@@ -267,5 +273,5 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 
 * **Contributors** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal 
-* **Created By/Date** - Vinay Pandhariwal, March 2025
-* **Last Updated By/Date** - Vinay Pandhariwal, March 2025
+* **Created By/Date** - Vinay Pandhariwal, April 2025
+* **Last Updated By/Date** - Vinay Pandhariwal, April 2025

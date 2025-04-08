@@ -1,4 +1,4 @@
-# Immutable Tables : Build the Foundation of tamper-resistant Data Storage
+# Immutable Tables with Retention-Based Data Protection
 
 ## **Introduction**
 
@@ -517,43 +517,6 @@ This command simplifies the management of data retention in Immutable Tables, en
 
 You may now [proceed to the next lab](#next).
 
-## Other Immutable Table Commands
-
-<details>
-<summary><mark>Adding Interval Partitioning to Immutable Tables</mark></summary>
-
-The **`immutable_table add_interval_partitioning`** command adds interval partitioning to an existing, non-partitioned Immutable Table. This feature automatically creates partitions for new data at regular intervals based on the specified settings, streamlining data management. It is supported for **V1** and **V2 Immutable Tables** starting from database version **23ai**.
-
-#### Usage:
-<pre>
-immutable_table add_interval_partitioning {OPTIONS}
-</pre>
-
-<details>
-<summary>**Options:**</summary>
-- **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Immutable Table. The table name can be preceded by its schema name. For case-sensitive schema or table names, enclose the full name in double quotes, and individual parts in double, double quotes.
-- **`-interval_number|-intnum <interval_number>` (Required):** Defines the interval for partition creation. For example, setting `1` creates a partition every 1 unit of the specified frequency.
-- **`-interval_frequency|-intfreq <interval_frequency>` (Required):** Specifies the time unit for the interval. Acceptable values are:
-    - `YEAR`
-    - `MONTH`
-    - `DAY`
-    - `HOUR`
-    - `MINUTE`
-- **`-first_high_timestamp|-firsthigh <first_high_timestamp>` (Required):** A timestamp specifying the upper boundary of the first partition. This timestamp determines the starting point for partition creation.
-</details>
-</br>
-
-#### Key Notes:
-1. This command is equivalent to the **`DBMS_IMMUTABLE_TABLE.ADD_INTERVAL_PARTITIONING`** PL/SQL procedure for programmatic operations.
-2. It is only applicable to non-partitioned Immutable Tables.
-3. Adding interval partitioning automates partition management, reducing manual overhead for handling large datasets.
-
-By using the **`add_interval_partitioning`** command, you can seamlessly manage time-based data in Immutable Tables, ensuring efficient and scalable performance.
-</details>
-</br>
-
-You may now [proceed to the next lab](#next).
-
 ## Learn more
 
 * For more information on Immutable Table and other Immutable Table commands, please see [DBMS\_IMMUTABLE\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_immutable_table.html) documentation and SQLcl help section accessed using **`help immutable_table`** in the SQLcl console.
@@ -562,5 +525,5 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 
 * **Contributors** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal 
-* **Created By/Date** - Vinay Pandhariwal, March 2025
-* **Last Updated By/Date** - Vinay Pandhariwal, March 2025
+* **Created By/Date** - Vinay Pandhariwal, April 2025
+* **Last Updated By/Date** - Vinay Pandhariwal, April 2025
