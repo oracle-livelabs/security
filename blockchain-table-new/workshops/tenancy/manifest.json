@@ -25,11 +25,11 @@
             "filename": "../../blockchain-tables-basic/blockchain-tables-basic.md"
         },
         {
-            "title": "Lab 4: Advanced Row-Level Signature and Verification in Blockchain Tables",
+            "title": "Lab 4: Row-Level Signatures and Their Verification in Blockchain Tables",
             "filename": "../../blockchain-tables-advanced/blockchain-tables-advanced.md"
         },
         {
-            "title": "Lab 5: Advanced Digest Generation and Verification in Blockchain Tables",
+            "title": "Lab 5: Digest Generation and Verification in Blockchain Tables",
             "filename": "../../blockchain-table-digests/blockchain-table-digests.md"
         },
         {

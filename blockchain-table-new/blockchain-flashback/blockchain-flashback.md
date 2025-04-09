@@ -25,7 +25,7 @@ In this lab, you will:
   Explore how Oracle manages and protects historical data for tracked tables.
 
 - **Perform Blockchain Table Based Verification on Flashback Archive History Tables** <br />
-  Use blockchain table enabled SQLcl commands such as verify_rows, verify\_table, and get\_digest to verify the cryptographic integrity of Oracle-managed blockchain history tables created for Flashback Archive, ensuring that historical changes to the tracked table remain immutable and tamper-resistant."
+  Use blockchain table enabled SQLcl commands such as verify_rows, verify\_table, and get\_digest to verify the cryptographic integrity of Oracle-managed blockchain history tables created for Flashback Archive, ensuring that historical changes to the tracked table remain immutable and tamper-resistant.
 
 ### Prerequisites
 
@@ -234,6 +234,8 @@ In this task, you will perform various operations on regular_table and observe h
 
   ![insert into regular table](./images/lab6-task3-1.png " ")
 
+
+> NOTE: The blockchain flashback archive is updated asynchronously by a background process; therefore, it is recommended to wait a few seconds after inserting or modifying rows before querying or verifying them.
 
 - Query the Blockchain History Table:
 

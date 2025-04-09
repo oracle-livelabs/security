@@ -16,7 +16,7 @@ In the previous labs, we've explored various commands related to blockchain tabl
 * Have successfully completed the previous labs.
 
 
-## Task1: Other Immutable Table Commands
+## Task 1: Other Immutable Table Commands
 <details>
 <summary><mark>Adding Interval Partitioning to Immutable Tables</mark></summary>
 

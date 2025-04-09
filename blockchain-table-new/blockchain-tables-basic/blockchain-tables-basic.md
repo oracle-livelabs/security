@@ -586,7 +586,7 @@ To verify rows created between two timestamps:
 > Verified 0 rows from '"DEMOUSER".bank_ledger_bt' table. </pre>
 
 #### Example with Signature Skipping:
-To verify rows but skip validating user signatures:
+To verify rows but skip validating all signatures:
 ```
     <copy>
     blockchain_table verify_rows -tab bank_ledger_bt -skip_user_signature -skip_delegate_signature -skip_countersignature

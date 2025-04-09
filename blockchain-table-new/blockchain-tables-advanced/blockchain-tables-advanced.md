@@ -1,4 +1,4 @@
-# Advanced Row-Level Signature and Verification in Blockchain Tables
+# Row-Level Signatures and Their Verification in Blockchain Tables
 
 ## **Introduction**
 
@@ -16,7 +16,7 @@ In this lab, we will use SQLcl to perform various operations on Blockchain Table
 
 Watch the video below for a quick walk through of the lab.
 
-[Advanced Row-Level Signing and Verification in Blockchain Tables](videohub:1_w6ghvbpi:medium)
+[Row-Level Signing and Verification in Blockchain Tables](videohub:1_w6ghvbpi:medium)
 
 ### Objectives
 
@@ -85,23 +85,20 @@ We will create a wallet containing certificates and private key pairs in the Clo
     !openssl genrsa -out ca_privatekey.pem 4096
     !openssl req -x509 -new -key ca_privatekey.pem -sha512 -days 3650 -out ca_cert.pem -subj "/CN=Admin"
 
-    -- 3. Export the CA certificate in base64 format (PEM)
-    !cp ca_cert.pem b64certificate.txt
-
-    -- 4. Generate a private key for demouser
+    -- 3. Generate a private key for demouser
     !openssl genrsa -out demouser_privatekey.pem 4096
 
-    -- 5. Create a certificate signing request (CSR) and a self-signed certificate using the private key
+    -- 4. Create a certificate signing request (CSR) and a self-signed certificate using the private key
     !openssl req -new -key demouser_privatekey.pem -out demouser_csr.pem -subj "/CN=demouser"
     !openssl x509 -req -in demouser_csr.pem -CA ca_cert.pem -CAkey ca_privatekey.pem -CAcreateserial -out demouser_cert.crt -days 3650 -sha512
 
-    -- 6. Convert the certificate to PKCS#12 format
+    -- 5. Convert the certificate to PKCS#12 format
     !openssl pkcs12 -export -in demouser_cert.crt -inkey demouser_privatekey.pem -out demouser_cert.p12 -name "demouser" -passout pass:Welcome_123#
 
-    -- 7. Import the PKCS#12 file into the Oracle Wallet
+    -- 6. Import the PKCS#12 file into the Oracle Wallet
     orapki wallet import_pkcs12 -wallet . -pkcs12file demouser_cert.p12 -pwd Welcome_123# -pkcs12pwd Welcome_123#
 
-    -- 8. Add the CA certificate to the Oracle Wallet
+    -- 7. Add the CA certificate to the Oracle Wallet
     orapki wallet add -wallet . -trusted_cert -cert ca_cert.pem -pwd Welcome_123#
     </copy>
 ```
@@ -179,7 +176,7 @@ Adding certificate using certificate file and storing the guid in a bind variabl
         <copy>
         variable guid VARCHAR2;
 
-        certificate add -cert_file demouser_cert.crt -cert_guid ::guid
+        certificate add -cert_file demouser_cert.crt -cert_guid ":guid"
 
         print guid
         </copy>
@@ -190,7 +187,7 @@ Adding certificate using certificate file and storing the guid in a bind variabl
 > <pre>
 > SQL> variable guid VARCHAR2;  
 > SQL>   
-> SQL> certificate add -cert_file demouser_cert.crt -cert_guid ::guid  
+> SQL> certificate add -cert_file demouser_cert.crt -cert_guid ":guid"
 > Command executed successfully.  
 > CERTIFICATE_GUID : &lt;RANDOM_GUID&gt;
 > SQL>   
@@ -250,7 +247,7 @@ certificate drop {OPTIONS}
 Dropping certificate using bind variable used in previous step
     ```
     <copy>
-    certificate drop -cert_guid ::guid
+    certificate drop -cert_guid ":guid"
     </copy>
     ```
 
@@ -267,7 +264,7 @@ Managing certificates is a vital step in enabling secure cryptographic operation
 
 ---
 
-> In this lab, we will continue working with the **bank\_ledger\_bt** table created in Lab 3, building upon it to explore advanced signing and verification features.
+> In this lab, we will continue working with the **bank\_ledger\_bt** table created in Lab 3, building upon it to explore row signing and verification features.
 
 The **`blockchain_table sign_row`** command enables users to provide a digital signature for a previously inserted row in a Blockchain Table. This signature ensures the authenticity and integrity of the row data. The command corresponds to the **`DBMS_BLOCKCHAIN_TABLE.SIGN_ROW`** PL/SQL procedure.
 
@@ -304,7 +301,7 @@ blockchain_table sign_row {OPTIONS}
 - **`-type <type>` (Optional):** Specifies the type of signature. Acceptable values:
     - `USER`: Default value, used for user-generated signatures.
     - `DELEGATE`: Indicates the signature is delegated.
-- **`-pdb_guid <pdb_guid>` (Optional):** Specifies the GUID of the Pluggable Database (PDB) where the Blockchain Table is located. Required for V2 tables in a multi-tenant environment.
+- **`-pdb_guid <pdb_guid>` (Optional):** Specifies the GUID of the Pluggable Database (PDB) where the Blockchain Table is located.
 </details>
 
 #### Before signing lets declare some variables and add certificates for ease of use.
@@ -316,7 +313,7 @@ variable   seq_id         VARCHAR2;
 variable   row_hash       VARCHAR2;
 variable   guid           VARCHAR2;
 
-certificate add -cert_file demouser_cert.crt -cert_guid ::guid
+certificate add -cert_file demouser_cert.crt -cert_guid ":guid"
 
 </copy>
 ```
@@ -413,7 +410,7 @@ commit;
 > Successfully signed row at instance id '<INST_ID>', chain id '<CHAIN_ID>' and sequence id '<SEQUENCE_ID>' in table '"DEMOUSER".bank_ledger_bt'. </pre>
 
 
-Using the `sign_row` command ensures the authenticity of Blockchain Table data by attaching cryptographic signatures to rows, identified either by chain/sequence or key columns. The inclusion of **`type`** and **`pdb_guid`** options adds flexibility for advanced use cases in multi-tenant environments and delegated signing.
+Using the `sign_row` command ensures the authenticity of Blockchain Table data by attaching cryptographic signatures to rows, identified either by chain/sequence or key columns. The inclusion of **`type`** option adds flexibility for advanced use cases in delegated signing.
 
 
 <details open>
@@ -519,7 +516,7 @@ To verify rows created between two timestamps:
 > Verified 0 rows from '"DEMOUSER".bank_ledger_bt' table. </pre>
 
 #### Example with Signature Skipping:
-To verify rows but skip validating user signatures:
+To verify rows but skip validating all signatures:
 ```
     <copy>
     blockchain_table verify_rows -tab bank_ledger_bt -skip_user_signature -skip_delegate_signature -skip_countersignature

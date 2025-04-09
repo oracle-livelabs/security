@@ -1,4 +1,4 @@
-# Advanced Digest Generation and Verification in Blockchain Tables
+# Digest Generation and Verification in Blockchain Tables
 
 ## **Introduction**
 
@@ -14,7 +14,7 @@ This lab explores how to generate both types of digests, validate them, and unde
 
 > Oracle 23ai introduces the ability to generate filtered digests using row selectors. These allow you to verify digest integrity over a subset of rows rather than the entire table — ideal for cases like regional audits, department-level records, or sensitive data slices.
 > 
-> We will continue working with the **bank\_ledger\_bt** table created in Lab 3, building upon it to explore advanced signing and verification features.
+> We will continue working with the **bank\_ledger\_bt** table created in Lab 3, building upon it to explore digest generation and verification features.
 
 
 In this lab, we will use SQLcl to perform various operations on Blockchain Tables, leveraging its intuitive and user-friendly interface. The dedicated command for managing Blockchain Tables is `blockchain_table | bl` . SQLcl offers powerful features such as Completion Insight (TAB) for command suggestions, Command History to revisit previous commands, and an In-Line Editor for easy modifications, ensuring a smooth and efficient workflow. For additional guidance, you can access the help section directly in the SQLcl console by typing `help blockchain_table` or `help bl` . This provides a comprehensive overview of all commands and functionalities, making it easier to explore and manage Blockchain Tables throughout the lab.
@@ -23,7 +23,7 @@ In this lab, we will use SQLcl to perform various operations on Blockchain Table
 
 Watch the video below for a quick walk through of the lab.
 
-[Advanced Digest Generation and Verification in Blockchain Tables](videohub:1_vc1xrzr9:medium)
+[Digest Generation and Verification in Blockchain Tables](videohub:1_vc1xrzr9:medium)
 
 ### Objectives
 
@@ -40,12 +40,6 @@ In this lab, you will:
 
 - **Verify Blockchain Table State Using Digests** <br />
   Use the verify_table command to confirm data integrity against previously stored digest files.
-
-- **Understand Digest Matching Rules** <br />
-  Learn key verification rules:
-  - Only signed digests can verify signed digests, and unsigned for unsigned.
-  - A filtered digest must match its filtering criteria at verification time.
-  - Digest types (full-table vs. filtered) cannot be interchanged during verification.
 
 
 ### Prerequisites
@@ -214,8 +208,6 @@ You can apply filters using:
 - **`-selector`**: Directly specify the filter condition as a WHERE clause (without the `WHERE` keyword).
 - **`-selector_file`**: Provide a file containing the row selection condition.
 
-> Note: Signed digests must be verified using other signed digests, and only when the same filtering criteria is applied. Mixing signed and unsigned digests, or inconsistent filters, will lead to verification failure.
-
 #### Usage:
 <pre>
 blockchain_table get_signed_digest {OPTIONS}
@@ -260,14 +252,7 @@ print cert_guid
 The **`blockchain_table verify_table`** command checks the integrity of all rows in a Blockchain Table between a specified range of digests. This includes verifying signatures, user chains, and system chains for rows created within the range defined by the provided digest files. This command is equivalent to the **`DBMS_BLOCKCHAIN_TABLE.VERIFY_TABLE_BLOCKCHAIN`** PL/SQL procedure.
 
 > **Important Notes:**
-> - You must use the **same type of digest** for both the `start_digest_file` and `end_digest_file`:
->     - Full table digests must be verified against **other full table digests**.
->     - Filtered row digests must be verified against **other filtered row digests**.
->     - Interchanging digest types (e.g., full with filtered) will result in **verification failure**.
->
 > - When using **filtered row digests**, ensure that **both digest files were generated using the same row filter**. Using different filters will lead to **verification failure**.
->
-> - Signed digests can only be verified against **other signed digests**, and **unsigned digests** can only be verified against other **unsigned digests**. Mixing signed and unsigned digests during verification is not supported and will result in failure.
 
 #### Usage:
 <pre>
