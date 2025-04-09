@@ -21,13 +21,7 @@
       "type": "key-vault_ssh"
     },
     {
-      "title": "Lab 2: Environment Setup",
-      "description": "How to provision the workshop environment and connect to it",
-      "publisheddate": "06/30/2020",
-      "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
-    },
-    {
-      "title": "Lab 3: Key Vault (OKV) - SSH Key Management",
+      "title": "Lab 2: Key Vault (OKV) - SSH Key Management",
       "description": "In this lab you can see how to leverage Oracle Key Vault (OKV) to manage SSH keys",
       "publisheddate": "10/20/2020",
       "filename": "../../key-vault_ssh/key-vault_ssh.md",
