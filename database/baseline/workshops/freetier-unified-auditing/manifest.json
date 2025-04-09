@@ -21,25 +21,13 @@
       "type": "unified-auditing"
     },
     {
-      "title": "Lab 2: Environment Setup",
-      "description": "How to provision the workshop environment and connect to it",
-      "publisheddate": "06/30/2020",
-      "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
-    },
-    {
-      "title": "Lab 3: Initialize Environment",
-      "description": "How to initialize and start all the workshop components",
-      "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env-dbs.md"
-    },
-    {
-      "title": "Lab 4: Configure Database for Audit",
+      "title": "Lab 2: Configure Database for Audit",
       "description": "In this lab you will do initial configuration for Unified Auditing",
       "publisheddate": "11/14/2024",
       "filename": "../../unified-auditing/setup-auditing.md"
     },
     {
-      "title": "Lab 5: Unified Audit Basics: Beginner’s Delight",
+      "title": "Lab 3: Unified Audit Basics: Beginner’s Delight",
       "description": "In this lab you will get started with Unified Auditing essentials",
       "publisheddate": "11/14/2024",
       "filename": "../../unified-auditing/basics-auditing.md"
