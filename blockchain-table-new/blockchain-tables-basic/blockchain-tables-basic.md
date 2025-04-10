@@ -571,12 +571,28 @@ To verify all rows in a table:
 
 
 #### Example with Timestamp Range:
-To verify rows created between two timestamps:
-```
-    <copy>
-    blockchain_table verify_rows -tab bank_ledger_bt -low '16-JAN-25 01.00.01 AM UTC' -high '17-JAN-25 11.21.30 AM UTC'
-    </copy>
-```
+Blockchain Tables allow selective verification of rows using timestamp boundaries. This feature is useful when you want to validate changes made within a specific time range.
+
+- Query the Creation Time of Rows.<br/>
+    Before verifying rows, identify the creation times by querying the `bank_ledger_bt` table:
+    ```
+        <copy>
+        select ACCOUNT_NUMBER, ORABCTAB_CREATION_TIME$ from bank_ledger_bt;
+        </copy>
+    ```
+
+ - Verify Rows with a Timestamp Range<br/>
+    You can now use the `verify_rows` command with different combinations of -low and -high timestamps to validate only the rows created within that period.
+    ```
+        <copy>
+        blockchain_table verify_rows -tab bank_ledger_bt -low '08-APR-25 05.01.01 AM UTC' -high '09-APR-25 11.21.30 AM UTC'
+        </copy>
+    ```
+    ```
+        <copy>
+        blockchain_table verify_rows -tab bank_ledger_bt -low '08-APR-25 05.01.01 AM UTC' -high '08-APR-25 05.01.10 AM UTC'
+        </copy>
+    ```
 >NOTE: Timestamps need to be specified as per NLS settings.
 
 ![verify_rows with timestamp](./images/lab3-task6-2.png " ")

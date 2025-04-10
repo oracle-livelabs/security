@@ -14,7 +14,7 @@ Watch the video below for a quick walk-through of the lab.
 
 -   Learn how to provision a new Autonomous Database
 -   Create a new user for demo purpose
--   Connect to Autonomous Database using Oracle CloudShell and SQLcl
+-   Connect to Autonomous Database using Oracle Cloud Shell and SQLcl
 
 ### Prerequisites
 
@@ -110,7 +110,7 @@ Watch the video below for a quick walk-through of the lab.
 4.  Notice that the new user is created successfully.
     ![new user created successfully](./images/lab1-task2-5.png "new user created successfully")
 
-## Task 3: Connect to Autonomous Database using Oracle CloudShell and SQLcl
+## Task 3: Connect to Autonomous Database using Oracle Cloud Shell and SQLcl
 
 1. On the **Blockchain-Table-Demo ATP** instance details page, click on **Copy** to copy the **OCID** of the ATP instance.  
     ![instance details page](./images/lab1-task3-2.png "instance details page")

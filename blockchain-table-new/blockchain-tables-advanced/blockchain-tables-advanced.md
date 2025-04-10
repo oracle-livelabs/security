@@ -59,7 +59,7 @@ Adding certificates to the database is essential as they form the foundation for
     - The certificate associated with the signature must be present in the database to verify the validity of the signature.
   
 - **Certificate Retention for Historical Data**:
-    - Even if a certificate expires, it must remain in the database until all rows signed with it are deleted. This ensures that historical rows can still be verified.
+    - Even if a certificate expires, it must remain in the database until all rows signed with it are deleted. This ensures that digital signatures on historical rows can still be verified.
 
 - **Multi-User Scenarios**:
     - Certificates allow different users or systems to sign and verify rows independently. Each certificate is uniquely identified with a **Global Unique Identifier (GUID)**, enabling clear ownership and usage tracking.
@@ -68,11 +68,11 @@ In this task, we will use **SQLcl commands** to add, drop, and list certificates
 
 ---
 
-### **Creating a Wallet and Certificates in CloudShell**
+### **Creating a Wallet and Certificates in Cloud Shell**
 
 ---
 
-We will create a wallet containing certificates and private key pairs in the CloudShell local directory. This wallet will be used to add certificates to the `user_certs$` table. Follow the steps below to perform wallet creation and certificate generation. These commands need to be run from **SQLcl**.
+We will create a wallet containing certificates and private key pairs in the Cloud Shell local directory. This wallet will be used to add certificates to the `user_certs$` table. Follow the steps below to perform wallet creation and certificate generation. These commands need to be run from **SQLcl**.
 
 #### Steps:
 
@@ -343,7 +343,7 @@ commit;
 
 
 #### Example: Sign a Row Using Key Column Parameters and a private key stored in a file
-To sign a specific row in the `bank_ledger_bt` table using key columns. The code internally uses OpenSSL installed on user's local system (here cloudshell) to generate signature:
+To sign a specific row in the `bank_ledger_bt` table using key columns. The code internally uses OpenSSL installed on user's local system (here Cloud Shell) to generate the signature:
 ```
 <copy>
 
@@ -361,7 +361,7 @@ commit;
 
 
 #### Example: Sign a Row Using Positional Parameters and a private key stored in a file
-To sign a specific row in the `bank_ledger_bt` table using positional parameters i.e. instance id, chain id and sequence id. The code internally uses OpenSSL installed on user's local system (here cloudshell) to generate signature:
+To sign a specific row in the `bank_ledger_bt` table using positional parameters i.e. instance id, chain id and sequence id. The code internally uses OpenSSL installed on user's local system (here Cloud Shell) to generate the signature:
 ```
 <copy>
 
@@ -410,13 +410,13 @@ commit;
 > Successfully signed row at instance id '<INST_ID>', chain id '<CHAIN_ID>' and sequence id '<SEQUENCE_ID>' in table '"DEMOUSER".bank_ledger_bt'. </pre>
 
 
-Using the `sign_row` command ensures the authenticity of Blockchain Table data by attaching cryptographic signatures to rows, identified either by chain/sequence or key columns. The inclusion of **`type`** option adds flexibility for advanced use cases in delegated signing.
+Using the `sign_row` command ensures the authenticity of Blockchain Table data by attaching cryptographic signatures to rows, identified either by chain/sequence or key columns. The inclusion of the **`type`** option adds flexibility for advanced use cases in delegated signing.
 
 
 <details open>
 <summary>**Delegate Signing**</summary>
 
-Delegate signing in Blockchain Tables allows a delegate to sign rows on behalf of the primary user, using a delegate certificate. This is particularly useful in scenarios where the primary user wants to enable other trusted entities to sign rows without sharing their private key. To perform delegate signing, the delegate certificate must be added to the database, and the **`type`** option must be set to **`DELEGATE`** in the **`sign_row`** command. This ensures that the signature is explicitly marked as a delegate's signature, preserving auditability and trust. Delegate signing provides flexibility while maintaining security, as the primary user's credentials remain secure.
+Delegate signing in Blockchain Tables allows a delegate to sign rows on behalf of the primary user, using a delegate certificate. This is particularly useful in scenarios where the primary user either does not have a private key or wants to enable other trusted entities to sign rows without sharing their private key. To perform delegate signing, the delegate certificate must be added to the database, and the **`type`** option must be set to **`DELEGATE`** in the **`sign_row`** command. This ensures that the signature is explicitly marked as a delegate's signature, preserving auditability and trust. Delegate signing provides flexibility while maintaining security, as the primary user's credentials remain secure.
 </details>
 
 <details open>
@@ -501,12 +501,28 @@ To verify all rows in a table:
 
 
 #### Example with Timestamp Range:
-To verify rows created between two timestamps:
-```
-    <copy>
-    blockchain_table verify_rows -tab bank_ledger_bt -low '16-JAN-25 01.00.01 AM UTC' -high '17-JAN-25 11.21.30 AM UTC'
-    </copy>
-```
+Blockchain Tables allow selective verification of rows using timestamp boundaries. This feature is useful when you want to validate changes made within a specific time range.
+
+- Query the Creation Time of Rows.<br/>
+    Before verifying rows, identify the creation times by querying the `bank_ledger_bt` table:
+    ```
+        <copy>
+        select ACCOUNT_NUMBER, ORABCTAB_CREATION_TIME$ from bank_ledger_bt;
+        </copy>
+    ```
+
+ - Verify Rows with a Timestamp Range<br/>
+    You can now use the `verify_rows` command with different combinations of -low and -high timestamps to validate only the rows created within that period.
+    ```
+        <copy>
+        blockchain_table verify_rows -tab bank_ledger_bt -low '08-APR-25 05.01.01 AM UTC' -high '09-APR-25 11.21.30 AM UTC'
+        </copy>
+    ```
+    ```
+        <copy>
+        blockchain_table verify_rows -tab bank_ledger_bt -low '08-APR-25 05.01.01 AM UTC' -high '08-APR-25 05.01.10 AM UTC'
+        </copy>
+    ```
 >NOTE: Timestamps need to be specified as per NLS settings.
 
 ![verify_rows with timestamp](./images/lab4-task3-2.png " ")
