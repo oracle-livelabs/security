@@ -325,7 +325,7 @@ In this lab, you will do the following:
     
         ![AVDF](./images/avdf-523.png "Save Sensitive Objects")
 
-8. A sensitive object set by the name of GDPR_set1 is created. You can use this set in All Activity and GDPR reports. You can also use these sets in your database firewall and alert policy. Notice under **In use**, it is still **No**since this global set has not been used in any alert or database firewall policy yet.
+8. A sensitive object set by the name of GDPR_set1 is created. You can use this set in All Activity and GDPR reports. You can also use these sets in your database firewall and alert policy. Notice under **In use**, it is still **No** since this global set has not been used in any alert or database firewall policy yet.
 
     ![AVDF](./images/avdf-524.png "Sensitive Objects Set")
 
@@ -401,7 +401,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
     - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **pdb1**
 
-7. Repeat the steps 5 and 6 for **pdb2** as well
+7. Repeat from #3 to #6 for **pdb2** as well
 
 8. The next thing you can do is check which Unified Audit Policies exist and which Unified Audit Policies are enabled by using **SQL*Plus**
 
@@ -737,7 +737,7 @@ In this lab, we will do the following
 
         ![AVDF](./images/avdf-102.png "Configure network settings")
     
-    - For ens3, the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2, because here we will use these ports to use Database Firewall
+    - For the available network interface card (NIC), the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2. These ports will be used for the Database Firewall monitoring.
     
         ![AVDF](./images/avdf-103.png "Proxy Ports settings")
 
@@ -752,6 +752,53 @@ In this lab, we will do the following
         **Note**:
         - Once enabled, Database Firewall monitoring will analyze the traffic from pdb1 through the port 15223
         - We configured it in "Proxy" mode, so all the SQL traffic will transit by the DB Firewall appliance to be able to block the "bad" traffic if needed
+
+    - ***If you have deployed this lab in "Run on LiveLabs Sandbox" (green button)***
+
+        ![AVDF](./images/avdf-104a.png "LiveLabs Green Button")
+
+    - **Note:** ***In the case of a Green Button, the monitoring point for the database firewall will not be created automatically and will be shown empty. Please perform the following steps to manually add the monitoring point.***
+
+        ![AVDF](./images/avdf-104b.png "Empty Database Firewall Monitoring Point")
+
+    **To add a monitoring point for pdb1**
+    - Login as AVADMIN user
+    - Click on the **Target** tab and click **pdb1**
+    - Under **Database Firewall Monitoring**, Click on **Add**
+    - Select the following details:
+        - Database Firewall: **dbfw**
+        - Network Interface Card: **enp0s5** (Select from drop-down)
+        - Mode: **Monitoring/ Blocking (Proxy)**
+        - Proxy Port: **Proxy_pdb1(15223)**
+
+    - Click on Add to add the host, port, and service details, and add the following under each column
+        - Host Name / IP Address: **10.0.0.150**
+        - Port: **1521**
+        - Service: **pdb1**
+        - Click [**Save**]
+
+     - Click [**Save**]
+
+    Optionally, you may want to repeat the same steps for **pdb2**; however, in this task, we will use **pdb1** to configure the use cases.
+
+    **To add a monitoring point for pdb2**
+
+    - Login as AVADMIN user
+    - Click on the **Target** tab and click **pdb2**
+    - Under **Database Firewall Monitoring**, Click on **Add**
+    - Select the following details:
+        - Database Firewall: **dbfw**
+        - Network Interface Card: **enp0s5** (Select from drop-down)
+        - Mode: **Monitoring/ Blocking (Proxy)**
+        - Proxy Port: **Proxy_pdb2(15224)**
+
+    - Click on Add to add the host, port, and service details, and add the following under each column
+        - Host Name / IP Address: **10.0.0.150**
+        - Port: **1521**
+        - Service: **pdb2**
+        - Click [**Save**]
+
+     - Click [**Save**]
 
 4. Now, verify connectivity between the database and the DB Firewall
 
@@ -980,7 +1027,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
         ![AVDF](./images/avdf-127f.png "See the SQL statements in a dedicated column")
 
-    - Sroll down to one of our favorite queries
+    - Scroll down to one of our favorite queries
 
         ![AVDF](./images/avdf-127g.png "Sroll down to one of our favorite queries")
 
@@ -1470,6 +1517,12 @@ Transaction Log collector takes advantage of **Oracle GoldenGate’s Integrated 
 The first thing we need to do is to set up the database to be ready for Golden Gate
 
 1. Go back to your terminal session on DBSec-Lab VM to create the Golden Gate Database Administration user **C##AVGGADMIN** in the container database **cdb1**
+
+    - Go to AVS directory
+
+    ````
+    <copy>cd $DBSEC_LABS/avdf/avs</copy>
+    ````
 
     ````
     <copy>./avs_create_oggadmin_db_user.sh</copy>
