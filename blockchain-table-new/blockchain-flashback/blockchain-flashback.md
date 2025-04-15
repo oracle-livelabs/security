@@ -95,9 +95,9 @@ In this task, you will create a regular table that utilizes Oracle's Flashback A
 
 In this task, you will explore the internal structures that Oracle creates to support Flashback Archive with blockchain capabilities.
 
-- Find the Object ID for regular_table:
+- Find the Object ID for the regular_table:
 
-  Each table in Oracle has a unique OBJECT\_ID. Retrieve the OBJECT\_ID for regular_table by executing:
+  Each table in Oracle has a unique OBJECT\_ID. Retrieve the OBJECT\_ID for the regular_table by executing:
 
   ```
   <copy>
@@ -119,7 +119,7 @@ In this task, you will explore the internal structures that Oracle creates to su
     - Transaction Control Row Version Table (TCRV): Named SYS\_FBA\_TCRV\_{RANDOM\_OBJECT\_ID}, this table tracks the current row versions.
 
 - List All Blockchain Tables:
-  To view all blockchain tables in the database, execute:
+  To view all blockchain tables that you can access in the database, execute:
   ```
   <copy>
     select * from all_blockchain_tables;
@@ -351,8 +351,6 @@ In this task, you will utilize Oracle's blockchain table commands to verify the 
 You may now [proceed to the next lab](#next).
 
 ## Learn more
-
-* For more information on managing certificates, including adding, dropping, and other related procedures, please see the [DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html) documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
 
 * For more information on Blockchain Flashback Journals for regular tables, please see **[Protecting Flashback Archive Data](https://docs.oracle.com/en/database/oracle/oracle-database/23/adfns/flashback.html#GUID-6B04E5D6-4740-4CA6-9CC6-A3CD19E00FA6)** documentation.
 
