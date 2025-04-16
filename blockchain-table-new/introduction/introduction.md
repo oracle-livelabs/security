@@ -51,7 +51,11 @@ You may now [proceed to the next lab](#next).
 
 * For more information on Blockchain Flashback Journals for regular tables, please see **[Protecting Flashback Archive Data](https://docs.oracle.com/en/database/oracle/oracle-database/23/adfns/flashback.html#GUID-6B04E5D6-4740-4CA6-9CC6-A3CD19E00FA6)** documentation.
 
-* For more information about Immutable table and Blockchain table SQLcl commands, please see **[SQLcl Command Reference](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/24.4/sqcug/blockchain_table.html#GUID-1430B902-25D7-4C72-926D-3EEF9C035661)**
+* For more information about PKI Certificate SQLcl commands, please see **[SQLcl Certificates](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/certificate.html)**
+
+* For more information about Immutable table SQLcl commands, please see **[SQLcl Immutable Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/immutable_table.html)**
+
+* For more information about Blockchain table SQLcl commands, please see **[SQLcl Blockchain Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/blockchain_table.html)**
 
 * For more information on SQLcl, please see **[SQLcl Documentation](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/)**
 

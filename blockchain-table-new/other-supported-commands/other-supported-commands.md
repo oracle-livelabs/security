@@ -232,7 +232,11 @@ blockchain_table verify_user_chains {OPTIONS}
 
 * For more information on Blockchain Table and other Blockchain Table commands, please see **[DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html)** documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
 
-* For more information about Immutable table and Blockchain table SQLcl commands, please see **[SQLcl Command Reference](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/24.4/sqcug/blockchain_table.html#GUID-1430B902-25D7-4C72-926D-3EEF9C035661)**
+* For more information about PKI Certificate SQLcl commands, please see **[SQLcl Certificates](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/certificate.html)**
+
+* For more information about Immutable table SQLcl commands, please see **[SQLcl Immutable Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/immutable_table.html)**
+
+* For more information about Blockchain table SQLcl commands, please see **[SQLcl Blockchain Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/blockchain_table.html)**
 
 ## Acknowledgements
 

@@ -644,6 +644,8 @@ You may now [proceed to the next lab](#next).
 
 * For more information on managing certificates, including adding, dropping, and other related procedures, please see the [DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html) documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
 
+* For more information about Blockchain table SQLcl commands, please see **[SQLcl Blockchain Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/blockchain_table.html)**
+
 ## Acknowledgements
 
 * **Contributors** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal 

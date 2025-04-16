@@ -521,6 +521,8 @@ You may now [proceed to the next lab](#next).
 
 * For more information on Immutable Table and other Immutable Table commands, please see [DBMS\_IMMUTABLE\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_immutable_table.html) documentation and SQLcl help section accessed using **`help immutable_table`** in the SQLcl console.
 
+* For more information about Immutable table SQLcl commands, please see **[SQLcl Immutable Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/immutable_table.html)**
+
 
 ## Acknowledgements
 
