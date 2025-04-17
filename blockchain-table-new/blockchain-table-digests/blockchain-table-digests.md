@@ -4,7 +4,7 @@
 
 While Blockchain Tables provide cryptographic chaining to ensure tamper-resistant data, real-world enterprise systems often require additional ways to validate and share the authenticity of table contents over time. This is where Blockchain Table digests come into play.
 
-A digest is a compact, cryptographically signed or unsigned summary of selected rows or the last chained row of the Blockchain Table. Digests can be securely stored, exported, or distributed to third parties, enabling periodic integrity checks or legal proof of unchanged historical data. Oracle provides built-in support for both last-chain-row digests and filtered-row digests, along with flexible options for unsigned and signed digest generation. These allow organizations to implement fine-grained, auditable verification pipelines.
+A digest is a compact, cryptographically signed or unsigned summary of selected rows or the last-row of each system chain in the Blockchain Table. The last-rows refers to the final row in each individual system chain, as a Blockchain Table can typically consist of multiple chains. These digests can be securely stored, exported, or distributed to third parties, enabling periodic integrity checks or providing legal proof of unchanged historical data. Oracle provides built-in support for both last-rows digests and filtered-row digests, along with flexible options for unsigned and signed digest generation. These capabilities allow organizations to implement fine-grained, auditable verification pipelines.
 
 You can generate:
 - Unsigned digests: Lightweight hashes for internal or local verification.
@@ -12,7 +12,7 @@ You can generate:
 
 This lab explores how to generate different types of digests, validate them, and understand their applications.
 
-> Oracle 23ai introduces the ability to generate filtered digests using row selectors. These allow you to verify digest integrity over a subset of rows rather than the last chained row in a Blockchain table — ideal for cases like regional audits, department-level records, or sensitive data slices.
+> Oracle 23ai introduces the ability to generate filtered digests using row selectors. These allow you to verify digest integrity over a subset of rows rather than the last row of the system chains in a Blockchain table — ideal for cases like regional audits, department-level records, or sensitive data slices.
 > 
 > We will continue working with the **bank\_ledger\_bt** table created in Lab 3, building upon it to explore digest generation and verification features.
 
@@ -29,8 +29,8 @@ Watch the video below for a quick walk through of the lab.
 
 In this lab, you will:
 
-- **Generate a last-chain-row Digest** <br />
-  Learn how to compute a cryptographic digest for the last chained row in a Blockchain Table using SQLcl commands.
+- **Generate a Last-Rows Digest** <br />
+  Learn how to compute a cryptographic digest for the last row of the system chains in a Blockchain Table using SQLcl commands.
 
 - **Generate a Signed Digest** <br />
   Create a digitally signed digest using the table owner's private key for secure distribution and validation.
@@ -47,16 +47,16 @@ In this lab, you will:
 * A Free-Tier or LiveLabs Oracle Cloud account.
 * Have successfully completed the previous labs.
 
-## Task 1: Distribution of last-chain-row digest for the Blockchain Table
+## Task 1: Distribution of last-rows digest for the Blockchain Table
 
 ---
 
 The commands `get_digest` and `get_signed_digest` provide robust mechanisms for verifying data integrity and authenticity in Blockchain Tables. The signed digest ensures an additional layer of trust by using cryptographic signing.
 
 <details open>
-<summary><mark>Generating Unsigned last-chain-row Digest for the Blockchain Table</mark></summary>
+<summary><mark>Generating Unsigned last-rows Digest for the Blockchain Table</mark></summary>
 
-The **`blockchain_table get_digest`** command generates a cryptographic hash (digest) for the last chained row of the Blockchain Table. This digest enables validation of data integrity and authenticity over a specified range of rows.
+The **`blockchain_table get_digest`** command generates a cryptographic hash (digest) for the last row of the system chains in the Blockchain Table. This digest enables validation of data integrity and authenticity by using all the rows at the end of each system chain.
 
 #### Usage:
 <pre>
@@ -66,10 +66,10 @@ blockchain_table get_digest {OPTIONS}
 <details open>
 <summary>Options:</summary>
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Blockchain Table.
-- **`-bytes_file <bytes_file>` (Optional):** Specifies the file name to store the generated digest bytes.
-- **`-digest <digest>` (Optional):** Outputs the hexadecimal representation of the digest.
-- **`-digest_file <digest_file>` (Optional):** Specifies the file name to store the binary digest.
-- **`-row_indexes_file <row_indexes_file>` (Optional):** Specifies the file to save the row index details in JSON format.
+- **`-bytes_file <bytes_file>` (Optional) (Out Parameter):** Specifies the file name to store the generated digest bytes.
+- **`-digest <digest>` (Optional) (Out Parameter):** Outputs the hexadecimal representation of the digest.
+- **`-digest_file <digest_file>` (Optional) (Out Parameter):** Specifies the file name to store the binary digest.
+- **`-row_indexes_file <row_indexes_file>` (Optional) (Out Parameter):** Specifies the file to save the row index details in JSON format.
 - **`-algorithm|-algo <algorithm>` (Optional):** Specifies the hash algorithm. Acceptable values:
     - `SHA2_256`
     - `SHA2_384`
@@ -79,18 +79,18 @@ blockchain_table get_digest {OPTIONS}
 
 > **NOTE**:
 > 1. The `bytes_file` option is used to store the digest in binary format in a file on the user's local machine from where the command is executed (here Cloud Shell). It stores the cryptographic hash of the digest.
-> 2. The `digest` option is used to store the header followed by an array of row-info in a bind variable in a hexadecimal format. While the `digest_file` option is used to store the same information in a binary format at the path where the user specifies. This sequence of bytes is input to the cryptographic hash function.
+> 2. The `digest` option is used to store the header followed by an array of row-info in a bind variable in a hexadecimal format, while the `digest_file` option is used to store the same information in a binary format at the path where the user specifies. This sequence of bytes is input to the cryptographic hash function.
 > 3. The `row_indexes_file` specifies the rows in the blockchain table that were selected for the digest and is stored in a JSON format on the user's local machine from where the command is executed (here Cloud Shell).
 > 4. The `bytes_file` option is the one that is used as input for the `verify_table` command.
 
 
-#### Example: Generate last-chain-row Digest for the Blockchain Table
+#### Example: Generate last-rows Digest for the Blockchain Table
 ```
 <copy>
 bl get_digest -tab bank_ledger_bt -bytes_file demouser_bytes1.txt -digest_file demouser_digest1.txt -algorithm "SHA2_384"
 </copy>
 ```
-![Generate digest for the last chained row in the Blockchain table](./images/lab5-task1-1.png " ")
+![Generate last-rows digest for the Blockchain table](./images/lab5-task1-1.png " ")
 > **Expected Output:**  
 > <pre>
 > Command executed successfully. </pre>
@@ -103,9 +103,9 @@ bl get_digest -tab bank_ledger_bt -bytes_file demouser_bytes1.txt -digest_file d
 </br>
 
 <details>
-<summary><mark>Generating a Signed last-chain-row Digest for the Blockchain Table</mark></summary>
+<summary><mark>Generating a Signed last-rows Digest for the Blockchain Table</mark></summary>
 
-The **`blockchain_table get_signed_digest`** command generates and signs a cryptographic hash (digest) for the last chained row of the Blockchain Table. The signed digest is created using the table owner's private key stored in the database wallet, ensuring both integrity and authenticity.
+The **`blockchain_table get_signed_digest`** command generates and signs a cryptographic hash (digest) for the last row of the system chains in the Blockchain Table.  The signed digest is created using the table owner's private key stored in the database wallet, ensuring both integrity and authenticity.
 
 #### Usage:
 <pre>
@@ -115,11 +115,11 @@ blockchain_table get_signed_digest {OPTIONS}
 <details open>
 <summary>**Options:**</summary>
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Blockchain Table.
-- **`-bytes_file <bytes_file>` (Optional):** Specifies the file name to store the digest bytes before signing.
-- **`-digest <digest>` (Optional):** Outputs the hexadecimal representation of the signed digest.
-- **`-digest_file <digest_file>` (Optional):** Specifies the file name to store the signed binary digest.
-- **`-row_indexes_file <row_indexes_file>` (Optional):** Specifies the file to save the row index details in JSON format.
-- **`-cert_guid|-cg <cert_guid>` (Required):** Specifies the certificate GUID used for signing.
+- **`-bytes_file <bytes_file>` (Optional) (Out Parameter):** Specifies the file name to store the digest bytes before signing.
+- **`-digest <digest>` (Optional) (Out Parameter):** Outputs the hexadecimal representation of the signed digest.
+- **`-digest_file <digest_file>` (Optional) (Out Parameter):** Specifies the file name to store the signed binary digest.
+- **`-row_indexes_file <row_indexes_file>` (Optional) (Out Parameter):** Specifies the file to save the row index details in JSON format.
+- **`-cert_guid|-cg <cert_guid>` (Required) (Out Parameter):** Specifies the certificate GUID used for signing.
 - **`-algorithm|-algo <algorithm>` (Optional):** Specifies the signing algorithm. Acceptable values:
     - `RSA_SHA2_256`
     - `RSA_SHA2_384`
@@ -129,7 +129,7 @@ blockchain_table get_signed_digest {OPTIONS}
 
 > **NOTE**:
 > 1. The `bytes_file` option is used to store the digest in binary format in a file on the user's local machine from where the command is executed (here Cloud Shell). It stores the cryptographic hash of the digest.
-> 2. The `digest` option is used to store the header followed by an array of row-info in a bind variable in a hexadecimal format. While the `digest_file` option is used to store the same information in a binary format at the path where the user specifies. This sequence of bytes is input to the cryptographic hash function.
+> 2. The `digest` option is used to store the header followed by an array of row-info in a bind variable in a hexadecimal format, while the `digest_file` option is used to store the same information in a binary format at the path where the user specifies. This sequence of bytes is input to the cryptographic hash function.
 > 3. The `row_indexes_file` specifies the rows in the blockchain table that were selected for the digest and is stored in a JSON format on the user's local machine from where the command is executed (here Cloud Shell).
 > 4. The `bytes_file` option is the one that is used as input for the `verify_table` command.
 
@@ -152,7 +152,7 @@ print cert_guid
 
 ---
 
-Continuing from the previous task where we generated digests for the *last chained row**, Oracle Database 23ai introduces powerful options to generate **filtered row digests**. These are useful when you want to validate specific subsets of rows rather than the whole table.
+Continuing from the previous task where we generated digests for the *last row of the system chains**, Oracle Database 23ai introduces powerful options to generate **filtered row digests**. These are useful when you want to validate specific subsets of rows.
 
 From version **23ai** onward, the following options are available for the `get_digest` and `get_signed_digest` SQLcl commands:
 
@@ -165,7 +165,7 @@ These filters help you generate cryptographic digests for only a specific portio
 <details open>
 <summary><mark>Generating Unsigned Digest for Filtered Rows in the Blockchain Table</mark></summary>
 
-The **`blockchain_table get_digest`** command generates a cryptographic hash (digest) for a **subset of rows** in a Blockchain Table using filtering criteria. This feature allows users to validate integrity for **specific rows** instead of the last chained row in the Blockchain table, introduced in Oracle Database 23ai.
+The **`blockchain_table get_digest`** command generates a cryptographic hash (digest) for a **subset of rows** in a Blockchain Table using filtering criteria. This feature allows users to validate integrity for **specific rows** instead of the last rows of the system chains in the Blockchain table, introduced in Oracle Database 23ai.
 
 You can apply filters using:
 - **`-selector`**: Directly specify the filter condition as a WHERE clause (without the `WHERE` keyword).
@@ -181,11 +181,11 @@ blockchain_table get_digest {OPTIONS}
 - **`-table_name|-tab <table_name>` (Required):** Name of the Blockchain Table.
 - **`-selector <selector>` (Optional):** Filtering clause for row selection.
 - **`-selector_file <selector_file>` (Optional):** File containing the selector condition.
-- **`-bytes_file <bytes_file>` (Optional):** File to store raw digest bytes.
-- **`-digest <digest>` (Optional):** Hexadecimal digest output.
-- **`-digest_file <digest_file>` (Optional):** File to store binary digest.
-- **`-row_data_file <row_data_file>` (Optional):** File to store row data used for digest.
-- **`-row_indexes_file <row_indexes_file>` (Optional):** File to store row index details in JSON.
+- **`-bytes_file <bytes_file>` (Optional) (Out Parameter):** File to store raw digest bytes.
+- **`-digest <digest>` (Optional) (Out Parameter):** Hexadecimal digest output.
+- **`-digest_file <digest_file>` (Optional) (Out Parameter):** File to store binary digest.
+- **`-row_data_file <row_data_file>` (Optional) (Out Parameter):** File to store row data used for digest.
+- **`-row_indexes_file <row_indexes_file>` (Optional) (Out Parameter):** File to store row index details in JSON.
 - **`-algorithm|-algo <algorithm>` (Optional):** Hash algorithm to use. Options:
     - `SHA2_256` (default)
     - `SHA2_384`
@@ -194,7 +194,7 @@ blockchain_table get_digest {OPTIONS}
 
 > **NOTE**:
 > 1. The `bytes_file` option is used to store the digest in binary format in a file on the user's local machine from where the command is executed (here Cloud Shell). It stores the cryptographic hash of the digest.
-> 2. The `digest` option is used to store the header followed by an array of row-info in a bind variable in a hexadecimal format. While the `digest_file` option is used to store the same information in a binary format at the path where the user specifies. This sequence of bytes is input to the cryptographic hash function.
+> 2. The `digest` option is used to store the header followed by an array of row-info in a bind variable in a hexadecimal format, while the `digest_file` option is used to store the same information in a binary format at the path where the user specifies. This sequence of bytes is input to the cryptographic hash function.
 > 3. The `row_data_file` is only generated in the case of filtered-row digests and stores the content of the rows in the blockchain table that were selected for the digest. It is stored at the path where the user executes the command from.
 > 4. The `bytes_file` option is the one that is used as input for the `verify_table` command.
 > 5. The `row_indexes_file` specifies the rows in the blockchain table that were selected for the digest and is stored in a JSON format on the user's local machine from where the command is executed (here Cloud Shell).
@@ -239,12 +239,12 @@ blockchain_table get_signed_digest {OPTIONS}
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Blockchain Table.
 - **`-selector <selector>` (Optional):** A WHERE clause without the `WHERE` keyword to filter rows for the signed digest.
 - **`-selector_file <selector_file>` (Optional):** Specifies a file containing the row selection criteria.
-- **`-bytes_file <bytes_file>` (Optional):** Specifies the file name to store the digest bytes before signing.
-- **`-digest <digest>` (Optional):** Outputs the hexadecimal representation of the signed digest.
-- **`-digest_file <digest_file>` (Optional):** Specifies the file name to store the signed binary digest.
-- **`-row_data_file <row_data_file>` (Optional):** Specifies the file to save the generated row data bytes.
-- **`-row_indexes_file <row_indexes_file>` (Optional):** Specifies the file to save the row index details in JSON format.
-- **`-cert_guid|-cg <cert_guid>` (Required):** Specifies the certificate GUID used for signing.
+- **`-bytes_file <bytes_file>` (Optional) (Out Parameter):** Specifies the file name to store the digest bytes before signing.
+- **`-digest <digest>` (Optional) (Out Parameter):** Outputs the hexadecimal representation of the signed digest.
+- **`-digest_file <digest_file>` (Optional) (Out Parameter):** Specifies the file name to store the signed binary digest.
+- **`-row_data_file <row_data_file>` (Optional) (Out Parameter):** Specifies the file to save the generated row data bytes.
+- **`-row_indexes_file <row_indexes_file>` (Optional) (Out Parameter):** Specifies the file to save the row index details in JSON format.
+- **`-cert_guid|-cg <cert_guid>` (Required) (Out Parameter):** Specifies the certificate GUID used for signing.
 - **`-algorithm|-algo <algorithm>` (Optional):** Specifies the signing algorithm. Acceptable values:
     - `RSA_SHA2_256`
     - `RSA_SHA2_384`
@@ -254,7 +254,7 @@ blockchain_table get_signed_digest {OPTIONS}
 
 > **NOTE**:
 > 1. The `bytes_file` option is used to store the digest in binary format in a file on the user's local machine from where the command is executed (here Cloud Shell). It stores the cryptographic hash of the digest.
-> 2. The `digest` option is used to store the header followed by an array of row-info in a bind variable in a hexadecimal format. While the `digest_file` option is used to store the same information in a binary format at the path where the user specifies. This sequence of bytes is input to the cryptographic hash function.
+> 2. The `digest` option is used to store the header followed by an array of row-info in a bind variable in a hexadecimal format, while the `digest_file` option is used to store the same information in a binary format at the path where the user specifies. This sequence of bytes is input to the cryptographic hash function.
 > 3. The `row_data_file` is only generated in the case of filtered-row digests and stores the content of the rows in the blockchain table that were selected for the digest. It is stored at the path where the user executes the command from.
 > 4. The `bytes_file` option is the one that is used as input for the `verify_table` command.
 > 5. The `row_indexes_file` specifies the rows in the blockchain table that were selected for the digest and is stored in a JSON format on the user's local machine from where the command is executed (here Cloud Shell).
@@ -289,7 +289,7 @@ blockchain_table verify_table {OPTIONS}
 <summary>**Options:**</summary>
 - **`-begin_bytes_file <begin_bytes_file>` (Required):** Specifies the file containing the starting digest. This digest must be generated using commands like `get_signed_digest` or `get_digest`.
 - **`-end_bytes_file <end_bytes_file>` (Required):** Specifies the file containing the ending digest. This digest must also be generated using `get_signed_digest` or `get_digest`.
-- **`-rowcount <rowcount>` (Optional):** Outputs the number of successfully verified rows.
+- **`-rowcount <rowcount>` (Optional) (Out Parameter):** Outputs the number of successfully verified rows.
 - **`-skip_user_signature|-skipuser` (Optional):** Skips validation of user signatures if present. Default is `FALSE`.
 - **`-skip_delegate_signature|-skipdlg` (Optional):** Skips validation of delegate signatures if present. Default is `FALSE`.
 - **`-skip_countersignature|-skipctr` (Optional):** Skips validation of countersignatures if present. Default is `FALSE`.
@@ -300,7 +300,7 @@ blockchain_table verify_table {OPTIONS}
 > 1. The `bytes_file` option generated from the previous `get_digest` or `get_signed_digest` commands, either for filtered-row digests or for last-chain-row digests, are used as inputs for the `begin_bytes_file` and `end_bytes_file` options.
 
 
-#### Example: Verify unsigned digest for the last chained row in the Blockchain Table
+#### Example: Verify unsigned digest for the last row of system chains in the Blockchain Table
 Lets first create another digest files using `get_digest` command:
 ```
 <copy>
@@ -327,7 +327,10 @@ You may now [proceed to the next lab](#next).
 
 ## Learn more
 
-* For more information on managing certificates, including adding, dropping, and other related procedures, please see the [DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html) documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
+
+* For more information on using certificates with blockchain tables, please see the **[DBMS\_USER\_CERTS](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_user_certs.html)** documentation and SQLcl help section accessed using **`help certificate`** in the SQLcl console.
+
+* For more information on Blockchain Table and other Blockchain Table commands, please see the **[DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html)** documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
 
 * For more information about Blockchain table SQLcl commands, please see **[SQLcl Blockchain Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/blockchain_table.html)**
 

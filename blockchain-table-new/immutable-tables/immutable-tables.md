@@ -456,7 +456,7 @@ immutable_table delete_expired_rows {OPTIONS}
 #### Options:
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Immutable Table from which expired rows are to be deleted.
 - **`-before_timestamp|-before <before_timestamp>` (Optional):** Deletes expired rows with timestamps earlier than the specified value. If not provided, all expired rows are deleted.
-- **`-rowcount <rowcount>` (Optional):** Outputs the number of rows deleted.
+- **`-rowcount <rowcount>` (Optional) (Out Parameter):** Outputs the number of rows deleted.
 
 #### Example:
 To delete all expired rows from the table:
@@ -478,7 +478,9 @@ To delete rows that expired before a specific timestamp:
     immutable_table delete_expired_rows -tab bank_ledger_2 -before '16-JAN-25 01.00.01 AM UTC';
     </copy>
     ```
->NOTE: Timestamps need to be specified as per NLS settings.
+> **NOTE**: Timestamps must align with the current NLS settings, such as NLS\_TIMESTAMP\_FORMAT for TIMESTAMP or NLS\_TIMESTAMP\_TZ\_FORMAT for TIMESTAMP WITH TIME ZONE.
+><br/>
+><br/>
 > **Expected Output:**  
 > <pre>
 > Command executed successfully.  
@@ -520,6 +522,8 @@ You may now [proceed to the next lab](#next).
 ## Learn more
 
 * For more information on Immutable Table and other Immutable Table commands, please see [DBMS\_IMMUTABLE\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_immutable_table.html) documentation and SQLcl help section accessed using **`help immutable_table`** in the SQLcl console.
+
+* For more information about PKI Certificate SQLcl commands, please see **[SQLcl Certificates](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/certificate.html)**
 
 * For more information about Immutable table SQLcl commands, please see **[SQLcl Immutable Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/immutable_table.html)**
 

@@ -22,7 +22,7 @@ This LiveLab is designed to provide participants with hands-on experience in lev
     - Understand countersignatures, delegate signing, and signature verification flows.
 
 4. **Blockchain table Digest Operations and Verification**
-    - Learn how to generate full-table or filtered row digests and produce cryptographically signed snapshots.
+    - Learn how to generate last-rows or filtered row digests and produce cryptographically signed snapshots.
     - Use signed and unsigned digests to verify blockchain table integrity and detect unauthorized changes.
 
 5. **Blockchain Table Backed Flashback Journals for Regular Tables**
@@ -47,7 +47,9 @@ You may now [proceed to the next lab](#next).
 
 * For more information on Immutable Table and other Immutable Table commands, please see **[DBMS\_IMMUTABLE\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_immutable_table.html)** documentation and SQLcl help section accessed using **`help immutable_table`** in the SQLcl console.
 
-* For more information on Blockchain Table and other Blockchain Table commands, please see **[DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html)** documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
+* For more information on using certificates with blockchain tables, please see the **[DBMS\_USER\_CERTS](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_user_certs.html)** documentation and SQLcl help section accessed using **`help certificate`** in the SQLcl console.
+
+* For more information on Blockchain Table and other Blockchain Table commands, please see the **[DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html)** documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
 
 * For more information on Blockchain Flashback Journals for regular tables, please see **[Protecting Flashback Archive Data](https://docs.oracle.com/en/database/oracle/oracle-database/23/adfns/flashback.html#GUID-6B04E5D6-4740-4CA6-9CC6-A3CD19E00FA6)** documentation.
 

@@ -6,7 +6,7 @@ Blockchain Tables offer a powerful foundation for ensuring data is tamper-resist
 
 With row-level signing, Oracle Blockchain Tables allow each row to carry a digital signature tied to a registered certificate. This adds a critical layer of assurance: that the contents of the row were reviewed and signed by an authorized identity.
 
-Blockchain Tables further supports delegate signatures, allowing a trusted user to sign on behalf of another, and countersignatures, which are exclusive to table owners — enabling them to cryptographically affirm and endorse signed rows for added trust and authenticity. These layered trust mechanisms provide enhanced accountability in collaborative or multi-tenant environments.
+Blockchain Tables further support delegate signatures, allowing a trusted user to sign on behalf of another, and countersignatures, which are exclusive to table owners — enabling them to cryptographically affirm and endorse signed rows for added trust and authenticity. These layered trust mechanisms provide enhanced accountability in collaborative or multi-tenant environments.
 
 This lab guides you through setting up Oracle Wallets, registering certificates, and using SQLcl commands to sign and verify rows — empowering you to build Blockchain Tables that don’t just protect data from change, but also verify its authenticity.
 
@@ -112,13 +112,11 @@ Notes:
     - This script above involves:
         - Creating an Oracle wallet in the local directory.
         - Generating a CA/Root private key and self-signed certificate.
-        - Exporting the CA certificate in base64 format.
         - Generating a private key for `demouser`.
         - Creating a CSR and a self-signed certificate for `demouser`.
         - Converting the certificate to PKCS#12 format.
         - Importing the PKCS#12 file into the Oracle Wallet.
         - Adding the CA certificate to the Oracle Wallet.
-        - Displaying the wallet's contents for verification.
         - The `demouser` certificate is stored as `demouser_cert.crt`.
         - The `demouser` private key is stored as `demouser_privatekey.pem`.
 </pre>
@@ -165,7 +163,7 @@ The **`certificate add`** command allows users to add an X.509 certificate, whic
 
 #### Options:
 - **`-cert_file|-cf <cert_file>` (Required):** Specifies the X.509 certificate file used for signature verification.
-- **`-cert_guid|-cg <cert_guid>` (Optional):** Species the bind variable used to store the generated GUID.
+- **`-cert_guid|-cg <cert_guid>` (Optional) (Out Parameter):** Species the bind variable used to store the generated GUID.
 - **`-wallet_path|-wallet <wallet_path>` (Optional):** Specifies the local wallet's path where the certificate is stored.
 - **`-wallet_password|-walletpw <wallet_password>` (Optional):** Provides the password for accessing the wallet. If not provided, the system will prompt for it interactively.
 - **`-wallet_certificate_alias|-walletcertalias <alias>` (Optional):** Specifies an alias for the certificate being added.
@@ -294,7 +292,7 @@ blockchain_table sign_row {OPTIONS}
     - `RSA_SHA2_384`
     - `RSA_SHA2_512`
 - **`-wallet_path|-wallet <wallet_path>` (Optional):** Specifies the local wallet path containing the private key for signing.
-- **`-wallet_password|-walletpw <wallet_password>` (Optional):** Provides the password for accessing the wallet interactively if not supplied directly.
+- **`-wallet_password|-walletpw <wallet_password>` (Optional):** Provides the password for accessing the wallet. If not provided, the system will prompt for it interactively.
 - **`-wallet_private_key_alias|-walletpvtkeyalias <alias>` (Optional):** Identifies the private key in the wallet for signature generation. If not provided, the system retrieves the private key using the `cert_guid`.
 - **`-wallet_private_key_password|-walletpvtkeypw <password>` (Optional):** Provides the password to access the private key stored in the wallet.
 - **`-data_format|-df <data_format>` (Optional):** Specifies the version of the data layout for the hash in the row. Default is `1`.
@@ -442,9 +440,9 @@ blockchain_table countersign_row {OPTIONS}
 - **`-keycol2_value|-kc2val <key_value>` (Optional):** Specifies the value of the second key column.
 - **`-keycol3_name|-kc3name <key_column>` (Optional):** Specifies the name of the third key column (for composite keys).
 - **`-keycol3_value|-kc3val <key_value>` (Optional):** Specifies the value of the third key column.
-- **`-countersignature|-csig <countersignature>` (Optional):** Outputs the hexadecimal representation of the countersignature.
-- **`-bytes_file <bytes_file>` (Optional):** Specifies the file name to store the countersignature bytes.
-- **`-countersign_cert_guid|-cscg <cert_guid>` (Optional):** Specifies the certificate GUID used for verifying the countersignature.
+- **`-countersignature|-csig <countersignature>` (Optional) (Out Parameter):** Outputs the hexadecimal representation of the countersignature.
+- **`-bytes_file <bytes_file>` (Optional) (Out Parameter):** Specifies the file name to store the countersignature bytes.
+- **`-countersign_cert_guid|-cscg <cert_guid>` (Optional) (Out Parameter):** Specifies the certificate GUID used for verifying the countersignature.
 - **`-countersignature_algorithm|-countersignalgo <algorithm>` (Optional):** Specifies the algorithm used for generating the countersignature. Acceptable values:
     - `RSA_SHA2_256`
     - `RSA_SHA2_384`
@@ -478,7 +476,7 @@ Usage:
 - **`-high_timestamp|-high <high_timestamp>` (Optional):** Defines the upper bound of the time range for verifying rows. Default is `NULL`.
 - **`-instance_id|-inst <instance_id>` (Optional):** Restricts verification to rows inserted on the specified instance.
 - **`-chain_id|-ch <chain_id>` (Optional):** Restricts verification to rows on the specified chain (default is all chains).
-- **`-rowcount <rowcount>` (Optional):** Outputs the number of rows verified.
+- **`-rowcount <rowcount>` (Optional) (Out Parameter):** Outputs the number of rows verified.
 - **`-skip_user_signature|-skipuser` (Optional):** Skips validation of user signatures if present. 
 - **`-skip_delegate_signature|-skipdlg` (Optional):** Skips validation of delegate signatures if present.
 - **`-skip_countersignature|-skipctr` (Optional):** Skips validation of countersignatures if present.
@@ -523,7 +521,7 @@ Blockchain Tables allow selective verification of rows using timestamp boundarie
         blockchain_table verify_rows -tab bank_ledger_bt -low '08-APR-25 05.01.01 AM UTC' -high '08-APR-25 05.01.10 AM UTC'
         </copy>
     ```
->NOTE: Timestamps need to be specified as per NLS settings.
+> **NOTE**: Timestamps must align with the current NLS settings, such as NLS\_TIMESTAMP\_FORMAT for TIMESTAMP or NLS\_TIMESTAMP\_TZ\_FORMAT for TIMESTAMP WITH TIME ZONE.
 
 ![verify_rows with timestamp](./images/lab4-task3-2.png " ")
 > **Expected Output:**  
@@ -572,9 +570,9 @@ You may now [proceed to the next lab](#next).
 
 ## Learn More
 
-* For more information on managing certificates, including adding, dropping, and other related procedures, please see the [DBMS\_USER\_CERTS](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_user_certs.html) documentation and SQLcl help section accessed using **`help certificate`** in the SQLcl console.
+* For more information on using certificates with blockchain tables, please see the **[DBMS\_USER\_CERTS](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_user_certs.html)** documentation and SQLcl help section accessed using **`help certificate`** in the SQLcl console.
 
-* For more information on managing certificates, including adding, dropping, and other related procedures, please see the [DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html) documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
+* For more information on Blockchain Table and other Blockchain Table commands, please see the **[DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html)** documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
 
 * For more information about PKI Certificate SQLcl commands, please see **[SQLcl Certificates](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/certificate.html)**
 

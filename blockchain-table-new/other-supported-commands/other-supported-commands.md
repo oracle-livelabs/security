@@ -126,7 +126,7 @@ blockchain_table delete_expired_rows {OPTIONS}
     - If older than the calculated timestamp: Deletes expired rows with timestamps less than the specified value.
     - If younger than the calculated timestamp: Deletes rows based on the retention policy.
     - Default: `NULL`.
-- **`-rowcount <rowcount>` (Optional):** Specifies the number of rows deleted.
+- **`-rowcount <rowcount>` (Optional) (Out Parameter):** Specifies the number of rows deleted.
 </details>
 </details>
 </br>
@@ -149,7 +149,7 @@ blockchain_table get_bytes_for_row_hash {OPTIONS}
 - **`-chain_id|-ch <chain_id>` (Optional):** Specifies the chain to which the row belongs. By default, Blockchain Tables have 32 chains per database instance numbered from 0 to 31.
 - **`-sequence_id|-seq <sequence_id>` (Optional):** Specifies the position of the row within the chain.
 - **`-data_format|-df <data_format>` (Optional, Default: `1`):** Specifies the version of the data layout for the hash. Currently, only `1` is supported.
-- **`-row_data_file <row_data_file>` (Optional):** Specifies the file to save the generated row data bytes.
+- **`-row_data_file <row_data_file>` (Optional) (Out Parameter):** Specifies the file to save the generated row data bytes.
 - **`-user_chain|-uchain <user_chain>` (Optional):** For V2 Blockchain Tables, specifies the user chain when the bytes for the cryptographic hash on the user chain are desired. Specify `NULL` for system chains.
 - **`-keycol1_name|-kc1name <keycol1_name>` (Optional):** Specifies the name of the first key column.
 - **`-keycol1_value|-kc1val <keycol1_value>` (Optional):** Specifies the value of the first key column.
@@ -180,7 +180,7 @@ blockchain_table get_bytes_for_row_signature {OPTIONS}
 - **`-chain_id|-ch <chain_id>` (Optional):** Specifies the chain to which the row belongs. By default, Blockchain Tables have 32 chains per database instance numbered from 0 to 31.
 - **`-sequence_id|-seq <sequence_id>` (Optional):** Specifies the position of the row within the chain.
 - **`-data_format|-df <data_format>` (Optional, Default: `1`):** Specifies the version of the data layout for the hash in the row. Currently, only `1` is supported.
-- **`-row_data_file <row_data_file>` (Optional):** Specifies the file to save the generated row data bytes.
+- **`-row_data_file <row_data_file>` (Optional) (Out Parameter):** Specifies the file to save the generated row data bytes.
 - **`-keycol1_name|-kc1name <keycol1_name>` (Optional):** Specifies the name of the first key column.
 - **`-keycol1_value|-kc1val <keycol1_value>` (Optional):** Specifies the value of the first key column.
 - **`-keycol2_name|-kc2name <keycol2_name>` (Optional):** Specifies the name of the second key column (for composite keys).
@@ -212,7 +212,7 @@ blockchain_table verify_user_chains {OPTIONS}
 <summary>**Options:**</summary>
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Blockchain Table. The name can include a schema prefix for clarity. Use double quotes for case-sensitive names.
 - **`-user_chain|-uchain <user_chain>` (Required):** Specifies the name of the user-defined chain to verify.
-- **`-rowcount <rowcount>` (Optional):** Outputs the number of successfully verified rows.
+- **`-rowcount <rowcount>` (Optional) (Out Parameter):** Outputs the number of successfully verified rows.
 - **`-keycol1_value|-kc1val <key_value>` (Optional):** Specifies the value of the first key column for identifying the user chain.
 - **`-keycol2_value|-kc2val <key_value>` (Optional):** Specifies the value of the second key column (for composite keys).
 - **`-keycol3_value|-kc3val <key_value>` (Optional):** Specifies the value of the third key column (for composite keys).
@@ -230,7 +230,9 @@ blockchain_table verify_user_chains {OPTIONS}
 
 * For more information on Immutable Table and other Immutable Table commands, please see **[DBMS\_IMMUTABLE\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_immutable_table.html)** documentation and SQLcl help section accessed using **`help immutable_table`** in the SQLcl console.
 
-* For more information on Blockchain Table and other Blockchain Table commands, please see **[DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html)** documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
+* For more information on using certificates with blockchain tables, please see the **[DBMS\_USER\_CERTS](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_user_certs.html)** documentation and SQLcl help section accessed using **`help certificate`** in the SQLcl console.
+
+* For more information on Blockchain Table and other Blockchain Table commands, please see the **[DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html)** documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
 
 * For more information about PKI Certificate SQLcl commands, please see **[SQLcl Certificates](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/certificate.html)**
 

@@ -548,7 +548,7 @@ Usage:
 - **`-high_timestamp|-high <high_timestamp>` (Optional):** Defines the upper bound of the time range for verifying rows. Default is `NULL`.
 - **`-instance_id|-inst <instance_id>` (Optional):** Restricts verification to rows inserted on the specified instance.
 - **`-chain_id|-ch <chain_id>` (Optional):** Restricts verification to rows on the specified chain (default is all chains).
-- **`-rowcount <rowcount>` (Optional):** Outputs the number of rows verified.
+- **`-rowcount <rowcount>` (Optional) (Out Parameter):** Outputs the number of rows verified.
 - **`-skip_user_signature|-skipuser` (Optional):** Skips validation of user signatures if present. 
 - **`-skip_delegate_signature|-skipdlg` (Optional):** Skips validation of delegate signatures if present.
 - **`-skip_countersignature|-skipctr` (Optional):** Skips validation of countersignatures if present.
@@ -593,7 +593,7 @@ Blockchain Tables allow selective verification of rows using timestamp boundarie
         blockchain_table verify_rows -tab bank_ledger_bt -low '08-APR-25 05.01.01 AM UTC' -high '08-APR-25 05.01.10 AM UTC'
         </copy>
     ```
->NOTE: Timestamps need to be specified as per NLS settings.
+> **NOTE**: Timestamps must align with the current NLS settings, such as NLS\_TIMESTAMP\_FORMAT for TIMESTAMP or NLS\_TIMESTAMP\_TZ\_FORMAT for TIMESTAMP WITH TIME ZONE.
 
 ![verify_rows with timestamp](./images/lab3-task6-2.png " ")
 > **Expected Output:**  
@@ -642,7 +642,7 @@ You may now [proceed to the next lab](#next).
 
 ## Learn more
 
-* For more information on managing certificates, including adding, dropping, and other related procedures, please see the [DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html) documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
+* For more information on Blockchain Table and other Blockchain Table commands, please see the **[DBMS\_BLOCKCHAIN\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_blockchain_table.html)** documentation and SQLcl help section accessed using **`help blockchain_table`** in the SQLcl console.
 
 * For more information about Blockchain table SQLcl commands, please see **[SQLcl Blockchain Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/blockchain_table.html)**
 
