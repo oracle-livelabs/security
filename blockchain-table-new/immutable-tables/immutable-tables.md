@@ -1,4 +1,4 @@
-# Immutable Tables : Build the Foundation of tamper-resistant Data Storage
+# Immutable Tables with Retention-Based Data Protection
 
 ## **Introduction**
 
@@ -456,7 +456,7 @@ immutable_table delete_expired_rows {OPTIONS}
 #### Options:
 - **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Immutable Table from which expired rows are to be deleted.
 - **`-before_timestamp|-before <before_timestamp>` (Optional):** Deletes expired rows with timestamps earlier than the specified value. If not provided, all expired rows are deleted.
-- **`-rowcount <rowcount>` (Optional):** Outputs the number of rows deleted.
+- **`-rowcount <rowcount>` (Optional) (Out Parameter):** Outputs the number of rows deleted.
 
 #### Example:
 To delete all expired rows from the table:
@@ -478,7 +478,9 @@ To delete rows that expired before a specific timestamp:
     immutable_table delete_expired_rows -tab bank_ledger_2 -before '16-JAN-25 01.00.01 AM UTC';
     </copy>
     ```
->NOTE: Timestamps need to be specified as per NLS settings.
+> **NOTE**: Timestamps must align with the current NLS settings, such as NLS\_TIMESTAMP\_FORMAT for TIMESTAMP or NLS\_TIMESTAMP\_TZ\_FORMAT for TIMESTAMP WITH TIME ZONE.
+><br/>
+><br/>
 > **Expected Output:**  
 > <pre>
 > Command executed successfully.  
@@ -517,50 +519,17 @@ This command simplifies the management of data retention in Immutable Tables, en
 
 You may now [proceed to the next lab](#next).
 
-## Other Immutable Table Commands
-
-<details>
-<summary><mark>Adding Interval Partitioning to Immutable Tables</mark></summary>
-
-The **`immutable_table add_interval_partitioning`** command adds interval partitioning to an existing, non-partitioned Immutable Table. This feature automatically creates partitions for new data at regular intervals based on the specified settings, streamlining data management. It is supported for **V1** and **V2 Immutable Tables** starting from database version **23ai**.
-
-#### Usage:
-<pre>
-immutable_table add_interval_partitioning {OPTIONS}
-</pre>
-
-<details>
-<summary>**Options:**</summary>
-- **`-table_name|-tab <table_name>` (Required):** Specifies the name of the Immutable Table. The table name can be preceded by its schema name. For case-sensitive schema or table names, enclose the full name in double quotes, and individual parts in double, double quotes.
-- **`-interval_number|-intnum <interval_number>` (Required):** Defines the interval for partition creation. For example, setting `1` creates a partition every 1 unit of the specified frequency.
-- **`-interval_frequency|-intfreq <interval_frequency>` (Required):** Specifies the time unit for the interval. Acceptable values are:
-    - `YEAR`
-    - `MONTH`
-    - `DAY`
-    - `HOUR`
-    - `MINUTE`
-- **`-first_high_timestamp|-firsthigh <first_high_timestamp>` (Required):** A timestamp specifying the upper boundary of the first partition. This timestamp determines the starting point for partition creation.
-</details>
-</br>
-
-#### Key Notes:
-1. This command is equivalent to the **`DBMS_IMMUTABLE_TABLE.ADD_INTERVAL_PARTITIONING`** PL/SQL procedure for programmatic operations.
-2. It is only applicable to non-partitioned Immutable Tables.
-3. Adding interval partitioning automates partition management, reducing manual overhead for handling large datasets.
-
-By using the **`add_interval_partitioning`** command, you can seamlessly manage time-based data in Immutable Tables, ensuring efficient and scalable performance.
-</details>
-</br>
-
-You may now [proceed to the next lab](#next).
-
 ## Learn more
 
 * For more information on Immutable Table and other Immutable Table commands, please see [DBMS\_IMMUTABLE\_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/dbms_immutable_table.html) documentation and SQLcl help section accessed using **`help immutable_table`** in the SQLcl console.
+
+* For more information about PKI Certificate SQLcl commands, please see **[SQLcl Certificates](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/certificate.html)**
+
+* For more information about Immutable table SQLcl commands, please see **[SQLcl Immutable Table](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.1/sqcug/immutable_table.html)**
 
 
 ## Acknowledgements
 
 * **Contributors** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal 
-* **Created By/Date** - Vinay Pandhariwal, March 2025
-* **Last Updated By/Date** - Vinay Pandhariwal, March 2025
+* **Created By/Date** - Vinay Pandhariwal, April 2025
+* **Last Updated By/Date** - Vinay Pandhariwal, April 2025

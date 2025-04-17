@@ -17,20 +17,32 @@
             "filename": "../../provision/provision.md"
         },
         {
-            "title": "Lab 2: Immutable Tables : Build the Foundation of tamper-resistant Data Storage",
+            "title": "Lab 2: Immutable Tables with Retention-Based Data Protection",
             "filename": "../../immutable-tables/immutable-tables.md"
         },
         {
-            "title": "Lab 3: Blockchain Table Prerequisites: Public Key Infrastructure (PKI) Certificates",
-            "filename": "../../blockchain-tables-prereq/blockchain-tables-prereq.md"
+            "title": "Lab 3: Blockchain Tables with Cryptographic Verifiability",
+            "filename": "../../blockchain-tables-basic/blockchain-tables-basic.md"
         },
         {
-            "title": "Lab 4: Blockchain Tables: Enhance Data Integrity with Cryptographic Precision and Trust",
-            "filename": "../../blockchain-tables/blockchain-tables.md"
+            "title": "Lab 4: Row-Level Signatures and Their Verification in Blockchain Tables",
+            "filename": "../../blockchain-tables-advanced/blockchain-tables-advanced.md"
         },
         {
-            "title": "Lab 5: Terminate Oracle Autonomous Database",
+            "title": "Lab 5: Digest Generation and Verification in Blockchain Tables",
+            "filename": "../../blockchain-table-digests/blockchain-table-digests.md"
+        },
+        {
+            "title": "Lab 6: Use Blockchain Flashback Journals for Regular Tables",
+            "filename": "../../blockchain-flashback/blockchain-flashback.md"
+        },
+        {
+            "title": "Lab 7: Terminate Oracle Autonomous Database",
             "filename": "../../terminate/terminate.md"
+        },
+        {
+            "title": "Other Supported Commands",
+            "filename": "../../other-supported-commands/other-supported-commands.md"
         },
         {
             "title": "Need Help?",
