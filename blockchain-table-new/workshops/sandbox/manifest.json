@@ -14,7 +14,7 @@
         },
         {
             "title": "Lab 1: Prepare your environment",
-            "filename": "../../provision/provision.md"
+            "filename": "../../provision-sandbox/provision.md"
         },
         {
             "title": "Lab 2: Immutable Tables with Retention-Based Data Protection",
