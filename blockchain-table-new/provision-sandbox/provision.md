@@ -2,27 +2,24 @@
 
 ## **Introduction**
 
-This lab provides step-by-step instructions to create an Oracle Autonomous Database and connect to it using SQLcl.
+This lab provides step-by-step instructions to connect to a pre-provisioned Oracle Autonomous Database using SQLcl.
 
-* Estimated time: 20 minutes
+* Estimated time: 5 minutes
 
 Watch the video below for a quick walk-through of the lab.
 [Prepare your environment](videohub:1_nw8ufqzp:medium)
 
+> **NOTE**: The video covers the full setup process. Since you are using the **LiveLabs Sandbox**, the Autonomous Database and a user named `DEMOUSER` have already been created for you. You can skip directly to **Task 3** in the video, which starts at **01:50**.
 
 ### Objectives
 
--   Learn how to provision a new Autonomous Database
--   Create a new user for demo purpose
--   Connect to Autonomous Database using Oracle Cloud Shell and SQLcl
+-   Connect to an existing Autonomous Database using Oracle Cloud Shell and SQLcl
 
 ### Prerequisites
 
-* A Free-Tier or LiveLabs Oracle Cloud account.
+* Access to a LiveLabs Oracle Cloud account with a sandbox environment
 
-## Task 1: Provision an Autonomous Database
-
-  **Note:** If you plan to use an Oracle-provided environment, you can skip the Task 1 and Task 2.
+## Task 1: Navigate to Oracle Autonomous Database
 
 1. Log in to the Oracle Cloud Infrastructure Console.
 
@@ -32,83 +29,31 @@ Watch the video below for a quick walk-through of the lab.
 
 3. The following steps apply to Autonomous Databases. So please **click the Autonomous Database**.
 
-    ![Provision Autonomous Database](./images/lab1-task1-2.png "click the autonomous database.")
+    ![Autonomous Database](./images/lab1-task1-2.png "click the autonomous database.")
 
-4. From the **Compartment** filter, select your compartment and click [**Create Autonomous Database**]
+4.  From the **Compartment** filter, select your **LiveLabs environment compartment**. The exact value depends on your environment and is visible in your console, as shown in *Get Started Task 1*.
 
     ![Check Compartment](./images/lab1-task1-3.png "Make sure you are in the correct compartment.")
 
-
-5. On the **Create Autonomous Database** page, provide basic information for your database:
-    - **Display name** - Enter a memorable name for the database for display purposes, for this lab, use *`Blockchain-Table-Demo`*
-
-        ```
-        <copy>Blockchain-Table-Demo</copy>
-        ```
-
-    - **Database Name** - Enter *`BlockchainTableDemo`*, it's important to use letters and numbers only, starting with a letter (the maximum length is 14 characters and Underscores are not supported)
-        
-        ```
-        <copy>BlockchainTableDemo</copy>
-        ```
-    - **Compartment** - If needed, select your compartment
-
-    - **Workload Type** - Select the type of your Autonomous Database (here we select "Transaction Processing")
-
-6. Configure the database:
-
-    - **Always Free** - Select this option by moving the slider to the right
-    - **Database version** - Select *`23ai`* 
-
-    ![Basic information](./images/lab1-task1-4.png "Select the appropriate display name, database name, compartment and workload.")
+5. Please note the following details about the created Oracle Autonomous Database
+    - **Display name** - *`Blockchain-Table-Demo`*.
+    - **Database Name** - *`BlockchainTableDemo`*.
+    - **Compartment** - As selected in Step 4
+    - **Workload Type** - *`Transaction Processing`*.
+    - **Always Free** - Enabled.
+    - **Database version** - *`23ai`*.
+    - **ADMIN PASSWORD** - *`Welcome_123#`*.
 
 
-7. Create administrator credentials:
+## Task 2: Pre-Created Database User
 
-    - **Password** and **Confirm Password** - Specify a password for the ADMIN database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character. For example : *`Welcome_123#`*
+The following user has been set up in the Autonomous Database instance:
 
-        ```
-        <copy>Welcome_123#</copy>
-        ```
+- **Username**: *`DEMOUSER`*.  
+- **Password**: *`Welcome_123#`*.  
+- **Quota on tablespace DATA**: *`500M`*.  
 
-8. Choose the network access :
-
-    - **Network Access** - Leave *`Secure access from everywhere`* selected
-    - **Provide Contacts** - You can leave this blank
-
-    ![password and network access types](./images/lab1-task1-5.png "choose the network type and provide contact info, if you want. ")
-
-9. Click [**Create**]
-
-10.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Database is ready to use! Have a look at your instance's details here including its name, database version, OCID, Instance Type amd Mode.
-
-    ![provisioning the instance will take a few minutes ](./images/lab1-task1-6.png "provisioning the instance will take a few minutes")
-
-## Task 2: Create a New User Using Database Actions
-
-1. On the Blockchain-Table-Demo ATP instance details page, click on the **Database Actions** tab, select **Database Users**, a new tab will open up.
-    ![click on Database Actions followed by Database users](./images/lab1-task2-2.png "click on Database Actions followed by Database users")
-
-2. Click on **Create User** to create a new user to access the database.
-    ![click create new user](./images/lab1-task2-3.png "click create new user")
-
-3. In the Create User page, under User tab, give the following details and click **Create User**:
-    - **User Name** - Give the new user a User Name. The username is case-sensitive. In the lab, we name the user **Username - DEMOUSER**.
-    ```
-        <copy>DEMOUSER</copy>
-    ```
-    - **Password** - Give the new user a password and confirm the Password. In this lab, we give the same password as admin user for ease of use, **Password - Welcome_123#** and confirm the password.
-    ```
-        <copy>Welcome_123#</copy>
-    ```
-    - **Quota on tablespace DATA** - Set a value for the Quota on tablespace DATA for the user. Choose **500M** for this user.
-    - **Web Access** - Turn on the Web Access radio button to access the SQL Developer Web.
-    - **Web access advanced features** - Expand the Web access advanced features and turn off the Authorization required radio button to disable the authorization for `demouser` REST services
-
-    ![set username, password, quota, web access and advanced features](./images/lab1-task2-4.png "set username, password, quota, web access and advanced features")
-
-4.  Notice that the new user is created successfully.
-    ![new user created successfully](./images/lab1-task2-5.png "new user created successfully")
+This user has sufficient privileges to complete all lab tasks.
 
 ## Task 3: Connect to Autonomous Database using Oracle Cloud Shell and SQLcl
 
