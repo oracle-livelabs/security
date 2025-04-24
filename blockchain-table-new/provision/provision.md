@@ -51,6 +51,8 @@ Watch the video below for a quick walk-through of the lab.
         ```
         <copy>BlockchainTableDemo</copy>
         ```
+    > **NOTE:** The database name must be unique across all Autonomous Databases and Autonomous Data Warehouses in your tenancy within the same region. If an existing database shares the same name, provisioning will fail. Use a unique name to ensure successful provisioning.
+
     - **Compartment** - If needed, select your compartment
 
     - **Workload Type** - Select the type of your Autonomous Database (here we select "Transaction Processing")
