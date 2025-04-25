@@ -36,8 +36,8 @@ Watch the video below for a quick walk-through of the lab.
     ![Check Compartment](./images/lab1-task1-3.png "Make sure you are in the correct compartment.")
 
 5. Please note the following details about the created Oracle Autonomous Database
-    - **Display name** - *`Blockchain-Table-Demo`*.
-    - **Database Name** - *`BlockchainTableDemo`*.
+    - **Display Name** – *`Blockchain-Demo-<unique_id>`*
+    - **Database Name** - *`BlockchainDemo<unique_id>`*.
     - **Compartment** - As selected in Step 4
     - **Workload Type** - *`Transaction Processing`*.
     - **Always Free** - Enabled.
@@ -57,7 +57,7 @@ This user has sufficient privileges to complete all lab tasks.
 
 ## Task 3: Connect to Autonomous Database using Oracle Cloud Shell and SQLcl
 
-1. On the **Blockchain-Table-Demo ATP** instance details page, click on **Copy** to copy the **OCID** of the ATP instance.  
+1. On the **Blockchain-Demo-`<unique_id>` ATP** instance details page, click on **Copy** to copy the **OCID** of the ATP instance.  
     ![instance details page](./images/lab1-task3-2.png "instance details page")
 
 2. In the top-right corner, click on **Developer Tools** and select **Cloud Shell**.  
@@ -168,12 +168,12 @@ This user has sufficient privileges to complete all lab tasks.
     ![set TNS_ADMIN](./images/lab1-task3-6.png "set TNS_ADMIN")
 
 6. To connect to the Autonomous Database instance, use the **mTLS connection string**:
-    - On the **Blockchain-Table-Demo ATP** instance details page, click **Database Connection**.  
+    - On the **Blockchain-Demo-`<unique_id>` ATP** instance details page, click **Database Connection**.  
     ![find connection details](./images/lab1-task3-7.png "find connection details")
-    - Select the connection string for the **blockchaintabledemo_medium** TNS name.  
+    - Select the connection string for the **blockchaindemo`<unique_id>`_medium** TNS name.  
     ![choose medium connection string](./images/lab1-task3-8.png "choose medium connection string")
 
-7. In the **Cloud Shell**, run the following command to connect to the Blockchain-Table-Demo ATP instance:
+7. In the **Cloud Shell**, run the following command to connect to the Blockchain-Demo-`<unique_id>` ATP instance:
     - Note: `demouser` is the user created in Task 2.
     - Enter your values below. The command will update in real time:
         - **CONNECTION STRING:** <input type="text" id="connectionStringInp" placeholder="CONNECTION STRING" style="width: 30%; padding: 6px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" oninput="connectionString()">
