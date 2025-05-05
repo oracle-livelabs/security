@@ -27,84 +27,83 @@ This lab assumes you have:
 
 1. With the OCI console open, navigate to the ATP portal by selecting the hamburger menu in the top left corner, which will allow for you to select **Oracle Database** and then, **Autonomous Transaction Processing.**
 
-    ![Select ATP from OCI menu](images/select-the-atp-menu.png) 
+    ![Select ATP from OCI menu](images/drords-001.png "Select ATP from OCI menu") 
 
-2. Select **Create Autonomous Database.**
+2. Select **Create Autonomous Database.** Make sure you are in the correct compartment.
 
-    ![Select Create Autonomous Database](images/create-autonomous-database.png) 
+    ![Select Create Autonomous Database](images/drords-002.png "Select Create Autonomous Database") 
 
-3. Use a compartment of your choice and enter a display name and database name of **RedactionDB**.  
+3. Use a compartment of your choice and enter a display name and database name of **ADBSecurity**.  
 
-    ![Enter database name](images/db-name.png) 
+    ![Enter database name](images/drords-003.png "Enter database name") 
 
-4. Create a password for the **ADMIN** credentials.
+4. For the database version, make sure **23ai** is selected.
 
-    ![Enter admin credentials](images/atp-password.png) 
+    ![Select database version](images/drords-004.png "Select database version")
 
-5. Change network access to **allowed IPs and VCNs only** and change IP notation type to **CIDR Block. Input the CIDR value of 0.0.0.0/0 into the blank field.** Make sure that the option for **requiring mutual TLS (mTLS) authentication remains unchecked**.
+5. Create a password for the **ADMIN** credentials.
 
-    ![Enter admin credentials](images/secure-access.png) 
+    ![Enter admin credentials](images/atp-password.png "Enter admin credentials") 
 
-6. Select the licensing option of your choosing, then select **Create Autonomous Database** at the bottom.
-*Note: Spinning up the ADB can take a couple of minutes.*
+6. For network access, choose **Secure access from everywhere**.
 
-    ![Create ADB button at the bottom](images/create-the-atp.png)
+    ![Network access](images/adb-network.png "Choose network access")
+
+7. Select the licensing option of your choosing, then select **Create Autonomous Database** at the bottom.
+    
+    *Note*: Spinning up the ADB can take a couple of minutes.
+
+    ![Create ADB button at the bottom](images/create-atp.png "Create ADB button at the bottom")
 
     
 
 ## Task 2: Use the `employee_data_load.sql` script to create the `EMPLOYEESEARCH_PROD` user and upload data.
 
-1. Once the Autonomous Database is green and available, navigate to top menu bar of the Autonomous Database dashboard and select **Database Actions**.
+1. Once the Autonomous Database is green and available, navigate to top menu bar of the Autonomous Database dashboard and select **Database Actions**, then **SQL**.
 
-    ![Go to database actions](images/db-actions.png)
+    ![Go to database actions](images/drords-005.png "Go to database actions")
 
-2. Login to **Database Actions** using the **ADMIN** credentials you created.
-
-    ![Login to db actions](images/db-login.png)
-
-3. Under the **Development** section, select **SQL**.
-
-    ![SQL worksheet](images/sql-worksheet.png)
-
-4. Use the following URL to download and save the `employee_data_load.sql` script:
+2. Use the following URL to download and save the `employee_data_load.sql` script:
 
     ```
     <copy>https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/employee_data_load.sql</copy>   
     ```
 
-5. At the top of the menu bar, select the folder icon to open a file.
+3. Drag and drop the `employee_data_load.sql` that was downloaded into the center of the SQL worksheet.
 
-    ![Open file](images/folder-icon.png)
+    ![Open file](images/drords-006.png "Open file")
 
-6. Select **Open file** and upload the `employee_data_load.sql` script
+4. Once the script is loaded into the **SQL worksheet**, select the script icon to run the SQL script. Check the script output at the bottom to make sure no errors were received.
 
-    ![Select the file](images/open-file.png)
+    ![Run the script](images/drords-007.png "Run the script")
 
-7. Once the script is loaded into the **SQL worksheet**, select the script icon to run the SQL script. Check the script output at the bottom to make sure no errors were received.
+5. Clear the SQL worksheet and run the following command to grant the necessary privileges to `EMPLOYEESEARCH_PROD`. Select the green play button at the top menu bar to run the command.
 
-    ![Run the script](images/run-script.png)
+    ```
+    <copy>GRANT ADMINISTER REDACTION POLICY TO employeesearch_prod;</copy>
+    ```
 
-8. Return back to the **Database Actions** main dashboard by selecting the **Oracle** logo at the top left of the screen
+6. Return back to the **Database Actions** main dashboard by selecting the **Oracle** logo at the top left of the screen
 
-    ![Return to dashboard](images/return-to-dash.png)
+    ![Return to dashboard](images/drords-008.png "Return to dashboard")
 
-9. Scroll down. Under **Administration**, select **DATABASE USERS**.
+7. Under the **Administration** tab, select **DATABASE USERS**.
 
-    ![Select database users](images/select-db-users.png)
+    ![Select database users](images/drords-009.png "Select database users")
 
-10. Under the user `EMPLOYEESEARCH_PROD`, select the elipsis then click **Edit User**.
+8. Scroll down. Under the user `EMPLOYEESEARCH_PROD`, select the elipsis then click **Enable REST**. 
 
-    ![Edit user](images/edit-user.png)
+    ![Enable REST](images/drords-010.png "Enable REST")
 
-11. Under **User**, make sure **Web Access** is toggled **on** the select **Apply Changes** on the bottom right of the pop-up menu.
+9. A pop-up menu will come up. Keeping everything as is, Select **REST Enable User**.
 
-    ![Toggle web access on](images/web-access.png)
+    ![Confirm Enable REST](images/drords-011.png "Confirm Enable REST")
 
-12. Open the **Database Actions** portal for `EMPLOYEESEARCH_PROD` by copying the URL and pasting in a new incognito window.
+10. Open the **Database Actions** portal for `EMPLOYEESEARCH_PROD` by copying the URL and pasting in a new incognito window.
 
-    ![Open db actions as emp](images/db-actions-emp.png)
+    ![Open db actions as emp](images/drords-012.png "Open db actions as emp")
 
-13. Login into **Database Actions** as `EMPLOYEESEARCH_PROD` using the following credentials:
+11. Login into **Database Actions** as `EMPLOYEESEARCH_PROD` using the following credentials:
 
     ```
     <copy>EMPLOYEESEARCH_PROD</copy>   
@@ -114,10 +113,12 @@ This lab assumes you have:
     <copy>Oracle123+Oracle123+</copy>
     ```
 
+    ![Login as EMPLOYEESEARCH_PROD](images/drords-013.png "Login as EMPLOYEESEARCH_PROD")
+
 You may now **proceed to the next lab.**
 
 ## Acknowledgements
 
-- **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
+- **Authors** - Alpha Diallo & Ethan Shmargad
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Alexander John, October 2024
+- **Last Updated By/Date** - Ethan Shmargad, February 2025

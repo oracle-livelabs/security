@@ -56,7 +56,7 @@ This lab assumes you have:
 
 ## Task 1: Create the Sales History data and a user account
 
-1. In your "`ADBSecurity`" database's details page, click the **Database actions** button then click **SQL**. This will open a SQL worksheet.
+1. In your `ADBSecurity` database's details page, click the **Database actions** button then click **SQL**. This will open a SQL worksheet.
 
     ![](./images/adb-dr_001a.png "Click the Database actions button then click SQL to open a SQL worksheet.")
 
@@ -85,7 +85,7 @@ This lab assumes you have:
          </copy>
          ```
 
-    - Create the read only user. You will grant `SH1_READER` the READ ANY TABLE privilege on `SH1`. This is a 23ai feature called schema-level privileges. 
+    - Create the read only user. You will grant `SH1_READER` the READ ANY TABLE privilege on `SH1`. This is a 23ai feature called schema-level privileges.  The `ORDS_ADMIN` call enables `SH1_READER1` to use the **Database Actions** web page.
 
          ```
          <copy>
@@ -693,7 +693,7 @@ Here is a table that includes some of the most-commonly used partial redaction f
    | `DBMS_REDACT.REDACT_DATE_EPOCH` | Redacts all dates to 01-JAN-70. |
    | `DBMS_REDACT.REDACT_NA_PHONE_FORMATTED` | Redacts the North American phone number by leaving the area code, but replacing everything else with X. |
 
-1. First, create a new Data Redaction policy on the `PAYMENTS` base table. As `ADMIN`, run the `ADD_POLICY` procedure. 
+1. First, create a new Data Redaction policy on the `PAYMENTS` base table. As `ADMIN`, run the `ADD_POLICY` procedure. When columns are added to this policy, it will redact column data for everyone, including the table owner `SH1`. Everyone except users that have the `EXEMPT REDACTION POLICY` privilege. This will allow us to view the effects of Data redaction on `SH1` and `SH1_READER`. 
 
       ```
       <copy>
@@ -809,7 +809,7 @@ You have demonstrated how you can create different redaction policies and use di
 
 ## Task 5: Run analytics and advanced queries against your redacted data
 
-In this example the `SH1_READER` user will perform business analytics operations on the `CUSTOMERS` data. You will protect this data from the analytic operations with Oracle Data Redaaction. 
+In this example the `SH1_READER` user will perform business analytics operations on the `CUSTOMERS` data. You will protect this data from the analytic operations with Oracle Data Redaction. 
 
 This task will show you how to use policy expressions to change the redaction policy based for individual columns. Your Data Redaction policy might have a common expressed, used as the default for columns that don't specify a policy expression, and other columns that use different expressions based on the scenario.
 
@@ -1200,7 +1200,7 @@ In general, the first step you take is to identify sensitive data. You can use *
 ## Want to Learn More?
 
 Technical Documentation:
-  - [Oracle Data Redaction 23ai](https://docs.us.oracle.com/en/database/oracle/oracle-database/23/dbred/toc.htm)
+  - [Oracle Data Redaction 23ai](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbred/toc.htm)
 
 Video:
   - *Data Redaction - Extend it to multiple columns and Analytics (October 2023)*" [](youtube:Q0K2caAtGIY)
