@@ -50,11 +50,13 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 5. Clear the worksheet and script output.  
 
+6. Return to the **Data Safe | Oracle Cloud Infrastructure** browser tab.
+
 
 
 ## Task 2: Enable SQL Firewall in Data Safe
 
-1. Return to the **Data Safe | Oracle Cloud Infrastructure** browser tab.
+1. Make sure you are on the **Data Safe | Oracle Cloud Infrastructure** browser tab.
 
 2. Under **Security center** in Data Safe, click **SQL Firewall**.
 
@@ -87,7 +89,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     SQL Firewall is now set to capture SQL statements issued by the `APP_USER` database user.
 
-6. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**.
+6. From the navigation menu, select **Oracle Database**, and then **Autonomous Database**.
 
 7. Click the name of your database.
 
@@ -100,6 +102,8 @@ Perform this task only if you are working in your own tenancy. If you are using 
     Note: Password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character or the username "admin".
 
 11. At the bottom, enable **Web Access**.
+
+   ![Enable web access](images/enable-web-access.png "Enable web access")
 
 12. Click **Apply Changes**.
 
@@ -181,14 +185,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     The SQL statements that you collected earlier are listed.
 
-    ```text
-    SELECT * FROM (SELECT Q_.*,ROW_NUMBER () OVER (ORDER BY :"SYS_B_0") RN___ FROM (SELECT FIRST_NAME,LAST_NAME,EMPLOYEE_ID FROM HCM1.EMPLOYEES) Q_) WHERE RN___ BETWEEN :1 AND :2
-    
-    SELECT * FROM (SELECT Q_.*,ROW_NUMBER () OVER (ORDER BY :"SYS_B_0") RN___ FROM (SELECT LOCATION_ID,STREET_ADDRESS,CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID) Q_) WHERE RN___ BETWEEN :1 AND :2
-
-    SELECT * FROM (SELECT Q_.*,ROW_NUMBER () OVER (ORDER BY :"SYS_B_0") RN___ FROM (SELECT LOCATION_ID,CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID=:"SYS_B_1") Q_) WHERE RN___ BETWEEN :1 AND :2
-    ```
-
+   ![Filtered SQL statements](images/filtered-sql-statements.png "Filtered SQL statements")
 
 ## Task 5: Test the SQL Firewall policy
 
@@ -267,6 +264,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, Dec 18, 2024
+- **Last Updated By/Date** - Jody Glover, May 5, 2025
 
 

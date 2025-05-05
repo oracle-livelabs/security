@@ -35,7 +35,7 @@ This lab assumes you have:
 
 ## Task 1: Configure auditing and alerts for your target database
 
-1. Return to the browser tab for Oracle Data Safe browser. In the breadcrumb at the top of the page, click **Data Safe**.
+1. Return to the browser tab for Oracle Data Safe. In the breadcrumb at the top of the page, click **Data Safe**.
 
 2. Under **Data Safe**, click **Activity auditing**.
 
@@ -77,6 +77,7 @@ This lab assumes you have:
 
     - Audit data online retention months = 12
     - Audit data offline retention months = 0
+    - This will override the global retention settings = Yes
     - Paid usage = not selected
 
     ![Activity Auditing wizard - Audit profile](images/activity-auditing-wizard-audit-profile.png "Activity Auditing wizard - Audit profile")
@@ -89,6 +90,8 @@ This lab assumes you have:
 8. For **Review and submit**, review the configuration, and click **Submit** if everything is correct.
 
     ![Activity Auditing wizard - Review and submit](images/activity-auditing-wizard-review-submit.png "Activity Auditing wizard - Review and submit")
+
+    ![Activity Auditing wizard - Review and submit](images/activity-auditing-wizard-review-submit2.png "Activity Auditing wizard - Review and submit")
 
 9. For **Audit configuration progress**, wait until the alert and audit policies are provisioned and the audit trail is started. 
     
@@ -162,7 +165,7 @@ In this task, you perform activities on your target database in Database Actions
 5. In the **Report name** column on the right, click the **All alerts** report and review it.
 
     - The report is automatically filtered to show you all alerts for all target databases in the selected compartment for the past one week. To create filters, you can use the **+ Another filter** button or the **SCIM query builder**. 
-    - You can view several totals, including the total number of target databases; total number of open and closed alerts, and the total number of critical, high, medium, and low alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
+    - You can view several totals, including the total number of target databases; total number of open and closed alerts, the total number of critical, high, medium, and low alerts; and the total number of alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
     - At the bottom of the report, you can view the list of alerts. By default, the table shows you the alert name, alert status, alert severity, target databases on which the audited event occurred, when the alert was created, and the alert policy rule name.
     - You have options to create a PDF or XLS report, create a custom report, schedule a custom report, open and close alerts, and specify which table columns you want displayed on the page.
 
@@ -192,4 +195,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, December 13, 2024
+* **Last Updated By/Date** - Jody Glover, May 5, 2025

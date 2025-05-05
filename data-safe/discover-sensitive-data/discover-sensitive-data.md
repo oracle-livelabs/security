@@ -8,8 +8,6 @@ In this lab, you use Oracle Data Safe to discover sensitive data on your target 
 
 Estimated Lab Time: 15 minutes
 
-[Data Safe](videohub:1_d8x5ayoo)
-
 ### Objectives
 
 In this lab, you will:
@@ -106,7 +104,7 @@ This lab assumes you have:
 
 Increase the scope of the data discovery job.
 
-1. Under **Resources** on the left, click **Lastest incremental discovery**.
+1. Under **Resources** on the left, click **Incremental discovery**.
 
 2. Under **Incremental discovery** on the right, click **Run discovery now**.
 
@@ -128,7 +126,9 @@ Increase the scope of the data discovery job.
 
 8. For **Select discovery options**, select **Collect, display and store sample data**.
 
-9. Click **Run discovery now**, and wait for the message **Incremental discovery completed successfully** to be displayed.
+9. Click **Run discovery now**, and wait for the status of the discovery job to read as **FINISHED**.
+
+   ![Finished incremental discovery job](images/finished-incremental-discovery-job.png "Finished incremental discovery job")
 
 10. Review the additional sensitive data that was discovered. Notice that you can approve and reject incremental discovery results or specific results.
 
@@ -185,7 +185,7 @@ Add `COUNTRY_ABBREV` to the sensitive data model.
 
 6. Select the check box for the `COUNTRY_ABBREV` column.
 
-7. From the **Sensitive type** drop-down list, under **Biographic Information > Address**, select **Country**.
+7. From the **Sensitive type** drop-down list, under **Biographic Information > Address**, select **Country**. *Be sure to select Country, not County.*
 
 8. Click **Add columns**.
 
@@ -202,4 +202,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, December 9, 2024
+- **Last Updated By/Date** - Jody Glover, May 5, 2025
