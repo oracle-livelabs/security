@@ -10,8 +10,6 @@ In this lab, you explore Security Assessment.
 
 Estimated Time: 20 minutes
 
-[Data Safe](videohub:1_z96ow7gf)
-
 ### Objectives
 
 In this lab, you will:
@@ -225,4 +223,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, December 6, 2024
+* **Last Updated By/Date** - Jody Glover, May 5, 2025

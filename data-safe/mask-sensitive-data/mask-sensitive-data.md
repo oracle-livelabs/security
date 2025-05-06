@@ -6,11 +6,9 @@ Data Masking provides a way for you to mask sensitive data so that the data is s
 
 The roles granted to the Oracle Data Safe service account on your target database control which Oracle Data Safe features you can use with the database. By default, Autonomous Database Serverless has all Oracle Data Safe roles granted during target database registration, except for the Data Masking and SQL Firewall roles. If you are working in your own tenancy, you need to grant the Data Masking role on your target database. 
 
-Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab. View the before and after effect on the masked data by using Oracle Database Actions.
+Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data) lab. View the before and after effect on the masked data by using Oracle Database Actions.
 
 Estimated Time: 20 minutes
-
-[Data Safe](videohub:1_wiu76838)
 
 ### Objectives
 
@@ -25,7 +23,6 @@ In this lab, you will:
 - Mask sensitive data in your target database
 - View the Data Masking report
 - Validate the masked data in your target database
-
 
 
 ### Prerequisites
@@ -124,7 +121,7 @@ Data Masking can generate a masking policy for your target database based on you
     - Compartment: **Select your compartment**
     - Description: **Masking policy for SDM1**
     - Choose how you want to create the masking policy: Leave **Using a sensitive data model** selected.
-    - Sensitive Data Model: Select **SDM1\[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab.
+    - Sensitive Data Model: Select **SDM1\[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data) lab.
 
     ![Create masking policy panel using SDM1](images/create-masking-policy-sdm1.png "Create masking policy panel using SDM1")
 
@@ -257,7 +254,7 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 2. Review the masking report.
 
-    - The **Masking report information** tab shows you the target database name, masking policy name (you can click a link to view it), the Oracle Cloud Identifier (OCID) for the masking report, the date and time when the data masking job started and finished, and the number of masked sensitive types, schemas, tables, columns, and values. You can click a link to view masking options. There is also a bar chart that shows you the the number of masked columns for each of the top five sensitive types.
+    - The **Masking report information** tab shows you the target database name; masking policy name (you can click a link to view it); the Oracle Cloud Identifier (OCID) for the masking report; the masking status; the date and time when the data masking job started and finished; the number of masked sensitive types, schemas, tables, columns, values, total pre-mask errors, and total post-mask errors. You can click a link to view masking errors and masking options. There is also an interactive bar chart that shows you the the number of masked columns for each of the top five sensitive types.
     - The **Masked columns** table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
 
     ![Masking report top](images/masking-report-top3.png "Masking report top")
@@ -279,7 +276,7 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
     ![Masked EMPLOYEE data](images/masked-query-results.png "Masked EMPLOYEE data")
 
-4. (Optional) Click the **Script Output** tab to view the original unmasked data.
+4. Click the **Script Output** tab to view the original unmasked data.
 
 5. Clear the worksheet.
 
@@ -304,4 +301,4 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, December 9, 2024
+- **Last Updated By/Date** - Jody Glover, May 5, 2025

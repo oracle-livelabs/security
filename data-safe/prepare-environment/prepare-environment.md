@@ -149,7 +149,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
 > **Note**: If you plan to use an existing ATP database in your tenancy or you are using an Oracle-provided environment, you can skip this task.
 
-1. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**.
+1. From the navigation menu, select **Oracle Database**, and then **Autonomous Database**.
 
 2. In the **Filters** section on the left, make sure your workload type is **Transaction Processing** or **All** so that you can view your database listing after you create your database.
 
@@ -287,4 +287,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, December 6, 2024
+- **Last Updated By/Date** - Jody Glover, May 5, 2025
