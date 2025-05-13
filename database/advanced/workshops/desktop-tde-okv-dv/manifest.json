@@ -1,0 +1,36 @@
+{
+  "workshoptitle": "DB Security - Key Vault",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Understand the architecture of this workshop and what it can do",
+      "publisheddate": "09/01/2020",
+      "filename": "../../intro/intro-key-vault.md"
+    },
+    {
+      "title": "Get Started",
+      "description": "Using noVNC Remote Desktop",
+      "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
+    },
+    {
+      "title": "Lab 2: Key Vault (OKV)",
+      "description": "In this lab you can see how to leverage Oracle Key Vault (OKV)",
+      "publisheddate": "10/20/2020",
+      "filename": "../../tde-okv-dv/key-vault.md",
+      "type": "green"
+    },
+	{
+      "title": "Lab 3: Database Vault (DV)",
+      "description": "Learn how to use Database Vault to separate privileged users from application data",
+      "publisheddate": "10/20/2020",
+      "filename": "../../tde-okv-dv/database-vault.md",
+      "type": "green"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}
