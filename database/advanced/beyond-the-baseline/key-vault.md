@@ -511,32 +511,38 @@ You must create a master encryption key for the container database before contin
 
 In this lab, we will encrypt an existing tablespace with zero downtime.
 
-1. View unencrypted data in the `EMPDATA_PROD` tablespace using a shell script. 
+1. Navigate to the TDE directory to use a script from that lab. 
+
+    ````
+    <copy>cd $DBSEC_LABS/tde</copy>
+    ````
+
+2. View unencrypted data in the `EMPDATA_PROD` tablespace using a shell script. 
 
     ````
     <copy>./tde_strings_data_empdataprod.sh</copy>
     ````
 
-2. Login as SYSDBA to the container database
+3. Login as SYSDBA to the container database
 
     ````
     <copy>sqlplus / as sysdba</copy>
     ````
    
-3. Switch to the Pluggable Database (PDB1)
+4. Switch to the Pluggable Database (PDB1)
 
     ````
     <copy>alter session set container=pdb1;</copy>
     ````
 
 
-4. Perform the online tablespace encryption
+5. Perform the online tablespace encryption
 
     ````
-    <copy>alter tablespace empdata_prod employtion online encrypt;</copy>
+    <copy>alter tablespace empdata_prod encryption online encrypt;</copy>
     ````
 
-5. Exit SQL\*Plus and run the command to look at the now that the tablespace is encrypted.
+6. Exit SQL\*Plus and run the command to look at the now that the tablespace is encrypted.
 
     ````
     <copy>exit</copy>
