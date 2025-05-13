@@ -14,7 +14,7 @@ Watch the video below for a quick walk-through of the lab.
 
 -   Learn how to provision a new Autonomous Database
 -   Create a new user for demo purpose
--   Connect to Autonomous Database using Oracle CloudShell and SQLcl
+-   Connect to Autonomous Database using Oracle Cloud Shell and SQLcl
 
 ### Prerequisites
 
@@ -22,17 +22,17 @@ Watch the video below for a quick walk-through of the lab.
 
 ## Task 1: Provision an Autonomous Database
 
-  **Note:** If you plan to use an existing Autonomous Database in your own tenancy, or you are using an Oracle-provided environment, you can skip the Task 1 and Task 2.
+  **Note:** If you plan to use an Oracle-provided environment, you can skip the Task 1 and Task 2.
 
-1. Log in to the Oracle Cloud Infrastructure
+1. Log in to the Oracle Cloud Infrastructure Console.
 
 2. Once you are logged in, you are taken to the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.
 
     ![Menu](./images/lab1-task1-1.png "In the top left corner, click the 3 lines menu to expand.")
 
-3. The following steps apply to Autonomous Databases. So please **click the provisioning of Autonomous Database**.
+3. The following steps apply to Autonomous Databases. So please **click the Autonomous Database**.
 
-    ![Provision Autonomous Database](./images/lab1-task1-2.png "click the provision autonomous database.")
+    ![Provision Autonomous Database](./images/lab1-task1-2.png "click the autonomous database.")
 
 4. From the **Compartment** filter, select your compartment and click [**Create Autonomous Database**]
 
@@ -51,6 +51,8 @@ Watch the video below for a quick walk-through of the lab.
         ```
         <copy>BlockchainTableDemo</copy>
         ```
+    > **NOTE:** The database name must be unique across all Autonomous Databases and Autonomous Data Warehouses in your tenancy within the same region. If an existing database shares the same name, provisioning will fail. Use a unique name to ensure successful provisioning.
+
     - **Compartment** - If needed, select your compartment
 
     - **Workload Type** - Select the type of your Autonomous Database (here we select "Transaction Processing")
@@ -94,7 +96,13 @@ Watch the video below for a quick walk-through of the lab.
 
 3. In the Create User page, under User tab, give the following details and click **Create User**:
     - **User Name** - Give the new user a User Name. The username is case-sensitive. In the lab, we name the user **Username - DEMOUSER**.
+    ```
+        <copy>DEMOUSER</copy>
+    ```
     - **Password** - Give the new user a password and confirm the Password. In this lab, we give the same password as admin user for ease of use, **Password - Welcome_123#** and confirm the password.
+    ```
+        <copy>Welcome_123#</copy>
+    ```
     - **Quota on tablespace DATA** - Set a value for the Quota on tablespace DATA for the user. Choose **500M** for this user.
     - **Web Access** - Turn on the Web Access radio button to access the SQL Developer Web.
     - **Web access advanced features** - Expand the Web access advanced features and turn off the Authorization required radio button to disable the authorization for `demouser` REST services
@@ -104,7 +112,7 @@ Watch the video below for a quick walk-through of the lab.
 4.  Notice that the new user is created successfully.
     ![new user created successfully](./images/lab1-task2-5.png "new user created successfully")
 
-## Task 3: Connect to Autonomous Database using Oracle CloudShell and SQLcl
+## Task 3: Connect to Autonomous Database using Oracle Cloud Shell and SQLcl
 
 1. On the **Blockchain-Table-Demo ATP** instance details page, click on **Copy** to copy the **OCID** of the ATP instance.  
     ![instance details page](./images/lab1-task3-2.png "instance details page")
@@ -267,5 +275,5 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 
 * **Contributors** - Amit Ketkar, Pavas Navaney, Vinay Pandhariwal 
-* **Created By/Date** - Vinay Pandhariwal, March 2025
-* **Last Updated By/Date** - Vinay Pandhariwal, March 2025
+* **Created By/Date** - Vinay Pandhariwal, April 2025
+* **Last Updated By/Date** - Vinay Pandhariwal, April 2025

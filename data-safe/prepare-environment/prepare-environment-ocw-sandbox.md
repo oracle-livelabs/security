@@ -52,7 +52,7 @@ This lab assumes you have:
 
     You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
 
-7. Access your database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
+7. Access your database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Database**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
 
 
 ## Task 2: Access Oracle Database Actions
@@ -126,4 +126,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 16, 2024
+- **Last Updated By/Date** - Jody Glover, May 5, 2025
