@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "DB Security - Key Vault",
+  "workshoptitle": "DB Security - Beyond the baseline",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
@@ -14,20 +14,14 @@
       "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
     },
     {
-      "title": "Lab 1: Initialize Environment",
-      "description": "How to initialize and start all the workshop components",
-      "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env-dbs.md"
-    },
-    {
-      "title": "Lab 2: Key Vault (OKV)",
+      "title": "Lab 1: Encryption and Key Management",
       "description": "In this lab you can see how to leverage Oracle Key Vault (OKV)",
       "publisheddate": "10/20/2020",
       "filename": "../../beyond-the-baseline/key-vault.md",
       "type": "green"
     },
 	{
-      "title": "Lab 3: Database Vault (DV)",
+      "title": "Lab 2: Separation of Duties",
       "description": "Learn how to use Database Vault to separate privileged users from application data",
       "publisheddate": "10/20/2020",
       "filename": "../../beyond-the-baseline/database-vault.md",

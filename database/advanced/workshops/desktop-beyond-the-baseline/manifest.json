@@ -6,7 +6,7 @@
       "title": "Introduction",
       "description": "Understand the architecture of this workshop and what it can do",
       "publisheddate": "09/01/2020",
-      "filename": "../../intro/intro-key-vault.md"
+      "filename": "../../intro/intro-beyond-the-baseline.md"
     },
     {
       "title": "Get Started",
@@ -14,18 +14,16 @@
       "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
     },
     {
-      "title": "Lab 2: Key Vault (OKV)",
+      "title": "Lab 1: Encryption and Key Management",
       "description": "In this lab you can see how to leverage Oracle Key Vault (OKV)",
       "publisheddate": "10/20/2020",
-      "filename": "../../beyond-the-baseline/key-vault.md",
-      "type": "green"
+      "filename": "../../beyond-the-baseline/key-vault.md"
     },
 	{
-      "title": "Lab 3: Database Vault (DV)",
+      "title": "Lab 2: Separation of Duties",
       "description": "Learn how to use Database Vault to separate privileged users from application data",
       "publisheddate": "10/20/2020",
-      "filename": "../../beyond-the-baseline/database-vault.md",
-      "type": "green"
+      "filename": "../../beyond-the-baseline/database-vault.md"
     },
     {
       "title": "Need Help?",
