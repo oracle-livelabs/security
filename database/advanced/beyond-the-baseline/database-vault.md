@@ -35,13 +35,10 @@ This lab assumes you have:
 
 ## Task 1: Enable Database Vault
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*.
+1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* by clicking the top-left button named **Activities** and then clicking the terminal icon that is the third item down and looks like a black and grey command prompt. 
 
-    ```
-    <copy>sudo su - oracle</copy>
-    ```
+    ![Open Linux Terminal](./images/dv-open-terminal-01.png "Click Activities then click black and grey command prompt icon.")
 
-    **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
 2. Go to the following directory:
 
@@ -75,12 +72,15 @@ This lab assumes you have:
 ## Task 2: Create a Simple Realm
 
 1. Open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
+    
+    ![Open Glassfish Application](./images/dv-open-glassfish-app-01.png "Open Glassfish HR Application")
+
 
     **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
-    ![DB Vault](./images/dv-029.png "HR App - Login")
-
 2. Login to the application as *`hradmin`* with the password "*`Oracle123`*"
+
+    ![DB Vault](./images/dv-029.png "HR App - Login")
 
     ```
     <copy>hradmin</copy>
@@ -100,7 +100,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-032.png "HR App - Search employees")
 
-5. Go back to your Terminal session and run the command to view the details about the Glassfish session
+5. Go back to your Terminal session and run the command to query a critical table within the application. This query will run as SYS. 
 
     ```
     <copy>./dv_query_employee_data.sh</copy>
@@ -132,7 +132,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-006.png "Add EMPLOYEESEARCH_PROD as a realm authorized owner")
 
-9. Re-execute the SQL query to show that `SYS` now receives the **insufficient privileges** error message
+9. Now that the realm is enforced and the only user who is authorized access to the realm is the schema owner **`EMPLOYEESEARCH_PROD`**, re-execute the SQL query to show that `SYS` now receives the **insufficient privileges** error message.
 
     ```
     <copy>./dv_query_employee_data.sh</copy>
