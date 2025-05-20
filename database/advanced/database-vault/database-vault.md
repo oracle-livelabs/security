@@ -99,6 +99,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-030.png "HR App - Login")
 
+
     **Note:** If you receive the `Change your password` box, please click **OK** and ignore it. This is a sandbox environment and the password is intentionally weak for ease of use. This is not a real application.
         ![DB Vault](./images/dv-ignore-change-pwd.png "Ignore the change password request from Google Chrome.")
 
@@ -145,7 +146,10 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-006.png "Add EMPLOYEESEARCH_PROD as a realm authorized owner")
 
-9. Re-execute the SQL query to show that `SYS` now receives the **insufficient privileges** error message.
+
+9. Now that the realm is enforced and the only user who is authorized access to the realm is the schema owner **`EMPLOYEESEARCH_PROD`**, re-execute the SQL query to show that `SYS` now receives the **insufficient privileges** error message.
+
+10. Re-execute the SQL query to show that `SYS` now receives the **insufficient privileges** error message.
 
     ```
     <copy>./dv_query_employee_data.sh</copy>
@@ -153,7 +157,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-007a.png "Now, SYS user receives the insufficient privileges error message")
 
-10. When you have completed this lab, you can drop the Realm
+11. When you have completed this lab, you can drop the Realm
 
     ```
     <copy>./dv_drop_realm.sh</copy>
