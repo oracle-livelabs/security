@@ -3,19 +3,17 @@
 ## Introduction
 This workshop introduces the various features and functionality of Oracle Database Vault (DV). It gives the user an opportunity to learn how to configure those features to prevent unauthorized privileged users from accessing sensitive data.
 
-Estimated Time: 60 minutes
+Estimated Time: 20 minutes
 
 *Version tested in this lab:* Oracle Database 19c Enterprise Edition
 
 ### Video Preview
-Watch a preview of "*LiveLabs - Oracle Database Vault (May 2022)*" [](youtube:M5Kn-acUHRQ)
+Watch a preview of "*LiveLabs - Oracle Database Vault*" [](youtube:M5Kn-acUHRQ)
 
 ### Objectives
 - Enable Database Vault in the container and `PDB1` pluggable database
 - Protect sensitive data using a Database Vault realm
-- Safeguard service accounts using Trusted Path
-- Test Database Vault Controls with Simulation mode
-- Protect pluggable databases from Container Admins
+- Protect pluggable databases from container administrators
 
 ### Prerequisites
 This lab assumes you have:
@@ -28,12 +26,16 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1 | Enable Database Vault | 10 minutes |
+| 1 | Enable Database Vault | 5 minutes |
 | 2 | Create a Simple Realm | 10 minutes |
-| 3 | Create a Trusted Path / Multi-factor Authorization | 10 minutes |
-| 4 | Ops Control | 10 minutes |
+| 3 | Ops Control | 5 minutes |
 
 ## Task 1: Enable Database Vault
+
+Database Vault must be configured and enabled in the container database before it can be configured and enabled on a pluggable database. This step requires assigning the `DV_OWNER` role to a database user and the `DV_ACCTMGR` role to another database user. In this lab, you will assign `C##DVOWNER` the `DV_OWNER` role and `C##DVACCTMGR` the `DV_ACCTMGR` role.
+
+Database Vault requires a database restart to be enabled. The downtime can be minimized by performing a RAC-rolling enablement.  For more information on Oracle Database Vault, please see `https://docs.oracle.com` and review the *Database Vault Administrator's Guide* and the *Database Vault Getting Started Guide*.
+
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* by clicking the top-left button named **Activities** and then clicking the terminal icon that is the third item down and looks like a black and grey command prompt. 
 
@@ -51,30 +53,31 @@ This lab assumes you have:
       <copy>./dv_enable_on_cdb.sh</copy>
       ```
 
-    **Note**: To enable DB Vault, database will be rebooted!
+    **Note**: To enable DB Vault, database will be rebooted.
 
     ![DB Vault](./images/dv-001.png "Enable DB Vault")
 
-4. Next, enable it on the pluggable database. For now, just enable it on **pdb1**
+4. Next, enable it on a pluggable database. For now, just enable it on **pdb1**. Once Database Vault is enabled on the container database, you can decide which PDBs it should be enabled on. 
 
     ```
     <copy>./dv_enable_on_pdb.sh pdb1</copy>
     ```
 
-    **Note**: Remember to add **pdb1** to the end of the command!
+    **Note**: Remember to add **pdb1** to the end of the command.
 
    You should see a status like this:
 
     ![DB Vault](./images/dv-002.png "Enable DB Vault")
 
-5. Now, Database Vault is enabled in the container database as well as pdb1!
+5. Now, Database Vault is enabled in the container database as well as **pdb1**.
 
 ## Task 2: Create a Simple Realm
 
-1. Open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
+Next, you are going to view the data through the application while preventing DBAs from viewing data from sqlplus and other utilities. The simplest way to protect database objects is to create a Database Vault realm and only authorize specific users to access the realm. In this task, you will only authorize the application owner to use its privileges to view or modify database objects related to the application. 
+
+1. Open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App. 
     
     ![Open Glassfish Application](./images/dv-open-glassfish-app-01.png "Open Glassfish HR Application")
-
 
     **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
@@ -91,6 +94,11 @@ This lab assumes you have:
     ```
 
     ![DB Vault](./images/dv-030.png "HR App - Login")
+
+    **Note:** If you receive the `Change your password` box, please click **OK** and ignore it. This is a sandbox environment and the password is intentionally weak for ease of use. This is not a real application and the environment should be destroyed upon completion of this lab. 
+    
+        ![DB Vault](./images/dv-ignore-change-pwd.png "Ignore the change password request from Google Chrome.")
+
 
 3. Click **Search Employee**
 
@@ -116,7 +124,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-004.png "Create the Realm PROTECT_EMPLOYEESEARCH_PROD")
 
-7. Add objects to the Realm to protect (here you add all the schema's objects)
+7. Add objects to the Realm to protect. These are the objects you are choosing to protect. You can choose an entire schema, multiple schemas, or specific objects in one or more schemas. In this example, you will protect all objects in a single schema. 
 
     ```
     <copy>./dv_add_obj_to_realm.sh</copy>
@@ -124,7 +132,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-005.png "Add objects to the Realm to protect")
 
-8. Make sure you have an authorized user in the realm. In this step, we will add `EMPLOYEESEARCH_PROD` as a realm authorized owner
+8. Make sure you have an authorized user in the realm. In this step, we will add `EMPLOYEESEARCH_PROD` as a realm authorized owner. This will be the only user who can use their system or object privileges to access the protected objects. 
 
     ```
     <copy>./dv_add_auth_to_realm.sh</copy>
@@ -141,87 +149,11 @@ This lab assumes you have:
     ![DB Vault](./images/dv-007a.png "Now, SYS user receives the insufficient privileges error message")
 
 
-## Task 3: Create a Trusted Path / Multi-factor Authorization
+## Task 3: Operations Control (Ops Control)
 
-1. Go back to your Glassfish app and click [**Search Employee**] again
+Database Vault Ops Control was introduced in Oracle Database 19c. Ops Control separates container administrators from pluggable database data even if Database Vault is not enabled in a pluggable database. 
 
-    ![DB Vault](./images/dv-031.png "HR App - Search Employees")
-
-2. And click [**Search**]
-
-    ![DB Vault](./images/dv-032.png "HR App - Search")
-
-3. Go back to your Terminal session and run this query to view the session information associated with the Glassfish application
-
-    ```
-    <copy>./dv_query_employeesearch_usage.sh</copy>
-    ```
-
-    ![DB Vault](./images/dv-019.png "View the session information associated with the HR app")
-
-4. Now, query the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table with the owner `EMPLOYEESEARCH_PROD` to demonstrate it is accessible
-
-    ```
-    <copy>./dv_query_employee_search.sh</copy>
-    ```
-
-    ![DB Vault](./images/dv-020.png "Query tables")
-
-5. Begin protecting the application credentials by creating a Database Vault Rule
-
-    ```
-    <copy>./dv_create_rule.sh</copy>
-    ```
-
-    ![DB Vault](./images/dv-021.png "Create a Database Vault Rule")
-
-    **Note**: We authorize as a Trusted Path app only the access from Glassfish Web App (JDBC Thin Client) through the schema owner `EMPLOYEESEARCH_PROD`!
-
-6. We use the Database Vault Rule by adding it to a **DV Rule Set**
-
-    - You can have one or more rules in the rule set
-    - If you have more than one, you can choose between the rule set evaluating all rules must be true or `ANY` rule must be true
-    - Think of it like the difference between `IN` and `EXISTS` - `IN` includes all while `EXISTS` stops once it identifies one result matches
-
-    ```
-    <copy>./dv_create_rule_set.sh</copy>
-    ```
-
-    ![DB Vault](./images/dv-022.png "Create a Database Vault Rule Set")
-
-7. Create a Command Rule on "**CONNECT**" to protect the `EMPLOYEESEARCH_PROD` user
-
-    ```
-    <copy>./dv_create_command_rule.sh</copy>
-    ```
-
-    ![DB Vault](./images/dv-023.png "Create a Command Rule on CONNECT")
-
-   **Note**: You can only "`CONNECT`" as `EMPLOYEESEARCH_PROD` if you match the Rule Set we created!
-
-8. Go back to your Glassfish app and refresh a few times and run some queries by clicking [**Search**] and explore employee data
-
-    **Note**: Because you're using the Glassfish App as a Trusted Path app you can access the data!
-
-9. Go back to your terminal session and re-run our query of the application usage to verify that it still works
-
-    ```
-    <copy>./dv_query_employeesearch_usage.sh</copy>
-    ```
-
-    ![DB Vault](./images/dv-024.png "Search employees")
-
-10. Now, try to query the `EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES` table with the owner `EMPLOYEESEARCH_PROD`... **You should be blocked**!
-
-    ```
-    <copy>./dv_query_employee_search.sh</copy>
-    ```
-
-    ![DB Vault](./images/dv-025.png "Query tables")
-
-    **Note**: Because you're querying via a non-"Trusted Path" app you can't access the data!
-
-## Task 4: Ops Control
+Database Vault allows a PDB DBA to access PDB data but prevents a container DBA (C##) from accessing the data. With Ops Control, no realms or command rules are required. Database Vault only has to be enabled in the container database to enforce Ops Control. However, Ops Control does **not** have the flexibility realms and command rules provide. Container DBAs (C##) are either authorized to use their privileges in the PDB or they are prevented from doing so. 
 
 1. Check the status of Database Vault and Operations Control
 
@@ -257,7 +189,7 @@ This lab assumes you have:
 
 3. Enable Database Vault 19c **Operations Control** and run the queries again
 
-    **Note**: Notice who can and who cannot query the `EMPLOYEESEARCH_PROD` schema data now... `SAL` should no longer be able to access data!
+    **Note**: Notice who can and who cannot query the `EMPLOYEESEARCH_PROD` schema data now. `SAL` should no longer be able to access data.
 
     ```
     <copy>./dv_enable_ops_control.sh</copy>
@@ -293,7 +225,7 @@ This lab assumes you have:
     ![DB Vault](./images/dv-018b.png "Disable OPS control")
 
 
-You may now proceed to the next lab!
+You may now proceed to the next lab.
 
 ## **Appendix**: About the Product
 ### **Overview**
@@ -357,9 +289,9 @@ Technical Documentation:
   - [Oracle Database Vault 19c](https://docs.oracle.com/en/database/oracle/oracle-database/19/dvadm/introduction-to-oracle-database-vault.html#GUID-0C8AF1B2-6CE9-4408-BFB3-7B2C7F9E7284)
 
 Video:
-  - *Oracle Database Vault - Use Cases (Part1) (October 2019)* [](youtube:aW9YQT5IRmA)
-  - *Oracle Database Vault - Use Cases (Part2) (November 2019)* [](youtube:hh-cX-ubCkY)
-  - *Understanding Oracle Database Vault (March 2019)* [](youtube:oVidZw7yWIQ)
+  - *Oracle Database Vault - Use Cases (Part1)* [](youtube:aW9YQT5IRmA)
+  - *Oracle Database Vault - Use Cases (Part2)* [](youtube:hh-cX-ubCkY)
+  - *Understanding Oracle Database Vault* [](youtube:oVidZw7yWIQ)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
