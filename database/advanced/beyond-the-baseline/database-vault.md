@@ -73,11 +73,14 @@ Database Vault requires a database restart to be enabled. The downtime can be mi
 
 ## Task 2: Create a Simple Realm
 
+
 Next, you are going to view the data through the application while preventing DBAs from viewing data from sqlplus and other utilities. The simplest way to protect database objects is to create a Database Vault realm and only authorize specific users to access the realm. In this task, you will only authorize the application owner to use its privileges to view or modify database objects related to the application. 
 
-1. Open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App. 
+1. Open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
     
     ![Open Glassfish Application](./images/dv-open-glassfish-app-01.png "Open Glassfish HR Application")
+
+
 
     **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
