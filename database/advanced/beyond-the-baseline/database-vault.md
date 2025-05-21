@@ -100,7 +100,7 @@ Next, you are going to view the data through the application while preventing DB
 
     **Note:** If you receive the `Change your password` box, please click **OK** and ignore it. This is a sandbox environment and the password is intentionally weak for ease of use. This is not a real application and the environment should be destroyed upon completion of this lab. 
     
-        ![DB Vault](./images/dv-ignore-change-pwd.png "Ignore the change password request from Google Chrome.")
+    ![DB Vault](./images/dv-ignore-change-pwd.png "Ignore the change password request from Google Chrome.")
 
 
 3. Click **Search Employee**
