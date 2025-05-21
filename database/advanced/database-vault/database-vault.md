@@ -45,38 +45,43 @@ This lab assumes you have:
 
     **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
+        ![Open Linux Terminal](./images/dv-open-terminal-01.png "Click Activities then click the terminal icon")
+
+
 2. Go to the following directory:
 
     ```
     <copy>cd livelabs/database-vault</copy>
     ```
-3. Start by enabling Database Vault in the container database **cdb1**
+3. Start by configuring and enabling Database Vault in the container database **cdb1**. 
 
       ```
       <copy>./dv_enable_on_cdb.sh</copy>
       ```
 
-    **Note**: To enable DB Vault, database will be rebooted!
+    **Note**: To enable DB Vault, database will be rebooted. If you are using RAC, you can perform a RAC-rolling enablement.
 
     ![DB Vault](./images/dv-001.png "Enable DB Vault")
 
-4. Next, enable it on the pluggable database. For now, just enable it on **pdb1**
+4. Next, enable it on the pluggable database. For now, just enable it on **pdb1**. Once Database Vault is enabled on the container database, you can decide which PDBs it should be enabled on. 
 
     ```
     <copy>./dv_enable_on_pdb.sh pdb1</copy>
     ```
 
-    **Note**: Remember to add **pdb1** to the end of the command!
+    **Note**: Remember to include **pdb1** on the end of the command.
 
    You should see a status like this:
 
     ![DB Vault](./images/dv-002.png "Enable DB Vault")
 
-5. Now, Database Vault is enabled in the container database as well as pdb1!
+5. Now, Database Vault is enabled in the container database as well as PDB1. 
 
 ## Task 2: Create a Simple Realm
 
 1. Open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
+
+    ![DB Vault](./images/dv-open-glassfish-website-01.png "Open a new tab and paste the link to the HR application")
 
     **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
@@ -94,6 +99,11 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-030.png "HR App - Login")
 
+
+    **Note:** If you receive the `Change your password` box, please click **OK** and ignore it. This is a sandbox environment and the password is intentionally weak for ease of use. This is not a real application.
+        ![DB Vault](./images/dv-ignore-change-pwd.png "Ignore the change password request from Google Chrome.")
+
+
 3. Click **Search Employee**
 
     ![DB Vault](./images/dv-031.png "HR App - Search employees")
@@ -102,7 +112,9 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-032.png "HR App - Search employees")
 
-5. Go back to your Terminal session and run the command to view the details about the Glassfish session
+5. Go back to your Terminal session and run the command to view the details about the Glassfish session. The easiest way to return to the terminal is click **Activities** then click the open **Terminal** preview. 
+
+    ![DB Vault](./images/dv-back-to-terminal-01.png "HR App - Employees data")
 
     ```
     <copy>./dv_query_employee_data.sh</copy>
@@ -110,7 +122,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-003.png "HR App - Employees data")
 
-6. Now, create the **Realm** `PROTECT_EMPLOYEESEARCH_PROD` to protect objects in the `EMPLOYEESEARCH_PROD` schema from malicious activity
+6. Now, create the **Realm** `PROTECT_EMPLOYEESEARCH_PROD` to protect objects in the `EMPLOYEESEARCH_PROD` schema from malicious activity. A realm is a collection of objects you wish to protect the same way. 
 
     ```
     <copy>./dv_create_realm.sh</copy>
@@ -118,7 +130,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-004.png "Create the Realm PROTECT_EMPLOYEESEARCH_PROD")
 
-7. Add objects to the Realm to protect (here you add all the schema's objects)
+7. Add objects to the Realm to protect. These are the objects you are choosing to protect. You can choose an entire schema, multiple schemas, or specific objects in one or more schemas. In this example, you will protect all objects in a single schema. 
 
     ```
     <copy>./dv_add_obj_to_realm.sh</copy>
@@ -126,7 +138,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-005.png "Add objects to the Realm to protect")
 
-8. Make sure you have an authorized user in the realm. In this step, we will add `EMPLOYEESEARCH_PROD` as a realm authorized owner
+8. Make sure you have an authorized user in the realm. In this step, we will add `EMPLOYEESEARCH_PROD` as a realm authorized owner. This will be the only user who can use their system or object privileges to access the protected objects. 
 
     ```
     <copy>./dv_add_auth_to_realm.sh</copy>
@@ -134,7 +146,10 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-006.png "Add EMPLOYEESEARCH_PROD as a realm authorized owner")
 
-9. Re-execute the SQL query to show that `SYS` now receives the **insufficient privileges** error message
+
+9. Now that the realm is enforced and the only user who is authorized access to the realm is the schema owner **`EMPLOYEESEARCH_PROD`**, re-execute the SQL query to show that `SYS` now receives the **insufficient privileges** error message.
+
+10. Re-execute the SQL query to show that `SYS` now receives the **insufficient privileges** error message.
 
     ```
     <copy>./dv_query_employee_data.sh</copy>
@@ -142,7 +157,7 @@ This lab assumes you have:
 
     ![DB Vault](./images/dv-007a.png "Now, SYS user receives the insufficient privileges error message")
 
-10. When you have completed this lab, you can drop the Realm
+11. When you have completed this lab, you can drop the Realm
 
     ```
     <copy>./dv_drop_realm.sh</copy>
