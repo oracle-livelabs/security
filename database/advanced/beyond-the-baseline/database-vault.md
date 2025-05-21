@@ -219,17 +219,6 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
     ![DB Vault](./images/dv-018a.png "Query as DBA SAL")
 
 
-4. When you are have completed this lab, disable Ops Control
-
-    ```
-    <copy>./dv_disable_ops_control.sh</copy>
-    ```
-
-    ![DB Vault](./images/dv-018b.png "Disable OPS control")
-
-
-You may now proceed to the next lab.
-
 ## **Appendix**: About the Product
 ### **Overview**
 Oracle Database Vault provides controls to prevent unauthorized privileged users from accessing sensitive data and to prevent unauthorized database changes.
