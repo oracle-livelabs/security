@@ -100,7 +100,7 @@ Next, you are going to view the data through the application while preventing DB
 
     **Note:** If you receive the `Change your password` box, please click **OK** and ignore it. This is a sandbox environment and the password is intentionally weak for ease of use. This is not a real application and the environment should be destroyed upon completion of this lab. 
     
-        ![DB Vault](./images/dv-ignore-change-pwd.png "Ignore the change password request from Google Chrome.")
+    ![DB Vault](./images/dv-ignore-change-pwd.png "Ignore the change password request from Google Chrome.")
 
 
 3. Click **Search Employee**
@@ -218,17 +218,6 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
 
     ![DB Vault](./images/dv-018a.png "Query as DBA SAL")
 
-
-4. When you are have completed this lab, disable Ops Control
-
-    ```
-    <copy>./dv_disable_ops_control.sh</copy>
-    ```
-
-    ![DB Vault](./images/dv-018b.png "Disable OPS control")
-
-
-You may now proceed to the next lab.
 
 ## **Appendix**: About the Product
 ### **Overview**
