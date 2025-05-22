@@ -15,12 +15,8 @@ The complete architecture of the **DB Security Hands-On Labs** is as following:
 It's composed of 1 VMs:
   - **DBSec-Lab VM** 
 
-During this mini-lab, you'll use different resources to interact with these VMs:
-  - SSH Terminal Client
-  - Oracle Key Vault Web Console
-
-So that your experience of this workshop is the best possible, DO NOT FORGET to perform "Lab: *Initialize Environment*" to be sure that all these resources are correctly set!
-
+During this mini-lab, you'll use different **NoVNC** to interact with this VM.
+  
 ### Objectives
 
 This Hands-On Labs give you an opportunity to learn how to configure **Database Vault** to separate DBAs from sensitive data in the Oracle Database. 
