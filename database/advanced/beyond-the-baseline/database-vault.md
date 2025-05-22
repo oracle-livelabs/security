@@ -37,6 +37,9 @@ Database Vault must be configured and enabled in the container database before i
 Database Vault requires a database restart to be enabled. The downtime can be minimized by performing a RAC-rolling enablement.  For more information on Oracle Database Vault, please and review the [*Database Vault Administrator's Guide*](https://docs.oracle.com/en/database/oracle/oracle-database/23/dvadm/index.html). and the [*Database Vault Getting Started Guide*](https://docs.oracle.com/en/database/oracle/oracle-database/23/dvgsg/overview.html).
 
 
+**Note:** If you see an error saying `Can't update Chrome` just press the black **X** button. Do not attempt to reinstall Chrome. 
+
+
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* by clicking the top-left button named **Activities** and then clicking the terminal icon that is the third item down and looks like a black and grey command prompt. 
 
     ![Open Linux Terminal](./images/dv-open-terminal-01.png "Click Activities then click black and grey command prompt icon.")
@@ -230,19 +233,19 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
 
    - As `DBA_DEBRA` you will notice the realm prevents her from accessing data in **pdb1** but she can query the data in **pdb2**.
 
-        ```
-        <copy>./dv_query_with_debra.sh</copy>
-        ```
+    ```
+    <copy>./dv_query_with_debra.sh</copy>
+    ```
 
-        ![DB Vault](./images/dv-017.png "Query as DBA DEBRA")
+    ![DB Vault](./images/dv-017.png "Query as DBA DEBRA")
 
    - As `C##SEC_DBA_SAL` you will notice the realm prevents him from accessing data in **pdb1 and pdb2**.
 
-        ```
-        <copy>./dv_query_with_sal.sh</copy>
-        ```
+    ```
+    <copy>./dv_query_with_sal.sh</copy>
+    ```
 
-        ![DB Vault](./images/dv-018a.png "Query as DBA SAL")
+    ![DB Vault](./images/dv-018a.png "Query as DBA SAL")
 
 
 ## **Appendix**: About the Product
