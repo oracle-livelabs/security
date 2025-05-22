@@ -230,20 +230,20 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
 
    - As `DBA_DEBRA` you will notice the realm prevents her from accessing data in **pdb1** but she can query the data in **pdb2**.
 
-        ```
-        <copy>./dv_query_with_debra.sh</copy>
-        ```
+    ```
+    <copy>./dv_query_with_debra.sh</copy>
+    ```
 
-        ![DB Vault](./images/dv-017a.png "Query as DBA DEBRA")
+    ![DB Vault](./images/dv-017a.png "Query as DBA DEBRA")
 
 
    - As `C##SEC_DBA_SAL` you cannot query application data in either pdb. This is because of operations control and the Database Vault realm. 
 
-        ```
-        <copy>./dv_query_with_sal.sh</copy>
-        ```
+    ```
+    <copy>./dv_query_with_sal.sh</copy>
+    ```
 
-        ![DB Vault](./images/dv-018d.png "Query as DBA SAL")
+    ![DB Vault](./images/dv-018d.png "Query as DBA SAL")
 
 
 In this lab, you have learned how to use operations control to separate the container administrators from the data in pluggable databases. 
