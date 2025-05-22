@@ -34,7 +34,7 @@ This lab assumes you have:
 
 Database Vault must be configured and enabled in the container database before it can be configured and enabled on a pluggable database. This step requires assigning the `DV_OWNER` role to a database user and the `DV_ACCTMGR` role to another database user. In this lab, you will assign `C##DVOWNER` the `DV_OWNER` role and `C##DVACCTMGR` the `DV_ACCTMGR` role.
 
-Database Vault requires a database restart to be enabled. The downtime can be minimized by performing a RAC-rolling enablement.  For more information on Oracle Database Vault, please see `https://docs.oracle.com` and review the *Database Vault Administrator's Guide* and the *Database Vault Getting Started Guide*.
+Database Vault requires a database restart to be enabled. The downtime can be minimized by performing a RAC-rolling enablement.  For more information on Oracle Database Vault, please and review the [*Database Vault Administrator's Guide*](https://docs.oracle.com/en/database/oracle/oracle-database/23/dvadm/index.html). and the [*Database Vault Getting Started Guide*](https://docs.oracle.com/en/database/oracle/oracle-database/23/dvgsg/overview.html).
 
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* by clicking the top-left button named **Activities** and then clicking the terminal icon that is the third item down and looks like a black and grey command prompt. 
