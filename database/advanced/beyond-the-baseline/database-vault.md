@@ -179,7 +179,7 @@ Database Vault Ops Control was introduced in Oracle Database 19c. Ops Control se
 
 Database Vault allows a PDB DBA to access PDB data but prevents a container DBA (C##) from accessing the data. With Ops Control, no realms or command rules are required. Database Vault only has to be enabled in the container database to enforce Ops Control. However, Ops Control does **not** have the flexibility realms and command rules provide. Container DBAs (C##) are either authorized to use their privileges in the PDB or they are prevented from doing so. 
 
-1. Check the status of Database Vault and operations control. You will see **`DV_APP_PROTECTION`** shows either **`NOT CONFIGURED`** or **`DISABLED`**. This demonstrates that operations control is not currently enabled. 
+1. Check the status of Database Vault and operations control. You will see **`DV_APP_PROTECTION`** shows either **`NOT CONFIGURED`** or **`DISABLED`**. This demonstrates that operations control is not currently enabled. You should also see that Database Vault is **not enabled** on **pdb2**. 
 
     ```
     <copy>./dv_status.sh</copy>
@@ -189,31 +189,30 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
 
     **Note**: It is not yet configured!
 
-2. Next, we will run the same queries as both pluggable database **pdb1** and **pdb2**...
+2. Next, we will run the same queries on both pluggable database **pdb1** and **pdb2**.
 
-    - ... as `DBA_DEBRA`
+    - As `DBA_DEBRA` you will notice the realm prevents her from accessing data in **pdb1** but she can query the data in **pdb2**.
 
-    ```
-    <copy>./dv_query_with_debra.sh</copy>
-    ```
+        ```
+        <copy>./dv_query_with_debra.sh</copy>
+        ```
 
-    ![DB Vault](./images/dv-014.png "Query as DBA DEBRA")
+        ![DB Vault](./images/dv-014a.png "Query as DBA DEBRA")
+      
 
-    - ... as `C##SEC_DBA_SAL`
+    - As `C##SEC_DBA_SAL` you will notice the realm prevents him from accessing data in **pdb1** but he can query the data in **pdb2**.
 
-    ```
-    <copy>./dv_query_with_sal.sh</copy>
-    ```
+        ```
+        <copy>./dv_query_with_sal.sh</copy>
+        ```
 
-    ![DB Vault](./images/dv-015.png "Query as DBA SAL")
+        ![DB Vault](./images/dv-015a.png "Query as DBA SAL")
 
     **Note**:
-      - The query results are the same
-      - The common user `C##SEC_DBA_SAL` has access to data in the pluggable databases, just as the pdb Admin has
+      - The query results are the same for both the PDB user (DBA_DEBRA) and a container user (C##SEC_DBA_SAL).
+      - The common user `C##SEC_DBA_SAL` has access to data in **pdb2**, just as the pdb admin (DBA_DEBRA) does.
 
-3. Enable Database Vault 19c **Operations Control** and run the queries again
-
-    **Note**: Notice who can and who cannot query the `EMPLOYEESEARCH_PROD` schema data now. `SAL` should no longer be able to access data.
+3. Enable Database Vault 19c **Operations Control**. Notice this does not require a restart of the Oracle Database. 
 
     ```
     <copy>./dv_enable_ops_control.sh</copy>
@@ -227,17 +226,27 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
 
     ![DB Vault](./images/dv-016b.png "Check the Database Vault status")
 
-    ```
-    <copy>./dv_query_with_debra.sh</copy>
-    ```
+4. Now, re-run the queries as both **DBA_DEBRA** and **C##SEC_DBA_SAL** to demonstrate that **Debra** can access the data because she is a local pluggable database administrator but the container database administrator **Sal** cannot.
 
-    ![DB Vault](./images/dv-017.png "Query as DBA DEBRA")
+   - As `DBA_DEBRA` you will notice the realm prevents her from accessing data in **pdb1** but she can query the data in **pdb2**.
 
-    ```
-    <copy>./dv_query_with_sal.sh</copy>
-    ```
+        ```
+        <copy>./dv_query_with_debra.sh</copy>
+        ```
 
-    ![DB Vault](./images/dv-018a.png "Query as DBA SAL")
+        ![DB Vault](./images/dv-017a.png "Query as DBA DEBRA")
+
+
+   - As `C##SEC_DBA_SAL` you cannot query application data in either pdb. This is because of operations control and the Database Vault realm. 
+
+        ```
+        <copy>./dv_query_with_sal.sh</copy>
+        ```
+
+        ![DB Vault](./images/dv-018d.png "Query as DBA SAL")
+
+
+In this lab, you have learned how to use operations control to separate the container administrators from the data in pluggable databases. 
 
 
 ## **Appendix**: About the Product
