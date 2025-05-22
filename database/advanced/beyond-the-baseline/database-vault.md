@@ -111,7 +111,9 @@ Next, you are going to view the data through the application while preventing DB
 
     ![DB Vault](./images/dv-032.png "HR App - Search employees")
 
-5. Go back to your Terminal session and run the command to query a critical table within the application. This query will run as SYS. 
+5. Return to your Terminal session by clicking the **Activities** menu in the top left corner of the NoVNC session and clicking the open **Terminal**. Then,  run the command to query a critical table within the application. This query will run as SYS. 
+
+    ![DB Vault](./images/dv-switch-back-to-terminal-01.png "Click Activities in the top left corner and then click the open Terminal")
 
     ```
     <copy>./dv_query_employee_data.sh</copy>
@@ -150,6 +152,25 @@ Next, you are going to view the data through the application while preventing DB
     ```
 
     ![DB Vault](./images/dv-007a.png "Now, SYS user receives the insufficient privileges error message")
+
+
+10. Return to the browser by clicking the **Activities** menu and clicking the open browser window with the **HR Application** open. 
+
+    ![DB Vault](./images/dv-switch-to-browser-01.png "Now, SYS user receives the insufficient privileges error message")
+
+
+11. Run another search to verify the application has not been impacted by the creation of the **Database Vault realm**.
+
+    - Click **Search Employee**
+
+        ![DB Vault](./images/dv-031.png "HR App - Search employees")
+
+    - Click [**Search**]
+
+        ![DB Vault](./images/dv-032.png "HR App - Search employees")
+
+
+You have completed this task. You now know how to use Database Vault realms to separate privileged users from sensitive application data stored in the Oracle Database. 
 
 
 ## Task 3: Operations Control (Ops Control)
