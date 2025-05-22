@@ -230,17 +230,19 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
 
    - As `DBA_DEBRA` you will notice the realm prevents her from accessing data in **pdb1** but she can query the data in **pdb2**.
 
-    ```
-    <copy>./dv_query_with_debra.sh</copy>
-    ```
+        ```
+        <copy>./dv_query_with_debra.sh</copy>
+        ```
 
-    ![DB Vault](./images/dv-017.png "Query as DBA DEBRA")
+        ![DB Vault](./images/dv-017.png "Query as DBA DEBRA")
+
+   - As `C##SEC_DBA_SAL` you will notice the realm prevents him from accessing data in **pdb1 and pdb2**.
 
         ```
         <copy>./dv_query_with_sal.sh</copy>
         ```
 
-    ![DB Vault](./images/dv-018a.png "Query as DBA SAL")
+        ![DB Vault](./images/dv-018a.png "Query as DBA SAL")
 
 
 ## **Appendix**: About the Product
