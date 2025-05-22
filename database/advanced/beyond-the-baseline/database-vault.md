@@ -179,7 +179,7 @@ Database Vault Ops Control was introduced in Oracle Database 19c. Ops Control se
 
 Database Vault allows a PDB DBA to access PDB data but prevents a container DBA (C##) from accessing the data. With Ops Control, no realms or command rules are required. Database Vault only has to be enabled in the container database to enforce Ops Control. However, Ops Control does **not** have the flexibility realms and command rules provide. Container DBAs (C##) are either authorized to use their privileges in the PDB or they are prevented from doing so. 
 
-1. Check the status of Database Vault and Operations Control
+1. Check the status of Database Vault and operations control. You will see **`DV_APP_PROTECTION`** shows either **`NOT CONFIGURED`** or **`DISABLED`**. This demonstrates that operations control is not currently enabled. 
 
     ```
     <copy>./dv_status.sh</copy>
