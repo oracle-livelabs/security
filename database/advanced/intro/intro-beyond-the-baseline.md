@@ -15,7 +15,7 @@ The complete architecture of the **DB Security Hands-On Labs** is as following:
 It's composed of 1 VMs:
   - **DBSec-Lab VM** 
 
-During this mini-lab, you'll use different **NoVNC** to interact with this VM.
+During this mini-lab, you'll use **NoVNC** to interact with this VM.
   
 ### Objectives
 
