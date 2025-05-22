@@ -36,7 +36,6 @@ Database Vault must be configured and enabled in the container database before i
 
 Database Vault requires a database restart to be enabled. The downtime can be minimized by performing a RAC-rolling enablement.  For more information on Oracle Database Vault, please see `https://docs.oracle.com` and review the *Database Vault Administrator's Guide* and the *Database Vault Getting Started Guide*.
 
-
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* by clicking the top-left button named **Activities** and then clicking the terminal icon that is the third item down and looks like a black and grey command prompt. 
 
     ![Open Linux Terminal](./images/dv-open-terminal-01.png "Click Activities then click black and grey command prompt icon.")
