@@ -2,7 +2,7 @@
 
 ## About this Workshop
 ### Overview
-*Estimated Time to complete the workshop*: 55 minutes
+*Estimated Time to complete the workshop*: 20 minutes
 
 This workshop is dedicated separating application data from privileged users (DV). Here, you will prevent privileged users from accessing your sensitive application data. 
 
