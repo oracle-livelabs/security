@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.13
+*Version tested in this lab:* Oracle AVDF 20.14
 
 ### Video Preview
 
@@ -143,7 +143,7 @@ In this lab, you will do the following:
 
     - Click [**Save**] to save and continue
 
-    **Note**: By default, retreival job has been already scheduled for **pdb2** during the deployment
+    **Note**: By default, retreival job has been already scheduled for **pdb2** during the deployment. Please verify if the job is completed successfully under the **Settings** tab. If not, please repeat Steps 3 and 4 for the **pdb2** as well.  
 
 5. Click on the **Home** tab
 
