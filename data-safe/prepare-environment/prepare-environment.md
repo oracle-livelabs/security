@@ -149,33 +149,34 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
 > **Note**: If you plan to use an existing ATP database in your tenancy or you are using an Oracle-provided environment, you can skip this task.
 
-1. From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**.
+1. From the navigation menu, select **Oracle Database**, and then **Autonomous Database**.
 
-2. In the **Filters** section on the left, make sure your workload type is **Transaction Processing** or **All** so that you can view your database listing after you create your database.
+    The **Autonomous Database** page is displayed.
 
-3. From the **Compartment** drop-down list, select your compartment.
+2. If needed, next to **Applied Filters**, click **Compartment...**, and select your compartment.
 
-4. Click **Create Autonomous Database**.
+3. Click **Create Autonomous Database**.
 
-5. On the **Create Autonomous Database** page, provide basic information for your database:
+    The **Create Autonomous Database Serverless** page is displayed.
 
-    - **Compartment** - If needed, select a different compartment.
+4. Provide basic information for your database:
+
     - **Display name** - Enter a memorable name for the database for display purposes.
     - **Database name** - Enter a database name. It's important to use letters and numbers only, starting with a letter. The maximum length is 14 characters. Underscores are not supported.
+    - **Compartment** - If needed, select a different compartment.
     - **Workload type** - Select **Transaction Processing**.
-    - **Deployment type** - Leave **Serverless** selected.
-    - **Always Free** - Select this option by moving the slider to the right.
-    - **Database version** - If possible, select **23ai**.
+    - **Always Free** - (Optional, if possible) Select this option by moving the slider to the right.
+    - **Database version** - If possible, select **23ai**. You need a 23ai database to do the SQL Firewall lab in this workshop.
     - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. In order for you to later register this database with Data Safe, the password must be between 14 and 30 characters long and must include at least one uppercase letter, one lowercase letter, one numeric character, and one special character. It cannot contain your username or the double quote (") character.
     - **Access Type** - Leave **Secure access from everywhere** selected.
 
-6. Click **Create Autonomous Database**. 
+5. Click **Create**. 
 
-    The **Autonomous Database details** page is displayed.
+    The **Autonomous Databases** page is displayed.
 
-7. Wait a few minutes for your database instance to provision. 
+6. Wait a few minutes for your database instance to provision. 
 
-    **AVAILABLE** is displayed below the large ATP icon.
+    **Available** is displayed next to your database name at the top of the page.
 
     ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
 
@@ -215,14 +216,14 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
 Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
+1. At the top of the **Autonomous Database** page, from the **Database actions** menu, select **SQL**.
 
 2. If required, sign in as the `ADMIN` user. 
 
     - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
     - If you are using an Oracle-provided environment, enter the database password provided to you.
 
-3. Close the **SQL History** and **Warning** dialog boxes.
+3. Close all warning and help dialog boxes.
 
 4. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
@@ -287,4 +288,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, December 6, 2024
+- **Last Updated By/Date** - Jody Glover, May 21, 2025
