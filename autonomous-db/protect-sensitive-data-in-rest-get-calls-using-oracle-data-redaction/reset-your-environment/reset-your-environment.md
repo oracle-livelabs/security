@@ -33,7 +33,7 @@ This lab assumes you have:
     /</copy>   
     ```
 
-    ![Drop Audit Policy](images/drop-aud-pol.png)
+    ![Drop Audit Policy](images/drop-aud-pol.png "Drop Audit Policy")
    
 2. Navigate back to the **SQL window** for `EMPLOYEESEARCH_PROD` and **drop the redaction policy**.
     
@@ -47,21 +47,23 @@ This lab assumes you have:
         end;
     /</copy>   
     ```
-    ![Drop](images/drop.png)
+    ![Drop](images/drords-022.png "Drop audit policy")
 
 ## Task 2: Drop the EMPLOYEESEARCH_PROD schema and objects
 
 1. As **ADMIN**, navigate to the Database users
 
-    ![Database users](images/nav_to_users.png)
+    ![Database users page](images/drords-023.png "Database users page")
+
+    ![Database users](images/drords-009.png "Database users")
 
 2. Click the 3 dots on **EMPLOYEESEARHC_PROD** and click **Delete**
 
-    ![Three_dots](images/delete.png)
+    ![Three_dots](images/drords-024.png "Select the elipsis")
 
 3. Choose **Cascade** and **Drop REST Services**
 
-    ![Cascade_Drop](images/check.png)
+    ![Cascade_Drop](images/drords-025.png "Cascade_Drop")
 
 4. Delete user
 
@@ -70,49 +72,50 @@ This lab assumes you have:
 1. As **ADMIN** in SQL Worksheet, perform the following query to make sure the user has been deleted
 select * from dba_users where username = 'EMPLOYEESEARCH_PROD';
 
-   ```
-      <copy>
-      select * from dba_users where username = 'EMPLOYEESEARCH_PROD';
-      /</copy>   
-    ```
-  ![Delete Employee](images/delete_employee.png)
+  ```
+  <copy>select * from dba_users where username = 'EMPLOYEESEARCH_PROD';</copy>   
+  ```
+  
+  ![Delete Employee](images/delete_employee.png "Delete Employee")
 
 2. As **ADMIN** in SQL Worksheet, verify the unified audit policy has been deleted.
 select * from AUDIT_UNIFIED_POLICIES where policy_name = 'AUDIT_HR_SELECT';
 
-   ```
-      <copy>
-     select * from AUDIT_UNIFIED_POLICIES where policy_name = 'AUDIT_HR_SELECT';
-      /</copy>   
-    ```
-  ![Verify Audit](images/verify_audit.png)
+  ```
+  <copy>
+  select * from AUDIT_UNIFIED_POLICIES where policy_name = 'AUDIT_HR_SELECT';
+  </copy>   
+  ```
+  
+  ![Verify Audit](images/verify_audit.png "Verify Audit")
 
 3. As **ADMIN** in SQL Worksheet, verify the Oracle Data redaction policy has been deleted"
 select * from redaction_policies where policy_name = 'REDACT_EMP_INFO';
 
-   ```
-      <copy>
-     select * from redaction_policies where policy_name = 'REDACT_EMP_INFO';
-      /</copy>   
-    ```
-  ![Verify Redaction](images/verify_redaction.png)
+  ```
+  <copy>
+  select * from redaction_policies where policy_name = 'REDACT_EMP_INFO';
+  </copy>   
+  ```
+
+  ![Verify Redaction](images/verify_redaction.png "Verify Redaction")
   
 ## Task 4: Terminate the Autonomous Database Instance
 
 1. Navigate back to your Autonomous Database instance page on OCI.
 
-    ![Database users](images/adb-page.png)
+    ![Database users](images/drords-026.png "Database users")
 
-2. At the top menu bar, under More Actions, select Terminate.
+2. At the top menu bar, under More Actions, scroll down and select Terminate.
 
-   ![More actions](images/more-actions.png)
+   ![More actions](images/drords-027.png "More actions")
 
 3. In the pop-up window, type in the name of your database, then select Terminate Autonomous Database.
 
-   ![Terminate adb](images/terminate.png)
+   ![Terminate adb](images/drords-028.png "Terminate adb")
 
 ## Acknowledgements
 
-- **Authors** - Alpha Diallo & Ethan Shmargad, North America Specialists Hub
+- **Authors** - Alpha Diallo & Ethan Shmargad
 - **Creator** - Pedro Lopes, Database Security Product Manager
-- **Last Updated By/Date** - Alpha Diallo & Alexander John, October 2024
+- **Last Updated By/Date** - Ethan Shmargad, February 2025

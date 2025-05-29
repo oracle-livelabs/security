@@ -21,31 +21,25 @@
       "type": "aso"
     },
     {
-      "title": "Lab 2: Environment Setup",
-      "description": "How to provision the workshop environment and connect to it",
-      "publisheddate": "03/30/2023",
-      "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
-    },
-    {
-      "title": "Lab 3: Initialize Environment",
+      "title": "Lab 2: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "03/14/2023",
       "filename": "../../../common/init-start-env/init-start-env-dbs.md"
     },
     {
-      "title": "Lab 4: Sample Schema Setup",
+      "title": "Lab 3: Sample Schema Setup",
       "description": "Setup Schema",
       "publisheddate": "03/20/2023",
       "filename": "../../aso-aco/aco/setup/setup.md"
     },
     {
-      "title": "Lab 5: Transparent Data Encryption (TDE)",
+      "title": "Lab 4: Transparent Data Encryption (TDE)",
       "description": "Create new encrypted tablespace which leverages Oracle Transparent Data Encryption (TDE)",
       "publisheddate": "03/20/2023",
       "filename": "../../aso-aco/aco/tde/tde.md"
     },
     {
-      "title": "Lab 6: Enable advanced compression and online redefinition into encrypted tablespace",
+      "title": "Lab 5: Enable advanced compression and online redefinition into encrypted tablespace",
       "description": "Online Compression to encrypted tablespace via online redefinition",
       "publisheddate": "03/20/2023",
       "filename": "../../aso-aco/aco/aco_row_index/aco_row_index.md"

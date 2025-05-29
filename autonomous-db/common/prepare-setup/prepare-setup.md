@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through the steps to get started using the Oracle Autonomous Database and initialize it to use DB Vault.
+This lab walks you through the steps to get started using the Oracle Autonomous Database and initialize it.
 
 Estimated time: 10 minutes
 
@@ -46,7 +46,17 @@ Watch the video below for a quick walk-through of the lab.
 6. On the **Create Autonomous Database** page, provide basic information for your database:
     - **Compartment** - If needed, select your compartment
     - **Display name** - Enter a memorable name for the database for display purposes, for this lab, use *`ADBSecurity`*
+
+        ```
+        <copy>ADBSecurity</copy>
+        ```
+
     - **Database Name** - Enter *`ADBSEC01`*, it's important to use letters and numbers only, starting with a letter (the maximum length is 14 characters and Underscores are not supported)
+        
+        ```
+        <copy>ADBSEC01</copy>
+        ```
+
     - **Workload Type** - Select the type of your Autonomous Database to match your choice at Step 3 earlier above (here we select "Transaction Processing")
     - **Deployment Type** - Leave *`Shared Infrastructure`* selected
 
@@ -64,11 +74,11 @@ Watch the video below for a quick walk-through of the lab.
 
     - **Password** and **Confirm Password** - Specify a password for the ADMIN database user and jot it down. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character. For example : *`WElcome_123#`*
 
-      ```
-      <copy>WElcome_123#</copy>
-      ```
+        ```
+        <copy>WElcome_123#</copy>
+        ```
 
-      ![](./images/adb-set_007a.png "enter a password that meets the requirements ")
+        ![](./images/adb-set_007a.png "enter a password that meets the requirements ")
 
 9. Choose the network access and the license type:
 

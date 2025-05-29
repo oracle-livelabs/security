@@ -47,7 +47,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 In this task, you will select the identities that you want to include in your service.
 
-1. In the Oracle Access Governance Console, navigate to Service Administration -> Manage Identities
+1. In the Oracle Access Governance Console, navigate to Service Administration -> Manage Identities -> Active
 
   ![Navigate Manage Identities](images/navigate-to-manage-identities.png)
 
@@ -68,6 +68,49 @@ In this task, you will select the identities that you want to include in your se
 5. Close the pop-up and click on **Save**
 
   ![Manage Identities page](images/preview-identities-user.png)
+
+## Task 3: Assign the Selected Users as Workforce Users
+
+In this task, you will assign the users Pamela Green, Harlan Bullard, Mark Hernandez and Jerry Poland as Workforce users and the remaining users as Consumer users. 
+
+1. Navigate to Service Administration -> Manage Identities -> Consumer
+
+  ![Manage Identities page](images/manage-consumer.png)
+
+2. Select **Any** condition match option. Select the below options for the condition to match the identities that you want to include.
+
+      * Select attribute: Status
+      * Select operator: Contains
+      * Attribute value: Active
+
+
+       Hit **Enter**
+
+3. Click on **Manage Exclusions**. Under **Edit excluded identities** , select users **Pamela Green**, **Harlan Bullard**, **Mark Hernandez** and **Jerry Poland** and click on **Save**.
+
+  ![Manage Identities page](images/user-pamela.png)
+
+  ![Manage Identities page](images/user-harlan.png)
+
+  ![Manage Identities page](images/user-mark.png)
+
+  ![Manage Identities page](images/user-jerry.png)
+
+4. Now you can see the 4 identities have been excluded from the membership rule. 
+
+  ![Manage Identities page](images/users-exclude.png)
+
+  Click on **Save** and **Confirm**. 
+
+  ![Manage Identities page](images/select-confirm.png)
+
+  Now the users *Pamela Green, Harlan Bullard, Mark Hernandez and Jerry Poland* have been marked as the Workforce users and the remaining users have been marked as Consumer users. 
+
+5. You can verify the user type under **Identities** tab. 
+
+  ![Manage Identities page](images/workforce-users.png)
+
+   ![Manage Identities page](images/consumer-users.png)
 
   You may now **proceed to the next lab**.
 

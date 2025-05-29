@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.12 and DBEE 19.23
+*Version tested in this lab:* Oracle AVDF 20.14
 
 ### Video Preview
 
@@ -131,7 +131,7 @@ In this lab, you will do the following:
 
 3. Click on **Schedule Retrieval Jobs** for **pdb1**
 
-    ![AVDF](./images/avdf_501.png "AVDF - Retrieval Jobs")   
+    ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs")
 
 4. Under **Security Assessment**
     - Checkbox *Assess Immediately*
@@ -143,21 +143,22 @@ In this lab, you will do the following:
 
     - Click [**Save**] to save and continue
 
-    **Note**: By default, retreival job has been already scheduled for **pdb2** during the deployment
+    **Note**: By default, retrieval job has been already scheduled for **pdb2** during the deployment. Please verify if the job is completed successfully under the **Settings** tab. If not, please repeat Steps 3 and 4 for the **pdb2** as well.
+
 
 5. Click on the **Home** tab
 
     ![AVDF](./images/avdf-050b.png "Security Assessment")
 
     **Note**:
-    - Now, you can see the risks for all your taregts directly on the main dashboard
+    - Now, you can see the risks for all your targets directly on the main dashboard
     - You can access to a risk by clicking on a color risk in the circle of your choice
 
 6. Click on the **Reports** tab
 
 7. Click the **Assessment Reports** sub-menu on left
 
-8. In the **Assessment Reports** section, click on the **Security Assessment Summary by Severity** report
+8. In the **Assessment Reports** section, click on the **Summary by Severity** report
 
     ![AVDF](./images/avdf-051.png "Assessment Report")
 
@@ -165,9 +166,9 @@ In this lab, you will do the following:
 
     ![AVDF](./images/avdf-052.png "Assessment Report - By Severity")
 
-10. For example, click on **High Risk** to see the highest risks detected for all your targets
+10. For example, click on **Medium Risk** to see the risks detected for all your targets
 
-11. Now, click on one of them to see its details
+11. Now, click on one of them to see its details. Alternatively, you can also click on one of the assessments and add the exception by changing the severity or deferring the assessment.
 
     ![AVDF](./images/avdf-053.png "Assessment Report - Highest Risks")
 
@@ -191,7 +192,7 @@ In this lab, you will do the following:
     ![AVDF](./images/avdf-503.png "AVDF - Assessment Report")
 
     - Click on **pdb1**
-    
+
     - Select the assessment "**Latest**", and click on "**Set as baseline**"
 
         ![AVDF](./images/avdf-504.png "AVDF - Set a baseline")
@@ -206,7 +207,7 @@ In this lab, you will do the following:
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
+        **Note**: Only **if you are using a remote desktop session**, click on "Activities" at the top left of the desktop and click on terminal to launch a session directly as Oracle. In that case **you don't need to execute this command**!
 
     - Go to the scripts directory
 
@@ -282,7 +283,7 @@ In this lab, you will do the following:
     
     - Do the same for **pdb2**
 
-10. Click **Home** to go back to the Auditor dashboard and examine the **Security assessment drift graph** to see if the identified risk has been fixed
+10. Click **Home** to go back to the Auditor dashboard and examine the **Security assessment drift graph** to see if the identified risk has been fixed. You will notice that after revoking the permissions granted at step 4, the risk counts return to their previous state of zero high risk. 
 
     ![AVDF](./images/avdf-506.png "AVDF - Drift Chart Mitigated")
 
@@ -325,7 +326,8 @@ In this lab, you will do the following:
     
         ![AVDF](./images/avdf-523.png "Save Sensitive Objects")
 
-8. Sensitive object set by the name of GDPR_set1 is created. Notice under **In use** it is still **No**, since there is no database firewall policy has been created using this global set. 
+8. A sensitive object set by the name of GDPR_set1 is created. You can use this set in All Activity and GDPR reports. You can also use these sets in your database firewall and alert policy. Notice under **In use**, it is still **No** since this global set has not been used in any alert or database firewall policy yet.
+
     ![AVDF](./images/avdf-524.png "Sensitive Objects Set")
 
 > #### What did we learn in this lab
@@ -389,6 +391,8 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
     - Click [**Provision Unified Policy**]
 
+
+
 6. Verify the job completed successfully
     - Click on the **Settings** tab
     - Click on the **Jobs** section on the left menu bar
@@ -398,7 +402,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
     - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **pdb1**
 
-7. Repeat the steps 5 and 6 for **pdb2** as well
+7. Repeat from #3 to #6 for **pdb2** as well
 
 8. The next thing you can do is check which Unified Audit Policies exist and which Unified Audit Policies are enabled by using **SQL*Plus**
 
@@ -628,7 +632,7 @@ In this lab we will create 2 alert policies:
         - Click on **Configure email notification** and provide email address
         - **You need to have SMTP server** configured for the email notification
 
-    - Your Alert should look like this
+    - Your Alert should look like this.
 
         ![AVDF](./images/avdf-652.png "AVDF Alerts")
 
@@ -637,6 +641,8 @@ In this lab we will create 2 alert policies:
         **Note:** Your Alert is automatically started!
 
            ![AVDF](./images/avdf-653.png "Confirm creation")
+
+    **Note:** You can also create alert using global sets. 
 
 2. Go back to your terminal session on DBSeclab VM and create users within the **pdb1** and **pdb2** pluggable databases
 
@@ -732,7 +738,7 @@ In this lab, we will do the following
 
         ![AVDF](./images/avdf-102.png "Configure network settings")
     
-    - For ens3, the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2, because here we will use these ports to use Database Firewall
+    - For the available network interface card (NIC), the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2. These ports will be used for the Database Firewall monitoring.
     
         ![AVDF](./images/avdf-103.png "Proxy Ports settings")
 
@@ -747,6 +753,53 @@ In this lab, we will do the following
         **Note**:
         - Once enabled, Database Firewall monitoring will analyze the traffic from pdb1 through the port 15223
         - We configured it in "Proxy" mode, so all the SQL traffic will transit by the DB Firewall appliance to be able to block the "bad" traffic if needed
+
+    - ***If you have deployed this lab in "Run on LiveLabs Sandbox" (green button)***
+
+        ![AVDF](./images/avdf-104a.png "LiveLabs Green Button")
+
+    - **Note:** ***In the case of a Green Button, the monitoring point for the database firewall will not be created automatically and will be shown empty. Please perform the following steps to manually add the monitoring point.***
+
+        ![AVDF](./images/avdf-104b.png "Empty Database Firewall Monitoring Point")
+
+    **To add a monitoring point for pdb1**
+    - Login as AVADMIN user
+    - Click on the **Target** tab and click **pdb1**
+    - Under **Database Firewall Monitoring**, Click on **Add**
+    - Select the following details:
+        - Database Firewall: **dbfw**
+        - Network Interface Card: **enp0s5** (Select from drop-down)
+        - Mode: **Monitoring/ Blocking (Proxy)**
+        - Proxy Port: **Proxy_pdb1(15223)**
+
+    - Click on Add to add the host, port, and service details, and add the following under each column
+        - Host Name / IP Address: **10.0.0.150**
+        - Port: **1521**
+        - Service: **pdb1**
+        - Click [**Save**]
+
+     - Click [**Save**]
+
+    Optionally, you may want to repeat the same steps for **pdb2**; however, in this task, we will use **pdb1** to configure the use cases.
+
+    **To add a monitoring point for pdb2**
+
+    - Login as AVADMIN user
+    - Click on the **Target** tab and click **pdb2**
+    - Under **Database Firewall Monitoring**, Click on **Add**
+    - Select the following details:
+        - Database Firewall: **dbfw**
+        - Network Interface Card: **enp0s5** (Select from drop-down)
+        - Mode: **Monitoring/ Blocking (Proxy)**
+        - Proxy Port: **Proxy_pdb2(15224)**
+
+    - Click on Add to add the host, port, and service details, and add the following under each column
+        - Host Name / IP Address: **10.0.0.150**
+        - Port: **1521**
+        - Service: **pdb2**
+        - Click [**Save**]
+
+     - Click [**Save**]
 
 4. Now, verify connectivity between the database and the DB Firewall
 
@@ -975,7 +1028,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
         ![AVDF](./images/avdf-127f.png "See the SQL statements in a dedicated column")
 
-    - Sroll down to one of our favorite queries
+    - Scroll down to one of our favorite queries
 
         ![AVDF](./images/avdf-127g.png "Sroll down to one of our favorite queries")
 
@@ -1466,6 +1519,12 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
 1. Go back to your terminal session on DBSec-Lab VM to create the Golden Gate Database Administration user **C##AVGGADMIN** in the container database **cdb1**
 
+    - Go to AVS directory
+
+    ````
+    <copy>cd $DBSEC_LABS/avdf/avs</copy>
+    ````
+
     ````
     <copy>./avs_create_oggadmin_db_user.sh</copy>
     ````
@@ -1737,10 +1796,12 @@ The objective of this lab is to collect audit log records from PostgreSQL databa
 
         - Click [**Add**] and enter values as following:
 
-            - Name: *`av.collector.securedTargetVersion`*  /  Value: *`11.0`*
+            - Name: *`av.collector.securedTargetVersion`*  /  Value: *`15.0`*
             - Name: *`av.collector.timezoneoffset`*  /  Value: `<YOUR_DBSECLAB-VM_TIMEZONE>` (here UTC Time: "*`0:00`*")
 
                 ![AVDF](./images/avdf-204.png "Audit Collection Attributes")
+
+**Note:** If you already have one entry for 11.0 then delete that attribute and add new with the value 15.0.
 
     - Click [**Save**]
 
@@ -2206,6 +2267,6 @@ Video:
 - *Introducing Oracle Audit Vault and Database Firewall 20.4 (June 2021)* [](youtube:Q90Htb_Lef4)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Nazia Zaidi
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - June 2024
+- **Author** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager
+- **Contributors** - Hakim Loumi - Hakim Loumi, Database Security - Product Manager
+- **Last Updated By/Date** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager - November 2024

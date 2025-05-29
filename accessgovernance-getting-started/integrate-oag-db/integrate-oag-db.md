@@ -105,7 +105,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
 
 3. On the tile labeled **Select and configure a new orchestrated system**, select **Oracle Identity Governance** to configure the agent for a target Oracle Identity Governance connected system, and then click **Next.**
 
-   ![Add - Connected System](images/select-oig-system.png)
+   ![Add - Connected System](images/oig-select.png)
 
 4. On the **Enter Details** step, enter the following details:
 
@@ -113,7 +113,14 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     * **Description:** oig
     * **Click Next.**
 
-    ![Access Governance console - Connected Systems-OIG](images/enter-oig-system.png)
+    ![Access Governance console - Connected Systems-OIG](images/oig-enter.png)
+
+
+    ![Access Governance console - Connected Systems-OIG](images/primary-owner.png)
+
+    * **Click Next.**
+
+    
 
 5. On the **Configure** step, enter connection details for the target system:
 
@@ -167,7 +174,7 @@ A valid Oracle OCI tenancy, with OCI administrator privileges.
     <copy>Welcome1</copy>
     ```
 
-     ![Configure Details](images/oig-connection-details.png)
+     ![Configure Details](images/details-oig.png)
 
 6. On the Download Agent step, select the *Download link* and download the agent zip file. The zip file is present in: /home/opc/Downloads
 

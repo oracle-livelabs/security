@@ -3,7 +3,7 @@
 ## Introduction
 This workshop introduces the functionality of Oracle SQL Firewall. It gives the user an opportunity to learn how to configure SQL Firewall to protect against common database risks such as SQL injection attacks and compromised accounts. SQL Firewall helps ensure that only authorized SQL statements from trusted database connections are permitted for execution inside the Oracle Database while blocking and logging unauthorized SQL or database connections.
 
-*Estimated Lab Time:* 30 minutes
+*Estimated Lab Time:* 30 minutesxxxxx
 
 *Version tested in this lab:* Oracle Database 23ai Free
 

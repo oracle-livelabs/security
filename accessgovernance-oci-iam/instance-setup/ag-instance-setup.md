@@ -80,10 +80,10 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
       ![OIG Identity Roles and Access Policies](images/aguser.png)
 
 
-    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez, Jerry Poland and Harlan Bullard* in *Available Users.* Click on *Assign*
+    *  Click on *Assigned Users -> Manage*. Select *Mark Hernandez, Jerry Poland, Harlan Bullard, Jose Walker, John Smith and David Brown* in *Available Users.* Click on *Assign*
 
 
-    * Mark Hernandez, Jerry Poland and Harlan Bullard have now been assigned with the *AG User* application role. You can now close the window.
+    * Mark Hernandez, Jerry Poland, Harlan Bullard, Jose Walker, John Smith and David Brown have now been assigned with the *AG User* application role. You can now close the window.
 
 
     You may now **proceed to the next lab.**
@@ -98,4 +98,4 @@ Login to the OCI console using the Identity domain: ag-domain as the **Identity 
 ## Acknowledgments
 * **Authors** - Anuj Tripathi, Indira Balasundaram, Anbu Anbarasu 
 * **Contributors** - Edward Lu
-* **Last Updated By/Date** - Indira Balasundaram , Sept 2024
+* **Last Updated By/Date** - Indira Balasundaram , Nov 2024

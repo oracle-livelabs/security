@@ -16,7 +16,7 @@ This lab assumes you have:
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
 
-    - [oracle_access_governance_stack.zip](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/oracle_access_governance_stack%20_v1.4.zip)
+    - [oracle_access_governance_stack.zip](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/oracle_access_governance_stack%20_v1.5.zip)
 
 
 2.  Save in your downloads folder.
@@ -69,5 +69,5 @@ Using the details from the two Tasks above, proceed to the lab *Environment Setu
 ## Acknowledgements
 * **Authors** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
 * **Contributors** - Meghana Banka
-* **Last Updated By/Date** - Indira Balasundaram, January 2023
+* **Last Updated By/Date** - Indira Balasundaram, Feb 2025
 

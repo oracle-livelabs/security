@@ -9,18 +9,18 @@
       "filename": "../../intro/intro-key-vault.md"
     },
     {
-      "title": "Lab 1: Environment Setup",
+      "title": "Get Started",
       "description": "Verify Setup of compute instance",
       "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
     },
     {
-      "title": "Lab 2: Initialize Environment",
+      "title": "Lab 1: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
       "filename": "../../../common/init-start-env/init-start-env-dbs.md"
     },
     {
-      "title": "Lab 3: Key Vault (OKV)",
+      "title": "Lab 2: Key Vault (OKV)",
       "description": "In this lab you can see how to leverage Oracle Key Vault (OKV)",
       "publisheddate": "10/20/2020",
       "filename": "../../key-vault/key-vault.md",

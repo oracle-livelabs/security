@@ -52,8 +52,14 @@
     },
     {
       "title": "Lab 6: Audit database activity",
-      "description": "This lab shows you how to provision audit and alert policies in Oracle Data Safe.",
+      "description": "This lab shows you how to provision audit and alert policies in Data Safe.",
       "filename": "../../audit-database-activity/audit-database-activity.md",
+      "type": "freetier"
+    },
+    {
+      "title": "Lab 7: Create and enforce a SQL Firewall policy in Data Safe",
+      "description": "This lab shows you how to use SQL Firewall in Data Safe.",
+      "filename": "../../sqlfw/sqlfw.md",
       "type": "freetier"
     },
     {

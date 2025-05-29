@@ -88,7 +88,7 @@ xauth list $DISPLAY
 5. Install RADIUS Proxy.
 	1. Read the Welcome screen, and then click Next.
     2. Read the Information screen, and then click Next.
-    3. Select the Destination Folder as /home/opc/oracle_radius_proxy, where the RADIUS Proxy installer will be installed. Click Next.
+    3. Select the Destination Folder as /home/opc/oracle\_radius\_proxy, where the RADIUS Proxy installer will be installed. Click Next.
     4. On the HTTP Proxy screen, select Use HTTP Proxy if RADIUS Proxy needs to use HTTP proxy to connect to Oracle Identity Cloud Service. If not, then leave this check box unchecked. Click Next.
     5. On the Oracle Identity Cloud Service screen, enter the Cloud Service URL in the following format: https://tenant-base-url. Provide the Client ID and Client Secret of the RADIUS Proxy created in Oracle Identity Cloud Service. (This is the RADIUS Proxy you created using the POST Operation above.) Click Next. **Note** For this lab, the values client ID and client secret of Radius proxy can be found in the logs of stack2 with name **Radius Proxy Oauth Client ID** and **Radius Proxy Oauth Client Secret** respectively.
     6. On the RADIUS User and Group Information screen, provide the Username and user Group information, for example:

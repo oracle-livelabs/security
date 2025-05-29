@@ -4,13 +4,11 @@
 
 Data Masking provides a way for you to mask sensitive data so that the data is safe for non-production purposes. For example, organizations often need to create copies of their production data to support development and test activities. Simply copying the production data exposes sensitive data to new users. To avoid a security risk, you can use Data Masking to replace the sensitive data with realistic, but fictitious data.
 
-The roles granted to the Oracle Data Safe service account on your target database control which Oracle Data Safe features you can use with the database. By default, Autonomous Database Serverless has all Oracle Data Safe roles granted during target database registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`). If you are working in your own tenancy, you need to grant the Data Masking role on your target database. 
+The roles granted to the Oracle Data Safe service account on your target database control which Oracle Data Safe features you can use with the database. By default, Autonomous Database Serverless has all Oracle Data Safe roles granted during target database registration, except for the Data Masking and SQL Firewall roles. If you are working in your own tenancy, you need to grant the Data Masking role on your target database. 
 
-Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab. View the before and after effect on the masked data by using Oracle Database Actions.
+Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data) lab. View the before and after effect on the masked data by using Oracle Database Actions.
 
 Estimated Time: 20 minutes
-
-[Data Safe](videohub:1_wiu76838)
 
 ### Objectives
 
@@ -25,7 +23,6 @@ In this lab, you will:
 - Mask sensitive data in your target database
 - View the Data Masking report
 - Validate the masked data in your target database
-
 
 
 ### Prerequisites
@@ -99,7 +96,7 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
 
     - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, and `PHONE_NUMBER` are considered sensitive data and should be masked if shared for non-production use.
 
-8. Return to the browser tab for Oracle Data Safe. Keep this browser tab open because you return to it later.
+8. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe. 
 
 
 ## Task 3: Create a masking policy for your target database
@@ -124,7 +121,7 @@ Data Masking can generate a masking policy for your target database based on you
     - Compartment: **Select your compartment**
     - Description: **Masking policy for SDM1**
     - Choose how you want to create the masking policy: Leave **Using a sensitive data model** selected.
-    - Sensitive Data Model: Select **SDM1\[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab.
+    - Sensitive Data Model: Select **SDM1\[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data) lab.
 
     ![Create masking policy panel using SDM1](images/create-masking-policy-sdm1.png "Create masking policy panel using SDM1")
 
@@ -136,7 +133,7 @@ Data Masking can generate a masking policy for your target database based on you
 
 8. Review the masking policy.
 
-    - On the **Masking policy information** tab, you can view the masking policy name (and edit it), the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, a link to the work request for the masking policy, a link to masking options, the target database and sensitive data model to which the masking policy is associated, and the date/time in which the masking policy was created and last updated.
+    - On the **Masking policy information** tab, you can view the masking policy name (and edit it), a description of the masking policy, the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, when the masking policy was created and updated, the name of the target database, a link to the work request for the masking policy, a link to masking options, the target database and sensitive data model to which the masking policy is associated, and pre/post masking scripts.
     - The **Masking columns** table lists all the masking columns and their masking formats. If needed, you can select a different masking format for any masking column. You can click the pencil icon next to a masking format to edit it.
 
     ![Masking policy details page for Mask SDM1 top](images/masking-policy-details-top.png "Masking policy details page for Mask SDM1 top")
@@ -213,6 +210,8 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 4. Select your masking policy.
 
+5. Select your compartment.
+
     ![Pre-masking check panel](images/pre-masking-check-panel.png "Pre-masking check panel")
 
 5. Click **Submit**. 
@@ -255,7 +254,7 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 2. Review the masking report.
 
-    - The **Masking report information** tab shows you the target database name, masking policy name (you can click a link to view it), the Oracle Cloud Identifier (OCID) for the masking report, the date and time when the data masking job started and finished, and the number of masked sensitive types, schemas, tables, columns, and values. You can click a link to view masking options. There is also a bar chart that shows you the the number of masked columns for each of the top five sensitive types.
+    - The **Masking report information** tab shows you the target database name; masking policy name (you can click a link to view it); the Oracle Cloud Identifier (OCID) for the masking report; the masking status; the date and time when the data masking job started and finished; the number of masked sensitive types, schemas, tables, columns, values, total pre-mask errors, and total post-mask errors. You can click a link to view masking errors and masking options. There is also an interactive bar chart that shows you the the number of masked columns for each of the top five sensitive types.
     - The **Masked columns** table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
 
     ![Masking report top](images/masking-report-top3.png "Masking report top")
@@ -277,7 +276,7 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
     ![Masked EMPLOYEE data](images/masked-query-results.png "Masked EMPLOYEE data")
 
-4. (Optional) Click the **Script Output** tab to view the original unmasked data.
+4. Click the **Script Output** tab to view the original unmasked data.
 
 5. Clear the worksheet.
 
@@ -302,4 +301,4 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, October 9, 2024
+- **Last Updated By/Date** - Jody Glover, May 5, 2025
