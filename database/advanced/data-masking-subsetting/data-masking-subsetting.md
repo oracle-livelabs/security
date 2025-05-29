@@ -4,7 +4,7 @@
 This workshop introduces the core functionality of the **Oracle Data Masking and Subsetting (DMS)** pack for Enterprise Manager 24. Participants will learn how to configure and utilize key features to protect sensitive data in non-production environments. A particular emphasis will be placed on the **Data Sharing** use case, showcasing how DMS ensures secure sharing of data with third parties, such as developers, testers, or external collaborators, by masking or subsetting sensitive information. This approach helps maintain compliance with privacy regulations while ensuring data remains usable for non-production purposes. 
 
 * *`Estimated Lab Time:`* 90 minutes.
-* *`Version tested in this lab:`* DBEE 19.23 and Oracle Enterprise Manager 24.
+* *`Version tested in this lab:`* DBEE 19.23 and Oracle Enterprise Manager 24ai.
 
 ### Problem Statement 
 An organization needs to share a development application (EMPLOYEESEARCH_DEV) with third party collaborator and want to mask sensitive columns that contain Email ID, User ID and Password data before sharing it. They also want to share the subset of the masked data for testing. How can we automatically identify sensitive columns, mask and subset data using Oracle Data Masking and Subsetting?
@@ -20,8 +20,7 @@ Finally, we will see how the masked and subsetted data can be used securely for 
 This lab assumes you have:
 - A Free Tier, Paid or LiveLabs Oracle Cloud account.
 - Completed:
-    - Lab 1: Prepare Setup (*`Free-tier`* and *`Paid Tenants`* only)
-    - Lab 2: Environment Setup
+    - Lab: Environment Setup
 
 ## Task 1: Navigate to DMS
 
@@ -107,57 +106,10 @@ Fill in the following details:
 **What You Accomplished**  
 Created Application Data Model *`Employee_ADM `* for *`cdb1_PDB1`* target database.
 
-## Task 3: Data Discovery- Create New Sensitive Types
+## Task 3: Data Discovery- Discover Sensitive Data (Automated)
 
 ### Objective
-Create two new **Sensitive Types** for **USERID** and **PASSWORD** columns: To identify columns containing sensitive data like Email ID, User ID, and Password, we rely on the **Sensitive Types** library in Data Masking and Subsetting. This library includes a range of predefined Sensitive Types representing specific data categories, and it also allows users to add custom Sensitive Types. Since **Email ID** is already available as a predefined Sensitive Type, we would create two new Sensitive Types: **USER_ID** and **PASSWORD** to complete our requirements.
-
-### Steps
-1. Navigate to **Sensitive Types** under **Data Discovery**. 
-
-    ![DMS](./images/dms-008.png "008")
-
-2. Click **Create**.
-
-    ![DMS](./images/dms-009.png "009")
-
-3. Fill in the details as below:
-
-- Name: *`USER_ID`*.
-- Column Name Pattern: *`USERID.*;ID.*`*
-- Column Comment Pattern: *`USERID.*;ID.*`*
-
-    ![DMS](./images/dms-106.png "106")  
-    
-    Optionally, you can also define the Column Data Pattern.
-
-4. Click **Create**.
-
-5. Now, let's create the second Sensitive Type **PASSWORD** by clicking **Create** option at the top again.  
-
-    ![DMS](./images/dms-009.png "009")
-
-6. Fill in the below details on **Create Sensitive Type** page:
-
-- Name: *`PASSWORD`*
-- Column Name Pattern: *`PASSWORD.*;PASS.*`*
-- Column Column Pattern: *`PASSWORD.*;PASS.*`*
-
-    ![DMS](./images/dms-107.png "11")  
-
-7. Click **Create**.
-
-**Note**:
-- This process uses Oracle Regular Expressions which is compatible with the IEEE Portable Operating System Interface (POSIX) regular expression standard and to the Unicode Regular Expression Guidelines of the Unicode Consortium.
-- In this case, the **Search Type** has been set as an **Or** condition, so if any of the conditions listed above are met, it will result in a match.
-
-**What You Accomplished**  
- You now have two new customized Sensitive Types: **USER_ID** and **PASSWORD**, available in the **Sensitive Types** Library. 
-
-## Task 4 Data Discovery- Discover Sensitive Data (Automated)
-
-### Objective
-Run the **Discover Sensitive Columns** job: To identify sensitive columns, run the Discover Sensitive Columns job using Oracle's predefined sensitive type, **Email ID**, along with user-defined sensitive types, **USER_ID** and **PASSWORD**. Data Discovery uses column name, comment and data patterns from your selected sensitive types to discover potential relationships between columns.
+Run the **Discover Sensitive Columns** job: To identify sensitive columns, run the Discover Sensitive Columns job using Oracle's predefined sensitive type, **Email ID**, **User ID** and **Password**. Data Discovery uses column name, comment and data patterns from your selected sensitive types to discover potential relationships between columns.
 
 ### Steps
 1. Go to **Application Data Models** page under **Data Discovery**. You can **close left side bar navigation menu** using below icon to enlarge the screen:
@@ -174,21 +126,21 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 
     Please note the two sections in the image above: **Sensitive Column Discovery Jobs** and **Discovered Columns**.
     - **Sensitive Column Discovery Jobs:** Shows a list of discovery jobs.
-    - **Discovered Columns:** When you highlight any discovery job, this section will display a list of discovered columns for that job.
+    - **Discovered Columns:** When you highlight any discovery job, this section will display a list of discovered columns for that job.  
 
 4. Fill in the following details on the **Create Sensitive Column Discovery Job** page:
 
-- Database Named Credentials: *`DMS_ADMIN`*.
-- Applications: *`EMPLOYEESEARCH_DEV`* (Start typing to select from the drop-down).
-- Sensitive Types: **Email ID**, **USER_ID** and **PASSWORD** (Type in and select from the drop-down for each of the values).
+    - Database Named Credentials: *`DMS_ADMIN`*.
+    - Applications: *`EMPLOYEESEARCH_DEV`* (Start typing to select from the drop-down).
+    - Sensitive Types: **Email ID**, **User ID** and **Password** (Type in and select from the drop-down for each of the values).
 
-  ![DMS](./images/dms-108.png "15")  
+    ![DMS](./images/dms-108.png "15")  
 
 5. Click **Submit**. Check the discovery job status by pressing the **Refresh** button and move forward when status shows **Succeeded**!
 
     ![DMS](./images/dms-112.png "16")
 
-6. Highlight the succeeded Discovery Job and notice thirteen sensitive columns discovered and shown under the **Discovered Columns** section. Next, highlight each row with columns EMAIL, USERID or PASSWORD one by one and select **Mark Sensitive** option at the top. Notice that the **Sensitive Status** has been changed from *`UNDEFINED`* to *`SENSITIVE`* for eight rows.
+6. Highlight the succeeded Discovery Job and notice thirteen sensitive columns discovered and shown under the **Discovered Columns** section. Next, highlight each row with columns EMAIL, USERID or PASSWORD one by one and select **Mark Sensitive** option at the top. You can also choose **Select All** option to mark all columns sensitive together and mark **Not Sensitive** for unrequired columns. Notice that the **Sensitive Status** has been changed from *`UNDEFINED`* to *`SENSITIVE`* for eight rows.
 
     ![DMS](./images/dms-113.png "17")
 
@@ -205,7 +157,7 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 **What You Accomplished**  
 Successfully ran the **Discover Sensitive Columns** job to identify and mark sensitive columns. Utilized Oracle's predefined sensitive type, **Email ID**, along with user-defined sensitive types, **USER_ID** and **PASSWORD**.
 
-## Task 5: Data Masking- Create a New Masking Format
+## Task 4: Data Masking- Create a New Masking Format
 
 ### Objective
 Create a new **Masking Format** for previously discovered sensitive column *`Email ID`*: The **Masking Formats** library, provided by Data Masking and Subsetting, is available for use. However, for this task, we will create a new masking format to specifically mask the **EMAIL** column. This custom masking format will be used in the next task when creating the Masking Definitions.
@@ -240,7 +192,7 @@ You can see the newly created Masking Format for the EMAIL columns in the librar
 **What You Accomplished:**  
 A new Masking Format **Email ID** that will be used to replace sensitive data in *`EMAIL`* columns with new values generated from the concatenation of a random string of 6 to 8 characters at the beginning, followed by the fixed value *`@xyz.com`*.
 
-## Task 6: Data Masking- Create Masking Definition
+## Task 5: Data Masking- Create Masking Definition
 
 ### Objective
 Create a new Masking Definition under **Data Masking** where the masking formats will be set for the sensitive columns *`EMAIL`*, *`USERID`* and *`PASSWORD`* in *`Employee_ADM`* Application Data Model.
@@ -334,7 +286,7 @@ Stay on the **Create Masking Definitions** page to define and add the formats fo
 **What You Accomplished:**  
 A new Masking Definition for sensitive columns EMAIL, USERID and PASSWORD in the *`Employee_Data_Mask`* is created and shown on the **Masking Definitions** page.
 
-## Task 7: Data Masking- Generate and Execute Masking Script  
+## Task 6: Data Masking- Generate and Execute Masking Script  
 
 ### Objective
 - **Generate the masking script** for the previously created Masking Definition, *`Employee_Data_Mask`*. If needed, you can also export the script and perform bulk operations.
@@ -497,7 +449,7 @@ Observe that the **Most Recent Job Status** changes to **Masking Job Scheduled**
 **What You Accomplished:**  
 Generated the Masking Script for the *`Employee_Data_Mask`* definition, with the option to export it for future bulk operations. Updated the required Host Named Credential and executed the script by submitting a masking job, successfully masking the sensitive data.
 
-## Task 8: Review the Masked Data and Share with Third-Party
+## Task 7: Review the Masked Data and Share with Third-Party
 
 ### Objective
 **Query and review the masked data** in the development and production environments for a before and after comparison. Share the masked data with your third-party collaborator.
@@ -585,7 +537,7 @@ As shown, sensitive data has been masked according to the defined formats in the
 **What You Accomplished:**  
 Queried and reviewed masked data using Oracle SQL Developer, while also exploring the use case for securely sharing data with a third-party collaborator.
 
-## Task 9: Data Subsetting- Create Data Subsetting Definition
+## Task 8: Data Subsetting- Create Data Subsetting Definition
 
 ### Objective
 Subset and mask your sensitive data for secure sharing with external partners. The following tasks will be performed to subset and mask the data together:
@@ -709,7 +661,7 @@ Now, your Data Masking script is associated with your Data Subsetting definition
 **What you accomplished:**  
 Data Subsetting Definition is created with defined subsetting and masking rules. Alternatively, you can choose to just define subsetting rules without the masking definition inclusion by skipping step 13 and 14.
 
-## Task 10: Data Subsetting- Generate and Execute Data Subsetting Script
+## Task 9: Data Subsetting- Generate and Execute Data Subsetting Script
 
 ### Objective
 Once the Data Subsetting Definition containing subsetting and masking rules is created, the next step is to:
@@ -785,7 +737,7 @@ After reviewing that the required space is available, click **Submit** to genera
 **What you accomplished:**  
  Generated the Data Subsetting script including subsetting as well as masking rules and executed the script to successfully subset and mask the data in one step.
 
-## Task 11: Review the Subsetted (and Masked) Data
+## Task 10: Review the Subsetted (and Masked) Data
 
 ### Objective
 Review subsetted and masked data across environments to understand how Data Masking and Subsetting enables secure data sharing with third-party collaborators. This includes querying subsetted and masked data in Production and Development environments for a before-and-after comparison.
@@ -1046,7 +998,7 @@ With regulations like GDPR and CCPA, organizations are required to handle sensit
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle Data Masking & Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dmksb/intro.html#GUID-24B241AF-F77F-46ED-BEAE-3919BF1BBD80)
+- [Oracle Data Masking & Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/23/dmksb/index.html)
 
 Video:
 - *Understanding Oracle Data Masking & Subsetting* [](youtube:3zi0Bs_bgEw)
@@ -1054,5 +1006,4 @@ Video:
 
 ## Acknowledgements
 - **Author** - Kajal Singh, Database Security PM
-- **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Kajal Singh, Database Security PM - January 2025
+- **Last Updated By/Date** - Kajal Singh, Database Security PM - May 2025
