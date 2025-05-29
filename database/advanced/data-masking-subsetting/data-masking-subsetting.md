@@ -140,7 +140,8 @@ Create two new **Sensitive Types** for **User ID** and **Password** columns: To 
 
 **Note**:
 - This process uses Oracle Regular Expressions which is compatible with the IEEE Portable Operating System Interface (POSIX) regular expression standard and to the Unicode Regular Expression Guidelines of the Unicode Consortium.
-- In this case, the **Search Type** has been set as an **Or** condition, so if any of the conditions listed above are met, it will result in a match.
+- In this case, the **Search Type** has been set as an **Or** condition, so if any of the conditions listed above are met, it will result in a match.  
+
 **What You Accomplished**  
  You now have two new customized Sensitive Types: **User ID** and **Password**, available in the **Sensitive Types** Library. 
 
@@ -195,7 +196,7 @@ Notice that the **Sensitive Status** has been changed from *`SENSITIVE`* to *`NO
     d. **Table**: A structured set of data organized in rows and columns within a schema. 
 
 **What You Accomplished**  
-Successfully ran the **Discover Sensitive Columns** job to identify and mark sensitive columns. Utilized Oracle's predefined sensitive type, **Email ID**, along with user-defined sensitive types, **USER_ID** and **PASSWORD**.
+Successfully ran the **Discover Sensitive Columns** job to identify and mark sensitive columns. Utilized Oracle's predefined sensitive type, **Email ID**, along with user-defined sensitive types, **User ID** and **Password**.
 
 ## Task 5: Data Masking- Create a New Masking Format
 
