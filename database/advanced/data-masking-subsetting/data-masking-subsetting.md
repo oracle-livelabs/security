@@ -1,10 +1,10 @@
 # Oracle Data Masking and Subsetting (DMS)
 
 ## Introduction
-This workshop introduces the core functionality of the **Oracle Data Masking and Subsetting (DMS)** pack for Enterprise Manager 24. Participants will learn how to configure and utilize key features to protect sensitive data in non-production environments. A particular emphasis will be placed on the **Data Sharing** use case, showcasing how DMS ensures secure sharing of data with third parties, such as developers, testers, or external collaborators, by masking or subsetting sensitive information. This approach helps maintain compliance with privacy regulations while ensuring data remains usable for non-production purposes. 
+This workshop introduces the core functionality of the **Oracle Data Masking and Subsetting (DMS)** pack for Enterprise Manager 24ai. Participants will learn how to configure and utilize key features to protect sensitive data in non-production environments. A particular emphasis will be placed on the **Data Sharing** use case, showcasing how DMS ensures secure sharing of data with third parties, such as developers, testers, or external collaborators, by masking or subsetting sensitive information. This approach helps maintain compliance with privacy regulations while ensuring data remains usable for non-production purposes. 
 
 * *`Estimated Lab Time:`* 90 minutes.
-* *`Version tested in this lab:`* DBEE 19.23 and Oracle Enterprise Manager 24.
+* *`Version tested in this lab:`* DBEE 19.25 and Oracle Enterprise Manager 24ai.
 
 ### Problem Statement 
 An organization needs to share a development application (EMPLOYEESEARCH_DEV) with third party collaborator and want to mask sensitive columns that contain Email ID, User ID and Password data before sharing it. They also want to share the subset of the masked data for testing. How can we automatically identify sensitive columns, mask and subset data using Oracle Data Masking and Subsetting?
@@ -20,8 +20,7 @@ Finally, we will see how the masked and subsetted data can be used securely for 
 This lab assumes you have:
 - A Free Tier, Paid or LiveLabs Oracle Cloud account.
 - Completed:
-    - Lab 1: Prepare Setup (*`Free-tier`* and *`Paid Tenants`* only)
-    - Lab 2: Environment Setup
+    - Lab: Environment Setup
 
 ## Task 1: Navigate to DMS
 
@@ -110,54 +109,46 @@ Created Application Data Model *`Employee_ADM `* for *`cdb1_PDB1`* target databa
 ## Task 3: Data Discovery- Create New Sensitive Types
 
 ### Objective
-Create two new **Sensitive Types** for **USERID** and **PASSWORD** columns: To identify columns containing sensitive data like Email ID, User ID, and Password, we rely on the **Sensitive Types** library in Data Masking and Subsetting. This library includes a range of predefined Sensitive Types representing specific data categories, and it also allows users to add custom Sensitive Types. Since **Email ID** is already available as a predefined Sensitive Type, we would create two new Sensitive Types: **USER_ID** and **PASSWORD** to complete our requirements.
-
+Create two new **Sensitive Types** for **User ID** and **Password** columns: To identify columns containing sensitive data, we rely on the **Sensitive Types** library in Data Masking and Subsetting. This library includes a range of predefined Sensitive Types representing specific data categories, and it also allows users to add custom Sensitive Types. Since **Email ID** is already available as a predefined Sensitive Type, we would create two new Sensitive Types: **User ID** and **Password** to complete our requirements.
 ### Steps
 1. Navigate to **Sensitive Types** under **Data Discovery**. 
-
-    ![DMS](./images/dms-008.png "008")
+    ![DMS](./images/dms-008.png "008") 
 
 2. Click **Create**.
-
-    ![DMS](./images/dms-009.png "009")
+    ![DMS](./images/dms-009(2).png "009")  
 
 3. Fill in the details as below:
-
-- Name: *`USER_ID`*.
+- Name: *`User ID`*.
 - Column Name Pattern: *`USERID.*;ID.*`*
 - Column Comment Pattern: *`USERID.*;ID.*`*
-
-    ![DMS](./images/dms-106.png "106")  
+    ![DMS](./images/dms-106(2).png "106")  
     
-    Optionally, you can also define the Column Data Pattern.
+    Optionally, you can also define the Column Data Pattern.  
 
-4. Click **Create**.
+4. Click **Create**.  
 
-5. Now, let's create the second Sensitive Type **PASSWORD** by clicking **Create** option at the top again.  
-
-    ![DMS](./images/dms-009.png "009")
+5. Now, let's create the second Sensitive Type **Password** by clicking **Create** option at the top again.  
+    ![DMS](./images/dms-009(2).png "009")  
 
 6. Fill in the below details on **Create Sensitive Type** page:
-
-- Name: *`PASSWORD`*
+- Name: *`Password`*
 - Column Name Pattern: *`PASSWORD.*;PASS.*`*
 - Column Column Pattern: *`PASSWORD.*;PASS.*`*
+    ![DMS](./images/dms-107(2).png "11")  
 
-    ![DMS](./images/dms-107.png "11")  
-
-7. Click **Create**.
+7. Click **Create**.  
 
 **Note**:
 - This process uses Oracle Regular Expressions which is compatible with the IEEE Portable Operating System Interface (POSIX) regular expression standard and to the Unicode Regular Expression Guidelines of the Unicode Consortium.
-- In this case, the **Search Type** has been set as an **Or** condition, so if any of the conditions listed above are met, it will result in a match.
+- In this case, the **Search Type** has been set as an **Or** condition, so if any of the conditions listed above are met, it will result in a match.  
 
 **What You Accomplished**  
- You now have two new customized Sensitive Types: **USER_ID** and **PASSWORD**, available in the **Sensitive Types** Library. 
+ You now have two new customized Sensitive Types: **User ID** and **Password**, available in the **Sensitive Types** Library. 
 
-## Task 4 Data Discovery- Discover Sensitive Data (Automated)
+## Task 4: Data Discovery- Discover Sensitive Data (Automated)
 
 ### Objective
-Run the **Discover Sensitive Columns** job: To identify sensitive columns, run the Discover Sensitive Columns job using Oracle's predefined sensitive type, **Email ID**, along with user-defined sensitive types, **USER_ID** and **PASSWORD**. Data Discovery uses column name, comment and data patterns from your selected sensitive types to discover potential relationships between columns.
+Run the **Discover Sensitive Columns** job: To identify sensitive columns, run the Discover Sensitive Columns job using predefined and user-defined sensitive types - **Email ID**, **User ID**, and **Password**. Data Discovery uses column name, comment and data patterns from your selected sensitive types to discover potential relationships between columns.
 
 ### Steps
 1. Go to **Application Data Models** page under **Data Discovery**. You can **close left side bar navigation menu** using below icon to enlarge the screen:
@@ -174,23 +165,25 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
 
     Please note the two sections in the image above: **Sensitive Column Discovery Jobs** and **Discovered Columns**.
     - **Sensitive Column Discovery Jobs:** Shows a list of discovery jobs.
-    - **Discovered Columns:** When you highlight any discovery job, this section will display a list of discovered columns for that job.
+    - **Discovered Columns:** When you highlight any discovery job, this section will display a list of discovered columns for that job.  
 
 4. Fill in the following details on the **Create Sensitive Column Discovery Job** page:
 
-- Database Named Credentials: *`DMS_ADMIN`*.
-- Applications: *`EMPLOYEESEARCH_DEV`* (Start typing to select from the drop-down).
-- Sensitive Types: **Email ID**, **USER_ID** and **PASSWORD** (Type in and select from the drop-down for each of the values).
+    - Database Named Credentials: *`DMS_ADMIN`*.
+    - Applications: *`EMPLOYEESEARCH_DEV`* (Start typing to select from the drop-down).
+    - Sensitive Types: **Email ID**, **User ID**, and **Password** (Type in and select from the drop-down for each of the values).
 
-  ![DMS](./images/dms-108.png "15")  
+    ![DMS](./images/dms-108(2).png "15")  
 
-5. Click **Submit**. Check the discovery job status by pressing the **Refresh** button and move forward when status shows **Succeeded**!
+5. Click **Submit**. Check the discovery job status by pressing the **Refresh** button and move forward when status shows **Succeeded**! Highlight the succeeded Discovery Job and notice eleven sensitive columns discovered and shown under the **Discovered Columns** section. 
 
-    ![DMS](./images/dms-112.png "16")
+    ![DMS](./images/dms-112(2).png "16")
 
-6. Highlight the succeeded Discovery Job and notice thirteen sensitive columns discovered and shown under the **Discovered Columns** section. Next, highlight each row with columns EMAIL, USERID or PASSWORD one by one and select **Mark Sensitive** option at the top. Notice that the **Sensitive Status** has been changed from *`UNDEFINED`* to *`SENSITIVE`* for eight rows.
+6. **Sensitive Status** for discovered columns is **Sensitive** by default. Highlight each row with non-required columns including MANAGERID, ROLEID, and MEMBER_ID and **Mark Not Sensitive**.
 
-    ![DMS](./images/dms-113.png "17")
+![DMS](./images/dms-113(2).png "17")
+
+Notice that the **Sensitive Status** has been changed from *`SENSITIVE`* to *`NOT_SENSITIVE`* for three rows.  
 
 7. Click **Close**. Now, your ADM is populated with sensitive columns *`EMAIL`*, *`USERID`* and *`PASSWORD`* from different objects.
 
@@ -203,7 +196,7 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
     d. **Table**: A structured set of data organized in rows and columns within a schema. 
 
 **What You Accomplished**  
-Successfully ran the **Discover Sensitive Columns** job to identify and mark sensitive columns. Utilized Oracle's predefined sensitive type, **Email ID**, along with user-defined sensitive types, **USER_ID** and **PASSWORD**.
+Successfully ran the **Discover Sensitive Columns** job to identify and mark sensitive columns. Utilized Oracle's predefined sensitive type, **Email ID**, along with user-defined sensitive types, **User ID** and **Password**.
 
 ## Task 5: Data Masking- Create a New Masking Format
 
@@ -233,9 +226,6 @@ Create a new **Masking Format** for previously discovered sensitive column *`Ema
 
 4. Click **Create**. 
 
-You can see the newly created Masking Format for the EMAIL columns in the library.
-
-![DMS](./images/dms-020.png "20")
 
 **What You Accomplished:**  
 A new Masking Format **Email ID** that will be used to replace sensitive data in *`EMAIL`* columns with new values generated from the concatenation of a random string of 6 to 8 characters at the beginning, followed by the fixed value *`@xyz.com`*.
@@ -265,43 +255,43 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 
 5. On the next screen, you can see two different sections- **Columns Available in Application Data Model** and **Columns Available in Masking Definition**. Notice all discovered sensitive columns shown under **Columns Available in Application Data Model** section:
 
-    ![DMS](./images/dms-114.png "23")
+    ![DMS](./images/dms-114(2).png "23")
 
 Now, let's define and add the masking formats for all the columns for EMAIL, USERID and PASSWORD. 
 
 6. For **EMAIL** columns: Select both the EMAIL columns and click the **Define Format and Add** option at the top.
 
-    ![DMS](./images/dms-115.png "24")
+    ![DMS](./images/dms-115(2).png "24")
 
 7. On the **Define Format and Add** page, choose **Email ID** (**Masking Format** created in task 5) under **Choose From Masking Formats** drop-down box and click **Import**.
 Notice, Masking Format Entries are automatically populated.
 
 8. View the sample data by clicking **Generate** under **Sample Data**:
 
-    ![DMS](./images/dms-025.png "25")
+    ![DMS](./images/dms-116(2).png "25")
 
-9. Notice the *`EMAIL`* columns now appear under **Columns Available in Masking Definition** along with the defined Masking Format:
+9. Click **Add**. Notice the *`EMAIL`* columns now appear under **Columns Available in Masking Definition** along with the defined Masking Format:
 
-    ![DMS](./images/dms-116.png "26")
+    ![DMS](./images/dms-116(3).png "26")
 
 Stay on the **Create Masking Definitions** page to define and add the formats for the other columns- *`USERID`* and *`PASSWORD`* as shown in the next steps.
 
 10. For **USERID** columns: let’s group columns with the same data type and apply a masking format. Start by selecting the three **USERID** columns with the **VARCHAR** data type listed under **Columns Available in Application Data Model**, then click **Define Format and Add**.
 
-    ![DMS](./images/dms-117.png "27")
+    ![DMS](./images/dms-117(2).png "27")
 
     **Note**: You can define masking formats for multiple columns with the same data type.
 
  - Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
  - Click **Add Format Entry**.
     
-    ![DMS](./images/dms-118.png "028")
+    ![DMS](./images/dms-118(2).png "028")
 
 - click **Add**. 
 
 11. Repeat the process for the remaining two **USERID** columns. Select the other two **USERID** columns with the **NUMBER** data type listed under **Columns Available in Application Data Model**, then click **Define Format and Add**.
 
-    ![DMS](./images/dms-119.png "29")
+    ![DMS](./images/dms-119(2).png "29")
 
  - Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
  - Click **Add Format Entry** and click **Add**. 
@@ -311,11 +301,11 @@ Stay on the **Create Masking Definitions** page to define and add the formats fo
 - Choose **Custom Format Entry** as **Fixed String** and enter the string as *`***`*. 
 - Click **Add Format Entry**. 
     
-    ![DMS](./images/dms-120.png "30")
+    ![DMS](./images/dms-120(2).png "30")
 
 - Click **Add** and notice, all columns- **EMAIL**, **USERID** and **PASSWORD** are added under **Columns Available in Masking Definitions**:  
         
-    ![DMS](./images/dms-121.png "31")
+    ![DMS](./images/dms-121(2).png "31")
        
 13. Click **Next**.
 
@@ -1046,7 +1036,7 @@ With regulations like GDPR and CCPA, organizations are required to handle sensit
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle Data Masking & Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dmksb/intro.html#GUID-24B241AF-F77F-46ED-BEAE-3919BF1BBD80)
+- [Oracle Data Masking & Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/23/dmksb/index.html)
 
 Video:
 - *Understanding Oracle Data Masking & Subsetting* [](youtube:3zi0Bs_bgEw)
@@ -1054,5 +1044,4 @@ Video:
 
 ## Acknowledgements
 - **Author** - Kajal Singh, Database Security PM
-- **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Kajal Singh, Database Security PM - January 2025
+- **Last Updated By/Date** - Kajal Singh, Database Security PM - May 2025
