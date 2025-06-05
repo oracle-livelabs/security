@@ -110,10 +110,10 @@ Identify the commands and values that are required for the SH script and test ea
 
 4. Create a variable that defines the report format (PDF or XLS) you want for the downloaded security assessment. 
 
-    To do this, in Cloud Shell, enter the following command, replacing `pdf-or-xls` with **PDF** or **XLS**.
+    To do this, in Cloud Shell, enter the following command, replacing `PDF-or-XLS` with **PDF** or **XLS**.
 
     ```text
-    $ <copy>export format=pdf-or-xls</copy>
+    $ <copy>export format=PDF-or-XLS</copy>
     ```
 
 5. Create a security assessment and obtain its OCID. 
@@ -244,4 +244,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 6, 2024
+- **Last Updated By/Date** - Jody Glover, June 5, 2025
