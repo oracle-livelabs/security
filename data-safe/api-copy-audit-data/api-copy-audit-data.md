@@ -4,7 +4,7 @@
 
 When you start your target database's audit trail in Oracle Data Safe, Oracle Data Safe begins copying audit records from the database's audit trail into the Oracle Data Safe repository. In this lab, you use the Oracle Data Safe application programming interface (API) to copy Oracle Data Safe's audit data for your target database into object storage.
 
-Note: During this lab, you configure the Oracle Cloud Development Kit on a compute instance to use the Jarkarta EE8/Jersey 2 HTTP client library.
+Note: During this lab, you configure the Oracle Cloud development kit on a compute instance to use the Jarkarta EE8/Jersey 2 HTTP client library.
 
 Estimated Lab Time: 30 minutes
 
