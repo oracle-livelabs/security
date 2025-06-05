@@ -4,6 +4,8 @@
 
 When you start your target database's audit trail in Oracle Data Safe, Oracle Data Safe begins copying audit records from the database's audit trail into the Oracle Data Safe repository. In this lab, you use the Oracle Data Safe application programming interface (API) to copy Oracle Data Safe's audit data for your target database into object storage.
 
+Note: During this lab, you configure the Oracle Cloud development kit on a compute instance to use the Jarkarta EE8/Jersey 2 HTTP client library.
+
 Estimated Lab Time: 30 minutes
 
 ### Objectives
@@ -13,7 +15,7 @@ In this lab, you will:
 - Create a bucket to store the audit data
 - Start the audit trail for your target database in Oracle Data Safe
 - View the quantity of audit data collected by Oracle Data Safe
-- Provision a compute instance with the Oracle Cloud Developer Kit preinstalled
+- Provision a compute instance with the Oracle Cloud development kit preinstalled
 - Connect to your compute instance
 - Create an API key
 - Upload your private key (PEM file) to your compute instance
@@ -31,12 +33,14 @@ This lab assumes you have:
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
 - Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
+- If you are using a Free Tier subscription, you need to be working in your home region. This is necessary in order to create a compute instance with the Oracle Cloud Development kit.
 
 ### Assumptions
 
 Cloud Shell is running the following application versions:
 - Oracle Linux Server 7.9
-- Oracle Cloud Infrastructure Java SDK 3.33.0
+- Oracle Cloud Infrastructure Java SDK 3.55.1
+- openjdk version 1.8.0_442
 
 
 ## Task 1: Create a bucket to store the audit data
@@ -77,7 +81,9 @@ Cloud Shell is running the following application versions:
     - If it's currently the first day of the month, you can select the previous day to be sure you collect all of the data.
     - Do not select the **Auto Purge** option.
 
-8. Click **Start**. Wait for **Collection State** to change from **STARTING** to **COLLECTING** and then to **IDLE**. It takes about one minute.
+8. Click **Start** and wait for one minute. The **Collection state** value remains at **COLLECTING**. 
+
+    Note: You can view sub-states in the work request details section. Sub-state values include **STARTING**, **COLLECTING** and **IDLE**.
 
 
 ## Task 3: View the quantity of audit data collected by Oracle Data Safe
@@ -88,61 +94,65 @@ Cloud Shell is running the following application versions:
 
 3. On the right, click the name of your target database.
 
-    The **Audit profile details** page for your target database is displayed.
+    The **Audit profile information** page for your target database is displayed.
 
-4. Scroll down the page to the **Compute audit volume** section.
+4. Scroll down the page to the **Compute audit records** section.
 
 5. Click **Collected by Data Safe**.
 
-    The **Compute collected volume** dialog box is displayed.
+    The **Show number of collected audit records** dialog box is displayed.
 
-6. Set the **Start month** and **End month** fields to the first and last day of the current month respectively, and click **Compute**. 
+6. Set the **Start month** and **End month** fields to the first and last day of the current month respectively, and click **Show**. 
 
 7. In the **Collected in Data Safe (Online)** column, make note of the number of audit records collected by Oracle Data Safe.
 
 
 
-## Task 4: Provision a compute instance with the Oracle Cloud Development Kit preinstalled
+## Task 4: Provision a compute instance with the Oracle Cloud development kit preinstalled
 
-1. From the home page in Oracle Cloud Infrastructure, scroll down and click the **RESOURCE MANAGER** tile called **Create a stack**.
+1. From the navigation menu, select **Developer Services**, and then under **Resource Manager**, click **Stacks**. 
+
+2. Click **Create stack**.
 
     The **Create stack** page is displayed. You first need to complete **Step 1 Stack information**.
 
-2. Leave **Template** selected.
+3. Select **Template**.
 
-3. Click **Change template**.
+4. In the **Stack configuration** section, click **Select template**.
 
-4. Click the **Architecture** tab. Scroll down and select **Oracle Cloud Development kit**. Click **Select template**.
+    The **Browse templates** panel is displayed.
 
-5. (Optional) Enter a different name for the stack.
+5. Click the **Architecture** tab. Scroll down and select **Oracle Cloud development kit**. Click **Select template**.
 
-6. Select your compartment. 
+6. (Optional) Enter a different name for the stack.
 
-7. Leave the default terraform version as is.
+7. Select your compartment. 
 
-8. Click **Next**.
+8. Leave the default terraform version and working directory as is.
+
+9. Click **Next**.
 
     Now you need to complete **Step 2 Configure variables**.
 
-9. Leave the default instance shape set to **VM.Standard.E2.1.Micro**.
+10. Leave the default instance shape set to **VM.Standard.E2.1.Micro**.
 
-10. Leave **Auto-generate SSH key pair** selected.
+11. Leave **Auto-generate SSH key pair** selected.
 
-11. Leave **Compute instance to access all resources at tenancy level** selected.
+12. Leave **Compute instance to access all resources at tenancy level** selected.
 
-12. Click **Next**.
+13. Click **Next**.
 
     Now you need to complete **Step 3 Review**.
 
-13. Review the configuration, and if it is correct, select the **Run apply** check box at the bottom of the page, and click **Create**.
+14. Review the configuration, and if it is correct, select the **Run apply** check box at the bottom of the page, and click **Create**.
 
-    The new stack is displayed on the **Stack details** page. 
+    The **Job details** page is displayed. The new stack is displayed on the **Stack details** page. 
 
-14. Wait for your compute instance to be provisioned.
+15. Wait for your compute instance to be provisioned.
 
-    When the instance is provisioned (indicated by a "Succeeded" status for the apply job), installation of the development kit items begins. The installation process takes a few minutes. If you connect to the instance before the installation finishes, then a warning message indicates that the installation is still in process. Once the items are installed on the instance, you can immediately use them.
+    When the instance is provisioned (indicated by a "Succeeded" status for the apply job), installation of the development kit items begins. The installation process takes a few minutes. If you connect to the instance before the installation finishes, then a warning message indicates that the installation is still in progress. Once the items are installed on the instance, you can immediately use them.
 
-15. To obtain information about your compute instance, click the **Application information** tab. From here you can copy connectivity information, including the following:
+16. To obtain information about your compute instance, click the **Application information** tab. From here you can copy connectivity information, including the following:
 
     - Compute instance public IP
     - Generated private key for SSH access
@@ -176,12 +186,12 @@ To connect to your compute instance, you first need to copy your private key to 
     $ <copy>vi ~/.ssh/cloudshellkey</copy>
     ```
 
-5. On the **Application information** tab, click **Unlock** to view your private key. Copy your private key data to the vi editor. It is important that you put **-----BEGIN RSA PRIVATE KEY-----** on the first line, the key code on the second line, and **-----END RSA PRIVATE KEY-----** on the third line. Be careful not to include any code for line breaks.
+5. On the **Application information** tab, click **Unlock** to view your private key. Copy your private key data to the vi editor. It is important that you put **-----BEGIN RSA PRIVATE KEY-----** on the first line, the key code on the second line, and **-----END RSA PRIVATE KEY-----** on the third line. Be careful not to include any code for line breaks. To save, press **Escape**, enter **:wq**, and then press **Enter**.
 
     Here is an example:
 
     ```
-    $ <copy>-----BEGIN RSA PRIVATE KEY-----
+    <copy>-----BEGIN RSA PRIVATE KEY-----
     MIIEowIBAAKCAQEAoLeHMmDKzeYdOJYKtxaGvtTjn40X5Hfy6A/Rdem90d59m5u0\nqSXmzGYqX1Yj1tgd6...AQj8uvBC7kW8Fstl
     -----END RSA PRIVATE KEY-----</copy>
     ```
@@ -208,17 +218,17 @@ There are three parts to configuring the SDK: create an API key, upload the priv
 
 1. In the upper-right corner of the Oracle Cloud Infrastructure Console, click the **Profile** icon, and then click your username.
 
-2. On the left, click **API Keys**.
+2. Click the **Tokens and keys** tab.
 
-3. Click **Add API Key**.
+3. Click **Add API key**.
 
-    The **Add API Key** dialog box is displayed.
+    The **Add API key** panel is displayed.
 
-4. Leave **Generate API Key Pair** selected, click **Download Private Key**, and save your private key (PEM file) to a local directory on your computer. 
+4. Leave **Generate API key pair** selected, click **Download private key**, and save your private key (PEM file) to a local directory on your computer. 
 
 5. Click **Add**.
 
-    The **Configuration File Preview** dialog box is displayed, showing you a preview of the configuration file.
+    The **Configuration File Preview** panel is displayed, showing you a preview of the configuration file.
 
 6. Copy the configuration file contents to a temporary text file because you need it in a later task. Be sure to include `[DEFAULT]`. The content looks similar to this:
 
@@ -234,15 +244,9 @@ There are three parts to configuring the SDK: create an API key, upload the priv
 7. Click **Close**.
 
 
-8. Create a `.oci` directory.
-
-    ```text
-    $ <copy>mkdir ~/.oci</copy>
-    ```
-
 ## Task 7: Upload your private key (PEM file) to your compute instance
 
-This task covers the second part for configuring the SDK on your compute instnace: Upload your private key (PEM file) into object storage, and then copy it to the `.oci` directory on your compute instance.
+This task covers the second part for configuring the SDK on your compute instance: Upload your private key (PEM file) into object storage, and then copy it to the `.oci` directory on your compute instance.
 
 1. From the navigation menu in Oracle Cloud Infrastructure, select **Storage**, and then **Buckets**. Select your compartment. Click the name of your bucket.
    
@@ -268,26 +272,31 @@ This task covers the second part for configuring the SDK on your compute instnac
 
 8. Click **Close**.
 
-9. In Cloud Shell, change to the `.oci` directory.
+9. In Cloud Shell, create a `.oci` directory.
+
+    ```text
+    $ <copy>mkdir ~/.oci</copy>
+    ```
+
+10. Change to the `.oci` directory.
 
     ```text
     $ <copy>cd ~/.oci</copy>
     ```
 
-10. Use the `WGET` command to copy your private key file from object storage into the `.oci` directory. Replace `pre-authenticated-request-url` with your own url.
+11. Use the `WGET` command to copy your private key file from object storage into the `.oci` directory. Replace `pre-authenticated-request-url` with your own url.
 
     ```text
     $ <copy>wget pre-authenticated-request-url</copy>
     ```
 
-11. List the contents of the directory and verify that the private key file is listed.
+12. List the contents of the directory and verify that the private key file is listed.
 
     ```text
     $ <copy>ls</copy>
 
     your-private-key-file-name
     ```
-
 
 
 ## Task 8: Create an API configuration file on your compute instance
@@ -337,16 +346,16 @@ This task covers the third (and last) part for configuring the SDK on your compu
 
 ## Task 9: Compile a Java program on your compute instance
 
-The Oracle Cloud Development Kit comes with the Java SDK already installed. The OCI jar file is located in `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-<version>.jar`, and third-party libraries are in `/usr/lib64/java-oci-sdk/third-party/lib`. To compile a Java file, use the `javac` command. 
+The Oracle Cloud development kit comes with the Java SDK already installed. The OCI jar file is located in `/usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-<version>.jar`, and third-party libraries are in `/usr/lib64/java-oci-sdk/third-party/lib`. To compile a Java file, use the `javac` command. 
 
-In this task, you compile a Java program named `DataSafeRestAPIClientExample.java`, which is included with the SDK installation. The purpose of this program is to copy audit data from the Oracle Data Safe repository into a specified object storage bucket. If needed, you can also download the program directly from Github by running the following command: `wget https://raw.githubusercontent.com/oracle/oci-java-sdk/master/bmc-examples/src/main/java/DataSafeRestAPIClientExample.java`.
+In this task, you compile an example Java program named `DataSafeRestAPIClientExample.java`, which is included with the SDK installation. The purpose of this program is to copy audit data from the Oracle Data Safe repository into a specified object storage bucket. If needed, you can also download the program directly from Github by running the following command: `wget https://raw.githubusercontent.com/oracle/oci-java-sdk/master/bmc-examples/src/main/java/DataSafeRestAPIClientExample.java`.
 
-1. Find the version of the `oci-java-sdk-full-version.jar` file and make note of it. You will need it in later steps. In this example, the version is 3.33.0.
+1. Find the version of the `oci-java-sdk-full-version.jar` file and make note of it. You will need it in later steps. In this example, the version is 3.55.1.
 
     ```text
     $ <copy>ls /usr/lib64/java-oci-sdk/lib</copy>
 
-    jersey   jersey3   oci-java-sdk-full-3.33.0.jar  oci-java-sdk-full-3.33.0-javadoc.jar  oci-java-sdk-full-3.33.0-sources.jar
+    oci-java-sdk-full-3.55.1.jar  oci-java-sdk-full-3.55.1-javadoc.jar  oci-java-sdk-full-3.55.1-sources.jar
     ```
 
 2. Copy the example Java program `DataSafeRestAPIClientExample.java` to your current directory (`~/.oci`).
@@ -369,14 +378,47 @@ In this task, you compile a Java program named `DataSafeRestAPIClientExample.jav
     <copy>ObjectStorage objStoreClient = 
         ObjectStorageClient.builder().region(provider.getRegion()).build(provider);</copy>
     ```
-
-5. Compile the `DataSafeRestAPIClientExample.java` file. Be sure to use the correct version in the `oci-java-sdk-full-<version>.jar` file name. The example below uses version 3.33.0. It’s very common that a Java program depends on one or more external libraries (JAR files). Use the flag `-classpath` (or `-cp`) to tell the compiler where to look for external libraries. Note that there is no output after the file is compiled. You are simply returned to the prompt.
+5. Change to the third-party libarary directory.
 
     ```text
-    # <copy>javac -cp /usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-3.33.0.jar:/usr/lib64/java-oci-sdk/third-party/lib/* DataSafeRestAPIClientExample.java</copy>
+    $ <copy>cd /usr/lib64/java-oci-sdk/third-party/lib/</copy>
+    ```
+6. Add third-party JAR files to the third-party library directory for the HTTP client libary (Jakarta EE 8/Jersey 2). After you run the commands below, you should have 26 files in the current directory.
+
+    ```text
+    <copy>sudo wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar
+    sudo wget https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.1/jackson-datatype-jsr310-2.17.1.jar
+    sudo wget https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.1/jakarta.ws.rs-api-2.1.1.jar
+    sudo wget https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.6/jakarta.ws.rs-api-2.1.6.jar
+    sudo wget https://repo1.maven.org/maven2/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar
+    sudo wget https://repo1.maven.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar
+    sudo wget https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar
+    sudo wget https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar
+    sudo wget https://repo1.maven.org/maven2/org/glassfish/jersey/connectors/jersey-apache-connector/2.35/jersey-apache-connector-2.35.jar
+    sudo wget https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.35/jersey-common-2.35.jar
+    sudo wget https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.35/jersey-client-2.35.jar
+    sudo wget https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.35/jersey-hk2-2.35.jar 
+    sudo wget https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-locator/2.6.1/hk2-locator-2.6.1.jar
+    sudo wget https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-api/2.6.1/hk2-api-2.6.1.jar
+    sudo wget https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.6.1/hk2-utils-2.6.1.jar
+    sudo wget https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-json-jackson/2.35/jersey-media-json-jackson-2.35.jar
+    sudo wget https://repo1.maven.org/maven2/com/oracle/oci/sdk/oci-java-sdk-common-httpclient/3.55.1/oci-java-sdk-common-httpclient-3.55.1.jar
+    sudo wget https://repo1.maven.org/maven2/com/oracle/oci/sdk/oci-java-sdk-common-httpclient-jersey/3.55.1/oci-java-sdk-common-httpclient-jersey-3.55.1.jar
+    sudo wget https://repo1.maven.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar</copy>
     ```
 
-6. Confirm that you now have a class file named `DataSafeRestAPIClientExample.class`.
+7. Change to the .oci directory.
+
+    ```
+    $ <copy>cd ~/.oci</copy>
+    ```
+
+8. Compile the `DataSafeRestAPIClientExample.java` file. Be sure to use the correct version in the `oci-java-sdk-full-<version>.jar` file name. The example below uses version 3.55.1. It’s very common that a Java program depends on one or more external libraries (JAR files). Use the flag `-classpath` (or `-cp`) to tell the compiler where to look for external libraries. Note that there is no output after the file is compiled. You are simply returned to the prompt.
+
+    ```text
+    $ <copy>javac -cp /usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-3.55.1.jar:/usr/lib64/java-oci-sdk/third-party/lib/* DataSafeRestAPIClientExample.java</copy>
+    ```
+9. Confirm that you now have a class file named `DataSafeRestAPIClientExample.class`.
 
     ```text
     $ <copy>ls</copy>
@@ -397,7 +439,7 @@ In this task, you compile a Java program named `DataSafeRestAPIClientExample.jav
 
     The **Target database information** page is displayed.
     
-5. On the **Target database information** tab, make note of the compartment. 
+5. On the **Target database information** tab, make note of the compartment name. You need this name is step 7. 
 
 6. From the navigation menu, select **Identity & Security**, and then on the right under **Identity**, select **Compartments**. 
 
@@ -405,7 +447,7 @@ In this task, you compile a Java program named `DataSafeRestAPIClientExample.jav
 
     The **Compartment details** page is displayed.
 
-8. On the **Compartment Information** tab, click the **Copy** link next to **OCID** and paste the OCID into a temporary local text file. You need the OCID for the next task.
+8. On the **Compartment Information** tab, click the **Copy** link next to **OCID** and paste the OCID into a temporary local text file. You need this OCID for the next task.
 
 
 
@@ -423,10 +465,10 @@ The `DataSafeRestAPIClientExample.class` program requires two inputs, which you 
     $ <copy>export COMPARTMENT=compartment-ocid-for-target-database</copy>
     ```
 
-2. Run the following command to run the class file. The example below uses `oci-java-sdk-full-3.33.0.jar`, but be sure to use the version that is on your system. You can ignore the error about failing to load the `org.slf4j.impl.StaticLoggerBinder` class. 
+2. Run the following command to run the class file. The example below uses `oci-java-sdk-full-3.55.1.jar`, but be sure to use the version that is on your system. You can ignore the error about failing to load the `org.slf4j.impl.StaticLoggerBinder` class. 
 
     ```text
-    $ <copy>java -cp /usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-3.33.0.jar:/usr/lib64/java-oci-sdk/third-party/lib/*:/usr/lib64/java-oci-sdk/third-party/jersey/lib/*:/usr/lib64/java-oci-sdk/lib/jersey/oci-java-sdk-common-httpclient-jersey-3.33.0.jar:. DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
+    $ <copy>java -Xmx2g -cp /usr/lib64/java-oci-sdk/lib/oci-java-sdk-full-3.55.1.jar:/usr/lib64/java-oci-sdk/third-party/lib/*:/usr/lib64/java-oci-sdk/third-party/lib/oci-java-sdk-common-httpclient-jersey-3.55.1.jar:. DataSafeRestAPIClientExample $BUCKET $COMPARTMENT</copy>
     ```
 
 3. Review the output. The third last output line tells you the count of audit records copied into object storage. Your value may be different. If your count is equal to zero, delete any cursors in your bucket and repeat step 3.
@@ -438,7 +480,7 @@ The `DataSafeRestAPIClientExample.class` program requires two inputs, which you 
     Getting the namespace
 
 
-    Namespace: frmwj0cqbupb
+    Namespace: ...
 
 
     Getting content for object cursor  from bucket: DataSafeAuditData
@@ -448,20 +490,20 @@ The `DataSafeRestAPIClientExample.class` program requires two inputs, which you 
     Finished reading content for object cursor, last upload's last auditEvent record's timecollected FAILED
 
 
-    2024-02-05T18:46:52.701Z
-    Querying for auditEvents with timeCollected Start = 2024-02-05T18:46:52.701Z, End = 2024-02-06T18:46:52.701Z
+    2025-06-03T19:13:52.436Z
+    Querying for auditEvents with timeCollected Start = 2025-06-03T19:13:52.436Z, End = 2025-06-04T19:13:52.436Z
 
 
-    Count38
+    Count57
 
 
-    Upload complete at  Tue Feb 06 18:46:54 GMT 2024 of auditeventjson2024-02-06T18:46:54.382Z _noofrecords_ 87 Start =2024-02-05T18:46:52.701Z, End=2024-02-06T18:46:52.701Z  OpcRequestId: iad-1:ZzjIHd0Q_vmD6ctGG...
+    Upload complete at  Wed Jun 04 19:14:28 GMT 2025 of auditeventjson2025-06-04T19:14:26.126Z _noofrecords_ 57 Start =2025-06-03T19:13:52.436Z, End=2025-06-04T19:13:52.436Z  OpcRequestId: iad-1:jHMqzRM-6TUldkUOAKz...
 
 
-    Upload complete at  Tue Feb 06 18:46:55 GMT 2024 of cursor  OpcRequestId: iad-1:gdp3sqAUejDr4RhpGfT6gTB1N7Zz4IKJ7b...</copy>
+    Upload complete at  Wed Jun 04 19:14:29 GMT 2025 of cursor  OpcRequestId: iad-1:3HM-YBp8D8BC7otS...</copy>
+
     
     ```
-
 
 
 ## Task 12: Verify that the audit data is saved to your bucket in object storage
@@ -479,7 +521,7 @@ The `DataSafeRestAPIClientExample.class` program requires two inputs, which you 
 5. Notice that you now have a line item named `auditeventjson` that contains the text `noofrecords_<some-number>`. This is the audit data copied from the Oracle Data Safe repository. `<some-number>` is the number of copied audit records.
 
     ```text
-    <copy>auditeventjson2024-02-06T18:46:54.382Z _noofrecords_ 38 Start =2024-02-05T18:46:52.701Z, End=2024-02-06T18:46:52.701Z</copy>
+    <copy>auditeventjson2025-06-04T19:14:26.126Z _noofrecords_ 57 Start =2025-06-03T19:13:52.436Z, End=2025-06-04T19:13:52.436Z</copy>
     ```
 
 
@@ -500,5 +542,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Richard Evans, Bettina Schaeumer, Archana Rao, Anna Haikl 
-- **Last Updated By/Date** - Jody Glover, February 12, 2024
+- **Last Updated By/Date** - Jody Glover, June 5, 2025
 
