@@ -68,13 +68,13 @@ This lab assumes you have:
 
 Now, proceed to deploy your workshop environment using Oracle Resource Manager (ORM) stack where you have 2 options:
 
-Task 2A: Create Stack: Compute + Networking (recommended)
+Task 2A: Create Stack: Compute + Networking (recommended)  
 Task 2B: Create Stack: Compute Only
 
 ## Task 2A: Create Stack: Compute + Networking (recommended)   
 
 1. Identify the ORM stack zip file downloaded in the previous task
-2. Log in to Oracle Cloud
+2. Log in to Oracle Cloud account
 3. Open up the hamburger menu in the top left corner. Click **Developer Services**, and choose **Resource Manager > Stacks**. Choose the compartment in which you would like to install the stack. Click **Create Stack**.
 
 4. Select **My Configuration**, choose the **.Zip file** button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer.

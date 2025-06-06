@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.13
+*Version tested in this lab:* Oracle AVDF 20.14
 
 ### Video Preview
 
@@ -131,7 +131,7 @@ In this lab, you will do the following:
 
 3. Click on **Schedule Retrieval Jobs** for **pdb1**
 
-    ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs")   
+    ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs")
 
 4. Under **Security Assessment**
     - Checkbox *Assess Immediately*
@@ -143,14 +143,15 @@ In this lab, you will do the following:
 
     - Click [**Save**] to save and continue
 
-    **Note**: By default, retreival job has been already scheduled for **pdb2** during the deployment
+    **Note**: By default, retrieval job has been already scheduled for **pdb2** during the deployment. Please verify if the job is completed successfully under the **Settings** tab. If not, please repeat Steps 3 and 4 for the **pdb2** as well.
+
 
 5. Click on the **Home** tab
 
     ![AVDF](./images/avdf-050b.png "Security Assessment")
 
     **Note**:
-    - Now, you can see the risks for all your taregts directly on the main dashboard
+    - Now, you can see the risks for all your targets directly on the main dashboard
     - You can access to a risk by clicking on a color risk in the circle of your choice
 
 6. Click on the **Reports** tab
@@ -191,7 +192,7 @@ In this lab, you will do the following:
     ![AVDF](./images/avdf-503.png "AVDF - Assessment Report")
 
     - Click on **pdb1**
-    
+
     - Select the assessment "**Latest**", and click on "**Set as baseline**"
 
         ![AVDF](./images/avdf-504.png "AVDF - Set a baseline")
