@@ -192,7 +192,7 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
 
 2. Next, we will run the same queries on both pluggable database **pdb1** and **pdb2**.
 
-    - As `DBA\_DEBRA` you will notice the realm prevents her from accessing data in **pdb1** but she can query the data in **pdb2**.
+    - As `DBA_DEBRA` you will notice the realm prevents her from accessing data in **pdb1** but she can query the data in **pdb2**.
 
         ```
         <copy>./dv_query_with_debra.sh</copy>
@@ -201,7 +201,7 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
         ![DB Vault](./images/dv-014a.png "Query as DBA DEBRA")
       
 
-    - As `C##SEC\_DBA\_SAL` you will notice the realm prevents him from accessing data in **pdb1** but he can query the data in **pdb2**.
+    - As `C##SEC_DBA_SAL` you will notice the realm prevents him from accessing data in **pdb1** but he can query the data in **pdb2**.
 
         ```
         <copy>./dv_query_with_sal.sh</copy>
@@ -227,7 +227,7 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
 
     ![DB Vault](./images/dv-016b.png "Check the Database Vault status")
 
-4. Now, re-run the queries as both **DBA\_DEBRA** and **C##SEC\_DBA\_SAL** to demonstrate that **Debra** can access the data because she is a local pluggable database administrator but the container database administrator **Sal** cannot.
+4. Now, re-run the queries as both `DBA_DEBRA` and `C##SEC_DBA_SAL` to demonstrate that **Debra** can access the data because she is a local pluggable database administrator but the container database administrator **Sal** cannot.
 
    - As `DBA_DEBRA` you will notice the realm prevents her from accessing data in **pdb1** but she can query the data in **pdb2**.
 
