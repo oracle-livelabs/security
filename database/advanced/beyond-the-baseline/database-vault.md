@@ -210,8 +210,8 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
         ![DB Vault](./images/dv-015a.png "Query as DBA SAL")
 
     **Note**:
-      - The query results are the same for both the PDB user (DBA\_DEBRA) and a container user (C##SEC_DBA_SAL).
-      - The common user `C##SEC_DBA_SAL` has access to data in **pdb2**, just as the pdb admin (DBA\_DEBRA) does.
+      - The query results are the same for both the PDB user (`DBA_DEBRA`) and a container user (C##SEC_DBA_SAL).
+      - The common user `C##SEC_DBA_SAL` has access to data in **pdb2**, just as the pdb admin (`DBA_DEBRA`) does.
 
 3. Enable Database Vault 19c **Operations Control**. Notice this does not require a restart of the Oracle Database. 
 
