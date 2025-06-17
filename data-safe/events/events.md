@@ -64,8 +64,6 @@ This lab assumes you have:
 
 3. Click **View history**. Notice that in your compartment you have a baseline assessment.
 
-    ![Assessment history page](images/assessment-history.png "Assessment history page")
-
 4. Click **Close**.
 
 
@@ -109,16 +107,16 @@ In this task, you create a user on your target database with the `PDB_DBA` role.
 
 2. If needed, clear the worksheet and the **Script Output** tab.
 
-3. On the worksheet, enter the following command:
+3. On the worksheet, enter the following command. Substitute `<enter a password>` with your own password.
 
     ```
-    <copy>CREATE USER joe_smith identified by Oracle123_Oracle123;
+    <copy>CREATE USER joe_smith identified by <enter a password>;
     GRANT PDB_DBA to joe_smith;</copy>
     ```
 
-4. On the toolbar, click the **Run Statement** button (green circle with white arrow).
+4. On the toolbar, click the **Run Script** button.
 
-    ![Run Statement button](images/run-statement-button.png "Run Statement button")
+    ![Run Script button](images/run-script.png "Run Script button")
 
 
 ## Task 5: Refresh the latest user assessment and analyze the results
@@ -170,37 +168,41 @@ In this task, you create a user on your target database with the `PDB_DBA` role.
 
     ```text
     <copy>{
-      "eventType" : "com.oraclecloud.datasafe.userassessmentdriftfrombaseline",
-      "cloudEventsVersion" : "0.1",
-      "eventTypeVersion" : "2.0",
-      "source" : "DataSafe",
-      "eventTime" : "2024-02-05T19:26:38Z",
-      "contentType" : "application/json",
-      "data" : {
-     "compartmentId" : "ocid1.compartment.oc1.....",
-        "compartmentName" : "...",
-        "resourceName" : "UA_1707159041468",
-        "resourceId" : "ocid1.datasafeuserassessment.oc1....",
-        "availabilityDomain" : "ad1",
-        "additionalDetails" : {
-          "targetName" : "ATP1001",
-          "comparedWith" : "ocid1.datasafeuserassessment.oc1.eu-frankfurt-1....
-        }
-      },
-      "eventID" : "06cda7fe-1bd1-4823-...",
-      "extensions" : {
-        "compartmentId" : "ocid1.compartment.oc1....."
-      }
+    "eventType" : "com.oraclecloud.datasafe.userassessmentdriftfrombaseline",
+    "cloudEventsVersion" : "0.1",
+    "eventTypeVersion" : "2.0",
+    "source" : "DataSafe",
+    "eventTime" : "2025-06-05T16:10:25Z",
+    "contentType" : "application/json",
+    "data" : {
+     "compartmentId" : "ocid1.compartment.oc1..aaaaaa...",
+     "compartmentName" : "datasafe_livelabs",
+     "resourceName" : "UA_1748009336777",
+     "resourceId" : "ocid1.datasafeuserassessment.oc1.iad.abuwclj...",
+     "availabilityDomain" : "ad2",
+     "freeformTags" : { },
+     "definedTags" : { },
+     "additionalDetails" : {
+      "targetName" : "ATP102",
+      "comparedWith" : "ocid1.datasafeuserassessment.oc1.iad.amaa..."
     }
+  },
+  "eventID" : "4e93466f-b1cd-4f71-9d9c-0435d6ac5be9",
+  "extensions" : {
+    "compartmentId" : "ocid1.compartment.oc1..aaaaaaaajs..."
+  }
+}
+
 
     --
-    You are receiving notifications as a subscriber to the topic: security-drift (Topic OCID: ocid1.onstopic.oc1.eu-frankfurt-1....). 
-    To stop receiving notifications from this topic, unsubscribe: https://cell1.notification.eu-frankfurt-1.oci.oraclecloud.com/20181201/subscriptions/ocid1.onssubscription.oc1....==&protocol=EMAIL
+    You are receiving notifications as a subscriber to the topic: security-drift (Topic OCID: ocid1.onstopic.oc1.iad.amaaaaaaknuwt...). 
+    To stop receiving notifications from this topic, unsubscribe: https://cell1.notification.us-ashburn-1.oci.oraclecloud.com/20181201/subscriptions/ocid1.onssubscription.oc1.iad.aaaaaaaa.../unsubscription?token=YVpsOE4...==&protocol=EMAIL 
 
     Please do not reply directly to this email. If you have any questions or comments regarding this email, contact your account administrator.
 
     Oracle Corporation - Worldwide Headquarters
-    2300 Oracle Way, Austin, Texas 78741 USA</copy>
+    2300 Oracle Way, Austin, Texas 78741 USA
+    </copy>
     ```
 
 ## Learn More
@@ -211,4 +213,4 @@ In this task, you create a user on your target database with the `PDB_DBA` role.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Contributors** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, February 6, 2024
+- **Last Updated By/Date** - Jody Glover, Jun 5, 2025
