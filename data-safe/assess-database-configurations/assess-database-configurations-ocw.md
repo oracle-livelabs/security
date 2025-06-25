@@ -35,7 +35,7 @@ This lab assumes you have:
 - Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs.
 
 
-## Task 2: View the latest security assessment for your target database
+## Task 1: View the latest security assessment for your target database
 
 1. Under **Security center**, click **Security assessment**.
 
@@ -174,4 +174,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, Jun 24, 2025
+* **Last Updated By/Date** - Jody Glover, June 25, 2025

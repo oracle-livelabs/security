@@ -11,7 +11,7 @@
       {
         "title": "Lab 1: Access your environment",
         "description": "Access and review your Sandbox environment.",
-        "filename": "../../access-environment/access-environment-sandbox.md",
+        "filename": "../../access-environment/access-environment-ocw-sandbox.md",
         "type": "livelabs"
       },
       {
@@ -41,7 +41,7 @@
       {
         "title": "Lab 7: Create and enforce a SQL Firewall policy in Data Safe",
         "description": "This lab shows you how to use SQL Firewall in Data Safe.",
-        "filename": "../../sqlfw/sqlfw.md",
+        "filename": "../../sqlfw/sqlfw-ocw.md",
         "type": "livelabs"
       },
       {
