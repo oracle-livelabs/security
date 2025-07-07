@@ -33,16 +33,16 @@ This lab assumes you have:
 ## Task 1: Explore target database registration options
 
 You have three options for registering your Autonomous Database:
-- Use the **Register** link on the **Autonomous Database details** page (one-click method with no interaction).
+- Use the **Register** link on the **Autonomous Databases** page (one-click method with no interaction).
 - Use the Autonomous Databases wizard on the **Overview** page for the Oracle Data Safe service (guided method with customization options).
 - Manually register your target database from the **Registered Targets** page (advanced method without guidance).
 
 
-1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous Database details** page.
+1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous Databases** page.
 
-    If you navigated away from this page: From the navigation menu, select **Oracle Database**, and then **Autonomous Transaction Processing**. Select your compartment (if needed), and then click the name of your database.
+    If you navigated away from this page: From the navigation menu, select **Oracle Database**, and then **Autonomous Database**. Select your compartment (if needed), and then click the name of your database.
 
-2. Scroll down the page, and then under **Data Safe**, notice that there is a **Register** option. *Please don't click the link, and instead, lets view the other options.*
+2. Scroll down the page, and then under **Data Safe**, notice that there is a **Register** option. *Please don't click the link, and instead, let's view the other options.*
 
     ![Register option for your database](images/register-database.png "Register option for your database")
 
@@ -87,15 +87,15 @@ To register a database other than an ATP database for this workshop, please foll
 
 6. (Optional) Enter a description for your target database. 
 
-7. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity option') and 3 ('Add security rule') are not necessary and will be skipped.** If your database has a private IP address, you need to configure an Oracle Data Safe private endpoint and security rules. 
+7. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity option') and 3 ('Add security rule') are not necessary and will be skipped.** If your database has a private IP address, the wizard will guide you through the process of configuring an Oracle Data Safe private endpoint and security rules. 
 
-    ![Autonomous Database registration wizard - Select Database page](images/ADB-wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
+    ![Autonomous Database registration wizard - Select Database page](images/wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
 
 8. Click **Next**.    
 
 9. On the  **Review and submit** page, review the information. To make a change, you can return to the **Select database** page. 
 
-    ![Autonomous Database registration wizard - Review and Submit page](images/ADB-wizard-review-submit.png "Autonomous Database registration wizard - Review and Submit page")
+    ![Autonomous Database registration wizard - Review and Submit page](images/wizard-review-submit.png "Autonomous Database registration wizard - Review and Submit page")
 
 
 10. Click **Register**.
@@ -105,7 +105,7 @@ To register a database other than an ATP database for this workshop, please foll
 11. Wait for the target database status to turn to **ACTIVE**, which means your target database is fully registered. Next, review the information and options provided on the page.
 
     - You can view/edit the target database name and description.
-    - You can view the Oracle Cloud Identifier (OCID), when the target database was registered, the compartment name to where the target database is registered, the database type (Autonomous Database), and the connection protocol (TLS). The information varies depending on the target database type.
+    - You can view the Oracle Cloud Identifier (OCID), the compartment name to where the target database is registered, when the target database was registered and updated, the database type (Autonomous Database), and the connection protocol (TLS). The information varies depending on the target database type.
     - You have options to edit connection details (for example, choose a connectivity option), move the target database to another compartment, deregister the target database, and add tags.
 
     ![Target database information page](images/target-database-details-page.png "Target database information page")
@@ -153,4 +153,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 12, 2024
+- **Last Updated By/Date** - Jody Glover, June 11, 2025
