@@ -39,35 +39,32 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 
 <if type="brown">
-| Task No. | Feature                                           | Approx. Time | Details                                                                    |
+| Lab No.  | Feature                                           | Approx. Time | Details                                                                    |
 | -------- | ------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
-| 1        | Review TDE setup in an encrypted database         | 2 minutes    |                                                                            |
-| 2        | RMAN backup of encrypted tablespace               | 2 minutes    |                                                                            |
-| 3        | Prepare OKV for the incoming database             | 2 minutes    |                                                                            |
-| 4        | Download and install OKV client software          | 2 minutes    |                                                                            |
-| 5        | Migrate database to use OKV                       | 2 minutes    |                                                                            |
-| 6        | True migration (OKV only !)                       | 2 minutes    |                                                                            |
-| 7        | Enable "hands-off" operation                      | 2 minutes    |                                                                            |
-| 8        | Make database immune against connectivity issues  | 2 minutes    |                                                                            |
-| 9        | Zero key caching for lower security environments  | 2 minutes    |                                                                            |
-|10        | Automate re-key operations                        | 2 minutes    |                                                                            |
-|11        | Bring your own key                                | 2 minutes    |                                                                            |
+| 3        | Review TDE setup in an encrypted database         | 2 minutes    |                                                                            |
+| 4        | Migrate to OKV in 5 easy steps                    | 2 minutes    |                                                                            |
+| 5        | Show and Tell                                     | 2 minutes    |                                                                            |
+| x        | True migration (OKV only !)                       | 2 minutes    |                                                                            |
+| x        | Enable "hands-off" operation                      | 2 minutes    |                                                                            |
+| x        | Make database immune against connectivity issues  | 2 minutes    |                                                                            |
+| x        | Zero key caching for lower security environments  | 2 minutes    |                                                                            |
+|xx        | Automate re-key operations                        | 2 minutes    |                                                                            |
+|xx        | Bring your own key                                | 2 minutes    |                                                                            |</if>
 </if>
 <if type="green">
-| Task No. | Feature                                           | Approx. Time | Details                                                                    |
+| Lab No.  | Feature                                           | Approx. Time | Details                                                                    |
 | -------- | ------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
-| 1        | Review TDE setup in an encrypted database         | 2 minutes    |                                                                            |
-| 2        | RMAN backup of encrypted tablespace               | 2 minutes    |                                                                            |
-| 3        | Prepare OKV for the incoming database             | 2 minutes    |                                                                            |
-| 4        | Download and install OKV client software          | 2 minutes    |                                                                            |
-| 5        | Migrate database to use OKV                       | 2 minutes    |                                                                            |
-| 6        | True migration (OKV only !)                       | 2 minutes    |                                                                            |
-| 7        | Enable "hands-off" operation                      | 2 minutes    |                                                                            |
-| 8        | Make database immune against connectivity issues  | 2 minutes    |                                                                            |
-| 9        | Zero key caching for lower security environments  | 2 minutes    |                                                                            |
-|10        | Automate re-key operations                        | 2 minutes    |                                                                            |
-|11        | Bring your own key                                | 2 minutes    |                                                                            |</if>
+| 3        | Review TDE setup in an encrypted database         | 2 minutes    |                                                                            |
+| 4        | Migrate to OKV in 5 easy steps                    | 2 minutes    |                                                                            |
+| 5        | Show and Tell                                     | 2 minutes    |                                                                            |
+| x        | True migration (OKV only !)                       | 2 minutes    |                                                                            |
+| x        | Enable "hands-off" operation                      | 2 minutes    |                                                                            |
+| x        | Make database immune against connectivity issues  | 2 minutes    |                                                                            |
+| x        | Zero key caching for lower security environments  | 2 minutes    |                                                                            |
+|xx        | Automate re-key operations                        | 2 minutes    |                                                                            |
+|xx        | Bring your own key                                | 2 minutes    |                                                                            |</if>
 
+## Lab 3: Review a typical TDE environment
 ## Task 1: Review TDE setup in an encrypted database
 
 An ancrypted database has been prepared for you:
@@ -113,226 +110,37 @@ An ancrypted database has been prepared for you:
 
     ![Key Vault](./images/okv_xxxxxxxxx.png "See the TDE master encryption in the TDE wallet:")
 
-## Task 2: RMAN works transparently with migrated keystores:
+## Task 2: Drop an encrypted tablespace for 'True Migration' Lab (Backup has been taken)
 
-1. Make an RMAN backup of an encrypted tablespace:
-   (select from table; make RMAN backup; delete tablespace; select from table (fails))
+1. Select from table; delete tablespace; select from table (fails)
     ````
-    <copy>./03_tde_create_RMAN_backup.sh</copy>
+    <copy>./04_xxxxxxxxxxxxxxxxxx.sh</copy>
     ````
 
     ![Key Vault](./images/okv_2504_003.png "Make an RMAN backup of an encrypted tablespace:")
 
-## Task 3: Prepare OKV for the incoming database:
+## Lab 4: Migrate to OKV in 5 easy steps:
+## Task 1: Prepare OKV for the incoming database:
 
 0. Display random password; go to OKV GUI, KVEPADMIN login with random one-time password and replace with self-defined permanent password; log in with new password; KVRESTADMIN is not needed in this demo, skip it.
 
-1. Create endpoint in OKV GUI:
+## Task 2: Download the OKV client software for this endpoint:
 
     ![Key Vault](./images/okv_2504_004.png "Create endpoint in OKV GUI:")
 
-2. Create wallet in OKV GUI:
+## Task 3: Deploy the OKV client software:
 
     ![Key Vault](./images/okv_2504_005.png "Create wallet in OKV GUI:")
 
-3. Make the wallet the "default wallet" of the endpoint:
+## Task 4: Prepare the database for the migration to Oracle Key Vault:
 
     ![Key Vault](./images/okv_2504_006.png "Make the wallet the 'default wallet' of the endpoint:")
 
-4. Grab Token from GUI:
+## Task 5: Migrate the database to use Oracle Key Vault for centralized key management:
 
     ![Key Vault](./images/okv_2504_006.png "Grab Token from GUI:")
 
-## Task 4: Download and install OKV client software:
-
-1. Navigate to download page and use Token:
-
-    ![Key Vault](./images/okv_2504_007.png "Navigate to download page and use Token:")
-
-2. Download OKV endpoint software:
-
-    ![Key Vault](./images/okv_2504_007.png "Download OKV endpoint software:")
-
-3. Install OKV client software into <WALLET_ROOT>/okv:
-
-    ````
-    <copy>./08_java-jar-and-root.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv_2504_008.png "Install OKV client software into <WALLET_ROOT>/okv:")
-
-## Task 5: Migrate database to use OKV:
-
-1. Change TDE_CONFIG from FILE to OKV|FILE:
-
-    ````
-    <copy>./08_change-TDE-config.sh</copy>
-    ````
-    
-    ![Key Vault](./images/okv_2504_007.png "Change TDE_CONFIG from FILE to OKV|FILE:")
-
-2. Basic migration of your database from TDE wallet to Oracle Key Vault:
-
-    ````
-    <copy>./08_migrate-to-OKV.sh</copy>
-    ````
-    
-    ![Key Vault](./images/okv_2504_007.png "Migrate database from TDE wallet to Oracle Key Vault:")
-
-3. Confirm new keys with 'okvutil list':
-
-    ````
-    <copy>./09-okvutil-list.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv_2504_008.png "List new keys from OKV:")
-
-4. Confirm new keys from v$encryption_keys:
-
-    ````
-    <copy>./10-show-keys.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv_2504_008.png "List new keys from v$encryption_keys:")
-
-## Task 6: True migration (OKV only):
-
-1. Upload pre-migration keys to OKV:
-
-    ````
-    <copy>./09-okvutil-upload.sh</copy>
-    ````
-    ![Key Vault](./images/okv_2504_008.png "Upload pre-migration keys to OKV:")
-
-2. Confirm un-interrupted chain of TDE keys in OKV:
-
-    ````
-    <copy>./09-okvutil-list.sh</copy>
-    ````
-    ![Key Vault](./images/okv_2504_008.png "Confirm un-interrupted chain of TDE keys in OKV:")
-
-3. Only after true migration into OKV: Delete wallet (PCI compliance requirement):
-
-    ````
-    <copy>./12-delete-TDE-wallet.sh</copy>
-    ````
-    ![Key Vault](./images/okv_2504_008.png "Confirm un-interrupted chain of TDE keys in OKV:")
-
-4. Restore RMAN backup to show that RMAN finds the key automatically
-
-    ````
-    <copy>./12-RMAN-restore-TBS.sh</copy>
-    ````
-    ![Key Vault](./images/okv_2504_008.png "Restore RMAN backup after migrating to OKV:")
-
-## Task 7: Enable "hands-off" operation:
-
-1. Add local auto-open wallet in <WALLET_ROOT>/tde which contains only OKV_PASSWORD; confirm by selecting from v$client_secrets.
-
-    ````
-    <copy>./13-create-auto-open-OKV.sh</copy>
-    ````
-    ![Key Vault](./images/okv_2504_008.png "Enable hands-off operations by creating 'auto-open OKV' setup:")
-
-2. Validate by closing wallet and selecting from v$encryption_wallet; it should say "LOCAL AUTO_LOGIN"
-
-    ````
-    <copy>./14-validate-local-auto-open.sh</copy>
-
-    ![Key Vault](./images/okv_2504_008.png "Confirm auto-open wallet enables auto-open OKV:")
-    ````
-3. Bounce DB, then select from encrypted table WITHOUT ever opening the keystore with a keystore password.
-
-    ````
-    <copy>./15-select-from-table-after-bounce.sh</copy>
-    ````
-    ![Key Vault](./images/okv_2504_008.png "Confirm TDE operations thanks to auto-open OKV:")
-
-## Task 8: Make database immune against connectivity issues:
-
-1. Show content of pCache (okvutil)
-
-    ````
-    <copy>./16-show-pCache-content.sh</copy>
-
-    ![Key Vault](./images/okv_2504_008.png "Confirm keys in pCache match key in OKV:")
-    ````
-
-2. Cut connectivity with OKV and confirm with failed okvutil list command
-
-    ````
-    <copy>./17-cut-connect-OKV.sh</copy>
-    ````
-    ![Key Vault](./images/okv_2504_008.png "Confirm connection to OKV has been interrupted:")
-
-3. Bounce database and add table to new encrypted tablespace; select from table
-
-    ````
-    <copy>./18-bounce-and-create-table-in-new-tablespace.sh</copy>
-    ````
-    ![Key Vault](./images/okv_xxxxx.png "Confirm continued TDE operation despite OKV being not reachable:")
-
-4. Restore and confirm connectivity to OKV
-
-    ````
-    <copy>./19-restore-and-confirm-connectivity.sh</copy>
-    ````
-    ![Key Vault](./images/okv_xxxxx.png "Restore and confirm connectivity to OKV:")
-
-## Task 9: Zero key caching for lower security environments
-
-1. Go to OKV web console and make the endpoint non-extractable:
-
-    ![Key Vault](./images/okv-xxx.png "Make the endpoint non-extractable")
-
-2. Verify we have the new master encryption key in the virtual Wallet, note it says "FALSE" in the 'Extractable' column:
-
-    ````
-    <copy>./020-show-new-non-ext-key-with-okvutil-list-a.sh</copy>
-    ````
-
-    ![Key Vault](./images/okv-071.png "Check rekey")
-
-
-3. Compare keys with "okvutil list -a" and "okvutil list pCache"; non-ext keys are missing from pCache.
-
-4. Disable Endpoint
-
-    ![Key Vault](./images/xxxxxxxxxx.png "Disable Endpoint")
-
-5. Try crypto-operation and it should fail right away
- 
-    ![Key Vault](./images/okv-073.png "crypto-operations fail")
-
-6. Re-enable endpoint 
-
-    ![Key Vault](./images/okv-074.png "Re-enable endpoint")
-
-7. Try crypto-operation and it will succeed.
-
-    ![Key Vault](./images/okv-073.png "crypto-operations succeed")
-
-## Task 10: Automate re-key operations
-
-1. Create an IBES wallet:
-
-    ![Key Vault](./images/okv-xxx.png "Add OKV password into IBES wallet")
-
-2. Re-key without providing a keystore password:
-
-    ![Key Vault](./images/okv-xxx.png "Re-key without providing a keystore password")
-
-## Task 11: Bring Your Own Key
-
-1. Create TDE key in OKV GUI:
-
-    ![Key Vault](./images/okv-xxx.png "Create TDE key in OKV GUI")
-
-2. Activate key in PDB:
-
-    ![Key Vault](./images/okv-xxx.png "Activate key in PDB")
-
-3. Show key and TAG in v$encryption_keys in PDB and with okvutil list
+## Lab 5: Show and Tell:
 
 
 ## **Appendix**: About the Product
