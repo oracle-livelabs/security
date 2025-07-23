@@ -65,7 +65,7 @@ This lab assumes you have:
 |xx        | Bring your own key                                | 2 minutes    |                                                                            |</if>
 
 ## Lab 3: Review a typical TDE environment
-#### Task 1: Review TDE setup in an encrypted database
+### Task 1: Review TDE setup in an encrypted database
 
 An ancrypted database has been prepared for you:
 
@@ -110,7 +110,7 @@ An ancrypted database has been prepared for you:
 
     ![Key Vault](./images/okv_xxxxxxxxx.png "See the TDE master encryption in the TDE wallet:")
 
-#### Task 2: Drop an encrypted tablespace for 'True Migration' Lab (Backup has been taken)
+### Task 2: Drop an encrypted tablespace for 'True Migration' Lab (Backup has been taken)
 
 1. Select from table; delete tablespace; select from table (fails)
     ````
@@ -120,23 +120,23 @@ An ancrypted database has been prepared for you:
     ![Key Vault](./images/okv_2504_003.png "Make an RMAN backup of an encrypted tablespace:")
 
 ## Lab 4: Migrate to OKV in 5 easy steps:
-#### Task 1: Prepare OKV for the incoming database:
+### Task 1: Prepare OKV for the incoming database:
 
 Display random password; go to OKV GUI, KVEPADMIN login with random one-time password and replace with self-defined permanent password; log in with new password; KVRESTADMIN is not needed in this demo, skip it.
 
-#### Task 2: Download the OKV client software for this endpoint:
+### Task 2: Download the OKV client software for this endpoint:
 
     ![Key Vault](./images/okv_2504_004.png "Create endpoint in OKV GUI:")
 
-#### Task 3: Deploy the OKV client software:
+### Task 3: Deploy the OKV client software:
 
     ![Key Vault](./images/okv_2504_005.png "Create wallet in OKV GUI:")
 
-#### Task 4: Prepare the database for the migration to Oracle Key Vault:
+### Task 4: Prepare the database for the migration to Oracle Key Vault:
 
     ![Key Vault](./images/okv_2504_006.png "Make the wallet the 'default wallet' of the endpoint:")
 
-#### Task 5: Migrate the database to use Oracle Key Vault for centralized key management:
+### Task 5: Migrate the database to use Oracle Key Vault for centralized key management:
 
     ![Key Vault](./images/okv_2504_006.png "Grab Token from GUI:")
 
