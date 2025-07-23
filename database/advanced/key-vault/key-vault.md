@@ -65,7 +65,7 @@ This lab assumes you have:
 |xx        | Bring your own key                                | 2 minutes    |                                                                            |</if>
 
 ## Lab 3: Review a typical TDE environment
-## Task 1: Review TDE setup in an encrypted database
+Task 1: Review TDE setup in an encrypted database
 
 An ancrypted database has been prepared for you:
 
@@ -110,7 +110,7 @@ An ancrypted database has been prepared for you:
 
     ![Key Vault](./images/okv_xxxxxxxxx.png "See the TDE master encryption in the TDE wallet:")
 
-## Task 2: Drop an encrypted tablespace for 'True Migration' Lab (Backup has been taken)
+Task 2: Drop an encrypted tablespace for 'True Migration' Lab (Backup has been taken)
 
 1. Select from table; delete tablespace; select from table (fails)
     ````
