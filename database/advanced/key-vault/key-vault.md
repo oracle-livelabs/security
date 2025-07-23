@@ -5,7 +5,7 @@ This workshop guides you through the process of migrating an encrypted Oracle da
 
 *Estimated Lab Time:* 60 minutes
 
-*Version tested in this lab:* Oracle OKV 21.11 and DBEE 19.25
+*Version tested in this lab:* Oracle OKV 21.11 and DBEE 19.28
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
@@ -65,7 +65,7 @@ This lab assumes you have:
 |xx        | Bring your own key                                | 2 minutes    |                                                                            |</if>
 
 ## Lab 3: Review a typical TDE environment
-Task 1: Review TDE setup in an encrypted database
+### Task 1: Review TDE setup in an encrypted database
 
 An ancrypted database has been prepared for you:
 
@@ -110,7 +110,7 @@ An ancrypted database has been prepared for you:
 
     ![Key Vault](./images/okv_xxxxxxxxx.png "See the TDE master encryption in the TDE wallet:")
 
-Task 2: Drop an encrypted tablespace for 'True Migration' Lab (Backup has been taken)
+### Task 2: Drop an encrypted tablespace for 'True Migration' Lab (Backup has been taken)
 
 1. Select from table; delete tablespace; select from table (fails)
     ````
@@ -120,7 +120,7 @@ Task 2: Drop an encrypted tablespace for 'True Migration' Lab (Backup has been t
     ![Key Vault](./images/okv_2504_003.png "Make an RMAN backup of an encrypted tablespace:")
 
 ## Lab 4: Migrate to OKV in 5 easy steps:
-Task 1: Prepare OKV for the incoming database:
+### Task 1: Prepare OKV for the incoming database:
 
 0. Display random password; go to OKV GUI, KVEPADMIN login with random one-time password and replace with self-defined permanent password; log in with new password; KVRESTADMIN is not needed in this demo, skip it.
 
