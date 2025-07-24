@@ -117,20 +117,26 @@ An ancrypted database has been prepared for you:
     <copy>./04_xxxxxxxxxxxxxxxxxx.sh</copy>
     ````
 
-    ![Key Vault](./images/okv_2504_003.png "Make an RMAN backup of an encrypted tablespace:")
+    ![Key Vault](./images/.png "Make an RMAN backup of an encrypted tablespace:")
 
-## Lab 4: Migrate to OKV in 5 easy steps:
-### Task 1: Prepare OKV for the incoming database:
+## Lab 4: Migrate to OKV in 5 easy steps
+### Task 1: Prepare OKV for the incoming database
 
-Display random password; go to OKV GUI, KVEPADMIN login with random one-time password and replace with self-defined permanent password; log in with new password; KVRESTADMIN is not needed in this demo, skip it.
+1. Click on the "Endpoints" tab:
 
-### Task 2: Download the OKV client software for this endpoint:
+     ![Key Vault](./images/001-ep-tab.png "Click on the 'Endpoints' tab.")
 
-    ![Key Vault](./images/okv_2504_004.png "Create endpoint in OKV GUI:")
+2. Click the "Add" button to add an endpoint for your LiveLabs database:
 
-### Task 3: Deploy the OKV client software:
+    ![Key Vault](./images/002-ep.png "Click the 'Add' button to add an endpoint in OKV for your LiveLabs database")
 
-    ![Key Vault](./images/okv_2504_005.png "Create wallet in OKV GUI:")
+3. Fill in the details of your endpoint and click the "Register" button:
+
+    ![Key Vault](./images/004-add-ep-details.png "Fill in the details of your endpoint: Endpoint Name is 'LIVELABS_DB_EP'; Type is 'Oracle Database'; OS Type is 'Linux'; click 'Register'")
+
+4. OKV will take you back to the 'Endpoint Details' page; Scroll down and enter the name of the default wallet into the text field; click 'Save'. That will create the default wallet for this endpoint:
+
+    ![Key Vault](./images/005-add-default-wallet.png "Type the name of the Endpoint's wallet ('LIVELAB_DB_WALLET') into the 'Default Wallet' text field; click 'Save'")
 
 ### Task 4: Prepare the database for the migration to Oracle Key Vault:
 
