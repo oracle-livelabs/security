@@ -1,20 +1,20 @@
-# Discover Sensitive Data
+# Discover sensitive data
 
 ## Introduction
 
 Data Discovery helps you find sensitive data in your target databases. You tell Data Discovery what kind of sensitive data to search for, and it inspects the actual data in your target database and its data dictionary, and then returns to you a list of sensitive columns. By default, Data Discovery can search for a wide variety of sensitive data pertaining to identification, biographic, IT, financial, healthcare, employment, and academic information.
 
-Use Oracle Data Safe to discover sensitive data on your target database and then adjust the sensitive data model.
+In this lab, you use Oracle Data Safe to discover sensitive data on your target database and then adjust the sensitive data model.
 
-Estimated Time: 10 minutes
-
+Estimated Lab Time: 15 minutes
 
 ### Objectives
 
 In this lab, you will:
 
 - Discover sensitive data in your target database by using Data Discovery
-- Adjust the sensitive data model
+- Analyze the sensitive data model
+- Add a column to the sensitive data model
 
 
 ### Prerequisites
@@ -22,16 +22,14 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Prepared your environment for this workshop
-- Registered your target database with Oracle Data Safe
+- Access to or prepared an environment for this workshop
+- Access to a registered target database
 
 
 ### Assumptions
 
-- Your data values are most likely different than those shown in the screenshots.
-
-Watch the video below for a quick walk-through of the lab.
-[Discover Sensitive Data](videohub:1_d0fz5ep5)
+- Your data values might be different than those shown in the screenshots.
+- Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs. 
 
 
 ## Task 1: Discover sensitive data in your target database by using Data Discovery
@@ -40,75 +38,97 @@ Watch the video below for a quick walk-through of the lab.
 
 2. In the breadcrumb at the top of the page, click **Data Safe**.
 
-3. On the left under **Security Center**, and click **Data Discovery**.
+3. On the left under **Security center**, and click **Data discovery**.
 
 4. From the **Compartment** drop-down list, select your compartment.
 
-    A Data Discovery overview page is displayed with statistics for the top five target databases in your compartment. Your page is most likely empty because this is the first time you are using Data Discovery in this workshop.
+    The Data discovery page is displayed with statistics for the top five target databases in your compartment. Your page is most likely empty because this is the first time you are using Data Discovery in this workshop.
 
-5. Click **Discover Sensitive Data**.
+5. Click **Discover sensitive data**.
 
-    The **Create Sensitive Data Model** page is displayed.
+    The **Create sensitive data model** wizard is displayed.
 
-6. On the **Provide Basic Information** page, do the following, and then click **Next**.
+6. On the **Provide basic information** page, do the following, and then click **Next**.
 
     - In the **Name** box, enter **SDM1**.
     - Leave the compartment set to your compartment.
     - In the **Description** box, enter **Sensitive Data Model 1**.
     - Select your target database
 
-    ![Provide Basic Information page](images/ocw/provide-basic-information-page.png "Provide Basic Information page")
+    ![Provide basic information](images/provide-basic-information-page.png "Provide basic information")
 
-7. On the **Select Schemas** page, leave **Select specific schemas only** selected. Scroll down and select the **HCM1** schema, and then click **Next**. You might need to click the right arrow button at the bottom of the page to navigate to page 2.
+7. On the **Select schemas** page, wait for the schemas to be refreshed if prompted to do so. Leave **Select specific schemas only** selected. Scroll down and select the **HCM1** schema, and then click **Next**. You might need to click the right arrow button at the bottom of the page to navigate to page 2.
 
-    ![Select Schemas page](images/ocw/select-schemas-page.png "Select Schemas page")
+    ![Select schemas](images/select-schemas-page.png "Select schemas")
 
-8. On the **Select Sensitive Types** page, expand all of the sensitive categories by moving the **Expand All** slider to the right. Scroll down the page and review the sensitive types. Notice that you can select individual sensitive types, sensitive categories, and all sensitive types at one time. At the top of the page, select the **All** check box, and then click **Next**.
+8. On the **Select tables for schema** page, leave **All tables** selected, and click **Next**.
 
-    ![Select Sensitive Types page](images/ocw/select-sensitive-types-page.png "Select Sensitive Types page")
-
-9. On the **Select Discovery Options** page, select **Collect, display and store sample data**, and then click **Create Sensitive Data Model** at the bottom of the page to begin the data discovery process.
-
-    ![Select Discovery Options page page](images/select-discovery-options-page.png "Select Discovery Options page")
-
-10. Wait for the sensitive data model to be created.
-
-    The **Sensitive Data Model Details** page is displayed.
-
-11. Review the information on the **Sensitive Data Model Details** page.
-
-    - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, the selected schema for discovery (HCM1), and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
-    - You can view the selected sensitive types for discovery (click **View Details**).
-    - You can view the work request information (click **View Details**).
-    - The pie chart compares the number of sensitive values per sensitive category and sensitive type.
-    - The **Sensitive Columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
-
-    ![Sensitive Data Model Details page top](images/ocw/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
-    ![Sensitive Data Model Details page bottom](images/ocw/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")
-
-## Task 2: Adjust the sensitive data model
-
-Remove the `DATE_OF_HIRE` column from the sensitive data model.
-
-1. In the **Sensitive Columns** section, click **Remove Columns**. 
-
-    The **Remove Columns** panel is displayed.
+    ![Select tables for schema page](images/select-tables-for-selected-schemas.png "Select tables for schema page")
     
-2. In the **COLUMN NAME** box, enter **DATE**, and then select **DATE\_OF\_HIRE**.
+9. On the  **Select sensitive types** page, review the list of common sensitive types and then scroll down and review all available sensitive types. Select all sensitive types, and click **Next**.
 
-3. Click **Search**.
 
-4. Select the checkbox for the **DATE\_OF\_HIRE** column in the **JOB_HISTORY** table, and then click **REMOVE COLUMNS**.
+10. On the **Select discovery options** page, select **Collect, display and store sample data**, and then click **Create sensitive data model** at the bottom of the page to begin the data discovery process.
 
-    ![Remove Columns panel](images/ocw/remove-columns-panel.png "Remove Columns panel")
+    ![Select discovery options page](images/select-discovery-options-page.png "Select discovery options")
 
+11. Wait for the sensitive data model to be created. The **Sensitive data model details** page is displayed.
+
+
+## Task 2: Analyze the sensitive data model
+
+1. Review the information about the sensitive data model.
+
+    - The **Sensitive data model information** tab lists general information about your sensitive data model, the target database, sensitive data information, and sensitive data counts.
+    - You can view the selected sensitive types for discovery, sensitive schemas discovered, sensitive types discovered, and work request information by clicking the respective **View details** link.
+    - The bar chart shows you the number of sensitive columns found for the top five sensitive types.
+    - The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat view** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, sample data (if you chose to retrieve sample data and if it exists), and audit records. Review the sample data to get an idea of what it looks like.
+
+    ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
+    ![Sensitive Data Model Details page bottom](images/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")
+
+2. Under **Sensitive columns**, from the first drop-down list, select **Sensitive type view** to sort the sensitive columns by sensitive type. By default, all items are expanded in the view. You can collapse the items by moving the **Expand all** slider to the left.
+
+    ![Sensitive type view of sensitive data model](images/sensitive-type-view-sdm1.png "Sensitive type view of sensitive data model")
+
+3. From the same drop-down list, select **Schema view** to sort the sensitive columns by schema and table name.
+
+    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the **Parent column**. For example, `EMPLOYEE_ID` in the `EMP_EXTENDED` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
+
+    ![Schema view of sensitive data model](images/schema-view-sdm1.png "Schema view of sensitive data model")
+
+
+## Task 3: Add a column to the sensitive data model
+
+Add `COUNTRY_ABBREV` to the sensitive data model.
+
+1. Click **Add columns**.
+
+2. From the **Schema name** drop-down list, select **HCM1**.
+
+3. From the **Table name** drop-down list, select **LOCATIONS**.
+
+4. From the **Column name** drop-down list, select **COUNTRY_ABBREV**.
+
+5. Click **Search**.
+
+6. Select the check box for the `COUNTRY_ABBREV` column.
+
+7. From the **Sensitive type** drop-down list, under **Biographic Information > Address**, select **Country**. *Be sure to select Country, not County.*
+
+8. Click **Add columns**.
+
+   ![Add columns page](images/add-columns-page.png "Add columns page")
+
+9. Verify that `COUNTRY_ABBREV` from the `LOCATIONS` table is added to your sensitive data model.
 
 You may now **proceed to the next lab**.
 
+
 ## Learn More
 
-- [Data Discovery](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-discovery.html)
+- [Data Discovery Overview](https://docs.oracle.com/en/cloud/paas/data-safe/udscs/data-discovery-overview.html)
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 22, 2023
+- **Last Updated By/Date** - Jody Glover, June 25, 2025

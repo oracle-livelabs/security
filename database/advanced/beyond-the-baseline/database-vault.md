@@ -37,7 +37,7 @@ Database Vault must be configured and enabled in the container database before i
 Database Vault requires a database restart to be enabled. The downtime can be minimized by performing a RAC-rolling enablement.  For more information on Oracle Database Vault, please and review the [*Database Vault Administrator's Guide*](https://docs.oracle.com/en/database/oracle/oracle-database/23/dvadm/index.html). and the [*Database Vault Getting Started Guide*](https://docs.oracle.com/en/database/oracle/oracle-database/23/dvgsg/overview.html).
 
 
-**Note:** If you see an error saying `Can't update Chrome` just press the black **X** button. Do not attempt to reinstall Chrome. 
+**Note:** If you see an error saying *Can't update Chrome* just press the black **X** button. Do not attempt to reinstall Chrome. 
 
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle* by clicking the top-left button named **Activities** and then clicking the terminal icon that is the third item down and looks like a black and grey command prompt. 
@@ -79,11 +79,9 @@ Database Vault requires a database restart to be enabled. The downtime can be mi
 
 Next, you are going to view the data through the application while preventing DBAs from viewing data from sqlplus and other utilities. The simplest way to protect database objects is to create a Database Vault realm and only authorize specific users to access the realm. In this task, you will only authorize the application owner to use its privileges to view or modify database objects related to the application. 
 
-1. Open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
+1. The web browser window should be open to *`http://dbsec-lab:8080/hr_prod_pdb1`*, which is how you will access your Glassfish App. 
     
     ![Open Glassfish Application](./images/dv-open-glassfish-app-01.png "Open Glassfish HR Application")
-
-
 
     **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
@@ -101,7 +99,7 @@ Next, you are going to view the data through the application while preventing DB
 
     ![DB Vault](./images/dv-030.png "HR App - Login")
 
-    **Note:** If you receive the `Change your password` box, please click **OK** and ignore it. This is a sandbox environment and the password is intentionally weak for ease of use. This is not a real application and the environment should be destroyed upon completion of this lab. 
+    **Note:** If you receive the *Change your password* box, please click **OK** and ignore it. This is a sandbox environment and the password is intentionally weak for ease of use. This is not a real application and the environment should be destroyed upon completion of this lab. 
     
     ![DB Vault](./images/dv-ignore-change-pwd.png "Ignore the change password request from Google Chrome.")
 
@@ -212,8 +210,8 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
         ![DB Vault](./images/dv-015a.png "Query as DBA SAL")
 
     **Note**:
-      - The query results are the same for both the PDB user (DBA_DEBRA) and a container user (C##SEC_DBA_SAL).
-      - The common user `C##SEC_DBA_SAL` has access to data in **pdb2**, just as the pdb admin (DBA_DEBRA) does.
+      - The query results are the same for both the PDB user (`DBA_DEBRA`) and a container user (C##SEC_DBA_SAL).
+      - The common user `C##SEC_DBA_SAL` has access to data in **pdb2**, just as the pdb admin (`DBA_DEBRA`) does.
 
 3. Enable Database Vault 19c **Operations Control**. Notice this does not require a restart of the Oracle Database. 
 
@@ -229,7 +227,7 @@ Database Vault allows a PDB DBA to access PDB data but prevents a container DBA 
 
     ![DB Vault](./images/dv-016b.png "Check the Database Vault status")
 
-4. Now, re-run the queries as both **DBA_DEBRA** and **C##SEC_DBA_SAL** to demonstrate that **Debra** can access the data because she is a local pluggable database administrator but the container database administrator **Sal** cannot.
+4. Now, re-run the queries as both `DBA_DEBRA` and `C##SEC_DBA_SAL` to demonstrate that **Debra** can access the data because she is a local pluggable database administrator but the container database administrator **Sal** cannot.
 
    - As `DBA_DEBRA` you will notice the realm prevents her from accessing data in **pdb1** but she can query the data in **pdb2**.
 
