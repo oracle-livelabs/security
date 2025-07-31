@@ -29,16 +29,16 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
-| 1| Installing DBSAT | <5 minutes |
-| 2| Collect data | 5 minutes |
+| 1| Installing DBSAT | <3 minutes |
+| 2| Collect data | 3 minutes |
 | 3| Generate the report | 5 minutes |
-| 4| Analyze the Report  | <5 minutes |
-| 5| Analyze the Report - Details | 15 minutes |
-| 6| Discover Sensitive Data | 15 minutes |
+| 4| Analyze the Report  | <3 minutes |
+| 5| Analyze the Report - Details | 10 minutes |
+| 6| Discover Sensitive Data | <5 minutes |
 | 7| Analyze the Discoverer Report - Summary | 5 minutes |
-| 8| Advanced Discoverer - Getting into dbsat.config Discovery parameters | 15 minutes |
-|9| Advanced Discoverer - Exploring Pattern files, Sensitive Types, and Categories | 10 minutes |
-|10| Advanced Discoverer - Pattern Files | 15 minutes |
+| 8| Advanced Discoverer - Getting into dbsat.config Discovery parameters | 10 minutes |
+|9| Advanced Discoverer -  Prepare sample data| 3 minutes |
+|10| Advanced Discoverer - Exploring Pattern files, Sensitive Types, and Categories | <15 minutes |
 
 ## Task 1: Installing DBSAT
 
@@ -129,7 +129,6 @@ This lab assumes you have:
     ![DBSAT](./images/dbsat-003.png "Login to DBSAT")
 
     **Note**:
-    - You can safely ignore any existing warnings.
     - The `DBSAT_ADMIN` user is preconfigured in this database. If you need to create the `DBSAT_ADMIN` user in a different environment, refer to the product documentation for the required minimum privileges and roles.
     
 6. A file named **pdbhol.dbsat** is created in the directory. You don't need to uncompress this file. DBSAT Reporter can accept either the JSON file (if –n was used) or the <code>.dbsat</code> compressed file.
@@ -160,7 +159,7 @@ This lab assumes you have:
 
     ![DBSAT](./images/dbsat-004.png "User for one password")
 
-3. You will have the results of the analysis in a password-protected file named `pdbhol_report.dbsat`.
+3. You will have the results of the analysis in an encrypted file named `pdbhol_report.dbsat`.
 
 4. Unpack the file to view the reports.
 
@@ -182,7 +181,7 @@ This lab assumes you have:
 
     ![DBSAT](./images/dbsat-006.png "Copy the html file to the glassfish server directory")
 
-6. In a new web browser tab, open the URL provided in the output, replacing the placeholder with your DBSecLab Public IP address.  
+6. In a new web browser tab, **open the URL provided in the output**, replacing the placeholder with your DBSecLab Public IP address.  
 Alternatively, you can use the link below, where *`dbsec-lab`* refers to **your DBSecLab domain name for your Private IP address**.
 
     ````
@@ -396,7 +395,7 @@ Identifying sensitive data within your Oracle Database is essential for safeguar
 
 In this exercise, you will learn how to use the DBSAT Discoverer. The DBSAT Discoverer connects to the database and collects and analysis data based on the settings specified in the configuration and sensitive pattern files.
 
-1. Navigate to the `scripts` directory.
+1. Navigate to the `conf` directory.
 
     ````
     <copy>cd $DBSEC_LABS/dbsat/dbsat40/Discover/conf</copy>
@@ -506,23 +505,24 @@ Take a few minutes to scroll through the HTML report. Use the navigation arrows 
     - The **Discovery Parameters** table lists the parameters currently in use from the `dbsat.config` file:
 
         - **Schemas Scope = ALL**
-            - Specifies whether the search includes all schemas (excluding `SYS`, `SYSTEM`, and other Oracle-maintained schemas) or a specified set of comma-separated schemas.
-            - By default, `ALL` targets all applicable schemas.
+            - Determines which schemas are included in the search.
+            - `ALL` (default) scans all user schemas except Oracle-maintained schemas (SYS, SYSTEM, etc.).
+            - You can also specify a comma-separated list of schemas to target only those.
 
         - **Exclusion List File = NONE**
-            - Allows you to exclude specific tables, schemas, or columns from the results:
+            - Lets you specify a file containing tables, schemas, or columns to exclude from the results:
                 - Entire schema: `schemaD`
                 - Specific table: `schemaA.tableA`
                 - Specific columns: `schemaA.tableB.columnA ; schemaB.tableA.columnC`
 
         - **Minimum Rows Count = [1 (default)]**
-            - Excludes tables with fewer than the specified number of rows from the results.
-            - This focuses the report on more significant tables by filtering out smaller, less relevant tables.
+            - Excludes tables with fewer rows than the specified minimum from the results.
+            - Helps focus the report on significant tables by filtering out smaller, less relevant ones.
 
         - **Pattern File(s) = [sensitive.ini (default), other.ini, ...]**
-            - By default, `sensitive.ini` is used, containing English-based patterns to identify sensitive columns and comments.
+            - Default: sensitive.ini uses English-based patterns to identify sensitive data.
             - You can specify additional or alternative pattern files as needed.
-            - To search for sensitive data in other languages, contact your Oracle Account Manager. Oracle can provide sample pattern files in various languages to help you create your own.
+            - Need other languages? Contact your Oracle Account Manager for sample pattern files in various languages to help you create your own.
 
         > **Note:** Pattern files must be located in the same directory as the `dbsat.config` file.
 
@@ -549,6 +549,8 @@ Take a few minutes to scroll through the HTML report. Use the navigation arrows 
 
 
 4. Next, go to the **Schema View** section. The **Object Summary** displays the list of schemas, object names, object types (Table/View), total columns, sensitive columns, number of rows, and sensitive categories.
+
+    > **Tip**: Use the bottom right arrows to navigate to other sections.
 
     ![DBSAT](./images/dbsat-025.png "Schema View section")
 
@@ -620,7 +622,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
 
 8. Save the file by typing "*`:wq![Enter]`*"
 
-9. Open the dbsat.config file and set the parameter *`EXCLUSION_LIST_FILE = exclude.ini`*
+9. Open the `dbsat.config` file and set the parameter *`EXCLUSION_LIST_FILE = exclude.ini`*
 
     ````
     <copy>vi Discover/conf/dbsat.config</copy>
@@ -670,7 +672,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
 
     **Note**: This script will copy the html report to the glassfish webserver to make it easier for you to see the report
 
-14. On a new web browser tab, copy-paste the URL provided for the "**v2**" discoverer html report (**`pdb1_dbsat_v2_discover.html`**) as the output with your DBSecLab Public IP, or use the link below where *`dbsec-lab`* is **your own DBSecLab domain name for your Private IP address**
+14. On a new web browser tab, **copy-paste the URL provided** for the "**v2**" discoverer html report (**`pdb1_dbsat_v2_discover.html`**) as the output with your DBSecLab Public IP, or use the link below where *`dbsec-lab`* is **your own DBSecLab domain name for your Private IP address**
 
     ````
     <copy>http://dbsec-lab:8080/hr_prod_pdb1/dbsat/pdbhol_sdd_v2_discover.html</copy>
@@ -738,7 +740,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
 
     ![DBSAT](./images/dbsat-036.png "Make the file available using Glassfish")
 
-20. On a new web browser tab, copy-paste the URL provided for the "**v3**" discoverer html report (**`pdbhol_sdd_v3_discover.html`**) as the output with your DBSecLab Public IP, or use the link below where *`dbsec-lab`* is **your own DBSecLab domain name for your Private IP address**
+20. On a new web browser tab, **copy-paste the URL provided** for the "**v3**" discoverer html report (**`pdbhol_sdd_v3_discover.html`**) as the output with your DBSecLab Public IP, or use the link below where *`dbsec-lab`* is **your own DBSecLab domain name for your Private IP address**
 
     ````
     <copy>http://dbsec-lab:8080/hr_prod_pdb1/dbsat/pdbol_sdd_v3_discover.html</copy>
@@ -752,7 +754,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
 
     ![DBSAT](./images/dbsat-037.png "DBSAT report")
 
-## Task 9: Advanced Discoverer - Exploring Pattern files, Sensitive Types, and Categories
+## Task 9: Advanced Discoverer - Prepare sample data
 
 1. Let's start by adding some sample data for the next exercise. You’ll create the `FINACME` schema and insert sample **Company Financial Information**.
 
@@ -815,7 +817,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
 
     ![DBSAT](./images/dbsat-038.png "Insert some records")
 
-5. Let’s gather table statistics
+5. Gather table statistics. DBSAT relies on existing table statistics for row counts; it does not count table rows to avoid full table scans.
 
     ````
     <copy>exec dbms_stats.gather_table_stats('FINACME','COMPANY_DATA');</copy>
@@ -846,7 +848,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
 
 8. You are all set now!
 
-## Task 10: Advanced Discoverer - Pattern Files
+## Task 10: Advanced Discoverer - Exploring Pattern files, Sensitive Types, and Categories
 
 DBSAT uses pattern files and the defined regular expressions within them to identify sensitive data.
 
@@ -880,11 +882,11 @@ DBSAT uses pattern files and the defined regular expressions within them to iden
 4. DBSAT will parse this pattern file and search for matches of the defined regexp patterns
     - In this example, it will search **column names** that match the regex "`(^|[_-])SSN#?($|[_-])|^SS#?$|(^|[_-])(SSN|SOC.*SEC.*).?(ID|NO|NUMBERS?|NUM|NBR|#)($|[_-])|^SOCIAL.?SEC(URITY)?#?$`"
     - **column comments** that match "`\bSS#\b|\bSSN#?\b|SOCIAL SECURITY (ID|NUM|\bNO\b|NBR|#)`"
-    - and **if a match is found** it will report a finding in the "`Sensitive Category PII – NIDs (National Identifiers)`"
+    - and **if a match is found** it will report a finding in the "`Identification Info - National IDs`"
 
 5. The `SENSITIVE_CATEGORY` parameter specifies the type/class of sensitive data
 
-    **Note**: This parameter needs to be defined in the dbsat.config file along with the risk level for that category
+    **Note**: This parameter needs to be defined in the `dbsat.config` file along with the risk level for that category
 
 6. Exit vi by typing "*`:q[Enter]`*."
 
@@ -896,29 +898,30 @@ DBSAT uses pattern files and the defined regular expressions within them to iden
 
     ![DBSAT](./images/dbsat-045.png "View the DBSAT config file")
 
-7. Scroll to the bottom of the file. You’ll see that DBSAT includes **19 Sensitive Categories** out-of-the-box
+7. Scroll to the bottom of the file. You’ll see that DBSAT includes **20 Sensitive Categories** out-of-the-box
 
     |#| Sensitive Category                          | Description                                                   |
     |--|-----------------------------------------   |-------------------------------------------------------------  |
     |01| Identification Info - National IDs         | PII – National Identifiers                                    |
-    |02| Identification Info - Personal IDs        | PII - Personal Identifiers (Names, Phone, Email)              |
-    |03| Biographic Info - Address                  | Address related information                                   |
-    |04| Biographic Info - Family Data             | Names (Father, Mother, Child, Spouse, etc.)                   |
-    |05| Biographic Info - Extended PII            | Age, DOB, Place of Birth , Citizenship, etc.                  |
-    |06| Biographic Info - Restricted Data         | Photo, Fingerprint, Gender, Race, Religion                    |
-    |07| IT Info - User IT Data                        | User, Password, Cookie, etc.                                  |
-    |08| IT Info - Device Data                      | Hostname, IP, MAC, IMEI                                       |
-    |09| Financial Info - Card Data                 | PCI DSS related data. Credit/Debit Card information           |
-    |10| Financial Info - Bank Data                 | Bank account related data                                     |
-    |11| Health Info - Insurance Data              | Health Insurance Number and Provider                          |
-    |12| Health Info - Provider Data               | Heatlh Care Provider, DEA Number, NPI                         |
-    |13| Health Info - Medical Data                 | Height, Weight, Blood type, Disability, Smoker, ICD Code, etc.|
-    |14| Job Info - Employee Data                   | Employment-related data                                       |
-    |15| Job Info - Org Data                    | Employee Organization Data                                    |
-    |16| Job Info - Compensation Data               | Income, Compensation, Stocks                                  |
-    |17| Academic Info - Student Data               | Student ID, Academic Degree, Field of Study                   |
-    |18| Academic Info - Institution Data           | College/School Address and Name, Admission Date, Grad Date    |
-    |19| Academic Info - Performance Data          | Grades, Attendance and Disciplinary Records, etc.              |
+    |02| Identification Info - Personal IDs        | PII - Personal Identifiers (Passport number, Tax ID, Driver License, etc.)              |
+    |03| Identification Info - Public IDs        | PII - Public Identifiers (Names, Phone, Email, etc.)              |
+    |04| Biographic Info - Address                  | Address related information                                   |
+    |05| Biographic Info - Family Data             | Names (Father, Mother, Child, Spouse, etc.)                   |
+    |06| Biographic Info - Extended PII            | Age, DOB, Place of Birth , Citizenship, etc.                  |
+    |07| Biographic Info - Restricted Data         | Photo, Fingerprint, Gender, Race, Religion                    |
+    |08| IT Info - User IT Data                        | User, Password, Cookie, etc.                                  |
+    |09| IT Info - Device Data                      | Hostname, IP, MAC, IMEI                                       |
+    |10| Financial Info - Card Data                 | PCI DSS related data. Credit/Debit Card information           |
+    |11| Financial Info - Bank Data                 | Bank account related data                                     |
+    |12| Health Info - Insurance Data              | Health Insurance Number and Provider                          |
+    |13| Health Info - Provider Data               | Heatlh Care Provider, DEA Number, NPI                         |
+    |14| Health Info - Medical Data                 | Height, Weight, Blood type, Disability, Smoker, ICD Code, etc.|
+    |15| Job Info - Employee Data                   | Employment-related data                                       |
+    |16| Job Info - Org Data                    | Employee Organization Data                                    |
+    |17| Job Info - Compensation Data               | Income, Compensation, Stocks                                  |
+    |18| Academic Info - Student Data               | Student ID, Academic Degree, Field of Study                   |
+    |19| Academic Info - Institution Data           | College/School Address and Name, Admission Date, Grad Date    |
+    |20| Academic Info - Performance Data          | Grades, Attendance and Disciplinary Records, etc.              |
 
     **Note**:
     - You can customize or add your own categories and risk levels.
