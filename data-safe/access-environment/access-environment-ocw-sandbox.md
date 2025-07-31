@@ -74,14 +74,16 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
     ![Target databases page in OCI](images/target-databases-page-oci.png "Target databases page in OCI")
 
-
-## Task 3 (Optional): Explore Security Center
-
-1. In the breadcrumb at the top of the page, click **Data Safe**.
+4. In the breadcrumb at the top of the page, click **Data Safe**.
 
     The **Overview** page is displayed.
 
-2. Under **Security center** on the left, click **Dashboard** and review the dashboard. Scroll down to view the security controls and feature metrics (charts). Make sure your compartment is selected under **List scope**. From the **Target databases** drop-down list, select your target database so that the data in the dashboard pertains to your target database only.
+
+## Task 3 (Optional): Explore Security Center
+
+1. Under **Security center** on the left, click **Dashboard**.
+
+2. Review the dashboard. Scroll down to view the security controls and feature metrics (charts). Make sure your compartment is selected under **List scope**. From the **Target databases** drop-down list, select your target database so that the data in the dashboard pertains to your target database only.
 
     - In Security center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, SQL Firewall, and Alerts.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security assessment**, **User assessment**, **Feature usage**, and **Operations summary** charts in the dashboard already have data.
@@ -136,4 +138,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 22, 2024
+- **Last Updated By/Date** - Jody Glover, June 25, 2025
