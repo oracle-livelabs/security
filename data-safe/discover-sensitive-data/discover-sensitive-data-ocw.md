@@ -66,6 +66,7 @@ This lab assumes you have:
     
 9. On the  **Select sensitive types** page, review the list of common sensitive types and then scroll down and review all available sensitive types. Select all sensitive types, and click **Next**.
 
+    ![Select sensitive types page](images/select-all-sensitive-types.png "Select sensitive types page")
 
 10. On the **Select discovery options** page, select **Collect, display and store sample data**, and then click **Create sensitive data model** at the bottom of the page to begin the data discovery process.
 
@@ -79,7 +80,7 @@ This lab assumes you have:
     - The **Sensitive data model information** tab lists general information about your sensitive data model, the target database, sensitive data information, and sensitive data counts.
     - You can view the selected sensitive types for discovery, sensitive schemas discovered, sensitive types discovered, and work request information by clicking the respective **View details** link.
     - The bar chart shows you the number of sensitive columns found for the top five sensitive types.
-    - The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat view** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, sample data (if you chose to retrieve sample data and if it exists), and audit records. Review the sample data to get an idea of what it looks like.
+    - The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat view** format. You can change it to **Sensitive type view** or **Schema view**. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, sample data (if you chose to retrieve sample data and if it exists), and audit records. Review the sample data to get an idea of what it looks like.
 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
     ![Sensitive Data Model Details page bottom](images/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")

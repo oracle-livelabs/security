@@ -267,35 +267,28 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Task 9: Validate the masked data in your target database
 
-1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. The `SELECT` statement against the `EMPLOYEES` table should be displayed on the worksheet.
+1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. Clear the worksheet.
 
-2. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query.
+2. Drag the `EMPLOYEES` table to the worksheet and apply the **Select** insertion type.
 
-    Clicking the **Run Statement** button (instead of the **Run Script** button) will show the results on the **Query Results** tab instead of the **Script Output** tab. This will allow you to do a before and after comparison of the masked data.
+3. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query.
 
-3. Review the masked data on the **Query Result** tab at the bottom of the page. 
+4. Review the masked data on the **Query Result** tab at the bottom of the page. 
 
     - You can resize the panel to view more data and you can scroll down and to the right.
     - Find the `SALARY` column and verify that the values are all 50000.
 
     ![Masked EMPLOYEE data](images/masked-query-results.png "Masked EMPLOYEE data")
 
-4. Click the **Script Output** tab to view the original unmasked data.
-
 5. Clear the worksheet.
 
-6. Drag the `LOCATIONS` table to the worksheet.
+6. Drag the `LOCATIONS` table to the worksheet and applyt the **Select** insertion type.
 
-7. When prompted to choose an insertion type, click **Select**, and then click **Apply**.
+7. On the toolbar, click the **Run Statement** button.
 
-8. On the toolbar, click the **Run Script** button.
-
-    ![Run Script button](images/run-script.png "Run Script button")
-
-9. Examine the data on the **Script Output** tab. The data for each `LOCATION_ID` has changed. `STREET_ADDRESS`, `POSTAL_CODE`, `CITY`, `STATE_PROVINCE`, AND `COUNTRY_ABBREV` are shuffled as an entire group to maintain the accuracy of each location. Notice that the `COUNTRY_ID`, which has not been masked and is not included in the screenshot below, is different than the `COUNTRY_ABBREV`.
+8. Examine the data. The data for each `LOCATION_ID` has changed. `STREET_ADDRESS`, `POSTAL_CODE`, `CITY`, `STATE_PROVINCE`, AND `COUNTRY_ABBREV` are shuffled as an entire group to maintain the accuracy of each location. Notice that the `COUNTRY_ID`, which has not been masked and is not included in the screenshot below, is different than the `COUNTRY_ABBREV`.
 
     ![Addresses shuffled](images/addresses-shuffled.png "Addresses shuffled")
-
 
 
 ## Learn More
