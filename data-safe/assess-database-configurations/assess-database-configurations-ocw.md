@@ -58,13 +58,7 @@ This lab assumes you have:
 
     ![Latest security assessment assessment summary tab](images/latest-sa-assessment-summary-tab.png "Latest security assessment assessment summary tab")
 
-6. To view details about the security assessment itself, click the **Assessment information** tab.
-
-    - Details include assessment name, OCID, compartment to which the assessment was saved, target database name, target database version, assessment date and time, schedule, name of the baseline assessment (if one is set), and whether the assessment complies with the baseline (Yes, No, or No baseline set).
-
-    ![Latest security assessment assessment information tab](images/latest-sa-assessment-information-tab2.png "Latest security assessment assessment information tab")
-
-7. Scroll down and view the **Assessment details** section.
+6. Scroll down and view the **Assessment details** section.
 
     - This section shows you all the findings for each risk category.
     - Risks are color-coded to help you easily identify categories that have high risk findings (red).
@@ -72,11 +66,11 @@ This lab assumes you have:
 
     ![Latest Security Assessment Assessment details section](images/latest-sa-assessment-details-section.png "Latest Security Assessment Assessment details section")
 
-8. Under **Filters by risks** on the left, notice that you can select the risk levels that you want displayed. Also notice on the left that you can filter by references.
+7. Under **Filters by risks** on the left, notice that you can select the risk levels that you want displayed. Also notice on the left that you can filter by references.
 
     ![Security Assessment filters](images/sa-filters.png "Security Assessment filters")
 
-9. On the right, expand categories and review the findings.
+8. On the right, expand categories and review the findings.
 
     - Each finding shows you the status (risk level), a summary of the finding, details about the finding, remarks to help you to mitigate the risk, and references - whether a finding is recommended by the Center for Internet Security (**CIS**), European Union's General Data Protection Regulation (**EU GDPR**), Security Technical Implementation Guide (**DISA STIG**), and/or **Oracle best practices**. These references make it easy for you to identify the recommended security controls.
     - In the example below, the **Transparent Data Encryption** finding has three references: **Oracle Best Practices**, **DISA STIG**, and **GDPR**.
@@ -86,7 +80,7 @@ This lab assumes you have:
 
 ## Task 2: Set the latest assessment as the baseline assessment
 
-A baseline assessment shows you data for all your target databases in a selected compartment at a given point in time. However, because we are only dealing with one target database in your compartment, the baseline assessment shows data for only one target database.
+A baseline assessment shows you data for all your target databases in a selected compartment at a given point in time. However, because we are only dealing with one target database in your compartment, the baseline assessment shows data for only one target database. Let’s assume that we are okay with the current configuration and we want to set it as our baseline. New assessments are then automatically compared to the baseline.
 
 1. At the top of the page, click **Set as baseline**.
 
@@ -103,7 +97,7 @@ A baseline assessment shows you data for all your target databases in a selected
 
 ## Task 3: Create a risk on the target database
 
-In this task, you issue a `GRANT` command on your target database so that later, when you refresh the latest security assessment, you can compare assessments.
+In this task, you manually create a new configuration risk on your database by issuing a `GRANT` command. Later, when you refresh the latest security assessment, you can compare assessments.
 
 1. Access the SQL worksheet in Database Actions. If your session has expired, sign in again as the `ADMIN` user.
 
@@ -148,12 +142,13 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
 ## Task 5: Compare your assessment with the baseline
 
-1. With the latest security assessment displayed, under **Resources** on the left, click **Compare with baseline**. Oracle Data Safe automatically begins processing the comparison. 
+1. With the latest security assessment displayed, under **Resources** on the left, click **Compare with baseline**. 
+
+2. From the **Baseline** drop-down list, select your baseline. Oracle Data Safe automatically begins processing the comparison. 
 
     If you navigated away from the latest security assessment, you can return to it by doing the following: Click **Security assessment** in the breadcrumb. Click the **Target summary** tab. Click **View report** for your target database.
 
-
-2. When the comparison operation is completed, scroll down the page to the **Comparison with baseline** section and review the information.
+3. When the comparison operation is completed, scroll down the page to the **Comparison with baseline** section and review the information.
 
     - Review the number of findings per risk category for each risk level. Categories include **User accounts**, **Privileges and roles**, **Authorization control**, **Data encryption**, **Fine-grained access control**, **Auditing**, and **Database configuration**.
     - You can identify where the changes have occurred on your target database by viewing cells that contain the word **Modified**. The number represents the total count of new, remediated, and modified risks on the target database.
@@ -174,4 +169,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, June 25, 2025
+* **Last Updated By/Date** - Jody Glover, August 1, 2025

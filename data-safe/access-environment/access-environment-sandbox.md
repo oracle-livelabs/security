@@ -63,7 +63,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 3. Under **List scope**, browse to and select your compartment. Your registered target database is listed on the right.
 
     - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
-    - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
+    - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. Cloud target databases are delisted after one day. Billable target databases are delisted after 45 days.
 
     ![Target databases page in OCI](images/target-databases-page-oci.png "Target databases page in OCI")
 
@@ -78,7 +78,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
     - In Security center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, SQL Firewall, and Alerts.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security assessment**, **User assessment**, **Feature usage**, and **Operations summary** charts in the dashboard already have data.
-    - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail with the status **In transition** for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
+    - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
 
     ![Initial Dashboard - security controls](images/dashboard-security-controls.png "Initial Dashboard - security controls")
 
@@ -96,9 +96,6 @@ Database Actions provides a way for you to run SQL commands on your database. Th
 2. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
 
 3. If required, sign in as the `ADMIN` user. 
-
-    - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
-    - If you are using an Oracle-provided environment, enter the database password provided to you.
 
 4. Close any open dialog boxes.
 
@@ -129,4 +126,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 5, 2025
+- **Last Updated By/Date** - Jody Glover, August 1, 2025

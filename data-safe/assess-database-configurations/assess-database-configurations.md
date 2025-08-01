@@ -135,7 +135,7 @@ You can defer or change the risk level of a risk finding. In this task, defer th
 
 ## Task 4: Set the latest assessment as the baseline assessment
 
-A baseline assessment shows you data for all your target databases in a selected compartment at a given point in time. However, because we are only dealing with one target database in your compartment, the baseline assessment shows data for only one target database.
+A baseline assessment shows you data for all your target databases in a selected compartment at a given point in time. However, because we are only dealing with one target database in your compartment, the baseline assessment shows data for only one target database. Let’s assume that we are okay with the current configuration and we want to set it as our baseline. New assessments are then automatically compared to the baseline.
 
 1. At the top of the page, click **Set as baseline**.
 
@@ -152,7 +152,7 @@ A baseline assessment shows you data for all your target databases in a selected
 
 ## Task 5: Create a risk on the target database
 
-In this task, you issue a `GRANT` command on your target database so that later, when you refresh the latest security assessment, you can compare assessments.
+In this task, you manually create a new configuration risk on your database by issuing a `GRANT` command. Later, when you refresh the latest security assessment, you can compare assessments.
 
 1. Access the SQL worksheet in Database Actions. If your session has expired, sign in again as the `ADMIN` user.
 
@@ -197,12 +197,13 @@ In this task, you issue a `GRANT` command on your target database so that later,
 
 ## Task 7: Compare your assessment with the baseline
 
-1. With the latest security assessment displayed, under **Resources** on the left, click **Compare with baseline**. Oracle Data Safe automatically begins processing the comparison. 
+1. With the latest security assessment displayed, under **Resources** on the left, click **Compare with baseline**. 
+
+2. From the **Baseline** drop-down list, select your baseline. Oracle Data Safe automatically begins processing the comparison. 
 
     If you navigated away from the latest security assessment, you can return to it by doing the following: Click **Security assessment** in the breadcrumb. Click the **Target summary** tab. Click **View report** for your target database.
 
-
-2. When the comparison operation is completed, scroll down the page to the **Comparison with baseline** section and review the information.
+3. When the comparison operation is completed, scroll down the page to the **Comparison with baseline** section and review the information.
 
     - Review the number of findings per risk category for each risk level. Categories include **User accounts**, **Privileges and roles**, **Authorization control**, **Data encryption**, **Fine-grained access control**, **Auditing**, and **Database configuration**.
     - You can identify where the changes have occurred on your target database by viewing cells that contain the word **Modified**. The number represents the total count of new, remediated, and modified risks on the target database.
@@ -223,4 +224,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, May 5, 2025
+* **Last Updated By/Date** - Jody Glover, August 1, 2025

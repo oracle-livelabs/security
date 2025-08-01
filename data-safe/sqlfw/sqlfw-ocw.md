@@ -2,7 +2,9 @@
 
 ## Introduction
 
-In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `APP_USER`. This collection is referred to as the *allow-list*. Next, you test that `APP_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
+In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. **Oracle SQL Firewall** is a robust security feature built into the Oracle Database 23ai, designed to provide real-time protection against common database attacks by restricting access to only authorized SQL statements or connections.
+
+You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `APP_USER`. This collection is referred to as the *allow-list*. Next, you test that `APP_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
 
 Estimated Lab Time: 20 minutes
 
@@ -33,7 +35,7 @@ This lab assumes you have:
 
 3. Under **List Scope** on the left, select your compartment.
 
-4. On the **Target summary** tab, click the name of your target database. It should currently show as **Disabled**.
+4. On the **Target summary** tab, click the name of your target database. The SQL Firewall status should currently show as **Disabled**.
 
 5. Click **Refresh**. 
 
@@ -56,7 +58,7 @@ This lab assumes you have:
 
    ![Create and start SQL collection dialog box](images/create-start-sql-collection.png "Create and start SQL Collection dialog box")
 
-5. Wait for status to change to **COLLECTING**.
+5. Wait for the status to change to **COLLECTING**.
 
     SQL Firewall is now set to capture SQL statements issued by the `APP_USER` database user.
 
@@ -70,7 +72,7 @@ This lab assumes you have:
 
 10. In the **Password** and **Confirm Password** boxes, enter a database password for `APP_USER`.
 
-    Note: Password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character or the username "admin".
+    Note: The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. It cannot contain the double quote (") character or the username "admin".
 
 11. At the bottom, enable **Web Access**.
 
@@ -78,46 +80,48 @@ This lab assumes you have:
 
 12. Click **Apply Changes**.
 
-13. To the right of the URL in the `APP_USER` tile, click the **Open in new tab** icon.
+13. Click the three dots again, and select **Enable REST**.
+
+14. To the right of the URL in the `APP_USER` tile, click the **Open in new tab** icon.
 
     The sign-in page for Database Actions is opened in a new tab.
 
-14. Sign in as `APP_USER` and enter the password.
+15. Sign in as `APP_USER` and enter the password.
 
-15. Click the **SQL** tab.
+16. Click the **SQL** tab.
 
-16. Close any tip dialog boxes.
+17. Close any tip dialog boxes.
 
-17. On the worksheet, enter the following, and then click the **Run Statement** button:
+18. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
     <copy>SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
     </copy>
     ```
 
-18. On the worksheet, enter the following, and then click the **Run Statement** button:
+19. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
     <copy>SELECT LOCATION_ID, STREET_ADDRESS, CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
     </copy>
     ```
 
-19. On the worksheet, enter the following, and then click the **Run Statement** button:
+20. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
     <copy>SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
     </copy>
     ```
 
-20. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+21. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
-21. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
+22. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
 
-22. Click the name of your target database.
+23. Click the name of your target database.
 
-23. Click the SQL collection for `APP_USER`. 
+24. Click the SQL collection for `APP_USER`. 
 
-24. To stop the SQL workload capture of allowed SQL statements, click **Stop**, and wait for the status to change to **COMPLETED**.
+25. To stop the SQL workload capture of allowed SQL statements, click **Stop**, and wait for the status to change to **COMPLETED**.
 
     The SQL collection is created for `APP_USER`.
 
@@ -235,6 +239,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 25, 2025
+- **Last Updated By/Date** - Jody Glover, August 1, 2025
 
 
