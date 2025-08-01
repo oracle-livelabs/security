@@ -2,7 +2,7 @@
 
 ## Introduction
 
-User Assessment helps you assess the security of your database users and identify potential high risk users. By default, Oracle Data Safe automatically generates user assessments for your target databases and stores them in the Assessment History. You can analyze assessment data across all your target databases and for each target database. You can monitor security drift on your target databases by comparing the latest assessment to a baseline or to another assessment.
+User Assessment helps you assess the security of your database users and identify potential high risk users. This allows you to review the potential risk to your data in case any of your user accounts get compromised or go rogue. By default, Oracle Data Safe automatically generates user assessments for your target databases and stores them in the Assessment History. You can analyze assessment data across all your target databases and for each target database. You can monitor user or entitlement changes on your target databases by comparing the latest assessment to a baseline or to another assessment.
 
 In this lab, you explore User Assessment.
 
@@ -187,7 +187,7 @@ You can select a user assessment to compare with the latest user assessment. Wit
 5. Review the results.
 
     - There is a new user added and a user deleted. The new user finding is identified as a potential **CRITICAL** risk.
-    - There are user grants modified by the `DS$ADMIN` user. This finding is also identified as a potential **CRITICAL** risk.
+    - The grants for the `DS$ADMIN` user were modified. This finding is also identified as a potential **CRITICAL** risk.
 
     ![User Assessment Comparison report](images/ua-comparison-report3.png "User Assessment Comparison report")
 
@@ -209,4 +209,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, May 5, 2025
+* **Last Updated By/Date** - Jody Glover, August 1, 2025

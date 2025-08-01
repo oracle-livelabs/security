@@ -96,7 +96,9 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
 
     - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, and `PHONE_NUMBER` are considered sensitive data and should be masked if shared for non-production use.
 
-8. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe. 
+8. Repeat steps 3 to 7 for the `LOCATIONS` table.
+
+9. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe. 
 
 
 ## Task 3: Create a masking policy for your target database
@@ -121,7 +123,7 @@ Data Masking can generate a masking policy for your target database based on you
     - Compartment: **Select your compartment**
     - Description: **Masking policy for SDM1**
     - Choose how you want to create the masking policy: Leave **Using a sensitive data model** selected.
-    - Sensitive Data Model: Select **SDM1\[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data) lab.
+    - Sensitive Data Model: Select **SDM1 \[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data) lab.
 
     ![Create masking policy panel using SDM1](images/create-masking-policy-sdm1.png "Create masking policy panel using SDM1")
 
@@ -201,6 +203,8 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 
 ## Task 6: Perform a pre-masking check
+
+The pre-masking check looks for any known issues that might arise during a masking run; for example, not enough tablespace, missing privileges, and so on. It alerts you to any found issues so that you can remediate them before starting the actual masking run.
 
 1. In the breadcrumb at the top of the page, click **Data Masking**.
 
@@ -301,4 +305,4 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 5, 2025
+- **Last Updated By/Date** - Jody Glover, August 1, 2025

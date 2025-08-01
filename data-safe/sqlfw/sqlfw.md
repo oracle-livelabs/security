@@ -2,7 +2,9 @@
 
 ## Introduction
 
-In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `APP_USER`. This collection is referred to as the *allow-list*. Next, you test that `APP_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
+In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. **Oracle SQL Firewall** is a robust security feature built into the Oracle Database 23ai, designed to provide real-time protection against common database attacks by restricting access to only authorized SQL statements or connections.
+
+You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `APP_USER`. This collection is referred to as the *allow-list*. Next, you test that `APP_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
 
 Estimated Lab Time: 20 minutes
 
@@ -62,7 +64,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 3. Under **List Scope** on the left, select your compartment.
 
-4. On the **Target summary** tab, click the name of your target database. It should currently show as **Disabled**.
+4. On the **Target summary** tab, click the name of your target database. The SQL Firewall status should currently show as **Disabled**.
 
 5. Click **Refresh**. 
 
@@ -264,6 +266,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 5, 2025
+- **Last Updated By/Date** - Jody Glover, August 1, 2025
 
 
