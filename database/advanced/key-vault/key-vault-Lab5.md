@@ -19,31 +19,51 @@ This lab assumes you went through Lab 4.
 ## Lab 5: Migrate to OKV in 5 easy steps
 ### Task 1: Prepare OKV for the incoming database
 
-1. Click on the "Endpoints" tab:
+1.  Login to Key Vault:
 
-     ![Key Vault](./images/001-ep-tab.png "Click on the 'Endpoints' tab.")
+     ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault.")
 
-2. Click the "Add" button to add an endpoint for your LiveLabs database:
+2. Click the Endpoints Tab:
 
-    ![Key Vault](./images/002-ep.png "Click the 'Add' button to add an endpoint in OKV for your LiveLabs database")
+    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints Tab.")
 
-3. Fill in the details of your endpoint and click the "Register" button:
+3.  Click on Add to add a new Endpoint:
 
-    ![Key Vault](./images/004-add-ep-details.png "Fill in the details of your endpoint: Endpoint Name is 'LIVELABS_DB_EP'; Type is 'Oracle Database'; OS Type is 'Linux'; click 'Register'")
+    ![Key Vault](./images/image-2025-7-24_15-59-1.png "Click on Add to add a new Endpoint:")
 
-4. OKV will take you back to the 'Endpoint Details' page; Scroll down and enter the name of the default wallet into the text field; click 'Save'. That will create the default wallet for this endpoint:
+4.  Provide the Endpoint details and click Register:
 
-    ![Key Vault](./images/005-add-default-wallet.png "Type the name of the Endpoint's wallet ('LIVELAB_DB_WALLET') into the 'Default Wallet' text field; click 'Save'")
+    ![Key Vault](./images/image-2025-7-24_12-17-29.png "Fill in the details of your endpoint: Endpoint Name is LIVELABS_DB_EP; Type is Oracle Database; OS Type is Linux; click 'Register'")
 
-5. Confirm endpoint's access to wallet:
+5.  Click the Endpoints Tab to view the recently created endpoint "LIVELABS_DB_EP":
 
-    ![Key Vault](./images/okv_2504_006.png "Make the wallet the 'default wallet' of the endpoint:")
+    ![Key Vault](./images/image-2025-7-24_12-26-31.png "Click the Endpoints Tab to view the recently created endpoint LIVELABS_DB_EP:")
 
-### Task 2: Install OKV client (endpoint) software on your database host:
+6.  Click on the endpoint name "LIVELAB_DB_EP" to view the details:
 
-1. Grab the enrollment token from list of endpoints:
+    ![Key Vault](./images/image-2025-7-24_12-26-40.png "Click on the endpoint name LIVELAB_DB_EP to view the details:")
 
-    ![Key Vault](./images/grab-ep-token.png "Copy the enrollment token for your endpoint to the clipboard")
+7.  On the endpoint details page, add the default wallet and click save:
+
+    ![Key Vault](./images/image-2025-7-24_16-12-59.png "On the endpoint details page, add the default wallet and click save:")
+
+8.  Check the permissions of the default wallet:
+
+    ![Key Vault](./images/image-2025-7-24_16-15-52.png "Check the permissions of the default wallet:")
+
+9.  Click the Endpoints Tab and copy the "Enrollment Token":
+
+    ![Key Vault](./images/image-2025-7-24_16-17-13.png "Click the Endpoints Tab and copy the Enrollment Token:")
+
+10. Click "Logout" on the right-hand corner of the page:
+
+    ![Key Vault](./images/image-2025-7-24_12-27-48.png "Click Logout on the right-hand corner of the page:")
+
+### Task 2: Download the OKV client software for this endpoint:
+
+1.  On the database machine, go to the Key Vault login page, click on "Endpoint Enrollment and Software Download":
+
+    ![Key Vault](./images/grab-ep-token.png "On the database machine, go to the Key Vault login page, click on Endpoint Enrollment and Software Download:")
 
 2. Logout and navigate to the software download page:
 

@@ -1,7 +1,7 @@
 # Oracle Key Vault (OKV)
 
 ## Bring Your Own Key and use it
-- A person or process could upload externally generated keys into OKV, and share the key-ID (the name of a key) with a DBA to "use" that key. Both processes would be isolated from each other to maintain key secrecy.
+- A person or process could upload externally generated keys into OKV, and share the key-ID (the name of a key) with a DBA to ##use that key. Both processes would be isolated from each other to maintain key secrecy.
 
 *Estimated Lab Time:* 2 minutes
 

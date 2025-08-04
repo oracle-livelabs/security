@@ -1,7 +1,7 @@
 # Oracle Key Vault (OKV)
 
 ## Review a typical TDE environment
-- In this lab you will confirm the encryption status of an Oracle database, and you will understand how TDE has been setup.
+- Before migrating a database from local TDE wallet to centralized key management with Oracle Key Vault, you need to understand how the TDE parameters are set, and what tablespaces are encrypted.
 
 *Estimated Lab Time:* 2 minutes
 
@@ -16,24 +16,7 @@ This lab assumes you went through Lab 3.
 
 An encrypted database has been prepared for you:
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
-
-<if type="brown">
-    ````
-    <copy>sudo su - oracle</copy>
-    ````
-</if>
-<if type="green">
-    **Note**: Double-click on the Terminal icon on the desktop to launch a session directly as oracle
-</if>
-
-2. Go to the OKV LiveLab scripts directory
-
-    ````
-    <copy>cd $DBSEC_LABS/okv</copy>
-    ````
-
-3. Display the parameters that define how TDE is setup in your database:
+1. Display the parameters that define how TDE is setup in your database:
 
     ````
     <copy>./01_tde_show_tde_parameters.sh</copy>
@@ -41,7 +24,7 @@ An encrypted database has been prepared for you:
 
     ![Key Vault](./images/okv_2504_001.png "Display the parameters that define how TDE is setup in your database:")
 
-4. Confirm the encryption status of the root database and PDB1:
+2. Confirm the encryption status of the root database and PDB1:
 
     ````
     <copy>./02_tde_list_enc_tbs.sh</copy>
@@ -49,7 +32,7 @@ An encrypted database has been prepared for you:
 
     ![Key Vault](./images/okv_2504_002.png "Confirm the encryption status of the root database and PDB1:")
 
-5. See the TDE master encryption keys in the TDE wallet:
+3. See the TDE master encryption keys in the TDE wallet:
 
     ````
     <copy>./03_tde_show_TDE_keys.sh</copy>
