@@ -4,9 +4,7 @@
 
 Data Masking provides a way for you to mask sensitive data so that the data is safe for non-production purposes. For example, organizations often need to create copies of their production data to support development and test activities. Simply copying the production data exposes sensitive data to new users. To avoid a security risk, you can use Data Masking to replace the sensitive data with realistic, but fictitious data.
 
-The roles granted to the Oracle Data Safe service account on your target database control which Oracle Data Safe features you can use with the database. By default, Autonomous Database Serverless has all Oracle Data Safe roles granted during target database registration, except for the Data Masking and SQL Firewall roles. If you are working in your own tenancy, you need to grant the Data Masking role on your target database. 
-
-Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data) lab. View the before and after effect on the masked data by using Oracle Database Actions.
+Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab. View the before and after effect on the masked data by using Oracle Database Actions.
 
 Estimated Time: 20 minutes
 
@@ -44,9 +42,9 @@ This lab assumes you have:
 
 View the sensitive data in the `HCM1.EMPLOYEES` table.
 
-1. (If you didn't perform task 1) Return to the SQL worksheet in Database Actions. If you are prompted to sign in to your target database, sign in as the `ADMIN` user. Clear the worksheet and the **Script Output** tab.
+1. Return to the SQL worksheet in Database Actions. If you are prompted to sign in to your target database, sign in as the `ADMIN` user. Clear the worksheet and the **Script Output** tab.
 
-2. On the **Navigator** tab in Database Actions, select the **HCM1** schema from the first drop-down list.
+2. On the **Navigator** tab in Database Actions, select the **HCM1** schema from the first drop-down list. If it's not listed, refresh your *browser* tab and try again.
 
 3. Drag the `EMPLOYEES` table to the worksheet.
 
@@ -70,7 +68,9 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
 
     - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, and `PHONE_NUMBER` are considered sensitive data and should be masked if shared for non-production use.
 
-8. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe. 
+8. Clear the worksheet and script output, and repeat steps 3 to 7 for the `LOCATIONS` table.
+
+9. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe. 
 
 
 ## Task 2: Create a masking policy for your target database
@@ -95,7 +95,7 @@ Data Masking can generate a masking policy for your target database based on you
     - Compartment: **Select your compartment**
     - Description: **Masking policy for SDM1**
     - Choose how you want to create the masking policy: Leave **Using a sensitive data model** selected.
-    - Sensitive Data Model: Select **SDM1\[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data) lab.
+    - Sensitive Data Model: Select **SDM1 \[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab.
 
     ![Create masking policy panel using SDM1](images/create-masking-policy-sdm1.png "Create masking policy panel using SDM1")
 
@@ -163,7 +163,7 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
     - `COUNTRY_ABBREV`
     - `POSTAL_CODE`
 
-    Note: If `COUNTRY_ABBREV` is not available, you need to add it to your sensitive data model first before creating the group mask (see [Discover Sensitive Data](?lab=discover-sensitive-data)). Or, you can leave it out.
+    Note: If `COUNTRY_ABBREV` is not available, you need to add it to your sensitive data model first before creating the group mask (see [Discover Sensitive Data](?lab=discover-sensitive-data-ocw)). Or, you can leave it out.
 
     ![Group mask configuration](images/group-mask1.png "Group mask configuration")
 
@@ -175,6 +175,8 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 
 ## Task 5: Perform a pre-masking check
+
+The pre-masking check looks for any known issues that might arise during a masking run; for example, not enough tablespace, missing privileges, and so on. It alerts you to any found issues so that you can remediate them before starting the actual masking run.
 
 1. In the breadcrumb at the top of the page, click **Data Masking**.
 
@@ -237,35 +239,28 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 ## Task 8: Validate the masked data in your target database
 
-1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. The `SELECT` statement against the `EMPLOYEES` table should be displayed on the worksheet.
+1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. Clear the worksheet.
 
-2. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query.
+2. Drag the `EMPLOYEES` table to the worksheet and apply the **Select** insertion type.
 
-    Clicking the **Run Statement** button (instead of the **Run Script** button) will show the results on the **Query Results** tab instead of the **Script Output** tab. This will allow you to do a before and after comparison of the masked data.
+3. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query.
 
-3. Review the masked data on the **Query Result** tab at the bottom of the page. 
+4. Review the masked data on the **Query Result** tab at the bottom of the page. 
 
     - You can resize the panel to view more data and you can scroll down and to the right.
     - Find the `SALARY` column and verify that the values are all 50000.
 
     ![Masked EMPLOYEE data](images/masked-query-results.png "Masked EMPLOYEE data")
 
-4. Click the **Script Output** tab to view the original unmasked data.
-
 5. Clear the worksheet.
 
-6. Drag the `LOCATIONS` table to the worksheet.
+6. Drag the `LOCATIONS` table to the worksheet and applyt the **Select** insertion type.
 
-7. When prompted to choose an insertion type, click **Select**, and then click **Apply**.
+7. On the toolbar, click the **Run Statement** button.
 
-8. On the toolbar, click the **Run Script** button.
-
-    ![Run Script button](images/run-script.png "Run Script button")
-
-9. Examine the data on the **Script Output** tab. The data for each `LOCATION_ID` has changed. `STREET_ADDRESS`, `POSTAL_CODE`, `CITY`, `STATE_PROVINCE`, AND `COUNTRY_ABBREV` are shuffled as an entire group to maintain the accuracy of each location. Notice that the `COUNTRY_ID`, which has not been masked and is not included in the screenshot below, is different than the `COUNTRY_ABBREV`.
+8. Examine the data. The data for each `LOCATION_ID` has changed. `STREET_ADDRESS`, `POSTAL_CODE`, `CITY`, `STATE_PROVINCE`, AND `COUNTRY_ABBREV` are shuffled as an entire group to maintain the accuracy of each location. Notice that the `COUNTRY_ID`, which has not been masked and is not included in the screenshot below, is different than the `COUNTRY_ABBREV`.
 
     ![Addresses shuffled](images/addresses-shuffled.png "Addresses shuffled")
-
 
 
 ## Learn More
@@ -276,4 +271,4 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 25, 2025
+- **Last Updated By/Date** - Jody Glover, August 1, 2025

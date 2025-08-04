@@ -13,7 +13,6 @@ Estimated Lab Time: 15 minutes
 In this lab, you will:
 
 - Discover sensitive data in your target database by using Data Discovery
-- Analyze the sensitive data model
 - Add a column to the sensitive data model
 
 
@@ -67,6 +66,7 @@ This lab assumes you have:
     
 9. On the  **Select sensitive types** page, review the list of common sensitive types and then scroll down and review all available sensitive types. Select all sensitive types, and click **Next**.
 
+    ![Select sensitive types page](images/select-all-sensitive-types.png "Select sensitive types page")
 
 10. On the **Select discovery options** page, select **Collect, display and store sample data**, and then click **Create sensitive data model** at the bottom of the page to begin the data discovery process.
 
@@ -75,30 +75,18 @@ This lab assumes you have:
 11. Wait for the sensitive data model to be created. The **Sensitive data model details** page is displayed.
 
 
-## Task 2: Analyze the sensitive data model
-
-1. Review the information about the sensitive data model.
+12. Review the information about the sensitive data model.
 
     - The **Sensitive data model information** tab lists general information about your sensitive data model, the target database, sensitive data information, and sensitive data counts.
     - You can view the selected sensitive types for discovery, sensitive schemas discovered, sensitive types discovered, and work request information by clicking the respective **View details** link.
     - The bar chart shows you the number of sensitive columns found for the top five sensitive types.
-    - The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat view** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, sample data (if you chose to retrieve sample data and if it exists), and audit records. Review the sample data to get an idea of what it looks like.
+    - The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat view** format. You can change it to **Sensitive type view** or **Schema view**. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, sample data (if you chose to retrieve sample data and if it exists), and audit records. Review the sample data to get an idea of what it looks like.
 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
     ![Sensitive Data Model Details page bottom](images/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")
 
-2. Under **Sensitive columns**, from the first drop-down list, select **Sensitive type view** to sort the sensitive columns by sensitive type. By default, all items are expanded in the view. You can collapse the items by moving the **Expand all** slider to the left.
 
-    ![Sensitive type view of sensitive data model](images/sensitive-type-view-sdm1.png "Sensitive type view of sensitive data model")
-
-3. From the same drop-down list, select **Schema view** to sort the sensitive columns by schema and table name.
-
-    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the **Parent column**. For example, `EMPLOYEE_ID` in the `EMP_EXTENDED` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
-
-    ![Schema view of sensitive data model](images/schema-view-sdm1.png "Schema view of sensitive data model")
-
-
-## Task 3: Add a column to the sensitive data model
+## Task 2: Add a column to the sensitive data model
 
 Add `COUNTRY_ABBREV` to the sensitive data model.
 
@@ -131,4 +119,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 25, 2025
+- **Last Updated By/Date** - Jody Glover, August 1, 2025
