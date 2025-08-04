@@ -63,18 +63,62 @@ This lab assumes you went through Lab 4.
 
 1.  On the database machine, go to the Key Vault login page, click on "Endpoint Enrollment and Software Download":
 
-    ![Key Vault](./images/grab-ep-token.png "On the database machine, go to the Key Vault login page, click on Endpoint Enrollment and Software Download:")
+    ![Key Vault](./images/image-2025-7-24_12-31-21.png "On the database machine, go to the Key Vault login page, click on Endpoint Enrollment and Software Download:")
 
-2. Logout and navigate to the software download page:
+2.  Provide the Enrollment Token and click Submit Token. Endpoint details will be populated:
 
-    ![Key Vault](./images/logout.png "")
+    ![Key Vault](./images/image-2025-7-24_12-38-55.png "Provide the Enrollment Token and click Submit Token. Endpoint details will be populated:")
 
-    ![Key Vault](./images/sw-download01.png "")
+3.  Click enroll to download the "okvclient.jar" file. The file is downloaded to your database machine.
 
-3. Download OKV client (endpoint) software package
+    ![Key Vault](./images/image-2025-7-24_16-22-35.png "Click enroll to download the okvclient.jar file. The file is downloaded to your database machine.")
 
-    ![Key Vault](./images/download.png "")
+### Task 3: Deploy the OKV client software:
 
-4. Install OKV client (endpoint) software package
+1.  Change to the WALLET_ROOT/okv directory:
 
-    ![Key Vault](./images/install.png "")
+        cd /etc/ORACLE/WALLETS/cdb1/okv
+
+2.  Install Key Vault software. This will prompt for the endpoint connection password. We will refer to this as the endpoint_connection_password:
+
+    ![Key Vault](./images/image-2025-7-24_12-48-0.png " Install Key Vault software. This will prompt for the endpoint connection password.")
+
+3.  Setup Key Vault endpoint home. This is the base of operations for endpoint software:
+
+         export OKV_HOME=/etc/ORACLE/WALLETS/cdb1/okv
+
+4.  Show details under Key Vault endpoint home:
+
+    ![Key Vault](./images/image-2025-7-24_16-33-45.png "Show details under Key Vault endpoint home:")
+
+5.  Setup the Key Vault library (liborapkcs.so) that the DB will use to communicate with Key Vault:
+
+    ![Key Vault](./images/image-2025-7-24_12-50-7.png "Setup the Key Vault library (liborapkcs.so) that the DB will use to communicate with Key Vault:")
+
+### Task 4: Prepare the database for the migration to Oracle Key Vault:
+
+1.  Add OKV password to the TDE wallet:
+
+    ![Key Vault](./images/image-2025-7-24_12-52-28.png "Add OKV password to the TDE wallet:")
+
+2.  Change the TDE config to OKV|FILE:
+
+    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE config to OKV|FILE:")
+
+### Task 5: Migrate the database to use Oracle Key Vault for centralized key management:
+
+1.  Migrate to use Key Vault:
+
+        SQL> ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY
+        "<endpoint_connection_password>" FORCE KEYSTORE MIGRATE USING
+        "<wallet_password>";
+
+    ![Key Vault](./images/image-2025-7-24_12-54-16.png "Add OKV password to the TDE wallet:")
+
+2.  Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB$ROOT and one for PDB1:
+
+    ![Key Vault](./images/image-2025-7-24_16-58-54.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB$ROOT and one for PDB1:")
+
+3.  Review the database setup after migrating to Key Vault:
+
+    ![Key Vault](./images/image-2025-7-24_17-8-50.png "Review the database setup after migrating to Key Vault:")
