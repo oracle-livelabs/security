@@ -15,11 +15,11 @@ This lab assumes you went through Lab 4.
 ## Lab 5: Migrate to OKV in 5 easy steps
 ### Task 1: Prepare OKV for the incoming database
 
-1.  Login to Key Vault:
+1.  Login to Key Vault as user KVEPADMIN
 
-     ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault.")
+     ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
 
-2. Click the Endpoints Tab:
+2. Click the **Endpoints** Tab:
 
     ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints Tab.")
 
@@ -31,11 +31,11 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-17-29.png "Fill in the details of your endpoint: Endpoint Name is LIVELABS_DB_EP; Type is Oracle Database; OS Type is Linux; click 'Register'")
 
-5.  Click the **Endpoints** Tab to view the recently created endpoint **LIVELABS_DB_EP**:
+5.  Click the **Endpoints** Tab to view the recently created endpoint **LIVELABS\_DB\_EP**:
 
     ![Key Vault](./images/image-2025-7-24_12-26-31.png "Click the Endpoints Tab to view the recently created endpoint LIVELABS_DB_EP:")
 
-6.  Click on the endpoint name **LIVELAB_DB_EP** to view the details:
+6.  Click on the endpoint name **LIVELAB\_DB\_EP** to view the details:
 
     ![Key Vault](./images/image-2025-7-24_12-26-40.png "Click on the endpoint name LIVELAB_DB_EP to view the details:")
 
@@ -71,30 +71,50 @@ This lab assumes you went through Lab 4.
 
 ### Task 3: Deploy the OKV client software:
 
-1.  Change to the WALLET_ROOT/okv directory:
+1.  Change to the WALLET\_ROOT/okv directory:
 
-        cd /etc/ORACLE/WALLETS/cdb1/okv
+    ```
+    <copy>
+    cd /etc/ORACLE/WALLETS/cdb1/okv
+    </copy>
+    ```
 
 2.  Install the Key Vault software. This will prompt for the endpoint connection password. We will refer to this as the endpoint_connection_password:
 
-        java -jar ~/Downloads/okvclient.jar -d .
+    ```
+    <copy>
+    java -jar ~/Downloads/okvclient.jar -d .
+    </copy>
+    ```
 
     ![Key Vault](./images/image-2025-7-24_12-48-0.png "Install Key Vault software. This will prompt for the endpoint connection password.")
 
 3.  Setup the Key Vault endpoint home. This is the base of operations for the endpoint software:
 
-        export OKV_HOME=/etc/ORACLE/WALLETS/cdb1/okv
+    ```
+    <copy>
+    export OKV_HOME=/etc/ORACLE/WALLETS/cdb1/okv
+    </copy>
+    ```
 
 4.  Show details under Key Vault endpoint home:
 
-        tree $OKV_HOME
+    ```
+    <copy>
+    tree $OKV_HOME
+    </copy>
+    ```
 
     ![Key Vault](./images/image-2025-7-24_16-33-45.png "Show details under Key Vault endpoint home:")
 
 5.  Setup the Key Vault library (liborapkcs.so) that the DB will use to communicate with Key Vault:
 
-        cd $OKV_HOME
-        sudo ./bin/root.sh
+    ```
+    <copy>
+    cd $OKV_HOME
+    sudo ./bin/root.sh
+    </copy>
+    ```
 
     ![Key Vault](./images/image-2025-7-24_12-50-7.png "Setup the Key Vault library (liborapkcs.so) that the DB will use to communicate with Key Vault:")
 
@@ -104,28 +124,46 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-52-28.png "Add OKV password to the TDE wallet:")
 
-2.  Change the TDE config to OKV|FILE:
+2.  Change the TDE configuration to OKV|FILE:
 
-        SQL> alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE';
+    ```
+    <copy>
+    SQL> alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' scope = BOTH;
+    </copy>
+    ```
 
-    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE config to OKV|FILE:")
+    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE configuration to OKV|FILE:")
 
 ### Task 5: Migrate the database to use Oracle Key Vault for centralized key management:
 
 1.  Migrate to use Key Vault:
 
-        SQL> ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY
-        "<endpoint_connection_password>" FORCE KEYSTORE MIGRATE USING
-        "<wallet_password>";
+    ```
+    <copy>
+    SQL> ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY
+    "<endpoint_connection_password>" FORCE KEYSTORE MIGRATE USING
+    "<wallet_password>";
+    </copy>
+    ```
 
     ![Key Vault](./images/image-2025-7-24_12-54-16.png "Add OKV password to the TDE wallet:")
 
 2.  Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB$ROOT and one for PDB1:
 
-        $OKV_HOME/bin/okvutil list
+    ```
+    <copy>
+    $OKV_HOME/bin/okvutil list
+    </copy>
+    ```
 
-    ![Key Vault](./images/image-2025-7-24_16-58-54.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB$ROOT and one for PDB1:")
+    ![Key Vault](./images/image-2025-7-24_16-58-54.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB\$ROOT and one for PDB1:")
 
 3.  Review the database setup after migrating to Key Vault:
+
+    ```
+    <copy>
+    ./review_tde_using_okv_configuration.sh
+    </copy>
+    ```
 
     ![Key Vault](./images/image-2025-7-24_17-8-50.png "Review the database setup after migrating to Key Vault:")
