@@ -15,7 +15,7 @@ This lab assumes you went through Lab 4.
 ## Lab 5: Migrate to OKV in 5 easy steps
 ### Task 1: Prepare OKV for the incoming database
 
-1.  Login to Key Vault as user KVEPADMIN
+1.  Login to Key Vault as user **KVEPADMIN**
 
      ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
 
@@ -71,25 +71,7 @@ This lab assumes you went through Lab 4.
 
 ### Task 3: Deploy the OKV client software:
 
-1.  Change to the WALLET\_ROOT/okv directory:
-
-    ```
-    <copy>
-    cd /etc/ORACLE/WALLETS/cdb1/okv
-    </copy>
-    ```
-
-2.  Install the Key Vault software. This will prompt for the endpoint connection password. We will refer to this as the endpoint_connection_password:
-
-    ```
-    <copy>
-    java -jar ~/Downloads/okvclient.jar -d .
-    </copy>
-    ```
-
-    ![Key Vault](./images/image-2025-7-24_12-48-0.png "Install Key Vault software. This will prompt for the endpoint connection password.")
-
-3.  Setup the Key Vault endpoint home. This is the base of operations for the endpoint software:
+1.  Setup the Key Vault endpoint home. This is the base of operations for the endpoint software:
 
     ```
     <copy>
@@ -97,7 +79,17 @@ This lab assumes you went through Lab 4.
     </copy>
     ```
 
-4.  Show details under Key Vault endpoint home:
+2.  Install the Key Vault software. This will prompt for the endpoint connection password. We will refer to this as the "Key Vault endpoint password":
+
+    ```
+    <copy>
+    java -jar ~/Downloads/okvclient.jar -d $OKV_HOME
+    </copy>
+    ```
+
+    ![Key Vault](./images/image-2025-7-24_12-48-0.png "Install Key Vault software. This will prompt for the endpoint connection password.")
+
+3.  Show details under Key Vault endpoint home:
 
     ```
     <copy>
@@ -107,12 +99,11 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_16-33-45.png "Show details under Key Vault endpoint home:")
 
-5.  Setup the Key Vault library (liborapkcs.so) that the DB will use to communicate with Key Vault:
+4.  Setup the Key Vault library (liborapkcs.so) that the DB will use to communicate with Key Vault:
 
     ```
     <copy>
-    cd $OKV_HOME
-    sudo ./bin/root.sh
+    sudo $OKV_HOME/bin/root.sh
     </copy>
     ```
 
@@ -141,8 +132,8 @@ This lab assumes you went through Lab 4.
     ```
     <copy>
     SQL> ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY
-    "<endpoint_connection_password>" FORCE KEYSTORE MIGRATE USING
-    "<wallet_password>";
+    "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING
+    "<wallet password>";
     </copy>
     ```
 
