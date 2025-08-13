@@ -369,7 +369,8 @@ i. Generate SSH Keys
     
 ii. Update the Host Named Credential with the new SSH Key:
 
-- From the EM Console as SYSMAN, navigate to menu **Setup > Security > Named Credentials**:
+- From the EM Console as SYSMAN, navigate to menu **Setup > Security > Named Credentials**:  
+    
     ![DMS](./images/dms-037.png "Add the formats entries types")
 
 - Select *`OS_ORACLE_SSH`* credential and click *`Edit`*.
@@ -380,7 +381,7 @@ ii. Update the Host Named Credential with the new SSH Key:
 
     - Username: *`oracle`*.
     - Delete any content for SSH Public and Private Keys.
-=        
+       
         ![DMS](./images/dms-039.png "39")
 
     - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **Other Locations > tmp** and select the file *`rsa_priv`*.
@@ -479,11 +480,11 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
     -- -----------------------------
 
     -- EMPLOYEE_DATA
-    SELECT EMAIL, USERID FROM EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES
+    SELECT USERID, EMAIL FROM EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES
      ORDER BY 1;
 
     -- USERS_DATA
-    SELECT EMAIL, USERID, PASSWORD FROM EMPLOYEESEARCH_PROD.DEMO_HR_USERS
+    SELECT USERID, EMAIL, PASSWORD FROM EMPLOYEESEARCH_PROD.DEMO_HR_USERS
      ORDER BY 1;
 
     </copy>
@@ -698,8 +699,8 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by runnin
 
 **Generate and execute the subsetting script:**  
 4. Go back to the OEM Console and navigate to **Target > Databases**, then choose **Security** > **Data Masking and Subsetting** > **Data Subsetting**.  
-
-![DMS](./images/dms-003b.png "Navigate to the Application Data Models")
+    
+    ![DMS](./images/dms-003b.png "Navigate to the Application Data Models")
 
 5. Select the *`Employee_Data_Subset`* subsetting definition, go to **Actions**, and choose **Generate Subset**.
 
@@ -723,9 +724,9 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by runnin
 
         ![DMS](./images/dms-078.png "Generate Subset: Parameters")
 
-9. Click **Continue**. A warning message tells you that a directory will be created to store the script into the location you mentioned earlier.
-
-    ![DMS](./images/dms-079.png "Warning message")
+9. Click **Continue**. A warning message tells you that a directory will be created to store the script into the location you mentioned earlier.  
+        
+    ![DMS](./images/dms-079(1).png "warning")
 
 10. Click **OK**.  
 After reviewing that the required space is available, click **Submit** to generate the script.
