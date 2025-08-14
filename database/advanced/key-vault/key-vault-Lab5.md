@@ -1,15 +1,15 @@
 # Oracle Key Vault (OKV)
 
 ## Migrate to OKV in 5 easy steps
-## Prepare Oracle Key Vault and the encrypted database for centralized TDE key management. 
+### Prepare Oracle Key Vault and the encrypted database for centralized TDE key management. 
 In this lab you will prepare Oracle Key Vault for the incoming database and install the OKV client endpoint software on the database host.
 
-*Estimated Lab Time:* 15 minutes
+Estimated Lab Time: 15 minutes
 
-### Objectives
+#### Objectives
 In this LiveLab, you will go through the steps of migrating an encrypted database from a local TDE wallet to centralized TDE key managemment in Oracle Key Vault.
 
-### Prerequisites
+#### Prerequisites
 This lab assumes you went through Lab 4. 
 
 ## Lab 5: Migrate to OKV in 5 easy steps
@@ -132,8 +132,7 @@ This lab assumes you went through Lab 4.
     ```
     <copy>
     SQL> ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY
-    "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING
-    "<wallet password>";
+    "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING "<wallet password>";
     </copy>
     ```
 
