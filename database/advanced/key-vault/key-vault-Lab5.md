@@ -1,6 +1,6 @@
 # Oracle Key Vault (OKV)
 
-## Migrate to OKV in 5 easy steps
+## Lab 5: Migrate to OKV in 5 easy steps
 ### Prepare Oracle Key Vault and the encrypted database for centralized TDE key management. 
 In this lab you will prepare Oracle Key Vault for the incoming database and install the OKV client endpoint software on the database host.
 
@@ -12,7 +12,6 @@ In this LiveLab, you will go through the steps of migrating an encrypted databas
 #### Prerequisites
 This lab assumes you went through Lab 4. 
 
-## Lab 5: Migrate to OKV in 5 easy steps
 ### Task 1: Prepare OKV for the incoming database
 
 1.  Login to Key Vault as user **KVEPADMIN**
@@ -31,7 +30,7 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-17-29.png "Fill in the details of your endpoint: Endpoint Name is LIVELABS_DB_EP; Type is Oracle Database; OS Type is Linux; click 'Register'")
 
-5.  Click the **Endpoints** Tab to view the recently created endpoint **LIVELABS\_DB\_EP**:
+5.  Click the **Endpoints** Tab to view the recently created endpoint **LIVELABS\_DB\_EP** among earlier created endpoints:
 
     ![Key Vault](./images/image-2025-7-24_12-26-31.png "Click the Endpoints Tab to view the recently created endpoint LIVELABS_DB_EP:")
 

@@ -16,41 +16,14 @@ This lab assumes you went through Lab 3.
 
 An encrypted database has been prepared for you:
 
-1. Display the parameters that define how TDE is setup in your database:
+1. To start, run the following script; it will show you exactly what you need to know before migrating to Oracle Key Vault:
 
     ````
     <copy>
-    ./01_tde_show_tde_parameters.sh
+    ./review_tde_deployment.sh
     </copy>
     ````
 
-    ![Key Vault](./images/okv_2504_001.png "Display the parameters that define how TDE is setup in your database:")
+    ![Key Vault](./images/OKV-LL4_001.png "Display the parameters that define how TDE is setup in your database:")
 
-2. Confirm the encryption status of the root database and PDB1:
-
-    ````
-    <copy>
-    ./02_tde_list_enc_tbs.sh
-    </copy>
-    ````
-
-    ![Key Vault](./images/okv_2504_002.png "Confirm the encryption status of the root database and PDB1:")
-
-3. See the TDE master encryption keys in the TDE wallet:
-
-    ````
-    <copy>
-    ./03_tde_show_TDE_keys.sh
-    </copy>
-    ````
-
-    ![Key Vault](./images/okv_xxxxxxxxx.png "See the TDE master encryption in the TDE wallet:")
-
-### Task 2: Drop an encrypted tablespace for 'True Migration' Lab (Backup has been taken)
-
-1. Select from table; delete tablespace; select from table (fails)
-    ````
-    <copy>./04_xxxxxxxxxxxxxxxxxx.sh</copy>
-    ````
-
-    ![Key Vault](./images/.png "Make an RMAN backup of an encrypted tablespace:")
+For a later LiveLab, we have already prepare an RMAN backup of the encrypted tablespaces
