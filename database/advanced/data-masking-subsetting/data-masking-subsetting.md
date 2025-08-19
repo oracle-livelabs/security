@@ -480,7 +480,7 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
 
     - **AFTER masking** (on dev)
 
-        ![DMS](./images/dms-053.png "Employee data AFTER masking (in DEV)")
+        ![DMS](./images/dms-053(1).png "Employee data AFTER masking (in DEV)")
 
 - Users Data:
     - **BEFORE masking** (on prod)
@@ -489,7 +489,7 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
 
     - **AFTER masking** (on dev)
 
-        ![DMS](./images/dms-055.png "Users data AFTER masking (in DEV)")
+        ![DMS](./images/dms-055(1).png "Users data AFTER masking (in DEV)")
 
 As shown, sensitive data has been masked according to the defined formats in the development environment, allowing you to share this environment securely. With sensitive columns like Email, UserID, and Password masked while keeping other non-sensitive columns unmasked, organizations can safely share data with external partners without exposing sensitive information. This ensures secure data sharing while maintaining usability for various purposes, including analytics, as illustrated below:  
 *`The collaborator can perform workforce analysis while protecting privacy by utilizing masked columns like Email, UserID, and Password, alongside unmasked, non-sensitive columns. For example, the firm could examine employee engagement and activity without needing direct identifiers. Suppose the data shows that out of 1000 masked employees in HR_EMPLOYEES, 300 have logged into the system over 50 times in the past month, indicating high engagement. In HR_USERS, masked UserIDs can show 100 distinct users who accessed sensitive internal reports.`*
@@ -742,7 +742,7 @@ Review subsetted and masked data across environments to understand how Data Mask
     </copy>
     ````
 
-    ![DMS](./images/dms-083.png "Queries for the PROD (BEFORE SUBSETTING)")
+    ![DMS](./images/dms-083.png "Queries for the PROD (BEFORE SUBSETTING AND MASKING)")
 
 4. In the second one, copy the following queries for the **development after subsetting and masking** operation:
 
@@ -772,29 +772,33 @@ Review subsetted and masked data across environments to understand how Data Mask
     </copy>
     ````
 
-    ![DMS](./images/dms-086.png "Queries for the DEV (AFTER SUBSETTING)")
+    ![DMS](./images/dms-086.png "Queries for the DEV (AFTER SUBSETTING AND MASKING)")
 
 5. Execute all the above queries and compare the results as shown below:
 
     - Rows count **before subsetting**:
 
+        ![DMS](./images/dms-085(1).png "Row count BEFORE subsetting (in DEV)")
+        
+    - Rows count **after subsetting**:
+
         ![DMS](./images/dms-085.png "Row count AFTER subsetting (in DEV)")
 
     - Employee Data **before masking**:
 
-        ![DMS](./images/dms-087.png "Employee Data BEFORE masking (in PROD)")
+        ![DMS](./images/dms-087(1).png "Employee Data BEFORE masking (in PROD)")
 
     - Employee Data **after masking**
 
-        ![DMS](./images/dms-089.png "Employee Data AFTER masking (in DEV)")
+        ![DMS](./images/dms-089(1).png "Employee Data AFTER masking (in DEV)")
 
     - Users Data **before masking**
 
-        ![DMS](./images/dms-088.png "Users Data BEFORE masking (in PROD)")
+        ![DMS](./images/dms-088(1).png "Users Data BEFORE masking (in PROD)")
 
     - Users Data **after masking**
 
-        ![DMS](./images/dms-090.png "Users Data AFTER masking (in DEV)")
+        ![DMS](./images/dms-090(1).png "Users Data AFTER masking (in DEV)")
 
 As you can see, the sensitive data is subsetted and masked as per the defined object rules and masking definition. 
 
@@ -855,7 +859,7 @@ This task ensures a clean environment for future exercises and prevents any pote
         ![DMS](./images/dms-092.png "Navigate to the Application Data Models")
 
     - Select each Data Masking Definition, then click **Delete** at the top.
-        ![DMS](./images/dms-093.png "Delete all the Data Masking definitions")
+        ![DMS](./images/dms-094(1).png "Delete all the Data Masking definitions")
 
     - Click **Delete** to confirm.
 
