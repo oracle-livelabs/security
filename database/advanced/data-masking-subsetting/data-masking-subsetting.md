@@ -145,11 +145,11 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
     ![DMS](./images/dms-112(3).png "16")
 
 6. **Sensitive Status** for discovered columns is **Sensitive** by default. Here, you have the flexibility to update the status to *`Not Sensitive`* or *`Undefined`*, depending on your requirement. 
-For this task, select *`USERNAME`* column and **Mark Not Sensitive**.
+For this task, select the three *`User ID`* sensitive type columns shown below and selct **Mark Not Sensitive**.
 
-![DMS](./images/dms-113(3).png "17")
+![DMS](./images/dms-113(4).png "17")
 
-Notice that the **Sensitive Status** has been changed from *`SENSITIVE`* to *`NOT_SENSITIVE`* for one row.  
+Notice that the **Sensitive Status** has been changed from *`SENSITIVE`* to *`NOT_SENSITIVE`* for three rows.  
 
 7. Click **Close**. Now, your ADM is populated with sensitive columns *`EMAIL`*, *`USERID`* and *`PASSWORD`* from different objects.
 
@@ -164,42 +164,11 @@ Notice that the **Sensitive Status** has been changed from *`SENSITIVE`* to *`NO
 **What You Accomplished**  
 Successfully ran the **Discover Sensitive Columns** job to identify sensitive columns. Utilized Oracle's predefined sensitive types, **Email ID**,  **User ID** and **Password**.
 
-## Task 4: Data Masking- Create a New Masking Format
+
+## Task 4: Data Masking- Create Masking Definition
 
 ### Objective
-Create a new **Masking Format** for previously discovered sensitive column *`Email ID`*: The **Masking Formats** library, provided by Data Masking and Subsetting, is available for use. However, for this task, we will create a new masking format to specifically mask the **EMAIL** column. This custom masking format will be used in the next task when creating the Masking Definitions.
-
-### Steps
-1. To create a new masking format, navigate to the **Masking Formats** page under **Data Masking** as follows:
-
-    ![DMS](./images/dms-018.png "18")
-
-2. Notice that **Masking Formats** library appears with predefined masking formats that Oracle Enterprise Manager provides. Click **Create** and fill in the following details:
-
- - Name: *`Email ID`*.
- - Description: *`Mask the corporate email by changing prefix and domain name`*.
- - Sensitive Type: *`Email ID`* under *`Biographic`* .
- - Format Entry: *`Random Strings`*.
- - Mention the **Start Length** as 6 and **End Length** as 8. Click **Add Format Entry**.  
- 
-3. Now, add another **Format Entry** as shown below:
- 
-- Format Entry: *`Fixed String`*.
-- Mention the fixed doman string such as *`@xyz.com`* and click on **Add Format Entry**.
-- Optional: You can click Generate to view sample data.
-
-    ![DMS](./images/dms-019(1).png "19")
-
-4. Click **Create**. 
-
-
-**What You Accomplished:**  
-A new Masking Format **Email ID** that will be used to replace sensitive data in *`EMAIL`* columns with new values generated from the concatenation of a random string of 6 to 8 characters at the beginning, followed by the fixed value *`@xyz.com`*.
-
-## Task 5: Data Masking- Create Masking Definition
-
-### Objective
-Create a new Masking Definition under **Data Masking** where the masking formats will be set for the sensitive columns *`EMAIL`*, *`USERID`* and *`PASSWORD`* in *`Employee_ADM`* Application Data Model.
+Create a new Masking Definition under **Data Masking** where the masking formats are automatically assigned to sensitive columns *`EMAIL`*, *`USERID`* and *`PASSWORD`* in *`Employee_ADM`* Application Data Model.
 
 ### Steps
 1. To create a Masking Definition, navigate to **Masking Definitions** under **Data Masking** as follows:
@@ -219,78 +188,69 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 
 4. Click **Next**.
 
-5. On the next screen, you can see two different sections- **Columns Available in Application Data Model** and **Columns Available in Masking Definition**. Notice all discovered sensitive columns shown under **Columns Available in Application Data Model** section:
+5. On the next screen, notice the discovered sensitive columns along with assigned masking formats.
 
-    ![DMS](./images/dms-114(3).png "23")
+    **Note**:  
+    - Masking formats are automatically assigned based on the sensitive type and data type of the columns. If no match is found, a masking format will not be assigned, and the user must either select one from the masking formats library or create a custom format.
 
-Now, let's define and add the masking formats for all the columns for EMAIL, USERID and PASSWORD. 
+    ![DMS](./images/dms-114(4).png "23")
 
-6. For **EMAIL** columns: Select both the EMAIL columns and click the **Define Format and Add** option at the top.
+Now, let’s define the masking formats for the remaining three columns that do not yet have assigned formats.
 
-    ![DMS](./images/dms-115(3).png "24")
+6. Select the **EMAIL** column in *`DEMO_HR_EMPLOYEES`*, then click the **Define Masking Format** option at the top.
 
-7. On the **Define Format and Add** page, choose **Email ID** (**Masking Format** created in the previous task) under **Choose From Masking Formats** drop-down box and click **Import**.
-Notice, Masking Format Entries are automatically populated. 
+    ![DMS](./images/dms-115(4).png "24")
 
-8. View the sample data by clicking **Generate** under **Sample Data**:
+7. On the **Define Masking Format** page, select **Email Address** from the **Choose From Masking Formats** drop-down box, and click **Import**.
 
-    ![DMS](./images/dms-116(3).png "25")
+   ![DMS](./images/dms-115(5).png "24")
 
-9. Click **Add**. Notice the *`EMAIL`* columns now appear under **Columns Available in Masking Definition** along with the defined Masking Format:
+8. The Masking Format Entries is automatically populated. View the sample data by clicking **Generate** under **Sample Data**:
 
-    ![DMS](./images/dms-117(3).png "26")
+    ![DMS](./images/dms-116(4).png "25")
 
-Stay on the **Create Masking Definitions** page to define and add the formats for the other columns- *`USERID`* and *`PASSWORD`* as shown in the next steps.
+9. Click **Save**. Notice the *`EMAIL`* column now has the defined masking format:
 
-10. For **USERID** columns: let’s group columns with the same data type and apply a masking format. Start by selecting the three **USERID** columns with the **VARCHAR** data type listed under **Columns Available in Application Data Model**, then click **Define Format and Add**.
 
-    ![DMS](./images/dms-117(4).png "27")
+Stay on the **Create Masking Definition** page to define the format for the other column- *`USERID`* as shown in the next steps.
 
-    **Note**: You can define masking formats for multiple columns with the same data type.
+10. For **USERID** column:  Select the **USERID** column in *`DEMO_HR_EMPLOYEES`*, then click the **Define Masking Format** option at the top.
 
- - Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
+    ![DMS](./images/dms-117(5).png "27")
+
+    **Note**: You can define masking formats for multiple columns together with the same data type.
+
+ - On the *`Define Masking Format`* page, choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
  - Click **Add Format Entry**.
     
-    ![DMS](./images/dms-118(2).png "028")
+    ![DMS](./images/dms-118(3).png "028")
 
-- click **Add**. 
+- click **Save**.  
 
-11. Repeat the process for the other **USERID** column with the **NUMBER** data type listed under **Columns Available in Application Data Model**. Click **Define Format and Add**.
+    ![DMS](./images/dms-118(4).png "028")
 
-    ![DMS](./images/dms-119(3).png "29")
-
- - Choose **Custom Format Entry** as **Random Numbers** and enter *`Start Integer`* and *`End Integer`* as *`101`* and *`1999`*.
- - Click **Add Format Entry** and click **Add**. 
-    
-12. Now, select the **PASSWORD** column shown under **Columns Available in Application Data Model** and click **Define Format and Add**:
-
-- Choose **Custom Format Entry** as **Fixed String** and enter the string as *`***`*. 
-- Click **Add Format Entry**. 
-    
-    ![DMS](./images/dms-120(2).png "30")
-
-- Click **Add** and notice, all columns- **EMAIL**, **USERID** and **PASSWORD** are added under **Columns Available in Masking Definitions**:  
+11. Notice that all columns for **EMAIL**, **USERID** and **PASSWORD** now have masking formats assigned.
         
-    ![DMS](./images/dms-121(3).png "31")
+    ![DMS](./images/dms-121(5).png "31")
        
-13. Click **Next**.
+12. Click **Next**.
 
-14. Users have an option to add a pre-masking script and a post-masking script. For this task, however, you can leave it empty.
+13. Users have an option to add a pre-masking script and a post-masking script. For this task, however, you can leave it empty.
 
 **Note**:
     - Use the **Pre Mask Script** text box to specify any SQL script that must run before masking starts.
     - Use the **Post Mask Script** text box to specify any SQL script that must run after masking completes.  
     
-15. Click **Next**.
+14. Click **Next**.
 
-16. Click **Create** on the next page. A new Masking Definition is created.
+15. Click **Create** on the next page. A new Masking Definition is created.
 
-    ![DMS](./images/dms-032(1).png "32")
+    ![DMS](./images/dms-032(2).png "32")
 
 **What You Accomplished:**  
-A new Masking Definition for sensitive columns EMAIL, USERID and PASSWORD in the *`Employee_Data_Mask`* is created and shown on the **Masking Definitions** page.
+A new Masking Definition for sensitive columns EMAIL, USERID and PASSWORD in the *`Employee_Data_Mask`* is created, where the automatically assigned masking formats are reviewed and the remaining ones are added.
 
-## Task 6: Data Masking- Generate and Execute Masking Script  
+## Task 5: Data Masking- Generate and Execute Masking Script  
 
 ### Objective
 - **Generate the masking script** for the previously created Masking Definition, *`Employee_Data_Mask`*. If needed, you can also export the script and perform bulk operations.
@@ -300,7 +260,7 @@ A new Masking Definition for sensitive columns EMAIL, USERID and PASSWORD in the
 **Generate the Masking Script**:
 1. Click **Actions** for *`Employee_Data_Mask`* and choose **Manage Masking Script > Generate Masking Script** as shown below:  
 
-    ![DMS](./images/dms-033(1).png "33")
+    ![DMS](./images/dms-033(2).png "33")
 
 2. On **Generate Masking Script** page, you can choose either of the two options:
 
@@ -326,7 +286,6 @@ To monitor the status of the job, refresh the screen by clicking the **Re-fetch
 
 Notice that the **Most Recent Job Status** has changed to *`Script Generated`* for *`Employee_Data_Mask`*. Now, your masking script is ready to be used!
 
-![DMS](./images/dms-035(1).png "35")
 
 **Note:**  
 Pre-Masking Validation Checks:  
@@ -418,7 +377,7 @@ Your connection should be successful, if not please make sure your SSH Private K
 
 6. Highlight *`Employee_Data_Mask`* and select **Actions > Schedule Masking**.
 
-    ![DMS](./images/dms-043(1).png "43")
+    ![DMS](./images/dms-043(2).png "43")
 
 Fill in the following details on the **Schedule Data Masking Job: Basic Details page**:  
    - Data Masking Option: **In-Database Masking**.
@@ -442,7 +401,7 @@ On the next page, mention:
 
 Observe that the **Most Recent Job Status** changes to **Masking Job Scheduled**. Click the **re-fetch** button periodically until the status updates to **Masking Job Succeeded**.
 
-![DMS](./images/dms-046(1).png "46")
+![DMS](./images/dms-046(2).png "46")
 
 **Note:**
 - Oracle Data Masking Pack performs bulk operations to rapidly replace the table containing sensitive data with an identical table containing masked data while retaining the original database constraints, referential integrity and associated access structures, such as INDEXes and PARTITIONs, and access permissions, such as GRANTs.
@@ -452,7 +411,7 @@ Observe that the **Most Recent Job Status** changes to **Masking Job Scheduled**
 **What You Accomplished:**  
 Generated the Masking Script for the *`Employee_Data_Mask`* definition, with the option to export it for future bulk operations. Updated the required Host Named Credential and executed the script by submitting a masking job, successfully masking the sensitive data.
 
-## Task 7: Review the Masked Data and Share with Third-Party
+## Task 6: Review the Masked Data and Share with Third-Party
 
 ### Objective
 **Query and review the masked data** in the development and production environments for a before and after comparison. Share the masked data with your third-party collaborator.
@@ -540,7 +499,7 @@ As shown, sensitive data has been masked according to the defined formats in the
 **What You Accomplished:**  
 Queried and reviewed masked data using Oracle SQL Developer, while also exploring the use case for securely sharing data with a third-party collaborator.
 
-## Task 8: Data Subsetting- Create Data Subsetting Definition
+## Task 7: Data Subsetting- Create Data Subsetting Definition
 
 ### Objective
 Subset and mask your sensitive data for secure sharing with external partners. The following tasks will be performed to subset and mask the data together:
@@ -664,7 +623,7 @@ Now, your Data Masking script is associated with your Data Subsetting definition
 **What you accomplished:**  
 Data Subsetting Definition is created with defined subsetting and masking rules. Alternatively, you can choose to just define subsetting rules without the masking definition inclusion by skipping step 13 and 14.
 
-## Task 9: Data Subsetting- Generate and Execute Data Subsetting Script
+## Task 8: Data Subsetting- Generate and Execute Data Subsetting Script
 
 ### Objective
 Once the Data Subsetting Definition containing subsetting and masking rules is created, the next step is to:
@@ -740,7 +699,7 @@ After reviewing that the required space is available, click **Submit** to genera
 **What you accomplished:**  
  Generated the Data Subsetting script including subsetting as well as masking rules and executed the script to successfully subset and mask the data in one step.
 
-## Task 10: Review the Subsetted (and Masked) Data
+## Task 9: Review the Subsetted (and Masked) Data
 
 ### Objective
 Review subsetted and masked data across environments to understand how Data Masking and Subsetting enables secure data sharing with third-party collaborators. This includes querying subsetted and masked data in Production and Development environments for a before-and-after comparison.
@@ -844,7 +803,7 @@ By combining subsetting with masking, the enterprise ensures that the third-part
 
 - Conduct application testing on anonymized data.
 - Maintain the relationships and integrity of reference data.
-- Ensure compliance with privacy regulations, even when sharing data externally.
+- Helps comply with privacy regulations, even when sharing data externally.
 
 **What You Accomplished:**  
 Queried and reviewed subsetted and masked data on production and development environments using Oracle SQL Developer.
