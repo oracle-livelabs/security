@@ -613,11 +613,11 @@ You may stop here if you only need to subset your data. However, we will proceed
 
 13. Select the masking definition *`Employee_Data_Mask`* created earlier. Click **OK**.
 
-    ![DMS](./images/dms-072.png "Data Masking Definitions")
+    ![DMS](./images/dms-072(1).png "Data Masking Definitions")
 
 Now, your Data Masking script is associated with your Data Subsetting definition and it will be executed along with data subsetting. You do not need to execute the masking script separately.
         
-![DMS](./images/dms-073.png "Data Masking Definitions is associated")
+![DMS](./images/dms-073(1).png "Data Masking Definitions is associated")
 
 14. Click **Return** to go to the Data Subsetting Definitions screen.
 
@@ -659,8 +659,8 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by runnin
 
 **Generate and execute the subsetting script:**  
 4. Go back to the OEM Console and navigate to **Target > Databases**, then choose **Security** > **Data Masking and Subsetting** > **Data Subsetting**.  
-    
-    ![DMS](./images/dms-003b.png "Navigate to the Application Data Models")
+
+![DMS](./images/dms-003b.png "Restore original data")
 
 5. Select the *`Employee_Data_Subset`* subsetting definition, go to **Actions**, and choose **Generate Subset**.
 
@@ -779,7 +779,7 @@ Review subsetted and masked data across environments to understand how Data Mask
 
     - Rows count **before subsetting**:
 
-        ![DMS](./images/dms-085(1).png "Row count BEFORE subsetting (in DEV)")
+        ![DMS](./images/dms-385(1).png "Row count BEFORE subsetting (in DEV)")
         
     - Rows count **after subsetting**:
 
