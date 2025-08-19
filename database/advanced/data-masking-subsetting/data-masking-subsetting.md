@@ -480,16 +480,8 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
 
     - **AFTER masking** (on dev)
 
-    ![DMS](./images/dms-053(1).png "Employee data after masking (in DEV)")  
+    ![DMS](./images/dms-353(1).png "Employee data after masking (in DEV)")  
     
-- Employee Data:
-    - **BEFORE masking** (on prod)
-
-    ![DMS](./images/dms-052.png "Employee data BEFORE masking (in PROD)")
-
-    - **AFTER masking** (on dev)
-
-    ![DMS](./images/dms-053(1).png "Employee data AFTER masking (in DEV)")
 
 - Users Data:
     - **BEFORE masking** (on prod)
