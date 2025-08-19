@@ -26,4 +26,4 @@ An encrypted database has been prepared for you:
 
     ![Key Vault](./images/OKV-LL4_001.png "Display the parameters that define how TDE is setup in your database:")
 
-For a later LiveLab, we have already prepare an RMAN backup of the encrypted tablespaces
+For a later LiveLab, we have already prepared an RMAN backup of the encrypted tablespaces.
