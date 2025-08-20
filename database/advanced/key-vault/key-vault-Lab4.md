@@ -23,7 +23,9 @@ An encrypted database has been prepared for you:
     ./review_tde_deployment.sh
     </copy>
     ````
-
+Under 1), you see the system parameters that are controlling the behaviour of TDE in your database; the default algorithm is AES256; new tablespaces will be created encrypted, the database uses a file-based wallet in the wallet_root directory.
+Under 2) you see the wallet location; the entry for PDB1 is empty, because united PDBs share that location with the CDB\$ROOT.
+Under 3) you see the key-IDs of the TDE master keys for CDB\$ROOT and each PDB.
     ![Key Vault](./images/OKV-LL4_001.png "Display the parameters that define how TDE is setup in your database:")
 
 For a later LiveLab, we have already prepared an RMAN backup of the encrypted tablespaces.
