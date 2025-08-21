@@ -184,18 +184,19 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 - Associated Database: *`cdb1_PDB1.`*
 - Database Named Credentials: *`DMS_ADMIN.`*
 
-    ![DMS](./images/dms-022.png "22")
-
-4. Click **Next**.
+    ![DMS](./images/dms-022.png "22")  
+    
+    
+4. Click **Next**.  
 
 5. On the next screen, notice the discovered sensitive columns along with assigned masking formats.
 
     **Note**:  
     - Masking formats are automatically assigned based on the sensitive type and data type of the columns. If no match is found, a masking format will not be assigned, and the user must either select one from the masking formats library or create a custom format.
 
-    ![DMS](./images/dms-114(4).png "23")
-
-Now, let’s define the masking formats for the remaining three columns that do not yet have assigned formats.
+    ![DMS](./images/dms-114(4).png "23")  
+    
+    Now, let’s define the masking formats for the remaining three columns that do not yet have assigned formats.
 
 6. Select the **EMAIL** column in *`DEMO_HR_EMPLOYEES`*, then click the **Define Masking Format** option at the top.
 
@@ -293,7 +294,7 @@ Oracle Data Masking Pack performs a series of validation checks during script g
 - Masking Formats: This is a necessary step in the Data Masking process to ensure that the chosen masking formats meet the database and application integrity requirements.
 - Data Constraints: The requirements may include generating unique values for the column being masked because of uniqueness constraints or generating values that meet the column length or type requirements
 
-**Update the Host Named Credentials**  
+**Update the Host Named Credential**  
 4. The Host Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Host Named Credential with the new SSH key based on your connection method:  
 
     **Step 4(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).  
