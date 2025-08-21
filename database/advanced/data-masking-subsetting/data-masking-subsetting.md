@@ -293,7 +293,7 @@ Oracle Data Masking Pack performs a series of validation checks during script g
 - Masking Formats: This is a necessary step in the Data Masking process to ensure that the chosen masking formats meet the database and application integrity requirements.
 - Data Constraints: The requirements may include generating unique values for the column being masked because of uniqueness constraints or generating values that meet the column length or type requirements
 
-**Update the Host Named Credential**  
+**Update the Host Named Credentials**  
 4. The Host Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Host Named Credential with the new SSH key based on your connection method:  
 
     **Step 4(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).  
