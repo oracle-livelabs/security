@@ -1,12 +1,12 @@
 # Oracle Key Vault (OKV)
 
 ## Key Vault in a typical customer deployment
-- <Explain the use-case>
+Oracle Key Vault provides many rich and meaningful activity, audit and awareness reports that support you in keeping your business running in a secure fashion without unneccessay and avoidable interruptions.
 
-*Estimated Lab Time:* 2 minutes
+*Estimated Lab Time:* 5 minutes
 
 ### Objectives
-- <Explain the lab details>
+In this lab you will learn how to navigate to the many actionable reports that OKV provides and how to interpret them. Among other things, see which DBAs have failed to re-key their TDE master keys regularly, and which certificates are nearing expiration or no longer satisfy new, stricter compliance requirements.
 
 ### Prerequisites
 This lab assumes you went through Lab 11. 
