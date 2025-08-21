@@ -273,9 +273,9 @@ Fill in the below details:
  - Associated Database: *`cdb1_PDB1`*.
  - Database Named Credential: *`DMS_ADMIN`*.  
  
-    ![DMS](./images/dms-034.png "34")
-
-
+    ![DMS](./images/dms-034.png "34")  
+    
+    
 3. Click **Generate**.  
 
 To monitor the status of the job, refresh the screen by clicking the **Re-fetch** icon on the **Masking Definitions** page. 
