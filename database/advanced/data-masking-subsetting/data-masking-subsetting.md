@@ -184,18 +184,19 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 - Associated Database: *`cdb1_PDB1.`*
 - Database Named Credentials: *`DMS_ADMIN.`*
 
-    ![DMS](./images/dms-022.png "22")
-
-4. Click **Next**.
+    ![DMS](./images/dms-022.png "22")  
+    
+    
+4. Click **Next**.  
 
 5. On the next screen, notice the discovered sensitive columns along with assigned masking formats.
 
     **Note**:  
     - Masking formats are automatically assigned based on the sensitive type and data type of the columns. If no match is found, a masking format will not be assigned, and the user must either select one from the masking formats library or create a custom format.
 
-    ![DMS](./images/dms-114(4).png "23")
-
-Now, let’s define the masking formats for the remaining three columns that do not yet have assigned formats.
+    ![DMS](./images/dms-114(4).png "23")  
+    
+    Now, let’s define the masking formats for the remaining three columns that do not yet have assigned formats.
 
 6. Select the **EMAIL** column in *`DEMO_HR_EMPLOYEES`*, then click the **Define Masking Format** option at the top.
 
@@ -273,9 +274,9 @@ Fill in the below details:
  - Associated Database: *`cdb1_PDB1`*.
  - Database Named Credential: *`DMS_ADMIN`*.  
  
-    ![DMS](./images/dms-034.png "34")
-
-
+    ![DMS](./images/dms-034.png "34")  
+    
+    
 3. Click **Generate**.  
 
 To monitor the status of the job, refresh the screen by clicking the **Re-fetch** icon on the **Masking Definitions** page. 
