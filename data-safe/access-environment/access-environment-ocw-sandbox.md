@@ -100,7 +100,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
 Database Actions provides a way for you to run SQL commands on your database. The step-by-step instructions for accessing Database Actions are covered here. Subsequent labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
+1. From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Database**. In the table on the right, click the name of your database.
 
 2. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
 
@@ -135,4 +135,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 1, 2025
+- **Last Updated By/Date** - Jody Glover, August 28, 2025
