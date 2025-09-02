@@ -38,7 +38,7 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-26-40.png "Click on the endpoint name LIVELAB_DB_EP to view the details:")
 
-7.  On the endpoint details page, add the default wallet and click **Save**:
+7.  On the endpoint details page, type the name of the default wallet [LIVELABS_DB_WALLET] and click **Save**:
 
     ![Key Vault](./images/image-2025-7-24_16-12-59.png "On the endpoint details page, add the default wallet and click save:")
 
@@ -111,6 +111,12 @@ This lab assumes you went through Lab 4.
 ### Task 4: Prepare the database for the migration to Oracle Key Vault:
 
 1.  Add OKV password to the TDE wallet:
+
+    ```
+    <copy>
+    SQL> administer key management add secret 'Manager_1' for client 'OKV_PASSWORD' identified by EXTERNAL STORE with backup;
+    </copy>
+    ```
 
     ![Key Vault](./images/image-2025-7-24_12-52-28.png "Add OKV password to the TDE wallet:")
 

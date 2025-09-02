@@ -23,7 +23,7 @@ An encrypted database has been prepared for you:
     ./review_tde_deployment.sh
     </copy>
     ````
-![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behaviour of TDE in your database:")
+   ![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behaviour of TDE in your database:")
 
 You see the system parameters that are controlling the behaviour of TDE in your database: The default algorithm is AES256; new tablespaces will be created encrypted, the database uses a file-based wallet in the wallet_root directory.
 
