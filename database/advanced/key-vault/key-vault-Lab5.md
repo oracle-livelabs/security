@@ -114,7 +114,7 @@ This lab assumes you went through Lab 4.
 
     ```
     <copy>
-    SQL> administer key management add secret 'Manager_1' for client 'OKV_PASSWORD' identified by EXTERNAL STORE with backup;
+    SQL> administer key management add secret '<Key Vault endpoint password>' for client 'OKV_PASSWORD' identified by EXTERNAL STORE with backup;
     </copy>
     ```
 
@@ -124,7 +124,7 @@ This lab assumes you went through Lab 4.
 
     ```
     <copy>
-    SQL> alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' scope = BOTH;
+    alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' scope = BOTH;
     </copy>
     ```
 
@@ -132,11 +132,11 @@ This lab assumes you went through Lab 4.
 
 ### Task 5: Migrate the database to use Oracle Key Vault for centralized key management:
 
-1.  Migrate to use Key Vault:
+1.  Migrate the database to use Key Vault:
 
     ```
     <copy>
-    SQL> ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY
+    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY
     "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING "<wallet password>";
     </copy>
     ```
