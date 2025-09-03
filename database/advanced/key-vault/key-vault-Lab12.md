@@ -13,9 +13,9 @@ This lab assumes you went through Lab 11.
 
 ## Lab 12: Utilize the OKV reports to keep your business running
 
-1.  Login to Key Vault as user **KVEPADMIN**
+1.  Login to Key Vault as user **KVRESTADMIN**
 
-     ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
+     ![Key Vault](./images/image-2025-09-03_13-29-46.png "Login to Key Vault as an OKV administrator.")
 
 2. Click the **Reports** Tab:
 
@@ -33,4 +33,8 @@ This lab assumes you went through Lab 11.
 
     ![Key Vault](./images/image-2025-09-02_16-40-35.png "Click the Endpoints Tab.")
 
-You see a list of certificates with a length of 1024 bits (and their remaining life time), so you know immediatelly which certificate to replace with a longer one.
+You see a list of certificates with a length of 1024 bits (and their remaining life time), so you know immediatelly which certificate to replace with a longer one. Some of them also reached the end of their lifetime.
+
+4. Expand **Keys and Wallets Reports** and click on **Certificate Awareness Report**:
+
+    ![Key Vault](./images/image-2025-09-02_16-38-44.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
