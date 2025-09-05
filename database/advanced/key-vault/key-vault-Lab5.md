@@ -114,7 +114,7 @@ This lab assumes you went through Lab 4.
 
     ```
     <copy>
-    SQL> administer key management add secret '<Key Vault endpoint password>' for client 'OKV_PASSWORD' identified by EXTERNAL STORE with backup;
+    administer key management add secret '<Key Vault endpoint password>' for client 'OKV_PASSWORD' identified by EXTERNAL STORE with backup;
     </copy>
     ```
 
