@@ -109,7 +109,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 12. Click **Apply Changes**.
 
-13. Click the three dots again, and select **Enable REST**.
+13. Click the three dots again, and select **Enable REST**. In the **REST Enable User** dialog box, click **REST Enable User**.
 
 14. To the right of the URL in the `APP_USER` tile, click the **Open in new tab** icon.
 
@@ -241,11 +241,11 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
     The **Add from violations** page is displayed showing you Autonomous Database SQL queries.
 
-    ![Add from violations page](images/two-violations.png "Add from violations page")
+    ![Add from violations page](images/violations.png "Add from violations page")
 
 3. Expand the violations and review.
 
-4. Select the check box for the second SQL violation: `SELECT * FROM HCM1.EMPLOYEES`.
+4. Select the check box for the SQL violation: `SELECT * FROM HCM1.EMPLOYEES`. You need to click **Show** to identify it.
 
 5. Click **Add violations**. 
 
@@ -268,6 +268,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 1, 2025
+- **Last Updated By/Date** - Jody Glover, August 28, 2025
 
 
