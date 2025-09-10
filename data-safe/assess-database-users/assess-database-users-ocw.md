@@ -8,6 +8,8 @@ In this lab, you explore User Assessment.
 
 Estimated Time: 20 minutes
 
+[Lab 3 - Assess database users](videohub:1_3riz09r3)
+
 ### Objectives
 
 In this lab, you will:
@@ -175,4 +177,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, August 1, 2025
+* **Last Updated By/Date** - Jody Glover, September 10, 2025
