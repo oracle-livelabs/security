@@ -39,7 +39,7 @@
         "type": "livelabs"
       },
       {
-        "title": "Lab 7: Create and enforce a SQL Firewall policy in Data Safe",
+        "title": "Lab 6: Create and enforce a SQL Firewall policy in Data Safe",
         "description": "This lab shows you how to use SQL Firewall in Data Safe.",
         "filename": "../../sqlfw/sqlfw-ocw.md",
         "type": "livelabs"
