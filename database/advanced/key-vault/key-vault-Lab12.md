@@ -21,20 +21,58 @@ This lab assumes you went through Lab 11.
 
     ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Reports Tab.")
 
-2. Expand **Keys and Wallets Reports** and click on **Certificate Awareness Report**:
+3. System Overview before clustering:
 
-    ![Key Vault](./images/image-2025-09-02_16-38-44.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+    ![Key Vault](./images/image-2025-09-11-17.41.21.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
 
-3. On the left, you see certificates ordered and grouped by key length, on the right side ordered and grouped by their remaining life time.
+4. Key Management Report:
 
-    ![Key Vault](./images/image-2025-09-02_16-38-09.png "Certficates are listed and grouped by their length and remaining life time:")
+    ![Key Vault](./images/image-2025-09-11-17.53.46.png "Certficates are listed and grouped by their length and remaining life time:")
 
-4. Let us assume certificates with a length of 1024 bits are not compliant with your internal policies. Click on the red section of the pie chart diagram on the left and scroll down.
+5. DB Activated TDE Master Encryption Key Report:
 
-    ![Key Vault](./images/image-2025-09-02_16-40-35.png "Click the Endpoints Tab.")
+    ![Key Vault](./images/image-2025-09-11-18.09.03.png "Click the Endpoints Tab.")
 
-You see a list of certificates with a length of 1024 bits (and their remaining life time), so you know immediatelly which certificate to replace with a longer one. Some of them also reached the end of their lifetime.
+6. Endpoints page:
 
-4. Expand **Keys and Wallets Reports** and click on **Certificate Awareness Report**:
+    ![Key Vault](./images/image-2025-09-11-18.13.52.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
 
-    ![Key Vault](./images/image-2025-09-02_16-38-44.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+7. Wallets page:
+
+    ![Key Vault](./images/image-2025-09-11-18.20.43.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+
+8. Alerts page:
+
+    ![Key Vault](./images/image-2025-09-11-18.27.41.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+
+9. Manager Users page:
+
+    ![Key Vault](./images/image-2025-09-11-18.29.46.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+
+10. Empty LDAP Group Mappings:
+
+    ![Key Vault](./images/image-2025-09-11-18.33.10.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+
+11. Change user password:
+
+    ![Key Vault](./images/image-2025-09-11-18.42.01.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+
+12. CPU and memory metrics:
+
+    ![Key Vault](./images/image-2025-09-11-18.46.22.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+
+13. Settings page:
+
+    ![Key Vault](./images/image-2025-09-11-18.48.38-CUSTOM.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+
+14. Configure as Candidate node:
+
+    ![Key Vault](./images/image-2025-09-11-18.50.51.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+
+15. Cluster page:
+
+    ![Key Vault](./images/image-2025-09-11-18.58.43.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
+
+16. System overview after clustering:
+
+    ![Key Vault](./images/image-2025-09-11-19.02.06.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report:")
