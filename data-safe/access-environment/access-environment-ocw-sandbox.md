@@ -4,10 +4,9 @@
 
 In this lab, you access and review your LiveLabs Sandbox environment in Oracle Cloud Infrastructure. Your environment comes with a tenancy, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database. Sample data is loaded into your database and your database is registered with Oracle Data Safe.
 
-
 Estimated Lab Time: 5 minutes
 
-[Data Safe](videohub:1_dj98a6we)
+[Lab 1 - Access your environment](videohub:1_z0wftp16)
 
 ### Objectives
 
@@ -23,7 +22,7 @@ In this lab, you will:
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+- Reserved your environment for the HOL with the instructions given by the speaker.
 
 
 ## Task 1: View your LiveLabs Sandbox reservation information and sign in
@@ -70,7 +69,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 3. Under **List scope**, browse to and select your compartment. Your registered target database is listed on the right.
 
     - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
-    - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
+    - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe.
 
     ![Target databases page in OCI](images/target-databases-page-oci.png "Target databases page in OCI")
 
@@ -87,7 +86,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
     - In Security center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, SQL Firewall, and Alerts.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security assessment**, **User assessment**, **Feature usage**, and **Operations summary** charts in the dashboard already have data.
-    - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail with the status **In transition** for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
+    - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
 
     ![Initial Dashboard - security controls](images/dashboard-security-controls.png "Initial Dashboard - security controls")
 
@@ -100,18 +99,19 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
 Database Actions provides a way for you to run SQL commands on your database. The step-by-step instructions for accessing Database Actions are covered here. Subsequent labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
+1. From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Database**. 
 
-2. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
+2. If needed, select your compartment.
 
-3. If required, sign in as the `ADMIN` user. 
+3. In the table on the right, click the name of your database.
 
-    - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
-    - If you are using an Oracle-provided environment, enter the database password provided to you.
+4. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
 
-4. Close the **SQL History** and **Warning** dialog boxes.
+5. If required, sign in as the `ADMIN` user. 
 
-5. Review the interface. Here are the ways that you use Database Actions during the workshop:
+6. Close the **SQL History** and **Warning** dialog boxes.
+
+7. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
     - In the **Navigator** pane on the left, you select tables from the **HCM1** schema on your database.
     - On the **Worksheet** on the right, you run SQL commands and scripts.
@@ -119,9 +119,9 @@ Database Actions provides a way for you to run SQL commands on your database. Th
 
     ![SQL Worksheet in Oracle Database Actions](images/database-actions.png "SQL Worksheet in Oracle Database Actions")
 
-6. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. 
+8. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. 
 
-7. Return to Oracle Data Safe: Click the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed.
+9. Return to Oracle Data Safe: Click the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed.
 
 
 You may now **proceed to the next lab**.
@@ -138,4 +138,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, June 25, 2025
+- **Last Updated By/Date** - Jody Glover, September 10, 2025
