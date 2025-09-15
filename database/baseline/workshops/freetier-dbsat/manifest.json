@@ -5,7 +5,7 @@
     {
       "title": "Introduction",
       "description": "Understand the architecture of this workshop and what it can do",
-      "publisheddate": "09/01/2020",
+      "publisheddate": "08/18/2025",
       "filename": "../../intro/intro-dbsat.md"
     },
     {
@@ -16,20 +16,14 @@
     {
       "title": "Lab 1: Prepare Setup",
       "description": "How to download your ORM stack and update security rules for an existing VCN",
-      "publisheddate": "09/28/2020",
+      "publisheddate": "08/18/2025",
       "filename": "../../../common/prepare-setup/prepare-setup.md",
       "type": "dbsat"
     },
     {
-      "title": "Lab 2: Initialize Environment",
-      "description": "How to initialize and start all the workshop components",
-      "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env.md"
-    },
-    {
-      "title": "Lab 3: Database Security Assessment Tool (DBSAT)",
+      "title": "Lab 2: Database Security Assessment Tool (DBSAT)",
       "description": "In this lab you can see how to leverage Oracle DB Assessment Tool (DBSAT)",
-      "publisheddate": "10/20/2020",
+      "publisheddate": "08/18/2025",
       "filename": "../../dbsat/dbsat.md"
     },
     {
