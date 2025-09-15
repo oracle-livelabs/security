@@ -8,6 +8,9 @@ You begin by using Data Safe and Database Actions to create a collection of allo
 
 Estimated Lab Time: 20 minutes
 
+[Lab 6 - Create and enforce a SQL Firewall policy in Data Safe](videohub:1_jp0wu223)
+
+
 ### Objectives
 
 In this lab, you will:
@@ -80,7 +83,7 @@ This lab assumes you have:
 
 12. Click **Apply Changes**.
 
-13. Click the three dots again, and select **Enable REST**. In the **REST Enable User** dialog box, click **REST Enable User**.
+13. If REST does not get enabled, click the three dots again, and select **Enable REST**. In the **REST Enable User** dialog box, click **REST Enable User**.
 
 14. To the right of the URL in the `APP_USER` tile, click the **Open in new tab** icon.
 
@@ -239,6 +242,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 28, 2025
+- **Last Updated By/Date** - Jody Glover, September 10, 2025
 
 
