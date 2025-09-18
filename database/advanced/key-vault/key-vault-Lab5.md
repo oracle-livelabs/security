@@ -110,17 +110,7 @@ This lab assumes you went through Lab 4.
 
 ### Task 4: Prepare the database for the migration to Oracle Key Vault:
 
-1.  Add OKV password to the TDE wallet:
-
-    ```
-    <copy>
-    administer key management add secret '<Key Vault endpoint password>' for client 'OKV_PASSWORD' identified by EXTERNAL STORE with backup;
-    </copy>
-    ```
-
-    ![Key Vault](./images/image-2025-7-24_12-52-28.png "Add OKV password to the TDE wallet:")
-
-2.  Change the TDE configuration to OKV|FILE:
+1.  Change the TDE configuration to OKV|FILE:
 
     ```
     <copy>

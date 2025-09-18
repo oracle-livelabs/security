@@ -1,7 +1,7 @@
 # Oracle Key Vault (OKV)
 
 ## Enable lights-out operations
-In certain scenarios, it can be important to allow a database to open the connection to Oracle Kay Vault without human intervention, for example when a RAC instance is automatically restarted, or when a Data Guard primary database restarts after a role transition to take on the standby role.
+In certain scenarios, it can be important to allow a database to open the connection to Oracle Key Vault without human intervention, for example when a RAC instance is automatically restarted by Oracle Grid Infrastructre, or when a Data Guard primary database restarts after a role transition to take on the standby role.
 
 *Estimated Lab Time:* 2 minutes
 

@@ -1,7 +1,7 @@
 # Oracle Key Vault (OKV)
 
-## True Migration
-True migration is a term that only applies to Oracle Key Vault: Because OKV has been purpose-built for Oracle, it uniquely allows to upload pre-migration keys from the wallet into OKV, enabling you to eventually delete the old wallet and comply with PCI which requires to remove encryption keys from the encrypting server. No other key manager can do this.
+## Full Migration (better use case, keep backups and keys that is compliance)
+Full migration is a term that only applies to Oracle Key Vault: Because OKV has been purpose-built for Oracle, it uniquely allows to upload pre-migration keys from the wallet into OKV, enabling you to eventually delete the old wallet and comply with PCI which requires to remove encryption keys from the encrypting server. No other key manager can do this.
 
 *Estimated Lab Time:* 2 minutes
 
