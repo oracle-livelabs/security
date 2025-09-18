@@ -13,7 +13,7 @@ This lab assumes you went through Lab 11.
 
 ## Lab 12: Utilize the OKV reports to keep your business running
 
-1. Login Login to Key Vault as user **KVRESTADMIN**
+1. Login to Key Vault as user **KVRESTADMIN**
 
      ![Key Vault](./images/image-2025-09-03_13-29-46.png "Login to Key Vault as an OKV administrator.")
 
