@@ -8,6 +8,9 @@ You begin by using Data Safe and Database Actions to create a collection of allo
 
 Estimated Lab Time: 20 minutes
 
+[Lab 6 - Create and enforce a SQL Firewall policy in Data Safe](videohub:1_jp0wu223)
+
+
 ### Objectives
 
 In this lab, you will:
@@ -37,7 +40,7 @@ This lab assumes you have:
 
 4. On the **Target summary** tab, click the name of your target database. The SQL Firewall status should currently show as **Disabled**.
 
-5. Click **Refresh**. 
+5. On the SQL Firewall page, click the **Refresh** button.
 
 6. Click **Enable** and wait until the status changes to **ACTIVE**.
 
@@ -80,7 +83,7 @@ This lab assumes you have:
 
 12. Click **Apply Changes**.
 
-13. Click the three dots again, and select **Enable REST**.
+13. If REST does not get enabled, click the three dots again, and select **Enable REST**. In the **REST Enable User** dialog box, click **REST Enable User**.
 
 14. To the right of the URL in the `APP_USER` tile, click the **Open in new tab** icon.
 
@@ -212,11 +215,11 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
     The **Add from violations** page is displayed showing you Autonomous Database SQL queries.
 
-    ![Add from violations page](images/two-violations.png "Add from violations page")
+    ![Add from violations page](images/violations.png "Add from violations page")
 
 3. Expand the violations and review.
 
-4. Select the check box for the second SQL violation: `SELECT * FROM HCM1.EMPLOYEES`.
+4. Select the check box for the SQL violation: `SELECT * FROM HCM1.EMPLOYEES`. You need to click **Show** to identify it.
 
 5. Click **Add violations**. 
 
@@ -239,6 +242,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 1, 2025
+- **Last Updated By/Date** - Jody Glover, September 10, 2025
 
 

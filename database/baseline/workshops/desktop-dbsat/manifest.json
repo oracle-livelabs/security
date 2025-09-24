@@ -5,7 +5,7 @@
     {
       "title": "Introduction",
       "description": "Understand the architecture of this workshop and what it can do",
-      "publisheddate": "09/01/2020",
+      "publisheddate": "08/18/2025",
       "filename": "../../intro/intro-dbsat.md"
     },
     {
@@ -14,15 +14,9 @@
       "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
     },
     {
-      "title": "Lab 1: Initialize Environment",
-      "description": "How to initialize and start all the workshop components",
-      "publisheddate": "10/14/2020",
-      "filename": "../../../common/init-start-env/init-start-env.md"
-    },
-    {
-      "title": "Lab 2: Database Security Assessment Tool (DBSAT)",
+      "title": "Lab 1: Database Security Assessment Tool (DBSAT)",
       "description": "In this lab you can see how to leverage Oracle DB Assessment Tool (DBSAT)",
-      "publisheddate": "10/20/2020",
+      "publisheddate": "08/18/2025",
       "filename": "../../dbsat/dbsat.md"
     },
     {

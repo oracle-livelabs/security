@@ -4,10 +4,9 @@
 
 In this lab, you access and review your LiveLabs Sandbox environment in Oracle Cloud Infrastructure. Your environment comes with a tenancy, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database. Sample data is loaded into your database and your database is registered with Oracle Data Safe.
 
-
 Estimated Lab Time: 5 minutes
 
-[Data Safe](videohub:1_dj98a6we)
+[Lab 1 - Access your environment](videohub:1_z0wftp16)
 
 ### Objectives
 
@@ -100,15 +99,19 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
 Database Actions provides a way for you to run SQL commands on your database. The step-by-step instructions for accessing Database Actions are covered here. Subsequent labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Transaction Processing**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
+1. From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Database**. 
 
-2. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
+2. If needed, select your compartment.
 
-3. If required, sign in as the `ADMIN` user. 
+3. In the table on the right, click the name of your database.
 
-4. Close the **SQL History** and **Warning** dialog boxes.
+4. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
 
-5. Review the interface. Here are the ways that you use Database Actions during the workshop:
+5. If required, sign in as the `ADMIN` user. 
+
+6. Close the **SQL History** and **Warning** dialog boxes.
+
+7. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
     - In the **Navigator** pane on the left, you select tables from the **HCM1** schema on your database.
     - On the **Worksheet** on the right, you run SQL commands and scripts.
@@ -116,9 +119,9 @@ Database Actions provides a way for you to run SQL commands on your database. Th
 
     ![SQL Worksheet in Oracle Database Actions](images/database-actions.png "SQL Worksheet in Oracle Database Actions")
 
-6. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. 
+8. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. 
 
-7. Return to Oracle Data Safe: Click the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed.
+9. Return to Oracle Data Safe: Click the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed.
 
 
 You may now **proceed to the next lab**.
@@ -135,4 +138,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 1, 2025
+- **Last Updated By/Date** - Jody Glover, September 10, 2025
