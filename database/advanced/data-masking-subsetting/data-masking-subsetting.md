@@ -196,7 +196,7 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 
     ![DMS](./images/dms-114(4).png "23")  
     
-    Now, let’s define the masking formats for the remaining three columns that do not yet have assigned formats.
+    Now, let’s define the masking formats for the remaining two columns that do not yet have assigned formats.
 
 6. Select the **EMAIL** column in *`DEMO_HR_EMPLOYEES`*, then click the **Define Masking Format** option at the top.
 
@@ -251,7 +251,40 @@ Stay on the **Create Masking Definition** page to define the format for the othe
 **What You Accomplished:**  
 A new Masking Definition for sensitive columns EMAIL, USERID and PASSWORD in the *`Employee_Data_Mask`* is created, where the automatically assigned masking formats are reviewed and the remaining ones are added.
 
-## Task 5: Data Masking- Generate and Execute Masking Script  
+## Task 5: Data Masking- Pre Masking Checks 
+
+### Objective
+Before generating and running a masking job, it is recommended to perform a pre-masking check. This task runs a pre-masking check job to validate the selected target database and ensure it is properly configured for masking. 
+
+### Steps
+1. Click **Actions** for *`Employee_Data_Mask`* and choose **Pre-Masking Checks** as shown below:  
+
+   ![DMS](./images/dms-214.png "34") 
+
+2. Click Schedule
+
+3. On the **Create Pre-Masking Check report**, fill in the below details:
+
+ - Associated Database: *`cdb1_PDB1`*.
+ - Database Named Credential: *`DMS_ADMIN`*.  
+ 
+    ![DMS](./images/dms-216.png "34")  
+    
+    
+3. Click **Submit**
+4. Pre-Masking Check job is submitted. Use the **Refresh** icon to update the page.
+
+    ![DMS](./images/dms-217.png "34")  
+
+5. Once the job is completed, a total of eleven checks are performed. Verify that all checks have passed successfully. Review and remediate any issues based on the error messages before proceeding.  
+
+**Note:**  
+Pre-Masking Checks ensure the masking user has required privileges, enough tablespace, and valid objects/packages. They verify that dependent objects, triggers, and indexes won’t block masking, confirm tables and columns exist with up-to-date stats, and check that security controls (OLS, VPD, Data Redaction, Database Vault) won’t restrict access or need to be rebuilt.
+
+**What You Accomplished:** 
+Successfully ran a **Pre-Masking Check** job to validate the environment and ensure the masking job could run without issues.
+
+## Task 6: Data Masking- Generate and Execute Masking Script  
 
 ### Objective
 - **Generate the masking script** for the previously created Masking Definition, *`Employee_Data_Mask`*. If needed, you can also export the script and perform bulk operations.
@@ -286,13 +319,6 @@ To monitor the status of the job, refresh the screen by clicking the **Re-fetch
  - This exported script can then be executed on other targets with the same schema and sensitive data.
 
 Notice that the **Most Recent Job Status** has changed to *`Script Generated`* for *`Employee_Data_Mask`*. Now, your masking script is ready to be used!
-
-
-**Note:**  
-Pre-Masking Validation Checks:  
-Oracle Data Masking Pack performs a series of validation checks during script generation to ensure that the Data Masking process proceeds successfully without errors. Once the validation checks listed below are successfully completed, Oracle Data Masking Pack generates a PL/SQL-based masking script, which is then transferred to the target database for execution:
-- Masking Formats: This is a necessary step in the Data Masking process to ensure that the chosen masking formats meet the database and application integrity requirements.
-- Data Constraints: The requirements may include generating unique values for the column being masked because of uniqueness constraints or generating values that meet the column length or type requirements
 
 **Update the Host Named Credential**  
 4. The Host Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Host Named Credential with the new SSH key based on your connection method:  
@@ -412,7 +438,7 @@ Observe that the **Most Recent Job Status** changes to **Masking Job Scheduled**
 **What You Accomplished:**  
 Generated the Masking Script for the *`Employee_Data_Mask`* definition, with the option to export it for future bulk operations. Updated the required Host Named Credential and executed the script by submitting a masking job, successfully masking the sensitive data.
 
-## Task 6: Review the Masked Data and Share with Third-Party
+## Task 7: Review the Masked Data and Share with Third-Party
 
 ### Objective
 **Query and review the masked data** in the development and production environments for a before and after comparison. Share the masked data with your third-party collaborator.
@@ -501,7 +527,7 @@ As shown, sensitive data has been masked according to the defined formats in the
 **What You Accomplished:**  
 Queried and reviewed masked data using Oracle SQL Developer, while also exploring the use case for securely sharing data with a third-party collaborator.
 
-## Task 7: Data Subsetting- Create Data Subsetting Definition
+## Task 8: Data Subsetting- Create Data Subsetting Definition
 
 ### Objective
 Subset and mask your sensitive data for secure sharing with external partners. The following tasks will be performed to subset and mask the data together:
@@ -625,7 +651,7 @@ Now, your Data Masking script is associated with your Data Subsetting definition
 **What you accomplished:**  
 Data Subsetting Definition is created with defined subsetting and masking rules. Alternatively, you can choose to just define subsetting rules without the masking definition inclusion by skipping step 13 and 14.
 
-## Task 8: Data Subsetting- Generate and Execute Data Subsetting Script
+## Task 9: Data Subsetting- Generate and Execute Data Subsetting Script
 
 ### Objective
 Once the Data Subsetting Definition containing subsetting and masking rules is created, the next step is to:
@@ -701,7 +727,7 @@ After reviewing that the required space is available, click **Submit** to genera
 **What you accomplished:**  
  Generated the Data Subsetting script including subsetting as well as masking rules and executed the script to successfully subset and mask the data in one step.
 
-## Task 9: Review the Subsetted (and Masked) Data
+## Task 10: Review the Subsetted (and Masked) Data
 
 ### Objective
 Review subsetted and masked data across environments to understand how Data Masking and Subsetting enables secure data sharing with third-party collaborators. This includes querying subsetted and masked data in Production and Development environments for a before-and-after comparison.
