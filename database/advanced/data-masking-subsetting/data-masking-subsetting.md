@@ -281,7 +281,7 @@ Before generating and running a masking job, it is recommended to perform a pre-
 **Note:**  
 Pre-Masking Checks ensure the masking user has required privileges, enough tablespace, and valid objects/packages. They verify that dependent objects, triggers, and indexes won’t block masking, confirm tables and columns exist with up-to-date stats, and check that security controls (OLS, VPD, Data Redaction, Database Vault) won’t restrict access or need to be rebuilt.
 
-**What You Accomplished:** 
+**What You Accomplished:**  
 Successfully ran a **Pre-Masking Check** job to validate the environment and ensure the masking job could run without issues.
 
 ## Task 6: Data Masking- Generate and Execute Masking Script  
