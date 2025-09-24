@@ -8,6 +8,8 @@ Create a masking policy using the default settings and then  customize it. Mask 
 
 Estimated Time: 20 minutes
 
+[Lab 5 - Mask sensitive data](videohub:1_dh9kov8c)
+
 ### Objectives
 
 In this lab, you will:
@@ -271,4 +273,4 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 1, 2025
+- **Last Updated By/Date** - Jody Glover, September 10, 2025

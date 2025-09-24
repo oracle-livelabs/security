@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.14
+*Version tested in this lab:* Oracle AVDF 20.15
 
 ### Video Preview
 
@@ -57,7 +57,8 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
+
+        **Note**: **if you are using a remote desktop session/Green Button**, click on the Activities menu in the top left corner and open the terminal application to execute the commands. 
 
     - Go to the scripts directory
 
