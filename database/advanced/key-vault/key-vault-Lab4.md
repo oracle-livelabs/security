@@ -33,7 +33,7 @@ You see the wallet location; the entry for PDB1 is empty, because united PDBs in
 
    ![Key Vault](./images/OKV-LL4-001c.png "You see the key-IDs (names of the keys) of the TDE master keys for CDB$ROOT and each PDB:")
 
-You see the key-IDs (names of the keys) of the TDE master keys for CDB$ROOT and each PDB.
+You see the key-IDs (names of the keys) of the TDE master keys for CDB$ROOT and each PDB, and their creation times.
 
    ![Key Vault](./images/OKV-LL4-001d.png "See which tablespaces are encrypted and the encryption algorithm:")
 

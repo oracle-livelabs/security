@@ -16,6 +16,14 @@ This lab assumes you went through Lab 4.
 
 1.  Login to Key Vault as user **KVEPADMIN**
 
+    Get the randonly generated password by executing this command
+
+    ```
+    <copy>
+    cat wui_passphrase
+    </copy>
+    ```
+
      ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
 
 2. Click the **Endpoints** Tab:
@@ -34,7 +42,7 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-26-31.png "Click the Endpoints Tab to view the recently created endpoint LIVELABS_DB_EP:")
 
-6.  Click on the endpoint name **LIVELAB\_DB\_EP** to view the details:
+6.  Click on the endpoint name **LIVELABS\_DB\_EP** to view the details:
 
     ![Key Vault](./images/image-2025-7-24_12-26-40.png "Click on the endpoint name LIVELAB_DB_EP to view the details:")
 
@@ -147,8 +155,20 @@ This lab assumes you went through Lab 4.
 
     ```
     <copy>
-    ./review_tde_using_okv_configuration.sh
+    ./review_tde_deployment.sh
     </copy>
     ```
 
     ![Key Vault](./images/image-2025-7-24_17-8-50.png "Review the database setup after migrating to Key Vault:")
+
+### Task 6: Post-migration step:
+
+1.  You have setup a password-protected connection to OKV. Correct the setting of the TDE_CONFIGURATION parameter:
+  
+       ```
+       <copy>
+       alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV' scope = BOTH;
+       </copy>
+       ```
+   
+       ![Key Vault](./images/TDE_CONFIG_OKV.png "Change the TDE configuration to OKV|FILE:")

@@ -49,7 +49,7 @@
     },
     {
       "title": "Lab 6: True Migration",
-      "description": "need shorter text]",
+      "description": "Upload pre-migration TDE keys from the TDE wallet to OKV",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab6.md",
       "type": "brown"
@@ -86,14 +86,14 @@
       "title": "Lab 11: Bring Your Own Key and use it",
       "description": "Upload an externally generated key into OKV",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault.md",
+      "filename": "../../key-vault/key-vault-Lab11.md",
       "type": "brown"
     },
     {
       "title": "Lab 12: Key Vault (OKV)",
       "description": "Key Vault in a typical customer deployment",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault.md",
+      "filename": "../../key-vault/key-vault-Lab12.md",
       "type": "brown"
     },
     {

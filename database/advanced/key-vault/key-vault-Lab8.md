@@ -1,7 +1,7 @@
 # Oracle Key Vault (OKV)
 
 ## Ignore intermittent connectivity with Persistent cache
-- Oracle Key Vault already provides continuous availability by building an OKV cluster on-prem, or stretching into any Cloud. What if something happens, like an underwater landslide, that cuts the connection between your databases and your OKV cluster? Not to worry, OKVs persistent cache saves your day and keeps your databases running. 
+- Oracle Key Vault already provides continuous availability by building an OKV cluster on-prem, or stretching it into any Cloud. What if something happens, like an underwater landslide, that cuts the connection between your databases and your OKV cluster? Not to worry, OKVs persistent cache saves your day and keeps your databases running. 
 
 *Estimated Lab Time:* 2 minutes
 

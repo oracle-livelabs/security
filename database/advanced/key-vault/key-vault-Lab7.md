@@ -9,7 +9,7 @@ In certain scenarios, it can be important to allow a database to open the connec
 - Learn how to setup an auto-open OKV connection.
 
 ### Prerequisites
-This lab assumes you went through Lab 5. 
+This lab assumes you went through Lab 6. 
 
 ## Lab 7: Enable lights-out operations
 ### Task 1: Enable lights-out operations
@@ -26,8 +26,18 @@ This lab assumes you went through Lab 5.
 
     ````
     <copy>
-    ./enable-lights-out-operation.sh
+    administer key management add secret 'Manager_1' for client 'OKV_PASSWORD' to local auto_login keystore '/etc/ORACLE/WALLETS/cdb1/tde';
     </copy>
     ````
 
-   ![Key Vault](./images/image-2025-09-05-enable-light-out-operation.png "Upload the pre-migration key from the old TDE wallet into the OKV wallet that you created in Lab 5:")
+   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Upload the pre-migration key from the old TDE wallet into the OKV wallet that you created in Lab 5:")
+
+3.  Change the TDE configuration to OKV|FILE:
+   
+       ```
+       <copy>
+       alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' scope = BOTH;
+       </copy>
+       ```
+   
+       ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE configuration to OKV|FILE:")
