@@ -16,13 +16,13 @@ This lab assumes you went through Lab 3.
 
 An encrypted database has been prepared for you:
 
-1. To start, run the following script; it will show you exactly what you need to know before migrating to Oracle Key Vault.
+To start, run the following script; it will show you exactly what you need to know before migrating to Oracle Key Vault.
 
-    ````
-    <copy>
-    ./review_tde_deployment.sh
-    </copy>
-    ````
+ ````
+ <copy>
+ ./review_tde_deployment.sh
+ </copy>
+ ````
    ![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behaviour of TDE in your database:")
 
 You see the system parameters that are controlling the behaviour of TDE in your database: The default algorithm is AES256; new tablespaces will be created encrypted, the database uses a file-based wallet in the wallet_root directory.

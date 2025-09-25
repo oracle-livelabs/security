@@ -94,7 +94,7 @@ This lab assumes you went through Lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_12-48-0.png "Install Key Vault software. This will prompt for the endpoint connection password.")
+    ![Key Vault](./images/image-2025-09-27_install.png "Install Key Vault software. This will prompt for the endpoint connection password.")
 
 3.  Show details under Key Vault endpoint home:
 
@@ -114,7 +114,7 @@ This lab assumes you went through Lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_12-50-7.png "Setup the Key Vault library (liborapkcs.so) that the DB will use to communicate with Key Vault:")
+    ![Key Vault](./images/images-2025-09-25_13-30-45_root.png "Setup the Key Vault library (liborapkcs.so) that the DB will use to communicate with Key Vault:")
 
 ### Task 4: Prepare the database for the migration to Oracle Key Vault:
 
@@ -149,7 +149,7 @@ This lab assumes you went through Lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_16-58-54.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB\$ROOT and one for PDB1:")
+    ![Key Vault](./images/images-2025-09-25_13-36-48_list.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB\$ROOT and one for PDB1:")
 
 3.  Review the database setup after migrating to Key Vault:
 
