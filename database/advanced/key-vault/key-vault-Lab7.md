@@ -30,4 +30,4 @@ This lab assumes you went through Lab 6.
     </copy>
     ````
 
-   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Upload the pre-migration key from the old TDE wallet into the OKV wallet that you created in Lab 5:")
+   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Add the OKV password to the TDE wallet in <WALLET_ROOT>/tde to enable auto-open OKV configuration.")

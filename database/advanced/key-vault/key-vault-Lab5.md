@@ -135,7 +135,7 @@ This lab assumes you went through Lab 4.
     ```
     <copy>
     ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY
-    "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING "<wallet password>";
+    "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING "<TDE wallet password>";
     </copy>
     ```
 
