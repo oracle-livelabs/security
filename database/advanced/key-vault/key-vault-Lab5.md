@@ -160,15 +160,3 @@ This lab assumes you went through Lab 4.
     ```
 
     ![Key Vault](./images/image-2025-7-24_17-8-50.png "Review the database setup after migrating to Key Vault:")
-
-### Task 6: Post-migration step:
-
-1.  You have setup a password-protected connection to OKV. Correct the setting of the TDE_CONFIGURATION parameter:
-  
-       ```
-       <copy>
-       alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV' scope = BOTH;
-       </copy>
-       ```
-   
-       ![Key Vault](./images/TDE_CONFIG_OKV.png "Change the TDE configuration to OKV|FILE:")

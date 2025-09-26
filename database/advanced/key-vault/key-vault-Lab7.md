@@ -31,13 +31,3 @@ This lab assumes you went through Lab 6.
     ````
 
    ![Key Vault](./images/image-2025-09-25_11-48-23.png "Upload the pre-migration key from the old TDE wallet into the OKV wallet that you created in Lab 5:")
-
-3.  Change the TDE configuration to OKV|FILE:
-   
-       ```
-       <copy>
-       alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' scope = BOTH;
-       </copy>
-       ```
-   
-       ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE configuration to OKV|FILE:")
