@@ -12,8 +12,4 @@
 This lab assumes you went through Lab 7. 
 
 ## Lab 8: Ignore intermittent connectivity with Persistent cache
-### Task 1: Re...
-
-A...
-
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+### Task 1: 

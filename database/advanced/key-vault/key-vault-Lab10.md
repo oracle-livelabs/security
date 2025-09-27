@@ -14,11 +14,11 @@ This lab assumes you went through Lab 9.
 ## Lab 10: Automate REKEY
 ### Task 1: Automate REKEY
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+1. Log into your **DBSec-Lab** database as SYSDBA:
 
     ````
     <copy>
-    cd $DBSEC_LABS/okv
+    sqlplus / as SYSDBA
     </copy>
     ````
 
@@ -29,7 +29,8 @@ This lab assumes you went through Lab 9.
     administer key management add secret 'Manager_1' for client 'OKV_PASSWORD' to local auto_login keystore '/etc/ORACLE/WALLETS/cdb1/tde_seps';
     </copy>
     ````
-    ![Key Vault](./images/images-2025-09-26_12-41-08-tde_seps.png "Add the OKV password to a (local) auto-open wallet in <WALLET_ROOT>/tde_seps to replace it on the SQL*Plus command line with EXTERNAL STORE".)
+
+    ![Key Vault](./images/images-2025-09-26_12-41-08-tde_seps.png "Add the OKV password to a (local) auto-open wallet in <WALLET_ROOT>/tde_seps to replace it on the SQL*Plus command line with EXTERNAL STORE.")
 
 3. To confirm the changed behaviour, execute a re-key operation without using the OKV password:
 
