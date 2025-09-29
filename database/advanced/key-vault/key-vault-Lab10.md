@@ -26,7 +26,7 @@ This lab assumes you went through Lab 9.
 
     ````
     <copy>
-    administer key management add secret 'Manager_1' for client 'OKV_PASSWORD' to local auto_login keystore '/etc/ORACLE/WALLETS/cdb1/tde_seps';
+    administer key management add secret '*********' for client 'OKV_PASSWORD' to local auto_login keystore '/etc/ORACLE/WALLETS/cdb1/tde_seps';
     </copy>
     ````
 

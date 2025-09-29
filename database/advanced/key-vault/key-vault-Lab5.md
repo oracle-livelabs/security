@@ -26,9 +26,9 @@ This lab assumes you went through Lab 4.
 
      ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
 
-2. Click the **Endpoints** Tab:
+2. Click the **Endpoints** tab:
 
-    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints Tab.")
+    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints tab.")
 
 3.  Click on **Add** to add a new Endpoint:
 
@@ -38,7 +38,7 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-17-29.png "Fill in the details of your endpoint: Endpoint Name is LIVELABS_DB_EP; Type is Oracle Database; OS Type is Linux; click 'Register'")
 
-5.  Click the **Endpoints** Tab to view the recently created endpoint **LIVELABS\_DB\_EP** among earlier created endpoints:
+5.  Click the **Endpoints** tab to view the recently created endpoint **LIVELABS\_DB\_EP** among earlier created endpoints:
 
     ![Key Vault](./images/image-2025-7-24_12-26-31.png "Click the Endpoints Tab to view the recently created endpoint LIVELABS_DB_EP:")
 
@@ -54,9 +54,9 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_16-15-52.png "Check the permissions of the default wallet:")
 
-9.  Click the **Endpoints** Tab and copy the **Enrollment Token**:
+9.  Click the **Endpoints** tab and copy the **Enrollment Token**:
 
-    ![Key Vault](./images/image-2025-7-24_16-17-13.png "Click the Endpoints Tab and copy the Enrollment Token:")
+    ![Key Vault](./images/image-2025-7-24_16-17-13.png "Click the Endpoints tab and copy the Enrollment Token:")
 
 10. Click **Logout** on the right-hand corner of the page:
 
