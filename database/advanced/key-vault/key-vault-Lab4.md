@@ -29,7 +29,7 @@ You see the system parameters that are controlling the behaviour of TDE in your 
 - The default algorithm is AES256
 - New tablespaces will be created encrypted
 - the database uses a file-based wallet 
-- in the wallet_root directory
+- in the <WALLET_ROOT>/tde directory
 
 ![Key Vault](./images/OKV-LL4-001b.png "You see the wallet location:")
 

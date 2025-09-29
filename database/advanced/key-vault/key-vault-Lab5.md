@@ -7,7 +7,7 @@ In this lab you will prepare Oracle Key Vault for the incoming database and inst
 Estimated Lab Time: 15 minutes
 
 #### Objectives
-In this LiveLab, you will go through the steps of migrating an encrypted database from a local TDE wallet to centralized TDE key managemment in Oracle Key Vault.
+In this LiveLab, you will go through the steps of migrating an encrypted database from a local TDE wallet to centralized TDE key management in Oracle Key Vault.
 
 #### Prerequisites
 This lab assumes you went through Lab 4. 
@@ -46,7 +46,7 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-26-40.png "Click on the endpoint name LIVELAB_DB_EP to view the details:")
 
-7.  On the endpoint details page, type the name of the default wallet [LIVELABS_DB_WALLET] and click **Save**:
+7.  On the endpoint details page, type the name of the default wallet [LIVELABS\_DB\_WALLET] and click **Save**:
 
     ![Key Vault](./images/image-2025-7-24_16-12-59.png "On the endpoint details page, add the default wallet and click save:")
 

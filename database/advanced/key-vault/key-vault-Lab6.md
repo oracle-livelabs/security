@@ -31,7 +31,17 @@ This lab assumes you went through Lab 5.
 
    ![Key Vault](./images/image-2025-09-27_upload.png "Upload the pre-migration key from the old TDE wallet into the OKV wallet that you created in Lab 5:")
 
-3. Delete the TDE wallet from <WALLET_ROOT>/tde:
+3. Set the TDE_CONFIGURATION to "OKV":
+
+    ````
+    <copy>
+    ALTER SYSTEM SET TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV' scope = both;
+    </copy>
+    ````
+
+
+4. Delete the TDE wallet from <WALLET_ROOT>/tde:
+
     ````
     <copy>
     rm -v /etc/ORACLE/WALLETS/cdb1/tde/*
