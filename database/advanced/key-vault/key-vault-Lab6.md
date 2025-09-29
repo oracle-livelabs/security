@@ -23,7 +23,7 @@ This lab assumes you went through Lab 5.
 
 2. Upload the pre-migration key from the TDE wallet into the OKV wallet that you created in Lab 5:
 
-    ````
+    ````plaintext
     <copy>
     $OKV_HOME/bin/okvutil upload -t WALLET -g LIVELABS_DB_WALLET -l /etc/ORACLE/WALLETS/cdb1/tde/ -v 3
     </copy>
