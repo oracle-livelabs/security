@@ -15,7 +15,7 @@ This lab assumes you went through Lab 5.
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
-    ````
+    ````plaintext
     <copy>
     cd $DBSEC_LABS/okv
     </copy>
@@ -33,7 +33,7 @@ This lab assumes you went through Lab 5.
 
 3. Set the TDE_CONFIGURATION to "OKV":
 
-    ````
+    ````plaintext
     <copy>
     ALTER SYSTEM SET TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV' scope = both;
     </copy>
@@ -42,7 +42,7 @@ This lab assumes you went through Lab 5.
 
 4. Delete the TDE wallet from <WALLET_ROOT>/tde:
 
-    ````
+    ````plaintext
     <copy>
     rm -v /etc/ORACLE/WALLETS/cdb1/tde/*
     </copy>
