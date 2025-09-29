@@ -39,6 +39,7 @@ This lab assumes you went through Lab 5.
     </copy>
     ````
 
+   ![Key Vault](./images/TDE_CONFIG_OKV.png "Set the TDE_CONFIGURATION to 'OKV'")
 
 4. Delete the TDE wallet from <WALLET_ROOT>/tde:
 

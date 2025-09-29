@@ -16,7 +16,7 @@ This lab assumes you went through Lab 6.
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
-    ````
+    ````plaintext
     <copy>
     cd $DBSEC_LABS/okv
     </copy>
@@ -26,8 +26,20 @@ This lab assumes you went through Lab 6.
 
     ````
     <copy>
-    administer key management add secret 'Manager_1' for client 'OKV_PASSWORD' to local auto_login keystore '/etc/ORACLE/WALLETS/cdb1/tde';
+    administer key management add secret '*********' for client 'OKV_PASSWORD' to local auto_login keystore '/etc/ORACLE/WALLETS/cdb1/tde';
     </copy>
     ````
 
    ![Key Vault](./images/image-2025-09-25_11-48-23.png "Add the OKV password to the TDE wallet in <WALLET_ROOT>/tde to enable auto-open OKV configuration.")
+
+3. Change the TDE_CONFIGURATION to 'OKV|FILE' to enable the database to find the new wallet in <WALLET_ROOT>/tde.
+
+    ```
+    <copy>
+    alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' scope = BOTH;
+    </copy>
+    ```
+
+    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE configuration to OKV|FILE:")
+
+
