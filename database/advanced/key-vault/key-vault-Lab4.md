@@ -6,7 +6,7 @@ Before migrating a database from a local TDE wallet to centralized key managemen
 Estimated Lab Time: 10 minutes
 
 ### Objectives
-...to understand how TDE has been setup and which tablespaces are encrypted.
+In this lab, you will see how TDE has been setup and which tablespaces are encrypted.
 
 ### Prerequisites
 This lab assumes you have completed lab 3.
