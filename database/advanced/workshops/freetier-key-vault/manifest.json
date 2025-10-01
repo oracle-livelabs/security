@@ -34,63 +34,63 @@
       "type": "brown"
     },
     {
-      "title": "Lab 4: Review a typical TDE environment",
+      "title": "Lab 4: Review a Typical TDE Environment",
       "description": "Confirm the encryption status of an Oracle database, and understand how TDE has been setup.",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab4.md",
       "type": "brown"
     },
     {
-      "title": "Lab 5: Migrate to OKV in 5 easy steps",
+      "title": "Lab 5: Migrate to OKV in 5 Easy Steps",
       "description": "Prepare Oracle Key Vault for the incoming database and install the OKV endpoint software on the database host",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab5.md",
       "type": "brown"
     },
     {
-      "title": "Lab 6: True Migration",
+      "title": "Lab 6: Leave No Keys Behind - Full Migration",
       "description": "Upload pre-migration TDE keys from the TDE wallet to OKV",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab6.md",
       "type": "brown"
     },
     {
-      "title": "Lab 7: Enable lights-out operations",
+      "title": "Lab 7: Enable Lights-Out Operations",
       "description": "Learn how to setup an auto-open OKV connection",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab7.md",
       "type": "brown"
     },
     {
-      "title": "Lab 8: Ignore intermittent connectivity issues with Persistent cache",
+      "title": "Lab 8: Tolerate Connectivity Issues with Secure Persistent Cache",
       "description": "See how OKVs persistent cache keeps your databases running ...",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab8.md",
       "type": "brown"
     },
     {
-      "title": "Lab 9: Increase key protection in riskier environments",
+      "title": "Lab 9: Increased Key Control for Less Secure Environments",
       "description": "HSM-mode of operations",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab9.md",
       "type": "brown"
     },
     {
-      "title": "Lab 10: Automate re-key operation",
+      "title": "Lab 10: Simplify Key Rotation",
       "description": "Learn how to hide the keystore password in a Secure Extermal Password Store",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab10.md",
       "type": "brown"
     },
     {
-      "title": "Lab 11: Bring Your Own Key and use it",
+      "title": "Lab 11: Bring Your Own Key",
       "description": "Upload an externally generated key into OKV",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab11.md",
       "type": "brown"
     },
     {
-      "title": "Lab 12: Key Vault (OKV)",
+      "title": "Lab 12: Examine/Review/Go Over Key Vault in a Typical Customer Deployment",
       "description": "Key Vault in a typical customer deployment",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab12.md",

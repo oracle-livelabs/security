@@ -1,17 +1,19 @@
-# Oracle Key Vault (OKV)
+# Leave No Keys Behind - Full Migration
 
-## Full Migration
-Full migration is a term that only applies to Oracle Key Vault: Because OKV has been purpose-built for Oracle, it uniquely allows to upload pre-migration keys from the wallet into OKV, enabling you to eventually delete the old TDE wallet and comply with PCI which requires to remove encryption keys from the encrypting server. No other key manager can do this.
+## Introduction
+Full migration is a term that only applies to Oracle Key Vault because OKV has been purpose-built for Oracle. It uniquely allows one to upload pre-migration keys from the wallet into OKV. This enables you to eventually delete the old TDE wallet and comply with PCI which requires you to remove encryption keys from the encrypting server. No other key manager can do this.
 
-*Estimated Lab Time:* 2 minutes
+define full migration first, then say why OKV is special
+
+Estimated Lab Time: 2 minutes
 
 ### Objectives
-- Learn how to upload pre-migration keys from the TDE wallet to OKV
+In this lab, you will learn how to upload pre-migration keys from the TDE wallet to OKV.
 
 ### Prerequisites
-This lab assumes you went through Lab 5. 
+This lab assumes you have completed lab 5.
 
-### Task 1: Achieve PCI compliance ONLY with Oracle Key Vault
+## Task 1: Achieve PCI compliance ONLY with Oracle Key Vault
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 

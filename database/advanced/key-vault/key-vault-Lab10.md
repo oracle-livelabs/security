@@ -1,18 +1,20 @@
-# Oracle Key Vault (OKV)
+# Simplify Key Rotation
 
-## Automate REKEY
-DBA activities that do not change the TDE configuration can be executed without knowing the keystore password. That is important for separation of duties between DBAs and OKV administrators, and automation scripts that require TDE operations without spilling the keystore password.
+## Introduction
+DBA activities that do not change the TDE configuration can be executed without knowing the keystore password. This is critical for separation of duties between DBAs and OKV administrators. Additionally, this is useful for automation scripts that perform TDE operations eliminating the need to manually type the keystore password.
 
-*Estimated Lab Time:* 2 minutes 
+
+simplify password management for scripting key rotation operations for example not to expose password in bash scrpt
+
+Estimated Lab Time: 2 minutes 
 
 ### Objectives
-- Learn how to hide the keystore password for separation of duties and automation.
+In this lab, you will add the keystore password to a local auto-login wallet and then use this wallet to perform a rekey operation without needing to enter the OKV password.
 
 ### Prerequisites
-This lab assumes you went through Lab 9. 
+This lab assumes you have completed lab 9.
 
-## Lab 10: Automate REKEY
-### Task 1: Automate REKEY
+## Task 1: Automate REKEY
 
 1. Log into your **DBSec-Lab** database as SYSDBA:
 

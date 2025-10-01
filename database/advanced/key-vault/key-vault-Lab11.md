@@ -1,18 +1,17 @@
-# Oracle Key Vault (OKV)
+# Bring Your Own Key
 
-## Bring Your Own Key and use it
-- A person or process could upload externally generated keys into OKV, and share the key-ID (the name of a key) with a DBA to ##use that key. Both processes would be isolated from each other to maintain key secrecy.
+## Introduction
+A person or process can possess their own keys (with better entropy) that they wish to manage with their other keys. These externally generated keys can be uploaded to and registered with Oracle Key Vault. At the time of use, the key administrator can share the key-ID (the name of a key) with the appropriate DBA. Both processes would be isolated from each other to maintain key secrecy.
 
-*Estimated Lab Time:* 2 minutes
+Estimated Lab Time: 2 minutes
 
 ### Objectives
-- Learn how to create a correctly formatted file to upload an externally generated key into OKV, share the key-ID with the DBA, and the DBA "use" that key.
+In this lab, you will learn how to create a correctly formatted file to upload an externally generated key into OKV. You will also learn how to see this key on the OKV management console and how to locate the key-ID that will be shared with the DBA.
 
 ### Prerequisites
-This lab assumes you went through Lab 10. 
+This lab assumes you have completed lab 10.
 
-## Lab 11: Bring Your Own Key and use it
-### Task 1: Re...
+## Task 1: Re...
 
 A...
 

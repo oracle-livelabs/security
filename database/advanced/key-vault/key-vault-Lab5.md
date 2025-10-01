@@ -1,18 +1,21 @@
-# Oracle Key Vault (OKV)
+# Lab 5: Migrate to OKV in 5 Easy Steps
 
-## Lab 5: Migrate to OKV in 5 easy steps
-### Prepare Oracle Key Vault and the encrypted database for centralized TDE key management. 
-In this lab you will prepare Oracle Key Vault for the incoming database and install the OKV client endpoint software on the database host.
+## Introduction
+To migrate from a local TDE wallet to using Oracle Key Vault (the centralized key manager), both the Key Vault server and the database host environments need to be set up to communicate with each other.
+
+To use OKV as the centralized key manager for TDE KEYS for Oracle DB... (not communicate)
 
 Estimated Lab Time: 15 minutes
 
-#### Objectives
-In this LiveLab, you will go through the steps of migrating an encrypted database from a local TDE wallet to centralized TDE key management in Oracle Key Vault.
+### Objectives
+In this lab, you will prepare the Oracle Key Vault server for the incoming database and install the client endpoint software on the database host to establish a means of communication between the server (Oracle Key Vault) and the client (the database host).
 
-#### Prerequisites
-This lab assumes you went through Lab 4. 
+add more on the migration stuff, onboarding oracle db to okv server (objective should be one liner)
 
-### Task 1: Prepare OKV for the incoming database
+### Prerequisites
+This lab assumes you have completed lab 4.
+
+## Task 1: Prepare OKV for the incoming database
 
 1.  Login to Key Vault as user **KVEPADMIN**
 
@@ -62,7 +65,7 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-27-48.png "Click Logout on the right-hand corner of the page:")
 
-### Task 2: Download the OKV client software for this endpoint:
+## Task 2: Download the OKV client software for this endpoint:
 
 1.  On the database machine, go to the Key Vault login page, click on **Endpoint Enrollment and Software Download**:
 
@@ -76,7 +79,7 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_16-22-35.png "Click enroll to download the okvclient.jar file. The file is downloaded to your database machine.")
 
-### Task 3: Deploy the OKV client software:
+## Task 3: Deploy the OKV client software:
 
 1.  Setup the Key Vault endpoint home. This is the base of operations for the endpoint software:
 
@@ -116,7 +119,7 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/images-2025-09-25_13-30-45_root.png "Setup the Key Vault library (liborapkcs.so) that the DB will use to communicate with Key Vault:")
 
-### Task 4: Prepare the database for the migration to Oracle Key Vault:
+## Task 4: Prepare the database for the migration to Oracle Key Vault:
 
 1.  Change the TDE configuration to OKV|FILE:
 
@@ -128,7 +131,7 @@ This lab assumes you went through Lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE configuration to OKV|FILE:")
 
-### Task 5: Migrate the database to use Oracle Key Vault for centralized key management:
+## Task 5: Migrate the database to use Oracle Key Vault for centralized key management:
 
 1.  Migrate the database to use Key Vault:
 

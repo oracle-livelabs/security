@@ -1,17 +1,22 @@
-# Oracle Key Vault (OKV)
+# Examine/Review/Go Over Key Vault in a Typical Customer Deployment
 
-## Key Vault in a typical customer deployment
+## Introduction
 Oracle Key Vault provides many rich and meaningful activity, audit and awareness reports that support you in keeping your business running in a secure fashion without unneccessay and avoidable interruptions.
 
-*Estimated Lab Time:* 5 minutes
+before the above line, talk about deployment types (standalone, mm cluster, RAC, multi-cloud)
+then talk about keys,certs, what we manage
+then talk about the existing intro line: sys management, reports, etc.
+
+
+Estimated Lab Time: 5 minutes
 
 ### Objectives
 In this lab you will learn how to navigate to the many actionable reports that OKV provides and how to interpret them. Among other things, see which DBAs have failed to re-key their TDE master keys regularly, and which certificates are nearing expiration or no longer satisfy new, stricter compliance requirements.
 
 ### Prerequisites
-This lab assumes you went through Lab 11. 
+This lab assumes you have completed lab 11.
 
-## Lab 12: Utilize the OKV reports to keep your business running
+## Task 1: Utilize the OKV reports to keep your business running
 
 1. Login to Key Vault as user **KVRESTADMIN**
 

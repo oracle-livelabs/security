@@ -1,19 +1,17 @@
-# Oracle Key Vault (OKV)
+# Increased Key Control for Less Secure Environments
 
-## Increase key protection in riskier environments
-- In riskier environments, you may want to have stronger protection of your TDE master encryption keys, and prevent them from being cached locally in the persistent cache, or downloaded, under all circumstances. 
+## Introduction
+In certain scenarios, it may be necessary to share data with environments that operate under lower security controls. However, it is critical that the TDE master encryption keys aren't exposed with this environment, downloaded or cached with the secure persistent cache. For this purpose, the Oracle Key Vault can manage keys that are non-extractable.
 
-*Estimated Lab Time:* 2 minutes
+Estimated Lab Time: 2 minutes
 
 ### Objectives
-- Learn how to change your endpoint or Oracle Key Vault to "HSM-mode of operations" and make TDE key non-extractable.
-- Confirm TDE keys are not extractable
+In this lab, you will rekey a key with OKV as the external store but tag the key with the attribute 'Non-Extractable'. You will then simulate a connectivity failure, and then attempt to create a new tablespace (which will fail), to observe how the keys weren't exposed/available to the riskier environment.
 
 ### Prerequisites
-This lab assumes you went through Lab 8. 
+This lab assumes you have completed lab 8.
 
-## Lab 9: Increase key protection in riskier environments
-### Task 1: Re...
+## Task 1: Re...
 
 A...
 

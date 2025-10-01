@@ -1,18 +1,19 @@
-# Oracle Key Vault (OKV)
+# Enable Lights-Out Operations
 
-## Enable lights-out operations
-In certain scenarios, it can be important to allow a database to open the connection to Oracle Key Vault without human intervention, for example when a RAC instance is automatically restarted by Oracle Grid Infrastructre, or when a Data Guard primary database restarts after a role transition to take on the standby role.
+## Introduction
+In certain scenarios, it can be important to allow a database to open the connection to Oracle Key Vault without human intervention. For example, when a RAC instance is automatically restarted by Oracle Grid Infrastructre. Or when a Data Guard primary database restarts after a role transition to take on the standby role.
 
-*Estimated Lab Time:* 2 minutes
+talk about how db restarts when grid infra works -> the why is high availability
+
+Estimated Lab Time: 2 minutes
 
 ### Objectives
-- Learn how to setup an auto-open OKV connection.
+In this lab, you will learn how to setup an auto-open OKV connection.
 
 ### Prerequisites
-This lab assumes you went through Lab 6. 
+This lab assumes you have completed lab 6.
 
-## Lab 7: Enable lights-out operations
-### Task 1: Enable lights-out operations
+## Task 1: Enable lights-out operations
 
 1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
