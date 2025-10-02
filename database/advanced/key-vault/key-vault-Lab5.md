@@ -1,16 +1,12 @@
 # Lab 5: Migrate to OKV in 5 Easy Steps
 
 ## Introduction
-To migrate from a local TDE wallet to using Oracle Key Vault (the centralized key manager), both the Key Vault server and the database host environments need to be set up to communicate with each other.
-
-To use OKV as the centralized key manager for TDE KEYS for Oracle DB... (not communicate)
+To migrate from a local TDE wallet to using Oracle Key Vault as the centralized key manager for your Oracle databases, both the Key Vault server and the database host environments need to be configured so that the keys can be migrated and Oracle Key Vault can become the key manager.
 
 Estimated Lab Time: 15 minutes
 
 ### Objectives
-In this lab, you will prepare the Oracle Key Vault server for the incoming database and install the client endpoint software on the database host to establish a means of communication between the server (Oracle Key Vault) and the client (the database host).
-
-add more on the migration stuff, onboarding oracle db to okv server (objective should be one liner)
+In this lab, you will learn how to onboard the Oracle database to Oracle Key Vault, and migrate keys from the TDE wallet to the key manager.
 
 ### Prerequisites
 This lab assumes you have completed lab 4.
@@ -27,7 +23,7 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-     ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
+    ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
 
 2. Click the **Endpoints** tab:
 
@@ -52,6 +48,9 @@ This lab assumes you have completed lab 4.
 7.  On the endpoint details page, type the name of the default wallet [LIVELABS\_DB\_WALLET] and click **Save**:
 
     ![Key Vault](./images/image-2025-7-24_16-12-59.png "On the endpoint details page, add the default wallet and click save:")
+
+    <!-- SHUBHAGO TO-DO -->
+    **TO-DO: WE NEED STEPS HERE TO SAY HOW TO GET TO THE DEFAULT WALLET**
 
 8.  Check the permissions of the default wallet:
 
@@ -96,6 +95,9 @@ This lab assumes you have completed lab 4.
     java -jar ~/Downloads/okvclient.jar -d $OKV_HOME
     </copy>
     ```
+
+    <!-- SHUBHAGO TO-DO -->
+    **TO-DO: DO WE WANT TO SAY WHAT PASSWORD TO USE HERE???**
 
     ![Key Vault](./images/image-2025-09-27_install.png "Install Key Vault software. This will prompt for the endpoint connection password.")
 

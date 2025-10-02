@@ -1,4 +1,4 @@
-# Examine/Review/Go Over Key Vault in a Typical Customer Deployment
+# Explore ~~/Review/Walk through~~ Key Vault in a Typical Customer Deployment
 
 ## Introduction
 Oracle Key Vault provides many rich and meaningful activity, audit and awareness reports that support you in keeping your business running in a secure fashion without unneccessay and avoidable interruptions.

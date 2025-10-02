@@ -17,27 +17,28 @@ An encrypted database has been prepared for you:
 
 To start, run the following script; it will show you exactly what you need to know before migrating to Oracle Key Vault.
 
- ````
- <copy>
- ./review_tde_deployment.sh
- </copy>
- ````
-   ![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behaviour of TDE in your database:")
+````
+<copy>
+./review_tde_deployment.sh
+</copy>
+````
 
-You see the system parameters that are controlling the behaviour of TDE in your database: 
+You will see the system parameters that are controlling the behavior of TDE in your database: 
 - The default algorithm is AES256
-- New tablespaces will be created encrypted
-- the database uses a file-based wallet 
-- in the <WALLET_ROOT>/tde directory
+- Newly created tablespaces will be encrypted by default
+- The database uses a file-based wallet 
+- They will be created in the <WALLET_ROOT>/tde directory
+
+![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behaviour of TDE in your database:")
+
+For the wallet locations, the entry for PDB1 is empty, because united PDBs inherit that location from CDB$ROOT.
 
 ![Key Vault](./images/OKV-LL4-001b.png "You see the wallet location:")
 
-You see the wallet location; the entry for PDB1 is empty, because united PDBs inherit that location from CDB$ROOT.
+Below, you can see the key-IDs (names of the keys) of the TDE master encryption keys for CDB$ROOT and each PDB, and their creation times.
 
-   ![Key Vault](./images/OKV-LL4-001c.png "You see the key-IDs (names of the keys) of the TDE master keys for CDB$ROOT and each PDB:")
+![Key Vault](./images/OKV-LL4-001c.png "You see the key-IDs (names of the keys) of the TDE master keys for CDB$ROOT and each PDB:")
 
-You see the key-IDs (names of the keys) of the TDE master keys for CDB$ROOT and each PDB, and their creation times.
+Here you can see which tablespaces are encrypted and the encryption algorithm used to encrypt them.
 
-   ![Key Vault](./images/OKV-LL4-001d.png "See which tablespaces are encrypted and the encryption algorithm:")
-
-See which tablespaces are encrypted and the encryption algorithm.
+![Key Vault](./images/OKV-LL4-001d.png "See which tablespaces are encrypted and the encryption algorithm:")
