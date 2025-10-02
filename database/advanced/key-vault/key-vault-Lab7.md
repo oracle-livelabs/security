@@ -25,6 +25,8 @@ This lab assumes you have completed lab 6.
 
 2. Add the keystore password (that you defined when you installed the OKV client software) into a new (local) auto-open wallet in <WALLET_ROOT>/tde.
 
+\<Key Vault endpoint password\> -- for text for passwords ****
+
     ````
     <copy>
     administer key management add secret '*********' for client 'OKV_PASSWORD' to local auto_login keystore '/etc/ORACLE/WALLETS/cdb1/tde';
@@ -43,4 +45,16 @@ This lab assumes you have completed lab 6.
 
     ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE configuration to OKV|FILE:")
 
+4. Restart the database
 
+    ```
+    <copy>
+    sqlplus / as sysdba
+    shutdown immediate;
+    startup;
+    </copy>
+    ```
+    
+    <!-- Shubham TBD -->
+
+    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Restart database")
