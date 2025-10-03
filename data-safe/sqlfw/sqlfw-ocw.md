@@ -69,7 +69,7 @@ This lab assumes you have:
 
 7. Click the name of your database.
 
-8. On the **Autonomous Database details** page, from the **Database actions** menu, select **Database Users**.
+8. On the **Autonomous Database** page, from the **Database actions** menu, select **Database Users**.
 
 9. On the **APP_USER** tile, click the three dots, and select **Edit**.
 
@@ -83,48 +83,46 @@ This lab assumes you have:
 
 12. Click **Apply Changes**.
 
-13. If REST does not get enabled, click the three dots again, and select **Enable REST**. In the **REST Enable User** dialog box, click **REST Enable User**.
-
-14. To the right of the URL in the `APP_USER` tile, click the **Open in new tab** icon.
+13. To the right of the URL in the `APP_USER` tile, click the **Open in new tab** icon.
 
     The sign-in page for Database Actions is opened in a new tab.
 
-15. Sign in as `APP_USER` and enter the password.
+14. Sign in as `APP_USER` and enter the password.
 
-16. Click the **SQL** tab.
+15. Click the **SQL** tab.
 
-17. Close any tip dialog boxes.
+16. Close any tip dialog boxes.
 
-18. On the worksheet, enter the following, and then click the **Run Statement** button:
+17. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
     <copy>SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
     </copy>
     ```
 
-19. On the worksheet, enter the following, and then click the **Run Statement** button:
+18. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
     <copy>SELECT LOCATION_ID, STREET_ADDRESS, CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
     </copy>
     ```
 
-20. On the worksheet, enter the following, and then click the **Run Statement** button:
+19. On the worksheet, enter the following, and then click the **Run Statement** button:
 
     ```text
     <copy>SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
     </copy>
     ```
 
-21. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+20. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
-22. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
+21. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
 
-23. Click the name of your target database.
+22. Click the name of your target database.
 
-24. Click the SQL collection for `APP_USER`. 
+23. Click the SQL collection for `APP_USER`. 
 
-25. To stop the SQL workload capture of allowed SQL statements, click **Stop**, and wait for the status to change to **COMPLETED**.
+24. To stop the SQL workload capture of allowed SQL statements, click **Stop**, and wait for the status to change to **COMPLETED**.
 
     The SQL collection is created for `APP_USER`.
 
@@ -211,25 +209,31 @@ When you run the SQL statements in this task, use the **Run Statement** button i
     
 1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** tab. You may need to wait a couple of minutes for the violations to show up.
 
-2. Under **Unique allowed SQL statements**, click **Add from violations**.
+2. On the **SQL Firewall policy information** tab, click the **View report** link next to **Violation reports**. Review the two violations.
+
+    ![Violations Log](images/violations-log.png "Violations Log")
+
+3. In the breadcrumb at the top of the page, click **Firewall policy details**.
+
+4. Under **Unique allowed SQL statements**, click **Add from violations**.
 
     The **Add from violations** page is displayed showing you Autonomous Database SQL queries.
 
+5. Expand the violations and review.
+
+6. Select the check box for the SQL violation: `SELECT * FROM HCM1.EMPLOYEES`. You need to click **Show** to identify it.
+
     ![Add from violations page](images/violations.png "Add from violations page")
 
-3. Expand the violations and review.
-
-4. Select the check box for the SQL violation: `SELECT * FROM HCM1.EMPLOYEES`. You need to click **Show** to identify it.
-
-5. Click **Add violations**. 
+7. Click **Add violations**. 
 
     You are returned to the **Firewall policy details** page.
 
-6. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed at the top.
+8. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed at the top.
 
     ![Add from violations page](images/new-allowed-sql-statement.png "Add from violations page")
 
-7. Return to **Database Actions** as `APP_USER` and run the newly-allowed SQL statement to test that it will run successfully.
+9. Return to **Database Actions** as `APP_USER` and run the newly-allowed SQL statement to test that it will run successfully.
 
     ```text
     <copy>SELECT * FROM HCM1.EMPLOYEES;
@@ -242,6 +246,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, September 10, 2025
+- **Last Updated By/Date** - Jody Glover, September 26, 2025
 
 
