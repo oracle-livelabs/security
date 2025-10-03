@@ -1,4 +1,4 @@
-# Bring Your Own Key
+# Bring your own key
 
 ## Introduction
 A person or process may possess their own keys (which were created with a higher entropy) that they wish to manage with their other keys. These externally generated keys can be uploaded to and registered with Oracle Key Vault. At the time of use, the key administrator can share the key-ID (the name of a key) with the appropriate DBA. Both processes would be isolated from each other to maintain key secrecy.
@@ -6,13 +6,13 @@ A person or process may possess their own keys (which were created with a higher
 Estimated Lab Time: 2 minutes
 
 ### Objectives
-In this lab, you will learn how to create a correctly formatted file to upload an externally generated key into OKV. You will also learn how to see this key on the OKV management console and how to locate the key-ID that will be shared with the DBA.
+In this lab, you will create a file for uploading an externally generated key to the Key Vault server, view the key in the management console, and locate the key-ID to share with the DBA.
 
 ### Prerequisites
 This lab assumes you have completed lab 10.
 
 
-## Task 1: Save your BYOK Key to a File
+## Task 1: Save your imported key (BYOK) to a file
 
 1.  Write your key to a file
 
@@ -25,7 +25,7 @@ This lab assumes you have completed lab 10.
     ```
 
 
-## Task 2: Add the BYOK Key to OKV
+## Task 2: Add the imported key (BYOK) to Oracle Key Vault
 
 1.  Login to Key Vault as user **KVRESTADMIN**
 
@@ -36,33 +36,34 @@ This lab assumes you have completed lab 10.
     cat wui_passphrase
     </copy>
     ```
-<!-- TODO - change image -->
-     ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
+
+    ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Login to Key Vault as the REST administrator.")
 
 2. Click the **Keys & Wallets** tab:
-<!-- TODO - change image -->
 
-    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints tab.")
+    ![Key Vault](./images/Screenshot_2025-10-03_13.52.35.png "Click the Keys & Wallets tab.")
 
 3. Click the **Keys & Secrets** tab:
-<!-- TODO - change image -->
-    ![Key Vault](./images/image-2025-7-24_15-59-1.png "Click on Add to add a new Endpoint:")
 
+    <!-- TODO - add image -->
+    **TO-DO: ADD IMAGE**
+    
 4. Click the **Create** button:
 
 5. Click the **TDE Master Enryption Key** link:
+
 6. Click the **Bring Your Own Key** radio button and choose the above file:
 
-7. Click on **Select Wallet** button and choose the LIVELABS_DB_WALLET wallet:
+7. Click on **Select Wallet** button and choose the LIVELABS\_DB\_WALLET wallet:
 
 8. Copy the **Master encryption key identifier** (at the top of this page):
 
 9. Click the **Create** button:
 <!-- TODO - add image -->
 
-## Task 3: Activate the key in the DB
+## Task 3: Activate the key in the database
 
-1. Activate the BYOK key:
+1. Activate the imported key (BYOK):
 
     ````
     <copy>
@@ -70,20 +71,20 @@ This lab assumes you have completed lab 10.
     </copy>
     ````
 
-2. Verify the key with supplied master encryption key identifier was activated by the database
+2. Verify the key with the supplied master encryption key identifier was activated by the database
 
-    ````plaintext
+    ````
     <copy>
-    sqlplus / as sysdba
+    sqlplus / as SYSDBA
     </copy>
     ````
 
 
-    2. Select from v$encrypted_tablespaces to show the new tablespace was created
+3. Select from v$encrypted_tablespaces to show the new tablespace was created
 
-    ````plaintext
+    ````
     <copy>
-    sqlplus / as sysdba
+    sqlplus / as SYSDBA
     select t.name, e.masterkeyid from v$encrypted_tablespaces e, v$tablespace t where e.TS#=t.TS#;
     </copy>
     ````

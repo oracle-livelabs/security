@@ -1,7 +1,7 @@
-# Leave No Keys Behind - Full Migration
+# Leave no keys behind - Full migration
 
 ## Introduction
-Full migration refers to the ability of allowing one to upload pre-migration keys from the TDE wallet to a centralized key manager. This enables you to eventually delete the old TDE wallet and comply with PCI requirements which mandates the removal of the encryption keys from the encrypting server. Oracle Key Vault is the only key manager with this unique ability because OKV has been purpose-built for Oracle. No other key manager can do this.
+Full migration refers to the ability of allowing one to upload pre-migration keys from the TDE wallet to Key Vault. This enables you to eventually delete the old TDE wallet and comply with PCI requirements which mandates the removal of the encryption keys from the database server. Oracle Key Vault is the only key manager with this unique ability because OKV has been purpose-built for Oracle. No other key manager can do this.
 
 Estimated Lab Time: 2 minutes
 
@@ -13,17 +13,9 @@ This lab assumes you have completed lab 5.
 
 ## Task 1: Achieve PCI compliance ONLY with Oracle Key Vault
 
-1. Open a Terminal session on your **DBSec-Lab** VM as OS user *oracle*
+1. Upload the pre-migration keys in the database's TDE wallet to the database's default wallet in the Key Vault server that you created in lab 5:
 
-    ````plaintext
-    <copy>
-    cd $DBSEC_LABS/okv
-    </copy>
     ````
-
-2. Upload the pre-migration key from the TDE wallet into the OKV wallet that you created in Lab 5:
-
-    ````plaintext
     <copy>
     $OKV_HOME/bin/okvutil upload -t WALLET -g LIVELABS_DB_WALLET -l /etc/ORACLE/WALLETS/cdb1/tde/ -v 3
     </copy>
@@ -31,9 +23,9 @@ This lab assumes you have completed lab 5.
 
    ![Key Vault](./images/image-2025-09-27_upload.png "Upload the pre-migration key from the old TDE wallet into the OKV wallet that you created in Lab 5:")
 
-3. Set the TDE_CONFIGURATION to "OKV":
+2. Set the TDE_CONFIGURATION to "OKV":
 
-    ````plaintext
+    ````
     <copy>
     ALTER SYSTEM SET TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV' scope = both;
     </copy>
@@ -41,11 +33,12 @@ This lab assumes you have completed lab 5.
 
    ![Key Vault](./images/TDE_CONFIG_OKV.png "Set the TDE_CONFIGURATION to 'OKV'")
 
-4. Delete the TDE wallet from <WALLET_ROOT>/tde:
+3. Delete the TDE wallet from &lt;WALLET_ROOT&gt;/tde:
 
-    ````plaintext
+    ````
     <copy>
     rm -v /etc/ORACLE/WALLETS/cdb1/tde/*
+    ls /etc/ORACLE/WALLETS/cdb1/tde/
     </copy>
     ````
 

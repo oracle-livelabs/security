@@ -1,17 +1,14 @@
-# Explore ~~/Review/Walk through~~ Key Vault in a Typical Customer Deployment
+# Explore Key Vault in a typical customer deployment
 
 ## Introduction
+Oracle Key Vault can be deployed in numerous configurations to suit different organizational needs. Deployment options include standalone installations for simpler environments, multi-master clusters for high availability and scalability, as well as support for Oracle Real Application Clusters (RAC). In addition, Oracle Key Vault is designed to operate seamlessly across diverse infrastructure architectures, including multi-cloud and hybrid environments, as well as traditional on-premises and fully cloud-based deployments.
+Oracle Key Vault serves as a centralized key management platform, providing secure storage and management for a wide range of sensitive cryptographic material. It is designed to manage TDE master encryption keys, symmetric keys, private and public keys, SSH keys, Oracle GoldenGate keys, and digital certificates, among others.
 Oracle Key Vault provides many rich and meaningful activity, audit and awareness reports that support you in keeping your business running in a secure fashion without unneccessay and avoidable interruptions.
-
-before the above line, talk about deployment types (standalone, mm cluster, RAC, multi-cloud)
-then talk about keys,certs, what we manage
-then talk about the existing intro line: sys management, reports, etc.
-
 
 Estimated Lab Time: 5 minutes
 
 ### Objectives
-In this lab you will learn how to navigate to the many actionable reports that OKV provides and how to interpret them. Among other things, see which DBAs have failed to re-key their TDE master keys regularly, and which certificates are nearing expiration or no longer satisfy new, stricter compliance requirements.
+In this lab, you will explore Oracle Key Vault's actionable reports and learn how to interpret them - for example identifying which TDE master encryption keys need to be re-keyed, which certificates are nearing expiration or no longer satisfy stricter compliance requirements.
 
 ### Prerequisites
 This lab assumes you have completed lab 11.

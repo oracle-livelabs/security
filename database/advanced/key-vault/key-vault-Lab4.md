@@ -1,4 +1,4 @@
-# Review a Typical TDE Environment
+# Review a typical TDE environment
 
 ## Introduction
 Before migrating a database from a local TDE wallet to centralized key management with Oracle Key Vault, you need to understand how the TDE parameters are set, and what tablespaces are encrypted.
@@ -6,39 +6,42 @@ Before migrating a database from a local TDE wallet to centralized key managemen
 Estimated Lab Time: 10 minutes
 
 ### Objectives
-In this lab, you will see how TDE has been setup and which tablespaces are encrypted.
+In this lab, you will see a typical TDE setup with encrypted tablespaces.
 
 ### Prerequisites
 This lab assumes you have completed lab 3.
 
 ## Task 1: Review TDE setup in an encrypted database
 
-An encrypted database has been prepared for you:
+An encrypted database has been prepared for you to review the environment.
 
-To start, run the following script; it will show you exactly what you need to know before migrating to Oracle Key Vault.
+To review this environment, run the following script
 
 ````
 <copy>
+cd $DBSEC_LABS/okv
 ./review_tde_deployment.sh
 </copy>
 ````
 
-You will see the system parameters that are controlling the behavior of TDE in your database: 
+The output of the script will show:
+
+1. The system parameters that are controlling the behavior of TDE in your database: 
 - The default algorithm is AES256
 - Newly created tablespaces will be encrypted by default
 - The database uses a file-based wallet 
-- They will be created in the <WALLET_ROOT>/tde directory
+- File based wallets will be created in the &lt;WALLET_ROOT&gt;/tde directory
 
-![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behaviour of TDE in your database:")
+![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behaviour of TDE in your database.")
 
-For the wallet locations, the entry for PDB1 is empty, because united PDBs inherit that location from CDB$ROOT.
+2. The file based wallet is open for use. Since the database is using united mode PDBs, they inherit their location from CDB$ROOT.
 
-![Key Vault](./images/OKV-LL4-001b.png "You see the wallet location:")
+![Key Vault](./images/OKV-LL4-001b.png "The file based wallet is open for use. Since the database is using united mode PDBs, they inherit their location from CDB$ROOT.")
 
-Below, you can see the key-IDs (names of the keys) of the TDE master encryption keys for CDB$ROOT and each PDB, and their creation times.
+3. The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time.
 
-![Key Vault](./images/OKV-LL4-001c.png "You see the key-IDs (names of the keys) of the TDE master keys for CDB$ROOT and each PDB:")
+![Key Vault](./images/OKV-LL4-001c.png "The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time.")
 
-Here you can see which tablespaces are encrypted and the encryption algorithm used to encrypt them.
+4. The list of encrypted tablespaces.
 
-![Key Vault](./images/OKV-LL4-001d.png "See which tablespaces are encrypted and the encryption algorithm:")
+![Key Vault](./images/OKV-LL4-001d.png "The list of encrypted tablespaces.")
