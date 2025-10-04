@@ -37,7 +37,7 @@ This lab assumes you have completed lab 11.
 
     ![Key Vault](./images/image-2025-09-11-17.41.21.png "The System Overview section at the bottom identifies the system")
 
-## Task 2: Managing Primary-Standby, Sharded DBs, Multi-Tennant and RAC databses
+## Task 2: Manage Primary-Standby, Sharded DBs, Multi-Tennant and RAC databses
 
 Oracle Key Vault can manage databases of various deployments by deploying database clients called **endpoints** on the database host. The system administrator is tasked with creating, and overseeing endpoints on the Key Vault server.
 
@@ -58,7 +58,7 @@ To simplify management of database keys, Oracle Key Vault offers virtual wallets
 
     ![Key Vault](./images/image-2025-09-11-18.20.43.png "This takes you to the Wallets page")
 
-## Task 4: Review the DB Attribute Reports (INVENTORY)
+## Task 4: Inventory of database encryption keys
 
 1. Click the **Reports** tab
 
@@ -68,13 +68,13 @@ To simplify management of database keys, Oracle Key Vault offers virtual wallets
 
     ![Key Vault](./images/image-2025-09-11-18.09.03.png "Click the Endpoints Tab")
 
-## Task 5: Review the Latest Key for each DB report (OPERATIONS)
+## Task 5: Track database key and certificate lifetimes
 
 1. Key Management Report
 
     ![Key Vault](./images/image-2025-09-11-17.53.46.png "Certficates are listed and grouped by their length and remaining life time")
 
-## Task 6: Review Alerts setup for keys (NOTIFICATIONS)
+## Task 6: Receive notifications for urgent tasks
 
 1. Click the **Alerts** tab
 
@@ -84,7 +84,7 @@ To simplify management of database keys, Oracle Key Vault offers virtual wallets
 
     ![Key Vault](./images/image-2025-09-11-18.27.41.png "Alerts that required immediate attention")
 
-## Task 7: Review Audit records (SECURITY)
+## Task 7: Ensure accountability with audit records
 
 To support security and compliance requirements, Oracle Key Vault reporting includes a complete audit trail, enabling thorough tracking and review of all actions and events. This is available to all administrators.
 
@@ -92,9 +92,9 @@ To support security and compliance requirements, Oracle Key Vault reporting incl
 
 2. Click the **Audit Trail** tab on the left hand side
 
-## Task 8: Review Users Page Discuss the role of Admins and Privileges (USER MANAGEMENT)
+## Task 8: Enforce separation of duties
 
-The role of user management is undertaken by the system administrator. To perform these tasks
+The role of account management is undertaken by the system administrator. To perform these tasks
 
 1. Click the **Users** tab
 
@@ -113,21 +113,21 @@ The role of user management is undertaken by the system administrator. To perfor
 
     ![Key Vault](./images/image-2025-09-11-18.33.10.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
 
-## Task 9: Review System Status Page 
+## Task 9: Assess system health
 
 1. Settings page
 
     ![Key Vault](./images/image-2025-09-11-18.48.38-CUSTOM.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
 
-## Task 10: Review Metrics Page 
+## Task 10: Monitor performance for optimal operations
 
 1. CPU and memory metrics
 
     ![Key Vault](./images/image-2025-09-11-18.46.22.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
 
-## Task 11: Review System Settings Page 
+## Task 11: Administer Oracle Key Vault
 
-## Task 12: Sneak-peek at the system as a cluster node
+## Task 12: A quick look at the cluster
 
 1. Click the **Cluster** tab
 
@@ -139,6 +139,6 @@ The role of user management is undertaken by the system administrator. To perfor
 
     ![Key Vault](./images/image-2025-09-11-18.58.43.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
 
-3. On the Home page, the System Overview section at the bottom is updated (identifying the deployment mode as Cluster)
+4. On the Home page, the System Overview section at the bottom is updated (identifying the deployment mode as Cluster)
 
     ![Key Vault](./images/image-2025-09-11-19.02.06.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
