@@ -75,7 +75,7 @@ This lab assumes you have completed lab 4.
 
     ![Key Vault](./images/Screenshot_2025-10-03_13.56.15.png "Check the permissions of the default wallet")
 
-9.  Click the **Endpoints** tab and copy the **Enrollment Token**
+9.  Click the **Endpoints** tab and copy the **Enrollment Token** for **LIVELABS\_DB\_EP**
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.03.59.png "Click the Endpoints tab and copy the Enrollment Token")
 
@@ -143,6 +143,7 @@ This lab assumes you have completed lab 4.
 
     ```
     <copy>
+    sqlplus / AS SYSDBA
     alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' scope = BOTH;
     </copy>
     ```
@@ -155,12 +156,12 @@ This lab assumes you have completed lab 4.
 
     ```
     <copy>
-    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY
-    "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING "<TDE wallet password>";
+    sqlplus / AS SYSDBA
+    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING "<TDE wallet password>";
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_12-54-16.png "Add OKV password to the TDE wallet")
+    ![Key Vault](./images/Screenshot_2025-10-03_15.11.26.png "Add OKV password to the TDE wallet")
 
 2.  Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB$ROOT and one for PDB1
 
@@ -170,14 +171,16 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/images-2025-09-25_13-36-48_list.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB\$ROOT and one for PDB1")
+    ![Key Vault](./images/Screenshot_2025-10-03_15.13.44.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB\$ROOT and one for PDB1")
 
 3.  Review the database setup after migrating to Key Vault
 
     ```
     <copy>
-    ./review_tde_deployment.sh
+    ./review_tde_using_okv_configuration.sh
     </copy>
     ```
+
+    **WHEN RUNNING THIS SCRIPT AFTER MIGRATION, THE FORMATTING IS ALL WHACK**
 
     ![Key Vault](./images/image-2025-7-24_17-8-50.png "Review the database setup after migrating to Key Vault")

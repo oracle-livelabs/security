@@ -1,12 +1,12 @@
 # Increased key control for less secure environments
 
 ## Introduction
-In certain scenarios, it may be necessary to share data with environments that operate under lower security controls. However, it is critical that the TDE master encryption keys aren't exposed with or downloaded to this environment, or cached with the secure persistent cache. For this purpose, the Oracle Key Vault can also manage keys that are non-extractable.
+In certain scenarios, it may be necessary to share data with environments that operate under lower security controls. However, it is critical that the TDE master encryption keys aren't exposed in or downloaded to this environment, or even cached in the secure persistent cache. For this purpose, Oracle Key Vault can also mark keys as non-extractable.
 
 Estimated Lab Time: 2 minutes
 
 ### Objectives
-In this lab, you will rekey with OKV as the external store, tagging the key as 'Non-Extractable'. You will then simulate a connectivity failure and attempt to create a new tablespace (which will fail), observing that keys remain protected.
+In this lab, you will set a key as 'Non-Extractable'. Creation of a new tablespace will fail in case of a connectivity failure verifying that non-extractable keys remain protected in Key Vault.
 
 ### Prerequisites
 This lab assumes you have completed lab 8.
@@ -19,11 +19,13 @@ This lab assumes you have completed lab 8.
     ````
     <copy>
     sqlplus / as SYSDBA
-    CREATE TABLESPACE extractable_key_tbs DATAFILE 'extractable_key_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT)';
+    CREATE TABLESPACE extractable_key_tbs DATAFILE 'extractable_key_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT);
     </copy>
     ````
 
-2. Select from dba_tablespaces to verify that the new tablespace was created
+   ![Key Vault](./images/Screenshot_2025-10-03_16.06.27_create.png "Create a new tablespace")
+
+2. Verify the new tablespace was created
 
     ````
     <copy>
@@ -31,6 +33,8 @@ This lab assumes you have completed lab 8.
     SELECT tablespace_name, encrypted FROM dba_tablespaces WHERE tablespace_name = UPPER('extractable_key_tbs');
     </copy>
     ````
+
+   ![Key Vault](./images/Screenshot_2025-10-03_16.06.27_verify.png "Verify the new tablespace was created")
 
 ## Task 2: Mark the key as Non-Extractable
 
@@ -44,23 +48,19 @@ This lab assumes you have completed lab 8.
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Login to Key Vault as the REST administrator.")
+    ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Login to Key Vault as the REST administrator")
 
-2. Click the **Endpoints** tab:
+2. Click the **Endpoints** tab
 
-    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints tab.")
+    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints tab")
 
-3. Click the **Settings** tab:
+3. Click the **Settings** tab
 
-    <!-- TODO - change image -->
-    **TO-DO: UPDATE PHOTO**
+    ![Key Vault](./images/Screenshot_2025-10-03_14.26.41.png "Click the Settings tab")
 
-    ![Key Vault](./images/image-2025-7-24_15-59-1.png "Click on Add to add a new Endpoint:")
+4. Scroll to the bottom and set the Extractable Attribute for the Symmetric Key to False
 
-4. Scroll to the bottom and set the extractable attribute for the symmetric key to False
-
-    <!-- TODO - add image -->
-    **TO-DO: ADD PHOTO**
+    ![Key Vault](./images/Screenshot_2025-10-03_14.29.00.png "Set the Extractable Attribute for the Symmetric Key to False")
 
 
 ## Task 3: Cut the connectivity to Oracle Key Vault server
@@ -77,20 +77,33 @@ This lab assumes you have completed lab 8.
 
     ````
     <copy>
-    $OKV_HOME/bin/okvutil list -t OKV_PERSISTENT_CACHE -l /etc/ORACLE/WALLETS/cdb1/okv/conf
+    $OKV_HOME/bin/okvutil list
     </copy>
     ````
+
+   ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Confirm that the server is unreachable")
 
 ## Task 4: Attempt to create a new tablespace to confirm that database operations fail even when the secure persistent cache exists
 
    1. Attempt to create a new tablespace
 
+    **THIS DOESN'T WORK BUT THAT'S BECAUSE extractable_key_tbs ALREADY EXISTS, NOT BECAUSE OF NON-EXTRACTABLE KEYS**
     ````
     <copy>
     sqlplus / as SYSDBA
-    CREATE TABLESPACE extractable_key_tbs DATAFILE 'extractable_key_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT)';
+    CREATE TABLESPACE extractable_key_tbs DATAFILE 'extractable_key_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT);
     </copy>
     ````
+
+    **THIS WORKS EVEN THOUGH IT SHOULDN'T**
+    ````
+    <copy>
+    sqlplus / as SYSDBA
+    CREATE TABLESPACE non_extractable_key_tbs DATAFILE 'non_extractable_key_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT);
+    </copy>
+    ````
+
+
 
 ## Task 5: Restore connectivity
 
@@ -106,7 +119,9 @@ This lab assumes you have completed lab 8.
 
     ````
     <copy>
-    $OKV_HOME/bin/okvutil list -t OKV_PERSISTENT_CACHE -l /etc/ORACLE/WALLETS/cdb1/okv/conf
+    $OKV_HOME/bin/okvutil list
     </copy>
     ````
+
+   ![Key Vault](./images/Screenshot_2025-10-03_16.04.40.png "Confirm that the server is reachable")
 

@@ -38,10 +38,14 @@ The output of the script will show:
 
 ![Key Vault](./images/OKV-LL4-001b.png "The file based wallet is open for use. Since the database is using united mode PDBs, they inherit their location from CDB$ROOT.")
 
-3. The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time.
+3. The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time
 
-![Key Vault](./images/OKV-LL4-001c.png "The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time.")
+![Key Vault](./images/OKV-LL4-001c.png "The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time")
 
-4. The list of encrypted tablespaces.
+4. The list of encrypted tablespaces
 
-![Key Vault](./images/OKV-LL4-001d.png "The list of encrypted tablespaces.")
+![Key Vault](./images/OKV-LL4-001d.png "The list of encrypted tablespaces")
+
+5. The list of encrypted RMAN backups
+
+![Key Vault](./images/OKV-LL4-001e.png "The list of encrypted RMAN backups")

@@ -20,10 +20,8 @@ This lab assumes you have completed lab 5.
     $OKV_HOME/bin/okvutil list -t OKV_PERSISTENT_CACHE -l /etc/ORACLE/WALLETS/cdb1/okv/conf
     </copy>
     ````
-    <!-- SHUBHAGO TO-DO -->
-    **TO-DO: UPDATE THE PHOTO HERE**
 
-   ![Key Vault](./images/image-2025-09-27_upload.png "Upload the pre-migration key from the old TDE wallet into the OKV wallet that you created in lab 5:")
+   ![Key Vault](./images/Screenshot_2025-10-03_15.56.40.png "List the IDs of the keys in the secure persistent cache")
 
 ## Task 2: Cut the connectivity to Oracle Key Vault server
 
@@ -37,13 +35,20 @@ This lab assumes you have completed lab 5.
 
 2. Confirm that the server is unreachable
 
+    **THIS IS CURRENT CODE - THIS PRINTS P-CACHE**
     ````
     <copy>
     $OKV_HOME/bin/okvutil list -t OKV_PERSISTENT_CACHE -l /etc/ORACLE/WALLETS/cdb1/okv/conf
     </copy>
     ````
+    **I THINK IT SHOULD BE:**
+    ````
+    <copy>
+    $OKV_HOME/bin/okvutil list
+    </copy>
+    ````
 
-    <!-- Shubham TBD -->
+   ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Confirm that the server is unreachable")
 
 ## Task 3: Create a new tablespace to confirm that database operations continue uninterrupted
 
@@ -52,9 +57,11 @@ This lab assumes you have completed lab 5.
     ````
     <copy>
     sqlplus / as SYSDBA
-    CREATE TABLESPACE tolerance_tbs DATAFILE 'tolerance_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT)';
+    CREATE TABLESPACE tolerance_tbs DATAFILE 'tolerance_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT);
     </copy>
     ````
+
+   ![Key Vault](./images/Screenshot_2025-10-03_16.01.30.png "Create a new tablespace")
 
 2. Verify the new tablespace was created
 
@@ -64,6 +71,8 @@ This lab assumes you have completed lab 5.
     SELECT tablespace_name, encrypted FROM dba_tablespaces WHERE tablespace_name = UPPER('tolerance_tbs');
     </copy>
     ````
+
+   ![Key Vault](./images/Screenshot_2025-10-03_16.03.05.png "Verify the new tablespace was created")
 
 ## Task 4: Restore connectivity
 
@@ -77,8 +86,17 @@ This lab assumes you have completed lab 5.
 
 2. Confirm that the server is reachable
 
+    **THIS IS CURRENT CODE - THIS PRINTS P-CACHE**
     ````
     <copy>
     $OKV_HOME/bin/okvutil list -t OKV_PERSISTENT_CACHE -l /etc/ORACLE/WALLETS/cdb1/okv/conf
     </copy>
     ````
+    **I THINK IT SHOULD BE:**
+    ````
+    <copy>
+    $OKV_HOME/bin/okvutil list
+    </copy>
+    ````
+
+   ![Key Vault](./images/Screenshot_2025-10-03_16.04.40.png "Confirm that the server is reachable")

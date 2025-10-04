@@ -27,6 +27,7 @@ This lab assumes you have completed lab 5.
 
     ````
     <copy>
+    sqlplus / AS SYSDBA
     ALTER SYSTEM SET TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV' scope = both;
     </copy>
     ````

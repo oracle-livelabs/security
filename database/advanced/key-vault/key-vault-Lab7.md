@@ -45,7 +45,6 @@ This lab assumes you have completed lab 6.
     </copy>
     ```
 
-    <!-- SHUBHAGO TO-DO -->
-    **TO-DO: UPDATE BELOW PHOTO**
+    SHUTDOWN IMMEDIATE DOESN'T WORK CAUSE **orders_tbs01.dbf** WAS DELETED IN THE PREVIOUS LAB
 
-    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Restart the database")
+    ![Key Vault](./images/Screenshot_2025-10-03_14.23.38.png "Restart the database")

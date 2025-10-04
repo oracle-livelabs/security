@@ -1,18 +1,18 @@
 # Bring your own key
 
 ## Introduction
-A person or process may possess their own keys (which were created with a higher entropy) that they wish to manage with their other keys. These externally generated keys can be uploaded to and registered with Oracle Key Vault. At the time of use, the key administrator can share the key-ID (the name of a key) with the appropriate DBA. Both processes would be isolated from each other to maintain key secrecy.
+You may want to bring an externally generated key, potentially with higher entropy, and manage it with Key Vault.
 
 Estimated Lab Time: 2 minutes
 
 ### Objectives
-In this lab, you will create a file for uploading an externally generated key to the Key Vault server, view the key in the management console, and locate the key-ID to share with the DBA.
+In this lab, you will upload an externally generated key to the Key Vault server, and activate it for the database.
 
 ### Prerequisites
 This lab assumes you have completed lab 10.
 
 
-## Task 1: Save your imported key (BYOK) to a file
+## Task 1: Generate a key external to Oracle Key Vault
 
 1.  Write your key to a file
 
@@ -20,12 +20,12 @@ This lab assumes you have completed lab 10.
 
     ```
     <copy>
-    openssl rand -hex 32 > $DBSEC_LABS/okv/byok_aes256.txt
+    openssl rand -hex 32 | tr '[:lower:]' '[:upper:]' > $DBSEC_LABS/okv/byok_aes256.txt
     </copy>
     ```
 
 
-## Task 2: Add the imported key (BYOK) to Oracle Key Vault
+## Task 2: Upload the key to Oracle Key Vault
 
 1.  Login to Key Vault as user **KVRESTADMIN**
 
@@ -37,33 +37,41 @@ This lab assumes you have completed lab 10.
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Login to Key Vault as the REST administrator.")
+    ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Login to Key Vault as the REST administrator")
 
-2. Click the **Keys & Wallets** tab:
+2. Click the **Keys & Wallets** tab
 
-    ![Key Vault](./images/Screenshot_2025-10-03_13.52.35.png "Click the Keys & Wallets tab.")
+    ![Key Vault](./images/Screenshot_2025-10-03_13.52.35.png "Click the Keys & Wallets tab")
 
-3. Click the **Keys & Secrets** tab:
+3. Click the **Keys & Secrets** tab
 
-    <!-- TODO - add image -->
-    **TO-DO: ADD IMAGE**
+    ![Key Vault](./images/Screenshot_2025-10-03_14.31.43.png "Click the Keys & Secrets tab")
     
-4. Click the **Create** button:
+4. Click the **Create** button
 
-5. Click the **TDE Master Enryption Key** link:
+    ![Key Vault](./images/Screenshot_2025-10-03_14.37.46.png "Click the Create button")
 
-6. Click the **Bring Your Own Key** radio button and choose the above file:
+5. Click the **TDE Master Enryption Key** link
 
-7. Click on **Select Wallet** button and choose the LIVELABS\_DB\_WALLET wallet:
+    ![Key Vault](./images/Screenshot_2025-10-03_14.33.54.png "Click the TDE Master Enryption Key link")
 
-8. Copy the **Master encryption key identifier** (at the top of this page):
+6. Click the **Bring Your Own Key** radio button and choose the `byok_aes256.txt` file you had created above
 
-9. Click the **Create** button:
-<!-- TODO - add image -->
+    ![Key Vault](./images/Screenshot_2025-10-03_14.38.50.png "Click the Bring Your Own Key radio button and choose the byok_aes256.txt file you had created above")
+
+7. Click the **Select Wallet** button, choose the **LIVELABS\_DB\_WALLET** wallet, and click the **Close** button
+
+    ![Key Vault](./images/Screenshot_2025-10-03_14.42.12.png "Click the Select Wallet button and choose the LIVELABS_DB_WALLET wallet")
+
+8. Copy the **Master Encryption Key Identifier** (at the top of this page)
+
+    ![Key Vault](./images/Screenshot_2025-10-03_14.44.02.png "Copy the Master Encryption Key Identifier")
+
+9. Click the **Create** button
 
 ## Task 3: Activate the key in the database
 
-1. Activate the imported key (BYOK):
+1. Activate the imported key (BYOK)
 
     ````
     <copy>
@@ -71,16 +79,10 @@ This lab assumes you have completed lab 10.
     </copy>
     ````
 
+    **DOESN'T WORK**
+
+
 2. Verify the key with the supplied master encryption key identifier was activated by the database
-
-    ````
-    <copy>
-    sqlplus / as SYSDBA
-    </copy>
-    ````
-
-
-3. Select from v$encrypted_tablespaces to show the new tablespace was created
 
     ````
     <copy>
