@@ -44,7 +44,7 @@ Oracle Key Vault can manage databases of various deployments by deploying databa
 1. Click the **Endpoints** tab
     ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints tab")
 
-2. This takes you to the Endpoints page
+2. This takes you to the Endpoints page - where the system administrator can see information about the endpoints that are registered or enrolled with Key Vault
     ![Key Vault](./images/image-2025-09-11-18.13.52.png "This takes you to the Endpoints page")
 
 ## Task 3: Virtual wallets for database keys 
@@ -54,7 +54,7 @@ To simplify management of database keys, Oracle Key Vault offers virtual wallets
 1. Click the **Keys & Wallets** tab
     ![Key Vault](./images/Screenshot_2025-10-04_15.43.07.png "Click the Keys & Wallets tab")
 
-2. This takes you to the Wallets page
+2. This takes you to the Wallets page - where the key administrator can manage these
 
     ![Key Vault](./images/image-2025-09-11-18.20.43.png "This takes you to the Wallets page")
 
@@ -64,23 +64,39 @@ To simplify management of database keys, Oracle Key Vault offers virtual wallets
 
     ![Key Vault](./images/Screenshot_2025-10-04_15.46.44.png "Click the Reports Tab")
 
-2. DB Activated TDE Master Encryption Key Report
+2. Expand the **Key Management Reports for Oracle Endpoints**
 
-    ![Key Vault](./images/image-2025-09-11-18.09.03.png "Click the Endpoints Tab")
+    ![Key Vault](./images/image-2025-09-11-17.53.46.png "Key Management Report")
+
+3. Select **DB Activated TDE Master Encryption Key Report**  - to see an example of a report with the inventory of database encryption keys
+
+    ![Key Vault](./images/image-2025-09-11-18.09.03.png "Select DB Activated TDE Master Encryption Key Report")
 
 ## Task 5: Track database key and certificate lifetimes
 
-1. Key Management Report
+1. Click the **Reports** tab
 
-    ![Key Vault](./images/image-2025-09-11-17.53.46.png "Certficates are listed and grouped by their length and remaining life time")
+    ![Key Vault](./images/Screenshot_2025-10-04_15.46.44.png "Click the Reports Tab")
+
+2. Expand the **Keys and Wallets Report**
+
+    ![Key Vault](./images/Screenshot_2025-10-05_10.06.42.png "Keys and Wallets Report")
+
+3. Select **Certificate Awareness Report**  - to see an example of a report to track certificate lifetimes
+
+    ![Key Vault](./images/Screenshot_2025-10-05_10.08.23.png "Select Certificate Awareness Report")
 
 ## Task 6: Receive notifications for urgent tasks
 
-1. Click the **Alerts** tab
+1. Click the **Reports** tab
+
+    ![Key Vault](./images/Screenshot_2025-10-04_15.46.44.png "Click the Reports Tab")
+
+2. Click the **Alerts** tab on the left-side panel 
 
     ![Key Vault](./images/Screenshot_2025-10-04_15.49.25.png "Click the Alerts Tab")
 
-2. Alerts that required immediate attention
+3. Alerts that required immediate attention - **NEED TO UPDATE PHOTO TO SHOW EXPIRING KEYS ALSO**
 
     ![Key Vault](./images/image-2025-09-11-18.27.41.png "Alerts that required immediate attention")
 
@@ -90,7 +106,11 @@ To support security and compliance requirements, Oracle Key Vault reporting incl
 
 1. Click the **Reports** tab
 
-2. Click the **Audit Trail** tab on the left hand side
+    ![Key Vault](./images/Screenshot_2025-10-04_15.46.44.png "Click the Reports Tab")
+
+2. Click the **Audit Trail** tab on the left-side panel 
+
+    ![Key Vault](./images/Screenshot_2025-10-05_10.41.36.png "Click the Audit Trail Tab")
 
 ## Task 8: Enforce separation of duties
 
@@ -104,32 +124,65 @@ The role of account management is undertaken by the system administrator. To per
 
     ![Key Vault](./images/image-2025-09-11-18.29.46.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
 
-2. To change the user password, click Change user password
+3. To change the Key Vault user password, click the **Change Password** tab on the left-side panel
 
-    ![Key Vault](./images/image-2025-09-11-18.42.01.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
+    ![Key Vault](./images/Screenshot_2025-10-05_10.49.21.png "To change the Key Vault user password, click the Change Password tab on the left-side panel")
 
+4. The **Change Password for &lt;Key Vault User&gt;** page is where the user can change the password
 
-3. Empty LDAP Group Mappings
+    ![Key Vault](./images/image-2025-09-11-18.42.01.png "The Change Password for <Key Vault User> page is where the user can change the password")
 
-    ![Key Vault](./images/image-2025-09-11-18.33.10.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
+5. For deployments using LDAP, key administrators can manage access for users to specific wallets by setting up LDAP group mappings. Click **Manage LDAP Mappings** on the left-side panel.
+
+    ![Key Vault](./images/Screenshot_2025-10-05_10.54.01.png "Click Manage LDAP Mappings on the left-side panel")
+
+6. The **LDAP Group Mappings** page shows which mappings are setup to which roles and privileges in Key Vault
+
+    ![Key Vault](./images/image-2025-09-11-18.33.10.png "The LDAP Group Mappings page shows which mappings are setup to which roles and privileges in Key Vault")
 
 ## Task 9: Assess system health
 
-1. Settings page
+1. To assess the health of the Key Vault server, click the **System** tab
 
-    ![Key Vault](./images/image-2025-09-11-18.48.38-CUSTOM.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
+    ![Key Vault](./images/Screenshot_2025-10-05_11.10.42.png "To assess the health of the Key Vault server, click the System tab")
+
+2. This page shows the system health
+
+    ![Key Vault](./images/Screenshot_2025-10-05_11.07.08.png "This page shows the system health")
 
 ## Task 10: Monitor performance for optimal operations
 
-1. CPU and memory metrics
+1. Click the **System** tab
 
-    ![Key Vault](./images/image-2025-09-11-18.46.22.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
+    ![Key Vault](./images/Screenshot_2025-10-05_11.10.42.png "Click the System tab")
+
+2. Click the **System Metrics** button
+
+    ![Key Vault](./images/Screenshot_2025-10-05_11.25.42.png "Click the System Metrics button")
+
+3. To monitor system performance, expand the **CPU & Memory Metrics** section
+
+    ![Key Vault](./images/image-2025-09-11-18.46.22.png "To monitor system performance, expand the CPU & Memory Metrics section")
 
 ## Task 11: Administer Oracle Key Vault
+
+1. Click the **System** tab
+
+    ![Key Vault](./images/Screenshot_2025-10-05_11.10.42.png "Click the System tab")
+
+2. Click the **Settings** tab on the left-side panel
+
+    ![Key Vault](./images/Screenshot_2025-10-05_11.12.24.png "Click the Settings tab on the left-side panel")
+
+3. This takes you to the page from where the system administrator can administer the Key Vault server
+
+    ![Key Vault](./images/image-2025-09-11-18.48.38-CUSTOM.png "This takes you to the page from where the system administrator can administer the Key Vault server")
 
 ## Task 12: A quick look at the cluster
 
 1. Click the **Cluster** tab
+
+    ![Key Vault](./images/Screenshot_2025-10-05_11.33.32.png "Click the Cluster tab")
 
 2. Configure the server as a Candidate Node
 
