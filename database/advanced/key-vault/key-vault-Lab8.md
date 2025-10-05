@@ -35,13 +35,6 @@ This lab assumes you have completed lab 5.
 
 2. Confirm that the server is unreachable
 
-    **THIS IS CURRENT CODE - THIS PRINTS P-CACHE**
-    ````
-    <copy>
-    $OKV_HOME/bin/okvutil list -t OKV_PERSISTENT_CACHE -l /etc/ORACLE/WALLETS/cdb1/okv/conf
-    </copy>
-    ````
-    **I THINK IT SHOULD BE:**
     ````
     <copy>
     $OKV_HOME/bin/okvutil list
@@ -86,13 +79,6 @@ This lab assumes you have completed lab 5.
 
 2. Confirm that the server is reachable
 
-    **THIS IS CURRENT CODE - THIS PRINTS P-CACHE**
-    ````
-    <copy>
-    $OKV_HOME/bin/okvutil list -t OKV_PERSISTENT_CACHE -l /etc/ORACLE/WALLETS/cdb1/okv/conf
-    </copy>
-    ````
-    **I THINK IT SHOULD BE:**
     ````
     <copy>
     $OKV_HOME/bin/okvutil list

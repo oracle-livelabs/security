@@ -87,7 +87,7 @@ This lab assumes you have completed lab 8.
 
    1. Attempt to create a new tablespace
 
-    **THIS DOESN'T WORK BUT THAT'S BECAUSE extractable\_key\_tbs ALREADY EXISTS, NOT BECAUSE OF NON-EXTRACTABLE KEYS**
+    **TO-DO: THIS DOESN'T WORK BUT THAT'S BECAUSE extractable\_key\_tbs ALREADY EXISTS, NOT BECAUSE OF NON-EXTRACTABLE KEYS**
     ````
     <copy>
     sqlplus / as SYSDBA
@@ -95,7 +95,7 @@ This lab assumes you have completed lab 8.
     </copy>
     ````
 
-    **THIS WORKS EVEN THOUGH IT SHOULDN'T**
+    **TO-DO: THIS WORKS EVEN THOUGH IT SHOULDN'T**
     ````
     <copy>
     sqlplus / as SYSDBA

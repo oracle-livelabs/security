@@ -45,6 +45,6 @@ This lab assumes you have completed lab 6.
     </copy>
     ```
 
-    SHUTDOWN IMMEDIATE DOESN'T WORK CAUSE **orders_tbs01.dbf** WAS DELETED IN THE PREVIOUS LAB
+    **TO-DO: SHUTDOWN IMMEDIATE DOESN'T WORK CAUSE *orders_tbs01.dbf* WAS DELETED IN THE PREVIOUS LAB**
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.23.38.png "Restart the database")

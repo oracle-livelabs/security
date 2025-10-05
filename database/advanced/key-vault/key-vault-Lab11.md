@@ -73,14 +73,12 @@ This lab assumes you have completed lab 10.
 
 1. Activate the imported key (BYOK)
 
+    **TO-DO: DOESN'T WORK**
     ````
     <copy>
     administer key management use key '<Master Encryption Key Identifier>' force keystore identified by external store;
     </copy>
     ````
-
-    **DOESN'T WORK**
-
 
 2. Verify the key with the supplied master encryption key identifier was activated by the database
 

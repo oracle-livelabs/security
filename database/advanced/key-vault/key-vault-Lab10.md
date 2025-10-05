@@ -28,13 +28,14 @@ This lab assumes you have completed lab 9.
 
 2. To confirm the changed behaviour, execute a re-key operation without using the OKV password
 
+    **TO-DO: FIX THIS CODE:**
     ````
     <copy>
     administer key management set key identified by EXTERNAL STORE;
     </copy>
     ````
 
-    THIS IS FAILING WITH
+    **TO-DO: THIS IS FAILING WITH:**
     ````
     SQL> administer key management set key identified by EXTERNAL STORE;
     administer key management set key identified by EXTERNAL STORE

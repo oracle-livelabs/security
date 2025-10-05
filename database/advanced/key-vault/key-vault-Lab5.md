@@ -185,6 +185,6 @@ This lab assumes you have completed lab 4.
     - In the TDE configuration parameters, the KEYSTORE_CONFIGURATION now says OKV|FILE
     - In the wallet status, you'll see the wallet of type OKV is open
     
-    **WHEN RUNNING THIS SCRIPT AFTER MIGRATION, THE FORMATTING IS ALL WHACK**
+    **TO-DO: WHEN RUNNING THIS SCRIPT AFTER MIGRATION, THE FORMATTING IS ALL WHACK**
 
     ![Key Vault](./images/image-2025-7-24_17-8-50.png "Review the database setup after migrating to Key Vault")
