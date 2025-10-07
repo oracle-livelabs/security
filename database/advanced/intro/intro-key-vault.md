@@ -4,7 +4,7 @@
 ### Overview
 *Estimated Time to complete the workshop*: 55 minutes
 
-This workshop is the SECOND of two Hands-On Labs dedicated to encrypting data at rest within the Oracle Database. The first workshop, DB Security – ASO (Transparent Data Encryption & Data Redaction) covers transparent data encryption (TDE). This second workshop covers the important topic of managing encryption keys. Here, we will migrate an encrypted database to Oracle Key Vault for centralized key management.
+This workshop is the SECOND of two Hands-On Labs dedicated to encrypting data at rest within the Oracle Database. The first workshop, DB Security – ASO (Transparent Data Encryption & Data Redaction) covers transparent data encryption (TDE). This second workshop covers the important topic of managing encryption keys. Here, we will migrate an encrypted database to Oracle Key Vault for centralized key management and walk through a typical Key Vault deployment.
 
 Based on an OCI architecture, deployed in a few minutes with a simple internet connection, it allows you to test DB Security use cases in a complete environment already pre-configured by the Oracle Database Security Product Manager Team.
 
@@ -33,7 +33,7 @@ This Hands-On Labs give the user an opportunity to learn how to configure the DB
 
 In this mini-lab, you will learn how to use the **Oracle Key Vault** (OKV) features.
 
-The entire DB Security PMs Team wishes you an excellent workshop!
+The entire DB Security PMs team wishes you an excellent workshop!
 
 You may now [proceed to the next lab](#next).
 

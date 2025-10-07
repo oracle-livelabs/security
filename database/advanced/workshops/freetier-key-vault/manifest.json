@@ -35,7 +35,7 @@
     },
     {
       "title": "Lab 4: Review a typical TDE environment",
-      "description": "Confirm the encryption status of an Oracle database, and understand how TDE has been setup.",
+      "description": "Confirm the encryption status of a tablespace in an Oracle database, and understand how TDE has been setup.",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab4.md",
       "type": "brown"
@@ -49,35 +49,35 @@
     },
     {
       "title": "Lab 6: Leave no keys behind - Full migration",
-      "description": "Upload pre-migration TDE keys from the TDE wallet to OKV",
+      "description": "Upload pre-migration TDE master encryption keys from the local TDE wallet to OKV",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab6.md",
       "type": "brown"
     },
     {
       "title": "Lab 7: Enable lights-out operations",
-      "description": "Learn how to setup an auto-open OKV connection",
+      "description": "Learn how to setup an auto-open connection to OKV",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab7.md",
       "type": "brown"
     },
     {
       "title": "Lab 8: Tolerate connectivity issues with secure persistent cache",
-      "description": "See how OKVs persistent cache keeps your databases running",
+      "description": "See how OKVs secure persistent cache keeps your databases running",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab8.md",
       "type": "brown"
     },
     {
       "title": "Lab 9: Increased key control for less secure environments",
-      "description": "HSM-mode of operations",
+      "description": "Learn how OKV can restrict access of your keys to environments with lower security controls",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab9.md",
       "type": "brown"
     },
     {
-      "title": "Lab 10: Simplify key rotation",
-      "description": "Learn how to hide the keystore password in a Secure Extermal Password Store",
+      "title": "Lab 10: Automate key rotation",
+      "description": "See how you can add keystore passwords to local auto-login wallets to simplify key rotation operations",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab10.md",
       "type": "brown"

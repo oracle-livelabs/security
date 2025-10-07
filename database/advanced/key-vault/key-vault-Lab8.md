@@ -1,9 +1,9 @@
 # Tolerate connectivity issues with secure persistent cache
 
 ## Introduction
-Oracle Key Vault cluster deployment provides continuous availability in case of server failures, but may not help with network connectivity issues. What happens if there is an underwater landslide that cuts the connection between your databases and your Key Vault cluster? Not to worry, Key Vault's secure persistent cache saves your day and keeps your databases running.
+Oracle Key Vault cluster deployment provides continuous availability in case of server failures, but the cluster deployment may not help with network connectivity issues unless there is network redundancy. What happens if there is an underwater landslide that cuts the connection between your databases and your Key Vault cluster? Not to worry, Key Vault's secure persistent cache saves your day and keeps your databases running.
 
-Estimated Lab Time: 2 minutes
+Estimated Lab Time: 5 minutes
 
 ### Objectives
 In this lab, you will check the secure persistent cache, simulate a connectivity failure, and create a new tablespace to observe cache-based operation.

@@ -1,12 +1,12 @@
 # Leave no keys behind - Full migration
 
 ## Introduction
-Full migration refers to the ability of allowing one to upload pre-migration keys from the TDE wallet to Key Vault. This enables you to eventually delete the old TDE wallet and comply with PCI requirements which mandates the removal of the encryption keys from the database server. Oracle Key Vault is the only key manager with this unique ability because OKV has been purpose-built for Oracle. No other key manager can do this.
+Full migration refers to the ability of allowing one to upload pre-migration keys from the local TDE wallet to Key Vault. This enables you to eventually delete the old TDE wallet and comply with PCI requirements which mandates the removal of the encryption keys from the database hosts. Oracle Key Vault is the only key manager with this unique ability because OKV has been purpose-built for Oracle. No other key manager can do this.
 
-Estimated Lab Time: 2 minutes
+Estimated Lab Time: 3 minutes
 
 ### Objectives
-In this lab, you will learn how to upload pre-migration keys from the TDE wallet to OKV.
+In this lab, you will learn how to upload pre-migration keys from the local TDE wallet to OKV.
 
 ### Prerequisites
 This lab assumes you have completed lab 5.
@@ -21,9 +21,9 @@ This lab assumes you have completed lab 5.
     </copy>
     ````
 
-   ![Key Vault](./images/image-2025-09-27_upload.png "Upload the pre-migration key from the old TDE wallet into the OKV wallet that you created in Lab 5:")
+   ![Key Vault](./images/image-2025-09-27_upload.png "Upload the pre-migration key from the local TDE wallet into the OKV wallet that you created in Lab 5:")
 
-2. Set the TDE_CONFIGURATION to "OKV":
+2. Set the TDE_CONFIGURATION of the database to "OKV":
 
     ````
     <copy>
@@ -34,7 +34,7 @@ This lab assumes you have completed lab 5.
 
    ![Key Vault](./images/TDE_CONFIG_OKV.png "Set the TDE_CONFIGURATION to 'OKV'")
 
-3. Delete the TDE wallet from &lt;WALLET_ROOT&gt;/tde:
+3. Delete the local TDE wallet from &lt;WALLET_ROOT&gt;/tde:
 
     ````
     <copy>
@@ -43,4 +43,4 @@ This lab assumes you have completed lab 5.
     </copy>
     ````
 
-   ![Key Vault](./images/image-2025-09-05-delete-wallet-after-upload.png "Delete the old TDE wallet from <WALLET_ROOT>/tde:")
+   ![Key Vault](./images/image-2025-09-05-delete-wallet-after-upload.png "Delete the local TDE wallet from <WALLET_ROOT>/tde:")

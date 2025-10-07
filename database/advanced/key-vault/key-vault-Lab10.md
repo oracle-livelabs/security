@@ -1,19 +1,17 @@
-# Simplify key rotation
+# Automate key rotation
 
 ## Introduction
 Scripting of the key rotation operations can be made easier and safer by storing the keystore password in an external store.
 
-<!-- DBA activities that do not change the TDE configuration can be executed without knowing the keystore password. This is critical for separation of duties between DBAs and OKV administrators. Additionally, one can simplify password management for scripting key rotation operations to avoid exposing passwords in bash scripts. -->
-
-Estimated Lab Time: 2 minutes 
+Estimated Lab Time: 5 minutes 
 
 ### Objectives
-In this lab, you will add the keystore password to a local auto-login wallet and then use this wallet to perform a rekey operation without needing to enter the OKV password.
+In this lab, you will add the keystore password to a local auto-login wallet and then use this wallet to perform a re-key operation without needing to enter the OKV password.
 
 ### Prerequisites
 This lab assumes you have completed lab 9.
 
-## Task 1: Automate REKEY
+## Task 1: Automate re-key
 
 1. Add the keystore password (that you defined when you installed the OKV client software in lab 5) into a new (local) auto-open wallet in &lt;WALLET_ROOT&gt;/tde
 

@@ -6,7 +6,7 @@ To use Oracle Key Vault as your centralized key manager, you need to migrate you
 Estimated Lab Time: 15 minutes
 
 ### Objectives
-In this lab, you will learn how to onboard the Oracle database to Oracle Key Vault, and how to migrate your keys from the TDE wallet to Key Vault.
+In this lab, you will learn how to onboard the Oracle database to Oracle Key Vault, and how to migrate your keys from the local TDE wallet to Key Vault.
 
 ### Prerequisites
 This lab assumes you have completed lab 4.
@@ -25,17 +25,13 @@ This lab assumes you have completed lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
 
-2. Click the **Endpoints** tab
-
-    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints tab.")
-
-3.  Click on **Add** to add a new endpoint
+2. Click the **Endpoints** tab and then click the **Add** button to add a new endpoint
 
     The endpoint represents the Oracle database in Oracle Key Vault.
 
     ![Key Vault](./images/image-2025-7-24_15-59-1.png "Click on Add to add a new endpoint")
 
-4.  Provide the endpoint details and click **Register**
+3.  Provide the endpoint details and click **Register** to register the new endpoint
 
     We recommend using LIVELABS\_DB\_EP for the **Endpoint Name**
     ```plaintext
@@ -53,15 +49,13 @@ This lab assumes you have completed lab 4.
     ![Key Vault](./images/image-2025-7-24_12-17-29.png "Fill in the details of your endpoint: Endpoint Name is LIVELABS_DB_EP; Type is Oracle Database; OS Type is Linux; Description is 'This is the endpoint for LiveLabs database (cdb1).'; Click 'Register'")
 
 
-5.  Click on **Register** to register this new endpoint
-
-6.  Click the newly created endpoint **LIVELABS\_DB\_EP** to view the details for this endpoint
+4.  Click the newly created endpoint **LIVELABS\_DB\_EP** to view the details for this endpoint
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.02.30.png "Click the Endpoints Tab to view the recently created endpoint LIVELABS_DB_EP")
 
-7.  On the endpoint details page, add **LIVELABS\_DB\_WALLET** as the default wallet and click **Save**
+5.  On the endpoint details page, add **LIVELABS\_DB\_WALLET** as the **Default Wallet** and click **Save**
 
-    By setting up a default wallet, all new keys of the database will be a part of this wallet.
+    By setting up a *default wallet*, all new keys of the database will be a part of this wallet.
 
     ```plaintext
     <copy>
@@ -71,7 +65,7 @@ This lab assumes you have completed lab 4.
 
     ![Key Vault](./images/image-2025-7-24_16-12-59.png "On the endpoint details page, add the default wallet and click save")
 
-8.  Verify that the permissions of the Default Wallet (LIVELABS\_DB\_WALLET) show 'Read, Write, Manage Wallet' by checking the **Access to Wallets** section of this page
+8.  Verify that the permissions of the default wallet (LIVELABS\_DB\_WALLET) show 'Read, Write, Manage Wallet' by checking the **Access to Wallets** section of this page
 
     ![Key Vault](./images/Screenshot_2025-10-03_13.56.15.png "Check the permissions of the default wallet")
 
@@ -79,13 +73,15 @@ This lab assumes you have completed lab 4.
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.03.59.png "Click the Endpoints tab and copy the Enrollment Token")
 
-10. Click **Logout** on the right-hand corner of the page
+10. Click on the username KVEPADMIN on the top right hand corner of the page and then click **Logout**
 
     ![Key Vault](./images/image-2025-7-24_12-27-48.png "Click Logout on the right-hand corner of the page")
 
 ## Task 2: Download the Oracle Key Vault client software for this database
 
-1.  On the database host, go to the Key Vault login page, click on **Endpoint Enrollment and Software Download**
+1.  On the database host, go to the Key Vault login page, and click on **Endpoint Enrollment and Software Download**
+
+
 
     ![Key Vault](./images/image-2025-7-24_12-31-21.png "On the database host, go to the Key Vault login page, click on Endpoint Enrollment and Software Download")
 
@@ -139,7 +135,7 @@ This lab assumes you have completed lab 4.
 
 ## Task 4: Prepare the database for the migration to Oracle Key Vault
 
-1.  Change the TDE configuration to OKV|FILE
+1.  Change the TDE configuration of the database to OKV|FILE
 
     ```
     <copy>
@@ -148,7 +144,7 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE configuration to OKV|FILE")
+    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE configuration of the database to OKV|FILE")
 
 ## Task 5: Migrate the database to use Oracle Key Vault for centralized key management
 

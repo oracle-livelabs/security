@@ -3,7 +3,7 @@
 ## Introduction
 You may want to bring an externally generated key, potentially with higher entropy, and manage it with Key Vault.
 
-Estimated Lab Time: 2 minutes
+Estimated Lab Time: 5 minutes
 
 ### Objectives
 In this lab, you will upload an externally generated key to the Key Vault server, and activate it for the database.
@@ -39,35 +39,33 @@ This lab assumes you have completed lab 10.
 
     ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Login to Key Vault as the REST administrator")
 
-2. Click the **Keys & Wallets** tab
-
-    ![Key Vault](./images/Screenshot_2025-10-03_13.52.35.png "Click the Keys & Wallets tab")
-
-3. Click the **Keys & Secrets** tab
+2. Click the **Keys & Wallets** tab and then click the **Keys & Secrets** tab
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.31.43.png "Click the Keys & Secrets tab")
     
-4. Click the **Create** button
+3. Click the **Create** button
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.37.46.png "Click the Create button")
 
-5. Click the **TDE Master Enryption Key** link
+4. Click the **TDE Master Encryption Key** link
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.33.54.png "Click the TDE Master Enryption Key link")
+    ![Key Vault](./images/Screenshot_2025-10-03_14.33.54.png "Click the TDE Master Encryption Key link")
 
-6. Click the **Bring Your Own Key** radio button and choose the `byok_aes256.txt` file you had created above
+5. Click the **Bring Your Own Key** radio button and upload `byok_aes256.txt` file you had created above.
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.38.50.png "Click the Bring Your Own Key radio button and choose the byok_aes256.txt file you had created above")
+    This will be located at `/home/oracle/DBSecLab/livelabs/byok_aes256.txt`
 
-7. Click the **Select Wallet** button, choose the **LIVELABS\_DB\_WALLET** wallet, and click the **Close** button
+    ![Key Vault](./images/Screenshot_2025-10-03_14.38.50.png "Click the Bring Your Own Key radio button and upload byok_aes256.txt file you had created above")
+
+6. Click the **Select Wallet** button, choose the **LIVELABS\_DB\_WALLET** wallet, and click the **Close** button
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.42.12.png "Click the Select Wallet button and choose the LIVELABS_DB_WALLET wallet")
 
-8. Copy the **Master Encryption Key Identifier** (at the top of this page)
+7. Copy the **Master Encryption Key Identifier** (at the top of this page)
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.44.02.png "Copy the Master Encryption Key Identifier")
 
-9. Click the **Create** button
+8. Click the **Create** button
 
 ## Task 3: Activate the key in the database
 

@@ -1,8 +1,9 @@
 # Oracle Key Vault (OKV)
 
 ## Introduction
-This workshop guides you through the process of migrating an encrypted Oracle database 19c from a local TDE wallet to centralized key management with Oracle Key Vault.
+This workshop guides you through the process of migrating an encrypted Oracle database 19c from a local Transparent Database Encryption (TDE) wallet to centralized key management with Oracle Key Vault.
 
+**IS IT 60 MIN??**
 *Estimated Lab Time:* 60 minutes
 
 *Version tested in this lab:* Oracle OKV 21.12 and DBEE 19.28
@@ -11,15 +12,24 @@ This workshop guides you through the process of migrating an encrypted Oracle da
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
 
 ### Objectives
-- Review TDE setup in an encrypted database
-- Migrate your encrypted database from TDE wallet to centralized key management with Oracle Key Vault
-- "Full migration": Upload pre-migration TDE master encryption keys from the TDE wallet to Oracle Key Vault
+During the course of this workshop, you will:
+- Review Transparent Data Encryption (TDE) setup of an Oracle database with encrypted tablespaces
+- Migrate your databases with keys in local TDE wallet to centralized key management with Oracle Key Vault
+- "Full migration" - Upload pre-migration TDE master encryption keys from the local TDE wallet to Oracle Key Vault
 - Enable "lights-out" operations
-- Become immune against network interruptions with secure persistent cache
-- Zero key caching for lower security environments
-- Enable automated re-key operations
-- "Bring your own key" into Oracle Key Vault
-- Explore OKV console's enhanced functionality
+- Tolerate network interruptions with secure persistent cache
+- No key exposure for lower security environments
+- Enable re-key operations
+- Bring your own key into Oracle Key Vault
+- Explore Oracle Key Vault in a typical customer deployment
+
+In this workshop, you'll have a pre-setup database host and an Oracle Key Vault server:
+  - The Oracle Key Vault server:
+    - The Oracle Key Vault management console is open in your remote desktop.
+    - The Oracle Key Vault server has been pre-populated with example endpoints, wallets, keys and secrets.
+  - The database host:
+    - The remote desktop is the database host.
+    - You should open a terminal to perform database and Key Vault endpoint operations.
 
 ### Prerequisites
 This lab assumes you have:
@@ -39,30 +49,31 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 
 <if type="brown">
-| Lab No.  | Feature                                           | Approx. Time | Details                                                                    |
-| -------- | ------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
-| 4        | Review TDE setup in an encrypted database         | 10 minutes   |                                                                            |
-| 5        | Migrate to OKV in 5 easy steps                    | 15 minutes   |                                                                            |
-| 6        | Leave no keys behind - Full migration             | 2 minutes    |                                                                            |
-| 7        | Enable "lights-out" operation                     | 2 minutes    |                                                                            |
-| 8        | Tolerate connectivity issues with persistent cache| 2 minutes    |                                                                            |
-| 9        | Increased key control for less secure environments| 2 minutes    |                                                                            |
-|10        | Simplify key rotation                             | 2 minutes    |                                                                            |
-|11        | Bring your own key                                | 2 minutes    |                                                                            |
-|12        | Explore Key Vault in a typical customer deployment| 5 minutes    |                                                                            |</if>
+| Lab No.  | Feature                                                  | Approx. Time | Details                                                                    |
+| -------- | -------------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
+| 4        | Review a typical TDE environment                         | 3 minutes    |                                                                            |
+| 5        | Migrate to OKV in 5 easy steps                           | 15 minutes   |                                                                            |
+| 6        | Leave no keys behind - Full migration                    | 3 minutes    |                                                                            |
+| 7        | Enable "lights-out" operation                            | 3 minutes    |                                                                            |
+| 8        | Tolerate connectivity issues with secure persistent cache| 5 minutes    |                                                                            |
+| 9        | Increased key control for less secure environments       | 5 minutes    |                                                                            |
+|10        | Automate key rotation                                    | 5 minutes    |                                                                            |
+|11        | Bring your own key                                       | 5 minutes    |                                                                            |
+|12        | Explore Key Vault in a typical customer deployment       | 15 minutes   |                                                                            |
 </if>
 <if type="green">
-| Lab No.  | Feature                                           | Approx. Time | Details                                                                    |
-| -------- | ------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
-| 4        | Review TDE setup in an encrypted database         | 10 minutes   |                                                                            |
-| 5        | Migrate to OKV in 5 easy steps                    | 15 minutes   |                                                                            |
-| 6        | Leave no keys behind - Full migration             | 2 minutes    |                                                                            |
-| 7        | Enable "lights-out" operation                     | 2 minutes    |                                                                            |
-| 8        | Tolerate connectivity issues with persistent cache| 2 minutes    |                                                                            |
-| 9        | Increased key control for less secure environments| 2 minutes    |                                                                            |
-|10        | Simplify key rotation                             | 2 minutes    |                                                                            |
-|11        | Bring your own key                                | 2 minutes    |                                                                            |
-|12        | Explore Key Vault in a typical customer deployment| 5 minutes    |                                                                            |</if>
+| Lab No.  | Feature                                                  | Approx. Time | Details                                                                    |
+| -------- | -------------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
+| 4        | Review a typical TDE environment                         | 3 minutes    |                                                                            |
+| 5        | Migrate to OKV in 5 easy steps                           | 15 minutes   |                                                                            |
+| 6        | Leave no keys behind - Full migration                    | 3 minutes    |                                                                            |
+| 7        | Enable "lights-out" operation                            | 3 minutes    |                                                                            |
+| 8        | Tolerate connectivity issues with secure persistent cache| 5 minutes    |                                                                            |
+| 9        | Increased key control for less secure environments       | 5 minutes    |                                                                            |
+|10        | Automate key rotation                                    | 5 minutes    |                                                                            |
+|11        | Bring your own key                                       | 5 minutes    |                                                                            |
+|12        | Explore Key Vault in a typical customer deployment       | 15 minutes   |                                                                            |
+</if>
 
 ## **Appendix**: About the Product
 ### **Overview**
