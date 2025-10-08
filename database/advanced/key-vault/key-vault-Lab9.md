@@ -11,7 +11,7 @@ In this lab, you will set a key as 'Non-Extractable'. Creation of a new tablespa
 ### Prerequisites
 This lab assumes you have completed lab 8.
 
-
+<!--
 ## Task 1: Create a new tablespace with an Extractable key
 
 1. Create a new tablespace
@@ -19,7 +19,7 @@ This lab assumes you have completed lab 8.
     ````
     <copy>
     sqlplus / as SYSDBA
-    CREATE TABLESPACE extractable_key_tbs DATAFILE 'extractable_key_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT);
+    CREATE TABLESPACE extractable_key_tbs DATAFILE SIZE 100M;
     </copy>
     ````
 
@@ -36,7 +36,8 @@ This lab assumes you have completed lab 8.
 
    ![Key Vault](./images/Screenshot_2025-10-03_16.06.27_verify.png "Verify the new tablespace was created")
 
-## Task 2: Generate a Non-Extractable key
+-->
+## Task 1: Generate a Non-Extractable key
 
 1.  Login to Key Vault as user **KVRESTADMIN**
 
@@ -69,7 +70,7 @@ This lab assumes you have completed lab 8.
     **UPDATE IMAGE**
     ![Key Vault](./images/Screenshot_2025-10-03_15.11.26.png "Add OKV password to the local TDE wallet")
 
-## Task 3: Cut the connectivity to Oracle Key Vault server
+## Task 2: Cut the connectivity to Oracle Key Vault server
 
 1. Cut the connectivity to the Key Vault server to simulate a network connection issue
 
@@ -89,7 +90,7 @@ This lab assumes you have completed lab 8.
 
    ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Confirm that the server is unreachable")
 
-## Task 4: Attempt to create a new tablespace to confirm that database operations fail even when the secure persistent cache exists
+## Task 3: Attempt to create a new tablespace to confirm that database operations fail even when the secure persistent cache exists
 
    1. Attempt to create a new tablespace
 
@@ -111,7 +112,7 @@ This lab assumes you have completed lab 8.
 
 
 
-## Task 5: Restore connectivity
+## Task 4: Restore connectivity
 
 1. Restore the connectivity to the Key Vault server
 

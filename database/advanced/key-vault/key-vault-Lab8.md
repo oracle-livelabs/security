@@ -50,7 +50,7 @@ This lab assumes you have completed lab 5.
     ````
     <copy>
     sqlplus / as SYSDBA
-    CREATE TABLESPACE tolerance_tbs DATAFILE 'tolerance_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT);
+    CREATE TABLESPACE tolerance_tbs DATAFILE SIZE 100M;
     </copy>
     ````
 

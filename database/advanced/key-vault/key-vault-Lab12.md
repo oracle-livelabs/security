@@ -10,10 +10,7 @@ As a critical system component, proper Key Vault operation is essential to maint
 Estimated Lab Time: 15 minutes
 
 ### Objectives
-
-**OLD** - In this lab, you will explore the various types of Key Vault endpoints that can be deployed to different Oracle databases, as well as the virtual wallets used to organize and manage the keys for these databases. You will also explore Oracle Key Vault's actionable reports and how to interpret them - for example identifying which TDE master encryption keys need to be re-keyed, which certificates are nearing expiration or no longer satisfy stricter compliance requirements. You will also explore how system administrators can perform user management, mornitor system health and administer the key vault server.
-
-**NEW** - In this lab, you will explore the different types of Key Vault endpoints for Oracle databases, and how virtual wallets organize database keys. You will also explore Oracle Key Vault's actionable reports and how to interpret them - for example identifying which TDE master encryption keys need to be re-keyed, which certificates are nearing expiration or no longer satisfy stricter compliance requirements. You’ll also learn how administrators manage users, monitor system health, and administer the Key Vault server.
+In this lab, you will explore the different types of Key Vault endpoints for Oracle databases, and how virtual wallets organize database keys. You will also explore Oracle Key Vault's actionable reports and how to interpret them - for example identifying which TDE master encryption keys need to be re-keyed, which certificates are nearing expiration or no longer satisfy stricter compliance requirements. You’ll also learn how administrators manage users, monitor system health, and administer the Key Vault server.
 
 ### Prerequisites
 This lab assumes you have completed lab 11.

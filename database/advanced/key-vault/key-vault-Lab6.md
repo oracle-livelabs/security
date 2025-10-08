@@ -1,7 +1,7 @@
 # Leave no keys behind - Full migration
 
 ## Introduction
-Full migration refers to the ability of allowing one to upload pre-migration keys from the local TDE wallet to Key Vault. This enables you to eventually delete the old TDE wallet and comply with PCI requirements which mandates the removal of the encryption keys from the database hosts. Oracle Key Vault is the only key manager with this unique ability because OKV has been purpose-built for Oracle. No other key manager can do this.
+Full migration refers to the ability of allowing one to upload pre-migration keys from the local TDE wallet to Key Vault. This enables you to eventually delete the old TDE wallet and comply with PCI requirements which mandates the removal of the TDE master encryption keys from the database hosts. Oracle Key Vault is the only key manager with this unique ability because OKV has been purpose-built for Oracle. No other key manager can do this.
 
 Estimated Lab Time: 3 minutes
 
