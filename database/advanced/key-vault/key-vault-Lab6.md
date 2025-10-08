@@ -13,7 +13,11 @@ This lab assumes you have completed lab 5.
 
 ## Task 1: Achieve PCI compliance ONLY with Oracle Key Vault
 
-1. Upload the pre-migration keys in the database's TDE wallet to the database's default wallet in the Key Vault server that you created in lab 5:
+1. Upload the pre-migration keys in the database's TDE wallet to the database's default wallet in the Key Vault server that you created in lab 5
+
+    When prompted for the source wallet password, enter the TDE wallet password.
+
+    When prompted for the Oracle Key Vault endpoint password, enter the Key Vault endpoint password.
 
     ````
     <copy>
@@ -23,18 +27,19 @@ This lab assumes you have completed lab 5.
 
    ![Key Vault](./images/image-2025-09-27_upload.png "Upload the pre-migration key from the local TDE wallet into the OKV wallet that you created in Lab 5:")
 
-2. Set the TDE_CONFIGURATION of the database to "OKV":
+2. Set the TDE_CONFIGURATION of the database to "OKV"
 
     ````
     <copy>
-    sqlplus / AS SYSDBA
-    ALTER SYSTEM SET TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV' scope = both;
+    sqlplus / as sysdba
+    ALTER SYSTEM SET TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV' SCOPE = BOTH;
+    exit;
     </copy>
     ````
 
    ![Key Vault](./images/TDE_CONFIG_OKV.png "Set the TDE_CONFIGURATION to 'OKV'")
 
-3. Delete the local TDE wallet from &lt;WALLET_ROOT&gt;/tde:
+3. Delete the local TDE wallet from &lt;WALLET_ROOT&gt;/tde
 
     ````
     <copy>

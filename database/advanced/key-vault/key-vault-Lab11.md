@@ -53,7 +53,7 @@ This lab assumes you have completed lab 10.
 
 5. Click the **Bring Your Own Key** radio button and upload `byok_aes256.txt` file you had created above.
 
-    This will be located at `/home/oracle/DBSecLab/livelabs/byok_aes256.txt`
+    This will be located at `/home/oracle/DBSecLab/livelabs/okv/byok_aes256.txt`
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.38.50.png "Click the Bring Your Own Key radio button and upload byok_aes256.txt file you had created above")
 
@@ -71,18 +71,26 @@ This lab assumes you have completed lab 10.
 
 1. Activate the imported key (BYOK)
 
-    **TO-DO: DOESN'T WORK**
     ````
     <copy>
-    administer key management use key '<Master Encryption Key Identifier>' force keystore identified by external store;
+    sqlplus / as sysdba
+    ADMINISTER KEY MANAGEMENT USE KEY '<Master Encryption Key Identifier>' FORCE KEYSTORE IDENTIFIED BY EXTERNAL STORE;
+    exit;
     </copy>
     ````
+    ![Key Vault](./images/Screenshot_2025-10-08_12.10.54.png "Activate the imported key")
 
 2. Verify the key with the supplied master encryption key identifier was activated by the database
 
-    ````
+    ```
     <copy>
-    sqlplus / as SYSDBA
-    select t.name, e.masterkeyid from v$encrypted_tablespaces e, v$tablespace t where e.TS#=t.TS#;
+    sqlplus / as sysdba
+    select t.name as "ENCRYPTED TABLESPACE", 
+        e.MASTERKEYID as "MASTER ENCRYPTION KEY ID"
+      from v$tablespace t, v$encrypted_tablespaces e 
+      where t.ts#=e.ts# and t.con_id = 1;
+    exit;
     </copy>
-    ````
+    ```
+
+    ![Key Vault](./images/Screenshot_2025-10-08_12.12.47.png "Verify that the tablespace was re-keyed")

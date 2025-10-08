@@ -13,34 +13,58 @@ This lab assumes you have completed lab 9.
 
 ## Task 1: Automate re-key
 
-1. Add the keystore password (that you defined when you installed the OKV client software in lab 5) into a new (local) auto-open wallet in &lt;WALLET_ROOT&gt;/tde
+1. Add the keystore password into a new local auto-open wallet in &lt;WALLET_ROOT&gt;/tde
 
     ````
     <copy>
-    sqlplus / as SYSDBA
-    administer key management add secret '<Key Vault endpoint password>' for client 'OKV_PASSWORD' to local auto_login keystore '/etc/ORACLE/WALLETS/cdb1/tde_seps';
+    sqlplus / as sysdba
+    ADMINISTER KEY MANAGEMENT ADD SECRET '<Key Vault endpoint password>' FOR CLIENT 'OKV_PASSWORD' TO LOCAL AUTO_LOGIN KEYSTORE '/etc/ORACLE/WALLETS/cdb1/tde_seps';
+    exit;
     </copy>
     ````
     
-    ![Key Vault](./images/Screenshot_2025-10-03_16.19.30.png "Add the keystore password (that you defined when you installed the OKV client software in lab 5) into a new (local) auto-open wallet in <WALLET_ROOT>/tde")
+    ![Key Vault](./images/Screenshot_2025-10-03_16.19.30.png "Add the keystore password into a new local auto-open wallet in <WALLET_ROOT>/tde")
 
-2. To confirm the changed behaviour, execute a re-key operation without using the OKV password
+2. Check the Master Encryption Key ID before a re-key
 
-    **TO-DO: FIX THIS CODE:**
+    ```
+    <copy>
+    sqlplus / as sysdba
+    select t.name as "ENCRYPTED TABLESPACE", 
+        e.MASTERKEYID as "MASTER ENCRYPTION KEY ID"
+      from v$tablespace t, v$encrypted_tablespaces e 
+      where t.ts#=e.ts# and t.con_id = 1;
+    exit;
+    </copy>
+    ```
+
+    ![Key Vault](./images/Screenshot_2025-10-07_23.41.30.png "Check the Master Encryption Key ID before a re-key")
+
+3. Execute a re-key operation without using the Key Vault password
+
     ````
     <copy>
-    administer key management set key identified by EXTERNAL STORE;
+    sqlplus / as sysdba
+    ADMINISTER KEY MANAGEMENT SET KEY FORCE KEYSTORE IDENTIFIED BY EXTERNAL STORE;
+    exit;
     </copy>
     ````
 
-    **TO-DO: THIS IS FAILING WITH:**
-    ````
-    SQL> administer key management set key identified by EXTERNAL STORE;
-    administer key management set key identified by EXTERNAL STORE
-    *
-    ERROR at line 1:
-    ORA-28407: Hardware Security Module failed with PKCS#11 error
-    CKR_FUNCTION_FAILED(6)
-    ````
-
     This command rotates the TDE master encryption keys for CDB$ROOT and PDB1.    
+
+    ![Key Vault](./images/Screenshot_2025-10-07_23.29.07.png "Execute a re-key operation without using the Key Vault password")
+
+4. Verify that the tablespace was re-keyed
+
+    ```
+    <copy>
+    sqlplus / as sysdba
+    select t.name as "ENCRYPTED TABLESPACE", 
+        e.MASTERKEYID as "MASTER ENCRYPTION KEY ID"
+      from v$tablespace t, v$encrypted_tablespaces e 
+      where t.ts#=e.ts# and t.con_id = 1;
+    exit;
+    </copy>
+    ```
+
+    ![Key Vault](./images/Screenshot_2025-10-07_23.39.39.png "Verify that the tablespace was re-keyed")

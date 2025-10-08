@@ -105,6 +105,8 @@ This lab assumes you have completed lab 4.
 
 2.  Install the Key Vault software. This will prompt for the endpoint connection password. We will refer to this as the "Key Vault endpoint password"
 
+    **Note:** the Key Vault endpoint password will be used throughout this workshop for SQL and okvutil commands.
+
     ```
     <copy>
     java -jar ~/Downloads/okvclient.jar -d $OKV_HOME
@@ -131,7 +133,7 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/images-2025-09-25_13-30-45_root.png "Setup the Key Vault library (liborapkcs.so) that the database will use to communicate with Key Vault")
+    ![Key Vault](./images/images-2025-09-25_13-30-45_root.png "Deploy the Key Vault library (liborapkcs.so) that the database will use to communicate with Key Vault")
 
 ## Task 4: Prepare the database for the migration to Oracle Key Vault
 
@@ -139,8 +141,9 @@ This lab assumes you have completed lab 4.
 
     ```
     <copy>
-    sqlplus / AS SYSDBA
-    alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' scope = BOTH;
+    sqlplus / as sysdba
+    ALTER SYSTEM SET TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' SCOPE = BOTH;
+    exit;
     </copy>
     ```
 
@@ -150,16 +153,29 @@ This lab assumes you have completed lab 4.
 
 1.  Migrate the database to use Key Vault
 
+    The Key Vault endpoint password is the same password you used earlier for deployment in task 3 step 2.
+
+    For the TDE wallet password, execute the following command
+
     ```
     <copy>
-    sqlplus / AS SYSDBA
-    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING "<TDE wallet password>";
+    echo $DBUSR_PWD
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_15.11.26.png "Add OKV password to the TDE wallet")
+    ```
+    <copy>
+    sqlplus / as sysdba
+    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY "<Key Vault endpoint password>" FORCE KEYSTORE MIGRATE USING "<TDE wallet password>";
+    exit;
+    </copy>
+    ```
+
+    ![Key Vault](./images/Screenshot_2025-10-03_15.11.26.png "Add the Key Vault password to the TDE wallet")
 
 2.  Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB$ROOT and one for PDB1
+
+    When prompted, enter the Key Vault endpoint password.
 
     ```
     <copy>
@@ -181,6 +197,4 @@ This lab assumes you have completed lab 4.
     - In the TDE configuration parameters, the KEYSTORE_CONFIGURATION now says OKV|FILE
     - In the wallet status, you'll see the wallet of type OKV is open
     
-    **TO-DO: WHEN RUNNING THIS SCRIPT AFTER MIGRATION, THE FORMATTING IS ALL WHACK**
-
     ![Key Vault](./images/image-2025-7-24_17-8-50.png "Review the database setup after migrating to Key Vault")

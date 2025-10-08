@@ -13,23 +13,25 @@ This lab assumes you have completed lab 6.
 
 ## Task 1: Enable lights-out operations
 
-1. Add the Key Vault endpoint password (that you defined when you installed the Oracle Key Vault client software in lab 5) into a new local auto-open wallet in &lt;WALLET_ROOT&gt;/tde.
+1. Add the Key Vault endpoint password into a new local auto-open wallet in &lt;WALLET_ROOT&gt;/tde.
 
     ````
     <copy>
-    sqlplus / as SYSDBA
-    administer key management add secret '<Key Vault endpoint password>' for client 'OKV_PASSWORD' to local auto_login keystore '/etc/ORACLE/WALLETS/cdb1/tde';
+    sqlplus / as sysdba
+    ADMINISTER KEY MANAGEMENT ADD SECRET '<Key Vault endpoint password>' FOR CLIENT 'OKV_PASSWORD' TO LOCAL AUTO_LOGIN KEYSTORE '/etc/ORACLE/WALLETS/cdb1/tde';
+    exit;
     </copy>
     ````
 
-   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Add the Key Vault endpoint password (that you defined when you installed the Oracle Key Vault client software in lab 5) into a new local auto-open wallet in <WALLET_ROOT>/tde.")
+   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Add the Key Vault endpoint password into a new local auto-open wallet in <WALLET_ROOT>/tde.")
 
 2. Change the TDE\_CONFIGURATION of the database to 'OKV|FILE' to enable the database to find the new wallet in &lt;WALLET_ROOT&gt;/tde.
 
     ```
     <copy>
-    sqlplus / as SYSDBA
-    alter system set TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' scope = BOTH;
+    sqlplus / as sysdba
+    ALTER SYSTEM SET TDE_CONFIGURATION = 'KEYSTORE_CONFIGURATION=OKV|FILE' SCOPE = BOTH;
+    exit;
     </copy>
     ```
 
@@ -39,10 +41,29 @@ This lab assumes you have completed lab 6.
 
     ```
     <copy>
-    sqlplus / as SYSDBA
-    shutdown immediate;
-    startup;
+    sqlplus / as sysdba
+    SHUTDOWN IMMEDIATE;
+    STARTUP;
+    exit;
     </copy>
     ```
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.23.38.png "Restart the database")
+
+4. Verify that the auto-login wallet is open
+
+    ```
+    <copy>
+    sqlplus / as sysdba
+    set lines 130 pages 9999 feedback off
+    col "container"       format a10
+    col "wallet location" format a30
+    select b.name "CONTAINER", a.status "WALLET STATUS",
+           a.wallet_type "WALLET TYPE", a.wrl_parameter "WALLET LOCATION"
+      from v$encryption_wallet a join v$containers b on a.con_id = b.con_id
+      where b.name in ('CDB$ROOT','PDB1') order by a.con_id;
+    exit;
+    </copy>
+    ```
+
+    ![Key Vault](./images/Screenshot_2025-10-07_23.08.12.png "Verify that the auto-login wallet is open")

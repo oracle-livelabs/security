@@ -15,6 +15,8 @@ This lab assumes you have completed lab 5.
 
 1. List the IDs of the keys in the secure persistent cache
 
+    When prompted, enter the Key Vault endpoint password.
+
     ````
     <copy>
     $OKV_HOME/bin/okvutil list -t OKV_PERSISTENT_CACHE -l /etc/ORACLE/WALLETS/cdb1/okv/conf
@@ -35,6 +37,8 @@ This lab assumes you have completed lab 5.
 
 2. Confirm that the server is unreachable
 
+    When prompted, enter the Key Vault endpoint password.
+
     ````
     <copy>
     $OKV_HOME/bin/okvutil list
@@ -49,8 +53,9 @@ This lab assumes you have completed lab 5.
 
     ````
     <copy>
-    sqlplus / as SYSDBA
+    sqlplus / as sysdba
     CREATE TABLESPACE tolerance_tbs DATAFILE SIZE 100M;
+    exit;
     </copy>
     ````
 
@@ -60,8 +65,9 @@ This lab assumes you have completed lab 5.
 
     ````
     <copy>
-    sqlplus / as SYSDBA
+    sqlplus / as sysdba
     SELECT tablespace_name, encrypted FROM dba_tablespaces WHERE tablespace_name = UPPER('tolerance_tbs');
+    exit;
     </copy>
     ````
 
@@ -78,6 +84,8 @@ This lab assumes you have completed lab 5.
     ````
 
 2. Confirm that the server is reachable
+
+    When prompted, enter the Key Vault endpoint password.
 
     ````
     <copy>

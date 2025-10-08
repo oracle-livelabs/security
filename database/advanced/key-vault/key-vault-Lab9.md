@@ -11,32 +11,6 @@ In this lab, you will set a key as 'Non-Extractable'. Creation of a new tablespa
 ### Prerequisites
 This lab assumes you have completed lab 8.
 
-<!--
-## Task 1: Create a new tablespace with an Extractable key
-
-1. Create a new tablespace
-
-    ````
-    <copy>
-    sqlplus / as SYSDBA
-    CREATE TABLESPACE extractable_key_tbs DATAFILE SIZE 100M;
-    </copy>
-    ````
-
-   ![Key Vault](./images/Screenshot_2025-10-03_16.06.27_create.png "Create a new tablespace")
-
-2. Verify the new tablespace was created
-
-    ````
-    <copy>
-    sqlplus / as SYSDBA
-    SELECT tablespace_name, encrypted FROM dba_tablespaces WHERE tablespace_name = UPPER('extractable_key_tbs');
-    </copy>
-    ````
-
-   ![Key Vault](./images/Screenshot_2025-10-03_16.06.27_verify.png "Verify the new tablespace was created")
-
--->
 ## Task 1: Generate a Non-Extractable key
 
 1.  Login to Key Vault as user **KVRESTADMIN**
@@ -55,7 +29,7 @@ This lab assumes you have completed lab 8.
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.26.41.png "Click the Endpoints tab and then click the Settings tab on the left-side panel")
 
-3. Scroll to the bottom and set the **Extractable Attribute** for the **Symmetric Key** to False
+3. Scroll to the bottom, set the **Extractable Attribute** for the **Symmetric Key** to False and click **Save**
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.29.00.png "Set the Extractable Attribute for the Symmetric Key to False")
 
@@ -63,12 +37,13 @@ This lab assumes you have completed lab 8.
 
     ```
     <copy>
-    sqlplus / AS SYSDBA
-    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY "<Key Vault endpoint password>";
+    sqlplus / as sysdba
+    ADMINISTER KEY MANAGEMENT SET KEY FORCE KEYSTORE IDENTIFIED BY "<Key Vault endpoint password>";
+    exit;
     </copy>
     ```
-    **UPDATE IMAGE**
-    ![Key Vault](./images/Screenshot_2025-10-03_15.11.26.png "Add OKV password to the local TDE wallet")
+
+    ![Key Vault](./images/Screenshot_2025-10-08_11.57.01.png "Add OKV password to the local TDE wallet")
 
 ## Task 2: Cut the connectivity to Oracle Key Vault server
 
@@ -82,6 +57,8 @@ This lab assumes you have completed lab 8.
 
 2. Confirm that the server is unreachable
 
+    When prompted, enter the Key Vault endpoint password.
+
     ````
     <copy>
     $OKV_HOME/bin/okvutil list
@@ -94,22 +71,17 @@ This lab assumes you have completed lab 8.
 
    1. Attempt to create a new tablespace
 
-    **TO-DO: THIS DOESN'T WORK BUT THAT'S BECAUSE extractable\_key\_tbs ALREADY EXISTS, NOT BECAUSE OF NON-EXTRACTABLE KEYS**
     ````
     <copy>
-    sqlplus / as SYSDBA
-    CREATE TABLESPACE extractable_key_tbs DATAFILE 'extractable_key_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT);
+    sqlplus / as sysdba
+    CREATE TABLESPACE extractable_key_tbs DATAFILE 'extractable_key_tbs01.dbf' SIZE 100M;
+    exit;
     </copy>
     ````
 
-    **TO-DO: THIS WORKS EVEN THOUGH IT SHOULDN'T**
-    ````
-    <copy>
-    sqlplus / as SYSDBA
-    CREATE TABLESPACE non_extractable_key_tbs DATAFILE 'non_extractable_key_tbs01.dbf' SIZE 100M ENCRYPTION USING 'AES256' DEFAULT STORAGE (ENCRYPT);
-    </copy>
-    ````
+    Note that the step will fail, as in the example below
 
+   ![Key Vault](./images/Screenshot_2025-10-07_22.09.24.png "Attempt to create a new tablespace")
 
 
 ## Task 4: Restore connectivity
@@ -123,6 +95,8 @@ This lab assumes you have completed lab 8.
     ````
 
 2. Confirm that the server is reachable
+
+    When prompted, enter the Key Vault endpoint password.
 
     ````
     <copy>
