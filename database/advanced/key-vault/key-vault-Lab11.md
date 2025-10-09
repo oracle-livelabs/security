@@ -71,6 +71,7 @@ This lab assumes you have completed lab 10.
 
 1. Activate the imported key (BYOK)
 
+    Note: The Master Encryption Key Identifier is the string you copied above in task 2 step 7
     ````
     <copy>
     sqlplus / as sysdba

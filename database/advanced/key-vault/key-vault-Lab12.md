@@ -24,7 +24,7 @@ This lab assumes you have completed lab 11.
 2. On the home page, observe the following:
 
     - The **Alerts** banner summarizes critical items that need immediate attention which may impact operational continuity.
-    - The **Managed Entities** provides a quick overview of the databases (endpoints) and the wallets (database).
+    - The **Managed Entities** provides a quick overview of the databases (endpoints) and the wallets storing database keys.
     - The **Managed Keys & Secrets** gives a quick glance of all the managed cryptographic objects.
 
     ![Key Vault](./images/Screenshot_2025-10-04_15.32.37.png "On the home page, observe Alerts, Managed Entities, and Managed Keys & Secrets")
@@ -35,35 +35,47 @@ This lab assumes you have completed lab 11.
 
 ## Task 2: Manage Primary-Standby, Sharded DBs, Multi-Tennant and RAC databses
 
-Oracle Key Vault can manage databases of various deployments by deploying database clients called **endpoints** on the database host. The system administrator is tasked with creating, and overseeing endpoints on the Key Vault server. Endpoints can be deployed for Oracle databases, Oracle ACFS, MySQL databases, and SSH servers.
+Oracle Key Vault can manage all deployment modes of the Oracle database - single instance, RAC, multi-tenant, Data Guard, sharded, and cloud. This is done by deploying database clients called **endpoints** on the database host. For cloud databases, you have to use the cloud console. Endpoints can also be deployed for Oracle GoldenGate, Oracle ACFS, MySQL databases, SSH servers, and more.
+
+The system administrator is tasked with creating, and overseeing the endpoints on the Key Vault server.
 
 1. Click the **Endpoints** tab
     ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints tab")
 
-2. This takes you to the Endpoints page - where the system administrator can see information about the endpoints that are registered or enrolled with Key Vault.
+2. This takes you to the Endpoints page
 
-    Note the endpoints that have been deployed in this example to various deployments of the Oracle database:
-    - The 3 REGIONS endpoints are deployed for 3 different shards of the REGIONS database
-    - The 2 SALES\_PURCHASE endpoint has been deployed to each node of the INVENTORY RAC database in the SALES CDB
-    - Similarly the 2 SALES\_INVENTORY endpoints have been deployed to both nodes of the INVENTORY RAC database in the SALES CDB
-    - The 2 STAFF endpoints are deployed to a primary and a standby STAFF database
+    Note the endpoints deployed across various Oracle database deployment modes:
+    - Three different shards of the sharded database, REGIONS, are endpoints REGIONS\_SHARD\_1, REGIONS\_SHARD\_2, and REGIONS\_SHARD\_3.
+    - Pluggable instance, INVENTORY, of the two node RAC and multi-tenant database SALES, has two endpoints SALES\_INVENTORY\_1 and SALES\_INVENTORY\_2.
+    - Primary-Standby two instance RAC database, STAFF, are four endpoints STAFF\_PRIMARY\_1, STAFF\_PRIMARY\_2, STAFF\_STANDBY\_1 and STAFF\_STANDBY\_2.
 
     ![Key Vault](./images/image-2025-09-11-18.13.52.png "This takes you to the Endpoints page")
 
 ## Task 3: Virtual wallets for database keys 
 
-To simplify management of database keys, Oracle Key Vault offers virtual wallets which act as a grouping mechanism to identify keys that belong to a specific database. Each virtual wallet can be mapped to a specific endpoint so that all keys uploaded by an endpoint become a part of this wallet by default. You can think of this wallet as the Key Vault representation of the local TDE wallet. The key administrator is responsible for creating and managing virtual wallets.
+To simplify management of database keys, Oracle Key Vault offers virtual wallets which group the keys of the database. Virtual wallets can be tied to multiple endpoint, depending on the database deployment model, so that all keys uploaded by an endpoint become a part of this wallet by default. You can think of this wallet as the Key Vault representation of the local TDE wallet.
+
+The key administrator is responsible for creating and managing virtual wallets.
 
 1. Click the **Keys & Wallets** tab
     ![Key Vault](./images/Screenshot_2025-10-04_15.43.07.png "Click the Keys & Wallets tab")
 
-2. This takes you to the Wallets page - where the key administrator can manage these
+2. This takes you to the Wallets page
 
-    In the photo below, you can see that for the endpoints created in task 2, there exists a virtual wallet so that all keys of the corresponding database can be grouped together.
+    In the image below, you can see that each database or pluggable database is tied to a wallet.
+    
+    For example:
+    - The sharded database, REGIONS, has a wallet named REGIONS.
+    - Both pluggable databases, INVENTORY and PURCHASE, have their own wallets named INVENTORY and PURCHASE, respectively.
+    - All instances of the primary-standby RAC database, STAFF, share the same wallet named STAFF.
 
     ![Key Vault](./images/image-2025-09-11-18.20.43.png "This takes you to the Wallets page")
 
 ## Task 4: Inventory of database encryption keys
+
+Oracle Key Vault offers a comprehensive set of reports, including inventory, activity, security, and system reports.
+
+Inventory reports cover Oracle databases, GoldenGate, Secure Shell (SSH), public and private keys, certificates, and more. Activity reports include endpoint activity, user activity, and SSH usage details. Security reports provide information on entitlements, SSH authorizations, SSH access, user accounts, failed logins, and more. System reports encompass backup history and RESTful service usage statistics.
 
 1. Click the **Reports** tab
 
@@ -75,55 +87,58 @@ To simplify management of database keys, Oracle Key Vault offers virtual wallets
 
 3. Select **DB Generated TDE Master Encryption Key Attribute Report**  - to see an example of a report with the inventory of database encryption keys
 
-    Note the key metadata shown for ease of filtering:
-    - You can see the user that created the key, the creating database and the creating PDB
-    - You can also see the user that activated the key, and which database and PDB activated the key
-    - You can check the time for when the database activated the key (no other key manager can do this)
+    This report tells you:
+    - Who created and activated the key
+    - Which database, and the container database (including their GUIDs), the key was created or activated for
+    - When the key was created or activated
 
     ![Key Vault](./images/Screenshot_2025-10-07_09.41.40.png "Select DB Generated TDE Master Encryption Key Attribute Report")
 
 ## Task 5: Track database key and certificate lifetimes
 
+OKV reports help maintain compliance by listing active TDE master keys with activation times to highlight databases overdue for rotation, and by flagging expired or non‑compliant certificates, including lifetime and key size issues.
+
 1. Click the **Reports** tab
 
     ![Key Vault](./images/Screenshot_2025-10-04_15.46.44.png "Click the Reports Tab")
 
+
+**REPLACE PHOTO BECAUSE ORDER FLIPPED**
 2. Expand the **Keys and Wallets Report**
 
     ![Key Vault](./images/Screenshot_2025-10-05_10.06.42.png "Keys and Wallets Report")
 
-3. Select **Certificate Awareness Report**  - to see an example of a report to track certificate lifetimes
+3. Select **DB Activated TDE Master Encryption Key Report**  - to see an example of a report with the inventory of database encryption keys
 
-    Here you can see the key sizes of certificates (to see if any of them are not meeting your organization's compliance requirements) and the remaining certificate lifetime (by expiration or deactivation time) so that your administrator knows when the certificates need to be rotated.
-
-    ![Key Vault](./images/Screenshot_2025-10-05_10.08.23.png "Select Certificate Awareness Report")
-
-4. Select **DB Activated TDE Master Encryption Key Report**  - to see an example of a report with the inventory of database encryption keys
-
-    This report shows the most recently activated key by the database, the time it was activated and the database & the PDB that activated it. You can use this report to see when the keys were most recently rotated for a database to ensure your keys remain compliant.
+    This report lists active TDE master keys along with their activation time, helping you identify databases that haven’t generated a new key recently and are in violation of rotation policies
 
     ![Key Vault](./images/image-2025-09-11-18.09.03.png "Select DB Activated TDE Master Encryption Key Report")
 
+4. Select **Certificate Awareness Report**  - to see an example of a report to track certificate lifetimes
+
+    This report lists certificates expiring in 30, 60, or 90 days, and flag those that need attention or drift out of compliance. For example, when their lifetime exceeds a newly-defined shorter lifetime. You can also view the key sizes used for certificates to help verify they are policy compliant.
+
+    ![Key Vault](./images/Screenshot_2025-10-05_10.08.23.png "Select Certificate Awareness Report")
+
 ## Task 6: Receive notifications for urgent tasks
+
+To keep you aware of your system state, Oracle Key Vault generates alerts and delivers notifications. Key Vault raises categorized alerts when your system reaches critical thresholds for cluster & system parameters, and when keys & certificates are expiring. Besides showing alerts on the console, Key Vault delivers notifications via email alerts, remote syslog, or SNMP depending on your organizational needs.
 
 1. Click the **Reports** tab and click the **Alerts** tab on the left-side panel 
 
     ![Key Vault](./images/Screenshot_2025-10-04_15.49.25.png "Click the Alerts Tab")
 
-3. Alerts that required immediate attention
+2. Alerts that required immediate attention. Key Vault only shows the relevant alerts to the administrator based on their roles.
 
-    The alerts report lets the relevant administrators take action on critical tasks that may bring downtime to your operations. This photo shows several such examples:
-    - Several user's (KVADMIN, KVAUDITOR, KVSYSTEM) passwords are expiring and need to be reset
-    - Several certificate objects are expiring within a certain threshold of time (this threshold can be altered to suit your needs) and need to be rotated
+    In the image below, there are notifications for:
+    - User's passwords that are expiring and need to be reset
+    - Certificate objects that are expiring and need to be rotated
 
-    These notifications can be sent over remote syslog, SNMP or email notifications depending on your organizational needs.
-
-    **NEED TO UPDATE PHOTO TO SHOW EXPIRING KEYS ALSO**
     ![Key Vault](./images/image-2025-09-11-18.27.41.png "Alerts that required immediate attention")
 
 ## Task 7: Ensure accountability with audit records
 
-To support security and compliance requirements, Oracle Key Vault reporting includes a complete audit trail, enabling thorough tracking and review of all actions and events. This is available to all administrators.
+Oracle Key Vault reporting includes a complete audit trail to track actions and monitor changes across Key Vault. The audit trail captures operations like creating a key, done by the users or endpoints, from where, and when. This is available to all administrators.
 
 1. Click the **Reports** tab and click the **Audit Trail** tab on the left-side panel 
 
@@ -131,15 +146,17 @@ To support security and compliance requirements, Oracle Key Vault reporting incl
 
 2. The audit trail page shows all audit records for your Key Vault deployment
 
-    Here you can see which subject (user, or endpoint) performed what action on which object, the time it happened at and whether or not it was successfully completed. Audit managers can use the **Audit Settings** button to filter for custom events and also select which events they want to be audited. 
+    Audit managers can use the **Audit Settings** button to filter for custom events and also select which events they want to be audited. 
+
+    Here you can see which subject (user, or endpoint) performed what action on which object, the time it happened at and whether or not it was successfully completed.
 
     ![Key Vault](./images/Screenshot_2025-10-07_09.55.44.png "The audit trail page")
 
 ## Task 8: Enforce separation of duties
 
-For separation of duties, Key Vault offers 3 different types of administrator roles, a system administrator, a key administrator and an audit manager. Together, these 3 administrators are responsible for managing the entire server but there also exists specific privileges like create endpoints, create endpoint groups and a monitor privilege. These privileges don't grant a complete administrative access but provide some escalation in roles and allow for non-privileged users to perform those specific tasks.
+For separation of duties, Key Vault provides three distinct administrator roles: system administrator, key administrator, and audit manager. Regular Key Vault administrators can be assigned specific privileges, such as creating endpoints or endpoint groups, to manage their designated sets of endpoints. A regular user with monitor privileges can run RESTful monitor commands.
 
-For user administration in Oracle Key Vault, users can exist as a local Key Vault user, or users that are part of your organization through an LDAP configuration or SSO configuration. The role of account management is undertaken by the system administrator. To perform these tasks:
+Key Vault users can be managed locally as native Key Vault users or externally through Active Directory. Additionally, single sign-on can be enabled for users managed in Entra ID or ADFS. The role of account management is undertaken by the system administrator. To perform these tasks:
 
 1. Click the **Users** tab
 
@@ -147,21 +164,26 @@ For user administration in Oracle Key Vault, users can exist as a local Key Vaul
 
 2. This takes you to the **Manager Users** page
 
-    ![Key Vault](./images/image-2025-09-11-18.29.46.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
+    ![Key Vault](./images/image-2025-09-11-18.29.46.png "The Manage Users page")
 
 3. To change the Key Vault user password, click the **Change Password** tab on the left-side panel
 
     ![Key Vault](./images/Screenshot_2025-10-05_10.49.21.png "To change the Key Vault user password, click the Change Password tab on the left-side panel")
 
-4. The **Change Password for &lt;Key Vault User&gt;** page is where the user can change the password
+4. The **Change Password** page is where the user can change their password
 
-    ![Key Vault](./images/image-2025-09-11-18.42.01.png "The Change Password for <Key Vault User> page is where the user can change the password")
+    ![Key Vault](./images/image-2025-09-11-18.42.01.png "The Change Password page is where the user can change the password")
 
-5. For deployments using LDAP, key administrators can manage access for users to specific wallets by setting up LDAP group mappings. Click **Manage LDAP Mappings** on the left-side panel.
+**ADD STEP TO SHOW HOW TO CONFIGURE LDAP**
+5. For organizations that need LDAP support, show the page using some LDAP details added in
+
+6. For deployments using LDAP, key administrators can manage access for users to specific wallets by setting up LDAP group mappings. Click **Manage LDAP Mappings** on the left-side panel.
 
     ![Key Vault](./images/Screenshot_2025-10-05_10.54.01.png "Click Manage LDAP Mappings on the left-side panel")
 
-6. The **LDAP Group Mappings** page shows which mappings are setup to which roles and privileges in Key Vault
+7. The **LDAP Group Mappings** page shows which mappings are setup to which roles and privileges in Key Vault
+
+    **GET A PHOTO FROM AKHIL SHOWING SOME LDAP GROUPS**
 
     ![Key Vault](./images/image-2025-09-11-18.33.10.png "The LDAP Group Mappings page shows which mappings are setup to which roles and privileges in Key Vault")
 
@@ -173,7 +195,7 @@ For user administration in Oracle Key Vault, users can exist as a local Key Vaul
 
 2. This page shows the system health
 
-    Note the various classes of information shown on this page:
+    Observe the various classes of information shown on this page:
     - The base server information
     - The state of critical system services
     - Information about space usage
@@ -184,7 +206,7 @@ For user administration in Oracle Key Vault, users can exist as a local Key Vaul
 
 ## Task 10: Monitor performance for optimal Oracle Key Vault operations
 
-System administrators can monitor the performance of the Key Vault server to check on the underlying machine the server is running on to ensure the system is performing optimally. Administrators can check the **CPU & Memory Metrics**, the **Disk I/O Metrics**, the **Network Metrics**, and the **Application Metrics**.
+Oracle Key Vault performance monitoring allows system administrators to identify and address potential bottlenecks, proactively resolve unusual or complex environment-specific issues, and maintain overall system health. In addition, by analyzing system load and resource utilization across the cluster, administrators can make informed decisions about scaling the environment.
 
 1. Click the **System** tab
 
@@ -194,11 +216,13 @@ System administrators can monitor the performance of the Key Vault server to che
 
     ![Key Vault](./images/Screenshot_2025-10-05_11.25.42.png "Click the System Metrics button")
 
-3. To monitor system performance, expand the **CPU & Memory Metrics** section
+3. To monitor system performance for example, expand the **CPU & Memory Metrics** section
 
     ![Key Vault](./images/image-2025-09-11-18.46.22.png "To monitor system performance, expand the CPU & Memory Metrics section")
 
 ## Task 11: Administer Oracle Key Vault
+
+For ease of use, Key Vault consolidates all network, system, certificate, and monitoring configurations onto a single landing page within the web console. In a cluster deployment, a drop-down menu indicates which configurations are applied across the cluster and which need to be configured individually for each node.
 
 1. Click the **System** tab
 
@@ -210,13 +234,13 @@ System administrators can monitor the performance of the Key Vault server to che
 
 3. This takes you to the page from where the system administrator can administer the Key Vault server
 
-    System administrators will look at and perform configuration for the Key Vault server from this page. Administration for the server is grouped by **Network Details**, **Monitoring and Alerts**, **System Configuration**, **Certificates**, and **Network Services**.
+    System administrators are reponsible for most of the system configuration. Audit Manager is responsible for setting up Audit Vault integration.
 
     ![Key Vault](./images/image-2025-09-11-18.48.38-CUSTOM.png "This takes you to the page from where the system administrator can administer the Key Vault server")
 
 ## Task 12: A quick look at the cluster
 
-For a quick look at the cluster deployment, here is an example of the server being converted to a cluster node. This deployment shows the cluster with the controller node (the first server of the cluster). This node will have all the existing keys and will seed the cluster.
+A Key Vault cluster provides continuous availability of your keys to ensure uninterrupted database operations. This task will convert a standalone Key Vault server into the first node of a cluster. This initial node will contain all existing keys and can be used to create a cluster by adding additional nodes.
 
 1. Click the **Cluster** tab
 
@@ -228,10 +252,12 @@ For a quick look at the cluster deployment, here is an example of the server bei
 
 3. Once the server has been configured as a cluster node, the Cluster page is updated to show the status of all nodes that are part of this cluster
 
+    You can click the **Add** button to add a second, third and more nodes to the cluster.
+
     ![Key Vault](./images/image-2025-09-11-18.58.43.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
 
-4. On the Home page, the System Overview section at the bottom is updated (identifying the deployment mode as Cluster)
+4. On the Home page, the System Overview section at the bottom is updated, identifying the deployment mode as Cluster
 
-    This section will show how many read-write pairs are part of the cluster as well as the cluster service status.
+    This section highlights how many read-write pairs are part of the cluster as well as the cluster service status. For now, there is just the one node that we setup.
 
     ![Key Vault](./images/image-2025-09-11-19.02.06.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
