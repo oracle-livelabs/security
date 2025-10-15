@@ -27,7 +27,7 @@ This lab assumes you have completed lab 4.
 
 2. Click the **Endpoints** tab and then click the **Add** button to add a new endpoint
 
-    The endpoint represents the Oracle database in Oracle Key Vault.
+    An endpoint represents an Oracle database instance in Oracle Key Vault.
 
     ![Key Vault](./images/image-2025-7-24_15-59-1.png "Click on Add to add a new endpoint")
 
@@ -104,6 +104,8 @@ This lab assumes you have completed lab 4.
     ```
 
 2.  Install the Key Vault software. This will prompt for the endpoint connection password. We will refer to this as the "Key Vault endpoint password"
+
+    This is a one time step and the install software (okvclient.jar) is automatically deleted after the install is completed successfully.
 
     **Note:** the Key Vault endpoint password will be used throughout this workshop for SQL and okvutil commands.
 

@@ -30,10 +30,10 @@ This lab assumes you have completed lab 9.
     ```
     <copy>
     sqlplus / as sysdba
-    select t.name as "ENCRYPTED TABLESPACE", 
-        e.MASTERKEYID as "MASTER ENCRYPTION KEY ID"
-      from v$tablespace t, v$encrypted_tablespaces e 
-      where t.ts#=e.ts# and t.con_id = 1;
+    col "container" format a10
+    select b.name "CONTAINER", a.MASTERKEYID "MASTER ENCRYPTION KEY ID"
+      from v$database_key_info a join v$containers b on a.con_id = b.con_id
+      where b.name in ('CDB$ROOT');
     exit;
     </copy>
     ```
@@ -59,10 +59,10 @@ This lab assumes you have completed lab 9.
     ```
     <copy>
     sqlplus / as sysdba
-    select t.name as "ENCRYPTED TABLESPACE", 
-        e.MASTERKEYID as "MASTER ENCRYPTION KEY ID"
-      from v$tablespace t, v$encrypted_tablespaces e 
-      where t.ts#=e.ts# and t.con_id = 1;
+    col "container" format a10
+    select b.name "CONTAINER", a.MASTERKEYID "MASTER ENCRYPTION KEY ID"
+      from v$database_key_info a join v$containers b on a.con_id = b.con_id
+      where b.name in ('CDB$ROOT');
     exit;
     </copy>
     ```

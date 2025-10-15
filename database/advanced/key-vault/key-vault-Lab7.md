@@ -61,9 +61,9 @@ This lab assumes you have completed lab 6.
     select b.name "CONTAINER", a.status "WALLET STATUS",
            a.wallet_type "WALLET TYPE", a.wrl_parameter "WALLET LOCATION"
       from v$encryption_wallet a join v$containers b on a.con_id = b.con_id
-      where b.name in ('CDB$ROOT','PDB1') order by a.con_id;
+      where b.name in ('CDB$ROOT','PDB1') order by a.con_id, a.wallet_order;
     exit;
     </copy>
     ```
-
+    
     ![Key Vault](./images/Screenshot_2025-10-07_23.08.12.png "Verify that the auto-login wallet is open")

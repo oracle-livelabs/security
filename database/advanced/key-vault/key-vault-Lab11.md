@@ -57,7 +57,7 @@ This lab assumes you have completed lab 10.
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.38.50.png "Click the Bring Your Own Key radio button and upload byok_aes256.txt file you had created above")
 
-6. Click the **Select Wallet** button, choose the **LIVELABS\_DB\_WALLET** wallet, and click the **Close** button
+6. Click the **Select Wallet** button, choose the **LIVELABS\_DB\_WALLET** wallet from the pop-up, and click the **Close** button of the pop-up window
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.42.12.png "Click the Select Wallet button and choose the LIVELABS_DB_WALLET wallet")
 
@@ -86,10 +86,10 @@ This lab assumes you have completed lab 10.
     ```
     <copy>
     sqlplus / as sysdba
-    select t.name as "ENCRYPTED TABLESPACE", 
-        e.MASTERKEYID as "MASTER ENCRYPTION KEY ID"
-      from v$tablespace t, v$encrypted_tablespaces e 
-      where t.ts#=e.ts# and t.con_id = 1;
+    col "container" format a10
+    select b.name "CONTAINER", a.MASTERKEYID "MASTER ENCRYPTION KEY ID"
+      from v$database_key_info a join v$containers b on a.con_id = b.con_id
+      where b.name in ('CDB$ROOT');
     exit;
     </copy>
     ```
