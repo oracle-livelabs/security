@@ -102,11 +102,9 @@ OKV reports help maintain compliance by listing active TDE master keys with acti
 
     ![Key Vault](./images/Screenshot_2025-10-04_15.46.44.png "Click the Reports Tab")
 
+2. Expand the **Key Management Reports for Oracle Endpoints**
 
-**REPLACE PHOTO BECAUSE ORDER FLIPPED**
-2. Expand the **Keys and Wallets Report**
-
-    ![Key Vault](./images/Screenshot_2025-10-05_10.06.42.png "Keys and Wallets Report")
+    ![Key Vault](./images/Screenshot_2025-10-16_15.48.32.png "Key Management Reports for Oracle Endpoints")
 
 3. Select **DB Activated TDE Master Encryption Key Report**  - to see an example of a report with the inventory of database encryption keys
 
@@ -114,7 +112,11 @@ OKV reports help maintain compliance by listing active TDE master keys with acti
 
     ![Key Vault](./images/image-2025-09-11-18.09.03.png "Select DB Activated TDE Master Encryption Key Report")
 
-4. Select **Certificate Awareness Report**  - to see an example of a report to track certificate lifetimes
+4. Expand the **Keys and Wallets Report**
+
+    ![Key Vault](./images/Screenshot_2025-10-05_10.06.42.png "Keys and Wallets Report")
+
+5. Select **Certificate Awareness Report**  - to see an example of a report to track certificate lifetimes
 
     This report lists certificates expiring in 30, 60, or 90 days, and flag those that need attention or drift out of compliance. For example, when their lifetime exceeds a newly-defined shorter lifetime. You can also view the key sizes used for certificates to help verify they are policy compliant.
 
