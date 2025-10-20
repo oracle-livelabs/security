@@ -75,7 +75,7 @@ This lab assumes you have:
 
 10. In the **Password** and **Confirm Password** boxes, enter a database password for `APP_USER`.
 
-    Note: The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. It cannot contain the double quote (") character or the username "admin".
+    Note: The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character. It cannot contain the double quote (") character or the username "admin".
 
 11. At the bottom, enable **Web Access**.
 
@@ -246,6 +246,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, September 26, 2025
+- **Last Updated By/Date** - Jody Glover, October 14, 2025
 
 
