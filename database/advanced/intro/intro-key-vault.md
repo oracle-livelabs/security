@@ -40,4 +40,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl, Rahil Mir, Shubham Goyal
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - October 2025
+- **Last Updated By/Date** - Shubham Goyal, Database Security PM - October 2025
