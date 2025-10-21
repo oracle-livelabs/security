@@ -3,7 +3,6 @@
 ## Introduction
 This workshop guides you through the process of migrating an encrypted Oracle database 19c from a local Transparent Database Encryption (TDE) wallet to centralized key management with Oracle Key Vault.
 
-**IS IT 60 MIN??**
 *Estimated Lab Time:* 60 minutes
 
 *Version tested in this lab:* Oracle OKV 21.12 and DBEE 19.28
