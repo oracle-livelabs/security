@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. **Oracle SQL Firewall** is a robust security feature built into the Oracle Database 23ai, designed to provide real-time protection against common database attacks by restricting access to only authorized SQL statements or connections.
+In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. **Oracle SQL Firewall** is a robust security feature built into Oracle AI Database 26ai, designed to provide real-time protection against common database attacks by restricting access to only authorized SQL statements or connections.
 
 You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `APP_USER`. This collection is referred to as the *allow-list*. Next, you test that `APP_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
 
@@ -26,7 +26,7 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
 - Prepared your environment
-- A target database that is Oracle Database 23ai
+- A target database that is Oracle AI Database 26ai
 
 ## Task 1 (For your tenancy only): Grant the SQL Firewall role on your target database
 
@@ -91,11 +91,11 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     SQL Firewall is now set to capture SQL statements issued by the `APP_USER` database user.
 
-6. From the navigation menu, select **Oracle Database**, and then **Autonomous Database**.
+6. From the navigation menu, select **Oracle AI Database**, and then **Autonomous AI Database**.
 
 7. Click the name of your database.
 
-8. On the **Autonomous Database** page, from the **Database actions** menu, select **Database Users**.
+8. On the **Autonomous AI Database** page, from the **Database actions** menu, select **Database Users**.
 
 9. On the **APP_USER** tile, click the three dots, and select **Edit**.
 
@@ -140,9 +140,9 @@ Perform this task only if you are working in your own tenancy. If you are using 
     </copy>
     ```
 
-20. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+20. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** tab.
 
-21. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
+21. From the navigation menu, select **Oracle AI Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
 
 22. Click the name of your target database.
 
@@ -243,7 +243,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
 4. Under **Unique allowed SQL statements**, click **Add from violations**.
 
-    The **Add from violations** page is displayed showing you Autonomous Database SQL queries.
+    The **Add from violations** page is displayed showing you Autonomous AI Database SQL queries.
 
 5. Expand the violations and review.
 
@@ -272,6 +272,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, September 26, 2025
+- **Last Updated By/Date** - Jody Glover, October 20, 2025
 
 
