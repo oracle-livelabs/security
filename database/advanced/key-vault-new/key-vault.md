@@ -148,5 +148,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Peter Wahl, Rahil Mir
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024
+- **Contributors** - Peter Wahl, Rahil Mir, Shubham Goyal
+- **Last Updated By/Date** - Shubham Goyal, Database Security PM - October 2025
