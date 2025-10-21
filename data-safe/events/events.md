@@ -23,7 +23,7 @@ This lab assumes you have:
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - *Administrator* permissions in your tenancy
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
+- Registered your target database with Oracle Data Safe (see [Register an Autonomous AI Database with Oracle Data Safe](?lab=register-autonomous-database))
 - A valid email address
 
 ### Assumptions
@@ -33,7 +33,7 @@ This lab assumes you have:
 
 ## Task 1: Review the latest user assessment
 
-1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe - Database Security**.
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle AI Database**, and then **Data Safe - Database Security**.
 
 2. Under **Security center**, click **User assessment**.
 
@@ -213,4 +213,4 @@ In this task, you create a user on your target database with the `PDB_DBA` role.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Contributors** - Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, Jun 5, 2025
+- **Last Updated By/Date** - Jody Glover, October 20, 2025

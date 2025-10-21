@@ -195,4 +195,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, May 5, 2025
+* **Last Updated By/Date** - Jody Glover, October 20, 2025

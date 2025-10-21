@@ -14,7 +14,7 @@ In this lab, you will:
 - Create a user group and add an Oracle Cloud account to the group
 - Create an IAM policy for the user group
 - Provision an Autonomous Transaction Processing database
-- Access Oracle Database Actions
+- Access ORACLE Database Actions
 - Load sample data into your database
 - Register your database with Oracle Data Safe
 - Access Oracle Data Safe and view your registered target database
@@ -116,19 +116,19 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 
 ## Task 4: Provision an Autonomous Transaction Processing database
 
-Create an Autonomous Transaction Processing (ATP) database in your compartment. Before proceeding, make sure that you have enough quota in your tenancy to create an (Always Free) Autonomous Database.
+Create an Autonomous Transaction Processing (ATP) database in your compartment. Before proceeding, make sure that you have enough quota in your tenancy to create an (Always Free) Autonomous AI Database.
 
 > **Note**: If you plan to use an existing ATP database in your tenancy, you can skip this task.
 
-1. From the navigation menu, select **Oracle Database**, and then **Autonomous Database**.
+1. From the navigation menu, select **Oracle AI Database**, and then **Autonomous AI Database**.
 
 2. In the **Filters** section on the left, make sure your workload type is **Transaction Processing** or **All** so that you can view your database listing after you create your database.
 
 3. From the **Compartment** drop-down list, select your compartment.
 
-4. Click **Create Autonomous Database**.
+4. Click **Create Autonomous AI Database**.
 
-5. On the **Create Autonomous Database** page, provide basic information for your database:
+5. On the **Create Autonomous AI Database** page, provide basic information for your database:
 
     - **Compartment** - If needed, select a different compartment.
     - **Display name** - Enter a memorable name for the database for display purposes.
@@ -143,34 +143,34 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - **Access Type** - Leave **Secure access from everywhere** selected.
     - **License Type** - Leave **License included** selected.
 
-6. Click **Create Autonomous Database**. 
+6. Click **Create Autonomous AI Database**. 
 
-    The **Autonomous Database details** page is displayed.
+    The **Autonomous AI Database** page is displayed.
 
 7. Wait a few minutes for your database instance to provision. 
 
     **AVAILABLE** is displayed below the large ATP icon.
 
-    ![Autonomous Database Details page](images/autonomous-database-details-page.png "Autonomous Database Details page")
+    ![Autonomous AI Database page](images/autonomous-database-details-page.png "Autonomous AI Database page")
 
 
-## Task 5: Access Oracle Database Actions
+## Task 5: Access ORACLE Database Actions
 
 Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. Subsequent labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. At the top of the **Autonomous Database details** page, click **Database actions**. 
+1. At the top of the **Autonomous AI Database** page, click **Database actions**. 
 
     The **Sign-in** page is displayed.
 
 2. If required, sign in as the `ADMIN` user. 
 
-    A browser tab named **Oracle Database Actions** is opened. *Keep this tab open throughout the workshop.* If your session expires, you can always sign in again.
+    A browser tab named **ORACLE Database Actions** is opened. *Keep this tab open throughout the workshop.* If your session expires, you can always sign in again.
 
-    - If a tenancy administrator provided you an Autonomous Database, obtain the database password from that person.
+    - If a tenancy administrator provided you an Autonomous AI Database, obtain the database password from that person.
 
 3. In the **Development** section, click **SQL**. 
 
-    The browser tab name is changed to **SQL | Oracle Database Actions**.
+    The browser tab name is changed to **SQL | ORACLE Database Actions**.
 
 4. Close the warning and help dialog boxes.
 
@@ -180,14 +180,14 @@ Database Actions provides a way for you to run SQL commands on your target datab
     - On the **Worksheet** on the right, you run SQL commands and scripts.
     - On the **Query Result** and **Script Output** tabs at the bottom of the page, you review query results and output generated from running scripts.
 
-    ![SQL Worksheet in Oracle Database Actions](images/database-actions.png "SQL Worksheet in Oracle Database Actions")
+    ![SQL Worksheet in Database Actions](images/database-actions.png "SQL Worksheet in Database Actions")
 
 
 ## Task 6: Load sample data into your database
 
 As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also generates database activity for the `ADMIN` user.
 
-1. Download the [**load-data-safe-sample-data_admin.sql**](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad.
+1. Download the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/QqCOrIg8vwNsrtXHFosXcmFRIWkjKv4yNbXj6_bUNx2ZQy-KsK564UWBxJKqkdVM/n/c4u04/b/livelabsfiles/o/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad.
 
 2. Copy the entire script to the clipboard and paste it into the worksheet in Database Actions. The last line of the script is as follows:
 
@@ -214,20 +214,20 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
     - `SUPPLEMENTAL_DATA` - 149 rows
 
 
-    If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
+    If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/QqCOrIg8vwNsrtXHFosXcmFRIWkjKv4yNbXj6_bUNx2ZQy-KsK564UWBxJKqkdVM/n/c4u04/b/livelabsfiles/o/load-data-safe-sample-data_admin.sql) script.
 
 5. Refresh Database Actions by refreshing the _browser_ page. If prompted, click **Leave page**.
 
 6. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
-7. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+7. *Leave the **SQL | ORACLE Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** tab.
 
 
 ## Task 7: Register your database with Oracle Data Safe
 
 A database registered with Oracle Data Safe is referred to as a *target* database in Oracle Data Safe.
 
-1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the Autonomous Database details page.
+1. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab. You last left off on the Autonomous AI Database page.
 
 2. Scroll down to the **Data Safe** section, click **Register**, and wait for the registration to be completed.
 
@@ -236,7 +236,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
 A database registered with Oracle Data Safe is referred to as a *target* database in Oracle Data Safe.
 
-1. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
+1. From the navigation menu, select **Oracle AI Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
 
 2. On the left, click **Target databases**.
 
@@ -258,7 +258,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
     - In Security center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, SQL Firewall, and Alerts.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security assessment**, **User assessment**, **Feature usage**, and **Operations summary** charts in the dashboard already have data.
-    - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail with the status **In transition** for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
+    - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail with the status **In transition** for your Autonomous AI Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
 
     ![Initial Dashboard - security controls](images/dashboard-security-controls.png "Initial Dashboard - security controls")
 
@@ -273,8 +273,8 @@ You may now **proceed to the next lab**.
 
 - [Oracle Cloud Infrastructure documentation](https://docs.oracle.com/iaas/Content/home.htm)
 - [OCI Cloud Free Tier](https://www.oracle.com/cloud/free/)
-- [Provision Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-provision.html)
-- [Loading Data into an Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/load-data.html)
+- [Provision Autonomous AI Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-provision.html)
+- [Loading Data](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/load-data.html)
 - [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
 - [Oracle Data Safe Dashboard](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B4D784B8-F3F7-4020-891D-49D709B9A302)
 
@@ -282,4 +282,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, May 5, 2025
+- **Last Updated By/Date** - Jody Glover, October 20, 2025
