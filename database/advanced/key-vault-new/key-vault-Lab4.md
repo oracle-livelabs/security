@@ -4,7 +4,6 @@
 Before migrating a database from a local TDE wallet to centralized key management with Oracle Key Vault, you need to understand what the TDE parameters are set, and what tablespaces are encrypted.
 
 Estimated Lab Time: 3 minutes
-eibccbgnheklbgnenrrnbrjujvckjftkjdeufggljvin
 
 
 ### Objectives
