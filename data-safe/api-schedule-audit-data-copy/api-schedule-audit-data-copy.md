@@ -23,7 +23,7 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
+- Registered your target database with Oracle Data Safe (see [Register an Autonomous AI Database with Oracle Data Safe](?lab=register-autonomous-database))
 - Completed the [Copy Audit Data to Object Storage using the Oracle Data Safe REST API](?lab=api-copy-audit-data) lab. This lab is a continuation of that lab.
 
 
@@ -78,7 +78,7 @@ In this task, you create an SH script that contains the variables and Java comma
     <copy>1/5 * * * * /home/opc/.oci/datasafejob.sh</copy>
     ```
 
-3. Generate some activity for Oracle Data Safe to audit. To do this, access Database Actions for your target database. Download the [**load-data-safe-sample-data_admin.sql**](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad. Copy the entire script to the clipboard and paste it into the worksheet in Database Actions. On the toolbar, click the **Run Script** button and wait for the script to finish running.
+3. Generate some activity for Oracle Data Safe to audit. To do this, access Database Actions for your target database. Download the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/QqCOrIg8vwNsrtXHFosXcmFRIWkjKv4yNbXj6_bUNx2ZQy-KsK564UWBxJKqkdVM/n/c4u04/b/livelabsfiles/o/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad. Copy the entire script to the clipboard and paste it into the worksheet in Database Actions. On the toolbar, click the **Run Script** button and wait for the script to finish running.
 
 
 4. Return to your bucket and view the audit data being collected every five minutes. It can sometimes take a few minutes for the audit data objects to be displayed.
@@ -127,7 +127,7 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Contributors** - Richard Evans, Anna Haikl, Russ Lowenthal, Archana Rao, Bettina Schaeumer
-- **Last Updated By/Date** - Jody Glover, June 5, 2025
+- **Last Updated By/Date** - Jody Glover, October 20, 2025
 
 
 

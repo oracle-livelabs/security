@@ -16,7 +16,7 @@ Watch a preview of "*Introduction to Oracle Data Safe*" (May 2025) [Video hosted
 
 In this workshop, you learn how to perform the following tasks:
 
-- Register an Autonomous Database with Oracle Data Safe
+- Register an Autonomous AI Database with Oracle Data Safe
 - Assess the security of your database configurations and database users using Oracle Data Safe
 - Discover and mask sensitive data on your target database using Oracle Data Safe
 - Collect and monitor audit data in Oracle Data Safe to inform you of database activity
@@ -37,4 +37,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, August 1, 2025
+* **Last Updated By/Date** - Jody Glover, October 20, 2025
