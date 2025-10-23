@@ -147,6 +147,6 @@ Video:
 - *Introducing Oracle Key Vault 21 (January 2021)* [](youtube:SfXQEwziyw4)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
+- **Author** - Shubham Goyal
 - **Contributors** - Peter Wahl, Rahil Mir, Shubham Goyal
-- **Last Updated By/Date** - Shubham Goyal, Database Security PM - October 2025
+- **Last Updated By/Date** - Shubham Goyal - October 2025
