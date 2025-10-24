@@ -148,5 +148,5 @@ Video:
 
 ## Acknowledgements
 - **Author** - Shubham Goyal
-- **Contributors** - Peter Wahl, Rahil Mir, Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
 - **Last Updated By/Date** - Shubham Goyal - October 2025
