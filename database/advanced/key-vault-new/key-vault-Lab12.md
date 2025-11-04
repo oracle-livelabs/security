@@ -176,8 +176,8 @@ Key Vault users can be managed locally as native Key Vault users or externally t
 
     ![Key Vault](./images/image-2025-09-11-18.42.01.png "The Change Password page is where the user can change the password")
 
-**ADD STEP TO SHOW HOW TO CONFIGURE LDAP**
 5. For organizations that need LDAP support, show the page using some LDAP details added in
+    **ADD SCREENSHOT SHOWING HOW TO CONFIGURE LDAP**
 
 6. For deployments using LDAP, key administrators can manage access for users to specific wallets by setting up LDAP group mappings. Click **Manage LDAP Mappings** on the left-side panel.
 
