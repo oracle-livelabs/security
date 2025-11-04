@@ -176,16 +176,31 @@ Key Vault users can be managed locally as native Key Vault users or externally t
 
     ![Key Vault](./images/image-2025-09-11-18.42.01.png "The Change Password page is where the user can change the password")
 
-5. For organizations that need LDAP support, show the page using some LDAP details added in
-    **ADD SCREENSHOT SHOWING HOW TO CONFIGURE LDAP**
+5. For organizations that need LDAP support, system administrators can configure LDAP on Key Vault to centrally manage users.
 
-6. For deployments using LDAP, key administrators can manage access for users to specific wallets by setting up LDAP group mappings. Click **Manage LDAP Mappings** on the left-side panel.
+    To do so, click the **System** tab.
+
+    ![Key Vault](./images/Screenshot_2025-10-05_11.10.42.png "Click the System tab")
+
+6. Click the **Settings** tab on the left-side panel
+
+    ![Key Vault](./images/Screenshot_2025-10-05_11.12.24.png "Click the Settings tab on the left-side panel")
+
+7. Click the **LDAP** link and then click the **Add** button to add a new LDAP configuration.
+
+    ![Key Vault](./images/Screenshot_2025-11-04_14.42.19.png "Add a new LDAP configuration")
+
+8. For deployments using LDAP, key administrators can manage access for users to specific wallets by setting up LDAP group mappings.
+
+    To do so, click the **Users** tab.
+
+    ![Key Vault](./images/Screenshot_2025-10-04_15.54.38.png "Click the Users tab")
+
+9. Click **Manage LDAP Mappings** on the left-side panel.
 
     ![Key Vault](./images/Screenshot_2025-10-05_10.54.01.png "Click Manage LDAP Mappings on the left-side panel")
 
-7. The **LDAP Group Mappings** page shows which mappings are setup to which roles and privileges in Key Vault
-
-    **GET A PHOTO FROM AKHIL SHOWING SOME LDAP GROUPS**
+10. The **LDAP Group Mappings** page shows which mappings are setup to which roles and privileges in Key Vault
 
     ![Key Vault](./images/image-2025-09-11-18.33.10.png "The LDAP Group Mappings page shows which mappings are setup to which roles and privileges in Key Vault")
 
