@@ -188,6 +188,8 @@ Key Vault users can be managed locally as native Key Vault users or externally t
 
 7. Click the **LDAP** link and then click the **Add** button to add a new LDAP configuration.
 
+    Note: This image only shows values for demonstration purposes. An LDAP configuration cannot be added as part of this lab.
+
     ![Key Vault](./images/Screenshot_2025-11-04_14.42.19.png "Add a new LDAP configuration")
 
 8. For deployments using LDAP, key administrators can manage access for users to specific wallets by setting up LDAP group mappings.
@@ -200,7 +202,9 @@ Key Vault users can be managed locally as native Key Vault users or externally t
 
     ![Key Vault](./images/Screenshot_2025-10-05_10.54.01.png "Click Manage LDAP Mappings on the left-side panel")
 
-10. The **LDAP Group Mappings** page shows which mappings are setup to which roles and privileges in Key Vault
+10. The **LDAP Group Mappings** page shows which mappings are setup to which roles and privileges in Key Vault.
+
+    Note: This image only shows LDAP group mappings for demonstration purposes. LDAP group mappings can only be created after an LDAP server is configured in Key Vault.
 
     ![Key Vault](./images/image-2025-09-11-18.33.10.png "The LDAP Group Mappings page shows which mappings are setup to which roles and privileges in Key Vault")
 
