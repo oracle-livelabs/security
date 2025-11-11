@@ -100,7 +100,7 @@ This lab assumes you have completed lab 8.
 
     ````
     <copy>
-    $OKV_HOME/bin/okvutil list
+    $OKV_HOME/bin/okvutil list -a
     </copy>
     ````
 

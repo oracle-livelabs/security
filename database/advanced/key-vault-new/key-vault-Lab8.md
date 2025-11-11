@@ -89,8 +89,8 @@ This lab assumes you have completed lab 5.
 
     ````
     <copy>
-    $OKV_HOME/bin/okvutil list
+    $OKV_HOME/bin/okvutil list -a
     </copy>
     ````
 
-   ![Key Vault](./images/Screenshot_2025-10-03_16.04.40.png "Confirm that the server is reachable")
+   ![Key Vault](./images/Screenshot_2025-11-10_16.37.08.png "Confirm that the server is reachable")

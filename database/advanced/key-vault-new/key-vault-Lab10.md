@@ -33,7 +33,7 @@ This lab assumes you have completed lab 9.
     col "container" format a10
     select b.name "CONTAINER", a.MASTERKEYID "MASTER ENCRYPTION KEY ID"
       from v$database_key_info a join v$containers b on a.con_id = b.con_id
-      where b.name in ('CDB$ROOT');
+      where b.name in ('CDB$ROOT', 'PDB1');
     exit;
     </copy>
     ```
@@ -54,7 +54,7 @@ This lab assumes you have completed lab 9.
 
     ![Key Vault](./images/Screenshot_2025-10-07_23.29.07.png "Execute a re-key operation without using the Key Vault password")
 
-4. Verify that the tablespace was re-keyed
+4. Verify that both CDB$ROOT and PDB1 have a new TDE master key
 
     ```
     <copy>
@@ -62,7 +62,7 @@ This lab assumes you have completed lab 9.
     col "container" format a10
     select b.name "CONTAINER", a.MASTERKEYID "MASTER ENCRYPTION KEY ID"
       from v$database_key_info a join v$containers b on a.con_id = b.con_id
-      where b.name in ('CDB$ROOT');
+      where b.name in ('CDB$ROOT', 'PDB1');
     exit;
     </copy>
     ```
