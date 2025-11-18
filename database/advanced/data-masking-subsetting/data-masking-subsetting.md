@@ -148,7 +148,7 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
     ![DMS](./images/dms-112(5).png "16")
 
 6. **Sensitive Status** for discovered columns is **Sensitive** by default. Here, you have the flexibility to update the status to *`Not Sensitive`* or *`Undefined`*, depending on your requirement. 
-For this task, select the four *`User ID`* and one *`Email ID`* sensitive type columns shown below and selct **Mark Not Sensitive**.
+For this task, select the four *`User ID`* and one *`Email ID`* sensitive type columns shown below and select **Mark Not Sensitive**.
 
 ![DMS](./images/dms-113(5).png "17")
 
@@ -202,7 +202,7 @@ Create a new Masking Definition under **Data Masking** where the masking formats
     
 6. Click **Next**.
 
-7. Users have an option to add a pre-masking script and a post-masking script. For this task, however, you can leave it empty.
+7. You have an option to add a pre-masking script and a post-masking script. For this task, however, you can leave it empty.
 
 **Note**:
     - Use the **Pre Mask Script** text box to specify any SQL script that must run before masking starts.
