@@ -10,6 +10,8 @@ In this lab, you explore Security Assessment.
 
 Estimated Time: 20 minutes
 
+[Lab 2 - Assess database configurations](videohub:1_8st8f2xf)
+
 ### Objectives
 
 In this lab, you will:
@@ -169,4 +171,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, August 1, 2025
+* **Last Updated By/Date** - Jody Glover, October 20, 2025
