@@ -36,7 +36,7 @@ This lab assumes you have:
 2.  Use the Linux command 'wget' to download a bundled (zipped) file of the commands for the lab. 
 
     ````
-    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/AC5TmVamZJxZfPG21L3cjuGER4BBS5lvMS80Du3DOwkkVtwoySpGfPIdo4Zf9knM/n/oradbclouducm/b/dbsec_rich/o/dbsec-livelabs-vpd.tar</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/cSHhQf7m7ms3YRkyhSIfYtQw9qRcoOeBevb81RGUKsU19RhLMsLTjtUNRPoO4UaN/n/oradbclouducm/b/dbsec_rich/o/dbsec-livelabs-vpd.tar</copy>
     ````
 
 3.  Unarchive the downloaded tar to expand the directory and scripts.
