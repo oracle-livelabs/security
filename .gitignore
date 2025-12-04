@@ -24,3 +24,5 @@ data-management-library/autonomous-database/shared/adb-auto-scaling/images/send 
 .claude/
 *.claude
 .claude_code/
+*.ps1
+unused_images_report.txt
