@@ -54,7 +54,7 @@ This lab assumes you have:
 
         ![Data Redaction](./images/dr-001.png "See the original data")
     
-        **Note**: Depending on the employee, they have a SIN, SSN or NINO number!
+        **Note**: Depending on the employee, they may have a SIN, SSN or NINO number!
 
     - Now, let's have a look **on your Glassfish App**
 
@@ -186,9 +186,10 @@ You may now proceed to the next lab!
 
 ## **Appendix**: About the Product
 ### **Overview**
-Hard-coded within the Oracle Database core product, this features is part of the *Advanced Security Option (ASO)*
 
-Data Redaction enables you to mask (redact) data that is returned from queries issued by applications. We can also talk about Dynamic Data Masking.
+Data Redaction is built into the Oracle Database kernel and is a feature of *Advanced Security Option (ASO)*.
+
+Data Redaction enables you to dynamically mask (redact) data that is returned from queries issued by applications. 
 
 You can redact column data by using one of the following methods:
 

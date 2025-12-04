@@ -16,3 +16,11 @@ data-management-library/autonomous-database/autonomous-data-warehouse_PRIOR TO S
 *.iml
 data-management-library/autonomous-database/shared/adb-auto-scaling/images/send to Nilay.png
 *.bak
+
+# Unused images folder
+**/unused_images/
+
+# Claude Code files
+.claude/
+*.claude
+.claude_code/
