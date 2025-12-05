@@ -1,14 +1,14 @@
 # Oracle Native Network Encryption (NNE)
 
 ## Introduction
-This workshop introduces the functionality of Oracle Native Network Encryption (NNE). It gives the user an opportunity to learn how to configure this feature to encrypt and secure its data in-motion.
+This workshop introduces the functionality of Oracle Native Network Encryption (NNE). It gives the user an opportunity to learn how to configure this feature to encrypt and secure their data in-motion.
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.23
+*Version tested in this lab:* Oracle DBEE 19c
 
 ### Video Preview
-Watch a preview of "*LiveLabs - Oracle Native Network Encryption (May 2022)*" [](youtube:N6Uz-pVTkaI)
+Watch a preview of "*LiveLabs - Oracle Native Network Encryption*" [](youtube:N6Uz-pVTkaI)
 
 ### Objectives
 - Enable/Disable the Native Network Encryption on your database
@@ -93,7 +93,7 @@ This lab assumes you have:
 
     **Note**:
     - We extract all rows containing an email or something similar
-    - Because the network is in the clear text, the `DEMO_HR_EMPLOYEES` table data is totally readable!
+    - Because the network is in clear text, the `DEMO_HR_EMPLOYEES` table data is totally readable!
 
 3. Next, run **tcpflow** to capture traffic across the wire for the Glassfish application
 
@@ -107,7 +107,7 @@ This lab assumes you have:
 
         **Notes:** We will extract all lines containing an email or something similar (see the egrep command)
 
-    - In parallel, open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to your Glassfish App
+    - In parallel, open a web browser window to *`http://dbsec-lab:8080/hr_prod_pdb1`* to access your Glassfish App
     
         **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
 
@@ -140,11 +140,11 @@ This lab assumes you have:
 
 4. When you have seen the un-encrypted data, use "*`[Ctrl]+C`* " to stop the script
 
-    **Notes:** Because the network is in the clear text, we can access to all sensitive data in transit!
+    **Notes:** Because the network is in clear text, we can access all sensitive data in transit!
 
 
 ## Task 3: Enable the network encryption
-You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.ENCRYPTION_SERVER`*
+You will enable SQL*Net encryption with the *`REQUESTED`* value for *`SQLNET.ENCRYPTION_SERVER`*
 
 1. To begin with, we use this option because it will allow non-encrypted connections to still connect. While this rarely has an impact, it is often important to do this so the change does not interfere with production systems that cannot encrypt between the client and the database!
 
