@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data R
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.23
+*Version tested in this lab:* Oracle Database Enterprise Edition (EE) 19c
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
@@ -124,6 +124,7 @@ This lab assumes you have:
     - It's normal because the redaction policy has been created on column **SIN** for all queries in every contexts (**Expression "1=1"**)
     - Again, once enabled, the Data Redaction policy is applied immediately and there is no need to restart anything
 
+
 ## Task 2: Contextualize an existing Data Redaction policy
 
 1. Now, modify the redaction policy to ONLY redact non-Glassfish queries (to do that, we need an **Expression with "Rule Set"**)
@@ -228,4 +229,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Last Updated By/Date** - Richard C. Evans, Database Security PM - December 2025

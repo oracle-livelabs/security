@@ -11,7 +11,7 @@ Oracle Data Redaction enables you to obscure data that is returned from queries 
 
 *Estimated Time:* 60 minutes
 
-*Version tested in this lab:* Oracle Autonomous Database 23ai
+*Version tested in this lab:* Oracle Autonomous AI Database 26ai
 
 ### Video Preview
 
@@ -29,11 +29,11 @@ In this lab you will:
 - Explore built-in Data Redaction types and regular expression redaction
 - Test various queries including advanced group by and union operations
 
-In Oracle Autonomous Database the `SH` schema is a shared resource and meant for demonstration.  Instead, you will copy two tables (`CUSTOMERS` and `SALES`) to a new schema you will create, named `SH1`. The tables you are copying contain sensitive information and need to be protected from a database user (e.g., `SH1_READER`).
+In Oracle Autonomous AI Database the `SH` schema is a shared resource and meant for demonstration.  Instead, you will copy two tables (`CUSTOMERS` and `SALES`) to a new schema you will create, named `SH1`. The tables you are copying contain sensitive information and need to be protected from a database user (e.g., `SH1_READER`).
 
 **Note:**
 - The PL/SQL package for Oracle Data Redaction, `DBMS_REDACT`, has been granted to the `ADMIN` user, who can forward-grant it to other users. 
-- In Oracle Autonomous Database, the `ADMIN` user is exempt from redaction policy enforcement because it has the `EXEMPT REDACTION POLICY` privilege.
+- In Oracle Autonomous AI Database, the `ADMIN` user is exempt from redaction policy enforcement because it has the `EXEMPT REDACTION POLICY` privilege.
 - In Oracle Database 23ai, in addition to `EXECUTE` on `DBMS_REDACT`, users must have the `ADMINISTER REDACTION POLICY` privilege to manage Data Redaction policies. 
 
 
@@ -1210,4 +1210,4 @@ Video:
 ## Acknowledgements
 - **Author** - Richard C. Evans, Database Security PM
 - **Contributors** - Anita Patel, Anna Haikl, Hakim Loumi
-- **Last Updated By/Date** - Richard C. Evans, Database Security PM - October 2024
+- **Last Updated By/Date** - Richard C. Evans, Database Security PM - December 2025

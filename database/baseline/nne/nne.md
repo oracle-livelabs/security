@@ -5,7 +5,7 @@ This workshop introduces the functionality of Oracle Native Network Encryption (
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DBEE 19c
+*Version tested in this lab:* Oracle Database Enterprise Edition (EE) 19c
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Native Network Encryption*" [](youtube:N6Uz-pVTkaI)
@@ -259,5 +259,5 @@ Technical Documentation:
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Richard Evans
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Contributors** - Richard C. Evans
+- **Last Updated By/Date** - Richard C. Evans, Database Security PM - December 2025
