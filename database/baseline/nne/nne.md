@@ -144,7 +144,7 @@ This lab assumes you have:
 
 
 ## Task 3: Enable the network encryption
-You will enable SQL*Net encryption with the *`REQUESTED`* value for *`SQLNET.ENCRYPTION_SERVER`*
+You will enable SQL\*Net encryption with the *`REQUESTED`* value for *`SQLNET.ENCRYPTION_SERVER`*
 
 1. To begin with, we use this option because it will allow non-encrypted connections to still connect. While this rarely has an impact, it is often important to do this so the change does not interfere with production systems that cannot encrypt between the client and the database!
 
