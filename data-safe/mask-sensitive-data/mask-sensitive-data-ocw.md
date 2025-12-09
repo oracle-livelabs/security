@@ -4,9 +4,11 @@
 
 Data Masking provides a way for you to mask sensitive data so that the data is safe for non-production purposes. For example, organizations often need to create copies of their production data to support development and test activities. Simply copying the production data exposes sensitive data to new users. To avoid a security risk, you can use Data Masking to replace the sensitive data with realistic, but fictitious data.
 
-Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab. View the before and after effect on the masked data by using Oracle Database Actions.
+Create a masking policy using the default settings and then  customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab. View the before and after effect on the masked data by using ORACLE Database Actions.
 
 Estimated Time: 20 minutes
+
+[Lab 5 - Mask sensitive data](videohub:1_dh9kov8c)
 
 ### Objectives
 
@@ -271,4 +273,4 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 28, 2025
+- **Last Updated By/Date** - Jody Glover, October 20, 2025

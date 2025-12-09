@@ -8,6 +8,8 @@ In this lab, you use Oracle Data Safe to discover sensitive data on your target 
 
 Estimated Lab Time: 15 minutes
 
+[Lab 4 - Discover sensitive data](videohub:1_g5kt8rbe)
+
 ### Objectives
 
 In this lab, you will:
@@ -119,4 +121,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 1, 2025
+- **Last Updated By/Date** - Jody Glover, October 20, 2025

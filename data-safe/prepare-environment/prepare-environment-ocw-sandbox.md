@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you prepare your environment in Oracle Cloud Infrastructure. The LiveLabs sandbox provides you with a tenancy, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database. Sample data is loaded into your database and your database is registered with Oracle Data Safe.
+In this lab, you prepare your environment in Oracle Cloud Infrastructure. The LiveLabs sandbox provides you with a tenancy, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous AI Database. Sample data is loaded into your database and your database is registered with Oracle Data Safe.
 
 
 Estimated Lab Time: 5 minutes
@@ -12,7 +12,7 @@ Estimated Lab Time: 5 minutes
 In this lab, you will:
 
 - View your LiveLabs reservation information and sign in
-- Access Oracle Database Actions
+- Access ORACLE Database Actions
 - Access Oracle Data Safe and view your registered target database
 - Explore Security Center
 
@@ -36,7 +36,7 @@ This lab assumes you have:
     - A link that directs you to the sign-in page for Oracle Cloud Infrastructure (**Launch OCI** button)
     - A username and password to sign in to the LiveLabs tenancy. When signing in for the first time, you are prompted to change your password.
     - A compartment of your very own. We refer to this compartment as "your compartment" throughout the workshop. Make note of your compartment's name because you need to select it often throughout the workshop.
-    - An Autonomous Database in your compartment. You are provided the password for the `ADMIN` account on your database.
+    - An Autonomous AI Database in your compartment. You are provided the password for the `ADMIN` account on your database.
 
 3. Make note of your username and click the **Copy Password** button for Oracle Cloud Infrastructure.
 
@@ -52,18 +52,18 @@ This lab assumes you have:
 
     You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
 
-7. Access your database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle Database**, and then **Autonomous Database**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
+7. Access your database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle AI Database**, and then **Autonomous AI Database**. Under **List Scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
 
 
-## Task 2: Access Oracle Database Actions
+## Task 2: Access ORACLE Database Actions
 
 Database Actions provides a way for you to run SQL commands on your database. The step-by-step instructions for accessing Database Actions are covered here. Subsequent labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. At the top of the **Autonomous Database details** page, from the **Database actions** menu, select **SQL**.
+1. At the top of the **Autonomous AI Database** page, from the **Database actions** menu, select **SQL**.
 
 2. If required, sign in as the `ADMIN` user. 
 
-    - If a tenancy administrator provided you an Autonomous Database, obtain the password from that person.
+    - If a tenancy administrator provided you an Autonomous AI Database, obtain the password from that person.
     - If you are using an Oracle-provided environment, enter the database password provided to you.
 
 3. Close the **SQL History** and **Warning** dialog boxes.
@@ -74,9 +74,9 @@ Database Actions provides a way for you to run SQL commands on your database. Th
     - On the **Worksheet** on the right, you run SQL commands and scripts.
     - On the **Query Result** and **Script Output** tabs at the bottom of the page, you review query results and output generated from running scripts.
 
-    ![SQL Worksheet in Oracle Database Actions](images/database-actions.png "SQL Worksheet in Oracle Database Actions")
+    ![SQL Worksheet in Database Actions](images/database-actions.png "SQL Worksheet in Database Actions")
 
-5. *Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+5. *Leave the **SQL | ORACLE Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** tab.
 
 
 ## Task 3: Access Oracle Data Safe and view your registered target database
@@ -103,7 +103,7 @@ A database registered with Oracle Data Safe is referred to as a *target* databas
 
     - In Security center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, SQL Firewall, and Alerts.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security assessment**, **User assessment**, **Feature usage**, and **Operations summary** charts in the dashboard already have data.
-    - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail with the status **In transition** for your Autonomous Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
+    - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail with the status **In transition** for your Autonomous AI Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
 
     ![Initial Dashboard - security controls](images/dashboard-security-controls.png "Initial Dashboard - security controls")
 
@@ -126,4 +126,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 1, 2025
+- **Last Updated By/Date** - Jody Glover, October 20, 2025
