@@ -15,7 +15,7 @@ This lab assumes you have completed lab 5.
 
 1. List the IDs of the keys in the secure persistent cache
 
-    When prompted, enter the Key Vault endpoint password.
+    Enter the Key Vault endpoint password when prompted.
 
     ````
     <copy>
@@ -25,9 +25,9 @@ This lab assumes you have completed lab 5.
 
    ![Key Vault](./images/Screenshot_2025-10-03_15.56.40.png "List the IDs of the keys in the secure persistent cache")
 
-## Task 2: Cut the connectivity to Oracle Key Vault server
+## Task 2: Simulate network outage
 
-1. Cut the connectivity to the Key Vault server to simulate a network connection issue
+1. Disconnect from the Key Vault server to simulate a network issue
 
     ````
     <copy>
@@ -35,9 +35,12 @@ This lab assumes you have completed lab 5.
     </copy>
     ````
 
-2. Confirm that the server is unreachable
+    This command blocks outgoing TCP traffic to port 5696, simulating a network issue between database and the Oracle Key Vault server.
 
-    When prompted, enter the Key Vault endpoint password.
+
+2. Check if the server is unreachable
+
+    Enter the Key Vault endpoint password when prompted.
 
     ````
     <copy>
@@ -45,7 +48,7 @@ This lab assumes you have completed lab 5.
     </copy>
     ````
 
-   ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Confirm that the server is unreachable")
+   ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Check if the server is unreachable")
 
 ## Task 3: Create a new tablespace to confirm that database operations continue uninterrupted
 
@@ -73,7 +76,7 @@ This lab assumes you have completed lab 5.
 
    ![Key Vault](./images/Screenshot_2025-10-03_16.03.05.png "Verify the new tablespace was created")
 
-## Task 4: Restore connectivity
+## Task 4: Re-establish connectivity between database and Key Vault
 
 1. Restore the connectivity to the Key Vault server
 
@@ -85,7 +88,7 @@ This lab assumes you have completed lab 5.
 
 2. Confirm that the server is reachable
 
-    When prompted, enter the Key Vault endpoint password.
+    Enter the Key Vault endpoint password when prompted.
 
     ````
     <copy>

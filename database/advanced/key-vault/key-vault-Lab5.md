@@ -177,7 +177,7 @@ This lab assumes you have completed lab 4.
 
 2.  Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB$ROOT and one for PDB1
 
-    When prompted, enter the Key Vault endpoint password.
+    Enter the Key Vault endpoint password when prompted.
 
     ```
     <copy>

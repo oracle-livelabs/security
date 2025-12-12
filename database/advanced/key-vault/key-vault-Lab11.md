@@ -29,7 +29,7 @@ This lab assumes you have completed lab 10.
 
 1.  Login to Key Vault as user **KVRESTADMIN**
 
-    Get the randonly generated password by executing this command
+    Get the password of KVRESTADMIN by executing this command
 
     ```
     <copy>

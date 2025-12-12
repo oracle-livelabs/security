@@ -1,21 +1,21 @@
-# Increased key control for less secure environments
+# Enhance security with key management in vulnerable environments
 
 ## Introduction
-In certain scenarios, it may be necessary to share data with environments that operate under lower security controls. However, it is critical that the TDE master encryption keys aren't exposed in or downloaded to this environment, or even cached in the secure persistent cache. For this purpose, Oracle Key Vault can also mark keys as non-extractable.
+You may need to share data with environments operating under lower security controls, such as when cloning a PDB from production to test (P2T). It is crucial to ensure that TDE master encryption keys are never exposed, downloaded, or cached in these environments. To enhance security, mark these keys as non-extractable in Oracle Key Vault.
 
 Estimated Lab Time: 5 minutes
 
 ### Objectives
-In this lab, you will set a key as 'Non-Extractable'. Creation of a new tablespace will fail in case of a connectivity failure verifying that non-extractable keys remain protected in Key Vault.
+In this lab, you will set the key as 'Non-Extractable,' which prevents endpoints from retrieving the key material. While the key remains available for cryptographic operations, it cannot be extracted. This lab will demonstrate how non-extractable keys remain secure in Oracle Key Vault by simulating a failure, such as a connection interruption during the creation of a new encrypted tablespace.
 
 ### Prerequisites
-This lab assumes you have completed lab 8.
+This lab builds on concepts and operations from lab 8. Complete lab 8 first before starting this lab.
 
 ## Task 1: Generate a Non-Extractable key
 
 1.  Login to Key Vault as user **KVRESTADMIN**
 
-    Get the randonly generated password by executing this command
+    Get the password of KVRESTADMIN by executing this command
 
     ```
     <copy>
@@ -25,15 +25,15 @@ This lab assumes you have completed lab 8.
 
     ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Login to Key Vault as the REST administrator")
 
-2. Click the **Endpoints** tab and then click the **Settings** tab on the left-side panel
+2. Click on the **Endpoints** tab and select **Settings** from the left-side panel
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.26.41.png "Click the Endpoints tab and then click the Settings tab on the left-side panel")
 
-3. Scroll to the bottom, set the **Extractable Attribute** for the **Symmetric Key** to False and click **Save**
+3. Scroll to the bottom and set the **Extractable Attribute** for the **Symmetric Key** to False and click **Save**
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.29.00.png "Set the Extractable Attribute for the Symmetric Key to False")
 
-4.  On the database host, set a new Non-Extractable key in the Key Vault
+4.  On the database host, set a new Transparent Data Encryption Key. The new key created in Key Vault will be generated with 'Non Extractable' attribute set
 
     ```
     <copy>
@@ -45,9 +45,9 @@ This lab assumes you have completed lab 8.
 
     ![Key Vault](./images/Screenshot_2025-10-08_11.57.01.png "Add OKV password to the local TDE wallet")
 
-## Task 2: Cut the connectivity to Oracle Key Vault server
+## Task 2: Simulate network outage
 
-1. Cut the connectivity to the Key Vault server to simulate a network connection issue
+1. Disconnect from the Key Vault server to simulate a network issue
 
     ````
     <copy>
@@ -55,9 +55,11 @@ This lab assumes you have completed lab 8.
     </copy>
     ````
 
-2. Confirm that the server is unreachable
+    This command blocks outgoing TCP traffic to port 5696, simulating a network issue between database and the Oracle Key Vault server.
 
-    When prompted, enter the Key Vault endpoint password.
+2. Check if the server is unreachable
+
+    Enter the Key Vault endpoint password when prompted.
 
     ````
     <copy>
@@ -65,7 +67,7 @@ This lab assumes you have completed lab 8.
     </copy>
     ````
 
-   ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Confirm that the server is unreachable")
+   ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Check if the server is unreachable")
 
 ## Task 3: Attempt to create a new tablespace to confirm that database operations fail even when the secure persistent cache exists
 
@@ -84,7 +86,7 @@ This lab assumes you have completed lab 8.
    ![Key Vault](./images/Screenshot_2025-10-07_22.09.24.png "Attempt to create a new tablespace")
 
 
-## Task 4: Restore connectivity
+## Task 4: Re-establish connectivity between database and Key Vault
 
 1. Restore the connectivity to the Key Vault server
 
@@ -96,7 +98,7 @@ This lab assumes you have completed lab 8.
 
 2. Confirm that the server is reachable
 
-    When prompted, enter the Key Vault endpoint password.
+    Enter the Key Vault endpoint password when prompted.
 
     ````
     <copy>

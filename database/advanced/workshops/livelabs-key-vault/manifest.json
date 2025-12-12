@@ -69,7 +69,7 @@
       "type": "green"
     },
     {
-      "title": "Lab 9: Increased key control for less secure environments",
+      "title": "Lab 9: Enhance security with key management in vulnerable environments",
       "description": "Learn how OKV can restrict access of your keys to environments with lower security controls",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab9.md",
