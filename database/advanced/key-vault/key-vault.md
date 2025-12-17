@@ -38,12 +38,12 @@ This lab requires you to have:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
-- You have completed the [TDE LiveLabs](https://livelabs.oracle.com/ords/r/dbpm/livelabs/view-workshop?clear=RR,180&wid=3720) and are familiar with basic TDE concepts
+- You have completed the [TDE LiveLabs](https://livelabs.oracle.com/ords/r/dbpm/livelabs/view-workshop?clear=RR,180&wid=703) and are familiar with basic TDE concepts
 </if>
 <if type="green">
 - An Oracle Cloud account
 - You have completed the introductory tasks for Oracle LiveLabs
-- You have completed the [TDE LiveLabs](https://livelabs.oracle.com/ords/r/dbpm/livelabs/view-workshop?clear=RR,180&wid=3720) and are familiar with basic TDE concepts
+- You have completed the [TDE LiveLabs](https://livelabs.oracle.com/ords/r/dbpm/livelabs/view-workshop?clear=RR,180&wid=703) and are familiar with basic TDE concepts
 </if>
 
 ### Estimated Lab Duration
