@@ -5,13 +5,13 @@ This workshop guides you through the process of migrating an encrypted Oracle da
 
 *Estimated Lab Time:* 60 minutes
 
-*Version tested in this lab:* Oracle OKV 21.12 and DBEE 19.28
+*Version tested in this lab:* Oracle Key Vault (OKV) 21.12 and Database Enterprise Edition (DBEE) 19.28
 
 ### Video Preview
-Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
+Watch this preview to see how Oracle Key Vault can enhance your data security [](youtube:4VR1bbDpUIA)
 
 ### Objectives
-During the course of this workshop, you will:
+In this workshop, you will learn how to securely manage encryption keys using Oracle Key Vault. You will:
 - Review Transparent Data Encryption (TDE) setup of an Oracle database with encrypted tablespaces
 - Migrate your databases with keys in local TDE wallet to centralized key management with Oracle Key Vault
 - "Full migration" - Upload pre-migration TDE master encryption keys from the local TDE wallet to Oracle Key Vault
@@ -24,57 +24,58 @@ During the course of this workshop, you will:
 
 In this workshop, you'll have a pre-setup database host and an Oracle Key Vault server:
   - The Oracle Key Vault server:
-    - The Oracle Key Vault management console is open in your remote desktop.
+    - The Oracle Key Vault management console is open in your remote desktop. You will use the Key Vault console to create endpoints representing databases and wallets to manage database keys.
     - The Oracle Key Vault server has been pre-populated with example endpoints, wallets, keys and secrets.
   - The database host:
     - The remote desktop is the database host.
-    - You should open a terminal to perform database and Key Vault endpoint operations.
+    - Open a terminal on the database host to perform database and Key Vault endpoint operations.
 
 ### Prerequisites
-This lab assumes you have:
+This lab requires you to have:
 <if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
-- You have completed:
+- You have completed the introductory tasks 1 and 2 for Oracle LiveLabs:
     - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
     - Lab: Environment Setup
     - Lab: Initialize Environment
+- You have completed the [TDE LiveLabs](https://livelabs.oracle.com/ords/r/dbpm/livelabs/view-workshop?clear=RR,180&wid=3720) and are familiar with basic TDE concepts
 </if>
 <if type="green">
 - An Oracle Cloud account
-- You have completed:
-    - Introduction Tasks
+- You have completed the introductory tasks for Oracle LiveLabs
+- You have completed the [TDE LiveLabs](https://livelabs.oracle.com/ords/r/dbpm/livelabs/view-workshop?clear=RR,180&wid=3720) and are familiar with basic TDE concepts
 </if>
 
-### Lab Timing (estimated)
+### Estimated Lab Duration
 
 <if type="brown">
-| Lab No.  | Feature                                                  | Approx. Time | Details                                                                    |
-| -------- | -------------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
-| 4        | Review a typical TDE environment                         | 3 minutes    |                                                                            |
-| 5        | Migrate to OKV in 5 easy steps                           | 15 minutes   |                                                                            |
-| 6        | Leave no keys behind - Full migration                    | 3 minutes    |                                                                            |
-| 7        | Enable "lights-out" operation                            | 3 minutes    |                                                                            |
-| 8        | Tolerate connectivity issues with secure persistent cache| 5 minutes    |                                                                            |
-| 9        | Increased key control for less secure environments       | 5 minutes    |                                                                            |
-|10        | Automate key rotation                                    | 5 minutes    |                                                                            |
-|11        | Bring your own key                                       | 5 minutes    |                                                                            |
-|12        | Explore Key Vault in a typical customer deployment       | 15 minutes   |                                                                            |
+| Lab No.  | Feature                                                              | Approx. Time | Details                                                                    |
+| -------- | ---------------------------------------------------------------------| ------------ | -------------------------------------------------------------------------- |
+| 4        | Review a typical TDE environment                                     | 3 minutes    |                                                                            |
+| 5        | Secure Your Data: Migrate to Oracle Key Vault in 5 easy steps        | 15 minutes   |                                                                            |
+| 6        | Ensure a complete key transfer, leaving no keys on the database host | 3 minutes    |                                                                            |
+| 7        | Enable zero-touch transparent data encryption operations             | 3 minutes    |                                                                            |
+| 8        | Ensure reliable data access during connectivity disruptions          | 5 minutes    |                                                                            |
+| 9        | Enhance security with key management in vulnerable environments      | 5 minutes    |                                                                            |
+|10        | Automate key rotation                                                | 5 minutes    |                                                                            |
+|11        | Bring your own key                                                   | 5 minutes    |                                                                            |
+|12        | Explore Key Vault in a typical customer deployment                   | 15 minutes   |                                                                            |
 </if>
 <if type="green">
-| Lab No.  | Feature                                                  | Approx. Time | Details                                                                    |
-| -------- | -------------------------------------------------------- | ------------ | -------------------------------------------------------------------------- |
-| 4        | Review a typical TDE environment                         | 3 minutes    |                                                                            |
-| 5        | Migrate to OKV in 5 easy steps                           | 15 minutes   |                                                                            |
-| 6        | Leave no keys behind - Full migration                    | 3 minutes    |                                                                            |
-| 7        | Enable "lights-out" operation                            | 3 minutes    |                                                                            |
-| 8        | Tolerate connectivity issues with secure persistent cache| 5 minutes    |                                                                            |
-| 9        | Increased key control for less secure environments       | 5 minutes    |                                                                            |
-|10        | Automate key rotation                                    | 5 minutes    |                                                                            |
-|11        | Bring your own key                                       | 5 minutes    |                                                                            |
-|12        | Explore Key Vault in a typical customer deployment       | 15 minutes   |                                                                            |
+| Lab No.  | Feature                                                              | Approx. Time | Details                                                                    |
+| -------- | ---------------------------------------------------------------------| ------------ | -------------------------------------------------------------------------- |
+| 4        | Review a typical TDE environment                                     | 3 minutes    |                                                                            |
+| 5        | Secure Your Data: Migrate to Oracle Key Vault in 5 easy steps        | 15 minutes   |                                                                            |
+| 6        | Ensure a complete key transfer, leaving no keys on the database host | 3 minutes    |                                                                            |
+| 7        | Enable zero-touch transparent data encryption operations             | 3 minutes    |                                                                            |
+| 8        | Ensure reliable data access during connectivity disruptions          | 5 minutes    |                                                                            |
+| 9        | Enhance security with key management in vulnerable environments      | 5 minutes    |                                                                            |
+|10        | Automate key rotation                                                | 5 minutes    |                                                                            |
+|11        | Bring your own key                                                   | 5 minutes    |                                                                            |
+|12        | Explore Key Vault in a typical customer deployment                   | 15 minutes   |                                                                            |
 </if>
 
-## **Appendix**: About the Product
+## **Appendix**: About Oracle Key Vault
 ### **Overview**
 
 Oracle Key Vault is a full-stack, security-hardened software appliance built to centralize the management of keys and security objects within the enterprise.
@@ -123,17 +124,20 @@ The clocks on all the nodes of the cluster must be synchronized. Consequently, a
 
 Every node in the cluster can serve endpoints actively and independently while maintaining an identical dataset through continuous replication across the cluster. The smallest possible configuration is a 2-node cluster, and the largest configuration can have up to 16 nodes with several pairs spread across several data centers.
 
-### **Benefits of Using Oracle Key Vault**
-- Oracle Key Vault helps you to fight security threats, centralize key storage, and centralize key lifecycle management
-- Deploying Oracle Key Vault in your organization will help you accomplish the following:
-- Manage the lifecycle for endpoint security objects and keys, which includes key creation, rotation, deactivation, and removal
-- Prevent the loss of keys and wallets due to forgotten passwords or accidental deletion
-- Share keys securely between authorized endpoints across the organization
-- Enroll and provision endpoints easily using a single software package that contains all the necessary binaries, configuration files, and endpoint certificates for mutually authenticated connections between endpoints and Oracle Key Vault
-- Work with other Oracle products and features in addition to Transparent Data Encryption (TDE), such as Oracle Real Application Clusters (Oracle RAC), Oracle Data Guard, pluggable databases, and Oracle GoldenGate. Oracle Key Vault facilitates the movement of encrypted data using Oracle Data Pump and transportable tablespaces, a key feature of Oracle Database
-- Oracle Key Vault multi-master cluster provides additional benefits, such as:
-- Maximum key availability by providing multiple Oracle Key Vault nodes from which data may be retrived
-- Zero endpoint downtime during Oracle Key Vault multi-master cluster maintenance
+### **Secure Your Data with Oracle Key Vault Multi-Master Clustering**
+
+  - Oracle Key Vault reduces risk by centralizing key storage and life cycle management
+
+  - Deploying Oracle Key Vault in your organization will help you accomplish the following:
+    - Manage the lifecycle for endpoint security objects and keys, which includes key creation, rotation, deactivation, and removal
+    - Prevent the loss of keys and wallets due to forgotten passwords or accidental deletion
+    - Share keys securely between authorized endpoints across the organization
+    - Enroll and provision endpoints easily using a single software package that contains all the necessary binaries, configuration files, and endpoint certificates for mutually authenticated connections between endpoints and Oracle Key Vault
+    - Work with other Oracle products and features in addition to Transparent Data Encryption (TDE), such as Oracle Real Application Clusters (Oracle RAC), Oracle Data Guard, pluggable databases, and Oracle GoldenGate. Oracle Key Vault facilitates the movement of encrypted data using Oracle Data Pump and transportable tablespaces, a key feature of Oracle Database
+
+  - Oracle Key Vault multi-master cluster provides additional benefits, such as:
+    - Maximum key availability by providing multiple Oracle Key Vault nodes from which data may be retrieved
+    - Zero endpoint downtime during Oracle Key Vault multi-master cluster maintenance
 
 ## Want to Learn More?
 Technical Documentation:

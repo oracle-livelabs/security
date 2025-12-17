@@ -41,28 +41,28 @@
       "type": "brown"
     },
     {
-      "title": "Lab 5: Migrate to OKV in 5 easy steps",
+      "title": "Lab 5: Secure Your Data: Migrate to Oracle Key Vault in 5 easy steps",
       "description": "Prepare Oracle Key Vault for the incoming database and install the OKV endpoint software on the database host",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab5.md",
       "type": "brown"
     },
     {
-      "title": "Lab 6: Leave no keys behind - Full migration",
+      "title": "Lab 6: Ensure a complete key transfer, leaving no keys on the database host",
       "description": "Upload pre-migration TDE master encryption keys from the local TDE wallet to OKV",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab6.md",
       "type": "brown"
     },
     {
-      "title": "Lab 7: Enable lights-out operations",
+      "title": "Lab 7: Enable zero-touch transparent data encryption operations",
       "description": "Learn how to setup an auto-open connection to OKV",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab7.md",
       "type": "brown"
     },
     {
-      "title": "Lab 8: Tolerate connectivity issues with secure persistent cache",
+      "title": "Lab 8: Ensure reliable data access during connectivity disruptions",
       "description": "See how OKVs secure persistent cache keeps your databases running",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab8.md",

@@ -1,4 +1,4 @@
-# Migrate to OKV in 5 easy steps
+# Secure Your Data: Migrate to Oracle Key Vault in 5 easy steps
 
 ## Introduction
 To use Oracle Key Vault as your centralized key manager, you need to migrate your Oracle databases from a local TDE wallet to Key Vault.
@@ -9,7 +9,7 @@ Estimated Lab Time: 15 minutes
 In this lab, you will learn how to onboard the Oracle database to Oracle Key Vault, and how to migrate your keys from the local TDE wallet to Key Vault.
 
 ### Prerequisites
-This lab assumes you have completed lab 4.
+This lab builds on concepts and operations from lab 4. Complete lab 4 first before starting this lab.
 
 ## Task 1: Enroll the incoming Oracle database into Oracle Key Vault
 
@@ -25,13 +25,13 @@ This lab assumes you have completed lab 4.
 
     ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
 
-2. Click the **Endpoints** tab and then click the **Add** button to add a new endpoint
+2. Click the **Endpoints** tab, then click **Add** to create a new endpoint
 
     An endpoint represents an Oracle database instance in Oracle Key Vault.
 
-    ![Key Vault](./images/image-2025-7-24_15-59-1.png "Click on Add to add a new endpoint")
+    ![Key Vault](./images/image-2025-7-24_15-59-1.png "Click the Endpoints tab, then click Add to create a new endpoint")
 
-3.  Provide the endpoint details and click **Register** to register the new endpoint
+3.  Provide the endpoint details and click **Register** to create the new endpoint
 
     We recommend using LIVELABS\_DB\_EP for the **Endpoint Name**
     ```plaintext
@@ -49,11 +49,11 @@ This lab assumes you have completed lab 4.
     ![Key Vault](./images/image-2025-7-24_12-17-29.png "Fill in the details of your endpoint: Endpoint Name is LIVELABS_DB_EP; Type is Oracle Database; OS Type is Linux; Description is 'This is the endpoint for LiveLabs database (cdb1).'; Click 'Register'")
 
 
-4.  Click the newly created endpoint **LIVELABS\_DB\_EP** to view the details for this endpoint
+4.  Click the newly created endpoint **LIVELABS\_DB\_EP** to see its details
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.02.30.png "Click the Endpoints Tab to view the recently created endpoint LIVELABS_DB_EP")
+    ![Key Vault](./images/Screenshot_2025-10-03_14.02.30.png "Click the newly created endpoint LIVELABS_DB_EP to see its details")
 
-5.  On the endpoint details page, add **LIVELABS\_DB\_WALLET** as the **Default Wallet** and click **Save**
+5.  Add **LIVELABS\_DB\_WALLET** as the **Default Wallet** on the endpoint details page and click **Save**
 
     By setting up a *default wallet*, all new keys of the database will be a part of this wallet.
 
@@ -63,31 +63,29 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_16-12-59.png "On the endpoint details page, add the default wallet and click save")
+    ![Key Vault](./images/image-2025-7-24_16-12-59.png "Add the default wallet on the endpoint details page and click save")
 
-8.  Verify that the permissions of the default wallet (LIVELABS\_DB\_WALLET) show 'Read, Write, Manage Wallet' by checking the **Access to Wallets** section of this page
+8.  Verify that the permissions of the default wallet (LIVELABS\_DB\_WALLET) are set to 'Read, Write, Manage Wallet' by checking the **Access to Wallets** section of this page
 
     ![Key Vault](./images/Screenshot_2025-10-03_13.56.15.png "Check the permissions of the default wallet")
 
-9.  Click the **Endpoints** tab and copy the **Enrollment Token** for **LIVELABS\_DB\_EP**
+9.  Click on the **Endpoints** tab and copy the **Enrollment Token** for **LIVELABS\_DB\_EP**
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.03.59.png "Click the Endpoints tab and copy the Enrollment Token")
+    ![Key Vault](./images/Screenshot_2025-10-03_14.03.59.png "Click on the Endpoints tab and copy the Enrollment Token")
 
-10. Click on the username KVEPADMIN on the top right hand corner of the page and then click **Logout**
+10. Click your username, KVEPADMIN, on the top right corner, then click **Logout**
 
-    ![Key Vault](./images/image-2025-7-24_12-27-48.png "Click Logout on the right-hand corner of the page")
+    ![Key Vault](./images/image-2025-7-24_12-27-48.png "Click Logout on the top right corner of the page")
 
 ## Task 2: Download the Oracle Key Vault client software for this database
 
 1.  On the database host, go to the Key Vault login page, and click on **Endpoint Enrollment and Software Download**
 
-
-
     ![Key Vault](./images/image-2025-7-24_12-31-21.png "On the database host, go to the Key Vault login page, click on Endpoint Enrollment and Software Download")
 
-2.  Provide the Enrollment Token and click **Submit Token**. Endpoint details will be automatically populated.
+2.  Paste the Enrollment Token copied in step 7 of task 1 and click **Submit Token**. You will see the endpoint details automatically populated.
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.11.39.png "Provide the Enrollment Token and click Submit Token. Endpoint details will be automatically populated")
+    ![Key Vault](./images/Screenshot_2025-10-03_14.11.39.png "Paste the Enrollment Token copied in step 7 of task 1 and click Submit Token. You will see the endpoint details automatically populated.")
 
 3.  Click **Enroll** to download the "okvclient.jar" file. The file is downloaded to your database host.
 
@@ -95,7 +93,7 @@ This lab assumes you have completed lab 4.
 
 ## Task 3: Deploy the Oracle Key Vault client software on the database host
 
-1.  Setup the Key Vault endpoint home. This is the base of operations for the endpoint software
+1.  Setup the Key Vault endpoint home. This is the root directory for the endpoint software. Setting **OKV_HOME** allows Key Vault utilities and libraries to locate the endpoint software and configuration files.
 
     ```
     <copy>
@@ -103,11 +101,11 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-2.  Install the Key Vault software. This will prompt for the endpoint connection password. We will refer to this as the "Key Vault endpoint password"
+2.  Install the Key Vault software. This prompts for the endpoint connection password. We will call this the "Key Vault endpoint password".
 
-    This is a one time step and the install software (okvclient.jar) is automatically deleted after the install is completed successfully.
+    This is a one time step, and the installation software (okvclient.jar) is automatically deleted after a successfull installation.
 
-    **Note:** the Key Vault endpoint password will be used throughout this workshop for SQL and okvutil commands.
+    **Note:** you will use the Key Vault endpoint password frequently for SQL and okvutil commands, so keep it handy.
 
     ```
     <copy>
@@ -115,9 +113,9 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-09-27_install.png "Install Key Vault software. This will prompt for the endpoint connection password.")
+    ![Key Vault](./images/image-2025-09-27_install.png "Install Key Vault software. This prompts for the endpoint connection password.")
 
-3.  Review details under the Key Vault endpoint home
+3.  Review the layout of the Key Vault endpoint home
 
     ```
     <copy>
@@ -125,9 +123,9 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_16-33-45.png "Show details under Key Vault endpoint home")
+    ![Key Vault](./images/image-2025-7-24_16-33-45.png "Review the layout of the Key Vault endpoint home")
 
-4.  Deploy the Key Vault library (liborapkcs.so) that the database will use to communicate with Key Vault
+4.  Deploy the Key Vault library (liborapkcs.so) used by the database to communicate with Key Vault
 
     ```
     <copy>
@@ -135,11 +133,11 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/images-2025-09-25_13-30-45_root.png "Deploy the Key Vault library (liborapkcs.so) that the database will use to communicate with Key Vault")
+    ![Key Vault](./images/images-2025-09-25_13-30-45_root.png "Deploy the Key Vault library (liborapkcs.so) used by the database to communicate with Key Vault")
 
-## Task 4: Prepare the database for the migration to Oracle Key Vault
+## Task 4: Preparing the database for Oracle Key Vault migration
 
-1.  Change the TDE configuration of the database to OKV|FILE
+1.  Update the TDE configuration of the database to OKV|FILE
 
     ```
     <copy>
@@ -149,21 +147,26 @@ This lab assumes you have completed lab 4.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE configuration of the database to OKV|FILE")
+    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Update the TDE configuration of the database to OKV|FILE")
 
-## Task 5: Migrate the database to use Oracle Key Vault for centralized key management
+## Task 5: Migrate the database to Oracle Key Vault for centralized key management
 
 1.  Migrate the database to use Key Vault
 
-    The Key Vault endpoint password is the same password you used earlier for deployment in task 3 step 2.
+    Use the same password for the Key Vault endpoint as used in step 2 of task 3
 
-    For the TDE wallet password, execute the following command
+    To get the password of the TDE wallet, execute the following command
 
     ```
     <copy>
     echo $DBUSR_PWD
     </copy>
     ```
+
+    Execute the following command to migrate to Key Vault. The migrate command will do the following:
+
+    - Generate a new key in Key Vault
+    - Update the database to use the master key in Key Vault 
 
     ```
     <copy>
@@ -175,7 +178,7 @@ This lab assumes you have completed lab 4.
 
     ![Key Vault](./images/Screenshot_2025-10-03_15.11.26.png "Add the Key Vault password to the TDE wallet")
 
-2.  Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB$ROOT and one for PDB1
+2.  Migration is always a re-key (key rotation) operation. A new key is generated in Key Vault, and the data encryption keys are re-wrapped with this new key in Key Vault. For a multi-tenant database with CDB$ROOT and one PDB, two keys are created: one for CDB$ROOT and one for PDB1.
 
     Enter the Key Vault endpoint password when prompted.
 
@@ -187,7 +190,7 @@ This lab assumes you have completed lab 4.
 
     ![Key Vault](./images/Screenshot_2025-10-03_15.13.44.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB\$ROOT and one for PDB1")
 
-3.  Review the database setup after migrating to Key Vault
+3.  Verify the database configuration post-migration to Key Vault
 
     ```
     <copy>

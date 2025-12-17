@@ -9,7 +9,7 @@ Estimated Lab Time: 5 minutes
 In this lab, you will upload an externally generated key to the Key Vault server, and activate it for the database.
 
 ### Prerequisites
-This lab assumes you have completed lab 10.
+This lab builds on concepts and operations from lab 10. Complete lab 10 first before starting this lab.
 
 
 ## Task 1: Generate a key external to Oracle Key Vault

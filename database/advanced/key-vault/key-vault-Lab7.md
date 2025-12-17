@@ -1,4 +1,4 @@
-# Enable lights-out operations
+# Enable zero-touch transparent data encryption operations
 
 ## Introduction
 For high availability purposes, you may want to configure your databases to open a connection to Oracle Key Vault without human intervention. For example, when your Oracle Grid Infrastructure restarts your Oracle RAC database instance, or the Data Guard standby restarts as the primary database after a role switch.
@@ -6,14 +6,14 @@ For high availability purposes, you may want to configure your databases to open
 Estimated Lab Time: 3 minutes
 
 ### Objectives
-In this lab, you will learn how to setup an auto-open OKV connection.
+In this lab, you will learn to quickly set up an auto-open Oracle Key Vault connection to streamline your Transparent Data Encryption workflows
 
 ### Prerequisites
-This lab assumes you have completed lab 6.
+This lab builds on concepts and operations from lab 6. Complete lab 6 first before starting this lab.
 
-## Task 1: Enable lights-out operations
+## Task 1: Enable zero-touch transparent data encryption operations when using Key Vault
 
-1. Add the Key Vault endpoint password into a new local auto-open wallet in &lt;WALLET_ROOT&gt;/tde.
+1. Create a new local auto-open wallet in &lt;WALLET_ROOT&gt;/tde and add the Key Vault endpoint password.
 
     ````
     <copy>
@@ -23,9 +23,9 @@ This lab assumes you have completed lab 6.
     </copy>
     ````
 
-   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Add the Key Vault endpoint password into a new local auto-open wallet in <WALLET_ROOT>/tde.")
+   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Create a new local auto-open wallet in <WALLET_ROOT>/tde and add the Key Vault endpoint password")
 
-2. Change the TDE\_CONFIGURATION of the database to 'OKV|FILE' to enable the database to find the new wallet in &lt;WALLET_ROOT&gt;/tde.
+2. Update the Transparent Data Encryption (TDE) configuration of the database to 'OKV|FILE' so it can locate the new auto-login wallet in the specified &lt;WALLET_ROOT&gt;/tde directory.
 
     ```
     <copy>
@@ -35,9 +35,9 @@ This lab assumes you have completed lab 6.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Change the TDE_configuration of the database to OKV|FILE to enable the database to find the new wallet in <WALLET_ROOT>/tde.")
+    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Update the Transparent Data Encryption (TDE) configuration of the database to OKV|FILE so it can locate the new auto-login wallet in the specified <WALLET_ROOT>/tde directory")
 
-3. Restart the database
+3. Restart the database to force the auto-login wallet configuration to take effect.
 
     ```
     <copy>
@@ -48,9 +48,9 @@ This lab assumes you have completed lab 6.
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.23.38.png "Restart the database")
+    ![Key Vault](./images/Screenshot_2025-10-03_14.23.38.png "Restart the database to force the auto-login wallet configuration to take effect")
 
-4. Verify that the auto-login wallet is open
+4. Confirm that the auto-login wallet has been correctly configured and is operational.
 
     ```
     <copy>
@@ -66,4 +66,4 @@ This lab assumes you have completed lab 6.
     </copy>
     ```
     
-    ![Key Vault](./images/Screenshot_2025-10-07_23.08.12.png "Verify that the auto-login wallet is open")
+    ![Key Vault](./images/Screenshot_2025-10-07_23.08.12.png "Confirm that the auto-login wallet has been correctly configured and is operational")

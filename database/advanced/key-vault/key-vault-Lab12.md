@@ -19,7 +19,15 @@ This lab assumes you have completed lab 11.
 
 1. Login to Key Vault as user **KVRESTADMIN**
 
-    ![Key Vault](./images/image-2025-09-03_13-29-46.png "Login to Key Vault as user KVRESTADMIN")
+    Get the password of KVRESTADMIN by executing this command
+
+    ```
+    <copy>
+    cat wui_passphrase
+    </copy>
+    ```
+
+    ![Key Vault](./images/image-2025-09-03_13-29-46.png "Login to Key Vault as the REST administrator")
 
 2. On the home page, observe the following:
 
@@ -39,8 +47,8 @@ Oracle Key Vault can manage all deployment modes of the Oracle database - single
 
 The system administrator is tasked with creating, and overseeing the endpoints on the Key Vault server.
 
-1. Click the **Endpoints** tab
-    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click the Endpoints tab")
+1. Click on the **Endpoints** tab
+    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click on the Endpoints tab")
 
 2. This takes you to the Endpoints page
 

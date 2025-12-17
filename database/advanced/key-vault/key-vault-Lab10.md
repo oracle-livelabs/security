@@ -9,7 +9,7 @@ Estimated Lab Time: 5 minutes
 In this lab, you will add the keystore password to a local auto-login wallet and then use this wallet to perform a re-key operation without needing to enter the OKV password.
 
 ### Prerequisites
-This lab assumes you have completed lab 9.
+This lab builds on concepts and operations from lab 9. Complete lab 9 first before starting this lab.
 
 ## Task 1: Automate re-key
 

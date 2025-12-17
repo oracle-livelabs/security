@@ -1,19 +1,19 @@
-# Tolerate connectivity issues with secure persistent cache
+# Ensure reliable data access during connectivity disruptions
 
 ## Introduction
-Oracle Key Vault cluster deployment provides continuous availability in case of server failures, but the cluster deployment may not help with network connectivity issues unless there is network redundancy. What happens if there is an underwater landslide that cuts the connection between your databases and your Key Vault cluster? Not to worry, Key Vault's secure persistent cache saves your day and keeps your databases running.
+Oracle Key Vault cluster deployment ensures continuous availability during server failures, but connectivity disruptions may still pose a problem. How do you handle network disruptions between your databases and the Key Vault cluster? Key Vault's secure persistent cache ensures your databases continue operating smoothly, even during connectivity issues. 
 
 Estimated Lab Time: 5 minutes
 
 ### Objectives
-In this lab, you will check the secure persistent cache, simulate a connectivity failure, and create a new tablespace to observe cache-based operation.
+In this lab, you will learn how to maintain secure data access using persistent caching. You will also create a new encrypted tablespace, even in the event of connectivity failures.
 
 ### Prerequisites
-This lab assumes you have completed lab 5.
+This lab builds on concepts and operations from lab 5. Complete lab 5 first before starting this lab.
 
 ## Task 1: Review Oracle Key Vault's secure persistent cache
 
-1. List the IDs of the keys in the secure persistent cache
+1. Retrieve (list) the IDs of keys stored in the local secure persistent cache
 
     Enter the Key Vault endpoint password when prompted.
 
@@ -23,7 +23,7 @@ This lab assumes you have completed lab 5.
     </copy>
     ````
 
-   ![Key Vault](./images/Screenshot_2025-10-03_15.56.40.png "List the IDs of the keys in the secure persistent cache")
+   ![Key Vault](./images/Screenshot_2025-10-03_15.56.40.png "List the IDs of the keys in the local secure persistent cache")
 
 ## Task 2: Simulate network outage
 
@@ -46,13 +46,16 @@ This lab assumes you have completed lab 5.
     <copy>
     $OKV_HOME/bin/okvutil list
     </copy>
+
     ````
+
+    The retrieval of key IDs from Key Vault will fail because the network connection between the database and the Key Vault server is disconnected.
 
    ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Check if the server is unreachable")
 
-## Task 3: Create a new tablespace to confirm that database operations continue uninterrupted
+## Task 3: Confirm database resilience with persistent cache by creating a new encrypted tablespace
 
-1. Create a new tablespace
+1. Create a new encrypted tablespace
 
     ````
     <copy>
@@ -62,7 +65,7 @@ This lab assumes you have completed lab 5.
     </copy>
     ````
 
-   ![Key Vault](./images/Screenshot_2025-10-03_16.01.30.png "Create a new tablespace")
+   ![Key Vault](./images/Screenshot_2025-10-03_16.01.30.png "Create a new encrypted tablespace")
 
 2. Verify the new tablespace was created
 
@@ -76,7 +79,7 @@ This lab assumes you have completed lab 5.
 
    ![Key Vault](./images/Screenshot_2025-10-03_16.03.05.png "Verify the new tablespace was created")
 
-## Task 4: Re-establish connectivity between database and Key Vault
+## Task 4: Re-establish connectivity between the database and Key Vault
 
 1. Restore the connectivity to the Key Vault server
 
@@ -86,7 +89,7 @@ This lab assumes you have completed lab 5.
     </copy>
     ````
 
-2. Confirm that the server is reachable
+2. Ensure the server is reachable
 
     Enter the Key Vault endpoint password when prompted.
 
@@ -96,4 +99,4 @@ This lab assumes you have completed lab 5.
     </copy>
     ````
 
-   ![Key Vault](./images/Screenshot_2025-11-10_16.37.08.png "Confirm that the server is reachable")
+   ![Key Vault](./images/Screenshot_2025-11-10_16.37.08.png "Ensure the server is reachable")
