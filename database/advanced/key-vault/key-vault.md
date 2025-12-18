@@ -100,6 +100,11 @@ An Oracle Key Vault multi-master cluster provides a mechanism to create pairs of
 
 ![Key Vault](./images/okv-cluster-concept.png "Key Vault Multi-Master Concept")
 
+- Up to 16 nodes
+- Both nodes are available to TDE endpoints for reading/writing keys
+- OKV node remains available for Read-only operations in the event of a single node outage
+- Read-only node provides keys to local TDE endpoints on demand with low latency
+
 Oracle Key Vault supports two types of mode for cluster nodes: read-only restricted mode or read-write mode.
 
 - **Read-only restricted mode**
@@ -110,7 +115,7 @@ Oracle Key Vault supports two types of mode for cluster nodes: read-only restric
 
 - **Read-write mode**
 
-This mode enables both critical and non-critical information to be written to a node. A read-write node should always operate in the read-write mode.
+  This mode enables both critical and non-critical information to be written to a node. A read-write node should always operate in the read-write mode.
 
 You can add read-only Oracle Key Vault nodes to the cluster to provide even greater availability to endpoints that need Oracle wallets, encryption keys, Java keystores, certificates, credential files, and other objects.
 
