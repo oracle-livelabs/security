@@ -8,7 +8,7 @@ Estimated Time: 60 minutes
 *Version tested in this lab:* Oracle Database 19c Enterprise Edition
 
 ### Video Preview
-Watch a preview of "*LiveLabs - Oracle Database Vault (May 2022)*" [](youtube:M5Kn-acUHRQ)
+Watch a preview of "*LiveLabs - Oracle Database Vault*" [](youtube:M5Kn-acUHRQ)
 
 ### Objectives
 - Enable Database Vault in the container and `PDB1` pluggable database
@@ -45,7 +45,7 @@ This lab assumes you have:
 
     **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
 
-        ![Open Linux Terminal](./images/dv-open-terminal-01.png "Click Activities then click the terminal icon")
+    ![Open Linux Terminal](./images/dv-open-terminal-01.png "Click Activities then click the terminal icon")
 
 
 2. Go to the following directory:
