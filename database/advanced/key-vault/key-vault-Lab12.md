@@ -3,7 +3,7 @@
 ## Introduction
 Oracle Key Vault offers continuously available, fault-tolerant, and highly scalable centralized management of encryption keys and secrets for all Oracle Database deployment models, addressing diverse organizational requirements. It securely stores and manages sensitive cryptographic material, including TDE master encryption keys, Oracle GoldenGate keys, SSH keys, public and private keys, digital certificates, and more.
 
-Key Vault is purpose-built to manage TDE master encryption keys for standalone, multitenant, RAC, and sharded databases deployed on Exadata, Cloud, Cloud@Customer, and on Oracle Database Appliance. It also operates seamlessly across diverse infrastructure architectures, including multi-cloud and hybrid environments, as well as traditional on-premises and fully cloud-based deployments.
+Key Vault is purpose-built to manage TDE master encryption keys for standalone, multi-tenant, RAC, and sharded databases deployed on Exadata, Cloud, Cloud@Customer, and Oracle Database Appliance. It also operates seamlessly across diverse infrastructure architectures, including multi-cloud and hybrid environments, as well as traditional on-premises and fully cloud-based deployments.
 
 As a critical system component, proper Key Vault operation is essential to maintaining operational continuity. To support this, Key Vault provides comprehensive reporting and notifications, including inventory, activity, security, operational, and audit reports, with notifications delivered via email alerts, remote syslog, or SNMP.
 
@@ -17,7 +17,7 @@ This lab assumes you have completed lab 11.
 
 ## Task 1: Oracle Key Vault Home page 
 
-1. Login to Key Vault as user **KVRESTADMIN**
+1. Log in to Key Vault as user **KVRESTADMIN**
 
     Get the password of KVRESTADMIN by executing this command
 
@@ -27,7 +27,7 @@ This lab assumes you have completed lab 11.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-09-03_13-29-46.png "Login to Key Vault as the REST administrator")
+    ![Key Vault](./images/image-2025-09-03_13-29-46.png "Log in to Key Vault as the REST administrator")
 
 2. On the home page, observe the following:
 
@@ -41,7 +41,7 @@ This lab assumes you have completed lab 11.
 
     ![Key Vault](./images/image-2025-09-11-17.41.21.png "The System Overview section at the bottom identifies the system.")
 
-## Task 2: Manage Primary-Standby, Sharded DBs, Multi-Tennant and RAC databses
+## Task 2: Manage Primary-Standby, Sharded DBs, Multi-Tenant and RAC databases
 
 Oracle Key Vault can manage all deployment modes of the Oracle database - single instance, RAC, multi-tenant, Data Guard, sharded, and cloud. This is done by deploying database clients called **endpoints** on the database host. For cloud databases, you have to use the cloud console. Endpoints can also be deployed for Oracle GoldenGate, Oracle ACFS, MySQL databases, SSH servers, and more.
 
@@ -138,13 +138,13 @@ To keep you aware of your system state, Oracle Key Vault generates alerts and de
 
     ![Key Vault](./images/Screenshot_2025-10-04_15.49.25.png "Click the Alerts Tab")
 
-2. Alerts that required immediate attention. Key Vault only shows the relevant alerts to the administrator based on their roles.
+2. Alerts that require immediate attention. Key Vault only shows the relevant alerts to the administrator based on their roles.
 
     In the image below, there are notifications for:
-    - User's passwords that are expiring and need to be reset
+    - Users' passwords that are expiring and need to be reset
     - Certificate objects that are expiring and need to be rotated
 
-    ![Key Vault](./images/image-2025-09-11-18.27.41.png "Alerts that required immediate attention")
+    ![Key Vault](./images/image-2025-09-11-18.27.41.png "Alerts that require immediate attention")
 
 ## Task 7: Ensure accountability with audit records
 
@@ -228,7 +228,7 @@ Key Vault users can be managed locally as native Key Vault users or externally t
     - The base server information
     - The state of critical system services
     - Information about space usage
-    - Deployment related information
+    - Deployment-related information
     - Certificate state
 
     ![Key Vault](./images/Screenshot_2025-10-05_11.07.08.png "This page shows the system health")
@@ -263,7 +263,7 @@ For ease of use, Key Vault consolidates all network, system, certificate, and mo
 
 3. This takes you to the page from where the system administrator can administer the Key Vault server
 
-    System administrators are reponsible for most of the system configuration. Audit Manager is responsible for setting up Audit Vault integration.
+    System administrators are responsible for most of the system configuration. Audit Manager is responsible for setting up Audit Vault integration.
 
     ![Key Vault](./images/image-2025-09-11-18.48.38-CUSTOM.png "This takes you to the page from where the system administrator can administer the Key Vault server")
 
@@ -277,16 +277,16 @@ A Key Vault cluster provides continuous availability of your keys to ensure unin
 
 2. Configure the server as a Candidate Node
 
-    ![Key Vault](./images/image-2025-09-11-18.50.51.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
+    ![Key Vault](./images/image-2025-09-11-18.50.51.png "Configure the server as a Candidate Node")
 
 3. Once the server has been configured as a cluster node, the Cluster page is updated to show the status of all nodes that are part of this cluster
 
     You can click the **Add** button to add a second, third and more nodes to the cluster.
 
-    ![Key Vault](./images/image-2025-09-11-18.58.43.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
+    ![Key Vault](./images/image-2025-09-11-18.58.43.png "Once the server has been configured as a cluster node, the Cluster page is updated to show the status of all nodes that are part of this cluster")
 
 4. On the Home page, the System Overview section at the bottom is updated, identifying the deployment mode as Cluster
 
-    This section highlights how many read-write pairs are part of the cluster as well as the cluster service status. For now, there is just the one node that we setup.
+    This section highlights how many read-write pairs are part of the cluster as well as the cluster service status. For now, there is just one node that we setup.
 
-    ![Key Vault](./images/image-2025-09-11-19.02.06.png "Expand Keys and Wallets Reports and click on Certificate Awareness Report")
+    ![Key Vault](./images/image-2025-09-11-19.02.06.png "On the Home page, the System Overview section at the bottom is updated, identifying the deployment mode as Cluster")

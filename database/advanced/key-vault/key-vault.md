@@ -1,7 +1,7 @@
 # Oracle Key Vault (OKV)
 
 ## Introduction
-This workshop guides you through the process of migrating an encrypted Oracle database 19c from a local Transparent Database Encryption (TDE) wallet to centralized key management with Oracle Key Vault.
+This workshop guides you through the process of migrating an encrypted Oracle Database 19c from a local Transparent Data Encryption (TDE) wallet to centralized key management with Oracle Key Vault.
 
 *Estimated Lab Time:* 60 minutes
 
@@ -13,12 +13,12 @@ Watch this preview to see how Oracle Key Vault can enhance your data security []
 ### Objectives
 In this workshop, you will learn how to securely manage encryption keys using Oracle Key Vault. You will:
 - Review Transparent Data Encryption (TDE) setup of an Oracle database with encrypted tablespaces
-- Migrate your databases with keys in local TDE wallet to centralized key management with Oracle Key Vault
-- "Full migration" - Upload pre-migration TDE master encryption keys from the local TDE wallet to Oracle Key Vault
-- Enable "lights-out" operations
-- Tolerate network interruptions with secure persistent cache
-- No key exposure for lower security environments
-- Enable re-key operations
+- Migrate your databases with keys in local TDE wallets to centralized key management with Oracle Key Vault
+- Ensure a complete key transfer, leaving no keys on the database host
+- Enable zero-touch transparent data encryption operations
+- Ensure reliable data access during connectivity disruptions
+- Enhance security with key management in vulnerable environments
+- Automate key rotation
 - Bring your own key into Oracle Key Vault
 - Explore Oracle Key Vault in a typical customer deployment
 
@@ -34,15 +34,14 @@ In this workshop, you'll have a pre-setup database host and an Oracle Key Vault 
 This lab requires you to have:
 <if type="brown">
 - A Free Tier, Paid or LiveLabs Oracle Cloud account
-- You have completed the introductory tasks 1 and 2 for Oracle LiveLabs:
-    - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
-    - Lab: Environment Setup
+- You have completed introductory tasks 1 and 2 for Oracle LiveLabs:
+    - Lab: Prepare Setup (*Free Tier* and *Paid Tenants* only)
     - Lab: Initialize Environment
 - You have completed the [TDE LiveLabs](https://livelabs.oracle.com/ords/r/dbpm/livelabs/view-workshop?clear=RR,180&wid=703) and are familiar with basic TDE concepts
 </if>
 <if type="green">
 - An Oracle Cloud account
-- You have completed the introductory tasks for Oracle LiveLabs
+- You have completed introductory tasks for Oracle LiveLabs
 - You have completed the [TDE LiveLabs](https://livelabs.oracle.com/ords/r/dbpm/livelabs/view-workshop?clear=RR,180&wid=703) and are familiar with basic TDE concepts
 </if>
 
@@ -84,9 +83,9 @@ Oracle Key Vault is a robust, secure, and standards-compliant key management pla
 
 ![Key Vault](./images/okv-concept.png "Key Vault Concept")
 
-Security objects that you can manage with Oracle Key Vault include as encryption keys, Oracle wallets, Java keystores (JKS), Java Cryptography Extension keystores (JCEKS), and credential files.
+Security objects that you can manage with Oracle Key Vault include encryption keys, Oracle wallets, Java keystores (JKS), Java Cryptography Extension keystores (JCEKS), and credential files.
 
-Oracle Key Vault centralizes encryption key storage across your organization quickly and efficiently. Built on Oracle Linux, Oracle Database, Oracle Database security features like Oracle Transparent Data Encryption, Oracle Database Vault, Oracle Virtual Private Database, and Oracle GoldenGate technology, Oracle Key Vault's centralized, highly available, and scalable security solution helps to overcome the biggest key-management challenges facing organizations today. With Oracle Key Vault you can retain, back up, and restore your security objects, prevent their accidental loss, and manage their lifecycle in a protected environment.
+Oracle Key Vault centralizes encryption key storage across your organization quickly and efficiently. Built on Oracle Linux, Oracle Database, Oracle Database security features like Oracle Transparent Data Encryption, Oracle Database Vault, Oracle Virtual Private Database, and Oracle GoldenGate technology, Oracle Key Vault's centralized, highly available, and scalable security solution helps overcome the biggest key-management challenges facing organizations today. With Oracle Key Vault you can retain, back up, and restore your security objects, prevent their accidental loss, and manage their lifecycle in a protected environment.
 
 Oracle Key Vault is optimized for the Oracle Stack (database, middleware, systems), and Advanced Security Transparent Data Encryption (TDE). In addition, it complies with the industry standard OASIS Key Management Interoperability Protocol (KMIP) for compatibility with KMIP-based clients.
 
@@ -94,7 +93,7 @@ You can use Oracle Key Vault to manage a variety of other endpoints, such as MyS
 
 Starting with Oracle Key Vault release 18.1, a new multi-master cluster mode of operation is available to provide increased availability and support geographic distribution.
 
-The multi-master cluster nodes provide high availability, disaster recovery, load distribution, and geographic distribution to an Oracle Key Vault environment.
+The multi-master cluster nodes provide high availability, disaster recovery, load distribution, and geographic distribution in an Oracle Key Vault environment.
 
 An Oracle Key Vault multi-master cluster provides a mechanism to create pairs of Oracle Key Vault nodes for maximum availability and reliability.
 
@@ -105,7 +104,7 @@ An Oracle Key Vault multi-master cluster provides a mechanism to create pairs of
 - OKV node remains available for Read-only operations in the event of a single node outage
 - Read-only node provides keys to local TDE endpoints on demand with low latency
 
-Oracle Key Vault supports two types of mode for cluster nodes: read-only restricted mode or read-write mode.
+Oracle Key Vault supports two modes for cluster nodes: read-only restricted mode or read-write mode.
 
 - **Read-only restricted mode**
 

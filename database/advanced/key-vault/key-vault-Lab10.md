@@ -13,7 +13,7 @@ This lab builds on concepts and operations from lab 9. Complete lab 9 first befo
 
 ## Task 1: Automate re-key
 
-1. Add the keystore password into a new local auto-open wallet in &lt;WALLET_ROOT&gt;/tde
+1. Add the keystore password into a new local auto-login wallet in &lt;WALLET_ROOT&gt;/tde
 
     ````
     <copy>
@@ -23,7 +23,7 @@ This lab builds on concepts and operations from lab 9. Complete lab 9 first befo
     </copy>
     ````
     
-    ![Key Vault](./images/Screenshot_2025-10-03_16.19.30.png "Add the keystore password into a new local auto-open wallet in <WALLET_ROOT>/tde")
+    ![Key Vault](./images/Screenshot_2025-10-03_16.19.30.png "Add the keystore password into a new local auto-login wallet in <WALLET_ROOT>/tde")
 
 2. Check the Master Encryption Key ID before a re-key
 

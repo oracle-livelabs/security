@@ -6,14 +6,14 @@ For high availability purposes, you may want to configure your databases to open
 Estimated Lab Time: 3 minutes
 
 ### Objectives
-In this lab, you will learn to quickly set up an auto-open Oracle Key Vault connection to streamline your Transparent Data Encryption workflows
+In this lab, you will learn to quickly set up an auto-open Oracle Key Vault connection to streamline your Transparent Data Encryption workflows.
 
 ### Prerequisites
 This lab builds on concepts and operations from lab 6. Complete lab 6 first before starting this lab.
 
 ## Task 1: Enable zero-touch transparent data encryption operations when using Key Vault
 
-1. Create a new local auto-open wallet in &lt;WALLET_ROOT&gt;/tde and add the Key Vault endpoint password.
+1. Create a new local auto-login wallet in &lt;WALLET_ROOT&gt;/tde and add the Key Vault endpoint password.
 
     ````
     <copy>
@@ -23,7 +23,7 @@ This lab builds on concepts and operations from lab 6. Complete lab 6 first befo
     </copy>
     ````
 
-   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Create a new local auto-open wallet in <WALLET_ROOT>/tde and add the Key Vault endpoint password")
+   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Create a new local auto-login wallet in <WALLET_ROOT>/tde and add the Key Vault endpoint password")
 
 2. Update the Transparent Data Encryption (TDE) configuration of the database to 'OKV|FILE' so it can locate the new auto-login wallet in the specified &lt;WALLET_ROOT&gt;/tde directory.
 

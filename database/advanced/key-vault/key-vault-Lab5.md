@@ -13,7 +13,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 ## Task 1: Enroll the incoming Oracle database into Oracle Key Vault
 
-1.  Login to Key Vault as user **KVEPADMIN**
+1.  Log in to Key Vault as user **KVEPADMIN**
 
     For the password, execute the following command
 
@@ -23,7 +23,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_12-13-38.png "Login to Key Vault as an endpoint administrator.")
+    ![Key Vault](./images/image-2025-7-24_12-13-38.png "Log in to Key Vault as an endpoint administrator.")
 
 2. Click the **Endpoints** tab, then click **Add** to create a new endpoint
 
@@ -63,17 +63,17 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_16-12-59.png "Add the default wallet on the endpoint details page and click save")
+    ![Key Vault](./images/image-2025-7-24_16-12-59.png "Add the default wallet on the endpoint details page and click Save")
 
-8.  Verify that the permissions of the default wallet (LIVELABS\_DB\_WALLET) are set to 'Read, Write, Manage Wallet' by checking the **Access to Wallets** section of this page
+6.  Verify that the permissions of the default wallet (LIVELABS\_DB\_WALLET) are set to 'Read, Write, Manage Wallet' by checking the **Access to Wallets** section of this page
 
     ![Key Vault](./images/Screenshot_2025-10-03_13.56.15.png "Check the permissions of the default wallet")
 
-9.  Click on the **Endpoints** tab and copy the **Enrollment Token** for **LIVELABS\_DB\_EP**
+7.  Click on the **Endpoints** tab and copy the **Enrollment Token** for **LIVELABS\_DB\_EP**
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.03.59.png "Click on the Endpoints tab and copy the Enrollment Token")
 
-10. Click your username, KVEPADMIN, on the top right corner, then click **Logout**
+8. Click your username, KVEPADMIN, on the top right corner, then click **Logout**
 
     ![Key Vault](./images/image-2025-7-24_12-27-48.png "Click Logout on the top right corner of the page")
 
@@ -83,7 +83,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
     ![Key Vault](./images/image-2025-7-24_12-31-21.png "On the database host, go to the Key Vault login page, click on Endpoint Enrollment and Software Download")
 
-2.  Paste the Enrollment Token copied in step 7 of task 1 and click **Submit Token**. You will see the endpoint details automatically populated.
+2.  Paste the Enrollment Token copied in step 7 of Task 1 and click **Submit Token**. You will see the endpoint details automatically populated.
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.11.39.png "Paste the Enrollment Token copied in step 7 of task 1 and click Submit Token. You will see the endpoint details automatically populated.")
 
@@ -93,7 +93,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 ## Task 3: Deploy the Oracle Key Vault client software on the database host
 
-1.  Setup the Key Vault endpoint home. This is the root directory for the endpoint software. Setting **OKV_HOME** allows Key Vault utilities and libraries to locate the endpoint software and configuration files.
+1.  Set up the Key Vault endpoint home. This is the root directory for the endpoint software. Setting **OKV_HOME** allows Key Vault utilities and libraries to locate the endpoint software and configuration files.
 
     ```
     <copy>
@@ -103,7 +103,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 2.  Install the Key Vault software. This prompts for the endpoint connection password. We will call this the "Key Vault endpoint password".
 
-    This is a one time step, and the installation software (okvclient.jar) is automatically deleted after a successfull installation.
+    This is a one time step, and the installation software (okvclient.jar) is automatically deleted after a successful installation.
 
     **Note:** you will use the Key Vault endpoint password frequently for SQL and okvutil commands, so keep it handy.
 
@@ -153,7 +153,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 1.  Migrate the database to use Key Vault
 
-    Use the same password for the Key Vault endpoint as used in step 2 of task 3
+    Use the same password for the Key Vault endpoint as used in step 2 of Task 3
 
     To get the password of the TDE wallet, execute the following command
 

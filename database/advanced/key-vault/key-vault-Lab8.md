@@ -35,7 +35,7 @@ This lab builds on concepts and operations from lab 5. Complete lab 5 first befo
     </copy>
     ````
 
-    This command blocks outgoing TCP traffic to port 5696, simulating a network issue between database and the Oracle Key Vault server.
+    This command blocks outgoing TCP traffic to port 5696, simulating a network issue between the database and the Oracle Key Vault server.
 
 
 2. Check if the server is unreachable
@@ -81,7 +81,7 @@ This lab builds on concepts and operations from lab 5. Complete lab 5 first befo
 
 ## Task 4: Re-establish connectivity between the database and Key Vault
 
-1. Restore the connectivity to the Key Vault server
+1. Restore connectivity to the Key Vault server
 
     ````
     <copy>

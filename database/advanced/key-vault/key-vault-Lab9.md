@@ -13,7 +13,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
 
 ## Task 1: Generate a Non-Extractable key
 
-1.  Login to Key Vault as user **KVRESTADMIN**
+1.  Log in to Key Vault as user **KVRESTADMIN**
 
     Get the password of KVRESTADMIN by executing this command
 
@@ -23,7 +23,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Login to Key Vault as the REST administrator")
+    ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Log in to Key Vault as the REST administrator")
 
 2. Click on the **Endpoints** tab and select **Settings** from the left-side panel
 
@@ -55,7 +55,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
     </copy>
     ````
 
-    This command blocks outgoing TCP traffic to port 5696, simulating a network issue between database and the Oracle Key Vault server.
+    This command blocks outgoing TCP traffic to port 5696, simulating a network issue between the database and the Oracle Key Vault server.
 
 2. Check if the server is unreachable
 
@@ -90,7 +90,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
 
 ## Task 4: Re-establish connectivity between the database and Key Vault
 
-1. Restore the connectivity to the Key Vault server
+1. Restore connectivity to the Key Vault server
 
     ````
     <copy>
