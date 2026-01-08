@@ -11,7 +11,7 @@ Oracle Data Redaction enables you to obscure data that is returned from queries 
 
 *Estimated Time:* 60 minutes
 
-*Version tested in this lab:* Oracle Autonomous Database 23ai
+*Version tested in this lab:* Oracle Autonomous AI Database 26ai
 
 ### Video Preview
 
@@ -29,11 +29,11 @@ In this lab you will:
 - Explore built-in Data Redaction types and regular expression redaction
 - Test various queries including advanced group by and union operations
 
-In Oracle Autonomous Database the `SH` schema is a shared resource and meant for demonstration.  Instead, you will copy two tables (`CUSTOMERS` and `SALES`) to a new schema you will create, named `SH1`. The tables you are copying contain sensitive information and need to be protected a user account (e.g., `SH1_READER`).
+In Oracle Autonomous AI Database the `SH` schema is a shared resource and meant for demonstration.  Instead, you will copy two tables (`CUSTOMERS` and `SALES`) to a new schema you will create, named `SH1`. The tables you are copying contain sensitive information and need to be protected from a database user (e.g., `SH1_READER`).
 
 **Note:**
 - The PL/SQL package for Oracle Data Redaction, `DBMS_REDACT`, has been granted to the `ADMIN` user, who can forward-grant it to other users. 
-- In Oracle Autonomous Database, the `ADMIN` user is exempt from redaction policy enforcement because it has the `EXEMPT REDACTION POLICY` privilege.
+- In Oracle Autonomous AI Database, the `ADMIN` user is exempt from redaction policy enforcement because it has the `EXEMPT REDACTION POLICY` privilege.
 - In Oracle Database 23ai, in addition to `EXECUTE` on `DBMS_REDACT`, users must have the `ADMINISTER REDACTION POLICY` privilege to manage Data Redaction policies. 
 
 
@@ -43,15 +43,15 @@ This lab assumes you have:
 - You have completed "Prepare Your Environment" step previously
 
 ### Lab Timing (estimated)
-| Task No. | Feature | Approx. Time | Details ||
-| -------- | ------- | ------------ ||
-| 1 | Create the Sales History read-only account and data | 5 minutes ||
-| 2 | Create an Oracle Data Redaction Policy | 10 minutes ||
-| 3 | Add a built-in regular expression redaction | 10 minutes ||
-| 4 | Redact data with built-in partial policies | 5 minutes ||
-| 5 | Run analytics and advanced queries against your redacted data | 10 minutes ||
-| 6 | (Optional) Modify the default value for full Data Redaction | 10 minutes ||
-| 7 | (Optional) Clean-up | 5 minutes ||
+| Task No. | Feature | Approx. Time | Details |
+| -------- | ------- | ------------ |
+| 1 | Create the Sales History read-only account and data | 5 minutes |
+| 2 | Create an Oracle Data Redaction Policy | 10 minutes |
+| 3 | Add a built-in regular expression redaction | 10 minutes |
+| 4 | Redact data with built-in partial policies | 5 minutes |
+| 5 | Run analytics and advanced queries against your redacted data | 10 minutes |
+| 6 | (Optional) Modify the default value for full Data Redaction | 10 minutes |
+| 7 | (Optional) Clean-up | 5 minutes |
 
 
 ## Task 1: Create the Sales History data and a user account
@@ -85,7 +85,7 @@ This lab assumes you have:
          </copy>
          ```
 
-    - Create the read only user. You will grant `SH1_READER` the READ ANY TABLE privilege on `SH1`. This is a 23ai feature called schema-level privileges.  The `ORDS_ADMIN` call enables `SH1_READER1` to use the **Database Actions** web page.
+    - Create the read only user. You will grant `SH1_READER` the READ ANY TABLE privilege on `SH1`. This is a 23ai feature called schema-level privileges.  The `ORDS_ADMIN` call enables `SH1_READER` to use the **Database Actions** web page.
 
          ```
          <copy>
@@ -376,7 +376,7 @@ You will be using some of the procedures in the `DBMS_REDACT` PL/SQL package in 
       ```
    **Expected Result:** Notice that **`ADMIN`** has the privilege, **`EXEMPT REDACTION POLICY`**, which exempts `ADMIN` from Data Redaction policies. 
 
-3. Run the same query as **`SH1_READER`** to verify this user does not have the `EXEMPT REDACXTION POLICY` privilege. 
+3. Run the same query as **`SH1_READER`** to verify this user does not have the `EXEMPT REDACTION POLICY` privilege. 
 
       ```
       <copy>
@@ -387,7 +387,7 @@ You will be using some of the procedures in the `DBMS_REDACT` PL/SQL package in 
    **Expected Result:** The only privilege **`SH1_READER`** should have is **`CREATE SESSION`**. 
       
 
-4. Query a subset of the `SH1.CUSTOMERS` rows as two users: `ADMIN` and `SH1_READER1`.
+4. Query a subset of the `SH1.CUSTOMERS` rows as two users: `ADMIN` and `SH1_READER`.
 
       ```
       <copy>
@@ -651,11 +651,13 @@ When creating a Data Redaction policy using regular expressions, your `DBMS_REDA
 
    - First as `ADMIN` who will still see full data. 
 
+      ```
          <copy>
          SELECT * FROM SH1.CUSTOMER_SUMMARY WHERE customer_id IN (103, 131, 147, 156);
          </copy>
+      ```
 
-   - Then as `SH1_READER1` to see that the marital status has been redacted to _null_ and email domain has been redacted to **`xxxxx.com`**. 
+   - Then as `SH1_READER` to see that the marital status has been redacted to _null_ and email domain has been redacted to **`xxxxx.com`**. 
 
       ```
          <copy>
@@ -829,7 +831,7 @@ END;
       ```
       **Note:** If the `CLIENT_IDENTIFIER` is not set then it is null. Any comparison to a `NULL` is false. You must include the `IS NULL` comparison to ensure the policy expression returns to `TRUE` if the `CLIENT_IDENTIFIER` is not set to `AnalyticsServer` or is null. 
 
-2. As `ADMIN`, view the Data Redaction named policy exprsesions. 
+2. As `ADMIN`, view the Data Redaction named policy expressions. 
 
       ```
       <copy>
@@ -1208,4 +1210,4 @@ Video:
 ## Acknowledgements
 - **Author** - Richard C. Evans, Database Security PM
 - **Contributors** - Anita Patel, Anna Haikl, Hakim Loumi
-- **Last Updated By/Date** - Richard C. Evans, Database Security PM - October 2024
+- **Last Updated By/Date** - Richard C. Evans, Database Security PM - December 2025
