@@ -296,9 +296,9 @@ Notice that the **Most Recent Job Status** has changed to *`Script Generated`* f
 **Step 4(a).** If you are using the embedded remote desktop:  
 
 i. Generate SSH Keys  
-- From your noVNC remote desktop session, open a **Terminal** session:
+- From your noVNC remote desktop session, open a **Terminal** session:  
 
-![DMS](./images/dms-122.png "36")
+![DMS](./images/dms-122.png "36")  
 
 - Run the following to generate the key pair:  
 
