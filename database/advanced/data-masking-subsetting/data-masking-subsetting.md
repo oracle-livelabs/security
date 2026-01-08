@@ -300,7 +300,7 @@ i. Generate SSH Keys
 
 ![DMS](./images/dms-122.png "36")
 
- Run the following to generate the key pair:  
+- Run the following to generate the key pair:  
 
     ````
     <copy>
@@ -337,7 +337,7 @@ ii. Update the Host Named Credential with the new SSH Key:
        
         ![DMS](./images/dms-039.png "39")
 
-    - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **Other Locations > tmp** and select the file *`rsa_priv`*.
+    - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **Other Locations > Computer > tmp** and select the file *`rsa_priv`*.
 
         ![DMS](./images/dms-040.png "40")
 
@@ -596,7 +596,7 @@ Now, all 4 defined Object Rules should show as below:
 
     **Note:**
     - Here, you can see the **Source and Estimated Subset Size** (in MB and number of rows).
-    - Since the tables are interdependent, you will see the effects of subsetting on parent-child tables. In this example, *`DEMO_HR_EMPLOYEES`* retains 25% of its rows as previously defined. However, due to its dependency on the *`DEMO_HR_SUPPLEMENTAL_DATA`* table, this table is also affected by the subsetting and will retain 71% of its rows.
+    - Since the tables are interdependent, you will see the effects of subsetting on parent-child tables. In this example, *`DEMO_HR_EMPLOYEES`* retains 25% of its rows as previously defined. However, due to its dependency on the *`DEMO_HR_SUPPLEMENTAL_DATA`* table, this table is also affected by the subsetting and will retain 68% of its rows.
 
 You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process.
 
