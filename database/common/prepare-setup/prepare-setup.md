@@ -37,7 +37,7 @@ This lab assumes you have:
     - [`dbseclabs-init-vm-dbsat.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_init-vm-dbsat.zip)
 </if>
 <if type="key-vault">
-    - [`dbseclabs-okv.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v63_okv.zip)
+    - [`dbseclabs-okv.zip`](https://objectstorage.us-ashburn-1.oraclecloud.com/p/93FWhdphB9qrsDo6YmEsz19Fm0Yb4uAVwp9Cw1ZXhTk1mQFH5auIPo3422Qe6Pli/n/c4u04/b/livelabsfiles/o/security-library/newdbsec.zip)
 </if>
 <if type="key-vault_ssh">
     - [`dbseclabs-okv_ssh.zip`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v62_okv_ssh.zip)
@@ -181,4 +181,4 @@ You may now **proceed to the next lab**.
 
 * **Author** - Hakim Loumi, Database Security PM
 * **Contributors** - Rene Fontcha, Master Principal Solutions Architect, NA Technology
-* **Last Updated By/Date** - Kajal Singh, Database Security PM - January 2025
+* **Last Updated By/Date** - Shubham Goyal - November 2025
