@@ -20,7 +20,7 @@ In this lab, you will:
 - Create a compartment
 - Create a user group and add an Oracle Cloud account to the group
 - Create an IAM policy for the user group
-- Provision an Autonomous Transaction Processing database
+- Provision an Autonomous AI Database (Transaction Processing)
 - (LiveLabs Sandbox reservation only) View your LiveLabs reservation information and sign in
 - Access ORACLE Database Actions
 - Load sample data into your database
@@ -41,9 +41,9 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 
     The **Compartments** page in IAM is displayed.
 
-2. Click **Create Compartment**.
+2. Select **Create Compartment**.
 
-    The **Create Compartment** dialog box is displayed.
+    The **Create Compartment** panel appears.
 
 3. Enter a name for your compartment.
 
@@ -51,32 +51,32 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 
 5. Select a parent compartment.
 
-6. Click **Create Compartment**.
+6. Select **Create Compartment**.
 
 
 ## Task 2: Create a user group and add an Oracle Cloud account to the group
 
 Create a user group and add your Oracle Cloud account to the group.
 
-1. From the navigation menu, select **Identity & Security**, and then **Domains**. Change to the correct compartment, and then click the name of your domain (for example, **Default**).
+1. From the navigation menu, select **Identity & Security**, and then **Domains**. Change to the correct compartment, and then select the name of your domain (for example, **Default**).
 
-2. Click the **User management** tab.
+2. Select the **User management** tab.
 
-3. Scroll down, and then click **Create group**.
+3. Scroll down, and then select **Create group**.
 
-    The **Create group** page is displayed.
+    The **Create group** page appears.
 
 4. Enter a name for the group, for example, `dsg01` (short for Data Safe group 1).
 
 5. Enter a description for the group, for example, **User group for data safe user 1**. A description is required.
 
-6. (Optional) Click **Add tag** and create a tag.
+6. (Optional) Select **Add tag** and create a tag.
 
-7. Click **Create**.
+7. Select **Create**.
 
-8. Click the **Users** tab.
+8. Select the **Users** tab.
 
-9. Search for the user for this workshop, and then click **Assign user to group**.
+9. Search for the user for this workshop, and then select **Assign user to group**.
 
     The user is listed as a group member.
 
@@ -85,23 +85,23 @@ Create a user group and add your Oracle Cloud account to the group.
 
 Create an IAM policy that grants you the necessary permissions for the workshop.
 
-1. On the left, select **Policies**.
+1. From the navigation menu, select **Identity and Security**, and the select **Policies**.
 
-    The **Policies** page is displayed.
+    The **Policies** page appears.
 
 2. Change the compartment to the **root** compartment.
 
-3. Click **Create Policy**.
+3. Select **Create Policy**.
 
-    The **Create Policy** page is displayed.
+    The **Create Policy** page appears.
 
 4. Enter a name for the policy. It is helpful to name the policy after a group name, for example, `dsg01 `.
 
 5. Enter a description for the policy, for example, **Policy for Data Safe group 1**.
 
-6. From the **COMPARTMENT** drop-down list, leave the **root** compartment selected.
+6. From the **Compartment** drop-down list, leave the **root** compartment selected.
 
-7. In the **Policy Builder** section, click **Show manual editor**.
+7. In the **Policy Builder** section, select **Show manual editor**.
 
 8. In the policy field, enter the following policy statements. Substitute `{group name}` and `{compartment name}` with the appropriate values.
 
@@ -136,10 +136,10 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
     ```
    
 
-9. Click **Create**.
+9. Select **Create**.
 
 
-## Task 4: Provision an Autonomous Transaction Processing database
+## Task 4: Provision an Autonomous AI Database (Transaction Processing)
 
 Create an Autonomous Transaction Processing (ATP) database in your compartment. You can create an Always Free Autonomous AI Database for this workshop provided your tenancy has enough quota.
 
@@ -149,7 +149,7 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
 
 2. If needed, change your compartment.
 
-4. Click **Create Autonomous AI Database**.
+4. Select **Create Autonomous AI Database**.
 
 5. On the **Create Autonomous AI Database Serverless** page, provide basic information for your database:
 
@@ -158,26 +158,26 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - **Compartment** - If needed, select a different compartment.
     - **Workload type** - Select **Transaction Processing**.
     - **Always Free** - (Optional) Select this option by moving the slider to the right.
-    - **Database version** - If possible, select **23ai** (required to do the SQL Firewall lab in the Get Started with Oracle Data Safe Fundamentals workshop).
+    - **Database version** - If possible, select **26ai** (required to do the SQL Firewall lab in the Get Started with Oracle Data Safe Fundamentals workshop).
     - **Password** and **Confirm Password** - Specify a password for the `ADMIN` database user and jot it down. In order for you to later register this database with Data Safe, the password must be between 14 and 30 characters long and must include at least one uppercase letter, one lowercase letter, one numeric character, and one special character. It cannot contain your username or the double quote (") character.
-    - **Access Type** - Leave **Secure access from everywhere** selected.
+    - **Network access type** - Leave **Secure access from everywhere** selected.
 
-6. Click **Create**. 
+6. Select **Create**. 
 
-    The **Autonomous AI Database** page is displayed.
+    The **Autonomous AI Database** page appears.
 
 7. Wait a few minutes for your database instance to provision. 
 
-    **Available** is displayed next to the name of your database.
+    When your database is fully provisioned, **Available** is displayed next to its name.
 
     ![Autonomous AI Database page](images/autonomous-database-details-page.png "Autonomous AI Database page")
 
 
 ## Task 5 (LiveLabs Sandbox reservation only): View your LiveLabs Sandbox reservation information and sign in
 
-1. In the upper-left corner of the lab instructions page (this page), click the **View Login Info** link. 
+1. In the upper-left corner of the lab instructions page (this page), select the **View Login Info** link. 
 
-    A **Reservation Information** panel is displayed.
+    A **Reservation Information** panel appears.
 
 2. Review the information. You are provided with the following in Oracle Cloud Infrastructure:
 
@@ -187,24 +187,24 @@ Create an Autonomous Transaction Processing (ATP) database in your compartment. 
     - A compartment of your very own. We refer to this compartment as "your compartment" throughout the workshop. Make note of your compartment's name because you need to select it often throughout the workshop.
     - An Autonomous AI Database in your compartment. You are provided the password for the `ADMIN` account on your database.
 
-3. Make note of your Oracle Cloud Infrastructure username and click the **Copy Password** button.
+3. Make note of your Oracle Cloud Infrastructure username, and then select the **Copy Password** button.
 
-4. On the **Reservation Information** panel, click the **Launch OCI** button.
+4. On the **Reservation Information** panel, select the **Launch OCI** button.
 
-    A new browser tab is opened and the sign in page for the LiveLabs tenancy is displayed.
+    A new browser tab is opened and the sign in page for the LiveLabs tenancy appears.
 
-5. Enter your username (if needed) and paste the password into the **Password** box, and then click **Sign In**.
+5. Enter your username (if needed), paste the password into the **Password** box, and then select **Sign In**.
 
-    The **Change Password** page is displayed.
+    The **Change Password** page appears.
 
-6. In the **Current Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Note the password requirements, which are provided on the page. Click **Save New Password**.
+6. In the **Current Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Note the password requirements, which are provided on the page. Select **Save New Password**.
 
     You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
 
-7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle AI Database**, and then **Autonomous Transaction Processing**. Under **List scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
+7. Access your target database: From the navigation menu (hamburger menu in the upper-left corner), select **Oracle AI Database**, and then select **Autonomous Transaction Processing**. Under **List scope**, select your compartment under the **LiveLabs** folder. In the table on the right, click the name of your database.
 
 
-## Task 6: Access ORACLE Database Actions
+## Task 6: Access Oracle Database Actions
 
 Database Actions provides a way for you to run SQL commands on your target database. The step-by-step instructions for accessing Database Actions are covered here. The labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
@@ -215,7 +215,7 @@ Database Actions provides a way for you to run SQL commands on your target datab
     - If a tenancy administrator provided you an Autonomous AI Database, obtain the password from that person.
     - If you are using an Oracle-provided environment, enter the database password provided to you.
 
-3. Close the **SQL History** and **Warning** dialog boxes.
+3. Close any open dialog boxes.
 
 4. Review the interface. Here are the ways that you use Database Actions during the workshop:
 
@@ -236,7 +236,7 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
      `select null as "End of script" from dual;`
 
-3. On the toolbar, click the **Run Script** button and wait for the script to finish running. Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
+3. On the toolbar, select the **Run Script** button and wait for the script to finish running. Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
 
     - The script takes a few minutes to run.
     - In the bottom-left corner, the cog wheel may remain still for about a minute, and then it turns as the script is processed. The script output is displayed after the script is finished running.
@@ -259,7 +259,7 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
     If your results are different than what is specified above, rerun the [**load-data-safe-sample-data_admin.sql**](https://objectstorage.us-ashburn-1.oraclecloud.com/p/QqCOrIg8vwNsrtXHFosXcmFRIWkjKv4yNbXj6_bUNx2ZQy-KsK564UWBxJKqkdVM/n/c4u04/b/livelabsfiles/o/load-data-safe-sample-data_admin.sql) script.
 
-5. Refresh Database Actions by refreshing the _browser_ page. If prompted, click **Leave page**.
+5. Refresh Database Actions by refreshing the _browser_ page. If prompted, select **Leave page**.
 
 6. Verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
@@ -280,4 +280,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, October 20, 2025
+- **Last Updated By/Date** - Jody Glover, November 12, 2025

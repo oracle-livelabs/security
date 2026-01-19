@@ -14,8 +14,8 @@ In this lab, you will:
 
 - Explore target database registration options
 - Register your database with Oracle Data Safe using the wizard
-- Access Oracle Data Safe and view your list of registered target databases
-- Explore Security Center
+- View your list of registered target databases
+- Explore Oracle Data Safe
 
 ### Prerequisites
 
@@ -40,69 +40,75 @@ You have three options for registering your Autonomous AI Database:
 
 1. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous AI Database** page.
 
-    If you navigated away from this page: From the navigation menu, select **Oracle AI Database**, and then **Autonomous AI Database**. Select your compartment (if needed), and then click the name of your database.
+    If you navigated away from this page: From the navigation menu, select **Oracle AI Database**, and then **Autonomous AI Database**. Select your compartment (if needed), and then select the name of your database.
 
 2. Scroll down the page, and then under **Data Safe**, notice that there is a **Register** option. *Please don't click the link, and instead, let's view the other options.*
 
     ![Register option for your database](images/register-database.png "Register option for your database")
 
-3. From the navigation menu, select **Oracle AI Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
+3. From the navigation menu, select **Oracle AI Database**, and then **Data Safe - Database Security**. The **Overview** page is displayed.
 
     On this page, there are wizards to register the following types of databases:
 
-    - Autonomous AI databases
-    - Oracle cloud databases
-    - Oracle AI Databases on compute
-    - Oracle Cloud@Customer databases
-    - Oracle on-premises databases
-    - Amazon RDS for Oracle
+    - Autonomous AI Database
+    - Oracle cloud database
+    - Oracle database on compute
+    - Oracle Cloud@Customer database
+    - On-premises Oracle database
+    - Amazon RDS for Oracle database
 
     ![Registration wizards for Oracle Data Safe](images/registration-wizards.png "Registration wizards for Oracle Data Safe")
 
-4. Under **Data Safe** on the left, click **Target databases**. 
+4. Under **Data Safe** on the left, select **Target Databases**. 
 
-5. On the right, click **Register database**. From here, you can configure registration details. This method assumes that you have already completed the required pre-registration tasks for your database.
+5. On the right, select **Register database**. From here, you can manually configure registration details. This method assumes that you have already completed the required pre-registration tasks for your database.
 
    ![Manual target registration](images/manual-target-registration.png "Manual target registration")
 
-6. Click **Cancel**.
+6. Select **Cancel**.
 
 ## Task 2: Register your database with Oracle Data Safe using the wizard
 
-To register a database other than an ATP database for this workshop, please follow the registration instructions specific for your database type in the _Administering Oracle Data Safe_ guide. See the **Learn More** section at the bottom of this page.
+To register a database other than an Autonomous AI Database for this workshop, please follow the registration instructions specific for your database type in the _Administering Oracle Data Safe_ guide. See the **Learn More** section at the bottom of this page.
 
-1. Click **Register database via wizard**.
+1. Select **Register database via wizard**.
 
-    The **Overview** page is displayed.
+    The **Overview** page appears.
 
-2. On the **Autonomous AI Databases** tile, click **Start wizard**. 
+2. Select the **Autonomous AI Databases** tile, and then select **Start wizard**. 
 
-    The first page in the wizard called **Select database** is displayed.
+    The first page in the wizard called **Select database** appears.
 
-3. From the first drop-down list, select your database. If needed, click **Change compartment**, select your compartment, and then select your database. 
+3. Select the compartment that stores your database, and then select your database. 
 
 4. (Optional) Change the default display name for your target database. This name is displayed in your Oracle Data Safe reports. 
 
-5. (Optional) Select a different compartment in which to save the target database. Usually you select the compartment in which your database resides.
+5. (Optional) Select a compartment in which to save the target database registration information. Usually you select the same compartment as the database compartment.
 
 6. (Optional) Enter a description for your target database. 
 
-7. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity option') and 3 ('Add security rule') are not necessary and will be skipped.** If your database has a private IP address, the wizard will guide you through the process of configuring an Oracle Data Safe private endpoint and security rules. 
-
     ![Autonomous AI Database registration wizard - Select Database page](images/wizard-select-database.png "Autonomous AI Database registration wizard - Select Database page")
 
-8. Click **Next**.    
+7. Select **Next**.
 
-9. On the  **Review and submit** page, review the information. To make a change, you can return to the **Select database** page. 
+    The **Connectivity option** page appears. Notice the message **The selected database is configured to be securely accessible from everywhere. Step 2 ('Connectivity option') is not necessary and will be skipped.**
+
+    ![Autonomous AI Database registration wizard - Connectivity option page](images/wizard-connectivity-option.png "Autonomous AI Database registration wizard - Connectivity option page")
+
+8. Select **Next**.
+
+    The **Review and submit** page appears.
+  
+9. Review the information. To make a change, you can return to the **Select database** page. 
 
     ![Autonomous AI Database registration wizard - Review and Submit page](images/wizard-review-submit.png "Autonomous AI Database registration wizard - Review and Submit page")
 
 
-10. Click **Register**.
+10. Select **Register**.
 
-    The **Target database information** page is displayed. 
+    The **Target database information** page appears. 
 
-11. Wait for the target database status to turn to **ACTIVE**, which means your target database is fully registered. Next, review the information and options provided on the page.
+11. Wait for the target database status to turn to **Active**, which means your target database is fully registered. Next, review the information and options provided on the page.
 
     - You can view/edit the target database name and description.
     - You can view the Oracle Cloud Identifier (OCID), the compartment name to where the target database is registered, when the target database was registered and updated, the database type (Autonomous AI Database), and the connection protocol (TLS). The information varies depending on the target database type.
@@ -111,11 +117,11 @@ To register a database other than an ATP database for this workshop, please foll
     ![Target database information page](images/target-database-details-page.png "Target database information page")
     
 
-## Task 3: Access Oracle Data Safe and view your list of registered target databases
+## Task 3: View your list of registered target databases
 
-1. In the breadcrumb at the top of the page, click **Target databases**.
+1. In the breadcrumb at the top of the page, select **Target databases**.
 
-2. Under **List scope**, make sure your compartment is selected. Your registered target database is listed on the right.
+2. If needed, select your compartment. Your registered target database is listed on the right.
 
     - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
     - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. The listing is removed 45 days after the target database is deregistered.
@@ -123,15 +129,16 @@ To register a database other than an ATP database for this workshop, please foll
     ![Target databases page in OCI](images/target-databases-page-oci.png "Target databases page in OCI")
 
 
-## Task 4: Explore Security Center
+## Task 4: Explore Oracle Data Safe
 
-1. In the breadcrumb at the top of the page, click **Data Safe**.
+1. On the left, select **Target Databases**, and then select **Dashboard**.
 
-    The **Overview** page is displayed.
+    The **Overview** page appears.
 
 2. Under **Security center** on the left, click **Dashboard** and review the dashboard. Scroll down to view the security controls and feature metrics (charts). Make sure your compartment is selected under **List scope**. From the **Target databases** drop-down list, select your target database so that the data in the dashboard pertains to your target database only.
 
-    - In Security center, you can access all the Oracle Data Safe features, including the dashboard, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, SQL Firewall, and Alerts.
+3. On the left,you can access all the Oracle Data Safe features, including Attribute Sets, Security Assessment, User Assessment, Data Discovery, Data Masking, Activity Auditing, Security Policies, SQL Firewall, and Alerts.
+
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you. That's why the **Security assessment**, **User assessment**, **Feature usage**, and **Operations summary** charts in the dashboard already have data.
     - During registration, Oracle Data Safe also discovers audit trails on your target database. That's why the **Audit trails** chart in the dashboard shows one audit trail with the status **In transition** for your Autonomous AI Database. Later you start this audit trail to collect audit data into Oracle Data Safe.
 
@@ -153,4 +160,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, October 20, 2025
+- **Last Updated By/Date** - Jody Glover, November 12, 2025
