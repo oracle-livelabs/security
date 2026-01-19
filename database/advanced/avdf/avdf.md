@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.15
+*Version tested in this lab:* Oracle AVDF 20.16
 
 ### Video Preview
 
@@ -535,7 +535,7 @@ In this section, we will only see the change report for **pdb2**, where all the 
         - You should see the status **COLLECTING** or **IDLE**
         - If not then login as **AVADMIN** and start the transaction log trail for **pdb2**
 
-2. Click on the sub-menu **Audit Trail** on the left to check that your page looks like this (from **AVAUDITOR** login)
+2. Click on the sub-menu **Audit Trails** on the left to check that your page looks like this (from **AVAUDITOR** login)
 
     ![AVDF](./images/avdf-551.png "Status of the new Audit Trail")
 
@@ -599,7 +599,7 @@ In this section, we will only see the change report for **pdb2**, where all the 
 
     **Note:** If you are not seeing Before/After value changes in Audit Vault:
     - **Restart OGG** (Oracle Golden Gate) Extracts (from the Golden Gate Web Console, click [**Action**] for the `pdb2` extract, stop and start it)
-    - Ensure you properly executed the scripts in `Before_and_After_Changes` folder to create the "`C##GGAVADMIN`" user and setup the database
+    - Ensure you properly executed the scripts in `Before_and_After_Changes` folder to create the "`C##AVGGADMIN`" user and setup the database
     - Check if the Timezone of your Audit Trail is correctly set to your VM Timezone
     - Check your Audit Trail is up and running
 
