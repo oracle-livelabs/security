@@ -5,7 +5,7 @@ This workshop introduces the advanced features and functionality of Oracle Key V
 
 *Estimated Lab Time:* 35 minutes
 
-*Version tested in this lab:* Oracle OKV 21.12 and Oracle Linux 8.
+*Version tested in this lab:* Oracle OKV 21.13 and Oracle Linux 8.
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
