@@ -78,7 +78,7 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
 
     ![EMPLOYEES table](images/drag-employees-table-to-worksheet.png "EMPLOYEES table")
 
-4. When prompted to choose an insertion type, click **Select**, and then click **Apply**.
+4. When prompted to choose an insertion type, click **Select**, and then select **Apply**.
 
     ![Choose the type of insertion dialog box](images/insertion-type-select.png "Choose the type of insertion dialog box")
 
@@ -87,7 +87,7 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
     ![Worksheet tab showing EMPLOYEES table](images/query-employees-table.png "Worksheet tab showing EMPLOYEES table")
 
 
-6. On the toolbar, click the **Run Script** button.
+6. On the toolbar, select the **Run Script** button.
 
     ![Run Script button](images/run-script.png "Run Script button")
 
@@ -105,44 +105,42 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
 
 Data Masking can generate a masking policy for your target database based on your sensitive data model. It automatically tries to select a default masking format for each sensitive column. You can edit these default selections and select different ones as needed. Occasionally you might be prompted to fix issues (if they exist) in your masking formats.
 
-1. In the breadcrumb at the top of the page, click **Data Safe**.
+1. Navigate to the **Data masking** landing page.
 
-2. On the left under **Security center**, click **Data masking**.
+2. Under **Data masking**, select **Masking policies**.
 
-3. Under **Related resources**, click **Masking policies**.
+3. Next to **Applied filters**, select your compartment, if needed.
 
-4. Under **List scope** on the left, select your compartment.
+4. Select **Create masking policy**.
 
-5. On the right, click **Create masking policy**.
+    The **Create masking policy** panel opens.
 
-    The **Create masking policy** panel is displayed.
-
-6. Configure the masking policy as follows:
+5. Configure the masking policy as follows:
 
     - Name: **Mask SDM1**
     - Compartment: **Select your compartment**
     - Description: **Masking policy for SDM1**
     - Choose how you want to create the masking policy: Leave **Using a sensitive data model** selected.
-    - Sensitive Data Model: Select **SDM1 \[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data) lab.
+    - Sensitive Data Model: Select your compartment (if needed), and then select **SDM1 \[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data) lab.
 
     ![Create masking policy panel using SDM1](images/create-masking-policy-sdm1.png "Create masking policy panel using SDM1")
 
-7. Click **Create masking policy**.
+6. Select **Create masking policy**.
 
     *Important! Please do not close the panel. It closes automatically after all operations are completed. If you close the panel before the operations are finished, the operation to add columns to the masking policy is not initiated.*
 
-    The **Masking policy details** page is displayed.
 
-8. Review the masking policy.
+7. Review the **Details** tab. 
 
-    - On the **Masking policy information** tab, you can view the masking policy name (and edit it), a description of the masking policy, the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, when the masking policy was created and updated, the name of the target database, a link to the work request for the masking policy, a link to masking options, the target database and sensitive data model to which the masking policy is associated, and pre/post masking scripts.
-    - The **Masking columns** table lists all the masking columns and their masking formats. If needed, you can select a different masking format for any masking column. You can click the pencil icon next to a masking format to edit it.
+    - Under **General information**, you can view the masking policy name, a description of the masking policy, the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, when the masking policy was created and updated.
+    - Under **Column source**, you can view the name of the target database and a link to the sensitive data model.
+    - Under **Pre/post masking scripts**, you can view and edit the scripts.
+    - Under **Masking options**, you can review how these options are configured: Drop temporary table, Redo logging, Refreshing stats enabled, Degree of parallelism, and Recompile.
+
+8. Select the **Masking columns** tab and review the masking columns and their masking formats. If needed, you can select a different masking format for any masking column or edit the existing one. 
 
     ![Masking policy details page for Mask SDM1 top](images/masking-policy-details-top.png "Masking policy details page for Mask SDM1 top")
 
-    ![Masking policy details page for Mask SDM1 middle](images/masking-policy-details-middle.png "Masking policy details page for Mask SDM1 middle")
-
-    ![Masking policy details page for Mask SDM1 bottom](images/masking-policy-details-bottom.png "Masking policy details page for Mask SDM1 bottom")
 
 
 ## Task 4: Modify a masking format to use a fixed number
@@ -151,41 +149,40 @@ Set `SALARY` to be a fixed number, such as 50000.
 
 1. Locate the row for the `SALARY` column in the `EMPLOYEES` table. 
 
-2. Click the pencil button next to the masking format.
+2. Select the three dots, and then select **View/Edit masking format**.
 
-    The **Edit masking format** page is displayed. 
+    The **Edit format entry** panel opens. 
 
-3. From the **Masking format entry** drop-down list, select **Fixed Number**. 
+3. Select **Add format entry**. From the **Masking format entry** drop-down list, select **Fixed Number**. 
 
 4. In the **Fixed number** box, enter **50000**.
 
     ![Edit masking format page](images/edit-masking-format-page.png "Edit masking format page")
 
-5. Click **Continue**. 
+5. Select **Update**. 
 
     Notice that the updated row is highlighted.
     
     ![Updated row is highlighted](images/updated-row-is-highlighted.png "Updated row is highlighted")
     
-6. To save your update, click **Save masking formats** and wait for the update operation to finish.
+6. To save your update, from the **Actions** menu, select **Save masking formats** and wait for the update operation to finish.
 
 
 ## Task 5: Create a group mask
 
 Use the group masking feature to create a group named `ADDRESS` and apply the `SHUFFLE` masking format to the group.
 
-1. In the list of columns in the masking policy, find `STREET_ADDRESS` from the `LOCATIONS` table, and then select the masking format called **Group Masking**.
+1. From the **Actions** menu, select **Assign group masking**. The **Assign group masking** panel opens.
 
-    The **Edit masking format** page is displayed.
+2. For **Masking format entry**, select **Shuffle**.
 
-2. For **Group name**, enter **Address**.
+3. For **Group name**, enter **Address**.
 
-3. From the **Masking format entry** drop-down list, select **Shuffle**.
+4. For **Condition**, enter **1=1**.
 
-4. Notice that **STREET_ADDRESS** is listed as a column for the group.
+5. For each of the following columns, select the column from the **Group masking column name** dropdown list, and then select **Add column**. 
 
-5. For each of the following columns, click **+Another** column and select the column.
-
+    - `STREET_ADDRESS`
     - `CITY`
     - `STATE_PROVINCE`
     - `COUNTRY_ABBREV`
@@ -195,32 +192,33 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
     ![Group mask configuration](images/group-mask1.png "Group mask configuration")
 
-6. Click **Continue**.
+
+6. Select **Continue**.
 
 7. Notice that the masking format for the columns is set to **Address**.
 
-8. Click **Save masking formats**.
+8. From the **Actions** menu, select  **Save masking formats**.
 
 
 ## Task 6: Perform a pre-masking check
 
 The pre-masking check looks for any known issues that might arise during a masking run; for example, not enough tablespace, missing privileges, and so on. It alerts you to any found issues so that you can remediate them before starting the actual masking run.
 
-1. In the breadcrumb at the top of the page, click **Data Masking**.
+1. On the left, select **Pre-masking reports**.
 
-2. Click **Pre-masking check**.
+2. Select **Pre-masking check**.
 
-3. Select your target database.
+3. Select the compartment for your target database (if needed), and then select your target database.
 
-4. Select your masking policy.
+4. Select the compartment for your masking policy (if needed), and then select your masking policy.
 
-5. Select your compartment.
+5. For the **Pre-masking report compartment**, select your compartment.
 
     ![Pre-masking check panel](images/pre-masking-check-panel.png "Pre-masking check panel")
 
-5. Click **Submit**. 
+5. Select **Submit**. 
 
-     The **Pre-masking report details** page is displayed.
+     The **Work requests** tab is displayed.
 
     ![Pre-masking report details page](images/pre-masking-report-details-page.png "Pre-masking report details page")
 
@@ -229,40 +227,44 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Task 7: Mask sensitive data in your target database
 
-1. On the **Pre-masking report details** page, click the name of your masking policy (**Mask SDM1**). 
+1. Select **Mask data**.
 
-    The **Masking policy details** page is displayed.
+    The **Mask sensitive data** panel opens.
 
-2. Click **Mask target**.
-
-    The **Mask sensitive data** panel is displayed.
-
-3. Select your target database, and click **Mask data**.
+2. Select your target database, and select **Mask data**.
 
     ![Mask sensitive data panel](images/mask-sensitive-data-panel.png "Mask sensitive data panel")
 
-    The **Work request** page is displayed.
+    The **Work request** tab is opened.
 
-4. Monitor the progress of the work request by viewing the log messages in the **Log messages** table.
+3. Monitor the progress of the work request by viewing the log messages in the table.
 
     ![Log messages for data masking work request](images/masking-log-messages.png "Log messages for data masking work request")
 
-5. Wait for the status to read as **SUCCEEDED**.
+4. Wait for the operations to finish.
 
  
 ## Task 8: View the Data Masking report
 
-1. While on the **Work request** page, next to **Masking report** on the **Work request information** tab, click **View details**.
+1. On the left, navigate to the **Data masking** landing page.
 
-    The **Masking report details** page is displayed.
+2. On the **Masking reports** tab, ensure that your compartment is selected. Scroll down and select **View report** for your target database.
 
-2. Review the masking report.
+    The **Masking report** page opens. The **Details** tab shows you the following information:
+    
+    - Oracle Cloud Identifier (OCID) for the masking report
+    - Compartment where the report is stored
+    - Target database name
+    - Masking policy name - you can click a link to view it
+    - Masking status - verify that it says **SUCCESS**
+    - Date and time when the data masking job started and finished
+    - Number of masked sensitive types, schemas, tables, columns, values, total pre-mask errors, and total post-mask errors
 
-    - The **Masking report information** tab shows you the target database name; masking policy name (you can click a link to view it); the Oracle Cloud Identifier (OCID) for the masking report; the masking status; the date and time when the data masking job started and finished; the number of masked sensitive types, schemas, tables, columns, values, total pre-mask errors, and total post-mask errors. You can click a link to view masking errors and masking options. There is also an interactive bar chart that shows you the the number of masked columns for each of the top five sensitive types.
-    - The **Masked columns** table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
+3. Select the **Masked columns** tab and review the masked sensitive columns.
+
+    - This table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
 
     ![Masking report top](images/masking-report-top3.png "Masking report top")
-    ![Masking report bottom](images/masking-report-bottom.png "Masking report bottom")
 
 
 ## Task 9: Validate the masked data in your target database
@@ -273,7 +275,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 3. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query.
 
-4. Review the masked data on the **Query Result** tab at the bottom of the page. 
+4. Review the masked data at the bottom of the page. 
 
     - You can resize the panel to view more data and you can scroll down and to the right.
     - Find the `SALARY` column and verify that the values are all 50000.
@@ -282,7 +284,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 5. Clear the worksheet.
 
-6. Drag the `LOCATIONS` table to the worksheet and applyt the **Select** insertion type.
+6. Drag the `LOCATIONS` table to the worksheet and apply the **Select** insertion type.
 
 7. On the toolbar, click the **Run Statement** button.
 
@@ -298,4 +300,4 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, October 20, 2025
+- **Last Updated By/Date** - Jody Glover, January 22, 2026

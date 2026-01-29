@@ -60,30 +60,32 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 1. Make sure you are on the **Data Safe | Oracle Cloud Infrastructure** browser tab.
 
-2. Under **Security center** in Data Safe, click **SQL Firewall**.
+2. On the left, navigate to the landing page for **SQL Firewall**.
 
-3. Under **List Scope** on the left, select your compartment.
+3. Next to **Applied filters**, select your compartment.
 
-4. On the **Target summary** tab, click the name of your target database. The SQL Firewall status should currently show as **Disabled**.
+4. Select the **Target summary** tab, and then select the name of your target database. The SQL Firewall status should currently show as **DISABLED**.
 
-5. On the SQL Firewall page, click the **Refresh** button.
+    The **Database security config** page opens.
 
-6. Click **Enable** and wait until the status changes to **ACTIVE**.
+5. From the **Actions** menu, select **Refresh**.
+
+6. Select **Enable** and wait until the status of the database security configuration changes to **Active**.
 
 
 ## Task 3: Create a SQL collection for APP_USER
 
-1. Under **SQL collections**, click **Create and start SQL collection**.
+1. Select the **SQL collections** tab, and then select **Create and start SQL collection**.
 
-    The **Create and start SQL collection** dialog box is displayed.
+    The **Create and start SQL collection** page opens.
 
 2. From the **Database user** drop-down list, select **APP_USER**.
 
-    If `APP_USER` is not listed in the **Database user** drop-down list, click the **Refresh** icon, and then select the user.
+    If `APP_USER` is not listed, select **Refresh database users**, and then select the user.
 
 3. Leave **User issued SQL commands** selected.
 
-4. Click **Create and start SQL collection**.
+4. Select **Create and start SQL collection**.
 
    ![Create and start SQL collection dialog box](images/create-start-sql-collection.png "Create and start SQL Collection dialog box")
 
@@ -93,89 +95,93 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 6. From the navigation menu, select **Oracle AI Database**, and then **Autonomous AI Database**.
 
-7. Click the name of your database.
+7. Change to your compartment, if needed, and then select the name of your database.
 
 8. On the **Autonomous AI Database** page, from the **Database actions** menu, select **Database Users**.
 
-9. On the **APP_USER** tile, click the three dots, and select **Edit**.
+9. On the **APP_USER** tile, select the three dots, and then select **Edit**.
 
 10. In the **Password** and **Confirm Password** boxes, enter a database password for `APP_USER`.
 
-    Note: The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. It cannot contain the double quote (") character or the username "admin".
+    The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. It cannot contain the double quote (") character or the username "admin".
 
-11. At the bottom, enable **Web Access**.
+11. At the bottom, enable **Web access**. 
+
+    Note: It's included in the toggle for **REST, GraphQL, MongoDB API, and Web access**.
 
    ![Enable web access](images/enable-web-access.png "Enable web access")
 
 12. Click **Apply Changes**.
 
-13. To the right of the URL in the `APP_USER` tile, click the **Open in new tab** icon.
+13. To the right of the URL in the `APP_USER` tile, select the **Open in new tab** icon.
 
     The sign-in page for Database Actions is opened in a new tab.
 
 14. Sign in as `APP_USER` and enter the password.
 
-15. Click the **SQL** tab.
+15. Close any dialog boxes, and then select the **SQL** tab.
 
 16. Close any tip dialog boxes.
 
-17. On the worksheet, enter the following, and then click the **Run Statement** button:
+17. On the worksheet, enter the following, and then select the **Run Statement** button:
 
     ```text
     <copy>SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
     </copy>
     ```
 
-18. On the worksheet, enter the following, and then click the **Run Statement** button:
+18. On the worksheet, enter the following, and then select the **Run Statement** button:
 
     ```text
     <copy>SELECT LOCATION_ID, STREET_ADDRESS, CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
     </copy>
     ```
 
-19. On the worksheet, enter the following, and then click the **Run Statement** button:
+19. On the worksheet, enter the following, and then select the **Run Statement** button:
 
     ```text
     <copy>SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
     </copy>
     ```
 
-20. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** tab.
+20. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab.
 
-21. From the navigation menu, select **Oracle AI Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
+21. From the navigation menu, select **Oracle AI Database**, and then select **SQL Firewall** under **Data Safe - Database Security**.
 
-22. Click the name of your target database.
+22. Select the **Target summary** tab, and then select the name of your target database.
 
-23. Click the SQL collection for `APP_USER`. 
+23. Select the **SQL collections** tab, and then select the SQL collection for `APP_USER`. 
 
-24. To stop the SQL workload capture of allowed SQL statements, click **Stop**, and wait for the status to change to **COMPLETED**.
+    The **SQL collection** page opens.
+
+24. To stop the SQL workload capture of allowed SQL statements, from the **Actions** menu, select **Stop**, and then wait for the status to change to **Completed**.
 
     The SQL collection is created for `APP_USER`.
 
 
 ## Task 4: Deploy the SQL Firewall policy for APP_USER
 
-1. On the **SQL collection details** page, click **Generate firewall policy**.
+1. From the **Actions** menu, select **Generate firewall policy**.
 
-    A firewall policy is created, but not yet enabled (deployed). Notice the status of the policy is set to **Disabled**.
+    A firewall policy is created, but not yet enabled (deployed). Notice that under **Enforcement information**, the status of the policy is set to **DISABLED**.
     
-2. Scroll down and review the collection of SQL statements on the allow-list. 
+2. Select the **Unique allowed SQL statements** tab, and then review the collection of SQL statements on the allow-list. 
 
-    Note: Database Actions adds additional SQL statements to the allow-list automatically. The SQL statements that you just collected also have additional code inserted, which you can ignore.
+    Database Actions adds additional SQL statements to the allow-list automatically. The SQL statements that you just collected also have additional code inserted, which you can ignore.
 
-3. To deploy the SQL Firewall policy for the `APP_USER` user, click **Deploy and enforce**.
+3. To deploy the SQL Firewall policy for the `APP_USER` user, select **Deploy and enforce**.
 
-    The **Deploy SQL Firewall policy** dialog box is displayed.
+    The **Deploy SQL Firewall policy** panel opens.
 
 4. Select the following options:
 
     - Enforcement scope: **SQL statements only**
     - Action on violations: **Block and log violations**
-    - Audit for violations: **Off**. Note: If you select **On**, the audit trail for your target database must be started.
+    - Audit for violations: **Off**. If you select **On**, the audit trail for your target database must be started.
 
     *Be sure to select these options carefully!*
     
-5. Click **Deploy and enforce**.
+5. Select **Deploy and enforce**.
 
    ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
 
@@ -235,23 +241,23 @@ When you run the SQL statements in this task, use the **Run Statement** button i
     
 1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** tab. You may need to wait a couple of minutes for the violations to show up.
 
-2. On the **SQL Firewall policy information** tab, click the **View report** link next to **Violation reports**. Review the two violations.
+2. On the **SQL Firewall policy information** tab, select the **View report** link next to **Violation reports**. Review the two violations.
 
     ![Violations Log](images/violations-log.png "Violations Log")
 
-3. In the breadcrumb at the top of the page, click **Firewall policy details**.
+3. In the breadcrumb at the top of the page, select **Firewall policy details**.
 
-4. Under **Unique allowed SQL statements**, click **Add from violations**.
+4. Under **Unique allowed SQL statements**, select **Add from violations**.
 
     The **Add from violations** page is displayed showing you Autonomous AI Database SQL queries.
 
 5. Expand the violations and review.
 
-6. Select the check box for the SQL violation: `SELECT * FROM HCM1.EMPLOYEES`. You need to click **Show** to identify it.
+6. Select the check box for the SQL violation: `SELECT * FROM HCM1.EMPLOYEES`. You need to select **Show** to identify it.
 
     ![Add from violations page](images/violations.png "Add from violations page")
 
-7. Click **Add violations**. 
+7. Select **Add violations**. 
 
     You are returned to the **Firewall policy details** page.
 
@@ -272,6 +278,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, October 20, 2025
+- **Last Updated By/Date** - Jody Glover, January 23, 2026
 
 

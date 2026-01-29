@@ -41,9 +41,9 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 
     The **Compartments** page in IAM is displayed.
 
-2. Select **Create Compartment**.
+2. Select **Create compartment**.
 
-    The **Create Compartment** panel appears.
+    The **Create compartment** page opens.
 
 3. Enter a name for your compartment.
 
@@ -51,7 +51,7 @@ Create a compartment for yourself in Oracle Cloud Infrastructure Identity and Ac
 
 5. Select a parent compartment.
 
-6. Select **Create Compartment**.
+6. Select **Create compartment**.
 
 
 ## Task 2: Create a user group and add an Oracle Cloud account to the group
@@ -64,7 +64,7 @@ Create a user group and add your Oracle Cloud account to the group.
 
 3. Scroll down, and then select **Create group**.
 
-    The **Create group** page appears.
+    The **Create group** page opens.
 
 4. Enter a name for the group, for example, `dsg01` (short for Data Safe group 1).
 
@@ -76,26 +76,28 @@ Create a user group and add your Oracle Cloud account to the group.
 
 8. Select the **Users** tab.
 
-9. Search for the user for this workshop, and then select **Assign user to group**.
+9. Select **Assign user to group**. The **Add users** panel opens.
+
+10. Search for the user for this workshop. Once found, select it, and then select **Add**. 
 
     The user is listed as a group member.
 
 
 ## Task 3: Create an IAM policy for the user group
 
-Create an IAM policy that grants you the necessary permissions for the workshop.
+Create an IAM policy that grants the workshop user the necessary permissions.
 
 1. From the navigation menu, select **Identity and Security**, and the select **Policies**.
 
-    The **Policies** page appears.
+    The **Policies** page opens.
 
 2. Change the compartment to the **root** compartment.
 
 3. Select **Create Policy**.
 
-    The **Create Policy** page appears.
+    The **Create Policy** page opens.
 
-4. Enter a name for the policy. It is helpful to name the policy after a group name, for example, `dsg01 `.
+4. Enter a name for the policy. It's helpful to name the policy after a group name, for example, `dsg01 `.
 
 5. Enter a description for the policy, for example, **Policy for Data Safe group 1**.
 
@@ -105,7 +107,7 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
 
 8. In the policy field, enter the following policy statements. Substitute `{group name}` and `{compartment name}` with the appropriate values.
 
-    - For the **Get Started with Oracle Data Safe Fundamentals** workshop, you require the following permissions:
+    - For the **Get Started with Oracle Data Safe Fundamentals** workshop, add the following permissions:
 
     ```text
     <copy>
@@ -114,7 +116,7 @@ Create an IAM policy that grants you the necessary permissions for the workshop.
     </copy>
     ```
 
-    - For the **Integrate Oracle Data Safe with Applications and Services** workshop, you require the following permissions: 
+    - For the **Integrate Oracle Data Safe with Applications and Services** workshop, add the following permissions: 
 
     ```text
     <copy>
@@ -280,4 +282,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, November 12, 2025
+- **Last Updated By/Date** - Jody Glover, January 20, 2026

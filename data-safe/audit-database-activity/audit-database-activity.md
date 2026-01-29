@@ -35,11 +35,21 @@ This lab assumes you have:
 
 ## Task 1: Configure auditing and alerts for your target database
 
-1. Return to the browser tab for Oracle Data Safe. In the breadcrumb at the top of the page, click **Data Safe**.
+1. On the browser tab for Oracle Data Safe, navigate to the landing page for **Activity auditing**.
 
-2. Under **Data Safe**, click **Activity auditing**.
+2. Select **Start audit trails** to start the Activity Auditing wizard.
 
-3. Click **Configure auditing and alerts** to start the Activity Auditing wizard.
+    The **Start audit trails** page opens.
+
+3. Under **Audit trails**, do the following, and then select:
+
+    a) Select your compartment, and then select your target database. After you select the target database, audit trails and options are displayed.
+    
+    b) Select **UNIFIED_AUDIT_TRAIL: NOT_STARTED**. 
+    
+    c) For start date, select the beginning of your current month. Leave start time as is.
+
+
 
 4. For **Alert policy**, do the following to enable alert policies, and then click **Next**.
 
