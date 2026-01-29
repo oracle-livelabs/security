@@ -13,7 +13,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 ## Task 1: Enroll the incoming Oracle database into Oracle Key Vault
 
-1.  Refresh the browser window on the right side of the page and log in to Key Vault as user **KVEPADMIN**
+1.  Refresh the browser window on the right side of the remote desktop and log in to Key Vault as user **KVEPADMIN**
 
     For the password, execute the following command
 
@@ -23,7 +23,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_12-13-38.png "Refresh the browser window on the right side of the page and log in to Key Vault as an endpoint administrator.")
+    ![Key Vault](./images/image-2025-7-24_12-13-38.png "Refresh the browser window on the right side of the remote desktop and log in to Key Vault as an endpoint administrator.")
 
 2. Click the **Endpoints** tab, then click **Add** to create a new endpoint
 
