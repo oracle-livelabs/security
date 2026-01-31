@@ -109,11 +109,11 @@ Data Masking can generate a masking policy for your target database based on you
 
 2. Under **Data masking**, select **Masking policies**.
 
-3. Next to **Applied filters**, select your compartment, if needed.
+3. Next to **Applied filters**, select your compartment without children, if needed.
 
 4. Select **Create masking policy**.
 
-    The **Create masking policy** panel opens.
+    The **Create masking policy** page opens.
 
 5. Configure the masking policy as follows:
 
@@ -137,10 +137,11 @@ Data Masking can generate a masking policy for your target database based on you
     - Under **Pre/post masking scripts**, you can view and edit the scripts.
     - Under **Masking options**, you can review how these options are configured: Drop temporary table, Redo logging, Refreshing stats enabled, Degree of parallelism, and Recompile.
 
+    ![Masking policy Details tab for Mask SDM1](images/masking-policy-details-tab.png "Masking policy details tab for Mask SDM1")
+
 8. Select the **Masking columns** tab and review the masking columns and their masking formats. If needed, you can select a different masking format for any masking column or edit the existing one. 
 
-    ![Masking policy details page for Mask SDM1 top](images/masking-policy-details-top.png "Masking policy details page for Mask SDM1 top")
-
+    ![Masking policy Masking columns tab for Mask SDM1](images/masking-columns-tab.png "Masking policy Masking columns tab for Mask SDM1")
 
 
 ## Task 4: Modify a masking format to use a fixed number
@@ -153,20 +154,16 @@ Set `SALARY` to be a fixed number, such as 50000.
 
     The **Edit format entry** panel opens. 
 
-3. Select **Add format entry**. From the **Masking format entry** drop-down list, select **Fixed Number**. 
+3. From the **Masking format entry** dropdown list, select **Fixed Number**. 
 
-4. In the **Fixed number** box, enter **50000**.
+4. Select **Add Format entry**. In the **Fixed number** box, enter **50000**. Remove the first format entry.
 
     ![Edit masking format page](images/edit-masking-format-page.png "Edit masking format page")
 
-5. Select **Update**. 
+5. Select **Update**.
 
-    Notice that the updated row is highlighted.
-    
-    ![Updated row is highlighted](images/updated-row-is-highlighted.png "Updated row is highlighted")
-    
-6. To save your update, from the **Actions** menu, select **Save masking formats** and wait for the update operation to finish.
-
+6. Under **Masking columns**, from the **Actions** menu, select **Save masking formats**.
+  
 
 ## Task 5: Create a group mask
 
@@ -216,13 +213,13 @@ The pre-masking check looks for any known issues that might arise during a maski
 
     ![Pre-masking check panel](images/pre-masking-check-panel.png "Pre-masking check panel")
 
-5. Select **Submit**. 
+6. Select **Submit**. 
 
-     The **Work requests** tab is displayed.
+7. Select the **Work requests** tab to view the progress. 
+
+8. Review the log messages and verify each check has passed.
 
     ![Pre-masking report details page](images/pre-masking-report-details-page.png "Pre-masking report details page")
-
-6. Review the log messages and verify each check has passed.
 
 
 ## Task 7: Mask sensitive data in your target database
@@ -231,7 +228,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 
     The **Mask sensitive data** panel opens.
 
-2. Select your target database, and select **Mask data**.
+2. Select your target database, and then select **Mask data**.
 
     ![Mask sensitive data panel](images/mask-sensitive-data-panel.png "Mask sensitive data panel")
 
@@ -246,11 +243,12 @@ The pre-masking check looks for any known issues that might arise during a maski
  
 ## Task 8: View the Data Masking report
 
-1. On the left, navigate to the **Data masking** landing page.
+1. Navigate to the **Data masking** landing page.
 
 2. On the **Masking reports** tab, ensure that your compartment is selected. Scroll down and select **View report** for your target database.
 
-    The **Masking report** page opens. The **Details** tab shows you the following information:
+    The **Masking report** page opens. The **Details** tab shows you the following information: 
+  
     
     - Oracle Cloud Identifier (OCID) for the masking report
     - Compartment where the report is stored
@@ -260,11 +258,13 @@ The pre-masking check looks for any known issues that might arise during a maski
     - Date and time when the data masking job started and finished
     - Number of masked sensitive types, schemas, tables, columns, values, total pre-mask errors, and total post-mask errors
 
+    ![Masking report Details tab](images/masking-report-details-tab.png "Masking report Details tab")
+
 3. Select the **Masked columns** tab and review the masked sensitive columns.
 
     - This table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
 
-    ![Masking report top](images/masking-report-top3.png "Masking report top")
+    ![Masking report Masked columns tab](images/masking-report-masked-columns-tab.png "Masking report Masked columns tab")
 
 
 ## Task 9: Validate the masked data in your target database
@@ -300,4 +300,4 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 22, 2026
+- **Last Updated By/Date** - Jody Glover, January 31, 2026
