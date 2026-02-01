@@ -60,15 +60,15 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 1. Make sure you are on the **Data Safe | Oracle Cloud Infrastructure** browser tab.
 
-2. On the left, navigate to the landing page for **SQL Firewall**.
+2. On the left, navigate to the **SQL Firewall** landing page.
 
-3. Next to **Applied filters**, select your compartment.
+3. Next to **Applied filters**, select your compartment without child compartments.
 
-4. Select the **Target summary** tab, and then select the name of your target database. The SQL Firewall status should currently show as **DISABLED**.
+4. Select the **Target summary** tab, and then select the name of your target database. 
 
-    The **Database security config** page opens.
+    The **Database security config** page opens. The SQL Firewall status should currently show as **DISABLED**.
 
-5. From the **Actions** menu, select **Refresh**.
+5. From the **Actions** menu, select **Refresh** and wait for a moment.
 
 6. Select **Enable** and wait until the status of the database security configuration changes to **Active**.
 
@@ -79,7 +79,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     The **Create and start SQL collection** page opens.
 
-2. From the **Database user** drop-down list, select **APP_USER**.
+2. From the **Database user** dropdown list, select **APP_USER**.
 
     If `APP_USER` is not listed, select **Refresh database users**, and then select the user.
 
@@ -97,7 +97,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 7. Change to your compartment, if needed, and then select the name of your database.
 
-8. On the **Autonomous AI Database** page, from the **Database actions** menu, select **Database Users**.
+8. On the **Autonomous AI Database** page, from the **Database Actions** menu, select **Database Users**.
 
 9. On the **APP_USER** tile, select the three dots, and then select **Edit**.
 
@@ -146,7 +146,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 20. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab.
 
-21. From the navigation menu, select **Oracle AI Database**, and then select **SQL Firewall** under **Data Safe - Database Security**.
+21. Navigate to the **SQL Firewall** landing page.
 
 22. Select the **Target summary** tab, and then select the name of your target database.
 
@@ -185,15 +185,13 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
    ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
 
-6. Notice that the status of the SQL Firewall policy changes to **Enabled**. 
+6. Notice that the status of the SQL Firewall policy changes to **Active**. 
 
-   ![Unique allowed SQL statements](images/enabled-policy.png "Unique allowed SQL statements")
-
-7. To filter the allow-list, under **Unique allowed SQL statements**, click **+ Add filter**, set **SQL text Like HCM1**, and click **Apply**.
+7. To filter the allow-list, select the **Search and Filter** box, and then select **SQL text**. Enter **Like HCM1**, and then select **Apply filter**.
 
     The SQL statements that you collected earlier are listed.
 
-   ![Filtered SQL statements](images/filtered-sql-statements.png "Filtered SQL statements")
+  <!-- ![Filtered SQL statements](images/filtered-sql-statements.png "Filtered SQL statements") -->
 
 ## Task 5: Test the SQL Firewall policy
 
@@ -239,31 +237,29 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
 ## Task 6: Add a SQL statement from the violation log to the allow-list
     
-1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** tab. You may need to wait a couple of minutes for the violations to show up.
+1. Return to the **SQL Firewall policies | Oracle Cloud Infrastructure** browser tab. You may need to wait a couple of minutes for the violations to show up.
 
-2. On the **SQL Firewall policy information** tab, select the **View report** link next to **Violation reports**. Review the two violations.
+2. From the **Actions** menu, select **Add from violations**.
 
-    ![Violations Log](images/violations-log.png "Violations Log")
+    The **Add from violations** panel opens.
 
-3. In the breadcrumb at the top of the page, select **Firewall policy details**.
+3. Scroll down and notice that there are two SQL violations.
 
-4. Under **Unique allowed SQL statements**, select **Add from violations**.
+    ![Two violations listed](images/two-violations-listed.png "Two violations listed")
 
-    The **Add from violations** page is displayed showing you Autonomous AI Database SQL queries.
+4. To review a violation, select its three dots, and then select **View details**. Select **Close** when you are finished reviewing.
 
-5. Expand the violations and review.
-
-6. Select the check box for the SQL violation: `SELECT * FROM HCM1.EMPLOYEES`. You need to select **Show** to identify it.
+5. Select the check box for the SQL violation: `SELECT * FROM HCM1.EMPLOYEES`.
 
     ![Add from violations page](images/violations.png "Add from violations page")
 
-7. Select **Add violations**. 
+6. Select **Update**. 
 
-    You are returned to the **Firewall policy details** page.
+    You are returned to the **SQL Firewall policy** page.
 
-8. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed at the top.
+7. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed.
 
-    ![Add from violations page](images/new-allowed-sql-statement.png "Add from violations page")
+  <!--  ![Add from violations page](images/new-allowed-sql-statement.png "Add from violations page")-->
 
 9. Return to **Database Actions** as `APP_USER` and run the newly-allowed SQL statement to test that it will run successfully.
 
@@ -278,6 +274,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 23, 2026
+- **Last Updated By/Date** - Jody Glover, February 1, 2026
 
 
