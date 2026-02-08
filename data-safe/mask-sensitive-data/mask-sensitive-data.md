@@ -121,7 +121,7 @@ Data Masking can generate a masking policy for your target database based on you
     - Compartment: **Select your compartment**
     - Description: **Masking policy for SDM1**
     - Choose how you want to create the masking policy: Leave **Using a sensitive data model** selected.
-    - Sensitive Data Model: Select your compartment (if needed), and then select **SDM1 \[your-target-database-name\]**. If you don't have this sensitive data model, please refer to the [Discover Sensitive Data](?lab=discover-sensitive-data) lab.
+    - Sensitive Data Model: Select your compartment (if needed), and then select the name of your sensitive data model (for example, **SDM1**). If you don't have a sensitive data model, please refer to the [Discover sensitive data](?lab=discover-sensitive-data) lab.
 
     ![Create masking policy panel using SDM1](images/create-masking-policy-sdm1.png "Create masking policy panel using SDM1")
 
@@ -215,11 +215,11 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 6. Select **Submit**. 
 
-7. Select the **Work requests** tab to view the progress. 
+    The **Work requests** tab opens and shows you the status of the pre-check operations.
 
-8. Review the log messages and verify each check has passed.
+7. Verify that each check has passed.
 
-    ![Pre-masking report details page](images/pre-masking-report-details-page.png "Pre-masking report details page")
+    ![Pre-masking verification](images/pre-masking-verification.png "Pre-masking verification")
 
 
 ## Task 7: Mask sensitive data in your target database
@@ -232,13 +232,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 
     ![Mask sensitive data panel](images/mask-sensitive-data-panel.png "Mask sensitive data panel")
 
-    The **Work request** tab is opened.
-
-3. Monitor the progress of the work request by viewing the log messages in the table.
-
-    ![Log messages for data masking work request](images/masking-log-messages.png "Log messages for data masking work request")
-
-4. Wait for the operations to finish.
+3. Monitor the progress of the operation named `MASKING_JOB`, and wait for it to finish.
 
  
 ## Task 8: View the Data Masking report
@@ -301,4 +295,4 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 2, 2026
+- **Last Updated By/Date** - Jody Glover, February 8, 2026

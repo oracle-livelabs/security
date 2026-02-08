@@ -52,13 +52,10 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 5. Clear the worksheet and script output.  
 
-6. Return to the **Data Safe | Oracle Cloud Infrastructure** browser tab.
-
-
 
 ## Task 2: Enable SQL Firewall in Data Safe
 
-1. Make sure you are on the **Data Safe | Oracle Cloud Infrastructure** browser tab.
+1. Return to the browser tab for Data Safe.
 
 2. Navigate to the **SQL Firewall** landing page.
 
@@ -66,11 +63,13 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 4. Select the **Target summary** tab, and then select the name of your target database. 
 
-    The **Database security config** page opens. The SQL Firewall status should currently show as **DISABLED**.
+    The **Database security config** page opens. The SQL Firewall status should currently show as **Disabled**.
+
+    ![SQL Firewall is disabled](images/sql-firewall-disabled2.png "SQL Firewall is disabled")
 
 5. From the **Actions** menu, select **Refresh** and wait for a moment.
 
-6. Select **Enable** and wait until the status of the database security configuration changes to **Active**.
+6. Select **Enable** and wait until the SQL Firewall status changes to **Active**.
 
 
 ## Task 3: Create a SQL collection for APP_USER
@@ -144,7 +143,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
     </copy>
     ```
 
-20. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab.
+20. Return to the browser tab for Oracle Data Safe.
 
 21. Navigate to the **SQL Firewall** landing page.
 
@@ -163,7 +162,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 1. From the **Actions** menu, select **Generate firewall policy**.
 
-    A firewall policy is created, but not yet enabled (deployed). Notice that under **Enforcement information**, the status of the policy is set to **DISABLED**.
+    A firewall policy is created, but not yet enabled (deployed). Notice that under **Enforcement information**, the status of the policy is set to **Disabled**.
     
 2. Select the **Unique allowed SQL statements** tab, and then review the collection of SQL statements on the allow-list. 
 
@@ -173,19 +172,17 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     The **Deploy SQL Firewall policy** panel opens.
 
-4. Select the following options:
+4. Select the following options carefully:
 
     - Enforcement scope: **SQL statements only**
     - Action on violations: **Block and log violations**
     - Audit for violations: **Off**. If you select **On**, the audit trail for your target database must be started.
-
-    *Be sure to select these options carefully!*
     
 5. Select **Deploy and enforce**.
 
    ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
 
-6. Notice that the status of the SQL Firewall policy changes to **Active**. 
+6. Wait for the status of the SQL Firewall policy to change to **Active**. You may need to refresh the browser tab.
 
 7. To filter the allow-list, select the **Search and Filter** box, and then select **SQL text**. Enter **HCM1**, and then select **Apply filter**.
 
@@ -237,9 +234,9 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
 ## Task 6: Add a SQL statement from the violation log to the allow-list
     
-1. Return to the **SQL Firewall policies | Oracle Cloud Infrastructure** browser tab. You may need to wait a couple of minutes for the violations to show up.
+1. Return to the browser tab for Oracle Data Safe. You may need to wait a couple of minutes for the violations to show up.
 
-2. From the **Actions** menu, select **Add from violations**.
+2. Under **Unique allowed SQL statements**, from the **Actions** menu, select **Add from violations**.
 
     The **Add from violations** panel opens.
 
@@ -255,7 +252,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
 6. Select **Update**. 
 
-    You are returned to the **SQL Firewall policy** page.
+    You are returned to the **SQL Firewall policy** page. Wait a moment.
 
 7. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed at the top.
 
@@ -274,6 +271,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 2, 2026
+- **Last Updated By/Date** - Jody Glover, February 8, 2026
 
 

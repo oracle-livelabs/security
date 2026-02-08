@@ -2,7 +2,7 @@
 
 This workshop is designed to help new users become familiar with the features of Oracle Data Safe. You learn how to assess the security of your database configurations and users, discover and mask sensitive data, and create and deploy a SQL Firewall policy.
 
-Estimated Workshop Time: 2 hours
+Estimated Workshop Time: 90 minutes
 
 ## About Oracle Data Safe
 
@@ -33,4 +33,4 @@ The following links provide more information about Oracle Data Safe:
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, October 20, 2025
+* **Last Updated By/Date** - Jody Glover, February 8, 2026

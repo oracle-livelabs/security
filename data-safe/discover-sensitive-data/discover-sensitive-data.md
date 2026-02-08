@@ -192,9 +192,9 @@ Add `COUNTRY_ABBREV` to the sensitive data model.
 
 5. Select **Search**.
 
-6. Scroll down, and then select the check box for the `COUNTRY_ABBREV` column.
+6. Scroll down, and then from the **Sensitive type** dropdown list for the `COUNTRY_ABBREV` column, select **Address - Country**. *Be sure to select Country, not County.*
 
-7. From the **Sensitive type** dropdown list, select **Address - Country**. *Be sure to select Country, not County.*
+7. Select the check box for the `COUNTRY_ABBREV` column.
 
 8. Select **Add columns**, and then wait until you are returned to the **Sensitive columns** list.
 
@@ -211,4 +211,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 3, 2026
+- **Last Updated By/Date** - Jody Glover, February 8, 2026

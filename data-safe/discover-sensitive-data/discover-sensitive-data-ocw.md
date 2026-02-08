@@ -58,9 +58,9 @@ This lab assumes you have:
 
     ![Select tables for schema page](images/select-tables-for-selected-schemas.png "Select tables for schema page")
 
-6. For **Step 4 - Select sensitive types**, review the common sensitive types. From the dropdown list, select **All sensitive types** and review them. Switch back to **Common sensitive types**, and then select them all by selecting the **Sensitive type** check box. Select **Next**.
+6. For **Step 4 - Select sensitive types**, review the common sensitive types. From the dropdown list, select **All sensitive types** and review them. Select them all by selecting the **Sensitive type** check box. Select **Next**.
 
-    ![Select all common sensitive types](images/select-all-common-sensitive-types.png "Select all common sensitive types")
+    ![Select all sensitive types](images/select-all-sensitive-types2.png "Select all sensitive types")
 
 7. For **Step 5 - Select discovery options**, select **Collect, display and store sample data**, and then select **Create sensitive data model** to begin the data discovery process.
 
@@ -102,9 +102,9 @@ Add `COUNTRY_ABBREV` to the sensitive data model.
 
 5. Select **Search**.
 
-6. Scroll down, and then select the check box for the `COUNTRY_ABBREV` column.
+6. Scroll down, and then from the **Sensitive type** dropdown list for the `COUNTRY_ABBREV` column, select **Address - Country**. *Be sure to select Country, not County.*
 
-7. From the **Sensitive type** dropdown list, select **Address - Country**. *Be sure to select Country, not County.*
+7. Select the check box for the `COUNTRY_ABBREV` column.
 
 8. Select **Add columns**, and then wait until you are returned to the **Sensitive columns** list.
 
@@ -121,4 +121,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 3, 2026
+- **Last Updated By/Date** - Jody Glover, February 8, 2026

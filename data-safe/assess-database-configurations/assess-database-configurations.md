@@ -157,7 +157,7 @@ A baseline assessment shows you data for all your target databases in a selected
 
     The **Details** tab opens.
 
-3. Wait until the baseline name appears.
+3. Wait until the baseline name appears on the **Details** tab.
 
     ![Security Assessment Baseline has been set message](images/sa-baseline-has-been-set-message.png "Security Assessment Baseline has been set message")
 
@@ -240,4 +240,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 5, 2026
+* **Last Updated By/Date** - Jody Glover, February 8, 2026
