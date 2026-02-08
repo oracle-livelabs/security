@@ -102,9 +102,9 @@ Increase the scope of the data discovery job.
 
 3. Select **Adjust the scope for the incremental discovery**, and then select **Submit**.
 
-    You are returned to the beginning of the data discovery wizard.
-
     ![Run discovery now dialog box](images/run-discovery-now-dialog-box.png "Run discovery now dialog box")
+
+    You are returned to the beginning of the data discovery wizard.
 
 4. For **Step 1 - Provide basic information**, select **Next**.
 
@@ -116,7 +116,7 @@ Increase the scope of the data discovery job.
 
 8. For **Step 5 - Select discovery options**, select **Collect, display and store sample data**.
 
-9. Select **Run discovery now**, and wait for the status of the discovery job to read as **Done**. Select **Close**.
+9. Select **Run discovery now**. Scroll down and wait for the status of the discovery job to read as **Done**, and then select **Close**.
 
    ![Finished incremental discovery job](images/finished-incremental-discovery-job.png "Finished incremental discovery job")
 
@@ -124,9 +124,9 @@ Increase the scope of the data discovery job.
 
 11. Under **Incremental discovery**, from the **Actions** menu, select **Manage results**. 
 
-    The **Incremental discovery** panel opens. Here you can approve and reject incremental discovery results or specific results.
+    The **Incremental discovery** panel opens. Here you can approve and reject incremental discovery results.
 
-12. Select **All incremental discovery results**, and then select **Approve**. 
+12. Scroll down and select **All incremental discovery results**, and then select **Approve**. 
 
     ![Approve all incremental discovery results](images/approve-discovery-results.png "Approve all incremental discovery results")
 
@@ -136,7 +136,7 @@ Increase the scope of the data discovery job.
 
     You are returned to the **Incremental discovery** panel.
     
-14. Select **Cancel** to close the panel.
+14. Select **Close** to close the panel.
 
 15. Scroll to the right in the table, if needed, and verify that the **Planned action** column now has **Approved** listed in each row. 
 
@@ -152,7 +152,7 @@ Increase the scope of the data discovery job.
 
     The sensitive data model is updated with the additional sensitive columns.
     
-18. Select **Cancel** to close the panel.
+18. Select **Close** to close the panel.
 
     There are no sensitive columns listed anymore because you added them to the sensitive data model.
 
@@ -211,4 +211,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 31, 2026
+- **Last Updated By/Date** - Jody Glover, February 3, 2026

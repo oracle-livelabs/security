@@ -41,65 +41,65 @@ This lab assumes you have:
 
     The **Configure auditing and alerts** page opens.
 
-3. For **Step 1 - Select target/target database group**, leave **Select a target database** selected. Select your database compartment and your target database. Select **Next**.
+3. For **Step 1 - Select target/target database group**, leave **Select a target database** selected. Select your database compartment and your target database.
+
+4. Select **Next**.
 
     ![Activity Auditing wizard - select target](images/activity-auditing-wizard-select-target.png "Activity Auditing wizard - Select target")
 
-4. For **Step 2 - Alert policies**, do the following to enable alert policies:
+5. For **Step 2 - Alert policies**, do the following to enable alert policies:
 
     a) Select **Manage alert policies**. The **Manage alert policies** panel opens.
     
-    b) Select the **Select pre-defined alert policies** tile.
+    b) Leave the **Select pre-defined alert policies** tile selected.
     
-    c) Select the **Failed logins by admin user** and **User creation/modification** alert policies to enable them.
+    c) Select the **Failed logins by admin user** and **User creation/modification** alert policies.
 
-    d) Select **Update**.
+    d) Select **Update**, and then select **Next**.
 
     ![Activity Auditing wizard - Alert policies](images/activity-auditing-wizard-alert-policy.png "Activity Auditing wizard - Alert policies") 
 
-    d) Select **Next**.
 
- 5. For **Step 3 - Security policies**, do the following to enable security policies:
+ 6. For **Step 3 - Security policies**, do the following to enable security policies:
 
     a) Select **Manage security policies**. The **Manage security policies** panel opens.
    
     b) Select **Admin activity auditing** and **Basic auditing**.
     
-    c) Select the **Custom security policies** tab.
+    c) Select the **Custom security policies** tile.
 
-    d) Select one of the security policies; for example, **CADB\_PAR\_URL\_ACCESS\_AUDIT**.  <!-- Note: **APP\_USER\_NOT\_APP\_SERVER** is not listed -->
+    d) Select one of the security policies; for example, **CIS\_POLICY**.  <!-- Note: **APP\_USER\_NOT\_APP\_SERVER** is not listed -->
 
-    e) Select **Update**.
+    e) Select **Update**, and then select **Next**.
 
     ![Activity Auditing wizard - security policies](images/activity-auditing-wizard-security-policies.png "Activity Auditing wizard - security policies")
 
-    f) Select **Next**.
 
-6. For **Step 4 - Audit trails**, do the following:
+7. For **Step 4 - Audit trails**, do the following:
 
     a) Select **UNIFIED\_AUDIT\_TRAIL**. 
     
     b) For start date, select the beginning of your current month. Leave start time as is.
 
+    c) Select **Next**.
+
     ![Activity Auditing wizard - Audit trails](images/activity-auditing-wizard-audit-trails.png "Activity Auditing wizard - Audit Trails")
 
-    c) Select **Next**.
  
-7. For **Step 5 - Audit profile**, configure the following, and then click **Next**.
+8. For **Step 5 - Audit profile**, configure the following, and then click **Next**.
 
     - Audit data online retention months = 12
     - Audit data offline retention months = 0
     - Paid usage = not enabled
-    <!-- - This will override the global retention settings = Yes -->
     
     ![Activity Auditing wizard - Audit profile](images/activity-auditing-wizard-audit-profile.png "Activity Auditing wizard - Audit profile")
 
     - Each regional Oracle Data Safe service in a tenancy has global settings for paid usage, online retention period, and archive retention period.
-    - Global settings are applied to all target databases unless their audit profiles override them.
+    - Global settings are applied to all target databases unless their audit profiles override them. These override the global retention setting.
     - All initial audit profile settings for your target database are inherited from the global settings for Oracle Data Safe.
     - By default, paid usage is not enabled for all target databases. You cannot enable paid usage for a free trial account.
 
-8. For **Step 6 - Review and submit**, review the configuration, and then select **Submit** if everything is correct. Wait for the policies to be provisioned, and then select **Close**.
+9. For **Step 6 - Review and submit**, review the configuration, and then select **Submit** if everything is correct. Wait for the policies to be provisioned, and then select **Close**.
 
 
 ## Task 2: Perform activities on your target database to generate audit data
@@ -124,16 +124,17 @@ In this task, you perform activities on your target database in Database Actions
 
     If you are using a Sandbox environment, you can find the database password in the LiveLabs reservation.
 
-6. If needed, close any tip dialog boxes, select the **Development** tile, and then select **SQL**.
+6. If needed, close any tip dialog boxes, select the **Development** tab, and then select **SQL**.
 
-7. Paste the following SQL script. Replace `your-password` with a password of your choice. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
+7. Paste the following SQL script. Replace `your-password` with a password of your choice.
+
+    The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
 
     ```
     <copy>drop user MALFOY cascade;
     create user MALFOY identified by your-password;
     grant PDB_DBA to MALFOY;</copy>
     ```
-
 
 8. On the toolbar, click the **Run Script** button and wait for the script to finish running. 
 
@@ -146,7 +147,7 @@ In this task, you perform activities on your target database in Database Actions
 
 1. Navigate to the **Alerts** landing page.
 
-2. Set a filter for your target database.
+2. Adjust the **Time period** filter to include the current day. Also ensure that you are working in your compartment.
 
 3. Review the charts on the **Overview** tab.
 

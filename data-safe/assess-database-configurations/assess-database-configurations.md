@@ -43,7 +43,7 @@ This lab assumes you have:
 
 2. If needed, next to **Applied filters**, select your compartment. Deselect **Include child compartments**, and then select **Apply filter**. 
 
-    Note: From here on, the labs simply say *Select your compartment without child compartments* to simplify the instructions.
+    Note: From here on in, the labs simply say *Select your compartment without child compartments* to simplify the instructions.
 
 3. On the **Overview** tab, review the charts.
 
@@ -124,7 +124,11 @@ You can defer or change the risk level of a finding. In this task, you defer the
 
 1. Set a filter: **Finding = Users with Unlimited Concurrent Sessions**.
 
-2. Select the three dots for the **Users with Unlimited Concurrent Sessions** finding, and then select **Update risk**. The **Update risk for finding** panel opens.
+    You do not need to include the equal sign.
+
+2. Select the three dots for the **Users with Unlimited Concurrent Sessions** finding, and then select **Update risk**.
+
+    The **Update risk for finding** panel opens.
 
 3. Leave **Defer risk** selected. Optionally, enter a justification and set an expiration date. Select **Update**.
 
@@ -149,9 +153,11 @@ A baseline assessment shows you data for all your target databases in a selected
 
     ![Set baseline dialog box](images/set-as-baseline-dialog-box.png "Set baseline dialog box")
 
-2. Select **Set baseline** to confirm that you want to set these findings as the baseline.
+2. Select **Yes** to confirm that you want to set these findings as the baseline and wait a moment for the dialog box to close.
 
-3. Select the **Details** tab and wait a moment until the baseline name appears. You may need to refresh the browser page.
+    The **Details** tab opens.
+
+3. Wait until the baseline name appears.
 
     ![Security Assessment Baseline has been set message](images/sa-baseline-has-been-set-message.png "Security Assessment Baseline has been set message")
 
@@ -202,7 +208,7 @@ In this task, you manually create a new configuration risk on your database by i
 
     ![System Privileges Granted to PUBLIC finding](images/system-privileges-granted-to-public.png "System Privileges Granted to PUBLIC finding")
 
-6. Remove the filter.
+6. Remove the filter if you set one.
 
 
 ## Task 7: Compare your assessment with the baseline
@@ -221,7 +227,7 @@ In this task, you manually create a new configuration risk on your database by i
     ![Security Assessment Comparison report top](images/sa-comparison-report-top.png "Security Assessment Comparison report top")
     ![Security Assessment Comparison report bottom](images/sa-comparison-report-bottom.png "Security Assessment Comparison report bottom")
 
-4. Click **Cancel** to close the panel.
+4. Select **Close** to close the panel.
 
 
 You may now **proceed to the next lab**.
@@ -234,4 +240,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, January 29, 2026
+* **Last Updated By/Date** - Jody Glover, February 5, 2026

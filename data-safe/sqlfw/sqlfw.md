@@ -60,7 +60,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 1. Make sure you are on the **Data Safe | Oracle Cloud Infrastructure** browser tab.
 
-2. On the left, navigate to the **SQL Firewall** landing page.
+2. Navigate to the **SQL Firewall** landing page.
 
 3. Next to **Applied filters**, select your compartment without child compartments.
 
@@ -187,11 +187,11 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 6. Notice that the status of the SQL Firewall policy changes to **Active**. 
 
-7. To filter the allow-list, select the **Search and Filter** box, and then select **SQL text**. Enter **Like HCM1**, and then select **Apply filter**.
+7. To filter the allow-list, select the **Search and Filter** box, and then select **SQL text**. Enter **HCM1**, and then select **Apply filter**.
 
     The SQL statements that you collected earlier are listed.
 
-  <!-- ![Filtered SQL statements](images/filtered-sql-statements.png "Filtered SQL statements") -->
+    ![Filtered SQL statements](images/filtered-sql-statements.png "Filtered SQL statements")
 
 ## Task 5: Test the SQL Firewall policy
 
@@ -257,9 +257,9 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
     You are returned to the **SQL Firewall policy** page.
 
-7. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed.
+7. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed at the top.
 
-  <!--  ![Add from violations page](images/new-allowed-sql-statement.png "Add from violations page")-->
+    ![Add from violations page](images/new-allowed-sql-statement.png "Add from violations page")
 
 9. Return to **Database Actions** as `APP_USER` and run the newly-allowed SQL statement to test that it will run successfully.
 
@@ -274,6 +274,6 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 1, 2026
+- **Last Updated By/Date** - Jody Glover, February 2, 2026
 
 

@@ -154,15 +154,15 @@ Set `SALARY` to be a fixed number, such as 50000.
 
     The **Edit format entry** panel opens. 
 
-3. From the **Masking format entry** dropdown list, select **Fixed Number**. 
+3. From the **Masking format entry** dropdown list, select **Fixed Number**. You can modify the existing masking format.
 
-4. Select **Add Format entry**. In the **Fixed number** box, enter **50000**. Remove the first format entry.
+4. In the **Fixed number** box, enter **50000**.
 
     ![Edit masking format page](images/edit-masking-format-page.png "Edit masking format page")
 
 5. Select **Update**.
 
-6. Under **Masking columns**, from the **Actions** menu, select **Save masking formats**.
+6. Under **Masking columns**, from the **Actions** menu, select **Save masking formats**. Wait for the format to save and show as **FIXED_NUMBER**.
   
 
 ## Task 5: Create a group mask
@@ -263,6 +263,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 3. Select the **Masked columns** tab and review the masked sensitive columns.
 
     - This table lists each masked sensitive column and its respective schema, table, masking format, sensitive type, parent column, and total number of masked values.
+    - If a sensitive column doesn't have a masking format associated with it, a dash is shown in the masking format column.
 
     ![Masking report Masked columns tab](images/masking-report-masked-columns-tab.png "Masking report Masked columns tab")
 
@@ -300,4 +301,4 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 31, 2026
+- **Last Updated By/Date** - Jody Glover, February 2, 2026
