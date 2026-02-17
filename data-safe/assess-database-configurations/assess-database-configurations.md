@@ -213,7 +213,7 @@ In this task, you manually create a new configuration risk on your database by i
 
 ## Task 7: Compare your assessment with the baseline
 
-1. Select the **Compare with baseline** tab.
+1. Select the **Compare with baseline** tab. If the baseline is not listed, refresh your browser.
 
 2. Select **View comparison report**.
 

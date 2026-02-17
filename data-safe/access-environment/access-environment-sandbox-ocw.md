@@ -78,7 +78,7 @@ A database registered with Oracle Data Safe is referred to as a *target database
 
     The **Overview** page opens. On this page, you can register target databases; learn about Oracle Data Safe features, Oracle Data Safe private endpoints, and Oracle Data Safe on-premises connectors; and access documentation.
 
-2. Under **Data Safe - Database Security** on the left, select and review the landing pages for each feature covered in this workshop: **Security assessment**, **User assessment**, **Data discovery**, **Data masking**, **Activity auditing**, **SQL Firewall**, and **Alerts**.
+2. Under **Data Safe - Database Security** on the left, select and review the landing pages for each feature covered in this workshop: **Security assessment**, **User assessment**, **Data discovery**, **Data masking**, and **SQL Firewall**.
 
     - From here on in, we simply say *Navigate to a feature's landing page* to simplify the instructions.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you.
@@ -124,4 +124,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 8, 2026
+- **Last Updated By/Date** - Jody Glover, February 9, 2026

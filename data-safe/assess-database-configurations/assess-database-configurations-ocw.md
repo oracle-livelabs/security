@@ -80,7 +80,7 @@ This lab assumes you have:
 
     ![Security Assessment filters](images/sa-filters.png "Security Assessment filters")
 
-9. Expand a finding (the expand arrow is to the left of the risk level) and review the information.
+9. Expand a finding (the expand arrow is to the left of the risk level) and review the information. Remove any filters after you are done.
 
     - For each finding, there is a brief overview of the finding, a summary of what Oracle Data Safe found on your target database, details about the finding on your target database, remarks to help you to mitigate the risk, and references for Center for Internet Security (**CIS Benchmark**), Security Technical Implementation Guide (**DISA STIG**), European Union's General Data Protection Regulation (**EU GDPR**), and/or **Oracle recommended practices**. These references make it easy for you to identify the recommended security controls.
     - In the example below, the **Transparent Data Encryption** finding has three references: **DISA STIG**, **EU GDPR**, and **Oracle recommended practices**.
@@ -156,7 +156,7 @@ In this task, you manually create a new configuration risk on your database by i
 
 ## Task 5: Compare your assessment with the baseline
 
-1. Select the **Compare with baseline** tab.
+1. Select the **Compare with baseline** tab. If the baseline is not listed, refresh your browser.
 
 2. Select **View comparison report**.
 
