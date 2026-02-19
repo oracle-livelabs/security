@@ -14,7 +14,7 @@ In this lab, you will:
 
 - View your LiveLabs reservation information and sign in
 - Access Oracle Data Safe and view your registered target database
-- (Optional) Explore Security Center
+- (Optional) Explore the Oracle Data Safe user interface
 - Access ORACLE Database Actions
 
 
