@@ -62,14 +62,14 @@
       "type": "green"
     },
     {
-      "title": "Lab 8: Ensure reliable data access during connectivity disruptions",
+      "title": "Lab 8: Ensure reliable data access during disruptions in connectivity between the database and Oracle Key Vault",
       "description": "See how OKVs secure persistent cache keeps your databases running",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab8.md",
       "type": "green"
     },
     {
-      "title": "Lab 9: Enhance security with key management in vulnerable environments",
+      "title": "Lab 9: Restrict key exposure in target environments (like P2T clones)",
       "description": "Learn how OKV can restrict access of your keys to environments with lower security controls",
       "publisheddate": "10/01/2025",
       "filename": "../../key-vault/key-vault-Lab9.md",

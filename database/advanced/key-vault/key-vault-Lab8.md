@@ -1,4 +1,4 @@
-# Ensure reliable data access during connectivity disruptions
+# Ensure reliable data access during disruptions in connectivity between the database and Oracle Key Vault
 
 ## Introduction
 Oracle Key Vault cluster deployment ensures continuous availability during server failures, but connectivity disruptions may still pose a problem. How do you handle network disruptions between your databases and the Key Vault cluster? Key Vault's secure persistent cache ensures your databases continue operating smoothly, even during connectivity issues. 

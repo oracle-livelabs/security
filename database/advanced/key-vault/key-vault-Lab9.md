@@ -1,4 +1,4 @@
-# Enhance security with key management in vulnerable environments
+# Restrict key exposure in target environments (like P2T clones)
 
 ## Introduction
 You may need to share data with environments operating under lower security controls, such as when cloning a PDB from production to test (P2T). It is crucial to ensure that TDE master encryption keys are never exposed, downloaded, or cached in these environments. To enhance security, mark these keys as non-extractable in Oracle Key Vault.
