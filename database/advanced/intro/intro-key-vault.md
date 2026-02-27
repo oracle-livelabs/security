@@ -38,6 +38,6 @@ The entire DB Security PMs team wishes you an excellent workshop!
 You may now [proceed to the next lab](#next).
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
-- **Contributors** - Peter Wahl, Rahil Mir, Shubham Goyal
-- **Last Updated By/Date** - Shubham Goyal, Database Security PM - October 2025
+- **Author** - Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - October 2025

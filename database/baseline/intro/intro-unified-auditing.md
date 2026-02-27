@@ -40,4 +40,4 @@ You may now [proceed to the next lab](#next)
 
 ## Acknowledgements
 - **Author** - Angeline Dhanarani, Database Security PM
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - November 2024
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - January 2026

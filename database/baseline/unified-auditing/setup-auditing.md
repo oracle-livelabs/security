@@ -113,4 +113,4 @@ Video:
 ## Acknowledgements
 - **Author** - Angeline Dhanarani, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - November 2024
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - January 2026

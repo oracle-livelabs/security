@@ -181,4 +181,4 @@ You may now **proceed to the next lab**.
 
 * **Author** - Hakim Loumi, Database Security PM
 * **Contributors** - Rene Fontcha, Master Principal Solutions Architect, NA Technology
-* **Last Updated By/Date** - Kajal Singh, Database Security PM - January 2025
+* **Last Updated By/Date** - Shubham Goyal - November 2025
