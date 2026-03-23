@@ -41,7 +41,7 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
     - Drilldown into the bar showing **Risky privilege grants to PUBLIC** 
         ![AVDF](./images/360-1b.png "AVDF - Security Insights - System privileges")
 
-    **Note**: Targets **sales_history** and **customer_orders** have system privileges/ roles granted to PUBLIC. Any privilege assigned to PUBLIC is effectively given to everyone, often far beyond what is necessary. It is safer to assign roles and privileges explicitly to specific users or groups based on well-defined requirements.
+    **Note**: Targets **Sales_history** and **Customer_orders** have system privileges/ roles granted to PUBLIC. Any privilege assigned to PUBLIC is effectively given to everyone, often far beyond what is necessary. It is safer to assign roles and privileges explicitly to specific users or groups based on well-defined requirements.
 
      - Click [**Security Insights**] to go back to the console.
 
@@ -119,9 +119,9 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
 3.  Drilldown into the bar showing privileged users **Access to DV protected objects**
     ![AVDF](./images/360-2.png "AVDF - Retrieval Jobs")  
 
-     **Note**: Database Administrators **DBA_DEBRA** and **DBA_HARVEY** have access to the sensitive objects in the protected realms of **Customer Orders** pdb. Auditing is all the more important when privileged users can access sensitive objects, given the heightened risk of data exposure.
+     **Note**: Database Administrators **DBA_DEBRA** and **DBA_HARVEY** have access to the sensitive objects in the protected realms of **Customer_orders** pdb. Auditing is all the more important when privileged users can access sensitive objects, given the heightened risk of data exposure.
 
-### Step 2: Assess the sensitive data exposure risk within the Oracle Database
+### Step 3: Assess the sensitive data exposure risk within the Oracle Database
 
 
 1.  Review the sensitive data access not audited under **Data discovery summary**
@@ -130,7 +130,7 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
 2.  Drilldown into the bar showing sensitive data whose **Access not audited** 
     ![AVDF](./images/360-4.png "AVDF - Security Insights - Data discovery - Access not audited")
 
-**Note**: Access to sensitive data in **employees_search** and **customer_orders** pdbs are not audited. Ensuring proper visibility and governance over who can access sensitive data helps minimize risk, enforce accountability, and protect high-value information.
+**Note**: Access to sensitive data in **Employees_search** and **Customer_orders** pdbs are not audited. Ensuring proper visibility and governance over who can access sensitive data helps minimize risk, enforce accountability, and protect high-value information.
 
 3. Go back to the **Security Insights** console, and drilldown into sensitive data **Exposed to privileged users**
     ![AVDF](./images/360-4a.png "AVDF - Security Insights - Data discovery - Access not protected")
@@ -139,7 +139,7 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
 
 4. Go back to the **Security Insights** console 
 
-### Step 2: Review the data retrieval jobs that power these insights 
+### Step 4: Review the data retrieval jobs that power these insights 
 
 1. Go to the **Targets** tab
 
@@ -149,8 +149,9 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
  **Note**: When a target is registered, AVDF automatically runs retrieval jobs for security assessment, user assessment and sensitive data discovery. You can consider scheduling periodic runs of these jobs to factor in changes. In this livelab instance, we have automated daily retrieval jobs.
 
 ## Task 2: Review your sensitive data landscape
+
 Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identify database objects—such as tables and views—that store confidential information including PII, financial data, and health records. It organizes findings into sensitive categories, helping teams to quickly spot what kind of data is exposed to more risk. Within these categories, sensitive types define the specific detection patterns used to accurately identify particular kinds of sensitive data. The dashboard surfaces key insights such as discovery summaries, top targets by sensitive values, and distribution of sensitive data across the fleet by category and type. Together, these capabilities enable security teams to quickly assess exposure, prioritize mitigation efforts, and strengthen overall data protection posture.
----------------------
+
 ### Step 1: Assess the sensitive data landscape
 
 1. Click on the **Discover & Classify** tab
@@ -164,6 +165,7 @@ Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identi
     **Note**: Pluggable databases **employees_search** and **customer_orders** contain a high concentration of sensitive data; therefore, we should prioritize implementing strong access controls to secure and govern access.
 
 ## Task 3: Review your security policy landscape
+The unified security policy console provides a centralized interface to define, manage, and enforce policies across the entire fleet. This streamlined console helps ensure consistent protection across the fleet and enables to identify potential gaps in policy enforcement.
 
 ### Step 1: Assess the unified security policy  console
 
@@ -173,13 +175,12 @@ Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identi
 
     ![AVDF](./images/360-6.png "AVDF - Policy console")
 
-    **Note**: The unified security policy console provides a centralized interface to define, manage, and enforce policies across the entire fleet. This streamlined console helps ensure consistent protection across the fleet and enables to identify potential gaps in policy enforcement.
 
 3. Review the policies deployed on Oracle databases
     
     ![AVDF](./images/360-6.png "AVDF - Policy console")
 
-      - Click on **Audit** bar which shows non-zero audit configurations
+    - Click on **Audit** bar which shows non-zero audit configurations
     
 4. Drilldown and filter to see the audit policies enabled for **employees_search**
 
@@ -187,7 +188,7 @@ Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identi
 
   **Note**: The list contains the audit configuration enabled by default in the Oracle Database. 
 
-     - Go back to **Policy Console**
+    - Go back to **Policy Console**
 
 ### Step 2: Review the retrieval schedule for Oracle Database targets
 
@@ -220,7 +221,7 @@ Global set represents predefined collection of entities such as IP addresses, da
 
     **Note** This sensitive object set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
 
-### Step 2: Review the global **Privileged User Sets**
+### Step 3: Review the global **Privileged User Sets**
 
 1. Click the set **Database Administrators** to see the database administrators assigned in this group
     ![AVDF](./images/360-9c.png "AVDF - Privilege User Sets")
