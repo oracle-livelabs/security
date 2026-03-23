@@ -1,11 +1,17 @@
 # Oracle Audit Vault and DB Firewall (AVDF)
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Audit Vault and DB Firewall (AVDF). It gives the user an opportunity to learn how to configure those appliances in order to audit, monitor and protect access to sensitive data.
+As a security administrator, your mission is to protect and monitor a growing fleet of Oracle databases—ensuring both operational efficiency and data security. This workshop introduces you to multiple pre-seeded Pluggable Databases (PDBs), including **employees_search** and **customer_orders**, and demonstrates how AVDF empowers you to manage and secure a database fleet at scale.
 
-*Estimated Lab Time:* 110 minutes
+**Employees_search PDB** powers the company’s in-house self-service HR application, giving employees access to sensitive personal and salary information. Its integrity, availability, and security are critical to maintaining trust and operational continuity.
 
-*Version tested in this lab:* Oracle AVDF 20.13
+**Customer_orders PDB** supports the company’s client-facing order management application, containing sensitive customer data such as order, billing, shipping, and payment information. Ensuring its accuracy, availability, and security is essential for customer satisfaction, business continuity, and commercial success.
+
+Through this workshop, you’ll gain hands-on experience in using AVDF to monitor, protect, and manage these databases, arming you with the tools and insights to secure a real-world database fleet efficiently and confidently.
+
+*Estimated Lab Time:* 90 minutes
+
+*Version tested in this lab:* Oracle AVDF NextGen
 
 ### Video Preview
 
@@ -13,14 +19,10 @@ Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](yo
 
 
 ### Objectives
-- Assess the security posture of the registered Oracle database targets
-- Set a baseline and detect drift of the security configuration
-- Discover sensitive data
-- Configure the auditing for the Oracle database
-- Explore the interactive reporting capabilities, including user entitlement
-- Simply compliance with pre-defined reports, including activity on sensitive data
-- Train the DBFW for the authorized application query and prevent the SQL injection
-
+- Assess your database: risks, users, and data of the registered Oracle database targets
+- Establish visibility first: audit and monitor
+- Protect and Prevent: enforce controls
+- Continuous vigilance: report and alert
 
 ### Prerequisites
 This lab assumes you have:
@@ -36,16 +38,15 @@ This lab assumes you have:
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
 || **AVDF Labs**||
-|04| Reset the password | <5 minutes|
-|05| Assess and Discover | 20 minutes|
-|06| Audit and Monitor | 20 minutes|
-|07| Report and Alert | 20 minutes|
-|08| Protect and Prevent | 20 minutes|
+|04| Access AVDF console | <5 minutes|
+|05| Assess your database: risks, users, and data | 20 minutes|
+|06| Establish visibility first: audit and monitor | 20 minutes|
+|07| Protect and Prevent: enforce controls | 20 minutes|
+|08| Continuous vigilance: report and alert | 20 minutes|
 || **Optional**||
-|09| Advanced features configuration | 25 minutes|
-|10| Reset the AVDF labs config | <5 minutes|
+|09| Reset the AVDF labs config | <5 minutes|
 
-## Lab 4: Reset the randomly generated password
+## Lab 4: Access AVDF console
 
 You have been given a randomly generated password for the *`AVADMIN`* and *`AVAUDITOR`* user login for the AV console. When you log into the AV console for the first time using these users, you will be asked to change the password.
 

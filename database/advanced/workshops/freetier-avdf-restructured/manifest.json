@@ -33,10 +33,10 @@
       "filename": "../../../common/init-start-env/init-start-env-gf-prod.md"
     },
     {
-      "title": "Lab 4: Reset the randomly generated password",
+      "title": "Lab 4: Getting started",
       "description": "In this lab you will learn how to reset the ranndomly generated password in Oracle Audit Vault and DB Firewall (AVDF)",
       "publisheddate": "10/20/2020",
-      "filename": "../../avdf-restructured/reset-password.md"
+      "filename": "../../avdf-restructured/getting-started.md"
     },
     {
       "title": "Lab 5: Assess and Discover",

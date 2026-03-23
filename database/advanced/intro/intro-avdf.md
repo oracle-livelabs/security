@@ -2,11 +2,13 @@
 
 ## About this Workshop
 ### Overview
-*Estimated Time to complete the workshop*: 150 minutes
+*Estimated Time to complete the workshop*: 90 minutes
 
-This workshop environment is dedicated to Oracle Database Security features and functionalities.
+Oracle Audit Vault and Database Firewall (AVDF) is a single security control center with unified policy management for Audit, Database Vault, Database Firewall, SQL Firewall, and Alerts. It strengthens fleet posture by discovering sensitive data, assessing database configurations, and risk‑scoring user privileges. Security Insights correlates these signals to expose gaps and prioritize fixes, while GenAI assistance accelerates everyday tasks—from “how-to” setup guidance to optimizing alert policies to reduce false positives.
 
-Based on an OCI architecture, deployed in a few minutes with a simple internet connection, it allows you to test DB Security use cases in a complete environment already pre-configured by the Oracle Database Security Product Manager Team.
+This workshop environment is dedicated to Oracle Database Security features and functionalities. In this workshop, you as a security administrator are tasked with improving the security posture of a growing fleet of Oracle databases, containing sensitive data. You understand the importance of securing the organization's sensitive data but lack deep experience in database security management. You are unsure where to start. The goal is to establish a comprehensive monitoring and security framework that ensures only authorized access to critical data, while minimizing risk and preventing potential breaches, and spotting abnormal access patterns. 
+
+Based on an OCI architecture, deployed in a few minutes with a simple internet connection, it allows you to experience AVDF use cases in a complete environment already pre-configured by the Oracle Database Security Product Manager Team.
 
 Now, you no longer need important resources on your PC (storage, CPU or memory), nor complex tools to master, making you completely autonomous to discover at your rhythm all new DB Security features.
 
@@ -41,6 +43,6 @@ The entire DB Security PMs Team wishes you an excellent workshop!
 You may now [proceed to the next lab](#next).
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
+- **Author** - Angeline Dhanarani, Database Security PM
 - **Contributors** - Angeline Dhanarani, Nazia Zaidi, Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - January 2024
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - March 2026
