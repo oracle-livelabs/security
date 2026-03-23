@@ -201,7 +201,7 @@ The unified security policy console provides a centralized interface to define, 
 
 3. Click Cancel to go back to **Policy Console**
 
-## Task 3: Review and leverage global sets 
+## Task 4: Review and leverage global sets 
 
 Global set represents predefined collection of entities such as IP addresses, database users, OS users, client programs, database roles, sensitive schemas, privileged users, and sensitive objects, that can be centrally managed and reused across multiple policies and reports. This approach streamlines policy management, ensures consistency, and simplifies updates across the system.
 
@@ -216,14 +216,14 @@ Global set represents predefined collection of entities such as IP addresses, da
 
 ### Step 2: Review the global **Sensitive Object Sets**
 
-1. Click the set **EmployeeSearchSensitiveApplicationObjects** to see the sensitive objects assigned
+Click the set **EmployeeSearchSensitiveApplicationObjects** to see the sensitive objects assigned
     ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets")
 
     **Note** This sensitive object set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
 
 ### Step 3: Review the global **Privileged User Sets**
 
-1. Click the set **Database Administrators** to see the database administrators assigned in this group
+Click the set **Database Administrators** to see the database administrators assigned in this group
     ![AVDF](./images/360-9c.png "AVDF - Privilege User Sets")
 
     **Note** This privileged user set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
@@ -234,11 +234,11 @@ Global set represents predefined collection of entities such as IP addresses, da
 >>    - How to assess the security configuration risks of Oracle database, and make sure they are mitigated
 >>    - How to discover potentially risky users in the system by virtue of their broad entitlements which can be misused or abused.
 >>    - How to identify sensitive objects in the landscape and focus your mitigation efforts
->>.   - How you can take advantage of global sets to streamline policy management, ensure consistency, and simplifu updates across the system.
+>>    - How you can take advantage of global sets to streamline policy management, ensure consistency, and simplify updates across the system.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-- **Author** - Angeline Dhanarani, Audit Vault and Databse Firewall - Product Manager
-- **Contributors** - Angeline Dhanarani, Database Security - Product Manager
-- **Last Updated By/Date** - Angeline Dhanarani, Audit Vault and Databse Firewall - Product Manager - April 2026
+- **Author** - Angeline Dhanarani, Database Security - Product Manager
+- **Contributors** - Nazia Zaidi, Database Security - Product Manager
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - April 2026

@@ -1,11 +1,13 @@
-# Oracle Audit Vault and DB Firewall (AVDF)
+# Establish visibility first: audit and monitor
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Audit Vault and DB Firewall (AVDF). It gives the user an opportunity to learn how to configure those appliances in order to audit, monitor and protect access to sensitive data.
+Now that you have the necessary insights, you begin by configuring activity monitoring, followed by implementing preventive controls.
+The **employees_search pdb** supporting internal self-service applications contains a high volume of sensitive data and is accessible to privileged users, making insider threat mitigation the top priority. You enable auditing to track security-relevant events, privileged user activity, and access to sensitive data.
+For the **customer_orders pdb**, the primary focus is mitigating external threats and demonstrating compliance (e.g., CIS). You enable auditing for system configuration changes, critical database activity, and schema changes, and additionally provision user activity and CIS compliance policies.
 
-*Estimated Lab Time:* 110 minutes
+*Estimated Lab Time:* 30 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.13
+*Version tested in this lab:* Oracle AVDF Next Gen
 
 ### Video Preview
 
@@ -13,166 +15,193 @@ Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](yo
 
 
 ### Objectives
-- Assess the security posture of the registered Oracle database targets
-- Set a baseline and detect drift of the security configuration
-- Discover sensitive data
-- Configure the auditing for the Oracle database
-- Explore the interactive reporting capabilities, including user entitlement
-- Simply compliance with pre-defined reports, including activity on sensitive data
-- Train the DBFW for the authorized application query and prevent the SQL injection
+- Configure database activity monitoring with audit
+- Pro-actively monitor actionable audit events with alerts
 
 
-### Prerequisites
-This lab assumes you have:
-- A Free Tier, Paid or LiveLabs Oracle Cloud account
-- You have completed:
-    - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
-    - Lab: Environment Setup
-    - Lab: Initialize Environment
+## Task 1: Configure database activity monitoring with audit
 
-### Lab Timing (estimated)
+AVDF enables comprehensive database activity monitoring by collecting and aggregating audit data, along with network-based monitoring of SQL traffic. For Oracle Database, it provides centralized capabilities to manage and provision audit policies, ensuring consistent monitoring, improved visibility, and stronger security governance across the database environment.
 
+### Step 1: Ensure audit trails are configured for Oracle databases 
 
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-|| **AVDF Labs**||
-|04| Reset the password | <5 minutes|
-|05| Assess and Discover | 20 minutes|
-|06| Audit and Monitor | 20 minutes|
-|07| Report and Alert | 20 minutes|
-|08| Protect and Prevent | 20 minutes|
-|| **Optional**||
-|09| Advanced features configuration | 25 minutes|
-|10| Reset the AVDF labs config | <5 minutes|
-
-## Lab 6: Audit and Monitor
-
-AVDF gives you visibility into database activity by collecting and aggregating audit data and network-based monitoring of SQL statements for the most popular relational databases. For Oracle databases, users can centrally manage and provision audit policies from AVDF.
-
-In this lab, we will do the following
-- Provision audit policy from AVDF on Oracle database
-- Retrieve and monitor user entitlements
-
-### Step 1: Manage and Provision audit policy from AVDF for Oracle databases pdb1 and pdb2
-
-We have already configured the audit trail for the databases pdb1 and pdb2.
-
-To showcase AVDF capabilities, we use **agent-based audit collection for pdb1** and **agentless collection for pdb2**.
+**Note** In the livelab, we have already configured the audit trail for the Oracle databases. We used **agent-based audit collection for pdb1** and **agentless collection for pdb2**.
 
 You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** login)
 
 ![AVDF](./images/avdf-551.png "Audit Trail")
 
-You will retrieve and provision the Unified Audit settings for the **pdb1** pluggable database
+**Notes** Ensure the **UNIFIED_AUDIT_TRAIL** table audit trails are either in **Collecting** or in **Idle** state
 
-1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
+### Step 2: Retrieve and provision the Unified audit policies for **Employees_search** pdb
+
+
+1. Go to Audit Vault Web Console as *`AVAUDITOR`*
 
     ![AVDF](./images/avdf-300.png "AVDF - Login")
 
-2. Click on the **Targets** tab
+2. Click on the **Policies** tab, and **Audit Policies** in the left menu
+    ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 
-3. Click on **Schedule Retrieval Jobs** on **pdb1**
+    **Note**: If the **Last Retrieved time** is *Never*, select the **Employees_search** pdb and click **Retrieve policies** to retrieve the latest from the database.You can schedule the periodical retrieval following *Lab5->Task3->Step2*.
 
-    ![AVDF](./images/avdf-501.png "Schedule Retrieval Jobs")
+3. Click on **Employees_search** pdb to review the policies enabled
+    ![AVDF](./images/360-12.png "AVDF - Audit Policies for Employees Search pdb")
 
-4. On the target screen, under **Audit Policy** perform the following:
-    - Checkbox *Retrieve Immediately*
-    - Checkbox *Create/Update Schedule*
-    - Change the **Schedule** radio button to *Enable*
-    - Set **Repeat Every** to *1 Days*
-    - Then, click [**Save**] to save and continue
+    **Note**: We have enabled few audit policies like **System Configuration Changes**, **Critical Database Activity**, and **Database Schema changes** in the terraform for the livelab instance. 
 
-     ![AVDF](./images/avdf-552.png "Audit Policy")
+4. Provision the audit policy to track **privileged user activity**
+    - Expand **User Actions**
+    - Click **User Activity**
+    - Leave the default policy enable condition pick the privileged users identified by User Assessment
+        ![AVDF](./images/360-13.png "AVDF - User Activity Policy enable condition")
+    - Click **Enable** and review to see the status as **Enabled** in the policies page
 
-    **Note**: By default, retreival job has been already scheduled for **pdb2** during the deployment
+5. Next, provision the audit policy to track **sensitive data access**
+    - Expand **Data access**
+    - Click **Sensitive Data Access Monitoring**
+    - Unselect checkbox **Audit SELECT operations**
+    - Ensure this is checked **Sensitive objects discovered by sensitive data discovery**
+        ![AVDF](./images/360-14.png "AVDF - Sensitive Data Access Monitoring Policy")
+    - Enable policies for all users except Application service account (EMPLOYEESEARCH_PROD)
+         ![AVDF](./images/360-15.png "AVDF - Sensitive Data Access Monitoring Policy condition")
+         - Click **Add Row**, select **User** as Type, and enter **EMPLOYEESEARCH_PROD**
+    - Click **Enable** and review to see the status as **Enabled** in the policies page
 
-5. Next, provision the audit policy for **pdb1**
-    - Click on the **Policies** tab and you will be placed on the **Audit Policies** page
-    - Click on the Target Name **pdb1**
-    - On this screen, you will see two tabs, "Unified Auditing" and "Traditional Auditing"
-    - In this lab we are using **Unified Auditing** tab, so go to the **Core Policies** section and ensure the following options are checkmarked
-        - *`Critical Database Activity`*
-        - *`Database Schema Changes`*
-        - *`All Admin Activity`*
-        - *`Center for Internet Security (CIS) Configuration`*
+6. Go back to **Audit Policies** 
+### Step 3: Retrieve and provision the Unified audit policies for **Customer_orders** pdb
 
-            ![AVDF](./images/avdf-012.png "View the audit policy reports")
+1. Click on **customer_orders** pdb to review the policies enabled
+    ![AVDF](./images/360-12.png "AVDF - Audit Policies for customer orders pdb")
 
-    - Click [**Provision Unified Policy**]
+    **Note**: We have enabled few audit policies like **System Configuration Changes**, **Critical Database Activity**, and **Database Schema changes** in the terraform for the livelab instance. 
 
+2. Provision the audit policy to track **privileged user activity**
+    - Expand **User Actions**
+    - Click **User Activity**
+    - Leave the default policy enable condition pick the privileged users identified by User Assessment
+        ![AVDF](./images/360-13.png "AVDF - User Activity Policy enable condition")
+    - Click **Enable** and review to see the status as **Enabled** in the policies page
 
+3. Provision the audit policy to help comply with CIS
+    - Expand **Compliance**
+    - Select **Center for Internet Security (CIS) Configuration** and click **Enable**
+        ![AVDF](./images/360-16.png "AVDF - CIS Audit policy")
 
-6. Verify the job completed successfully
-    - Click on the **Settings** tab
+6. Go back to **Audit Policies** and review the policy count for **employee_search** and **customer_orders** pdb
+      ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
+
+### Step 4: Ensure the audit policy provisioning jobs succeeds, and policies enabled on the target
+
+1. Click on the **Settings** tab
     - Click on the **Jobs** section on the left menu bar
-    - You should see at least one **Job Type** that says **Unified Audit Policy**
+    - You should see at least one **Job Type** that says **Provision Audit Policies**
 
         ![AVDF](./images/avdf-553.png "Verify the job completed successfully")
 
-    - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **pdb1**
+    - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **employees_search** and **customer_orders**
 
-7. Repeat the steps 5 and 6 for **pdb2** as well
+2. Ensure the Unified Audit policies are enabled on the target using **SQL*Plus**
 
-8. The next thing you can do is check which Unified Audit Policies exist and which Unified Audit Policies are enabled by using **SQL*Plus**
-
-    - Go back to your terminal session and list **ALL** the Unified Audit Policies in **pdb1**
+    - Go back to your terminal session and show the **enabled** Unified Audit policies in **employee_search** 
 
         ````
-        <copy>./avs_query_all_unified_policies.sh pdb1</copy>
-        ````
-
-        ![AVDF](./images/avdf-014.png "List all the Unified Audit Policies")
-
-    - Next, show the **enabled** Unified Audit policies
-
-        ````
-        <copy>./avs_query_enabled_unified_policies.sh pdb1</copy>
+        <copy>./avs_query_enabled_unified_policies.sh freepdb1</copy>
         ````
 
         ![AVDF](./images/avdf-015.png "Show the enabled Unified Audit policies")
+**Note** Repeat the query for **customer_orders** pdb and re-confirm
 
-9. If you want, you can re-do the previous steps and make changes to the Unified Audit Policies. For example, don't enable the **Center for Internet Security (CIS) Configuration** and re-run the two shell scripts to see what changes!
+## Task 2: Pro-actively monitor actionable audit events with alerts
 
-### Step 2: Retrieve and monitor user entitlements
+### Step 1: Provision alert policy for account management operations
 
-1. Go back to the Home tab (Do not logout in stay logged as *`AVAUDITOR`*)
 
-2. Click on the **Targets** tab
+1. Click on the **Policies** tab
 
-3. Click on **Schedule Retrieval Jobs** for **pdb1**
+2. Create the alter policy "**Alert whenever there is a user created, dropped or altered**"
 
-4. Under **User Entitlements**
-    - Checkbox *Retrieve Immediately*
-    - Checkbox *Create/Update Schedule*
-    - Change the **Schedule** radio button to *Enable*
-    - Set **Repeat Every** to *1 Days*
-    - Click [**Save**] to save and continue
+    - Click on the **Policies** tab
 
-    ![AVDF](./images/avdf-016.png "User Entitlements")
+    - Click the **Alert Policies** sub-menu on left
 
-    **Note**: By default, retreival job has been already scheduled for **pdb2** during the deployment
+    - Click [**Create**]
 
-5. Click on the **Reports** tab
+    - Enter the following information for our new **Alert**
 
-6. Scroll down and expand the **Entitlement Reports** section
+        - Alert policy name: *`User creation/modification`*
+        - Description: *`Alert when the user is created, dropped, or altered`*
+        - Target type: *`Oracle Database`*
+        - Severity: *`Warning`*
+        - Condition: Click on **"Copy conditions from examples"** and copy condition **"User creation/modification"**
+            
+            ![AVDF](./images/avdf-651.png "Copy Alerts")
+    
+        - Threshold (times): *`1`*
 
-    ![AVDF](./images/avdf-017.png "Entitlement Reports")
+        **Note:** You can also enable email notification for the alerts
+        - Click on **Configure email notification** and provide email address
+        - **You need to have SMTP server** configured for the email notification
 
-7. Click on the **User Accounts** report
-    - Under **Target Name**, select *`All`*
-    - For **Label**, select *`Latest`*
-    - Click [**Go**] and you will see a report that looks like this
+    - Your Alert should look like this.
 
-        ![AVDF](./images/avdf-018.png "User Accounts")
+        ![AVDF](./images/avdf-652.png "AVDF Alerts")
+
+    - Click [**Save**]
+
+        **Note:** Your Alert is automatically started!
+
+           ![AVDF](./images/avdf-653.png "Confirm creation")
+
+    **Note:** You can also create alert using global sets. 
+
+3. Go back to your terminal session on DBSeclab VM and create users within the **employees_search** and **customer_orders** pluggable databases
+
+    ````
+    <copy>
+    ./avs_create_users.sh freepdb1
+    ./avs_create_users.sh cust1
+    </copy>
+    ````
+
+    ![AVDF](./images/avdf-045.png "Create users")
+
+    Run another script to drop the users we created in the previous script
+
+    ````
+    <copy>
+    ./avs_drop_users.sh freepdb1
+    ./avs_drop_users.sh cust1
+    </copy>
+    ````
+
+    ![AVDF](./images/avdf-048.png "Drop the users just created")
+
+### Step 1: Review the alerts generated
+
+3. Click on **Alerts** tab
+
+4. View the Alerts that have occurred related to our user creation SQL commands
+
+    ![AVDF](./images/avdf-654.png "View the alerts")
+
+    **Note**: If you don't see them, refresh the page because the system catch the alerts every minute
+
+5. Click on the details of one of the alerts
+
+    ![AVDF](./images/avdf-655.png "View an alert")
+
+    **Note**: Once you understand how to create an alert, feel free to create another and test it manually
+
 
 > #### What did we learn in this lab
 >
 >>- How to provision audit policy from AVDF on Oracle database
->>- How to schedule and monitor user entitlement
+>>- How to pro-actively monitor actionable audit events with alerts
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-- **Author** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager
-- **Contributors** - Hakim Loumi - Hakim Loumi, Database Security - Product Manager
-- **Last Updated By/Date** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager - November 2024
+- **Author** - Angeline Dhanarani, Database Security- Product Manager
+- **Contributors** - Nazia Zaidi, Database Security - Product Manager
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - April 2026
