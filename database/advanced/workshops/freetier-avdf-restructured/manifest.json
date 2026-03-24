@@ -51,25 +51,19 @@
       "filename": "../../avdf-restructured/audit-monitor.md"
     },
     {
-      "title": "Lab 7: Report and Alert",
-      "description": "In this lab you will learn how to Report and set Alerts in Oracle Audit Vault and DB Firewall (AVDF)",
-      "publisheddate": "10/20/2020",
-      "filename": "../../avdf-restructured/report-alert.md"
-    },
-    {
-      "title": "Lab 8: Protect and Prevent",
+      "title": "Lab 7: Protect and Prevent",
       "description": "In this lab you will learn how to Protect and Prevent in Oracle Audit Vault and DB Firewall (AVDF)",
       "publisheddate": "10/20/2020",
       "filename": "../../avdf-restructured/protect-prevent.md"
     },
     {
-      "title": "Lab 9: Advanced features configuration (optional)",
-      "description": "In this lab you can learn more about advanced configurations in Oracle Audit Vault and DB Firewall (AVDF)",
+      "title": "Lab 8: Report and Alert",
+      "description": "In this lab you will learn how to Report and set Alerts in Oracle Audit Vault and DB Firewall (AVDF)",
       "publisheddate": "10/20/2020",
-      "filename": "../../avdf-restructured/advanced-features.md"
+      "filename": "../../avdf-restructured/report-alert.md"
     },
     {
-      "title": "Lab 10: Reset the AVDF lab configuration",
+      "title": "Lab 9: Reset the AVDF lab configuration",
       "description": "In this lab you will reset the AVDF lab configuration",
       "publisheddate": "10/20/2020",
       "filename": "../../avdf-restructured/reset-config.md"
