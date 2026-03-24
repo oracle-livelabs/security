@@ -2,10 +2,10 @@
 
 ## Introduction
 Now that you have the necessary insights, you begin by configuring activity monitoring, followed by implementing preventive controls.
-The **employees_search pdb** supporting internal self-service applications contains a high volume of sensitive data and is accessible to privileged users, making insider threat mitigation the top priority. You enable auditing to track security-relevant events, privileged user activity, and access to sensitive data.
-For the **customer_orders pdb**, the primary focus is mitigating external threats and demonstrating compliance (e.g., CIS). You enable auditing for system configuration changes, critical database activity, and schema changes, and additionally provision user activity and CIS compliance policies.
+- The **Employees_search** pdb supports internal self-service applications, and contains a high volume of sensitive data and is accessible to privileged users, making insider threat mitigation the top priority. You enable auditing to track security-relevant events, privileged user activity, and access to sensitive data.
+- For the **Customer_orders** pdb, the primary focus is mitigating external threats and demonstrating compliance (e.g., CIS). You enable auditing for system configuration changes, critical database activity, and schema changes, and additionally provision user activity and CIS compliance policies.
 
-*Estimated Lab Time:* 30 minutes
+*Estimated Lab Time:* 20 minutes
 
 *Version tested in this lab:* Oracle AVDF Next Gen
 
@@ -88,7 +88,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
     - Select **Center for Internet Security (CIS) Configuration** and click **Enable**
         ![AVDF](./images/360-16.png "AVDF - CIS Audit policy")
 
-6. Go back to **Audit Policies** and review the policy count for **employee_search** and **customer_orders** pdb
+6. Go back to **Audit Policies** and review the policy count for **Employees_search** and **Customer_orders** pdb
       ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 
 ### Step 4: Ensure the audit policy provisioning jobs succeeds, and policies enabled on the target
@@ -99,7 +99,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 
         ![AVDF](./images/avdf-553.png "Verify the job completed successfully")
 
-    - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **employees_search** and **customer_orders**
+    - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **Employees_search** and **Customer_orders**
 
 2. Ensure the Unified Audit policies are enabled on the target using **SQL*Plus**
 
@@ -155,7 +155,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 
     **Note:** You can also create alert using global sets. 
 
-3. Go back to your terminal session on DBSeclab VM and create users within the **employees_search** and **customer_orders** pluggable databases
+3. Go back to your terminal session on DBSeclab VM and create users within the **Employees_search** and **Customer_orders** pluggable databases
 
     ````
     <copy>
@@ -177,17 +177,17 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 
     ![AVDF](./images/avdf-048.png "Drop the users just created")
 
-### Step 1: Review the alerts generated
+### Step 2: Review the alerts generated
 
-3. Click on **Alerts** tab
+1. Click on **Alerts** tab
 
-4. View the Alerts that have occurred related to our user creation SQL commands
+2. View the Alerts that have occurred related to our user creation SQL commands
 
     ![AVDF](./images/avdf-654.png "View the alerts")
 
     **Note**: If you don't see them, refresh the page because the system catch the alerts every minute
 
-5. Click on the details of one of the alerts
+3. Click on the details of one of the alerts
 
     ![AVDF](./images/avdf-655.png "View an alert")
 
