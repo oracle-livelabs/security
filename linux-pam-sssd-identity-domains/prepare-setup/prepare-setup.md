@@ -18,11 +18,11 @@ This lab assumes you have:
 - A *SSH key* pair. A single SSH Key pair to be used for both the servers (Make sure you have the .key and .pem formats of the private key available)
 
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file to Deploy 
-1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
+1.  Click on the links below to download the Resource Manager zip files, which you will need to build your environment:
 
-    - [Stack1-Deploy.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LIveLab/o/PAMStack1%20-%20Deploy.zip)
+    - [Stack1-Deploy.zip](https://github.com/gautamm2707/linux-pam-livelab/blob/main/Stack1%20-%20Deploy.zip)
 	
-	- [Stack2-Configure.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/id3kvohtwgjy/b/LIveLab/o/PAMStack2%20-%20Configure.zip)
+	- [Stack2-Configure.zip](https://github.com/gautamm2707/linux-pam-livelab/blob/main/Stack2%20-%20Configure.zip)
 
 2.  Save in your *downloads* folder.
 
@@ -68,4 +68,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
 * **Contributor** - Deepthi Shetty
-* **Last Updated By/Date** - Gautam Mishra July 2023
+* **Last Updated By/Date** - Gautam Mishra Mar 2026

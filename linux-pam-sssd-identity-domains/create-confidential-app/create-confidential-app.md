@@ -22,16 +22,14 @@ This module will also help you to create a confidential application under the ne
 2. On the page that gets loaded, please **reset your password** for your admin account under your newly created Domain.
 
 	![password-reset](./images/password-reset.jpg "password-reset")
+
+	![congratulations](./images/congratulations.jpg "congratulations")
 	
 3. Now, please try to login into your new Domain with the admin account you just completed the password reset.
 
 	![sign-in](./images/sign-in.jpg "sign-in")
 	
-4. After successful authentication you will land on the **My Console** page, click on the **OCI Console** Option from the menu to go to your **Infrastructure Console** screen
-
-	![myconsole](./images/myconsole.jpg "myconsole")
-	
-5. You should land on the below mentioned screen which gives you the details about your newly created Domain of the type - **Oracle Apps Premium**
+4. Navigate to Domain overview page, which gives you the details about your newly created Domain of the type - **Oracle Apps Premium**
 
 	![domain-overview](./images/domain-overview.jpg "domain-overview")
 
@@ -39,7 +37,7 @@ This module will also help you to create a confidential application under the ne
 
 We will register a Confidential Application under newly created OCI-IAM Domain with the allowed grants type **Client Credentials**
 
-1. Under your newly created **Identity Domain**, Copy the **Identity Domain URL** from the **Domain Information** section. Click on **Applications** from the navigation menu.
+1. Under your newly created **Identity Domain**, Copy the **Identity Domain URL** from the **Domain Information** section. Click on **Integrated Applications** from the navigation menu to **Add application**.
 
 	![domain-url](./images/domain-url.jpg "domain-url")
 
@@ -51,23 +49,19 @@ We will register a Confidential Application under newly created OCI-IAM Domain w
  
 	![create-confidential-application](./images/create-confidential-application.jpg "create-confidential-application")
 
-3. Add the Name to your application and then click of **Next**
+3. Add the Name to your application and then click of **Submit**.
 
 	![app-name](./images/app-name.jpg "app-name")
  
-4. Select **Client Credentials** as the Grant Type and then click on **Next**
+4. Navigate to **OAuth Configuration** and click **Edit OAuth Configuration** to select **Client Credentials** as the Grant Type.
 
 	![grant-type](./images/grant-type.jpg "grant-type")
 
-5. Select **Identity Domain Administrator** from **App Role** and **Add** it.
+5. Select **Identity Domain Administrator** from **App Role** and **Add** it. Then hit **Submit**.
 
 	![app-roles](./images/app-roles.jpg "app-roles")
 
-6. Finally click on **Finish** 
-
-	![finish](./images/finish.jpg "finish")
-
-6. Click on **Activate Application**
+6. Now **Activate** the Application under **Action**.
 
 	![activate](./images/activate.jpg "activate")
 
@@ -84,4 +78,4 @@ In this Lab, we activated the Admin user under your newly created Identity Domai
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
 * **Contributor** - Deepthi Shetty
-* **Last Updated By/Date** - Gautam Mishra July 2023
+* **Last Updated By/Date** - Gautam Mishra Mar 2026
