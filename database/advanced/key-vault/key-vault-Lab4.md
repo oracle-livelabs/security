@@ -49,3 +49,8 @@ The script will display the output:
 5. A list of encrypted RMAN backups
 
 ![Key Vault](./images/OKV-LL4-001e.png "A list of encrypted RMAN backups")
+
+## Acknowledgements
+- **Author** - Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - March 2026

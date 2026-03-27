@@ -95,3 +95,8 @@ This lab builds on concepts and operations from lab 10. Complete lab 10 first be
     ```
 
     ![Key Vault](./images/Screenshot_2025-10-08_12.12.47.png "Verify that the tablespace was re-keyed")
+
+## Acknowledgements
+- **Author** - Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - March 2026

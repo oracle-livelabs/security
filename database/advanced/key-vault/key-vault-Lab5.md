@@ -203,3 +203,8 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
     - In the wallet status, you'll see the wallet of type OKV is open
     
     ![Key Vault](./images/image-2025-7-24_17-8-50.png "Review the database setup after migrating to Key Vault")
+
+## Acknowledgements
+- **Author** - Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - March 2026
