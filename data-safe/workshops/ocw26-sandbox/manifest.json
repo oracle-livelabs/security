@@ -45,6 +45,12 @@
         "type": "livelabs"
       },
       {
+        "title": "Lab 7: Check Your Understanding",
+        "description": "Review key Oracle Data Safe concepts with a scored quiz.",
+        "filename": "../../check-your-understanding/check-your-understanding.md",
+        "type": "livelabs"
+      },
+      {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",
         "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
