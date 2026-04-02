@@ -210,9 +210,9 @@ Create a new Masking Definition under **Data Masking** where the masking formats
     
 8. Click **Next**.
 
-9. Click **Create** on the next page. A new Masking Definition is created.
+9. Click **Save** on the next page. A new Masking Definition is created.
 
-    ![DMS](./images/dms-032(2).png "32")
+    ![DMS](./images/dms-012(c).png "32")
 
 **What You Accomplished:**  
 A new Masking Definition for sensitive columns EMAIL, USERID and PASSWORD in the *`Employee_Data_Mask`* is created, where the automatically assigned masking formats are reviewed and the remaining ones are added.
@@ -434,11 +434,11 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
     -- -----------------------------
 
     -- EMPLOYEE_DATA
-    SELECT USERID, EMAIL FROM EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES
+    SELECT EMAIL, USERID FROM EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES
      ORDER BY 1;
 
     -- USERS_DATA
-    SELECT USERID, EMAIL, PASSWORD FROM EMPLOYEESEARCH_PROD.DEMO_HR_USERS
+    SELECT EMAIL, USERID, PASSWORD FROM EMPLOYEESEARCH_PROD.DEMO_HR_USERS
      ORDER BY 1;
 
     </copy>
@@ -598,7 +598,7 @@ Now, all 4 defined Object Rules should show as below:
     - Here, you can see the **Source and Estimated Subset Size** (in MB and number of rows).
     - Since the tables are interdependent, you will see the effects of subsetting on parent-child tables. In this example, *`DEMO_HR_EMPLOYEES`* retains 25% of its rows as previously defined. However, due to its dependency on the *`DEMO_HR_SUPPLEMENTAL_DATA`* table, this table is also affected by the subsetting and will retain 68% of its rows.
 
-You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process.
+You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process
 
 **Associate the previously generated Masking Definition**  
 
