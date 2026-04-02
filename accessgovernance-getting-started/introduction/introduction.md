@@ -4,7 +4,7 @@
 
 Oracle Access Governance is a cloud-native identity governance and administration (IGA) service that provides enterprise-wide visibility to govern access to cloud and on-premises environments. With an intuitive user experience, dynamic access control, and a prescriptive analytics–driven access review process, it helps customers automate access provisioning, get insights into access permission and cloud infrastructure policy reviews, identify anomalies, and remediate security risks. Using advanced analytics, Oracle Access Governance offers an intuitive user experience, providing recommendations and insights into access entitlements, behaviors, and risks.
 
- The graphic below shows the high level architecture of Oracle Access Governance.
+ The graphic below shows the high level architecture of Oracle Access Governance
 
   ![View List of Campaigns](images/oracle-access-governance-overview.png)
 

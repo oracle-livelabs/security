@@ -22,20 +22,14 @@
       "type": "sqlfw"
     },
     {
-      "title": "Lab 2: Environment Setup",
-      "description": "How to provision the workshop environment and connect to it",
-      "publisheddate": "06/30/2020",
-      "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
-    },
-    {
-      "title": "Lab 3: Initialize Environment",
+      "title": "Lab 2: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
       "filename": "../../../common/init-start-env/init-start-env-sqlfw.md",
       "type": "brown"
     },
     {
-      "title": "Lab 4: SQL Firewall",
+      "title": "Lab 3: SQL Firewall",
       "description": "In this lab you can see how to leverage Oracle SQL Firewall",
       "publisheddate": "08/18/2023",
       "filename": "../../sqlfw/sqlfw.md",

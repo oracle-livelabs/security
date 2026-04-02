@@ -1,4 +1,4 @@
-# Register an Autonomous Database with Oracle Data Safe
+# Register Autonomous Database with Oracle Data Safe
 
 ## Introduction
 

@@ -21,12 +21,6 @@
       "type": "database-vault"
     },
     {
-      "title": "Lab 2: Environment Setup",
-      "description": "How to provision the workshop environment and connect to it",
-      "publisheddate": "06/30/2020",
-      "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute-generic/setup-compute-novnc-ssh.md"
-    },
-    {
       "title": "Lab 3: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",

@@ -14,24 +14,19 @@
       "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
     },
     {
-      "title": "Lab 1: Environment Setup",
-      "description": "Verify Setup of compute instance",
-      "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
-    },
-    {
-      "title": "Lab 2: Initialize Environment",
+      "title": "Lab 1: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
       "filename": "../../../common/init-start-env/init-start-env-dbs.md"
     },
     {
-      "title": "Lab 3: Configure Database for Audit",
+      "title": "Lab 2: Configure Database for Audit",
       "description": "In this lab you will do initial configuration for Unified Auditing",
       "publisheddate": "11/14/2024",
       "filename": "../../unified-auditing/setup-auditing.md"
     },
     {
-      "title": "Lab 4: Unified Audit Basics: Beginner’s Delight",
+      "title": "Lab 3: Unified Audit Basics: Beginner’s Delight",
       "description": "In this lab you will get started with Unified Auditing essentials",
       "publisheddate": "11/14/2024",
       "filename": "../../unified-auditing/basics-auditing.md"
