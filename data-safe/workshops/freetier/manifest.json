@@ -21,8 +21,8 @@
       "type": "freetier"
     },
     {
-      "title": "Lab 1: Register an Autonomous Database with Oracle Data Safe",
-      "description": "This lab shows you how to register an Autonomous Data Warehouse on Shared Exadata Infrastructure with Oracle Data Safe and load sample data into it.",
+      "title": "Lab 1: Register Autonomous AI Database with Oracle Data Safe",
+      "description": "This lab shows you how to register Autonomous AI Database Serverless with Oracle Data Safe and load sample data into it.",
       "filename": "../../register-autonomous-database/register-autonomous-database.md",
       "type": "freetier"
     },

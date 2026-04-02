@@ -9,8 +9,8 @@
       "type": "freetier"
     },
     {
-      "title": "Register Oracle Database 23ai on a compute instance with Data Safe",
-      "description": "This lab shows you how to register Oracle Database 23ai on a compute instance with Data Safe.",
+      "title": "Register Oracle AI Database 26ai on a compute instance with Data Safe",
+      "description": "This lab shows you how to register Oracle AI Database 26ai on a compute instance with Data Safe.",
       "filename": "../../register-db-on-compute/register-db-on-compute.md",
       "type": "freetier"
     },

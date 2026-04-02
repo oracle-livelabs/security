@@ -1,0 +1,29 @@
+{
+  "workshoptitle": "DB Security - Beyond the baseline",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Understand the architecture of this workshop and what it can do",
+      "publisheddate": "05/21/2025",
+      "filename": "../../intro/intro-beyond-the-baseline.md"
+    },
+    {
+      "title": "Get Started",
+      "description": "Verify Setup of compute instance",
+      "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
+    },
+ 	  {
+      "title": "Lab 1: Separation of Duties",
+      "description": "Learn how to use Database Vault to separate privileged users from application data",
+      "publisheddate": "10/20/2020",
+      "filename": "../../beyond-the-baseline/database-vault.md",
+      "type": "green"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}

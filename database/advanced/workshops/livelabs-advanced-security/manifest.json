@@ -9,24 +9,24 @@
       "filename": "../../intro/intro-advanced-security.md"
     },
     {
-      "title": "Lab 1: Environment Setup",
+      "title": "Get Started",
       "description": "Verify Setup of compute instance",
       "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
     },
     {
-      "title": "Lab 2: Initialize Environment",
+      "title": "Lab 1: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
       "filename": "../../../common/init-start-env/init-start-env-gf.md"
     },
     {
-      "title": "Lab 3: Transparent Data Encryption (TDE)",
+      "title": "Lab 2: Transparent Data Encryption (TDE)",
       "description": "In this lab you can see how to leverage Oracle Transparent Data Encryption (TDE)",
       "publisheddate": "10/20/2020",
       "filename": "../../advanced-security/tde/tde.md"
     },
     {
-      "title": "Lab 4: Data Redaction",
+      "title": "Lab 3: Data Redaction",
       "description": "In this lab you can see how to leverage Oracle Data Redaction",
       "publisheddate": "10/20/2020",
       "filename": "../../advanced-security/data-redaction/data-redaction.md"

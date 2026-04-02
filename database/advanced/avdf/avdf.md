@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.13
+*Version tested in this lab:* Oracle AVDF 20.17
 
 ### Video Preview
 
@@ -57,7 +57,8 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
         <copy>sudo su - oracle</copy>
         ````
 
-        **Note**: Only **if you are using a remote desktop session**, just double-click on the Terminal icon on the desktop to launch a session directly as oracle, so, in that case **you don't need to execute this command**!
+
+        **Note**: **if you are using a remote desktop session/Green Button**, click on the Activities menu in the top left corner and open the terminal application to execute the commands. 
 
     - Go to the scripts directory
 
@@ -131,7 +132,7 @@ In this lab, you will do the following:
 
 3. Click on **Schedule Retrieval Jobs** for **pdb1**
 
-    ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs")   
+    ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs")
 
 4. Under **Security Assessment**
     - Checkbox *Assess Immediately*
@@ -143,14 +144,15 @@ In this lab, you will do the following:
 
     - Click [**Save**] to save and continue
 
-    **Note**: By default, retreival job has been already scheduled for **pdb2** during the deployment
+    **Note**: By default, retrieval job has been already scheduled for **pdb2** during the deployment. Please verify if the job is completed successfully under the **Settings** tab. If not, please repeat Steps 3 and 4 for the **pdb2** as well.
+
 
 5. Click on the **Home** tab
 
     ![AVDF](./images/avdf-050b.png "Security Assessment")
 
     **Note**:
-    - Now, you can see the risks for all your taregts directly on the main dashboard
+    - Now, you can see the risks for all your targets directly on the main dashboard
     - You can access to a risk by clicking on a color risk in the circle of your choice
 
 6. Click on the **Reports** tab
@@ -191,7 +193,7 @@ In this lab, you will do the following:
     ![AVDF](./images/avdf-503.png "AVDF - Assessment Report")
 
     - Click on **pdb1**
-    
+
     - Select the assessment "**Latest**", and click on "**Set as baseline**"
 
         ![AVDF](./images/avdf-504.png "AVDF - Set a baseline")
@@ -248,7 +250,7 @@ In this lab, you will do the following:
 
     **Note:** The graph gives you a clear picture of drifts on all the targets where the baseline has been set
 
-7.	Click on any of the evaluations, like **Pass** or **High Risk**, which will take you to the detailed drift report
+7. Click on any of the evaluations, like **Pass** or **High Risk**, which will take you to the detailed drift report
 
     ![AVDF](./images/avdf-505.png "AVDF - Drift Chart")
 
@@ -325,7 +327,7 @@ In this lab, you will do the following:
     
         ![AVDF](./images/avdf-523.png "Save Sensitive Objects")
 
-8. A sensitive object set by the name of GDPR_set1 is created. You can use this set in All Activity and GDPR reports. You can also use these sets in your database firewall and alert policy. Notice under **In use**, it is still **No**since this global set has not been used in any alert or database firewall policy yet.
+8. A sensitive object set by the name of GDPR_set1 is created. You can use this set in All Activity and GDPR reports. You can also use these sets in your database firewall and alert policy. Notice under **In use**, it is still **No** since this global set has not been used in any alert or database firewall policy yet.
 
     ![AVDF](./images/avdf-524.png "Sensitive Objects Set")
 
@@ -401,7 +403,7 @@ You will retrieve and provision the Unified Audit settings for the **pdb1** plug
 
     - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **pdb1**
 
-7. Repeat the steps 5 and 6 for **pdb2** as well
+7. Repeat from #3 to #6 for **pdb2** as well
 
 8. The next thing you can do is check which Unified Audit Policies exist and which Unified Audit Policies are enabled by using **SQL*Plus**
 
@@ -533,7 +535,7 @@ In this section, we will only see the change report for **pdb2**, where all the 
         - You should see the status **COLLECTING** or **IDLE**
         - If not then login as **AVADMIN** and start the transaction log trail for **pdb2**
 
-2. Click on the sub-menu **Audit Trail** on the left to check that your page looks like this (from **AVAUDITOR** login)
+2. Click on the sub-menu **Audit Trails** on the left to check that your page looks like this (from **AVAUDITOR** login)
 
     ![AVDF](./images/avdf-551.png "Status of the new Audit Trail")
 
@@ -597,7 +599,7 @@ In this section, we will only see the change report for **pdb2**, where all the 
 
     **Note:** If you are not seeing Before/After value changes in Audit Vault:
     - **Restart OGG** (Oracle Golden Gate) Extracts (from the Golden Gate Web Console, click [**Action**] for the `pdb2` extract, stop and start it)
-    - Ensure you properly executed the scripts in `Before_and_After_Changes` folder to create the "`C##GGAVADMIN`" user and setup the database
+    - Ensure you properly executed the scripts in `Before_and_After_Changes` folder to create the "`C##AVGGADMIN`" user and setup the database
     - Check if the Timezone of your Audit Trail is correctly set to your VM Timezone
     - Check your Audit Trail is up and running
 
@@ -737,7 +739,7 @@ In this lab, we will do the following
 
         ![AVDF](./images/avdf-102.png "Configure network settings")
     
-    - For ens3, the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2, because here we will use these ports to use Database Firewall
+    - For the available network interface card (NIC), the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2. These ports will be used for the Database Firewall monitoring.
     
         ![AVDF](./images/avdf-103.png "Proxy Ports settings")
 
@@ -752,6 +754,53 @@ In this lab, we will do the following
         **Note**:
         - Once enabled, Database Firewall monitoring will analyze the traffic from pdb1 through the port 15223
         - We configured it in "Proxy" mode, so all the SQL traffic will transit by the DB Firewall appliance to be able to block the "bad" traffic if needed
+
+    - ***If you have deployed this lab in "Run on LiveLabs Sandbox" (green button)***
+
+        ![AVDF](./images/avdf-104a.png "LiveLabs Green Button")
+
+    - **Note:** ***In the case of a Green Button, the monitoring point for the database firewall will not be created automatically and will be shown empty. Please perform the following steps to manually add the monitoring point.***
+
+        ![AVDF](./images/avdf-104b.png "Empty Database Firewall Monitoring Point")
+
+    **To add a monitoring point for pdb1**
+    - Login as AVADMIN user
+    - Click on the **Target** tab and click **pdb1**
+    - Under **Database Firewall Monitoring**, Click on **Add**
+    - Select the following details:
+        - Database Firewall: **dbfw**
+        - Network Interface Card: **enp0s5** (Select from drop-down)
+        - Mode: **Monitoring/ Blocking (Proxy)**
+        - Proxy Port: **Proxy_pdb1(15223)**
+
+    - Click on Add to add the host, port, and service details, and add the following under each column
+        - Host Name / IP Address: **10.0.0.150**
+        - Port: **1521**
+        - Service: **pdb1**
+        - Click [**Save**]
+
+     - Click [**Save**]
+
+    Optionally, you may want to repeat the same steps for **pdb2**; however, in this task, we will use **pdb1** to configure the use cases.
+
+    **To add a monitoring point for pdb2**
+
+    - Login as AVADMIN user
+    - Click on the **Target** tab and click **pdb2**
+    - Under **Database Firewall Monitoring**, Click on **Add**
+    - Select the following details:
+        - Database Firewall: **dbfw**
+        - Network Interface Card: **enp0s5** (Select from drop-down)
+        - Mode: **Monitoring/ Blocking (Proxy)**
+        - Proxy Port: **Proxy_pdb2(15224)**
+
+    - Click on Add to add the host, port, and service details, and add the following under each column
+        - Host Name / IP Address: **10.0.0.150**
+        - Port: **1521**
+        - Service: **pdb2**
+        - Click [**Save**]
+
+     - Click [**Save**]
 
 4. Now, verify connectivity between the database and the DB Firewall
 
@@ -980,7 +1029,7 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
         ![AVDF](./images/avdf-127f.png "See the SQL statements in a dedicated column")
 
-    - Sroll down to one of our favorite queries
+    - Scroll down to one of our favorite queries
 
         ![AVDF](./images/avdf-127g.png "Sroll down to one of our favorite queries")
 
@@ -1086,36 +1135,6 @@ In this lab you will use the Glassfish Application to connect through the Oracle
         ![AVDF](./images/avdf-134a.png "SQL Statement parameters")
 
     - Click [**Save**]
-
-<!--
-14. Next, add database users that we trust to connect to the database through the Database Firewall
-
-    **Note**:
-    - We will create a **Database User Set** for our DB Admin (`SYSTEM`) and for the HR App's owner (`EMPLOYEESEARCH_PROD`)
-    - Only these 2 DB users will be able to run the **HR SQL Cluster**
-
-15. Click [**Sets/Profiles**]
-
-    ![AVDF](./images/avdf-134b.png "Check Sets/Profiles")
-
-16. Select the **Database User Sets** tab and click [**Add**]
-
-    ![AVDF](./images/avdf-134c.png "Add Database User Sets")
-
-17. Enter the following information:
-
-    - Name: *`Privileged Users`*
-    - Description: *`Users We Trust`*
-    - Sets Values: *`SYSTEM, EMPLOYEESEARCH_PROD`*
-
-        ![AVDF](./images/avdf-135.png "Database User Sets parameters")
-
-    - Click [**Save**]
-    - Click [**Back**]
-
-        ![AVDF](./images/avdf-136.png "Save Database User Sets")
-
--->
 
 14. Finally, select the **Default** tab to specify what the DB Firewall policy has to do you if you are not in the context definied previously (here we will block all the "black-listed" queries and we will return a blank result)
 
@@ -1471,6 +1490,12 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
 1. Go back to your terminal session on DBSec-Lab VM to create the Golden Gate Database Administration user **C##AVGGADMIN** in the container database **cdb1**
 
+    - Go to AVS directory
+
+    ````
+    <copy>cd $DBSEC_LABS/avdf/avs</copy>
+    ````
+
     ````
     <copy>./avs_create_oggadmin_db_user.sh</copy>
     ````
@@ -1494,9 +1519,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
     ````
 
     ![AVDF](./images/avdf-027.png "Check connectivity to the database")
-
-**Configuring a GoldenGate Extract**
-
+    
 4. In the DBSecLab VM, the Oracle GoldenGate software has been already installed and pre-configured, but ensure the Golden Gate Administration Service is up and running
 
     ````
@@ -1618,8 +1641,6 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
         ![AVDF](./images/avdf-038.png "Start a new GoldenGate Extract")
 
-**Configure a new Audit Trail**
-
 13. Go back to Audit Vault Web Console as *`AVADMIN`*"
 
     ![AVDF](./images/avdf-400.png "AVDF - Login")
@@ -1661,8 +1682,6 @@ The first thing we need to do is to set up the database to be ready for Golden G
     ![AVDF](./images/avdf-041.png "Status of the new Audit Trail")
 
     **Note:** Attention, don't go to next step while the both **Audit Trail** and **Unified Audit Trail** are not started!
-
-**Generate Changes and View the Audit Vault Reports**
 
 22. Go back to your terminal session and generate data and object changes with 2 different privileged users **on pdb1**
 
@@ -1747,7 +1766,7 @@ The objective of this lab is to collect audit log records from PostgreSQL databa
 
                 ![AVDF](./images/avdf-204.png "Audit Collection Attributes")
 
-**Note:** If you already have one entry for 11.0 then delete that attribute and add new with the value 15.0.
+    **Note:** If you already have one entry for 11.0 then delete that attribute and add new with the value 15.0.
 
     - Click [**Save**]
 
@@ -2102,72 +2121,6 @@ Important: before performing this lab, you must have:
     - Click [**OK**] to confirm the deletion
 
         ![AVDF](./images/avdf-262.png "Confirm the deletion")
-
-<!--
-    - Go back to your terminal session to reset Golden Gate
-
-        ````
-        <copy>$DBSEC_LABS/avdf/avs/avs_reset_ogg.sh pdb1</copy>
-        ````
-
-        ![AVDF](./images/avdf-263.png "Reset the Golden Gate configuration")
-
-2. Delete the **Unified Audit Trail** configuration
-
-    - Go back to Audit Vault Web Console as *`AVADMIN`*"
-
-        ![AVDF](./images/avdf-400.png "AVDF - Login")
-
-    - Click the **Targets** tab
-
-    - Click the Target Name **pdb1**
-
-    - In the section **Audit Data Collection**, select "**`UNIFIED_AUDIT_TRAIL`**" and click [**Stop**]
-
-        ![AVDF](./images/avdf-264.png "Stop the Audit Data Collection")
-
-    - Check that the service is stopped
-
-        ![AVDF](./images/avdf-265.png "Check that the service is stopped")
-
-    - Select "**`UNIFIED_AUDIT_TRAIL`**" and click [**Delete**]
-
-        ![AVDF](./images/avdf-266.png "Delete the Audit Data Collection")
-
-3. Then, delete the Audit Vault **Agent**
-
-    - Click the **Agents** tab
-
-    - Select the Agent Name **dbseclab** and click [**Deactivate**]
-
-        ![AVDF](./images/avdf-269.png "Deactivate the Audit Vault Agent")
-
-    - Now, the agent should be "**Not Activated**"
-
-        ![AVDF](./images/avdf-270.png "Check that the Audit Vault Agent is deactivated")
-
-    - Select the Agent Name **dbseclab** and click [**Delete**]
-
-        ![AVDF](./images/avdf-271.png "delete the Audit Vault Agent")
-
-    - Now, the agent is deleted
-
-        ![AVDF](./images/avdf-272.png "Check that the Audit Vault Agent is deleted")
-
-4. Finally, reset **AVDF binaries**
-
-    ````
-    <copy>
-    rm -Rf $AV_HOME/*
-    ll $AV_HOME
-
-    rm -Rf $AVCLI_HOME/*
-    ll $AVCLI_HOME
-    </copy>
-    ````
-
-    ![AVDF](./images/avdf-273.png "Reset AVDF binaries")
--->
 
 2. **Now, the AVDF configuration is correctly reset!**
 
