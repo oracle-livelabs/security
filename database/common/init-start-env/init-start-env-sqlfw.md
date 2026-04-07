@@ -29,7 +29,7 @@ This lab assumes you have:
 
 1. Verify the application functions as expected
 
-   **Note**: For this lab, Glassfish app is connected to the 23ai database **`FREEPDB1`** (installed on the DB23ai VM)
+   **Note**: For this lab, Glassfish app is connected to the Oracle AI Database 26ai **`FREEPDB1`** 
 
 2. Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
 
