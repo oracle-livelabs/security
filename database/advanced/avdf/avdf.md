@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.16
+*Version tested in this lab:* Oracle AVDF 20.17
 
 ### Video Preview
 
@@ -250,7 +250,7 @@ In this lab, you will do the following:
 
     **Note:** The graph gives you a clear picture of drifts on all the targets where the baseline has been set
 
-7.	Click on any of the evaluations, like **Pass** or **High Risk**, which will take you to the detailed drift report
+7. Click on any of the evaluations, like **Pass** or **High Risk**, which will take you to the detailed drift report
 
     ![AVDF](./images/avdf-505.png "AVDF - Drift Chart")
 
@@ -1136,36 +1136,6 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
     - Click [**Save**]
 
-<!--
-14. Next, add database users that we trust to connect to the database through the Database Firewall
-
-    **Note**:
-    - We will create a **Database User Set** for our DB Admin (`SYSTEM`) and for the HR App's owner (`EMPLOYEESEARCH_PROD`)
-    - Only these 2 DB users will be able to run the **HR SQL Cluster**
-
-15. Click [**Sets/Profiles**]
-
-    ![AVDF](./images/avdf-134b.png "Check Sets/Profiles")
-
-16. Select the **Database User Sets** tab and click [**Add**]
-
-    ![AVDF](./images/avdf-134c.png "Add Database User Sets")
-
-17. Enter the following information:
-
-    - Name: *`Privileged Users`*
-    - Description: *`Users We Trust`*
-    - Sets Values: *`SYSTEM, EMPLOYEESEARCH_PROD`*
-
-        ![AVDF](./images/avdf-135.png "Database User Sets parameters")
-
-    - Click [**Save**]
-    - Click [**Back**]
-
-        ![AVDF](./images/avdf-136.png "Save Database User Sets")
-
--->
-
 14. Finally, select the **Default** tab to specify what the DB Firewall policy has to do you if you are not in the context definied previously (here we will block all the "black-listed" queries and we will return a blank result)
 
     ![AVDF](./images/avdf-137.png "Specify the default action to do by the DB Firewall policy")
@@ -1549,9 +1519,7 @@ The first thing we need to do is to set up the database to be ready for Golden G
     ````
 
     ![AVDF](./images/avdf-027.png "Check connectivity to the database")
-
-**Configuring a GoldenGate Extract**
-
+    
 4. In the DBSecLab VM, the Oracle GoldenGate software has been already installed and pre-configured, but ensure the Golden Gate Administration Service is up and running
 
     ````
@@ -1673,8 +1641,6 @@ The first thing we need to do is to set up the database to be ready for Golden G
 
         ![AVDF](./images/avdf-038.png "Start a new GoldenGate Extract")
 
-**Configure a new Audit Trail**
-
 13. Go back to Audit Vault Web Console as *`AVADMIN`*"
 
     ![AVDF](./images/avdf-400.png "AVDF - Login")
@@ -1716,8 +1682,6 @@ The first thing we need to do is to set up the database to be ready for Golden G
     ![AVDF](./images/avdf-041.png "Status of the new Audit Trail")
 
     **Note:** Attention, don't go to next step while the both **Audit Trail** and **Unified Audit Trail** are not started!
-
-**Generate Changes and View the Audit Vault Reports**
 
 22. Go back to your terminal session and generate data and object changes with 2 different privileged users **on pdb1**
 
@@ -1802,7 +1766,7 @@ The objective of this lab is to collect audit log records from PostgreSQL databa
 
                 ![AVDF](./images/avdf-204.png "Audit Collection Attributes")
 
-**Note:** If you already have one entry for 11.0 then delete that attribute and add new with the value 15.0.
+    **Note:** If you already have one entry for 11.0 then delete that attribute and add new with the value 15.0.
 
     - Click [**Save**]
 
@@ -2157,72 +2121,6 @@ Important: before performing this lab, you must have:
     - Click [**OK**] to confirm the deletion
 
         ![AVDF](./images/avdf-262.png "Confirm the deletion")
-
-<!--
-    - Go back to your terminal session to reset Golden Gate
-
-        ````
-        <copy>$DBSEC_LABS/avdf/avs/avs_reset_ogg.sh pdb1</copy>
-        ````
-
-        ![AVDF](./images/avdf-263.png "Reset the Golden Gate configuration")
-
-2. Delete the **Unified Audit Trail** configuration
-
-    - Go back to Audit Vault Web Console as *`AVADMIN`*"
-
-        ![AVDF](./images/avdf-400.png "AVDF - Login")
-
-    - Click the **Targets** tab
-
-    - Click the Target Name **pdb1**
-
-    - In the section **Audit Data Collection**, select "**`UNIFIED_AUDIT_TRAIL`**" and click [**Stop**]
-
-        ![AVDF](./images/avdf-264.png "Stop the Audit Data Collection")
-
-    - Check that the service is stopped
-
-        ![AVDF](./images/avdf-265.png "Check that the service is stopped")
-
-    - Select "**`UNIFIED_AUDIT_TRAIL`**" and click [**Delete**]
-
-        ![AVDF](./images/avdf-266.png "Delete the Audit Data Collection")
-
-3. Then, delete the Audit Vault **Agent**
-
-    - Click the **Agents** tab
-
-    - Select the Agent Name **dbseclab** and click [**Deactivate**]
-
-        ![AVDF](./images/avdf-269.png "Deactivate the Audit Vault Agent")
-
-    - Now, the agent should be "**Not Activated**"
-
-        ![AVDF](./images/avdf-270.png "Check that the Audit Vault Agent is deactivated")
-
-    - Select the Agent Name **dbseclab** and click [**Delete**]
-
-        ![AVDF](./images/avdf-271.png "delete the Audit Vault Agent")
-
-    - Now, the agent is deleted
-
-        ![AVDF](./images/avdf-272.png "Check that the Audit Vault Agent is deleted")
-
-4. Finally, reset **AVDF binaries**
-
-    ````
-    <copy>
-    rm -Rf $AV_HOME/*
-    ll $AV_HOME
-
-    rm -Rf $AVCLI_HOME/*
-    ll $AVCLI_HOME
-    </copy>
-    ````
-
-    ![AVDF](./images/avdf-273.png "Reset AVDF binaries")
--->
 
 2. **Now, the AVDF configuration is correctly reset!**
 

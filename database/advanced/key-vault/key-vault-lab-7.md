@@ -23,7 +23,7 @@ This lab builds on concepts and operations from lab 6. Complete lab 6 first befo
     </copy>
     ````
 
-   ![Key Vault](./images/image-2025-09-25_11-48-23.png "Create a new local auto-login wallet in <WALLET_ROOT>/tde and add the Key Vault endpoint password")
+    ![Key Vault](./images/image-2025-09-25_11-48-23.png "Create a new local auto-login wallet in <WALLET_ROOT>/tde and add the Key Vault endpoint password")
 
 2. Update the Transparent Data Encryption (TDE) configuration of the database to 'OKV|FILE' so it can locate the new auto-login wallet in the specified &lt;WALLET_ROOT&gt;/tde directory.
 
@@ -67,3 +67,8 @@ This lab builds on concepts and operations from lab 6. Complete lab 6 first befo
     ```
     
     ![Key Vault](./images/Screenshot_2025-10-07_23.08.12.png "Confirm that the auto-login wallet has been correctly configured and is operational")
+
+## Acknowledgements
+- **Author** - Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - March 2026

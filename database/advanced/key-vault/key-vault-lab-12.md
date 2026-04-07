@@ -290,3 +290,8 @@ A Key Vault cluster provides continuous availability of your keys to ensure unin
     This section highlights how many read-write pairs are part of the cluster as well as the cluster service status. For now, there is just one node that we setup.
 
     ![Key Vault](./images/image-2025-09-11-19.02.06.png "On the Home page, the System Overview section at the bottom is updated, identifying the deployment mode as Cluster")
+
+## Acknowledgements
+- **Author** - Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - March 2026
