@@ -67,26 +67,21 @@ Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](yo
     ![AVDF](./images/avdf-024.png "Compliance Reports")
 
 ### Step 2: Tracking Data Changes (Auditing "Before-After" Values)
-In this section, we will only see the change report for **customer_orders**, where all the configuration has been already done during the deployment
+In this section, we will only see the change report for **`customer_orders`**, where all the configuration has been already done during the deployment
 
 
-1. Check if the registed transaction log trail for **customer_orders** is started
+1. Check if the registed transaction log trail for **`customer_orders`** is started
 
     - Click on "**Targets**"
     
-    - Then click on **customer_orders**
+    - Then click on **`customer_orders`**
 
         ![AVDF](./images/avdf-621.png "Start Audit Trail")
 
         **Note:**
         - You should see the status **COLLECTING** or **IDLE**
         - If not then login as **AVADMIN** and start the transaction log trail for **customer_orders**
-
-2. Click on the sub-menu **Audit Trail** on the left to check that your page looks like this (from **AVAUDITOR** login)
-
-    ![AVDF](./images/avdf-551.png "Status of the new Audit Trail")
-
-    **Note:** Attention, don't go to next step if **`UNIFIED_AUDIT_TRAIL`** and **TRANSACTION LOG** for **customer_orders** is not in the **COLLECTING** or **IDLE** status!
+        - Do not go to next step if **`UNIFIED_AUDIT_TRAIL`** and **TRANSACTION LOG** for **`customer_orders`** is not in the **COLLECTING** or **IDLE** status!
 
 3. Now, generate value changes in database and view the Data Modification Before-After Values Reports
 
@@ -118,14 +113,13 @@ In this section, we will only see the change report for **customer_orders**, whe
 
             ![AVDF](./images/avdf-029.png "Golden Gate - Login")
 
-    - **Start OGG** (Oracle Golden Gate) extracts from the OGG Web Console, click [**Action**] for the *`cust1`* extract and start it
+    - **Start OGG** (Oracle Golden Gate) extracts from the OGG Web Console, click [**Action**] for the *`cust1`* extract and start it if not already started
 
-        ![AVDF](./images/avdf-622.png "Start OGG PDB2 extract Service")
+        ![AVDF](./images/avdf-622.png "Start OGG CUST1 extract Service")
 
     - Go back to your DBSecLab VM and generate data and object changes with 2 different privileged users for **customer_orders**
 
         ````
-        This is a new script with some DML activity on Customer Orders (update,delete)
         <copy>./avs_generate_customer_order_prod_changes.sh cust1</copy>
         ````
         

@@ -41,7 +41,7 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
     - Drilldown into the bar showing **Risky privilege grants to PUBLIC** 
         ![AVDF](./images/360-1b.png "AVDF - Security Insights - System privileges")
 
-    **Note**: Targets **Sales_history** and **Customer_orders** have system privileges/ roles granted to PUBLIC. Any privilege assigned to PUBLIC is effectively given to everyone, often far beyond what is necessary. It is safer to assign roles and privileges explicitly to specific users or groups based on well-defined requirements.
+    **Note**: Targets **`Sales_history`** and **`Customer_orders`** have system privileges/ roles granted to PUBLIC. Any privilege assigned to PUBLIC is effectively given to everyone, often far beyond what is necessary. It is safer to assign roles and privileges explicitly to specific users or groups based on well-defined requirements.
 
      - Click [**Security Insights**] to go back to the console.
 
@@ -61,7 +61,7 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
         <copy>cd $DBSEC_LABS/avdf/avs</copy>
         ````
 
-    - Mitigate the risk for **customer_orders**
+    - Mitigate the risk for **`customer_orders`**
 
         ````
         <copy>./avs_mitigate-risk.sh cust1</copy>
@@ -77,11 +77,11 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
 
         ![AVDF](./images/avdf-504c.png "Mitigate risks on sales_history")
 
- 6. Generate an assessment on-demand for the targets **customers_orders** and **sales_history** 
+ 6. Generate an assessment on-demand for the targets **`customers_orders`** and **`sales_history`** 
 
     - Click on "**Targets**",
     
-    - Then click on "**Schedule retrieval job**" for **customers_orders**
+    - Then click on "**Schedule retrieval job**" for **`customers_orders`**
     ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs") 
     
     - Under **Security Assessment**
@@ -114,12 +114,12 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
     - Filter the report to show only database admins among the priveleged users
     ![AVDF](./images/360-1f.png "AVDF - Security Insights - User Assessment - Priv users without audit")
 
-    **Note**: Database Administrators **DBA_DEBRA** and **DBA_HARVEY** have the broad database administrative rights on the entire fleet of databases. It is critical to audit database administrators and other privileged users, as their broad system privileges can pose significant risk if their credentials are compromised or misused. 
+    **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have the broad database administrative rights on the entire fleet of databases. It is critical to audit database administrators and other privileged users, as their broad system privileges can pose significant risk if their credentials are compromised or misused. 
      
 3.  Drilldown into the bar showing privileged users **Access to DV protected objects**
     ![AVDF](./images/360-2.png "AVDF - Retrieval Jobs")  
 
-     **Note**: Database Administrators **DBA_DEBRA** and **DBA_HARVEY** have access to the sensitive objects in the protected realms of **Customer_orders** pdb. Auditing is all the more important when privileged users can access sensitive objects, given the heightened risk of data exposure.
+     **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have access to the sensitive objects in the protected realms of **`Customer_orders`** pdb. Auditing is all the more important when privileged users can access sensitive objects, given the heightened risk of data exposure.
 
 ### Step 3: Assess the sensitive data exposure risk within the Oracle Database
 
@@ -130,12 +130,12 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
 2.  Drilldown into the bar showing sensitive data whose **Access not audited** 
     ![AVDF](./images/360-4.png "AVDF - Security Insights - Data discovery - Access not audited")
 
-**Note**: Access to sensitive data in **Employees_search** and **Customer_orders** pdbs are not audited. Ensuring proper visibility and governance over who can access sensitive data helps minimize risk, enforce accountability, and protect high-value information.
+**Note**: Access to sensitive data in **`Employees_search`** and **`Customer_orders`** pdbs are not audited. Ensuring proper visibility and governance over who can access sensitive data helps minimize risk, enforce accountability, and protect high-value information.
 
 3. Go back to the **Security Insights** console, and drilldown into sensitive data **Exposed to privileged users**
     ![AVDF](./images/360-4a.png "AVDF - Security Insights - Data discovery - Access not protected")
 
-**Note**: Access to sensitive data in **employees_search** pdb remains insufficiently protected, as privileged users can still directly access these objects, increasing the risk of misuse or unauthorized exposure. It is recommended to implement controls such as Oracle Database Vault to enforce separation of duties and restrict access to sensitive data, especially for highly privileged users. By doing so, organizations can significantly reduce the risk of privilege abuse and strengthen overall data security posture.
+**Note**: Access to sensitive data in **`employees_search`** pdb remains insufficiently protected, as privileged users can still directly access these objects, increasing the risk of misuse or unauthorized exposure. It is recommended to implement controls such as Oracle Database Vault to enforce separation of duties and restrict access to sensitive data, especially for highly privileged users. By doing so, organizations can significantly reduce the risk of privilege abuse and strengthen overall data security posture.
 
 4. Go back to the **Security Insights** console 
 
@@ -143,7 +143,7 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
 
 1. Go to the **Targets** tab
 
-2. Click the **Schedule Retrieval Jobs** icon for the target **employees_search** 
+2. Click the **Schedule Retrieval Jobs** icon for the target **`employees_search`** 
     ![AVDF](./images/360-8.png "AVDF - Retrieval jobs")
 
  **Note**: When a target is registered, AVDF automatically runs retrieval jobs for security assessment, user assessment and sensitive data discovery. You can consider scheduling periodic runs of these jobs to factor in changes. In this livelab instance, we have automated daily retrieval jobs.
@@ -162,7 +162,7 @@ Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identi
 
     ![AVDF](./images/360-5.png "AVDF - Sensitive data discovery dashboard")
 
-    **Note**: Pluggable databases **employees_search** and **customer_orders** contain a high concentration of sensitive data; therefore, we should prioritize implementing strong access controls to secure and govern access.
+    **Note**: Pluggable databases **`employees_search`** and **`customer_orders`** do contain substantial concentration of sensitive data; therefore, we should prioritize implementing strong access controls to secure and govern access.
 
 ## Task 3: Review your security policy landscape
 The unified security policy console provides a centralized interface to define, manage, and enforce policies across the entire fleet. This streamlined console helps ensure consistent protection across the fleet and enables to identify potential gaps in policy enforcement.
@@ -182,7 +182,7 @@ The unified security policy console provides a centralized interface to define, 
 
     - Click on **Audit** bar which shows non-zero audit configurations
     
-4. Drilldown and filter to see the audit policies enabled for **employees_search**
+4. Drilldown and filter to see the audit policies enabled for **`employees_search`**
 
     ![AVDF](./images/360-6a.png "AVDF - Policy console - audit policies")
 
@@ -194,7 +194,7 @@ The unified security policy console provides a centralized interface to define, 
 
 1. Go to the **Policies retrieval schedule for Oracle Database targets** region
 
-2. Check the target **employees_search** and click **Schedule retrieval** 
+2. Check the target **`employees_search`** and click **Schedule retrieval** 
     ![AVDF](./images/360-6b.png "AVDF - Policy console - Schedule retrieval")
 
  **Note**: When a target is registered, AVDF automatically runs retrieval job for policies. You can consider scheduling periodic runs of these jobs to factor in changes. In this livelab instance, we have automated daily retrieval job.
@@ -217,15 +217,13 @@ Global set represents predefined collection of entities such as IP addresses, da
 ### Step 2: Review the global **Sensitive Object Sets**
 
 Click the set **EmployeeSearchSensitiveApplicationObjects** to see the sensitive objects assigned
-    ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets")
-
-    **Note** This sensitive object set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
+    ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
+    **Note:** This sensitive object set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
 
 ### Step 3: Review the global **Privileged User Sets**
 
 Click the set **Database Administrators** to see the database administrators assigned in this group
     ![AVDF](./images/360-9c.png "AVDF - Privilege User Sets")
-
     **Note** This privileged user set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
 
 > #### What did we learn in this lab

@@ -85,27 +85,19 @@ SQL Firewall is enabled in the **Employees_search** pdb in the livelab environme
 
     ![AVDF](./images/avdf-112.png "HR App - Login")
 
-3. In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
-
-    ![AVDF](./images/avdf-115.png "HR App - Settings")
-
-4. On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
-
-    ![AVDF](./images/avdf-116.png "HR App - Session Details")
-
-5. Click **Search Employees**
+3. In the right hand corner of the App, Click **Search Employees**
 
     ![AVDF](./images/avdf-113.png "Search Employees")
 
-6. In the **HR ID** field enter "*`164`*" and click [**Search**]
+4. In the **HR ID** field enter "*`164`*" and click [**Search**]
 
     ![AVDF](./images/avdf-123.png "Search Employee UserID 164")
 
-7. Clear the **HR ID** field and click [**Search**] again to see all rows
+5. Clear the **HR ID** field and click [**Search**] again to see all rows
 
     ![AVDF](./images/avdf-114.png "Search Employee")
 
-8. Enter the following information in the **Search Employee** fields
+6. Enter the following information in the **Search Employee** fields
 
     - HR ID: *`196`*
     - Active: *`Active`*
@@ -118,13 +110,21 @@ SQL Firewall is enabled in the **Employees_search** pdb in the livelab environme
 
         ![AVDF](./images/avdf-124.png "Search Employees Criteria")
 
-9. Click [**Search**]
+7. Click [**Search**]
 
-10. Click on "**Harvey, William**" to view the details of this employee
+8. Click on "**Harvey, William**" to view the details of this employee
 
     ![AVDF](./images/avdf-125.png "Search Employee")
 
-11. Logout
+9.  In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
+
+    ![AVDF](./images/avdf-115.png "HR App - Settings")
+
+    -   On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
+    - You should see that the **IP Address** is **10.0.0.150**, which is the IP Address of the DBSec VM where glassfish app is hosted
+    - You should see the **DB NAME** is **FREEPDB1**, which is the Oracle AI Database 26ai.
+
+10. Logout
 
     ![AVDF](./images/avdf-117.png "AVDF - Logout")
 
@@ -135,6 +135,8 @@ SQL Firewall is enabled in the **Employees_search** pdb in the livelab environme
         
     - Click **View learning data** to see the SQL Queries captured by SQL Firewall that were executed on HR Glassfish app.
             ![AVDF](./images/360-23.png "AVDF - SQL Firewall policy- View learning data") 
+
+       **Note** If you don't see data from **JDBC Thin Client** in the column **Client program** in the table, click **Refresh learning data**. Repeat 2-3 times if required.   
     - Click **Cancel** to return back
     - Click **Stop** 
             ![AVDF](./images/360-24.png "AVDF - SQL Firewall policy- Stop learning popup")  
@@ -188,7 +190,7 @@ We will validate the protection controls of SQL Firewall by triggering violation
     - Imagine you are that someone who has access to the stolen app service account credentials of **EMPLOYEESEARCH_PROD**, and you are trying to access the database bypassing the application normal access path.
 
         ````
-        <copy>./sqlfw_sqlplus_connect.sh</copy>
+        <copy>./avs_sqlfw_risk.sh</copy>
         ````
 
         ![AVDF](./images/360-30.png "SQL Firewall context violation -1 ")
@@ -235,11 +237,9 @@ Now, let's simulate SQL Firewall statement violations by using Glassfish HR app 
     - Don't forget the "`--`" at the end to disable rest of the query
 
 7. Click [**Search**]
-    ![AVDF](./images/360-30.png "Impact of SQL Firewall Blocking mode")
+    ![AVDF](./images/360-30a.png "Impact of SQL Firewall Blocking mode")
 
     **Note**: 
-        - The above image should be replaced with UI showing SQL Firewall violation
-        - The output should return "**no rows**"
         - Remember, this is because the UNION query is not recognized as an approved and authorized SQL statement by SQL Firewall .. and hence it blocked from its further execution!
 
 ### Step 8: Monitor SQL Firewall violations in the console
@@ -248,7 +248,7 @@ Now, let's simulate SQL Firewall statement violations by using Glassfish HR app 
 
 2. Click on the **Policies** tab, expand **Firewall Policies** in the left menu, and click **Oracle SQL Firewall**
     ![AVDF](./images/360-31.png "AVDF - Oracle SQL Firewall page with violations")
-    **Note**:
+        **Note:**
         - There are SQL context violation(s) since we tried to access **employee_search** pdb with *SQLPLUS* script
         - There are SQL statement violation(s) since we made SQL injection attempts using unathorized SQLs over Glassfish app
 
@@ -316,21 +316,21 @@ In this task, we will do the following
 
         ![AVDF](./images/avdf-102.png "Configure network settings")
     
-    - For ens3, the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2, because here we will use these ports to use Database Firewall
+    - For ens3, the Proxy Ports are set to 15223 and 15224, because here we will use these ports to use Database Firewall
     
         ![AVDF](./images/avdf-103.png "Proxy Ports settings")
 
-3. Now, check the DB Firewall Monitoring mode for `pdb1`
+3. Now, check the DB Firewall Monitoring mode for `employees_search`
 
-    - Click the **Targets** tab and click **pdb1**
+    - Click the **Targets** tab and click **employees_search**
 
     - In the **Database Firewall Monitoring** section, check that monitoring is up and running
 
         ![AVDF](./images/avdf-104.png "The new Database Firewall Monitoring")
 
         **Note**:
-        - Once enabled, Database Firewall monitoring will analyze the traffic from pdb1 through the port 15223
-        - We configured it in "Proxy" mode, so all the SQL traffic will transit by the DB Firewall appliance to be able to block the "bad" traffic if needed
+        - Once enabled, Database Firewall monitoring will analyze the traffic through the port 15223
+        - We configured it in "Proxy" mode, so all the SQL traffic from the client will go through the DB Firewall to the database. DB Firewall will be able to alert and/or block the "bad" traffic as defined by the DB Firewall policy.
 
 4. Now, verify connectivity between the database and the DB Firewall
 
@@ -361,7 +361,7 @@ In this task, we will do the following
         ![AVDF](./images/avdf-106.png "Check the connectivity to the database WITH the Database Firewall")
 
         **Note**:
-        - This will connect to the pluggable database pdb1 **through the proxy** on the port **15223** (DB Firewall Monitoring) we just configured
+        - This will connect to the pluggable database  **through the proxy** on the port **15223** (DB Firewall Monitoring) we just configured
         - You should see that the connection shows **10.0.0.152** which is the IP Address of the DB Firewall VM
 
 ### Step 2: Configure the HR Glassfish App to use the DB Firewall
@@ -376,12 +376,26 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     ![AVDF](./images/avdf-118.png "Set HR App with Database firewall")
 
-2. Confirm the Glassfish application connects through DB Firewall 
+2. Add the IP Address of the DB Firewall VM **10.0.0.152** to the SQL Firewall policy for **EMPLOYEESEARCH_PROD** user
+
+    - Click on the **Policies** tab, expand **Firewall Policies** in the left menu, and click **Oracle SQL Firewall**
+
+    - Click the target **Employees_search** to drilldown
+
+    - Expand **SQL Firewall policy for users (1)** and drilldown into policy for user **EMPLOYEESEARCH_PROD**
+
+    - Exapnd **Session context** to enter DB Firewall VM IP Address **10.0.0.152** to allowed **Client IP address** list
+
+        ![AVDF](./images/avdf-118a.png "Add FW IP address to allowed client IP addresses")
+
+    - Click Save.
+
+3. Confirm the Glassfish application connects through DB Firewall 
 
     -   Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
 
     **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*. 
-    **Notes:**<TBD>You might have to add the 10.0.0.152 to Client IP address of the SQL Firewall policy. This is to be tested
+   
 
     
     - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
@@ -560,6 +574,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     ````
     <copy> //This is new script in dbf folder
     connect as dba_debra@firewall IP: proxyport/freepdb1
+    $ORACLE_HOME/bin/sqlplus DBA_DEBRA/Oracle123@10.0.0.152:15223/freepdb1
     delete from EMPLOYEESEARCH_PROD.DEMO_HR_USERS where userid=1000; //this should get blocked
     select count(*) from EMPLOYEESEARCH_PROD.DEMO_HR_USERS; //this should raise alert
     select * from EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES; ////this should raise alert
@@ -568,7 +583,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     ![AVDF](./images/avdf-128.png "Check the connectivity through the Database Firewall")
 
-    **Note**: Screenshot to be replaced. You should see Database Firewall blocked error for first SQL since we do not permit DBA_DEBRA to do DMLs on sensitive app objects over the network
+    **Note**: Database Firewall blocks the DELETE statement since we have not permitted DBA_DEBRA to do DMLs on sensitive app objects over the network
 
 
 2. Let's see when EMPLOYEESEARCH_PROD connects using DB Firewall to query the sensitive application objects
@@ -577,9 +592,9 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
     <copy>./dbf_exfiltrate_with_dbfw.sh </copy>
     ````
 
-    ![AVDF](./images/avdf-128.png "Check the connectivity through the Database Firewall")
+    ![AVDF](./images/avdf-128a.png "Check the connectivity through the Database Firewall")
 
-   **Note**: Screenshot to be replaced. You should see SQL Firewall context violation error as EMPLOYEESEARCH_PROD user is allowed to connect only through Glassfish app
+   **Note**: You see a SQL Firewall context violation error as EMPLOYEESEARCH_PROD user is allowed to connect only through Glassfish app (JDBC Thin Client) as per the SQL Firewall policy configured
 
 
 ### Step 5: Monitor Database Firewall violations from console
@@ -604,22 +619,22 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
         ![AVDF](./images/avdf-181.png "Select columns to display")
 
-    - Add the columns *`Row Count(Event)`*, *`Object Type(Target Object)`* and *`Policy Name(Event)`*
+    - Add the columns *`Row Count(Event)`*, *`Rule Name(Event)`* and *`Policy Name(Event)`*
 
         ![AVDF](./images/avdf-182.png "Add columns to display")
 
     - Click [**Apply**]
 
-    - You can see now the "Row Count" number of queries executed previously, with the name of the table targeted and the policy name
+    - You can see now the "Row Count" number of queries executed previously, with the name of the DB Firewall rule and the policy name
 
         ![AVDF](./images/avdf-183.png "Check the Row Count number of queries executed previously")
 
-### Step 6: Pro-actively monitor SQL Firewall violations using alert
+### Step 6: Pro-actively monitor DB Firewall violations using alert
 
 1. Click on the **Policies** tab
 2. Click the **Alert Policies** menu on left
 3. Review the alert by name **Database Firewall Alert**
-**Notes** This alert fires for all Database Firewall events which are either blocked or alerted
+    - **Notes** This alert fires for all Database Firewall events which are either blocked or alerted
 
 4. Let's create an alert policy for getting pro-actively notified for data exfiltration attempts
 
@@ -628,7 +643,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
         - Description: *Someone has selected more than 10 rows of PII in a single query*
         - Type: *Oracle Database*
         - Severity: *Warning*
-        - Condition: *:ROW_COUNT > 100 and :TARGET_OBJECT like '%DEMO_HR%'*
+        - Condition: *:ROW_COUNT >100 AND :OBJECT like '%DEMO_HR%'*
         - Threshold (times): *1*
         - Duration: *1*
         - Group By (Field): *USER*
@@ -637,15 +652,15 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     - Click [**Save**]
     
-    ![AVDF](./images/avdf-657.png "Alert Policies enabled"
 
 5. Go to your terminal session to generate some traffic on SQL*Plus via the Database Firewall
 
     - Connect as `DBA_DEBRA` to fire some DML activities the sensitive application objects
 
-    ````
-    <copy> //New script in dbf folder
+   ````
+    <copy> //This is new script in dbf folder
     connect as dba_debra@firewall IP: proxyport/freepdb1
+    $ORACLE_HOME/bin/sqlplus DBA_DEBRA/Oracle123@10.0.0.152:15223/freepdb1
     delete from EMPLOYEESEARCH_PROD.DEMO_HR_USERS where userid=1000; //this should get blocked
     select count(*) from EMPLOYEESEARCH_PROD.DEMO_HR_USERS; //this should raise alert
     select * from EMPLOYEESEARCH_PROD.DEMO_HR_EMPLOYEES; ////this should raise alert
@@ -654,7 +669,7 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     ![AVDF](./images/avdf-128.png "Check the connectivity through the Database Firewall")
 
-    **Note**: Screenshot to be replaced. You should see Database Firewall blocked error for first SQL since we do not permit DBA_DEBRA to do DMLs on sensitive app objects over the network
+    **Note**: Database Firewall blocks the DELETE statement since we have not permitted DBA_DEBRA to do DMLs on sensitive app objects over the network
 
 
 6. Let's check the Database Firewall alerts that were generated
@@ -663,22 +678,17 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     - Click the **Alerts** tab
 
-    - You should see some alerts "**PII Exfiltration Alert**" in the "Alert Policy Name" column
+    - You should see some alerts like "**PII Exfiltration Alert**" and "**Database Firewall Alert**" in the "Alert Policy Name" column
 
         ![AVDF](./images/avdf-185.png "Check alerts PII Exfiltration Alert")
 
         **Note:** Again, if you don't see them refresh the page because DB Firewall needs up to a few minutes to integrate the events
 
-    - Click on the first alert to see its details
-
-        ![AVDF](./images/avdf-186.png "Detail of an alert")
+    - Click on the **Database Firewall Alert** with **DELETE** event to see its details
 
     - To see the details of the event, click on the **paper icon** in the **Event** section
 
         ![AVDF](./images/avdf-187.png "Detail of an alert")
-
-        ![AVDF](./images/avdf-188.png "Detail of an alert")
-
 
 ### Step 7: Restore the HR Glassfish App to use Direct Mode (optional)
 

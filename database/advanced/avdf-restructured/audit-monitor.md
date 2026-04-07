@@ -25,13 +25,13 @@ AVDF enables comprehensive database activity monitoring by collecting and aggreg
 
 ### Step 1: Ensure audit trails are configured for Oracle databases 
 
-**Note** In the livelab, we have already configured the audit trail for the Oracle databases. We used **agent-based audit collection for pdb1** and **agentless collection for pdb2**.
+**Note** In the livelab, we have already configured the audit trail for the Oracle databases. 
 
 You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** login)
 
 ![AVDF](./images/avdf-551.png "Audit Trail")
 
-**Notes** Ensure the **UNIFIED_AUDIT_TRAIL** table audit trails are either in **Collecting** or in **Idle** state
+**Notes** Ensure the **`UNIFIED_AUDIT_TRAIL`** table audit trails are either in **Collecting** or in **Idle** state
 
 ### Step 2: Retrieve and provision the Unified audit policies for **Employees_search** pdb
 
@@ -43,7 +43,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 2. Click on the **Policies** tab, and **Audit Policies** in the left menu
     ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 
-    **Note**: If the **Last Retrieved time** is *Never*, select the **Employees_search** pdb and click **Retrieve policies** to retrieve the latest from the database.You can schedule the periodical retrieval following *Lab5->Task3->Step2*.
+    **Note**: If the **Last Retrieved time** is *Never*, select the **`Employees_search`** pdb and click **Retrieve policies** to retrieve the latest from the database.You can schedule the periodical retrieval following *Lab5->Task3->Step2*.
 
 3. Click on **Employees_search** pdb to review the policies enabled
     ![AVDF](./images/360-12.png "AVDF - Audit Policies for Employees Search pdb")
@@ -63,9 +63,9 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
     - Unselect checkbox **Audit SELECT operations**
     - Ensure this is checked **Sensitive objects discovered by sensitive data discovery**
         ![AVDF](./images/360-14.png "AVDF - Sensitive Data Access Monitoring Policy")
-    - Enable policies for all users except Application service account (EMPLOYEESEARCH_PROD)
+    - Enable policies for all users except Application service account (`EMPLOYEESEARCH_PROD`)
          ![AVDF](./images/360-15.png "AVDF - Sensitive Data Access Monitoring Policy condition")
-         - Click **Add Row**, select **User** as Type, and enter **EMPLOYEESEARCH_PROD**
+         - Click **Add Row**, select **User** as Type, and enter **`EMPLOYEESEARCH_PROD`**
     - Click **Enable** and review to see the status as **Enabled** in the policies page
 
 6. Go back to **Audit Policies** 
@@ -99,18 +99,18 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 
         ![AVDF](./images/avdf-553.png "Verify the job completed successfully")
 
-    - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **Employees_search** and **Customer_orders**
+    - If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **`Employees_search`** and **`Customer_orders`**
 
 2. Ensure the Unified Audit policies are enabled on the target using **SQL*Plus**
 
-    - Go back to your terminal session and show the **enabled** Unified Audit policies in **employee_search** 
+    - Go back to your terminal session and show the **enabled** Unified Audit policies in **`employee_search`** 
 
         ````
         <copy>./avs_query_enabled_unified_policies.sh freepdb1</copy>
         ````
 
         ![AVDF](./images/avdf-015.png "Show the enabled Unified Audit policies")
-**Note** Repeat the query for **customer_orders** pdb and re-confirm
+**Note** Repeat the query for **`customer_orders`** pdb and re-confirm
 
 ## Task 2: Pro-actively monitor actionable audit events with alerts
 
@@ -155,7 +155,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 
     **Note:** You can also create alert using global sets. 
 
-3. Go back to your terminal session on DBSeclab VM and create users within the **Employees_search** and **Customer_orders** pluggable databases
+3. Go back to your terminal session on DBSeclab VM and create users within the **`Employees_search`** and **`Customer_orders`** pluggable databases
 
     ````
     <copy>
