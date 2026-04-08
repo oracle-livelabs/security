@@ -5,7 +5,7 @@ Now that you have the necessary insights, you begin by configuring activity moni
 - The **Employees_search** pdb supports internal self-service applications, and contains a high volume of sensitive data and is accessible to privileged users, making insider threat mitigation the top priority. You enable auditing to track security-relevant events, privileged user activity, and access to sensitive data.
 - For the **Customer_orders** pdb, the primary focus is mitigating external threats and demonstrating compliance (e.g., CIS). You enable auditing for system configuration changes, critical database activity, and schema changes, and additionally provision user activity and CIS compliance policies.
 
-*Estimated Lab Time:* 20 minutes
+*Estimated Lab Time:* 10 minutes
 
 *Version tested in this lab:* Oracle AVDF Next Gen
 
@@ -88,7 +88,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
     - Select **Center for Internet Security (CIS) Configuration** and click **Enable**
         ![AVDF](./images/360-16.png "AVDF - CIS Audit policy")
 
-6. Go back to **Audit Policies** and review the policy count for **Employees_search** and **Customer_orders** pdb
+4. Go back to **Audit Policies** and review the policy count for **`Employees_search`** and **`Customer_orders`** pdb
       ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 
 ### Step 4: Ensure the audit policy provisioning jobs succeeds, and policies enabled on the target

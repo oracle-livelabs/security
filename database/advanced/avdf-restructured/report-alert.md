@@ -3,7 +3,7 @@
 ## Introduction
 Consider establishing a process of continuous monitoring to help meet the requirements of various regulations using the pre-defined reports of AVDF. Consider alerts to pro-actively notify you on actionable events that need to be prioritized for mitigation.
 
-*Estimated Lab Time:* 30 minutes
+*Estimated Lab Time:* 5 minutes
 
 *Version tested in this lab:* Oracle AVDF Next Gen
 

@@ -3,7 +3,7 @@
 ## Introduction
 Assessing your database - its risks, user access, and the sensitivity of stored data is essential to understanding your current security posture. It provides a clear view of potential vulnerabilities, exposure points, and privilege misuse that could impact your environment. This insight enables you to prioritize mitigation efforts effectively and focus on the areas that pose the greatest risk to your organization.
 
-*Estimated Lab Time:* 20 minutes
+*Estimated Lab Time:* 10 minutes
 
 *Version tested in this lab:* Oracle AVDF Next Gen
 
@@ -36,8 +36,9 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
     ![AVDF](./images/360-1.png "AVDF - Security Insights console")   
 
 4. Review the key configuration risks under **Database configuration summary**
-    ![AVDF](./images/360-1a.png "AVDF - Security Insights - Configuration summary") 
-
+    - Observe the configuration risks that need to be mitigated
+        ![AVDF](./images/360-1aa.png "AVDF - Security Insights - User Assessment") 
+    
     - Drilldown into the bar showing **Risky privilege grants to PUBLIC** 
         ![AVDF](./images/360-1b.png "AVDF - Security Insights - System privileges")
 
@@ -85,7 +86,7 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
     ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs") 
     
     - Under **Security Assessment**
-        - Checkbox **Assess Immediately** 
+        - Select checkbox **Assess Immediately** 
         - Click [**Save**] to save and continue
     
     - Do the same for **sales_history**          
@@ -93,7 +94,7 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
 7. Go to the **Security Insights** console 
 
     - Review the key configuration risks under **Database configuration summary**
-    ![AVDF](./images/360-1a.png "AVDF - Security Insights - Configuration summary") 
+        ![AVDF](./images/360-1a.png "AVDF - Security Insights - Configuration summary") 
 
     **Note**:
     - Now, you can see risks in **Risky privilege grants to PUBLIC** are resolved.
@@ -101,14 +102,16 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
 8. Review the Drifts detected in **Security assessment drift detection**
     ![AVDF](./images/360-1c.png "AVDF - Security Insights - Security Assessment Drift Detection") 
 
-    - Click on the pipeline with drifts to see the popup showing the risks mitigated 
+    - Click on the pipeline with drifts to see the popup showing the risks involving **grants to PUBLIC** mitigated 
     ![AVDF](./images/360-1d.png "AVDF - Security Insights - Security Assessment Drifts Report ") 
+
+    -Close the popup
 
 
 ### Step 2: Evaluate user risk across the Oracle Databases
 
 1.  Review the key privilege user risks under **User assessment summary**
-    ![AVDF](./images/360-1e.png "AVDF - Security Insights - User Assessment") 
+        ![AVDF](./images/360-1e.png "AVDF - Security Insights - User Assessment") 
 
 2.  Drilldown into the bar showing privileged users **Access not audited** 
     - Filter the report to show only database admins among the priveleged users
@@ -125,7 +128,7 @@ By offering a simplified, fleet-wide perspective across your entire fleet of Ora
 
 
 1.  Review the sensitive data access not audited under **Data discovery summary**
-    ![AVDF](./images/360-3.png "AVDF - Security Insights - Data discovery") 
+        ![AVDF](./images/360-3.png "AVDF - Security Insights - Data discovery") 
 
 2.  Drilldown into the bar showing sensitive data whose **Access not audited** 
     ![AVDF](./images/360-4.png "AVDF - Security Insights - Data discovery - Access not audited")
