@@ -7,11 +7,11 @@ Now that you have the necessary insights, you begin by configuring activity moni
 
 *Estimated Lab Time:* 10 minutes
 
-*Version tested in this lab:* Oracle AVDF Next Gen
+*Version tested in this lab:* Oracle Database Security Central (Security Central)
 
 ### Video Preview
 
-Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](youtube:eLEeOLMAEec)
+Watch a preview of "*LiveLabs - Oracle Database Security Central (Security Central)*" [](youtube:eLEeOLMAEec)
 
 
 ### Objectives
@@ -21,9 +21,9 @@ Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](yo
 
 ## Task 1: Configure database activity monitoring with audit
 
-AVDF enables comprehensive database activity monitoring by collecting and aggregating audit data, along with network-based monitoring of SQL traffic. For Oracle Database, it provides centralized capabilities to manage and provision audit policies, ensuring consistent monitoring, improved visibility, and stronger security governance across the database environment.
+Security Central enables comprehensive database activity monitoring by collecting and aggregating audit data, along with network-based monitoring of SQL traffic. For Oracle Database, it provides centralized capabilities to manage and provision audit policies, ensuring consistent monitoring, improved visibility, and stronger security governance across the database environment.
 
-### Step 1: Ensure audit trails are configured for Oracle databases 
+### **Step 1: Ensure audit trails are configured for Oracle databases**
 
 **Note** In the livelab, we have already configured the audit trail for the Oracle databases. 
 
@@ -33,10 +33,10 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 
 **Notes** Ensure the **`UNIFIED_AUDIT_TRAIL`** table audit trails are either in **Collecting** or in **Idle** state
 
-### Step 2: Retrieve and provision the Unified audit policies for **Employees_search** pdb
+### **Step 2: Retrieve and provision the Unified audit policies for Employees_search pdb**
 
 
-1. Go to Audit Vault Web Console as *`AVAUDITOR`*
+1. Go to Security Central Console as *`AVAUDITOR`*
 
     ![AVDF](./images/avdf-300.png "AVDF - Login")
 
@@ -69,7 +69,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
     - Click **Enable** and review to see the status as **Enabled** in the policies page
 
 6. Go back to **Audit Policies** 
-### Step 3: Retrieve and provision the Unified audit policies for **Customer_orders** pdb
+### **Step 3: Retrieve and provision the Unified audit policies for Customer_orders pdb**
 
 1. Click on **customer_orders** pdb to review the policies enabled
     ![AVDF](./images/360-12.png "AVDF - Audit Policies for customer orders pdb")
@@ -91,7 +91,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 4. Go back to **Audit Policies** and review the policy count for **`Employees_search`** and **`Customer_orders`** pdb
       ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 
-### Step 4: Ensure the audit policy provisioning jobs succeeds, and policies enabled on the target
+### **Step 4: Ensure the audit policy provisioning jobs succeeds, and policies enabled on the target**
 
 1. Click on the **Settings** tab
     - Click on the **Jobs** section on the left menu bar
@@ -112,9 +112,12 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
         ![AVDF](./images/avdf-015.png "Show the enabled Unified Audit policies")
 **Note** Repeat the query for **`customer_orders`** pdb and re-confirm
 
+> [!TIP]
+> You've now provisioned audit policies in the target that generates an audit event when actions tracked occur in the database. Let's see how to collect these audit events and raise actionable alerts
+
 ## Task 2: Pro-actively monitor actionable audit events with alerts
 
-### Step 1: Provision alert policy for account management operations
+### **Step 1: Provision alert policy for account management operations**
 
 
 1. Click on the **Policies** tab
@@ -177,7 +180,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 
     ![AVDF](./images/avdf-048.png "Drop the users just created")
 
-### Step 2: Review the alerts generated
+### **Step 2: Review the alerts generated**
 
 1. Click on **Alerts** tab
 
@@ -196,7 +199,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 
 > #### What did we learn in this lab
 >
->>- How to provision audit policy from AVDF on Oracle database
+>>- How to provision audit policy from Security Central on Oracle database
 >>- How to pro-actively monitor actionable audit events with alerts
 
 You may now **proceed to the next lab**.

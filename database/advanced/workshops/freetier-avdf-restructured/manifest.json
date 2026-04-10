@@ -1,9 +1,9 @@
 {
-  "workshoptitle": "DB Security - Audit Vault and DB Firewall (AVDF)",
+  "workshoptitle": "DB Security - Oracle Database Security Central (Security Central)",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
-      "title": "Introduction: Audit Vault and Database Firewall (AVDF) ",
+      "title": "Introduction: Oracle Database Security Central (Security Central)",
       "description": "Understand the architecture of this workshop and what it can do",
       "publisheddate": "09/01/2020",
       "filename": "../../intro/intro-avdf.md"
@@ -34,43 +34,43 @@
     },
     {
       "title": "Lab 4: Getting started",
-      "description": "In this lab you will learn how to reset the ranndomly generated password in Oracle Audit Vault and DB Firewall (AVDF)",
+      "description": "In this lab you will learn how to reset the ranndomly generated password in Security Central",
       "publisheddate": "10/20/2020",
       "filename": "../../avdf-restructured/getting-started.md"
     },
     {
       "title": "Lab 5: Assess and Discover",
-      "description": "In this lab you will learn how to Assess and Discover in Oracle Audit Vault and DB Firewall (AVDF)",
+      "description": "In this lab you will learn how to Assess and Discover in Security Central",
       "publisheddate": "10/20/2020",
       "filename": "../../avdf-restructured/assess-discover.md"
     },
     {
       "title": "Lab 6: Audit and Monitor",
-      "description": "In this lab you will learn how to Audit and Monitor Oracle Audit Vault and DB Firewall (AVDF)",
+      "description": "In this lab you will learn how to Audit and Monitor in Security Central",
       "publisheddate": "10/20/2020",
       "filename": "../../avdf-restructured/audit-monitor.md"
     },
     {
       "title": "Lab 7: Protect and Prevent",
-      "description": "In this lab you will learn how to Protect and Prevent in Oracle Audit Vault and DB Firewall (AVDF)",
+      "description": "In this lab you will learn how to Protect and Prevent in Security Central",
       "publisheddate": "10/20/2020",
       "filename": "../../avdf-restructured/protect-prevent.md"
     },
     {
       "title": "Lab 8: Report and Alert",
-      "description": "In this lab you will learn how to Report and set Alerts in Oracle Audit Vault and DB Firewall (AVDF)",
+      "description": "In this lab you will learn how to Report and set Alerts in Security Central",
       "publisheddate": "10/20/2020",
       "filename": "../../avdf-restructured/report-alert.md"
     },
     {
-      "title": "Lab 9: Reset the AVDF lab configuration",
-      "description": "In this lab you will reset the AVDF lab configuration",
+      "title": "Lab 9: Reset the Security Central lab configuration",
+      "description": "In this lab you will reset the Security Central lab configuration",
       "publisheddate": "10/20/2020",
       "filename": "../../avdf-restructured/reset-config.md"
     },
     {
       "title": "Appendix",
-      "description": "Learn more about Oracle Audit Vault and DB Firewall (AVDF)",
+      "description": "Learn more about Oracle Database Security Central (Security Central)",
       "publisheddate": "10/20/2020",
       "filename": "../../avdf-restructured/appendix.md"
     },
