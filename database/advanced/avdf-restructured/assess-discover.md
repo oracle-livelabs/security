@@ -24,7 +24,7 @@ The Security Insights in Security Central Console provides a unified, actionable
 By offering a simplified, fleet-wide perspective across your entire Oracle Database fleet, it enables teams to quickly identify high-risk areas, prioritize mitigation efforts, and take focused action to strengthen the overall security posture.
 
 <details>
-<summary>### **Step 1: Assess the Oracle database's security configuration risks**</summary>
+<summary>**Step 1: Assess the Oracle database's security configuration risks**</summary>
 
 1. Log in to the Security Central Console as *`AVAUDITOR`* (use the newly reset password)
 
@@ -39,7 +39,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 4. Review the key configuration risks under **Database configuration summary**
     - Observe the configuration risks that need to be mitigated
-        ![AVDF](./images/360-1aa.png "AVDF - Security Insights - User Assessment") { width=20% }
+        ![AVDF](./images/360-1aa.png "AVDF - Security Insights - User Assessment"){width=20%}
     
     - Drilldown into the bar showing **Risky privilege grants to PUBLIC** 
         ![AVDF](./images/360-1b.png "AVDF - Security Insights - System privileges")
@@ -98,12 +98,11 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 
     - Review the key configuration risks under **Database configuration summary**
-        ![AVDF](./images/360-1a.png "AVDF - Security Insights - Configuration summary") 
-
-    **Note**: Now, you can see risks in **Risky privilege grants to PUBLIC** are resolved.
+        ![AVDF](./images/360-1a.png "AVDF - Security Insights - Configuration summary"){width=20%}
+        **Note**: Now, you can see risks in **Risky privilege grants to PUBLIC** are resolved.
     
 8. Review the Drifts detected in **Security assessment drift detection**
-    ![AVDF](./images/360-1c.png "AVDF - Security Insights - Security Assessment Drift Detection") 
+    ![AVDF](./images/360-1c.png "AVDF - Security Insights - Security Assessment Drift Detection"){width=20%}
 
     - Click on the pipeline with drifts to see the popup showing the risks involving **grants to PUBLIC** mitigated 
     ![AVDF](./images/360-1d.png "AVDF - Security Insights - Security Assessment Drifts Report ") 
@@ -115,11 +114,11 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 </details>
 
 <details>
-<summary><h3>Step 2: Evaluate user risk across the Oracle Databases</h3></summary>
+<summary>**Step 2: Evaluate user risk across the Oracle Databases**</summary>
 
 1.  Review the key privilege user risks under **User assessment summary**
 
-        ![AVDF](./images/360-1e.png "AVDF - Security Insights - User Assessment") 
+    ![AVDF](./images/360-1e.png "AVDF - Security Insights - User Assessment"){width=20%}
 
 2.  Drilldown into the bar showing privileged users **Access not audited** 
     - Filter the report to show only database admins among the priveleged users
@@ -131,15 +130,15 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
     ![AVDF](./images/360-2.png "AVDF - Retrieval Jobs")  
      **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have access to the sensitive objects in the protected realms of **`Customer_orders`** pdb. Auditing is all the more important when privileged users can access sensitive objects, given the heightened risk of data exposure.
 
-> [!TIP]
-> You've now identified potential user risks. Let's move on to understand sensitive data that faces risk of exposure.
+💡 **TIP:** You've now identified potential user risks. Let's move on to understand sensitive data that faces risk of exposure.
 </details>
-### **Step 3: Assess the sensitive data exposure risk within the Oracle Database**
 
+<details
+<summary>>**Step 3: Assess the sensitive data exposure risk within the Oracle Database** </summary>
 
 1.  Review the sensitive data access not audited under **Data discovery summary**
 
-        ![AVDF](./images/360-3.png "AVDF - Security Insights - Data discovery") 
+    ![AVDF](./images/360-3.png "AVDF - Security Insights - Data discovery") 
 
 2.  Drilldown into the bar showing sensitive data whose **Access not audited** 
     ![AVDF](./images/360-4.png "AVDF - Security Insights - Data discovery - Access not audited")
@@ -152,11 +151,10 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 4. Go back to the **Security Insights** console 
 
-> [!TIP]
-> You've now identified sensitive data which faces risk of exposure. Let's move on to understand what powers these insights in Security Central
-
-### **Step 4: Review the data retrieval jobs that power these insights**
-
+💡 **TIP:** You've now identified sensitive data which faces risk of exposure. Let's move on to understand what powers these insights in Security Central
+</details>
+<details>
+<summary>**Step 4: Review the data retrieval jobs that power these insights**</summary>
 
 1. Go to the **Targets** tab
 
@@ -165,14 +163,15 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
  **Note**: When a target is registered, Security Central automatically runs retrieval jobs for security assessment, user assessment and sensitive data discovery. You can consider scheduling periodic runs of these jobs to factor in changes. In this livelab instance, we have automated daily retrieval jobs.
 
- > [!TIP]
-> You've now assessed security risk posture - configuration risks, potential user risks, and the sensitivity data exposture risks. Now let's understand the sensitive data landscape.
+💡 **TIP:** You've now assessed security risk posture - configuration risks, potential user risks, and the sensitivity data exposture risks. Now let's understand the sensitive data landscape.
+</details>
 
 ## Task 2: Review your sensitive data landscape
 
-Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identify database objects—such as tables and views—that store confidential information including PII, financial data, and health records. It organizes findings into sensitive categories, helping teams to quickly spot what kind of data is exposed to more risk. Within these categories, sensitive types define the specific detection patterns used to accurately identify particular kinds of sensitive data. The dashboard surfaces key insights such as discovery summaries, top targets by sensitive values, and distribution of sensitive data across the fleet by category and type. Together, these capabilities enable security teams to quickly assess exposure, prioritize mitigation efforts, and strengthen overall data protection posture.
+Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identify database objects—such as tables and views—that store sensitive information including PII, financial data, and health records. It organizes findings into sensitive categories, helping teams to quickly spot what kind of data is exposed to more risk. Within these categories, sensitive types define the specific detection patterns used to accurately identify particular kinds of sensitive data. The dashboard surfaces key insights such as discovery summaries, top targets by sensitive values, and distribution of sensitive data across the fleet by category and type. Together, these capabilities enable security teams to quickly assess exposure, prioritize mitigation efforts, and strengthen overall data protection posture.
 
-### **Step 1: Assess the sensitive data landscape**
+<details>
+<summary> **Step 1: Assess the sensitive data landscape** </summary>
 
 
 1. Click on the **Discover & Classify** tab
@@ -186,13 +185,14 @@ Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identi
 
     **Note**: Pluggable databases **`employees_search`** and **`customer_orders`** do contain substantial concentration of sensitive data; therefore, we should prioritize implementing strong access controls to secure and govern access.
 
- > [!TIP]
-> You've now know your sensitive data landscape to start focussing your efforts to secure, let's understand the security policies present in the environment.
+💡 **TIP:** You've now know your sensitive data landscape to start focussing your efforts to secure, let's understand the security policies present in the environment.
+</details>
 
 ## Task 3: Review your security policy landscape
 The unified security policy console provides a centralized interface to define, manage, and enforce policies across the entire fleet. This streamlined console helps ensure consistent protection across the fleet and enables to identify potential gaps in policy enforcement.
 
-### **Step 1: Assess the unified security policy console
+<details> 
+<summary>**Step 1: Assess the unified security policy console**</summary>
 
 1. Click on the **Policies** tab
 
@@ -213,14 +213,13 @@ The unified security policy console provides a centralized interface to define, 
     ![AVDF](./images/360-6a.png "AVDF - Policy console - audit policies")
   **Note**: The list contains the audit configuration enabled by default in the Oracle Database. 
 
-    - Go back to **Policy Console**
+5. Go back to **Policy Console**
+</details>
 
-### **Step 2: Review the retrieval schedule for Oracle Database targets**
-
+<details> 
+<summary>**Step 2: Review the retrieval schedule for Oracle Database targets**</summary>
 
 1. Go to the **Policies retrieval schedule for Oracle Database targets** region
-
-
 
 2. Check the target **`employees_search`** and click **Schedule retrieval** 
     ![AVDF](./images/360-6b.png "AVDF - Policy console - Schedule retrieval")
@@ -229,46 +228,51 @@ The unified security policy console provides a centralized interface to define, 
 
 3. Click Cancel to go back to **Policy Console**
 
- > [!TIP]
-> You've now know security policies present in the environment and what is missing. Let's start exploring the building blocks for policy configurations
+💡 **TIP:**You've now know security policies present in the environment and what is missing. Let's start exploring the building blocks for policy configurations
+
+</details>
 
 ## Task 4: Review and leverage global sets 
 
 Global set represents predefined collection of entities such as IP addresses, database users, OS users, client programs, database roles, sensitive schemas, privileged users, and sensitive objects, that can be centrally managed and reused across multiple policies and reports. This approach streamlines policy management, ensures consistency, and simplifies updates across the system.
 
-### **Step 1: Review and leverage the global sets**
-
+<details>
+<summary>**Step 1: Review and leverage the global sets**</summary>
 
 1. Click on the **Discovery & Classify** tab
-
 
 2. Click on the **Global Sets** is the left menu
     ![AVDF](./images/360-9a.png "AVDF - Global Sets")  
 
     **Note:** Create and manage global sets like IP address, database user, operating system user, client program, privileged user, and sensitive object sets on this page
-
-### **Step 2: Review the global Sensitive Object Sets**
+</details>
+<details>
+<summary> **Step 2: Review the global Sensitive Object Sets** </summary>
 
 1. Click the set **EmployeeSearchSensitiveApplicationObjects** to see the sensitive objects assigned
     ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
     **Note:** This sensitive object set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
-
-### **Step 3: Review the global Privileged User Sets**
+</details>
+<details>
+<summary> **Step 3: Review the global Privileged User Sets**</summary>
 
 1. Click the set **Database Administrators** to see the database administrators assigned in this group
     ![AVDF](./images/360-9c.png "AVDF - Privilege User Sets")
     **Note** This privileged user set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
 
+</details>
 
-> #### What did we learn in this lab
->    
->> It is important to assess your database fleet to identify security risks, privileged users with broad system access, and the presence of sensitive data. These insights help you prioritize and focus your efforts to effectively secure your database environment. In this lab, we have learned:
->>    - How to assess the security configuration risks of Oracle database, and make sure they are mitigated
->>    - How to discover potentially risky users in the system by virtue of their broad entitlements which can be misused or abused.
->>    - How to know the sensitive data that is in risk of exposure
->>    - How to identify sensitive objects in the landscape and focus your mitigation efforts
->>    - How to know your current security policy landscape
->>    - How you can take advantage of global sets to streamline policy management, ensure consistency, and simplify updates across the system.
+## What did we learn in this lab
+    
+Assessing your database fleet is essential to identify configuration risks, detect potentially risky users, and uncover sensitive data that may be exposed. These insights enable you to prioritize actions and strengthen the overall security posture of your database environment.
+
+In this lab, you learned how to:
+    - Assess Oracle Database security configurations and mitigate identified risks
+    - Identify potentially risky users with excessive privileges that could be misused or abused
+    - Discover sensitive data that may be at risk of exposure
+    - Locate sensitive objects within the environment to focus your efforts
+    - Understand your current security policy landscape
+    - Leverage global sets to streamline policy management, ensure consistency, and simplify updates across the system
 
 You may now **proceed to the next lab**.
 

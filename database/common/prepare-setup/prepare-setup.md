@@ -179,6 +179,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-* **Author** - Hakim Loumi, Database Security PM
+* **Author** - Angeline Dhanarani, Database Security PM
 * **Contributors** - Rene Fontcha, Master Principal Solutions Architect, NA Technology
-* **Last Updated By/Date** - Shubham Goyal - November 2025
+* **Last Updated By/Date** - Angeline Dhanarani - April 2026

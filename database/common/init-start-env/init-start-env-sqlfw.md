@@ -66,4 +66,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
 - **Contributors** - Marion Smith, Technical Program Manager
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - January 2026
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - April 2026
