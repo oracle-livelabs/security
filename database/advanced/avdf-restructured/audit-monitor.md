@@ -113,8 +113,10 @@ Unified audit policies in Oracle Database define what database activities should
         ![AVDF](./images/avdf-015.png "Show the enabled Unified Audit policies")
         **Note:** Repeat the query for **`customer_orders`** pdb and re-confirm
 
-</details>
+
 💡 **TIP:** You have provisioned unified audit policies on the target database to generate audit events for tracked actions. Next, you will learn how to turn them into actionable alerts for monitoring and response, once these are collected in Security Central through audit trails.
+
+</details>
 
 ## Task 2: Pro-actively monitor actionable audit events with alerts
 
@@ -206,8 +208,8 @@ Unified audit policies in Oracle Database define what database activities should
 Establishing visibility is the first step toward securing your database environment. By enabling auditing and continuous monitoring, you can track user activities, detect anomalies, and understand how data is accessed and modified. Configuring alerts ensures that suspicious or policy-violating actions are promptly brought to attention, enabling faster response and mitigation. Together, auditing, monitoring, and alerting create a strong foundation for proactive security.
 
 In this lab, you learned how to:
-    - Provision unified audit policies from Security Central for Oracle Databases
-    - Proactively monitor audit events and respond to them using actionable alerts
+- Provision unified audit policies from Security Central for Oracle Databases
+- Proactively monitor audit events and respond to them using actionable alerts
 
 You may now **proceed to the next lab**.
 

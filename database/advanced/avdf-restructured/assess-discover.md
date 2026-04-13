@@ -39,7 +39,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 4. Review the key configuration risks under **Database configuration summary**
     - Observe the configuration risks that need to be mitigated
-        ![AVDF](./images/360-1aa.png "AVDF - Security Insights - User Assessment"){width=20%}
+        <img src="./images/360-1aa.png" alt="AVDF - Security Insights - User Assessment" width="25%">
     
     - Drilldown into the bar showing **Risky privilege grants to PUBLIC** 
         ![AVDF](./images/360-1b.png "AVDF - Security Insights - System privileges")
@@ -98,7 +98,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 
     - Review the key configuration risks under **Database configuration summary**
-        ![AVDF](./images/360-1a.png "AVDF - Security Insights - Configuration summary"){width=20%}
+        <img src="./images/360-1a.png" alt="AVDF - Security Insights - Configuration summary" width="20%">
         **Note**: Now, you can see risks in **Risky privilege grants to PUBLIC** are resolved.
     
 8. Review the Drifts detected in **Security assessment drift detection**
@@ -118,7 +118,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 1.  Review the key privilege user risks under **User assessment summary**
 
-    ![AVDF](./images/360-1e.png "AVDF - Security Insights - User Assessment"){width=20%}
+  <img src="./images/360-1e.png" alt="AVDF - Security Insights - User Assessment" width="20%">
 
 2.  Drilldown into the bar showing privileged users **Access not audited** 
     - Filter the report to show only database admins among the priveleged users
@@ -133,7 +133,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 💡 **TIP:** You've now identified potential user risks. Let's move on to understand sensitive data that faces risk of exposure.
 </details>
 
-<details
+<details>
 <summary>>**Step 3: Assess the sensitive data exposure risk within the Oracle Database** </summary>
 
 1.  Review the sensitive data access not audited under **Data discovery summary**
@@ -258,7 +258,7 @@ Global set represents predefined collection of entities such as IP addresses, da
 
 1. Click the set **Database Administrators** to see the database administrators assigned in this group
     ![AVDF](./images/360-9c.png "AVDF - Privilege User Sets")
-    **Note** This privileged user set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
+    **Note**: This privileged user set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
 
 </details>
 
@@ -267,12 +267,12 @@ Global set represents predefined collection of entities such as IP addresses, da
 Assessing your database fleet is essential to identify configuration risks, detect potentially risky users, and uncover sensitive data that may be exposed. These insights enable you to prioritize actions and strengthen the overall security posture of your database environment.
 
 In this lab, you learned how to:
-    - Assess Oracle Database security configurations and mitigate identified risks
-    - Identify potentially risky users with excessive privileges that could be misused or abused
-    - Discover sensitive data that may be at risk of exposure
-    - Locate sensitive objects within the environment to focus your efforts
-    - Understand your current security policy landscape
-    - Leverage global sets to streamline policy management, ensure consistency, and simplify updates across the system
+- Assess Oracle Database security configurations and mitigate identified risks
+- Identify potentially risky users with excessive privileges that could be misused or abused
+- Discover sensitive data that may be at risk of exposure
+- Locate sensitive objects within the environment to focus your efforts
+- Understand your current security policy landscape
+- Leverage global sets to streamline policy management, ensure consistency, and simplify updates across the system
 
 You may now **proceed to the next lab**.
 

@@ -1,61 +1,29 @@
-# Oracle Audit Vault and DB Firewall (AVDF)
+# Oracle Database Security Central (Security Central)
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Audit Vault and DB Firewall (AVDF). It gives the user an opportunity to learn how to configure those appliances in order to audit, monitor and protect access to sensitive data.
+This workshop introduced the key features and capabilities of Security Central. If you would like to repeat the exercises or start fresh, you can reset the lab environment and begin again from the beginning.
 
-*Estimated Lab Time:* 110 minutes
+*Estimated Lab Time:* 5 minutes
 
 *Version tested in this lab:* Oracle AVDF 20.13
 
 ### Video Preview
 
-Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](youtube:eLEeOLMAEec)
+Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eLEeOLMAEec)
 
 
 ### Objectives
-- Assess the security posture of the registered Oracle database targets
-- Set a baseline and detect drift of the security configuration
-- Discover sensitive data
-- Configure the auditing for the Oracle database
-- Explore the interactive reporting capabilities, including user entitlement
-- Simply compliance with pre-defined reports, including activity on sensitive data
-- Train the DBFW for the authorized application query and prevent the SQL injection
+- Rest the lab environment
 
+## Task: Reset the AVDF Lab Config
 
-### Prerequisites
-This lab assumes you have:
-- A Free Tier, Paid or LiveLabs Oracle Cloud account
-- You have completed:
-    - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
-    - Lab: Environment Setup
-    - Lab: Initialize Environment
-
-### Lab Timing (estimated)
-
-
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-|| **AVDF Labs**||
-|04| Reset the password | <5 minutes|
-|05| Assess and Discover | 20 minutes|
-|06| Audit and Monitor | 20 minutes|
-|07| Report and Alert | 20 minutes|
-|08| Protect and Prevent | 20 minutes|
-|| **Optional**||
-|09| Advanced features configuration | 25 minutes|
-|10| Reset the AVDF labs config | <5 minutes|
-
-## Lab 10: Reset the AVDF Lab Config
-
-1. Reset **Golden Gate** configuration for **pdb1** only!
+1. Reset **Golden Gate** configuration for **Customer_orders** only!
 
     - Go back to Audit Vault Web Console as *`AVADMIN`*"
 
-        ![AVDF](./images/avdf-400.png "AVDF - Login")
-
     - Click the **Targets** tab
 
-    - Click the Target Name **pdb1**
+    - Click the Target Name **Customer_orders**
 
         ![AVDF](./images/avdf-250.png "Select the Target Name")
 
@@ -93,7 +61,7 @@ This lab assumes you have:
 
         ![AVDF](./images/avdf-030a.png "Golden Gate - Configuration")
 
-    - Delete the "**Credentials**" for **pdb1** only by clicking on the "**Delete**" button
+    - Delete the "**Credentials**" for **cust1** only by clicking on the "**Delete**" button
 
         ![AVDF](./images/avdf-257.png "Delete credentials")
 
@@ -105,7 +73,7 @@ This lab assumes you have:
 
         ![AVDF](./images/avdf-033a.png "Select Overview")
 
-    - Stop the "**Extracts**" service for **pdb1** only by clicking on the "**Actions**" button and selecting "**Force Stop**"
+    - Stop the "**Extracts**" service for **cust1** only by clicking on the "**Actions**" button and selecting "**Force Stop**"
 
         ![AVDF](./images/avdf-259.png "Force Stop the service")
 
@@ -187,9 +155,9 @@ This lab assumes you have:
     ![AVDF](./images/avdf-273.png "Reset AVDF binaries")
 -->
 
-2. **Now, the AVDF configuration is correctly reset!**
+2. **Now, the Security Central configuration is correctly reset!**
 
 ## Acknowledgements
 - **Author** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager
-- **Contributors** - Hakim Loumi - Hakim Loumi, Database Security - Product Manager
-- **Last Updated By/Date** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager - November 2024
+- **Contributors** - Angeline Dhanarani, Database Security - Product Manager
+- **Last Updated By/Date** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager - April 2026

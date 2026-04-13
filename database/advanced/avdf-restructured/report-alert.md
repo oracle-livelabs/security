@@ -1,28 +1,27 @@
 # Continuous vigilance: report and alert
 
 ## Introduction
-Consider establishing a process of continuous monitoring to help meet the requirements of various regulations using the pre-defined reports of AVDF. Consider alerts to pro-actively notify you on actionable events that need to be prioritized for mitigation.
+Establish a continuous monitoring process to support compliance with regulatory requirements by leveraging the pre-defined reports available in Security Central. In addition, configure alerts to proactively notify you of actionable events, allowing you to prioritize and respond to potential risks in a timely manner.
 
 *Estimated Lab Time:* 5 minutes
 
-*Version tested in this lab:* Oracle AVDF Next Gen
+*Version tested in this lab:* Oracle Database Security Central
 
 ### Video Preview
 
-Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](youtube:eLEeOLMAEec)
+Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eLEeOLMAEec)
 
 
 ### Objectives
-- Review the pre-defined reports like User access rights and activity on sensitive Data
-- Tracking Data Changes (Auditing "Before-After" Values)
+- Review common pre-defined reports like *Activity on sensitive Data*, *Data Modification Before-After values*
+- Review alerts generated
 
 
-## Task 1: Review important pre-defined reports
-### Step 1: User access rights and user activity on sensitive Data
+## Task 1: Review common pre-defined reports
+<details>
+<summary>### Step 1: Review activity on sensitive Data</summary>
 
 1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
-
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 2. View the Sensitive Data
 
@@ -52,25 +51,29 @@ Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](yo
 
         **Note:** Here you can see the Data Privacy report of the Schema, Objects, Object Types, and Column Name and Sensitive Types
 
-2. If you want to see the associated global set, then on this report click **Actions** -> **Select Columns**
+3. If you want to see the associated global set, then on this report click **Actions** -> **Select Columns**
 
     - Select **"Sensitive Objects Sets"** and click on **Apply**
 
         ![AVDF](./images/avdf-602.png "Sensitive Data report")
 
-    - You will see the global set associated with these sensitive objects
+4. Now, you will see activity on sensitive data along with the global set
 
         ![AVDF](./images/avdf-603.png "Sensitive Data report")
 
-3. You can also view additional **Compliance Reports** about Sensitive Data
+5. You can also view additional **Compliance Reports** about Sensitive Data
 
     ![AVDF](./images/avdf-024.png "Compliance Reports")
 
-### Step 2: Tracking Data Changes (Auditing "Before-After" Values)
-In this section, we will only see the change report for **`customer_orders`**, where all the configuration has been already done during the deployment
+💡 **TIP:** You can now demonstrate compliance with regulations by showcasing activity on sensitive data through these reports. Consider scheduling these reports to run automatically at regular intervals to ensure continuous monitoring, timely insights, and readiness for audits without manual effort.
 
+</details>
+<details>
+<summary>### Step 2: Review Data Modification Before-After values</summary>
 
-1. Check if the registed transaction log trail for **`customer_orders`** is started
+Some regulations ask for providing a clear record of how certain data has been changed over time to ensures full transparency and accountability for data modifications. This pre-defined report helps meet the need. We will review the change report for **`customer_orders`**, where all the configuration has been already done in the livelab.
+
+1. Check if the transaction log trail for **`customer_orders`** is started
 
     - Click on "**Targets**"
     
@@ -83,7 +86,7 @@ In this section, we will only see the change report for **`customer_orders`**, w
         - If not then login as **AVADMIN** and start the transaction log trail for **customer_orders**
         - Do not go to next step if **`UNIFIED_AUDIT_TRAIL`** and **TRANSACTION LOG** for **`customer_orders`** is not in the **COLLECTING** or **IDLE** status!
 
-3. Now, generate value changes in database and view the Data Modification Before-After Values Reports
+3. Now, generate DML traffic in the database and view the Data Modification Before-After Values Reports
 
     - By default, in the dbseclab VM, the Oracle GoldenGate software has been already installed and pre-configured
     
@@ -127,8 +130,6 @@ In this section, we will only see the change report for **`customer_orders`**, w
 
 4. Go back to Audit Vault Web Console as *`AVAUDITOR`*"
 
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
-
 5. Click the **Reports** tab
 
 6. Under **Activity Reports**, in the **Data Access & Modification** section, click **Data Modification Before-After Values**
@@ -144,6 +145,10 @@ In this section, we will only see the change report for **`customer_orders`**, w
     - Ensure you properly executed the scripts in `Before_and_After_Changes` folder to create the "`C##GGAVADMIN`" user and setup the database
     - Check if the Timezone of your Audit Trail is correctly set to your VM Timezone
     - Check your Audit Trail is up and running
+
+💡 **TIP:** You have now explored commonly used pre-defined reports that provide insights into activity across your database fleet. Use these reports to support compliance requirements, perform forensic analysis, and detect abnormal or suspicious activities. Now you will see how you can gain insights on actionable alerts.
+
+</details>
 
 ## Task 2: Review alerts generated
 
@@ -162,14 +167,16 @@ In this section, we will only see the change report for **`customer_orders`**, w
 
     ![AVDF](./images/avdf-655.png "View an alert")
 
+💡 **TIP:** You have now explored on actionable alerts - how you can monitor them from Security Central. 
 
+## What did we learn in this lab
+    
+In this lab, you learned how to establish continuous monitoring using Oracle Database Security Central.
 
->**What did we learn in this lab**
->
->>- How to monitor and analyse user rights and activites sensitive objects
->>- Tracking "Before-After" value report for Oracle database for the compliance purpose
->>- How to get notified through AVDF powerful alert policy engine 
+- You explored pre-defined reports such as *Activity on Sensitive Data* and *Data Modification Before-After Values* to gain visibility into data access and changes, supporting compliance and audit requirements.
+- You reviewed alerts generated for actionable events, enabling proactive monitoring and faster response to potential risks.
 
+Together, reporting and alerting provide continuous vigilance, helping organizations maintain security, ensure compliance, and protect sensitive data effectively.
 
 ## Acknowledgements
 - **Author** - Angeline Dhanarani, Database Security - Product Manager
