@@ -24,7 +24,7 @@ The Security Insights in Security Central Console provides a unified, actionable
 By offering a simplified, fleet-wide perspective across your entire Oracle Database fleet, it enables teams to quickly identify high-risk areas, prioritize mitigation efforts, and take focused action to strengthen the overall security posture.
 
 <details>
-<summary><h3>Step 1: Assess the Oracle database's security configuration risks</h3></summary>
+<summary>### **Step 1: Assess the Oracle database's security configuration risks**</summary>
 
 1. Log in to the Security Central Console as *`AVAUDITOR`* (use the newly reset password)
 
@@ -110,9 +110,10 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
     - Close the popup
 
-> [!TIP]
-> You've now reviewed a Security configuration risks and mitigated them. Let's move on to identify potential user risks.
+💡 **TIP:** You've now reviewed a Security configuration risks and mitigated them. Let's move on to identify potential user risks.
+
 </details>
+
 <details>
 <summary><h3>Step 2: Evaluate user risk across the Oracle Databases</h3></summary>
 
