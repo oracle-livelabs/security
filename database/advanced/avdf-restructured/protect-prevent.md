@@ -128,6 +128,7 @@ SQL Firewall is enabled in the **`Employees_search`**. In this lab, you will ena
 💡 **TIP:** In real world deployment scenarios, you could capture the approved SQL statements while funtionally testing your apps in pre-prod instance, and importing them into production instance once you have captured all the approved SQLs and trusted paths.
 
 </details>
+
 <details>
 <summary> **Step 4: Ensure the SQL Firewall has learned**</summary>
 
@@ -145,6 +146,7 @@ SQL Firewall is enabled in the **`Employees_search`**. In this lab, you will ena
 💡 **TIP:** You've now enabled SQL Firewall to learn the approved SQL statements and trusted connection paths for EMPLOYEESEARCH_PROD application service account. You will now enforce this as an allow-list with SQL Firewall policy.
 
 </details>
+
 <details>
 <summary> **Step 5: Enable the SQL Firewall policy**</summary>
 
@@ -176,6 +178,7 @@ SQL Firewall is enabled in the **`Employees_search`**. In this lab, you will ena
 💡 **TIP:** You've now enforced the SQL Firewall policy for EMPLOYEESEARCH_PROD application service account,allow-listing approved SQL statements and trusted connection paths. Any mismatch will trigger SQL Firewall violation which will be collected by Security Central and alerted.
 
 </details>
+
 <details>
 <summary> **Step 6: Ensure SQL Firewall violations are being collected**</summary>
 
@@ -186,6 +189,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 **Note:** Ensure the *`DBA_SQL_FIREWALL_VIOLATIONS`* table audit trails are either in **Collecting** or in **Idle** state
 
 </details>
+
 <details>
 <summary> **Step 7: Trigger SQL Firewall violations** </summary>
 We will validate the protection controls of SQL Firewall by triggering violations. Let us simulate SQL Firewall context violations by connecting as *SQLPLUS*.  
@@ -248,8 +252,8 @@ We will validate the protection controls of SQL Firewall by triggering violation
     This occurs because the *UNION* query is not recognized by SQL Firewall as an authorized SQL statement. As a result, it is blocked and prevented from executing further.
 
 </details>
-<details>
 
+<details>
 <summary>**Step 8: Monitor SQL Firewall violations**</summary>
 
 1. Go to Security Central Console as *`AVAUDITOR`*
@@ -748,6 +752,7 @@ Database Vault is enabled in the **Customer_orders** pdb in the livelab environm
 
   **Note:** Review to see the realm **"PROTECT_CUSTOMER_ORDERS"** pre-created in the instance. The objects belonging to schema **CO** are protected in this realm. Only the schema owner is authorized to access this protected object.
 </details>
+
 <details>
 <summary>**Step 2: Add a user as authorized user of the realm**</summary>
 We will plan to add business user BA_ALEX as authorized participant of the realm object for reporting purposes, typically read-only access to the Customer Orders schema.
@@ -758,6 +763,7 @@ We will plan to add business user BA_ALEX as authorized participant of the realm
 3. Select **Success** and **Failure** in **Audit Details** region
 4. Click **Save**
 </details>
+
 <details>
 <summary>**Step 3: Ensure DV violation events are collected**</summary>
 
@@ -769,6 +775,7 @@ You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** l
 
 Ensure the table audit trails are either in **Collecting** or in **Idle** state
 </details>
+
 <details>
 <summary>**Step 4: Test the DV realm violations**</summary>
 
@@ -793,6 +800,7 @@ Ensure the table audit trails are either in **Collecting** or in **Idle** state
 - `BA_ALEX` has the object privelege access on CO.Orders; BA_ALEX also has necessary DV realm authorization on schema CO
 -  `CUSTOMERADMIN` has the object privilege access on CO.Orders; but no DV realm authorization on schema CO
 </details>
+
 <details>
 <summary>**Step 5: Monitor and alert on DV realm violations**</summary>
 

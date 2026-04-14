@@ -32,6 +32,7 @@ Audit trails represent collection endpoints for database activity events. They g
         **Note:** Ensure the **`UNIFIED_AUDIT_TRAIL`** table audit trails are either in **Collecting** or in **Idle** state.
 
 </details>
+
 <details>
 <summary> **Step 2: Retrieve and provision the Unified audit policies for Employees_search pdb** </summary>
 
@@ -68,6 +69,7 @@ Unified audit policies in Oracle Database define what database activities should
 
 6. Go back to **Audit Policies** 
 </details>
+
 <details>
 <summary> **Step 3: Retrieve and provision the Unified audit policies for Customer_orders pdb**</summary>
 
@@ -91,6 +93,7 @@ Unified audit policies in Oracle Database define what database activities should
 4. Go back to **Audit Policies** and review the policy count for **`Employees_search`** and **`Customer_orders`** pdb
       ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 </details>
+
 <details>
 <summary> **Step 4: Ensure the audit policy provisioning succeeds**</summary>
 
@@ -181,6 +184,7 @@ Unified audit policies in Oracle Database define what database activities should
     ![AVDF](./images/avdf-048.png "Drop the users just created")
 
 </details>
+
 <details>
 <summary>**Step 2: Review the alerts generated**</summary>
 

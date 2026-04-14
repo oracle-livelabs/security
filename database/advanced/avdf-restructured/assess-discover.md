@@ -152,6 +152,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 💡 **TIP:** You've now identified sensitive data which faces risk of exposure. Let's try to understand what powers these insights in **Security Central**
 </details>
+
 <details>
 <summary>**Step 4: Review what powers these insights**</summary>
 
@@ -245,6 +246,7 @@ Global set represents predefined collection of entities such as IP addresses, da
 
     **Note:** Create and manage global sets like IP address, database user, operating system user, client program, privileged user, and sensitive object sets on this page
 </details>
+
 <details>
 <summary> **Step 2: Review the global Sensitive Object Sets** </summary>
 
@@ -252,6 +254,7 @@ Global set represents predefined collection of entities such as IP addresses, da
     ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
     **Note:** This sensitive object set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
 </details>
+
 <details>
 <summary> **Step 3: Review the global Privileged User Sets**</summary>
 

@@ -68,6 +68,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 💡 **TIP:** You can now demonstrate compliance with regulations by showcasing activity on sensitive data through these reports. Consider scheduling these reports to run automatically at regular intervals to ensure continuous monitoring, timely insights, and readiness for audits without manual effort.
 
 </details>
+
 <details>
 <summary>**Step 2: Review Data Modification Before-After values**</summary>
 
