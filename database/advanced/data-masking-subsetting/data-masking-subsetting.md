@@ -212,7 +212,7 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 
 9. Click **Create** on the next page. A new Masking Definition is created.
 
-    ![DMS](./images/dms-032(2).png "32")
+    ![DMS](./images/dms-012(c).png "32")
 
 **What You Accomplished:**  
 A new Masking Definition for sensitive columns EMAIL, USERID and PASSWORD in the *`Employee_Data_Mask`* is created, where the automatically assigned masking formats are reviewed and the remaining ones are added.
