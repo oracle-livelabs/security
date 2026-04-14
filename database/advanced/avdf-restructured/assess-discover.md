@@ -81,7 +81,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
  6. Generate an assessment on-demand for the targets **`customers_orders`** and **`sales_history`** 
 
-    - Click on "**Targets**",
+    - Click on the **Targets** tab
     
     - Then click on "**Schedule retrieval job**" for **`customers_orders`**
     ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs") 
@@ -94,8 +94,6 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 7. Go to the **Security Insights** console 
 
-
-
     - Review the key configuration risks under **Database configuration summary**
         ![AVDF](./images/360-1a.png  "AVDF - Security Insights - Configuration summary") 
         **Note**: Now, you can see that the risks in **Risky privilege grants to PUBLIC** are resolved.
@@ -103,7 +101,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 8. Review the Drifts detected in **Security assessment drift detection**
         ![AVDF](./images/360-1c.png "AVDF - Security Insights - Security Assessment Drift Detection")
 
-        - Click on the pipeline with drifts to see the popup showing the risks involving **grants to PUBLIC** mitigated 
+9. Click on the pipeline with drifts to see the popup showing the risks involving **grants to PUBLIC** mitigated 
     
     ![AVDF](./images/360-1d.png "AVDF - Security Insights - Security Assessment Drifts Report ") 
 
@@ -121,16 +119,16 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 2.  Drilldown into the data showing privileged users **Access not audited** 
     - Filter the report to show only database admins among the priveleged users
-        - Make sure the filter contains **Database admin = "Yes"**
+        - Make sure to filter the rows containing **Database admin = "Yes"**
     ![AVDF](./images/360-1f.png "AVDF - Security Insights - User Assessment - Priv users without audit")
 
     **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have the broad database administrative rights on the entire fleet of databases. It is critical to audit database administrators and other privileged users, as their broad system privileges can pose significant risk if their credentials are compromised or misused. 
      
-3.  Now go back, drilldown into the data showing privileged users **Access to DV protected objects**
+3.  Click **Security Insights** to go back, then drilldown into the data showing privileged users **Access to DV protected objects**
     ![AVDF](./images/360-2.png "AVDF - Retrieval Jobs")  
      **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have access to the sensitive objects in the protected realms of **`Customer_orders`** pdb. 
 
-💡 **TIP:** You've now identified potential user risks. Let's move on to understand sensitive data that faces risk of exposure.
+💡 **TIP:** You've now identified privileged users who carry potential risks. Let's move on to understand sensitive data that faces risk of exposure.
 </details>
 
 <details>
@@ -150,7 +148,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 4. Go back to the **Security Insights** console 
 
-💡 **TIP:** You've now identified sensitive data which faces risk of exposure. Let's try to understand what powers these insights in **Security Central**
+💡 **TIP:** You've now identified sensitive data that faces risk of exposure. Let's try to understand what powers these insights in **Security Central**
 </details>
 
 <details>
@@ -161,7 +159,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 2. Click the **Schedule Retrieval Jobs** icon for the target **`employees_search`** 
     ![AVDF](./images/360-8.png "AVDF - Retrieval jobs")
 
- **Note**: When a target is registered, **Security Central** automatically runs retrieval jobs for security assessment, user assessment and sensitive data discovery. You can consider scheduling periodic runs of these jobs to factor in changes. In this livelab instance, we have automated daily retrieval jobs.
+ **Note**: When a target is registered, **Security Central** automatically runs retrieval jobs for security assessment, user assessment and sensitive data discovery. You can consider scheduling the jobs to run periodically. In this livelab, we have automated daily retrieval.
 
 💡 **TIP:** You've now assessed security risk posture - configuration risks, potential user risks, and the sensitive data exposture risks. Now let's understand the sensitive data landscape.
 </details>
@@ -192,7 +190,7 @@ Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identi
 The unified security policy console provides a centralized interface to define, manage, and enforce policies across the entire fleet. This streamlined console helps ensure consistent protection across the fleet and enables to identify potential gaps in policy enforcement.
 
 <details> 
-<summary>**Step 1: Assess the unified security policy console**</summary>
+<summary>**Step 1: Review the unified security policy console**</summary>
 
 1. Click on the **Policies** tab
 
