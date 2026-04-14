@@ -195,38 +195,35 @@ The unified security policy console provides a centralized interface to define, 
 1. Click on the **Policies** tab
 
 
-2. Click **Policy console** in the left menu
+2. Click **Policy console** in the left menu, and review the policies deployed
 
     ![AVDF](./images/360-6.png "AVDF - Policy console")
-
-
-3. Review the policies deployed on Oracle databases
+    - Drilldown into **Audit** data in the second chart showing policies deployed
     
-    ![AVDF](./images/360-6.png "AVDF - Policy console")
-
-    - Click on **Audit** bar which shows non-zero audit configurations
-    
-4. Drilldown and filter to see the audit policies enabled for **`employees_search`**
+3. Examine the audit policies enabled for **`customer_orders`**
 
     ![AVDF](./images/360-6a.png "AVDF - Policy console - audit policies")
-  **Note**: The list contains the audit configuration enabled by default in the Oracle Database. 
+    **Note**: The list includes the audit policies enabled by default in the Oracle Database, and those enabled by automation in the livelab.
 
-5. Go back to **Policy Console**
+4. Go back to **Policy Console**
 </details>
 
 <details> 
 <summary>**Step 2: Review the retrieval schedule for policies**</summary>
 
-1. Go to the **Policies retrieval schedule for Oracle Database targets** region
+1. Scroll down to the **Policies retrieval schedule for Oracle Database targets** 
 
-2. Check the target **`employees_search`** and click **Schedule retrieval** 
+2. Select the target **`employees_search`** and click **Schedule retrieval** . Enter the following in the popup.
     ![AVDF](./images/360-6b.png "AVDF - Policy console - Schedule retrieval")
+    - Select Policy type *Audit*
+    - Select *Create/Update schedule*
+    - Schedule *Enable*
+    - Repeats every *1 week*
+    - Click *Save*
 
- **Note**: When a target is registered, AVDF automatically runs retrieval job for policies. You can consider scheduling periodic runs of these jobs to factor in changes. In this livelab instance, we have automated daily retrieval job.
+ **Note**: When a target is registered, AVDF automatically runs retrieval job for policies. You should consider scheduling the job periodically to retrieve the latest. 
 
-3. Click Cancel to go back to **Policy Console**
-
-💡 **TIP:** You now know security policies present in the environment and what is missing. Let's explore the building blocks for policy configurations
+💡 **TIP:** You know the security policies present in the environment and what is missing. Let's explore the building blocks to start configuring policies.
 
 </details>
 
@@ -246,19 +243,27 @@ Global set represents predefined collection of entities such as IP addresses, da
 </details>
 
 <details>
-<summary> **Step 2: Review the global Sensitive Object Sets** </summary>
+<summary> **Step 2: Create a Sensitive Object Set** </summary>
 
-1. Click the set **EmployeeSearchSensitiveApplicationObjects** to see the sensitive objects assigned
+1. Expand **Sensitive Object Sets (0)** and click **Add**. Enter the following
+    -   Name **EmployeeSearchSensitiveApplicationObjects**
+    -   Toggle **Employees_search** to the selected target
+    -   All the discovered *Sensitive Objects* are included by default
+    -   Click **Save**
     ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
-    **Note:** This sensitive object set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
+    **Note:** Consider creating such sets to simply the management of policies.
 </details>
 
 <details>
-<summary> **Step 3: Review the global Privileged User Sets**</summary>
+<summary> **Step 3: Create a Privileged User Set**</summary>
 
-1. Click the set **Database Administrators** to see the database administrators assigned in this group
+1. Expand **Privileged User Sets (0)** and click **Add**. Enter the following
+    -   Name **EmployeeSearchPrivUsers**
+    -   Toggle **Employees_search** to the selected target
+    -   All the discovered *Privileged Users* are included by default
+    -   Click **Save**
     ![AVDF](./images/360-9c.png "AVDF - Privilege User Sets")
-    **Note**: This privileged user set is created for you in this Livelab instance by terraform. Consider creating such sets to simply the management of policies.
+    **Note**: Consider creating such sets to simply the management of policies.
 
 </details>
 
