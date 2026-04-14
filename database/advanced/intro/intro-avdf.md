@@ -4,7 +4,7 @@
 ### Overview
 *Estimated Time to complete the workshop*: 60 minutes
 
-Oracle Database Security Central (Security Central) is one command center providing unified view of risk, sensitive data, policy governance, activity monitoring, and SQL threat prevention for the fleet of databases in your environment. Security Central is designed to complement existing database protection technologies like encryption, auditing, fine-grained authorization, multi-factor authentication, and privileged access controls.Together, they create a layered, defense-in-depth approach:
+Oracle Database Security Central (Security Central) is one command center providing unified view of risk, sensitive data, policy governance, activity monitoring, and SQL threat prevention for the fleet of databases in your environment. Security Central is designed to complement existing database protection technologies like encryption, auditing, fine-grained authorization, multi-factor authentication, and privileged access controls. Together, they create a layered, defense-in-depth approach:
   - Prevent unauthorized access
   - Protect sensitive data
   - Monitor and audit activity
@@ -21,12 +21,12 @@ The complete architecture of the **DB Security Hands-On Labs** is as following:
 
   ![DBSec LiveLabs Archi](./images/dbseclab-archi.png "DBSec LiveLabs Archi")
 
-It's composed of 5 VMs:
+It's composed of multiple VMs, including:
   - **DBSec-Lab VM** (mandatory for all workshops: Baseline and Advanced workshops)
   - **Audit Vault Server VM** (for Advanced workshop only)
   - **DB Firewall Server VM** (for Advanced workshop only)
   - **Key Vault Server VM** (for Advanced workshop only)
-  - **DB23ai VM** (for SQL Firewall workshop only)
+
 
 During this mini-lab, you'll use different resources to interact with these VMs:
   - SSH Terminal Client
@@ -49,4 +49,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 - **Author** - Angeline Dhanarani, Database Security PM
 - **Contributors** - Angeline Dhanarani, Nazia Zaidi, Rene Fontcha
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - March 2026
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - April 2026

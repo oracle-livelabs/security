@@ -5,7 +5,7 @@ This workshop introduced the key features and capabilities of Security Central. 
 
 *Estimated Lab Time:* 5 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.13
+*Version tested in this lab:* Oracle Database Security Central
 
 ### Video Preview
 
@@ -15,11 +15,11 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 ### Objectives
 - Rest the lab environment
 
-## Task: Reset the AVDF Lab Config
+## Task: Reset the Security Central Lab Config
 
 1. Reset **Golden Gate** configuration for **Customer_orders** only!
 
-    - Go back to Audit Vault Web Console as *`AVADMIN`*"
+    - Go back to Security Central Console as *`AVADMIN`*"
 
     - Click the **Targets** tab
 
@@ -158,6 +158,6 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 2. **Now, the Security Central configuration is correctly reset!**
 
 ## Acknowledgements
-- **Author** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager
+- **Author** - Nazia Zaidi, Database Security - Product Manager
 - **Contributors** - Angeline Dhanarani, Database Security - Product Manager
-- **Last Updated By/Date** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager - April 2026
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - Product Manager - April 2026

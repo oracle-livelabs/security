@@ -2,12 +2,12 @@
 
 ## Introduction
 
-In this lab we will review and startup all components required to successfully run this workshop.
+In this lab we will review access to Glassfish application
 
-Estimated Time: 10 minutes maximum.
+Estimated Time: 5 minutes maximum.
 
 ### Objectives
-- Initialize the workshop environment.
+- Review access to Glassfish application
 
 ### Prerequisites
 This lab assumes you have:
@@ -25,7 +25,7 @@ This lab assumes you have:
 
 **Note:** All screenshots for SSH terminal type tasks featured throughout this workshop were captured using the *MobaXterm* SSH Client as described in this step. As a result when executing such tasks from within the graphical remote desktop session, skip steps requiring you to login as user *oracle* using *sudo su - oracle*, the reason being that the remote desktop session is under user *oracle*.
 
-## Task 1 - Check access to Glassfish app
+## Task 1: Check access to Glassfish app
 
 1. Verify the application functions as expected
 

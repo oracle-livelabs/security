@@ -1,14 +1,14 @@
 # Oracle Database Security Central (Security Central)
 
 ## Introduction
-As a security administrator, your mission is to protect and monitor a growing fleet of Oracle databases — ensuring both operational efficiency and data security. This workshop introduces you to multiple pre-seeded Pluggable Databases (PDBs), including **`Employees_search`** and **`Customer_orders`**, and demonstrates how Security Central empowers you to manage and secure a database fleet at scale. 
+As a security administrator, your mission is to protect and monitor a growing fleet of Oracle databases, ensuring both operational efficiency and data security. This workshop introduces you to multiple pre-seeded pluggable databases (PDBs), including **`Employees_search`** and **`Customer_orders`**, and demonstrates how **Security Central** empowers you to manage and secure database fleet at scale. 
 Let us assume the following scenarios in this workshop:
 
 - **Employees_search PDB** powers the company’s in-house self-service HR application, giving employees access to sensitive personal and salary information. Its integrity, availability, and security are critical to maintaining trust and operational continuity.
 
 - **Customer_orders PDB** supports the company’s client-facing order management application, containing sensitive customer data such as order, billing, shipping, and payment information. Ensuring its accuracy, availability, and security is essential for customer satisfaction, business continuity, and commercial success.
 
-Through this workshop, you’ll gain hands-on experience in using Security Central to monitor, protect, and manage these databases, arming you with the tools and insights to secure a real-world database fleet efficiently and confidently.
+Through this workshop, you’ll gain hands-on experience in using **Security Central** to monitor, protect, and manage these databases, arming you with insights to secure a real-world database fleet efficiently and confidently.
 
 *Estimated Lab Time:* 60 minutes
 
@@ -20,7 +20,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 
 ### Objectives
-- Assess your database: configurations, users, and data of the registered Oracle database targets
+- Assess your database: risks, users, and data
 - Establish visibility first: audit and monitor
 - Protect and Prevent: enforce controls
 - Continuous vigilance: report and alert
@@ -40,14 +40,14 @@ This lab assumes you have:
 |--|------------------------------------------------------------|-------------|
 || **Security Central Labs**||
 |04| Access Security Central console | <5 minutes|
-|05| Assess your database: configurations, users, and data | 10 minutes|
+|05| Assess your database: risks, users, and data | 10 minutes|
 |06| Establish visibility first: audit and monitor | 10 minutes|
 |07| Protect and Prevent: enforce controls | 30 minutes|
 |08| Continuous vigilance: report and alert | 5 minutes|
 || **Optional**||
 |09| Reset the Security Central labs config | <5 minutes|
 
-## Task1: Access Security Central console
+## Task: Access Security Central console
 
 You have been given a randomly generated password for the *`AVADMIN`* and *`AVAUDITOR`* user login for the Security Central console. When you log into the Security Central console for the first time using these users, you will be asked to change the password.
 

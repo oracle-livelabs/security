@@ -1,7 +1,8 @@
 # Establish visibility first: audit and monitor
 
 ## Introduction
-Now that you have the necessary insights, you begin by configuring activity monitoring, followed by implementing preventive controls.
+Establishing visibility is the first step toward securing your database environment. With the necessary insights in place, shift your focus to first enable continuous monitoring to track user activity, detect anomalies, and understand how data is accessed and modified.
+
 - The **Employees_search** pdb supports internal self-service applications, and contains a high volume of sensitive data and is accessible to privileged users, making insider threat mitigation the top priority. You enable auditing to track security-relevant events, privileged user activity, and access to sensitive data.
 - For the **Customer_orders** pdb, the primary focus is mitigating external threats and demonstrating compliance (e.g., CIS). You enable auditing for system configuration changes, critical database activity, and schema changes, and additionally provision user activity and CIS compliance policies.
 
@@ -23,12 +24,12 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central (Security Centr
 
 Security Central enables comprehensive database activity monitoring by collecting and aggregating audit data, along with network-based monitoring of SQL traffic. For Oracle Database, it provides centralized capabilities to manage and provision audit policies, ensuring consistent monitoring, improved visibility, and stronger security governance across the database environment.
 <details>
-<summary> **Step 1: Ensure audit trails are configured for Oracle databases** </summary>
+<summary> **Step 1: Ensure audit trails are configured** </summary>
 
 Audit trails represent collection endpoints for database activity events. They gather audit data from multiple sources, normalize and centralize it for monitoring and analysis. In this livelab, we have already configured the audit trail for the Oracle databases. 
     - You can see the same from "**Targets**" > "**Audit Trails**" (with **AVADMIN** login)
-    ![AVDF](./images/avdf-551.png "Audit Trail")
-    **Note:** Ensure the **`UNIFIED_AUDIT_TRAIL`** table audit trails are either in **Collecting** or in **Idle** state.
+        ![AVDF](./images/avdf-551.png "Audit Trail")
+        **Note:** Ensure the **`UNIFIED_AUDIT_TRAIL`** table audit trails are either in **Collecting** or in **Idle** state.
 
 </details>
 <details>
@@ -36,8 +37,6 @@ Audit trails represent collection endpoints for database activity events. They g
 
 Unified audit policies in Oracle Database define what database activities should be audited. They can be provisioned and managed from Security Central.
 1. Go to Security Central Console as *`AVAUDITOR`*
-
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
 
 2. Click on the **Policies** tab, and **Audit Policies** in the left menu
     ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
@@ -93,7 +92,7 @@ Unified audit policies in Oracle Database define what database activities should
       ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 </details>
 <details>
-<summary> **Step 4: Ensure the audit policy provisioning jobs succeeds, and policies enabled on the target**</summary>
+<summary> **Step 4: Ensure the audit policy provisioning succeeds**</summary>
 
 1. Click on the **Settings** tab
     - Click on the **Jobs** section on the left menu bar
@@ -114,14 +113,14 @@ Unified audit policies in Oracle Database define what database activities should
         **Note:** Repeat the query for **`customer_orders`** pdb and re-confirm
 
 
-💡 **TIP:** You have provisioned unified audit policies on the target database to generate audit events for tracked actions. Next, you will learn how to turn them into actionable alerts for monitoring and response, once these are collected in Security Central through audit trails.
+💡 **TIP:** You have provisioned unified audit policies on the target database to generate audit events for tracked actions. Next, you will learn how to turn them into actionable alerts for monitoring and response, once these are collected in **Security Central** through audit trails.
 
 </details>
 
-## Task 2: Pro-actively monitor actionable audit events with alerts
+## Task 2: Pro-actively monitor actionable audit events using alerts
 
 <details>
-<summary> **Step 1: Provision alert policy for account management operations**</summary>
+<summary> **Step 1: Provision alert policy**</summary>
 
 1. Click on the **Policies** tab
 
@@ -158,8 +157,6 @@ Unified audit policies in Oracle Database define what database activities should
         **Note:** Your Alert is automatically started!
 
            ![AVDF](./images/avdf-653.png "Confirm creation")
-
-            **Note:** You can also create alert using global sets. 
 
 3. To trigger alerts, go back to your terminal session on DBSeclab VM and create users within the **`Employees_search`** and **`Customer_orders`** pluggable databases
 

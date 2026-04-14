@@ -19,7 +19,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 ## Task 1: Review common pre-defined reports
 <details>
-<summary>### Step 1: Review activity on sensitive Data</summary>
+<summary>**Step 1: Review activity on sensitive Data**</summary>
 
 1. Go back to Audit Vault Web Console as *`AVAUDITOR`*
 
@@ -59,7 +59,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 4. Now, you will see activity on sensitive data along with the global set
 
-        ![AVDF](./images/avdf-603.png "Sensitive Data report")
+    ![AVDF](./images/avdf-603.png "Sensitive Data report")
 
 5. You can also view additional **Compliance Reports** about Sensitive Data
 
@@ -69,7 +69,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 </details>
 <details>
-<summary>### Step 2: Review Data Modification Before-After values</summary>
+<summary>**Step 2: Review Data Modification Before-After values**</summary>
 
 Some regulations ask for providing a clear record of how certain data has been changed over time to ensures full transparency and accountability for data modifications. This pre-defined report helps meet the need. We will review the change report for **`customer_orders`**, where all the configuration has been already done in the livelab.
 
