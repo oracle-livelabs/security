@@ -17,7 +17,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 ## Task: Reset the Security Central Lab Config
 
-1. Reset **Golden Gate** configuration for **Customer_orders** only!
+1. Reset **Golden Gate** configuration for **customer_orders** only!
 
     - Go back to Security Central Console as *`AVADMIN`*"
 

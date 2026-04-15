@@ -132,7 +132,7 @@ Unified audit policies in Oracle Database define what database activities should
 <details>
 <summary> **Step 1: Provision alert policy**</summary>
 
-1. Click on the **Policies** tab, and click the Alert Policies sub-menu on the left
+1. Click on the **Policies** tab, and click the **Alert Policies** sub-menu on the left
 
 2. Create the alert policy "**Alert whenever there is a user created, dropped or altered**"
 
