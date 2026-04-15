@@ -37,7 +37,7 @@ This lab builds on concepts and operations from lab 5. Complete lab 5 first befo
     </copy>
     ````
 
-    ![Key Vault](./images/TDE_CONFIG_OKV.png "Set the TDE_CONFIGURATION to 'OKV'")
+    ![Key Vault](./images/tde_config_okv.png "Set the TDE_CONFIGURATION to 'OKV'")
 
 3. To ensure security, delete the local TDE wallet from &lt;WALLET_ROOT&gt;/tde
 

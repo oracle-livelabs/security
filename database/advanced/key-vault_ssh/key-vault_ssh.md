@@ -488,7 +488,7 @@ In this lab, we will introduce remote server access controls by centrally managi
 
     **Note**: Even if the public key is no longer in the `authorized_keys` file, the remote server has access to your public key in the SSH Server wallet in OKV, and the login will succeed!
 
-<!--
+    <!--
 9. Go back on the **OKV Web Console** to remove the public key from the SSH Server Wallet
 
     - Open **Keys & Wallets** tab

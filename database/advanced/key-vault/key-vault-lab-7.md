@@ -48,7 +48,7 @@ This lab builds on concepts and operations from lab 6. Complete lab 6 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.23.38.png "Restart the database to force the auto-login wallet configuration to take effect")
+    ![Key Vault](./images/screenshot_2025-10-03_14.23.38.png "Restart the database to force the auto-login wallet configuration to take effect")
 
 4. Confirm that the auto-login wallet has been correctly configured and is operational.
 
@@ -66,7 +66,7 @@ This lab builds on concepts and operations from lab 6. Complete lab 6 first befo
     </copy>
     ```
     
-    ![Key Vault](./images/Screenshot_2025-10-07_23.08.12.png "Confirm that the auto-login wallet has been correctly configured and is operational")
+    ![Key Vault](./images/screenshot_2025-10-07_23.08.12.png "Confirm that the auto-login wallet has been correctly configured and is operational")
 
 ## Acknowledgements
 - **Author** - Shubham Goyal

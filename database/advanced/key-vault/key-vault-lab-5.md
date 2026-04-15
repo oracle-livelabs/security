@@ -51,7 +51,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 4. Click the newly created endpoint **LIVELABS\_DB\_EP** to see its details
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.02.30.png "Click the newly created endpoint LIVELABS_DB_EP to see its details")
+    ![Key Vault](./images/screenshot_2025-10-03_14.02.30.png "Click the newly created endpoint LIVELABS_DB_EP to see its details")
 
 5. Add **LIVELABS\_DB\_WALLET** as the **Default Wallet** on the endpoint details page and click **Save**
 
@@ -67,11 +67,11 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 6. Verify that the permissions of the default wallet (LIVELABS\_DB\_WALLET) are set to 'Read, Write, Manage Wallet' by checking the **Access to Wallets** section of this page
 
-    ![Key Vault](./images/Screenshot_2025-10-03_13.56.15.png "Check the permissions of the default wallet")
+    ![Key Vault](./images/screenshot_2025-10-03_13.56.15.png "Check the permissions of the default wallet")
 
 7. Click on the **Endpoints** tab and copy the **Enrollment Token** for **LIVELABS\_DB\_EP**
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.03.59.png "Click on the Endpoints tab and copy the Enrollment Token")
+    ![Key Vault](./images/screenshot_2025-10-03_14.03.59.png "Click on the Endpoints tab and copy the Enrollment Token")
 
 8. Click your username, KVEPADMIN, on the top right corner, then click **Logout**
 
@@ -85,11 +85,11 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 2. Paste the Enrollment Token copied in step 7 of Task 1 and click **Submit Token**. You will see the endpoint details automatically populated.
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.11.39.png "Paste the Enrollment Token copied in step 7 of task 1 and click Submit Token. You will see the endpoint details automatically populated.")
+    ![Key Vault](./images/screenshot_2025-10-03_14.11.39.png "Paste the Enrollment Token copied in step 7 of task 1 and click Submit Token. You will see the endpoint details automatically populated.")
 
 3. Click **Enroll** to download the "okvclient.jar" file. The file is downloaded to your database host.
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.13.54.png "Click enroll to download the okvclient.jar file. The file is downloaded to your database host.")
+    ![Key Vault](./images/screenshot_2025-10-03_14.13.54.png "Click enroll to download the okvclient.jar file. The file is downloaded to your database host.")
 
 ## Task 3: Deploy the Oracle Key Vault client software on the database host
 
@@ -176,7 +176,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_15.11.26.png "Add the Key Vault password to the TDE wallet")
+    ![Key Vault](./images/screenshot_2025-10-03_15.11.26.png "Add the Key Vault password to the TDE wallet")
 
 2. Migration is always a re-key (key rotation) operation. A new key is generated in Key Vault, and the data encryption keys are re-wrapped with this new key in Key Vault. For a multi-tenant database with CDB$ROOT and one PDB, two keys are created: one for CDB$ROOT and one for PDB1.
 
@@ -188,7 +188,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_15.13.44.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB\$ROOT and one for PDB1")
+    ![Key Vault](./images/screenshot_2025-10-03_15.13.44.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB\$ROOT and one for PDB1")
 
 3. Verify the database configuration post-migration to Key Vault
 
