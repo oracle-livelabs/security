@@ -5,7 +5,7 @@ This workshop introduces the advanced features and functionality of Oracle Key V
 
 *Estimated Lab Time:* 35 minutes
 
-*Version tested in this lab:* Oracle OKV 21.13 and Oracle Linux 8.
+*Version tested in this lab:* Oracle OKV 21.14 and Oracle Linux 8.
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Key Vault*" [](youtube:4VR1bbDpUIA)
@@ -1035,16 +1035,16 @@ Every node in the cluster can serve endpoints actively and independently while m
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle Key Vault](https://docs.oracle.com/en/database/oracle/key-vault/21.10/index.html)
-- [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.10/okvag/multimaster_concepts.html)
-- [Oracle Key Vault - SSH Key Management](https://docs.oracle.com/en/database/oracle/key-vault/21.10/okvag/management_of_ssh_keys_concepts.html)
+- [Oracle Key Vault](https://docs.oracle.com/en/database/oracle/key-vault/21.14/index.html)
+- [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.14/okvag/multimaster_concepts.html)
+- [Oracle Key Vault - SSH Key Management](https://docs.oracle.com/en/database/oracle/key-vault/21.14/okvag/management_of_ssh_keys_concepts.html)
 
     > To learn more about how to use OKV, please refer to the "[DB Security - Key Vault] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
 
 Video:
-- *Introducing Oracle Key Vault 21 (January 2021)* [](youtube:SfXQEwziyw4)
+- *Introducing Oracle Key Vault 21* [](youtube:SfXQEwziyw4)
 
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Peter Wahl, Rahil Mir
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024
+- **Last Updated By/Date** - Ethan Shmargad, Database Security PM - April 2026

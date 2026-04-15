@@ -5,7 +5,7 @@ This workshop guides you through the process of migrating an encrypted Oracle Da
 
 *Estimated Lab Time:* 60 minutes
 
-*Version tested in this lab:* Oracle Key Vault (OKV) 21.13 and Database Enterprise Edition (DBEE) 19.29
+*Version tested in this lab:* Oracle Key Vault (OKV) 21.14 and Database Enterprise Edition (DBEE) 19.29
 
 ### Video Preview
 Watch this preview to see how Oracle Key Vault can enhance your data security [](youtube:4VR1bbDpUIA)
@@ -145,9 +145,9 @@ Every node in the cluster can serve endpoints actively and independently while m
 
 ## Want to Learn More?
 Technical Documentation:
-- [Oracle Key Vault](https://docs.oracle.com/en/database/oracle/key-vault/21.10/index.html)
-- [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.10/okvag/multimaster_concepts.html)
-- [Oracle Key Vault - SSH Key Management](https://docs.oracle.com/en/database/oracle/key-vault/21.10/okvag/management_of_ssh_keys_concepts.html)
+- [Oracle Key Vault](https://docs.oracle.com/en/database/oracle/key-vault/21.14/okvag/index.html)
+- [Oracle Key Vault - Multimaster](https://docs.oracle.com/en/database/oracle/key-vault/21.14/okvag/multimaster_concepts.html)
+- [Oracle Key Vault - SSH Key Management](https://docs.oracle.com/en/database/oracle/key-vault/21.14/okvag/management_of_ssh_keys_concepts.html)
 
     > To learn more about how to use OKV to manage SSH keys, please refer to the "[DB Security - Key Vault (SSH Key Management)] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=727)" workshop
 
@@ -157,4 +157,4 @@ Video:
 ## Acknowledgements
 - **Author** - Shubham Goyal
 - **Contributors** - Peter Wahl, Rahil Mir
-- **Last Updated By/Date** - Shubham Goyal - October 2025
+- **Last Updated By/Date** - Ethan Shmargad, April 2026
