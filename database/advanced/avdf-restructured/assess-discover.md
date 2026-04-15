@@ -239,12 +239,17 @@ Global set represents predefined collection of entities such as IP addresses, da
 2. Click on the **Global Sets** is the left menu
     ![AVDF](./images/360-9a.png "AVDF - Global Sets")  
 
-    **Note:** Create and manage global sets like IP address, database user, operating system user, client program, privileged user, and sensitive object sets on this page
+    **Note:** Create and manage global sets like IP address, database user, operating system user, client program, privileged user, and sensitive object sets on this page. We have created couple of global sets in this livelab.
 </details>
 
 <details>
-<summary> **Step 2: Create a Sensitive Object Set** </summary>
+<summary> **Step 2: Review the Sensitive Object Set** </summary>
 
+1. Expand **Sensitive Object Sets (2)** and click the one created for you: **EmployeeSearchSensitiveApplicationObjects**
+    ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
+    **Note:** This group represents a set of most sensitive objects in employees_search DB, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
+2. Close the popup.
+<!--
 1. Expand **Sensitive Object Sets (0)** and click **Add**. Enter the following
     -   Name **EmployeeSearchSensitiveApplicationObjects**
     -   Toggle **Employees_search** to the selected target
@@ -252,11 +257,18 @@ Global set represents predefined collection of entities such as IP addresses, da
     -   Click **Save**
     ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
     **Note:** Consider creating such sets to simply the management of policies.
+-->
 </details>
 
 <details>
-<summary> **Step 3: Create a Privileged User Set**</summary>
+<summary> **Step 3: Review the Privileged User Set**</summary>
 
+1. Expand **Privileged User Sets (1)** and click the one created for you: **Database Administrators**
+    ![AVDF](./images/360-9c.png "AVDF - AVDF - Privilege User Sets") 
+    **Note:** This group represents the set of Database administrators who have broad system access in employees_search DB, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
+2. Close the popup.
+
+<!--
 1. Expand **Privileged User Sets (0)** and click **Add**. Enter the following
     -   Name **EmployeeSearchPrivUsers**
     -   Toggle **Employees_search** to the selected target
@@ -264,7 +276,7 @@ Global set represents predefined collection of entities such as IP addresses, da
     -   Click **Save**
     ![AVDF](./images/360-9c.png "AVDF - Privilege User Sets")
     **Note**: Consider creating such sets to simply the management of policies.
-
+-->
 </details>
 
 ## What did we learn in this lab
