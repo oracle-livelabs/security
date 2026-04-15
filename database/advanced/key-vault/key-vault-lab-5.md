@@ -13,7 +13,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 ## Task 1: Enroll the incoming Oracle database into Oracle Key Vault
 
-1.  Refresh the browser window on the right side of the remote desktop and log in to Key Vault as user **KVEPADMIN**
+1. Refresh the browser window on the right side of the remote desktop and log in to Key Vault as user **KVEPADMIN**
 
     For the password, execute the following command
 
@@ -31,7 +31,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
     ![Key Vault](./images/image-2025-7-24_15-59-1.png "Click the Endpoints tab, then click Add to create a new endpoint")
 
-3.  Provide the endpoint details and click **Register** to create the new endpoint
+3. Provide the endpoint details and click **Register** to create the new endpoint
 
     We recommend using LIVELABS\_DB\_EP for the **Endpoint Name**
     ```plaintext
@@ -49,11 +49,11 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
     ![Key Vault](./images/image-2025-7-24_12-17-29.png "Fill in the details of your endpoint: Endpoint Name is LIVELABS_DB_EP; Type is Oracle Database; OS Type is Linux; Description is 'This is the endpoint for LiveLabs database (cdb1).'; Click 'Register'")
 
 
-4.  Click the newly created endpoint **LIVELABS\_DB\_EP** to see its details
+4. Click the newly created endpoint **LIVELABS\_DB\_EP** to see its details
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.02.30.png "Click the newly created endpoint LIVELABS_DB_EP to see its details")
 
-5.  Add **LIVELABS\_DB\_WALLET** as the **Default Wallet** on the endpoint details page and click **Save**
+5. Add **LIVELABS\_DB\_WALLET** as the **Default Wallet** on the endpoint details page and click **Save**
 
     By setting up a *default wallet*, all new keys of the database will be a part of this wallet.
 
@@ -65,11 +65,11 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
     ![Key Vault](./images/image-2025-7-24_16-12-59.png "Add the default wallet on the endpoint details page and click Save")
 
-6.  Verify that the permissions of the default wallet (LIVELABS\_DB\_WALLET) are set to 'Read, Write, Manage Wallet' by checking the **Access to Wallets** section of this page
+6. Verify that the permissions of the default wallet (LIVELABS\_DB\_WALLET) are set to 'Read, Write, Manage Wallet' by checking the **Access to Wallets** section of this page
 
     ![Key Vault](./images/Screenshot_2025-10-03_13.56.15.png "Check the permissions of the default wallet")
 
-7.  Click on the **Endpoints** tab and copy the **Enrollment Token** for **LIVELABS\_DB\_EP**
+7. Click on the **Endpoints** tab and copy the **Enrollment Token** for **LIVELABS\_DB\_EP**
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.03.59.png "Click on the Endpoints tab and copy the Enrollment Token")
 
@@ -79,21 +79,21 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 ## Task 2: Download the Oracle Key Vault client software for this database
 
-1.  On the database host, go to the Key Vault login page, and click on **Endpoint Enrollment and Software Download**
+1. On the database host, go to the Key Vault login page, and click on **Endpoint Enrollment and Software Download**
 
     ![Key Vault](./images/image-2025-7-24_12-31-21.png "On the database host, go to the Key Vault login page, click on Endpoint Enrollment and Software Download")
 
-2.  Paste the Enrollment Token copied in step 7 of Task 1 and click **Submit Token**. You will see the endpoint details automatically populated.
+2. Paste the Enrollment Token copied in step 7 of Task 1 and click **Submit Token**. You will see the endpoint details automatically populated.
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.11.39.png "Paste the Enrollment Token copied in step 7 of task 1 and click Submit Token. You will see the endpoint details automatically populated.")
 
-3.  Click **Enroll** to download the "okvclient.jar" file. The file is downloaded to your database host.
+3. Click **Enroll** to download the "okvclient.jar" file. The file is downloaded to your database host.
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.13.54.png "Click enroll to download the okvclient.jar file. The file is downloaded to your database host.")
 
 ## Task 3: Deploy the Oracle Key Vault client software on the database host
 
-1.  Set up the Key Vault endpoint home. This is the root directory for the endpoint software. Setting **OKV_HOME** allows Key Vault utilities and libraries to locate the endpoint software and configuration files.
+1. Set up the Key Vault endpoint home. This is the root directory for the endpoint software. Setting **OKV_HOME** allows Key Vault utilities and libraries to locate the endpoint software and configuration files.
 
     ```
     <copy>
@@ -101,7 +101,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
     </copy>
     ```
 
-2.  Install the Key Vault software. This prompts for the endpoint connection password. We will call this the "Key Vault endpoint password".
+2. Install the Key Vault software. This prompts for the endpoint connection password. We will call this the "Key Vault endpoint password".
 
     This is a one time step, and the installation software (okvclient.jar) is automatically deleted after a successful installation.
 
@@ -115,7 +115,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
     ![Key Vault](./images/image-2025-09-27_install.png "Install Key Vault software. This prompts for the endpoint connection password.")
 
-3.  Review the layout of the Key Vault endpoint home
+3. Review the layout of the Key Vault endpoint home
 
     ```
     <copy>
@@ -125,7 +125,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
     ![Key Vault](./images/image-2025-7-24_16-33-45.png "Review the layout of the Key Vault endpoint home")
 
-4.  Deploy the Key Vault library (liborapkcs.so) used by the database to communicate with Key Vault
+4. Deploy the Key Vault library (liborapkcs.so) used by the database to communicate with Key Vault
 
     ```
     <copy>
@@ -137,7 +137,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 ## Task 4: Preparing the database for Oracle Key Vault migration
 
-1.  Update the TDE configuration of the database to OKV|FILE
+1. Update the TDE configuration of the database to OKV|FILE
 
     ```
     <copy>
@@ -151,7 +151,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
 ## Task 5: Migrate the database to Oracle Key Vault for centralized key management
 
-1.  Migrate the database to use Key Vault
+1. Migrate the database to use Key Vault
 
     Use the same password for the Key Vault endpoint as used in step 2 of Task 3
 
@@ -178,7 +178,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
     ![Key Vault](./images/Screenshot_2025-10-03_15.11.26.png "Add the Key Vault password to the TDE wallet")
 
-2.  Migration is always a re-key (key rotation) operation. A new key is generated in Key Vault, and the data encryption keys are re-wrapped with this new key in Key Vault. For a multi-tenant database with CDB$ROOT and one PDB, two keys are created: one for CDB$ROOT and one for PDB1.
+2. Migration is always a re-key (key rotation) operation. A new key is generated in Key Vault, and the data encryption keys are re-wrapped with this new key in Key Vault. For a multi-tenant database with CDB$ROOT and one PDB, two keys are created: one for CDB$ROOT and one for PDB1.
 
     Enter the Key Vault endpoint password when prompted.
 
@@ -190,7 +190,7 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
 
     ![Key Vault](./images/Screenshot_2025-10-03_15.13.44.png "Migration is always a re-key operation. There are two new keys created in Key Vault: one for the CDB\$ROOT and one for PDB1")
 
-3.  Verify the database configuration post-migration to Key Vault
+3. Verify the database configuration post-migration to Key Vault
 
     ```
     <copy>
@@ -203,3 +203,8 @@ This lab builds on concepts and operations from lab 4. Complete lab 4 first befo
     - In the wallet status, you'll see the wallet of type OKV is open
     
     ![Key Vault](./images/image-2025-7-24_17-8-50.png "Review the database setup after migrating to Key Vault")
+
+## Acknowledgements
+- **Author** - Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - March 2026

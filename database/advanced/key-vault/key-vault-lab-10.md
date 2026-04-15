@@ -45,7 +45,7 @@ This lab builds on concepts and operations from lab 9. Complete lab 9 first befo
     ````
     <copy>
     sqlplus / as sysdba
-    ADMINISTER KEY MANAGEMENT SET KEY FORCE KEYSTORE IDENTIFIED BY EXTERNAL STORE;
+    ADMINISTER KEY MANAGEMENT SET KEY FORCE KEYSTORE IDENTIFIED BY EXTERNAL STORE CONTAINER = ALL;
     exit;
     </copy>
     ````
@@ -68,3 +68,8 @@ This lab builds on concepts and operations from lab 9. Complete lab 9 first befo
     ```
 
     ![Key Vault](./images/Screenshot_2025-10-07_23.39.39.png "Verify that the tablespace was re-keyed")
+
+## Acknowledgements
+- **Author** - Shubham Goyal
+- **Contributors** - Daniel Wu, Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - March 2026
