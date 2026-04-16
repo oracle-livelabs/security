@@ -760,7 +760,7 @@ Ensure the the trails are either in **Collecting** or in **Idle** state
         - Description: *Alert when protected realm objects are accessed without appropriate authorization*
         - Target type: *Oracle Database*
         - Severity: *Warning*
-        - Condition: *:TARGET = 'customer_orders' AND :COMMAND_CLASS = 'VIOLATE' AND :OBJECT_TYPE = 'REALM'*
+        - Condition: `:TARGET = 'customer_orders' AND :COMMAND_CLASS = 'VIOLATE' AND :OBJECT_TYPE = 'REALM'`
         - Threshold (times): *1*
 
     - Your Alert should look like this.
