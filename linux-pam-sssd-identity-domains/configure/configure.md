@@ -19,25 +19,25 @@ Using this stack we will be able to configure **Linux Server and Identity Domain
 
 1. Once logged in to OCI Console, navigate to **Developer Services** then select **Stacks** under **Resource Manager**. Now click on **Create Stack**
 
-	![stacks](./images/stacks.png "stacks")
-	
-	![create-stacks](./images/create-stacks.png "create-stacks")
+    	![stacks](./images/stacks.png "stacks")
+    	
+    	![create-stacks](./images/create-stacks.png "create-stacks")
  
 2. On the Create Stack Wizard, select the **Stack 2- Configure.zip** option and then browse to upload the **Deploy** stack that you downloaded in the previous lab. Now click on **Next**
 
-	![upload](./images/upload.png "upload")
+    	![upload](./images/upload.png "upload")
 
 
 3. Now, on the **Configure variables** section, fill in the below mentioned values, then click on **Next**
 
-	![configure-variables](./images/configure-variables.png "configure-variables")
+    	![configure-variables](./images/configure-variables.png "configure-variables")
 
-	1. *Public IP address of the Linux Compute Instance* created earlier
+    	1. *Public IP address of the Linux Compute Instance* created earlier
     2. *Identity Domain URL* - Domain URL of the Deployed Domain . **Note** Remove **:443** from the end of the Domain URL.
     5. *Client ID* - Please enter the Client ID of your OCI IAM Confidential App
     6. *Client Secret* - Please enter the Client Secret of your OCI IAM Confidential App
-	
-	
+    	
+    	
 4. Now on the **Review Details** check for the configurations and then click on **Create** . Make sure the **Run Apply** is selected.
 
 	![review](./images/review.png "review")
@@ -54,6 +54,6 @@ In this lab, we were able to successfully deploy and configure Linux Pluggable A
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
 * **Contributor** - Deepthi Shetty
-* **Last Updated By/Date** - Gautam Mishra July 2023
+* **Last Updated By/Date** - Gautam Mishra Mar 2026
 
 

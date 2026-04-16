@@ -16,23 +16,23 @@ This lab will show you how you can test the Authentication into Linux Server Usi
 
 1. Below are the users who were created as sample SSO test users. 
 
-	![users](./images/users.png "users")
-	
-	**Default Password** - "Welcome@1234567890"
+    	![users](./images/users.png "users")
+    	
+    	**Default Password** - "Welcome@1234567890"
 
 2. Login to the OCI console using the newly created domain and enter the credentials of the *POSIX* user.
-		
-	![sign-in](./images/sign-in.png "sign-in")
+    		
+    	![sign-in](./images/sign-in.png "sign-in")
 
 3. Reset the default password.
 
-	![password-reset](./images/password-reset.png "password-reset")
+    	![password-reset](./images/password-reset.png "password-reset")
 
 4. Enable *Secure Verification* and enroll your mobile device.
 
-	![enable-mfa](./images/enable-mfa.png "enable-mfa")
+    	![enable-mfa](./images/enable-mfa.png "enable-mfa")
 
-	![scan-QR](./images/scan-qr-code.png "scan-QR")
+    	![scan-QR](./images/scan-qr.png "scan-QR")
 
 5. Click on **Done** and then proceed with *Task 2*.
 
@@ -59,5 +59,5 @@ In this Lab, we were able to successfully change the password of the test user a
 ## Acknowledgements
 * **Author** - Gautam Mishra, Aqib Bhat
 * **Contributor** - Deepthi Shetty
-* **Last Updated By/Date** - Gautam Mishra July 2023
+* **Last Updated By/Date** - Gautam Mishra Mar 2026
 
