@@ -3,8 +3,8 @@
 ## Introduction
 Establishing visibility is the first step toward securing your database environment. With the necessary insights in place, shift your focus to first enable continuous monitoring to track user activity, detect anomalies, and understand how data is accessed and modified.
 
-- The **Employees_search** pdb supports internal self-service applications, and contains a high volume of sensitive data and is accessible to privileged users, making insider threat mitigation the top priority. You enable auditing to track security-relevant events, privileged user activity, and access to sensitive data.
-- For the **Customer_orders** pdb, the primary focus is mitigating external threats and demonstrating compliance. You enable auditing for system configuration changes, critical database activity, and schema changes, and additionally provision user activity and CIS compliance policies.
+- The **employees_search** pdb supports internal self-service applications, and contains a high volume of sensitive data and is accessible to privileged users, making insider threat mitigation the top priority. You enable auditing to track security-relevant events, privileged user activity, and access to sensitive data.
+- For the **customer_orders** pdb, the primary focus is mitigating external threats and demonstrating compliance. You enable auditing for system configuration changes, critical database activity, and schema changes, and additionally provision user activity and CIS compliance policies.
 
 *Estimated Lab Time:* 10 minutes
 
@@ -36,7 +36,7 @@ Audit trails represent collection endpoints for database activity events. They g
 </details>
 
 <details>
-<summary> **Step 2: Provision audit policies for Employees_search pdb** </summary>
+<summary> **Step 2: Provision audit policies for employees_search pdb** </summary>
 
 Unified audit policies in Oracle Database define what database activities should be audited. They can be provisioned and managed from Security Central.
 1. Go to Security Central Console as *`AVAUDITOR`*
@@ -44,9 +44,9 @@ Unified audit policies in Oracle Database define what database activities should
 2. Click on the **Policies** tab, and **Audit Policies** in the left menu
     ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 
-    **Note**: If the **Last Retrieved time** is *Never*, select the **`Employees_search`** pdb and click **Retrieve policies** to retrieve the latest from the database.You can schedule the periodical retrieval following *Lab5->Task3->Step2*.
+    **Note**: If the **Last Retrieved time** is *Never*, select the **`employees_search`** pdb and click **Retrieve policies** to retrieve the latest from the database.You can schedule the periodical retrieval following *Lab5->Task3->Step2*.
 
-3. Click on **Employees_search** pdb to review the policies enabled
+3. Click on **employees_search** pdb to review the policies enabled
     ![AVDF](./images/360-12.png "AVDF - Audit Policies for Employees Search pdb")
 
     **Note**: We have enabled few audit policies like **System Configuration Changes**, **Critical Database Activity**, **User Login Events**, and **Database Schema changes** in the livelab instance. 
@@ -74,7 +74,7 @@ Unified audit policies in Oracle Database define what database activities should
 </details>
 
 <details>
-<summary> **Step 3: Provision audit policies for Customer_orders pdb**</summary>
+<summary> **Step 3: Provision audit policies for customer_orders pdb**</summary>
 
 1. Click on **customer_orders** pdb to review the policies enabled
     ![AVDF](./images/360-12a.png "AVDF - Audit Policies for customer orders pdb")
@@ -93,7 +93,7 @@ Unified audit policies in Oracle Database define what database activities should
     - Select **Center for Internet Security (CIS) Configuration** and click **Enable**
         ![AVDF](./images/360-16.png "AVDF - CIS Audit policy")
 
-4. Go back to **Audit Policies** and review the policies for **`Employees_search`** and **`Customer_orders`** pdb
+4. Go back to **Audit Policies** and review the policies for **`employees_search`** and **`customer_orders`** pdb
       ![AVDF](./images/360-11a.png "AVDF - Audit Policies page")
 </details>
 
@@ -105,7 +105,7 @@ Unified audit policies in Oracle Database define what database activities should
     - You should see **Job Type** that says **Provision Audit Policies**. The status should be set to **Completed**.
 
         ![AVDF](./images/avdf-553.png "Verify the job completed successfully")
-        **Note:** If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **`Employees_search`** and **`Customer_orders`**
+        **Note:** If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **`employees_search`** and **`customer_orders`**
 
 2. Ensure the Unified Audit policies are enabled on the target using **SQL*Plus**
 
@@ -163,7 +163,7 @@ Unified audit policies in Oracle Database define what database activities should
         **Note:** Your Alert is automatically enabled!
 
 
-3. To trigger alerts, go back to your terminal session on DBSeclab VM and create users within the **`Employees_search`** and **`Customer_orders`** pluggable databases
+3. To trigger alerts, go back to your terminal session on DBSeclab VM and create users within the **`employees_search`** and **`customer_orders`** pluggable databases
 
     ````
     <copy>
@@ -173,7 +173,7 @@ Unified audit policies in Oracle Database define what database activities should
 
     ![AVDF](./images/avdf-045.png "Create users")
 
-    - Repeat the same for **`Employees_search`** pdb
+    - Repeat the same for **`employees_search`** pdb
     
     ````
     <copy>
@@ -191,7 +191,7 @@ Unified audit policies in Oracle Database define what database activities should
 
     ![AVDF](./images/avdf-048.png "Drop the users just created")
     
-    - Repeat the same for **`Employees_search`** pdb
+    - Repeat the same for **`employees_search`** pdb
     
     ````
     <copy>

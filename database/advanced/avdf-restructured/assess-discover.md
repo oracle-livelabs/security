@@ -44,7 +44,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
     - Drilldown into the data showing **Risky privilege grants to PUBLIC** 
         ![AVDF](./images/360-1b.png "AVDF - Security Insights - System privileges")
 
-    **Note**: Targets **`Sales_history`** and **`Customer_orders`** have system privileges/ roles granted to **PUBLIC**. Any privilege assigned to PUBLIC is effectively given to everyone, often far beyond what is necessary. It is safer to assign roles and privileges explicitly to specific users or groups based on well-defined requirements.
+    **Note**: Targets **`sales_history`** and **`customer_orders`** have system privileges/ roles granted to **PUBLIC**. Any privilege assigned to PUBLIC is effectively given to everyone, often far beyond what is necessary. It is safer to assign roles and privileges explicitly to specific users or groups based on well-defined requirements.
 
      - Click [**Security Insights**] to go back to the console.
 
@@ -126,7 +126,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
      
 3.  Click **Security Insights** to go back, then drilldown into the data showing privileged users **Access to DV protected objects**
     ![AVDF](./images/360-2.png "AVDF - Retrieval Jobs")  
-     **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have access to the sensitive objects in the protected realms of **`Customer_orders`** pdb. 
+     **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have access to the sensitive objects in the protected realms of **`customer_orders`** pdb. 
 
 💡 **TIP:** You've now identified privileged users who carry potential risks. Let's move on to understand sensitive data that faces risk of exposure.
 </details>
@@ -140,7 +140,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 2.  Drilldown into the data showing sensitive data whose **Access not audited** 
     ![AVDF](./images/360-4.png "AVDF - Security Insights - Data discovery - Access not audited")
-        **Note**: Access to sensitive data in **`Employees_search`** and **`Customer_orders`** pdbs are not audited. Ensuring proper visibility and governance over who can access sensitive data helps minimize risk, enforce accountability, and protect high-value information.
+        **Note**: Access to sensitive data in **`employees_search`** and **`customer_orders`** pdbs are not audited. Ensuring proper visibility and governance over who can access sensitive data helps minimize risk, enforce accountability, and protect high-value information.
 
 3. Go back to the **Security Insights** console, and drilldown into sensitive data **Exposed to privileged users**
     ![AVDF](./images/360-4a.png "AVDF - Security Insights - Data discovery - Access not protected")
