@@ -187,8 +187,8 @@ SQL Firewall is enabled in the **`employees_search`**. In this lab, you will ena
 
 In the livelab, we have already configured trail for collecting SQL Firewall violations from **`employee_search`**.
 
-    - Go to the **Targets** tab, click **Targets** sub-menu on the left
-    - Drilldown to **`employee_search`** target to see the trails 
+1. Go to the **Targets** tab, click **Targets** sub-menu on the left
+2. Drilldown to **`employee_search`** target to see the trails 
 
 ![AVDF](./images/360-29.png "Audit Trail")
 **Note:** Ensure the *`SYS.DBA_SQL_FIREWALL_VIOLATIONS`* table audit trail is either in **Collecting** or in **Idle** state
@@ -262,7 +262,7 @@ We will validate the protection controls of SQL Firewall by triggering violation
 
 2. Click on the **Policies** tab, expand **Firewall Policies** in the left menu, and click **Oracle SQL Firewall**
     ![AVDF](./images/360-31.png "AVDF - Oracle SQL Firewall page with violations")
-        **Note:** There are SQL context violation(s) since we tried to access **`employee_search`** pdb with *`SQLPLUS`* script. There are SQL statement violation(s) since we made SQL injection attempts using unathorized SQLs over Glassfish app.
+        **Note:** There are session context violation(s) since we tried to access **`employee_search`** pdb with *`SQLPLUS`* script. There are SQL statement violation(s) since we made SQL injection attempts using unathorized SQLs over Glassfish app. You may have to refresh few times.
 
 3. Click on the **Reports** tab, expand **SQL Firewall Violations Report**, and click **SQL Firewall Violations** report
     ![AVDF](./images/360-32.png "AVDF - Oracle SQL Firewall page with violations")
@@ -274,9 +274,9 @@ We will validate the protection controls of SQL Firewall by triggering violation
 <summary> **Step 9: Pro-actively monitor SQL Firewall violations using alert**</summary>
 To stay informed of potential threats, consider creating an alert policy that notifies you whenever a SQL Firewall violation occurs. This enables timely detection and response to unauthorized or suspicious SQL activity.
 
-1. Click on the **Policies** tab, and click **Alert Policies** sub-menu 
+1. Click on the **Policies** tab, and click **Alert Policies** menu on the left
 
-2. Create the alter policy "**Alert whenever there is a SQL Firewall violation**"
+2. Create the alert policy "**Alert whenever there is a SQL Firewall violation**"
 
     - Click [**Create**]
 
@@ -506,7 +506,7 @@ In this lab you will modify the Glassfish app to connect to DB Firewall, which w
         - Commands: Selected *DELETE, INSERT, UPDATE*
         - Select DB Object Set from dropdown: *EmployeesSearchSensitiveApplicationObjects*
         - Action: *Block*
-        - Logging Level: *One-per-session*
+        - Logging Level: *Always*
         - Threat Severity: *Major*
 
         ![AVDF](./images/360-42.png "Database Object rule-1")
@@ -524,7 +524,7 @@ In this lab you will modify the Glassfish app to connect to DB Firewall, which w
         - Capture number of rows returned for SELECT queries: *Select*
         - Select DB Object Set from dropdown: *EmployeesSearchSensitiveApplicationObjects*
         - Action: *Alert*
-        - Logging Level: *One-per-session*
+        - Logging Level: *Always*
         - Threat Severity: *Moderate*
 
         ![AVDF](./images/360-42a.png "Database Object rule-2")
@@ -546,7 +546,7 @@ In this lab you will modify the Glassfish app to connect to DB Firewall, which w
 
     ![AVDF](./images/avdf-141a.png "HR Policy deployment")
 
-20. Select the targets to be covered by this policy (here *`Employees_search`*) and click [**Deploy**] 
+20. Select the targets to be covered by this policy (here *`employees_search`*) and click [**Deploy**] 
 
     ![AVDF](./images/avdf-141b.png "Select targets for Database Firewall Policy")
 
@@ -567,7 +567,7 @@ In this lab you will modify the Glassfish app to connect to DB Firewall, which w
     ````
 
     ![AVDF](./images/avdf-128.png "Check the connectivity through the Database Firewall")
-    **Note:** Database Firewall blocks the DELETE statement as shown above since we have not permitted DBA_DEBRA to do DMLs on sensitive app objects over the network. SELECT statements on sensitive objects are alerted on.
+    **Note:** Scroll through the output to see how Database Firewall blocks the DELETE statement as shown above since we have not permitted DBA_DEBRA to do DMLs on sensitive app objects over the network. SELECT statements on sensitive objects are alerted on.
 
 2. Let's now see when `DBA_DEBRA` connects to exfiltrate data from sensitive application objects
 
@@ -588,7 +588,7 @@ In this lab you will modify the Glassfish app to connect to DB Firewall, which w
 
      **Note**: Try connecting wth Glassfish app like we did in *Task2->Step2*; and run the normal workload queries which are already allow-listed in SQL Firewall policy for `EMPLOYEESEARCH_PROD` user. That works perfectly. Remember, Glassgish app is now configured to work with DB Firewall. 
 
-💡 **TIP:** You've now seen how SQL Firewall and Database Firewall complement each other in protecting **`employees_search`** from unauthorized traffic coming from different users (like `EMPLOYEESEARCH_PROD` application account, DBAs such as`DBA_DEBRA`) or different connection paths like client program.
+💡 **TIP:** You've now seen how SQL Firewall and Database Firewall complement each other in protecting **`employees_search`** from unauthorized traffic.
 
 </details>
 
@@ -602,7 +602,7 @@ In this lab you will modify the Glassfish app to connect to DB Firewall, which w
 3. In the **Database Firewall Reports**, click on **Monitored Activity** report
 
     ![AVDF](./images/360-45.png "Database Firewall Reports")
-     **Note**: You might want to refresh if you don't see the data yet. You may also want to select the columns **Action Taken**, **Command Text**, **Policy Name**, **Rule Name** in the report to understand the Firewall policy rule that triggered the event and the action taken by the DB Firewall.
+     **Note**: You might want to refresh if you don't see the data yet. You may also want to select the columns **Action Taken**, **Policy Name**, **Rule Name**, **Row Count** in the report to understand the Firewall policy rule that triggered the event and the action taken by the DB Firewall. Notice that DELETE is blocked!
 
 </details>
 
@@ -618,7 +618,7 @@ In this lab you will modify the Glassfish app to connect to DB Firewall, which w
 
     - Click [**Create**] and fill out the field as following
         - Alert policy name: *PII Exfiltration Alert*
-        - Description: *Someone has selected more than 10 rows of PII in a single query*
+        - Description: *Someone has selected more than 100 rows of PII in a single query*
         - Type: *Oracle Database*
         - Severity: *Warning*
         - Condition: *:ROW_COUNT >100 AND  :OBJECT  like '%DEMOHR%'*
@@ -656,23 +656,15 @@ In this lab you will modify the Glassfish app to connect to DB Firewall, which w
 <summary>**Step 7: Restore the Glassfish App to use Direct Mode (optional)**</summary>
 
 If you would like to restore the Glassfish connection to connect directly to the pluggable database **Employees_search** without the Database Firewall, follow the steps:
-
     ````
     <copy>./avdf_start_glassfish.sh</copy>
     ````
-
-![AVDF](./images/avdf-144.png "restore the default HR App connection (without DB Firewall)")
-
-   
-**Note**:       
-      - If your Database Firewall reports show a lot of unknown activity you probably have **Native Network Encryption** enabled. Please disable it from a terminal session and run the queries again:
-            - To check, run the following script: `$DBSEC_LABS/nne/nne_view_sqlnet_ora.sh`
-            - If it says `SQLNET.ENCRYPTION_SERVER=REQUESTED` or `SQLNET.ENCRYPTION_SERVER=REQUIRED` then it needs to be disabled
-            - To disable it, run the following scripts: `$DBSEC_LABS/nne/nne_disable.sh`
-            - To verify, run the following script: `$DBSEC_LABS/nne/nne_view_sqlnet_ora.sh`
+    ![AVDF](./images/avdf-144.png "restore the default HR App connection (without DB Firewall)")
+    **Note**:       
+      - If your Database Firewall reports show a lot of unknown activity you probably have **Native Network Encryption** enabled. Please disable it from a terminal session and run the queries again. To check, run the following script: `$DBSEC_LABS/nne/nne_view_sqlnet_ora.sh`. If it says `SQLNET.ENCRYPTION_SERVER=REQUESTED` or `SQLNET.ENCRYPTION_SERVER=REQUIRED` then it needs to be disabled. To disable it, run the following scripts: `$DBSEC_LABS/nne/nne_disable.sh`. To verify, run the following script: `$DBSEC_LABS/nne/nne_view_sqlnet_ora.sh`
 
 
-💡 **TIP:** You've now configured the protection for *`Employees_search`* target using SQL Firewall and Database Firewall. Let's now configure protection for *`customer_orders*` target using Database Vault.
+💡 **TIP:** You've now configured the protection for *`employees_search`* target using SQL Firewall and Database Firewall. Let's now configure protection for *`customer_orders*` target using Database Vault.
 
 </details>
 
@@ -743,7 +735,7 @@ Ensure the the trails are either in **Collecting** or in **Idle** state
     ![AVDF](./images/360-55.png "DV - fire query")
 
 **Note:**
-- `BA_ALEX` has the object privelege access on CO.Orders; BA_ALEX also has necessary DV realm authorization on schema CO
+- `BA_ALEX` has the object privilege access on CO.Orders; BA_ALEX also has necessary DV realm authorization on schema CO
 -  `CUSTOMERADMIN` has the object privilege access on CO.Orders; but no DV realm authorization on schema CO
 </details>
 
@@ -752,6 +744,7 @@ Ensure the the trails are either in **Collecting** or in **Idle** state
 
 1. Click on the **Reports** tab, expand **All Activity Report**, and notice the DV realm violation event
     ![AVDF](./images/360-56.png "AVDF - Oracle DV violations")
+
 
 2. Create an alert policy to alert pro-actively on DV realm violations
 

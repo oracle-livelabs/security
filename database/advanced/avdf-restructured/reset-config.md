@@ -23,21 +23,15 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
     - Click the **Targets** tab
 
-    - Click the Target Name **Customer_orders**
+    - Click the Target Name **customer_orders**
 
         ![AVDF](./images/avdf-250.png "Select the Target Name")
 
     - In the section **Audit Data Collection**, select "**/u01/app/oracle/product/ogg/var/lib/data**" and click [**Stop**]
 
-        ![AVDF](./images/avdf-254.png "Stop the Golden Gate Audit Data Collection")
-
     - Refresh the page to be sure that the service is stopped
 
-        ![AVDF](./images/avdf-255.png "Check that the service is stopped")
-
     - Select "**/u01/app/oracle/product/ogg/var/lib/data**" Audit Trail and click [**Delete**]
-
-        ![AVDF](./images/avdf-256.png "Delete the Golden Gate Audit Data Collection")
 
     - Login to your GoldenGate Web Console
 

@@ -96,7 +96,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
     - Review the key configuration risks under **Database configuration summary**
         ![AVDF](./images/360-1a.png  "AVDF - Security Insights - Configuration summary") 
-        **Note**: Now, you can see that the risks in **Risky privilege grants to PUBLIC** are resolved.
+        **Note**: Now, you can see that the risks in **Risky privilege grants to PUBLIC** are resolved. You may have to refresh the page few times to see the update. Review *Security Assessment* job status from *Settings tab -> Jobs* to see if it got completed.
     
 8. Review the Drifts detected in **Security assessment drift detection**
         ![AVDF](./images/360-1c.png "AVDF - Security Insights - Security Assessment Drift Detection")
@@ -119,14 +119,14 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 2.  Drilldown into the data showing privileged users **Access not audited** 
     - Filter the report to show only database admins among the priveleged users
-        - Make sure to filter the rows containing **Database admin = "Yes"**
+        - Make sure to filter the rows containing **Database admin = "Yes"**. You may have to toggle the column to display in *Actions dropdown -> Select Columns*
     ![AVDF](./images/360-1f.png "AVDF - Security Insights - User Assessment - Priv users without audit")
 
     **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have the broad database administrative rights on the entire fleet of databases. It is critical to audit database administrators and other privileged users, as their broad system privileges can pose significant risk if their credentials are compromised or misused. 
      
 3.  Click **Security Insights** to go back, then drilldown into the data showing privileged users **Access to DV protected objects**
     ![AVDF](./images/360-2.png "AVDF - Retrieval Jobs")  
-     **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have access to the sensitive objects in the protected realms of **`customer_orders`** pdb. 
+     **Note**: Only schema owner has been granted access to the objects in the protected realm of **`customer_orders`** pdb. 
 
 💡 **TIP:** You've now identified privileged users who carry potential risks. Let's move on to understand sensitive data that faces risk of exposure.
 </details>

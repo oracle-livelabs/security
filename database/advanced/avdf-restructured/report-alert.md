@@ -37,7 +37,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
         ![AVDF](./images/avdf-022b.png "Compliance regulations")
 
-    - Select **Customer_orders (Oracle Database)** to associate
+    - Select **customer_orders (Oracle Database)** to associate
 
         ![AVDF](./images/avdf-601.png "Associate a database to the report")
 
@@ -57,7 +57,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
         ![AVDF](./images/avdf-602.png "Sensitive Data report")
 
-4. Now, you will see activity on sensitive data along with the global set
+4. Now, you will see the sensitive data along with the global set
 
     ![AVDF](./images/avdf-603.png "Sensitive Data report")
 
@@ -142,8 +142,7 @@ Some regulations ask for providing a clear record of how certain data has been c
     ![AVDF](./images/avdf-043b.png "See a Before-After values output")
 
     **Note:** If you are not seeing Before/After value changes in Audit Vault:
-    - **Restart OGG** (Oracle Golden Gate) Extracts (from the Golden Gate Web Console, click [**Action**] for the `cust1` extract, stop and start it)
-    - Ensure you properly executed the scripts in `Before_and_After_Changes` folder to create the "`C##GGAVADMIN`" user and setup the database
+    - **Restart OGG** (Oracle Golden Gate) Extracts (from the Golden Gate Web Console, click [**Action**] for the `cust1` extract, stop and start it)   
     - Check if the Timezone of your Audit Trail is correctly set to your VM Timezone
     - Check your Audit Trail is up and running
 
