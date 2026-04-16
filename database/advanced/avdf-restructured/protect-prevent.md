@@ -572,7 +572,7 @@ In this lab you will modify the Glassfish app to connect to DB Firewall, which w
 2. Let's now see when `DBA_DEBRA` connects to exfiltrate data from sensitive application objects
 
     ````
-    <copy>[3:19 PM]./dbf_exfiltrate_with_dbfw.sh freepdb1 dba_debra </copy>
+    <copy>./dbf_exfiltrate_with_dbfw.sh freepdb1 dba_debra </copy>
     ````
 
     ![AVDF](./images/avdf-128a.png "Exfiltration attempt by DBA_DBRA- Database Firewall")
@@ -740,7 +740,7 @@ Ensure the the trails are either in **Collecting** or in **Idle** state
     <copy>./avs_orders_count_sqlplus.sh CUSTOMERADMIN</copy>
     ````
 
-![AVDF](./images/360-55.png "DV - fire query")
+    ![AVDF](./images/360-55.png "DV - fire query")
 
 **Note:**
 - `BA_ALEX` has the object privelege access on CO.Orders; BA_ALEX also has necessary DV realm authorization on schema CO
