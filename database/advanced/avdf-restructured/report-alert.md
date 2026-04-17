@@ -72,8 +72,6 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 <details>
 <summary>**Step 2: Review Data Modification Before-After values**</summary>
 
-    💡 **TIP:** Some regulations ask for providing a clear record of how certain data has been changed over time to ensures full transparency and accountability for data modifications. This pre-defined report helps meet the need. We will review the change report for **`customer_orders`**, where all the configuration has been already done in the livelab.
-
 1. Check if the transaction log trail for **`customer_orders`** is started
 
     - Click on "**Targets**"
@@ -146,7 +144,9 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
     - Check if the Timezone of your Audit Trail is correctly set to your VM Timezone
     - Check your Audit Trail is up and running
 
-💡 **TIP:** You have now explored commonly used pre-defined reports that provide insights into activity across your database fleet. Use these reports to support compliance requirements, perform forensic analysis, and detect abnormal or suspicious activities. Now you will see how you can gain insights on actionable alerts.
+    💡 **TIP:** Some regulations ask for providing a clear record of how certain data has been changed over time to ensures full transparency and accountability for data modifications. This pre-defined report helps meet the need. 
+
+    💡**TIP:** You have now explored commonly used pre-defined reports that provide insights into activity across your database fleet. Use these reports to support compliance requirements, perform forensic analysis, and detect abnormal or suspicious activities. Now you will see how you can gain insights on actionable alerts.
 
 </details>
 

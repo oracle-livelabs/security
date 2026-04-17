@@ -38,7 +38,7 @@ Audit trails represent collection endpoints for database activity events. They g
 <details>
 <summary> **Step 2: Provision audit policies for employees_search pdb** </summary>
 
-Unified audit policies in Oracle Database define what database activities should be audited. They can be provisioned and managed from Security Central.
+    💡 **TIP:** Unified audit policies in Oracle Database define what database activities should be audited. They can be provisioned and managed from Security Central.
 
 1. Go to Security Central Console as *`AVAUDITOR`*
 
@@ -124,7 +124,7 @@ Unified audit policies in Oracle Database define what database activities should
         ````
 
 
-💡 **TIP:** You have provisioned unified audit policies on the target database to generate audit events for tracked actions. Next, you will learn how to turn them into actionable alerts for monitoring and response, once these are collected in **Security Central** through audit trails.
+    💡 **TIP:** You have provisioned unified audit policies on the target database to generate audit events for tracked actions. Next, you will learn how to turn them into actionable alerts for monitoring and response, once these are collected in **Security Central** through audit trails.
 
 </details>
 

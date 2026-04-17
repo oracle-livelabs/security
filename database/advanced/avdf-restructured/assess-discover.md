@@ -208,8 +208,10 @@ The unified security policy console provides a centralized interface to define, 
 4. Go back to **Policy Console**
 </details>
 
+
 <details> 
 <summary>**Step 2: Review the retrieval schedule for policies**</summary>
+
 
 1. Scroll down to the **Policies retrieval schedule for Oracle Database targets** 
 
