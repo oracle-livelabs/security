@@ -38,8 +38,6 @@ Audit trails represent collection endpoints for database activity events. They g
 <details>
 <summary> **Step 2: Provision audit policies for employees_search pdb** </summary>
 
-    💡 **TIP:** Unified audit policies in Oracle Database define what database activities should be audited. They can be provisioned and managed from Security Central.
-
 1. Go to Security Central Console as *`AVAUDITOR`*
 
 2. Click on the **Policies** tab, and **Audit Policies** in the left menu
@@ -72,6 +70,10 @@ Audit trails represent collection endpoints for database activity events. They g
     - Click **Enable** and review to see the status as **Enabled** in the policies page. You may have to refresh the page couple of times till it reflects.
 
 6. Go back to **Audit Policies** 
+
+
+    💡 **TIP:** Unified audit policies in Oracle Database define what database activities should be audited. They can be provisioned and managed from Security Central.
+
 </details>
 
 <details>
@@ -209,7 +211,7 @@ Audit trails represent collection endpoints for database activity events. They g
 
 2. View the Alerts that have occurred related to the user creation/deletion SQL commands
 
-    ![AVDF](./images/avdf-654.png "View the alerts")
+    ![AVDF](./images/avdf-654a.png "View the alerts")
 
     **Note**: If you don't see them, refresh the page. 
 
