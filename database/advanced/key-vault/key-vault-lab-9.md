@@ -1,4 +1,4 @@
-# Enhance security with key management in vulnerable environments
+# Restrict key exposure in target environments (like P2T clones)
 
 ## Introduction
 You may need to share data with environments operating under lower security controls, such as when cloning a PDB from production to test (P2T). It is crucial to ensure that TDE master encryption keys are never exposed, downloaded, or cached in these environments. To enhance security, mark these keys as non-extractable in Oracle Key Vault.
@@ -13,7 +13,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
 
 ## Task 1: Generate a Non-Extractable key
 
-1.  Log in to Key Vault as user **KVRESTADMIN**
+1. Log in to Key Vault as user **KVRESTADMIN**
 
     Get the password of KVRESTADMIN by executing this command
 
@@ -33,7 +33,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
 
     ![Key Vault](./images/Screenshot_2025-10-03_14.29.00.png "Set the Extractable Attribute for the Symmetric Key to False")
 
-4.  On the database host, set a new Transparent Data Encryption Key. The new key created in Key Vault will be generated with the 'Non Extractable' attribute set
+4. On the database host, set a new Transparent Data Encryption Key. The new key created in Key Vault will be generated with the 'Non Extractable' attribute set
 
     ```
     <copy>
@@ -67,7 +67,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
     </copy>
     ````
 
-   ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Check if the server is unreachable")
+    ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Check if the server is unreachable")
 
 ## Task 3: Attempt to create a new tablespace to confirm that database operations fail even when the secure persistent cache exists
 
@@ -85,7 +85,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
 
     The creation of an encrypted tablespace fails because the non-extractable key cannot exist in the persistent cache, and the database cannot fetch it from Key Vault since the connection was disconnected in Task 2. This underscores that non-extractable keys cannot be accessed outside of Key Vault and that this deployment can be leveraged to provide higher levels of assurance in environments with a lower security posture.
 
-   ![Key Vault](./images/Screenshot_2025-10-07_22.09.24.png "Attempt to create a new tablespace")
+    ![Key Vault](./images/Screenshot_2025-10-07_22.09.24.png "Attempt to create a new tablespace")
 
 
 ## Task 4: Re-establish connectivity between the database and Key Vault
@@ -108,5 +108,9 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
     </copy>
     ````
 
-   ![Key Vault](./images/Screenshot_2025-10-03_16.04.40.png "Ensure the server is reachable")
+    ![Key Vault](./images/Screenshot_2025-10-03_16.04.40.png "Ensure the server is reachable")
 
+## Acknowledgements
+- **Author** - Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - March 2026

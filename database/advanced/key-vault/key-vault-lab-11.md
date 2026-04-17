@@ -14,7 +14,7 @@ This lab builds on concepts and operations from lab 10. Complete lab 10 first be
 
 ## Task 1: Generate a key external to Oracle Key Vault
 
-1.  Write your key to a file
+1. Write your key to a file
 
     In this example, we use openssl to generate TDE Master Encryption Key. You can use other means to generate this key.
 
@@ -27,7 +27,7 @@ This lab builds on concepts and operations from lab 10. Complete lab 10 first be
 
 ## Task 2: Upload the key to Oracle Key Vault
 
-1.  Log in to Key Vault as user **KVRESTADMIN**
+1. Log in to Key Vault as user **KVRESTADMIN**
 
     Get the password of KVRESTADMIN by executing this command
 
@@ -95,3 +95,8 @@ This lab builds on concepts and operations from lab 10. Complete lab 10 first be
     ```
 
     ![Key Vault](./images/Screenshot_2025-10-08_12.12.47.png "Verify that the tablespace was re-keyed")
+
+## Acknowledgements
+- **Author** - Shubham Goyal
+- **Contributors** - Peter Wahl, Rahil Mir
+- **Last Updated By/Date** - Shubham Goyal - March 2026

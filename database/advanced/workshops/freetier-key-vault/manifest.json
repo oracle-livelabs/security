@@ -11,7 +11,7 @@
     {
       "title": "Get Started",
       "description": "Get a Free Trial",
-      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+      "filename": "https://livelabs.oracle.com/cdn/common/labs/cloud-login/pre-register-free-tier-account.md"
     },
     {
       "title": "Lab 1: Prepare Setup",
@@ -37,69 +37,69 @@
       "title": "Lab 4: Review a typical TDE environment",
       "description": "Confirm the encryption status of a tablespace in an Oracle database, and understand how TDE has been setup.",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault-Lab4.md",
+      "filename": "../../key-vault/key-vault-lab-4.md",
       "type": "brown"
     },
     {
       "title": "Lab 5: Secure Your Data: Migrate to Oracle Key Vault in 5 easy steps",
       "description": "Prepare Oracle Key Vault for the incoming database and install the OKV endpoint software on the database host",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault-Lab5.md",
+      "filename": "../../key-vault/key-vault-lab-5.md",
       "type": "brown"
     },
     {
       "title": "Lab 6: Ensure a complete key transfer, leaving no keys on the database host",
       "description": "Upload pre-migration TDE master encryption keys from the local TDE wallet to OKV",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault-Lab6.md",
+      "filename": "../../key-vault/key-vault-lab-6.md",
       "type": "brown"
     },
     {
       "title": "Lab 7: Enable zero-touch transparent data encryption operations",
       "description": "Learn how to setup an auto-open connection to OKV",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault-Lab7.md",
+      "filename": "../../key-vault/key-vault-lab-7.md",
       "type": "brown"
     },
     {
-      "title": "Lab 8: Ensure reliable data access during connectivity disruptions",
+      "title": "Lab 8: Ensure reliable data access during disruptions in connectivity between the database and Oracle Key Vault",
       "description": "See how OKVs secure persistent cache keeps your databases running",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault-Lab8.md",
+      "filename": "../../key-vault/key-vault-lab-8.md",
       "type": "brown"
     },
     {
-      "title": "Lab 9: Enhance security with key management in vulnerable environments",
+      "title": "Lab 9: Restrict key exposure in target environments (like P2T clones)",
       "description": "Learn how OKV can restrict access of your keys to environments with lower security controls",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault-Lab9.md",
+      "filename": "../../key-vault/key-vault-lab-9.md",
       "type": "brown"
     },
     {
       "title": "Lab 10: Automate key rotation",
       "description": "See how you can add keystore passwords to local auto-login wallets to simplify key rotation operations",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault-Lab10.md",
+      "filename": "../../key-vault/key-vault-lab-10.md",
       "type": "brown"
     },
     {
       "title": "Lab 11: Bring your own key",
       "description": "Upload an externally generated key into OKV",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault-Lab11.md",
+      "filename": "../../key-vault/key-vault-lab-11.md",
       "type": "brown"
     },
     {
       "title": "Lab 12: Explore Key Vault in a typical customer deployment",
       "description": "Explore Key Vault in a typical customer deployment",
       "publisheddate": "10/01/2025",
-      "filename": "../../key-vault/key-vault-Lab12.md",
+      "filename": "../../key-vault/key-vault-lab-12.md",
       "type": "brown"
     },
     {
       "title": "Need Help?",
       "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+      "filename": "https://livelabs.oracle.com/cdn/common/labs/need-help/need-help-freetier.md"
     }
   ]
 }
