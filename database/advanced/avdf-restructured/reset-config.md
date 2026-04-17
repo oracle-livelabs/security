@@ -15,7 +15,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 ### Objectives
 - Rest the lab environment
 
-## Task: Reset the Security Central Lab Config
+## Task 1: Reset the Security Central Lab Config
 
 1. Reset **Golden Gate** configuration for **customer_orders** only!
 
@@ -83,71 +83,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
         ![AVDF](./images/avdf-262.png "Confirm the deletion")
 
-<!--
-    - Go back to your terminal session to reset Golden Gate
 
-        ````
-        <copy>$DBSEC_LABS/avdf/avs/avs_reset_ogg.sh pdb1</copy>
-        ````
-
-        ![AVDF](./images/avdf-263.png "Reset the Golden Gate configuration")
-
-2. Delete the **Unified Audit Trail** configuration
-
-    - Go back to Audit Vault Web Console as *`AVADMIN`*"
-
-        ![AVDF](./images/avdf-400.png "AVDF - Login")
-
-    - Click the **Targets** tab
-
-    - Click the Target Name **pdb1**
-
-    - In the section **Audit Data Collection**, select "**`UNIFIED_AUDIT_TRAIL`**" and click [**Stop**]
-
-        ![AVDF](./images/avdf-264.png "Stop the Audit Data Collection")
-
-    - Check that the service is stopped
-
-        ![AVDF](./images/avdf-265.png "Check that the service is stopped")
-
-    - Select "**`UNIFIED_AUDIT_TRAIL`**" and click [**Delete**]
-
-        ![AVDF](./images/avdf-266.png "Delete the Audit Data Collection")
-
-3. Then, delete the Audit Vault **Agent**
-
-    - Click the **Agents** tab
-
-    - Select the Agent Name **dbseclab** and click [**Deactivate**]
-
-        ![AVDF](./images/avdf-269.png "Deactivate the Audit Vault Agent")
-
-    - Now, the agent should be "**Not Activated**"
-
-        ![AVDF](./images/avdf-270.png "Check that the Audit Vault Agent is deactivated")
-
-    - Select the Agent Name **dbseclab** and click [**Delete**]
-
-        ![AVDF](./images/avdf-271.png "delete the Audit Vault Agent")
-
-    - Now, the agent is deleted
-
-        ![AVDF](./images/avdf-272.png "Check that the Audit Vault Agent is deleted")
-
-4. Finally, reset **AVDF binaries**
-
-    ````
-    <copy>
-    rm -Rf $AV_HOME/*
-    ll $AV_HOME
-
-    rm -Rf $AVCLI_HOME/*
-    ll $AVCLI_HOME
-    </copy>
-    ````
-
-    ![AVDF](./images/avdf-273.png "Reset AVDF binaries")
--->
 
 2. **Now, the Security Central configuration is correctly reset!**
 

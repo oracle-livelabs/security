@@ -79,7 +79,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
         ````
     💡 **TIP:** Now that risks are mitigated, let's generate the assessment on-demand to review the presence of risks.
 
- 6. Generate an assessment on-demand for the targets **`customers_orders`** and **`sales_history`** 
+    6. Generate an assessment on-demand for the targets **`customers_orders`** and **`sales_history`** 
 
     - Click on the **Targets** tab
     
@@ -107,38 +107,38 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
     - Close the popup
 
-💡 **TIP:** You've now reviewed security configuration risks and mitigated them. Let's move on to identify potential user risks.
+    💡 **TIP:** You've now reviewed security configuration risks and mitigated them. Let's move on to identify potential user risks.
 
 </details>
 
 <details>
 <summary>**Step 2: Evaluate user risks**</summary>
 
-1.  Review the key privilege user risks under **User assessment summary**
+1. Review the key privilege user risks under **User assessment summary**
     ![AVDF](./images/360-1e.png "AVDF - Security Insights - User Assessment")
 
-2.  Drilldown into the data showing privileged users **Access not audited** 
+2. Drilldown into the data showing privileged users **Access not audited** 
     - Filter the report to show only database admins among the priveleged users
         - Make sure to filter the rows containing **Database admin = "Yes"**. You may have to toggle the column to display in *Actions dropdown -> Select Columns*
     ![AVDF](./images/360-1f.png "AVDF - Security Insights - User Assessment - Priv users without audit")
 
     **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have the broad database administrative rights on the entire fleet of databases. It is critical to audit database administrators and other privileged users, as their broad system privileges can pose significant risk if their credentials are compromised or misused. 
      
-3.  Click **Security Insights** to go back, then drilldown into the data showing privileged users **Access to DV protected objects**
+3. Click **Security Insights** to go back, then drilldown into the data showing privileged users **Access to DV protected objects**
     ![AVDF](./images/360-2.png "AVDF - Retrieval Jobs")  
      **Note**: Only schema owner has been granted access to the objects in the protected realm of **`customer_orders`** pdb. 
 
-💡 **TIP:** You've now identified privileged users who carry potential risks. Let's move on to understand sensitive data that faces risk of exposure.
+    💡 **TIP:** You've now identified privileged users who carry potential risks. Let's move on to understand sensitive data that faces risk of exposure.
 </details>
 
 <details>
 <summary>**Step 3: Assess the sensitive data exposure risk** </summary>
 
-1.  Review the sensitive data access not audited under **Data discovery summary**
+1. Review the sensitive data access not audited under **Data discovery summary**
 
     ![AVDF](./images/360-3.png "AVDF - Security Insights - Data discovery") 
 
-2.  Drilldown into the data showing sensitive data whose **Access not audited** 
+2. Drilldown into the data showing sensitive data whose **Access not audited** 
     ![AVDF](./images/360-4.png "AVDF - Security Insights - Data discovery - Access not audited")
         **Note**: Access to sensitive data in **`employees_search`** and **`customer_orders`** pdbs are not audited. Ensuring proper visibility and governance over who can access sensitive data helps minimize risk, enforce accountability, and protect high-value information.
 
@@ -148,7 +148,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
 4. Go back to the **Security Insights** console 
 
-💡 **TIP:** You've now identified sensitive data that faces risk of exposure. Let's try to understand what powers these insights in **Security Central**
+    💡 **TIP:** You've now identified sensitive data that faces risk of exposure. Let's try to understand what powers these insights in **Security Central**
 </details>
 
 <details>
@@ -208,7 +208,7 @@ The unified security policy console provides a centralized interface to define, 
 4. Go back to **Policy Console**
 </details>
 
-<details> 
+    <details> 
 <summary>**Step 2: Review the retrieval schedule for policies**</summary>
 
 1. Scroll down to the **Policies retrieval schedule for Oracle Database targets** 
@@ -249,15 +249,7 @@ Global set represents predefined collection of entities such as IP addresses, da
     ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
     **Note:** This group represents a set of most sensitive objects in employees_search DB, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
 2. Close the popup.
-<!--
-1. Expand **Sensitive Object Sets (0)** and click **Add**. Enter the following
-    -   Name **EmployeeSearchSensitiveApplicationObjects**
-    -   Toggle **Employees_search** to the selected target
-    -   All the discovered *Sensitive Objects* are included by default
-    -   Click **Save**
-    ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
-    **Note:** Consider creating such sets to simply the management of policies.
--->
+
 </details>
 
 <details>
@@ -268,15 +260,6 @@ Global set represents predefined collection of entities such as IP addresses, da
     **Note:** This group represents the set of Database administrators who have broad system access in employees_search DB, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
 2. Close the popup.
 
-<!--
-1. Expand **Privileged User Sets (0)** and click **Add**. Enter the following
-    -   Name **EmployeeSearchPrivUsers**
-    -   Toggle **Employees_search** to the selected target
-    -   All the discovered *Privileged Users* are included by default
-    -   Click **Save**
-    ![AVDF](./images/360-9c.png "AVDF - Privilege User Sets")
-    **Note**: Consider creating such sets to simply the management of policies.
--->
 </details>
 
 ## What did we learn in this lab

@@ -47,7 +47,7 @@ This lab assumes you have:
 || **Optional**||
 |09| Reset the Security Central labs config | <5 minutes|
 
-## Task: Access Security Central console
+## Task 1: Access Security Central console
 
 You have been given a randomly generated password for the *`AVADMIN`* and *`AVAUDITOR`* user login for the Security Central console. When you log into the Security Central console for the first time using these users, you will be asked to change the password.
 

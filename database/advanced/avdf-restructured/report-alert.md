@@ -65,14 +65,14 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
     ![AVDF](./images/avdf-024.png "Compliance Reports")
 
-💡 **TIP:** You can now demonstrate compliance with regulations by showcasing activity on sensitive data through these reports. Consider scheduling these reports to run automatically at regular intervals to ensure continuous monitoring, timely insights, and readiness for audits without manual effort.
+    💡 **TIP:** You can now demonstrate compliance with regulations by showcasing activity on sensitive data through these reports. Consider scheduling these reports to run automatically at regular intervals to ensure continuous monitoring, timely insights, and readiness for audits without manual effort.
 
 </details>
 
 <details>
 <summary>**Step 2: Review Data Modification Before-After values**</summary>
 
-Some regulations ask for providing a clear record of how certain data has been changed over time to ensures full transparency and accountability for data modifications. This pre-defined report helps meet the need. We will review the change report for **`customer_orders`**, where all the configuration has been already done in the livelab.
+    Some regulations ask for providing a clear record of how certain data has been changed over time to ensures full transparency and accountability for data modifications. This pre-defined report helps meet the need. We will review the change report for **`customer_orders`**, where all the configuration has been already done in the livelab.
 
 1. Check if the transaction log trail for **`customer_orders`** is started
 
@@ -157,7 +157,7 @@ Some regulations ask for providing a clear record of how certain data has been c
 2. Click the **Alerts** tab
 
 
-3.  View the Alerts that have occurred 
+3. View the Alerts that have occurred 
 
     ![AVDF](./images/avdf-654.png "View the alerts")
 
