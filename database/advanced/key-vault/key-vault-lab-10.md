@@ -23,7 +23,7 @@ This lab builds on concepts and operations from lab 9. Complete lab 9 first befo
     </copy>
     ````
     
-    ![Key Vault](./images/Screenshot_2025-10-03_16.19.30.png "Add the keystore password into a new local auto-login wallet in <WALLET_ROOT>/tde")
+    ![Key Vault](./images/okv-ll10-task1-1.png "Add the keystore password into a new local auto-login wallet in <WALLET_ROOT>/tde")
 
 2. Check the Master Encryption Key ID before a re-key
 
@@ -38,7 +38,7 @@ This lab builds on concepts and operations from lab 9. Complete lab 9 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-07_23.41.30.png "Check the Master Encryption Key ID before a re-key")
+    ![Key Vault](./images/okv-ll10-task1-2.png "Check the Master Encryption Key ID before a re-key")
 
 3. Execute a re-key operation without using the Key Vault password
 
@@ -52,7 +52,7 @@ This lab builds on concepts and operations from lab 9. Complete lab 9 first befo
 
     This command rotates the TDE master encryption keys for CDB$ROOT and PDB1.    
 
-    ![Key Vault](./images/Screenshot_2025-10-07_23.29.07.png "Execute a re-key operation without using the Key Vault password")
+    ![Key Vault](./images/okv-ll10-task1-3.png "Execute a re-key operation without using the Key Vault password")
 
 4. Verify that both CDB$ROOT and PDB1 have a new TDE master key
 
@@ -67,7 +67,7 @@ This lab builds on concepts and operations from lab 9. Complete lab 9 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-07_23.39.39.png "Verify that the tablespace was re-keyed")
+    ![Key Vault](./images/okv-ll10-task1-4.png "Verify that the tablespace was re-keyed")
 
 ## Acknowledgements
 - **Author** - Shubham Goyal

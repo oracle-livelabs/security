@@ -32,23 +32,23 @@ The script will display the output:
     - The database uses a file-based wallet 
     - Root directory of the database wallet, &lt;WALLET\_ROOT&gt;. TDE wallets are located at &lt;WALLET\_ROOT&gt;/tde.
 
-    ![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behavior of TDE in your database.")
+    ![Key Vault](./images/okv-ll4-task1-1.png "You see the system parameters that are controlling the behavior of TDE in your database.")
 
 2. The file-based wallet is open, and the database can use the master keys from the wallet for TDE operations. The PDB does not show a wallet location because the database is using united mode PDBs, and the PDBs inherit their location from CDB$ROOT.
 
-    ![Key Vault](./images/OKV-LL4-001b.png "The file based wallet is open for use. Since the database is using united mode PDBs, they inherit their location from CDB$ROOT.")
+    ![Key Vault](./images/okv-ll4-task1-2.png "The file based wallet is open for use. Since the database is using united mode PDBs, they inherit their location from CDB$ROOT.")
 
 3. The identifier and creation time of the TDE master encryption key used by the CDB and PDB
 
-    ![Key Vault](./images/OKV-LL4-001c.png "The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time")
+    ![Key Vault](./images/okv-ll4-task1-3.png "The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time")
 
 4. A list of encrypted tablespaces
 
-    ![Key Vault](./images/OKV-LL4-001d.png "A list of encrypted tablespaces")
+    ![Key Vault](./images/okv-ll4-task1-4.png "A list of encrypted tablespaces")
 
 5. A list of encrypted RMAN backups
 
-    ![Key Vault](./images/OKV-LL4-001e.png "A list of encrypted RMAN backups")
+    ![Key Vault](./images/okv-ll4-task1-5.png "A list of encrypted RMAN backups")
 
 ## Acknowledgements
 - **Author** - Shubham Goyal

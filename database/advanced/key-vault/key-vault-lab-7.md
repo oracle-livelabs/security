@@ -23,7 +23,7 @@ This lab builds on concepts and operations from lab 6. Complete lab 6 first befo
     </copy>
     ````
 
-    ![Key Vault](./images/image-2025-09-25_11-48-23.png "Create a new local auto-login wallet in <WALLET_ROOT>/tde and add the Key Vault endpoint password")
+    ![Key Vault](./images/okv-ll7-task1-1.png "Create a new local auto-login wallet in <WALLET_ROOT>/tde and add the Key Vault endpoint password")
 
 2. Update the Transparent Data Encryption (TDE) configuration of the database to 'OKV|FILE' so it can locate the new auto-login wallet in the specified &lt;WALLET_ROOT&gt;/tde directory.
 
@@ -35,7 +35,7 @@ This lab builds on concepts and operations from lab 6. Complete lab 6 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-7-24_12-53-4.png "Update the Transparent Data Encryption (TDE) configuration of the database to OKV|FILE so it can locate the new auto-login wallet in the specified <WALLET_ROOT>/tde directory")
+    ![Key Vault](./images/okv-ll5-task4-1.png "Update the Transparent Data Encryption (TDE) configuration of the database to OKV|FILE so it can locate the new auto-login wallet in the specified <WALLET_ROOT>/tde directory")
 
 3. Restart the database to force the auto-login wallet configuration to take effect.
 
@@ -48,7 +48,7 @@ This lab builds on concepts and operations from lab 6. Complete lab 6 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.23.38.png "Restart the database to force the auto-login wallet configuration to take effect")
+    ![Key Vault](./images/okv-ll7-task1-3.png "Restart the database to force the auto-login wallet configuration to take effect")
 
 4. Confirm that the auto-login wallet has been correctly configured and is operational.
 
@@ -66,7 +66,7 @@ This lab builds on concepts and operations from lab 6. Complete lab 6 first befo
     </copy>
     ```
     
-    ![Key Vault](./images/Screenshot_2025-10-07_23.08.12.png "Confirm that the auto-login wallet has been correctly configured and is operational")
+    ![Key Vault](./images/okv-ll7-task1-4.png "Confirm that the auto-login wallet has been correctly configured and is operational")
 
 ## Acknowledgements
 - **Author** - Shubham Goyal

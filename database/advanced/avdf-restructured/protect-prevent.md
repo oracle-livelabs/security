@@ -1,137 +1,76 @@
-# Oracle Audit Vault and DB Firewall (AVDF)
+# Protect and Prevent: enforce controls
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Audit Vault and DB Firewall (AVDF). It gives the user an opportunity to learn how to configure those appliances in order to audit, monitor and protect access to sensitive data.
+Now, we will move to configure protection and prevention controls to alert or block any unauthorized activity in the Oracle Database targets: *`employees_search`* and *`customer_orders`*. The security controls such as **Oracle Database Vault**, **Oracle SQL Firewall** and **Database Firewall** help enforce strong security boundaries and protect critical data assets.
 
-*Estimated Lab Time:* 110 minutes
+The **`employees_search`** is to be protected from insider threats, unauthorized data access attempts, and data exfiltration attempts. To address these risks, you will use **SQL Firewall** (26ai feature) and **Database Firewall** to protect against scenarios such as:
+- Misuse or abuse of application service accounts, including access from untrusted paths
+- SQL injection attacks targeting self-service applications to retrieve unauthorized data
+- Misuse of privileged DBA credentials to perform unauthorized DML operations on sensitive application schema objects over the network
+- Data exfiltration attempts by privileged users accessing sensitive data over the network
 
-*Version tested in this lab:* Oracle AVDF 20.13
+The **`customer_orders`** is to be protected from external threats. Stricter segregation of duties and access control policies play a major role in mitigating potential risks. You will configure **Database Vault** to:
+- Restrict access to sensitive application schemas to only realm-authorized users
+- Ensure business users, such as Alex, can access only the data they are authorized to query
+- Enable monitoring and alerting for realm violations and other security-relevant events
 
+Together, these controls establish a layered defense strategy, helping safeguard sensitive data and ensuring that only authorized actions are permitted across the database environment.
+
+*Estimated Lab Time:* 30 minutes
+
+*Version tested in this lab:* Oracle Database Security Central (Security Central)
+<!--
 ### Video Preview
 
-Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](youtube:eLEeOLMAEec)
-
+Watch a preview of "*LiveLabs - Oracle Database Security Central (Security Central)*" [](youtube:eLEeOLMAEec)
+-->
 
 ### Objectives
-- Assess the security posture of the registered Oracle database targets
-- Set a baseline and detect drift of the security configuration
-- Discover sensitive data
-- Configure the auditing for the Oracle database
-- Explore the interactive reporting capabilities, including user entitlement
-- Simply compliance with pre-defined reports, including activity on sensitive data
-- Train the DBFW for the authorized application query and prevent the SQL injection
+- Use SQL Firewall to allow only authorized SQL statements and connections
+- Use Database Firewall to restrict the DBA access over the network
+- Use Database Vault to enforce least privilege by restricting even highly privileged users from accessing sensitive data
 
+## Task 1: Use SQL Firewall to allow only authorized SQL statements and connections
 
-### Prerequisites
-This lab assumes you have:
-- A Free Tier, Paid or LiveLabs Oracle Cloud account
-- You have completed:
-    - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
-    - Lab: Environment Setup
-    - Lab: Initialize Environment
+SQL Firewall is enabled in the **`employees_search`**. In this lab, you will enable SQL Firewall to learn authorized SQL traffic of EMPLOYEESEARCH_PROD user, create a policy based on approved SQL, IP, and client program, and enforce it to block unauthorized activity.
 
-### Lab Timing (estimated)
+<details>
+<summary> **Step 1: Ensure SQL Firewall is enabled** </summary>
 
+1. Go to Security Central Console as *`AVAUDITOR`*
 
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-|| **AVDF Labs**||
-|04| Reset the password | <5 minutes|
-|05| Assess and Discover | 20 minutes|
-|06| Audit and Monitor | 20 minutes|
-|07| Report and Alert | 20 minutes|
-|08| Protect and Prevent | 20 minutes|
-|| **Optional**||
-|09| Advanced features configuration | 25 minutes|
-|10| Reset the AVDF labs config | <5 minutes|
+2. Click on the **Policies** tab, expand **Firewall Policies** in the left menu, and click **Oracle SQL Firewall**
+        ![AVDF](./images/360-20.png "AVDF - Oracle SQL Firewall page")
+        Review the column **SQL Firewall status** for the target **`employees_search`**, make sure the status shows as **Enabled**
 
-## Lab 8: Protect and Prevent
-While monitoring user activities on sensitive data and getting alerted are important. Now, we are in the position to define protection rules to prevent your database from any unauthorized activities and SQL injection attempts.
+3. Click the target **`employees_search`** to drilldown and start configuring
+</details>
 
-In this lab, we will do the following
-- Review database firewall (DBFW) deployment in the **proxy mode** which is already configured for this lab
-- Monitor database acitivties with and without DBFW deployment
-- Train the DBFW engine for the authorized application SQL statement
-- Protect and prevent the application from the SQL injection attempts
-- Monitor data exfiltration attempts
+<details>
+<summary> **Step 2: Train SQL Firewall to learn authorized SQL traffic** </summary>
 
-### Step 1: Enable the DB Firewall Monitoring
+1. Expand the collapsible region **SQL learning for users (0)** 
+2. Filter for **`EMPLOYEESEARCH_PROD`** user, select and click **Start**
+    ![AVDF](./images/360-21.png "AVDF - SQL Firewall policy- Employees Search pdb")
 
-1. Now, go back to Audit Vault Web Console as *`AVADMIN`*
+3. Select the following in **Start learning** popup, and click **Start**
+    -   Stop learning in: *1 day*
+    -   Select *Only top level SQL*
+       ![AVDF](./images/360-22.png "AVDF - SQL Firewall policy- Start learning popup")  
+    -   Review the column **Status** for the user **`EMPLOYEESEARCH_PROD`**, make sure the status shows as **Learning**
+        ![AVDF](./images/360-22b.png "AVDF - SQL Firewall policy- learning popup") 
 
-    ![AVDF](./images/avdf-400.png "AVDF - Login")
+    💡 **TIP:** Now the SQL Firewall is ready to learn the expected workload of EMPLOYEESEARCH_PROD user!
+</details>
 
-2. Check the prerequisites of the Database Firewall (everything has been preset during the deployment of the Livelabs)
+<details>
+<summary> **Step 3: Execute the normal workload** </summary>
+ 
+1. Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
 
-    - Click on **Database Firewalls** tab (here dbfw must be up!)
-
-        ![AVDF](./images/avdf-101.png "Database Firewall page")
-
-    - Click on **dbfw**
+    **Note:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
     
-    - Under **Configuration**, click **Network Settings**
-
-        ![AVDF](./images/avdf-102.png "Configure network settings")
-    
-    - For ens3, the Proxy Ports are set to 15223 for pdb1 and 15224 for pdb2, because here we will use these ports to use Database Firewall
-    
-        ![AVDF](./images/avdf-103.png "Proxy Ports settings")
-
-3. Now, check the DB Firewall Monitoring mode for `pdb1`
-
-    - Click the **Targets** tab and click **pdb1**
-
-    - In the **Database Firewall Monitoring** section, check that monitoring is up and running
-
-        ![AVDF](./images/avdf-104.png "The new Database Firewall Monitoring")
-
-        **Note**:
-        - Once enabled, Database Firewall monitoring will analyze the traffic from pdb1 through the port 15223
-        - We configured it in "Proxy" mode, so all the SQL traffic will transit by the DB Firewall appliance to be able to block the "bad" traffic if needed
-
-4. Now, verify connectivity between the database and the DB Firewall
-
-    - Go back to your terminal session and go to the DBF directoy
-
-        ````
-        <copy>cd $DBSEC_LABS/avdf/dbf</copy>
-        ````
-
-    - Verify connectivity to pdb1 **WITHOUT** the Database Firewall
-
-        ````
-        <copy>./dbf_sqlplus_without_dbfw.sh</copy>
-        ````
-
-        ![AVDF](./images/avdf-105.png "Check the connectivity to the database WITHOUT the Database Firewall")
-
-        **Note**:
-        - This will connect to the pluggable database pdb1 **directly** on the standard listener port **1521**
-        - You should see that the connection shows **10.0.0.150** which is the IP Address of the DBSec-Lab VM
-
-    - Verify connectivity to pdb1 **WITH** the Database Firewall
-
-        ````
-        <copy>./dbf_sqlplus_with_dbfw.sh</copy>
-        ````
-
-        ![AVDF](./images/avdf-106.png "Check the connectivity to the database WITH the Database Firewall")
-
-        **Note**:
-        - This will connect to the pluggable database pdb1 **through the proxy** on the port **15223** (DB Firewall Monitoring) we just configured
-        - You should see that the connection shows **10.0.0.152** which is the IP Address of the DB Firewall VM
-
-### Step 2: DB Firewall - Configure and Verify the Glassfish App to Use the DB Firewall
-
-In this lab you will modify the Glassfish connection (instead of connecting directly to the pluggable database **pdb1**, Glassfish will connect through the Oracle DB Firewall so we can monitor, and block, SQL commands)
-
-1. First, verify that the application functions **before** we make any changes to connection string!
-
-2. Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
-
-    **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-    
-3. Login to the application as *`hradmin`* with the password "*`Oracle123`*"
+2. Login to the application as *`hradmin`* with the password "*`Oracle123`*"
 
     ````
     <copy>hradmin</copy>
@@ -145,106 +84,19 @@ In this lab you will modify the Glassfish connection (instead of connecting dire
 
     ![AVDF](./images/avdf-112.png "HR App - Login")
 
-4. In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
+3. In the right hand corner of the App, Click **Search Employees**
 
-    ![AVDF](./images/avdf-115.png "HR App - Settings")
+    ![AVDF](./images/avdf-113.png "Search Employees")
 
-5. On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
-
-    ![AVDF](./images/avdf-116.png "HR App - Session Details")
-
-6. Logout
-
-    ![AVDF](./images/avdf-117.png "AVDF - Logout")
-
-7. Now, go back to your terminal session and migrate the Glassfish Application connection string to proxy through the Database Firewall
-
-    ````
-    <copy>./dbf_start_proxy_glassfish.sh</copy>
-    ````
-
-    ![AVDF](./images/avdf-118.png "Set HR App with Database firewall")
-
-8. Next, verify the application functions as expected
-
-    - Go back to your Glassfish App web page and login as *`hradmin`* with the password "*`Oracle123`*"
-    - In the top right hand corner of the App, click on the **Weclome HR Administrator** link to view the **Session Details** page
-    - Now, you should see that the **IP Address** row has changed from **10.0.0.150** to **10.0.0.152**, which is the IP Address of the DB Firewall VM
-
-        ![AVDF](./images/avdf-119.png "check the application functions as expected")
-
-### Step 3: DB Firewall - Train the DB Firewall for Expected SQL Traffic
-In this lab you will use the Glassfish Application to connect through the Oracle Database Firewall so we can monitor, and block, SQL commands
-
-1. Go back to Audit Vault Web Console as *`AVADMIN`*"
-
-    ![AVDF](./images/avdf-400.png "AVDF - Login")
-
-2. Click the **Database Firewalls** tab
-
-3. Click on the Target name **dbfw**
-
-4. Under **Configuration**, click **System Services**
-
-    ![AVDF](./images/avdf-120a.png "System Services Configuration")
-
-    **Note**: According to your resources it can take up to several minutes to present the Tabs!
-
-5. Select the **Date and Time** tab
-
-6. Ensure the first NTP service is **ON** and the IP is *`169.254.169.254`*, and close the pop-up windows
-
-    ![AVDF](./images/avdf-120b.png "Set NTP service")
-
-7. Next, set the type of DB Firewall monitoring, so go back to Audit Vault Web Console as *`AVAUDITOR`*
-
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
-
-8. On top, click on the **Policies** tab
-
-9. Click the **Database Firewall Policies** sub-menu on left
-
-    ![AVDF](./images/avdf-120c.png "Database Firewall Monitoring")
-
-10. Check the **Log unique** option to enable the Database Firewall Policy, then click [**Deploy**]
-
-    ![AVDF](./images/avdf-121a.png "Enable Database Firewall Policy")
-
-    **Note:**
-    - Log unique policies enable you to log statements for offline analysis that include each distinct source of SQL traffic. Be aware that if you apply this policy, even though it stores fewer statements than if you had chosen to log all statements, it can still use a significant amount of storage for the logged data.
-    - Log unique policies log SQL traffic specifically for developing a new policy. The logged data enables the Analyzer to understand how client applications use the database and enables rapid development of a policy that reflects actual use of the database and its client applications.
-
-11. Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**]
-
-    ![AVDF](./images/avdf-121b.png "Select targets for Database Firewall Policy")
-
-12. Now, refresh the page to see the "Log unique" policy deployed for the target pdb1
-
-    ![AVDF](./images/avdf-121c.png "Database Firewall Policy deployed for pdb1")
-
-13. Now, generate Glassfish Application Traffic
-
-    - Go back to your Glassfish App web page and **Logout** explicitly to train the DB Firewall
-
-        ![AVDF](./images/avdf-122.png "HR App - Logout")
-
-    - Login as *`hradmin`* with the password "*`Oracle123`*"
-
-        ![AVDF](./images/avdf-112.png "HR App - Login")
-
-    - Click **Search Employees**
-
-        ![AVDF](./images/avdf-113.png "Search Employees")
-
-14. In the **HR ID** field enter "*`164`*" and click [**Search**]
+4. In the **HR ID** field enter "*`164`*" and click [**Search**]
 
     ![AVDF](./images/avdf-123.png "Search Employee UserID 164")
 
-15. Clear the **HR ID** field and click [**Search**] again to see all rows
+5. Clear the **HR ID** field and click [**Search**] again to see all rows
 
     ![AVDF](./images/avdf-114.png "Search Employee")
 
-16. Enter the following information in the **Search Employee** fields
+6. Enter the following information in the **Search Employee** fields
 
     - HR ID: *`196`*
     - Active: *`Active`*
@@ -257,296 +109,109 @@ In this lab you will use the Glassfish Application to connect through the Oracle
 
         ![AVDF](./images/avdf-124.png "Search Employees Criteria")
 
-17. Click [**Search**]
+7. Click [**Search**]
 
-18. Click on "**Harvey, William**" to view the details of this employee
+8. Click on "**Harvey, William**" to view the details of this employee
 
     ![AVDF](./images/avdf-125.png "Search Employee")
 
-19. Now, let's view the Database Firewall Activity, so go back to Audit Vault Web Console as *`AVAUDITOR`*
+9. In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
 
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
+    ![AVDF](./images/avdf-115.png "HR App - Settings")
 
-20. Click **Reports**
+    -   On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
+    - You should see that the **IP Address** is **10.0.0.150**, which is the IP Address of the DBSec VM where glassfish app is hosted.
+    - You should see the **DB NAME** is **FREEPDB1**, which is the Oracle AI Database 26ai instance of **employees_search** target.
 
-21. Scroll down to **Database Firewall Reports**
+10. Logout
 
-22. Click on **Monitored Activity**
+    ![AVDF](./images/avdf-117.png "AVDF - Logout")
 
-23. Your activity should show queries from `EMPLOYEESEARCH_PROD` using a "**JDBC Thin Client**"
+    💡 **TIP:** In real world deployment, you would capture the expected workload while funtionally testing your application in a pre-prod environment, and importing them into production instance once you are confident that all the approved SQLs and trusted paths are captured.
 
-    ![AVDF](./images/avdf-126.png "JDBC Thin Client activity")
+</details>
 
-    **Note**: Sometimes DB Firewall activity may take 5 minutes to appear in the Database Firewall Activity Reports, hence refresh this page if needed
+<details>
+<summary> **Step 4: Ensure the SQL Firewall has learned**</summary>
 
-24. Click on the details of a query (paper icon) to see more information and notice the following information in the **Event** category:
-    - Policy Name: *`Log unique`*
-    - Threat Severity: *`minimal`*
-    - Location: *`Network`*
-    - Action Taken: *`Pass`*
+1. On Security Central console, expand **SQL learning for users (1)**, select the user **`EMPLOYEESEARCH_PROD`** 
+        
+    - Click **View learning data** to see the SQL Queries captured by SQL Firewall that were executed on Glassfish app.
+            ![AVDF](./images/360-23.png "AVDF - SQL Firewall policy- View learning data") 
 
-        ![AVDF](./images/avdf-127.png "Event criteria")
-        ![AVDF](./images/avdf-127b.png "Event criteria")
+       **Note:** If you don't see data from **JDBC Thin Client** in the column **Client program** in the table, click **Refresh learning data**. Repeat 2-3 times if required.   
+    - Click **Cancel** to return back
+2. Click **Stop** and review the status transitions to **Learning completed**
+            ![AVDF](./images/360-24.png "AVDF - SQL Firewall policy- Stop learning popup")  
+            Normally, you will consider stopping once you’re confident the system has fully learned all authorized and approved SQL statements from trusted connection paths.
 
-    **Note**:       
-      - This information tells us a lot about our Database Firewall policies and why we are capturing this particular query
-      - If your reports show a lot of unknown activity you probably have **Native Network Encryption** enabled
-      - Please disable it from a terminal session and run the queries again:
-         - To check, run the following script: `$DBSEC_LABS/nne/nne_view_sqlnet_ora.sh`
-         - If it says `SQLNET.ENCRYPTION_SERVER=REQUESTED` or `SQLNET.ENCRYPTION_SERVER=REQUIRED` then it needs to be disabled
-         - To disable it, run the following scripts: `$DBSEC_LABS/nne/nne_disable.sh`
-         - To verify, run the following script: `$DBSEC_LABS/nne/nne_view_sqlnet_ora.sh`
-      - It should return no contents now!
+    💡 **TIP:** SQL Firewall has now learned the approved SQL statements and trusted connection paths for EMPLOYEESEARCH_PROD application service account, and constructed the allow-lists. You will now enforce the allow-lists in a SQL Firewall policy.
 
-25. Once you're confortable with these metrics, click [**< Report View**]
+</details>
 
-    ![AVDF](./images/avdf-127c.png "Go back to Report view")
+<details>
+<summary> **Step 5: Enable the SQL Firewall policy**</summary>
 
-26. To have a better overview of the activity in this report, add the SQL Text column
+1. Expand **SQL Firewall policy for users (0)**  
+    ![AVDF](./images/360-25.png "AVDF - SQL Firewall policy- create policy popup")
+    **Note:** Notice that SQL Firewall policy for **`EMPLOYEESEARCH_PROD`** is automatically created and is in **Disabled** status
 
-    - Click [**Actions**] and select **Select Columns**
+2. Select the record and click **Enable** to open a popup for choosing enabling conditions.
+    - Select the following:
+        - Enforcement policy: *SQL statements & session contexts*
+        - Action on violations: *Block and log*    
+    ![AVDF](./images/360-26.png "AVDF - SQL Firewall policy- create policy popup")
 
-        ![AVDF](./images/avdf-127d.png "Select Columns")
+    - Click **Enable** to see the SQL Firewall policy *status* is now **Enabled** , *Enforcement policy* is set to **SQL statements & session contexts** and *Actions on violations* set to **Block and log**
+    ![AVDF](./images/360-27.png "AVDF - SQL Firewall policy- policy configured")
+    **Note:** You may have to refresh the page to see the data.
 
-    - Add "**Command Text(Event)**" to the **Display in Report** section, then click [**Apply**]
+3. Drilldown the SQL Firewall policy for **`EMPLOYEESEARCH_PROD`** to review the details
+    - Review the **enforcement option**
+    - Review the **session context**
+        - Review the **Client IP address** captured
+        - Review the **Client program** captured
+        - Review the **OS user** captured
+    - Review the **SQL statement** captured
+    ![AVDF](./images/360-28.png "AVDF - SQL Firewall policy- policy enforcement")
+    - Click **Cancel**
 
-        ![AVDF](./images/avdf-127e.png "Add Command Text(Event)")
+    **Note:** If there are any changes to the session context and/ or SQL statements in the SQL Firewall policy, you can make the modifications and clicking **Save** will propagate the changes in real-time.
 
-    - Now, you should see the SQL statements in a dedicated column
+    💡 **TIP:** You've now enforced the SQL Firewall policy for EMPLOYEESEARCH_PROD application service account, allow-listing approved SQL statements and trusted connection paths. Any mismatch will trigger SQL Firewall violation which will be collected by Security Central and alerted.
 
-        ![AVDF](./images/avdf-127f.png "See the SQL statements in a dedicated column")
+</details>
 
-    - Sroll down to one of our favorite queries
+<details>
+<summary> **Step 6: Ensure SQL Firewall violations are being collected**</summary>
 
-        ![AVDF](./images/avdf-127g.png "Sroll down to one of our favorite queries")
+1. Go to the **Targets** tab, click **Targets** sub-menu on the left
+2. Drilldown to **`employee_search`** target to see the trails 
+
+    ![AVDF](./images/360-29.png "Audit Trail")
+    **Note:** Ensure the *`SYS.DBA_SQL_FIREWALL_VIOLATIONS`* table audit trail is either in **Collecting** or in **Idle** state. In the livelab, we have already configured trail for collecting SQL Firewall violations from **`employee_search`**.
+
+</details>
+
+<details>
+<summary> **Step 7: Trigger SQL Firewall violations** </summary>
+    We will validate the protection controls of SQL Firewall by triggering violations. Let us simulate SQL Firewall context violations by connecting as *SQLPLUS*.  
+1. Go to your terminal session and go to the SQLFW directoy
+        ````
+        <copy>cd $DBSEC_LABS/avdf/avs</copy>
+        ````
+    - Imagine you are that someone who has access to the stolen app service account credentials of **`EMPLOYEESEARCH_PROD`**, and you are trying to access the database bypassing the application normal access path.
 
         ````
-        select USERID,FIRSTNAME,LASTNAME from DEMO_HR_USERS where ( USERSTATUS is NULL or upper( USERSTATUS ) = '######' ) and upper(USERID) = '#######' and password = '#########'
+        <copy>./avs_sqlfw_risk.sh</copy>
         ````
-
-        **Note**:
-        - We like this query because this is the authentication SQL the "`My HR App`" uses to validate the `hradmin` and `Oracle123` password. Remember, the application is authenticated against a table not the database so queries like this will be captured
-        - Notice how the Database Firewall has removed the bind values that would have included the username and password. This is to minimize the collection of sensitive data within Audit Vault and Database Firewall
-
-27. Feel free to continue to explore the captured SQL statements and once you are comfortable, please continue the labs!
-
-### Step 4: DB Firewall - Build and Test the DB Firewall Allow-List Policy
-
-1. Before we build our policy we have to make sure DB Firewall has logged the SQL Statements from the **Train the Database Firewall for expected SQL traffic** Lab as well as SQL statements from our SQL*Plus scripts
-
-2. Go back to your terminal session to demonstrate connectivity through the Database Firewall and the ability to query the `EMPLOYEESEARCH_PROD` tables **before applying the DB Firewall policy**
-
-    ````
-    <copy>./dbf_query_fw_policy.sh</copy>
-    ````
-
-    ![AVDF](./images/avdf-128.png "Check the connectivity through the Database Firewall")
-
-    **Note**: You can see all rows!
-
-3. Go back to Audit Vault Web Console as *`AVAUDITOR`* to create a Database Firewall Policy
-
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
-
-4. Click the **Policies** tab
-
-5. Click the **Database Firewall Policies** sub-menu on left
-
-6. Click [**Create**]
-
-    ![AVDF](./images/avdf-129a.png "Create a Database Firewall Policy")
-
-7. Create the Database Firewall Policy with the following information
-
-    - Policy Name: *`HR Policy`*
-    - Target Type: *`Oracle Database`*
-    - Description: *`This policy will protect the My HR App`*
-
-        ![AVDF](./images/avdf-129b.png "Database Firewall Policy parameters")
-
-    - Click [**Save**]
-
-8. Now, create the context of this policy by clicking [**Sets/Profiles**]
-
-    ![AVDF](./images/avdf-130.png "Create the context of this policy")
-
-9. In the **SQL Cluster Sets** subtab, click [**Add**]
-
-    ![AVDF](./images/avdf-131.png "Add SQL Cluster Sets")
-
-10. In the **Add SQL Cluster Set** screen, create the list of known queries as following
-
-    - Name: *`HR SQL Cluster`*
-    - Description: *`Known SQL statements for HR App`*
-    - Target: *`pdb1`*
-    - Show cluster for: *`Last 24 Hours`* (or make this `Last Week`)
-    - Click [**Go**]
-
-        ![AVDF](./images/avdf-132a.png "SQL Cluster Sets parameters")
-
-    - Click [**Actions**] and select "*`ALL`*" in **Row per page** option to display all the results
-
-        ![AVDF](./images/avdf-132b.png "Option to display all the results")
-
-    - Check the **Select all** box next to the "**Cluster ID**" Header to add all "trained" queries into the SQL Clusters
-
-        ![AVDF](./images/avdf-132c.png "Select all trained queries to put into the SQL Clusters")
-
-    - But please **unselect the SQL*Plus query** run earlier in Step 12-1 to block it (because here we consider that it's not an official HR App query)
-
-        ```
-        select userid, firstname, lastname, emptype, position, city, ssn, sin, nino from employeesearch_prod.demo_hr_employees where rownum < 00
-        ```
-
-        ![AVDF](./images/avdf-133a.png "Unselect the SQLPlus query")
-
-    - Click [**Save**]
-
-11. Click [**Back**]
-
-    ![AVDF](./images/avdf-133b.png "Go back")
-
-12. Select the **SQL Statement** sub-tab and click [**Add**]
-
-    ![AVDF](./images/avdf-133c.png "Add SQL Statement")
-
-13. Complete the **SQL Statement** with the following information to allow the **HR SQL Cluster** created previoulsy (here we consider that these queries are official and can be executed)
-
-    - Rule Name: *`Allows HR SQL`*
-    - Description: *`Allowed SQL statements for HR App`*
-    - Cluster Set(s): *`HR SQL Cluster`*
-    - Action: *`Pass`*
-    - Logging Level: *`Don't Log`*
-    - Threat Severity: *`Minimal`*
-
-        ![AVDF](./images/avdf-134a.png "SQL Statement parameters")
-
-    - Click [**Save**]
-
-<!--
-14. Next, add database users that we trust to connect to the database through the Database Firewall
-
-    **Note**:
-    - We will create a **Database User Set** for our DB Admin (`SYSTEM`) and for the HR App's owner (`EMPLOYEESEARCH_PROD`)
-    - Only these 2 DB users will be able to run the **HR SQL Cluster**
-
-15. Click [**Sets/Profiles**]
-
-    ![AVDF](./images/avdf-134b.png "Check Sets/Profiles")
-
-16. Select the **Database User Sets** tab and click [**Add**]
-
-    ![AVDF](./images/avdf-134c.png "Add Database User Sets")
-
-17. Enter the following information:
-
-    - Name: *`Privileged Users`*
-    - Description: *`Users We Trust`*
-    - Sets Values: *`SYSTEM, EMPLOYEESEARCH_PROD`*
-
-        ![AVDF](./images/avdf-135.png "Database User Sets parameters")
-
-    - Click [**Save**]
-    - Click [**Back**]
-
-        ![AVDF](./images/avdf-136.png "Save Database User Sets")
-
--->
-
-14. Finally, select the **Default** tab to specify what the DB Firewall policy has to do you if you are not in the context definied previously (here we will block all the "black-listed" queries and we will return a blank result)
-
-    ![AVDF](./images/avdf-137.png "Specify the default action to do by the DB Firewall policy")
-
-    - Click on **Default Rule** under the Rule Name, to edit the Default rule, and enter the following information
-        - Action: *`Block`*
-        - Logging Level: *`One-Per-Session`*
-        - Threat Severity: *`Moderate`*
-        - Substitution SQL: *`SELECT 100 FROM dual WHERE 1=2`*
-
-            ![AVDF](./images/avdf-138.png "Default action parameters")
-
-    - Click [**Save**]
-
-15. Your HR Policy should look like this:
-
-    ![AVDF](./images/avdf-139.png "HR Policy")
-
-16. Click [**Save**]
-
-17. Once created, the policy is **automatically published**, but now you have to deploy it
-
-    ![AVDF](./images/avdf-140.png "HR Policy published")
-
-18. Check the **HR Policy** option, then click [**Deploy**]
-
-    ![AVDF](./images/avdf-141a.png "HR Policy deployment")
-
-19. Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
-
-    ![AVDF](./images/avdf-141b.png "Select targets for Database Firewall Policy")
-
-20. Now, refresh the page to see the "HR Policy" policy deployed for the target pdb1
-
-    ![AVDF](./images/avdf-141c.png "Database Firewall Policy deployed for pdb1")
-
-21. Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
-    - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
-    - Click **Search Employees**
-    - Click [**Search**]
-
-        ![AVDF](./images/avdf-114.png "Search employees")
-
-        **Note**: All rows are returned... Remember, all "official" queries from the HR App have been allowed in **HR SQL Cluter** in your DB Firewall policy
-
-22. Even if you add a search criteria and query again, you can access to the result (here we **filter by "HR ID = 196"** for example)
-
-    ![AVDF](./images/avdf-142.png "Filter by HR ID = 196")
-
-23. Now, go back to your terminal session and run the same script as at the beginning to see the impact of the DB Firewall policy
-
-    ````
-    <copy>./dbf_query_fw_policy.sh</copy>
-    ````
-
-    ![AVDF](./images/avdf-143.png "Check the impact of the DB Firewall policy")
-
-    **Note**:
-    - The output should return "**no rows selected**" for the SQL query
-    - Remember, this is because the DB Firewall policy substitute the result by "`SELECT 100 FROM dual WHERE 1=2`" for "unofficial" queries from the HR App, although you are still logged in with an authorized DB user (here SYSTEM)!
-
-### Step 5: DB Firewall - Block a SQL Injection Attack
-
-**SQL Injection (SQLi)** is a well-known cyber attack. Its ability to exploit security holes can be very powerful if properly exploited. It exploits security holes in an application that interacts with a database. The SQL Injection attack consists of modifying a current SQL query by injecting an unanticipated piece of the query, often through a form. The hacker can thus access the database, but also modify the content and thus compromise the security of the system.
-There are different types of SQL Injection:
-- "Blind-based" injects chunks that will return character by character what the attacker is trying to extract from the database. This allows to test the valid or invalid characters.
-- "Error-based" injects pieces that return field by field what the hacker is trying to extract from the database. This allows to divert the error message it generates.
-- "UNION-based" injects chunks that will return a set of data directly extracted from the database. This allows to retrieve entire tables from the database in one or two queries!
-- "Stacked query" is the most dangerous attack. Due to a database server configuration error, this type of injection can execute any SQL query on the targeted system. Not only does it retrieve data, but it can also modify data directly in the database.
-
-In this lab you will perform a "**UNION-based**" SQL Injection attack and see how to block it easily thanks to Database Firewall. To do that, we will use the policy "`HR Policy`" just created previously.
-
-1. Go back to Audit Vault Web Console as *`AVAUDITOR`* to create a Database Firewall Policy
-
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
-
-2. Click on the **Policies** tab
-
-3. Click the **Database Firewall Policies** sub-menu on left
-
-4. Check the **Log unique** option to change the Database Firewall Policy, then click [**Deploy**]
-
-    ![AVDF](./images/avdf-160.png "Set the current Database Firewall Policy")
-
-5. Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
-
-    ![AVDF](./images/avdf-121b.png "Select targets for Database Firewall Policy")
-
-6. Now, refresh the page to see the "Log unique" policy deployed for the target pdb1
-
-    ![AVDF](./images/avdf-161.png "Database Firewall Policy deployed for pdb1")
-
-7. Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
-    - Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
+2. You will see **ORA-47605: SQL Firewall violation** blocking access to the database
+   
+    ![AVDF](./images/360-30.png "SQL Firewall context violation -1 ")
+    
+    Now, let's simulate SQL Firewall statement violations by using Glassfish app by attempting SQL Injection attacks
+
+2. Go back to your Glassfish App web page, logout and login as *`hradmin`* with the password "*`Oracle123`*"
     - Click **Search Employees**
     - Click [**Search**]
 
@@ -554,11 +219,11 @@ In this lab you will perform a "**UNION-based**" SQL Injection attack and see ho
 
         **Note**: All rows are returned... normal, because, remerber, you allowed everything!
 
-8. Now, tick the **checkbox "Debug"** to see the SQL query behind this form
+3. Now, tick the **checkbox "Debug"** to see the SQL query behind this form
 
     ![AVDF](./images/avdf-162.png "See the SQL query executed behind the form")
 
-9. Click [**Search**] again
+4. Click [**Search**] again
 
     ![AVDF](./images/avdf-163.png "Search employees")
 
@@ -566,7 +231,7 @@ In this lab you will perform a "**UNION-based**" SQL Injection attack and see ho
     - Now, you can see the official SQL query executed by this form which displays the results
     - This query gives you the information of the number of columns requested, their name, their datatype and their relationship
 
-10. Now, based on this information, you can create our "UNION-based" SQL Injection query to display all sensitive data you want extract directly from the form. Here, we will use this query to extract `USER_ID', 'MEMBER_ID', 'PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from `DEMO_HR_SUPPLEMENTAL_DATA` table.
+5. Now that you have gathered the necessary information, you can construct a UNION-based SQL injection to retrieve sensitive data directly through the form. In this step, the goal is to extract the following fields: `USER_ID','MEMBER_ID', 'PAYMENT_ACCT_NO` and `ROUTING_NUMBER` from the `DEMO_HR_SUPPLEMENTAL_DATA` table.
 
     ````
     <copy>
@@ -574,7 +239,7 @@ In this lab you will perform a "**UNION-based**" SQL Injection attack and see ho
     </copy>
     ````
 
-11. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form and **tick the "Debug" checkbox**
+6. Copy the SQL Injection query, **paste it directly into the field "Position"** on the Search form and **tick the "Debug" checkbox**
 
     ![AVDF](./images/avdf-164.png "Copy/Paste the SQL Injection query")
 
@@ -582,214 +247,541 @@ In this lab you will perform a "**UNION-based**" SQL Injection attack and see ho
     - Don't forget the "`'`" before the UNION key word to close the SQL clause "LIKE"
     - Don't forget the "`--`" at the end to disable rest of the query
 
-12. Click [**Search**]
+7. Click [**Search**]
+    ![AVDF](./images/360-30a.png "Impact of SQL Firewall Blocking mode")
 
-    ![AVDF](./images/avdf-165.png "Search employees")
+    This occurs because the *UNION* query is not recognized by SQL Firewall as an authorized SQL statement. As a result, it is blocked and prevented from executing further. A super cool way to mitigate the risks of SQL Injection attacks!!!
 
-    **Note:**
-    - Now, because the source code of the app is exposed to this kind of attack, instead of the results as usual, **you can see your sensitive extraction**!
-    - Of course, you can modify this UNION query and extract the columns you want
+</details>
 
-13. **To block this attack, *with no app changes or reboot*, just activate at any time your Database Firewall policy!**
+<details>
+<summary>**Step 8: Monitor SQL Firewall violations**</summary>
 
-    - Go back to Audit Vault Web Console as *`AVAUDITOR`* to create a Database Firewall Policy
+1. Go to Security Central Console as *`AVAUDITOR`*
 
-        ![AVDF](./images/avdf-300.png "AVDF - Login")
+2. Click on the **Policies** tab, expand **Firewall Policies** in the left menu, and click **Oracle SQL Firewall**
+    ![AVDF](./images/360-31.png "AVDF - Oracle SQL Firewall page with violations")
+        **Note:** There are session context violation(s) since we tried to access **`employee_search`** pdb with *`SQLPLUS`* script. There are SQL statement violation(s) since we made SQL injection attempts using unathorized SQLs over Glassfish app. You may have to refresh few times.
 
-    - Click the **Policies** tab
+3. Click on the **Reports** tab, expand **SQL Firewall Violations Report**, and click **SQL Firewall Violations** report
+    ![AVDF](./images/360-32.png "AVDF - Oracle SQL Firewall page with violations")
+        **Note:** To see the action taken (allow/block), toggle the **Action Taken** in the *Actions* -> *Select Columns* dropdown
+
+</details>
+
+<details>
+<summary> **Step 9: Pro-actively monitor SQL Firewall violations using alert**</summary>
+    To stay informed of potential threats, consider creating an alert policy that notifies you whenever a SQL Firewall violation occurs. This enables timely detection and response to unauthorized or suspicious SQL activity.
+
+1. Click on the **Policies** tab, and click **Alert Policies** menu on the left
+
+2. Create the alert policy "**Alert whenever there is a SQL Firewall violation**"
+
+    - Click [**Create**]
+
+    - Enter the following information for the new **Alert**
+
+        - Alert policy name: *SQL Firewall violation*
+        - Description: *Alert when there is an unauthorized attempt to access*
+        - Target type: *Oracle Database*
+        - Severity: *Warning*
+        - Condition: *:AUDIT_TYPE = 'SQL Firewall Violation'*
+        - Threshold (times): *1*
+
+    - Your Alert should look like this.
+
+        ![AVDF](./images/360-33.png "SQLFirewall Alerts")
+
+    - Click [**Save**]
+
+        **Note:** Your Alert is automatically started!
+
+💡 **TIP:** You've now created and enabled SQL Firewall policy for EMPLOYEESEARCH_PROD application user. Only authorized SQL statements and connections is allowed to the database from this user. We will now explore Database Firewall to prevent misuse/abuse of privileged DBAs credentials over the network. 
+</details>
+
+## Task 2: Use Database Firewall to restrict the DBA access over the network
+
+In this task, we will do the following
+- Review database firewall (DBFW) deployment in the **proxy mode** which is already configured for this lab
+- Configure the Employee Search HR Glassfish application to use DB Firewall
+- Create the DB Firewall policy to monitor DBA activity over network
+- Monitor DB Firewall violations and configure alerts for pro-active notifications
+- Monitor data exfiltration attempts
+
+
+<details>
+<summary>**Step 1: Enable the DB Firewall Monitoring**</summary>
+
+1. Now, go back to Security Central Console as *`AVADMIN`*
+
+2. Check the prerequisites of the Database Firewall (everything has been configured in the Livelabs)
+
+    - Click on **Database Firewalls** tab (here dbfw must be up!)
+
+        ![AVDF](./images/avdf-101.png "Database Firewall page")
+
+    - Click on **dbfw**
     
-    - Click the **Database Firewall Policies** sub-menu on left
+    - Under **Configuration**, click **Network Settings**
+
+        ![AVDF](./images/avdf-102.png "Configure network settings")
     
-    - Check the **HR Policy** option, then click [**Deploy**]
-
-        ![AVDF](./images/avdf-141a.png "HR Policy deployment")
+    - Click Network Interface Card *ens3* to see the proxy ports. 
     
-    - Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
+    ![AVDF](./images/avdf-103.png "Proxy Ports settings")
+        **Note:** Proxy Ports are set to 15223 and 15224. We will use these ports for Database Firewall.
 
-        ![AVDF](./images/avdf-141b.png "Select targets for Database Firewall Policy")
-        
-    - Now, refresh the page to see the "HR Policy" policy deployed for the target pdb1
+3. Now, check the DB Firewall Monitoring mode for `employees_search`
 
-        ![AVDF](./images/avdf-141c.png "Database Firewall Policy deployed for pdb1")
+    - Click the **Targets** tab and click **`employees_search`**
 
-    - Once the DB Firewall Policy is enabled, we will validate the impact on the Glassfish App
-        - Go back to your Glassfish App web page
-        - **Keep the SQL Injection query** on the Search form
-        - **Tick the "Debug"** checkbox
+    - In the **Database Firewall Monitoring** section, check that monitoring is up and running
 
-            ![AVDF](./images/avdf-164.png "Check the impact of the DB Firewall policy")
-
-        - Click [**Search**]
-
-            ![AVDF](./images/avdf-168.png "Search employees")
+        ![AVDF](./images/avdf-104.png "The new Database Firewall Monitoring")
 
         **Note**:
-        - The output should return "**no rows**"
-        - Remember, this is because the UNION query has not been added into the Allow-list in the DB Firewall policy... as simple as that!
+        - Once enabled, Database Firewall monitoring will analyze the traffic through the port 15223
+        - We configured it in "Proxy" mode, so all the SQL traffic from the client will go through the DB Firewall to the database. DB Firewall will be able to alert and/or block the "bad" traffic as defined by the DB Firewall policy.
 
-### Step 6: DB Firewall - Detect Data Exfiltration Attempts
+4. Now, verify connectivity to the database when the DB Firewall is in proxy mode
 
-In this lab, you will detect sensitive data exfiltration attempts by capturing the number of rows returned for SELECT statements. Typically, when an application behaves normally, it's to display a single or maybe 50-100 rows per page displayed. But if you suddenly see a return of 1000 rows or more, this is definitely not normal application behavior. It's really important to know this automatically in real time, with no impact on the performance, to determine whether it's normal or not.
+    - Go back to your terminal session and go to the $DBSEC_LABS/avdf/avs folder
 
-In this lab you will create the policy `PII Exfiltration Monitor` to monitor the PII exfiltration attempts
+        ````
+        <copy>cd $DBSEC_LABS/avdf/avs</copy>
+        ````
 
-1. Go back to Audit Vault Web Console as *`AVAUDITOR`* to create a Database Firewall Policy
+    - Verify connectivity to **employees_search** pdb **WITHOUT** the Database Firewall
 
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
+        ````
+        <copy>./dbf_sqlplus_without_dbfw.sh freepdb1</copy>
+        ````
 
-2. Click the **Policies** tab
+        ![AVDF](./images/avdf-105.png "Check the connectivity to the database WITHOUT the Database Firewall")
 
-3. Click the **Database Firewall Policies** sub-menu on left
+        **Note**:
+        - This will connect to the pluggable database freepdb1 **directly** on the standard listener port **1521**
+        - You should see that the connection shows **10.0.0.150** which is the IP Address of the DBSec-Lab VM
 
-4. Click [**Create**]
+    - Verify connectivity to **employees_search** pdb **WITH** the Database Firewall
 
-5. Create the Database Firewall Policy with the following information
+        ````
+        <copy>./dbf_sqlplus_with_dbfw.sh freepdb1</copy>
+        ````
 
-    - Policy Name: *`PII Exfiltration Monitor`*
-    - Target Type: *`Oracle Database`*
-    - Description: *`This policy will monitor the PII exfiltration attempts`*
+        ![AVDF](./images/avdf-106.png "Check the connectivity to the database WITH the Database Firewall")
 
-        ![AVDF](./images/avdf-170.png "Create the Database Firewall Policy")
+        **Note**:
+        - This will connect to the pluggable database  **through the proxy** on the port **15223** (DB Firewall Monitoring) we just configured
+        - You should see that the connection shows **10.0.0.152** which is the IP Address of the DB Firewall VM
+</details>
+
+<details>
+<summary>**Step 2: Configure the Glassfish App to connect to the DB Firewall**</summary>
+
+1. In this lab you will modify the Glassfish app to connect to DB Firewall, which will inturn connect to the pluggable database **`employees_search`**. Go to the terminal session and migrate the Glassfish App connection string to proxy through the Database Firewall. 
+
+    ````
+    <copy>./dbf_start_proxy_glassfish.sh</copy>
+    ````
+
+    ![AVDF](./images/avdf-118.png "Set HR App with Database firewall")
+
+2. SQL Firewall policy for **`EMPLOYEESEARCH_PROD`** application user should now allow-list the IP Address of the DB Firewall VM **10.0.0.152** 
+
+    - Go back to Security Central Console as *AVAUDITOR*
+
+    - Click on the **Policies** tab, expand **Firewall Policies** in the left menu, and click **Oracle SQL Firewall**
+
+    - Click the target **`employees_search`** to drilldown
+
+    - Expand **SQL Firewall policy for users (1)** and drilldown into policy for user **`EMPLOYEESEARCH_PROD`**
+
+    - Expand **Session context** to enter DB Firewall VM IP Address **10.0.0.152** to allowed **Client IP address** list
+
+        ![AVDF](./images/avdf-118a.png "Add FW IP address to allowed client IP addresses")
+
+    - Click Save.
+
+    💡 **TIP:** DB Firewall is a valid client connecting to the database; hence add to the trusted connection paths!
+
+3. Confirm the Glassfish application connects through DB Firewall 
+
+    -   Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
+            **Note:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*. 
+
+    - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
+
+    ````
+    <copy>hradmin</copy>
+    ````
+
+    ````
+    <copy>Oracle123</copy>
+    ````
+
+    ![AVDF](./images/avdf-111.png "HR App - Login")
+
+    ![AVDF](./images/avdf-112.png "HR App - Login")
+
+    -   In the top right hand corner of the App, click on the **Welcome HR Administrator** link and you will be sent to a page with session data
+
+    ![AVDF](./images/avdf-115.png "HR App - Settings")
+
+    -   On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
+    - Now, you should see that the **IP Address** row has changed from **10.0.0.150** to **10.0.0.152**, which is the IP Address of the DB Firewall VM
+
+        ![AVDF](./images/avdf-119.png "check the application functions as expected")
+
+    - You can run the normal workload queries through the Glassfish apps connected to **employees_search** database through Database Firewall
+        - Remember, you have allow-listed authorized SQL queries from glassfish apps in SQL Firewall policies.
+        - Any unauthorized SQL queries from the Glassfish apps will trigger SQL Firewall violation
+
+    💡 **TIP:** You have now configured glassfish apps client to connect through the Database Firewall to the database. We will now create DB Firewall policies to enforce access control policies for DBAs who can bypass the application controls and access the application sensitive objects over the network.
+</details>
+
+<details>
+<summary>**Step 3: Create DB Firewall policy to monitor DBA activity over network**</summary>
+
+1. Go to Security Central Console as *`AVADMIN`*"
+
+2. Click the **Database Firewalls** tab
+
+3. Click on the Target name **dbfw**
+
+4. Under **Configuration**, click **System Services**
+
+    ![AVDF](./images/avdf-120a.png "System Services Configuration")
+
+5. Select the **Date and Time** tab
+
+6. Ensure the first NTP service is **ON** and the IP is *`169.254.169.254`*, and close the pop-up windows
+
+    ![AVDF](./images/avdf-120b.png "Set NTP service")
+
+7. Next, set the type of DB Firewall monitoring, so go back to Security Central Console as *`AVAUDITOR`*
+
+8. Click on the **Policies** tab, expand **Firewall Policies** in the menu on the left
+
+9. Click the **Database Firewall Policies** sub-menu 
+
+10. In the region **User-defined Database Firewall Policies** Click [**Create**]
+
+    ![AVDF](./images/avdf-129a.png "Create a Database Firewall Policy")
+
+11. Create the Database Firewall Policy with the following information
+
+    - Policy Name: *EmployeeSearchAccessOverNetwork*
+    - Target Type: *Oracle Database*
+    - Description: *Defines anomalous access patterns by DBAs to sensitive application objects in the employees_search database over the network*
+
+        ![AVDF](./images/avdf-129b.png "Database Firewall Policy parameters")
 
     - Click [**Save**]
 
-6. In the **Database Firewall Policy Rules** section, select the **Database Objects** subtab and click [**Add**]
+12. Now, create the context of this policy by clicking [**Sets/Profiles**]
 
-    ![AVDF](./images/avdf-171.png "Add Database Firewall Policy Rules")
+    ![AVDF](./images/avdf-130.png "Create the context of this policy")
 
-7. In the **Database Objects** screen, create the rule as following (we will monitor ALL tables)
 
-    - Rule Name: *`PII Table Monitor`*
-    - Description: *`Monitor the sensitive tables`*
-    - Statement Classes: select DML instructions *`INSERT, UPDATE, DELETE`* and *`SELECT`*
-    - Capture number of rows returned for SELECT queries: *`Yes`*
-    - Action: *`Pass`*
-    - Logging Level: *`Always`*
-    - Threat Severity: *`Moderate`*
+13. In the **Profile** subtab, click [**Add**] and provide the following information
+    - Name: *DBAs over network*
+    - Select DB User Set as *Database Administrators* from the dropdown
 
-        ![AVDF](./images/avdf-172.png "Database Firewall Policy Rules parameters")
+    ![AVDF](./images/360-41.png "Profile")
+    - Click [**Save**]
+
+14. Click [**Back**]
+
+
+15. Expand **Database Objects** in **Database Firewall Policy Rules** section
+    - Click **Add**
+    - Enter the following information in the rule
+        - Rule Name: *DBA activity on app sensitive objects*
+        - Description: *DBA activity over the network*
+        - Select Profile from dropdown: *DBAs over network*
+        - Commands: Selected *DELETE, INSERT, UPDATE*
+        - Select DB Object Set from dropdown: *EmployeesSearchSensitiveApplicationObjects*
+        - Action: *Block*
+        - Logging Level: *Always*
+        - Threat Severity: *Major*
+
+        ![AVDF](./images/360-42.png "Database Object rule-1")
+        **Note:** This database object rule monitors and blocks DBAs doing INSERT, UPDATE and DELETE on sensitive app object on the network
+    - Click [**Save**]
+
+
+16. Create another **Database Objects** rule 
+
+    - Enter the following information in the rule
+        - Rule Name: *Detect exfiltration attempt by DBAs*
+        - Description: *DBA activity over the network*
+        - Select Profile from dropdown: *DBAs over network*
+        - Commands: Selected *SELECT*
+        - Capture number of rows returned for SELECT queries: *Select*
+        - Select DB Object Set from dropdown: *EmployeesSearchSensitiveApplicationObjects*
+        - Action: *Alert*
+        - Logging Level: *Always*
+        - Threat Severity: *Moderate*
+
+        ![AVDF](./images/360-42a.png "Database Object rule-2")
+        **Note:** This database object rule monitors and alerts if DBAs were accessing **EmployeesSearchSensitiveApplicationObjects** global set of sensitive objects. It can help detect data exfiltration attempts.
 
     - Click [**Save**]
 
-8. Click [**Save**]
+17. Finally, select the **Default** tab to specify what the DB Firewall policy has to do you if you are not in the context defined previously 
+    ![AVDF](./images/avdf-137.png "Specify the default action to do by the DB Firewall policy")
 
-9. Once created, the policy is **automatically published** but not deployed
-
-    ![AVDF](./images/avdf-174.png "Database Firewall Policy published")
-
-10. Now, you have to deploy the policy published
-
-    - Check the **PII Exfiltration Monitor** option, then click [**Deploy**]
-
-        ![AVDF](./images/avdf-175.png "HR Policy deployment")
+    - Select the default settings in the **Default Rule** 
+        - Action: *Pass*
+        - Logging Level: *Don't log*
+        - Threat Severity: *Minimal*
     
-    - Select the targets to be covered by this policy (here *`pdb1`*) and click [**Deploy**] 
+18. Click [**Save**]
 
-        ![AVDF](./images/avdf-176a.png "Select targets for Database Firewall Policy")
+19. Select the policy **EmployeeSearchAccessOverNetwork** and click [**Deploy**]
+
+    ![AVDF](./images/avdf-141a.png "HR Policy deployment")
+
+20. Select the targets to be covered by this policy (here *`employees_search`*) and click [**Deploy**] 
+
+    ![AVDF](./images/avdf-141b.png "Select targets for Database Firewall Policy")
+
+21. Now, refresh the page to see the **EmployeeSearchAccessOverNetwork** policy deployed for the target **Employees_search**
+
+    ![AVDF](./images/360-44.png "Database Firewall Policy deployed for employees_search")
+
+    💡 **TIP:** You've now created and deployed Database Firewall policy to track the acivities of privileged DBAs on the sensitive application objects over the network. Let's test the policy!
+</details>
+
+<details>
+<summary>**Step 4: Test the DB Firewall policy**</summary>
+
+1. Connect as `DBA_DEBRA` to fire some DML activities the sensitive application objects
+
+     ````
+        <copy>./dbf_query_fw_policy.sh freepdb1</copy>
+    ````
+
+    ![AVDF](./images/avdf-128.png "Check the connectivity through the Database Firewall")
+    **Note:** Scroll through the output to see how Database Firewall blocks the DELETE statement as shown above since we have not permitted DBA_DEBRA to do DMLs on sensitive app objects over the network. SELECT statements on sensitive objects are alerted on.
+
+2. Let's now see when `DBA_DEBRA` connects to exfiltrate data from sensitive application objects
+
+    ````
+    <copy>./dbf_exfiltrate_with_dbfw.sh freepdb1 dba_debra </copy>
+    ````
+
+    ![AVDF](./images/avdf-128a.png "Exfiltration attempt by DBA_DBRA- Database Firewall")
+     **Note**: SELECT statements by DBA_DEBRA on sensitive app objects are not only alerted by DB Firewall policy, but we capture the rowcount returned also in the DB Firewall policy. Anything more than the normal rowcount could be alerted.
+
+3. Let's now see when someone uses the stolen credential of `EMPLOYEESEARCH_PROD` to exfiltrate data from sensitive application objects
+    ````
+    <copy>./dbf_exfiltrate_with_dbfw.sh freepdb1 employeesearch_prod </copy>
+    ````
+
+    ![AVDF](./images/avdf-128b.png "Check the connectivity through the Database Firewall")
+    **Note**: You see a SQL Firewall context violation error as `EMPLOYEESEARCH_PROD` user is allowed to connect only through Glassfish app (JDBC Thin Client) as per the SQL Firewall policy configured
+
+     **Note**: Try connecting wth Glassfish app like we did in *Task2->Step2*; and run the normal workload queries which are already allow-listed in SQL Firewall policy for `EMPLOYEESEARCH_PROD` user. That works perfectly. Remember, Glassgish app is now configured to work with DB Firewall. 
+
+    💡 **TIP:** You've now seen how SQL Firewall and Database Firewall complement each other in protecting **`employees_search`** from unauthorized traffic.
+
+</details>
+
+<details>
+<summary>**Step 5: Monitor Database Firewall violations from console**</summary>
+
+1. Go to Security Central Console as *`AVAUDITOR`* 
+
+2. Click the **Reports** tab
+
+3. In the **Database Firewall Reports**, click on **Monitored Activity** report
+
+    ![AVDF](./images/360-45.png "Database Firewall Reports")
+     **Note**: You might want to refresh if you don't see the data yet. You may also want to select the columns **Action Taken**, **Policy Name**, **Rule Name**, **Row Count** in the report to understand the Firewall policy rule that triggered the event and the action taken by the DB Firewall. Notice that DELETE is blocked!
+
+</details>
+
+<details>
+<summary>**Step 6: Pro-actively monitor DB Firewall violations using alert**</summary>
+
+1. Click on the **Policies** tab
+2. Click the **Alert Policies** menu on left
+3. Review the alert by name **Database Firewall Alert**
+    - **Note:** This alert fires for all Database Firewall events which are either blocked or alerted
+
+4. Let's create an alert policy for getting pro-actively notified for data exfiltration attempts
+
+    - Click [**Create**] and fill out the field as following
+        - Alert policy name: *PII Exfiltration Alert*
+        - Description: *Someone has selected more than 100 rows of PII in a single query*
+        - Type: *Oracle Database*
+        - Severity: *Warning*
+        - Condition: *:ROW_COUNT >100 AND  :OBJECT  like '%DEMOHR%'*
+        - Threshold (times): *1*
+        - Duration: *1*
+        - Group By (Field): *USER*
         
-    - Now, refresh the page to see the "HR Policy" policy deployed for the target pdb1
+        ![AVDF](./images/avdf-656.png "Alert Policies parameters")
 
-        ![AVDF](./images/avdf-176b.png "Database Firewall Policy deployed for pdb1")
+    - Click [**Save**]
+    
 
-11. Once the DB Firewall Policy is enabled, go back to you terminal session to generate some SELECT commands on SQL*Plus via the proxy connection
+5. To trigger alerts, generate traffic by running the scripts in Step 4.
 
-    ````
-    <copy>./dbf_exfiltrate_with_dbfw.sh</copy>
-    ````
+6. Let's check the Database Firewall alerts that were generated
 
-    ![AVDF](./images/avdf-177.png "Generate traffic")
-
-    [...]
-
-    ![AVDF](./images/avdf-178.png "Generate traffic")
-
-12. Go back to Audit Vault Web Console as *`AVAUDITOR`* to create a Database Firewall Policy
-
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
-
-13. Click the **Reports** tab
-
-14. In the **Database Firewall Reports**, click on **Monitored Activity** report
-
-    ![AVDF](./images/avdf-179.png "Database Firewall Reports")
-
-15. Watch the "**Event Time**" to confirm your recent activity 
-
-    ![AVDF](./images/avdf-180.png "Filter by event time")
-
-    **Note**: If not, refresh the research because DB Firewall needs up to a few minutes to integrate the events in its report
-
-16. But to see the "**Row Count**" number in the list, you have to add the column in your report
-
-    - In the **Actions** drop-down list, select **Select columns**
-
-        ![AVDF](./images/avdf-181.png "Select columns to display")
-
-    - Add the columns *`Row Count(Event)`*, *`Object Type(Target Object)`* and *`Policy Name(Event)`*
-
-        ![AVDF](./images/avdf-182.png "Add columns to display")
-
-    - Click [**Apply**]
-
-    - You can see now the "Row Count" number of queries executed previously, with the name of the table targeted and the policy name
-
-        ![AVDF](./images/avdf-183.png "Check the Row Count number of queries executed previously")
-
-
-18. Once the DB Firewall Alert is created, go back again to your terminal session to generate the same SELECT commands on SQL*Plus via the proxy connection
-
-    ````
-    <copy>./dbf_exfiltrate_with_dbfw.sh</copy>
-    ````
-
-    ![AVDF](./images/avdf-177.png "Generate traffic")
-
-    [...]
-
-    ![AVDF](./images/avdf-178.png "Generate traffic")
-
-19. Let's check the alerts we have created in previous lab for the data exfiltration attempts
-
-    - Go back to Audit Vault Web Console as *`AVAUDITOR`*
-
-        ![AVDF](./images/avdf-300.png "AVDF - Login")
+    - Go back to Security Central Console as *`AVAUDITOR`*
 
     - Click the **Alerts** tab
 
-    - You should see some alerts "**PII Exfiltration Alert**" in the "Alert Policy Name" column
+    - You should see some alerts like "**PII Exfiltration Alert**" and "**Database Firewall Alert**" in the "Alert Policy Name" column
 
         ![AVDF](./images/avdf-185.png "Check alerts PII Exfiltration Alert")
 
         **Note:** Again, if you don't see them refresh the page because DB Firewall needs up to a few minutes to integrate the events
 
-    - Click on the first alert to see its details
-
-        ![AVDF](./images/avdf-186.png "Detail of an alert")
+    - Click on the **Database Firewall Alert** with **DELETE** event to see its details
 
     - To see the details of the event, click on the **paper icon** in the **Event** section
 
         ![AVDF](./images/avdf-187.png "Detail of an alert")
+</details>
 
-        ![AVDF](./images/avdf-188.png "Detail of an alert")
+<details>
+<summary>**Step 7: Restore the Glassfish App to use Direct Mode (optional)**</summary>
 
-20. Now you know how to detect a sensitive data exfiltration with no impact on the performance thanks to Database Firewall!
-
-### Step 7: DB Firewall - Restore the Glassfish App Configuration to Use Direct Mode
-
-In this lab you will restore the Glassfish connection in order to connecting directly to the pluggable database **pdb1** without the Database Firewall
-
-1. Restore the Glassfish App connection string to direct connect mode
-
+If you would like to restore the Glassfish connection to connect directly to the pluggable database **Employees_search** without the Database Firewall, follow the steps:
     ````
-    <copy>./dbf_stop_proxy_glassfish.sh</copy>
+    <copy>./avdf_start_glassfish.sh</copy>
     ````
-
     ![AVDF](./images/avdf-144.png "restore the default HR App connection (without DB Firewall)")
+    **Note**:       
+      - If your Database Firewall reports show a lot of unknown activity you probably have **Native Network Encryption** enabled. Please disable it from a terminal session and run the queries again. To check, run the following script: `$DBSEC_LABS/nne/nne_view_sqlnet_ora.sh`. If it says `SQLNET.ENCRYPTION_SERVER=REQUESTED` or `SQLNET.ENCRYPTION_SERVER=REQUIRED` then it needs to be disabled. To disable it, run the following scripts: `$DBSEC_LABS/nne/nne_disable.sh`. To verify, run the following script: `$DBSEC_LABS/nne/nne_view_sqlnet_ora.sh`
 
+
+💡 **TIP:** You've now configured the protection for *`employees_search`* target using SQL Firewall and Database Firewall. Let's now configure protection for *`customer_orders*` target using Database Vault.
+
+</details>
+
+## Task 3: Use Database Vault to enforce least privilege 
+
+Database Vault is enabled in the **customer_orders** pdb in the livelab environment. We have also created a realm to protect the sensitive application schema objects. Only schema owner *CO* and certain database administrators are authorized to access the realm. In this lab, we will do the following:
+-   You will add business user as authorized participant of the realm.
+-   Monitor any realm violations
+
+<details>
+<summary>**Step 1: Review the Database Vault realm protection**</summary>
+
+1. Go to Security Central Console as *`AVAUDITOR`*
+
+2. Click on the **Policies** tab, and click **Database Vault Policies**
+    ![AVDF](./images/360-50.png "AVDF - Oracle DV page")
+
+    **Note:** Review the column **DV status** for the target **customer_orders**, make sure the status shows as **Enabled**
+
+    - Click the target **customer_orders** to explore further
+
+3. Click **Provide credentials to manage policies** and provide C##DVOWNER credentials ('Oracle123')
+    ![AVDF](./images/360-51.png "AVDF - Oracle DV page credentials")
+
+4. Expand to see the **Object protection** pre-configured in the livelab
+    ![AVDF](./images/360-52.png "AVDF - Oracle DV page credentials")
+
+    **Note:** Review to see the realm **`PROTECT_CUSTOMER_ORDERS`** pre-created in the instance. The objects belonging to schema *CO* are protected in this realm. Only the schema owner is authorized to access this protected object.
+</details>
+
+<details>
+<summary>**Step 2: Add a user as authorized user of the realm**</summary>
+    We will plan to add business user BA_ALEX as authorized participant of the realm object for reporting purposes, typically read-only access to the Customer Orders schema.
+
+1. Drilldown into **`PROTECT_CUSTOMER_ORDERS`**. Expand the region **Authorized users/roles**. Click **Add**
+2. Check **Select users/roles** and enter **BA_ALEX** as user. Click **Add**.
+    ![AVDF](./images/360-53.png "AVDF - Oracle DV page credentials-add user")
+3. Expand **Audit Details** region, and select **Success** and **Failure**.
+4. Click **Save**
+</details>
+
+<details>
+<summary>**Step 3: Ensure DV violation events are collected**</summary>
+
+1. In the livelab, we have already configured trail for collecting DV events/ violations from **`customer_orders`**. 
+
+2. Go to the **Targets** tab, click **Targets** in the left menu and drilldown into **`customer_orders`**
+
+    ![AVDF](./images/360-54.png "DV - Audit trail")
+    **Note:** Ensure the the trails are either in **Collecting** or in **Idle** state
+
+</details>
+
+<details>
+<summary>**Step 4: Test the DV realm violations**</summary>
+
+1. Go to the terminal, fire the queries to query ORDERS table as BA_ALEX and CUSTOMERADMIN
+
+    - Connect as `BA_ALEX` to fire select on CO.ORDERS
+    ````
+    <copy>./avs_orders_count_sqlplus.sh BA_ALEX</copy>
+    ````
+    - Connect as `CUSTOMERADMIN` to fire select on CO.ORDERS
+    ````
+    <copy>./avs_orders_count_sqlplus.sh CUSTOMERADMIN</copy>
+    ````
+
+    ![AVDF](./images/360-55.png "DV - fire query")
+
+    **Note:**
+    - `BA_ALEX` has the object privilege access on CO.Orders; BA_ALEX also has necessary DV realm authorization on schema CO
+    -  `CUSTOMERADMIN` has the object privilege access on CO.Orders; but no DV realm authorization on schema CO
+</details>
+
+<details>
+<summary>**Step 5: Monitor and alert on DV realm violations**</summary>
+
+1. Click on the **Reports** tab, expand **All Activity Report**, and notice the DV realm violation event
+    ![AVDF](./images/360-56.png "AVDF - Oracle DV violations")
+
+
+2. Create an alert policy to alert pro-actively on DV realm violations
+
+- Click on the **Policies** tab
+
+    - Click the **Alert Policies** sub-menu on left
+
+    - Click [**Create**]
+
+    - Enter the following information for the new **Alert**
+
+        - Alert policy name: *DV realm violation*
+        - Description: *Alert when protected realm objects are accessed without appropriate authorization*
+        - Target type: *Oracle Database*
+        - Severity: *Warning*
+        - Condition: `:TARGET = 'customer_orders' AND :COMMAND_CLASS = 'VIOLATE' AND :OBJECT_TYPE = 'REALM'`
+        - Threshold (times): *1*
+
+    - Your Alert should look like this.
+
+        ![AVDF](./images/360-57.png "DV Alerts")
+
+    - Click [**Save**]
+
+    **Note:** To see alerts getting triggered, fire the script in Step4 and notice the alerts.
+You may now **proceed to the next lab**.
+</details>
+
+## What did we learn in this lab
+    
+In this lab, you learned to protect Oracle Database targets using layered security controls:
+
+- You configured SQL Firewall to allow only approved SQL statements and trusted connections, helping prevent SQL injection and unauthorized access
+- You used Database Firewall to monitor and block risky DBA activity over the network and detect possible data exfiltration
+- You also used Database Vault to enforce least privilege by restricting access to sensitive objects
+
+Together, these controls help secure critical data, strengthen access governance, and improve threat detection across the database environment.
 
 You may now **proceed to the next lab**.
-
 ## Acknowledgements
-- **Author** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager
-- **Contributors** - Hakim Loumi - Hakim Loumi, Database Security - Product Manager
-- **Last Updated By/Date** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager - November 2024
+- **Author** - Angeline Dhanarani, Database Security - Product Manager
+- **Contributors** - Nazia Zaidi, Database Security - Product Manager
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - April 2026
