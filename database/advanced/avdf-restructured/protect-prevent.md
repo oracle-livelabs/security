@@ -185,7 +185,7 @@ SQL Firewall is enabled in the **`employees_search`**. In this lab, you will ena
 <details>
 <summary> **Step 6: Ensure SQL Firewall violations are being collected**</summary>
 
-    In the livelab, we have already configured trail for collecting SQL Firewall violations from **`employee_search`**.
+    - In the livelab, we have already configured trail for collecting SQL Firewall violations from **`employee_search`**.
 
 1. Go to the **Targets** tab, click **Targets** sub-menu on the left
 2. Drilldown to **`employee_search`** target to see the trails 
@@ -381,7 +381,7 @@ In this task, we will do the following
 <details>
 <summary>**Step 2: Configure the Glassfish App to connect to the DB Firewall**</summary>
 
-    In this lab you will modify the Glassfish app to connect to DB Firewall, which will inturn connect to the pluggable database **`employees_search`**. DB Firewall will monitor the incoming SQL traffic and can decide to alert, block or pass the SQL traffic to the database.
+    - In this lab you will modify the Glassfish app to connect to DB Firewall, which will inturn connect to the pluggable database **`employees_search`**. DB Firewall will monitor the incoming SQL traffic and can decide to alert, block or pass the SQL traffic to the database.
 
 1. Go to the terminal session and migrate the Glassfish App connection string to proxy through the Database Firewall
 
