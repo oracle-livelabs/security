@@ -6,11 +6,11 @@ Establish a continuous monitoring process to support compliance with regulatory 
 *Estimated Lab Time:* 5 minutes
 
 *Version tested in this lab:* Oracle Database Security Central
-
+<!--
 ### Video Preview
 
 Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eLEeOLMAEec)
-
+-->
 
 ### Objectives
 - Review common pre-defined reports like *Activity on sensitive Data*, *Data Modification Before-After values*

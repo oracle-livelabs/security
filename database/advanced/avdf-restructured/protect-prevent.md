@@ -19,11 +19,11 @@ Together, these controls establish a layered defense strategy, helping safeguard
 *Estimated Lab Time:* 30 minutes
 
 *Version tested in this lab:* Oracle Database Security Central (Security Central)
-
+<!--
 ### Video Preview
 
 Watch a preview of "*LiveLabs - Oracle Database Security Central (Security Central)*" [](youtube:eLEeOLMAEec)
-
+-->
 
 ### Objectives
 - Use SQL Firewall to allow only authorized SQL statements and connections
@@ -283,7 +283,7 @@ To stay informed of potential threats, consider creating an alert policy that no
     - Enter the following information for the new **Alert**
 
         - Alert policy name: *SQL Firewall violation*
-        - Description: *Alert when there is an unathorized attempt to access*
+        - Description: *Alert when there is an unauthorized attempt to access*
         - Target type: *Oracle Database*
         - Severity: *Warning*
         - Condition: *:AUDIT_TYPE = 'SQL Firewall Violation'*

@@ -6,11 +6,11 @@ This workshop introduced the key features and capabilities of Security Central. 
 *Estimated Lab Time:* 5 minutes
 
 *Version tested in this lab:* Oracle Database Security Central
-
+<!--
 ### Video Preview
 
 Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eLEeOLMAEec)
-
+-->
 
 ### Objectives
 - Rest the lab environment

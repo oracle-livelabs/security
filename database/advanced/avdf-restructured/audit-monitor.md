@@ -9,11 +9,11 @@ Establishing visibility is the first step toward securing your database environm
 *Estimated Lab Time:* 10 minutes
 
 *Version tested in this lab:* Oracle Database Security Central (Security Central)
-
+<!--
 ### Video Preview
 
 Watch a preview of "*LiveLabs - Oracle Database Security Central (Security Central)*" [](youtube:eLEeOLMAEec)
-
+-->
 
 ### Objectives
 - Configure database activity monitoring with audit

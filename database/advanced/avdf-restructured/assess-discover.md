@@ -6,11 +6,11 @@ Assessing your database - its configuration risks, user access, and the sensitiv
 *Estimated Lab Time:* 10 minutes
 
 *Version tested in this lab:* Oracle Database Security Central
-
+<!--
 ### Video Preview
 
 Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eLEeOLMAEec)
-
+-->
 
 ### Objectives
 - Review your security risk posture

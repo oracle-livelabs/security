@@ -13,11 +13,11 @@ Through this workshop, you’ll gain hands-on experience in using **Security Cen
 *Estimated Lab Time:* 60 minutes
 
 *Version tested in this lab:* Oracle Database Security Central (Security Central)
-
+<!--
 ### Video Preview
 
 Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eLEeOLMAEec)
-
+-->
 
 ### Objectives
 - Assess your database: risks, users, and data
