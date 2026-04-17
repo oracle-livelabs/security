@@ -72,7 +72,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 <details>
 <summary>**Step 2: Review Data Modification Before-After values**</summary>
 
-    - Some regulations ask for providing a clear record of how certain data has been changed over time to ensures full transparency and accountability for data modifications. This pre-defined report helps meet the need. We will review the change report for **`customer_orders`**, where all the configuration has been already done in the livelab.
+    💡 **TIP:** Some regulations ask for providing a clear record of how certain data has been changed over time to ensures full transparency and accountability for data modifications. This pre-defined report helps meet the need. We will review the change report for **`customer_orders`**, where all the configuration has been already done in the livelab.
 
 1. Check if the transaction log trail for **`customer_orders`** is started
 

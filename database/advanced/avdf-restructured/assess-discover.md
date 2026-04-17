@@ -208,7 +208,7 @@ The unified security policy console provides a centralized interface to define, 
 4. Go back to **Policy Console**
 </details>
 
-    <details> 
+<details> 
 <summary>**Step 2: Review the retrieval schedule for policies**</summary>
 
 1. Scroll down to the **Policies retrieval schedule for Oracle Database targets** 
@@ -221,9 +221,9 @@ The unified security policy console provides a centralized interface to define, 
     - Repeats every *1 week*
     - Click *Save*
 
- **Note**: When a target is registered, AVDF automatically runs retrieval job for policies. You should consider scheduling the job periodically to retrieve the latest. 
+    **Note**: When a target is registered, AVDF automatically runs retrieval job for policies. You should consider scheduling the job periodically to retrieve the latest. 
 
-💡 **TIP:** You know the security policies present in the environment and what is missing. Let's explore the building blocks to start configuring policies.
+    💡 **TIP:** You know the security policies present in the environment and what is missing. Let's explore the building blocks to start configuring policies.
 
 </details>
 

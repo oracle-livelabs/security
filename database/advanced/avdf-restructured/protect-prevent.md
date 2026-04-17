@@ -185,13 +185,11 @@ SQL Firewall is enabled in the **`employees_search`**. In this lab, you will ena
 <details>
 <summary> **Step 6: Ensure SQL Firewall violations are being collected**</summary>
 
-    - In the livelab, we have already configured trail for collecting SQL Firewall violations from **`employee_search`**.
-
 1. Go to the **Targets** tab, click **Targets** sub-menu on the left
 2. Drilldown to **`employee_search`** target to see the trails 
 
     ![AVDF](./images/360-29.png "Audit Trail")
-    **Note:** Ensure the *`SYS.DBA_SQL_FIREWALL_VIOLATIONS`* table audit trail is either in **Collecting** or in **Idle** state
+    **Note:** Ensure the *`SYS.DBA_SQL_FIREWALL_VIOLATIONS`* table audit trail is either in **Collecting** or in **Idle** state. In the livelab, we have already configured trail for collecting SQL Firewall violations from **`employee_search`**.
 
 </details>
 
@@ -381,9 +379,7 @@ In this task, we will do the following
 <details>
 <summary>**Step 2: Configure the Glassfish App to connect to the DB Firewall**</summary>
 
-    - In this lab you will modify the Glassfish app to connect to DB Firewall, which will inturn connect to the pluggable database **`employees_search`**. DB Firewall will monitor the incoming SQL traffic and can decide to alert, block or pass the SQL traffic to the database.
-
-1. Go to the terminal session and migrate the Glassfish App connection string to proxy through the Database Firewall
+1. In this lab you will modify the Glassfish app to connect to DB Firewall, which will inturn connect to the pluggable database **`employees_search`**. Go to the terminal session and migrate the Glassfish App connection string to proxy through the Database Firewall. 
 
     ````
     <copy>./dbf_start_proxy_glassfish.sh</copy>
@@ -710,7 +706,9 @@ Database Vault is enabled in the **customer_orders** pdb in the livelab environm
 <details>
 <summary>**Step 3: Ensure DV violation events are collected**</summary>
 
-1. In the livelab, we have already configured trail for collecting DV events/ violations from **customer_orders**. Go to the **Targets** tab, click **Targets** in the left menu and drilldown into **customer_orders**
+1. In the livelab, we have already configured trail for collecting DV events/ violations from **`customer_orders`**. 
+
+2. Go to the **Targets** tab, click **Targets** in the left menu and drilldown into **`customer_orders`**
 
     ![AVDF](./images/360-54.png "DV - Audit trail")
     **Note:** Ensure the the trails are either in **Collecting** or in **Idle** state

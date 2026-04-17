@@ -15,7 +15,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 ### Objectives
 - Rest the lab environment
 
-## Task 1: Reset the Security Central Lab Config
+## Task 1: Reset the Security Central Lab Configuration
 
 1. Reset **Golden Gate** configuration for **customer_orders** only!
 
