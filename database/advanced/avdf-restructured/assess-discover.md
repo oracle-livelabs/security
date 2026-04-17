@@ -206,16 +206,10 @@ The unified security policy console provides a centralized interface to define, 
     **Note**: The list includes the audit policies enabled by default in the Oracle Database, and those enabled by automation in the livelab.
 
 4. Go back to **Policy Console**
-</details>
 
+5. Scroll down to the **Policies retrieval schedule for Oracle Database targets** 
 
-<details> 
-<summary>**Step 2: Review the retrieval schedule for policies**</summary>
-
-
-1. Scroll down to the **Policies retrieval schedule for Oracle Database targets** 
-
-2. Select the target **`employees_search`** and click **Schedule retrieval** . Enter the following in the popup.
+6. Select the target **`employees_search`** and click **Schedule retrieval**. Enter the following in the popup:
     ![AVDF](./images/360-6b.png "AVDF - Policy console - Schedule retrieval")
     - Select Policy type *Audit*
     - Select *Create/Update schedule*
