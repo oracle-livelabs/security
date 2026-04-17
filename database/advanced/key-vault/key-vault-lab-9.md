@@ -23,15 +23,15 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-03_13.45.01.png "Log in to Key Vault as the REST administrator")
+    ![Key Vault](./images/okv-ll9-task1-1.png "Log in to Key Vault as the REST administrator")
 
 2. Click on the **Endpoints** tab and select **Settings** from the left-side panel
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.26.41.png "Click on the Endpoints tab and select Settings tab from the left-side panel")
+    ![Key Vault](./images/okv-ll9-task1-2.png "Click on the Endpoints tab and select Settings tab from the left-side panel")
 
 3. Scroll to the bottom and set the **Extractable Attribute** for the **Symmetric Key** to False and click **Save**
 
-    ![Key Vault](./images/Screenshot_2025-10-03_14.29.00.png "Set the Extractable Attribute for the Symmetric Key to False")
+    ![Key Vault](./images/okv-ll9-task1-3.png "Set the Extractable Attribute for the Symmetric Key to False")
 
 4. On the database host, set a new Transparent Data Encryption Key. The new key created in Key Vault will be generated with the 'Non Extractable' attribute set
 
@@ -43,7 +43,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
     </copy>
     ```
 
-    ![Key Vault](./images/Screenshot_2025-10-08_11.57.01.png "Add OKV password to the local TDE wallet")
+    ![Key Vault](./images/okv-ll9-task1-4.png "Add OKV password to the local TDE wallet")
 
 ## Task 2: Simulate network outage
 
@@ -67,7 +67,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
     </copy>
     ````
 
-    ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Check if the server is unreachable")
+    ![Key Vault](./images/okv-ll8-task2-1.png "Check if the server is unreachable")
 
 ## Task 3: Attempt to create a new tablespace to confirm that database operations fail even when the secure persistent cache exists
 
@@ -85,7 +85,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
 
     The creation of an encrypted tablespace fails because the non-extractable key cannot exist in the persistent cache, and the database cannot fetch it from Key Vault since the connection was disconnected in Task 2. This underscores that non-extractable keys cannot be accessed outside of Key Vault and that this deployment can be leveraged to provide higher levels of assurance in environments with a lower security posture.
 
-    ![Key Vault](./images/Screenshot_2025-10-07_22.09.24.png "Attempt to create a new tablespace")
+    ![Key Vault](./images/okv-ll9-task3-1.png "Attempt to create a new tablespace")
 
 
 ## Task 4: Re-establish connectivity between the database and Key Vault
@@ -108,7 +108,7 @@ This lab builds on concepts and operations from lab 8. Complete lab 8 first befo
     </copy>
     ````
 
-    ![Key Vault](./images/Screenshot_2025-10-03_16.04.40.png "Ensure the server is reachable")
+    ![Key Vault](./images/okv-ll9-task4-1.png "Ensure the server is reachable")
 
 ## Acknowledgements
 - **Author** - Shubham Goyal

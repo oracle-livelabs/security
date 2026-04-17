@@ -23,7 +23,7 @@ This lab builds on concepts and operations from lab 5. Complete lab 5 first befo
     </copy>
     ````
 
-    ![Key Vault](./images/Screenshot_2025-10-03_15.56.40.png "List the IDs of the keys in the local secure persistent cache")
+    ![Key Vault](./images/okv-ll8-task1-1.png "List the IDs of the keys in the local secure persistent cache")
 
 ## Task 2: Simulate network outage
 
@@ -51,7 +51,7 @@ This lab builds on concepts and operations from lab 5. Complete lab 5 first befo
 
     The retrieval of key IDs from Key Vault will fail because the network connection between the database and the Key Vault server is disconnected.
 
-    ![Key Vault](./images/Screenshot_2025-10-03_15.59.33.png "Check if the server is unreachable")
+    ![Key Vault](./images/okv-ll8-task2-1.png "Check if the server is unreachable")
 
 ## Task 3: Confirm database resilience with persistent cache by creating a new encrypted tablespace
 
@@ -65,7 +65,7 @@ This lab builds on concepts and operations from lab 5. Complete lab 5 first befo
     </copy>
     ````
 
-    ![Key Vault](./images/Screenshot_2025-10-03_16.01.30.png "Create a new encrypted tablespace")
+    ![Key Vault](./images/okv-ll8-task3-1.png "Create a new encrypted tablespace")
 
 2. Verify the new tablespace was created
 
@@ -77,7 +77,7 @@ This lab builds on concepts and operations from lab 5. Complete lab 5 first befo
     </copy>
     ````
 
-    ![Key Vault](./images/Screenshot_2025-10-03_16.03.05.png "Verify the new tablespace was created")
+    ![Key Vault](./images/okv-ll8-task3-2.png "Verify the new tablespace was created")
 
 ## Task 4: Re-establish connectivity between the database and Key Vault
 
@@ -99,7 +99,7 @@ This lab builds on concepts and operations from lab 5. Complete lab 5 first befo
     </copy>
     ````
 
-    ![Key Vault](./images/Screenshot_2025-11-10_16.37.08.png "Ensure the server is reachable")
+    ![Key Vault](./images/okv-ll8-task4-1.png "Ensure the server is reachable")
 
 ## Acknowledgements
 - **Author** - Shubham Goyal

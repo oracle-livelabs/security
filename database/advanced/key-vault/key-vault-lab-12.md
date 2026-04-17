@@ -27,7 +27,7 @@ This lab assumes you have completed lab 11.
     </copy>
     ```
 
-    ![Key Vault](./images/image-2025-09-03_13-29-46.png "Log in to Key Vault as the REST administrator")
+    ![Key Vault](./images/okv-ll12-task1-1.png "Log in to Key Vault as the REST administrator")
 
 2. On the home page, observe the following:
 
@@ -35,11 +35,11 @@ This lab assumes you have completed lab 11.
     - The **Managed Entities** provides a quick overview of the databases (endpoints) and the wallets storing database keys.
     - The **Managed Keys & Secrets** gives a quick glance of all the managed cryptographic objects.
 
-    ![Key Vault](./images/Screenshot_2025-10-04_15.32.37.png "On the home page, observe Alerts, Managed Entities, and Managed Keys & Secrets")
+    ![Key Vault](./images/okv-ll12-task1-2.png "On the home page, observe Alerts, Managed Entities, and Managed Keys & Secrets")
 
 2. The System Overview section at the bottom identifies the system. At this time, the system is deployed as a standalone server.
 
-    ![Key Vault](./images/image-2025-09-11-17.41.21.png "The System Overview section at the bottom identifies the system.")
+    ![Key Vault](./images/okv-ll12-task1-3.png "The System Overview section at the bottom identifies the system.")
 
 ## Task 2: Manage Primary-Standby, Sharded DBs, Multi-Tenant and RAC databases
 
@@ -48,7 +48,7 @@ Oracle Key Vault can manage all deployment modes of the Oracle database - single
 The system administrator is tasked with creating, and overseeing the endpoints on the Key Vault server.
 
 1. Click on the **Endpoints** tab
-    ![Key Vault](./images/image-2025-7-24_12-11-54.png "Click on the Endpoints tab")
+    ![Key Vault](./images/okv-ll12-task2-1.png "Click on the Endpoints tab")
 
 2. This takes you to the Endpoints page
 
@@ -57,7 +57,7 @@ The system administrator is tasked with creating, and overseeing the endpoints o
     - Pluggable instance, INVENTORY, of the two node RAC and multi-tenant database SALES, has two endpoints SALES\_INVENTORY\_1 and SALES\_INVENTORY\_2.
     - Primary-Standby two instance RAC database, STAFF, are four endpoints STAFF\_PRIMARY\_1, STAFF\_PRIMARY\_2, STAFF\_STANDBY\_1 and STAFF\_STANDBY\_2.
 
-    ![Key Vault](./images/image-2025-09-11-18.13.52.png "This takes you to the Endpoints page")
+    ![Key Vault](./images/okv-ll12-task2-2.png "This takes you to the Endpoints page")
 
 ## Task 3: Virtual wallets for database keys 
 
@@ -66,7 +66,7 @@ To simplify management of database keys, Oracle Key Vault offers virtual wallets
 The key administrator is responsible for creating and managing virtual wallets.
 
 1. Click the **Keys & Wallets** tab
-    ![Key Vault](./images/Screenshot_2025-10-04_15.43.07.png "Click the Keys & Wallets tab")
+    ![Key Vault](./images/okv-ll12-task3-1.png "Click the Keys & Wallets tab")
 
 2. This takes you to the Wallets page
 
@@ -77,7 +77,7 @@ The key administrator is responsible for creating and managing virtual wallets.
     - Both pluggable databases, INVENTORY and PURCHASE, have their own wallets named INVENTORY and PURCHASE, respectively.
     - All instances of the primary-standby RAC database, STAFF, share the same wallet named STAFF.
 
-    ![Key Vault](./images/image-2025-09-11-18.20.43.png "This takes you to the Wallets page")
+    ![Key Vault](./images/okv-ll12-task3-2.png "This takes you to the Wallets page")
 
 ## Task 4: Inventory of database encryption keys
 
@@ -87,11 +87,11 @@ Inventory reports cover Oracle databases, GoldenGate, Secure Shell (SSH), public
 
 1. Click the **Reports** tab
 
-    ![Key Vault](./images/Screenshot_2025-10-04_15.46.44.png "Click the Reports Tab")
+    ![Key Vault](./images/okv-ll12-task4-1.png "Click the Reports Tab")
 
 2. Expand the **Key Management Reports for Oracle Endpoints**
 
-    ![Key Vault](./images/image-2025-09-11-17.53.46.png "Key Management Report")
+    ![Key Vault](./images/okv-ll12-task4-2.png "Key Management Report")
 
 3. Select **DB Generated TDE Master Encryption Key Attribute Report**  - to see an example of a report with the inventory of database encryption keys
 
@@ -100,7 +100,7 @@ Inventory reports cover Oracle databases, GoldenGate, Secure Shell (SSH), public
     - Which database, and the container database (including their GUIDs), the key was created or activated for
     - When the key was created or activated
 
-    ![Key Vault](./images/Screenshot_2025-10-07_09.41.40.png "Select DB Generated TDE Master Encryption Key Attribute Report")
+    ![Key Vault](./images/okv-ll12-task4-3.png "Select DB Generated TDE Master Encryption Key Attribute Report")
 
 ## Task 5: Track database key and certificate lifetimes
 
@@ -108,27 +108,27 @@ OKV reports help maintain compliance by listing active TDE master keys with acti
 
 1. Click the **Reports** tab
 
-    ![Key Vault](./images/Screenshot_2025-10-04_15.46.44.png "Click the Reports Tab")
+    ![Key Vault](./images/okv-ll12-task4-1.png "Click the Reports Tab")
 
 2. Expand the **Key Management Reports for Oracle Endpoints**
 
-    ![Key Vault](./images/Screenshot_2025-10-16_15.48.32.png "Key Management Reports for Oracle Endpoints")
+    ![Key Vault](./images/okv-ll12-task5-2.png "Key Management Reports for Oracle Endpoints")
 
 3. Select **DB Activated TDE Master Encryption Key Report**  - to see an example of a report with the inventory of database encryption keys
 
     This report lists active TDE master keys along with their activation time, helping you identify databases that haven’t generated a new key recently and are in violation of rotation policies
 
-    ![Key Vault](./images/image-2025-09-11-18.09.03.png "Select DB Activated TDE Master Encryption Key Report")
+    ![Key Vault](./images/okv-ll12-task5-3.png "Select DB Activated TDE Master Encryption Key Report")
 
 4. Expand the **Keys and Wallets Report**
 
-    ![Key Vault](./images/Screenshot_2025-10-05_10.06.42.png "Keys and Wallets Report")
+    ![Key Vault](./images/okv-ll12-task5-4.png "Keys and Wallets Report")
 
 5. Select **Certificate Awareness Report**  - to see an example of a report to track certificate lifetimes
 
     This report lists certificates expiring in 30, 60, or 90 days, and flag those that need attention or drift out of compliance. For example, when their lifetime exceeds a newly-defined shorter lifetime. You can also view the key sizes used for certificates to help verify they are policy compliant.
 
-    ![Key Vault](./images/Screenshot_2025-10-05_10.08.23.png "Select Certificate Awareness Report")
+    ![Key Vault](./images/okv-ll12-task5-5.png "Select Certificate Awareness Report")
 
 ## Task 6: Receive notifications for urgent tasks
 
@@ -136,7 +136,7 @@ To keep you aware of your system state, Oracle Key Vault generates alerts and de
 
 1. Click the **Reports** tab and click the **Alerts** tab on the left-side panel 
 
-    ![Key Vault](./images/Screenshot_2025-10-04_15.49.25.png "Click the Alerts Tab")
+    ![Key Vault](./images/okv-ll12-task6-1.png "Click the Alerts Tab")
 
 2. Alerts that require immediate attention. Key Vault only shows the relevant alerts to the administrator based on their roles.
 
@@ -144,7 +144,7 @@ To keep you aware of your system state, Oracle Key Vault generates alerts and de
     - Users' passwords that are expiring and need to be reset
     - Certificate objects that are expiring and need to be rotated
 
-    ![Key Vault](./images/image-2025-09-11-18.27.41.png "Alerts that require immediate attention")
+    ![Key Vault](./images/okv-ll12-task6-2.png "Alerts that require immediate attention")
 
 ## Task 7: Ensure accountability with audit records
 
@@ -152,7 +152,7 @@ Oracle Key Vault reporting includes a complete audit trail to track actions and 
 
 1. Click the **Reports** tab and click the **Audit Trail** tab on the left-side panel 
 
-    ![Key Vault](./images/Screenshot_2025-10-05_10.41.36.png "Click the Audit Trail Tab")
+    ![Key Vault](./images/okv-ll12-task7-1.png "Click the Audit Trail Tab")
 
 2. The audit trail page shows all audit records for your Key Vault deployment
 
@@ -160,7 +160,7 @@ Oracle Key Vault reporting includes a complete audit trail to track actions and 
 
     Here you can see which subject (user, or endpoint) performed what action on which object, the time it happened at and whether or not it was successfully completed.
 
-    ![Key Vault](./images/Screenshot_2025-10-07_09.55.44.png "The audit trail page")
+    ![Key Vault](./images/okv-ll12-task7-2.png "The audit trail page")
 
 ## Task 8: Enforce separation of duties
 
@@ -170,57 +170,57 @@ Key Vault users can be managed locally as native Key Vault users or externally t
 
 1. Click the **Users** tab
 
-    ![Key Vault](./images/Screenshot_2025-10-04_15.54.38.png "Click the Users tab")
+    ![Key Vault](./images/okv-ll12-task8-1.png "Click the Users tab")
 
 2. This takes you to the **Manager Users** page
 
-    ![Key Vault](./images/image-2025-09-11-18.29.46.png "The Manage Users page")
+    ![Key Vault](./images/okv-ll12-task8-2.png "The Manage Users page")
 
 3. To change the Key Vault user password, click the **Change Password** tab on the left-side panel
 
-    ![Key Vault](./images/Screenshot_2025-10-05_10.49.21.png "To change the Key Vault user password, click the Change Password tab on the left-side panel")
+    ![Key Vault](./images/okv-ll12-task8-3.png "To change the Key Vault user password, click the Change Password tab on the left-side panel")
 
 4. The **Change Password** page is where the user can change their password
 
-    ![Key Vault](./images/image-2025-09-11-18.42.01.png "The Change Password page is where the user can change the password")
+    ![Key Vault](./images/okv-ll12-task8-4.png "The Change Password page is where the user can change the password")
 
 5. For organizations that need LDAP support, system administrators can configure LDAP on Key Vault to centrally manage users.
 
     To do so, click the **System** tab.
 
-    ![Key Vault](./images/Screenshot_2025-10-05_11.10.42.png "Click the System tab")
+    ![Key Vault](./images/okv-ll12-task8-5.png "Click the System tab")
 
 6. Click the **Settings** tab on the left-side panel
 
-    ![Key Vault](./images/Screenshot_2025-10-05_11.12.24.png "Click the Settings tab on the left-side panel")
+    ![Key Vault](./images/okv-ll12-task8-6.png "Click the Settings tab on the left-side panel")
 
 7. Click the **LDAP** link and then click the **Add** button to add a new LDAP configuration.
 
     Note: This image only shows values for demonstration purposes. An LDAP configuration cannot be added as part of this lab.
 
-    ![Key Vault](./images/Screenshot_2025-11-04_14.42.19.png "Add a new LDAP configuration")
+    ![Key Vault](./images/okv-ll12-task8-7.png "Add a new LDAP configuration")
 
 8. For deployments using LDAP, key administrators can manage access for users to specific wallets by setting up LDAP group mappings.
 
     To do so, click the **Users** tab.
 
-    ![Key Vault](./images/Screenshot_2025-10-04_15.54.38.png "Click the Users tab")
+    ![Key Vault](./images/okv-ll12-task8-1.png "Click the Users tab")
 
 9. Click **Manage LDAP Mappings** on the left-side panel.
 
-    ![Key Vault](./images/Screenshot_2025-10-05_10.54.01.png "Click Manage LDAP Mappings on the left-side panel")
+    ![Key Vault](./images/okv-ll12-task8-9.png "Click Manage LDAP Mappings on the left-side panel")
 
 10. The **LDAP Group Mappings** page shows which mappings are setup to which roles and privileges in Key Vault.
 
     Note: This image only shows LDAP group mappings for demonstration purposes. LDAP group mappings can only be created after an LDAP server is configured in Key Vault.
 
-    ![Key Vault](./images/image-2025-09-11-18.33.10.png "The LDAP Group Mappings page shows which mappings are setup to which roles and privileges in Key Vault")
+    ![Key Vault](./images/okv-ll12-task8-10.png "The LDAP Group Mappings page shows which mappings are setup to which roles and privileges in Key Vault")
 
 ## Task 9: Assess system health
 
 1. To assess the health of the Key Vault server, click the **System** tab
 
-    ![Key Vault](./images/Screenshot_2025-10-05_11.10.42.png "To assess the health of the Key Vault server, click the System tab")
+    ![Key Vault](./images/okv-ll12-task8-5.png "To assess the health of the Key Vault server, click the System tab")
 
 2. This page shows the system health
 
@@ -231,7 +231,7 @@ Key Vault users can be managed locally as native Key Vault users or externally t
     - Deployment-related information
     - Certificate state
 
-    ![Key Vault](./images/Screenshot_2025-10-05_11.07.08.png "This page shows the system health")
+    ![Key Vault](./images/okv-ll12-task9-2.png "This page shows the system health")
 
 ## Task 10: Monitor performance for optimal Oracle Key Vault operations
 
@@ -239,15 +239,15 @@ Oracle Key Vault performance monitoring allows system administrators to identify
 
 1. Click the **System** tab
 
-    ![Key Vault](./images/Screenshot_2025-10-05_11.10.42.png "Click the System tab")
+    ![Key Vault](./images/okv-ll12-task8-5.png "Click the System tab")
 
 2. Click the **System Metrics** button
 
-    ![Key Vault](./images/Screenshot_2025-10-05_11.25.42.png "Click the System Metrics button")
+    ![Key Vault](./images/okv-ll12-task10-2.png "Click the System Metrics button")
 
 3. To monitor system performance for example, expand the **CPU & Memory Metrics** section
 
-    ![Key Vault](./images/image-2025-09-11-18.46.22.png "To monitor system performance, expand the CPU & Memory Metrics section")
+    ![Key Vault](./images/okv-ll12-task10-3.png "To monitor system performance, expand the CPU & Memory Metrics section")
 
 ## Task 11: Administer Oracle Key Vault
 
@@ -255,17 +255,17 @@ For ease of use, Key Vault consolidates all network, system, certificate, and mo
 
 1. Click the **System** tab
 
-    ![Key Vault](./images/Screenshot_2025-10-05_11.10.42.png "Click the System tab")
+    ![Key Vault](./images/okv-ll12-task8-5.png "Click the System tab")
 
 2. Click the **Settings** tab on the left-side panel
 
-    ![Key Vault](./images/Screenshot_2025-10-05_11.12.24.png "Click the Settings tab on the left-side panel")
+    ![Key Vault](./images/okv-ll12-task8-6.png "Click the Settings tab on the left-side panel")
 
 3. This takes you to the page from where the system administrator can administer the Key Vault server
 
     System administrators are responsible for most of the system configuration. Audit Manager is responsible for setting up Audit Vault integration.
 
-    ![Key Vault](./images/image-2025-09-11-18.48.38-CUSTOM.png "This takes you to the page from where the system administrator can administer the Key Vault server")
+    ![Key Vault](./images/okv-ll12-task11-3.png "This takes you to the page from where the system administrator can administer the Key Vault server")
 
 ## Task 12: A quick look at the cluster
 
@@ -273,23 +273,23 @@ A Key Vault cluster provides continuous availability of your keys to ensure unin
 
 1. Click the **Cluster** tab
 
-    ![Key Vault](./images/Screenshot_2025-10-05_11.33.32.png "Click the Cluster tab")
+    ![Key Vault](./images/okv-ll12-task12-1.png "Click the Cluster tab")
 
 2. Configure the server as a Candidate Node
 
-    ![Key Vault](./images/image-2025-09-11-18.50.51.png "Configure the server as a Candidate Node")
+    ![Key Vault](./images/okv-ll12-task12-2.png "Configure the server as a Candidate Node")
 
 3. Once the server has been configured as a cluster node, the Cluster page is updated to show the status of all nodes that are part of this cluster
 
     You can click the **Add** button to add a second, third and more nodes to the cluster.
 
-    ![Key Vault](./images/image-2025-09-11-18.58.43.png "Once the server has been configured as a cluster node, the Cluster page is updated to show the status of all nodes that are part of this cluster")
+    ![Key Vault](./images/okv-ll12-task12-3.png "Once the server has been configured as a cluster node, the Cluster page is updated to show the status of all nodes that are part of this cluster")
 
 4. On the Home page, the System Overview section at the bottom is updated, identifying the deployment mode as Cluster
 
     This section highlights how many read-write pairs are part of the cluster as well as the cluster service status. For now, there is just one node that we setup.
 
-    ![Key Vault](./images/image-2025-09-11-19.02.06.png "On the Home page, the System Overview section at the bottom is updated, identifying the deployment mode as Cluster")
+    ![Key Vault](./images/okv-ll12-task12-4.png "On the Home page, the System Overview section at the bottom is updated, identifying the deployment mode as Cluster")
 
 ## Acknowledgements
 - **Author** - Shubham Goyal
