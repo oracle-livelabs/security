@@ -2,12 +2,12 @@
 
 ## Introduction
 
-In this lab we will review and startup all components required to successfully run this workshop.
+In this lab we will review access to Glassfish application
 
-Estimated Time: 10 minutes maximum.
+Estimated Time: 5 minutes maximum.
 
 ### Objectives
-- Initialize the workshop environment.
+- Review access to Glassfish application
 
 ### Prerequisites
 This lab assumes you have:
@@ -25,15 +25,15 @@ This lab assumes you have:
 
 **Note:** All screenshots for SSH terminal type tasks featured throughout this workshop were captured using the *MobaXterm* SSH Client as described in this step. As a result when executing such tasks from within the graphical remote desktop session, skip steps requiring you to login as user *oracle* using *sudo su - oracle*, the reason being that the remote desktop session is under user *oracle*.
 
-## Task 1 - Check access to Glassfish app
+## Task 1: Check access to Glassfish app
 
 1. Verify the application functions as expected
 
-   **Note**: For this lab, Glassfish app is connected to the 23ai database **`FREEPDB1`** (installed on the DB23ai VM)
+    **Note**: For this lab, Glassfish app is connected to the Oracle AI Database 26ai **`FREEPDB1`** 
 
 2. Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
 
-   **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
+    **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
     
 3. Login to the application as *`hradmin`* with the password "*`Oracle123`*"
 
@@ -66,4 +66,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Rene Fontcha, LiveLabs Platform Lead, NA Technology
 - **Contributors** - Marion Smith, Technical Program Manager
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - January 2026
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - April 2026

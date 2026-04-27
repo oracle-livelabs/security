@@ -1,0 +1,64 @@
+{
+  "workshoptitle": "DB Security - Oracle Database Security Central (Security Central)",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction: Oracle Database Security Central (Security Central)",
+      "description": "Understand the architecture of this workshop and what it can do",
+      "publisheddate": "09/01/2020",
+      "filename": "../../intro/intro-avdf.md"
+    },
+    {
+      "title": "Get Started",
+      "description": "Verify Setup of compute instance",
+      "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
+    },
+    {
+      "title": "Lab 1: Initialize Environment",
+      "description": "How to initialize and start all the workshop components",
+      "publisheddate": "10/14/2020",
+      "filename": "../../../common/init-start-env/init-start-env-sqlfw.md"
+    },
+ {
+      "title": "Lab 2: Access Security Central",
+      "description": "In this lab you will learn how to reset the ranndomly generated password in Security Central",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/getting-started.md"
+    },
+    {
+      "title": "Lab 3: Assess and Discover",
+      "description": "In this lab you will learn how to Assess and Discover in Security Central",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/assess-discover.md"
+    },
+    {
+      "title": "Lab 4: Audit and Monitor",
+      "description": "In this lab you will learn how to Audit and Monitor in Security Central",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/audit-monitor.md"
+    },
+    {
+      "title": "Lab 5: Protect and Prevent",
+      "description": "In this lab you will learn how to Protect and Prevent in Security Central",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/protect-prevent.md"
+    },
+    {
+      "title": "Lab 6: Report and Alert",
+      "description": "In this lab you will learn how to Report and set Alerts in Security Central",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/report-alert.md"
+    },
+    {
+      "title": "Lab 7: Reset the Security Central lab configuration",
+      "description": "In this lab you will reset the Security Central lab configuration",
+      "publisheddate": "10/20/2020",
+      "filename": "../../avdf-restructured/reset-config.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}
