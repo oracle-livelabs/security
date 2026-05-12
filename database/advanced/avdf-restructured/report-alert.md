@@ -178,15 +178,15 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 3. Find out the actionable security assessment findings using the natural language query
 
-    - Enter the following query *What are high and medium risk security assesssment findings in **`employees_search`** and **`customer_orders`** instance*
+    - Enter the following query *What are high and medium risk security assesssment findings in `employees_search` and `customer_orders` instance*
 
     ![AVDF](./images/avdf-700.png "Sec-advisor1")  
 
     - Review the results of the query to see where you need to focus your next steps to further strengthen security posture.
 
-4. Identify the risk landscape of users from the user assesssment findings in **`employees_search`** and **`customer_orders`** instance
+4. Identify the risk landscape of users from the user assesssment findings in `employees_search` and `customer_orders` instance
 
-    - Enter the following query *Summarize the user assesssment findings in **`employees_search`** and **`customer_orders`** instance*
+    - Enter the following query *Summarize the user assesssment findings in `employees_search` and `customer_orders` instance*
 
     ![AVDF](./images/avdf-701.png "Sec-advisor2")  
 
@@ -194,8 +194,8 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 5. Let's probe more to identify the database administrators in both these databases
 
-    - Enter the following query *List the distinct database administrators in **`customer_orders`** instance who are not C## user*
-    - Enter the following query *List the distinct database administrators in **`employees_search`** instance who are not C## user*
+    - Enter the following query *List the distinct database administrators in `customer_orders` instance who are not C## user*
+    - Enter the following query *List the distinct database administrators in `employees_search` instance who are not C## user*
 
     ![AVDF](./images/avdf-702.png "Sec-advisor3")  
 
@@ -203,7 +203,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 6. Review to see if **DBA_DEBRA** can access sensitive objects in both these databases
 
-    - Enter the following query *Show schema and object names for sensitive object access that user **`DBA_DEBRA`** can access in targets - **`customer_orders`** and **`employees_search`***
+    - Enter the following query *Show schema and object names for sensitive object access that user `DBA_DEBRA` can access in targets - `customer_orders` and `employees_search`
 
     ![AVDF](./images/avdf-703.png "Sec-advisor2")  
 
