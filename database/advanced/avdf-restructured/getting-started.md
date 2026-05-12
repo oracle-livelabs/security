@@ -36,16 +36,16 @@ This lab assumes you have:
 ### Lab Timing (estimated)
 
 
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-|| **Security Central Labs**||
-|a| Access Security Central console | <5 minutes|
-|b| Assess your database: risks, users, and data | 10 minutes|
-|c| Establish visibility first: audit and monitor | 10 minutes|
-|d| Protect and Prevent: enforce controls | 30 minutes|
-|e| Continuous vigilance: reports, alerts and GenAI-powered insights | 5 minutes|
-|| **Optional**||
-|f| Reset the Security Central labs config | <5 minutes|
+| Feature | Approx. Time |
+|------------------------------------------------------------|-------------|
+| **Security Central Labs**||
+| Access Security Central console | <5 minutes|
+| Assess your database: risks, users, and data | 10 minutes|
+| Establish visibility first: audit and monitor | 10 minutes|
+| Protect and Prevent: enforce controls | 30 minutes|
+| Continuous vigilance: reports, alerts and GenAI-powered insights | 5 minutes|
+| **Optional**||
+| Reset the Security Central labs config | <5 minutes|
 
 ## Task 1: Access Security Central console
 
