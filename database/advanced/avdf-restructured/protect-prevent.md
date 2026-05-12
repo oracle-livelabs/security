@@ -627,7 +627,7 @@ In this task, we will do the following
 
         - Enter the condition in natural language: *When someone selects more than 100 records in `DEMO_HR_EMPLOYEES` table in a single query*
         - Click *Generate Alert Condition*
-        - Review the condition if similar to the following: *(:OBJECT = '`DEMO_HR_EMPLOYEES`') AND (:OBJECT_TYPE = 'TABLE') AND (:COMMAND_CLASS = 'SELECT') AND (:ROW_COUNT > 100)*
+        - Review the condition if similar to the following: *(:OBJECT = '`DEMO_HR_EMPLOYEES`') AND (:`OBJECT_TYPE` = 'TABLE') AND (:`COMMAND_CLASS` = 'SELECT') AND (:`ROW_COUNT` > 100)*
         - Click *Use this alert condition*
 
         ![AVDF](./images/avdf-656a.png "Alert Assistant")
