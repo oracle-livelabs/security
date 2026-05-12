@@ -3,6 +3,8 @@
 ## Introduction
 Establish a continuous monitoring process to support compliance with regulatory requirements by leveraging the pre-defined reports available in Security Central. In addition, configure alerts to proactively notify you of actionable events, allowing you to prioritize and respond to potential risks in a timely manner.
 
+Use the GenAI-powered Security Advisor to query Database Security Central in natural language and gain faster insights from aggregated data.
+
 *Estimated Lab Time:* 5 minutes
 
 *Version tested in this lab:* Oracle Database Security Central
@@ -15,6 +17,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 ### Objectives
 - Review common pre-defined reports like *Activity on sensitive Data*, *Data Modification Before-After values*
 - Review alerts generated
+- Use security advisor to gain faster and meaningful insights
 
 
 ## Task 1: Review common pre-defined reports
@@ -62,8 +65,6 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
     ![AVDF](./images/avdf-603.png "Sensitive Data report")
 
 5. You can also view additional **Compliance Reports** about Sensitive Data
-
-    ![AVDF](./images/avdf-024.png "Compliance Reports")
 
     💡 **TIP:** You can now demonstrate compliance with regulations by showcasing activity on sensitive data through these reports. Consider scheduling these reports to run automatically at regular intervals to ensure continuous monitoring, timely insights, and readiness for audits without manual effort.
 
@@ -169,16 +170,58 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 💡 **TIP:** You have now explored on actionable alerts - how you can monitor them from Security Central. 
 
+
+## Task 3: Use security advisor to gain faster and meaningful insights
+
+1. Go to Audit Vault Web Console as *`AVAUDITOR`*
+2. Click the red chat icon at the bottom part of the screen to open the **Security advisor**
+
+3. Find out the actionable security assessment findings using the natural language query
+
+    - Enter the following query *What are high and medium risk security assesssment findings in employees_search and customer_orders instance*
+
+    ![AVDF](./images/avdf-700.png "Sec-advisor1")  
+
+    - Review the results of the query to see where you need to focus your next steps to further strengthen security posture.
+
+4. Identify the risk landscape of users from the user assesssment findings in employees_search and customer_orders instance
+
+    - Enter the following query *Summarize the user assesssment findings in employees_search and customer_orders instance*
+
+    ![AVDF](./images/avdf-701.png "Sec-advisor2")  
+
+    - You will notice that **employees_search** has higher concentration of users carrying potential risks owing to their entitlements
+
+5. Let's probe more to identify the database administrators in both these databases
+
+    - Enter the following query *List the distinct database administrators in customer_orders instance who are not C## user*
+    - Enter the following query *List the distinct database administrators in employees_search instance who are not C## user*
+
+    ![AVDF](./images/avdf-702.png "Sec-advisor3")  
+
+    - You will notice that certain administrators like **DBA_DEBRA** have broader access to both databases.
+
+6. Review to see if DBA_DEBRA can access sensitive objects in both these databases
+
+    - Enter the following query *Show schema and object names for sensitive object access that user DBA_DEBRA can access in targets customer_orders and employees_search*
+
+    ![AVDF](./images/avdf-703.png "Sec-advisor2")  
+
+    - You will notice that **DBA_DEBRA** does have access to sensitive data in both these databases, but in the previous lab we have configured monitoring and protection policies to ensure their activities are continuously monitored and secured.
+
+💡 **TIP:** You have now explored security advisor - how you can get faster meaningful insights with natural language queries.   
+
 ## What did we learn in this lab
     
 In this lab, you learned how to establish continuous monitoring using Oracle Database Security Central.
 
 - You explored pre-defined reports such as *Activity on Sensitive Data* and *Data Modification Before-After Values* to gain visibility into data access and changes, supporting compliance and audit requirements.
 - You reviewed alerts generated for actionable events, enabling proactive monitoring and faster response to potential risks.
+- You explored security advisor to get faster and meaningful insights with natural language queries.
 
-Together, reporting and alerting provide continuous vigilance, helping organizations maintain security, ensure compliance, and protect sensitive data effectively.
+Together, reporting and alerting provide continuous vigilance, helping organizations maintain security, ensure compliance, and protect sensitive data effectively. The GenAI-powered security advisor puts security insights at your fingertips.
 
 ## Acknowledgements
 - **Author** - Angeline Dhanarani, Database Security - Product Manager
 - **Contributors** - Nazia Zaidi, Database Security - Product Manager
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - April 2026
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - May 2026

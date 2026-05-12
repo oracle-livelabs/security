@@ -23,7 +23,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 - Assess your database: risks, users, and data
 - Establish visibility first: audit and monitor
 - Protect and Prevent: enforce controls
-- Continuous vigilance: report and alert
+- Continuous vigilance: reports, alerts and GenAI-powered insights
 
 ### Prerequisites
 This lab assumes you have:
@@ -39,13 +39,13 @@ This lab assumes you have:
 | Step No. | Feature | Approx. Time |
 |--|------------------------------------------------------------|-------------|
 || **Security Central Labs**||
-|04| Access Security Central console | <5 minutes|
-|05| Assess your database: risks, users, and data | 10 minutes|
-|06| Establish visibility first: audit and monitor | 10 minutes|
-|07| Protect and Prevent: enforce controls | 30 minutes|
-|08| Continuous vigilance: report and alert | 5 minutes|
+|a| Access Security Central console | <5 minutes|
+|b| Assess your database: risks, users, and data | 10 minutes|
+|c| Establish visibility first: audit and monitor | 10 minutes|
+|d| Protect and Prevent: enforce controls | 30 minutes|
+|e| Continuous vigilance: reports, alerts and GenAI-powered insights | 5 minutes|
 || **Optional**||
-|09| Reset the Security Central labs config | <5 minutes|
+|f| Reset the Security Central labs config | <5 minutes|
 
 ## Task 1: Access Security Central console
 
@@ -113,9 +113,23 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
     
     - Click [**Submit**]
 
+
+## Task 2: Configure Generative AI service integration
+
+ Configure Generative AI service integration in Security Central to leverage the features of *`Security advisor`* and *`Alert Assistant`*.
+
+1. Login to Security Central Console as *`AVADMIN`* 
+2. Click on the **Settings** tab, and **System** in the left menu
+3. Under **Configuration**, click **Security advisor configuration** to open the popup
+4. Follow the intructions provided in the tooltip **`See how to gather the Security advisor configuration details`** to fill the details
+
+    ![AVDF](./images/avdf-305.png "AVDF - Sec Advisor")
+
+5. Click Save.
+
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Nazia Zaidi, Oracle Database Security Central  - Product Manager
 - **Contributors** - Angeline Dhanarani, Database Security - Product Manager
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - April 2026
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - May 2026
