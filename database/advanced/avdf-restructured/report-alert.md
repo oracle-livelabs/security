@@ -178,21 +178,21 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 3. Find out the actionable security assessment findings using the natural language query
 
-    - Enter the following query *What are the high and medium risk security assesssment findings in `employees_search` and `customer_orders` instance*
+    - Enter the following query *What are the high and medium risk security assesssment findings in `employees_search` instance*
 
     ![AVDF](./images/avdf-700.png "Sec-advisor1")  
 
     - Review the results of the query to see where you need to focus your next steps to further strengthen security posture.
 
-4. Identify the risk landscape of users from the user assesssment findings in `employees_search` and `customer_orders` instance
+4. Identify the risk landscape of users from the user assesssment findings in `employees_search` instance
 
-    - Enter the following query *Summarize the user assesssment findings in `employees_search` and `customer_orders` instance*
+    - Enter the following query *Summarize the user assesssment findings in `employees_search`*
 
     ![AVDF](./images/avdf-701.png "Sec-advisor2")  
 
-    - You will notice that **employees_search** has higher concentration of users carrying potential risks owing to their entitlements
+    - You will notice that **employees_search** has high concentration of critical privilege users carrying potential risks owing to their entitlements
 
-5. Let's probe more to identify the database administrators in both these databases
+5. Let's probe more to identify the database administrators who have broader access across databases
 
     - Enter the following query *List the distinct database administrators in **customer_orders** instance who are not C## user*
     - Enter the following query *List the distinct database administrators in **employees_search** instance who are not C## user*
@@ -205,9 +205,16 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
     - Enter the following query *Show schema and object names for sensitive object access that user **DBA_DEBRA** can access in targets - `customer_orders` and `employees_search`*
 
-    ![AVDF](./images/avdf-703.png "Sec-advisor2")  
+    ![AVDF](./images/avdf-703.png "Sec-advisor4")  
 
     - You will notice that **DBA_DEBRA** does have access to sensitive data in both these databases, but in the previous lab we have configured monitoring and protection policies to ensure their activities are continuously monitored and secured.
+7. Review to see the alerts landscape generated on account of the configured monitoring/protection policies 
+    - Enter the following queries
+        - *How many alerts were generated in the last 48 hours against the target `employees_search`*
+        - *Which target has the most numer of alerts reported*
+        - *How many alerts are reported per target monitored in the system?*
+
+    ![AVDF](./images/avdf-704.png "Sec-advisor5")  
 
 💡 **TIP:** You have now explored security advisor - how you can get faster meaningful insights with natural language queries.   
 
