@@ -407,7 +407,7 @@ In this task, we will do the following
 
 3. Confirm the Glassfish application connects through DB Firewall 
 
-    -   Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
+    -   Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**.    
             **Note:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*. 
 
     - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
@@ -618,16 +618,22 @@ In this task, we will do the following
         - Description: *Someone has selected more than 100 rows of PII in a single query*
         - Type: *Oracle Database*
         - Severity: *Warning*
-        - Condition: *:ROW_COUNT >100 AND  :OBJECT  like '%DEMOHR%'*
         - Threshold (times): *1*
         - Duration: *1*
         - Group By (Field): *USER*
+        - Condition: Let's use *Alert Assistant* to create the condition
         
         ![AVDF](./images/avdf-656.png "Alert Policies parameters")
 
-    - Click [**Save**]
-    
+        - Enter the condition in natural language: *When someone selects more than 100 records in `DEMO_HR_EMPLOYEES` table in a single query*
+        - Click *Generate Alert Condition*
+        - Review the condition if similar to the following: *(:OBJECT = '`DEMO_HR_EMPLOYEES`') AND (:`OBJECT_TYPE` = 'TABLE') AND (:`COMMAND_CLASS` = 'SELECT') AND (:`ROW_COUNT` > 100)*
+        - Click *Use this alert condition*
 
+        ![AVDF](./images/avdf-656a.png "Alert Assistant")
+
+    - Click [**Save**] to create the alert policy
+    
 5. To trigger alerts, generate traffic by running the scripts in Step 4.
 
 6. Let's check the Database Firewall alerts that were generated
