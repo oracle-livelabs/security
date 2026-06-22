@@ -24,7 +24,7 @@ You will review the enabled SQL Firewall policy, trigger controlled SQL Injectio
 
 This workshop assumes the following setup is already complete:
 
-- You completed the SQL Firewall task in the Database Security Central signature workshop
+- You completed the SQL Firewall task in the Database Security Central signature workshop (Lab6 -> Task1)
 - You can sign in to Security Central as `AVAUDITOR`
 - The `employees_search` target is registered in Security Central
 - SQL Firewall is enabled for `employees_search`
@@ -37,7 +37,7 @@ This workshop assumes the following setup is already complete:
 
 > **Note:** If any prerequisite is missing, return to the SQL Firewall task in the signature workshop before continuing.
 
-## Use Case Flow
+## Use Case flow
 
 | Lab | Time | Outcome |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ This workshop assumes the following setup is already complete:
 | Review the SQL Firewall policy | 6 minutes | Review the SQL Firewall protection for approved SQL and trusted session context for `EMPLOYEESEARCH_PROD`. |
 | Trigger SQL Firewall violations | 6 minutes | Trigger SQL Firewall Violations and notice how Security Central captures violations/alerts. |
 
-## Lab 1: Review the sensitive data landscape in the protected database instance
+## Lab 1: Review the sensitive data landscape
 
 ### Introduction
 
@@ -59,7 +59,7 @@ Review the sensitive data landscape in the protected `employees_search` database
 - Confirm `employees_search` is the target for this validation
 - Connect the sensitive data finding to SQL Firewall enforcement
 
-### Task: Review the sensitive data landscape
+## Task 1: Review the sensitive data landscape
 
 1. Sign in to the Security Central Console as `AVAUDITOR`.
 
@@ -75,7 +75,7 @@ Review the sensitive data landscape in the protected `employees_search` database
 
     **Note:** There is significant amount of sensitive data within `employees_search` database that need to be protected. Since the data is exposed via legacy web application, the access through `EMPLOYEESEARCH_PROD` service account credentials need to secured enough to allow only legitimate SQL traffic and be protected agains its misuse/abuse. 
 
-## Lab 2: Review the SQL Firewall protection
+## Lab 2: Review the SQL Firewall policy
 
 ### Introduction
 
@@ -90,10 +90,7 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 - Review enforcement options, allowed SQL statements, and allowed session contexts
 - Review the `SQL Firewall violation` alert policy
 
-### Task 1: Confirm SQL Firewall is enabled
-
-<details>
-<summary>**Step 1: Examine SQL Firewall configuration**</summary>
+## Task 1: Confirm SQL Firewall is enabled
 
 1. In Security Central, click the **Policies** tab.
 
@@ -107,9 +104,7 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 
     **Note:** If this page does not show `employees_search` as enabled, return to the signature workshop SQL Firewall setup before continuing.
 
-</details>
-
-### Task 2: Review the enabled SQL Firewall policy for EMPLOYEESEARCH_PROD account
+## Task 2: Review the enabled SQL Firewall policy for EMPLOYEESEARCH_PROD account
 
 <details>
 <summary>**Step 1: Review the SQL Firewall policy**</summary>
@@ -148,10 +143,7 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 
 </details>
 
-### Task 3: Review the SQL Firewall violation alert policy
-
-<details>
-<summary>**Step 1: Review the alert policy**</summary>
+## Task 3: Review the SQL Firewall violation alert policy
 
 1. Click the **Policies** tab.
 
@@ -171,8 +163,6 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 
     **Note:** This alert policy turns blocked SQL Firewall activity into an actionable event for review.
 
-</details>
-
 
 ## Lab 3: Trigger SQL Firewall Violations 
 
@@ -189,10 +179,7 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 - Trigger a session context violation from an untrusted SQL*Plus path
 - Review the violations in Security Central
 
-### Task 1: Run the Employee Search from trusted application path with normal SQL traffic
-
-<details>
-<summary>**Step 1: Search employees through the trusted application**</summary>
+## Task 1: Run the Employee Search from trusted application path with normal SQL traffic
 
 1. Open the Employee Search application:
 
@@ -226,9 +213,7 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
     **Note:** This is the happy path. SQL Firewall allows the approved SQL and trusted application session context.
 
-</details>
-
-### Task 2: Generate SQL Firewall violations
+## Task 2: Generate SQL Firewall violations
 
 <details>
 <summary>**Step 1: Attempt SQL injection through the Employee Search form**</summary>
@@ -288,10 +273,10 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
 </details>
 
-### Task 3: Review violations in Security Central
+## Task 3: Review violations in Security Central
 
 <details>
-<summary>**Step 1: Review violations in Oracle SQL Firewall**</summary>
+<summary>**Step 1: Review violations in Security Central**</summary>
 
 1. Return to Security Central as `AVAUDITOR`.
 
