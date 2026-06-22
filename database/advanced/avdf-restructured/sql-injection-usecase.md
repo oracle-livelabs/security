@@ -59,7 +59,7 @@ Review the sensitive data landscape in the protected `employees_search` database
 - Confirm `employees_search` is the target for this validation
 - Connect the sensitive data finding to SQL Firewall enforcement
 
-### Task 1: Review the sensitive data landscape
+### Task: Review the sensitive data landscape
 
 1. Sign in to the Security Central Console as `AVAUDITOR`.
 
