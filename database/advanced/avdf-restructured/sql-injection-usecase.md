@@ -59,7 +59,7 @@ Review the sensitive data landscape in the protected `employees_search` database
 - Confirm `employees_search` is the target for this validation
 - Connect the sensitive data finding to SQL Firewall enforcement
 
-## Task 1: Review the sensitive data landscape
+### Task 1: Review the sensitive data landscape
 
 1. Sign in to the Security Central Console as `AVAUDITOR`.
 
@@ -90,7 +90,7 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 - Review enforcement options, allowed SQL statements, and allowed session contexts
 - Review the `SQL Firewall violation` alert policy
 
-## Task 1: Confirm SQL Firewall is enabled
+### Task 1: Confirm SQL Firewall is enabled
 
 1. In Security Central, click the **Policies** tab.
 
@@ -104,10 +104,7 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 
     **Note:** If this page does not show `employees_search` as enabled, return to the signature workshop SQL Firewall setup before continuing.
 
-## Task 2: Review the enabled SQL Firewall policy for EMPLOYEESEARCH_PROD account
-
-<details>
-<summary>**Step 1: Review the SQL Firewall policy**</summary>
+### Task 2: Review the enabled SQL Firewall policy for EMPLOYEESEARCH_PROD account
 
 1. Click the `employees_search` target to drill down.
 
@@ -122,28 +119,22 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 
     ![Enabled SQL Firewall policy](./images/360-27.png "Enabled SQL Firewall policy")
 
-</details>
+5. Drill down into the enabled `EMPLOYEESEARCH_PROD` policy.
 
-<details>
-<summary>**Step 2: Review allowed SQL statements and session contexts**</summary>
+6. Review the **Enforcement option** and confirm it includes both SQL statements and session contexts.
 
-1. Drill down into the enabled `EMPLOYEESEARCH_PROD` policy.
-
-2. Review the **Enforcement option** and confirm it includes both SQL statements and session contexts.
-
-3. Expand **Session context** and review the trusted path values captured during the signature workshop configuration, such as:
+7. Expand **Session context** and review the trusted path values captured during the signature workshop configuration, such as:
 
     - Client IP address
     - Client program
     - OS user
     ![Session context in SQL Firewall policy](./images/360-28.png "Session context in Firewall policy")
-4. Expand **SQL statements** and review the allowed Employee Search application SQL.
+8. Expand **SQL statements** and review the allowed Employee Search application SQL.
 
-5. Close the policy details.
+9. Close the policy details.
 
-</details>
 
-## Task 3: Review the SQL Firewall violation alert policy
+### Task 3: Review the SQL Firewall violation alert policy
 
 1. Click the **Policies** tab.
 
@@ -179,7 +170,7 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 - Trigger a session context violation from an untrusted SQL*Plus path
 - Review the violations in Security Central
 
-## Task 1: Run the Employee Search from trusted application path with normal SQL traffic
+### Task 1: Run the Employee Search from trusted application path with normal SQL traffic
 
 1. Open the Employee Search application:
 
@@ -213,7 +204,7 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
     **Note:** This is the happy path. SQL Firewall allows the approved SQL and trusted application session context.
 
-## Task 2: Generate SQL Firewall violations
+### Task 2: Generate SQL Firewall violations
 
 <details>
 <summary>**Step 1: Attempt SQL injection through the Employee Search form**</summary>
@@ -273,7 +264,7 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
 </details>
 
-## Task 3: Review violations in Security Central
+### Task 3: Review violations in Security Central
 
 <details>
 <summary>**Step 1: Review violations in Security Central**</summary>
