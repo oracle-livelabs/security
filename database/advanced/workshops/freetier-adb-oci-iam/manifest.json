@@ -1,0 +1,28 @@
+{
+  "workshoptitle": "DB Security - Autonomous AI Database Deep Data Security with OCI IAM",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Understand the architecture of this workshop and what it can do",
+      "publisheddate": "05/14/2026",
+      "filename": "../../intro/intro-oci-iam-data-grants.md"
+    },
+    {
+      "title": "Get Started",
+      "description": "Get a Free Trial",
+      "filename": "https://livelabs.oracle.com/cdn/common/labs/cloud-login/pre-register-free-tier-account.md"
+    },
+    {
+      "title": "Lab 1: Autonomous AI Database Deep Data Security with OCI IAM",
+      "description": "Configure OCI IAM authentication and Oracle Deep Data Security data grants for Autonomous AI Database",
+      "publisheddate": "05/14/2026",
+      "filename": "../../deep-data-security/adb-oci-iam/adb-oci-iam.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://livelabs.oracle.com/cdn/common/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}
