@@ -75,7 +75,7 @@ Review the sensitive data landscape in the protected `employees_search` database
 5. Review the sensitive data contained in the `employees_search` database.
 
     **Note:** There is significant amount of sensitive data within `employees_search` database that need to be protected. Since the data is exposed via legacy web application, the access through `EMPLOYEESEARCH_PROD` service account credentials need to secured enough to allow only legitimate SQL traffic and be protected agains its misuse/abuse. 
-<details>
+</details>
 
 ## Lab 2: Review the SQL Firewall policy
 
@@ -162,7 +162,7 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 
     **Note:** This alert policy turns blocked SQL Firewall activity into an actionable event for review.
 
-</summary>
+</details>
 
 ## Lab 3: Trigger SQL Firewall Violations 
 
@@ -214,7 +214,7 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
     **Note:** This is the happy path. SQL Firewall allows the approved SQL and trusted application session context.
 
-</summary>
+</details>
 
 
 <details>
