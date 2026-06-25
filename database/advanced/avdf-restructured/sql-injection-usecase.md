@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this 15-minute workshop, you will learn how to use Oracle SQL Firewall to mitigate the risks of SQl Injection attacks against a legacy web application. This workshop assumes you have already completed the SQL Firewall configuration steps from the Database Security Central signature workshop. The SQL Firewall in the `employees_search` database knows the authorized connection paths and the normal SQL traffic for the `EMPLOYEESEARCH_PROD` application service account of the web application.
+In this 15-minute workshop, you will learn how to use Oracle SQL Firewall to mitigate the risks of SQl Injection attacks against a legacy web application. This workshop has automated the SQL Firewall configuration steps from the Database Security Central signature workshop (Lab6-Task1). The SQL Firewall in the `employees_search` database knows the authorized connection paths and the normal SQL traffic for the `EMPLOYEESEARCH_PROD` application service account of the web application. You may consider reviewing the Database Security Central signature workshop (Lab6-Task1) if you would like to understand the configuration details.
 
 You will review the enabled SQL Firewall policy, trigger controlled SQL Injection attacks, confirm that SQL Firewall can block and log the violations, with alerts pro-actively notifying you of any such anamalous access patterns.
 
@@ -29,8 +29,8 @@ This workshop assumes the following setup is already complete:
 - The `employees_search` target is registered in Security Central
 - SQL Firewall is enabled for `employees_search`
 - The SQL Firewall policy for `EMPLOYEESEARCH_PROD` is enabled with:
-  - Enforcement policy: `SQL statements & session contexts`
-  - Action on violations: `Block and log`
+    - Enforcement policy: `SQL statements & session contexts`
+    - Action on violations: `Block and log`
 - The alert policy `SQL Firewall violation` exists
 - The Employee Search web application is available at `http://dbsec-lab:8080/hr_prod_pdb1`
 - The `DBSec-Lab` VM has the workshop scripts under `$DBSEC_LABS/avdf/avs`
@@ -59,7 +59,8 @@ Review the sensitive data landscape in the protected `employees_search` database
 - Confirm `employees_search` is the target for this validation
 - Connect the sensitive data finding to SQL Firewall enforcement
 
-### Task: Review the sensitive data landscape
+<details>
+<summary> **Task: Review the sensitive data landscape**</summary>
 
 1. Sign in to the Security Central Console as `AVAUDITOR`.
 
@@ -74,6 +75,7 @@ Review the sensitive data landscape in the protected `employees_search` database
 5. Review the sensitive data contained in the `employees_search` database.
 
     **Note:** There is significant amount of sensitive data within `employees_search` database that need to be protected. Since the data is exposed via legacy web application, the access through `EMPLOYEESEARCH_PROD` service account credentials need to secured enough to allow only legitimate SQL traffic and be protected agains its misuse/abuse. 
+<details>
 
 ## Lab 2: Review the SQL Firewall policy
 
@@ -90,7 +92,8 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 - Review enforcement options, allowed SQL statements, and allowed session contexts
 - Review the `SQL Firewall violation` alert policy
 
-### Task 1: Confirm SQL Firewall is enabled
+<details>
+<summary> **Task 1: Confirm SQL Firewall is enabled**</summary>
 
 1. In Security Central, click the **Policies** tab.
 
@@ -104,7 +107,10 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 
     **Note:** If this page does not show `employees_search` as enabled, return to the signature workshop SQL Firewall setup before continuing.
 
-### Task 2: Review the enabled SQL Firewall policy for EMPLOYEESEARCH_PROD account
+</details>
+
+<details>
+<summary> **Task2: Review the enabled SQL Firewall policy for EMPLOYEESEARCH_PROD account**</summary>
 
 1. Click the `employees_search` target to drill down.
 
@@ -133,8 +139,10 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 
 9. Close the policy details.
 
+</details>
 
-### Task 3: Review the SQL Firewall violation alert policy
+<details>
+<summary> **Task 3: Review the SQL Firewall violation alert policy**</summary>
 
 1. Click the **Policies** tab.
 
@@ -154,6 +162,7 @@ Review the configured SQL Firewall policy to see the approved SQL statements and
 
     **Note:** This alert policy turns blocked SQL Firewall activity into an actionable event for review.
 
+</summary>
 
 ## Lab 3: Trigger SQL Firewall Violations 
 
@@ -170,7 +179,8 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 - Trigger a session context violation from an untrusted SQL*Plus path
 - Review the violations in Security Central
 
-### Task 1: Run the Employee Search from trusted application path with normal SQL traffic
+<details>
+<summary> **Task 1: Run the Employee Search from trusted application path with normal SQL traffic**</summary>
 
 1. Open the Employee Search application:
 
@@ -204,10 +214,13 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
     **Note:** This is the happy path. SQL Firewall allows the approved SQL and trusted application session context.
 
-### Task 2: Generate SQL Firewall violations
+</summary>
+
 
 <details>
-<summary>**Step 1: Attempt SQL injection through the Employee Search form**</summary>
+<summary> **Task 2: Generate SQL Firewall violations** </summary>
+
+**Step 1: Attempt SQL injection through the Employee Search form**
 
 1. In the Employee Search application, tick the **Debug** checkbox.
 
@@ -229,10 +242,8 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
     **Note:** This is a SQL statement violation. The injected `UNION` query does not match the approved SQL allow-list for `EMPLOYEESEARCH_PROD`.
 
-</details>
 
-<details>
-<summary>**Step 2: Attempt direct access from an untrusted SQLPlus path**</summary>
+**Step 2: Attempt direct access from an untrusted SQLPlus path**
 
 1. Open a terminal session on the `DBSec-Lab` VM as the `oracle` OS user.
 
@@ -264,10 +275,10 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
 </details>
 
-### Task 3: Review violations in Security Central
-
 <details>
-<summary>**Step 1: Review violations in Security Central**</summary>
+<summary> **Task 3: Review violations in Security Central** </summary>
+
+**Step 1: Review violations in Security Central**
 
 1. Return to Security Central as `AVAUDITOR`.
 
@@ -286,10 +297,7 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
     **Note:** You may need to refresh the page a few times while events are collected.
 
-</details>
-
-<details>
-<summary>**Step 2: Review report evidence**</summary>
+**Step 2: Review report evidence**
 
 1. Click the **Reports** tab.
 
@@ -312,10 +320,7 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
 6. Confirm that the report preserves evidence for both blocked scenarios.
 
-</details>
-
-<details>
-<summary>**Step 3: Review SQL Firewall alerts in Security Central**</summary>
+**Step 3: Review SQL Firewall alerts in Security Central**
 
 1. Return to Security Central as `AVAUDITOR`.
 
