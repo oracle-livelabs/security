@@ -120,7 +120,7 @@ This lab assumes you have:
     ````
     <copy>Oracle123</copy>
     ````
-   Use `Oracle123` as the encryption key as well.
+        Use `Oracle123` as the encryption key as well.
     ````
     <copy>Oracle123</copy>
     ````
@@ -166,7 +166,7 @@ This lab assumes you have:
     <copy>./dbsat extract pdbhol_report</copy>
     ````
 
-   Use `Oracle123` as the encryption key.
+       Use `Oracle123` as the encryption key.
     ````
     <copy>Oracle123</copy>
     ````
@@ -447,7 +447,7 @@ In this exercise, you will learn how to use the DBSAT Discoverer. The DBSAT Disc
     <copy>Oracle123</copy>
     ````
 
-   Use `Oracle123` as the encryption key as well.
+       Use `Oracle123` as the encryption key as well.
     ````
     <copy>Oracle123</copy>
     ````
@@ -782,7 +782,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
     ````
     <copy>conn DBA_DEBRA/Oracle123@freepdb1</copy>
     ````
-- Execute:
+    - Execute:
     ````
     <copy>grant create table to finacme;</copy>
     ````
