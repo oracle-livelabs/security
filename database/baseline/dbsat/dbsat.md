@@ -316,8 +316,8 @@ In this exercise, you will be guided through key DBSAT findings to help you unde
 
         ````
         <copy>
-            `sqlplus dba_debra/Oracle123@freepdb1`
-            `revoke dba from public;`
+            sqlplus dba_debra/Oracle123@freepdb1
+            revoke dba from public;
     
         </copy>
         ````
