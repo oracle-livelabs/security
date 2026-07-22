@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Audit 
 
 *Estimated Lab Time:* 110 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.17
+*Version tested in this lab:* Oracle AVDF 20
 
 ### Video Preview
 
