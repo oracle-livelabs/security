@@ -1,22 +1,21 @@
 # Oracle Database Security Assessment Tool (DBSAT)
 
 ## Introduction
-Are you tired of guessing if your critical databases are securely set up? For 
-IT admins, DBAs, and security pros, the constant chase to avoid data leaks, 
-pass audits, and comply with regulations and standards like DISA STIG and CIS Benchmark, never slows down. Gaps in configuration create real risks; staying in front of threats gets harder year after year.
+As AI accelerates vulnerability discovery and exploitation, maintaining a secure database environment requires continuous assessment. IT administrators, DBAs, and security professionals need timely visibility into configuration risks, compliance with standards such as DISA STIG and CIS Benchmarks, and exposure to missing security patches.
+Oracle Database Security Assessment Tool (DBSAT) helps organizations proactively assess their database security posture, identify configuration weaknesses, and verify that databases are protected with the latest security updates.
 
-This workshop introduces the Oracle Database Security Assessment Tool (DBSAT). Through hands-on exercises, you will learn how to use DBSAT to evaluate key security aspects of an Oracle Database, including configuration settings, user privileges, and the identification of sensitive data, to protect your data better and help meet compliance requirements.
+Through hands-on exercises, you will learn how to use DBSAT to assess database security posture by identifying configuration risks, reviewing user privileges, discovering sensitive data, and validating compliance with Oracle security best practices and industry standards.
 
 
 *Estimated lab time:* 60 minutes
 
-*Version tested in this lab:* Oracle DBSAT 4.0 and Oracle Database 23ai Free.
+*Version tested in this lab:* Oracle DBSAT 4.3 and Oracle AI Database 26ai.
 
 ### Video Preview
 Watch a preview of "*LiveLabs - Oracle Database Security Assessment Tool (DBSAT)*" [](youtube:3XxA1qhNDpQ)
 
 ### Objectives
-In this lab, you'll use DBSAT to learn how it works and the immediate value it provides. Many customers have already benefited from running DBSAT and have improved their security posture. DBSAT helps you identify your overall security posture, review which users have access and their entitlements, and locate sensitive data.
+In this lab, you will learn how to use Oracle Database Security Assessment Tool (DBSAT) to assess the security posture of an Oracle Database. You will identify configuration weaknesses, review user privileges, discover sensitive data, and gain actionable insights to strengthen database security and support compliance.
 
 ### Prerequisites
 This lab assumes you have:
@@ -84,7 +83,7 @@ This lab assumes you have:
 
     **Note**:
     - For this lab, the DBSAT zip file has already been downloaded to the DBSec-Lab VM in the folder **/u01/app/sources.**
-    - You can also find Oracle DBSAT at [Oracle Support Document 2138254.1](https://support.oracle.com/epmos/faces/DocumentDisplay?id=2138254.1)
+    - DBSAT can be downloaded from MOS note [KB101686](https://support.oracle.com/support/?documentId=KB101686)
 
 ## Task 2: Collect data
 
@@ -121,7 +120,7 @@ This lab assumes you have:
     ````
     <copy>Oracle123</copy>
     ````
-   Use `Oracle123` as the encryption key as well.
+        Use `Oracle123` as the encryption key as well.
     ````
     <copy>Oracle123</copy>
     ````
@@ -167,7 +166,7 @@ This lab assumes you have:
     <copy>./dbsat extract pdbhol_report</copy>
     ````
 
-   Use `Oracle123` as the encryption key.
+       Use `Oracle123` as the encryption key.
     ````
     <copy>Oracle123</copy>
     ````
@@ -197,7 +196,7 @@ We will focus on reviewing several findings classified as High Risk, Medium Risk
 
 Take a few minutes to scroll through the HTML report. Use the links in the summary table to jump to specific sections, or navigate through the report using the arrows at the bottom right.
 
-1. The report contains informational tables, like the example below, as well as findings highlighting risks.
+- The report contains informational tables, like the example below, as well as findings highlighting risks.
 
     ![DBSAT](./images/dbsat-007.png "The report contains informational tables")
 
@@ -209,7 +208,7 @@ Take a few minutes to scroll through the HTML report. Use the links in the summa
     
 - Then, the Summary table presents all findings by section or domain, along with their severity level.
 
-2. **What is a finding?**<br>
+- **What is a finding?**<br>
 The DBSAT Reporter presents its analysis in units called findings. This is a finding:
 
     ![DBSAT](./images/dbsat-008.png "Analyze the Report - Findings")
@@ -260,12 +259,12 @@ In this exercise, you will be guided through key DBSAT findings to help you unde
       ![DBSAT](./images/dbsat-009.png "INFO.PATCH finding")
 
     - If the finding is **red**, your database requires a patch. If it is **green**, your environment is up to date. Always ensure you are using the latest version of DBSAT for your assessments.
-    - Keeping your database patched is critical because unpatched systems are among the most common entry points for attackers. Hackers frequently exploit well-known vulnerabilities that have already been addressed by security patches. Without regular patching, your database is exposed to threats that could compromise sensitive data or disrupt business operations.
+    - As frontier AI models accelerate vulnerability discovery and exploitation, the window between vulnerability disclosure and attack is rapidly shrinking. Keeping Oracle Databases current with the latest Critical Patch Updates is essential to reducing risk, protecting sensitive data, and maintaining a strong security posture.
   
-    - DBSAT now lists CVEs (Common Vulnerabilities and Exposures) related to your Oracle Database version. This helps you quickly identify specific vulnerabilities and understand the associated risks. 
+    - DBSAT now identifies Common Vulnerabilities and Exposures (CVEs) affecting your Oracle Database version, providing visibility into known security risks so you can prioritize patching and reduce exposure to emerging threats. 
 
     **Best Practices:**
-    - Apply the latest Release Update (RU) each quarter and the Monthly Recommended Patch (MRP) if critical fixes are needed.
+    - Apply the latest quarterly Release Update (RU), and use Monthly Recommended Patches (MRPs) or Critical Security Patch Updates (CSPUs) as appropriate to stay current with the latest security fixes.
     - Regularly monitor [Oracle Security Alerts](https://www.oracle.com/security-alerts/) and review relevant CVEs.    
     - Schedule and document patching activities as part of your standard operating procedures.
     - Verify patch application in test environments before deploying to production.
@@ -295,9 +294,8 @@ In this exercise, you will be guided through key DBSAT findings to help you unde
 
         ![DBSAT](./images/dbsat-012.png "PRIV.DBA finding")
 
-    - In the details, you can clearly see which users have been granted the DBA and PDB_DBA roles. **Of particular concern, the DBA role has been granted to PUBLIC.** This means **ALL** users in the database effectively have DBA privileges. This poses a significant security risk!
-    - Where applicable, DBSAT also displays the grant path (whether a privilege was granted directly or indirectly), helping you spot inappropriate grants more easily. For example, `SCOTT` received the DBA role indirectly through a chain of grants: `SCOTT <- APPROLE1 <- APPROLE2 <- APPROLE3 <- DBA`.
-    - Do these users really require the DBA role? DBSAT itself cannot answer this, as it lacks context of your organizational roles and processes. However, the presence of PUBLIC with the DBA role is marked as High Risk and should be addressed immediately.
+    - In the details, you can clearly see which users have been granted the DBA and PDB_DBA roles. **Of particular concern, the DBA role has been granted to PUBLIC.** This means **ALL** users in the database effectively have DBA privileges. This poses a significant security risk and should be addressed immediately!
+    - Where applicable, DBSAT also displays the grant path (whether a privilege was granted directly or indirectly), helping you spot inappropriate grants more easily. 
     
     **Note:**  
     - A **(D)** next to a user indicates the privilege was granted directly.
@@ -316,9 +314,13 @@ In this exercise, you will be guided through key DBSAT findings to help you unde
 
     - To revoke DBA from PUBLIC:
 
-        `sqlplus dba_debra/Oracle123@freepdb1`<br>
-        `revoke dba from public;`
-<br><br>
+        ````
+        <copy>
+            sqlplus dba_debra/Oracle123@freepdb1
+            revoke dba from public;
+    
+        </copy>
+        ````
 
 6. Now, let’s review **Medium Risk findings**. Return to the Summary table by clicking `TOP`.
     - Click the **User Accounts** link in the Summary table again.
@@ -372,14 +374,14 @@ In this exercise, you will be guided through key DBSAT findings to help you unde
         ![DBSAT](./images/dbsat-016.png "AUTHZ.DATABASEVAULTSOD finding")
 
     - In this database, Oracle Database Vault is enabled. This finding highlights several important points that require analysis:
-        - You should have at least **two user accounts for each critical role**: two accounts with the Database Vault Owner (DV_OWNER) role and two accounts with the Database Vault Account Manager (DV_ACCTMGR) role, all granted with ADMIN OPTION. This database currently has only one user account with each role.
-        - During database patching, a user with the DV_OWNER role should temporarily grant the DV_PATCH_ADMIN role to SYS across all containers. After patching, this role should be revoked. In this database, `MASKING_ADMIN` currently has the DV_PATCH_ADMIN role. This grant should be revoked.
-        - Users should only be granted the privileges necessary for their tasks. Database Vault authorizations ensure additional privileges cannot be accidentally misused. For example, to perform Data Pump export/import operations, users need the required roles (e.g., EXP_FULL_DATABASE, IMP_FULL_DATABASE) and also a Database Vault Authorization. In this database, `BACKUP_ADMIN` has the relevant Data Pump export role but is not properly authorized by Database Vault. If Data Pump export is required, add the appropriate authorization; otherwise, revoke the unnecessary role.
+        - You should have at least **two user accounts for each critical role**: two accounts with the Database Vault Owner (`DV_OWNER`) role and two accounts with the Database Vault Account Manager (`DV_ACCTMGR`) role, all granted with ADMIN OPTION. This database currently has only one user account with each role.
+        - During database patching, a user with the `DV_OWNER` role should temporarily grant the `DV_PATCH_ADMIN` role to SYS across all containers. After patching, this role should be revoked. In this database, `MASKING_ADMIN` currently has the `DV_PATCH_ADMIN` role. This grant should be revoked.
+        - Users should only be granted the privileges necessary for their tasks. Database Vault authorizations ensure additional privileges cannot be accidentally misused. For example, to perform Data Pump export/import operations, users need the required roles (e.g., `EXP_FULL_DATABASE`, `IMP_FULL_DATABASE`) and also a Database Vault Authorization. In this database, `BACKUP_ADMIN` has the relevant Data Pump export role but is not properly authorized by Database Vault. If Data Pump export is required, add the appropriate authorization; otherwise, revoke the unnecessary role.
         - Database Vault operations control is not enabled in this database.
 
     **Best Practices:**  
-    - Assign at least two separate user accounts to each critical Database Vault role (DV_OWNER and DV_ACCTMGR) with ADMIN OPTION to ensure redundancy and separation of duties.
-    - Regularly review and minimize privileged role assignments; grant sensitive roles such as DV_PATCH_ADMIN only temporarily and revoke them promptly after use.
+    - Assign at least two separate user accounts to each critical Database Vault role (`DV_OWNER` and `DV_ACCTMGR`) with ADMIN OPTION to ensure redundancy and separation of duties.
+    - Regularly review and minimize privileged role assignments; grant sensitive roles such as `DV_PATCH_ADMIN` only temporarily and revoke them promptly after use.
     - Ensure all privileged operations (such as Data Pump exports) are explicitly authorized within Database Vault, and revoke unnecessary privileges or authorizations.
     - Enabling Database Vault Operations Control will restrict sensitive actions carried out by privileged (common) users in a multitenant environment, especially those involving application data in PDBs.
 
@@ -387,11 +389,11 @@ In this exercise, you will be guided through key DBSAT findings to help you unde
 12. **Congratulations, so far you have learned how to use DBSAT collector and reporter to Assess your Database Security!**
 
     > **Want to take assessment to the next level?** <br>
-With [Oracle Data Safe](https://www.oracle.com/security/database-security/data-safe/) and [Oracle Audit Vault and Database Firewall](https://blogs.oracle.com/cloudsecurity/post/oracle-audit-vault-and-database-firewall-release-update-9-introduces-security-assessment), you will get DBSAT functionality in a central console with dashboards, reports, automated scheduling of assessments, detection of configuration drifts, fleet-wide views of risks, along with history of reports, and more.
+With [Oracle Data Safe](https://www.oracle.com/security/database-security/data-safe/) and [Oracle Database Security Central](https://www.oracle.com/security/database-security/database-security-central/), you will get DBSAT functionality in a central console with dashboards, reports, automated scheduling of assessments, detection of configuration drifts, fleet-wide views of risks, along with history of reports, and more.
 
 ## Task 6: Discover Sensitive Data
 
-Identifying sensitive data within your Oracle Database is essential for safeguarding information, maintaining compliance, and managing risk. By discovering where sensitive or regulated data resides, you can implement appropriate controls to protect it from unauthorized access, meet legal and regulatory requirements, and respond effectively to security incidents. Proactively locating sensitive data lays the foundation for strong data security practices and helps ensure that your organization remains compliant and secure.
+Protecting sensitive data begins with knowing where it resides. By discovering sensitive and regulated data across your Oracle Database, you can prioritize security controls, reduce the risk of unauthorized access, strengthen your security posture, and support compliance with industry and regulatory requirements.
 
 In this exercise, you will learn how to use the DBSAT Discoverer. The DBSAT Discoverer connects to the database and collects and analysis data based on the settings specified in the configuration and sensitive pattern files.
 
@@ -419,6 +421,7 @@ In this exercise, you will learn how to use the DBSAT Discoverer. The DBSAT Disc
 3. Change the following parameter to:
     ````
     DB_SERVICE_NAME = freepdb1
+    DB_PORT = 1522
     ````
     ![DBSAT](./images/dbsat-019.png "Change DB_SERVICE_NAME parameter")
 
@@ -444,7 +447,7 @@ In this exercise, you will learn how to use the DBSAT Discoverer. The DBSAT Disc
     <copy>Oracle123</copy>
     ````
 
-   Use `Oracle123` as the encryption key as well.
+       Use `Oracle123` as the encryption key as well.
     ````
     <copy>Oracle123</copy>
     ````
@@ -779,7 +782,7 @@ In this exercise, you will learn how **dbsat.config** parameters determine the b
     ````
     <copy>conn DBA_DEBRA/Oracle123@freepdb1</copy>
     ````
-- Execute:
+    - Execute:
     ````
     <copy>grant create table to finacme;</copy>
     ````

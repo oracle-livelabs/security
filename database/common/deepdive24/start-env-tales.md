@@ -27,7 +27,7 @@ This lab assumes you have:
 2. In the terminal session enter in the following command to retrieve the DBSecLab Guide.
 
     ```
-    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ILceY_Kbe_HebZRIAXZ7qjKm0BolhKwuO1Git3gmB24EcyfxT3ODz7VGVZ5z2l6Y/n/oradbclouducm/b/LiveLabs-bucket-prod/o/DBSecLab-Guide.zip</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/LfwV-u5XCP10Tv6xT1_Xa7Svm64Dcri0gSPRvjEHoA8yKeplkKx4M0PCsoKBZWpQ/n/oradbclouducm/b/LiveLabs-bucket-prod/o/DBSecLab-Guide.zip</copy>
     ```
 
     ![Guide](images/tds-003.png "Retrieve guide")

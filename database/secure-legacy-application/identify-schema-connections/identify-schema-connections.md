@@ -19,11 +19,11 @@ This lab assumes you have:
 
 ## Task 1: Create a Database Vault realm
 
-1. Navigate back to your **Database Actions SQL Worksheet**. Under the menu bar for `ADMIN` at the top right select **Sign out**. Sign back into Database Actions under the user `sec_admin_owen` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from **ADMIN** to `SEC_ADMIN_OWEN`.
+1. Navigate back to **Database Actions SQL Worksheet**. Copy the URL of  Under the menu bar for `ADMIN` at the top right select **Sign out**. Sign back into Database Actions under the user `sec_admin_owen` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated from **ADMIN** to `SEC_ADMIN_OWEN`.
 
-	![Change db actions schema](images/change-schema-dbactions.png)
+	![Change db actions schema](images/change-schema-dbactions.png "Change Database Actions Schema")
 
-2. Copy and paste the following script to the SQL worksheet to create a Database Vault realm `PROTECT_MYHRAPP` in order to protect `EMPLOYEESEARCH_PROD`. Select the **Run Script** button to execute the script. Check the script output at the bottom to make sure the script executed successfully.
+2. Copy and paste the following command to the SQL worksheet to create a Database Vault realm `PROTECT_MYHRAPP` in order to protect `EMPLOYEESEARCH_PROD`. Select the **Run Script** button to execute the script. Check the script output at the bottom to make sure the script executed successfully.
 
 	```
 	<copy>BEGIN
@@ -31,23 +31,34 @@ This lab assumes you have:
 				realm_name => 'PROTECT_MYHRAPP'
 				,description => 'A mandatory realm, in simulation mode, to show how EMPLOYEESEARCH_PROD would be protected'
 				,enabled => DBMS_MACUTL.G_SIMULATION
-				,audit_options => DBMS_MACUTL.G_REALM_AUDIT_FAIL
 				,realm_type => 1); 
 		END;
 		/</copy>
 	```
 
-	![Create dv realm](images/create-realm.png)
+	![Create dv realm](images/sla-024.png "Create realm")
 
-3. Clear your SQL worksheet. Copy and paste the following query and check the output to show the current Database Vault Realm was created. 
+3. Using the following commands, create and attach the Unified Audit policy.
+
+	```
+	<copy>CREATE AUDIT POLICY dv_realm_myhrapp
+			ACTIONS SELECT, UPDATE, DELETE
+			ACTIONS COMPONENT=DV Realm Violation ON "PROTECT_MYHRAPP";</copy>
+	```
+
+	```
+	<copy>AUDIT POLICY dv_realm_myhrapp;</copy>
+	```
+
+4. Clear your SQL worksheet. Copy and paste the following query and check the output to show the current Database Vault Realm was created. 
 
 	```	
 	<copy>SELECT name, description, enabled FROM dba_dv_realm WHERE id# >= 5000 ORDER BY 1;</copy>
     ```
 
-	![Show dv realm](images/show-dv-realm.png)
+	![Show dv realm](images/show-dv-realm.png "Show DV realm")
 
-4. Clear your SQL worksheet. Copy and paste the following script to add the `EMPLOYEESEARCH_PROD` schema, and all its objects to the `PROTECT_MYHRAPP` Database Vault realm. This applies to existing and any new objects created within the `EMPLOYEESEARCH_PROD` schema. Check the output to see that the script executed successfully.
+5. Clear your SQL worksheet. Copy and paste the following script to add the `EMPLOYEESEARCH_PROD` schema, and all its objects to the `PROTECT_MYHRAPP` Database Vault realm. This applies to existing and any new objects created within the `EMPLOYEESEARCH_PROD` schema. Check the output to see that the script executed successfully.
 
 	```
     <copy>BEGIN
@@ -62,13 +73,15 @@ This lab assumes you have:
     
 	In the next task, we are going to capture access to objects in the `EMPLOYEESEARCH_PROD` schema, including access by the schema itself. This will help us understand which objects are available and where they are retrieved from. 
 
-5. Navigate back to your **HR Production** application and log out, then log back in as **hradmin**. Check to see that the data still appears and is available. Click through the employee profile menu tabs to ensure all data is present.
+6. Navigate back to your **HR Production** application and log out, then log back in as **hradmin**. Check to see that the data still appears and is available. Click through the employee profile menu tabs to ensure all data is present.
 
-	![Search employees](images/search-emp.png)
+	![Search employees](images/search-emp.png "Search employees")
 
-	![Select employees](images/select-emp.png)
+	![Search employees](images/sla-025.png "Press Search")
 
-	![Navigate employees](images/navigate-emp.png)
+	![Select employees](images/select-emp.png "Select employees")
+
+	![Navigate employees](images/navigate-emp.png "Navigate employees")
 
 
 ## Task 2: Use simulation mode to identify the connections to the EMPLOYEESEARCH_PROD schema
@@ -79,11 +92,11 @@ This lab assumes you have:
 	<copy>select * from dba_dv_simulation_log;</copy>
 	```
 
-	![Show simulation logs](images/sec-view-log.png)
+	![Show simulation logs](images/sla-027.png "Show simulation logs")
 
 2. Under the menu bar for `SEC_ADMIN_OWEN` at the top right select **Sign out**. Sign back into Database Actions under the user `dba_debra` and select **SQL** under **Development**. Make sure the worksheet is clear and your schema is updated to `DBA_DEBRA`.
 
-	![Dba debra login](images/dba-deb-login.png)
+	![Dba debra login](images/sla-028.png "DBA Debra login")
 
 3. Copy and paste the following commands to query the `DEMO_HR_EMPLOYEES` table under the `EMPLOYEESEARCH_PROD` schema.
 
@@ -92,7 +105,7 @@ This lab assumes you have:
 	```
 
 	```
-	<copy>select a.USERID, a.FIRSTNAME, a.LASTNAME, a.EMAIL, a.PHONEMOBILE, a.PHONEFIX, a.PHONEFAX, a.EMPTYPE, a.POSITION, a.ISMANAGER, a.MANAGERID, a.DEPARTMENT, a.CITY, a.STARTDATE, a.ENDDATE, a.ACTIVE, a.COSTCENTER, b.FIRSTNAME as MGR_FIRSTNAME, b.LASTNAME as MGR_LASTNAME, b.USERID as MGR_USERID from DEMO_HR_EMPLOYEES a left outer join DEMO_HR_EMPLOYEES b on a.MANAGERID = b.USERID where 1=1 order by a.LASTNAME, a.FIRSTNAME</copy>
+	<copy>select a.USERID, a.FIRSTNAME, a.LASTNAME, a.EMAIL, a.PHONEMOBILE, a.PHONEFIX, a.PHONEFAX, a.EMPTYPE, a.POSITION, a.ISMANAGER, a.MANAGERID, a.DEPARTMENT, a.CITY, a.STARTDATE, a.ENDDATE, a.ACTIVE, a.COSTCENTER, b.FIRSTNAME as MGR_FIRSTNAME, b.LASTNAME as MGR_LASTNAME, b.USERID as MGR_USERID from DEMO_HR_EMPLOYEES a left outer join DEMO_HR_EMPLOYEES b on a.MANAGERID = b.USERID where 1=1 order by a.LASTNAME, a.FIRSTNAME;</copy>
 	```
 
 	![Query with dba](images/dba-query.png)

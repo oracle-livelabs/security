@@ -1,0 +1,18 @@
+{
+  "workshoptitle": "DB Security - Oracle Database Security Central Use-case: Mitigating SQL Injection risks",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    
+    {
+      "title": "Mitigate SQL Injection risks with Security Central",
+      "description": "In this fastlab you will learn how to mitigate SQL Injection risks in Security Central",
+      "publisheddate": "30/06/2026",
+      "filename": "../../avdf-restructured/sql-injection-usecase.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}
