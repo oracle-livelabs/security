@@ -16,6 +16,10 @@ Based on an OCI architecture, deployed in a few minutes with a simple internet c
 
 You may now [proceed to the lab](#next).
 
+### Objectives
+
+This Hands-On Labs give you an opportunity to learn how to leverage **Oracle Database Security Central** to improve security posture of fleet of Oracle databases.
+
 ## Acknowledgements
 - **Author** - Angeline Dhanarani, Database Security PM
 - **Contributors** - Angeline Dhanarani, Nazia Zaidi, Rene Fontcha
