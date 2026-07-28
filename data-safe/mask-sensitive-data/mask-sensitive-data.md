@@ -297,4 +297,4 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 28, 2026
+- **Last Updated By/Date** - Jody Glover, July 28th, 2026
