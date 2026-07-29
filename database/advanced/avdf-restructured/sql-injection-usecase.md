@@ -2,9 +2,11 @@
 
 ## Introduction
 
-In this 15-minute workshop, you will learn how to use Oracle SQL Firewall to mitigate the risks of SQl Injection attacks against a legacy web application. This workshop has automated the SQL Firewall configuration steps from the Database Security Central signature workshop (Lab6-Task1). The SQL Firewall in the `employees_search` database knows the authorized connection paths and the normal SQL traffic for the `EMPLOYEESEARCH_PROD` application service account of the web application. You may consider reviewing the Database Security Central signature workshop (Lab6-Task1) if you would like to understand the configuration details.
+In this 15-minute workshop, you will learn how to use Oracle SQL Firewall to mitigate the risks of SQl Injection attacks against a legacy web application. This workshop has automated the SQL Firewall configuration steps from the Database Security Central signature workshop (Lab6-Task1). The SQL Firewall in the `employees_search` database knows the authorized connection paths and the normal SQL traffic for the `EMPLOYEESEARCH_PROD` application service account of the web application. 
 
 You will review the enabled SQL Firewall policy, trigger controlled SQL Injection attacks, confirm that SQL Firewall can block and log the violations, with alerts pro-actively notifying you of any such anamalous access patterns.
+
+You may consider reviewing the Database Security Central signature workshop (Lab6-Task1) if you would like to understand the SQL Firewall policy configuration details.
 
 *Estimated Workshop Time:* 15 minutes
 
@@ -21,10 +23,8 @@ You will review the enabled SQL Firewall policy, trigger controlled SQL Injectio
 - Review SQL Firewall violations and alerts in Security Central
 
 ### Prerequisites
+This workshop assumes the following:
 
-This workshop assumes the following setup is already complete:
-
-- You completed the SQL Firewall task in the Database Security Central signature workshop (Lab6 -> Task1)
 - You can sign in to Security Central as `AVAUDITOR`
 - The `employees_search` target is registered in Security Central
 - SQL Firewall is enabled for `employees_search`
@@ -35,7 +35,6 @@ This workshop assumes the following setup is already complete:
 - The Employee Search web application is available at `http://dbsec-lab:8080/hr_prod_pdb1`
 - The `DBSec-Lab` VM has the workshop scripts under `$DBSEC_LABS/avdf/avs`
 
-> **Note:** If any prerequisite is missing, return to the SQL Firewall task in the signature workshop before continuing.
 
 ## Use Case flow
 
@@ -328,9 +327,13 @@ In this lab, we will demonstrate some of the practical scenarios of SQL Firewall
 
 3. Review the generated alerts and locate entries for the alert policy `SQL Firewall violation`.
 
+    ![SQL Firewall violations report](./images/360-32a.png "SQL Firewall violations alert")
+
     **Note:** If the alerts do not appear immediately, refresh the page. Security Central may take a few minutes to collect and display the generated events.
 
 4. Click one of the `SQL Firewall violation` alerts to review the alert details.
+
+    ![SQL Firewall violations report](./images/360-32b.png "SQL Firewall violations alert details")
 
 </details>
 
@@ -350,4 +353,4 @@ In this 15-minute workshop, you validated an existing SQL Firewall deployment in
 
 - **Author** - Angeline Dhanarani, Database Security - Product Manager
 - **Workshop adaptation** - SQL Injection risk mitigation validation flow for Oracle Database Security Central
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - June 2026
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - July 2026
