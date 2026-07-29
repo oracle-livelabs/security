@@ -157,4 +157,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 18, 2026
+- **Last Updated By/Date** - Jody Glover, July 29, 2026
