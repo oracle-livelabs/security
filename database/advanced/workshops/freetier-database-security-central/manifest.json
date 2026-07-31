@@ -18,7 +18,7 @@
       "description": "How to download your ORM stack and update security rules for an existing VCN",
       "publisheddate": "09/28/2020",
       "filename": "../../../common/prepare-setup/prepare-setup.md",
-      "type": "avdf"
+      "type": "dbseccentral"
     },
     {
       "title": "Lab 2: Initialize Environment",
