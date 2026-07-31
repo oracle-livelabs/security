@@ -326,7 +326,7 @@ In this task, we will do the following
 
         ![AVDF](./images/avdf-102.png "Configure network settings")
     
-    - Click Network Interface Card *ens3* to see the proxy ports. 
+    - Click Network Interface Card to see the proxy ports. 
     
     ![AVDF](./images/avdf-103.png "Proxy Ports settings")
         **Note:** Proxy Ports are set to 15223 and 15224. We will use these ports for Database Firewall.
