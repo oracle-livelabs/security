@@ -79,7 +79,7 @@ This lab assumes you have:
     - The **Details** tab lists general information about your sensitive data model, the target database, sensitive data information, and sensitive data counts.
     - You can view the selected schemas for discovery, selected sensitive types for discovery, sensitive schemas discovered, and sensitive types discovered by selecting the respective **View details** button.
 
-   ![Sensitive Data Model Details tab](images/sensitive-data-model-details-tab.png "Sensitive Data Model Details tab")
+    ![Sensitive Data Model Details tab](images/sensitive-data-model-details-tab.png "Sensitive Data Model Details tab")
     
 2. Select the **Sensitive columns** tab and review the discovered sensitive columns. 
 
@@ -136,7 +136,7 @@ Increase the scope of the data discovery job.
 
     The **Apply to SDM** dialog box opens. You are warned that this operation will update the sensitive data model with all the columns of this discovery job results that have been processed.
 
-    ![Apply to SDM dialog box](images/apply-to-SDM-dialog-box.png "Apply to SDM dialog box")
+    ![Apply to SDM dialog box](images/apply-to-sdm-dialog-box.png "Apply to SDM dialog box")
 
 15. Select **Apply**, and then wait to be returned to the **Incremental discovery** tab.
 
@@ -186,7 +186,7 @@ Add `COUNTRY_ABBREV` to the sensitive data model.
 
 8. Select **Add columns**, and then wait until you are returned to the **Sensitive columns** list.
 
-   ![Add columns panel](images/add-columns-panel.png "Add columns panel")
+    ![Add columns panel](images/add-columns-panel.png "Add columns panel")
 
 9. Verify that `COUNTRY_ABBREV` from the `LOCATIONS` table is added to your sensitive data model.
 

@@ -63,7 +63,7 @@ You have three options for registering your Autonomous AI Database:
 
 5. Select **Register database**. From here, you can manually configure registration details. This method assumes that you have already completed the required pre-registration tasks for your database.
 
-   ![Manual target registration](images/manual-target-registration.png "Manual target registration")
+    ![Manual target registration](images/manual-target-registration.png "Manual target registration")
 
 6. Select **Cancel**.
 
