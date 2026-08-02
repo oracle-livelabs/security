@@ -67,15 +67,15 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
         <copy>cd $DBSEC_LABS/avdf/avs</copy>
         ````
 
-    - Learn the Security Central password you will need for the duration of the lab
+    - Learn the Security Central password you will need to login for the first time
 
         ````
         <copy>echo $AVUSR_PWD</copy>
         ````
 
         **Note**:
-        - This new password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
-        - At the first login on the Security Central Console, it will ask you to change this randomly generated password
+        - This password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
+        - You will be prompted to change the password when you login for the first time with this randomly generated password
 
 2. Open a web browser window to *`https://av`* to access to the Security Central Console
 
@@ -116,7 +116,7 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
 
 ## Task 2: Configure Generative AI service integration
 
- Configure Generative AI service integration in Security Central to leverage the features of *`Security advisor`* and *`Alert Assistant`*.
+ Configure Generative AI service integration in Security Central to enable **Security advisor** and **Alert Assistant** features.
 
 1. Login to Security Central Console as *`AVADMIN`* 
 2. Click on the **Settings** tab, and **System** in the left menu
@@ -126,6 +126,8 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
     ![AVDF](./images/avdf-305.png "AVDF - Sec Advisor")
 
 5. Click Save.
+
+    **Note**: If you are getting **OAV-48809: DNS is not configured on the Audit Vault Server** error, under **Configuration**, click **System Settings**, and enter the DNS Server **169.254.169.254** and save. Retry the **Security advisor configuration**.
 
 You may now **proceed to the next lab**.
 
