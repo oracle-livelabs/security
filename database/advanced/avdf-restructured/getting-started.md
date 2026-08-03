@@ -124,6 +124,29 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
 4. Follow the intructions provided in the tooltip **`See how to gather the Security advisor configuration details`** to fill the details
 
     ![AVDF](./images/avdf-305.png "AVDF - Sec Advisor")
+    
+    **Note**:
+        - Log in to Oracle Cloud account
+            - If you are on the sandbox instance, OCI access details are present in **View Login Info** popup
+                ![AVDF](./images/avdf-305a.png "OCI access in sandbox")
+                - Click **Launch OCI**, use the password provided in the reservation to generate a new password. Login to OCI.
+        - Locate your **Tenancy OCID** 
+            - Select the Profile menu and then select Tenancy: **your_tenancy_name**
+            - Copy the tenancy OCID to the **Tenancy OCID** 
+        - Locate your **Compartment OCID** 
+            - Open the navigation menu, select Identity & Security. Under Identity, select Compartments.
+            - Search for the compartment and drilldown. Copy the OCID to **Compartment OCID** 
+            - If you are on the sandbox instance, copy the Compartment OCID from details in **View Login Info** popup
+        - Select OCI Region of your choice
+        - Locate your **User OCID**
+            - Select the Profile menu and then select User settings.
+            - The user OCID is shown under User Information. Copy the OCID to **User OCID**
+        - Generate an API Signing Key in the User's profile
+            - Go to **Token and keys** tab in the User profile, click **Add API key**, select **Generate API key pair**, download private key and public key, and click **Add**.
+            - The key is added and the Configuration File Preview is displayed. Copy the **Fingerprint**.
+            ![AVDF](./images/avdf-305b.png "OCI - API Singing Key")
+        - Choose the downloaded **OCI private key** in the security advisor configuration popup
+        - Copy the fingerprint to **OCI public key fingerprint**
 
 5. Click Save.
 
