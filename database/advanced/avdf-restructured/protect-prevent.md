@@ -32,7 +32,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central (Security Centr
 
 ## Task 1: Use SQL Firewall to allow only authorized SQL statements and connections
 
-SQL Firewall is enabled in the **`employees_search`**. In this lab, you will enable SQL Firewall to learn authorized SQL traffic of EMPLOYEESEARCH_PROD user, create a policy based on approved SQL, IP, and client program, and enforce it to block unauthorized activity.
+SQL Firewall is enabled in the **`employees_search`** instance. In this lab, you will use SQL Firewall to learn authorized SQL traffic of EMPLOYEESEARCH_PROD user, generate a policy based on approved SQL statements, IP addresses, and client programs, and enforce the policy to prevent unauthorized activity.
 
 <details>
 <summary> **Step 1: Ensure SQL Firewall is enabled** </summary>
@@ -564,7 +564,7 @@ In this task, we will do the following
     ````
 
     ![AVDF](./images/avdf-128.png "Check the connectivity through the Database Firewall")
-    **Note:** Scroll through the output to see how Database Firewall blocks the DELETE statement as shown above since we have not permitted DBA_DEBRA to do DMLs on sensitive app objects over the network. SELECT statements on sensitive objects are alerted on.
+    **Note:** Scroll through the output to see how Database Firewall blocks the DELETE statement as shown above since we have not permitted DBA_DEBRA to do DMLs on sensitive app objects over the network. SELECT statements on sensitive objects are executed as you see in the output but they are alerted on.
 
 2. Let's now see when `DBA_DEBRA` connects to exfiltrate data from sensitive application objects
 
@@ -583,7 +583,7 @@ In this task, we will do the following
     ![AVDF](./images/avdf-128b.png "Check the connectivity through the Database Firewall")
     **Note**: You see a SQL Firewall context violation error as `EMPLOYEESEARCH_PROD` user is allowed to connect only through Glassfish app (JDBC Thin Client) as per the SQL Firewall policy configured
 
-     **Note**: Try connecting wth Glassfish app like we did in *Task2->Step2*; and run the normal workload queries which are already allow-listed in SQL Firewall policy for `EMPLOYEESEARCH_PROD` user. That works perfectly. Remember, Glassgish app is now configured to work with DB Firewall. 
+     **Note**: Try connecting wth Glassfish app like we did in *Task1->Step3*; and run the normal workload queries which are already allow-listed in SQL Firewall policy for `EMPLOYEESEARCH_PROD` user. That works perfectly. Remember, Glassgish app is now configured to work with DB Firewall. 
 
     💡 **TIP:** You've now seen how SQL Firewall and Database Firewall complement each other in protecting **`employees_search`** from unauthorized traffic.
 
