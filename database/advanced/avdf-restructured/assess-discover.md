@@ -38,10 +38,10 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
     ![AVDF](./images/360-1.png "AVDF - Auditor dashboard in console") 
 
 4. Review the Missing Security Patches risks in **Databases behind on release updates** component
-    - Review to see if there are any non-zero database count listed across different Database versions 
-    **Note**: If there is any non-zero count, drilldown to see the databases lagging the security patches. The corresponding  missing CVEs count/lists should indicate the risk the database carries if not patched to the latest DBRU.
+    - Review to see if there are any non-zero database count listed across different Database versions. If there is any non-zero count, drilldown to see the databases lagging the security patches. 
+    
         ![AVDF](./images/360-misssec1.png "AVDF - Auditor dashboard - Missing security patches")
-
+    **Note**: Security Central shows the databases that are missing the latest security patches. The corresponding  missing CVEs count/lists indicates the risk the database carries if not patched to the latest DBRU.
  
 5. Review the key configuration risks 
     - Observe the risks pertaining to **Risky grants to PUBLIC** component
@@ -188,7 +188,7 @@ The unified security policy console provides a centralized interface to define, 
     ![AVDF](./images/360-6a.png "AVDF - Policy console - audit policies")
     **Note**: The list includes the audit policies enabled by default in the Oracle Database, and those enabled by automation in the livelab.
 
-4. Go back to **Policy Console**
+4. Click **Policy Console** to go back.
 
 5. Scroll down to the **Policies retrieval schedule for Oracle Database targets** 
 
@@ -215,7 +215,7 @@ Global set represents predefined collection of entities such as IP addresses, da
 
 1. Click on the **Discovery & Classify** tab
 
-2. Click on the **Global Sets** is the left menu
+2. Click on the **Global Sets** in the left menu
     ![AVDF](./images/360-9a.png "AVDF - Global Sets")  
 
     **Note:** Create and manage global sets like IP address, database user, operating system user, client program, privileged user, and sensitive object sets on this page. We have created couple of global sets in this livelab.
@@ -226,7 +226,7 @@ Global set represents predefined collection of entities such as IP addresses, da
 
 1. Expand **Sensitive Object Sets (2)** and click the one created for you: **EmployeeSearchSensitiveApplicationObjects**
     ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
-    **Note:** This group represents a set of most sensitive objects in employees_search DB, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
+    **Note:** This group represents a set of most sensitive objects in **employees_search**, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
 2. Close the popup.
 
 </details>
