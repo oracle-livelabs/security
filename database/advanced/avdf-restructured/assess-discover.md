@@ -38,7 +38,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
     ![AVDF](./images/360-1.png "AVDF - Auditor dashboard in console") 
 
 4. Review the Missing Security Patches risks in **Databases behind on release updates** component
-    - Review to see if there are any non-zero database count listed across different Database versions.If there is any non-zero count, drilldown to see the databases lagging the security patches. 
+    - Review to see if there are any non-zero database count listed across different Database versions. If there is any non-zero count, drilldown to see the databases lagging the security patches. 
     
         ![AVDF](./images/360-misssec1.png "AVDF - Auditor dashboard - Missing security patches")
     **Note**: Security Central shows the databases that are missing the latest security patches. The corresponding  missing CVEs count/lists indicates the risk the database carries if not patched to the latest DBRU.
