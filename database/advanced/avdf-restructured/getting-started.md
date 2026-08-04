@@ -135,7 +135,7 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
             - Sign in to OCI console with the newly reset password.
 
     - Locate your **Tenancy OCID** 
-        - Select the Profile menu and then select Tenancy: **your_tenancy_name**
+        - Select the Profile menu and then select Tenancy: **tenancy**
         - Copy the tenancy OCID to the **Tenancy OCID** 
 
     - Locate your **Compartment OCID** 
@@ -144,7 +144,7 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
             - If you are on the **sandbox instance**, copy the Compartment OCID from details in **View Login Info** popup
 
     - Select OCI Region as US Midwest (Chicago) **(us-chicago-1)** 
-            - If you are on the **sandbox instance**, you will see this in the reservation details as **Generative AI Endpoint Region** field 
+        - If you are on the **sandbox instance**, you will see this in the reservation details as **Generative AI Endpoint Region** field 
 
     - Locate your **User OCID**
         - Select the Profile menu and then select User settings.
