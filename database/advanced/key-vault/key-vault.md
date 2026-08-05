@@ -5,7 +5,7 @@ This workshop guides you through the process of migrating an encrypted Oracle Da
 
 *Estimated Lab Time:* 60 minutes
 
-*Version tested in this lab:* Oracle Key Vault (OKV) 21.14 and Database Enterprise Edition (DBEE) 19.29
+*Version tested in this lab:* Oracle Key Vault (OKV) 21.14 and Database Enterprise Edition (DBEE) 19.25
 
 ### Video Preview
 Watch this preview to see how Oracle Key Vault can enhance your data security [](youtube:4VR1bbDpUIA)

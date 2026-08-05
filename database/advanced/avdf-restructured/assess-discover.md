@@ -19,7 +19,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 - Review the global sets
 
 ## Task 1: Review your security risk posture
-The Security Insights in **Security Central** Console provides a unified, actionable view of your organization’s database security risks by delivering an in-depth assessment of security posture across your Oracle Database fleet. It analyzes key areas such as configurations, user accounts, and sensitive data to surface potential risks.
+The Auditor Dashboard in **Security Central** Console provides a unified, actionable view of your organization’s database security risk by delivering an in-depth assessment of security posture across your Oracle Database fleet. It analyzes key areas such as configurations, user accounts, and sensitive data to surface potential risks.
 
 By offering a simplified, fleet-wide perspective across your entire Oracle Database fleet, it enables teams to quickly identify high-risk areas, prioritize mitigation efforts, and take focused action to strengthen the overall security posture.
 
@@ -31,24 +31,28 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
 
     ![AVDF](./images/avdf-300.png "AVDF - Login")
 
-2. Click on the **Security Console** tab
+2. Ensure you are on the **Home** tab 
 
-3. Click on **Security Insights** in the left menu
+3. Review the **Oracle Database fleet security posture** in  **Auditor Dasboard**
 
-    ![AVDF](./images/360-1.png "AVDF - Security Insights console")   
+    ![AVDF](./images/360-1.png "AVDF - Auditor dashboard in console") 
 
-4. Review the key configuration risks under **Database configuration summary**
-    - Observe the configuration risks that need to be mitigated
-        ![AVDF](./images/360-1aa.png "AVDF - Security Insights - Sec Assessment")
+4. Review the Missing Security Patches risks in **Databases behind on release updates** component
+    - Review to see if there are any non-zero database count listed across different Database versions. If there is any non-zero count, drilldown to see the databases lagging the security patches. 
     
-    - Drilldown into the data showing **Risky privilege grants to PUBLIC** 
-        ![AVDF](./images/360-1b.png "AVDF - Security Insights - System privileges")
+        ![AVDF](./images/360-misssec1.png "AVDF - Auditor dashboard - Missing security patches")
+    **Note**: Security Central shows the databases that are missing the latest security patches. The corresponding  missing CVEs count/lists indicates the risk the database carries if not patched to the latest DBRU.
+ 
+5. Review the key configuration risks 
+    - Observe the risks pertaining to **Risky grants to PUBLIC** component
+    - Drilldown into the data showing affected databases
+        ![AVDF](./images/360-2.png "AVDF - Auditor dashboard - Risky grants to PUBLIC")
 
-    **Note**: Targets **`sales_history`** and **`customer_orders`** have system privileges/ roles granted to **PUBLIC**. Any privilege assigned to PUBLIC is effectively given to everyone, often far beyond what is necessary. It is safer to assign roles and privileges explicitly to specific users or groups based on well-defined requirements.
+    **Note**: Targets **`customer_orders`** and **`sales_history`** have system privileges/ roles granted to **PUBLIC**. Any privilege assigned to PUBLIC is effectively given to everyone, often far beyond what is necessary. It is safer to assign roles and privileges explicitly to specific users or groups based on well-defined requirements.
 
-     - Click [**Security Insights**] to go back to the console.
+     - Close the popup to go back to the dashboard.
 
-5. Let's go to the terminal session to mitigate the risk
+6. Let's go to the terminal session to mitigate the risk
 
     - Open a terminal session on your **DBSec-Lab** VM as OS user *oracle*
 
@@ -79,7 +83,7 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
         ````
     💡 **TIP:** Now that risks are mitigated, let's generate the assessment on-demand to review the presence of risks.
 
-    6. Generate an assessment on-demand for the targets **`customers_orders`** and **`sales_history`** 
+7. Generate an assessment on-demand for the targets **`customers_orders`** and **`sales_history`** 
 
     - Click on the **Targets** tab
     
@@ -92,63 +96,42 @@ By offering a simplified, fleet-wide perspective across your entire Oracle Datab
     
     - Do the same for **sales_history**          
 
-7. Go to the **Security Insights** console 
+8. Go to the **Home** 
 
-    - Review the key configuration risks under **Database configuration summary**
-        ![AVDF](./images/360-1a.png  "AVDF - Security Insights - Configuration summary") 
-        **Note**: Now, you can see that the risks in **Risky privilege grants to PUBLIC** are resolved. You may have to refresh the page few times to see the update. Review *Security Assessment* job status from *Settings tab -> Jobs* to see if it got completed.
+    - Review the risks now pertaining to **Risky grants to PUBLIC**  
+        ![AVDF](./images/360-3.png  "AVDF - Auditor dashboard - Risky grants to PUBLIC") 
+        **Note**: Now, you can see that the risks in **Risky grants to PUBLIC** are resolved. You may have to refresh the page few times to see the update. Review *Security Assessment* job status from *Settings tab -> Jobs* to see if it got completed.
     
-8. Review the Drifts detected in **Security assessment drift detection**
-        ![AVDF](./images/360-1c.png "AVDF - Security Insights - Security Assessment Drift Detection")
 
-9. Click on the pipeline with drifts to see the popup showing the risks involving **grants to PUBLIC** mitigated 
-    
-    ![AVDF](./images/360-1d.png "AVDF - Security Insights - Security Assessment Drifts Report ") 
-
-    - Close the popup
-
-    💡 **TIP:** You've now reviewed security configuration risks and mitigated them. Let's move on to identify potential user risks.
+    💡 **TIP:** You've now reviewed one of the key configuration risks and mitigated them. Let's move on to identify potential user risks.
 
 </details>
 
 <details>
 <summary>**Step 2: Evaluate user risks**</summary>
 
-1. Review the key privilege user risks under **User assessment summary**
-    ![AVDF](./images/360-1e.png "AVDF - Security Insights - User Assessment")
-
-2. Drilldown into the data showing privileged users **Access not audited** 
+1. Review the key user risks named **Privileged users not audited**
+    - Drilldown into the data showing affected users 
     - Filter the report to show only database admins among the priveleged users
         - Make sure to filter the rows containing **Database admin = "Yes"**. You may have to toggle the column to display in *Actions dropdown -> Select Columns*
-    ![AVDF](./images/360-1f.png "AVDF - Security Insights - User Assessment - Priv users without audit")
+    ![AVDF](./images/360-4.png "AVDF - Auditor Dashboard- Priv users without audit")
 
     **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have the broad database administrative rights on the entire fleet of databases. It is critical to audit database administrators and other privileged users, as their broad system privileges can pose significant risk if their credentials are compromised or misused. 
      
-3. Click **Security Insights** to go back, then drilldown into the data showing privileged users **Access to DV protected objects**
-    ![AVDF](./images/360-2.png "AVDF - Retrieval Jobs")  
-     **Note**: Only schema owner has been granted access to the objects in the protected realm of **`customer_orders`** pdb. 
-
     💡 **TIP:** You've now identified privileged users who carry potential risks. Let's move on to understand sensitive data that faces risk of exposure.
 </details>
 
 <details>
 <summary>**Step 3: Assess the sensitive data exposure risk** </summary>
 
-1. Review the sensitive data access not audited under **Data discovery summary**
 
-    ![AVDF](./images/360-3.png "AVDF - Security Insights - Data discovery") 
-
-2. Drilldown into the data showing sensitive data whose **Access not audited** 
-    ![AVDF](./images/360-4.png "AVDF - Security Insights - Data discovery - Access not audited")
-        **Note**: Access to sensitive data in **`employees_search`** and **`customer_orders`** pdbs are not audited. Ensuring proper visibility and governance over who can access sensitive data helps minimize risk, enforce accountability, and protect high-value information.
-
-3. Go back to the **Security Insights** console, and drilldown into sensitive data **Exposed to privileged users**
-    ![AVDF](./images/360-4a.png "AVDF - Security Insights - Data discovery - Access not protected")
+1. Review the risks showing **Sensitive objects exposed to privileged users**
+    ![AVDF](./images/360-4a.png "AVDF - Auditor Dashboard- - Data discovery - Access not protected")
         **Note**: Access to sensitive data in **`employees_search`** pdb remains insufficiently protected, as privileged users can still directly access these objects, increasing the risk of misuse or unauthorized exposure. 
 
-4. Go back to the **Security Insights** console 
+4. Close the popup to go to the dashboard
 
-    💡 **TIP:** You've now identified sensitive data that faces risk of exposure. Let's try to understand what powers these insights in **Security Central**
+    💡 **TIP:** You've now identified sensitive data that faces risk of exposure. Let's try to understand what powers these insights for Auditor Dashboard in **Security Central**
 </details>
 
 <details>
@@ -205,7 +188,7 @@ The unified security policy console provides a centralized interface to define, 
     ![AVDF](./images/360-6a.png "AVDF - Policy console - audit policies")
     **Note**: The list includes the audit policies enabled by default in the Oracle Database, and those enabled by automation in the livelab.
 
-4. Go back to **Policy Console**
+4. Click **Policy Console** to go back.
 
 5. Scroll down to the **Policies retrieval schedule for Oracle Database targets** 
 
@@ -232,7 +215,7 @@ Global set represents predefined collection of entities such as IP addresses, da
 
 1. Click on the **Discovery & Classify** tab
 
-2. Click on the **Global Sets** is the left menu
+2. Click on the **Global Sets** in the left menu
     ![AVDF](./images/360-9a.png "AVDF - Global Sets")  
 
     **Note:** Create and manage global sets like IP address, database user, operating system user, client program, privileged user, and sensitive object sets on this page. We have created couple of global sets in this livelab.
@@ -243,7 +226,7 @@ Global set represents predefined collection of entities such as IP addresses, da
 
 1. Expand **Sensitive Object Sets (2)** and click the one created for you: **EmployeeSearchSensitiveApplicationObjects**
     ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
-    **Note:** This group represents a set of most sensitive objects in employees_search DB, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
+    **Note:** This group represents a set of most sensitive objects in **employees_search**, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
 2. Close the popup.
 
 </details>

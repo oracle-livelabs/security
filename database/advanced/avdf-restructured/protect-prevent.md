@@ -32,7 +32,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central (Security Centr
 
 ## Task 1: Use SQL Firewall to allow only authorized SQL statements and connections
 
-SQL Firewall is enabled in the **`employees_search`**. In this lab, you will enable SQL Firewall to learn authorized SQL traffic of EMPLOYEESEARCH_PROD user, create a policy based on approved SQL, IP, and client program, and enforce it to block unauthorized activity.
+SQL Firewall is enabled in the **`employees_search`** instance. In this lab, you will use SQL Firewall to learn authorized SQL traffic of EMPLOYEESEARCH_PROD user, generate a policy based on approved SQL statements, IP addresses, and client programs, and enforce the policy to prevent unauthorized activity.
 
 <details>
 <summary> **Step 1: Ensure SQL Firewall is enabled** </summary>
@@ -326,7 +326,7 @@ In this task, we will do the following
 
         ![AVDF](./images/avdf-102.png "Configure network settings")
     
-    - Click Network Interface Card *ens3* to see the proxy ports. 
+    - Click Network Interface Card to see the proxy ports. 
     
     ![AVDF](./images/avdf-103.png "Proxy Ports settings")
         **Note:** Proxy Ports are set to 15223 and 15224. We will use these ports for Database Firewall.
@@ -407,7 +407,7 @@ In this task, we will do the following
 
 3. Confirm the Glassfish application connects through DB Firewall 
 
-    -   Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
+    -   Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**.    
             **Note:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*. 
 
     - Login to the application as *`hradmin`* with the password "*`Oracle123`*"
@@ -564,7 +564,7 @@ In this task, we will do the following
     ````
 
     ![AVDF](./images/avdf-128.png "Check the connectivity through the Database Firewall")
-    **Note:** Scroll through the output to see how Database Firewall blocks the DELETE statement as shown above since we have not permitted DBA_DEBRA to do DMLs on sensitive app objects over the network. SELECT statements on sensitive objects are alerted on.
+    **Note:** Scroll through the output to see how Database Firewall blocks the DELETE statement as shown above since we have not permitted DBA_DEBRA to do DMLs on sensitive app objects over the network. SELECT statements on sensitive objects are executed as you see in the output but they are alerted on.
 
 2. Let's now see when `DBA_DEBRA` connects to exfiltrate data from sensitive application objects
 
@@ -583,7 +583,7 @@ In this task, we will do the following
     ![AVDF](./images/avdf-128b.png "Check the connectivity through the Database Firewall")
     **Note**: You see a SQL Firewall context violation error as `EMPLOYEESEARCH_PROD` user is allowed to connect only through Glassfish app (JDBC Thin Client) as per the SQL Firewall policy configured
 
-     **Note**: Try connecting wth Glassfish app like we did in *Task2->Step2*; and run the normal workload queries which are already allow-listed in SQL Firewall policy for `EMPLOYEESEARCH_PROD` user. That works perfectly. Remember, Glassgish app is now configured to work with DB Firewall. 
+     **Note**: Try connecting wth Glassfish app like we did in *Task1->Step3*; and run the normal workload queries which are already allow-listed in SQL Firewall policy for `EMPLOYEESEARCH_PROD` user. That works perfectly. Remember, Glassgish app is now configured to work with DB Firewall. 
 
     💡 **TIP:** You've now seen how SQL Firewall and Database Firewall complement each other in protecting **`employees_search`** from unauthorized traffic.
 
@@ -618,16 +618,22 @@ In this task, we will do the following
         - Description: *Someone has selected more than 100 rows of PII in a single query*
         - Type: *Oracle Database*
         - Severity: *Warning*
-        - Condition: *:ROW_COUNT >100 AND  :OBJECT  like '%DEMOHR%'*
         - Threshold (times): *1*
         - Duration: *1*
         - Group By (Field): *USER*
+        - Condition: Let's use *Alert Assistant* to create the condition
         
         ![AVDF](./images/avdf-656.png "Alert Policies parameters")
 
-    - Click [**Save**]
-    
+        - Enter the condition in natural language: *When someone selects more than 100 records in `DEMO_HR_EMPLOYEES` table in a single query*
+        - Click *Generate Alert Condition*
+        - Review the condition if similar to the following: *(:OBJECT = '`DEMO_HR_EMPLOYEES`') AND (:`OBJECT_TYPE` = 'TABLE') AND (:`COMMAND_CLASS` = 'SELECT') AND (:`ROW_COUNT` > 100)*
+        - Click *Use this alert condition*
 
+        ![AVDF](./images/avdf-656a.png "Alert Assistant")
+
+    - Click [**Save**] to create the alert policy
+    
 5. To trigger alerts, generate traffic by running the scripts in Step 4.
 
 6. Let's check the Database Firewall alerts that were generated
@@ -765,8 +771,19 @@ Database Vault is enabled in the **customer_orders** pdb in the livelab environm
         ![AVDF](./images/360-57.png "DV Alerts")
 
     - Click [**Save**]
+    
+- To trigger the alerts on DV realm violations, query ORDERS table as CUSTOMERADMIN as shown in Step 4.
+    
+    - Connect as `CUSTOMERADMIN` to fire select on CO.ORDERS
+    ````
+    <copy>./avs_orders_count_sqlplus.sh CUSTOMERADMIN</copy>
+    ````
+- Click the **Alerts** tab to view the alerts that have occurred   
 
-    **Note:** To see alerts getting triggered, fire the script in Step4 and notice the alerts.
+    ![AVDF](./images/avdf-654.png "View the alerts")
+
+    **Note**: If you don't see them, refresh the page because the system catch the alerts every minute
+
 You may now **proceed to the next lab**.
 </details>
 
