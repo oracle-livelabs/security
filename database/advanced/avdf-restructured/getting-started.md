@@ -127,20 +127,24 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
     
     **Steps to configure**:
     - Log in to Oracle Cloud account
-        - If you are on the sandbox instance, OCI access details are present in **View Login Info** popup
+        - If you are on your own tenancy, enter your cloud account credentials to sign in.
+        - If you are on the **sandbox instance**, OCI access details are provided in **View Login Info** popup
                 ![AVDF](./images/avdf-305a.png "OCI access in sandbox")
-        - Click **Launch OCI**, use the password provided in the reservation to generate a new password. Login to OCI.
+            - Click **Copy OCI Link**, launch a browser and paste the URL.
+            - Use the password provided in the reservation to login the first time to reset the password. 
+            - Sign in to OCI console with the newly reset password.
 
     - Locate your **Tenancy OCID** 
-        - Select the Profile menu and then select Tenancy: **your_tenancy_name**
+        - Select the Profile menu and then select Tenancy: **tenancy**
         - Copy the tenancy OCID to the **Tenancy OCID** 
 
     - Locate your **Compartment OCID** 
         - Open the navigation menu, select Identity & Security. Under Identity, select Compartments.
         - Search for the compartment and drilldown. Copy the OCID to **Compartment OCID** 
-            - If you are on the sandbox instance, copy the Compartment OCID from details in **View Login Info** popup
+            - If you are on the **sandbox instance**, copy the Compartment OCID from details in **View Login Info** popup
 
-    - Select OCI Region of your choice
+    - Select OCI Region as US Midwest (Chicago) **(us-chicago-1)** 
+        - If you are on the **sandbox instance**, you will see this in the reservation details as **Generative AI Endpoint Region** field 
 
     - Locate your **User OCID**
         - Select the Profile menu and then select User settings.
