@@ -63,7 +63,7 @@ You have three options for registering your Autonomous AI Database:
 
 5. Select **Register database**. From here, you can manually configure registration details. This method assumes that you have already completed the required pre-registration tasks for your database.
 
-   ![Manual target registration](images/manual-target-registration.png "Manual target registration")
+    ![Manual target registration](images/manual-target-registration.png "Manual target registration")
 
 6. Select **Cancel**.
 
@@ -143,6 +143,8 @@ To register a database other than an Autonomous AI Database for this workshop, p
 
     Note: From here on, to navigate to a landing page, we simply say *Navigate to the 'feature-name' page*.
 
+    ![Data Safe landing pages](images/data-safe-landing-pages.png "Data Safe landing pages")
+
 
 You may now **proceed to the next lab**.
 
@@ -155,4 +157,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, January 29, 2026
+- **Last Updated By/Date** - Jody Glover, July 29, 2026
