@@ -54,7 +54,7 @@ By completing the instructions below the sample schemas **SH**, **OE**, and **HR
 
     ````
     <copy>
-    wget https://github.com/oracle/db-sample-schemas/archive/v19c.zip
+    wget https://github.com/oracle-samples/db-sample-schemas/archive/refs/tags/v19c.zip
     unzip v19c.zip
     cd db-sample-schemas-19c
     perl -p -i.bak -e 's#__SUB__CWD__#'$(pwd)'#g' *.sql */*.sql */*.dat
