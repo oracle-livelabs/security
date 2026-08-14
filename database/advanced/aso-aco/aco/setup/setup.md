@@ -42,7 +42,7 @@ By completing the instructions below the sample schemas **SH**, **OE**, and **HR
 
     ![substitute user oracle](./images/sudo-oracle.png " ")
 
-3.  Set the environment variables to point to the Oracle binaries.  When prompted for the SID (Oracle Database System Identifier), enter **cdb1**.
+3. Set the environment variables to point to the Oracle binaries.  When prompted for the SID (Oracle Database System Identifier), enter **cdb1**.
     ````
     <copy>
     . oraenv
@@ -54,7 +54,7 @@ By completing the instructions below the sample schemas **SH**, **OE**, and **HR
 
     ````
     <copy>
-    wget https://github.com/oracle/db-sample-schemas/archive/v19c.zip
+    wget https://github.com/oracle-samples/db-sample-schemas/archive/refs/tags/v19c.zip
     unzip v19c.zip
     cd db-sample-schemas-19c
     perl -p -i.bak -e 's#__SUB__CWD__#'$(pwd)'#g' *.sql */*.sql */*.dat
@@ -83,7 +83,7 @@ By completing the instructions below the sample schemas **SH**, **OE**, and **HR
     ````
     ![start sqlplus](./images/start-sqlplus-create-tbs-01.png " ")
 
-7.  Install the Sample Schemas by running the script below.
+7. Install the Sample Schemas by running the script below.
 
     ````
     <copy>
@@ -104,7 +104,7 @@ By completing the instructions below the sample schemas **SH**, **OE**, and **HR
 
     ![schema installed](./images/tables-created.png " " )
 
-8.  Exit SQL Plus to the oracle user.
+8. Exit SQL Plus to the oracle user.
 
     ```
     <copy>
@@ -114,7 +114,7 @@ By completing the instructions below the sample schemas **SH**, **OE**, and **HR
 
     ![return to opc](images/return-to-opc.png)
 
-9.  Create gzip backup of the sample data datafile (storage compression simulation)
+9. Create gzip backup of the sample data datafile (storage compression simulation)
 
     **Note**: Your numbers may by slightly different then what is shown in the screenshot, but the point is to show that compression has occured. As long is that is still shown for you, you are good to keep going through the lab.
 
