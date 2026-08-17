@@ -78,7 +78,7 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
 
     ![EMPLOYEES table](images/drag-employees-table-to-worksheet.png "EMPLOYEES table")
 
-4. When prompted to choose an insertion type, click **Select**, and then select **Apply**.
+4. When prompted to choose an insertion type, select **Select**, and then select **Apply**.
 
     ![Choose the type of insertion dialog box](images/insertion-type-select.png "Choose the type of insertion dialog box")
 
@@ -96,16 +96,16 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
 
     - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, and `PHONE_NUMBER` are considered sensitive data and should be masked if shared for non-production use.
 
-8. Repeat steps 3 to 7 for the `LOCATIONS` table.
+8. Clear the worksheet and the **Script Output** tab, and repeat steps 3 to 7 for the `LOCATIONS` table.
 
-9. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe. 
+9. Keep this browser tab open because you return to it later.
 
 
 ## Task 3: Create a masking policy for your target database
 
 Data Masking can generate a masking policy for your target database based on your sensitive data model. It automatically tries to select a default masking format for each sensitive column. You can edit these default selections and select different ones as needed. Occasionally you might be prompted to fix issues (if they exist) in your masking formats.
 
-1. Navigate to the **Data masking** landing page.
+1. Return to the browser tab for Oracle Data Safe and navigate to the **Data masking** landing page.
 
 2. Under **Data masking**, select **Masking policies**.
 
@@ -130,7 +130,7 @@ Data Masking can generate a masking policy for your target database based on you
     *Important! Please do not close the panel. It closes automatically after all operations are completed. If you close the panel before the operations are finished, the operation to add columns to the masking policy is not initiated.*
 
 
-7. Review the **Details** tab. 
+7. On the **Masking policy** page, review the **Details** tab. 
 
     - Under **General information**, you can view the masking policy name, a description of the masking policy, the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, when the masking policy was created and updated.
     - Under **Column source**, you can view the name of the target database and a link to the sensitive data model.
@@ -177,7 +177,9 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 4. For **Condition**, enter **1=1**.
 
-5. For each of the following columns, select the column from the **Group masking column name** dropdown list, and then select **Add column**. 
+5. For **Table name**, select **HCM1.LOCATIONS**.
+
+6. For each of the following columns, select the column from the **Group masking column name** dropdown list, and then select **Add column**. 
 
     - `STREET_ADDRESS`
     - `CITY`
@@ -190,11 +192,11 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
     ![Group mask configuration](images/group-mask1.png "Group mask configuration")
 
 
-6. Select **Continue**.
+7. Select **Continue**.
 
-7. Notice that the masking format for the columns is set to **Address**.
+8. Notice that the masking format for the columns is set to **Address**.
 
-8. From the **Actions** menu, select  **Save masking formats**.
+9. From the **Actions** menu, select  **Save masking formats**.
 
 
 ## Task 6: Perform a pre-masking check
@@ -295,4 +297,4 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 8, 2026
+- **Last Updated By/Date** - Jody Glover, July 28, 2026
