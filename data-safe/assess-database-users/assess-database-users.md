@@ -2,21 +2,55 @@
 
 ## Introduction
 
-User Assessment helps you assess the security of your database users and identify potential high risk users. This allows you to review the potential risk to your data in case any of your user accounts get compromised or go rogue. By default, Oracle Data Safe automatically generates user assessments for your target databases and stores them in the Assessment History. You can analyze assessment data across all your target databases and for each target database. You can monitor user or entitlement changes on your target databases by comparing the latest assessment to a baseline or to another assessment.
+In the previous lab, you acted as a database security administrator responsible for monitoring the security posture of a target database. You established an approved configuration as a baseline, introduced a risky privilege change, and used Oracle Data Safe Security Assessment to detect and investigate security drift.
 
-In this lab, you explore User Assessment.
+A secure database configuration is only part of the security picture. Who can access the database, what they can do, and whether their accounts are still appropriate are equally important.
+
+Imagine that you are responsible for reviewing access to a database containing sensitive business data. Your security team needs to know:
+- Which database users represent the greatest potential risk?
+- Which users have powerful administrative roles?
+- Which users have access to many schemas?
+- Are privileged accounts actively being used?
+- Have users or their entitlements changed since the last review?
+- Did a new privileged account appear, or did an existing risky account disappear?
+
+Oracle Data Safe User Assessment helps answer these questions by analyzing database users, their roles and privileges, account status, login activity, password information, and schema access.
+
+Data Safe automatically generates user assessments for registered target databases and stores assessment copies in Assessment History. You can analyze users across your target databases, investigate individual users, and compare assessments to identify changes in users and their entitlements.
+
+
+### Scenario
+
+You have just completed a security configuration review of your database and discovered that its configuration had drifted from the approved baseline.
+
+Now your security team asks you to perform an access review.
+
+During the review, you discover a user account with a CRITICAL potential risk rating. You need to understand why this account is considered risky and what privileges and access it has.
+
+Then, imagine that changes are made to the database:
+- The high-risk EVIL_RICH account is removed.
+- A new user, JOE_SMITH, is created.
+- JOE_SMITH is granted the PDB_DBA role.
+
+You will refresh the user assessment and compare it with the earlier assessment to determine what changed.
+
+The goal is not simply to find users. The goal is to answer a security question:
+How has database access changed, and did the change introduce a new potentially dangerous user?
+
 
 Estimated Time: 20 minutes
+
 
 ### Objectives
 
 In this lab, you will:
 
-- View the landing page for User Assessment
-- Analyze users in the latest user assessment
-- Change users and entitlements on the target database
-- Refresh the latest user assessment
-- Compare the latest user assessment with the initial user assessment
+- Evaluate the current potential risk of database users
+- Investigate a potentially critical-risk user and its entitlements
+- Simulate changes to database users and privileges
+- Refresh the user assessment to detect access changes
+- Compare user assessments to identify new and removed users and entitlement changes
+- Determine the security significance of a newly created privileged user
 
 
 ### Prerequisites
