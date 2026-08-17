@@ -19,7 +19,7 @@ This lab assumes you have:
 1. Click on the link below to download the Resource Manager zip file you need to build your environment:
 
 <if type="aso">
-    - [`https://c4u02.objectstorage.us-ashburn-1.oci.customer-oci.com/p/9DEArLjsgbKXuJgQtSG95E8hMXRFtxgHR8jiHbqz4HgyVYXVnSo0SC_s-zq5CJA3/n/c4u02/b/hosted-files/o/dbseclabs-v62_init-vm-aso.zip)
+    - [`dbseclabs-aso.zip`] (https://c4u02.objectstorage.us-ashburn-1.oci.customer-oci.com/p/9DEArLjsgbKXuJgQtSG95E8hMXRFtxgHR8jiHbqz4HgyVYXVnSo0SC_s-zq5CJA3/n/c4u02/b/hosted-files/o/dbseclabs-v62_init-vm-aso.zip)
 </if>
 <if type="avdf">
     - [`dbseclabs-avdf.zip`](https://c4u02.objectstorage.us-ashburn-1.oci.customer-oci.com/p/9DEArLjsgbKXuJgQtSG95E8hMXRFtxgHR8jiHbqz4HgyVYXVnSo0SC_s-zq5CJA3/n/c4u02/b/hosted-files/o/dbseclabs-v62_avdf.zip)
