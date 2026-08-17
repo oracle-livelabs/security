@@ -136,7 +136,7 @@ Increase the scope of the data discovery job.
 
     The **Apply to SDM** dialog box opens. You are warned that this operation will update the sensitive data model with all the columns of this discovery job results that have been processed.
 
-    ![Apply to SDM dialog box](images/apply-to-sdm-dialog-box.png "Apply to SDM dialog box")
+    ![Apply to SDM dialog box](images/apply-to-sdm-dialog-box2.png "Apply to SDM dialog box")
 
 15. Select **Apply**, and then wait to be returned to the **Incremental discovery** tab.
 
