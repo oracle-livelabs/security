@@ -43,7 +43,7 @@ Audit trails represent collection endpoints for database activity events. They g
 2. Click on the **Policies** tab, and **Audit Policies** in the left menu
     ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 
-    **Note**: If the **Last Retrieved time** is *Never*, select the **`employees_search`** pdb and click **Retrieve policies** to retrieve the latest from the database.You can schedule the periodical retrieval following *Lab5->Task3->Step2*.
+    **Note**: If the **Last Retrieved time** is *Never*, select the **`employees_search`** pdb and click **Retrieve policies** to retrieve the latest from the database.You can schedule the periodical retrieval following *Lab4->Task3->Step1*.
 
 3. Click on **employees_search** pdb to review the policies enabled
     ![AVDF](./images/360-12.png "AVDF - Audit Policies for Employees Search pdb")
@@ -82,7 +82,7 @@ Audit trails represent collection endpoints for database activity events. They g
 1. Click on **customer_orders** pdb to review the policies enabled
     ![AVDF](./images/360-12a.png "AVDF - Audit Policies for customer orders pdb")
 
-    **Note**: We have enabled few audit policies like **System Configuration Changes**, **Critical Database Activity**, and **Database Schema changes** in the terraform for the livelab instance. 
+    **Note**: We have enabled few audit policies like **System Configuration Changes**, **Critical Database Activity**, **User Login Events**, and **Database Schema changes** in the terraform for the livelab instance. 
 
 2. Provision the audit policy to track **privileged user activity**
     - Expand **User Actions**

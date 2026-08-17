@@ -178,7 +178,7 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eL
 
 3. Find out the actionable security assessment findings using the natural language query
 
-    - Enter the following query *What are the high and medium risk security assesssment findings in `employees_search` instance*
+    - Enter the following query *What are the high risk security assesssment findings in `employees_search` instance*
 
     ![AVDF](./images/avdf-700.png "Sec-advisor1")  
 

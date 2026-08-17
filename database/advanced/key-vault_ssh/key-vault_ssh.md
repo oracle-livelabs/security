@@ -289,7 +289,7 @@ In this lab, we will introduce remote server access controls by centrally managi
         ```
         <copy>
         sudo mkdir -pvm700 /opt/okv
-        export JAVA_HOME=/opt/oracle/product/23ai/dbhomeFree/jdk
+        export JAVA_HOME=/opt/oracle/product/26ai/dbhome_1/jdk
         sudo $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d /opt/okv        
         </copy>
         ```
@@ -685,7 +685,7 @@ In this second part, we will manage users' private keys in OKV making those priv
         ```
         <copy>
         cd
-        export JAVA_HOME=/opt/oracle/product/23ai/dbhomeFree/jdk
+        export JAVA_HOME=/opt/oracle/product/26ai/dbhome_1/jdk
         $JAVA_HOME/bin/java -jar /tmp/okvclient.jar -d .
         </copy>
         ```

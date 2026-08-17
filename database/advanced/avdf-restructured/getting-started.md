@@ -67,15 +67,15 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
         <copy>cd $DBSEC_LABS/avdf/avs</copy>
         ````
 
-    - Learn the Security Central password you will need for the duration of the lab
+    - Learn the Security Central password you will need to login for the first time
 
         ````
         <copy>echo $AVUSR_PWD</copy>
         ````
 
         **Note**:
-        - This new password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
-        - At the first login on the Security Central Console, it will ask you to change this randomly generated password
+        - This password for **AVADMIN** and **AVAUDITOR** users is randomly generated during the deployment of the Livelabs
+        - You will be prompted to change the password when you login for the first time with this randomly generated password
 
 2. Open a web browser window to *`https://av`* to access to the Security Central Console
 
@@ -116,16 +116,52 @@ You have been given a randomly generated password for the *`AVADMIN`* and *`AVAU
 
 ## Task 2: Configure Generative AI service integration
 
- Configure Generative AI service integration in Security Central to leverage the features of *`Security advisor`* and *`Alert Assistant`*.
+ Configure Generative AI service integration in Security Central to enable **Security advisor** and **Alert Assistant** features.
 
 1. Login to Security Central Console as *`AVADMIN`* 
 2. Click on the **Settings** tab, and **System** in the left menu
 3. Under **Configuration**, click **Security advisor configuration** to open the popup
-4. Follow the intructions provided in the tooltip **`See how to gather the Security advisor configuration details`** to fill the details
+4. Refer to the configuration steps given below. For details, you may refer to the documentation links in tooltip **`See how to gather the Security advisor configuration details`**.
 
     ![AVDF](./images/avdf-305.png "AVDF - Sec Advisor")
+    
+    **Steps to configure**:
+    - Log in to Oracle Cloud account
+        - If you are on your own tenancy, enter your cloud account credentials to sign in.
+        - If you are on the **sandbox instance**, OCI access details are provided in **View Login Info** popup
+                ![AVDF](./images/avdf-305a.png "OCI access in sandbox")
+            - Click **Copy OCI Link**, launch a browser and paste the URL.
+            - Use the password provided in the reservation to login the first time to reset the password. 
+            - Sign in to OCI console with the newly reset password.
+
+    - Locate your **Tenancy OCID** 
+        - Select the Profile menu and then select Tenancy: **tenancy**
+        - Copy the tenancy OCID to the **Tenancy OCID** 
+
+    - Locate your **Compartment OCID** 
+        - Open the navigation menu, select Identity & Security. Under Identity, select Compartments.
+        - Search for the compartment and drilldown. Copy the OCID to **Compartment OCID** 
+            - If you are on the **sandbox instance**, copy the Compartment OCID from details in **View Login Info** popup
+
+    - Select OCI Region as US Midwest (Chicago) **(us-chicago-1)** 
+        - If you are on the **sandbox instance**, you will see this in the reservation details as **Generative AI Endpoint Region** field 
+
+    - Locate your **User OCID**
+        - Select the Profile menu and then select User settings.
+        - The user OCID is shown under User Information. Copy the OCID to **User OCID**
+
+    - Generate an API Signing Key in the User's profile
+        - Go to **Token and keys** tab in the User profile, click **Add API key**, select **Generate API key pair**, download private key and public key, and click **Add**.
+        - The key is added and the Configuration File Preview is displayed. Copy the **Fingerprint**.
+            ![AVDF](./images/avdf-305b.png "OCI - API Singing Key")
+
+    - Choose the downloaded **OCI private key** in the security advisor configuration popup
+    
+    - Copy the fingerprint to **OCI public key fingerprint**
 
 5. Click Save.
+
+    **Note**: If you are getting **OAV-48809: DNS is not configured on the Audit Vault Server** error, under **Configuration**, click **System Settings**, and enter the DNS Server **169.254.169.254** and save. Retry the **Security advisor configuration**.
 
 You may now **proceed to the next lab**.
 
