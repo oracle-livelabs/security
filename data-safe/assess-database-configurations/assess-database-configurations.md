@@ -41,7 +41,7 @@ Estimated Time: 20 minutes
 
 In this lab, you will:
 
-- Evaluate the current security posture of a target database
+- Evaluate the current security posture of your target database
 - Establish an approved security posture as a baseline
 - Simulate a risky database privilege change
 - Reassess the database to detect the new risk
