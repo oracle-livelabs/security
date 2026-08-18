@@ -305,9 +305,13 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
 Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals livelab.
 
+
+## Learn More
+
+- [SQL Firewall Overview](https://docs.oracle.com/iaas/data-safe/doc/sql-firewall-overview.html)
+
+
 ## Acknowledgements
 
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 8, 2026
-
-
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Last Updated By/Date** - Jody Glover, August 18, 2026

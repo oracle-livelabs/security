@@ -2,11 +2,7 @@
 
 ## Introduction
 
-In the previous two labs, you investigated the security posture of the database and then reviewed who can access it and what they can do.
-
-You have now identified risky configuration changes and changes to privileged users and entitlements. The next question is more fundamental: What data are we actually trying to protect?
-
-Knowing that a user has access to a database does not tell you whether that access puts sensitive information at risk. To understand the potential impact of a compromised or over-privileged account, you need to know where sensitive data resides.
+In the previous two labs, you investigated the security posture of the database and then reviewed who can access it and what they can do. You have now identified risky configuration changes and changes to privileged users and entitlements. The next question is more fundamental: What data are we actually trying to protect? Knowing that a user has access to a database does not tell you whether that access puts sensitive information at risk. To understand the potential impact of a compromised or over-privileged account, you need to know where sensitive data resides.
 
 For example, a user might have access to a schema containing the following:
 
@@ -18,25 +14,19 @@ For example, a user might have access to a schema containing the following:
 - Academic information
 - Other information that your organization considers sensitive
 
-Manually locating this information across database tables and columns can be difficult, particularly as databases grow and application schemas change.
-
-Oracle Data Safe Data Discovery helps you build an inventory of sensitive data by inspecting the actual data in your target database and its data dictionary. You specify the types of sensitive information you are interested in, and Data Safe identifies columns that contain or are related to that information.
+Manually locating this information across database tables and columns can be difficult, particularly as databases grow and application schemas change. Oracle Data Safe Data Discovery helps you build an inventory of sensitive data by inspecting the actual data in your target database and its data dictionary. You specify the types of sensitive information you are interested in, and Data Safe identifies columns that contain or are related to that information.
 
 ### Scenario
 
-Continue acting as the database security administrator from the previous labs.
+Continue acting as the database security administrator from the previous labs. You have already done the following:
 
-You have already done the following:
-
-1. Reviewed the database's configuration and established an approved security baseline.
-
-2. Detected a risky configuration change.
-
-3. Reviewed database users and identified changes to privileged access.
+- Reviewed the database's configuration and established an approved security baseline
+- Detected a risky configuration change
+- Reviewed database users and identified changes to privileged access
 
 Now your security team asks a different question: If one of these accounts were compromised, what sensitive information could potentially be exposed?
 
-Your first step is to discover where sensitive data exists in the database. You will use Data Discovery to examine the `HCM1` schema and identify sensitive columns. You will review the results and sample data to understand what information is being protected. During the review, you will also recognize that automated discovery does not necessarily capture every piece of information your organization considers sensitive. You will therefore extend the sensitive data model by explicitly adding another sensitive column. This creates a more complete inventory that can support the security and data protection activities you will perform in subsequent labs.
+Your first step is to discover where sensitive data exists in the database. You will use Data Discovery to examine the `HCM1` schema and identify sensitive columns. You will review the results and sample data to understand what information is being protected. During the review, you will also recognize that automated discovery does not necessarily capture every piece of information your organization considers sensitive. You will therefore extend the sensitive data model by performing an incremental discovery of sensitive data and by explicitly adding another sensitive column. This creates a more complete inventory that can support the security and data protection activities you will perform in subsequent labs.
 
 Estimated Lab Time: 15 minutes
 
@@ -228,8 +218,10 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-- [Data Discovery Overview](https://docs.oracle.com/en/cloud/paas/data-safe/udscs/data-discovery-overview.html)
+- [Data Discovery Overview](https://docs.oracle.com/iaas/data-safe/doc/data-discovery-overview.html)
+
 
 ## Acknowledgements
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 28th, 2026
+
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Last Updated By/Date** - Jody Glover, August 18, 2026

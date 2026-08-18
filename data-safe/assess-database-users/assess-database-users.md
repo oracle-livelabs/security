@@ -244,9 +244,9 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-- [User Assessment Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-6BF46EE2-F7B5-4710-A09C-069EA95F8052)
+- [User Assessment Overview](https://docs.oracle.com/iaas/data-safe/doc/user-assessment-overview.html)
 
 ## Acknowledgements
 
-* **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 8, 2026
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Last Updated By/Date** - Jody Glover, August 18, 2026

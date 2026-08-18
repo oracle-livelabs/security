@@ -311,9 +311,11 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 ## Learn More
 
-- [Data Masking Overview](https://docs.oracle.com/en/cloud/paas/data-safe/udscs/data-masking-overview.html)
-- [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
+- [Data Masking Overview](https://docs.oracle.com/iaas/data-safe/doc/data-masking-overview.html)
+- [Target Database Registration](https://docs.oracle.com/iaas/data-safe/doc/target-database-registration.html)
+
 
 ## Acknowledgements
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, July 28, 2026
+
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Last Updated By/Date** - Jody Glover, August 18, 2026

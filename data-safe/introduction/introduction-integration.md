@@ -10,7 +10,7 @@ Estimated Workshop Time: 2 hours
 
 Oracle Data Safe is Oracle’s platform for securing data in databases. As a native Oracle Cloud Infrastructure service, Oracle Data Safe lets you assess the security of your database configurations, find your sensitive data, mask that data in non-production environments, discover the risks associated with database users, and monitor database activity.
 
-Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:UUc26bpdFnc)
+Watch a preview of "*Introduction to Oracle Data Safe*" (May 2025) [Video hosted on Oracle Video Hub](videohub:1_qzygqqzb)
 
 ## Objectives
 
@@ -27,12 +27,11 @@ In this workshop, you learn how to perform the following tasks:
 The following links provide more information about Oracle Data Safe:
 
 - [Get Started with Oracle Data Safe Fundamentals Workshop in LiveLabs](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=598)
-- [Oracle Data Safe website](https://www.oracle.com/database/technologies/security/data-safe.html)
-- [Oracle Data Safe user assistance](https://docs.oracle.com/en/cloud/paas/data-safe/index.html)
-- [Oracle Data Safe data sheet](https://www.oracle.com/a/tech/docs/dbsec/data-safe/ds-security-data-safe.pdf)
-- [Oracle Data Safe frequently asked questions](https://www.oracle.com/security/database-security/data-safe/faq/)
+- [Oracle Data Safe website](https://www.oracle.com/security/database-security/data-safe/)
+- [Oracle Data Safe documentation](https://docs.oracle.com/iaas/data-safe/index.html)
+
 
 ## Acknowledgements
 
 * **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, August 17, 2026
+* **Last Updated By/Date** - Jody Glover, August 18, 2026

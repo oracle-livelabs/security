@@ -77,7 +77,7 @@ This lab assumes you have:
     - The **Risks by category** pie chart shows you a percentage breakdown of the applicable risk categories (for example, User Accounts, Privileges and Roles, Authorization Control, Data Encryption, Fine-Grained Access, Auditing, and Database Configurations) across target databases in the selected compartment(s).
     - The **Top 5 common security controls** bar chart shows the number of target databases at each risk level for each of the top five common controls. The top five common controls are the five security controls that Oracle considers the most important to the security of your target databases.
 
-     ![Security assessment overview charts for all targets](images/sa_overview_charts.png "Security assessment overview charts for all targets")
+    ![Security assessment overview charts for all targets](images/sa_overview_charts.png "Security assessment overview charts for all targets")
 
 
 4. Select the **Risk summary** tab and review the information.
@@ -261,9 +261,9 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-- [Security Assessment Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-030B2A14-272F-49CF-80D2-5559C722E0FF)
+- [Security Assessment Overview](https://docs.oracle.com/iaas/data-safe/doc/security-assessment-overview.html)
 
 ## Acknowledgements
 
-* **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 8, 2026
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Last Updated By/Date** - Jody Glover, August 18, 2026

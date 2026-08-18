@@ -2,9 +2,33 @@
 
 ## Introduction
 
-Data Masking provides a way for you to mask sensitive data so that the data is safe for non-production purposes. For example, organizations often need to create copies of their production data to support development and test activities. Simply copying the production data exposes sensitive data to new users. To avoid a security risk, you can use Data Masking to replace the sensitive data with realistic, but fictitious data.
+In the previous labs, you have been building a more complete picture of your database's security posture.
 
-Create a masking policy using the default settings and then customize it. Mask the sensitive data that you discovered in the [Discover Sensitive Data](?lab=discover-sensitive-data-ocw) lab. View the before and after effect on the masked data by using Oracle Database Actions.
+You first asked: Is the database securely configured? You used Security Assessment to identify configuration risks and detect security drift.
+
+Next, you asked: Who has access to the database, and what can they do? You used User Assessment to investigate potentially risky users and changes to privileges and entitlements.
+
+Then, you asked: What sensitive information are we actually protecting? You used Data Discovery to identify sensitive data in the `HCM1` schema and created a sensitive data model describing where that information resides.
+
+Now your security team has a new challenge.
+
+The application development team needs realistic data for development and testing. Using production-like data helps developers test applications with realistic names, addresses, salaries, and other values. But copying sensitive data into a non-production environment creates additional risk. Developers and testers might not require access to real employee names, phone numbers, salaries, or addresses simply to test an application.
+
+The security question now becomes: How can we preserve realistic, usable data for development and testing without exposing the real sensitive information?
+
+### Scenario
+
+Continue acting as the database security administrator from the previous labs. Your team has completed its initial investigation and now knows the following:
+
+- The security posture of the database
+- Which users and privileges could present risk
+- Where sensitive information resides
+
+The development team now requests a copy of the `HCM` application data for use in a non-production environment. Before approving that request, you review the data. The `EMPLOYEES` table contains information such as employee names, email addresses, phone numbers, and salaries. The `LOCATIONS` table contains address information. Providing those values unchanged would unnecessarily expose sensitive information to users who do not need the real values.
+
+You decide that the data must be masked before it is made available for non-production use.
+
+In this lab, you will use the sensitive data model you created in the previous lab to build a masking policy. You will customize how certain values are masked, verify that the database is ready for masking, run the masking operation, and validate that the sensitive information has been transformed.
 
 Estimated Time: 20 minutes
 
@@ -14,14 +38,14 @@ Estimated Time: 20 minutes
 
 In this lab, you will:
 
-- View sensitive data in your target database
-- Create a masking policy for your target database
-- Modify a masking format to use a fixed number
-- Create a group mask
+- Review the sensitive information in your database
+- Create a masking policy from your sensitive data model
+- Customize how specific sensitive values are masked
+- Preserve relationships between related address values by using group masking
 - Perform a pre-masking check
-- Mask sensitive data in your target database
-- View the Data Masking report
-- Validate the masked data in your target database
+- Mask sensitive data
+- Validate that sensitive values have been transformed while remaining usable for non-production purposes
+
 
 ### Prerequisites
 
@@ -255,9 +279,11 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-- [Data Masking Overview](https://docs.oracle.com/en/cloud/paas/data-safe/udscs/data-masking-overview.html)
-- [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
+- [Data Masking Overview](https://docs.oracle.com/iaas/data-safe/doc/data-masking-overview.html)
+- [Target Database Registration](https://docs.oracle.com/iaas/data-safe/doc/target-database-registration.html)
+
 
 ## Acknowledgements
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 10, 2026
+
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Last Updated By/Date** - Jody Glover, August 18, 2026
