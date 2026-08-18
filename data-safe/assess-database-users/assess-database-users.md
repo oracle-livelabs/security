@@ -6,7 +6,8 @@ In the previous lab, you acted as a database security administrator responsible 
 
 A secure database configuration is only part of the security picture. Who can access the database, what they can do, and whether their accounts are still appropriate are equally important.
 
-Imagine that you are responsible for reviewing access to a database containing sensitive business data. Your security team needs to know:
+Imagine that you are responsible for reviewing access to a database containing sensitive business data. Your security team needs to know the following:
+
 - Which database users represent the greatest potential risk?
 - Which users have powerful administrative roles?
 - Which users have access to many schemas?
@@ -28,14 +29,14 @@ Now your security team asks you to perform an access review.
 During the review, you discover a user account with a CRITICAL potential risk rating. You need to understand why this account is considered risky and what privileges and access it has.
 
 Then, imagine that changes are made to the database:
-- The high-risk EVIL_RICH account is removed.
-- A new user, JOE_SMITH, is created.
-- JOE_SMITH is granted the PDB_DBA role.
+
+- The high-risk `EVIL_RICH` account is removed.
+- A new user, `JOE_SMITH`, is created.
+- `JOE_SMITH` is granted the `PDB_DBA` role.
 
 You will refresh the user assessment and compare it with the earlier assessment to determine what changed.
 
-The goal is not simply to find users. The goal is to answer a security question:
-How has database access changed, and did the change introduce a new potentially dangerous user?
+The goal is not simply to find users. The goal is to answer a security question: How has database access changed, and did the change introduce a new potentially dangerous user?
 
 
 Estimated Time: 20 minutes

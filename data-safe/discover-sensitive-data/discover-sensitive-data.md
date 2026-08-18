@@ -4,13 +4,12 @@
 
 In the previous two labs, you investigated the security posture of the database and then reviewed who can access it and what they can do.
 
-You have now identified risky configuration changes and changes to privileged users and entitlements. The next question is more fundamental:
-
-What data are we actually trying to protect?
+You have now identified risky configuration changes and changes to privileged users and entitlements. The next question is more fundamental: What data are we actually trying to protect?
 
 Knowing that a user has access to a database does not tell you whether that access puts sensitive information at risk. To understand the potential impact of a compromised or over-privileged account, you need to know where sensitive data resides.
 
-For example, a user might have access to a schema containing:
+For example, a user might have access to a schema containing the following:
+
 - Employee information
 - Contact information
 - Identification information
@@ -27,21 +26,17 @@ Oracle Data Safe Data Discovery helps you build an inventory of sensitive data b
 
 Continue acting as the database security administrator from the previous labs.
 
-You have already:
-1.	Reviewed the database's configuration and established an approved security baseline.
-2.	Detected a risky configuration change.
-3.	Reviewed database users and identified changes to privileged access.
+You have already done the following:
 
-Now your security team asks a different question:
-If one of these accounts were compromised, what sensitive information could potentially be exposed?
+1. Reviewed the database's configuration and established an approved security baseline.
 
-Your first step is to discover where sensitive data exists in the database.
+2. Detected a risky configuration change.
 
-You will use Data Discovery to examine the HCM1 schema and identify sensitive columns. You will review the results and sample data to understand what information is being protected.
+3. Reviewed database users and identified changes to privileged access.
 
-During the review, you will also recognize that automated discovery does not necessarily capture every piece of information your organization considers sensitive. You will therefore extend the sensitive data model by explicitly adding another sensitive column.
+Now your security team asks a different question: If one of these accounts were compromised, what sensitive information could potentially be exposed?
 
-This creates a more complete inventory that can support the security and data protection activities you will perform in subsequent labs.
+Your first step is to discover where sensitive data exists in the database. You will use Data Discovery to examine the `HCM1` schema and identify sensitive columns. You will review the results and sample data to understand what information is being protected. During the review, you will also recognize that automated discovery does not necessarily capture every piece of information your organization considers sensitive. You will therefore extend the sensitive data model by explicitly adding another sensitive column. This creates a more complete inventory that can support the security and data protection activities you will perform in subsequent labs.
 
 Estimated Lab Time: 15 minutes
 

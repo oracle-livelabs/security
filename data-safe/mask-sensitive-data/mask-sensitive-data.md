@@ -4,41 +4,28 @@
 
 In the previous labs, you have been building a more complete picture of your database's security posture.
 
-You first asked:
-Is the database securely configured?
+You first asked: Is the database securely configured? You used Security Assessment to identify configuration risks and detect security drift.
 
-You used Security Assessment to identify configuration risks and detect security drift.
-Next, you asked:
-Who has access to the database, and what can they do?
+Next, you asked: Who has access to the database, and what can they do? You used User Assessment to investigate potentially risky users and changes to privileges and entitlements.
 
-You used User Assessment to investigate potentially risky users and changes to privileges and entitlements.
-Then, you asked:
-What sensitive information are we actually protecting?
-
-You used Data Discovery to identify sensitive data in the HCM1 schema and created a sensitive data model describing where that information resides.
+Then, you asked: What sensitive information are we actually protecting? You used Data Discovery to identify sensitive data in the `HCM1` schema and created a sensitive data model describing where that information resides.
 
 Now your security team has a new challenge.
 
-The application development team needs realistic data for development and testing. Using production-like data helps developers test applications with realistic names, addresses, salaries, and other values.
+The application development team needs realistic data for development and testing. Using production-like data helps developers test applications with realistic names, addresses, salaries, and other values. But copying sensitive data into a non-production environment creates additional risk. Developers and testers might not require access to real employee names, phone numbers, salaries, or addresses simply to test an application.
 
-But copying sensitive data into a non-production environment creates additional risk.
-Developers and testers might not require access to real employee names, phone numbers, salaries, or addresses simply to test an application.
-
-The security question now becomes:
-How can we preserve realistic, usable data for development and testing without exposing the real sensitive information?
+The security question now becomes: How can we preserve realistic, usable data for development and testing without exposing the real sensitive information?
 
 ### Scenario
 
-Continue acting as the database security administrator from the previous labs.
-Your team has completed its initial investigation and now knows:
-•	The security posture of the database
-•	Which users and privileges could present risk
-•	Where sensitive information resides
-The development team now requests a copy of the HCM application data for use in a non-production environment.
-Before approving that request, you review the data.
-The EMPLOYEES table contains information such as employee names, email addresses, phone numbers, and salaries. The LOCATIONS table contains address information.
-Providing those values unchanged would unnecessarily expose sensitive information to users who do not need the real values.
-You decide that the data must be masked before it is made available for non-production use.
+Continue acting as the database security administrator from the previous labs. Your team has completed its initial investigation and now knows the following:
+
+- The security posture of the database
+- Which users and privileges could present risk
+- Where sensitive information resides
+
+The development team now requests a copy of the `HCM` application data for use in a non-production environment. Before approving that request, you review the data. The `EMPLOYEES` table contains information such as employee names, email addresses, phone numbers, and salaries. The `LOCATIONS` table contains address information. Providing those values unchanged would unnecessarily expose sensitive information to users who do not need the real values. You decide that the data must be masked before it is made available for non-production use.
+
 In this lab, you will use the sensitive data model you created in the previous lab to build a masking policy. You will customize how certain values are masked, verify that the database is ready for masking, run the masking operation, and validate that the sensitive information has been transformed.
 
 Estimated Time: 20 minutes

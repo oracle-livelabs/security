@@ -2,11 +2,12 @@
 
 ## Introduction
 
-Imagine that you are a database security administrator responsible for keeping your organization's databases securely configured. 
+Imagine that you are a database security administrator responsible for keeping your organization's databases securely configured.
 
 Your team has established an approved security posture for a database, but database configurations do not remain static. Administrators grant privileges, application requirements change, and configuration settings are modified. A change that seems harmless can introduce a security risk, and manually reviewing every database configuration change is difficult.
 
-You need a way to answer questions such as:
+You need a way to answer questions, such as:
+
 - What security risks exist in my database today?
 - Which findings should I investigate first?
 - Does the database still comply with the security posture my team previously approved?
@@ -23,17 +24,17 @@ In this lab, assume that you are responsible for monitoring the security posture
 
 You will first review the database's current security assessment and determine that its existing configuration represents an acceptable starting point. You will establish that assessment as your baseline.
 
-Next, a database privilege will be granted to PUBLIC, simulating a potentially risky administrative change.
+Next, a database privilege will be granted to `PUBLIC`, simulating a potentially risky administrative change.
 
 Rather than relying on someone to tell you that the change occurred, you will use Security Assessment to:
-1.	Reassess the database.
-2.	Detect that its security posture has changed.
-3.	Investigate the new high-risk finding.
-4.	Compare the current assessment with your approved baseline.
-5.	Identify exactly what changed.
+
+1. Reassess the database.
+2. Detect that its security posture has changed.
+3. Investigate the new high-risk finding.
+4. Compare the current assessment with your approved baseline.
+5. Identify exactly what changed.
 
 By the end of the lab, you will have experienced the workflow a security or database administrator can use to identify security configuration drift.
-
 
 Estimated Time: 20 minutes
 
@@ -55,7 +56,6 @@ This lab assumes you have:
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Access to or prepared an environment for this workshop
 - Access to a registered target database
-
 
 ### Assumptions
 
@@ -80,7 +80,7 @@ This lab assumes you have:
      ![Security assessment overview charts for all targets](images/sa_overview_charts.png "Security assessment overview charts for all targets")
 
 
-4. Select the **Risk summary** tab and review the information. 
+4. Select the **Risk summary** tab and review the information.
 
     - This tab shows you how much risk you have across all target databases in the specified compartment(s).
     - You can compare the number of high, medium, low, advisory, and evaluate risk findings across all target databases, and view which risk categories have the greatest numbers.
@@ -89,7 +89,7 @@ This lab assumes you have:
     ![Security assessment risk summary tab](images/sa-risk-summary-tab.png "Security assessment risk summary tab")
 
 
-5. Select the **Target summary** tab and review the information. 
+5. Select the **Target summary** tab and review the information.
 
     - This tab shows you the security posture of each target database.
     - You can view the number of high, medium, low, advisory, and evaluate risk findings for each target database.

@@ -5,20 +5,24 @@
 In the previous labs, you have been building a progressively deeper understanding of the database you are responsible for protecting.
 
 You have already answered four important questions:
-Is the database securely configured?
-You used Security Assessment to identify configuration risks and detect security drift.
 
-Who can access the database?
-You used User Assessment to investigate potentially risky users and changes to roles and privileges.
+1. Is the database securely configured?
 
-What sensitive information could that access expose?
-You used Data Discovery to identify sensitive data and build a sensitive data model.
+    You used Security Assessment to identify configuration risks and detect security drift.
 
-How can we safely provide that data to non-production users?
-You used Data Masking to protect sensitive information while preserving useful data for development and testing.
+2. Who can access the database?
 
-Now there is one more critical question:
-What are people actually doing in the database?
+    You used User Assessment to investigate potentially risky users and changes to roles and privileges.
+
+3. What sensitive information could that access expose?
+
+    You used Data Discovery to identify sensitive data and build a sensitive data model.
+
+4. How can we safely provide that data to non-production users?
+
+    You used Data Masking to protect sensitive information while preserving useful data for development and testing.
+
+Now there is one more critical question: What are people actually doing in the database?
 
 Knowing that an account has powerful privileges does not necessarily mean that the account is being misused. Conversely, an unexpected login or creation of a new privileged account can be an important warning sign.
 
@@ -28,25 +32,16 @@ Oracle Data Safe Activity Auditing allows you to configure audit and alert polic
 
 ### Scenario
 
-Continue with the same database security investigation.
-
-You have already identified potentially risky users and know where sensitive data resides. You have also protected that data for non-production use.
-
-Now your security team wants continuous visibility into activity on the database.
+Continue with the same database security investigation. You have already identified potentially risky users and know where sensitive data resides. You have also protected that data for non-production use. Now your security team wants continuous visibility into activity on the database.
 
 You decide to configure monitoring for two situations that could indicate a security problem:
-•	Repeated failed logins by an administrative user
-•	Creation or modification of a database user
 
-You will then deliberately generate both types of activity so that you can see how Data Safe detects them.
+- Repeated failed logins by an administrative user
+- Creation or modification of a database user
 
-First, you will configure auditing and alert policies and begin collecting audit data. You will then simulate suspicious activity by attempting several unsuccessful ADMIN logins and creating a new privileged MALFOY user.
+You will then deliberately generate both types of activity so that you can see how Data Safe detects them. First, you will configure auditing and alert policies and begin collecting audit data. You will then simulate suspicious activity by attempting several unsuccessful `ADMIN` logins and creating a new privileged `MALFOY` user. Finally, you will investigate the resulting alerts and audit events. The goal is to connect identity, privilege, and activity.
 
-Finally, you will investigate the resulting alerts and audit events.
-The goal is to connect identity, privilege, and activity:
-
-A risky user or privilege is important, but activity auditing helps answer the next question:
-Is something actually happening that we need to investigate?
+A risky user or privilege is important, but activity auditing helps answer the next question: Is something actually happening that we need to investigate?
 
 Estimated Lab Time: 10 minutes
 
@@ -75,7 +70,8 @@ This lab assumes you have:
 ### Assumptions
 
 - Your data values may be different than those shown in the screenshots.
-- Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs. 
+- Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs.
+
 
 ## Task 1: Configure auditing and alerts for your target database
 
