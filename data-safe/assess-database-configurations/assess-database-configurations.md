@@ -160,11 +160,11 @@ You can defer or change the risk level of a finding. In this task, you defer the
 
     Setting an expiration date is optional. Upon expiry, the next assessment resumes evaluating the finding and displays as found. With no expiration date, the risk finding is deferred indefinitely. 
 
-   ![Update risk for finding panel](images/update-risk-for-finding.png "Update risk for finding panel")
+    ![Update risk for finding panel](images/update-risk-for-finding.png "Update risk for finding panel")
 
 4. Notice that the risk finding is recategorized as **DEFERRED**.
 
-   ![Deferred risk finding](images/deferred-risk-finding.png "Deferred risk finding")
+    ![Deferred risk finding](images/deferred-risk-finding.png "Deferred risk finding")
 
 5. Select the **X** to remove the filter.
 
