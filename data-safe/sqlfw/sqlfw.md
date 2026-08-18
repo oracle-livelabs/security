@@ -2,9 +2,56 @@
 
 ## Introduction
 
-In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. **Oracle SQL Firewall** is a robust security feature built into Oracle AI Database 26ai, designed to provide real-time protection against common database attacks by restricting access to only authorized SQL statements or connections.
+Throughout the previous labs, you have been building a security story around the same database.
+You started by asking:
+Is the database configured securely?
+Security Assessment helped you establish an approved security posture and detect configuration drift.
 
-You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `APP_USER`. This collection is referred to as the *allow-list*. Next, you test that `APP_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
+Then you asked:
+Who can access the database, and what can they do?
+User Assessment helped you investigate risky users and changes to roles and privileges.
+
+Next:
+What sensitive information are we protecting?
+Data Discovery identified sensitive information and helped you build a sensitive data model.
+
+Then:
+How can we safely use that data outside production?
+Data Masking helped you protect sensitive information while keeping the data useful for development and testing.
+
+Finally:
+What are users actually doing in the database?
+Activity Auditing helped you monitor database activity, generate alerts, and investigate audit events.
+There is now one more security question:
+
+Even when a user is legitimate, how do we make sure that the user can execute only the SQL they are supposed to execute?
+This is where SQL Firewall adds another layer of protection.
+SQL Firewall, built into Oracle AI Database 26ai, allows you to define which SQL statements are authorized for a database user. SQL statements outside that allowed collection can be detected and blocked.
+
+## Scenario
+
+Continue acting as the database security administrator.
+
+During your previous investigations, you discovered that APP_USER is a legitimate application account that accesses the HCM data.
+The application needs to perform specific queries against the database. However, you do not want a compromised APP_USER session to be able to execute arbitrary SQL against sensitive tables.
+
+For example, perhaps the application normally needs to retrieve:
+- Employee names and IDs
+- Location information
+- A specific location by ID
+
+That does not necessarily mean the account should be able to run any SQL statement against the same tables.
+You therefore decide to establish a known-good pattern for the application's SQL activity.
+
+You will:
+1.	Capture the SQL statements that APP_USER legitimately uses.
+2.	Turn those statements into an allow-list.
+3.	Enforce the SQL Firewall policy.
+4.	Test both permitted and unauthorized SQL.
+5.	Investigate a blocked statement.
+6.	Decide to add that statement to the allow-list when it is determined to be legitimate.
+
+This gives you a practical example of moving from monitoring database activity to actively controlling what a user is allowed to execute.
 
 Estimated Lab Time: 20 minutes
 
@@ -13,11 +60,13 @@ Estimated Lab Time: 20 minutes
 In this lab, you will:
 
 - (For your tenancy only): Grant the SQL Firewall role on your target database
-- Enable SQL Firewall in Data Safe
-- Create a SQL collection for APP_USER
-- Deploy the SQL Firewall policy for APP_USER
-- Test the SQL Firewall policy
-- Add a SQL statement from the violation log to the allow-list
+- Enable SQL Firewall for your target database
+- Capture legitimate SQL activity for APP_USER
+- Create an allow-list of authorized SQL statements
+- Deploy and enforce a SQL Firewall policy
+- Test authorized and unauthorized SQL statements
+- Investigate SQL Firewall violations
+- Add an approved SQL statement to the allow-list
 
 
 ### Prerequisites
