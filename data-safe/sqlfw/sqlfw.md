@@ -135,7 +135,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 4. Select **Create and start SQL collection**.
 
-   ![Create and start SQL collection dialog box](images/create-start-sql-collection.png "Create and start SQL Collection dialog box")
+    ![Create and start SQL collection dialog box](images/create-start-sql-collection.png "Create and start SQL Collection dialog box")
 
 5. Wait for the status to change to **COLLECTING**.
 
@@ -157,7 +157,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     Note: It's included in the toggle for **REST, GraphQL, MongoDB API, and Web access**.
 
-   ![Enable web access](images/enable-web-access.png "Enable web access")
+    ![Enable web access](images/enable-web-access.png "Enable web access")
 
 12. Click **Apply Changes**.
 
@@ -229,7 +229,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
     
 5. Select **Deploy and enforce**.
 
-   ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
+    ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
 
 6. Wait for the status of the SQL Firewall policy to change to **Active**. You may need to refresh the browser tab.
 
