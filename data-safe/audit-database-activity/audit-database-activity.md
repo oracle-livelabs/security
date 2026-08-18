@@ -104,12 +104,12 @@ This lab assumes you have:
     ![Activity Auditing wizard - Alert policies](images/activity-auditing-wizard-alert-policy.png "Activity Auditing wizard - Alert policies") 
 
 
- 6. For **Step 3 - Security policies**, do the following to enable security policies:
+6. For **Step 3 - Security policies**, do the following to enable security policies:
 
     a) Select **Manage security policies**. The **Manage security policies** panel opens.
-   
+
     b) Select **Admin activity auditing** and **Basic auditing**.
-    
+
     c) Select the **Custom security policies** tile.
 
     d) Select one of the security policies; for example, **CIS\_POLICY**.  <!-- Note: **APP\_USER\_NOT\_APP\_SERVER** is not listed -->
@@ -119,7 +119,7 @@ This lab assumes you have:
     ![Activity Auditing wizard - security policies](images/activity-auditing-wizard-security-policies.png "Activity Auditing wizard - security policies")
 
 
-7. For **Step 4 - Audit trails**, do the following:
+8. For **Step 4 - Audit trails**, do the following:
 
     a) Select **UNIFIED\_AUDIT\_TRAIL**. 
     
@@ -130,7 +130,7 @@ This lab assumes you have:
     ![Activity Auditing wizard - Audit trails](images/activity-auditing-wizard-audit-trails.png "Activity Auditing wizard - Audit Trails")
 
  
-8. For **Step 5 - Audit profile**, configure the following, and then click **Next**.
+9. For **Step 5 - Audit profile**, configure the following, and then click **Next**.
 
     - Audit data online retention months = 12
     - Audit data offline retention months = 0
@@ -143,7 +143,7 @@ This lab assumes you have:
     - All initial audit profile settings for your target database are inherited from the global settings for Oracle Data Safe.
     - By default, paid usage is not enabled for all target databases. You cannot enable paid usage for a free trial account.
 
-9. For **Step 6 - Review and submit**, review the configuration, and then select **Submit** if everything is correct. Wait for the policies to be provisioned, and then select **Close**.
+10. For **Step 6 - Review and submit**, review the configuration, and then select **Submit** if everything is correct. Wait for the policies to be provisioned, and then select **Close**.
 
 
 ## Task 2: Perform activities on your target database to generate audit data
