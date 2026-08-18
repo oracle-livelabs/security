@@ -79,7 +79,7 @@ This lab assumes you have:
     - The **Details** tab lists general information about your sensitive data model, the target database, sensitive data information, and sensitive data counts.
     - You can view the selected schemas for discovery, selected sensitive types for discovery, sensitive schemas discovered, and sensitive types discovered by selecting the respective **View details** button.
 
-   ![Sensitive Data Model Details tab](images/sensitive-data-model-details-tab.png "Sensitive Data Model Details tab")
+    ![Sensitive Data Model Details tab](images/sensitive-data-model-details-tab.png "Sensitive Data Model Details tab")
     
 2. Select the **Sensitive columns** tab and review the discovered sensitive columns. 
 
@@ -96,7 +96,7 @@ Increase the scope of the data discovery job.
 
 1. Select the **Incremental discovery** tab.
 
-2. Under **Incremental discovery**, from the **Actions** menu, select **Run discovery now**.
+2. Select **Run discovery now**.
 
     The **Run discovery now** dialog box opens.
 
@@ -116,57 +116,45 @@ Increase the scope of the data discovery job.
 
 8. For **Step 5 - Select discovery options**, select **Collect, display and store sample data**.
 
-9. Select **Run discovery now**. Scroll down and wait for the status of the discovery job to read as **Done**, and then select **Close**.
+9. Select **Run discovery now**.
 
-   ![Finished incremental discovery job](images/finished-incremental-discovery-job.png "Finished incremental discovery job")
+    When the discovery job finishes, the **History of incremental discoveries** tab is displayed. Your discovery job is listed in the table and has a status of **Active**.
 
-10. Review the additional sensitive data that was discovered. 
+10. Select the **Incremental discovery** tab, scroll down, and review the additional sensitive data that was discovered.
 
-11. Under **Incremental discovery**, from the **Actions** menu, select **Manage results**. 
+11. Select the check box next to **Schema** in the table to select all of the discovered sensitive columns.
 
-    The **Incremental discovery** panel opens. Here you can approve and reject incremental discovery results.
+12. From the **Actions** menu, select **Approve**.
 
-12. Scroll down and select **All incremental discovery results**, and then select **Approve**. 
+    The **Approve discovery results** dialog box is displayed. Approving the selected columns will mark the discovery results to add new columns, remove deleted columns or update the modified columns. This action does not update the sensitive data model automatically. Apply to SDM will update the sensitive data model with the latest results that have been approved or rejected.
 
-    ![Approve all incremental discovery results](images/approve-discovery-results.png "Approve all incremental discovery results")
+    ![Approve discovery results dialog box](images/approve-discovery-results-dialog-box2.png "Approve discovery results dialog box")
 
-13. In the **Approve discovery results** dialog box, select **Approve**.
+13. Select **Approve**.
 
-    ![Approve discovery results dialog box](images/approve-discovery-results-dialog-box.png "Approve discovery results dialog box")
+14. With all of the columns still selected, from the **Actions** menu, select **Apply to SDM**.
 
-    You are returned to the **Incremental discovery** panel.
-    
-14. Select **Close** to close the panel.
+    The **Apply to SDM** dialog box opens. You are warned that this operation will update the sensitive data model with all the columns of this discovery job results that have been processed.
 
-15. Scroll to the right in the table, if needed, and verify that the **Planned action** column now has **Approved** listed in each row. 
+    ![Apply to SDM dialog box](images/apply-to-sdm-dialog-box2.png "Apply to SDM dialog box")
 
-    ![Approve in each row](images/approve-in-each-row.png "Approve in each row")
-
-16. Under **Incremental discovery**, from the **Actions** menu, select **Manage results**. Select **Apply to SDM**.
-
-    ![Apply to sensitive data model dialog box](images/apply-to-sensitive-data-model.png "Apply to sensitive data model dialog box")
-
-    The **Apply to SDM** dialog box opens.
-
-17. Select **Apply to sensitive data model**, and then wait to be returned to the **Incremental discovery** tab.
+15. Select **Apply**, and then wait to be returned to the **Incremental discovery** tab.
 
     The sensitive data model is updated with the additional sensitive columns.
     
-18. Select **Close** to close the panel.
-
-    There are no sensitive columns listed anymore because you added them to the sensitive data model.
+16. Select the **History of incremental discoveries** tab, and then select your incremental discovery job. All of the sensitive columns are marked as **Approved** in the **Planned action** column.
 
 
 ## Task 4: Remove a column from the sensitive data model
 
 Remove the `DATE_OF_HIRE` column from the sensitive data model.
 
-1. Select the **Sensitive columns** tab.
+1. Return to the the **Sensitive columns** tab.
 
-2. Under **Sensitive columns**, from the **Actions** menu, select **Remove columns**. 
+2. Under **Sensitive columns**, from the **Actions** menu, select **Remove columns**.
 
     The **Remove columns** panel opens.
-    
+
 3. From the **Column** dropdown list, select **DATE\_OF\_HIRE**.
 
 4. Select **Search**.
@@ -198,7 +186,7 @@ Add `COUNTRY_ABBREV` to the sensitive data model.
 
 8. Select **Add columns**, and then wait until you are returned to the **Sensitive columns** list.
 
-   ![Add columns panel](images/add-columns-panel.png "Add columns panel")
+    ![Add columns panel](images/add-columns-panel.png "Add columns panel")
 
 9. Verify that `COUNTRY_ABBREV` from the `LOCATIONS` table is added to your sensitive data model.
 
@@ -211,4 +199,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 8, 2026
+- **Last Updated By/Date** - Jody Glover, July 28th, 2026
