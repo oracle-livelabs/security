@@ -87,11 +87,11 @@ This lab assumes you have:
 
 1. Select the **SQL collections** tab, and then select **Create and start SQL collection**.
 
-   The **Create and start SQL collection** page opens.
+    The **Create and start SQL collection** page opens.
 
 2. From the **Database user** dropdown list, select **APP_USER**.
 
-   If `APP_USER` is not listed, select **Refresh database users**, and then select the user.
+    If `APP_USER` is not listed, select **Refresh database users**, and then select the user.
 
 3. Leave **User issued SQL commands** selected.
 
@@ -101,7 +101,7 @@ This lab assumes you have:
 
 5. Wait for the status to change to **COLLECTING**.
 
-   SQL Firewall is now set to capture SQL statements issued by the `APP_USER` database user.
+    SQL Firewall is now set to capture SQL statements issued by the `APP_USER` database user.
 
 6. From the navigation menu, select **Oracle AI Database**, and then **Autonomous AI Database**.
 
@@ -170,15 +170,15 @@ This lab assumes you have:
 
 1. From the **Actions** menu, select **Generate firewall policy**.
 
-   A firewall policy is created, but not yet enabled (deployed). Notice that under **Enforcement information**, the status of the policy is set to **Disabled**.
+    A firewall policy is created, but not yet enabled (deployed). Notice that under **Enforcement information**, the status of the policy is set to **Disabled**.
 
 2. Select the **Unique allowed SQL statements** tab, and then review the collection of SQL statements on the allow-list.
 
-   Database Actions adds additional SQL statements to the allow-list automatically. The SQL statements that you just collected also have additional code inserted, which you can ignore.
+    Database Actions adds additional SQL statements to the allow-list automatically. The SQL statements that you just collected also have additional code inserted, which you can ignore.
 
 3. To deploy the SQL Firewall policy for `APP_USER`, select **Deploy and enforce**.
 
-   The **Deploy SQL Firewall policy** panel opens.
+    The **Deploy SQL Firewall policy** panel opens.
 
 4. Select the following options carefully:
 
@@ -194,7 +194,7 @@ This lab assumes you have:
 
 7. To filter the allow-list, select the **Search and Filter** box, and then select **SQL text**. Enter **HCM1**, and then select **Apply filter**.
 
-   The SQL statements that you collected earlier are listed.
+    The SQL statements that you collected earlier are listed.
 
     ![Filtered SQL statements](images/filtered-sql-statements.png "Filtered SQL statements")
 
@@ -211,7 +211,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
     </copy>
     ```
 
-   The query should return data.
+    The query should return data.
 
 3. Clear the worksheet and try running a SQL statement that isn't on the allow-list, for example:
 
@@ -220,7 +220,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
     </copy>
     ```
 
-   You should receive an error message: ORA-47605: SQL Firewall violation.
+    You should receive an error message: ORA-47605: SQL Firewall violation.
 
 4. Clear the worksheet and try running a SQL statement on the allow-list with a modified `WHERE` clause, for example:
 
@@ -229,7 +229,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
     </copy>
     ```
 
-   The query should return data.
+    The query should return data.
 
 5. Clear the worksheet and try running the SQL statement on the allow-list with its columns in a different order, for example:
 
@@ -238,7 +238,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
     </copy>
     ```
 
-   You should receive an error message: ORA-47605: SQL Firewall violation.
+    You should receive an error message: ORA-47605: SQL Firewall violation.
 
 ## Task 5: Add a SQL statement from the violation log to the allow-list
 
@@ -246,7 +246,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
 2. Under **Unique allowed SQL statements**, from the **Actions** menu, select **Add from violations**.
 
-   The **Add from violations** panel opens.
+    The **Add from violations** panel opens.
 
 3. Scroll down and notice that there are two SQL violations.
 
@@ -260,7 +260,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
 6. Select **Update**.
 
-   You are returned to the **SQL Firewall policy** page. Wait a moment.
+    You are returned to the **SQL Firewall policy** page. Wait a moment.
 
 7. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed at the top.
 
@@ -273,7 +273,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
     </copy>
     ```
 
-   The query should retrieve data.
+    The query should retrieve data.
 
 Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals livelab.
 

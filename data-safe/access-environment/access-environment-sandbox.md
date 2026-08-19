@@ -58,11 +58,11 @@ A database registered with Oracle Data Safe is referred to as a *target database
 
 1. From the navigation menu, select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**.
 
-   The **Overview** page titled **Simplify security for your Oracle databases** opens. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
+    The **Overview** page titled **Simplify security for your Oracle databases** opens. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
 
 2. On the left under **Data Safe - Database Security**, select **Target databases**.
 
-    The **Target databases** page opens. 
+    The **Target databases** page opens.
 
 3. Next to **Applied filters**, select your compartment without child compartments. Your registered target database is listed in the table.
 
