@@ -128,7 +128,7 @@ Data Masking can generate a masking policy for your target database based on you
 
 2. Under **Data masking**, select **Masking policies**.
 
-3. Next to **Applied filters**, select your compartment without children, if needed.
+3. Next to **Applied filters**, select your compartment without child compartments.
 
 4. Select **Create masking policy**.
 
@@ -151,8 +151,8 @@ Data Masking can generate a masking policy for your target database based on you
 
 7. On the **Masking policy** page, review the **Details** tab. 
 
-    - Under **General information**, you can view the masking policy name, a description of the masking policy, the Oracle Cloud Identifier (OCID) for the masking policy, the compartment in which the masking policy is stored, when the masking policy was created and updated.
-    - Under **Column source**, you can view the name of the target database and a link to the sensitive data model.
+    - Under **General information**, you can view the masking policy's Oracle Cloud Identifier (OCID), the compartment in which the masking policy is stored, and when the masking policy was created and updated.
+    - Under **Column source**, you can view the target database.
     - Under **Pre/post masking scripts**, you can view and edit the scripts.
     - Under **Masking options**, you can review how these options are configured: Drop temporary table, Redo logging, Refreshing stats enabled, Degree of parallelism, and Recompile.
 
@@ -182,13 +182,15 @@ Set `SALARY` to be a fixed number, such as 50000.
 5. Select **Update**.
 
 6. Under **Masking columns**, from the **Actions** menu, select **Save masking formats**. Wait for the format to save and show as **FIXED_NUMBER**.
+
+    ![Fixed number](images/masking-fixed-number.png "Fixed number")
   
 
 ## Task 5: Create a group mask
 
 Use the group masking feature to create a group named `ADDRESS` and apply the `SHUFFLE` masking format to the group.
 
-1. From the **Actions** menu, select **Assign group masking**. The **Assign group masking** panel opens.
+1. Under **Masking columns**, from the **Actions** menu, select **Assign group masking**. The **Assign group masking** panel opens.
 
 2. For **Masking format entry**, select **Shuffle**.
 
@@ -213,7 +215,9 @@ Use the group masking feature to create a group named `ADDRESS` and apply the `S
 
 7. Select **Continue**.
 
-8. Notice that the masking format for the columns is set to **Address**.
+8. Notice that the masking format for the columns is set to **Address** and that **Masking group** is next to each column in the group.
+
+    ![Masking group](images/masking-group.png "Masking group")
 
 9. From the **Actions** menu, select  **Save masking formats**.
 
@@ -234,44 +238,49 @@ The pre-masking check looks for any known issues that might arise during a maski
 
     ![Pre-masking check panel](images/pre-masking-check-panel.png "Pre-masking check panel")
 
-6. Select **Submit**. 
+6. Select **Submit** and wait for the status to change to **Active**.
 
     The **Work requests** tab opens and shows you the status of the pre-check operations.
 
-7. Verify that each check has passed.
+7. Select the **Log messages** tab and verify that each check has passed. You can also check that each operation has succeeded on the **Work requests** tab.
 
     ![Pre-masking verification](images/pre-masking-verification.png "Pre-masking verification")
 
 
 ## Task 7: Mask sensitive data in your target database
 
-1. Select **Mask data**.
+1. Under **Data masking** on the left, select **Masking policies**, and then select your masking policy.
+
+2. Select **Mask data**.
 
     The **Mask sensitive data** panel opens.
 
-2. Select your target database, and then select **Mask data**.
+3. Select your target database, and then select **Mask data**.
 
     ![Mask sensitive data panel](images/mask-sensitive-data-panel.png "Mask sensitive data panel")
 
-3. Monitor the progress of the operation named `MASKING_JOB`, and wait for it to finish.
+    The **Work requests** tab opens.
+
+4. Monitor the progress of the operation named `MASKING_JOB`, and wait for it to finish. The status at the top reads **Active** and the **MASKING_JOB** operation has a status of **Succeeded**.
 
  
 ## Task 8: View the Data Masking report
 
 1. Navigate to the **Data masking** landing page.
 
-2. On the **Masking reports** tab, ensure that your compartment is selected. Scroll down and select **View report** for your target database.
+2. On the **Masking reports** tab, ensure that your compartment is selected. At the bottom of the page, select **View report** for your target database.
 
     The **Masking report** page opens. The **Details** tab shows you the following information: 
   
     
     - Oracle Cloud Identifier (OCID) for the masking report
     - Compartment where the report is stored
+    - Date and time when the masking report was created
     - Target database name
     - Masking policy name - you can click a link to view it
     - Masking status - verify that it says **SUCCESS**
     - Date and time when the data masking job started and finished
-    - Number of masked sensitive types, schemas, tables, columns, values, total pre-mask errors, and total post-mask errors
+    - Number of masked sensitive types, tables, columns, values, total pre-mask errors, and total post-mask errors
 
     ![Masking report Details tab](images/masking-report-details-tab.png "Masking report Details tab")
 
@@ -312,10 +321,9 @@ The pre-masking check looks for any known issues that might arise during a maski
 ## Learn More
 
 - [Data Masking Overview](https://docs.oracle.com/iaas/data-safe/doc/data-masking-overview.html)
-- [Target Database Registration](https://docs.oracle.com/iaas/data-safe/doc/target-database-registration.html)
 
 
 ## Acknowledgements
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 18, 2026
+- **Last Updated By/Date** - Jody Glover, August 19, 2026
