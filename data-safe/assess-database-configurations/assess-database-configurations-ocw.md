@@ -71,9 +71,7 @@ This lab assumes you have:
 
 1. Navigate to the **Security assessment** landing page.
 
-2. If needed, next to **Applied filters**, select your compartment. Deselect **Include child compartments**, and then select **Apply filter**. 
-
-    Note: From here on in, the labs simply say *Select your compartment without child compartments* to simplify the instructions.
+2. If needed, select your compartment without child compartments.
 
 3. On the **Overview** tab, review the charts.
 
@@ -85,7 +83,7 @@ This lab assumes you have:
 
 4. Select the **Target summary** tab, and then select the name of your database.
 
-    The latest security assessment for your target database is displayed. Notice that **Latest assessment for target database...** is displayed at the top of the page.
+    The latest security assessment for your target database opens. Notice that **Latest assessment for target database...** is displayed at the top of the page.
 
 5. Select the **Assessment summary** tab and review the risk level, finding name, and summary for the top 5 common security controls that Oracle considers to be the most important to the security of your target database.
 
@@ -98,15 +96,13 @@ This lab assumes you have:
 
     ![Latest security assessment assessment summary](images/latest-sa-assessment-summary.png "Latest security assessment assessment summary")
 
-7. Select the **Assessment details** tab.
+7. Select the **Findings** tab.
 
-    - This tab lists all the findings. For each finding, you can view the risk level, risk category, and references.
-    - Risks are color-coded to help you easily identify categories that have high risk findings (red).
-    - The high risk findings listed under **Privileges and Roles** were introduced when you ran the SQL script to populate your target database with sample data.
+    This tab lists all the findings. For each finding, you can view the risk level, finding name, risk category, references, and documentation links.
 
-    ![Latest Security Assessment Assessment details section](images/latest-sa-assessment-details-section.png "Latest Security Assessment Assessment details section")
+    ![Latest Security Assessment Findings section](images/latest-sa-findings-section.png "Latest Security Assessment Findings section")
 
-8. At the top, select the **Search and Filter** box. Notice that you can filter by risk, finding, category, reference, and documentation. Select outside the box to hide the filter options.
+8. At the top, select the **Search and Filter** box. Notice that you can filter by risk, finding, category, references, documentation, summary, details, and remarks. Select outside the box to hide the filter options.
 
     ![Security Assessment filters](images/sa-filters.png "Security Assessment filters")
 
@@ -153,9 +149,9 @@ In this task, you manually create a new configuration risk on your database by i
 
 4. On the toolbar, select the **Run Statement** button (green circle with white arrow).
 
-5. On the **Script Output** tab, verify that the grant is successful.
-
     ![Run Statement button](images/run-statement-button.png "Run Statement button")
+
+5. On the **Script Output** tab, verify that the grant is successful.
 
 
 ## Task 4: Refresh the latest security assessment and analyze the results
@@ -168,8 +164,7 @@ In this task, you manually create a new configuration risk on your database by i
 
 3. Leave the default name as is, and select **Refresh now**. Wait for the status next to the name of the security assessment to change from **Updating** to **Succeeded**. It takes about 1 minute.
 
-    - This action updates the data in the latest security assessment for your target database and also saves a copy of the assessment to the Assessment History.
-    
+    This action updates the data in the latest security assessment for your target database and also saves a copy of the assessment to the Assessment History.
 
     ![Security Assessment Refresh now panel](images/sa-refresh-now-panel.png "Security Assessment Refresh now panel")
 
@@ -177,7 +172,7 @@ In this task, you manually create a new configuration risk on your database by i
 
     ![Security Assessment Assessed on right now](images/sa-assessed-on-right-now.png "Security Assessment assessed on right now")
 
-5. Select the **Assessment details** tab and expand **System Privileges Granted to PUBLIC**. You can use the search box to quickly display this finding.
+5. Select the **Findings** tab and expand **System Privileges Granted to PUBLIC**. You can use the search box to quickly display this finding.
 
     - This is a high risk finding.
     - In the **Summary** section, you can see that the grant you made in the previous task is identified: All users are granted via 1 grant to PUBLIC.
@@ -196,8 +191,7 @@ In this task, you manually create a new configuration risk on your database by i
 
     - Review the number of findings per risk category for each risk level. Categories include **User accounts**, **Privileges and roles**, **Authorization control**, **Data encryption**, **Fine-grained access control**, **Auditing**, and **Database configuration**.
     - You can identify where the changes have occurred on your target database by viewing cells that contain the word **Modified**. The number represents the total count of new, remediated, and modified risks on the target database.
-    - In the details table, you can view the risk level for each finding, the category to which the finding belongs, the finding name, and a description of what has changed on your target database. The Comparison Report column is important because it explains what is changed, added, or removed from the target database since the baseline report was generated.
-    - Notice that the change you made is noted in the **Comparison report** column.
+    - In the details table, you can view information about each finding, including the risk level, the category to which the finding belongs, the finding name, and what was added, removed, or modified in the target database since the baseline report was generated. You can expand each finding to view more information.
 
     ![Security Assessment Comparison report top](images/sa-comparison-report-top.png "Security Assessment Comparison report top")
     ![Security Assessment Comparison report bottom](images/sa-comparison-report-bottom.png "Security Assessment Comparison report bottom")
@@ -214,4 +208,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 18, 2026
+- **Last Updated By/Date** - Jody Glover, August 19, 2026
