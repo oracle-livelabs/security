@@ -59,7 +59,7 @@ This lab assumes you have:
 
 ## Task 1: Discover sensitive data in your target database by using Data Discovery
 
-1. Navigate to the **Data Discovery** landing page.
+1. Navigate to the **Data discovery** landing page.
 
 2. Select **Discover sensitive data**.
 
@@ -86,13 +86,13 @@ This lab assumes you have:
 
     ![Select all common sensitive types](images/select-all-common-sensitive-types.png "Select all common sensitive types")
 
-7. For **Step 5 - Select discovery options**, select **Collect, display and store sample data**, and then select **Create sensitive data model** to begin the data discovery process.
+7. For **Step 5 - Select discovery options**, select **Collect, display and store sample data**.
 
     ![Select discovery options page](images/select-discovery-options-page.png "Select discovery options")
 
-8. Wait for the sensitive data model to be created.
+8. Select **Create sensitive data model** to begin the data discovery process. Wait for the sensitive data model to be created.
 
-    The **Sensitive data model details** page opens.
+    The **SDM1** page opens.
 
 
 ## Task 2: Analyze the sensitive data model
@@ -108,7 +108,7 @@ This lab assumes you have:
 
     - For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, sample data (if you chose to retrieve sample data and if it exists), confidence level, estimated row count, and audit records.
     - Review the sample data to get an idea of what it looks like.
-    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the **Parent column**. For example, `EMPLOYEE_ID` in the `EMP_EXTENDED` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
+    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the column named **Parent column**. For example, `EMPLOYEE_ID` in the `EMP_EXTENDED` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
 
     ![Sensitive Data Model Sensitive Columns tab](images/sensitive-data-model-sensitive-columns-tab.png "Sensitive Data Model Sensitive Columns tab")
 
