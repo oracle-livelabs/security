@@ -289,5 +289,5 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 ## Acknowledgements
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
-- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracler Database Security
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
 - **Last Updated By/Date** - Bettina Schäumer, August 20, 2026
