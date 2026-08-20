@@ -55,4 +55,4 @@ The following links provide more information about Oracle Data Safe:
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Bettina Schäumer, August 19, 2026
+- **Last Updated By/Date** - Bettina Schäumer, August 20, 2026

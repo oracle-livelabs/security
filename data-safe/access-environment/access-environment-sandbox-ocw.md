@@ -126,4 +126,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 19, 2026
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Jody Glover, August 20, 2026
