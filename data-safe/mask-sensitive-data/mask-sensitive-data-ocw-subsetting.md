@@ -1,36 +1,72 @@
-# Mask sensitive data
+# Subset and mask sensitive data
 
 ## Introduction
 
-In the previous labs, you have been building a more complete picture of your database's security posture.
+In the previous labs, you have been building a more complete picture of the database you are responsible for protecting.
 
-You first asked: Is the database securely configured? You used Security Assessment to identify configuration risks and detect security drift.
+You first asked:
+Is the database securely configured?
+You used Security Assessment to identify configuration risks and detect security drift.
 
-Next, you asked: Who has access to the database, and what can they do? You used User Assessment to investigate potentially risky users and changes to privileges and entitlements.
+Next, you asked:
+Who can access the database, and what can they do?
+You used User Assessment to investigate potentially risky users and changes to roles and privileges.
 
-Then, you asked: What sensitive information are we actually protecting? You used Data Discovery to identify sensitive data in the `HCM1` schema and created a sensitive data model describing where that information resides.
+Then, you asked:
+What sensitive information are we actually protecting?
+You used Data Discovery to identify sensitive data in the HCM1 schema and created a sensitive data model describing where that information resides.
 
-Now your security team has a new challenge.
+Now your security team receives a common business request.
+The application development team needs realistic data for development and testing.
 
-The application development team needs realistic data for development and testing. Using production-like data helps developers test applications with realistic names, addresses, salaries, and other values. But copying sensitive data into a non-production environment creates additional risk. Developers and testers might not require access to real employee names, phone numbers, salaries, or addresses simply to test an application.
+Providing a full copy of the data creates unnecessary risk. The development team does not need every employee and every location represented in the source data. And for the records they do need, they do not need access to real names, email addresses, phone numbers, salaries, addresses, or other sensitive values.
 
-The security question now becomes: How can we preserve realistic, usable data for development and testing without exposing the real sensitive information?
+Rather than simply copying the entire data set and masking it, you can reduce the amount of data exposed in the first place.
+
+Oracle Data Safe Data Subsetting and Data Masking can be used together to create a smaller, safer data set for non-production use.
+
+Data Subsetting reduces the amount of data by retaining only the records required for a particular business purpose while preserving the necessary relationships between the selected data. Data Masking then replaces sensitive values in the remaining records with fictitious or transformed values.
+
+Together, these capabilities help you apply two complementary principles:
+Keep only the data you need, and protect the sensitive data you keep.
 
 ### Scenario
 
-Continue acting as the database security administrator from the previous labs. Your team has completed its initial investigation and now knows the following:
+Continue acting as the database security administrator from the previous labs.
 
-- The security posture of the database
-- Which users and privileges could present risk
-- Where sensitive information resides
+Your development team is preparing a non-production environment to test the HCM application.
+They initially request a copy of the production-like HCM data.
 
-The development team now requests a copy of the `HCM` application data for use in a non-production environment. Before approving that request, you review the data. The `EMPLOYEES` table contains information such as employee names, email addresses, phone numbers, and salaries. The `LOCATIONS` table contains address information. Providing those values unchanged would unnecessarily expose sensitive information to users who do not need the real values.
+Before approving the request, you ask two questions:
+Does the development team need all of the data?
+No. For this testing exercise, the team only needs HCM data associated with a specific country. Employees, locations, and related information associated with other countries are unnecessary for the team's testing requirements.
 
-You decide that the data must be masked before it is made available for non-production use.
+Does the development team need the real sensitive values in the records they keep?
+Again, no. The application needs realistic data structures and values, but developers do not need real employee names, contact information, salaries, addresses, or other sensitive information.
 
-In this lab, you will use the sensitive data model you created in the previous lab to build a masking policy. You will customize how certain values are masked, verify that the database is ready for masking, run the masking operation, and validate that the sensitive information has been transformed.
+You therefore decide to create a fit-for-purpose non-production data set rather than providing a complete copy of the source data.
 
-Estimated Time: 20 minutes
+You will use what you learned about the HCM data in the Data Discovery lab as the foundation for this process.
+
+First, you will subset the data by country, retaining only the records needed for the selected country and removing data that falls outside the development team's testing requirements. Related data is retained as needed so that the resulting subset remains useful for application testing.
+
+Then, you will mask the sensitive information that remains using the sensitive data model you created in the Data Discovery lab.
+For example, salary information can be replaced with a fixed value, while related address elements can be masked together so that the address values remain useful as a group.
+
+Finally, you will validate the resulting data set to confirm two things:
+1.	The non-production environment contains only the data required for the selected country.
+2.	Sensitive values in the retained records no longer expose the original information.
+
+This approach reduces risk in two ways.
+Subsetting reduces the amount of data exposed.
+If the development team only needs HCM data for one country, there is no reason to provide data associated with every other country.
+
+Masking reduces the sensitivity of the data that remains.
+Even within the selected subset, developers receive realistic data without unnecessary access to the original sensitive values.
+
+The result is a smaller, protected data set designed around the development team's actual business need.
+
+Estimated Time: (tbd)
 
 [Lab 5 - Mask sensitive data](videohub:1_dh9kov8c)
 
@@ -39,7 +75,9 @@ Estimated Time: 20 minutes
 In this lab, you will:
 
 - Review the sensitive information in your database
-- Create a masking policy from your sensitive data model
+- Create a subset of the HCM data based on a specific country
+- Validate that the subset contains only the data required for the non-production testing scenario
+- Create a masking policy based on the sensitive data model from the Data Discovery lab
 - Customize how specific sensitive values are masked
 - Preserve relationships between related address values by using group masking
 - Perform a pre-masking check
@@ -298,4 +336,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 20, 2026
+- **Last Updated By/Date** - Bettina Schäumer, August 20, 2026

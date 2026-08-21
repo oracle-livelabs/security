@@ -2,9 +2,44 @@
 
 ## Introduction
 
-In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. **Oracle SQL Firewall** is a robust security feature built into Oracle AI Database 26ai, designed to provide real-time protection against common database attacks by restricting access to only authorized SQL statements or connections.
+Throughout the previous labs, you have been building a security story around the same database.
 
-You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `APP_USER`. This collection is referred to as the *allow-list*. Next, you test that `APP_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
+You started by asking: Is the database configured securely? Security Assessment helped you establish an approved security posture and detect configuration drift.
+
+Then you asked: Who can access the database, and what can they do? User Assessment helped you investigate risky users and changes to roles and privileges.
+
+Next you asked: What sensitive information are we protecting? Data Discovery identified sensitive information and helped you build a sensitive data model.
+
+Then you asked: How can we safely use that data outside production? Data Masking helped you protect sensitive information while keeping the data useful for development and testing.
+
+Finally you asked: What are users actually doing in the database? Activity Auditing helped you monitor database activity, generate alerts, and investigate audit events.
+
+There is now one more security question: Even when a user is legitimate, how do we make sure that the user can execute only the SQL they are supposed to execute? This is where SQL Firewall adds another layer of protection. SQL Firewall, built into Oracle AI Database 26ai, allows you to define which SQL statements are authorized for a database user. SQL statements outside that allowed collection can be detected and blocked.
+
+### Scenario
+
+Continue acting as the database security administrator.
+
+During your previous investigations, you discovered that `APP_USER` is a legitimate application account that accesses the `HCM` data. The application needs to perform specific queries against the database. However, you do not want a compromised `APP_USER` session to be able to execute arbitrary SQL against sensitive tables.
+
+For example, perhaps the application normally needs to retrieve the following data:
+
+- Employee names and IDs
+- Location information
+- A specific location by ID
+
+That does not necessarily mean the account should be able to run any SQL statement against the same tables. You therefore decide to establish a known-good pattern for the application's SQL activity.
+
+You will do the following:
+
+1. Capture the SQL statements that `APP_USER` legitimately uses.
+2. Turn those statements into an allow-list.
+3. Enforce the SQL Firewall policy.
+4. Test both permitted and unauthorized SQL.
+5. Investigate a blocked statement.
+6. Decide to add that statement to the allow-list when it is determined to be legitimate.
+
+This gives you a practical example of moving from monitoring database activity to actively controlling what a user is allowed to execute.
 
 Estimated Lab Time: 20 minutes
 
@@ -13,11 +48,13 @@ Estimated Lab Time: 20 minutes
 In this lab, you will:
 
 - (For your tenancy only): Grant the SQL Firewall role on your target database
-- Enable SQL Firewall in Data Safe
-- Create a SQL collection for APP_USER
-- Deploy the SQL Firewall policy for APP_USER
-- Test the SQL Firewall policy
-- Add a SQL statement from the violation log to the allow-list
+- Enable SQL Firewall for your target database
+- Capture legitimate SQL activity for APP_USER
+- Create an allow-list of authorized SQL statements
+- Deploy and enforce a SQL Firewall policy
+- Test authorized and unauthorized SQL statements
+- Investigate SQL Firewall violations
+- Add an approved SQL statement to the allow-list
 
 
 ### Prerequisites
@@ -86,7 +123,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 4. Select **Create and start SQL collection**.
 
-   ![Create and start SQL collection dialog box](images/create-start-sql-collection.png "Create and start SQL Collection dialog box")
+    ![Create and start SQL collection dialog box](images/create-start-sql-collection.png "Create and start SQL Collection dialog box")
 
 5. Wait for the status to change to **COLLECTING**.
 
@@ -108,7 +145,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     Note: It's included in the toggle for **REST, GraphQL, MongoDB API, and Web access**.
 
-   ![Enable web access](images/enable-web-access.png "Enable web access")
+    ![Enable web access](images/enable-web-access.png "Enable web access")
 
 12. Click **Apply Changes**.
 
@@ -180,7 +217,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
     
 5. Select **Deploy and enforce**.
 
-   ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
+    ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
 
 6. Wait for the status of the SQL Firewall policy to change to **Active**. You may need to refresh the browser tab.
 
@@ -268,9 +305,14 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
 Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals livelab.
 
+
+## Learn More
+
+- [SQL Firewall Overview](https://docs.oracle.com/iaas/data-safe/doc/sql-firewall-overview.html)
+
+
 ## Acknowledgements
 
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 8, 2026
-
-
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Jody Glover, August 20, 2026

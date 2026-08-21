@@ -62,17 +62,17 @@ Watch the video below for a quick walk-through of the lab.
 
 8. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity Option') and 3 ('Add Security Rule') are not necessary and will be skipped.** If your database had a private IP address, you would need to configure an Oracle Data Safe private endpoint and security rules. 
 
-    ![Autonomous Database registration wizard - Select Database page](images/ocw/ADB-wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
+    ![Autonomous Database registration wizard - Select Database page](images/ocw/adb-wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
 
-9. Click **Next**.    
+9. Click **Next**.
 
-10. On the **Review and Submit** page, review the information. To make a change, you can return to the **Select Database** page. 
+10. On the **Review and Submit** page, review the information. To make a change, you can return to the **Select Database** page.
 
-    ![Autonomous Database registration wizard - Review and Submit page](images/ocw/ADB-wizard-review-submit.png "Autonomous Database registration wizard - Review and Submit page")
+    ![Autonomous Database registration wizard - Review and Submit page](images/ocw/adb-wizard-review-submit.png "Autonomous Database registration wizard - Review and Submit page")
 
 11. Click **Register**.
 
-    The **Registration Progress** page is displayed briefly, and then the **Target Database Details** page is displayed. 
+    The **Registration Progress** page is displayed briefly, and then the **Target Database Details** page is displayed.
 
 12. Wait for the target database status to turn to **ACTIVE**, which means your target database is fully registered. While waiting, review the information and options provided on the page.
 
@@ -115,11 +115,11 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-- [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
-- [Oracle Data Safe Dashboard](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B4D784B8-F3F7-4020-891D-49D709B9A302)
+- [Target Database Registration](https://docs.oracle.com/iaas/data-safe/doc/target-database-registration.html)
 
 
 ## Acknowledgements
 
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, August 17, 2023
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Jody Glover, August 20, 2026

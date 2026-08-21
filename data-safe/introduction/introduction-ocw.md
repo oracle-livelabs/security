@@ -1,22 +1,45 @@
 # Introduction
 
-This workshop is designed to help new users become familiar with the features of Oracle Data Safe. You learn how to assess the security of your database configurations and users, discover and mask sensitive data, and create and deploy a SQL Firewall policy.
+Protecting a database requires more than applying individual security controls. Security teams need to understand whether databases are securely configured, who has access to them, where sensitive data resides, how that data should be protected, and whether applications are accessing the database as expected.
+
+In this workshop, you take on the role of a database security administrator responsible for protecting a database and the sensitive information it contains.
+
+Rather than exploring Oracle Data Safe as a collection of individual features, you will follow a connected security scenario. You will begin by assessing the security posture of your database and its users. You will then identify sensitive data and protect that data for non-production use. Finally, you will control the SQL statements that an application user is allowed to execute.
+
+Along the way, you will answer questions such as:
+
+- Is my database securely configured, and has its security posture changed?
+- Which database users present the greatest potential risk, and have their privileges changed?
+- Where is sensitive data stored, and what information could be exposed if an account were compromised?
+- How can I provide data for non-production purposes while protecting sensitive information?
+- Can I prevent an application account from executing SQL outside its expected workload?
+
+By working through these questions as part of a single scenario, you will experience a practical database security workflow:
+
+Assess → Discover → Protect → Control
 
 Estimated Workshop Time: 90 minutes
 
 ## About Oracle Data Safe
 
-Oracle Data Safe is Oracle’s platform for securing data in databases. As a native Oracle Cloud Infrastructure service, Oracle Data Safe lets you assess the security of your database configurations, find your sensitive data, mask that data in non-production environments, discover the risks associated with database users, monitor database activity, and create and enforce SQL Firewall policies for users.
+Oracle Data Safe is a unified database security service that helps you understand and reduce risk to data in Oracle databases.
+
+Data Safe provides capabilities to assess database configurations and users, discover sensitive data, reduce and protect data used in non-production environments, monitor database activity, and control SQL activity. In this workshop, you will explore a selection of these capabilities and see how they can work together to help identify risk, protect sensitive information, and strengthen database security controls.
+
 
 Watch a preview of "*Introduction to Oracle Data Safe*" (May 2025) [Video hosted on Oracle Video Hub](videohub:1_qzygqqzb)
 
 ## Objectives
 
-In this workshop, you learn how to perform the following tasks:
+In this workshop, you will:
 
-- Assess the security of your database configurations and database users using Oracle Data Safe
-- Discover and mask sensitive data on your target database using Oracle Data Safe
-- Create and enforce a SQL Firewall policy to protect your target database from common database attacks like SQL injection
+- **Assess the database security posture** by identifying configuration risks, establishing an approved baseline, and detecting security drift with Security Assessment.
+- **Evaluate database users and privileges** by identifying potentially high-risk users and detecting changes to users and entitlements with User Assessment.
+- **Discover sensitive data** by identifying where sensitive information resides and creating a sensitive data model with Data Discovery.
+- **Protect sensitive data** for non-production use by masking sensitive values with Data Masking.
+- **Control application SQL behavior** by learning an application's expected SQL workload, creating an allow-list, enforcing a SQL Firewall policy, and investigating blocked SQL statements.
+
+By the end of the workshop, you will understand how these Oracle Data Safe capabilities can work together to help identify and reduce database security risk while protecting sensitive data.
 
 You may now **proceed to the next lab**.
 
@@ -24,13 +47,12 @@ You may now **proceed to the next lab**.
 
 The following links provide more information about Oracle Data Safe:
 
-- [Oracle Data Safe website](https://www.oracle.com/database/technologies/security/data-safe.html)
-- [Oracle Data Safe user assistance](https://docs.oracle.com/en/cloud/paas/data-safe/index.html)
-- [Oracle Data Safe data sheet](https://www.oracle.com/a/tech/docs/dbsec/data-safe/ds-security-data-safe.pdf)
-- [Oracle Data Safe frequently asked questions](https://www.oracle.com/security/database-security/data-safe/faq/)
-- [Integrate Oracle Data Safe with Applications and Services Workshop in LiveLabs](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3596)
+- [Oracle Data Safe website](https://www.oracle.com/security/database-security/data-safe/)
+- [Oracle Data Safe documentation](https://docs.oracle.com/iaas/data-safe/index.html)
+
 
 ## Acknowledgements
 
-* **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, August 17, 2026
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Bettina Schäumer, August 20, 2026

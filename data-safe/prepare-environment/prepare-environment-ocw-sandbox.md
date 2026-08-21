@@ -118,12 +118,11 @@ You may now **proceed to the next lab**.
 
 - [Oracle Cloud Infrastructure documentation](https://docs.oracle.com/iaas/Content/home.htm)
 - [OCI Cloud Free Tier](https://www.oracle.com/cloud/free/)
-- [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
-- [Oracle Data Safe Dashboard](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B4D784B8-F3F7-4020-891D-49D709B9A302)
-
+- [Target Database Registration](https://docs.oracle.com/iaas/data-safe/doc/target-database-registration.html)
 
 
 ## Acknowledgements
 
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 8, 2026
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Jody Glover, August 20, 2026

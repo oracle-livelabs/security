@@ -2,11 +2,39 @@
 
 ## Introduction
 
-Security Assessment helps you assess the security of your database configurations. It analyzes database configurations, user accounts, and security controls, and then reports the findings with recommendations for remediation activities that follow best practices to reduce or mitigate risk. 
+Imagine that you are a database security administrator responsible for keeping your organization's databases securely configured.
 
-Oracle Data Safe automatically creates a security assessment of your target database during registration. This assessment is referred to as the *latest assessment* and is automatically updated on a weekly basis. All assessments are stored in the Assessment History. You can analyze assessment data across all your target databases and for each target database. You can monitor security drift on your target databases by comparing the latest assessment to a baseline or to another assessment.
+Your team has established an approved security posture for a database, but database configurations do not remain static. Administrators grant privileges, application requirements change, and configuration settings are modified. A change that seems harmless can introduce a security risk, and manually reviewing every database configuration change is difficult.
 
-In this lab, you explore Security Assessment.
+You need a way to answer questions, such as:
+
+- What security risks exist in my database today?
+- Which findings should I investigate first?
+- Does the database still comply with the security posture my team previously approved?
+- Has a recent database change introduced a new security risk?
+- What changed, and how can I remediate it?
+
+Oracle Data Safe Security Assessment helps you answer these questions by analyzing database configurations, user accounts, and security controls and identifying findings that could introduce risk.
+
+When you register a target database, Data Safe automatically creates its latest security assessment and updates it weekly. You can also refresh an assessment on demand. By establishing an assessment as a baseline, you can detect security drift and identify changes to the database's security posture.
+
+### Scenario
+
+In this lab, assume that you are responsible for monitoring the security posture of a database used by your organization.
+
+You will first review the database's current security assessment and determine that its existing configuration represents an acceptable starting point. You will establish that assessment as your baseline.
+
+Next, a database privilege will be granted to `PUBLIC`, simulating a potentially risky administrative change.
+
+Rather than relying on someone to tell you that the change occurred, you will use Security Assessment to:
+
+1. Reassess the database.
+2. Detect that its security posture has changed.
+3. Investigate the new high-risk finding.
+4. Compare the current assessment with your approved baseline.
+5. Identify exactly what changed.
+
+By the end of the lab, you will have experienced the workflow a security or database administrator can use to identify security configuration drift.
 
 Estimated Time: 20 minutes
 
@@ -14,13 +42,12 @@ Estimated Time: 20 minutes
 
 In this lab, you will:
 
-- View the landing page for Security Assessment
-- View the latest security assessment for your target database
-- Adjust the risk level of a risk finding
-- Set the latest assessment as the baseline assessment
-- Create a risk on the target database
-- Refresh the latest security assessment and analyze the results
-- Compare your assessment with the baseline
+- Evaluate the current security posture of your target database
+- Establish an approved security posture as a baseline
+- Simulate a risky database privilege change
+- Reassess the database to detect the new risk
+- Investigate the security finding and its remediation guidance
+- Compare the current security posture with the baseline to identify security drift
 
 ### Prerequisites
 
@@ -29,7 +56,6 @@ This lab assumes you have:
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Access to or prepared an environment for this workshop
 - Access to a registered target database
-
 
 ### Assumptions
 
@@ -51,10 +77,10 @@ This lab assumes you have:
     - The **Risks by category** pie chart shows you a percentage breakdown of the applicable risk categories (for example, User Accounts, Privileges and Roles, Authorization Control, Data Encryption, Fine-Grained Access, Auditing, and Database Configurations) across target databases in the selected compartment(s).
     - The **Top 5 common security controls** bar chart shows the number of target databases at each risk level for each of the top five common controls. The top five common controls are the five security controls that Oracle considers the most important to the security of your target databases.
 
-     ![Security assessment overview charts for all targets](images/sa_overview_charts.png "Security assessment overview charts for all targets")
+    ![Security assessment overview charts for all targets](images/sa_overview_charts.png "Security assessment overview charts for all targets")
 
 
-4. Select the **Risk summary** tab and review the information. 
+4. Select the **Risk summary** tab and review the information.
 
     - This tab shows you how much risk you have across all target databases in the specified compartment(s).
     - You can compare the number of high, medium, low, advisory, and evaluate risk findings across all target databases, and view which risk categories have the greatest numbers.
@@ -63,7 +89,7 @@ This lab assumes you have:
     ![Security assessment risk summary tab](images/sa-risk-summary-tab.png "Security assessment risk summary tab")
 
 
-5. Select the **Target summary** tab and review the information. 
+5. Select the **Target summary** tab and review the information.
 
     - This tab shows you the security posture of each target database.
     - You can view the number of high, medium, low, advisory, and evaluate risk findings for each target database.
@@ -134,11 +160,11 @@ You can defer or change the risk level of a finding. In this task, you defer the
 
     Setting an expiration date is optional. Upon expiry, the next assessment resumes evaluating the finding and displays as found. With no expiration date, the risk finding is deferred indefinitely. 
 
-   ![Update risk for finding panel](images/update-risk-for-finding.png "Update risk for finding panel")
+    ![Update risk for finding panel](images/update-risk-for-finding.png "Update risk for finding panel")
 
 4. Notice that the risk finding is recategorized as **DEFERRED**.
 
-   ![Deferred risk finding](images/deferred-risk-finding.png "Deferred risk finding")
+    ![Deferred risk finding](images/deferred-risk-finding.png "Deferred risk finding")
 
 5. Select the **X** to remove the filter.
 
@@ -235,9 +261,10 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-- [Security Assessment Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-030B2A14-272F-49CF-80D2-5559C722E0FF)
+- [Security Assessment Overview](https://docs.oracle.com/iaas/data-safe/doc/security-assessment-overview.html)
 
 ## Acknowledgements
 
-* **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 8, 2026
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Jody Glover, August 20, 2026

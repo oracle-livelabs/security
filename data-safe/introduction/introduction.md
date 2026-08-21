@@ -1,6 +1,22 @@
 # Introduction
 
-This workshop is designed to help new users become familiar with the features of Oracle Data Safe. You learn how to register a database with Oracle Data Safe, assess the security of your database configurations and users, discover and mask sensitive data, audit database activity and generate alerts, and create and deploy a SQL Firewall policy.
+Protecting a database requires more than applying individual security controls. Security teams need to understand whether databases are securely configured, who has access to them, where sensitive data resides, how that data is protected, what activity is occurring, and whether applications are behaving as expected.
+
+In this workshop, you take on the role of a database security administrator responsible for protecting a database and the sensitive information it contains.
+
+Rather than exploring Oracle Data Safe as a collection of individual features, you will follow a connected security scenario. You will begin by assessing the security posture of your database and its users. You will then identify and protect sensitive data, monitor security-relevant database activity, and control the SQL statements that an application user is allowed to execute.
+
+Along the way, you will answer questions such as:
+- Is my database securely configured, and has its security posture changed?
+- Which database users present the greatest potential risk, and have their privileges changed?
+- Where is sensitive data stored, and what information could be exposed if an account were compromised?
+- How can I provide useful data for non-production purposes without unnecessarily exposing sensitive information?
+- What security-relevant activity is occurring in the database?
+- Can I prevent an application account from executing SQL outside its expected workload?
+
+By working through these questions as part of a single scenario, you will experience a practical database security workflow:
+
+Assess → Discover → Protect → Monitor → Control
 
 You can do this workshop in your own tenancy or in an Oracle-provided environment, such as a LiveLabs sandbox.
 
@@ -8,19 +24,24 @@ Estimated Workshop Time: 2 hours
 
 ## About Oracle Data Safe
 
-Oracle Data Safe is Oracle’s platform for securing data in databases. As a native Oracle Cloud Infrastructure service, Oracle Data Safe lets you assess the security of your database configurations, find your sensitive data, mask that data in non-production environments, discover the risks associated with database users, monitor database activity, and create and enforce SQL Firewall policies for users.
+Oracle Data Safe is a unified database security service that helps you understand and reduce risk to data in Oracle databases.
+
+Data Safe provides capabilities to assess database configurations and users, discover and protect sensitive data, monitor database activity, and control SQL activity. These capabilities can be used together to help security and database teams identify risk, protect sensitive information, detect suspicious behavior, and strengthen database security controls.
 
 Watch a preview of "*Introduction to Oracle Data Safe*" (May 2025) [Video hosted on Oracle Video Hub](videohub:1_qzygqqzb)
 
 ## Objectives
 
-In this workshop, you learn how to perform the following tasks:
+In this workshop, you will:
 
-- Register an Autonomous AI Database with Oracle Data Safe
-- Assess the security of your database configurations and database users using Oracle Data Safe
-- Discover and mask sensitive data on your target database using Oracle Data Safe
-- Collect and monitor audit data in Oracle Data Safe to inform you of database activity
-- Create and enforce a SQL Firewall policy to protect your target database from common database attacks like SQL injection
+- **Assess the database security posture** by identifying configuration risks, establishing an approved baseline, and detecting security drift with Security Assessment.
+- **Evaluate database users and privileges** by identifying potentially high-risk users and detecting changes to users and entitlements with User Assessment.
+- **Discover sensitive data** by identifying where sensitive information resides and creating a sensitive data model with Data Discovery.
+- **Protect sensitive data for non-production use** by applying masking techniques that replace sensitive values while preserving useful characteristics of the data.
+- **Monitor database activity** by configuring auditing and alerts, generating security-relevant activity, and investigating the resulting alerts and audit events.
+- **Control application SQL behavior** by learning an application's expected SQL workload, creating an allow-list, enforcing a SQL Firewall policy, and investigating blocked SQL statements.
+
+By the end of the workshop, you will understand how these Oracle Data Safe capabilities can work together to help identify, reduce, and monitor database security risk.
 
 You may now **proceed to the next lab**.
 
@@ -28,13 +49,12 @@ You may now **proceed to the next lab**.
 
 The following links provide more information about Oracle Data Safe:
 
-- [Oracle Data Safe website](https://www.oracle.com/database/technologies/security/data-safe.html)
-- [Oracle Data Safe user assistance](https://docs.oracle.com/en/cloud/paas/data-safe/index.html)
-- [Oracle Data Safe data sheet](https://www.oracle.com/a/tech/docs/dbsec/data-safe/ds-security-data-safe.pdf)
-- [Oracle Data Safe frequently asked questions](https://www.oracle.com/security/database-security/data-safe/faq/)
-- [Integrate Oracle Data Safe with Applications and Services Workshop in LiveLabs](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3596)
+- [Oracle Data Safe website](https://www.oracle.com/security/database-security/data-safe/)
+- [Oracle Data Safe documentation](https://docs.oracle.com/iaas/data-safe/index.html)
+
 
 ## Acknowledgements
 
-* **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, August 17, 2026
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Bettina Schäumer, August 20, 2026

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-To clean up your environment after you are finished with this workshop, you need to terminate your target database. Terminating an Autonomous AI Database permanently deletes the instance from Oracle Cloud Infrastructure, removes all automatic backups, and deregesters the database from Oracle Data Safe. Oracle Data Safe automatically deprovisions resources when your free trial period expires. You cannot recover a terminated database.
+To clean up your environment after you are finished with this workshop, you need to terminate your target database. Terminating an Autonomous AI Database permanently deletes the instance from Oracle Cloud Infrastructure, removes all automatic backups, and deregisters the database from Oracle Data Safe. Oracle Data Safe automatically deprovisions resources when your free trial period expires. You cannot recover a terminated database.
 
 Estimated Time: 2 minutes
 
@@ -44,6 +44,6 @@ Watch the video below for a quick walk-through of the lab.
 
 ## Acknowledgements
 
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, October 20, 2023
-
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Jody Glover, August 20, 2026

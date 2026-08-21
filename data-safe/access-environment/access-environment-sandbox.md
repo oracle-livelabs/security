@@ -27,7 +27,7 @@ This lab assumes you have:
 
 1. In the upper-left corner of the lab instructions page (this page), click the **View Login Info** link. 
 
-    A **Reservation Information** panel is displayed.
+    A **Reservation Information** panel opens.
 
 2. Review the information. You are provided with the following in Oracle Cloud Infrastructure:
 
@@ -58,11 +58,11 @@ A database registered with Oracle Data Safe is referred to as a *target database
 
 1. From the navigation menu, select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**.
 
-   The **Overview** page titled **Simplify security for your Oracle databases** opens. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
+    The **Overview** page titled **Simplify security for your Oracle databases** opens. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
 
 2. On the left under **Data Safe - Database Security**, select **Target databases**.
 
-    The **Target databases** page opens. 
+    The **Target databases** page opens.
 
 3. Next to **Applied filters**, select your compartment without child compartments. Your registered target database is listed in the table.
 
@@ -109,20 +109,21 @@ Database Actions provides a way for you to run SQL commands on your database. Th
 
 6. *Leave the **SQL | ORACLE Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again. 
 
-7. Return to Oracle Data Safe: Select the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**. The **Overview** page opens.
+7. To return to Oracle Data Safe, select the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**. The **Overview** page opens.
 
 You may now **proceed to the next lab**.
 
 ## Learn More
 
 - [Oracle Cloud Infrastructure documentation](https://docs.oracle.com/iaas/Content/home.htm)
-- [OCI Cloud Free Tier](https://www.oracle.com/cloud/free/)
-- [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
-- [Oracle Data Safe Dashboard](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B4D784B8-F3F7-4020-891D-49D709B9A302)
+- [OCI Cloud Free Tier](https://docs.oracle.com/iaas/Content/FreeTier/freetier.htm)
+- [Target Database Registration](https://docs.oracle.com/iaas/data-safe/doc/target-database-registration.html)
+- [Oracle Data Safe Overview](https://docs.oracle.com/iaas/data-safe/doc/oracle-data-safe-overview.html)
 
 
 
 ## Acknowledgements
 
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 8, 2026
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Jody Glover, August 20, 2026

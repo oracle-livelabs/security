@@ -2,11 +2,39 @@
 
 ## Introduction
 
-Security Assessment helps you assess the security of your database configurations. It analyzes database configurations, user accounts, and security controls, and then reports the findings with recommendations for remediation activities that follow best practices to reduce or mitigate risk. 
+Imagine that you are a database security administrator responsible for keeping your organization's databases securely configured.
 
-Oracle Data Safe automatically creates a security assessment of your target database during registration. This assessment is referred to as the *latest assessment* and is automatically updated on a weekly basis. All assessments are stored in the Assessment History. You can analyze assessment data across all your target databases and for each target database. You can monitor security drift on your target databases by comparing the latest assessment to a baseline or to another assessment.
+Your team has established an approved security posture for a database, but database configurations do not remain static. Administrators grant privileges, application requirements change, and configuration settings are modified. A change that seems harmless can introduce a security risk, and manually reviewing every database configuration change is difficult.
 
-In this lab, you explore Security Assessment.
+You need a way to answer questions, such as:
+
+- What security risks exist in my database today?
+- Which findings should I investigate first?
+- Does the database still comply with the security posture my team previously approved?
+- Has a recent database change introduced a new security risk?
+- What changed, and how can I remediate it?
+
+Oracle Data Safe Security Assessment helps you answer these questions by analyzing database configurations, user accounts, and security controls and identifying findings that could introduce risk.
+
+When you register a target database, Data Safe automatically creates its latest security assessment and updates it weekly. You can also refresh an assessment on demand. By establishing an assessment as a baseline, you can detect security drift and identify changes to the database's security posture.
+
+### Scenario
+
+In this lab, assume that you are responsible for monitoring the security posture of a database used by your organization.
+
+You will first review the database's current security assessment and determine that its existing configuration represents an acceptable starting point. You will establish that assessment as your baseline.
+
+Next, a database privilege will be granted to `PUBLIC`, simulating a potentially risky administrative change.
+
+Rather than relying on someone to tell you that the change occurred, you will use Security Assessment to:
+
+1. Reassess the database.
+2. Detect that its security posture has changed.
+3. Investigate the new high-risk finding.
+4. Compare the current assessment with your approved baseline.
+5. Identify exactly what changed.
+
+By the end of the lab, you will have experienced the workflow a security or database administrator can use to identify security configuration drift.
 
 Estimated Time: 20 minutes
 
@@ -16,11 +44,13 @@ Estimated Time: 20 minutes
 
 In this lab, you will:
 
-- View the latest security assessment for your target database
-- Set the latest assessment as the baseline assessment
-- Create a risk on the target database
-- Refresh the latest security assessment and analyze the results
-- Compare your assessment with the baseline
+- Evaluate the current security posture of your target database
+- Establish an approved security posture as a baseline
+- Simulate a risky database privilege change
+- Reassess the database to detect the new risk
+- Investigate the new security finding and its remediation guidance
+- Compare the current security posture with the baseline to identify security drift
+
 
 ### Prerequisites
 
@@ -41,9 +71,7 @@ This lab assumes you have:
 
 1. Navigate to the **Security assessment** landing page.
 
-2. If needed, next to **Applied filters**, select your compartment. Deselect **Include child compartments**, and then select **Apply filter**. 
-
-    Note: From here on in, the labs simply say *Select your compartment without child compartments* to simplify the instructions.
+2. If needed, select your compartment without child compartments.
 
 3. On the **Overview** tab, review the charts.
 
@@ -51,11 +79,11 @@ This lab assumes you have:
     - The **Risks by category** pie chart shows you a percentage breakdown of the applicable risk categories (for example, User Accounts, Privileges and Roles, Authorization Control, Data Encryption, Fine-Grained Access, Auditing, and Database Configurations) across target databases in the selected compartment(s).
     - The **Top 5 common security controls** bar chart shows the number of target databases at each risk level for each of the top five common controls. The top five common controls are the five security controls that Oracle considers the most important to the security of your target databases.
 
-     ![Security assessment overview charts for all targets](images/sa_overview_charts.png "Security assessment overview charts for all targets")
+    ![Security assessment overview charts for all targets](images/sa_overview_charts.png "Security assessment overview charts for all targets")
 
 4. Select the **Target summary** tab, and then select the name of your database.
 
-    The latest security assessment for your target database is displayed. Notice that **Latest assessment for target database...** is displayed at the top of the page.
+    The latest security assessment for your target database opens. Notice that **Latest assessment for target database...** is displayed at the top of the page.
 
 5. Select the **Assessment summary** tab and review the risk level, finding name, and summary for the top 5 common security controls that Oracle considers to be the most important to the security of your target database.
 
@@ -68,15 +96,13 @@ This lab assumes you have:
 
     ![Latest security assessment assessment summary](images/latest-sa-assessment-summary.png "Latest security assessment assessment summary")
 
-7. Select the **Assessment details** tab.
+7. Select the **Findings** tab.
 
-    - This tab lists all the findings. For each finding, you can view the risk level, risk category, and references.
-    - Risks are color-coded to help you easily identify categories that have high risk findings (red).
-    - The high risk findings listed under **Privileges and Roles** were introduced when you ran the SQL script to populate your target database with sample data.
+    This tab lists all the findings. For each finding, you can view the risk level, finding name, risk category, references, and documentation links.
 
-    ![Latest Security Assessment Assessment details section](images/latest-sa-assessment-details-section.png "Latest Security Assessment Assessment details section")
+    ![Latest Security Assessment Findings section](images/latest-sa-findings-section.png "Latest Security Assessment Findings section")
 
-8. At the top, select the **Search and Filter** box. Notice that you can filter by risk, finding, category, reference, and documentation. Select outside the box to hide the filter options.
+8. At the top, select the **Search and Filter** box. Notice that you can filter by risk, finding, category, references, documentation, summary, details, and remarks. Select outside the box to hide the filter options.
 
     ![Security Assessment filters](images/sa-filters.png "Security Assessment filters")
 
@@ -123,9 +149,9 @@ In this task, you manually create a new configuration risk on your database by i
 
 4. On the toolbar, select the **Run Statement** button (green circle with white arrow).
 
-5. On the **Script Output** tab, verify that the grant is successful.
-
     ![Run Statement button](images/run-statement-button.png "Run Statement button")
+
+5. On the **Script Output** tab, verify that the grant is successful.
 
 
 ## Task 4: Refresh the latest security assessment and analyze the results
@@ -138,8 +164,7 @@ In this task, you manually create a new configuration risk on your database by i
 
 3. Leave the default name as is, and select **Refresh now**. Wait for the status next to the name of the security assessment to change from **Updating** to **Succeeded**. It takes about 1 minute.
 
-    - This action updates the data in the latest security assessment for your target database and also saves a copy of the assessment to the Assessment History.
-    
+    This action updates the data in the latest security assessment for your target database and also saves a copy of the assessment to the Assessment History.
 
     ![Security Assessment Refresh now panel](images/sa-refresh-now-panel.png "Security Assessment Refresh now panel")
 
@@ -147,7 +172,7 @@ In this task, you manually create a new configuration risk on your database by i
 
     ![Security Assessment Assessed on right now](images/sa-assessed-on-right-now.png "Security Assessment assessed on right now")
 
-5. Select the **Assessment details** tab and expand **System Privileges Granted to PUBLIC**. You can use the search box to quickly display this finding.
+5. Select the **Findings** tab and expand **System Privileges Granted to PUBLIC**. You can use the search box to quickly display this finding.
 
     - This is a high risk finding.
     - In the **Summary** section, you can see that the grant you made in the previous task is identified: All users are granted via 1 grant to PUBLIC.
@@ -166,8 +191,7 @@ In this task, you manually create a new configuration risk on your database by i
 
     - Review the number of findings per risk category for each risk level. Categories include **User accounts**, **Privileges and roles**, **Authorization control**, **Data encryption**, **Fine-grained access control**, **Auditing**, and **Database configuration**.
     - You can identify where the changes have occurred on your target database by viewing cells that contain the word **Modified**. The number represents the total count of new, remediated, and modified risks on the target database.
-    - In the details table, you can view the risk level for each finding, the category to which the finding belongs, the finding name, and a description of what has changed on your target database. The Comparison Report column is important because it explains what is changed, added, or removed from the target database since the baseline report was generated.
-    - Notice that the change you made is noted in the **Comparison report** column.
+    - In the details table, you can view information about each finding, including the risk level, the category to which the finding belongs, the finding name, and what was added, removed, or modified in the target database since the baseline report was generated. You can expand each finding to view more information.
 
     ![Security Assessment Comparison report top](images/sa-comparison-report-top.png "Security Assessment Comparison report top")
     ![Security Assessment Comparison report bottom](images/sa-comparison-report-bottom.png "Security Assessment Comparison report bottom")
@@ -179,9 +203,10 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-- [Security Assessment Overview](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=UDSCS-GUID-030B2A14-272F-49CF-80D2-5559C722E0FF)
+- [Security Assessment Overview](https://docs.oracle.com/iaas/data-safe/doc/security-assessment-overview.html)
 
 ## Acknowledgements
 
-* **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-* **Last Updated By/Date** - Jody Glover, February 8, 2026
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Bettina Schäumer, August 20, 2026

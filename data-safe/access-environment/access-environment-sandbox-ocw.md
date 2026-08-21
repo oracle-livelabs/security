@@ -15,7 +15,7 @@ In this lab, you will:
 - View your LiveLabs reservation information and sign in
 - Access Oracle Data Safe and view your registered target database
 - Explore the Oracle Data Safe user interface
-- Access ORACLE Database Actions
+- Access Oracle Database Actions
 
 ### Prerequisites
 
@@ -27,7 +27,7 @@ This lab assumes you have:
 
 1. In the upper-left corner of the lab instructions page (this page), select **View Login Info**.
 
-    A **Reservation Information** panel is displayed.
+    A **Reservation Information** panel opens.
 
 2. Review the information. You are provided with the following in Oracle Cloud Infrastructure:
 
@@ -37,17 +37,17 @@ This lab assumes you have:
     - A compartment of your very own. We refer to this compartment as "your compartment" throughout the workshop. Make note of your compartment's name because you need to select it often throughout the workshop.
     - An Autonomous AI Database in your compartment. You are provided the password for the `ADMIN` account on your database.
 
-3. Make note of your username and select **Copy Password** for Oracle Cloud Infrastructure.
+3. Make note of your username and select the **Copy** button for your Oracle Cloud Infrastructure password.
 
-4. On the **Reservation Information** panel, select **Launch OCI**. Leave the default domain selected, and then select **Next**.
+4. On the **Reservation Information** panel, select **Launch OCI**. Leave the **Default** domain selected, and then select **Next**.
 
-    A new browser tab opens and the sign-in page for the LiveLabs tenancy is displayed.
+    The sign-in page for the LiveLabs tenancy opens in a new browser tab.
 
 5. Enter your username (if needed), paste the password into the **Password** box, and then select **Sign In**.
 
-    The **Change Password** page is displayed.
+    The **Change Password** page opens.
 
-6. In the **Current Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Review the password requirements shown on the page. Select **Save New Password**.
+6. In the **Old Password** box, paste your password. In the **New Password** and **Confirm New Password** boxes, enter a new password. Review the password requirements shown on the page. Select **Reset Password**.
 
     You are now signed in to your LiveLabs Sandbox in Oracle Cloud Infrastructure.
 
@@ -55,20 +55,22 @@ This lab assumes you have:
 
 A database registered with Oracle Data Safe is referred to as a *target database* in Oracle Data Safe.
 
-1. From the navigation menu, select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**.
+1. From the navigation menu (hamburger menu in the upper-left corner), select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**.
 
-    The **Overview** page titled **Simplify security for your Oracle databases** opens. If the **Welcome to Data Safe** tour dialog box is displayed, select **Stop tour**.
+    The **Overview** page titled **Simplify security for your Oracle databases** opens.
 
 2. On the left under **Data Safe - Database Security**, select **Target databases**.
 
     The **Target databases** page opens.
 
-3. Next to **Applied filters**, select your compartment without child compartments.
+3. Next to **Applied filters**, select your compartment, which is under the **LiveLabs** folder in the list. Deselect **Include child compartments**, and then select **Apply filter**.
+
+    Note: From here on in, the labs simply say *Select your compartment without child compartments* to simplify the instructions.
 
     Your registered target database is listed in the table.
 
     - A target database with an **Active** status means that it is currently registered with Oracle Data Safe.
-    - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. Cloud target databases are delisted after one day. Billable target databases are delisted after 45 days.
+    - A target database with a **Deleted** status means that it is no longer registered with Oracle Data Safe. Deleted cloud target databases are delisted after one day. Deleted billable target databases are delisted after 45 days.
 
     ![Target databases page in OCI](images/target-databases-page-oci.png "Target databases page in OCI")
 
@@ -86,11 +88,11 @@ A database registered with Oracle Data Safe is referred to as a *target database
 
     ![Data Safe landing pages](images/data-safe-landing-pages.png "Data Safe landing pages")
 
-## Task 4: Access ORACLE Database Actions
+## Task 4: Access Oracle Database Actions
 
 Database Actions provides a way for you to run SQL commands on your database. The step-by-step instructions for accessing Database Actions are covered here. Subsequent labs simply say to "access the SQL worksheet in Database Actions." You can always refer back to these steps for help if needed.
 
-1. From the navigation menu (hamburger menu in the upper-left corner), select **Oracle AI Database**, and then **Autonomous AI Database**.
+1. From the navigation menu, select **Oracle AI Database**, and then **Autonomous AI Database**.
 
 2. Next to **Applied filters**, select your compartment under the **LiveLabs** folder. In the table, select the name of your database.
 
@@ -100,7 +102,7 @@ Database Actions provides a way for you to run SQL commands on your database. Th
 
 5. Close any open dialog boxes.
 
-6. Review the interface. Here are the ways that you use Database Actions during the workshop:
+6. Review the interface. Here are the ways that you use Database Actions during this workshop:
 
     - In the **Navigator** pane on the left, you select tables from the **HCM1** schema on your database.
     - On the **Worksheet** on the right, you run SQL commands and scripts.
@@ -110,18 +112,19 @@ Database Actions provides a way for you to run SQL commands on your database. Th
 
 7. *Leave the **SQL | ORACLE Database Actions** tab open because you return to it throughout this workshop.* If your session expires, you can always sign in again.
 
-8. Return to Oracle Data Safe: Select the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**. The **Overview** page opens.
+8. To return to Oracle Data Safe, select the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab. From the navigation menu, select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**. The **Overview** page opens.
 
 You may now **proceed to the next lab**.
 
 ## Learn More
 
 - [Oracle Cloud Infrastructure documentation](https://docs.oracle.com/iaas/Content/home.htm)
-- [OCI Cloud Free Tier](https://www.oracle.com/cloud/free/)
-- [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
-- [Oracle Data Safe Dashboard](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B4D784B8-F3F7-4020-891D-49D709B9A302)
+- [OCI Cloud Free Tier](https://docs.oracle.com/iaas/Content/FreeTier/freetier.htm)
+- [Target Database Registration](https://docs.oracle.com/iaas/data-safe/doc/target-database-registration.html)
+- [Oracle Data Safe Overview](https://docs.oracle.com/iaas/data-safe/doc/oracle-data-safe-overview.html)
 
 ## Acknowledgements
 
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Last Updated By/Date** - Jody Glover, February 9, 2026
+- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Jody Glover, August 20, 2026
