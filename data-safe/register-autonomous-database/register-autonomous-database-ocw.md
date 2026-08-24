@@ -62,13 +62,13 @@ Watch the video below for a quick walk-through of the lab.
 
 8. Notice the message at the bottom of the page: **The selected database is configured to be securely accessible from everywhere. Steps 2 ('Connectivity Option') and 3 ('Add Security Rule') are not necessary and will be skipped.** If your database had a private IP address, you would need to configure an Oracle Data Safe private endpoint and security rules. 
 
-    ![Autonomous Database registration wizard - Select Database page](images/ocw/adb-wizard-select-database.png "Autonomous Database registration wizard - Select Database page")
+    ![Autonomous Database registration wizard - Select Database page](images/ocw/adb-wizard-select-database2.png "Autonomous Database registration wizard - Select Database page")
 
 9. Click **Next**.
 
 10. On the **Review and Submit** page, review the information. To make a change, you can return to the **Select Database** page.
 
-    ![Autonomous Database registration wizard - Review and Submit page](images/ocw/adb-wizard-review-submit.png "Autonomous Database registration wizard - Review and Submit page")
+    ![Autonomous Database registration wizard - Review and Submit page](images/ocw/adb-wizard-review-submit2.png "Autonomous Database registration wizard - Review and Submit page")
 
 11. Click **Register**.
 
