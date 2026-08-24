@@ -107,7 +107,7 @@ This lab assumes you have:
 
 7. Change to your compartment, if needed, and then select the name of your database.
 
-8. On the **Autonomous AI Database** page, from the **Database Actions** menu, select **Database Users**.
+8. On the **Autonomous AI Database** page, from the **Database actions** menu, select **Database Users**.
 
 9. On the **APP_USER** tile, select the three dots, and then select **Edit**.
 
@@ -115,7 +115,7 @@ This lab assumes you have:
 
     The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. It cannot contain the double quote (") character or the username "admin".
 
-11. At the bottom, enable **Web access**.
+11. Enable **Web access**.
 
     Note: It's included in the toggle for **REST, GraphQL, MongoDB API, and Web access**.
 
@@ -129,9 +129,9 @@ This lab assumes you have:
 
 14. Sign in as `APP_USER` and enter the password.
 
-15. Select the **SQL** tab.
+15. Close any tip dialog boxes.
 
-16. Close any tip dialog boxes.
+16. Select the **SQL** tab.
 
 17. On the worksheet, enter the following, and then select the **Run Statement** button:
 
@@ -286,4 +286,4 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 20, 2026
+- **Last Updated By/Date** - Jody Glover, August 24, 2026
