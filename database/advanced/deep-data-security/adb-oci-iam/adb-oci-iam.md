@@ -16,7 +16,7 @@ In this lab, you will:
 
 Estimated Time: 55 minutes
 
-## What This Lab Does
+## Introduction
 
 - Creates or reuses an Autonomous AI Database 26ai instance.
 - Downloads the database client wallet into Cloud Shell.
@@ -157,7 +157,7 @@ By default, `00_setup_adb.sh` creates or reuses the real OCI IAM domain users
 `marvin` and `emma`. Set `CREATE_DEMO_USERS=0` only if you want to create or
 manage those users manually.
 
-## Task 0. Download and Unzip the Lab Files
+## Task 0: Download and Unzip the Lab Files
 
 Create a Cloud Shell working directory and download the lab archive:
 
@@ -203,7 +203,7 @@ Important files include:
 | `verify_db_setup.sh` | Verifies the ADMIN-side database setup |
 | `07_cleanup_adb_lab.sh` | Removes lab database objects and optional OCI resources |
 
-## Task 1. Create Autonomous AI Database and Download the Wallet
+## Task 1: Create Autonomous AI Database and Download the Wallet
 
 `00_setup_adb.sh` tries to discover the OCI IAM domain URL automatically by
 listing active IAM domains in your tenancy and selecting the domain named by
@@ -279,7 +279,7 @@ To set only Emma's password:
 The password is not written to `.adb-oci-iam.env`. If you forget a demo user's
 password, rerun the password helper.
 
-## Task 2. Enable OCI IAM on Autonomous AI Database
+## Task 2: Enable OCI IAM on Autonomous AI Database
 
 ```bash
 <copy>
@@ -315,7 +315,7 @@ running an old copy of the lab files. Re-download the ZIP and unzip with `-o`.
 The current lab script uses `DBMS_CLOUD_ADMIN.ENABLE_EXTERNAL_AUTHENTICATION`
 with the `params` argument instead of a direct `ALTER SYSTEM`.
 
-## Task 3. Create the HR Schema
+## Task 3: Create the HR Schema
 
 ```bash
 <copy>
@@ -326,7 +326,7 @@ with the `params` argument instead of a direct `ALTER SYSTEM`.
 The HR schema is created with `NO AUTHENTICATION`. It owns the data, but users do
 not log in as `HR`.
 
-## Task 4. Create Data Roles and Data Grants
+## Task 4: Create Data Roles and Data Grants
 
 ```bash
 <copy>
@@ -380,7 +380,7 @@ creation privileges, including `CREATE DATA ROLE`, `CREATE ANY DATA GRANT`,
 roles need `CREATE SESSION`, package execution, and the data grants—not broad
 `SELECT` or `UPDATE` privileges on `HR.EMPLOYEES`.
 
-## Task 5. Verify the ADMIN-Side Setup
+## Task 5: Verify the ADMIN-Side Setup
 
 ```bash
 <copy>
@@ -430,7 +430,7 @@ WHERE context_owner = 'HR'
 </copy>
 ```
 
-## Task 6. Get an OCI IAM OAuth2 Access Token
+## Task 6: Get an OCI IAM OAuth2 Access Token
 
 Use `--headless` in OCI Cloud Shell when your browser opens on your local
 machine. You do not need NoVNC for this flow:
@@ -475,12 +475,12 @@ In headless mode:
 
 1. Copy the printed **LOGIN URL**.
 2. Paste it into a separate private window, incognito window, separate browser
-   profile, or different browser.
+    profile, or different browser.
 3. Sign in as the target demo user, `marvin` or `emma`.
 4. The final `localhost:8888/callback?...` page will usually fail to load. That
-   is expected. The page load is not the success signal.
+    is expected. The page load is not the success signal.
 5. Copy the entire `localhost:8888/callback?...` URL from that browser address
-   bar.
+    bar.
 6. Paste the full URL back into the Cloud Shell prompt, then press Enter.
 
 After login, the script writes that user's OAuth2 access token here:
@@ -518,7 +518,7 @@ Before verification, check the token subject and groups:
 For Marvin, expect `user_name` or `sub` to be `marvin`, and `group` to include
 `EMPLOYEES` and `MANAGERS`. For Emma, expect `emma` and `EMPLOYEES` only.
 
-## Task 7. Verify Data Grants as Marvin
+## Task 7: Verify Data Grants as Marvin
 
 Get a token and sign in as Marvin in the separate browser session:
 
@@ -563,7 +563,7 @@ sqlplus -L /@${ADB_SERVICE}
 </copy>
 ```
 
-## Task 8. Verify Data Grants as Emma
+## Task 8: Verify Data Grants as Emma
 
 Clear Marvin's token, get a new token, and sign in as Emma in the separate
 browser session:
