@@ -767,6 +767,12 @@ adb_license_args=()
 if [ "$ADB_IS_FREE_TIER" = "false" ]; then
   adb_license_args=(--license-model "$ADB_LICENSE_MODEL")
 fi
+adb_compute_args=()
+if [ "$ADB_IS_FREE_TIER" = "false" ]; then
+  # ECPU is the current compute model for new paid Autonomous AI Databases.
+  # Two ECPUs is the minimum outside an elastic resource pool.
+  adb_compute_args=(--compute-model ECPU --compute-count 2)
+fi
 
 if [ -z "$ADB_OCID" ] || [ "$ADB_OCID" = "null" ]; then
   if [ -n "$ADB_ANY_STATE" ] && [ "$ADB_ANY_STATE" != "null" ]; then
@@ -782,7 +788,7 @@ if [ -z "$ADB_OCID" ] || [ "$ADB_OCID" = "null" ]; then
     "${adb_license_args[@]}" \
     "${adb_maintenance_args[@]}" \
     --admin-password '<hidden>' \
-    --cpu-core-count 1 \
+    "${adb_compute_args[@]}" \
     --data-storage-size-in-tbs 1 \
     --wait-for-state AVAILABLE
   oci db autonomous-database create \
@@ -794,7 +800,7 @@ if [ -z "$ADB_OCID" ] || [ "$ADB_OCID" = "null" ]; then
     "${adb_license_args[@]}" \
     "${adb_maintenance_args[@]}" \
     --admin-password "$ADMIN_PWD" \
-    --cpu-core-count 1 \
+    "${adb_compute_args[@]}" \
     --data-storage-size-in-tbs 1 \
     --wait-for-state AVAILABLE \
     >/dev/null
