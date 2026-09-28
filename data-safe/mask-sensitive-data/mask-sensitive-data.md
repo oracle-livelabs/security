@@ -298,7 +298,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 2. Drag the `EMPLOYEES` table to the worksheet and apply the **Select** insertion type.
 
-3. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query.
+3. On the toolbar, select the **Run Statement** button (green circle with a white arrow) to execute the query.
 
 4. Review the masked data at the bottom of the page. 
 
@@ -317,6 +317,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 
     ![Addresses shuffled](images/addresses-shuffled.png "Addresses shuffled")
 
+You may now **proceed to the next lab**.
 
 ## Learn More
 
@@ -327,4 +328,4 @@ The pre-masking check looks for any known issues that might arise during a maski
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 20, 2026
+- **Last Updated By/Date** - Jody Glover, September 28, 2026
