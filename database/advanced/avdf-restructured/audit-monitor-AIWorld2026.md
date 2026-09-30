@@ -1,107 +1,93 @@
-# Establish visibility first: audit and monitor
+# Audit, Monitor, and Alert on Privileged Activity
 
 ## Introduction
-Establishing visibility is the first step toward securing your database environment. With the necessary insights in place, shift your focus to first enable continuous monitoring to track user activity, detect anomalies, and understand how data is accessed and modified.
+In the previous lab, Security Central identified a control gap: sensitive employee data in the **employees_search** and **customer_orders** PDBs is accessed by privileged users, but the activity is not yet consistently audited and surfaced for response.
 
-- The **employees_search** pdb supports internal self-service applications, and contains a high volume of sensitive data and is accessible to privileged users, making insider threat mitigation the top priority. You enable auditing to track security-relevant events, privileged user activity, and access to sensitive data.
-- For the **customer_orders** pdb, the primary focus is mitigating external threats and demonstrating compliance. You enable auditing for system configuration changes, critical database activity, and schema changes, and additionally provision user activity and CIS compliance policies.
+In this lab, turn the findings into actionable protection. Centralized auditing creates the evidence needed to understand privileged activity and sensitive-data access, while alerts make important events visible for response. You will first provision the audit policies, then use a new alert to validate that activity by privileged users can be detected.
 
-*Estimated Lab Time:* 10 minutes
+*Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle Database Security Central (Security Central)
+
 <!--
 ### Video Preview
 
 Watch a preview of "*LiveLabs - Oracle Database Security Central (Security Central)*" [](youtube:eLEeOLMAEec)
 -->
 
-### Objectives
-- Configure database activity monitoring with audit
-- Pro-actively monitor actionable audit events with alerts
+## Objectives
+- Provision audit policies for privileged users and sensitive objects
+- Create and validate an alert for privileged-user activity
 
 
-## Task 1: Configure database activity monitoring with audit
+## Task 1: Provision audit policies for privileged users and sensitive objects
 
-Security Central enables comprehensive database activity monitoring by collecting and aggregating audit data, along with network-based monitoring of SQL traffic. For Oracle Database, it provides centralized capabilities to manage and provision audit policies, ensuring consistent monitoring, improved visibility, and stronger security governance across the database environment.
+Begin by provisioning the audit policies that collect the evidence for the next task. Apply **User Activity** to both PDBs, **Sensitive Data Access Monitoring** to **employees_search**, and the **CIS Configuration** policy to **customer_orders**.
 <details>
-<summary> **Step 1: Ensure audit trails are configured** </summary>
+<summary> **Step 1: Provision audit policies for employees_search** </summary>
 
-Audit trails represent collection endpoints for database activity events. They gather audit data from multiple sources, normalize and centralize it for monitoring and analysis. 
+1. Open the Security Central console as **AVAUDITOR**
 
-1. Examine the audit trails that we have already configured for you in this livelab:
-    - You can see them from **Targets** tab > "**Audit Trails**" menu (with **AVADMIN** login)
-        ![AVDF](./images/avdf-551.png "Audit Trail")
-        **Note:** Ensure the trails are either in **Collecting** or in **Idle** state in your lab.
-
-</details>
-
-<details>
-<summary> **Step 2: Provision audit policies for employees_search pdb** </summary>
-
-1. Go to Security Central Console as *`AVAUDITOR`*
-
-2. Click on the **Policies** tab, and **Audit Policies** in the left menu
+2. Click **Policies**, then select **Audit Policies** from the left menu
     ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 
-    **Note**: If the **Last Retrieved time** is *Never*, select the **`employees_search`** pdb and click **Retrieve policies** to retrieve the latest from the database.You can schedule the periodical retrieval following *Lab4->Task3->Step1*.
+    **Note**: If the **Last Retrieved time** is *Never*, select the **`employees_search`** pdb and click **Retrieve policies** to retrieve the latest from the database.
 
-3. Click on **employees_search** pdb to review the policies enabled
+3. Select **employees_search** PDB to review the enabled policies
     ![AVDF](./images/360-12.png "AVDF - Audit Policies for Employees Search pdb")
 
-    **Note**: We have enabled few audit policies like **System Configuration Changes**, **Critical Database Activity**, **User Login Events**, and **Database Schema changes** in the livelab instance. 
+    **Note:** A few audit policies, including **System Configuration Changes**, **Critical Database Activity**, **User Login Events**, and **Database schema changes**, are already enabled in the LiveLabs instance. 
 
-4. Provision the audit policy to track **privileged user activity**
+4. Provision **User Activity** to track privileged-user activity
     - Expand **User Actions**
     - Click **User Activity**
-    - Use the defaults for *Policy enable condition*. Make sure this is selected: *Privileged users identified by User Assessment*
+    - Keep the default *Policy enable condition* and ensure that *Privileged users identified by User Assessment* is selected.
         ![AVDF](./images/360-13.png "AVDF - User Activity Policy enable condition")
-        - Click **Enable** and review to see the status as **Enabled** in the policies page. You may have to refresh the page couple of times till it reflects.
+        - Click **Enable**. Refresh the page if necessary until the status shows **Enabled**.
 
-5. Next, provision the audit policy to track **sensitive data access**
+5. Provision **Sensitive Data Access Monitoring** to track sensitive-data access
     - Expand **Data access**
     - Click **Sensitive Data Access Monitoring**
-    - Unselect checkbox **Audit SELECT operations**
-    - Ensure this is checked **Sensitive objects discovered by sensitive data discovery**
+    - Ensure that **Audit SELECT operations** remains selected.
+    - Ensure that **Sensitive objects discovered by Sensitive Data Discovery** is selected.
         ![AVDF](./images/360-14.png "AVDF - Sensitive Data Access Monitoring Policy")
-    - Enable policies for all users except Application service account (`EMPLOYEESEARCH_PROD`)
+    - Enable the policy for all users except the application service account (`EMPLOYEESEARCH_PROD`).
          ![AVDF](./images/360-15.png "AVDF - Sensitive Data Access Monitoring Policy condition")
-         - Select *Enable policy for* checbox as **All users except a specific set of users** 
-         - Click **Add Row**, select **User** as Type, and select **`EMPLOYEESEARCH_PROD`** from the dropdown
+         - Set *Enable policy for* to **All users except a specific set of users**. 
+         - Click **Add Row**, select **User** as the type, and select **`EMPLOYEESEARCH_PROD`** from the dropdown.
     - Click **Enable** and review to see the status as **Enabled** in the policies page. You may have to refresh the page couple of times till it reflects.
-
-6. Go back to **Audit Policies** 
-
-
-    💡 **TIP:** Unified audit policies in Oracle Database define what database activities should be audited. They can be provisioned and managed from Security Central.
 
 </details>
 
+
 <details>
-<summary> **Step 3: Provision audit policies for customer_orders pdb**</summary>
+<summary> **Step 2: Provision audit policies for customer_orders**</summary>
 
 1. Click on **customer_orders** pdb to review the policies enabled
     ![AVDF](./images/360-12a.png "AVDF - Audit Policies for customer orders pdb")
 
-    **Note**: We have enabled few audit policies like **System Configuration Changes**, **Critical Database Activity**, **User Login Events**, and **Database Schema changes** in the terraform for the livelab instance. 
+    **Note:** A few audit policies, including **System Configuration Changes**, **Critical Database Activity**, **User Login Events**, and **Database schema changes**, are already enabled in the LiveLabs Terraform configuration. 
 
 2. Provision the audit policy to track **privileged user activity**
     - Expand **User Actions**
     - Click **User Activity**
-    - Use the defaults for *Policy enable condition*.
+    - Keep the default *Policy enable condition* and ensure that *Privileged users identified by User Assessment* is selected.
         ![AVDF](./images/360-13.png "AVDF - User Activity Policy enable condition")
     - Click **Enable** and review to see the status as **Enabled** in the policies page
 
-3. Provision the audit policy to help comply with CIS compliance
+Security Central also provides ready-to-deploy audit policies for common compliance frameworks. For this target, enable the CIS Configuration policy with a single action.
+
+3. Provision the CIS Configuration policy for compliance coverage
     - Expand **Compliance**
     - Select **Center for Internet Security (CIS) Configuration** and click **Enable**
         ![AVDF](./images/360-16.png "AVDF - CIS Audit policy")
 
-4. Go back to **Audit Policies** and review the policies for **`employees_search`** and **`customer_orders`** pdb
+4. Review the enabled policies for the **customer_orders** PDB.
       ![AVDF](./images/360-11a.png "AVDF - Audit Policies page")
 </details>
 
+
 <details>
-<summary> **Step 4: Ensure the audit policy provisioning succeeds**</summary>
+<summary> **Step 3: Verify audit-policy provisioning completed**</summary>
 
 1. Click on the **Settings** tab
     - Click on the **Jobs** section on the left menu
@@ -110,25 +96,9 @@ Audit trails represent collection endpoints for database activity events. They g
         ![AVDF](./images/avdf-553.png "Verify the job completed successfully")
         **Note:** If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **`employees_search`** and **`customer_orders`**
 
-2. Ensure the Unified Audit policies are enabled on the target using **SQL*Plus**
-
-    - Go back to your terminal session and show the **enabled** Unified Audit policies in **`employee_search`** 
-
-        ````
-        <copy>./avs_query_enabled_unified_policies.sh freepdb1</copy>
-        ````
-
-        ![AVDF](./images/avdf-015.png "Show the enabled Unified Audit policies")
-        **Note:** Repeat the query for **`customer_orders`** pdb and confirm
-
-        ````
-        <copy>./avs_query_enabled_unified_policies.sh cust1</copy>
-        ````
-
-
-    💡 **TIP:** You have provisioned unified audit policies on the target database to generate audit events for tracked actions. Next, you will learn how to turn them into actionable alerts for monitoring and response, once these are collected in **Security Central** through audit trails.
-
 </details>
+
+> **Expected outcome:** **User Activity** is enabled for both PDBs, **Sensitive Data Access Monitoring** is enabled for **employees_search**, the **CIS Configuration** policy is enabled for **customer_orders**, and the provisioning job has completed for both targets.
 
 ## Task 2: Pro-actively monitor actionable audit events using alerts
 
