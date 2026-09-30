@@ -36,12 +36,13 @@ Before accessing Security Central, retrieve the initial credentials and URLs fro
     ```
     <copy>Oracle123</copy>
     ```
-    ![SQLFW](../../common/init-start-env/images/init-start-env-sqlfw-002.png "HR App - Login")
-    ![SQLFW](../../common/init-start-env/images/init-start-env-sqlfw-003.png "HR App - Login")
+    ![SQLFW](images/init-start-env-sqlfw-002.png "HR App - Login")
+    ![SQLFW](images/init-start-env-sqlfw-003.png "HR App - Login")
 4. In the top right hand corner of the App, **click** on the **Welcome HR Administrator** link and you will be sent to a page with session data
-    ![SQLFW](../../common/init-start-env/images/init-start-env-sqlfw-004.png "HR App - Settings")
+    ![SQLFW](images/init-start-env-sqlfw-004.png "HR App - Settings")
 5. On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
-    ![SQLFW](../../common/init-start-env/images/init-start-env-sqlfw-005.png "HR App - Session details")
+    ![SQLFW](images/init-start-env-sqlfw-005.png "HR App - Session details")
 6. Now, you should see **FREEPDB1** as the **`DB_NAME`** and **dbsec-lab** as the **HOST**
-    ![SQLFW](../../common/init-start-env/images/init-start-env-sqlfw-006.png "HR App - Check the targetted database")
+    ![SQLFW](images/init-start-env-sqlfw-006.png "HR App - Check the targetted database")
 You may now **proceed to the next lab**.
+
