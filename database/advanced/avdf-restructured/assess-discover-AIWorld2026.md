@@ -1,261 +1,227 @@
-# Assess your database: risks, users, and data
+# Assess and Discover the Risk
 
 ## Introduction
-Assessing your database - its configuration risks, user access, and the sensitivity of stored data is essential to understanding your current security posture. It provides a clear view of potential vulnerabilities, exposure points, and privilege misuse that could impact your environment. This insight enables you to prioritize mitigation efforts effectively and focus on the areas that pose the greatest risk to your organization.
 
-*Estimated Lab Time:* 10 minutes
+Security Central identifies risks across the database fleet, including targets running a previous release, sensitive employee data, privileged-user access, and insufficient security controls.
 
-*Version tested in this lab:* Oracle Database Security Central
-<!--
-### Video Preview
+In this lab, follow one configuration risk from discovery through remediation and verification. Then investigate the privileged users, sensitive objects, reusable security sets, and policy coverage connected to the remaining risk.
 
-Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eLEeOLMAEec)
--->
+*Estimated Lab Time:* 15 minutes
 
-### Objectives
-- Review your security risk posture
-- Review your sensitive data landscape
-- Review the security policy landscape
-- Review the global sets
+## Objectives
 
-## Task 1: Review your security risk posture
-The Auditor Dashboard in **Security Central** Console provides a unified, actionable view of your organization’s database security risk by delivering an in-depth assessment of security posture across your Oracle Database fleet. It analyzes key areas such as configurations, user accounts, and sensitive data to surface potential risks.
+In this lab, you will:
 
-By offering a simplified, fleet-wide perspective across your entire Oracle Database fleet, it enables teams to quickly identify high-risk areas, prioritize mitigation efforts, and take focused action to strengthen the overall security posture.
+- Find a configuration risk.
+- Remediate the risky PUBLIC grants.
+- Refresh the assessment and verify that the risk is gone.
+- Identify privileged users and sensitive objects.
+- Connect those findings through reusable security sets.
+- Review existing policy coverage and prepare for the next lab.
+
+## Task 1: Find, remediate, and verify a configuration risk
+
+Use the Auditor Dashboard to identify a configuration risk, remediate it with the existing lab script, refresh the assessment, and verify that Security Central no longer reports the risk.
 
 <details>
-<summary>**Step 1: Assess configuration risks**</summary>
+<summary>**Follow the risk from discovery to verification**</summary>
 
-1. Log in to the Security Central Console as *`AVAUDITOR`* (use the newly reset password)
+1. Open the **Home** tab.
 
+2. In **Oracle Database fleet security posture**, review **Databases behind on release updates**.
 
-    ![AVDF](./images/avdf-300.png "AVDF - Login")
+    ![AVDF](./images/360-1.png "AVDF - Auditor dashboard in console")
 
-2. Ensure you are on the **Home** tab 
+3. Review the database-version counts. If a version has a non-zero count, drill down to identify the affected targets.
 
-3. Review the **Oracle Database fleet security posture** in  **Auditor Dasboard**
+    ![AVDF](./images/360-misssec1.png "AVDF - Auditor dashboard - Missing security patches")
 
-    ![AVDF](./images/360-1.png "AVDF - Auditor dashboard in console") 
+4. Review **Risky grants to PUBLIC** and drill down to identify the affected databases.
 
-4. Review the Missing Security Patches risks in **Databases behind on release updates** component
-    - Review to see if there are any non-zero database count listed across different Database versions. If there is any non-zero count, drilldown to see the databases lagging the security patches. 
-    
-        ![AVDF](./images/360-misssec1.png "AVDF - Auditor dashboard - Missing security patches")
-    **Note**: Security Central shows the databases that are missing the latest security patches. The corresponding  missing CVEs count/lists indicates the risk the database carries if not patched to the latest DBRU.
- 
-5. Review the key configuration risks 
-    - Observe the risks pertaining to **Risky grants to PUBLIC** component
-    - Drilldown into the data showing affected databases
-        ![AVDF](./images/360-2.png "AVDF - Auditor dashboard - Risky grants to PUBLIC")
+    ![AVDF](./images/360-2.png "AVDF - Auditor dashboard - Risky grants to PUBLIC")
 
-    **Note**: Targets **`customer_orders`** and **`sales_history`** have system privileges/ roles granted to **PUBLIC**. Any privilege assigned to PUBLIC is effectively given to everyone, often far beyond what is necessary. It is safer to assign roles and privileges explicitly to specific users or groups based on well-defined requirements.
+    In the workshop reference data, the affected targets are **customer_orders** and **sales_history**.
 
-     - Close the popup to go back to the dashboard.
+5. Open a terminal session on the **DBSec-Lab** VM as the **oracle** operating-system user.
 
-6. Let's go to the terminal session to mitigate the risk
+    If the terminal is not already running as **oracle**, execute:
 
-    - Open a terminal session on your **DBSec-Lab** VM as OS user *oracle*
+        sudo su - oracle
 
-        ````
-        <copy>sudo su - oracle</copy>
-        ````
+6. Change to the AVDF scripts directory:
 
-        **Note**: Only **if you are using a remote desktop session**, click on "Activities" at the top left of the desktop and click on terminal to launch a session directly as Oracle. In that case **you don't need to execute this command**!
+        cd $DBSEC_LABS/avdf/avs
 
-    - Go to the scripts directory
+7. Run the remediation script for **customer_orders**:
 
-        ````
-        <copy>cd $DBSEC_LABS/avdf/avs</copy>
-        ````
+        ./avs_mitigate-risk.sh cust1
 
-    - Mitigate the risk for **`customer_orders`**
+    ![AVDF](./images/avdf-504c.png "Mitigate risks on customer_orders")
 
-        ````
-        <copy>./avs_mitigate-risk.sh cust1</copy>
-        ````
+8. Run the remediation script for **sales_history**:
 
-        ![AVDF](./images/avdf-504c.png "Mitigate risks on customer_orders")
+        ./avs_mitigate-risk.sh sales1
 
-    - Mitigate the risk for **sales_history** similarly
+    The script removes the risky security grants. It does not modify business data.
 
-        ````
-        <copy>./avs_mitigate-risk.sh sales1</copy>
-        ````
-    💡 **TIP:** Now that risks are mitigated, let's generate the assessment on-demand to review the presence of risks.
+9. Return to Security Central and open **Targets**.
 
-7. Generate an assessment on-demand for the targets **`customers_orders`** and **`sales_history`** 
+10. Select the retrieval-job option for **customer_orders**.
 
-    - Click on the **Targets** tab
-    
-    - Then click on "**Schedule retrieval job**" for **`customers_orders`**
-    ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs") 
-    
-    - Under **Security Assessment**
-        - Select checkbox **Assess Immediately** 
-        - Click [**Save**] to save and continue
-    
-    - Do the same for **sales_history**          
+11. Under **Security Assessment**, select **Assess Immediately**, and click **Save**.
 
-8. Go to the **Home** 
+    ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs")
 
-    - Review the risks now pertaining to **Risky grants to PUBLIC**  
-        ![AVDF](./images/360-3.png  "AVDF - Auditor dashboard - Risky grants to PUBLIC") 
-        **Note**: Now, you can see that the risks in **Risky grants to PUBLIC** are resolved. You may have to refresh the page few times to see the update. Review *Security Assessment* job status from *Settings tab -> Jobs* to see if it got completed.
-    
+12. Repeat the on-demand assessment for **sales_history**.
 
-    💡 **TIP:** You've now reviewed one of the key configuration risks and mitigated them. Let's move on to identify potential user risks.
+13. Return to the **Home** tab and review **Risky grants to PUBLIC**.
+
+    ![AVDF](./images/360-3.png "AVDF - Auditor dashboard - Risky grants to PUBLIC")
+
+14. Confirm that the finding is resolved. If the dashboard has not refreshed, review the job status under **Settings > Jobs**, wait for the assessment to complete, and refresh the Home page.
+
+> **Expected outcome:** The risky PUBLIC grants are no longer reported for the remediated targets.
 
 </details>
 
-<details>
-<summary>**Step 2: Evaluate user risks**</summary>
+## Task 2: Discover privileged users and sensitive data
 
-1. Review the key user risks named **Privileged users not audited**
-    - Drilldown into the data showing affected users 
-    - Filter the report to show only database admins among the priveleged users
-        - Make sure to filter the rows containing **Database admin = "Yes"**. You may have to toggle the column to display in *Actions dropdown -> Select Columns*
-    ![AVDF](./images/360-4.png "AVDF - Auditor Dashboard- Priv users without audit")
-
-    **Note**: Database Administrators **`DBA_DEBRA`** and **`DBA_HARVEY`** have the broad database administrative rights on the entire fleet of databases. It is critical to audit database administrators and other privileged users, as their broad system privileges can pose significant risk if their credentials are compromised or misused. 
-     
-    💡 **TIP:** You've now identified privileged users who carry potential risks. Let's move on to understand sensitive data that faces risk of exposure.
-</details>
+Use the risk findings and Sensitive Data Discovery results to identify who has access and what data requires protection.
 
 <details>
-<summary>**Step 3: Assess the sensitive data exposure risk** </summary>
+<summary>**Discover privileged users and sensitive objects**</summary>
 
+1. In **Key risks to review**, select **Privileged users not audited**.
 
-1. Review the risks showing **Sensitive objects exposed to privileged users**
-    ![AVDF](./images/360-4a.png "AVDF - Auditor Dashboard- - Data discovery - Access not protected")
-        **Note**: Access to sensitive data in **`employees_search`** pdb remains insufficiently protected, as privileged users can still directly access these objects, increasing the risk of misuse or unauthorized exposure. 
+2. Drill down to view the affected users.
 
-4. Close the popup to go to the dashboard
+3. Filter the results to show database administrators. If necessary, use **Actions > Select Columns** to display **Database admin**, and filter it to **Yes**.
 
-    💡 **TIP:** You've now identified sensitive data that faces risk of exposure. Let's try to understand what powers these insights for Auditor Dashboard in **Security Central**
-</details>
+    ![AVDF](./images/360-4.png "AVDF - Auditor Dashboard - Privileged users without audit")
 
-<details>
-<summary>**Step 4: Review what powers these insights**</summary>
+4. Record the privileged users shown in the report. In the workshop reference data, **DBA_DEBRA** and **DBA_HARVEY** have broad administrative rights.
 
-1. Go to the **Targets** tab
+5. In **Key risks to review**, select **Sensitive objects exposed to privileged users**.
 
-2. Click the **Schedule Retrieval Jobs** icon for the target **`employees_search`** 
-    ![AVDF](./images/360-8.png "AVDF - Retrieval jobs")
+    ![AVDF](./images/360-4a.png "AVDF - Auditor Dashboard - Sensitive data access not protected")
 
- **Note**: When a target is registered, **Security Central** automatically runs retrieval jobs for security assessment, user assessment and sensitive data discovery. You can consider scheduling the jobs to run periodically. In this livelab, we have automated daily retrieval.
+6. Review the affected target and sensitive-object information.
 
-💡 **TIP:** You've now assessed security risk posture - configuration risks, potential user risks, and the sensitive data exposture risks. Now let's understand the sensitive data landscape.
-</details>
+7. Record **employees_search** as the affected target.
 
-## Task 2: Review your sensitive data landscape
+8. Click **Discover & Classify**.
 
-Sensitive Data Discovery dashboard provides a unified, fleet-wide view to identify database objects, such as tables and views that store sensitive information including PII, financial data, and health records. It organizes findings into sensitive categories, helping teams to quickly spot what kind of data is exposed to more risk. Within these categories, sensitive types define the specific detection patterns used to accurately identify particular kinds of sensitive data. The dashboard surfaces key insights such as discovery summaries, top targets by sensitive values, and distribution of sensitive data across the fleet by category and type. Together, these capabilities enable security teams to quickly assess exposure, prioritize mitigation efforts, and strengthen overall data protection posture.
+9. Expand **Sensitive Data Discovery** and click **Discovery Summary**.
 
-<details>
-<summary> **Step 1: Assess the sensitive data landscape** </summary>
-
-
-1. Click on the **Discover & Classify** tab
-
-
-2. Expand **Sensitive Data Discovery** in the left menu, and click on **Discovery Summary**
-
-3. Review the **Sensitive data discovery** dashboard
+10. Review the sensitive-data categories, types, target distribution, and object counts.
 
     ![AVDF](./images/360-5.png "AVDF - Sensitive data discovery dashboard")
 
-    **Note**: Pluggable databases **`employees_search`** and **`customer_orders`** do contain substantial concentration of sensitive data; therefore, we should prioritize implementing strong access controls to secure and govern access.
+11. Record the sensitive objects associated with the affected targets. In the workshop reference data, **employees_search** and **customer_orders** contain substantial concentrations of sensitive data.
 
-💡 **TIP:** Now that you understand your sensitive data landscape, let's understand the security policies present in the environment to protect the sensitive data.
+12. Optionally, open **Targets** and review the retrieval-job options for **employees_search** to understand how Security Central refreshes security assessment, user assessment, and sensitive-data discovery results.
+
+    ![AVDF](./images/360-8.png "AVDF - Retrieval jobs")
+
+    Do not change the retrieval schedule during this optional review.
+
+> **Expected outcome:** You have identified the privileged users, affected target, and sensitive objects that will be used in the following policy labs.
+
 </details>
 
-## Task 3: Review your security policy landscape
-The unified security policy console provides a centralized interface to define, manage, and enforce policies across the entire fleet. This streamlined console helps ensure consistent protection across the fleet and enables to identify potential gaps in policy enforcement.
+## Task 3: Connect the risk to reusable security sets
 
-<details> 
-<summary>**Step 1: Review the unified security policy console**</summary>
+Global Sets group the sensitive objects and privileged users identified in the previous task. These sets can be reused consistently when creating audit, Database Firewall, SQL Firewall, and Database Vault policies.
 
-1. Click on the **Policies** tab
+<details>
+<summary>**Review the reusable security sets**</summary>
 
+1. In **Discover & Classify**, click **Global Sets**.
 
-2. Click **Policy console** in the left menu, and review the policies deployed
+    ![AVDF](./images/360-9a.png "AVDF - Global Sets")
+
+2. Review the available sets. Locate **Sensitive Object Sets** and **Privileged User Sets**.
+
+    Do not create, edit, or delete any sets.
+
+3. Expand **Sensitive Object Sets (2)** and select **EmployeeSearchSensitiveApplicationObjects**.
+
+    ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets")
+
+    Confirm that the set contains sensitive application objects associated with **employees_search**.
+
+4. Close the details view. Expand **Privileged User Sets (1)** and select **Database Administrators**.
+
+    ![AVDF](./images/360-9c.png "AVDF - Privileged User Sets")
+
+    Confirm that the set contains the database administrators identified in the user-risk report.
+
+5. Record the relationship:
+
+    - **EmployeeSearchSensitiveApplicationObjects** identifies the sensitive objects that require protection and monitoring.
+    - **Database Administrators** identifies the privileged users whose activity requires control.
+
+> **Expected outcome:** You have connected the sensitive-object scope and privileged-user scope that will be reused in the following policy labs.
+
+</details>
+
+## Task 4: Review policy coverage and identify control gaps
+
+Review the existing policy configuration and determine which controls must be implemented, strengthened, or verified in the next labs.
+
+<details>
+<summary>**Review policy coverage and prepare the handoff**</summary>
+
+1. Click **Policies**.
+
+2. Click **Policy Console** in the left menu.
+
+3. Review the policies deployed across the targets.
 
     ![AVDF](./images/360-6.png "AVDF - Policy console")
-    - Drilldown into **Audit** data in the second chart showing policies deployed
-    
-3. Examine the audit policies enabled for **`customer_orders`**
 
-    ![AVDF](./images/360-6a.png "AVDF - Policy console - audit policies")
-    **Note**: The list includes the audit policies enabled by default in the Oracle Database, and those enabled by automation in the livelab.
+4. Review the policy coverage for:
 
-4. Click **Policy Console** to go back.
+    - Auditing
+    - Database Firewall
+    - SQL Firewall
+    - Database Vault
 
-5. Scroll down to the **Policies retrieval schedule for Oracle Database targets** 
+5. Drill down into the **Audit** information and review the audit policies enabled for **customer_orders**.
 
-6. Select the target **`employees_search`** and click **Schedule retrieval**. Enter the following in the popup:
+    ![AVDF](./images/360-6a.png "AVDF - Policy console - Audit policies")
+
+6. Record which targets, users, objects, and activities are covered by the existing audit policies.
+
+7. Optionally, review the policy retrieval schedule for **employees_search**.
+
     ![AVDF](./images/360-6b.png "AVDF - Policy console - Schedule retrieval")
-    - Select Policy type *Audit*
-    - Select *Create/Update schedule*
-    - Schedule *Enable*
-    - Repeats every *1 week*
-    - Click *Save*
 
-    **Note**: When a target is registered, AVDF automatically runs retrieval job for policies. You should consider scheduling the job periodically to retrieve the latest. 
+    This is a review of the existing schedule. Do not change it unless the workshop instructions specifically require the schedule to be configured.
 
-    💡 **TIP:** You know the security policies present in the environment and what is missing. Let's explore the building blocks to start configuring policies.
+8. Prepare the following handoff for the next labs:
 
-</details>
+    | Finding | Evidence | Planned control path |
+    |---|---|---|
+    | Target running a previous release | Auditor Dashboard and release-risk details | Continue assessment and target remediation |
+    | Privileged users with broad access | User-risk report and **Database Administrators** set | **Audit** — required control flow |
+    | Sensitive employee-data objects | Sensitive Data Discovery and **EmployeeSearchSensitiveApplicationObjects** set | **Audit and Database Firewall** — required control flow |
+    | Existing audit coverage | Policy Console and audit-policy details | Review, verify, or extend auditing |
+    | SQL activity requiring additional control | Policy Console coverage summary | **Database Firewall** — primary flow; **SQL Firewall** — optional control |
 
-## Task 4: Review and leverage global sets 
-
-Global set represents predefined collection of entities such as IP addresses, database users, OS users, client programs, database roles, sensitive schemas, privileged users, and sensitive objects, that can be centrally managed and reused across multiple policies and reports. This approach streamlines policy management, ensures consistency, and simplifies updates across the system.
-
-<details>
-<summary>**Step 1: Review and leverage the global sets**</summary>
-
-1. Click on the **Discovery & Classify** tab
-
-2. Click on the **Global Sets** in the left menu
-    ![AVDF](./images/360-9a.png "AVDF - Global Sets")  
-
-    **Note:** Create and manage global sets like IP address, database user, operating system user, client program, privileged user, and sensitive object sets on this page. We have created couple of global sets in this livelab.
-</details>
-
-<details>
-<summary> **Step 2: Review the Sensitive Object Set** </summary>
-
-1. Expand **Sensitive Object Sets (2)** and click the one created for you: **EmployeeSearchSensitiveApplicationObjects**
-    ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets") 
-    **Note:** This group represents a set of most sensitive objects in **employees_search**, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
-2. Close the popup.
-
-</details>
-
-<details>
-<summary> **Step 3: Review the Privileged User Set**</summary>
-
-1. Expand **Privileged User Sets (1)** and click the one created for you: **Database Administrators**
-    ![AVDF](./images/360-9c.png "AVDF - AVDF - Privilege User Sets") 
-    **Note:** This group represents the set of Database administrators who have broad system access in employees_search DB, and will be used later while creating policies. Consider creating such sets to simply the management of policies.
-2. Close the popup.
 
 </details>
 
 ## What did we learn in this lab
-    
-Assessing your database fleet is essential to identify configuration risks, detect potentially risky users, and uncover sensitive data that may be exposed. These insights enable you to prioritize actions and strengthen the overall security posture of your database environment.
 
-In this lab, you learned how to:
-- Assess Oracle Database security configurations and mitigate identified risks
-- Identify potentially risky users with excessive privileges that could be misused or abused
-- Discover sensitive data that may be at risk of exposure
-- Locate sensitive objects within the environment to focus your efforts
-- Understand your current security policy landscape
-- Leverage global sets to streamline policy management, ensure consistency, and simplify updates across the system
+You followed a security finding through the complete discovery and verification cycle:
 
-You may now **proceed to the next lab**.
+- Located release and configuration risks.
+- Remediated risky PUBLIC grants.
+- Refreshed the assessment and verified that the risk was resolved.
+- Identified privileged users and sensitive objects.
+- Connected the findings through Global Sets.
+- Reviewed existing audit and firewall policy coverage.
+- Prepared the control-gap handoff for the next labs.
 
-## Acknowledgements
-- **Author** - Angeline Dhanarani, Database Security - Product Manager
-- **Contributors** - Nazia Zaidi, Database Security - Product Manager
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - April 2026
+You may now **proceed to the next lab** to review and configure the core Audit and Database Firewall controls.
