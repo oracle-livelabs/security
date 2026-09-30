@@ -100,104 +100,99 @@ Security Central also provides ready-to-deploy audit policies for common complia
 
 > **Expected outcome:** **User Activity** is enabled for both PDBs, **Sensitive Data Access Monitoring** is enabled for **employees_search**, the **CIS Configuration** policy is enabled for **customer_orders**, and the provisioning job has completed for both targets.
 
-## Task 2: Pro-actively monitor actionable audit events using alerts
+## Task 2: Create an alert for privileged-user activity
+
+
+Audit policies now collect the evidence needed to understand database activity. In this task, turn that evidence into an actionable signal by creating an alert for activity by users in the privileged-user set. Use the Alert Assistant to define the condition in plain English, then verify that the alert is enabled.
+
 
 <details>
-<summary> **Step 1: Provision alert policy**</summary>
-
-1. Click on the **Policies** tab, and click the **Alert Policies** sub-menu on the left
-
-2. Create the alert policy "**Alert whenever there is a user created, dropped or altered**"
-
-    - Click [**Create**]
-
-    - Enter the following information for the new **Alert**
-
-        - Alert policy name: *`User creation/modification`*
-        - Description: *`Alert when the user is created, dropped, or altered`*
-        - Target type: *`Oracle Database`*
-        - Severity: *`Warning`*
-        - Condition: Click on **"Copy conditions from examples"** and copy condition **"User creation/modification"**
-            
-            ![AVDF](./images/avdf-651.png "Copy Alerts")
-    
-        - Threshold (times): *`1`*
-
-        **Note:** (Optional)You can also enable email notification for the alerts. 
-        - Select **Enable email notification** and provide email address
-        - **You need to have SMTP server** configured for the email notification. If you have it configured, you can check it out.
-
-    - Your Alert should look like this.
-
-        ![AVDF](./images/avdf-652.png "AVDF Alerts")
-
-    - Click [**Save**]
-
-        **Note:** Your Alert is automatically enabled!
+<summary> **Step 1: Create an alert for privileged-user activity** </summary>
 
 
-3. To trigger alerts, go back to your terminal session on DBSeclab VM and create users within the **`employees_search`** and **`customer_orders`** pluggable databases
+1. Click **Policies**, then select **Alert Policies** from the left menu.
 
-    ````
-    <copy>
-    ./avs_create_users.sh cust1
-    </copy>
-    ````
 
-    ![AVDF](./images/avdf-045.png "Create users")
+2. Click **Create**.
 
-    - Repeat the same for **`employees_search`** pdb
-    
-    ````
-    <copy>
-    ./avs_create_users.sh freepdb1
-    </copy>
-    ````
 
-    - Run another script to drop the users we created in the previous script
+3. Enter the following information:
 
-    ````
-    <copy>
-    ./avs_drop_users.sh cust1
-    </copy>
-    ````
 
-    ![AVDF](./images/avdf-048.png "Drop the users just created")
-    
-    - Repeat the same for **`employees_search`** pdb
-    
-    ````
-    <copy>
-    ./avs_drop_users.sh freepdb1
-    </copy>
-    ````
+    - Alert policy name: *`Privileged-user activity`*
+    - Description: *`Alert when any user in the Database Administrators set performs database activity.`*
+    - Target type: *`Oracle Database`*
+    - Severity: *`Warning`*
+
+
+        ![AVDF](./images/alert-policy-form-before-condition-AIWorld2026.png "Alert policy form before defining the condition")
+
+
+4. Click the **Alert Assistant** icon next to the **Condition** field.
+
+
+5. In **Describe the condition**, enter:
+
+
+    ```
+    Create an alert when any user in Database Administrators set performs any database activity.
+    ```
+
+
+6. Click **Generate alert condition**.
+
+
+7. Review the generated condition:
+
+
+    ```
+    (avsys.ae_globalset.check_user(:USER, 'IN', 'Database Administrators') = 1)
+    ```
+
+
+    **Note:** AI-generated conditions are not guaranteed to be complete or correct. Review the generated condition before using it.
+
+
+        ![AVDF](./images/alert-assistant-generated-AIWorld2026.png "Generate an alert condition using the Alert Assistant")
+
+
+8. Click **Use this alert condition**.
+
+
+9. Leave **Threshold (number)** set to *`1`*.
+
+
+10. Review the completed alert configuration.
+
+
+    Your alert should look like this:
+
+
+        ![AVDF](./images/alert-policy-form-completed-AIWorld2026.png "Completed alert policy configuration")
+
+
+11. Click **Save**.
+
+
+12. When prompted to enable the policy, click **OK**.
+
+
+13. On the **Alert Policies** page, verify that **Privileged-user activity** is listed as **Enabled**.
+
 
 </details>
 
-<details>
-<summary>**Step 2: Review the alerts generated**</summary>
 
-1. Click on **Alerts** tab in the console
-
-2. View the Alerts that have occurred related to the user creation/deletion SQL commands
-
-    ![AVDF](./images/avdf-654a.png "View the alerts")
-
-    **Note**: If you don't see them, refresh the page. 
-
-</details>
+> **Expected outcome:** An enabled alert policy monitors activity performed by users in the **Database Administrators** set.
 
 ## What did we learn in this lab
 
-Establishing visibility is the first step toward securing your database environment. By enabling auditing and continuous monitoring, you can track user activities, detect anomalies, and understand how data is accessed and modified. Configuring alerts ensures that suspicious or policy-violating actions are promptly brought to attention, enabling faster response and mitigation. Together, auditing, monitoring, and alerting create a strong foundation for proactive security.
+Security Central turns audit data into actionable visibility. In this lab, you provisioned audit policies for privileged users and sensitive objects, then used the Alert Assistant to create an alert from a plain-English description. Together, these controls provide evidence of database activity and a signal that helps security teams respond to privileged-user activity.
 
 In this lab, you learned how to:
-- Provision unified audit policies from Security Central for Oracle Databases
-- Proactively monitor audit events and respond to them using actionable alerts
+- Provision audit policies for privileged users and sensitive objects
+- Use the Alert Assistant to translate a plain-English requirement into an alert condition.
+- Enable an alert and verify that it monitors activity performed by users in the Database Administrators set.
 
 You may now **proceed to the next lab**.
 
-## Acknowledgements
-- **Author** - Angeline Dhanarani, Database Security- Product Manager
-- **Contributors** - Nazia Zaidi, Database Security - Product Manager
-- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - April 2026
