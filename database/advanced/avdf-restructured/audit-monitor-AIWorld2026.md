@@ -153,7 +153,7 @@ Audit policies now collect the evidence needed to understand database activity. 
     **Note:** AI-generated conditions are not guaranteed to be complete or correct. Review the generated condition before using it.
 
 
-        ![AVDF](./images/alert-assistant-generated-AIWorld2026.png "Generate an alert condition using the Alert Assistant")
+    ![Alert Assistant generated condition](./images/alert-assistant-generated-AIWorld2026.png "Generate an alert condition using the Alert Assistant")
 
 
 8. Click **Use this alert condition**.
@@ -168,7 +168,7 @@ Audit policies now collect the evidence needed to understand database activity. 
     Your alert should look like this:
 
 
-        ![AVDF](./images/alert-policy-form-completed-AIWorld2026.png "Completed alert policy configuration")
+    ![AVDF](./images/alert-policy-form-completed-AIWorld2026.png "Completed alert policy configuration")
 
 
 11. Click **Save**.
@@ -177,7 +177,7 @@ Audit policies now collect the evidence needed to understand database activity. 
 12. When prompted to enable the policy, click **OK**.
 
 
-13. On the **Alert Policies** page, verify that **Privileged-user activity** is listed as **Enabled**.
+13. On the **Alert Policies** page, verify that **Privileged-user activity** is listed as **Enabled**. <br><img src="./images/alert_enabled.png" alt="Alert policy enabled">
 
 
 </details>
