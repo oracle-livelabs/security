@@ -4,7 +4,7 @@
 
 In the previous two labs, you investigated the security posture of the database and reviewed who can access it and what they can do. The next question is: What data are we trying to protect? Knowing where sensitive data resides helps you understand the impact of a compromised account and plan how to protect data used for application testing.
 
-Oracle Data Safe Data Discovery builds an inventory of sensitive data by inspecting your target database and its data dictionary. You choose the schemas and sensitive types to search, and Data Safe records the discovered columns in a sensitive data model. Incremental discovery lets you update that model as your application's data scope changes.
+Oracle Data Safe Data Discovery builds an inventory of sensitive data by scanning your target database and its data dictionary. You choose the schemas and sensitive types to search, and Data Safe records the discovered columns in a sensitive data model. Incremental discovery lets you update that model as your application's data scope changes.
 
 ### Scenario
 
