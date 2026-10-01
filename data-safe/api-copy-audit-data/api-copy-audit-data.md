@@ -32,7 +32,7 @@ This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
 - Prepared your environment for this workshop (see [Prepare Your Environment](?lab=prepare-environment))
-- Registered your target database with Oracle Data Safe (see [Register an Autonomous Database with Oracle Data Safe](?lab=register-autonomous-database))
+- Registered your target database with Oracle Data Safe (see [Register an Autonomous AI Database with Oracle Data Safe](?lab=register-autonomous-database))
 - If you are using a Free Tier subscription, you need to be working in your home region. This is necessary in order to create a compute instance with the Oracle Cloud Development kit.
 
 ### Assumptions
@@ -60,7 +60,7 @@ Cloud Shell is running the following application versions:
 
 ## Task 2: Start the audit trail for your target database in Oracle Data Safe
 
-1. From the navigation menu, select **Oracle Database**, and then **Data Safe - Database Security**.
+1. From the navigation menu, select **Oracle AI Database**, and then **Data Safe - Database Security**.
 
 2. Under **Security center** on the left, click **Activity auditing**.
 
@@ -429,7 +429,7 @@ In this task, you compile an example Java program named `DataSafeRestAPIClientEx
 
 ## Task 10: Obtain the compartment OCID for your target database
 
-1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle Database**, and then **Data Safe - Database Security**. 
+1. From the navigation menu in Oracle Cloud Infrastructure, select **Oracle AI Database**, and then **Data Safe - Database Security**. 
 
 2. On the left, click **Target databases**. 
 
@@ -542,5 +542,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database 
 - **Consultants** - Richard Evans, Bettina Schaeumer, Archana Rao, Anna Haikl 
-- **Last Updated By/Date** - Jody Glover, June 5, 2025
+- **Last Updated By/Date** - Jody Glover, October 20, 2025
 

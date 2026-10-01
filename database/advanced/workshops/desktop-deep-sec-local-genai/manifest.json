@@ -1,0 +1,28 @@
+{
+  "workshoptitle": "DB Security - Local Deep Data Security and Generative AI",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Review the direct local-end-user architecture, preflight requirements, and lab flow.",
+      "publisheddate": "07/22/2026",
+      "filename": "../../deep-data-security/deep-sec-local-genai/introduction.md"
+    },
+    {
+      "title": "Get Started",
+      "description": "Open the Deep Sec Demo Setup and Customer Sales App from the Stack's Application Information tab.",
+      "filename": "../../deep-data-security/deep-sec-local-genai/get-started.md"
+    },
+    {
+      "title": "Can Application Code or GenAI Bypass Oracle Deep Data Security?",
+      "description": "Walk through local Deep Data Security end users, data roles, data grants, cross-table data grants, end user context, and OCI Generative AI authorization tests.",
+      "publisheddate": "07/22/2026",
+      "filename": "../../deep-data-security/deep-sec-local-genai/deep-sec-local-genai.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to common problems and directions for receiving live help.",
+      "filename": "https://livelabs.oracle.com/cdn/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}

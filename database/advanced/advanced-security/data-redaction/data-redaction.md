@@ -5,7 +5,7 @@ This workshop introduces the various features and functionality of Oracle Data R
 
 *Estimated Lab Time:* 15 minutes
 
-*Version tested in this lab:* Oracle DBEE 19.23
+*Version tested in this lab:* Oracle Database Enterprise Edition (EE) 19c
 
 ### Video Preview
 Watch a preview of "*Livelabs - Oracle ASO (Transparent Data Encryption & Data Redaction) (May 2022)*" [](youtube:JflshZKgxYs)
@@ -54,7 +54,7 @@ This lab assumes you have:
 
         ![Data Redaction](./images/dr-001.png "See the original data")
     
-        **Note**: Depending on the employee, they have a SIN, SSN or NINO number!
+        **Note**: Depending on the employee, they may have a SIN, SSN or NINO number!
 
     - Now, let's have a look **on your Glassfish App**
 
@@ -124,6 +124,7 @@ This lab assumes you have:
     - It's normal because the redaction policy has been created on column **SIN** for all queries in every contexts (**Expression "1=1"**)
     - Again, once enabled, the Data Redaction policy is applied immediately and there is no need to restart anything
 
+
 ## Task 2: Contextualize an existing Data Redaction policy
 
 1. Now, modify the redaction policy to ONLY redact non-Glassfish queries (to do that, we need an **Expression with "Rule Set"**)
@@ -186,9 +187,10 @@ You may now proceed to the next lab!
 
 ## **Appendix**: About the Product
 ### **Overview**
-Hard-coded within the Oracle Database core product, this features is part of the *Advanced Security Option (ASO)*
 
-Data Redaction enables you to mask (redact) data that is returned from queries issued by applications. We can also talk about Dynamic Data Masking.
+Data Redaction is built into the Oracle Database kernel and is a feature of *Advanced Security Option (ASO)*.
+
+Data Redaction enables you to dynamically mask (redact) data that is returned from queries issued by applications. 
 
 You can redact column data by using one of the following methods:
 
@@ -227,4 +229,4 @@ Video:
 ## Acknowledgements
 - **Author** - Hakim Loumi, Database Security PM
 - **Contributors** - Rene Fontcha
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - May 2024
+- **Last Updated By/Date** - Richard C. Evans, Database Security PM - December 2025

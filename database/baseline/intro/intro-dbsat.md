@@ -2,7 +2,9 @@
 
 ## About this Workshop
 ### Overview
-*Estimated Time to complete the workshop*: 110 minutes
+*Estimated Time to complete the workshop*: 60 minutes
+
+Oracle Database Security Assessment Tool (DBSAT) helps organizations quickly assess the security posture of Oracle Databases by identifying configuration risks, excessive privileges, sensitive data, and missing security controls. With actionable recommendations based on Oracle security best practices and industry benchmarks, DBSAT enables customers to strengthen database security, accelerate compliance, and proactively reduce risk.
 
 This workshop environment is dedicated to Oracle Database Security features and functionalities.
 
@@ -20,7 +22,6 @@ It may be composed of as many as five VMs:
   - **Audit Vault Server VM** (for Advanced workshop only)
   - **DB Firewall Server VM** (for Advanced workshop only)
   - **Key Vault Server VM** (for Advanced workshop only)
-  - **DB23ai VM** (for SQL Firewall workshop only)
 
 During this mini-lab, you'll use different resources to interact with these VMs:
   - SSH Terminal Client

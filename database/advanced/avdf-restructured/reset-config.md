@@ -1,75 +1,37 @@
-# Oracle Audit Vault and DB Firewall (AVDF)
+# Oracle Database Security Central (Security Central)
 
 ## Introduction
-This workshop introduces the various features and functionality of Oracle Audit Vault and DB Firewall (AVDF). It gives the user an opportunity to learn how to configure those appliances in order to audit, monitor and protect access to sensitive data.
+This workshop introduced the key features and capabilities of Security Central. If you would like to repeat the exercises or start fresh, you can reset the lab environment and begin again from the beginning.
 
-*Estimated Lab Time:* 110 minutes
+*Estimated Lab Time:* 5 minutes
 
-*Version tested in this lab:* Oracle AVDF 20.13
-
+*Version tested in this lab:* Oracle Database Security Central
+<!--
 ### Video Preview
 
-Watch a preview of "*LiveLabs - Oracle Audit Vault and Database Firewall*" [](youtube:eLEeOLMAEec)
-
+Watch a preview of "*LiveLabs - Oracle Database Security Central*" [](youtube:eLEeOLMAEec)
+-->
 
 ### Objectives
-- Assess the security posture of the registered Oracle database targets
-- Set a baseline and detect drift of the security configuration
-- Discover sensitive data
-- Configure the auditing for the Oracle database
-- Explore the interactive reporting capabilities, including user entitlement
-- Simply compliance with pre-defined reports, including activity on sensitive data
-- Train the DBFW for the authorized application query and prevent the SQL injection
+- Rest the lab environment
 
+## Task 1: Reset the Security Central Lab Configuration
 
-### Prerequisites
-This lab assumes you have:
-- A Free Tier, Paid or LiveLabs Oracle Cloud account
-- You have completed:
-    - Lab: Prepare Setup (*Free-tier* and *Paid Tenants* only)
-    - Lab: Environment Setup
-    - Lab: Initialize Environment
+1. Reset **Golden Gate** configuration for **customer_orders** only!
 
-### Lab Timing (estimated)
-
-
-| Step No. | Feature | Approx. Time |
-|--|------------------------------------------------------------|-------------|
-|| **AVDF Labs**||
-|04| Reset the password | <5 minutes|
-|05| Assess and Discover | 20 minutes|
-|06| Audit and Monitor | 20 minutes|
-|07| Report and Alert | 20 minutes|
-|08| Protect and Prevent | 20 minutes|
-|| **Optional**||
-|09| Advanced features configuration | 25 minutes|
-|10| Reset the AVDF labs config | <5 minutes|
-
-## Lab 10: Reset the AVDF Lab Config
-
-1. Reset **Golden Gate** configuration for **pdb1** only!
-
-    - Go back to Audit Vault Web Console as *`AVADMIN`*"
-
-        ![AVDF](./images/avdf-400.png "AVDF - Login")
+    - Go back to Security Central Console as *`AVADMIN`*"
 
     - Click the **Targets** tab
 
-    - Click the Target Name **pdb1**
+    - Click the Target Name **customer_orders**
 
         ![AVDF](./images/avdf-250.png "Select the Target Name")
 
     - In the section **Audit Data Collection**, select "**/u01/app/oracle/product/ogg/var/lib/data**" and click [**Stop**]
 
-        ![AVDF](./images/avdf-254.png "Stop the Golden Gate Audit Data Collection")
-
     - Refresh the page to be sure that the service is stopped
 
-        ![AVDF](./images/avdf-255.png "Check that the service is stopped")
-
     - Select "**/u01/app/oracle/product/ogg/var/lib/data**" Audit Trail and click [**Delete**]
-
-        ![AVDF](./images/avdf-256.png "Delete the Golden Gate Audit Data Collection")
 
     - Login to your GoldenGate Web Console
 
@@ -93,7 +55,7 @@ This lab assumes you have:
 
         ![AVDF](./images/avdf-030a.png "Golden Gate - Configuration")
 
-    - Delete the "**Credentials**" for **pdb1** only by clicking on the "**Delete**" button
+    - Delete the "**Credentials**" for **cust1** only by clicking on the "**Delete**" button
 
         ![AVDF](./images/avdf-257.png "Delete credentials")
 
@@ -105,7 +67,7 @@ This lab assumes you have:
 
         ![AVDF](./images/avdf-033a.png "Select Overview")
 
-    - Stop the "**Extracts**" service for **pdb1** only by clicking on the "**Actions**" button and selecting "**Force Stop**"
+    - Stop the "**Extracts**" service for **cust1** only by clicking on the "**Actions**" button and selecting "**Force Stop**"
 
         ![AVDF](./images/avdf-259.png "Force Stop the service")
 
@@ -121,75 +83,11 @@ This lab assumes you have:
 
         ![AVDF](./images/avdf-262.png "Confirm the deletion")
 
-<!--
-    - Go back to your terminal session to reset Golden Gate
 
-        ````
-        <copy>$DBSEC_LABS/avdf/avs/avs_reset_ogg.sh pdb1</copy>
-        ````
 
-        ![AVDF](./images/avdf-263.png "Reset the Golden Gate configuration")
-
-2. Delete the **Unified Audit Trail** configuration
-
-    - Go back to Audit Vault Web Console as *`AVADMIN`*"
-
-        ![AVDF](./images/avdf-400.png "AVDF - Login")
-
-    - Click the **Targets** tab
-
-    - Click the Target Name **pdb1**
-
-    - In the section **Audit Data Collection**, select "**`UNIFIED_AUDIT_TRAIL`**" and click [**Stop**]
-
-        ![AVDF](./images/avdf-264.png "Stop the Audit Data Collection")
-
-    - Check that the service is stopped
-
-        ![AVDF](./images/avdf-265.png "Check that the service is stopped")
-
-    - Select "**`UNIFIED_AUDIT_TRAIL`**" and click [**Delete**]
-
-        ![AVDF](./images/avdf-266.png "Delete the Audit Data Collection")
-
-3. Then, delete the Audit Vault **Agent**
-
-    - Click the **Agents** tab
-
-    - Select the Agent Name **dbseclab** and click [**Deactivate**]
-
-        ![AVDF](./images/avdf-269.png "Deactivate the Audit Vault Agent")
-
-    - Now, the agent should be "**Not Activated**"
-
-        ![AVDF](./images/avdf-270.png "Check that the Audit Vault Agent is deactivated")
-
-    - Select the Agent Name **dbseclab** and click [**Delete**]
-
-        ![AVDF](./images/avdf-271.png "delete the Audit Vault Agent")
-
-    - Now, the agent is deleted
-
-        ![AVDF](./images/avdf-272.png "Check that the Audit Vault Agent is deleted")
-
-4. Finally, reset **AVDF binaries**
-
-    ````
-    <copy>
-    rm -Rf $AV_HOME/*
-    ll $AV_HOME
-
-    rm -Rf $AVCLI_HOME/*
-    ll $AVCLI_HOME
-    </copy>
-    ````
-
-    ![AVDF](./images/avdf-273.png "Reset AVDF binaries")
--->
-
-2. **Now, the AVDF configuration is correctly reset!**
+2. **Now, the Security Central configuration is correctly reset!**
 
 ## Acknowledgements
-- **Author** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager
-- **Contributors** - Hakim Loumi - Hakim Loumi, Database Security - Product Manager
-- **Last Updated By/Date** - Nazia Zaidi, Audit Vault and Databse Firewall - Product Manager - November 2024
+- **Author** - Nazia Zaidi, Database Security - Product Manager
+- **Contributors** - Angeline Dhanarani, Database Security - Product Manager
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security - Product Manager - Product Manager - April 2026

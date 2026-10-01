@@ -43,7 +43,7 @@ This lab assumes you have:
 | 2        | Data exfiltration through an application                | <15 minutes  |         |
 | 3        | Data exfiltration from the database                     | <15 minutes  |         |
 
-## Task 1: Data exfiltration by bypassing database access controls
+## Task 1: Data Exfiltration by Bypassing Database Access Controls
 
 Acting while remaining silent is a golden rule for any good attacker. Anything that can be done far away from the target is preferred because the closer the attacker gets to the target, the greater their risk of being caught.
 
@@ -74,7 +74,7 @@ Several options are available in this case. From the farthest to the closest to 
 4. Retrieve the new `story-hack` directory.
 
     ```
-    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/wUCGLVTGIyezbgPkjf9GCU8v1vVNH8-bfQOve5X6GZr6xKSYO1NfWzgxHo2Lzb1K/n/oradbclouducm/b/LiveLabs-bucket-prod/o/story-hack.zip</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/9ZlNymO4lYU7Ye-mntD9cUKMVvyFIAuUKpbWOdqg9eloqHHQiQBC0v09lnIOVcmd/n/oradbclouducm/b/LiveLabs-bucket-prod/o/story-hack.zip</copy>
     ```
 5. Unzip the `story-hack.zip` file.
 
@@ -93,7 +93,7 @@ Several options are available in this case. From the farthest to the closest to 
     <copy>chmod +x *.sh</copy>
     ```
 
-## Task 1a: Prevent data exfiltration from the network (data-in-transit)
+## Task 2: Prevent Data Exfiltration from the Network (Data-in-Transit)
 
 Attackers can use packet analyzers, also known as packet sniffers, protocol analyzers, or network analyzers, to intercept and inspect network traffic. Two of the most well-known tools for this purpose are **tcpdump** and **Wireshark**, which is a graphical version of tcpdump with advanced sorting and filtering capabilities.  
 
@@ -154,7 +154,7 @@ To see how easy it is to exfiltrate data from an unencrypted network, let's run 
 
     > To learn more about how to enable NNE, please refer to the "[DB Security - Native Network Encryption] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=700)" workshop
 
-## Task 1b: Prevent data exfiltration from inert and residual files (backups and exports)
+## Task 3: Prevent Data Exfiltration from Inert and Residual Files (Backups and Exports)
 
 Stealing unencrypted data from network traffic is easy for an attacker, but it only provides access to data currently in transit. Since this method is passive, it does not expose the database structure, making it difficult for the attacker to determine what other valuable information exists.
 
@@ -231,7 +231,7 @@ Let's see how this type of attack could focus on an export file, but keep in min
 
     ---
 
-## Task 1c: Prevent data exfiltration from Database data files (data-at-rest)
+## Task 4: Prevent Data Exfiltration from Database Data Files (Data-at-Rest)
 
 If an attacker wants more data, especially if a previous breach only provided a partial export or if earlier attempts were blocked, they will need to take bigger risks. This means getting closer to the database while avoiding detection by access and audit controls. At this stage, they target active data files, which contain the entire database.
 
@@ -333,17 +333,17 @@ We will use a well-known Linux command "strings" to view data in the datafiles a
 
     ---
 
-### **Option 2: The attacker focuses on the non-production (test or development) database servers**
+    ### **Option 2: The attacker focuses on the non-production (test or development) database servers**
 
-If an attacker has more time, they will avoid targeting the production database to reduce the risk of detection. Instead, they often focus on non-production systems, which typically have fewer security controls and less monitoring. On average, for each production database, there are four non-production databases, such as development, testing, integration, and staging. Many of these are direct clones of production and contain the same sensitive data. Since developers need realistic environments to work effectively, non-production databases often mirror production closely.
+    If an attacker has more time, they will avoid targeting the production database to reduce the risk of detection. Instead, they often focus on non-production systems, which typically have fewer security controls and less monitoring. On average, for each production database, there are four non-production databases, such as development, testing, integration, and staging. Many of these are direct clones of production and contain the same sensitive data. Since developers need realistic environments to work effectively, non-production databases often mirror production closely.
 
-Applying the same security measures to non-production databases is often impractical. The cost of securing multiple environments can be high, and developers frequently require full access to perform their tasks.
+    Applying the same security measures to non-production databases is often impractical. The cost of securing multiple environments can be high, and developers frequently require full access to perform their tasks.
 
-The best approach is to establish a strong baseline of security, including auditing and regular assessments. More importantly, non-production databases should remain functional for development and testing but should not contain real sensitive data. The safest and most cost-effective solution is data masking, which removes security risks from these database copies. Masking ensures that sensitive information is not exposed while allowing teams to work efficiently without the need for production-level security controls.
+    The best approach is to establish a strong baseline of security, including auditing and regular assessments. More importantly, non-production databases should remain functional for development and testing but should not contain real sensitive data. The safest and most cost-effective solution is data masking, which removes security risks from these database copies. Masking ensures that sensitive information is not exposed while allowing teams to work efficiently without the need for production-level security controls.
 
-![Data Masking concept](./images/hack-lab1c-03.png "Data Masking concept")
+    ![Data Masking concept](./images/hack-lab1c-03.png "Data Masking concept")
 
-If you refresh your development database from the production database every Monday, it immediately becomes as sensitive as the production environment. This means your data files are just as vulnerable to the same attacks previously discussed.
+    If you refresh your development database from the production database every Monday, it immediately becomes as sensitive as the production environment. This means your data files are just as vulnerable to the same attacks previously discussed.
 
 1. Refresh **the development database from the production database on PDB1 without applying a masking script**.
 
@@ -398,7 +398,7 @@ If you refresh your development database from the production database every Mond
     - **There's no result!**
     - Although the datafile is still readable as expected - remember, we didn't encrypt the development env - but now, because the data is masked in development, even if the attacker actually connects to the database, there's no longer sensitive data to be stolen!
 
-<!--
+    <!--
     !!! BELOW, SECTION TO CHANGE ASAP !!!
     -----
     --
@@ -408,7 +408,7 @@ If you refresh your development database from the production database every Mond
     --
     -----
     !!! END OF CHANGE !!!
--->
+    -->
 
 5. Here, we have used the data masking capability provided by the Oracle Database, called **Data Masking and Subsetting (DMS)**.
 
@@ -432,7 +432,7 @@ If you refresh your development database from the production database every Mond
 
     ---
 
-## Task 2: Data exfiltration through an application
+## Task 5: Data Exfiltration Through an Application
 
 Next, the attacker will try to extract data indirectly by targeting an application that connects to the database. This increases their risk of detection, especially if security measures like a Web Application Firewall (WAF) are in place to monitor for such attacks.
 
@@ -444,7 +444,7 @@ Hackers use two common techniques when attacking the database through an applica
 - **SQL Injection**
 - **Sensitive data harvesting**
 
-## Task 2a: Detect and mitigate a SQL Injection
+## Task 6: Detect and Mitigate a SQL Injection
 
 SQL Injection (SQLi) is a code injection technique used to attack data-driven applications by inserting malicious SQL statements into entry fields.
 
@@ -527,11 +527,11 @@ In this lab, you will perform a UNION-based SQL injection attack on an applicati
     - The key is to ensure the number of returned values continues to match the original source query.
 
 
-<!--
------------------------------------------------------------------------------
---  !!! BELOW, SECTION TO CHANGE ASAP !!!
------------------------------------------------------------------------------
--->  
+    <!--
+    -----------------------------------------------------------------------------
+    --  !!! BELOW, SECTION TO CHANGE ASAP !!!
+    -----------------------------------------------------------------------------
+    -->  
 10. Now, we will configure **PDB2** to prevent this kind of attack
 
 11. Go back to your terminal session and configure a new Glassfish Application connection string for PDB2 to proxy through the Database Firewall
@@ -847,13 +847,13 @@ In this lab, you will perform a UNION-based SQL injection attack on an applicati
 
     > To learn more about how to use the Database Firewall to protect against SQL injection, please refer to the "[DB Security - Audit Vault and DB Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=711)" or "[DB Security - Oracle SQL Firewall] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3875)" workshops
 
-<!--
------------------------------------------------------------------------------
---                        END OF SECTION TO CHANGE                         --
------------------------------------------------------------------------------
--->
+    <!--
+    -----------------------------------------------------------------------------
+    --                        END OF SECTION TO CHANGE                         --
+    -----------------------------------------------------------------------------
+    -->
 
-## Task 2b: Detect and mitigate the sensitive data harvesting
+## Task 7: Detect and Mitigate the Sensitive Data Harvesting
 
 Many older applications expose data to the user that is no longer appropriate. Older applications were often developed when privacy concerns were not as important as they are now and when privacy regulations were not as stringent. It may not be practical to modify the applications, but you can still control the display of sensitive data within those applications.
 
@@ -908,7 +908,7 @@ Many older applications expose data to the user that is no longer appropriate. O
 
     ---
 
-## Task 3: Data exfiltration from the database
+## Task 8: Data Exfiltration from the Database
 
 Our attacker now switches their attention to a direct attack on the database.
 
@@ -922,7 +922,7 @@ Hackers use four common techniques when attacking the database directly:
 
 Because the database is directly attacked, this type of attack exposes the hacker to the highest level of detection risk!
 
-## Task 3a: Prevent and mitigate exploit known vulnerabilities of the database
+## Task 9: Prevent and Mitigate Exploit Known Vulnerabilities of the Database
 
 A missing patch, a known security issue not fixed, a too permissive configuration, poorly managed users, default passwords that were never changed, users with too many rights - the number of potential vulnerabilities can be intimidating.
 
@@ -972,7 +972,7 @@ Oracle provides customers with several easy-to-use and efficient tools that allo
 
     ---
 
-## Task 3b: Detect and prevent abuses of existing privileges
+## Task 10: Detect and Prevent Abuses of Existing Privileges
 
 Most database attacks occur when an attacker gains access using stolen account credentials. Once logged in, they can exploit the account’s granted privileges to steal data. This makes over-privileged accounts a major security risk. In many cases, administrators assign excessive privileges simply because they are unsure of the exact requirements, creating opportunities for attackers to misuse them.
 
@@ -1098,7 +1098,7 @@ To mitigate this risk, instead of guessing which privileges an account needs, we
     > To learn more about how to use Privilege Analysis, please refer to the "[DB Security - Privilege Analysis] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=701)" workshop
 
 
-## Task 3c: Prevent insufficient or permissive access controls
+## Task 11: Prevent Insufficient or Permissive Access Controls
 
 Data can also be stolen by connecting directly to the database instead of using an approved application. Sometimes, business users request direct database access to retrieve data that is difficult to extract through the application. While this may be a legitimate need, each of these accounts becomes a potential entry point for attackers.
 
@@ -1191,16 +1191,16 @@ Whether it is a hacker or a legitimate user, the risk increases if the database 
 
     ---
 
-<!--
+    <!--
     !!! BELOW, SECTION TO CHANGE ASAP !!!
     -----
     --
    
-Task 3d: Detect and prevent abuse of power
+    Task 3d: Detect and prevent abuse of power
 
-Finally, the attackers will take the gloves off and will attack with heavy artillery, by acting directly on the database to increase their privileges and exfiltrate sensitive data. Their objective is simple, to obtain as many rights as possible to steal the most data possible. They may try to grant additional privileges to accounts they have compromised, or create new accounts to use in follow-on attacks.
+    Finally, the attackers will take the gloves off and will attack with heavy artillery, by acting directly on the database to increase their privileges and exfiltrate sensitive data. Their objective is simple, to obtain as many rights as possible to steal the most data possible. They may try to grant additional privileges to accounts they have compromised, or create new accounts to use in follow-on attacks.
 
-### **Option 1: Escalation of privileges**
+    ### **Option 1: Escalation of privileges**
 
 1. Go back to your terminal session and create/grant/drop users to check if you are informed about it
 
@@ -1268,9 +1268,9 @@ Finally, the attackers will take the gloves off and will attack with heavy artil
     --
     -----
     !!! END OF CHANGE !!!
--->
+    -->
 
-## Task 3d: Prevent abuse of power
+## Task 12: Prevent Abuse of Power
 
 <!-- **Option 2: Abuse of power** -->
 
@@ -1324,7 +1324,7 @@ Oracle Database offers security controls to prevent unauthorized privileged user
 
         **Note**: DBAs are usually exempt from redaction policies – by default all DBAs have the `EXEMPT_REDACTION_POLICY` privilege. They can even see `SIN` (which we redacted to prevent sensitive data from being shown in an application earlier in this lab).
 
-<!--
+    <!--
     !!! BELOW, SECTION TO CHANGE ASAP !!!
     -----
     --
@@ -1334,7 +1334,7 @@ Oracle Database offers security controls to prevent unauthorized privileged user
     --
     -----
     !!! END OF CHANGE !!!
--->
+    -->
 2. To prevent this attack, let's protect sensitive objects in the `EMPLOYEESEARCH_PROD` schema on PDB2 from malicious activity, even by privileged users like database administrators!
 
     ```
@@ -1406,9 +1406,9 @@ Oracle Database offers security controls to prevent unauthorized privileged user
 
     ---
 
-**Now you have reached the end of this lab!**
+    **Now you have reached the end of this lab!**
 
-We began with a fictional attacker planning a ransomware attack, which typically involves both data theft and denial of service. The security controls discussed in this lab focus on preventing data theft, ensuring that any stolen data remains unusable to attackers. This can be the key factor in deciding whether to pay a ransom or confidently refuse, eliminating the extortion threat.
+    We began with a fictional attacker planning a ransomware attack, which typically involves both data theft and denial of service. The security controls discussed in this lab focus on preventing data theft, ensuring that any stolen data remains unusable to attackers. This can be the key factor in deciding whether to pay a ransom or confidently refuse, eliminating the extortion threat.
 
 ## Learn More?
 

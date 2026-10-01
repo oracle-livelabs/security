@@ -1041,6 +1041,6 @@ Technical Documentation:
 - [Oracle SQL Firewall](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/using-sql-firewall.html)
 
 ## Acknowledgements
-- **Author** - Hakim Loumi, Database Security PM
+- **Author** - Angeline Dhanarani, Database Security PM
 - **Contributors** - Angeline Dhanarani
-- **Last Updated By/Date** - Hakim Loumi, Database Security PM - August 2024
+- **Last Updated By/Date** - Angeline Dhanarani, Database Security PM - January 2026

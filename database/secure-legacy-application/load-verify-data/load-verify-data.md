@@ -17,7 +17,9 @@ In this lab, you will complete the following tasks:
 
 This lab assumes you have:
 - Oracle Cloud Infrastructure (OCI) tenancy account
-- Completion of the following previous labs: Configure the Autonomous Database instance, Connect to the legacy Glassfish HR application
+- Completion of the following previous labs: 
+    - Configure the Autonomous Database instance
+    - Connect to the legacy Glassfish HR application
 
 ## Task 1: Create the EMPLOYEESEARCH_PROD schema using SQL*Plus from the Glassfish App Server and startup the Glassfish application.
 
@@ -27,7 +29,7 @@ This lab assumes you have:
     <copy>./load_app_data.sh</copy>
     ```
 
-    ![Load app data](images/load-app-data.png)
+    ![Load app data](images/sla-017.png "Load app data")
 
 2. Update the application connection string using the `update_app_connection_string.sh` script.
 
@@ -51,21 +53,23 @@ This lab assumes you have:
 
 1. Minimize your Cloud Shell terminal and navigate back to you Glassfish app instance in OCI using the hamburger menu under **Compute>Instances**.
 
-    ![Running instance](images/instance-running.png)
+    ![Running instance](images/sla-015.png "Running instance")
 
-2. Under the section **Primary VNIC**, select the subnet it created for you.
+2. Under the section **Networking**, select the subnet it created for you.
 
-    ![Find subnet](images/subnet.png)
+    ![Find subnet](images/sla-018.png "Find subnet")
 
-3. Under security lists, select the **default security list** for your subnet.
+3. Under **Security**, select the **Default Security List** for your subnet.
 
-    ![Select defualt SL](images/default-list.png)
+    ![Select defualt SL](images/sla-019.png "Select security list")
 
-4. Under ingress rules, select **Add Ingress Rules**.
+4. Under **Security Rules**, select **Add Ingress Rules**.
+
+    ![Ingress rule](images/sla-020.png "Ingress rules")
 
 5. Fill in the information according to the image below and select **Add Ingress Rules**.
 
-    ![Add ingress rule](images/add-ingress.png)
+    ![Add ingress rule](images/sla-021.png "Add ingress rule")
 
 6. Navigate back to your Cloud Shell terminal. Locate the output of the `startGlassfish.sh` script and find both the **Production** and **Development** URLs given to you at the conclusion of the output. 
 
@@ -101,6 +105,6 @@ You may now **proceed to the next lab.**
 
 ## Acknowledgements
 
-- **Author** - Ethan Shmargad, North America Specialists Hub
+- **Author** - Ethan Shmargad, Product Manager
 - **Contributers** - Richard Evans, Senior Principle Product Manager
-- **Last Updated By/Date** - Ethan Shmargad, September 2022
+- **Last Updated By/Date** - Ethan Shmargad, April 2025

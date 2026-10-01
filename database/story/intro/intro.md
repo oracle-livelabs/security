@@ -1,17 +1,15 @@
 # Introduction
 
 ## About this Workshop
-This workshop is a hands-on lab dedicated to the features and functionality of Oracle Database security to prevent, detect and mitigate the most common cyberattacks performed on Oracle Databases - for more details on each of the featured products, please refer to the DB Security livelabs.
 
-In this lab, we will use a ransomware attack to explore how attackers operate and what database features you should use to prevent, detect, and mitigate data exfiltration risks.
+This workshop highlights Oracle Database security features and options to prevent, detect and mitigate the most common cyberattacks performed on Oracle Databases.
 
-A typical ransomware attack includes theft and exfiltration of data. The theft usually happens before encrypting your system to make it inoperable, with the stolen data used by the ransomware gang to help influence you to pay the ransom.
+In this lab, you will mimic a ransomware attack to explore how attackers operate and what database features you should use to prevent, detect, and mitigate data exfiltration risks.
+
+A typical ransomware attack includes theft and exfiltration of data. The theft usually happens before encrypting your system to make it inoperable, with the stolen data used by the attacker to help influence you to pay the ransom.
 
 ![Ransomware Attack message](./images/intro-hack-01.png "Ransomware Attack message")
 
-In order to make this possible, we provide you with the necessary infrastructure components based on an OCI architecture, deployed in a few minutes, so that you can test the most common attacks exploited on a database by hackers with a simple internet connection.
-
-As all these components are stored in the workshop's DBSec-Lab VM, you can conduct your attack without any risk and without fear of breaking anything to test database security use cases in an environment pre-configured by the Oracle Database Security Product Manager Team.
 
 *Estimated Time*: 40 minutes
 
@@ -21,18 +19,19 @@ As all these components are stored in the workshop's DBSec-Lab VM, you can condu
 During this lab you will use the following resources:
   - SSH Terminal Client
   - Oracle Databases
-  - Glassfish HR App
+  - GlassFish HR App
   - Audit Vault web console
   - OEM Cloud Control (DBA Web console)
 
-Note that the Glassfish HR application is a fictitious employee management web application that points to an unsecured Oracle Database named PDB1.
-In our scenario, this database contains sensitive data that could be used by the attackers to extort a ransomware payment, or be sold on the dark web for profit.
+Note that the GlassFish HR application is a fictitious employee management web application that points to an unsecured Oracle Database named PDB1.
+In this scenario, the database contains sensitive data that could be used by the attackers to extort a ransomware payment, or be sold on the dark web for profit.
 
-As your attack protocol progresses, you will test the same commands from the same interfaces, but this time pointing to another Oracle Database named PDB2. Oracle's recommended security controls protect PDB2. You will see how a well-configured database can block the most common attacks used to break in and steal data.
+As your attack protocol progresses, you will test the same commands from the same interfaces, but this time pointing to another Oracle Database named PDB2, which has some of Oracle's recommended security controls already implemented. You will see how a well-configured database can block the most common attacks used to break in and steal data.
 
 *Versions tested in this lab:* Oracle DB EE 19.23, OEM 13.5, AVDF 20.13 an OKV 21.9
 
 ### Objectives
+
 This lab helps you learn to use some of the most important security features of the Oracle Database.
 
 You will learn how to:
@@ -51,6 +50,7 @@ The entire Database Security team wishes you an excellent workshop!
 You may now proceed to the next lab.
 
 ## Learn More
+
 Before starting, let us explain why we chose to use a **ransomware attack** as an example to demonstrate Oracle's database security capabilities.
 
 Cybercriminals are becoming more and more equipped and better prepared. They now have a substantial technological arsenal that allows them to launch attacks against you from almost everywhere if you are not prepared to deal with them.
