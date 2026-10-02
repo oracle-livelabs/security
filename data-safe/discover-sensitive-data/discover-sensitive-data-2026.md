@@ -38,7 +38,7 @@ This lab assumes you have:
 
 2. In **Provide basic information**, enter the following, and then select **Next**:
 
-   - **Name:** `SDM1_2026` (or a unique name in your compartment).
+   - **Name:** `SDM1` (or a unique name in your compartment).
    - **Compartment:** your workshop compartment.
    - **Description:** `Sensitive data inventory for customer application testing`.
    - Select the compartment for your target database, and then select the name of target database.
@@ -61,7 +61,7 @@ This lab assumes you have:
 
    ![Discovery options with sample collection and application-level relationship discovery unselected](images/2026-discovery-options.png)
 
-7. Select **Create sensitive data model**. Wait until the `SDM1_2026` model becomes **Active**.
+7. Select **Create sensitive data model**. Wait until the `SDM1` model becomes **Active**.
 
 ## Task 2: Review the initial discovery results
 
@@ -94,7 +94,7 @@ This lab assumes you have:
 
 ## Task 3: Run incremental discovery
 
-The application testing scope now includes customer-support tickets. Reuse `SDM1_2026` to discover the additional sensitive data.
+The application testing scope now includes customer-support tickets. Reuse `SDM1` to discover the additional sensitive data.
 
 1. Select the **Incremental discovery** tab, and then select **Run discovery now** under **Discovery job results**.
 
