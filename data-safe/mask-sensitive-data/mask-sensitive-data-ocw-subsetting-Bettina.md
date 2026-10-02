@@ -54,8 +54,8 @@ Then, you will mask the sensitive information that remains using the sensitive d
 For example, salary information can be replaced with a fixed value, while related address elements can be masked together so that the address values remain useful as a group.
 
 Finally, you will validate the resulting data set to confirm two things:
-1.	The non-production environment contains only the data required for the selected country.
-2.	Sensitive values in the retained records no longer expose the original information.
+1. The non-production environment contains only the data required for the selected country.
+2. Sensitive values in the retained records no longer expose the original information.
 
 This approach reduces risk in two ways.
 Subsetting reduces the amount of data exposed.
