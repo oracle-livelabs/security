@@ -229,7 +229,6 @@ Compare the resulting order count with the source count and review the related r
 
 Use the subsetting report and the relationships reviewed in the graph to confirm that the related customer, order-item, and payment rows were retained as configured. Compare each table with its own baseline; 10% applies to the condition-matching driving-table rows, not to every table in the database.
 
-The masking report is the record of which columns were masked. Review representative values locally for usable formats, including the customer and shipping address groups configured in the preceding lab. Do not copy sensitive row values into the lab or screenshots.
 
 ### Learn More
 
