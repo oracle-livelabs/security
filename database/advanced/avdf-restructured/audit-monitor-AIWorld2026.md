@@ -210,7 +210,7 @@ The audit policies and alert policy are now enabled. In this task, generate cont
 
 > **Note:** `freepdb1` is the PDB name used by the script. In Security Central, this PDB is registered as the **employees_search** target.
 
-> **Database console screenshot:** To be added.
+![Database console output after running the scripts](./images/task3-database-console-output.png?raw=1 "Database console output after running the scripts")
 
 </details>
 
@@ -229,15 +229,11 @@ The audit policies and alert policy are now enabled. In this task, generate cont
 
 6. Confirm the relevant evidence, including the user, registered target, PDB or database, sensitive object, activity or action, and event time.
 
-![Activity on sensitive data by privileged users](./images/activity-sensitive-data-privileged-users-AIWorld2026.jpeg "Activity on sensitive data by privileged users")
+![Activity on sensitive data by privileged users](./images/activity-sensitive-data-privileged-users-AIWorld2026.png?raw=1 "Activity on sensitive data by privileged users")
 
-7. Return to the reports list and open **All Activity by Privileged Users**.
+7. Open **All Activity by Privileged Users**.
 
-8. Refresh the report.
-
-9. Verify that activity from both users is displayed for the **employees_search** target.
-
-![All Activity by Privileged Users](./images/all-activity-by-privileged-users-AIWorld2026.jpeg "All Activity by Privileged Users")
+![All Activity by Privileged Users](./images/all-activity-by-privileged-users-AIWorld2026.png?raw=1 "All Activity by Privileged Users")
 
 > **Expected outcome:** The activity is visible in both the sensitive-data report and the broader privileged-user activity report.
 
@@ -256,7 +252,7 @@ The audit policies and alert policy are now enabled. In this task, generate cont
 
 > **Expected outcome:** The enabled **Privileged-user activity** policy generates alert events for activity performed by users in the **Database Administrators** set.
 
-![Generated Privileged-user activity alerts](./images/alert-generated-privileged-user-activity-AIWorld2026.jpeg "Generated Privileged-user activity alerts")
+![Generated Privileged-user activity alerts](./images/alert-generated-privileged-user-activity-AIWorld2026.png?raw=1 "Generated Privileged-user activity alerts")
 
 </details>
 
