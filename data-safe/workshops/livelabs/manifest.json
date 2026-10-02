@@ -45,13 +45,13 @@
         "type": "livelabs"
       },
       {
-        "title": "Lab 6: Audit database activity",
+        "title": "Lab 7: Audit database activity",
         "description": "This lab shows you how to provision audit policies and alerts in Oracle Data Safe.",
         "filename": "../../audit-database-activity/audit-database-activity.md",
         "type": "livelabs"
       },
       {
-        "title": "Lab 7: Create and enforce a SQL Firewall policy in Data Safe",
+        "title": "Lab 8: Create and enforce a SQL Firewall policy in Data Safe",
         "description": "This lab shows you how to use SQL Firewall in Data Safe.",
         "filename": "../../sqlfw/sqlfw.md",
         "type": "livelabs"
