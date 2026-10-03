@@ -5,7 +5,11 @@ Before accessing Security Central, retrieve the initial credentials and URLs fro
    Copy or note the following values:
    - **AVS Passphrase** — the initial password for the `AVADMIN` and `AVAUDITOR` users.
    - **HOL Host 2** — the Security Central console URL.
-   - **Remote Desktop** — the remote desktop URL, if you are using the provided desktop environment.
+   - **HOL Host 3** — **`<YOUR_DBSEC-LAB_VM_PUBLIC_IP>`**.
+   - **Remote Desktop** — the remote desktop URL for accessing the database host.
+
+     Run all database-host scripts in a terminal through **Remote Desktop**. Open it now and keep it open throughout the workshop.
+
    ![LiveLabs Lab Info showing Terraform Outputs](images/lab-info-redacted.svg)
    > The values are generated for each reservation and may be different from the example shown.
 2. In a browser, open the **HOL Host 2** link from the LiveLabs **Lab Info** panel.
