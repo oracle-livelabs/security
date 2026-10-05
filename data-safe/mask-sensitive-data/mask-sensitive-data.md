@@ -51,21 +51,21 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 2. On the SQL worksheet, enter the following command to grant the Data Masking role to the Oracle Data Safe service account on your target database.
 
-   ```
-   <copy>EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$DATA_MASKING_ROLE');</copy>
-   ```
+    ```
+    <copy>EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$DATA_MASKING_ROLE');</copy>
+    ```
 
 3. On the toolbar, select the **Run Statement** button (the green circle with a white arrow) to execute the command.
 
-   ![Grant the Data Masking role in the SQL worksheet](images/2026-grant-role-command.png)
+    ![Grant the Data Masking role in the SQL worksheet](images/2026-grant-role-command.png)
 
 4. Verify that the Script Output reads:
 
-   `PL/SQL procedure successfully completed.`
+    `PL/SQL procedure successfully completed.`
 
-   ![Successful Data Masking role grant](images/2026-grant-role-result.png)
+    ![Successful Data Masking role grant](images/2026-grant-role-result.png)
 
-   You are now able to mask sensitive data on your target database.
+    You are now able to mask sensitive data on your target database.
 
 5. Clear the worksheet and Script Output before continuing.
 
@@ -83,20 +83,20 @@ Data Masking can generate a masking policy from a sensitive data model. It pulls
 
 5. Configure the masking policy as follows:
 
-   - **Name:** `Mask_SDM1`
-   - **Compartment:** Your workshop compartment
-   - **Description:** `Masking policy for the CUSTOMER, PAYMENT, and SUPPORT schemas discovered by SDM1`
-   - **Choose how you want to create the masking policy:** Leave **Using a sensitive data model** selected.
-   - **Sensitive data model compartment:** Select the compartment containing `SDM1`.
-   - **Sensitive data model:** Select `SDM1`.
+    - **Name:** `Mask_SDM1`
+    - **Compartment:** Your workshop compartment
+    - **Description:** `Masking policy for the CUSTOMER, PAYMENT, and SUPPORT schemas discovered by SDM1`
+    - **Choose how you want to create the masking policy:** Leave **Using a sensitive data model** selected.
+    - **Sensitive data model compartment:** Select the compartment containing `SDM1`.
+    - **Sensitive data model:** Select `SDM1`.
 
-   ![Create Mask_SDM1 using SDM1, with compartment values blurred](images/2026-create-policy.png)
+    ![Create Mask_SDM1 using SDM1, with compartment values blurred](images/2026-create-policy.png)
 
 6. Select **Create masking policy**.
 
 7. Wait for the operation to complete and for the masking policy to become **Active**. Do not close the creation panel while Data Safe is adding the model columns to the policy.
 
-   ![Mask_SDM1 is active after policy creation](images/2026-policy-active.png)
+    ![Mask_SDM1 is active after policy creation](images/2026-policy-active.png)
 
 ### Review the generated policy and masking formats
 
@@ -110,13 +110,13 @@ Review the generated policy and its masking formats before continuing. The refer
 
 4. Under **Masking options**, review the configured options, including temporary tables, redo logging, statistics refreshing, degree of parallelism, and recompilation.
 
-   ![Mask_SDM1 column source and masking options](images/2026-policy-details.png)
+    ![Mask_SDM1 column source and masking options](images/2026-policy-details.png)
 
 5. Select the **Masking columns** tab. Confirm that the policy contains all 14 columns and the generated formats:
 
-   ![Generated masking formats for the CUSTOMER schema](images/2026-customer-masking-columns.png)
+    ![Generated masking formats for the CUSTOMER schema](images/2026-customer-masking-columns.png)
 
-   ![Generated masking formats for the PAYMENT and SUPPORT schemas](images/2026-payment-support-masking-columns.png)
+    ![Generated masking formats for the PAYMENT and SUPPORT schemas](images/2026-payment-support-masking-columns.png)
 
 6. Review the generated format for each column against the screenshots above. Keep the generated formats for this lab. If a column is missing, verify that the policy was created from the completed `SDM1` inventory.
 
@@ -144,7 +144,7 @@ Use group masking so that an address and its corresponding postal code remain a 
 
 8. Select **Add column**. In the new **Group masking column name** drop-down list, select `POSTAL_CODE`.
 
-   ![Customer_Address shuffle group with CUSTOMER_ADDRESS and POSTAL_CODE](images/2026-customer-address-group.png)
+    ![Customer_Address shuffle group with CUSTOMER_ADDRESS and POSTAL_CODE](images/2026-customer-address-group.png)
 
 9. Select **Continue**. Confirm that both columns show the `Customer_Address` masking group.
 
@@ -166,7 +166,7 @@ Use group masking so that an address and its corresponding postal code remain a 
 
 8. Select **Add column**, and then select `SHIPPING_ZIP` in the new **Group masking column name** field.
 
-   ![Shipping_Address shuffle group with SHIPPING_ADDRESS and SHIPPING_ZIP](images/2026-shipping-address-group.png)
+    ![Shipping_Address shuffle group with SHIPPING_ADDRESS and SHIPPING_ZIP](images/2026-shipping-address-group.png)
 
 9. Select **Continue** and confirm that both columns show the `Shipping_Address` masking group.
 
@@ -190,27 +190,27 @@ The pre-masking check looks for known issues that could prevent a masking run, s
 
 5. For **Pre-masking report compartment**, select your workshop compartment. Leave the optional **Tablespace** field blank to use the default tablespace.
 
-   ![Pre-masking check for Mask_SDM1, with target and compartment values blurred](images/2026-pre-masking-check.png)
+    ![Pre-masking check for Mask_SDM1, with target and compartment values blurred](images/2026-pre-masking-check.png)
 
 6. Select **Submit** and wait for the pre-masking report status to change to **Active**.
 
-   ![Active pre-masking report](images/2026-pre-masking-active.png)
+    ![Active pre-masking report](images/2026-pre-masking-active.png)
 
 7. Select the **Log messages** tab and review the result of each check. The reference run passed all 16 checks, including privileges, database objects, statistics, and available space. Use **Manage Columns** to show **Message** and **Message type** together, as in the screenshots.
 
-   ![Pre-masking check results, including the required privileges](images/2026-pre-masking-log.png)
+    ![Pre-masking check results, including the required privileges](images/2026-pre-masking-log.png)
 
-   ![Remaining pre-masking check results](images/2026-pre-masking-log-more.png)
+    ![Remaining pre-masking check results](images/2026-pre-masking-log-more.png)
 
 If a check fails, record the message and resolve the issue before any masking run.
 
 This completes the lab. The next lab step will run subsetting and masking together to produce the smaller, protected copy.
 
-### Learn More
+## Learn More
 
 - [Data Masking Overview](https://docs.oracle.com/iaas/data-safe/doc/data-masking-overview.html)
 
-### Acknowledgements
+## Acknowledgements
 
 - Author - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - Contributor - Kajal Singh, Product Manager, Oracle Database Security
