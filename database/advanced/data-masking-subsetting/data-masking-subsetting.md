@@ -95,9 +95,9 @@ Create an ADM and associate it with a target database and schema. This ADM will 
     - Schemas: *`EMPLOYEESEARCH_DEV`* (Type in the text and select from the drop-down options).
     - Relationship Discovery Type: *`Database Level (Dictionary-Based)`* (default).
 
-![DMS](./images/dms-124.png "102")
+    ![DMS](./images/dms-124.png "102")
 
-**Note:** Database Level (Dictionary-Based) automatically identifies relationships within the database using its data dictionary. Refer to the [**documentation**](https://docs.oracle.com/en/database/oracle/oracle-database/23/dmksb/index.html#GUID-34B6A567-9332-49C8-AE8A-93EDCB78D7F9) for more details on referential relationship type.  
+    **Note:** Database Level (Dictionary-Based) automatically identifies relationships within the database using its data dictionary. Refer to the [**documentation**](https://docs.oracle.com/en/database/oracle/oracle-database/23/dmksb/index.html#GUID-34B6A567-9332-49C8-AE8A-93EDCB78D7F9) for more details on referential relationship type.  
     
 2. Click **Create**. Use the Re-fetch button to check the status. Proceed once the **Most Recent Jobs Status** for *`Employee_ADM `* displays "**Succeeded**"!
 
@@ -148,11 +148,11 @@ Run the **Discover Sensitive Columns** job: To identify sensitive columns, run t
     ![DMS](./images/dms-112(5).png "16")
 
 6. **Sensitive Status** for discovered columns is **Sensitive** by default. Here, you have the flexibility to update the status to *`Not Sensitive`* or *`Undefined`*, depending on your requirement. 
-For this task, select the four *`User ID`* and one *`Email ID`* sensitive type columns shown below and select **Mark Not Sensitive**.
+    For this task, select the four *`User ID`* and one *`Email ID`* sensitive type columns shown below and select **Mark Not Sensitive**.
 
-![DMS](./images/dms-113(5).png "17")
+    ![DMS](./images/dms-113(5).png "17")
 
-Notice that the **Sensitive Status** has been changed from *`SENSITIVE`* to *`NOT_SENSITIVE`* for five rows.  
+    Notice that the **Sensitive Status** has been changed from *`SENSITIVE`* to *`NOT_SENSITIVE`* for five rows.  
 
 7. Click **Close**. Now, your ADM is populated with sensitive columns *`EMAIL`*, *`USERID`* and *`PASSWORD`* from different objects.
 
@@ -182,12 +182,12 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 
 3. On the **Create Masking Definitions page: Basic Details**, fill it as follows:
 
-- Name: *`Employee_Data_Mask.`*
-- Application Data Model: *`Employee_ADM.`*
-- Associated Database: *`cdb1_PDB1.`*
-- Database Named Credentials: *`DMS_ADMIN.`*
+    - Name: *`Employee_Data_Mask.`*
+    - Application Data Model: *`Employee_ADM.`*
+    - Associated Database: *`cdb1_PDB1.`*
+    - Database Named Credentials: *`DMS_ADMIN.`*
 
-![DMS](./images/dms-022.png "22")  
+    ![DMS](./images/dms-022.png "22")  
 
 4. Click **Next**.  
 
@@ -204,7 +204,7 @@ Create a new Masking Definition under **Data Masking** where the masking formats
 
 7. You have an option to add a pre-masking script and a post-masking script. For this task, however, you can leave it empty.
 
-**Note**:
+    **Note**:
     - Use the **Pre Mask Script** text box to specify any SQL script that must run before masking starts.
     - Use the **Post Mask Script** text box to specify any SQL script that must run after masking completes.  
     
@@ -225,14 +225,14 @@ Before generating and running a masking job, it is recommended to perform a pre-
 ### Steps
 1. Click **Actions** for *`Employee_Data_Mask`* and choose **Pre-Masking Checks** as shown below:  
 
-   ![DMS](./images/dms-214.png "34") 
+    ![DMS](./images/dms-214.png "34") 
 
 2. Click Schedule
 
 3. On the **Create Pre-Masking Check report**, fill in the below details:
 
- - Associated Database: *`cdb1_PDB1`*.
- - Database Named Credential: *`DMS_ADMIN`*.  
+    - Associated Database: *`cdb1_PDB1`*.
+    - Database Named Credential: *`DMS_ADMIN`*.  
  
     ![DMS](./images/dms-216.png "34")  
     
@@ -264,106 +264,106 @@ Successfully ran a **Pre-Masking Check** job to validate the environment and ens
 
 2. On **Generate Masking Script** page, you can choose either of the two options:
 
- - **In-Database Masking**: This performs in-place masking by replacing sensitive data in a database. 
- - **In-Export Masking**: This performs masking while exporting data from a source database using Oracle Data Pump. It is safe to use this option in a production environment because it does not modify any source data.
+    - **In-Database Masking**: This performs in-place masking by replacing sensitive data in a database. 
+    - **In-Export Masking**: This performs masking while exporting data from a source database using Oracle Data Pump. It is safe to use this option in a production environment because it does not modify any source data.
 
-Fill in the below details:
+    Fill in the below details:
 
- - Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab).
- - Associated Database: *`cdb1_PDB1`*.
- - Database Named Credential: *`DMS_ADMIN`*.  
- - Run **Pre-Masking Check** if it has not been performed previously.
+    - Data Masking Option: **In-Database Masking** (we are choosing In-Database for this lab).
+    - Associated Database: *`cdb1_PDB1`*.
+    - Database Named Credential: *`DMS_ADMIN`*.  
+    - Run **Pre-Masking Check** if it has not been performed previously.
  
     ![DMS](./images/dms-034(1).png "34")  
     
     
 3. Click **Generate**.  
 
-To monitor the status of the job, refresh the screen by clicking the **Re-fetch** icon on the **Masking Definitions** page. 
+    To monitor the status of the job, refresh the screen by clicking the **Re-fetch** icon on the **Masking Definitions** page. 
 
-**Tips**:
- - You have the ability to export the script locally by clicking **Export** under **Actions**.
- - This exported script can then be executed on other targets with the same schema and sensitive data.
+    **Tips**:
+    - You have the ability to export the script locally by clicking **Export** under **Actions**.
+    - This exported script can then be executed on other targets with the same schema and sensitive data.
 
-Notice that the **Most Recent Job Status** has changed to *`Script Generated`* for *`Employee_Data_Mask`*. Now, your masking script is ready to be used!
+    Notice that the **Most Recent Job Status** has changed to *`Script Generated`* for *`Employee_Data_Mask`*. Now, your masking script is ready to be used!
 
-**Update the Host Named Credential**  
+    **Update the Host Named Credential**  
 4. The Host Named Credential has been pre-configured for you, but before running the masking script, you need to add your own SSH private key to enable it. Follow the steps below to update the Host Named Credential with the new SSH key based on your connection method:  
 
     **Step 4(a).** Complete this step only if you are using the embedded remote desktop. If not, skip to Step 4(b).  
     **Step 4(b).** Complete this step only if you are NOT using the embedded remote desktop.
 
-**Step 4(a).** If you are using the embedded remote desktop:  
+    **Step 4(a).** If you are using the embedded remote desktop:  
 
-i. Generate SSH Keys  
-- From your noVNC remote desktop session, open a **Terminal** session:  
+    i. Generate SSH Keys  
+    - From your noVNC remote desktop session, open a **Terminal** session:  
 
-![DMS](./images/dms-122.png "36")  
+    ![DMS](./images/dms-122.png "36")  
 
-- Run the following to generate the key pair:  
+    - Run the following to generate the key pair:  
 
-    ````
-    <copy>
-        cd ~
-        ssh-keygen -b 2048 -t rsa
-    </copy>
-    ````  
+        ````
+        <copy>
+            cd ~
+            ssh-keygen -b 2048 -t rsa
+        </copy>
+        ````  
 
-- Accept defaults for file and passphrase by pressing Enter three times to create a key with no passphrase.
-- Update *`~/.ssh/authorized_keys`* and copy the private key to *`/tmp`*.  
+    - Accept defaults for file and passphrase by pressing Enter three times to create a key with no passphrase.
+    - Update *`~/.ssh/authorized_keys`* and copy the private key to *`/tmp`*.  
 
-    ````
-    <copy>
-        cd .ssh
-        cat id_rsa >/tmp/rsa_priv
-        cat id_rsa.pub >>authorized_keys
-    </copy> 
-    ```` 
-    
-ii. Update the Host Named Credential with the new SSH Key:
+        ````
+        <copy>
+            cd .ssh
+            cat id_rsa >/tmp/rsa_priv
+            cat id_rsa.pub >>authorized_keys
+        </copy> 
+        ```` 
+        
+    ii. Update the Host Named Credential with the new SSH Key:
 
-- From the EM Console as SYSMAN, navigate to menu **Setup > Security > Named Credentials**:  
-    
-    ![DMS](./images/dms-037.png "Add the formats entries types")
+    - From the EM Console as SYSMAN, navigate to menu **Setup > Security > Named Credentials**:  
+        
+        ![DMS](./images/dms-037.png "Add the formats entries types")
 
-- Select *`OS_ORACLE_SSH`* credential and click *`Edit`*.
+    - Select *`OS_ORACLE_SSH`* credential and click *`Edit`*.
 
-    ![DMS](./images/dms-038.png "Add the formats entries types")
+        ![DMS](./images/dms-038.png "Add the formats entries types")
 
-- Keep the General Properties section unchanged and update the Credential Properties as followed:
+    - Keep the General Properties section unchanged and update the Credential Properties as followed:
 
-    - Username: *`oracle`*.
-    - Delete any content for SSH Public and Private Keys.
-       
+        - Username: *`oracle`*.
+        - Delete any content for SSH Public and Private Keys.
+           
+            ![DMS](./images/dms-039.png "39")
+
+        - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **Other Locations > Computer > tmp** and select the file *`rsa_priv`*.
+
+            ![DMS](./images/dms-040.png "40")
+
+    - Click **Test and Save**.
+
+        ![DMS](./images/dms-041.png "41")
+
+    **Step 4(b).** If you are NOT using the remote desktop embedded:  
+
+    - Make sure you can R/W files to your DBSecLab VM from the OEM Console by selecting the menu **Setup > Security > Named Credentials**.
+    - Select *`OS_ORACLE_SSH`* named credential.
+    - Click **Edit**.
+
+        ![DMS](./images/dms-038.png "38")
+
+    - We have already pre-configured this Named Credential for you but you have to put your own **SSH Private Key** to enable it.
+
         ![DMS](./images/dms-039.png "39")
 
-    - Under SSH Private Key, upload the key by clicking **Choose File**. On the file browser, navigate to **Other Locations > Computer > tmp** and select the file *`rsa_priv`*.
-
-        ![DMS](./images/dms-040.png "40")
-
-- Click **Test and Save**.
+    - In the section Credential Properties, load your SSH Private Key. Remember, this key must be in RSA format, so please open your own SSH Private Key file, copy the content and paste it in the text box.
+    - Click **Test and Save**.  
+    Your connection should be successful, if not please make sure your SSH Private Key is the correct one.
 
     ![DMS](./images/dms-041.png "41")
 
-**Step 4(b).** If you are NOT using the remote desktop embedded:  
-
-- Make sure you can R/W files to your DBSecLab VM from the OEM Console by selecting the menu **Setup > Security > Named Credentials**.
-- Select *`OS_ORACLE_SSH`* named credential.
-- Click **Edit**.
-
-    ![DMS](./images/dms-038.png "38")
-
-- We have already pre-configured this Named Credential for you but you have to put your own **SSH Private Key** to enable it.
-
-    ![DMS](./images/dms-039.png "39")
-
-- In the section Credential Properties, load your SSH Private Key. Remember, this key must be in RSA format, so please open your own SSH Private Key file, copy the content and paste it in the text box.
-- Click **Test and Save**.  
-Your connection should be successful, if not please make sure your SSH Private Key is the correct one.
-
-![DMS](./images/dms-041.png "41")
-
-**Schedule Masking Job**  
+    **Schedule Masking Job**  
 
 5. Now, lets schedule the Masking job by navigating to **Targets > Databases**. Click **Security** > **Data Masking and Subsetting** and Choose **Data Masking**.  
 
@@ -373,24 +373,24 @@ Your connection should be successful, if not please make sure your SSH Private K
 
     ![DMS](./images/dms-043(2).png "43")
 
-Fill in the following details on the **Schedule Data Masking Job: Basic Details page**:  
-   - Data Masking Option: **In-Database Masking**.
-   - Tablespace for Temporary Objects: **Default Tablespace** (Default).
-   - Associated Database: *`cdb1_PDB1`*.
-   - Database Named Credentials: *`DMS_ADMIN`*.
-   - Host Named Credentials: *`OS_ORACLE_SSH`*
-   - Select the checkbox for **Selected Database is not a production database**.
-   - Run **Pre-Masking Check** if it has not been done previously.
+    Fill in the following details on the **Schedule Data Masking Job: Basic Details page**:  
+    - Data Masking Option: **In-Database Masking**.
+    - Tablespace for Temporary Objects: **Default Tablespace** (Default).
+    - Associated Database: *`cdb1_PDB1`*.
+    - Database Named Credentials: *`DMS_ADMIN`*.
+    - Host Named Credentials: *`OS_ORACLE_SSH`*
+    - Select the checkbox for **Selected Database is not a production database**.
+    - Run **Pre-Masking Check** if it has not been done previously.
 
-![DMS](./images/dms-044(1).png "44")  
+    ![DMS](./images/dms-044(1).png "44")  
 
 7. Click **Next**.
 
-On the next page, mention:
+    On the next page, mention:
 
-- Script File Location: *`/tmp`*.
+    - Script File Location: *`/tmp`*.
 
-![DMS](./images/dms-045.png "45")
+    ![DMS](./images/dms-045.png "45")
 
 8. Click **Submit**.
 
@@ -417,9 +417,9 @@ Generated the Masking Script for the *`Employee_Data_Mask`* definition, with the
 
     ![DMS](./images/dms-122.png "47")
 
-Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
+    Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
 
-![DMS](./images/dms-048.png "48")
+    ![DMS](./images/dms-048.png "48")
 
 2. You should open two separate worksheets for *`PDB1_SYSTEM`*. Open the second worksheet by right clicking *`PDB1_SYSTEM`* shown under **Oracle Connections** and selecting **Open SQL Worksheet**.
 
@@ -466,7 +466,7 @@ Connect to *`PDB1_SYSTEM`* by double-clicking the connection.
     ````
     ![DMS](./images/dms-051(1).png "51")
 
-**Compare the results:**  
+    **Compare the results:**  
 5. Before and after masking job comparison for **DEMO_HR_EMPLOYEES** and **DEMO_HR_USERS** have been shown below:  
 - Employee Data:  
     - **BEFORE masking** (on prod)
@@ -528,9 +528,9 @@ Subset and mask your sensitive data for secure sharing with external partners. T
 
 6. Click **Submit**.  
 
-Now, your Subsetting definition is being created. Please refresh the page until you see **Succeeded** under **Most Recent Job Status**.
+    Now, your Subsetting definition is being created. Please refresh the page until you see **Succeeded** under **Most Recent Job Status**.
 
-![DMS](./images/dms-060.png "Subsetting definition is scheduling")
+    ![DMS](./images/dms-060.png "Subsetting definition is scheduling")
 
 7. Once the subsetting definition is created, select it and click on **Edit**.
 
@@ -544,51 +544,51 @@ Now, your Subsetting definition is being created. Please refresh the page until 
 
     ![DMS](./images/dms-104.png "Select the schema")
 
-**Add Object (Subset) Rules:**  
+    **Add Object (Subset) Rules:**  
 10. In the **Object Rules** tab, define the subset rules by clicking **Create** as many times as needed. Here, we will create **four** Object Rules, so click **Create** and proceed as below:
 
-![DMS](./images/dms-064.png "Create all the Subset rules")
+    ![DMS](./images/dms-064.png "Create all the Subset rules")
 
-- Object Rule 1: For *`DEMO_HR_EMPLOYEES`* table, we will keep only **25% of rows** as this is a dataset table.
-    - In **Objects**, select **Specified** and choose *`DEMO_HR_EMPLOYEES`*.
-    - In **Rows to Include**, select **Some Rows** and enter *`25`*.
-    - Check "**Include Related Rows**" and select **Ancestor and Descendant Objects** (Default).
+    - Object Rule 1: For *`DEMO_HR_EMPLOYEES`* table, we will keep only **25% of rows** as this is a dataset table.
+        - In **Objects**, select **Specified** and choose *`DEMO_HR_EMPLOYEES`*.
+        - In **Rows to Include**, select **Some Rows** and enter *`25`*.
+        - Check "**Include Related Rows**" and select **Ancestor and Descendant Objects** (Default).
 
-        ![DMS](./images/dms-065.png "... for DEMO_HR_EMPLOYEES table")
+            ![DMS](./images/dms-065.png "... for DEMO_HR_EMPLOYEES table")
 
-    - Click **OK**.
+        - Click **OK**.
 
-- Object Rule 2: For *`DEMO_HR_ERROR_LOG`* table, we will keep **0% of rows** as this is a log table.
-    - Click **Create**.
-    - In **Objects**, select **Specified** and choose *`DEMO_HR_ERROR_LOG`*.
-    - In **Rows to Include**, select **Rows Where** and enter *`1=0`* (here, this condition allow to extract 0 rows!).
-    - Uncheck **Include Related Rows**.
+    - Object Rule 2: For *`DEMO_HR_ERROR_LOG`* table, we will keep **0% of rows** as this is a log table.
+        - Click **Create**.
+        - In **Objects**, select **Specified** and choose *`DEMO_HR_ERROR_LOG`*.
+        - In **Rows to Include**, select **Rows Where** and enter *`1=0`* (here, this condition allow to extract 0 rows!).
+        - Uncheck **Include Related Rows**.
 
-        ![DMS](./images/dms-066.png "... for DEMO_HR_ERROR_LOG table")
+            ![DMS](./images/dms-066.png "... for DEMO_HR_ERROR_LOG table")
 
-    - Click **OK**.
+        - Click **OK**.
 
-- Object Rule 3: For *`DEMO_HR_ROLES`* table, we will keep **100% of rows** as this is a reference table.
-    - Click **Create**.
-    - In **Objects**, select **Specified** and choose *`DEMO_HR_ROLES`*.
-    - In **Rows to Include**, select **All Rows**.
-    - Check **Include Related Rows** and select **Ancestor and Descendant Objects** (Default).
+    - Object Rule 3: For *`DEMO_HR_ROLES`* table, we will keep **100% of rows** as this is a reference table.
+        - Click **Create**.
+        - In **Objects**, select **Specified** and choose *`DEMO_HR_ROLES`*.
+        - In **Rows to Include**, select **All Rows**.
+        - Check **Include Related Rows** and select **Ancestor and Descendant Objects** (Default).
 
-        ![DMS](./images/dms-067.png "... for DEMO_HR_ROLES table")
+            ![DMS](./images/dms-067.png "... for DEMO_HR_ROLES table")
 
-    - Click **OK**.
+        - Click **OK**.
 
-- Object Rule 4: For *`DEMO_HR_USERS`* table, we will keep **100% of rows** as this is a reference table.
-    - In **Objects**, select **Specified** and choose *`DEMO_HR_USERS`*.
-    - In **Rows to Include**, select **All Rows**.
-    - Check **Include Related Rows** and select **Ancestor and Descendant Objects**.
-    - Click **OK**.  
+    - Object Rule 4: For *`DEMO_HR_USERS`* table, we will keep **100% of rows** as this is a reference table.
+        - In **Objects**, select **Specified** and choose *`DEMO_HR_USERS`*.
+        - In **Rows to Include**, select **All Rows**.
+        - Check **Include Related Rows** and select **Ancestor and Descendant Objects**.
+        - Click **OK**.  
 
-        ![DMS](./images/dms-068.png "... for DEMO_HR_USERS table")
+            ![DMS](./images/dms-068.png "... for DEMO_HR_USERS table")
 
-Now, all 4 defined Object Rules should show as below:
+    Now, all 4 defined Object Rules should show as below:
 
-![DMS](./images/dms-069.png "List of your Object Rules")
+    ![DMS](./images/dms-069.png "List of your Object Rules")
 
 11. In the **Space Estimates** tab, expand the **Applications and Objects** list as shown below:
 
@@ -598,9 +598,9 @@ Now, all 4 defined Object Rules should show as below:
     - Here, you can see the **Source and Estimated Subset Size** (in MB and number of rows).
     - Since the tables are interdependent, you will see the effects of subsetting on parent-child tables. In this example, *`DEMO_HR_EMPLOYEES`* retains 25% of its rows as previously defined. However, due to its dependency on the *`DEMO_HR_SUPPLEMENTAL_DATA`* table, this table is also affected by the subsetting and will retain 68% of its rows.
 
-You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process..
+    You may stop here if you only need to subset your data. However, we will proceed by **associating the Data Masking script** previously generated to demonstrate how subsetting and masking can be combined in a single process..
 
-**Associate the previously generated Masking Definition**  
+    **Associate the previously generated Masking Definition**  
 
 12. In the **Data Masking Definitions** tab, click **Add**.  
 
@@ -610,9 +610,9 @@ You may stop here if you only need to subset your data. However, we will proceed
 
     ![DMS](./images/dms-072(1).png "Data Masking Definitions")
 
-Now, your Data Masking script is associated with your Data Subsetting definition and it will be executed along with data subsetting. You do not need to execute the masking script separately.
+    Now, your Data Masking script is associated with your Data Subsetting definition and it will be executed along with data subsetting. You do not need to execute the masking script separately.
         
-![DMS](./images/dms-073(1).png "Data Masking Definitions is associated")
+    ![DMS](./images/dms-073(1).png "Data Masking Definitions is associated")
 
 14. Click **Return** to go to the Data Subsetting Definitions screen.
 
@@ -630,13 +630,13 @@ Once the Data Subsetting Definition containing subsetting and masking rules is c
 ### Steps
 **Restore the development schema**
 1. Since the data was masked as part of Task 8, lets restore the *`EMPLOYEESEARCH_DEV`* schema on **pdb1** by cloning data from *`EMPLOYEESEARCH_PROD`* schema to have original data.
-Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by running the following command:
+    Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by running the following command:
 
         ````
         <copy>sudo su - oracle</copy>
         ````
 
-**Note**: If you are using a **remote desktop session**, simply double-click the **Terminal** icon to launch a session directly as Oracle. 
+    **Note**: If you are using a **remote desktop session**, simply double-click the **Terminal** icon to launch a session directly as Oracle. 
 
 2. Go to the scripts directory.
 
@@ -652,10 +652,10 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by runnin
 
     ![DMS](./images/dms-074.png "Restore original data")
 
-**Generate and execute the subsetting script:**  
+    **Generate and execute the subsetting script:**  
 4. Go back to the OEM Console and navigate to **Target > Databases**, then choose **Security** > **Data Masking and Subsetting** > **Data Subsetting**.  
 
-![DMS](./images/dms-003b.png "Restore original data")
+    ![DMS](./images/dms-003b.png "Restore original data")
 
 5. Select the *`Employee_Data_Subset`* subsetting definition, go to **Actions**, and choose **Generate Subset**.
 
@@ -684,9 +684,9 @@ Open a Terminal session on your **DBSec-Lab** VM as OS user *`oracle`* by runnin
     ![DMS](./images/dms-079(1).png "warning")
 
 10. Click **OK**.  
-After reviewing that the required space is available, click **Submit** to generate the script.
+    After reviewing that the required space is available, click **Submit** to generate the script.
 
-**Note:** The script is generated and automatically executed!
+    **Note:** The script is generated and automatically executed!
 
 11. Refresh the **Data Subsetting Definitions** page until you see the **Job Status** as **Succeeded**.
 
@@ -703,7 +703,7 @@ Review subsetted and masked data across environments to understand how Data Mask
 ### Steps
 1. Query the data in the production and development environments using SQL Developer: Open **SQL Developer** on your noVNC session.  
 
-![DMS](./images/dms-122.png "122")
+    ![DMS](./images/dms-122.png "122")
 
 2. You should open two separate worksheets for *`PDB1_SYSTEM`* connection:  
     - Under the list of **Oracle Connections**, double-click on PDB1_SYSTEM.  
