@@ -23,7 +23,7 @@ In this lab, you will:
 Security Central provides predefined reports that help organizations review sensitive-data access and assemble evidence for compliance reviews. Explore GDPR reports, then use `customer_orders` to see how before-and-after values provide a detailed record of data changes.
 
 <details>
-<summary>**Step 1: Review GDPR reporting coverage**</summary>
+<summary><strong>Step 1: Review GDPR reporting coverage</strong></summary>
 
 1. Log in to the Security Central console as *`AVAUDITOR`*.
 
@@ -65,7 +65,7 @@ These reports support compliance evidence. Reviewing them does not, by itself, e
 </details>
 
 <details>
-<summary>**Step 2: Verify collection and review data-change evidence**</summary>
+<summary><strong>Step 2: Verify collection and review data-change evidence</strong></summary>
 
 This report shows which data values changed; it is not a comparison of security posture before and after remediation. Transaction-log collection supplies before-and-after values, while unified auditing provides additional event information, including DML command text.
 
@@ -128,7 +128,7 @@ You have addressed the identified configuration issue and added auditing, alerti
 <!-- AUTHOR TODO: Validate Security Advisor query wording with the development team and replace the seven screenshot placeholders. The intended responses have not yet been confirmed on the current instance. -->
 
 <details>
-<summary>**Step 1: Review the controls and their evidence**</summary>
+<summary><strong>Step 1: Review the controls and their evidence</strong></summary>
 
 1. Log in to the Security Central console as *`AVAUDITOR`*. Click the red chat icon at the bottom of the page to open **Security Advisor**.
 
@@ -185,7 +185,7 @@ You have addressed the identified configuration issue and added auditing, alerti
 </details>
 
 <details>
-<summary>**Step 2: Review optional controls, if completed**</summary>
+<summary><strong>Step 2: Review optional controls, if completed</strong></summary>
 
 Only review the controls you implemented and validated in the optional tasks.
 

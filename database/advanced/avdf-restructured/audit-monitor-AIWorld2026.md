@@ -1,7 +1,8 @@
 # Audit, Monitor, and Alert on Privileged Activity
 
 ## Introduction
-In the previous lab, Security Central identified a control gap: sensitive employee data in the **employees_search** and **customer_orders** PDBs is accessed by privileged users, but the activity is not yet consistently audited and surfaced for response.
+
+In the previous lab, Security Central identified gaps in privileged-user auditing on **employees_search** and **customer_orders**, along with sensitive employee data requiring monitoring on **employees_search**.
 
 In this lab, turn the findings into actionable protection. Centralized auditing creates the evidence needed to understand privileged activity and sensitive-data access, while alerts make important events visible for response. You will first provision the audit policies, then use a new alert to validate that activity by privileged users can be detected.
 
@@ -15,38 +16,41 @@ Watch a preview of "*LiveLabs - Oracle Database Security Central (Security Centr
 -->
 
 ## Objectives
-- Provision audit policies for privileged users and sensitive objects
-- Create and validate an alert for privileged-user activity
+
+In this lab, you will:
+
+- Provision audit policies for privileged users and sensitive objects.
+- Create and validate an alert for privileged-user activity.
 
 
 ## Task 1: Provision audit policies for privileged users and sensitive objects
 
-Begin by provisioning the audit policies that collect the evidence for the next task. Apply **User Activity** to both PDBs, **Sensitive Data Access Monitoring** to **employees_search**, and the **CIS Configuration** policy to **customer_orders**.
+Begin by provisioning the audit policies that collect the evidence for the next task. Apply **User Activity** to both targets, **Sensitive Data Access Monitoring** to **employees_search**, and the **CIS Configuration** policy to **customer_orders**.
 <details>
-<summary> **Step 1: Provision audit policies for employees_search** </summary>
+<summary><strong>Step 1: Provision audit policies for employees_search</strong></summary>
 
-1. Open the Security Central console as **AVAUDITOR**
+1. Open the Security Central console as **AVAUDITOR**.
 
-2. Click **Policies**, then select **Audit Policies** from the left menu
+2. Click **Policies**, then select **Audit Policies** from the left menu.
     ![AVDF](./images/360-11.png "AVDF - Audit Policies page")
 
-    **Note**: If the **Last Retrieved time** is *Never*, select the **`employees_search`** pdb and click **Retrieve policies** to retrieve the latest from the database.
+    **Note:** If **Last Retrieved time** is *Never*, select the **`employees_search`** target and click **Retrieve policies** to retrieve the latest policies from the database.
 
-3. Select **employees_search** PDB to review the enabled policies
-    ![AVDF](./images/360-12.png "AVDF - Audit Policies for Employees Search pdb")
+3. Select the **employees_search** target to review the enabled policies.
+    ![AVDF](./images/360-12.png "AVDF - Audit Policies for employees_search")
 
     **Note:** A few audit policies, including **System Configuration Changes**, **Critical Database Activity**, **User Login Events**, and **Database schema changes**, are already enabled in the LiveLabs instance. 
 
-4. Provision **User Activity** to track privileged-user activity
-    - Expand **User Actions**
-    - Click **User Activity**
+4. Provision **User Activity** to track privileged-user activity.
+    - Expand **User Actions**.
+    - Click **User Activity**.
     - Keep the default *Policy enable condition* and ensure that *Privileged users identified by User Assessment* is selected.
         ![AVDF](./images/360-13.png "AVDF - User Activity Policy enable condition")
-        - Click **Enable**. Refresh the page if necessary until the status shows **Enabled**.
+    - Click **Enable**. Refresh the page if necessary until the status shows **Enabled**.
 
-5. Provision **Sensitive Data Access Monitoring** to track sensitive-data access
-    - Expand **Data access**
-    - Click **Sensitive Data Access Monitoring**
+5. Provision **Sensitive Data Access Monitoring** to track sensitive-data access.
+    - Expand **Data access**.
+    - Click **Sensitive Data Access Monitoring**.
     - Ensure that **Audit SELECT operations** remains selected.
     - Ensure that **Sensitive objects discovered by Sensitive Data Discovery** is selected.
         ![AVDF](./images/360-14.png "AVDF - Sensitive Data Access Monitoring Policy")
@@ -54,51 +58,51 @@ Begin by provisioning the audit policies that collect the evidence for the next 
          ![AVDF](./images/360-15.png "AVDF - Sensitive Data Access Monitoring Policy condition")
          - Set *Enable policy for* to **All users except a specific set of users**. 
          - Click **Add Row**, select **User** as the type, and select **`EMPLOYEESEARCH_PROD`** from the dropdown.
-    - Click **Enable** and review to see the status as **Enabled** in the policies page. You may have to refresh the page couple of times till it reflects.
+    - Click **Enable**. Refresh the policies page if necessary until the status shows **Enabled**.
 
 </details>
 
 
 <details>
-<summary> **Step 2: Provision audit policies for customer_orders**</summary>
+<summary><strong>Step 2: Provision audit policies for customer_orders</strong></summary>
 
-1. Click on **customer_orders** pdb to review the policies enabled
-    ![AVDF](./images/360-12a.png "AVDF - Audit Policies for customer orders pdb")
+1. Select the **customer_orders** target to review the enabled policies.
+    ![AVDF](./images/360-12a.png "AVDF - Audit Policies for customer_orders")
 
     **Note:** A few audit policies, including **System Configuration Changes**, **Critical Database Activity**, **User Login Events**, and **Database schema changes**, are already enabled in the LiveLabs Terraform configuration. 
 
-2. Provision the audit policy to track **privileged user activity**
-    - Expand **User Actions**
-    - Click **User Activity**
+2. Provision the audit policy to track **privileged-user activity**.
+    - Expand **User Actions**.
+    - Click **User Activity**.
     - Keep the default *Policy enable condition* and ensure that *Privileged users identified by User Assessment* is selected.
         ![AVDF](./images/360-13.png "AVDF - User Activity Policy enable condition")
-    - Click **Enable** and review to see the status as **Enabled** in the policies page
+    - Click **Enable**. Refresh the policies page if necessary until the status shows **Enabled**.
 
 Security Central also provides ready-to-deploy audit policies for common compliance frameworks. For this target, enable the CIS Configuration policy with a single action.
 
-3. Provision the CIS Configuration policy for compliance coverage
-    - Expand **Compliance**
-    - Select **Center for Internet Security (CIS) Configuration** and click **Enable**
+3. Provision the CIS Configuration policy for compliance coverage.
+    - Expand **Compliance**.
+    - Select **Center for Internet Security (CIS) Configuration** and click **Enable**.
         ![AVDF](./images/360-16.png "AVDF - CIS Audit policy")
 
-4. Review the enabled policies for the **customer_orders** PDB.
+4. Review the enabled policies for the **customer_orders** target.
       ![AVDF](./images/360-11a.png "AVDF - Audit Policies page")
 </details>
 
 
 <details>
-<summary> **Step 3: Verify audit-policy provisioning completed**</summary>
+<summary><strong>Step 3: Verify audit-policy provisioning completed</strong></summary>
 
-1. Click on the **Settings** tab
-    - Click on the **Jobs** section on the left menu
-    - You should see **Job Type** that says **Provision Audit Policies**. The status should be set to **Completed**.
+1. Click the **Settings** tab.
+    - Click **Jobs** in the left menu.
+    - Locate the **Provision Audit Policies** jobs and verify that their status is **Completed** for both targets.
 
         ![AVDF](./images/avdf-553.png "Verify the job completed successfully")
-        **Note:** If not, please refresh the web page  (press [F5] for example) until it shows **Completed** and it was provisioned on **`employees_search`** and **`customer_orders`**
+        **Note:** If provisioning is still in progress, refresh the page until the jobs for **`employees_search`** and **`customer_orders`** show **Completed**.
 
 </details>
 
-> **Expected outcome:** **User Activity** is enabled for both PDBs, **Sensitive Data Access Monitoring** is enabled for **employees_search**, the **CIS Configuration** policy is enabled for **customer_orders**, and the provisioning job has completed for both targets.
+> **Expected outcome:** **User Activity** is enabled for both targets, **Sensitive Data Access Monitoring** is enabled for **employees_search**, the **CIS Configuration** policy is enabled for **customer_orders**, and provisioning has completed for both targets.
 
 ## Task 2: Create an alert for privileged-user activity
 
@@ -107,7 +111,7 @@ Audit policies now collect the evidence needed to understand database activity. 
 
 
 <details>
-<summary> **Step 1: Create an alert for privileged-user activity** </summary>
+<summary><strong>Step 1: Create an alert for privileged-user activity</strong></summary>
 
 
 1. Click **Policies**, then select **Alert Policies** from the left menu.
@@ -190,9 +194,13 @@ Audit policies now collect the evidence needed to understand database activity. 
 The audit policies and alert policy are now enabled. In this task, generate controlled activity using two users in the **Database Administrators** set. Then verify that the activity appears in Security Central reports and generates alerts.
 
 <details>
-<summary> **Step 1: Generate privileged-user activity** </summary>
+<summary><strong>Step 1: Generate privileged-user activity</strong></summary>
 
-1. Open the terminal on the database host.
+1. In **Remote Desktop**, open the terminal on the database host and go to the AVS directory:
+
+    ```bash
+    cd $DBSEC_LABS/avdf/avs
+    ```
 
 2. Run the tested script for **DBA_DEBRA**:
 
@@ -215,7 +223,7 @@ The audit policies and alert policy are now enabled. In this task, generate cont
 </details>
 
 <details>
-<summary> **Step 2: Verify activity in reports** </summary>
+<summary><strong>Step 2: Verify activity in reports</strong></summary>
 
 1. Open **Reports**.
 
@@ -240,7 +248,7 @@ The audit policies and alert policy are now enabled. In this task, generate cont
 </details>
 
 <details>
-<summary> **Step 3: Verify generated alerts** </summary>
+<summary><strong>Step 3: Verify generated alerts</strong></summary>
 
 1. Open **Alerts**.
 

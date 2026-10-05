@@ -2,7 +2,9 @@
 
 ## Introduction
 
-This lab will show you how to get started with your workshop with a remote desktop session.
+This lab shows you how to use a remote desktop session for the workshop.
+
+In the LiveLabs console, open **Lab Info**, expand **Terraform Outputs**, and open the **Remote Desktop** link. Keep this session open throughout the workshop.
 
 Estimated Time: 2 minutes
 
@@ -10,49 +12,49 @@ Estimated Time: 2 minutes
 
 In this lab, you will:
 
-- Enable fullscreen display of remote desktop session
-- Enable remote clipboard integration
-- Open the workshop guide from the remote desktop
+- Display the remote desktop session in fullscreen mode.
+- Enable remote clipboard integration.
+- Open the workshop guide from the remote desktop.
 
 ### Prerequisites
 
 This lab assumes you have:
 
-- Provisioned VM Instance configured with noVNC
+- A provisioned VM instance configured with noVNC.
 
 ## Task 1: Enable Full-screen Display
 
-For seamless desktop integration and to make the best use of your display, perform the following tasks to render your remote desktop session in fullscreen mode.
+Use fullscreen mode to make the best use of your display.
 
-1. Click on the small gray tab on the middle-left side of your screen to open the control bar.
+1. Click the small gray tab on the middle-left side of your screen to open the control bar.
    ![Open control bar](./images/novnc-fullscreen-1.png " ")
 
-2. Select *Fullscreen* to render the session on your entire screen.
+2. Select *Fullscreen* to display the session on your entire screen.
    ![Click full screen](./images/novnc-fullscreen-2.png " ")
    ![Open full screen](./images/novnc-fullscreen-3.png " ")
 
-3. Select the Activities button to find out the applications already installed
+3. Select **Activities** to view the installed applications.
    ![Click Activities](./images/click-activities.png " ")
    ![Open full screen](./images/see-activities.png " ")
 
 ## Task 2: Enable Copy/Paste from Local to Remote Desktop
 
-During the execution of your labs, you may need to copy text from your *local PC/Mac* to the *remote desktop*, such as commands from the lab guide. While such direct copy/paste isn't supported as you will realize, you may proceed as indicated below to enable an alternative *local-to-remote clipboard* with Input Text Field.
+During the labs, you may need to copy text, such as commands, from your *local PC or Mac* to the *remote desktop*. Direct copy and paste is not supported. Use the noVNC clipboard widget to transfer the text instead.
 
-1. Continuing from the last task above, Select the *clipboard* icon
+1. In the control bar, select the *clipboard* icon.
    ![Click clipboard](./images/novnc-clipboard-1.png " ")
 
-2. Copy some text from your local computer as illustrated below and paste it into the clipboard widget, then finally open up the desired application (e.g. Terminal) and paste accordingly using *mouse controls*
+2. Copy text from your local computer and paste it into the clipboard widget. Then open the destination application, such as Terminal, and paste the text using the mouse controls.
    ![Copy text](./images/novnc-clipboard-2.png " ")
 
-   >**Note:** Please make sure you initialize your clipboard with Step 1 shown in the screenshot above before opening the target application in which you intend to paste the text. Otherwise will find the *paste* function in the context menu grayed out when attempting to paste for the first time.
+   > **Note:** Initialize the clipboard as shown in the screenshot before opening the destination application. Otherwise, you may find that **Paste** is grayed out in the context menu the first time you try to paste.
 
 ## Task 3: Open Your Workshop Guide
 
-1. If the *Web* browser window(s) is(are) not already open side-by-side, double-click the *Get Started with your Workshop* icon from the remote desktop. This will launch one or two windows depending on the workshop.
+1. If the browser windows are not already open, double-click the *Get Started with your Workshop* icon on the remote desktop. This opens one or two windows, depending on the workshop.
    ![Get Started with your Workshop](./images/novnc-launch-get-started-1.png " ")
 
-2. On the left window is your workshop guide and depending on your workshop, you may also have one or two browser tabs loaded with web apps. e.g. Weblogic console, Enterprise Manager Cloud Console, or a relevant application to your workshop such as SQL Developer, JDeveloper, etc.
+2. The left window displays your workshop guide. Depending on the workshop, other browser tabs may display applications such as WebLogic or Enterprise Manager, or tools such as SQL Developer or JDeveloper.
    ![Workshop guide and sample webapp](./images/novnc-launch-get-started-2.png " ")
 
 You may now **proceed to the next lab**.

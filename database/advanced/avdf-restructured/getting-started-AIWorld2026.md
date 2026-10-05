@@ -28,25 +28,24 @@ Before accessing Security Central, retrieve the initial credentials and URLs fro
    - Save the new password for later use.
    ![Reset the AVAUDITOR password](images/avdf-301.png)
 ## Task 2: Check access to Glassfish app
-1. Verify the application functions as expected
-    **Note**: For this lab, Glassfish app is connected to the Oracle AI Database 26ai **`FREEPDB1`** 
-2. Open a Web Browser at the URL *`http://dbsec-lab:8080/hr_prod_pdb1`* to access to **your Glassfish App**
-    **Notes:** If you are not using the remote desktop you can also access this page by going to *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*
-    
-3. Login to the application as *`hradmin`* with the password "*`Oracle123`*"
+1. Verify that the application functions as expected.
+    **Note:** For this lab, the Glassfish application is connected to the Oracle AI Database 26ai PDB **`FREEPDB1`**.
+2. Open a browser at *`http://dbsec-lab:8080/hr_prod_pdb1`* to access **your Glassfish application**.
+    **Note:** If you are not using Remote Desktop, use *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*.
+
+3. Log in to the application as *`hradmin`* with the password *`Oracle123`*.
     ```
-    <copy>hradmin</copy>
+    hradmin
     ```
     ```
-    <copy>Oracle123</copy>
+    Oracle123
     ```
     ![SQLFW](images/init-start-env-sqlfw-002.png "HR App - Login")
     ![SQLFW](images/init-start-env-sqlfw-003.png "HR App - Login")
-4. In the top right hand corner of the App, **click** on the **Welcome HR Administrator** link and you will be sent to a page with session data
+4. In the top-right corner of the application, click **Welcome HR Administrator** to open the session-data page.
     ![SQLFW](images/init-start-env-sqlfw-004.png "HR App - Settings")
 5. On the **Session Details** screen, you will see how the application is connected to the database. This information is taken from the **userenv** namespace by executing the `SYS_CONTEXT` function.
     ![SQLFW](images/init-start-env-sqlfw-005.png "HR App - Session details")
-6. Now, you should see **FREEPDB1** as the **`DB_NAME`** and **dbsec-lab** as the **HOST**
-    ![SQLFW](images/init-start-env-sqlfw-006.png "HR App - Check the targetted database")
+6. Verify that **`DB_NAME`** shows **FREEPDB1** and **HOST** shows **dbsec-lab**.
+    ![SQLFW](images/init-start-env-sqlfw-006.png "HR App - Check the targeted database")
 You may now **proceed to the next lab**.
-

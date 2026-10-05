@@ -20,7 +20,7 @@ In this lab, you will:
 
 - Verify Database Firewall monitoring for `employees_search`.
 - Configure and deploy a Database Firewall policy for privileged users and sensitive objects.
-- Test blocked DML activity and alerted read-only activity.
+- Test blocked DML activity and alerted SELECT activity.
 - Verify the results in Database Firewall reports and alerts.
 - Optionally explore SQL Firewall and Database Vault controls.
 
@@ -29,7 +29,7 @@ In this lab, you will:
 Database Firewall provides network-level protection for `employees_search`. In this task, verify monitoring, configure and deploy a policy for privileged users and sensitive objects, test blocked and alerted activity, and review the resulting evidence.
 
 <details>
-<summary> **Step 1: Verify Database Firewall monitoring** </summary>
+<summary><strong>Step 1: Verify Database Firewall monitoring</strong></summary>
 
 1. Log in to Security Central Console as *`AVADMIN`*.
 
@@ -161,7 +161,7 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
 -->
 
 <details>
-<summary> **Step 2: Create and deploy a Database Firewall policy** </summary>
+<summary><strong>Step 2: Create and deploy a Database Firewall policy</strong></summary>
 
 1. Log in to Security Central Console as *`AVAUDITOR`*.
 
@@ -181,7 +181,7 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
 
         ![AVDF](./images/avdf-129b.png "Database Firewall Policy parameters")
 
-    - Click [**Save**]
+    - Click **Save**.
 
 6. Click **Sets/Profiles** to define the policy context.
 
@@ -192,25 +192,25 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
     - DB User Set: *Database Administrators*
 
     ![AVDF](./images/360-41.png "Profile")
-    - Click [**Save**]
+    - Click **Save**.
 
 8. Click **Back**.
 
 9. Expand **Database Objects** in the **Database Firewall Policy Rules** section.
-    - Click **Add**
+    - Click **Add**.
     - Enter the following rule details:
         - Rule Name: *DBA activity on app sensitive objects*
         - Description: *DBA activity over the network*
         - Profile: *DBAs over network*
         - Commands: Select *DELETE, INSERT, UPDATE*
-        - DB Object Set: *EmployeesSearchSensitiveApplicationObjects*
+        - DB Object Set: *EmployeeSearchSensitiveApplicationObjects*
         - Action: *Block*
         - Logging Level: *Always*
         - Threat Severity: *Major*
 
         ![AVDF](./images/360-42.png "Database Object rule-1")
         This rule blocks INSERT, UPDATE, and DELETE operations by users in the Database Administrators set on sensitive objects over the network.
-    - Click [**Save**]
+    - Click **Save**.
 
 10. Create another **Database Objects** rule.
 
@@ -220,7 +220,7 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
         - Profile: *DBAs over network*
         - Commands: Select *SELECT*
         - Capture number of rows returned for SELECT queries: *Select*
-        - DB Object Set: *EmployeesSearchSensitiveApplicationObjects*
+        - DB Object Set: *EmployeeSearchSensitiveApplicationObjects*
         - Action: *Alert*
         - Logging Level: *Always*
         - Threat Severity: *Moderate*
@@ -228,10 +228,10 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
         ![AVDF](./images/360-42a.png "Database Object rule-2")
         This rule alerts on SELECT operations by users in the Database Administrators set against the sensitive-object set and records the number of rows returned.
 
-    - Click [**Save**]
+    - Click **Save**.
 
 11. Select the **Default** tab to define how Database Firewall handles activity that does not match the configured rules.
-    ![AVDF](./images/avdf-137.png "Specify the default action to do by the DB Firewall policy")
+    ![AVDF](./images/avdf-137.png "Specify the Database Firewall policy's default action")
 
     - Set the following values in **Default Rule**:
         - Action: *Pass*
@@ -255,7 +255,7 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
 </details>
 
 <details>
-<summary> **Step 3: Configure alerts for Database Firewall activity** </summary>
+<summary><strong>Step 3: Configure alerts for Database Firewall activity</strong></summary>
 
 1. Click **Policies**.
 
@@ -298,7 +298,7 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
 </details>
 
 <details>
-<summary> **Step 4: Generate activity and verify reports and alerts** </summary>
+<summary><strong>Step 4: Generate activity and verify reports and alerts</strong></summary>
 
 1. Open the terminal on the database host.
 
@@ -318,13 +318,13 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
 
     Review the output. Database Firewall blocks the DELETE statement. SELECT statements on the sensitive objects execute and generate alert events.
 
-4. Run the read-only exfiltration simulation as **DBA_DEBRA**:
+4. Run the exfiltration simulation as **DBA_DEBRA**:
 
     ~~~bash
     ./dbf_exfiltrate_with_dbfw.sh freepdb1 dba_debra
     ~~~
 
-    ![AVDF](./images/avdf-128a.png "Read-only exfiltration simulation")
+    ![AVDF](./images/avdf-128a.png "Exfiltration simulation")
 
     The SELECT activity is alerted, and Database Firewall captures the number of rows returned. The PII Exfiltration Alert identifies a query returning more than 100 rows from **DEMO_HR_EMPLOYEES**.
 
@@ -349,6 +349,8 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
     ![AVDF](./images/avdf-187.png "Database Firewall alert details")
 
 </details>
+
+After verifying the Database Firewall reports and alerts, you have completed the core protection task. Tasks 2 and 3 are optional. Continue with either optional control, or proceed to **Review Compliance Evidence and Security Posture**.
 
 <!--
 The following SQL Firewall context-validation step is covered in the optional SQL Firewall task.
@@ -399,7 +401,7 @@ SQL Firewall is an optional control that restricts SQL statements and connection
 In this task, you can train and enforce a SQL Firewall policy for the application workload and review the resulting violations.
 
 <details>
-<summary> **Step 1: Ensure SQL Firewall is enabled** </summary>
+<summary><strong>Step 1: Ensure SQL Firewall is enabled</strong></summary>
 
 1. Log in to Security Central Console as *`AVAUDITOR`*.
 
@@ -412,7 +414,7 @@ In this task, you can train and enforce a SQL Firewall policy for the applicatio
 </details>
 
 <details>
-<summary> **Step 2: Train SQL Firewall to learn authorized SQL traffic** </summary>
+<summary><strong>Step 2: Train SQL Firewall to learn authorized SQL traffic</strong></summary>
 
 1. Expand **SQL learning for users (0)**.
 
@@ -434,7 +436,7 @@ In this task, you can train and enforce a SQL Firewall policy for the applicatio
 </details>
 
 <details>
-<summary> **Step 3: Execute the normal workload** </summary>
+<summary><strong>Step 3: Execute the normal workload</strong></summary>
 
 1. Open `http://dbsec-lab:8080/hr_prod_pdb1` in a browser to access the **Glassfish** application. If you are not using the remote desktop, use `http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`.
 
@@ -497,7 +499,7 @@ In this task, you can train and enforce a SQL Firewall policy for the applicatio
 </details>
 
 <details>
-<summary> **Step 4: Ensure the SQL Firewall has learned** </summary>
+<summary><strong>Step 4: Verify SQL Firewall learning is complete</strong></summary>
 
 1. In Security Central Console, expand **SQL learning for users (1)** and select **`EMPLOYEESEARCH_PROD`**.
 
@@ -515,7 +517,7 @@ In this task, you can train and enforce a SQL Firewall policy for the applicatio
 </details>
 
 <details>
-<summary> **Step 5: Enable the SQL Firewall policy** </summary>
+<summary><strong>Step 5: Enable the SQL Firewall policy</strong></summary>
 
 1. Expand **SQL Firewall policy for users (0)**. The policy for **`EMPLOYEESEARCH_PROD`** has been created with a status of **Disabled**.
 
@@ -545,7 +547,7 @@ In this task, you can train and enforce a SQL Firewall policy for the applicatio
 </details>
 
 <details>
-<summary> **Step 6: Ensure SQL Firewall violations are being collected** </summary>
+<summary><strong>Step 6: Ensure SQL Firewall violations are being collected</strong></summary>
 
 1. Click **Targets**, then select **Targets** from the left menu.
 
@@ -556,11 +558,11 @@ In this task, you can train and enforce a SQL Firewall policy for the applicatio
 </details>
 
 <details>
-<summary> **Step 7: Validate SQL Firewall protection controls** </summary>
+<summary><strong>Step 7: Validate SQL Firewall protection controls</strong></summary>
 
-We will validate the protection controls of SQL Firewall by triggering violations. Let us simulate SQL Firewall context violations by connecting with *SQLPLUS*.
+Validate SQL Firewall protection by triggering connection-context and SQL-statement violations. First, connect using *SQLPLUS* to simulate a connection-context violation.
 
-1. Go to your terminal session on the database host and go to the AVS directory:
+1. In your terminal session on the database host, go to the AVS directory:
 
     ~~~bash
     cd $DBSEC_LABS/avdf/avs
@@ -609,7 +611,7 @@ We will validate the protection controls of SQL Firewall by triggering violation
 </details>
 
 <details>
-<summary> **Step 8: Monitor SQL Firewall violations** </summary>
+<summary><strong>Step 8: Monitor SQL Firewall violations</strong></summary>
 
 1. Return to Security Central Console as *`AVAUDITOR`*.
 
@@ -624,9 +626,9 @@ We will validate the protection controls of SQL Firewall by triggering violation
 </details>
 
 <details>
-<summary> **Step 9: Proactively monitor SQL Firewall violations using alerts** </summary>
+<summary><strong>Step 9: Proactively monitor SQL Firewall violations using alerts</strong></summary>
 
-Create an alert policy to detect future SQL Firewall violations.
+Create an alert policy, then rerun the connection-context test to generate the violation again and verify the alert.
 
 1. Click **Policies**, then select **Alert Policies** from the left menu.
 
@@ -643,10 +645,14 @@ Create an alert policy to detect future SQL Firewall violations.
 
 3. Click **Save**.
 
+4. Rerun **Step 7, items 1 and 2**, to generate another connection-context violation.
+
+5. Open **Alerts** and verify that a **SQL Firewall violation** alert is generated for **EMPLOYEESEARCH_PROD** on **employees_search**. Refresh the page if the new alert has not appeared yet.
+
 </details>
 
 <details>
-<summary> **Step 10: Configure the Glassfish App to connect through Database Firewall** </summary>
+<summary><strong>Step 10: Configure the Glassfish App to connect through Database Firewall</strong></summary>
 
 1. In the terminal session on the database host, go to the AVS directory and update the Glassfish connection to use the Database Firewall proxy:
 
@@ -701,7 +707,7 @@ Create an alert policy to detect future SQL Firewall violations.
 </details>
 
 <details>
-<summary> **Step 11: Validate the SQL Firewall connection context** </summary>
+<summary><strong>Step 11: Validate the SQL Firewall connection context</strong></summary>
 
 1. In the terminal session on the database host, go to the AVS directory:
 
@@ -722,7 +728,7 @@ Create an alert policy to detect future SQL Firewall violations.
 </details>
 
 <details>
-<summary> **Step 12: Restore the Glassfish App to direct mode (optional)** </summary>
+<summary><strong>Step 12: Restore the Glassfish App to direct mode (optional)</strong></summary>
 
 1. In the terminal session on the database host, run the following command from the AVS directory to restore the Glassfish connection directly to **employees_search**:
 
@@ -743,39 +749,40 @@ Database Vault protects the **customer_orders** target through realm authorizati
 In this task, authorize **BA_ALEX** to access the protected Customer Orders data, then compare that access with **CUSTOMERADMIN**, who does not have realm authorization. Configure audit collection and an alert before running the tests, then verify the blocked access in reports and alerts.
 
 <details>
-<summary> **Step 1: Review the Database Vault realm protection** </summary>
+<summary><strong>Step 1: Review the Database Vault realm protection</strong></summary>
 
-1. Go to Security Central Console as *`AVAUDITOR`*
+1. Log in to the Security Central console as *`AVAUDITOR`*.
 
-2. Click on the **Policies** tab, and click **Database Vault Policies**
+2. Click **Policies**, then select **Database Vault Policies**.
     ![AVDF](./images/360-50.png "AVDF - Oracle DV page")
 
-    **Note:** Review the column **DV status** for the target **customer_orders**, make sure the status shows as **Enabled**
+    **Note:** Verify that **DV status** for **customer_orders** is **Enabled**.
 
-    - Click the target **customer_orders** to explore further
+    - Click **customer_orders** to review its configuration.
 
-3. Click **Provide credentials to manage policies** and provide C##DVOWNER credentials ('Oracle123')
+3. Click **Provide credentials to manage policies** and enter the credentials for **C##DVOWNER**, using the password *`Oracle123`*.
     ![AVDF](./images/360-51.png "AVDF - Oracle DV page credentials")
 
-4. Expand to see the **Object protection** pre-configured in the livelab
+4. Expand **Object protection** to review the preconfigured LiveLabs settings.
     ![AVDF](./images/360-52.png "AVDF - Oracle DV page credentials")
 
-    **Note:** Review to see the realm **`PROTECT_CUSTOMER_ORDERS`** pre-created in the instance. The objects belonging to schema *CO* are protected in this realm. Only the schema owner is authorized to access this protected object.
+    **Note:** The realm **`PROTECT_CUSTOMER_ORDERS`** is preconfigured in the instance and protects objects in the **CO** schema. Initially, only the schema owner is authorized to access these protected objects.
 </details>
 
 <details>
-<summary> **Step 2: Add a user as authorized user of the realm** </summary>
-    We will plan to add business user BA_ALEX as authorized participant of the realm object for reporting purposes, typically read-only access to the Customer Orders schema.
+<summary><strong>Step 2: Authorize a user in the realm</strong></summary>
 
-1. Drilldown into **`PROTECT_CUSTOMER_ORDERS`**. Expand the region **Authorized users/roles**. Click **Add**
-2. Check **Select users/roles** and enter **BA_ALEX** as user. Click **Add**.
+Authorize business user **BA_ALEX** as a realm participant for reporting on Customer Orders data.
+
+1. Drill down into **`PROTECT_CUSTOMER_ORDERS`**, expand **Authorized users/roles**, and click **Add**.
+2. Check **Select users/roles**, enter **BA_ALEX** as the user, and click **Add**.
     ![AVDF](./images/360-53.png "AVDF - Oracle DV page credentials-add user")
-3. Expand **Audit Details** region, and select **Success** and **Failure**.
-4. Click **Save**
+3. Expand **Audit Details** and select **Success** and **Failure**.
+4. Click **Save**.
 </details>
 
 <details>
-<summary> **Step 3: Ensure DV violation events are collected** </summary>
+<summary><strong>Step 3: Ensure DV violation events are collected</strong></summary>
 
 The HOL is preconfigured to collect Database Vault events and violations from **customer_orders**.
 
@@ -788,7 +795,7 @@ The HOL is preconfigured to collect Database Vault events and violations from **
 </details>
 
 <details>
-<summary> **Step 4: Write the alert condition** </summary>
+<summary><strong>Step 4: Write the alert condition</strong></summary>
 
 Create an alert policy before generating a realm violation so that the test event can trigger an alert.
 
@@ -817,9 +824,9 @@ Create an alert policy before generating a realm violation so that the test even
 </details>
 
 <details>
-<summary> **Step 5: Run the load** </summary>
+<summary><strong>Step 5: Run the load</strong></summary>
 
-Compare authorized and unauthorized access using read-only queries against **CO.ORDERS**.
+Compare authorized and unauthorized access using queries against **CO.ORDERS**.
 
 1. Open the terminal on the database host and go to the AVS directory:
 
@@ -844,7 +851,7 @@ Compare authorized and unauthorized access using read-only queries against **CO.
 </details>
 
 <details>
-<summary> **Step 6: Validate the violation report and alert result** </summary>
+<summary><strong>Step 6: Validate the violation report and alert result</strong></summary>
 
 1. Return to Security Central Console as *`AVAUDITOR`*.
 
@@ -869,6 +876,6 @@ You followed the protection and prevention cycle:
 - Verified Database Firewall monitoring.
 - Configured and deployed a Database Firewall policy for privileged users and sensitive objects.
 - Configured an alert for queries returning more than 100 rows of employee data.
-- Tested blocked DML activity and alerted read-only activity.
+- Tested blocked DML activity and alerted SELECT activity.
 - Verified the results in Database Firewall reports and alerts.
 - Identified SQL Firewall and Database Vault as optional controls for additional protection.

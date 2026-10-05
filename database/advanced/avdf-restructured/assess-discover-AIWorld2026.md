@@ -24,7 +24,7 @@ In this lab, you will:
 Use the Auditor Dashboard to identify a configuration risk, remediate it with the existing lab script, refresh the assessment, and verify that Security Central no longer reports the risk.
 
 <details>
-<summary>**Follow the risk from discovery to verification**</summary>
+<summary><strong>Follow the risk from discovery to verification</strong></summary>
 
 1. Open the **Home** tab.
 
@@ -89,7 +89,7 @@ Use the Auditor Dashboard to identify a configuration risk, remediate it with th
 Use the risk findings and Sensitive Data Discovery results to identify who has access and what data requires protection.
 
 <details>
-<summary>**Discover privileged users and sensitive objects**</summary>
+<summary><strong>Discover privileged users and sensitive objects</strong></summary>
 
 1. In **Key risks to review**, select **Privileged users not audited**.
 
@@ -134,7 +134,7 @@ Use the risk findings and Sensitive Data Discovery results to identify who has a
 Global Sets group the sensitive objects and privileged users identified in the previous task. These sets can be reused consistently when creating audit, Database Firewall, SQL Firewall, and Database Vault policies.
 
 <details>
-<summary>**Review the reusable security sets**</summary>
+<summary><strong>Review the reusable security sets</strong></summary>
 
 1. In **Discover & Classify**, click **Global Sets**.
 
@@ -170,7 +170,7 @@ Global Sets group the sensitive objects and privileged users identified in the p
 Review the existing policy configuration and determine which controls must be implemented, strengthened, or verified in the next labs.
 
 <details>
-<summary>**Review policy coverage and prepare the handoff**</summary>
+<summary><strong>Review policy coverage and prepare the handoff</strong></summary>
 
 1. Click **Policies**.
 
@@ -203,7 +203,7 @@ Review the existing policy configuration and determine which controls must be im
 
     | Finding | Evidence | Planned control path |
     |---|---|---|
-    | Target running a previous release | Auditor Dashboard and release-risk details | Continue assessment and target remediation |
+    | Target running a previous release | Auditor Dashboard and release-risk details | Record for database-release upgrade follow-up outside this workshop |
     | Privileged users with broad access | User-risk report and **Database Administrators** set | **Audit** — required control flow |
     | Sensitive employee-data objects | Sensitive Data Discovery and **EmployeeSearchSensitiveApplicationObjects** set | **Audit and Database Firewall** — required control flow |
     | Existing audit coverage | Policy Console and audit-policy details | Review, verify, or extend auditing |

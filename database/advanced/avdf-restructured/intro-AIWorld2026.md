@@ -26,7 +26,7 @@ Security Central identifies a compound risk: one or more database targets are ru
 
 In this workshop, you will investigate the risk, discover the affected sensitive objects and user groups, identify the missing controls, and configure security policies to reduce the exposure.
 
-You will then replay safe read-only or blocked actions and verify the results in Reports, Alerts, and Security Advisor.
+You will then generate test activity and verify the results in Reports, Alerts, and Security Advisor.
 
 ## What You Will Learn
 
