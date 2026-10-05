@@ -28,25 +28,29 @@ cd $DBSEC_LABS/okv
 The output of the script will show:
 
 1. The system parameters that are controlling the behavior of TDE in your database: 
-- The default algorithm is AES256
-- Newly created tablespaces will be encrypted by default
-- The database uses a file-based wallet 
-- File based wallets will be created in the &lt;WALLET_ROOT&gt;/tde directory
+    - The default algorithm is AES256
+    - Newly created tablespaces will be encrypted by default
+    - The database uses a file-based wallet 
+    - File based wallets will be created in the &lt;WALLET_ROOT&gt;/tde directory
 
-![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behaviour of TDE in your database.")
+    ![Key Vault](./images/OKV-LL4-001a.png "You see the system parameters that are controlling the behaviour of TDE in your database.")
 
 2. The file based wallet is open for use. Since the database is using united mode PDBs, they inherit their location from CDB$ROOT.
 
-![Key Vault](./images/OKV-LL4-001b.png "The file based wallet is open for use. Since the database is using united mode PDBs, they inherit their location from CDB$ROOT.")
+    ![Key Vault](./images/OKV-LL4-001b.png "The file based wallet is open for use. Since the database is using united mode PDBs, they inherit their location from CDB$ROOT.")
 
 3. The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time
 
-![Key Vault](./images/OKV-LL4-001c.png "The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time")
+    ![Key Vault](./images/OKV-LL4-001c.png "The identifier of the TDE master encryption key in use by the CDB and the PDB as well as their creation time")
 
 4. The list of encrypted tablespaces
 
-![Key Vault](./images/OKV-LL4-001d.png "The list of encrypted tablespaces")
+    ![Key Vault](./images/OKV-LL4-001d.png "The list of encrypted tablespaces")
 
 5. The list of encrypted RMAN backups
 
-![Key Vault](./images/OKV-LL4-001e.png "The list of encrypted RMAN backups")
+    ![Key Vault](./images/OKV-LL4-001e.png "The list of encrypted RMAN backups")
+
+## Acknowledgements
+
+- **Contributors** - See the [lab contribution history](https://github.com/kjlsinghoracle/security/commits/main/database/advanced/key-vault-new/key-vault-Lab4.md).
