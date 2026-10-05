@@ -350,7 +350,11 @@ The Glassfish configuration is covered in the optional SQL Firewall task.
 
 </details>
 
-After verifying the Database Firewall reports and alerts, you have completed the core protection task. Tasks 2 and 3 are optional. Continue with either optional control, or proceed to **Review Compliance Evidence and Security Posture**.
+> **Core protection complete — choose your next step**
+>
+> After verifying the Database Firewall reports and alerts, you have completed the **core protection task**.
+>
+> **Tasks 2 and 3 are optional.** Continue with **Task 2: SQL Firewall** or **Task 3: Database Vault**, or proceed to **Review Compliance Evidence and Security Posture**.
 
 <!--
 The following SQL Firewall context-validation step is covered in the optional SQL Firewall task.
