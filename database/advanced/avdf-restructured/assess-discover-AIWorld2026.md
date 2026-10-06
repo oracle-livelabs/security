@@ -40,39 +40,39 @@ Use the Auditor Dashboard to identify a configuration risk, remediate it with th
 
     ![AVDF](./images/360-2.png "AVDF - Auditor dashboard - Risky grants to PUBLIC")
 
-    In the workshop reference data, the affected targets are **customer_orders** and **sales_history**.
+    In the workshop reference data, the affected targets are **`customer_orders`** and **`sales_history`**.
 
 5. Open a terminal session on the **DBSec-Lab** VM as the **oracle** operating-system user.
 
     If the terminal is not already running as **oracle**, execute:
 
-        sudo su - oracle
+    <pre class="bash"><code><copy>sudo su - oracle</copy></code></pre>
 
 6. Change to the AVDF scripts directory:
 
-        cd $DBSEC_LABS/avdf/avs
+    <pre class="bash"><code><copy>cd $DBSEC_LABS/avdf/avs</copy></code></pre>
 
-7. Run the remediation script for **customer_orders**:
+7. Run the remediation script for **`customer_orders`**:
 
-        ./avs_mitigate-risk.sh cust1
+    <pre class="bash"><code><copy>./avs_mitigate-risk.sh cust1</copy></code></pre>
 
     ![AVDF](./images/avdf-504c.png "Mitigate risks on customer_orders")
 
-8. Run the remediation script for **sales_history**:
+8. Run the remediation script for **`sales_history`**:
 
-        ./avs_mitigate-risk.sh sales1
+    <pre class="bash"><code><copy>./avs_mitigate-risk.sh sales1</copy></code></pre>
 
     The script removes the risky security grants. It does not modify business data.
 
 9. Return to Security Central and open **Targets**.
 
-10. Select the retrieval-job option for **customer_orders**.
+10. Select the retrieval-job option for **`customer_orders`**.
 
 11. Under **Security Assessment**, select **Assess Immediately**, and click **Save**.
 
     ![AVDF](./images/avdf-501.png "AVDF - Retrieval Jobs")
 
-12. Repeat the on-demand assessment for **sales_history**.
+12. Repeat the on-demand assessment for **`sales_history`**.
 
 13. Return to the **Home** tab and review **Risky grants to PUBLIC**.
 
@@ -80,7 +80,7 @@ Use the Auditor Dashboard to identify a configuration risk, remediate it with th
 
 14. Confirm that the finding is resolved. If the dashboard has not refreshed, review the job status under **Settings > Jobs**, wait for the assessment to complete, and refresh the Home page.
 
-> **Expected outcome:** The risky PUBLIC grants are no longer reported for the remediated targets.
+**Expected outcome:** The risky PUBLIC grants are no longer reported for the remediated targets.
 
 </details>
 
@@ -99,7 +99,7 @@ Use the risk findings and Sensitive Data Discovery results to identify who has a
 
     ![AVDF](./images/360-4.png "AVDF - Auditor Dashboard - Privileged users without audit")
 
-4. Record the privileged users shown in the report. In the workshop reference data, **DBA_DEBRA** and **DBA_HARVEY** have broad administrative rights.
+4. Record the privileged users shown in the report. In the workshop reference data, **`DBA_DEBRA`** and **`DBA_HARVEY`** have broad administrative rights.
 
 5. In **Key risks to review**, select **Sensitive objects exposed to privileged users**.
 
@@ -107,7 +107,7 @@ Use the risk findings and Sensitive Data Discovery results to identify who has a
 
 6. Review the affected target and sensitive-object information.
 
-7. Record **employees_search** as the affected target.
+7. Record **`employees_search`** as the affected target.
 
 8. Click **Discover & Classify**.
 
@@ -117,15 +117,15 @@ Use the risk findings and Sensitive Data Discovery results to identify who has a
 
     ![AVDF](./images/360-5.png "AVDF - Sensitive data discovery dashboard")
 
-11. Record the sensitive objects associated with the affected targets. In the workshop reference data, **employees_search** and **customer_orders** contain substantial concentrations of sensitive data.
+11. Record the sensitive objects associated with the affected targets. In the workshop reference data, **`employees_search`** and **`customer_orders`** contain substantial concentrations of sensitive data.
 
-12. Optionally, open **Targets** and review the retrieval-job options for **employees_search** to understand how Security Central refreshes security assessment, user assessment, and sensitive-data discovery results.
+12. Optionally, open **Targets** and review the retrieval-job options for **`employees_search`** to understand how Security Central refreshes security assessment, user assessment, and sensitive-data discovery results.
 
     ![AVDF](./images/360-8.png "AVDF - Retrieval jobs")
 
     Do not change the retrieval schedule during this optional review.
 
-> **Expected outcome:** You have identified the privileged users, affected target, and sensitive objects that will be used in the following policy labs.
+**Expected outcome:** You have identified the privileged users, affected target, and sensitive objects that will be used in the following policy labs.
 
 </details>
 
@@ -148,7 +148,7 @@ Global Sets group the sensitive objects and privileged users identified in the p
 
     ![AVDF](./images/360-9b.png "AVDF - Sensitive Object Sets")
 
-    Confirm that the set contains sensitive application objects associated with **employees_search**.
+    Confirm that the set contains sensitive application objects associated with **`employees_search`**.
 
 4. Close the details view. Expand **Privileged User Sets (1)** and select **Database Administrators**.
 
@@ -161,7 +161,7 @@ Global Sets group the sensitive objects and privileged users identified in the p
     - **EmployeeSearchSensitiveApplicationObjects** identifies the sensitive objects that require protection and monitoring.
     - **Database Administrators** identifies the privileged users whose activity requires control.
 
-> **Expected outcome:** You have connected the sensitive-object scope and privileged-user scope that will be reused in the following policy labs.
+**Expected outcome:** You have connected the sensitive-object scope and privileged-user scope that will be reused in the following policy labs.
 
 </details>
 
@@ -187,19 +187,7 @@ Review the existing policy configuration and determine which controls must be im
     - SQL Firewall
     - Database Vault
 
-5. Drill down into the **Audit** information and review the audit policies enabled for **customer_orders**.
-
-    ![AVDF](./images/360-6a.png "AVDF - Policy console - Audit policies")
-
-6. Record which targets, users, objects, and activities are covered by the existing audit policies.
-
-7. Optionally, review the policy retrieval schedule for **employees_search**.
-
-    ![AVDF](./images/360-6b.png "AVDF - Policy console - Schedule retrieval")
-
-    This is a review of the existing schedule. Do not change it unless the workshop instructions specifically require the schedule to be configured.
-
-8. Prepare the following handoff for the next labs:
+5. Prepare the following handoff for the next labs:
 
     | Finding | Evidence | Planned control path |
     |---|---|---|

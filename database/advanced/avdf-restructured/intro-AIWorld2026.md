@@ -48,12 +48,12 @@ By completing this workshop, you will learn how to:
 | 10 minutes | Assess and Discover | Find the risks, affected targets, sensitive objects, and privileged user groups. |
 | 10 minutes | Audit and Monitor | Identify the audit gap, configure audit policies, and verify activity coverage. |
 | 30 minutes | Protect and Prevent | Configure Database Firewall as the core control. SQL Firewall and Database Vault are available as optional extensions. |
-| 5 minutes | Reports, Alerts, and Security Advisor | Verify blocked, logged, and alerted activity and summarize the security posture. |
+| 5 minutes | Review Compliance Evidence and Confirm Workshop Outcomes | Verify blocked, logged, and alerted activity and summarize the security posture. |
 
 ## The Investigation Flow
 
 The workshop follows this sequence:
 
-> **Find the risk → Discover the exposure → Identify the gap → Configure the control → Generate safe test activity → Verify the evidence**
+**Find the risk → Discover the exposure → Identify the gap → Configure the control → Generate safe test activity → Verify the evidence**
 
 By the end of the workshop, you will understand how Oracle Database Security Central connects user risk, sensitive data, security policies, database activity, and compliance evidence in one place.

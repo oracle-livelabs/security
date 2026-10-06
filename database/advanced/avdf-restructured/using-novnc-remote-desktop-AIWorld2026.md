@@ -47,7 +47,7 @@ During the labs, you may need to copy text, such as commands, from your *local P
 2. Copy text from your local computer and paste it into the clipboard widget. Then open the destination application, such as Terminal, and paste the text using the mouse controls.
    ![Copy text](./images/novnc-clipboard-2.png " ")
 
-   > **Note:** Initialize the clipboard as shown in the screenshot before opening the destination application. Otherwise, you may find that **Paste** is grayed out in the context menu the first time you try to paste.
+   **Note:** Initialize the clipboard as shown in the screenshot before opening the destination application. Otherwise, you may find that **Paste** is grayed out in the context menu the first time you try to paste.
 
 ## Task 3: Open Your Workshop Guide
 
