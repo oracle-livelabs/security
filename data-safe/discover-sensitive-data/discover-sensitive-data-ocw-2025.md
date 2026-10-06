@@ -108,7 +108,7 @@ Add `COUNTRY_ABBREV` to the sensitive data model.
 
 8. Click **Add columns**.
 
-   ![Add columns page](images/add-columns-page.png "Add columns page")
+    ![Add columns page](images/add-columns-page.png "Add columns page")
 
 9. Verify that `COUNTRY_ABBREV` from the `LOCATIONS` table is added to your sensitive data model.
 

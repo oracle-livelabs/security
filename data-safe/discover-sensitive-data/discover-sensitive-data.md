@@ -2,227 +2,159 @@
 
 ## Introduction
 
-In the previous two labs, you investigated the security posture of the database and then reviewed who can access it and what they can do. You have now identified risky configuration changes and changes to privileged users and entitlements. The next question is more fundamental: What data are we actually trying to protect? Knowing that a user has access to a database does not tell you whether that access puts sensitive information at risk. To understand the potential impact of a compromised or over-privileged account, you need to know where sensitive data resides.
+In the previous two labs, you investigated the security posture of the database and reviewed who can access it and what they can do. The next question is: What data are we trying to protect? Knowing where sensitive data resides helps you assess data exposure, prioritize security controls, support compliance requirements, and plan appropriate protection throughout the data lifecycle.
 
-For example, a user might have access to a schema containing the following:
-
-- Employee information
-- Contact information
-- Identification information
-- Financial information
-- Healthcare information
-- Academic information
-- Other information that your organization considers sensitive
-
-Manually locating this information across database tables and columns can be difficult, particularly as databases grow and application schemas change. Oracle Data Safe Data Discovery helps you build an inventory of sensitive data by inspecting the actual data in your target database and its data dictionary. You specify the types of sensitive information you are interested in, and Data Safe identifies columns that contain or are related to that information.
+Oracle Data Safe Data Discovery builds an inventory of sensitive data by scanning your target database and its data dictionary. You choose the schemas and sensitive types to search, and Data Safe records the discovered columns in a sensitive data model. Incremental discovery lets you update that model as your database and discovery requirements change.
 
 ### Scenario
 
-Continue acting as the database security administrator from the previous labs. You have already done the following:
+Your team is preparing a test database for a retail application. Begin by discovering sensitive data in the `CUSTOMER` and `PAYMENT` schemas to build an inventory for masking. The testing scope then expands to include customer-support tickets. Use incremental discovery to find sensitive columns in the `SUPPORT` schema and add them to the same sensitive data model.
 
-- Reviewed the database's configuration and established an approved security baseline
-- Detected a risky configuration change
-- Reviewed database users and identified changes to privileged access
-
-Now your security team asks a different question: If one of these accounts were compromised, what sensitive information could potentially be exposed?
-
-Your first step is to discover where sensitive data exists in the database. You will use Data Discovery to examine the `HCM1` schema and identify sensitive columns. You will review the results and sample data to understand what information is being protected. During the review, you will also recognize that automated discovery does not necessarily capture every piece of information your organization considers sensitive. You will therefore extend the sensitive data model by performing an incremental discovery of sensitive data and by explicitly adding another sensitive column. This creates a more complete inventory that can support the security and data protection activities you will perform in subsequent labs.
-
-Estimated Lab Time: 15 minutes
+Estimated Lab Time: 20 minutes
 
 ### Objectives
 
 In this lab, you will:
 
-- Discover sensitive data in your target database
-- Review where sensitive information is stored
-- Examine the sensitive data model
-- Understand how Data Safe uses sensitive types and data relationships
-- Extend the sensitive data model with an additional sensitive column
-- Build a more complete view of the data that needs protection
-
+- Discover sensitive data in the `CUSTOMER` and `PAYMENT` schemas using common sensitive types.
+- Review the sensitive data model and the initial discovery results.
+- Run incremental discovery for the `SUPPORT` schema.
+- Review, approve, and apply the new sensitive columns to the existing model.
 
 ### Prerequisites
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console
-- Access to or prepared an environment for this workshop
-- Access to a registered target database
-
+- An Oracle Cloud account and access to the Oracle Cloud Infrastructure Console.
+- Access to the workshop environment.
 
 ### Assumptions
 
-- Your data values might be different than those shown in the screenshots.
-- Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs. 
+- Compartment names, target database names, dates, and discovery results can differ in your tenancy. The numbers of sensitive schemas, tables, columns, and types shown in this lab are examples from the workshop database.
 
+## Task 1: Discover sensitive data in customer and payment schemas
 
-## Task 1: Discover sensitive data in your target database by using Data Discovery
+1. Navigate to **Data discovery** in Oracle Data Safe, open **Sensitive data models**, and select **Create sensitive data model**.
 
-1. Navigate to the **Data discovery** landing page.
+2. In **Provide basic information**, enter the following, and then select **Next**:
 
-2. Select **Discover sensitive data**.
-
-    The **Create sensitive data model** wizard opens.
-
-3. For **Step 1 - Provide basic information**, do the following, and then select **Next**.
-
-    - In the **Name** box, enter **SDM1**.
-    - Select your compartment, if needed.
-    - In the **Description** box, enter **Sensitive Data Model 1**.
+    - **Name:** `SDM1` (or a unique name in your compartment).
+    - **Compartment:** your workshop compartment.
+    - **Description:** `Sensitive data inventory for customer application testing`.
     - Select the compartment for your target database, and then select the name of target database.
 
-    ![Provide basic information](images/provide-basic-information-page.png "Provide basic information")
+    ![Basic information for the sensitive data model, with target and compartment values blurred](images/2026-basic-information.png)
 
-4. For **Step 2 - Select schemas**, wait for the schemas to be refreshed if prompted to do so. Leave **Select specific schemas only** selected. Scroll down and select the **HCM1** schema, and then select **Next**. You might need to click the right arrow button at the bottom of the page to navigate to page 2.
+3. In **Select schemas**, wait for the schema list to load. If the database schemas have changed since the displayed update time, select **Refresh database schemas**. Keep **Select specific schemas only** selected, and select only `CUSTOMER` and `PAYMENT`. Leave `SUPPORT` unselected for this first discovery, and select **Next**.
 
-    ![Select schemas](images/select-schemas-page.png "Select schemas")
+    ![CUSTOMER and PAYMENT selected for initial discovery, with SUPPORT unselected](images/2026-select-schemas.png)
 
-5. For **Step 3 - Select tables for schemas**, leave **All tables** selected, and select **Next**.
+4. In **Select tables for schema**, confirm that `CUSTOMER` and `PAYMENT` are listed with **All tables**, and select **Next**.
 
-    ![Select tables for schema page](images/select-tables-for-selected-schemas.png "Select tables for schema page")
-    
-6. For **Step 4 - Select sensitive types**, review the common sensitive types. From the dropdown list, select **All sensitive types** and review them. Switch back to **Common sensitive types**, and then select them all by selecting the **Sensitive type** check box. Select **Next**.
+    ![Initial discovery scope showing CUSTOMER and PAYMENT with all tables selected](images/2026-initial-scope.png)
 
-    ![Select all common sensitive types](images/select-all-common-sensitive-types.png "Select all common sensitive types")
+5. In **Select sensitive types**, choose **Common sensitive types** in **Select sensitive type group**. Use the checkbox in the table header to select all common sensitive types, and select **Next**.
 
-7. For **Step 5 - Select discovery options**, select **Collect, display and store sample data**.
+    ![Common sensitive types selected using the table header checkbox](images/2026-sensitive-types.png)
 
-    ![Select discovery options page](images/select-discovery-options-page.png "Select discovery options")
+6. In **Select discovery options**, leave **Collect, display and store sample data** and **Discover application-level (non-dictionary) referential relationships** unselected for this lab. If **Run AI data discovery** is shown, leave it unselected.
 
-8. Select **Create sensitive data model** to begin the data discovery process. Wait for the sensitive data model to be created.
+    ![Discovery options with sample collection and application-level relationship discovery unselected](images/2026-discovery-options.png)
 
-    The **SDM1** page opens.
+7. Select **Create sensitive data model**. Wait until the `SDM1` model becomes **Active**.
 
+## Task 2: Review the initial discovery results
 
-## Task 2: Analyze the sensitive data model
+1. On the **Details** tab, review **Sensitive data information** and **Sensitive data counts**. Select **View details** beside an information item to view its details.
 
-1. Review the information about the sensitive data model.
+    In the captured run, the initial discovery found **12 sensitive columns across 2 schemas and 3 tables**, covering **10 sensitive types**.
 
-    - The **Details** tab lists general information about your sensitive data model, the target database, sensitive data information, and sensitive data counts.
-    - You can view the selected schemas for discovery, selected sensitive types for discovery, sensitive schemas discovered, and sensitive types discovered by selecting the respective **View details** button.
+    ![Initial discovery results showing 10 sensitive types, 2 schemas, 3 tables, and 12 columns](images/2026-initial-results.png)
 
-    ![Sensitive Data Model Details tab](images/sensitive-data-model-details-tab.png "Sensitive Data Model Details tab")
-    
-2. Select the **Sensitive columns** tab and review the discovered sensitive columns. 
+2. Select **Sensitive columns**. Review the schema, table, column, sensitive type, and confidence level for the discovered columns. The **Parent column** field identifies a related sensitive column when a referential relationship is found. Sample data is empty because it was not collected.
 
-    - For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, sample data (if you chose to retrieve sample data and if it exists), confidence level, estimated row count, and audit records.
-    - Review the sample data to get an idea of what it looks like.
-    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the column named **Parent column**. For example, `EMPLOYEE_ID` in the `EMP_EXTENDED` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
+    ![The twelve initial sensitive columns in the CUSTOMER and PAYMENT schemas](images/2026-initial-columns.png)
 
-    ![Sensitive Data Model Sensitive Columns tab](images/sensitive-data-model-sensitive-columns-tab.png "Sensitive Data Model Sensitive Columns tab")
+    The initial inventory in the captured run is:
 
+    | Schema | Table | Column | Sensitive type |
+    | --- | --- | --- | --- |
+    | CUSTOMER | CUSTOMERS | CUSTOMER_ADDRESS | Full Address |
+    | CUSTOMER | CUSTOMERS | DATE_OF_BIRTH | Date of Birth |
+    | CUSTOMER | CUSTOMERS | EMAIL_ADDRESS | Email Address |
+    | CUSTOMER | CUSTOMERS | FIRST_NAME | First Name |
+    | CUSTOMER | CUSTOMERS | LAST_NAME | Last Name |
+    | CUSTOMER | CUSTOMERS | PHONE_NUMBER | Phone Number |
+    | CUSTOMER | CUSTOMERS | POSTAL_CODE | Postal Code |
+    | CUSTOMER | CUSTOMERS | SSN | US Social Security Number (SSN) |
+    | CUSTOMER | ORDERS | SHIPPING_ADDRESS | Full Address |
+    | CUSTOMER | ORDERS | SHIPPING_ZIP | Postal Code |
+    | PAYMENT | PAYMENTS | CARDHOLDER_NAME | Full Name |
+    | PAYMENT | PAYMENTS | CARD_NUMBER | Card Number |
 
-## Task 3: Perform an incremental discovery
+## Task 3: Run incremental discovery
 
-Increase the scope of the data discovery job.
+The application testing scope now includes customer-support tickets. Reuse `SDM1` to discover the additional sensitive data.
 
-1. Select the **Incremental discovery** tab.
+1. Select the **Incremental discovery** tab, and then select **Run discovery now** under **Discovery job results**.
 
-2. Select **Run discovery now**.
+2. Select **Adjust the scope for the incremental discovery**, and then select **Submit**.
 
-    The **Run discovery now** dialog box opens.
+    ![Run discovery now dialog with Adjust the scope for the incremental discovery selected](images/2026-adjust-incremental-scope.png)
 
-3. Select **Adjust the scope for the incremental discovery**, and then select **Submit**.
+3. In **Provide basic information**, name the job `Discover_SUPPORT`, review the compartment, and select **Next**.
 
-    ![Run discovery now dialog box](images/run-discovery-now-dialog-box.png "Run discovery now dialog box")
+4. In **Select schemas**, keep **Select specific schemas only** selected. Clear the preselected `CUSTOMER` and `PAYMENT` checkboxes, select `SUPPORT`, and select **Next**. This limits the new discovery job to support data; the existing customer and payment columns remain in the model.
 
-    You are returned to the beginning of the data discovery wizard.
+    ![Only SUPPORT selected for incremental discovery](images/2026-select-support.png)
 
-4. For **Step 1 - Provide basic information**, select **Next**.
+5. In **Select tables for schema**, confirm that only `SUPPORT` is listed with **All tables**, and select **Next**.
 
-5. For **Step 2 - Select schemas**, select **Next**.
+    ![Incremental discovery scope showing only SUPPORT with all tables selected](images/2026-support-scope.png)
 
-6. For **Step 3 - Select tables for schema**, select **Next**.
+6. In **Select sensitive types**, keep **Common sensitive types** and confirm that all common types remain selected. Select **Next**.
 
-7. For **Step 4 - Select sensitive types**, select **All sensitive types** from the dropdown list. Select **Biographic Information** and **Employment Information**, and then select **Next**.
+7. In **Select discovery options**, keep the same options as the initial discovery: leave sample data collection, application-level relationship discovery, and **Run AI data discovery** (if shown) unselected. Select **Run discovery now**, and wait for the job to complete. If **History of incremental discoveries** opens, select **Cancel** to return to the **Incremental discovery** tab.
 
-8. For **Step 5 - Select discovery options**, select **Collect, display and store sample data**.
+## Task 4: Apply the incremental discovery results
 
-9. Select **Run discovery now**.
+1. On the **Incremental discovery** tab, review **Discovery job results**. In the captured run, two columns in `SUPPORT.SUPPORT_TICKETS` have the column status **New**:
 
-    When the discovery job finishes, the **History of incremental discoveries** tab is displayed. Your discovery job is listed in the table and has a status of **Active**.
+    | Column | Sensitive type |
+    | --- | --- |
+    | CONTACT_EMAIL | Email Address |
+    | CONTACT_PHONE | Phone Number |
 
-10. Select the **Incremental discovery** tab, scroll down, and review the additional sensitive data that was discovered.
+    ![Incremental discovery results showing the new SUPPORT contact columns](images/2026-incremental-results.png)
 
-11. Select the check box next to **Schema** in the table to select all of the discovered sensitive columns.
+2. Select the two new support columns, open **Actions**, and select **Approve**. Confirm the approval in the dialog.
 
-12. From the **Actions** menu, select **Approve**.
+3. Open **Actions** and select **Apply to SDM**. Confirm that you want to apply the approved changes, and wait for the update to complete. Approval records your decision; applying the changes updates the sensitive data model.
 
-    The **Approve discovery results** dialog box is displayed. Approving the selected columns will mark the discovery results to add new columns, remove deleted columns or update the modified columns. This action does not update the sensitive data model automatically. Apply to SDM will update the sensitive data model with the latest results that have been approved or rejected.
+    ![Apply to SDM dialog confirming the update to the existing sensitive data model](images/2026-apply-to-sdm.png)
 
-    ![Approve discovery results dialog box](images/approve-discovery-results-dialog-box2.png "Approve discovery results dialog box")
+4. Return to **Sensitive columns** and verify that the support contact columns are present alongside the existing customer and payment columns. Review the **Details** tab to confirm the updated counts.
 
-13. Select **Approve**.
+    | Sensitive data count | Initial discovery | After applying incremental discovery |
+    | --- | ---: | ---: |
+    | Schemas | 2 | 3 |
+    | Tables | 3 | 4 |
+    | Columns | 12 | 14 |
+    | Sensitive types | 10 | 10 |
 
-14. With all of the columns still selected, from the **Actions** menu, select **Apply to SDM**.
+    These totals reflect the workshop example. The sensitive type count stays the same because Email Address and Phone Number were already represented in the initial model.
 
-    The **Apply to SDM** dialog box opens. You are warned that this operation will update the sensitive data model with all the columns of this discovery job results that have been processed.
+    ![Updated sensitive data model counts after applying SUPPORT discovery results](images/2026-final-results.png)
 
-    ![Apply to SDM dialog box](images/apply-to-sdm-dialog-box2.png "Apply to SDM dialog box")
-
-15. Select **Apply**, and then wait to be returned to the **Incremental discovery** tab.
-
-    The sensitive data model is updated with the additional sensitive columns.
-    
-16. Select the **History of incremental discoveries** tab, and then select your incremental discovery job. All of the sensitive columns are marked as **Approved** in the **Planned action** column.
-
-
-## Task 4: Remove a column from the sensitive data model
-
-Remove the `DATE_OF_HIRE` column from the sensitive data model.
-
-1. Return to the the **Sensitive columns** tab.
-
-2. Under **Sensitive columns**, from the **Actions** menu, select **Remove columns**.
-
-    The **Remove columns** panel opens.
-
-3. From the **Column** dropdown list, select **DATE\_OF\_HIRE**.
-
-4. Select **Search**.
-
-5. Select the check box for the **DATE\_OF\_HIRE** column in the **JOB_HISTORY** table, and then select **Remove columns**.
-
-    ![Remove columns page](images/remove-columns-panel.png "Remove columns page")
-
-
-## Task 5: Add a column to the sensitive data model
-
-Add `COUNTRY_ABBREV` to the sensitive data model.
-
-1. Under **Sensitive columns**, from the **Actions** menu, select **Add columns**.
-
-    The **Add columns** panel opens.
-
-2. From the **Schema name** dropdown list, select **HCM1**.
-
-3. From the **Table name** dropdown list, select **LOCATIONS**.
-
-4. From the **Column name** dropdown list, select **COUNTRY_ABBREV**.
-
-5. Select **Search**.
-
-6. Scroll down, and then from the **Sensitive type** dropdown list for the `COUNTRY_ABBREV` column, select **Address - Country**. *Be sure to select Country, not County.*
-
-7. Select the check box for the `COUNTRY_ABBREV` column.
-
-8. Select **Add columns**, and then wait until you are returned to the **Sensitive columns** list.
-
-    ![Add columns panel](images/add-columns-panel.png "Add columns panel")
-
-9. Verify that `COUNTRY_ABBREV` from the `LOCATIONS` table is added to your sensitive data model.
-
-You may now **proceed to the next lab**.
-
+The same sensitive data model now covers the customer, payment, and support data needed for application testing. You may now **proceed to the next lab** to prepare the data masking policy.
 
 ## Learn More
 
-- [Data Discovery Overview](https://docs.oracle.com/iaas/data-safe/doc/data-discovery-overview.html)
-
+- [Data Discovery Overview](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-discovery-overview.html)
+- [Update Sensitive Data Models and Perform Incremental Discovery](https://docs.oracle.com/en-us/iaas/data-safe/doc/update-sensitive-data-models.html)
 
 ## Acknowledgements
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
-- **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 20, 2026
+- **Contributor** - Kajal Singh, Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Kajal Singh, October 1, 2026

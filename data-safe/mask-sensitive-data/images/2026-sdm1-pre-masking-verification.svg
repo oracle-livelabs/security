@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+<title id="title">SDM1 pre-masking verification</title>
+<desc id="desc">Reference view of a succeeded pre-masking health report for the Mask_SDM1 policy and ADB_2 target database.</desc>
+<rect width="1400" height="520" fill="#f7f8fa"/>
+<text x="36" y="58" fill="#111827" font-family="Arial,sans-serif" font-size="32" font-weight="700">Pre-masking verification</text>
+<rect x="36" y="86" width="1328" height="72" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="64" y="117" fill="#475569" font-family="Arial,sans-serif" font-size="17">Operation</text><text x="210" y="117" fill="#111827" font-family="Arial,sans-serif" font-size="18" font-weight="700">MASK_POLICY_GENERATE_HEALTH_REPORT</text><text x="1060" y="117" fill="#166534" font-family="Arial,sans-serif" font-size="18" font-weight="700">Succeeded</text>
+<text x="64" y="143" fill="#475569" font-family="Arial,sans-serif" font-size="17">Scope</text><text x="210" y="143" fill="#111827" font-family="Arial,sans-serif" font-size="17">Mask_SDM1 · ADB_2 · SDM1</text>
+<rect x="36" y="190" width="1328" height="246" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="64" y="234" fill="#1f2937" font-family="Arial,sans-serif" font-size="24" font-weight="700">Log messages</text>
+<line x1="64" y1="258" x2="1336" y2="258" stroke="#cbd5e1" stroke-width="2"/>
+<text x="64" y="294" fill="#475569" font-family="Arial,sans-serif" font-size="17" font-weight="700">Message</text><text x="1140" y="294" fill="#475569" font-family="Arial,sans-serif" font-size="17" font-weight="700">Status</text>
+<text x="64" y="340" fill="#111827" font-family="Arial,sans-serif" font-size="17">Health checks completed for the selected target and masking policy.</text><text x="1140" y="340" fill="#166534" font-family="Arial,sans-serif" font-size="17" font-weight="700">Passed</text>
+<text x="64" y="382" fill="#111827" font-family="Arial,sans-serif" font-size="17">No masking operation was started.</text><text x="1140" y="382" fill="#166534" font-family="Arial,sans-serif" font-size="17" font-weight="700">Passed</text>
+<text x="36" y="480" fill="#6b7280" font-family="Arial,sans-serif" font-size="16">Reference visual for this lab; tenancy-specific work-request IDs and timestamps are intentionally omitted.</text>
+</svg>

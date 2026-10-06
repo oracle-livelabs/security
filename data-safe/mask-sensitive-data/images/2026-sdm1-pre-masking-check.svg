@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="560" viewBox="0 0 1300 560" role="img" aria-labelledby="title desc">
+<title id="title">SDM1 pre-masking check configuration</title>
+<desc id="desc">Reference configuration for the pre-masking check using target database ADB_2 and masking policy Mask_SDM1.</desc>
+<rect width="1300" height="560" fill="#f7f8fa"/>
+<text x="36" y="56" fill="#111827" font-family="Arial,sans-serif" font-size="32" font-weight="700">Pre-masking check</text>
+<text x="36" y="88" fill="#4b5563" font-family="Arial,sans-serif" font-size="18">Run checks only; this step does not start the masking operation.</text>
+<g font-family="Arial,sans-serif" font-size="18">
+  <rect x="36" y="126" width="590" height="72" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/><text x="56" y="154" fill="#64748b" font-size="15">Select target compartment</text><text x="56" y="181" fill="#111827" font-weight="700">Workshop compartment</text>
+  <rect x="674" y="126" width="590" height="72" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/><text x="694" y="154" fill="#64748b" font-size="15">Select target</text><text x="694" y="181" fill="#111827" font-weight="700">ADB_2</text>
+  <rect x="36" y="222" width="590" height="72" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/><text x="56" y="250" fill="#64748b" font-size="15">Select masking policy compartment</text><text x="56" y="277" fill="#111827" font-weight="700">Workshop compartment</text>
+  <rect x="674" y="222" width="590" height="72" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/><text x="694" y="250" fill="#64748b" font-size="15">Select masking policy</text><text x="694" y="277" fill="#111827" font-weight="700">Mask_SDM1</text>
+  <rect x="36" y="318" width="1228" height="72" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/><text x="56" y="346" fill="#64748b" font-size="15">Pre-masking report compartment</text><text x="56" y="373" fill="#111827" font-weight="700">Workshop compartment</text>
+</g>
+<rect x="36" y="434" width="1228" height="70" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="62" y="463" fill="#075985" font-family="Arial,sans-serif" font-size="18" font-weight="700">Submit the pre-masking check and review the work request.</text>
+<text x="62" y="490" fill="#075985" font-family="Arial,sans-serif" font-size="17">Do not select Mask data; masking and subsetting run together in the next lab step.</text>
+</svg>
