@@ -4,22 +4,24 @@
 
 Before accessing Security Central, retrieve the initial credentials and URLs from the LiveLabs environment.
 
-1. In the LiveLabs console, open **Lab Info** and expand **Terraform Outputs**.
+1. In the LiveLabs console, click **View login info** and scroll down to **Environment Details**.
 
     Copy or note the following values:
 
     - **AVS Passphrase** — the initial password for the `AVADMIN` and `AVAUDITOR` users.
-    - **HOL Host 2** — the Security Central console URL.
-    - **HOL Host 3** — **`<YOUR_DBSEC-LAB_VM_PUBLIC_IP>`**.
-    - **Remote Desktop** — the remote desktop URL for accessing the database host.
+    - **Database Host** — **`<YOUR_DBSEC-LAB_VM_PUBLIC_IP>`**.
+    - **Security Central Console** — the Security Central console URL.
+    - **Remote Desktop** — the Remote Desktop connection URL for accessing the database host.
 
-    Run all database-host scripts in a terminal through **Remote Desktop**. Open it now and keep it open throughout the workshop.
+    Open the **Remote Desktop** connection and keep it open throughout the workshop. Use this connection to run commands, scripts and queries in the database-host terminal.
 
-    ![LiveLabs Lab Info showing Terraform Outputs](images/lab-info-redacted.svg)
+    Replace `<YOUR_DBSEC-LAB_VM_PUBLIC_IP>` in the application URLs with the Database Host public IP from **Environment Details**.
+
+    ![LiveLabs Environment Details with generated values redacted](images/environment-details-redacted-AIWorld2026.png)
 
     **Note:** The values are generated for each reservation and may be different from the example shown.
 
-2. In a browser, open the **HOL Host 2** link from the LiveLabs **Lab Info** panel.
+2. In a browser on your laptop, open the **Security Central Console** URL from **View login info → Environment Details**.
 
 3. Log in to the Security Central console as `AVADMIN` using the **AVS Passphrase**.
 
@@ -33,7 +35,7 @@ Before accessing Security Central, retrieve the initial credentials and URLs fro
 
     ![Reset the AVADMIN password](images/avdf-401.png)
 
-5. Log in to the Security Central console as `AVAUDITOR` using the original **AVS Passphrase** from the LiveLabs **Lab Info** panel.
+5. Log in to the Security Central console as `AVAUDITOR` using the original **AVS Passphrase** from **Environment Details**.
 
     ![Log in as AVAUDITOR](images/avdf-300.png)
 
@@ -51,9 +53,7 @@ Before accessing Security Central, retrieve the initial credentials and URLs fro
 
     **Note:** For this lab, the Glassfish application is connected to the Oracle AI Database 26ai PDB **`FREEPDB1`**.
 
-2. Open a browser at *`http://dbsec-lab:8080/hr_prod_pdb1`* to access **your Glassfish application**.
-
-    **Note:** If you are not using Remote Desktop, use *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`*.
+2. In a browser on your laptop, open *`http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`* to access **your Glassfish application**.
 
 3. Log in to the application as *`hradmin`* with the password *`Oracle123`*.
 

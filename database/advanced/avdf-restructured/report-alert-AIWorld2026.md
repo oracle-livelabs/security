@@ -75,7 +75,7 @@ This report shows which data values changed; it is not a comparison of security 
 
 2. Verify that **TRANSACTION LOG** and **`UNIFIED_AUDIT_TRAIL`** show **COLLECTING** or **IDLE**. If either trail is stopped, start it and confirm its status before continuing.
 
-3. Connect to the database host using the workshop's **Remote Desktop** link. Open a terminal and go to the AVS directory:
+3. Open your **Remote Desktop** connection, then open a terminal on the database host and go to the AVS directory:
 
     <pre class="bash"><code><copy>cd $DBSEC_LABS/avdf/avs</copy></code></pre>
 
@@ -85,7 +85,7 @@ This report shows which data values changed; it is not a comparison of security 
 
     ![Start the GoldenGate Administration Service](./images/avdf-028b.png "Start the GoldenGate Administration Service")
 
-4. In the Remote Desktop browser, open `http://dbsec-lab:50002`. Log in to the GoldenGate console as `OGGADMIN` using the workshop password `Oracle123`.
+4. In a browser on your laptop, open `http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:50002`. Log in to the GoldenGate console as `OGGADMIN` using the workshop password `Oracle123`.
 
     ![GoldenGate console login](./images/avdf-029.png "GoldenGate console login")
 
@@ -93,7 +93,7 @@ This report shows which data values changed; it is not a comparison of security 
 
     ![Verify that the cust1 extract is running](./images/avdf-622.png "Verify the cust1 extract status")
 
-5. If fresh evidence is needed, return to the database-host terminal and run the sample load after confirming that extraction and collection are running:
+5. If fresh evidence is needed, return to your **Remote Desktop** connection and run the sample load in the database-host terminal after confirming that extraction and collection are running:
 
     <pre class="bash"><code><copy>./avs_generate_customer_order_prod_changes.sh cust1</copy></code></pre>
 

@@ -167,7 +167,7 @@ The audit policies and alert policy are now enabled. In this task, generate cont
 <details>
 <summary><strong>Step 1: Generate privileged-user activity</strong></summary>
 
-1. In **Remote Desktop**, open the terminal on the database host and go to the AVS directory:
+1. Open your **Remote Desktop** connection, then open a terminal on the database host and go to the AVS directory:
 
     <pre class="bash"><code><copy>cd $DBSEC_LABS/avdf/avs</copy></code></pre>
 

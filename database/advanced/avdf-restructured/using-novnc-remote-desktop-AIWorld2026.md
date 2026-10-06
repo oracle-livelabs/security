@@ -4,7 +4,7 @@
 
 This lab shows you how to use a remote desktop session for the workshop.
 
-In the LiveLabs console, open **Lab Info**, expand **Terraform Outputs**, and open the **Remote Desktop** link. Keep this session open throughout the workshop.
+In the LiveLabs console, click **View login info**, scroll down to **Environment Details**, and open the **Remote Desktop** link. Keep this connection open throughout the workshop to run commands, scripts and queries in the database-host terminal.
 
 Estimated Time: 2 minutes
 

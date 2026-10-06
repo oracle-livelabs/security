@@ -164,7 +164,7 @@ Database Firewall provides network-level protection for `employees_search`. In t
 <details>
 <summary><strong>Step 3: Generate activity and verify reports and alerts</strong></summary>
 
-1. In **Remote Desktop**, open the terminal on the database host.
+1. Open your **Remote Desktop** connection, then open a terminal on the database host to run the following commands.
 
 2. Go to the lab script directory:
 
@@ -277,7 +277,7 @@ In this task, you can train and enforce a SQL Firewall policy for the applicatio
 <details>
 <summary><strong>Step 3: Execute the normal workload</strong></summary>
 
-1. Open `http://dbsec-lab:8080/hr_prod_pdb1` in a browser to access the **Glassfish** application. If you are not using the remote desktop, use `http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1`.
+1. In a browser on your laptop, open `http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:8080/hr_prod_pdb1` to access the **Glassfish** application.
 
 2. Log in as *`hradmin`* with the password *`Oracle123`*.
 
@@ -395,9 +395,9 @@ In this task, you can train and enforce a SQL Firewall policy for the applicatio
 <details>
 <summary><strong>Step 7: Validate SQL Firewall protection controls</strong></summary>
 
-Validate SQL Firewall protection by triggering connection-context and SQL-statement violations. First, connect using *SQLPLUS* to simulate a connection-context violation.
+Validate SQL Firewall protection by triggering connection-context and SQL-statement violations. First, use *SQLPLUS* in the database-host terminal through your **Remote Desktop** connection to simulate a connection-context violation.
 
-1. In your terminal session on the database host, go to the AVS directory:
+1. Open your **Remote Desktop** connection, then open a terminal on the database host and go to the AVS directory:
 
     <pre class="bash"><code><copy>cd $DBSEC_LABS/avdf/avs</copy></code></pre>
 
@@ -437,7 +437,7 @@ Validate SQL Firewall protection by triggering connection-context and SQL-statem
 
     ![AVDF](./images/360-30a.png "SQL Firewall blocks the unauthorized statement")
 
-9. In the terminal session on the database host, go to the AVS directory:
+9. Return to your **Remote Desktop** connection and go to the AVS directory in the database-host terminal:
 
     <pre class="bash"><code><copy>cd $DBSEC_LABS/avdf/avs</copy></code></pre>
 
@@ -551,7 +551,7 @@ Create an alert policy before generating a realm violation so that the test even
 
 Compare authorized and unauthorized access using queries against **CO.ORDERS**.
 
-1. Open the terminal on the database host and go to the AVS directory:
+1. Open your **Remote Desktop** connection, then open a terminal on the database host and go to the AVS directory:
 
     <pre class="bash"><code><copy>cd $DBSEC_LABS/avdf/avs</copy></code></pre>
 

@@ -42,7 +42,7 @@ Use the Auditor Dashboard to identify a configuration risk, remediate it with th
 
     In the workshop reference data, the affected targets are **`customer_orders`** and **`sales_history`**.
 
-5. Open a terminal session on the **DBSec-Lab** VM as the **oracle** operating-system user.
+5. Open the **Remote Desktop** connection described in **Lab 1, Task 1, item 1**, then open a terminal on the database host to run the following commands.
 
     If the terminal is not already running as **oracle**, execute:
 
@@ -117,7 +117,7 @@ Use the risk findings and Sensitive Data Discovery results to identify who has a
 
     ![AVDF](./images/360-5.png "AVDF - Sensitive data discovery dashboard")
 
-11. Record the sensitive objects associated with the affected targets. In the workshop reference data, **`employees_search`** and **`customer_orders`** contain substantial concentrations of sensitive data.
+11. Record the sensitive objects associated with the affected targets. In this workshop, we will use **`employees_search`** and **`customer_orders`**, which contain sensitive data.
 
 12. Optionally, open **Targets** and review the retrieval-job options for **`employees_search`** to understand how Security Central refreshes security assessment, user assessment, and sensitive-data discovery results.
 
