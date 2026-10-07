@@ -135,3 +135,9 @@ If you completed and validated the optional tasks, also include these outcomes:
 **Find the risk → Identify the gaps → Implement the controls → Generate test activity → Verify the evidence**
 
 The result: a traceable connection between the risks you identified, the controls you implemented, and the security outcomes you observed.
+
+## Acknowledgements
+
+* **Author:** Nazia Zaidi, Database Security - Product Manager
+* **Contributors:** Angeline Dhanarani, Database Security - Product Manager
+* **Last Updated By/Date:** Nazia Zaidi, Database Security - Product Manager - October 2026

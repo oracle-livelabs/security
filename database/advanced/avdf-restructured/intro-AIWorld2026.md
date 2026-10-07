@@ -57,3 +57,9 @@ The workshop follows this sequence:
 **Find the risk → Discover the exposure → Identify the gap → Configure the control → Generate safe test activity → Verify the evidence**
 
 By the end of the workshop, you will understand how Oracle Database Security Central connects user risk, sensitive data, security policies, database activity, and compliance evidence in one place.
+
+## Acknowledgements
+
+* **Author:** Nazia Zaidi, Database Security - Product Manager
+* **Contributors:** Angeline Dhanarani, Database Security - Product Manager
+* **Last Updated By/Date:** Nazia Zaidi, Database Security - Product Manager - October 2026

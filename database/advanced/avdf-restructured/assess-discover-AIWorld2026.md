@@ -213,3 +213,9 @@ You followed a security finding through the complete discovery and verification 
 - Prepared the control-gap handoff for the next labs.
 
 You may now **proceed to the next lab** to review and configure the core Audit and Database Firewall controls.
+
+## Acknowledgements
+
+* **Author:** Nazia Zaidi, Database Security - Product Manager
+* **Contributors:** Angeline Dhanarani, Database Security - Product Manager
+* **Last Updated By/Date:** Nazia Zaidi, Database Security - Product Manager - October 2026

@@ -58,3 +58,9 @@ During the labs, you may need to copy text, such as commands, from your *local P
    ![Workshop guide and sample webapp](./images/novnc-launch-get-started-2.png " ")
 
 You may now **proceed to the next lab**.
+
+## Acknowledgements
+
+* **Author:** Nazia Zaidi, Database Security - Product Manager
+* **Contributors:** Angeline Dhanarani, Database Security - Product Manager
+* **Last Updated By/Date:** Nazia Zaidi, Database Security - Product Manager - October 2026

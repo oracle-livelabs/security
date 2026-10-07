@@ -243,3 +243,9 @@ You followed the audit, monitoring, and alert-validation cycle:
 - Verified that the alert policy generated corresponding alert events.
 
 You may now **proceed to the next lab** to review and configure the core Database Firewall controls.
+
+## Acknowledgements
+
+* **Author:** Nazia Zaidi, Database Security - Product Manager
+* **Contributors:** Angeline Dhanarani, Database Security - Product Manager
+* **Last Updated By/Date:** Nazia Zaidi, Database Security - Product Manager - October 2026

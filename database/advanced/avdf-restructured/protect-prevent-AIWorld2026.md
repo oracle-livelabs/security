@@ -595,3 +595,9 @@ You followed the protection and prevention cycle:
 - Tested blocked DML activity and alerted SELECT activity.
 - Verified the results in Database Firewall reports and alerts.
 - Identified SQL Firewall and Database Vault as optional controls for additional protection.
+
+## Acknowledgements
+
+* **Author:** Nazia Zaidi, Database Security - Product Manager
+* **Contributors:** Angeline Dhanarani, Database Security - Product Manager
+* **Last Updated By/Date:** Nazia Zaidi, Database Security - Product Manager - October 2026

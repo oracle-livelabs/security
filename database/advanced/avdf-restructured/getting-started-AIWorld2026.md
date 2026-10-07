@@ -84,3 +84,9 @@ Before accessing Security Central, retrieve the initial credentials and URLs fro
     ![SQLFW](images/init-start-env-sqlfw-006.png "HR App - Check the targeted database")
 
 You may now **proceed to the next lab**.
+
+## Acknowledgements
+
+* **Author:** Nazia Zaidi, Database Security - Product Manager
+* **Contributors:** Angeline Dhanarani, Database Security - Product Manager
+* **Last Updated By/Date:** Nazia Zaidi, Database Security - Product Manager - October 2026
