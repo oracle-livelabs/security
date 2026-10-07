@@ -1,5 +1,7 @@
 # About This Hands-on Lab
 
+*Estimated Workshop Time:* 55 minutes for core labs
+
 ## Solution Overview
 
 Oracle Database Security Central provides a unified command center for database security across the fleet. It brings together:
@@ -28,7 +30,7 @@ In this workshop, you will investigate the risk, discover the affected sensitive
 
 You will then generate test activity and verify the results in Reports, Alerts, and Security Advisor.
 
-## What You Will Learn
+## Objectives
 
 By completing this workshop, you will learn how to:
 
