@@ -157,4 +157,4 @@ The same sensitive data model now covers the customer, payment, and support data
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Kajal Singh, Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Kajal Singh, October 1, 2026
+- **Last Updated By/Date** - Kajal Singh, October 7, 2026
