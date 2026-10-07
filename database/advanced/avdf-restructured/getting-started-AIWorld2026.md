@@ -1,5 +1,9 @@
 # Access Security Central console
 
+## Introduction
+
+In this lab, you will access the Security Central console and reset the passwords for the administrator and auditor accounts. You will also verify access to the Glassfish application used in this workshop.
+
 ## Task 1: Access Security Central console
 
 Before accessing Security Central, retrieve the initial credentials and URLs from the LiveLabs environment.
