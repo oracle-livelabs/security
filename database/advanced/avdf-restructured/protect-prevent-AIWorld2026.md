@@ -12,7 +12,7 @@ In this lab, configure Database Firewall as the core control to monitor and rest
 | --- | --- | --- |
 | Task 1: Database Firewall | Core | 15 minutes |
 | Task 2: SQL Firewall | Optional | 15 minutes |
-| Task 3: Database Vault | Optional | 5–10 minutes |
+| Task 3: Database Vault | Optional | 10 minutes |
 
 ## Objectives
 

@@ -6,7 +6,7 @@ In the previous lab, you identified privileged users and sensitive employee data
 
 In this lab, turn the findings into actionable protection. Centralized auditing creates the evidence needed to understand privileged activity and sensitive-data access, while alerts make important events visible for response. You will first provision the audit policies, then use a new alert to validate that activity by privileged users can be detected.
 
-*Estimated Lab Time:* 15 minutes
+*Estimated Lab Time:* 10 minutes
 
 
 <!--

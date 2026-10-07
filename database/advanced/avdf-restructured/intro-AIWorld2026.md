@@ -44,11 +44,11 @@ By completing this workshop, you will learn how to:
 
 | Approximate time | Lab | What you will do |
 |---|---|---|
-| Less than 5 minutes | Access Security Central | Sign in and establish the initial security posture baseline. |
-| 10 minutes | Assess and Discover | Find the risks, affected targets, sensitive objects, and privileged user groups. |
-| 10 minutes | Audit and Monitor | Identify the audit gap, configure audit policies, and verify activity coverage. |
-| 30 minutes | Protect and Prevent | Configure Database Firewall as the core control. SQL Firewall and Database Vault are available as optional extensions. |
-| 5 minutes | Review Compliance Evidence and Confirm Workshop Outcomes | Verify blocked, logged, and alerted activity and summarize the security posture. |
+| 5 minutes | Access Security Central | Sign in and establish the initial security posture baseline. |
+| 15 minutes | Assess and Discover the Risk | Find the risks, affected targets, sensitive objects, and privileged user groups. |
+| 10 minutes | Audit, Monitor, and Alert on Privileged Activity | Identify the audit gap, configure audit policies, and verify activity coverage. |
+| 15 minutes | Protect and Prevent Unauthorized Database Activity | Configure Database Firewall as the core control. SQL Firewall and Database Vault are available as optional extensions. |
+| 10 minutes | Review Compliance Evidence and Confirm Workshop Outcomes | Verify blocked, logged, and alerted activity and summarize the security posture. |
 
 ## The Investigation Flow
 

@@ -6,7 +6,7 @@ In the previous labs, you addressed a configuration risk and added auditing, ale
 
 Explore GDPR reports for `employees_search` and `customer_orders`. Then use Security Advisor to review enabled audit policies, PUBLIC-grant assessment findings, generated alerts, and the Database Firewall policy associated with the workshop targets.
 
-*Estimated Lab Time:* To be confirmed during end-to-end testing.
+*Estimated Lab Time:* 10 minutes
 
 ## Objectives
 
