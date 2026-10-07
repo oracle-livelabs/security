@@ -2,73 +2,20 @@
 
 ## Introduction
 
-In the previous labs, you have been building a more complete picture of the database you are responsible for protecting.
+The application team needs a smaller, protected copy of the retail application data for testing customer profiles, orders, payments, and support tickets.
 
-You first asked: Is the database securely configured?
-You used Security Assessment to identify configuration risks and detect security drift.
+In the preceding labs, you created the sensitive data model `SDM1`, built the masking policy `Mask_SDM1`, and completed its pre-masking check. In this lab, you configure the subsetting policy, then use **Subset database** from the Data subsetting overview to run subsetting and apply that existing masking policy in one operation.
 
-Next, you asked: Who can access the database, and what can they do?
-You used User Assessment to investigate potentially risky users and changes to roles and privileges.
-
-Then, you asked: What sensitive information are we actually protecting?
-You used Data Discovery to identify sensitive data in the CUSTOMER, PAYMENT, and SUPPORT schemas and created a sensitive data model describing where that information resides. You also expanded the model through incremental discovery as the application's testing scope grew.
-
-Next, you asked: How should that sensitive information be protected for non-production use?
-You used Data Masking to create a masking policy from the sensitive data model and define how the sensitive values should be transformed.
-
-Now your security team has one more question before the data can be made available for application testing:
-
-Does the development team need all of the data in the first place?
-
-Providing a complete copy of production-like data creates unnecessary exposure when only a portion of the data is needed for testing.
-
-Oracle Data Safe Data Subsetting helps you reduce the amount of data in a non-production database while preserving the relationships required to keep the retained data usable. You can define which rows should be retained in a driving table and specify how related data should be handled.
-
-Data Subsetting can also be combined with Data Masking so that the data is first reduced to what is needed and the sensitive values that remain are then protected.
-
-Together, these capabilities help you apply two complementary principles:
-
-Keep only the data you need, and protect the sensitive data you keep.
+The subsetting policy, `Subset SDM1`, selects 10% of the `CUSTOMER.ORDERS` rows dated January 1, 2026 or later, then retains the related rows needed by the application. Data masking then protects sensitive values in the retained data.
 
 Estimated Time: 20 minutes
 
-### Scenario
-
-Continue acting as the database security administrator from the previous labs.
-
-The application development team is preparing a non-production environment to test the customer application.
-
-In the previous labs, you identified sensitive customer, payment, and support information in SDM1 and created Mask_SDM1 to define how that sensitive information should be protected.
-
-But the development team does not need the complete production-like data set for its testing.
-
-For this testing scenario, the team needs only a sample of recent customer orders and the data required to support those orders. You therefore decide to retain 10% of the orders placed on or after January 1, 2026.
-
-Simply retaining a sample of the CUSTOMER.ORDERS table would not be enough. An order depends on related data. The resulting test data must retain the customers associated with the selected orders as well as the related order items and payments.
-
-You will use CUSTOMER.ORDERS as the driving table and review its relationships before defining the subsetting rule. Data Safe uses those relationships to help preserve the referential integrity of the resulting data set.
-
-Before running the operation, you will review the estimated reduction so that you can understand how much data is expected to remain.
-
-You will then combine the subsetting policy with the Mask_SDM1 policy you prepared in the previous lab. Data Safe first reduces the data and then masks the sensitive values that remain.
-
-Finally, you will compare the resulting data with the original row counts and verify two things:
-
-The database contains a smaller set of recent orders and the related data required for application testing.
-
-Sensitive customer, payment, and support values in the retained data no longer expose the original information.
-
-The result is a smaller, protected, and relationally consistent non-production data set designed around the development team's actual testing requirements.
-
 ### Objectives
 
-- Record baseline row counts before subsetting the database
-- Create a dedicated database user and grant the privileges required to run the subsetting job
-- Create a subsetting policy, configure subsetting rules and review table relationships
-- Configure how related customer, order-item, and payment data is retained to preserve referential integrity
+- Create a database user to run the subsetting job.
+- Configure subsetting rules and review table relationships.
 - Run subsetting with the existing masking policy.
-- Run and monitor the combined subsetting and masking operation
-- Validate the resulting data
+- Validate the resulting data and job reports.
 
 ## Task 1: Before you begin
 
@@ -289,6 +236,6 @@ Use the subsetting report and the relationships reviewed in the graph to confirm
 
 ## Acknowledgements
 
-- **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
-- **Contributors** - Kajal Singh, Product Manager / Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Bettina Schäumer, October 7, 2026
+- Author - Jody Glover, Lead Principal User Assistance Developer, Database Development
+- Contributor - Kajal Singh, Product Manager, Oracle Database Security
+- Last Updated By/Date - Kajal Singh, October 1, 2026
