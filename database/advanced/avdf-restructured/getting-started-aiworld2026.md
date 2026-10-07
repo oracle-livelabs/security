@@ -6,6 +6,13 @@ In this lab, you will access the Security Central console and reset the password
 
 *Estimated Lab Time:* 5 minutes
 
+## Objectives
+
+In this lab, you will:
+
+- Access the Security Central console and reset the administrator and auditor account passwords.
+- Verify access to the Glassfish application.
+
 ## Task 1: Access Security Central console
 
 Before accessing Security Central, retrieve the initial credentials and URLs from the LiveLabs environment.
@@ -23,7 +30,7 @@ Before accessing Security Central, retrieve the initial credentials and URLs fro
 
     Replace `<YOUR_DBSEC-LAB_VM_PUBLIC_IP>` in the application URLs with the Database Host public IP from **Environment Details**.
 
-    ![LiveLabs Environment Details with generated values redacted](images/environment-details-redacted-AIWorld2026.png)
+    ![LiveLabs Environment Details with generated values redacted](images/environment-details-redacted-aiworld2026.png)
 
     **Note:** The values are generated for each reservation and may be different from the example shown.
 
