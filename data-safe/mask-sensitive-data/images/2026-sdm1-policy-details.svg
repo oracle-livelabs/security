@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+<title id="title">Mask_SDM1 policy details</title>
+<desc id="desc">Reference view of the masking policy details for the SDM1 inventory and ADB_2 target database.</desc>
+<rect width="1400" height="560" fill="#f7f8fa"/>
+<text x="42" y="58" fill="#111827" font-family="Arial,sans-serif" font-size="34" font-weight="700">Mask_SDM1</text>
+<rect x="42" y="86" width="1316" height="56" rx="8" fill="#374151"/>
+<text x="70" y="122" fill="#ffffff" font-family="Arial,sans-serif" font-size="20">Mask target</text>
+<text x="240" y="122" fill="#ffffff" font-family="Arial,sans-serif" font-size="20">Generate policy</text>
+<text x="480" y="122" fill="#ffffff" font-family="Arial,sans-serif" font-size="20">Download policy</text>
+<text x="1180" y="122" fill="#ffffff" font-family="Arial,sans-serif" font-size="20">More actions</text>
+<rect x="42" y="174" width="1316" height="330" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="74" y="220" fill="#1f2937" font-family="Arial,sans-serif" font-size="26" font-weight="700">General information</text>
+<text x="74" y="270" fill="#374151" font-family="Arial,sans-serif" font-size="20" font-weight="700">Name:</text>
+<text x="190" y="270" fill="#111827" font-family="Arial,sans-serif" font-size="20">Mask_SDM1</text>
+<text x="74" y="314" fill="#374151" font-family="Arial,sans-serif" font-size="20" font-weight="700">Sensitive data model:</text>
+<text x="330" y="314" fill="#111827" font-family="Arial,sans-serif" font-size="20">SDM1</text>
+<text x="74" y="358" fill="#374151" font-family="Arial,sans-serif" font-size="20" font-weight="700">Description:</text>
+<text x="235" y="358" fill="#111827" font-family="Arial,sans-serif" font-size="20">CUSTOMER, PAYMENT, and SUPPORT schemas</text>
+<text x="74" y="402" fill="#374151" font-family="Arial,sans-serif" font-size="20" font-weight="700">Target database:</text>
+<text x="270" y="402" fill="#111827" font-family="Arial,sans-serif" font-size="20">ADB_2</text>
+<text x="760" y="220" fill="#1f2937" font-family="Arial,sans-serif" font-size="26" font-weight="700">Masking options</text>
+<text x="760" y="270" fill="#374151" font-family="Arial,sans-serif" font-size="20">Drop temporary table: <tspan font-weight="700">Yes</tspan></text>
+<text x="760" y="314" fill="#374151" font-family="Arial,sans-serif" font-size="20">Redo logging: <tspan font-weight="700">No</tspan></text>
+<text x="760" y="358" fill="#374151" font-family="Arial,sans-serif" font-size="20">Refresh stats enabled: <tspan font-weight="700">Yes</tspan></text>
+<text x="760" y="402" fill="#374151" font-family="Arial,sans-serif" font-size="20">Degree of parallelism: <tspan font-weight="700">DEFAULT</tspan></text>
+<text x="760" y="446" fill="#374151" font-family="Arial,sans-serif" font-size="20">Recompile: <tspan font-weight="700">NONE</tspan></text>
+<text x="42" y="540" fill="#6b7280" font-family="Arial,sans-serif" font-size="16">Reference visual for this lab; tenancy-specific OCIDs and timestamps are intentionally omitted.</text>
+</svg>

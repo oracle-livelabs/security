@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+<title id="title">Masking groups for related address values</title>
+<desc id="desc">Two shuffle masking groups keep address and postal code values together for customer and order data.</desc>
+<rect width="1200" height="520" fill="#f7f8fa"/>
+<text x="600" y="56" text-anchor="middle" fill="#1f2937" font-family="Arial, sans-serif" font-size="30" font-weight="700">Preserve related address values with group masking</text>
+<text x="600" y="88" text-anchor="middle" fill="#4b5563" font-family="Arial, sans-serif" font-size="18">Masking format: Shuffle · Condition: 1=1</text>
+<rect x="70" y="140" width="500" height="290" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="105" y="188" fill="#1e3a8a" font-family="Arial, sans-serif" font-size="24" font-weight="700">Customer_Address</text>
+<text x="105" y="228" fill="#374151" font-family="Arial, sans-serif" font-size="19">Table: CUSTOMER.CUSTOMERS</text>
+<rect x="105" y="260" width="420" height="58" rx="8" fill="#dbeafe"/>
+<text x="315" y="297" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="20" font-weight="700">CUSTOMER_ADDRESS</text>
+<rect x="105" y="340" width="420" height="58" rx="8" fill="#dbeafe"/>
+<text x="315" y="377" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="20" font-weight="700">POSTAL_CODE</text>
+<rect x="630" y="140" width="500" height="290" rx="14" fill="#ffffff" stroke="#059669" stroke-width="3"/>
+<text x="665" y="188" fill="#065f46" font-family="Arial, sans-serif" font-size="24" font-weight="700">Shipping_Address</text>
+<text x="665" y="228" fill="#374151" font-family="Arial, sans-serif" font-size="19">Table: CUSTOMER.ORDERS</text>
+<rect x="665" y="260" width="420" height="58" rx="8" fill="#d1fae5"/>
+<text x="875" y="297" text-anchor="middle" fill="#047857" font-family="Arial, sans-serif" font-size="20" font-weight="700">SHIPPING_ADDRESS</text>
+<rect x="665" y="340" width="420" height="58" rx="8" fill="#d1fae5"/>
+<text x="875" y="377" text-anchor="middle" fill="#047857" font-family="Arial, sans-serif" font-size="20" font-weight="700">SHIPPING_ZIP</text>
+</svg>
