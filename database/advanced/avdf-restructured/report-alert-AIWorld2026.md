@@ -4,7 +4,7 @@
 
 In the previous labs, you addressed a configuration risk and added auditing, alerting, and Database Firewall controls. In this optional lab, review how the collected evidence supports compliance reporting, then bring the workshop story together with a target-specific review of the controls and their outcomes.
 
-Explore GDPR reports for `employees_search` and `customer_orders`. Optionally, review data-change evidence for `customer_orders`. Then use Security Advisor to ask focused questions about the controls implemented in the workshop, distinguishing verified outcomes from risks that still require follow-up.
+Explore GDPR reports for `employees_search` and `customer_orders`. Then use Security Advisor to review enabled audit policies, PUBLIC-grant assessment findings, generated alerts, and the Database Firewall policy associated with the workshop targets.
 
 *Estimated Lab Time:* To be confirmed during end-to-end testing.
 
@@ -13,17 +13,12 @@ Explore GDPR reports for `employees_search` and `customer_orders`. Optionally, r
 In this lab, you will:
 
 - Review predefined compliance reports, including GDPR reports, for `employees_search` and `customer_orders`.
-- Optionally verify extraction and collection for `customer_orders` before generating data-change evidence.
-- Review before-and-after values for sample data changes if you complete the optional exercise.
 - Review the workshop controls and their evidence using Security Advisor.
 - Summarize the outcomes for the affected targets and identify remaining follow-up work.
 
-## Task 1: Review compliance reporting and data-change evidence
+## Task 1: Review compliance reporting coverage
 
-Security Central provides predefined reports that help organizations review sensitive-data access and assemble evidence for compliance reviews. Explore GDPR reports for `employees_search` and `customer_orders`. Then, optionally use `customer_orders` to see how before-and-after values provide a detailed record of data changes.
-
-<details>
-<summary><strong>Step 1: Review GDPR reporting coverage</strong></summary>
+Security Central provides predefined reports that help organizations review sensitive-data access and assemble evidence for compliance reviews. Explore GDPR reports for `employees_search` and `customer_orders` to connect sensitive data, access rights, and captured activity.
 
 1. Log in to the Security Central console as *`AVAUDITOR`*.
 
@@ -62,134 +57,43 @@ Security Central provides predefined reports that help organizations review sens
 
 These reports support compliance evidence. Reviewing them does not, by itself, establish GDPR compliance.
 
-</details>
-
-<details>
-<summary><strong>Step 2 (Optional): Verify collection and review data-change evidence</strong></summary>
-
-This report shows which data values changed; it is not a comparison of security posture before and after remediation. Transaction-log collection supplies before-and-after values, while unified auditing provides additional event information, including DML command text.
-
-1. Log in to the Security Central console as *`AVADMIN`*. Select **Targets → `customer_orders`** and review its audit trails.
-
-    ![Review audit trails for customer_orders](./images/avdf-621.png "Review audit trails for customer_orders")
-
-2. Verify that **TRANSACTION LOG** and **`UNIFIED_AUDIT_TRAIL`** show **COLLECTING** or **IDLE**. If either trail is stopped, start it and confirm its status before continuing.
-
-3. Open your **Remote Desktop** connection, then open a terminal on the database host and go to the AVS directory:
-
-    <pre class="bash"><code><copy>cd $DBSEC_LABS/avdf/avs</copy></code></pre>
-
-    Oracle GoldenGate is installed and preconfigured for the HOL. Ensure that its Administration Service is running:
-
-    <pre class="bash"><code><copy>./avs_start_ogg.sh</copy></code></pre>
-
-    ![Start the GoldenGate Administration Service](./images/avdf-028b.png "Start the GoldenGate Administration Service")
-
-4. In a browser on your laptop, open `http://<YOUR_DBSEC-LAB_VM_PUBLIC_IP>:50002`. Log in to the GoldenGate console as `OGGADMIN` using the workshop password `Oracle123`.
-
-    ![GoldenGate console login](./images/avdf-029.png "GoldenGate console login")
-
-    Verify that the **cust1** extract is **RUNNING**. If it is stopped, select **Action → Start** and confirm its status.
-
-    ![Verify that the cust1 extract is running](./images/avdf-622.png "Verify the cust1 extract status")
-
-5. If fresh evidence is needed, return to your **Remote Desktop** connection and run the sample load in the database-host terminal after confirming that extraction and collection are running:
-
-    <pre class="bash"><code><copy>./avs_generate_customer_order_prod_changes.sh cust1</copy></code></pre>
-
-    Record the execution time so that you can find the generated activity in the report. This script modifies demonstration data in `customer_orders`.
-
-    ![Generate sample changes for customer_orders](./images/avdf-042.png "Generate sample changes for customer_orders")
-
-6. Return to Security Central as *`AVAUDITOR`*. Select **Reports → Activity Reports**. Under **Data Access & Modification**, open **Data Modification Before-After Values**.
-
-    ![Open Data Modification Before-After Values](./images/avdf-043a.png "Open Data Modification Before-After Values")
-
-7. Filter the report for **`customer_orders`** and select a time range containing the sample activity. If you generated new changes, refresh the report after collection.
-
-8. Inspect a changed record. Review the target, user, operation, object, modified column, and its before-and-after values. The example shows an **UPDATE** by **CO** on **CUSTOMERS**, with a change to **`FULL_NAME`**.
-
-    ![Before-and-after values for customer_orders](./images/avdf-043b.png "Before-and-after values for customer_orders")
-
-If records remain absent, check the report filters, extraction status, collection status, and audit-trail time zone before repeating the load.
-
-</details>
-
 ## Task 2: Confirm the security controls with Security Advisor
 
-You have addressed the identified configuration issue and added auditing, alerting, and Database Firewall controls. Use Security Advisor to review the evidence collected during the workshop and confirm what these controls achieved.
-
-<!-- AUTHOR TODO: Validate Security Advisor query wording with the development team and replace the seven screenshot placeholders. The intended responses have not yet been confirmed on the current instance. -->
-
-<details>
-<summary><strong>Step 1: Review the controls and their evidence</strong></summary>
+You have addressed the identified configuration issue and added auditing, alerting, and Database Firewall controls. Use natural-language questions in Security Advisor to bring together the audit configuration, assessment findings, alerts, and policy information for the workshop targets.
 
 1. Log in to the Security Central console as *`AVAUDITOR`*. Click the red chat icon at the bottom of the page to open **Security Advisor**.
 
-2. Review the audit-policy configuration using the following proposed query:
+2. Review the enabled audit policies for `employees_search` using the following query:
 
-    <pre class="text"><code><copy>List the audit policies enabled on employees_search. Show the target name, policy name, and enabled status.</copy></code></pre>
+    <pre class="text"><code><copy>Show me the enabled audit policies for employees_search, including the policy name and status.</copy></code></pre>
 
-    Check the response against the policies provisioned in the Audit lab: **User Activity** and **Sensitive Data Access Monitoring** on `employees_search`. A general explanation of auditing is not confirmation of the target configuration.
+    Review the policy names and their status. The example shows **Sensitive Data Access Monitoring** as **Enabled**. Security Advisor may show a subset of the policies; use **Audit Policies on Specific Target** to review the full configuration, including **User Activity** from the Audit lab.
 
-    **Screenshot placeholder:** Validated Security Advisor response showing audit-policy names, targets, and enabled status.
+    ![Security Advisor shows enabled audit policies for employees_search](./images/security-advisor-audit-policies-AIWorld2026.png "Enabled audit policies for employees_search")
 
-3. Review the PUBLIC-grant remediation using the following proposed query:
+3. Review the PUBLIC-grant findings for `sales_history` and `customer_orders` using the following query:
 
-    <pre class="text"><code><copy>Using the latest security assessments for customer_orders and sales_history, show the results for findings related to privileges granted to PUBLIC. Include the assessment date and finding status.</copy></code></pre>
+    <pre class="text"><code><copy>Using the latest security assessment, show the results for findings related to privileges granted to PUBLIC for the target sales_history and customer_orders</copy></code></pre>
 
-    Compare the response with the refreshed assessments from the Assess lab. An empty response alone does not prove that remediation succeeded.
+    Review the finding categories and statuses for both targets. The example shows **Pass** for **System Privileges Granted to PUBLIC** and **Column Privileges Granted to PUBLIC**. Compare the relevant findings with the refreshed assessments from the Assess lab; use the **Security Assessment Detailed Report** for the complete results.
 
-    **Screenshot placeholder:** Validated Security Advisor response showing the latest PUBLIC-grant assessment results for `customer_orders` and `sales_history`.
+    ![Security Advisor shows PUBLIC-grant assessment findings for sales_history and customer_orders](./images/security-advisor-public-grants-AIWorld2026.png "PUBLIC-grant assessment findings for sales_history and customer_orders")
 
-4. Review captured privileged-user activity using the following proposed query:
+4. Review the generated alerts for `employees_search` using the following query:
 
-    <pre class="text"><code><copy>Show SELECT activity by DBA_DEBRA and DBA_HARVEY on employees_search in the last seven days. Include the user, object name, event time, and event status.</copy></code></pre>
+    <pre class="text"><code><copy>Show alerts generated for employees_search, grouped by alert policy name. Include the alert count for each policy.</copy></code></pre>
 
-    Match the returned records to the test activity from the Audit lab, including access to **`DEMO_HR_EMPLOYEES`** and **`DEMO_HR_SUPPLEMENTAL_DATA`**, where present.
+    Match the alert-policy names to the alerts reviewed in the earlier labs, including **Privileged-user activity**, **Database Firewall Alert**, and **PII Exfiltration Alert**. Use **Alert Details** to confirm the target and corresponding test events. Counts vary with the activity generated; there is no fixed expected count.
 
-    **Screenshot placeholder:** Validated Security Advisor response showing the captured test activity by `DBA_DEBRA` and `DBA_HARVEY`.
+    ![Security Advisor shows alert counts grouped by policy for employees_search](./images/security-advisor-alert-counts-AIWorld2026.png "Alert counts grouped by policy for employees_search")
 
-5. Review the generated alerts using the following proposed query:
+5. Review the Database Firewall policy associated with `employees_search` using the following query:
 
-    <pre class="text"><code><copy>Show alerts generated for employees_search in the last seven days, grouped by alert policy name. Include the alert count for each policy.</copy></code></pre>
+    <pre class="text"><code><copy>Show the Database Firewall policy name for the target employees_search; show policy name and deployment.</copy></code></pre>
 
-    Match the results to the alerts verified in the earlier labs: **Privileged-user activity**, **Database Firewall Alert**, and **PII Exfiltration Alert**. Counts vary with the activity generated; there is no fixed expected count.
+    Match the returned policy name to **EmployeeSearchAccessOverNetwork**, the policy deployed in the Database Firewall lab. The example response shows the policy name but does not show deployment status. If the response omits that status, confirm it in the Database Firewall configuration for `employees_search`, as you did in Lab 4.
 
-    **Screenshot placeholder:** Validated Security Advisor response showing alert-policy names and corresponding counts for `employees_search`.
-
-6. Review the Database Firewall blocking outcome using the following proposed query:
-
-    <pre class="text"><code><copy>Show activity blocked by Database Firewall on employees_search in the last seven days. Include the database user, SQL command, event time, action taken, and policy rule name.</copy></code></pre>
-
-    Match the response to the blocked test operation verified in the Database Firewall lab. This confirms the tested operation on the monitored network path, not every possible database connection.
-
-    **Screenshot placeholder:** Validated Security Advisor response showing the blocked Database Firewall test operation and its policy rule.
-
-</details>
-
-<details>
-<summary><strong>Step 2: Review optional controls, if completed</strong></summary>
-
-Only review the controls you implemented and validated in the optional tasks.
-
-1. If you completed **SQL Firewall**, use the following proposed query:
-
-    <pre class="text"><code><copy>Show SQL Firewall violations for EMPLOYEESEARCH_PROD on employees_search in the last seven days. Include the violation type, SQL command, and event time.</copy></code></pre>
-
-    Compare the response with the context and SQL-statement violations tested in the SQL Firewall task.
-
-    **Screenshot placeholder:** Validated Security Advisor response showing the tested SQL Firewall violations for `EMPLOYEESEARCH_PROD` on `employees_search`.
-
-2. If you completed **Database Vault**, use the following proposed query:
-
-    <pre class="text"><code><copy>Show Database Vault realm violations on customer_orders in the last seven days. Include the database user, realm name, attempted operation, and event time.</copy></code></pre>
-
-    Compare the response with the blocked **CUSTOMERADMIN** test against the **`PROTECT_CUSTOMER_ORDERS`** realm. The Database Vault task is independent of the other protection tasks.
-
-    **Screenshot placeholder:** Validated Security Advisor response showing the tested Database Vault realm violation on `customer_orders`.
-
-</details>
+    ![Security Advisor shows the Database Firewall policy name for employees_search](./images/security-advisor-database-firewall-policy-AIWorld2026.png "Database Firewall policy name for employees_search")
 
 **Note:** Database-release upgrades and broader privilege reviews remain follow-up work. The workshop verifies the specific configurations and test outcomes demonstrated in the labs; it does not establish that every risk is gone or that a database is fully compliant.
 
@@ -198,7 +102,6 @@ Only review the controls you implemented and validated in the optional tasks.
 You followed the compliance-evidence and security-review cycle:
 
 - Reviewed predefined GDPR reports for `employees_search` and `customer_orders` and the questions they help answer.
-- If you completed the optional data-change exercise, verified extraction and collection before generating sample evidence and reviewed before-and-after values on `customer_orders`.
 - Connected the implemented controls to focused Security Advisor questions.
 - Used target-specific evidence to connect a security problem, the action taken, and the value achieved.
 
@@ -207,7 +110,7 @@ You followed the compliance-evidence and security-review cycle:
 The workshop work was limited to the following registered targets:
 
 - **`employees_search`:** Privileged-user and sensitive-object auditing, privileged-user alerts, Database Firewall monitoring, blocking, and exfiltration alerts, and GDPR reporting coverage. SQL Firewall was optional.
-- **`customer_orders`:** PUBLIC-grant remediation and GDPR reporting coverage. The before-and-after reporting exercise and Database Vault were optional.
+- **`customer_orders`:** PUBLIC-grant remediation and GDPR reporting coverage. Database Vault was optional.
 - **`sales_history`:** PUBLIC-grant remediation and assessment verification only.
 
 The table connects each problem to the action taken and its demonstrated value. A green check applies only when the corresponding lab has been completed and its configuration or test evidence verified for the named target.
@@ -224,7 +127,6 @@ The table connects each problem to the action taken and its demonstrated value. 
 
 If you completed and validated the optional tasks, also include these outcomes:
 
-- **Data-change evidence — `customer_orders`:** Verified extraction and collection and reviewed the old and new values for a captured data change.
 - **SQL Firewall — `employees_search`:** The tested connection-context and SQL-statement violations were blocked.
 - **Database Vault — `customer_orders`:** The realm allowed the authorized test access and blocked the unauthorized CUSTOMERADMIN test.
 
