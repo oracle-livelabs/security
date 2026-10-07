@@ -2,49 +2,21 @@
 
 ## Introduction
 
-In the previous labs, you have been building a more complete picture of the database you are responsible for protecting.
+In the previous labs, you reviewed the database security posture, investigated who can access the database, and discovered where sensitive information resides.
 
-You first asked: Is the database securely configured?
-You used Security Assessment to identify configuration risks and detect security drift.
+Data Discovery identified sensitive columns in the `CUSTOMER`, `PAYMENT`, and `SUPPORT` schemas and recorded them in the sensitive data model `SDM1`. That model is now the inventory for the data that must be protected before a test copy is shared with the application team.
 
-Next, you asked: 
-Who can access the database, and what can they do?
-You used User Assessment to investigate potentially risky users and changes to roles and privileges.
-
-Then, you asked: What sensitive information are we actually protecting?
-You used Data Discovery to identify sensitive data in the `CUSTOMER`, `PAYMENT`, and `SUPPORT` schemas and created a sensitive data model describing where that information resides. 
-
-Now your security team has a new challenge:
-The application development team needs realistic data for development and testing. Using production-like data helps developers test applications with realistic customer, payment, and support information. But providing sensitive data to a non-production environment creates additional risk. Developers and testers might not require access to real names, email addresses, phone numbers, social security numbers, payment card numbers, or other sensitive values simply to test an application.
-
-The security question now becomes:
-
-How can we protect sensitive information while keeping the data useful for non-production application testing?
-
-Oracle Data Safe Data Masking helps address this problem by replacing sensitive values with fictitious or transformed values. You can create a masking policy from your sensitive data model and customize how different types of sensitive information are transformed.
-
-For related values, such as an address and its corresponding postal code, you can also use group masking to ensure that the values remain meaningful as a group after masking.
+The application team needs realistic records to test customer profiles, orders, payments, and support tickets. However, the team does not need access to real names, contact details, dates of birth, national identifiers, addresses, or payment-card details. A masking policy replaces those values with safe, usable values while retaining the structure needed for testing.
 
 Subsetting and masking will be run together later to create a smaller, protected copy for the application team.
 
 ### Scenario
 
-Continue acting as the database security administrator from the previous labs. Your team has completed its initial investigation and now knows the following:
-- The security posture of the database
-- Which users and privileges could present risk
-- Where sensitive information resides
+Continue acting as the database security administrator. The discovery work is complete, and `SDM1` now covers the sensitive data needed for the retail application test scenario.
 
-The application development team is preparing a non-production environment to test the customer application.
+The next control is to create a masking policy from `SDM1`. You will review the generated column mappings, keep the generated masking formats, group related address values so that they remain meaningful together, and perform a pre-masking check.
 
-In the previous lab, you created SDM1 to identify sensitive information in the `CUSTOMER` and `PAYMENT` schemas and then expanded the same model through incremental discovery to include sensitive data in the `SUPPORT` schema.
-
-The development team now needs to use this data for testing. Before the data is made available for non-production use, you need to determine how the sensitive information should be protected.
-
-You decide to create a masking policy from SDM1.
-
-Data Safe uses the sensitive columns in the model to generate masking formats for the sensitive data. You will review these generated formats and configure group masking for related address information so that the address and postal code remain a meaningful pair after masking.
-
-The resulting masking policy provides the protection rules that will be used together with Data Subsetting and Data Masking to create the smaller, protected data set for the development team's testing requirements.
+After the pre-masking check, the next lab step will run subsetting and masking together. This lab ends after the pre-masking check.
 
 Estimated Time: 20 minutes
 
@@ -52,12 +24,11 @@ Estimated Time: 20 minutes
 
 In this lab, you will:
 
-- (For your tenancy only) Grant the Data Masking role on the target database when working in your own tenancy
-- Create a masking policy from the completed `SDM1` sensitive data model
-- Review the generated masking formats for the discovered sensitive columns
-- Create group masks for customer address data as well as shipping address data
+- Grant the Data Masking role on the target database when working in your own tenancy
+- Create a masking policy from `SDM1`
+- Review the generated masking columns and confirm compatible masking formats
+- Create group masks for related address values
 - Perform a pre-masking check
-- Prepare the masking policy for use with Data Subsetting and Data Masking in the next step of the non-production data preparation workflow
 
 ### Prerequisites
 
@@ -242,5 +213,5 @@ This completes the lab. The next lab step will run subsetting and masking togeth
 ## Acknowledgements
 
 - Author - Jody Glover, Lead Principal User Assistance Developer, Database Development
-- Contributors - Bettina Schäeumer, Lead Principal Product Manager / Kajal Singh, Product Manager, Oracle Database Security
-- Last Updated By/Date - Bettina Schäumer, October 7, 2026
+- Contributor - Kajal Singh, Product Manager, Oracle Database Security
+- Last Updated By/Date - Kajal Singh, October 1, 2026

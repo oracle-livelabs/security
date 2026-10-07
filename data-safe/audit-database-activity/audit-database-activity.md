@@ -20,7 +20,7 @@ You have already answered four important questions:
 
 4. How can we safely provide that data to non-production users?
 
-    You used Data Masking to protect sensitive information while preserving useful data for development and testing.
+    You used Data Subsetting and Data Masking to reduce the data to what is needed for development and testing and protect the sensitive information that remains.
 
 Now there is one more critical question: What are people actually doing in the database?
 
@@ -32,7 +32,7 @@ Oracle Data Safe Activity Auditing allows you to configure audit and alert polic
 
 ### Scenario
 
-Continue with the same database security investigation. You have already identified potentially risky users and know where sensitive data resides. You have also protected that data for non-production use. Now your security team wants continuous visibility into activity on the database.
+Continue with the same database security investigation. You have already identified potentially risky users and know where sensitive data resides. You have also created a smaller, protected data set for non-production use by reducing the amount of data and masking the sensitive values that remain. Now your security team wants continuous visibility into activity on the database.
 
 You decide to configure monitoring for two situations that could indicate a security problem:
 
@@ -245,4 +245,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 20, 2026
+- **Last Updated By/Date** - Bettina Schäumer, October 7, 2026
