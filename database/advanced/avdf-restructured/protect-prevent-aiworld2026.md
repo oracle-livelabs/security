@@ -395,7 +395,7 @@ In this task, you can train and enforce a SQL Firewall policy for the applicatio
 <details>
 <summary><strong>Step 7: Validate SQL Firewall protection controls</strong></summary>
 
-Validate SQL Firewall protection by triggering connection-context and SQL-statement violations. First, use *SQLPLUS* in the database-host terminal through your **Remote Desktop** connection to simulate a connection-context violation.
+<p>Validate SQL Firewall protection by triggering connection-context and SQL-statement violations. First, use <em>SQLPLUS</em> in the database-host terminal through your <strong>Remote Desktop</strong> connection to simulate a connection-context violation.</p>
 
 1. Open your **Remote Desktop** connection, then open a terminal on the database host and go to the AVS directory:
 
@@ -497,7 +497,7 @@ In this task, authorize **`BA_ALEX`** to access the protected Customer Orders da
 <details>
 <summary><strong>Step 2: Authorize a user in the realm</strong></summary>
 
-Authorize business user **`BA_ALEX`** as a realm participant for reporting on Customer Orders data.
+<p>Authorize business user <strong><code>BA_ALEX</code></strong> as a realm participant for reporting on Customer Orders data.</p>
 
 1. Drill down into **`PROTECT_CUSTOMER_ORDERS`**, expand **Authorized users/roles**, and click **Add**.
 2. Check **Select users/roles**, enter **`BA_ALEX`** as the user, and click **Add**.
@@ -509,7 +509,7 @@ Authorize business user **`BA_ALEX`** as a realm participant for reporting on Cu
 <details>
 <summary><strong>Step 3: Ensure DV violation events are collected</strong></summary>
 
-The HOL is preconfigured to collect Database Vault events and violations from **`customer_orders`**.
+<p>The HOL is preconfigured to collect Database Vault events and violations from <strong><code>customer_orders</code></strong>.</p>
 
 1. Click **Targets**, select **Targets** from the left menu, and open **`customer_orders`**.
 
@@ -522,7 +522,7 @@ The HOL is preconfigured to collect Database Vault events and violations from **
 <details>
 <summary><strong>Step 4: Write the alert condition</strong></summary>
 
-Create an alert policy before generating a realm violation so that the test event can trigger an alert.
+<p>Create an alert policy before generating a realm violation so that the test event can trigger an alert.</p>
 
 1. Click **Policies**, select **Alert Policies** from the left menu, and click **Create**.
 
@@ -549,7 +549,7 @@ Create an alert policy before generating a realm violation so that the test even
 <details>
 <summary><strong>Step 5: Run the load</strong></summary>
 
-Compare authorized and unauthorized access using queries against **CO.ORDERS**.
+<p>Compare authorized and unauthorized access using queries against <strong>CO.ORDERS</strong>.</p>
 
 1. Open your **Remote Desktop** connection, then open a terminal on the database host and go to the AVS directory:
 
