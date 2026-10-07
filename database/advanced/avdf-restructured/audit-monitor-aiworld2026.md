@@ -53,7 +53,7 @@ Enable **User Activity** to capture privileged-user activity and **Sensitive Dat
     - Click **Sensitive Data Access Monitoring**.
     - Ensure that **Audit SELECT operations** remains selected.
     - Ensure that **Sensitive objects discovered by Sensitive Data Discovery** is selected.
-        ![Audit SELECT operations selected for Sensitive Data Access Monitoring](./images/audit-sensitive-data-audit-select-AIWorld2026.png "Audit SELECT operations selected")
+        ![Audit SELECT operations selected for Sensitive Data Access Monitoring](./images/audit-sensitive-data-audit-select-aiworld2026.png "Audit SELECT operations selected")
     - Enable the policy for all users except the application service account (`EMPLOYEESEARCH_PROD`).
          ![AVDF](./images/360-15.png "AVDF - Sensitive Data Access Monitoring Policy condition")
          - Set *Enable policy for* to **All users except a specific set of users**. 
@@ -102,7 +102,7 @@ Audit policies now collect the evidence needed to understand database activity. 
     - Severity: *`Warning`*
 
 
-        ![AVDF](./images/alert-policy-form-before-condition-AIWorld2026.png "Alert policy form before defining the condition")
+        ![AVDF](./images/alert-policy-form-before-condition-aiworld2026.png "Alert policy form before defining the condition")
 
 
 4. Click the **Alert Assistant** icon next to the **Condition** field.
@@ -126,7 +126,7 @@ Audit policies now collect the evidence needed to understand database activity. 
     **Note:** AI-generated conditions are not guaranteed to be complete or correct. Review the generated condition before using it.
 
 
-    ![Alert Assistant generated condition](./images/alert-assistant-generated-AIWorld2026.png "Generate an alert condition using the Alert Assistant")
+    ![Alert Assistant generated condition](./images/alert-assistant-generated-aiworld2026.png "Generate an alert condition using the Alert Assistant")
 
 
 8. Click **Use this alert condition**.
@@ -141,7 +141,7 @@ Audit policies now collect the evidence needed to understand database activity. 
     Your alert should look like this:
 
 
-    ![AVDF](./images/alert-policy-form-completed-AIWorld2026.png "Completed alert policy configuration")
+    ![AVDF](./images/alert-policy-form-completed-aiworld2026.png "Completed alert policy configuration")
 
 
 11. Click **Save**.
@@ -181,9 +181,9 @@ The audit policies and alert policy are now enabled. In this task, generate cont
 
 4. After both commands complete, return to Security Central.
 
-**Note:** `freepdb1` is the PDB name used by the script. In Security Central, this PDB is registered as the **`employees_search`** target.
+    **Note:** `freepdb1` is the PDB name used by the script. In Security Central, this PDB is registered as the **`employees_search`** target.
 
-![Database console output after running the scripts](./images/task3-database-console-output.png?raw=1 "Database console output after running the scripts")
+    ![Database console output after running the scripts](./images/task3-database-console-output.png?raw=1 "Database console output after running the scripts")
 
 </details>
 
@@ -202,13 +202,13 @@ The audit policies and alert policy are now enabled. In this task, generate cont
 
 6. Confirm the relevant evidence, including the user, registered target, PDB or database, sensitive object, activity or action, and event time.
 
-![Activity on sensitive data by privileged users](./images/activity-sensitive-data-privileged-users-AIWorld2026.png?raw=1 "Activity on sensitive data by privileged users")
+    ![Activity on sensitive data by privileged users](./images/activity-sensitive-data-privileged-users-aiworld2026.png?raw=1 "Activity on sensitive data by privileged users")
 
 7. Open **All Activity by Privileged Users**.
 
-![All Activity by Privileged Users](./images/all-activity-by-privileged-users-AIWorld2026.png?raw=1 "All Activity by Privileged Users")
+    ![All Activity by Privileged Users](./images/all-activity-by-privileged-users-aiworld2026.png?raw=1 "All Activity by Privileged Users")
 
-**Expected outcome:** The activity is visible in both the sensitive-data report and the broader privileged-user activity report.
+    **Expected outcome:** The activity is visible in both the sensitive-data report and the broader privileged-user activity report.
 
 </details>
 
@@ -223,9 +223,9 @@ The audit policies and alert policy are now enabled. In this task, generate cont
 
 4. Confirm that the alert policy, severity, user, target, and event details are shown.
 
-**Expected outcome:** The enabled **Privileged-user activity** policy generates alert events for activity performed by users in the **Database Administrators** set.
+    **Expected outcome:** The enabled **Privileged-user activity** policy generates alert events for activity performed by users in the **Database Administrators** set.
 
-![Generated Privileged-user activity alerts](./images/alert-generated-privileged-user-activity-AIWorld2026.png?raw=1 "Generated Privileged-user activity alerts")
+    ![Generated Privileged-user activity alerts](./images/alert-generated-privileged-user-activity-aiworld2026.png?raw=1 "Generated Privileged-user activity alerts")
 
 </details>
 
