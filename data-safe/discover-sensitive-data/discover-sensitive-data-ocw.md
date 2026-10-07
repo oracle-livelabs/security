@@ -26,9 +26,9 @@ Continue acting as the database security administrator from the previous labs. Y
 
 Now your security team asks a different question: If one of these accounts were compromised, what sensitive information could potentially be exposed?
 
-Your first step is to discover where sensitive data exists in the database. You will use Data Discovery to examine the `HCM1` schema and identify sensitive columns. You will review the results and sample data to understand what information is being protected. During the review, you will also recognize that automated discovery does not necessarily capture every piece of information your organization considers sensitive. You will therefore extend the sensitive data model by explicitly adding another sensitive column. This creates a more complete inventory that can support the security and data protection activities you will perform in subsequent labs.
+Your first step is to discover where sensitive data exists in the database. You will use Data Discovery to examine the `HCM1` schema and identify sensitive columns. You will review the results and sample data to understand what information is being protected.
 
-Estimated Lab Time: 15 minutes
+Estimated Lab Time: 10 minutes
 
 [Lab 4 - Discover sensitive data](videohub:1_g5kt8rbe)
 
@@ -40,7 +40,7 @@ In this lab, you will:
 - Review where sensitive information is stored
 - Examine the sensitive data model
 - Understand how Data Safe uses sensitive types and data relationships
-- Extend the sensitive data model with an additional sensitive column
+
 
 ### Prerequisites
 
@@ -94,7 +94,10 @@ This lab assumes you have:
 
     The **SDM1** page opens.
 
-9. Review the information about the sensitive data model.
+
+## Task 2: Review the sensitive data model
+
+1. Review the information about the sensitive data model.
 
     - The **Details** tab lists general information about your sensitive data model, the target database, sensitive data information, and sensitive data counts.
     - You can view the selected schemas for discovery, selected sensitive types for discovery, sensitive schemas discovered, and sensitive types discovered by selecting the respective **View details** button.
@@ -102,7 +105,7 @@ This lab assumes you have:
 
     ![Sensitive Data Model Details tab](images/sensitive-data-model-details-tab.png "Sensitive Data Model Details tab")
 
-10. Select the **Sensitive columns** tab and review the discovered sensitive columns. 
+2. Select the **Sensitive columns** tab and review the discovered sensitive columns.
 
     - For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, sample data (if you chose to retrieve sample data and if it exists), confidence level, estimated row count, and audit records.
     - Review the sample data to get an idea of what it looks like.
@@ -110,35 +113,7 @@ This lab assumes you have:
 
     ![Sensitive Data Model Sensitive Columns tab](images/sensitive-data-model-sensitive-columns-tab.png "Sensitive Data Model Sensitive Columns tab")
 
-
-## Task 2: Add a column to the sensitive data model
-
-Add `COUNTRY_ABBREV` to the sensitive data model.
-
-1. Under **Sensitive columns**, from the **Actions** menu, select **Add columns**.
-
-    The **Add columns** panel opens.
-
-2. From the **Schema name** dropdown list, select **HCM1**.
-
-3. From the **Table name** dropdown list, select **LOCATIONS**.
-
-4. From the **Column name** dropdown list, select **COUNTRY_ABBREV**.
-
-5. Select **Search**.
-
-6. Scroll down, and then from the **Sensitive type** dropdown list for the `COUNTRY_ABBREV` column, select **Address - Country**. *Be sure to select Country, not County.*
-
-7. Select the check box for the `COUNTRY_ABBREV` column.
-
-8. Select **Add columns**, and then wait until you are returned to the **Sensitive columns** list.
-
-    ![Add columns panel](images/add-columns-panel.png "Add columns panel")
-
-9. Verify that `COUNTRY_ABBREV` from the `LOCATIONS` table is added to your sensitive data model.
-
 You may now **proceed to the next lab**.
-
 
 ## Learn More
 
@@ -149,4 +124,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Bettina Schäumer, August 20, 2026
+- **Last Updated By/Date** - Jody Glover, September 28, 2026

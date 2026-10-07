@@ -27,16 +27,20 @@ Estimated Time: 55 minutes
 - Configures SQL*Plus to use an OCI IAM OAuth2 access token.
 - Verifies the same SQL returns different rows and columns for Marvin and Emma.
 
+![Infographic showing OCI IAM authentication, OAuth2 token-based SQL*Plus connections, IAM group-to-database-role mapping, and Oracle Deep Data Security enforcing different row and column access for Marvin and Emma.](images/oci-iam-deep-data-security-overview.png)
+
+*OCI IAM authenticates the user; Oracle Deep Data Security authorizes the data.*
+
 ## Assumptions
 
 - You are running from OCI Cloud Shell. If you run outside Cloud Shell, use Bash
   4.x or later, OCI CLI, Python 3, and SQL*Plus.
 - OCI CLI is already available and authenticated.
-- SQL*Plus is available. The lab scripts use `sqlplus`; they do not currently
-  use SQLcl.
+- SQL*Plus is available. The lab scripts use `sqlplus`.
 - Your OCI user can create Autonomous AI Databases in the target compartment.
 - Your OCI user can create OCI IAM domain users and groups, or reuse existing
   Marvin and Emma users and `EMPLOYEES` / `MANAGERS` groups.
+- An Oracle AI Database 26ai April 2026 Release Update (RU) instance (or newer).
 - The target database is Autonomous AI Database 26ai. Deep Data Security end-user
   context privileges used by this lab are not supported on 19c.
 - You know the compartment name where the Autonomous AI Database instance should
@@ -124,6 +128,10 @@ export ADB_MAINTENANCE_SCHEDULE_TYPE=EARLY
 </copy>
 ```
 
+For a paid database, the setup script uses the ECPU compute model with two ECPUs.
+For an Always Free database, it omits the scalable compute options because the
+Always Free shape has fixed CPU and memory.
+
 Set `ADB_MAINTENANCE_SCHEDULE_TYPE=EARLY` only when you want the Autonomous AI
 Database to receive early maintenance patches; leave it unset for the regular
 maintenance schedule.
@@ -195,23 +203,6 @@ Important files include:
 | `verify_db_setup.sh` | Verifies the ADMIN-side database setup |
 | `07_cleanup_adb_lab.sh` | Removes lab database objects and optional OCI resources |
 
-The script numbers are the execution order after the lab files are downloaded.
-They are not the same as the LiveLabs task numbers because Task 0 is the
-download step, and cleanup is optional after the verification tasks.
-
-| LiveLabs task | Script |
-| --- | --- |
-| Task 0: Download and unzip the lab files | No setup script |
-| Task 1: Create Autonomous AI Database and download the wallet | `00_setup_adb.sh` |
-| Task 2: Enable OCI IAM on Autonomous AI Database | `01_enable_oci_iam.sh` |
-| Task 3: Create the HR schema | `02_create_hr_schema.sh` |
-| Task 4: Create data roles and data grants | `03_create_data_roles_and_grants.sh` |
-| Task 5: Verify the ADMIN-side setup | `verify_db_setup.sh` |
-| Task 6: Get an OCI IAM OAuth2 access token | `04_get_iam_oauth_token.sh` |
-| Task 7: Verify data grants as Marvin | `05_verify_as_marvin.sh` |
-| Task 8: Verify data grants as Emma | `06_verify_as_emma.sh` |
-| Cleanup after the lab | `07_cleanup_adb_lab.sh` |
-
 ## Task 1: Create Autonomous AI Database and Download the Wallet
 
 `00_setup_adb.sh` tries to discover the OCI IAM domain URL automatically by
@@ -261,24 +252,6 @@ This script creates or reuses:
 - Database wallet: `$HOME/adb_wallet/<DB_NAME>`
 - OCI IAM domain groups: `EMPLOYEES`, `MANAGERS`
 - OCI IAM domain users: `marvin`, `emma`
-
-The setup script prints numbered steps as it runs. The most important identity
-steps are:
-
-- **Step 1: Creating or reusing OCI IAM OAuth applications.** The resource
-  application represents the database as an OAuth resource. The public client
-  application starts the browser-based authorization-code flow that Marvin or
-  Emma uses later in the lab. The access token issued by OCI IAM is scoped for
-  the database resource application.
-- **Step 2: Creating an access-token group claim.** Deep Data Security maps
-  database data roles to OCI IAM group names with `IAM_OAUTH_GROUP=...`. The
-  custom claim tells OCI IAM to include the user's group names in access tokens.
-  Without this claim, the user may authenticate, but the database cannot see the
-  `EMPLOYEES` or `MANAGERS` group values needed for data-role mapping.
-
-The remaining setup steps create or reuse the demo groups and users, create the
-Autonomous AI Database, download the wallet, and write `.adb-oci-iam.env` with
-the values used by later scripts.
 
 Default group membership:
 
@@ -332,24 +305,10 @@ END;
 ```
 
 The `params` argument sets `identity_provider_oauth_config` to the DB resource
-app created by Task 1. The script also creates the database-side
+app created by Task 0. The script also creates the database-side
 `OCI_IAM_DOMAIN_DB_CRED$` credential with `DBMS_CLOUD.CREATE_CREDENTIAL`.
-That credential stores the OAuth client ID and secret for the database resource
-application inside Autonomous AI Database. It is part of the database-side OCI
-IAM configuration; it is not Marvin's or Emma's password, and users do not type
-it during login.
-
-The user login flow later in the lab is separate:
-
-- `04_get_iam_oauth_token.sh` opens an OCI IAM browser sign-in flow for Marvin
-  or Emma.
-- OCI IAM returns an OAuth2 access token for that signed-in user.
-- The script writes the token to `$HOME/.oci/adb-oci-iam/token`.
-- `sqlnet.ora` points SQL*Plus at that token directory with `TOKEN_AUTH=OAUTH`
-  and `TOKEN_LOCATION=$HOME/.oci/adb-oci-iam`.
-- When SQL*Plus connects with `/@${ADB_SERVICE}`, Autonomous AI Database reads
-  the token, validates it against the OCI IAM configuration, and maps the
-  token's group claim to data roles such as `IAM_OAUTH_GROUP=EMPLOYEES`.
+The client does not use this secret; SQL*Plus only reads the OAuth2 access token
+from `TOKEN_LOCATION`.
 
 If this task prints `ALTER SYSTEM SET identity_provider_oauth_config`, you are
 running an old copy of the lab files. Re-download the ZIP and unzip with `-o`.
@@ -382,6 +341,45 @@ The script creates:
 - `DIRECT_LOGON_ROLE`, carrying `CREATE SESSION`
 - HR row and column data grants
 
+### How Task 4 works
+
+Task 4 runs as `ADMIN`, the provisioning identity. `ADMIN` creates the objects;
+Marvin and Emma later authenticate through OCI IAM. Neither user logs in as
+`HR`, which owns the table, context, and package.
+
+Here is the permission path:
+
+```text
+OCI IAM group -> Deep Data Security data role -> data grant -> allowed data
+```
+
+- `CREATE DATA ROLE ... MAPPED TO 'IAM_OAUTH_GROUP=...'` maps an IAM token group
+  to a data role. When the group is in the token, the database activates that
+  matching data role.
+- `GRANT direct_logon_role TO HRAPP_*` grants the ordinary database role that
+  provides `CREATE SESSION`. It is not a `GRANT DATA ROLE` statement.
+- The `HR` definer-rights context handler fills `HR.EMP_CTX.ID` with the current
+  employee ID. `UPDATE ANY END USER CONTEXT` is granted to `HR` because Oracle
+  requires it for this type of handler. It is not a runtime user privilege.
+- `EMPLOYEE_CONTEXT_GRANT` gives both data roles `SELECT` on the matching row in
+  `SYS.END_USER_CONTEXT`. That allows the custom context to be instantiated and
+  read when the manager predicate uses it.
+- The employee grant filters rows to the current user and allows updates only to
+  `phone_number` and `first_name`. The manager grant filters rows to direct
+  reports, allows `ALL COLUMNS EXCEPT ssn`, and permits updates to `salary`,
+  `department_id`, and `first_name`.
+
+Data grants are additive: Marvin has both IAM groups and receives both policies;
+Emma has only `EMPLOYEES` and receives only her own row. The verification scripts
+run the same query for both users and use `ORA_IS_COLUMN_AUTHORIZED` to show the
+effective `ssn` decision.
+
+If you replace `ADMIN` with a named provisioning account, it needs the relevant
+creation privileges, including `CREATE DATA ROLE`, `CREATE ANY DATA GRANT`,
+`ADMINISTER ANY DATA GRANT`, and `CREATE ANY END USER CONTEXT`. The runtime data
+roles need `CREATE SESSION`, package execution, and the data grants—not broad
+`SELECT` or `UPDATE` privileges on `HR.EMPLOYEES`.
+
 ## Task 5: Verify the ADMIN-Side Setup
 
 ```bash
@@ -402,6 +400,34 @@ HR_EMPLOYEE_ROWS                    7
 OCI_IAM_DOMAIN_DB_CRED$             <OCI_DB_CLIENT_ID>
 HRAPP_EMPLOYEES                     iam_oauth_group=EMPLOYEES
 HRAPP_MANAGERS                      iam_oauth_group=MANAGERS
+```
+
+To inspect the objects created by Task 4, run these read-only queries as `ADMIN`:
+
+```sql
+<copy>
+SELECT data_role, mapped_to
+FROM dba_data_roles
+WHERE data_role IN ('HRAPP_EMPLOYEES', 'HRAPP_MANAGERS')
+ORDER BY data_role;
+
+SELECT data_role, role_type, grantee, grantee_type
+FROM dba_data_role_grants
+WHERE grantee IN ('HRAPP_EMPLOYEES', 'HRAPP_MANAGERS')
+   OR data_role IN ('DIRECT_LOGON_ROLE', 'EMPLOYEE_CONTEXT_ADMIN')
+ORDER BY data_role, grantee;
+
+SELECT owner, grant_name, object_owner, object_name, privilege, column_name
+FROM dba_data_grants
+WHERE owner = 'HR'
+ORDER BY grant_name, privilege, column_name;
+
+SELECT context_owner, context_name, handler_owner, handler_package,
+       handler_procedure, handler_status
+FROM dba_end_user_context_definitions
+WHERE context_owner = 'HR'
+  AND context_name = 'EMP_CTX';
+</copy>
 ```
 
 ## Task 6: Get an OCI IAM OAuth2 Access Token
@@ -447,15 +473,15 @@ Emma. The verification scripts reject tokens for the wrong user.
 
 In headless mode:
 
-- Copy the printed **LOGIN URL**.
-- Paste it into a separate private window, incognito window, separate browser
-  profile, or different browser.
-- Sign in as the target demo user, `marvin` or `emma`.
-- The final `localhost:8888/callback?...` page will usually fail to load. That
-  is expected. The page load is not the success signal.
-- Copy the entire `localhost:8888/callback?...` URL from that browser address
-  bar.
-- Paste the full URL back into the Cloud Shell prompt, then press Enter.
+1. Copy the printed **LOGIN URL**.
+2. Paste it into a separate private window, incognito window, separate browser
+    profile, or different browser.
+3. Sign in as the target demo user, `marvin` or `emma`.
+4. The final `localhost:8888/callback?...` page will usually fail to load. That
+    is expected. The page load is not the success signal.
+5. Copy the entire `localhost:8888/callback?...` URL from that browser address
+    bar.
+6. Paste the full URL back into the Cloud Shell prompt, then press Enter.
 
 After login, the script writes that user's OAuth2 access token here:
 
@@ -712,6 +738,11 @@ them, because they may be reused by other labs or policies.
 - [Enable OCI IAM authentication on Autonomous AI Database](https://docs.public.content.oci.oraclecloud.com/en-us/iaas/autonomous-database-serverless/doc/enable-iam-authentication.html)
 - [Connect to Autonomous AI Database with OCI IAM authentication](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/iam-access-database.html)
 - [Oracle Deep Data Security Guide](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/index.html)
+- [Create Data Roles](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/create-data-role.html)
+- [Create Data Grants](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/create-data-grants.html)
+- [Modify Custom End-User Context Attributes](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/modify-custom-end-user-context-attributes.html)
+- [Data Authorization Views](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/data-authorization-views.html)
+- [Building Trusted Generative AI Experiences with Oracle Deep Data Security](https://blogs.oracle.com/database/building-trusted-genai-experiences-with-oracle-deep-data-security)
 
 ## Acknowledgements
 

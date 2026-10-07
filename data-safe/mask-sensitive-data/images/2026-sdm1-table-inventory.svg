@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+<title id="title">SDM1 table inventory for Database Actions review</title>
+<desc id="desc">The four tables and thirteen sensitive columns to review in Database Actions.</desc>
+<rect width="1600" height="720" fill="#f7f8fa"/>
+<text x="40" y="54" fill="#111827" font-family="Arial,sans-serif" font-size="32" font-weight="700">Database Actions review — SDM1 inventory</text>
+<text x="40" y="86" fill="#4b5563" font-family="Arial,sans-serif" font-size="18">Review these tables in the CUSTOMER, PAYMENT, and SUPPORT schemas.</text>
+<rect x="40" y="116" width="1520" height="52" fill="#1f4e79"/>
+<g fill="#ffffff" font-family="Arial,sans-serif" font-size="18" font-weight="700"><text x="62" y="149">Schema</text><text x="280" y="149">Table</text><text x="600" y="149">Sensitive columns in SDM1</text></g>
+<g font-family="Arial,sans-serif" font-size="17" fill="#111827">
+  <rect x="40" y="168" width="1520" height="104" fill="#ffffff"/><text x="62" y="214">CUSTOMER</text><text x="280" y="214">CUSTOMERS</text><text x="600" y="202">CUSTOMER_ADDRESS, DATE_OF_BIRTH, EMAIL_ADDRESS, FIRST_NAME,</text><text x="600" y="232">LAST_NAME, PHONE_NUMBER, POSTAL_CODE, SSN</text>
+  <rect x="40" y="272" width="1520" height="82" fill="#eef4fb"/><text x="62" y="318">CUSTOMER</text><text x="280" y="318">ORDERS</text><text x="600" y="306">SHIPPING_ADDRESS, SHIPPING_ZIP</text>
+  <rect x="40" y="354" width="1520" height="82" fill="#ffffff"/><text x="62" y="400">PAYMENT</text><text x="280" y="400">PAYMENTS</text><text x="600" y="388">CARDHOLDER_NAME</text>
+  <rect x="40" y="436" width="1520" height="82" fill="#eef4fb"/><text x="62" y="482">SUPPORT</text><text x="280" y="482">SUPPORT_TICKETS</text><text x="600" y="470">CONTACT_EMAIL, CONTACT_PHONE</text>
+</g>
+<rect x="40" y="558" width="1520" height="82" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="64" y="592" fill="#075985" font-family="Arial,sans-serif" font-size="18" font-weight="700">Review only the column headings and metadata.</text><text x="64" y="620" fill="#075985" font-family="Arial,sans-serif" font-size="17">Do not record or copy row values; masking is not run in this lab.</text>
+</svg>
