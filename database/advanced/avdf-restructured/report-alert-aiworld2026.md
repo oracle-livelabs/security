@@ -32,7 +32,7 @@ Security Central provides predefined reports that help organizations review sens
 
 4. Ensure that both **`employees_search` (Oracle Database)** and **`customer_orders` (Oracle Database)** are selected. If needed, move them to the selected targets and click **Save**. Keep other selected targets unchanged.
 
-    ![Associate employees_search and customer_orders with GDPR reports](./images/gdpr-targets-employees-search-customer-orders-AIWorld2026.png "Associate employees_search and customer_orders with GDPR reports")
+    ![Associate employees_search and customer_orders with GDPR reports](./images/gdpr-targets-employees-search-customer-orders-aiworld2026.png "Associate employees_search and customer_orders with GDPR reports")
 
 5. Open the **Sensitive Data** report. Review the target, schema, object, column name, and sensitive-data type for `employees_search` and `customer_orders`.
 
@@ -69,7 +69,7 @@ You have addressed the identified configuration issue and added auditing, alerti
 
     Review the policy names and their status. The example shows **Sensitive Data Access Monitoring** as **Enabled**. Security Advisor may show a subset of the policies; use **Audit Policies on Specific Target** to review the full configuration, including **User Activity** from the Audit lab.
 
-    ![Security Advisor shows enabled audit policies for employees_search](./images/security-advisor-audit-policies-AIWorld2026.png "Enabled audit policies for employees_search")
+    ![Security Advisor shows enabled audit policies for employees_search](./images/security-advisor-audit-policies-aiworld2026.png "Enabled audit policies for employees_search")
 
 3. Review the PUBLIC-grant findings for `sales_history` and `customer_orders` using the following query:
 
@@ -77,7 +77,7 @@ You have addressed the identified configuration issue and added auditing, alerti
 
     Review the finding categories and statuses for both targets. The example shows **Pass** for **System Privileges Granted to PUBLIC** and **Column Privileges Granted to PUBLIC**. Compare the relevant findings with the refreshed assessments from the Assess lab; use the **Security Assessment Detailed Report** for the complete results.
 
-    ![Security Advisor shows PUBLIC-grant assessment findings for sales_history and customer_orders](./images/security-advisor-public-grants-AIWorld2026.png "PUBLIC-grant assessment findings for sales_history and customer_orders")
+    ![Security Advisor shows PUBLIC-grant assessment findings for sales_history and customer_orders](./images/security-advisor-public-grants-aiworld2026.png "PUBLIC-grant assessment findings for sales_history and customer_orders")
 
 4. Review the generated alerts for `employees_search` using the following query:
 
@@ -85,7 +85,7 @@ You have addressed the identified configuration issue and added auditing, alerti
 
     Match the alert-policy names to the alerts reviewed in the earlier labs, including **Privileged-user activity**, **Database Firewall Alert**, and **PII Exfiltration Alert**. Use **Alert Details** to confirm the target and corresponding test events. Counts vary with the activity generated; there is no fixed expected count.
 
-    ![Security Advisor shows alert counts grouped by policy for employees_search](./images/security-advisor-alert-counts-AIWorld2026.png "Alert counts grouped by policy for employees_search")
+    ![Security Advisor shows alert counts grouped by policy for employees_search](./images/security-advisor-alert-counts-aiworld2026.png "Alert counts grouped by policy for employees_search")
 
 5. Review the Database Firewall policy associated with `employees_search` using the following query:
 
@@ -93,7 +93,7 @@ You have addressed the identified configuration issue and added auditing, alerti
 
     Match the returned policy name to **EmployeeSearchAccessOverNetwork**, the policy deployed in the Database Firewall lab. The example response shows the policy name but does not show deployment status. If the response omits that status, confirm it in the Database Firewall configuration for `employees_search`, as you did in Lab 4.
 
-    ![Security Advisor shows the Database Firewall policy name for employees_search](./images/security-advisor-database-firewall-policy-AIWorld2026.png "Database Firewall policy name for employees_search")
+    ![Security Advisor shows the Database Firewall policy name for employees_search](./images/security-advisor-database-firewall-policy-aiworld2026.png "Database Firewall policy name for employees_search")
 
 **Note:** Database-release upgrades and broader privilege reviews remain follow-up work. The workshop verifies the specific configurations and test outcomes demonstrated in the labs; it does not establish that every risk is gone or that a database is fully compliant.
 
