@@ -34,7 +34,7 @@
     },
     {
       "title": "Lab 5: Review Compliance Evidence and Confirm Workshop Outcomes",
-      "description": "Optionally review GDPR and before-and-after reports, then use Security Advisor to review the controls and summarize target-specific outcomes.",
+      "description": "Optionally review GDPR reports, then use Security Advisor to review the controls and summarize target-specific outcomes.",
       "publisheddate": "10/3/2026",
       "filename": "../../avdf-restructured/report-alert-AIWorld2026.md"
     }

@@ -21,27 +21,51 @@
         #module-content table > caption { display: none; }
     </style>
     <script>
-        // Access is a short onboarding guide: keep both tasks fully visible.
+        // The standard renderer skips the first h2; Lab 1 starts with Task 1.
         document.addEventListener("DOMContentLoaded", function () {
             var content = document.getElementById("module-content");
-            function showAccessTasks() {
+            function enableFirstAccessTask() {
                 if (new URLSearchParams(window.location.search).get("lab") !== "getting-started-AIWorld2026") return;
-                content.querySelectorAll("h2").forEach(function (heading) {
-                    heading.classList.remove("plus", "minus");
-                    heading.removeAttribute("tabindex");
-                    if (window.jQuery) window.jQuery(heading).off("click keydown");
-                    Array.from(heading.parentElement.children).forEach(function (element) {
-                        if (element.style.display === "none") element.style.removeProperty("display");
-                    });
-                });
+                var heading = content.querySelector("h2");
                 var toggle = content.querySelector("#btn_toggle");
-                if (toggle) toggle.remove();
+                if (!heading || !toggle || !window.jQuery || heading.dataset.accessToggle) return;
+                heading.dataset.accessToggle = "ready";
+                var task = window.jQuery(heading);
+                var body = task.nextUntil("h1, h2");
+                function setExpanded(expanded) {
+                    body.toggle(expanded);
+                    task.toggleClass("plus", !expanded).toggleClass("minus", expanded);
+                    heading.setAttribute("aria-expanded", String(expanded));
+                }
+                function syncToggle() {
+                    var expanded = content.querySelectorAll("h2.minus").length;
+                    var collapsed = content.querySelectorAll("h2.plus").length;
+                    var expandAll = expanded <= collapsed;
+                    window.jQuery(toggle).text(expandAll ? "Expand All Tasks" : "Collapse All Tasks")
+                        .toggleClass("plus", expandAll).toggleClass("minus", !expandAll);
+                }
+                function toggleTask() {
+                    setExpanded(heading.classList.contains("plus"));
+                    syncToggle();
+                }
+                task.attr("tabindex", "0").on("click.accessToggle", toggleTask)
+                    .on("keydown.accessToggle", function (event) {
+                        if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            toggleTask();
+                        }
+                    });
+                // Include Task 1 before the renderer toggles the other sections.
+                toggle.addEventListener("click", function () {
+                    setExpanded(toggle.classList.contains("plus"));
+                }, true);
+                setExpanded(false);
+                syncToggle();
             }
-            new MutationObserver(showAccessTasks).observe(content, { childList: true, subtree: true });
-            showAccessTasks();
+            new MutationObserver(enableFirstAccessTask).observe(content, { childList: true, subtree: true });
+            enableFirstAccessTask();
         });
     </script>
-
 </head>
 
 <body>
