@@ -10,7 +10,7 @@ Then you asked: Who can access the database, and what can they do? User Assessme
 
 Next you asked: What sensitive information are we protecting? Data Discovery identified sensitive information and helped you build a sensitive data model.
 
-Then you asked: How can we safely use that data outside production? Data Masking helped you protect sensitive information while keeping the data useful for development and testing.
+Then you asked: How can we safely use that data outside production? Data Subsetting and Data Masking helped you reduce the data to what is needed for development and testing and protect the sensitive information that remains.
 
 Finally you asked: What are users actually doing in the database? Activity Auditing helped you monitor database activity, generate alerts, and investigate audit events.
 
@@ -20,7 +20,7 @@ There is now one more security question: Even when a user is legitimate, how do 
 
 Continue acting as the database security administrator.
 
-During your previous investigations, you discovered that `APP_USER` is a legitimate application account that accesses the `HCM` data. The application needs to perform specific queries against the database. However, you do not want a compromised `APP_USER` session to be able to execute arbitrary SQL against sensitive tables.
+During your previous investigations, you discovered that `APP_USER` is a legitimate application account that accesses the customer application data. The application needs to perform specific queries against the database. However, you do not want a compromised `APP_USER` session to be able to execute arbitrary SQL against sensitive tables.
 
 For example, perhaps the application normally needs to retrieve the following data:
 
@@ -315,4 +315,4 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 20, 2026
+- **Last Updated By/Date** - Bettina Schäumer, October 7, 2026
