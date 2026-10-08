@@ -2,37 +2,28 @@
 
 ## Introduction
 
-After the Resource Manager Stack finishes applying, use the links and generated password in **Application Information** to open the workshop applications. This short lab confirms that the applications are ready for the Deep Data Security walkthrough.
+When provisioning completes, use **View Login Info** to open the workshop applications. This short lab confirms that both are running before you start the Deep Data Security walkthrough.
 
 Estimated Time: 5 minutes
 
 ### Objectives
 
-- Open the Stack's **Application Information** tab.
-- Sign in to **Deep Sec Demo Setup** as `ADMIN`.
-- Open the Customer Sales App in a second browser tab.
-- Confirm that the workshop applications are ready for the next lab.
+- Copy the `ADMIN` password from **View Login Info**.
+- Log in to the Admin Console.
 
-### Prerequisites
+## Task 1: Open the workshop console
 
-- The Resource Manager Apply job has completed successfully.
-- The Stack page and its **Application Information** tab are available.
+1. Open **View Login Info** on the lab page.
 
-## Task 1: Open the workshop applications
+    ![View Login Info page with URLs and passwords](images/deepsec-lab-login-details-ll.png)
 
-1. On the OCI Stack page, open the **Application Information** tab.
+2. Copy the `ADMIN` password.
 
-    ![OCI Resource Manager Application Information tab with the Open Deep Sec Demo Setup action highlighted and the generated password, Customer Sales App, JupyterLab, database, and compute outputs listed](images/oci-stack-application-info.png)
+3. Open **Admin Console** and sign in as `ADMIN` with the password you copied. DeeBee, the lab assistant, greets you.
 
-2. Find the generated password. Select **Unlock** if the password is hidden. Copy the password. It is shared by `ADMIN` in Deep Sec Demo Setup, `MARVIN` and `EMMA` in the Customer Sales App, and JupyterLab.
+> **Note:** Do not select **Start DB Setup** yet. You start the walkthrough in the next lab.
 
-3. Open **Deep Sec Demo Setup** from the link in the **Application Information** tab. Sign in as `ADMIN` with the password shown on that tab.
-
-4. Open the **Customer Sales App** from its link in **Application Information** and leave its sign-in page open in a second browser tab. Wait until the walkthrough creates Marvin and grants his data role before signing in.
-
-5. Return to **Deep Sec Demo Setup** and confirm that the **Overview** page loads. Do not select **Start DB Setup** yet; you will begin the walkthrough in the next lab.
-
-    You may now proceed to the next lab.
+You may now proceed to the next lab.
 
 ## Acknowledgements
 
