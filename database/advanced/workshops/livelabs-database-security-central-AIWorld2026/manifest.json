@@ -1,0 +1,42 @@
+{
+  "workshoptitle": "HOL6021 - See Risk Across Every Database: Hands-On with Database Security Central",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction: About This Hands-on Lab",
+      "description": "Understand Security Central, the workshop environment, and the risk-to-evidence story.",
+      "publisheddate": "10/3/2026",
+      "filename": "../../avdf-restructured/intro-aiworld2026.md"
+    },
+    {
+      "title": "Lab 1: Access Security Central console",
+      "description": "Retrieve workshop credentials and URLs, reset console passwords, and verify Glassfish application access.",
+      "publisheddate": "10/3/2026",
+      "filename": "../../avdf-restructured/getting-started-aiworld2026.md"
+    },
+    {
+      "title": "Lab 2: Assess and Discover the Risk",
+      "description": "Identify risks, discover sensitive objects and privileged users, remediate identified PUBLIC grants, and identify missing controls.",
+      "publisheddate": "10/3/2026",
+      "filename": "../../avdf-restructured/assess-discover-aiworld2026.md"
+    },
+    {
+      "title": "Lab 3: Audit, Monitor, and Alert on Privileged Activity",
+      "description": "Provision audit policies, create an alert with the Alert Assistant, and verify activity in reports and alerts.",
+      "publisheddate": "10/3/2026",
+      "filename": "../../avdf-restructured/audit-monitor-aiworld2026.md"
+    },
+    {
+      "title": "Lab 4: Protect and Prevent Unauthorized Database Activity",
+      "description": "Configure and validate Database Firewall protection, with optional SQL Firewall and independent Database Vault tasks.",
+      "publisheddate": "10/3/2026",
+      "filename": "../../avdf-restructured/protect-prevent-aiworld2026.md"
+    },
+    {
+      "title": "Lab 5: Review Compliance Evidence and Confirm Workshop Outcomes",
+      "description": "Optionally review GDPR reports, then use Security Advisor to review the controls and summarize target-specific outcomes.",
+      "publisheddate": "10/3/2026",
+      "filename": "../../avdf-restructured/report-alert-aiworld2026.md"
+    }
+  ]
+}
