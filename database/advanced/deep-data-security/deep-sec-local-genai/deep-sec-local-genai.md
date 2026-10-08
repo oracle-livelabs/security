@@ -8,7 +8,7 @@ In this lab, you use a guided web console to configure Oracle Deep Data Security
 
 The console walks you through every step with instructions, DeeBee's Notes, SQL previews, and quizzes. Depending on the step, select **Run Action**, **Apply this grant**, or **Mark as viewed**. You do not need to return to this document after you enter the console.
 
-Estimated Time: 60 minutes after provisioning completes.
+Estimated Workshop Time: 60 minutes after provisioning completes.
 
 ### Objectives
 
