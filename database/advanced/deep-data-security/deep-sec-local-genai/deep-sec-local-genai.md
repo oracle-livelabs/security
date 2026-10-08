@@ -2,21 +2,21 @@
 
 ## Introduction
 
-In this lab, you configure data access for a preinstalled Customer Sales App. Oracle AI Database enforces which rows and columns each signed-in end user can see. You then test the same boundary with OCI Generative AI and with data outside the database.
+In this lab, you use a guided web console to configure Oracle Deep Data Security for a preinstalled Customer Sales App. The database decides which rows and columns each signed-in end user can see. You then test that boundary with OCI Generative AI and with data outside the database.
 
 ![Deep Data Security architecture showing an end user and Customer Sales App or OCI Generative AI sending requests through end-user security context to Oracle AI Database, where data roles and grants enforce each user's authorized rows and columns](images/lab-architecture.png)
 
-Complete the lab inside a guided web console. The console provides step-by-step actions, DeeBee's Notes, SQL previews, and quizzes. Depending on the step, select **Run Action**, **Apply this grant**, or **Mark as viewed**. You do not need to return to this document after you enter the console. The console provides the remaining instructions.
+The console walks you through every step with instructions, DeeBee's Notes, SQL previews, and quizzes. Depending on the step, select **Run Action**, **Apply this grant**, or **Mark as viewed**. You do not need to return to this document after you enter the console.
 
-Estimated Time: 60 minutes once the stack is ready.
+Estimated Time: 60 minutes after provisioning completes.
 
 ### Objectives
 
 - Create database end users, data roles, data grants, cross-table data grants, and an end user context.
-- Walk through Oracle Deep Data Security's core authorization capabilities and observe how each one changes the authorized result.
-- Use OCI Generative AI to test natural-language queries against the data already authorized for the signed-in user.
-- Use the #11 red-team challenge to let GenAI request a read-only SQL check; the application runs it as the current local end user, so Oracle still makes the access decision.
-- Verify that GenAI queries cannot override or bypass database authorizations.
+- Compare how the same query returns different results as grants change.
+- Test natural-language queries in AI Insights against only the data authorized for the signed-in user.
+- Run the red-team exercise (#11), in which GenAI requests a read-only SQL check that still runs as the current end user.
+- Show that application code and GenAI cannot bypass database authorization.
 
 ### Who this lab is for
 
@@ -27,14 +27,14 @@ Estimated Time: 60 minutes once the stack is ready.
 
 ### Prerequisites
 
-- Complete the [Introduction](introduction.md) and [Get Started](get-started.md). Use your provisioned LiveLabs environment or a deployed GreenButton stack.
-- The Stack's **Application Information** tab provides three URLs and one generated password. Use the password for `ADMIN` in the console, `MARVIN` and `EMMA` in the Customer Sales App, and JupyterLab.
+- Complete the [Introduction](introduction.md) and [Get Started](get-started.md). 
+- The lab **View Login Info** link provides three URLs and one generated password. Use the password for `ADMIN` in the console, `MARVIN` and `EMMA` in the Customer Sales App, and JupyterLab.
 
 ## Task 1: Start the Deep Data Security walkthrough
 
 ### Browser: Deep Sec Demo Setup
 
-1. If it is not already open, open **Deep Sec Demo Setup** from the link in the OCI Stack page's **Application Information** tab.
+1. If it is not already open, open **Admin Console URL** from the **View Login Info** link.
 2. Sign in as `ADMIN` with the password shown on the same tab. Read the **Overview** page. It shows the scenario, architecture, and purpose of each stage.
 3. Select **?** in the header for a guided tour of the navigation. Select **Next** to continue, or **Skip tour** to close it. You can also press **Esc** or click outside the tour to close it.
 4. Select **Start DB Setup** and follow the numbered steps. The console guides you through every stage from here:
@@ -43,7 +43,7 @@ Estimated Time: 60 minutes once the stack is ready.
 
 5. A pending step is gray. The selected unfinished step is red. A step turns blue after its action succeeds and, if it has a quiz, you answer correctly. For observation steps, select **Mark as viewed** after completing the instructions. A check mark appears beside a page when all its steps are complete. Progress is retained while you navigate or refresh in the same Admin Console session; signing in again starts a new progress record.
 
-6. Keep the **Customer Sales App** open in a second browser tab for Marvin. On the console's **Customer Sales App** page, right-click **Right-click for Emma** and open the link in an Incognito (Chrome), InPrivate (Edge), or private browsing window. Sign in as Emma with the same generated password. If your browser does not offer that menu option, copy the link and paste it into a new private window. Keep Marvin's original window open to compare their access.
+6. Keep the **Customer Sales App** open in a second tab as Marvin. For Emma, right-click **Right-click for Emma** and open the link in a private window (Incognito in Chrome, InPrivate in Edge). If the menu option isn't available, copy the link into a new private window. Sign in as `EMMA` with the same password.
 
 7. After each grant change, select **Customer Report** or **Iceberg Report** again to fetch the current authorized result. Follow the console's instructions for row restrictions and excluded columns before comparing the expected counts.
 
@@ -51,7 +51,7 @@ Estimated Time: 60 minutes once the stack is ready.
 
 The console runs real SQL against an Autonomous AI Database. Use these steps to inspect the environment or run the same checks from a terminal.
 
-1. Open the JupyterLab link from the Stack's **Application Information** tab. Sign in with the generated password.
+1. Open the JupyterLab URL on the **View Login Info** link. Sign in with the generated password.
 
 2. Select either of the two **Terminal** tabs already open by default. If both are closed, select **File → New → Terminal**. These terminals run on the Compute VM that hosts both applications. Run the commands below there, not in a Python notebook cell or a terminal on your own computer.
 
