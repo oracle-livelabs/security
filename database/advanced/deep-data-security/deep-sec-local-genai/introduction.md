@@ -8,6 +8,8 @@ Starting from a working Customer Sales App, you create two local end users, Marv
 
 After each step, you verify the results with SQL queries and with natural-language questions in Customer Insights. OCI Generative AI sees only the rows and columns the database authorizes for the signed-in user. No rephrasing or prompt trick can widen that access.
 
+Estimated Workshop Time: 60 minutes after provisioning completes.
+
 ### Objectives
 
 - Create local Deep Data Security end users, data roles, and data grants.
