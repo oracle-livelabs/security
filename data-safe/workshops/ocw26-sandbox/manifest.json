@@ -33,13 +33,13 @@
         "type": "livelabs"
       },
       {
-        "title": "Lab 5: Mask sensitive data",
-        "description": "This lab shows you how to mask sensitive data on your target database by using the Data Masking feature in Oracle Data Safe.",
-        "filename": "../../mask-sensitive-data/mask-sensitive-data-ocw.md",
+        "title": "Lab 5: Subset and mask sensitive data",
+        "description": "This lab shows you how to mask and subset data on your target database by using the Data Masking and Data Subsetting features in Oracle Data Safe.",
+        "filename": "../../mask-sensitive-data/mask-subset-data-ocw.md",
         "type": "livelabs"
       },
       {
-        "title": "Lab 6: Create and enforce a SQL Firewall policy in Data Safe",
+        "title": "(Optional) Lab 6: Create and enforce a SQL Firewall policy in Data Safe",
         "description": "This lab shows you how to use SQL Firewall in Data Safe.",
         "filename": "../../sqlfw/sqlfw-ocw.md",
         "type": "livelabs"

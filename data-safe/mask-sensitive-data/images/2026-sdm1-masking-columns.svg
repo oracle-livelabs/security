@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="880" viewBox="0 0 1700 880" role="img" aria-labelledby="title desc">
+<title id="title">Mask_SDM1 masking columns and generated formats</title>
+<desc id="desc">All thirteen sensitive columns in the CUSTOMER, PAYMENT, and SUPPORT schemas with their generated masking formats.</desc>
+<rect width="1700" height="880" fill="#f7f8fa"/>
+<text x="40" y="52" fill="#111827" font-family="Arial,sans-serif" font-size="32" font-weight="700">Masking columns — Mask_SDM1</text>
+<text x="40" y="84" fill="#4b5563" font-family="Arial,sans-serif" font-size="18">13 sensitive columns from SDM1 · generated formats are shown in full</text>
+<rect x="40" y="112" width="1620" height="52" fill="#1f4e79"/>
+<g fill="#ffffff" font-family="Arial,sans-serif" font-size="18" font-weight="700">
+  <text x="62" y="145">Schema</text><text x="270" y="145">Table</text><text x="560" y="145">Column</text><text x="1030" y="145">Generated format</text>
+</g>
+<g font-family="Arial,sans-serif" font-size="17" fill="#111827">
+  <rect x="40" y="164" width="1620" height="50" fill="#ffffff"/><text x="62" y="196">CUSTOMER</text><text x="270" y="196">CUSTOMERS</text><text x="560" y="196">CUSTOMER_ADDRESS</text><text x="1030" y="196">Format Preserving Randomization</text>
+  <rect x="40" y="214" width="1620" height="50" fill="#eef4fb"/><text x="62" y="246">CUSTOMER</text><text x="270" y="246">CUSTOMERS</text><text x="560" y="246">DATE_OF_BIRTH</text><text x="1030" y="246">Date-Past</text>
+  <rect x="40" y="264" width="1620" height="50" fill="#ffffff"/><text x="62" y="296">CUSTOMER</text><text x="270" y="296">CUSTOMERS</text><text x="560" y="296">EMAIL_ADDRESS</text><text x="1030" y="296">Email Address</text>
+  <rect x="40" y="314" width="1620" height="50" fill="#eef4fb"/><text x="62" y="346">CUSTOMER</text><text x="270" y="346">CUSTOMERS</text><text x="560" y="346">FIRST_NAME</text><text x="1030" y="346">Random Name</text>
+  <rect x="40" y="364" width="1620" height="50" fill="#ffffff"/><text x="62" y="396">CUSTOMER</text><text x="270" y="396">CUSTOMERS</text><text x="560" y="396">LAST_NAME</text><text x="1030" y="396">Random Name</text>
+  <rect x="40" y="414" width="1620" height="50" fill="#eef4fb"/><text x="62" y="446">CUSTOMER</text><text x="270" y="446">CUSTOMERS</text><text x="560" y="446">PHONE_NUMBER</text><text x="1030" y="446">US Phone Number</text>
+  <rect x="40" y="464" width="1620" height="50" fill="#ffffff"/><text x="62" y="496">CUSTOMER</text><text x="270" y="496">CUSTOMERS</text><text x="560" y="496">POSTAL_CODE</text><text x="1030" y="496">Format Preserving Randomization</text>
+  <rect x="40" y="514" width="1620" height="50" fill="#eef4fb"/><text x="62" y="546">CUSTOMER</text><text x="270" y="546">CUSTOMERS</text><text x="560" y="546">SSN</text><text x="1030" y="546">Random String</text>
+  <rect x="40" y="564" width="1620" height="50" fill="#ffffff"/><text x="62" y="596">CUSTOMER</text><text x="270" y="596">ORDERS</text><text x="560" y="596">SHIPPING_ADDRESS</text><text x="1030" y="596">Format Preserving Randomization</text>
+  <rect x="40" y="614" width="1620" height="50" fill="#eef4fb"/><text x="62" y="646">CUSTOMER</text><text x="270" y="646">ORDERS</text><text x="560" y="646">SHIPPING_ZIP</text><text x="1030" y="646">Format Preserving Randomization</text>
+  <rect x="40" y="664" width="1620" height="50" fill="#ffffff"/><text x="62" y="696">PAYMENT</text><text x="270" y="696">PAYMENTS</text><text x="560" y="696">CARDHOLDER_NAME</text><text x="1030" y="696">Random Name</text>
+  <rect x="40" y="714" width="1620" height="50" fill="#eef4fb"/><text x="62" y="746">SUPPORT</text><text x="270" y="746">SUPPORT_TICKETS</text><text x="560" y="746">CONTACT_EMAIL</text><text x="1030" y="746">Email Address</text>
+  <rect x="40" y="764" width="1620" height="50" fill="#ffffff"/><text x="62" y="796">SUPPORT</text><text x="270" y="796">SUPPORT_TICKETS</text><text x="560" y="796">CONTACT_PHONE</text><text x="1030" y="796">US Phone Number</text>
+</g>
+<line x1="40" y1="112" x2="1660" y2="112" stroke="#9ca3af"/><line x1="40" y1="814" x2="1660" y2="814" stroke="#9ca3af"/>
+</svg>

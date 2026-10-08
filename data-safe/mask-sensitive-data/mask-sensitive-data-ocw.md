@@ -87,11 +87,9 @@ View the sensitive data in the `HCM1.EMPLOYEES` table.
 
 7. On the **Script Output** tab, review the query results.
 
-    - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, and `PHONE_NUMBER` are considered sensitive data and should be masked if shared for non-production use.
+    - Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, and `SALARY` are considered sensitive data and should be masked if shared for non-production use.
 
-8. Repeat steps 3 to 7 for the `LOCATIONS` table.
-
-9. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe.
+8. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe.
 
 ## Task 2: Create a masking policy for your target database
 
@@ -156,44 +154,8 @@ Set `SALARY` to a fixed number, such as 50000.
 
     ![Fixed number](images/masking-fixed-number.png "Fixed number")
 
-## Task 4: Create a group mask
 
-Use the group masking feature to create a group named `ADDRESS` and apply the `SHUFFLE` masking format to the group.
-
-1. Under **Masking columns**, from the **Actions** menu, select **Assign group masking**.
-
-    The **Assign group masking** panel opens.
-
-2. For **Masking format entry**, select **Shuffle**.
-
-3. For **Group name**, enter **Address**.
-
-4. For **Condition**, enter **1=1**.
-
-5. For **Table name**, select **HCM1.LOCATIONS**.
-
-6. For each of the following columns, select the column from the **Group masking column name** dropdown list, and then select **Add column**.
-
-    - `STREET_ADDRESS`
-    - `CITY`
-    - `STATE_PROVINCE`
-    - `COUNTRY_ABBREV`
-    - `POSTAL_CODE`
-
-    Note: If `COUNTRY_ABBREV` is not available, you need to add it to your sensitive data model first before creating the group mask (see [Discover Sensitive Data](?lab=discover-sensitive-data-ocw)). Or, you can leave it out.
-
-    ![Group mask configuration](images/group-mask1.png "Group mask configuration")
-
-7. Select **Continue**.
-
-8. Notice that the masking format for the columns is set to **Address** and that **Masking group** is next to each column in the group.
-
-    ![Masking group](images/masking-group.png "Masking group")
-
-9. From the **Actions** menu, select **Save masking formats**.
-
-
-## Task 5: Perform a pre-masking check
+## Task 4: Perform a pre-masking check
 
 The pre-masking check looks for any known issues that might arise during a masking run; for example, not enough tablespace, missing privileges, and so on. It alerts you to any found issues so that you can remediate them before starting the actual masking run.
 
@@ -217,7 +179,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 
     ![Pre-masking verification](images/pre-masking-verification.png "Pre-masking verification")
 
-## Task 6: Mask sensitive data in your target database
+## Task 5: Mask sensitive data in your target database
 
 1. Under **Data masking** on the left, select **Masking policies**, and then select your masking policy.
 
@@ -234,7 +196,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 4. Monitor the progress of the operation named `MASKING_JOB`, and wait for it to finish. The status at the top reads **Active** and the **MASKING_JOB** operation has a status of **Succeeded**.
 
 
-## Task 7: View the Data Masking report
+## Task 6: View the Data Masking report
 
 1. Navigate to the **Data masking** landing page.
 
@@ -262,7 +224,7 @@ The pre-masking check looks for any known issues that might arise during a maski
 
     ![Masking report Masked columns tab](images/masking-report-masked-columns-tab.png "Masking report Masked columns tab")
 
-## Task 8: Validate the masked data in your target database
+## Task 7: Validate the masked data in your target database
 
 1. Return to the SQL worksheet in Database Actions. If your session expired, sign in again as the `ADMIN` user. Clear the worksheet.
 
@@ -277,16 +239,6 @@ The pre-masking check looks for any known issues that might arise during a maski
 
     ![Masked EMPLOYEE data](images/masked-query-results.png "Masked EMPLOYEE data")
 
-5. Clear the worksheet.
-
-6. Drag the `LOCATIONS` table to the worksheet and apply the **Select** insertion type.
-
-7. On the toolbar, select the **Run Statement** button.
-
-8. Examine the data. The data for each `LOCATION_ID` has changed. `STREET_ADDRESS`, `POSTAL_CODE`, `CITY`, `STATE_PROVINCE`, and `COUNTRY_ABBREV` are shuffled as an entire group to maintain the accuracy of each location. Notice that the `COUNTRY_ID`, which has not been masked and is not included in the screenshot below, is different from `COUNTRY_ABBREV`.
-
-    ![Addresses shuffled](images/addresses-shuffled.png "Addresses shuffled")
-
 You may now **proceed to the next lab**.
 
 ## Learn More
@@ -298,4 +250,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 20, 2026
+- **Last Updated By/Date** - Jody Glover, September 28, 2026

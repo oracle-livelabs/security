@@ -4,19 +4,19 @@ Protecting a database requires more than applying individual security controls. 
 
 In this workshop, you take on the role of a database security administrator responsible for protecting a database and the sensitive information it contains.
 
-Rather than exploring Oracle Data Safe as a collection of individual features, you will follow a connected security scenario. You will begin by assessing the security posture of your database and its users. You will then identify sensitive data and protect that data for non-production use. Finally, you will control the SQL statements that an application user is allowed to execute.
+Rather than exploring Oracle Data Safe as a collection of individual features, you will follow a connected security scenario. You will begin by assessing the security posture of your database and its users. You will then identify sensitive data and protect and reduce that data for non-production use. Finally, you will control the SQL statements that an application user is allowed to execute.
 
 Along the way, you will answer questions such as:
 
 - Is my database securely configured, and has its security posture changed?
 - Which database users present the greatest potential risk, and have their privileges changed?
 - Where is sensitive data stored, and what information could be exposed if an account were compromised?
-- How can I provide data for non-production purposes while protecting sensitive information?
+- How can I provide data for non-production purposes while protecting sensitive information and providing only the data needed?
 - Can I prevent an application account from executing SQL outside its expected workload?
 
 By working through these questions as part of a single scenario, you will experience a practical database security workflow:
 
-Assess → Discover → Protect → Control
+Assess → Discover → Protect → Reduce → Control
 
 Estimated Workshop Time: 90 minutes
 
@@ -37,6 +37,7 @@ In this workshop, you will:
 - **Evaluate database users and privileges** by identifying potentially high-risk users and detecting changes to users and entitlements with User Assessment.
 - **Discover sensitive data** by identifying where sensitive information resides and creating a sensitive data model with Data Discovery.
 - **Protect sensitive data** for non-production use by masking sensitive values with Data Masking.
+- **Reduce data volume** in non-production target databases while preserving referential integrity by using Data Subsetting.
 - **Control application SQL behavior** by learning an application's expected SQL workload, creating an allow-list, enforcing a SQL Firewall policy, and investigating blocked SQL statements.
 
 By the end of the workshop, you will understand how these Oracle Data Safe capabilities can work together to help identify and reduce database security risk while protecting sensitive data.
@@ -55,4 +56,4 @@ The following links provide more information about Oracle Data Safe:
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Bettina Schäumer, August 20, 2026
+- **Last Updated By/Date** - Jody Glover, September 28, 2026

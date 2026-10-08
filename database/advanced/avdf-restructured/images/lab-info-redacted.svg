@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="500" viewBox="0 0 830 500" role="img" aria-labelledby="title desc">
+<title id="title">Redacted LiveLabs Lab Info Terraform Outputs</title>
+<desc id="desc">A redacted illustration of the LiveLabs Terraform Outputs panel. Generated values are hidden.</desc>
+<rect width="830" height="500" fill="#f7f7f7"/>
+<rect x="1" y="1" width="828" height="498" rx="9" fill="white" stroke="#d5d5d5"/>
+<rect x="1" y="1" width="828" height="58" rx="9" fill="#6f7e7f"/>
+<path d="M28 25l9 9 9-9" fill="none" stroke="#172020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="57" y="37" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="white">Terraform Outputs</text>
+<g font-family="Arial, sans-serif" font-size="16" fill="#202020">
+<line x1="1" y1="118" x2="829" y2="118" stroke="#dedede"/><line x1="150" y1="59" x2="150" y2="499" stroke="#dedede"/><line x1="650" y1="59" x2="650" y2="499" stroke="#dedede"/>
+<line x1="1" y1="206" x2="829" y2="206" stroke="#dedede"/><line x1="1" y1="294" x2="829" y2="294" stroke="#dedede"/><line x1="1" y1="382" x2="829" y2="382" stroke="#dedede"/>
+<text x="12" y="104">AVS Passphrase</text><rect x="164" y="88" width="285" height="22" rx="4" fill="#626a6b"/><rect x="682" y="74" width="111" height="62" rx="6" fill="#e8e6e6"/><text x="715" y="111">Copy</text>
+<text x="12" y="192">HOL Host 1</text><rect x="164" y="176" width="285" height="22" rx="4" fill="#626a6b"/><rect x="660" y="162" width="140" height="62" rx="6" fill="#e8e6e6"/><text x="694" y="199">Open Link</text>
+<text x="12" y="280">HOL Host 2</text><rect x="164" y="264" width="285" height="22" rx="4" fill="#626a6b"/><rect x="660" y="250" width="140" height="62" rx="6" fill="#e8e6e6"/><text x="694" y="287">Open Link</text>
+<text x="12" y="368">HOL Host 3</text><rect x="164" y="352" width="285" height="22" rx="4" fill="#626a6b"/><rect x="660" y="338" width="140" height="62" rx="6" fill="#e8e6e6"/><text x="694" y="375">Open Link</text>
+<text x="12" y="456">Remote Desktop</text><rect x="164" y="440" width="430" height="22" rx="4" fill="#626a6b"/><rect x="660" y="426" width="140" height="62" rx="6" fill="#e8e6e6"/><text x="694" y="463">Open Link</text>
+</g>
+</svg>

@@ -1,4 +1,4 @@
-# Create and enforce a SQL Firewall policy in Data Safe
+# (Optional) Create and enforce a SQL Firewall policy in Data Safe
 
 ## Introduction
 
@@ -10,7 +10,7 @@ Then you asked: Who can access the database, and what can they do? User Assessme
 
 Next you asked: What sensitive information are we protecting? Data Discovery identified sensitive information and helped you build a sensitive data model.
 
-Finally you asked: How can we safely use that data outside production? Data Masking helped you protect sensitive information while keeping the data useful for development and testing.
+Finally you asked: How can we safely use that data outside production? Data Subsetting and Data Masking helped you create a smaller, protected data set for development and testing by retaining only the data required for a specific country and masking the sensitive values that remained.
 
 There is now one more security question: Even when a user is legitimate, how do we make sure that the user can execute only the SQL they are supposed to execute? This is where SQL Firewall adds another layer of protection. SQL Firewall, built into Oracle AI Database 26ai, allows you to define which SQL statements are authorized for a database user. SQL statements outside that allowed collection can be detected and blocked.
 
@@ -286,4 +286,4 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 24, 2026
+- **Last Updated By/Date** - Jody Glover, October 7, 2026

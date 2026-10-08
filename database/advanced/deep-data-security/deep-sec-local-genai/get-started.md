@@ -24,11 +24,11 @@ Estimated Time: 5 minutes
 
     ![OCI Resource Manager Application Information tab with the Open Deep Sec Demo Setup action highlighted and the generated password, Customer Sales App, JupyterLab, database, and compute outputs listed](images/oci-stack-application-info.png)
 
-2. Find the generated password. Select **Unlock** if the password is hidden. Copy the password for both workshop applications.
+2. Find the generated password. Select **Unlock** if the password is hidden. Copy the password. It is shared by `ADMIN` in Deep Sec Demo Setup, `MARVIN` and `EMMA` in the Customer Sales App, and JupyterLab.
 
 3. Open **Deep Sec Demo Setup** from the link in the **Application Information** tab. Sign in as `ADMIN` with the password shown on that tab.
 
-4. Open the **Customer Sales App** from its link in **Application Information** and leave it open in a second browser tab.
+4. Open the **Customer Sales App** from its link in **Application Information** and leave its sign-in page open in a second browser tab. Wait until the walkthrough creates Marvin and grants his data role before signing in.
 
 5. Return to **Deep Sec Demo Setup** and confirm that the **Overview** page loads. Do not select **Start DB Setup** yet; you will begin the walkthrough in the next lab.
 
@@ -37,4 +37,4 @@ Estimated Time: 5 minutes
 ## Acknowledgements
 
 - **Author** - Richard Evans
-- **Last Updated** - September 2026
+- **Last Updated** - October 2026
