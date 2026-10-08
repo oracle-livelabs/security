@@ -47,7 +47,7 @@ The result is a smaller, protected data set designed around the development team
 
 Estimated Time: 15 min
 
-[Lab 5 - Mask sensitive data](videohub:1_dh9kov8c)
+[Lab 5 - Subset and mask sensitive data](videohub:1_dh9kov8c)
 
 ### Objectives
 
