@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
+  <title id="title">Trusted identity and application identity</title>
+  <desc id="desc">Marvin authenticates through enterprise IAM, the Customer Sales App uses its registered application identity, and Oracle receives Marvin's end-user security context over a pooled connection.</desc>
+  <rect width="960" height="260" rx="14" fill="#f7f6f4"/>
+  <text x="32" y="42" fill="#312d2a" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Pass the real user through the application</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="24" y="86" width="170" height="136" rx="12" fill="#eff6ff" stroke="#005fb8" stroke-width="3"/>
+    <text x="109" y="122" text-anchor="middle" fill="#312d2a" font-size="20" font-weight="700">Marvin</text>
+    <text x="109" y="151" text-anchor="middle" fill="#625f5b" font-size="15">End user</text>
+    <text x="109" y="175" text-anchor="middle" fill="#625f5b" font-size="15">Salesperson</text>
+    <text x="109" y="199" text-anchor="middle" fill="#625f5b" font-size="15">Signs in</text>
+
+    <line x1="204" y1="154" x2="214" y2="154" stroke="#005fb8" stroke-width="3"/>
+    <polygon points="226,154 214,146 214,162" fill="#005fb8"/>
+
+    <rect x="226" y="86" width="200" height="136" rx="12" fill="#fff2ef" stroke="#c74634" stroke-width="3"/>
+    <text x="326" y="119" text-anchor="middle" fill="#312d2a" font-size="19" font-weight="700">Enterprise IAM</text>
+    <text x="326" y="149" text-anchor="middle" fill="#625f5b" font-size="15">Entra ID or OCI IAM</text>
+    <text x="326" y="174" text-anchor="middle" fill="#625f5b" font-size="15">Identity + roles</text>
+    <text x="326" y="198" text-anchor="middle" fill="#625f5b" font-size="15">Trusted claims</text>
+
+    <line x1="436" y1="154" x2="446" y2="154" stroke="#c74634" stroke-width="3"/>
+    <polygon points="458,154 446,146 446,162" fill="#c74634"/>
+
+    <rect x="458" y="76" width="250" height="156" rx="12" fill="#fff8e1" stroke="#926014" stroke-width="3"/>
+    <text x="583" y="111" text-anchor="middle" fill="#312d2a" font-size="19" font-weight="700">Customer Sales App</text>
+    <text x="583" y="141" text-anchor="middle" fill="#625f5b" font-size="15">Application identity:</text>
+    <text x="583" y="164" text-anchor="middle" fill="#312d2a" font-size="15" font-weight="700">sales_app</text>
+    <text x="583" y="190" text-anchor="middle" fill="#625f5b" font-size="15">Connection pool</text>
+    <text x="583" y="214" text-anchor="middle" fill="#625f5b" font-size="13">attaches end-user context</text>
+
+    <line x1="718" y1="154" x2="728" y2="154" stroke="#926014" stroke-width="3"/>
+    <polygon points="740,154 728,146 728,162" fill="#926014"/>
+
+    <rect x="740" y="76" width="428" height="156" rx="12" fill="#eff6ff" stroke="#005fb8" stroke-width="3"/>
+    <text x="954" y="111" text-anchor="middle" fill="#312d2a" font-size="19" font-weight="700">Oracle AI Database</text>
+    <text x="954" y="141" text-anchor="middle" fill="#625f5b" font-size="15">End-user security context</text>
+    <text x="954" y="165" text-anchor="middle" fill="#312d2a" font-size="15" font-weight="700">user = Marvin</text>
+    <text x="954" y="190" text-anchor="middle" fill="#625f5b" font-size="14">roles + attributes</text>
+    <text x="954" y="214" text-anchor="middle" fill="#625f5b" font-size="13">Deep Sec enforces access</text>
+
+  </g>
+</svg>

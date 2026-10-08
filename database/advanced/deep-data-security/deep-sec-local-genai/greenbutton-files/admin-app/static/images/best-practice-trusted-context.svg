@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">Trusted context and controlled elevation</title>
+  <desc id="desc">Trusted employee and territory attributes flow into a protected end-user context, which a Deep Data Security predicate evaluates before a controlled elevation is approved.</desc>
+  <rect width="960" height="300" rx="14" fill="#f7f6f4"/>
+  <text x="32" y="38" fill="#312d2a" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Use trusted context for complex decisions</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="28" y="80" width="174" height="112" rx="12" fill="#eff6ff" stroke="#005fb8" stroke-width="3"/>
+    <text x="115" y="113" text-anchor="middle" fill="#312d2a" font-size="16" font-weight="700">Verified request</text>
+    <text x="52" y="141" fill="#625f5b" font-size="14">Marvin asks for</text>
+    <text x="52" y="163" fill="#625f5b" font-size="14">a territory report</text>
+    <text x="52" y="185" fill="#625f5b" font-size="14">through the app</text>
+
+    <line x1="216" y1="136" x2="254" y2="136" stroke="#005fb8" stroke-width="3"/>
+    <polygon points="254,136 242,128 242,144" fill="#005fb8"/>
+
+    <rect x="266" y="68" width="220" height="136" rx="12" fill="#fff8e1" stroke="#926014" stroke-width="3"/>
+    <text x="290" y="100" fill="#312d2a" font-size="18" font-weight="700">Protected context</text>
+    <text x="290" y="129" fill="#625f5b" font-size="14">employee_id = 1007</text>
+    <text x="290" y="152" fill="#625f5b" font-size="14">organization = West</text>
+    <text x="290" y="175" fill="#625f5b" font-size="14">territory = Pacific</text>
+    <text x="290" y="198" fill="#7c5b15" font-size="12">validated before use</text>
+
+    <line x1="500" y1="136" x2="538" y2="136" stroke="#926014" stroke-width="3"/>
+    <polygon points="538,136 526,128 526,144" fill="#926014"/>
+
+    <rect x="550" y="68" width="180" height="136" rx="12" fill="#eff6ff" stroke="#005fb8" stroke-width="3"/>
+    <text x="574" y="100" fill="#312d2a" font-size="18" font-weight="700">Deep Sec</text>
+    <text x="574" y="129" fill="#625f5b" font-size="14">predicate evaluates</text>
+    <text x="574" y="153" fill="#312d2a" font-size="14" font-weight="700">MGR_CTX.id</text>
+    <text x="574" y="177" fill="#625f5b" font-size="14">authorized rows</text>
+    <text x="574" y="198" fill="#625f5b" font-size="12">or deny</text>
+
+    <line x1="744" y1="136" x2="782" y2="136" stroke="#005fb8" stroke-width="3"/>
+    <polygon points="782,136 770,128 770,144" fill="#005fb8"/>
+
+    <rect x="794" y="68" width="138" height="136" rx="12" fill="#f2f7f4" stroke="#277447" stroke-width="3"/>
+    <text x="817" y="101" fill="#312d2a" font-size="17" font-weight="700">Decision</text>
+    <text x="817" y="132" fill="#625f5b" font-size="14">Allow rows</text>
+    <text x="817" y="157" fill="#625f5b" font-size="14">or deny</text>
+    <text x="817" y="182" fill="#277447" font-size="13" font-weight="700">logged</text>
+
+    <rect x="28" y="232" width="904" height="42" rx="9" fill="#fff2ef" stroke="#c74634" stroke-width="2"/>
+    <text x="52" y="259" fill="#7c2d22" font-size="16" font-weight="700">Sensitive elevation: approve → scope → expire → audit</text>
+  </g>
+</svg>

@@ -1,0 +1,2 @@
+pyiceberg[pyarrow,sql-sqlite]==0.10.0
+fastavro>=1.9,<2

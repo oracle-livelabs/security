@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vibe Report | Customer Sales App</title><meta name="csrf-token" content="{{ csrf_token() }}"><link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}"></head>
+  <body>
+    <header class="app-header"><a class="brand" href="/query" aria-label="Customer Sales App"><span class="oracle-mark" aria-hidden="true">O</span><span>Customer Sales App</span></a><div class="header-actions"><nav class="header-nav" aria-label="Application"><a href="/query">Customer Accounts</a><a href="/ai">AI Insights</a></nav><span class="header-context"><span class="status-dot"></span> {{ persona.label }}</span><button id="logout" class="header-button">Sign out</button></div></header>
+    <main class="page narrow-page">
+      <section class="page-heading compact-heading"><div><p class="eyebrow">Vibe Coding</p><h1>Customer Sales App Statement</h1><p class="lead">This page was created by Vibe Coding. It runs as your current database identity.</p></div><div class="security-badge"><span aria-hidden="true">✓</span> Oracle-authorized access only</div></section>
+      <section class="card query-card" aria-labelledby="report-title">
+        <div class="card-heading"><div><h2 id="report-title">Requested statement</h2><p>{{ report.request }}</p></div></div>
+        <div class="query-actions"><button id="load-vibe-report" class="primary" type="button" data-report-id="{{ report.id }}">Run statement</button><span id="vibe-report-status" class="loading-status" aria-live="polite"></span><span id="error" role="alert"></span></div>
+        <section id="security-context" class="security-context" aria-labelledby="security-context-title" hidden><h3 id="security-context-title">Database Security Context</h3><dl id="context" class="context"></dl></section>
+        <details class="lab-details" open><summary>SQL Query <span>Sent to Oracle</span></summary><code>{{ report.sql }}</code></details>
+        <div id="vibe-report-result" aria-live="polite"></div>
+      </section>
+    </main>
+    <footer>Customer Sales App · Protected by Oracle Deep Data Security</footer><script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

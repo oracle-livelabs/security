@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deep Sec DEMO Setup</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+  </head>
+  <body data-completed-actions='{{ completed_actions|tojson }}'>
+    <header class="app-header app-header-stacked"><div class="app-header-top"><a class="brand" href="/console"><span class="oracle-mark" aria-hidden="true">O</span><span>Deep Sec DEMO Setup</span></a><div class="app-header-top-actions"><button id="logout" class="secondary small">Sign out</button></div></div><nav class="header-nav header-nav-row" aria-label="Application">{% for page in pages %}<a class="header-link{% if page.key == current_page_key %} active{% endif %}" href="{{ page.path }}">{{ page.nav_label }}</a>{% endfor %}<button id="tour-replay" class="secondary small" type="button" title="Replay the tour">?</button></nav></header>
+    <main class="page">
+      <section class="stepper" aria-label="Fixed Deep Sec lab actions">
+        <ol class="stepper-list{% if current_page_key == 'admin' %} stepper-list-unordered{% endif %}">
+        {% for step in steps %}
+          <li class="step-item{% if step.key == 'download_lab_files' %} step-item-download{% endif %}" data-action-step="{{ step.key }}" data-action-keys="{{ step.action_keys|join(',') }}">
+            <button class="step-badge" data-select-action="{{ step.key }}" aria-controls="action-{{ step.key }}" type="button">
+              <span class="step-number">{% if step.key == 'validate_as_marvin' %}V{% elif step.key == 'restore_db_setup' %}DB{% elif step.key == 'restore_deep_sec_setup' %}DS{% elif step.key == 'download_lab_files' %}D{% elif step.key == 'reset_lab' %}R{% else %}{{ loop.index }}{% endif %}</span>
+              <span class="step-label">{{ step.title }}</span>
+            </button>
+          </li>
+        {% endfor %}
+        </ol>
+      </section>
+      <section class="action-details" aria-live="polite">
+        {% for step in steps %}
+        <div class="step-layout action-panel" data-action-panel="{{ step.key }}"{% if not loop.first %} hidden{% endif %}>
+        <div class="step-main">
+        <article id="action-{{ step.key }}" class="action-card{% if step.actions|selectattr('destructive')|list %} destructive{% endif %}">
+          {% if step.actions|length == 1 %}
+            {% set action = step.actions[0] %}
+            <div class="action-heading"><div><h2>{{ action.title }}</h2><p>{{ action.description }}</p></div></div>
+            {% if action.grant_wizard %}
+              {% set wiz = action.grant_wizard %}
+              <div class="grant-wizard" data-api-prefix="{{ wiz.api_prefix }}" data-action-key="{{ action.key }}" data-confirm-apply="{{ 'false' if current_page_key == 'end_user_context' else 'true' }}">
+              {% if wiz.style == 'all_except' %}
+              <table class="grant-privilege-table">
+                <thead>
+                  <tr><th>Column</th><th>Exclude from SELECT</th></tr>
+                </thead>
+                <tbody>
+                {% for col in wiz.columns %}
+                  <tr>
+                    <td>{{ col.label }}</td>
+                    <td class="grant-cell"><input type="checkbox" class="grant-exclude-column" value="{{ col.key }}"></td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <table class="grant-privilege-table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Column</th>
+                    <th colspan="2">SELECT</th>
+                    <th colspan="2">UPDATE</th>
+                  </tr>
+                  <tr>
+                    <th class="grant-subheader">Include</th>
+                    <th class="grant-subheader">Exclude</th>
+                    <th class="grant-subheader">Include</th>
+                    <th class="grant-subheader">Exclude</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for col in wiz.columns %}
+                  <tr>
+                    <td>{{ col.label }}{% if col.required %} <span class="muted">(required)</span>{% endif %}</td>
+                    {% if col.required %}
+                    <td class="grant-cell" colspan="2"><span class="muted">Always included</span></td>
+                    {% else %}
+                    <td class="grant-cell"><input type="radio" name="select-{{ col.key }}" class="grant-column-include" value="{{ col.key }}"{% if col.default %} checked{% endif %}></td>
+                    <td class="grant-cell"><input type="radio" name="select-{{ col.key }}" class="grant-column-exclude" value="{{ col.key }}"{% if not col.default %} checked{% endif %}></td>
+                    {% endif %}
+                    {% if col.allow_update %}
+                    <td class="grant-cell"><input type="radio" name="update-{{ col.key }}" class="grant-update-include" value="{{ col.key }}"></td>
+                    <td class="grant-cell"><input type="radio" name="update-{{ col.key }}" class="grant-update-exclude" value="{{ col.key }}" checked></td>
+                    {% else %}
+                    <td class="grant-cell" colspan="2"><span class="muted">—</span></td>
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% if wiz.row_restriction_option %}
+              <div class="grant-row grant-toggle-row"><input type="checkbox" class="grant-restrict-rows"><label>{{ wiz.row_restriction_option.label }}</label></div>
+              {% endif %}
+              {% if wiz.allow_delete_option %}
+              <div class="grant-row grant-toggle-row"><input type="checkbox" class="grant-allow-delete"><label>{{ wiz.allow_delete_option.label }} <span class="muted">(row-level, not per-column)</span></label></div>
+              {% endif %}
+              {% endif %}
+              <details open><summary>Generated SQL</summary><pre class="grant-preview">Loading…</pre></details>
+              <button class="primary run-grant-apply" type="button">Apply this grant</button><span class="action-status grant-status" aria-live="polite"></span>
+              <details class="action-output grant-output" hidden><summary>SQL*Plus output</summary><pre></pre></details>
+              </div>
+            {% elif action.explain_step %}
+              <figure class="iceberg-explanation"><img src="{{ url_for('static', filename='images/iceberg-hierarchy.svg') }}" alt="Oracle resolves an Iceberg query through metadata JSON, a manifest list, manifest files, and Parquet data files."><figcaption>Oracle follows this metadata chain; only the final layer contains actual order rows.</figcaption></figure>
+              <button class="primary run-action step-action-btn" data-action="{{ action.key }}" type="button">Mark as viewed</button><span class="action-status" aria-live="polite"></span>
+              <details class="action-output"{% if not action.output %} hidden{% endif %}{% if action.output %} open{% endif %}><summary>Step status</summary><pre>{{ action.output or '' }}</pre></details>
+            {% elif action.key == "show_iceberg_files" %}
+              <p class="script-label">Reads the generated Iceberg metadata directly from Object Storage; no SQL or Oracle object is involved.</p>
+              <button class="primary run-action step-action-btn" data-action="{{ action.key }}" type="button">See the raw data</button><span class="action-status" aria-live="polite"></span>
+              <details class="action-output"{% if not action.output %} hidden{% endif %}{% if action.output %} open{% endif %}><summary>Object Storage output</summary><pre>{{ action.output or '' }}</pre></details>
+            {% elif action.key == "download_lab_files" %}
+              <p>Each archive is generated fresh from the files currently installed on this VM.</p>
+              <p class="download-actions"><a class="download-button" href="/api/download/sql-scripts">Download SQL Scripts</a><a class="download-button" href="/api/download/application">Download Application</a></p>
+            {% elif not action.link_step %}
+              {% if step.key == "validate_as_marvin" %}
+              <section id="validation-comparison" class="validation-comparison" aria-live="polite">
+                <h3>Oracle authorization comparison</h3>
+                <p class="muted">Roles and data grants are read directly from Oracle. Emma is shown on the left; Marvin is shown on the right.</p>
+                <div id="validation-personas" class="validation-grid"><p class="muted">Loading Emma and Marvin's Oracle authorization…</p></div>
+                <h3>Customer query sent to Oracle</h3>
+                <pre id="validation-query">SELECT * FROM APPLAB.customers ORDER BY revenue DESC</pre>
+              </section>
+              {% endif %}
+              <p class="script-label">{% for script in action.scripts %}<code>{{ script.name }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+              <details open><summary>View exact script{% if action.scripts|length > 1 %}s{% endif %}</summary>{% for script in action.scripts %}<h3>{{ script.name }}</h3><pre>{{ script.sql }}</pre>{% endfor %}</details>
+              <button class="primary run-action step-action-btn" data-action="{{ action.key }}" data-resets-setup="{{ 'true' if action.resets_setup else 'false' }}" type="button">{{ action.button_label or "Run Action" }}</button><span class="action-status" aria-live="polite"></span>
+              <details class="action-output"{% if not action.output %} hidden{% endif %}{% if action.output %} open{% endif %}><summary>Complete SQL*Plus output</summary><pre>{{ action.output or '' }}</pre></details>
+            {% else %}
+              {% if action.link_url %}<p><a class="primary step-action-btn customer-sales-link" href="{{ action.link_url }}" target="_blank" rel="noopener" data-complete-action="{{ action.key }}">Open Customer Sales Demo</a></p>{% endif %}
+              {% if action.key != "customer_sales" %}<button class="primary run-action step-action-btn" data-action="{{ action.key }}" type="button">{{ action.link_button_label or "Continue" }}</button>{% endif %}<span class="action-status" aria-live="polite"></span>
+              <details class="action-output"{% if not action.output %} hidden{% endif %}{% if action.output %} open{% endif %}><summary>Step status</summary><pre>{{ action.output or '' }}</pre></details>
+            {% endif %}
+          {% else %}
+            <div class="action-heading"><div><h2>{{ step.title }}</h2><p>{{ step.actions[0].description }}</p></div></div>
+            <div class="toggle-pair">
+              {% for action in step.actions %}
+              <div class="toggle-half">
+                <h3>{{ action.title }}</h3>
+                <p class="script-label">{% for script in action.scripts %}<code>{{ script.name }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+                <details open><summary>View exact script</summary>{% for script in action.scripts %}<pre>{{ script.sql }}</pre>{% endfor %}</details>
+                <button class="primary run-action" data-action="{{ action.key }}" type="button">{{ action.title }}</button><span class="action-status" aria-live="polite"></span>
+                <details class="action-output"{% if not action.output %} hidden{% endif %}{% if action.output %} open{% endif %}><summary>Complete SQL*Plus output</summary><pre>{{ action.output or '' }}</pre></details>
+              </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% if step.quiz %}
+          <section class="review-quiz" aria-labelledby="quiz-{{ step.key }}-title" data-correct-answer="{{ step.quiz.correct_answer }}" data-correct-explanation="{{ step.quiz.explanation }}">
+            <h3 id="quiz-{{ step.key }}-title">Check your understanding</h3>
+            <p>{{ step.quiz.question }}</p>
+            <fieldset>
+              <legend class="sr-only">Answer choices</legend>
+              {% for option in step.quiz.options %}
+              <label class="review-quiz-option"><input type="radio" name="quiz-{{ step.key }}" value="{{ option.key }}"> <span>{{ option.label }}</span></label>
+              {% endfor %}
+            </fieldset>
+            <button class="secondary check-review-quiz" type="button">Check answer</button>
+            <p class="review-quiz-feedback" aria-live="polite" hidden></p>
+          </section>
+          {% endif %}
+          {% if step.next_hint %}<p class="action-next">{% if step.next_step_key %}<button class="next-button step-action-btn" type="button" data-next-step="{{ step.next_step_key }}">Next Step</button>{% elif step.next_page_path %}<a class="next-button step-action-btn" href="{{ step.next_page_path }}">Next Step</a>{% endif %}<span>{{ step.next_hint }}</span></p>{% endif %}
+        </article>
+        </div>
+        <aside class="step-notes">
+          <div class="step-notes-header"><img src="{{ url_for('static', filename='images/DeeBee.png') }}" alt="DeeBee" class="deebee-icon"><span>DeeBee's Notes</span></div>
+          {% if step.notes %}
+          <ul>{% for note in step.notes %}<li>{{ note }}</li>{% endfor %}</ul>
+          {% else %}
+          <p class="step-notes-empty">Notes for this step are coming soon.</p>
+          {% endif %}
+        </aside>
+        </div>
+        {% endfor %}
+      </section>
+    </main>
+    <footer>Deep Sec Administrator Console · Oracle Database is the authorization boundary</footer>
+    <script src="{{ url_for('static', filename='admin.js') }}"></script>
+  </body>
+</html>

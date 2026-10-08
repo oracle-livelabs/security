@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">Design the authorization model before implementing policies</title>
+  <desc id="desc">Business requirements flow into an authorization model and then into Deep Data Security data roles, data grants, and tests.</desc>
+  <rect width="960" height="300" rx="14" fill="#f7f6f4"/>
+  <text x="32" y="38" fill="#312d2a" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Design the model before the policy</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="30" y="72" width="230" height="112" rx="12" fill="#fff2ef" stroke="#c74634" stroke-width="3"/>
+    <text x="54" y="105" fill="#312d2a" font-size="19" font-weight="700">Business rules</text>
+    <text x="54" y="132" fill="#625f5b" font-size="15">Who can access what?</text>
+    <text x="54" y="155" fill="#625f5b" font-size="15">Which operations?</text>
+    <text x="54" y="178" fill="#625f5b" font-size="15">Under which conditions?</text>
+
+    <line x1="274" y1="128" x2="350" y2="128" stroke="#c74634" stroke-width="3"/>
+    <polygon points="350,128 337,120 337,136" fill="#c74634"/>
+
+    <rect x="365" y="72" width="230" height="112" rx="12" fill="#eff6ff" stroke="#005fb8" stroke-width="3"/>
+    <text x="389" y="105" fill="#312d2a" font-size="19" font-weight="700">Authorization model</text>
+    <text x="389" y="132" fill="#625f5b" font-size="15">Subjects and data objects</text>
+    <text x="389" y="155" fill="#625f5b" font-size="15">Rows, columns, operations</text>
+    <text x="389" y="178" fill="#625f5b" font-size="15">Trusted attributes</text>
+
+    <line x1="609" y1="128" x2="685" y2="128" stroke="#005fb8" stroke-width="3"/>
+    <polygon points="685,128 672,120 672,136" fill="#005fb8"/>
+
+    <rect x="700" y="72" width="230" height="112" rx="12" fill="#f2f7f4" stroke="#277447" stroke-width="3"/>
+    <text x="724" y="105" fill="#312d2a" font-size="19" font-weight="700">Deep Sec</text>
+    <text x="724" y="132" fill="#625f5b" font-size="15">Data roles</text>
+    <text x="724" y="155" fill="#625f5b" font-size="15">Data grants</text>
+    <text x="724" y="178" fill="#625f5b" font-size="15">Tests and evidence</text>
+
+    <rect x="30" y="218" width="900" height="48" rx="10" fill="#fff8e1" stroke="#e8d888" stroke-width="2"/>
+    <text x="52" y="248" fill="#514d48" font-size="16" font-weight="600">Example: salesperson → own rows → approved operations → sensitive columns excluded</text>
+  </g>
+</svg>

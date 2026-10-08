@@ -21,24 +21,7 @@ Estimated Workshop Time: 60 minutes after the Stack is ready. Allow extra time f
 
 ## Architecture
 
-```text
-Browser
-  |
-  v
-Customer Sales App / Deep Sec Demo Setup on Compute
-  |
-  | direct local database-user session
-  v
-Autonomous AI Database 26ai
-  |
-  | Deep Data Security data roles and grants
-  v
-Only authorized rows and columns
-  |
-  | authorized customer result set
-  v
-OCI Generative AI / Customer Insights
-```
+![Deep Data Security and OCI Generative AI workshop architecture](images/architecture-infographic.png)
 
 The Stack creates a private Object Storage bucket. It publishes the checked-in
 Iceberg files into that bucket and points ADB at the direct metadata JSON. The
@@ -55,24 +38,14 @@ did not authorize.
 
 - An isolated, non-production OCI compartment.
 - Permission to create the Stack resources or the supplied Stack inputs from the lab owner.
-- An SSH public key for the Compute instance.
 - An Oracle-SSO user Auth Token for the ADB Iceberg reader, entered only as a sensitive Stack variable.
 - Access to the supplied compute image in the selected OCI region.
 
 ## Deploy the GreenButton Stack
 
-1. From the `deep-sec-local-genai` project directory, build both archives:
-
-   ```bash
-   bash build_greenbutton_app_zip.sh
-   bash build_greenbutton_terraform_zip.sh
-   ```
-
-   The Terraform ZIP embeds the application ZIP and the checked-in Iceberg
-   sample. Only the Terraform ZIP is uploaded to Resource Manager.
-2. In the OCI Console, open **Developer Services**, select **Resource Manager**, then select **Stacks** and **Create stack**.
-3. Select **My configuration** and upload the ZIP. Set the working directory to `terraform`.
-4. Configure the following core inputs. The current GreenButton path generates
+1. In the OCI Console, open **Developer Services**, select **Resource Manager**, then select **Stacks** and **Create stack**.
+2. Select **My configuration** and upload the ZIP. Set the working directory to `terraform`.
+3. Configure the following core inputs. The current GreenButton path generates
    the shared database password after deployment, so `adb_admin_password` is
    intentionally not an input.
 
@@ -89,17 +62,17 @@ did not authorize.
    Auth Token. Use the `<identity-domain>/<username>` form for
    `order_history_oci_username`. Enter the matching
    `order_history_oci_auth_token` as a sensitive value.
-5. Leave the retired Customer Secret Key, user-bucket, shared-dataset, and
+4. Leave the retired Customer Secret Key, user-bucket, shared-dataset, and
    Data Flow inputs empty or disabled. The Stack creates its own private
    Iceberg bucket.
-6. Select **Plan**. Review the plan and confirm it completes successfully
+5. Select **Plan**. Review the plan and confirm it completes successfully
    before continuing.
-7. Select **Apply**. Apply waits for the application VM bootstrap health gate.
-8. In **Application Information**, unlock the generated shared password. Open
+6. Select **Apply**. Apply waits for the application VM bootstrap health gate.
+7. In **Application Information**, unlock the generated shared password. Open
    the Admin Console URL on port `7778`, Customer Sales App on port `7777`,
    or JupyterLab on port `8888`.
 
-9. If you need to diagnose the deployment, SSH to the Compute public IP and
+8. If you need to diagnose the deployment, SSH to the Compute public IP and
    run:
 
    ```bash

@@ -1,0 +1,470 @@
+title: "Deep Sec Local End-User GenAI Lab - MarketplaceSeparate"
+stackDescription: "Walletless TLS deployment of the Deep Sec Autonomous AI Database from a subscribed Marketplace image, with application code and the Order History Iceberg bundle supplied through separately published Object Storage PARs. The Terraform archive contains infrastructure only."
+description: "Deep Data Security demonstration using local database end user Marvin."
+informationalText: "After Apply completes, use the Application Outputs below. Terraform generates one sensitive password for ADB ADMIN, JupyterLab, and Marvin; select Unlock and copy it. Enter that password for Marvin when the database setup script prompts in Task 2."
+instructions: "Build and upload the separately published application and Iceberg bundle objects, each with an exact-object read PAR, using the helper scripts in the parent project. Then build and upload deep-sec-local-genai-terraform-MarketplaceSeparate.zip. In OCI Resource Manager choose My configuration, set the working directory to terraform, enter the tenancy, target compartment, region, the two component PAR URLs, the published Marketplace image OCID and package version reference, SSH public key, order_history_oci_username in <identity-domain>/<username> form, and its sensitive OCI Auth Token. The target tenancy must be allowed on the private Marketplace listing. Run Plan, review the successful plan, then run Apply. This Stack contains infrastructure only; it creates a private Stack-owned Iceberg bucket and materializes the separately published bundle during VM bootstrap. Re-upload the application object with the same name and PAR when application code changes; the Terraform archive does not need to be rebuilt. The application server receives a public IP and the subnet uses an Internet Gateway route for inbound review access, while the security list has no general Internet egress rule. Restrict allowed_ingress_home_ip_address to the operator's IPv4 address or CIDR; the Admin Console is on 7778, Customer Sales App on 7777, and JupyterLab on 8888. After Apply, select Unlock for the generated password and verify the VM bootstrap status is COMPLETE. See Oracle's Resource Manager ZIP deployment procedure: https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/create-stack-local.htm"
+schemaVersion: 1.1.0
+version: "20260916"
+locale: "en"
+
+variableGroups:
+  - title: "Target"
+    variables:
+      - tenancy_ocid
+      - compartment_ocid
+      - region
+  - title: "Autonomous AI Database"
+    variables:
+      - adb_db_name
+      - adb_display_name
+      - adb_compute_count
+      - adb_storage_tbs
+      - adb_license_model
+  - title: "Application Server"
+    variables:
+      - marketplace_listing_id
+      - marketplace_resource_version
+      - compute_shape
+      - compute_ocpus
+      - compute_memory_in_gbs
+      - compute_display_name
+      - ssh_public_key
+  - title: "Separately published lab components"
+    variables:
+      - application_bundle_par_url
+      - order_history_bundle_par_url
+  - title: "Public Review Access (no Internet egress)"
+    variables:
+      - allowed_ingress_home_ip_address
+      - allowed_ingress_description
+      - assign_public_ip
+  - title: "Order History Iceberg destination and reader credential"
+    variables:
+      - order_history_bucket_prefix
+      - order_history_oci_username
+      - order_history_oci_auth_token
+  # Confirmed unreferenced as of 2026-09-03. Hidden from the deploy UI, not
+  # deleted from variables.tf. Full removal is tracked for the next feature
+  # release; remove this compatibility group when upgraded Stack inputs no
+  # longer need to be preserved.
+  - title: "Deprecated (pending removal)"
+    visible: false
+    variables:
+      - enable_dataflow_iceberg_experiment
+      - dataflow_run_on_apply
+      - dataflow_iceberg_operator_group_name
+      - dataflow_iceberg_operator_identity_domain
+      - dataflow_iceberg_spark_version
+      - dataflow_iceberg_runtime_package
+      - use_shared_order_history_dataset
+      - shared_order_history_bucket
+      - shared_order_history_namespace
+      - shared_order_history_metadata_url
+      - shared_order_history_read_par_url
+      - shared_order_history_metadata_read_par_url
+      - current_user_ocid
+      - create_iceberg_resources
+      - order_history_delivery_mode
+      - order_history_bucket_name
+  - title: "OCI Generative AI"
+    variables:
+      - create_genai_iam
+      - genai_policy_compartment_ocid
+      - genai_model_id
+
+variables:
+  tenancy_ocid:
+    type: string
+    title: "Tenancy OCID"
+    required: true
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    title: "Lab compartment"
+    description: "Select DBSec_Rich for the intended Marketplace deployment. OCI requires the compartment OCID, so a safe name-only default is not possible."
+    required: true
+  region:
+    type: oci:identity:region:name
+    title: "Region"
+    required: true
+  oci_profile:
+    type: string
+    title: "Retired OCI CLI profile"
+    description: "Not used by Resource Manager."
+    visible: false
+    required: false
+  adb_db_name:
+    type: string
+    title: "ADB database name override"
+    description: "Leave blank to generate a unique DEEPSEC-prefixed database name. The lab still connects through deepsec_low."
+    required: false
+  adb_display_name:
+    type: string
+    title: "ADB display name"
+    required: false
+  adb_compute_count:
+    type: integer
+    title: "ADB ECPU count"
+    required: false
+  adb_storage_tbs:
+    type: integer
+    title: "ADB storage (TB)"
+    required: false
+  adb_license_model:
+    type: enum
+    title: "ADB license model"
+    enum: ["BRING_YOUR_OWN_LICENSE", "LICENSE_INCLUDED"]
+    required: false
+  compute_image_ocid:
+    type: oci:core:image:id
+    title: "Internal custom-image fallback"
+    description: "Used only when use_marketplace_image is false. The normal Marketplace path uses the published Marketplace image."
+    visible: false
+    required: false
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+  use_marketplace_image:
+    type: boolean
+    title: "Use Marketplace image"
+    description: "Subscribe to and launch the published Deep Sec Marketplace image."
+    default: true
+    visible: false
+    required: false
+  marketplace_listing_id:
+    type: string
+    title: "Marketplace App Catalog listing OCID"
+    description: "Consumer-facing App Catalog OCID of the private Deep Sec machine-image listing. Do not enter the publisher mktpublisting OCID."
+    default: "ocid1.appcataloglisting.oc1..aaaaaaaaczjoa6swtlfcx3hmvw2wj4xpebjnrsh5w3eh46ytvxi4nyeiy32q"
+    required: true
+  marketplace_resource_version:
+    type: string
+    title: "Marketplace package version reference"
+    description: "Published package version reference. The initial Marketplace package is version 1.0."
+    default: "1.0"
+    required: true
+  application_bundle_par_url:
+    type: string
+    title: "Application ZIP read PAR"
+    description: "Exact-object HTTPS PAR for deep-data-security-flask-app-MarketplaceSeparate.zip. Keep this URL stable when re-uploading updated application code."
+    required: true
+    sensitive: true
+  order_history_bundle_par_url:
+    type: string
+    title: "Order History bundle read PAR"
+    description: "Exact-object HTTPS PAR for order_history_iceberg_bundle-MarketplaceSeparate.zip."
+    required: true
+    sensitive: true
+  compute_shape:
+    type: oci:core:instanceshape:name
+    title: "Compute shape"
+    required: false
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+  compute_ocpus:
+    type: integer
+    title: "Compute OCPUs"
+    required: false
+  compute_memory_in_gbs:
+    type: integer
+    title: "Compute memory (GB)"
+    required: false
+  compute_display_name:
+    type: string
+    title: "Compute display name"
+    description: "Display name for the Flask compute instance."
+    default: "deep-sec-app-server"
+    required: false
+  ssh_public_key:
+    type: oci:core:ssh:publickey
+    title: "SSH public key"
+    description: "Public key for the person operating this stack. This shared package does not supply a maintainer key."
+    required: true
+  allowed_ingress_home_ip_address:
+    type: string
+    title: "Allowed ingress CIDR"
+    description: "IPv4 address or CIDR permitted to reach SSH, the applications, and JupyterLab on the public IP."
+    default: "0.0.0.0/0"
+    required: true
+  allowed_ingress_description:
+    type: string
+    title: "Ingress rule description"
+    default: "Operator review access"
+    required: false
+  assign_public_ip:
+    type: boolean
+    title: "Assign public IP"
+    description: "Must remain true so the application server is reachable for review. The subnet uses an Internet Gateway route for inbound access; its security list has no general Internet egress rule."
+    default: true
+    required: false
+  order_history_oci_username:
+    type: string
+    title: "ADB Iceberg reader username"
+    description: "Identity-domain user in <identity-domain>/<username> form. APPLAB uses this identity to create the DBMS_CLOUD reader credential for the published Iceberg metadata."
+    required: true
+  order_history_oci_auth_token:
+    type: string
+    title: "ADB Iceberg reader Auth Token"
+    description: "Auth Token for the named identity-domain user. Enter it as a sensitive Stack value; never put it in source control or a tfvars file."
+    sensitive: true
+    required: true
+  order_history_access_key:
+    type: string
+    title: "Retired Customer Secret Key access key"
+    description: "Retained compatibility input. The normal Marketplace path uses the Stack-created bucket and Stack PARs instead."
+    visible: false
+    required: false
+  order_history_secret_key:
+    type: string
+    title: "Retired Customer Secret Key secret"
+    description: "Retained compatibility input. The normal Marketplace path uses the Stack-created bucket and Stack PARs instead."
+    sensitive: true
+    visible: false
+    required: false
+  order_history_bucket_prefix:
+    type: string
+    title: "Order History bucket prefix"
+    description: "Prefix for the pre-created Iceberg table in the dedicated Stack-created bucket."
+    default: "order_history_iceberg"
+    required: false
+  order_history_bucket_name:
+    type: string
+    title: "Retired Order History bucket override"
+    description: "Legacy Resource Manager input retained for upgraded stacks; the Marketplace bundle path ignores it."
+    visible: false
+    required: false
+  order_history_delivery_mode:
+    type: enum
+    title: "Retired Order History delivery mode"
+    description: "Legacy Resource Manager input retained for upgraded stacks; Marketplace always publishes its pre-created bundle."
+    enum: ["auto", "bundle", "sample", "copy", "dataflow"]
+    visible: false
+    required: false
+  use_shared_order_history_dataset:
+    type: boolean
+    title: "Retired shared Order History dataset switch"
+    description: "Legacy Resource Manager input retained for upgraded stacks; Marketplace uses its own pre-created bundle."
+    visible: false
+    required: false
+  shared_order_history_bucket:
+    type: string
+    title: "Retired shared Order History bucket"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored by Marketplace."
+    visible: false
+    required: false
+  shared_order_history_namespace:
+    type: string
+    title: "Retired shared Object Storage namespace"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored by Marketplace."
+    visible: false
+    required: false
+  shared_order_history_metadata_url:
+    type: string
+    title: "Retired shared Iceberg metadata URL"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored by Marketplace."
+    visible: false
+    required: false
+  shared_order_history_read_par_url:
+    type: string
+    title: "Retired shared Order History read PAR"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored by Marketplace."
+    visible: false
+    sensitive: true
+    required: false
+  shared_order_history_metadata_read_par_url:
+    type: string
+    title: "Retired shared metadata read PAR"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored by Marketplace."
+    visible: false
+    sensitive: true
+    required: false
+  current_user_ocid:
+    type: string
+    title: "Retired current user OCID"
+    description: "Legacy Resource Manager input retained for upgraded stacks; not used by Marketplace."
+    visible: false
+    required: false
+  create_iceberg_resources:
+    type: boolean
+    title: "Retired Iceberg resource creation switch"
+    description: "Legacy Resource Manager input retained for upgraded stacks; Marketplace does not create automatic Iceberg credential resources."
+    visible: false
+    required: false
+  enable_dataflow_iceberg_experiment:
+    type: boolean
+    title: "Retired Data Flow Iceberg experiment switch"
+    description: "Legacy Resource Manager input retained for upgraded stacks; Data Flow is not provisioned or used by Marketplace."
+    visible: false
+    required: false
+  dataflow_run_on_apply:
+    type: boolean
+    title: "Retired Data Flow apply switch"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored because Data Flow is not provisioned."
+    visible: false
+    required: false
+  dataflow_iceberg_operator_group_name:
+    type: string
+    title: "Retired Data Flow operator group"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored because Data Flow is not provisioned."
+    visible: false
+    required: false
+  dataflow_iceberg_operator_identity_domain:
+    type: string
+    title: "Retired Data Flow operator identity domain"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored because Data Flow is not provisioned."
+    default: "Oracle-SSO"
+    visible: false
+    required: false
+  dataflow_iceberg_spark_version:
+    type: string
+    title: "Retired Data Flow Spark version"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored because Data Flow is not provisioned."
+    default: "3.5.0"
+    visible: false
+    required: false
+  dataflow_iceberg_runtime_package:
+    type: string
+    title: "Retired Iceberg Spark runtime package"
+    description: "Legacy Resource Manager input retained for upgraded stacks; ignored because Data Flow is not provisioned."
+    default: "org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.7.1"
+    visible: false
+    required: false
+  create_genai_iam:
+    type: boolean
+    title: "Create new GenAI and ADB dynamic groups (off by default)"
+    description: "Leave off for the first deployment. OCI limits a tenancy to 50 dynamic groups; use a consolidated existing group before enabling this option."
+    required: false
+  genai_policy_compartment_ocid:
+    type: string
+    title: "GenAI policy compartment OCID"
+    required: false
+  genai_model_id:
+    type: string
+    title: "On-demand GenAI model ID"
+    required: false
+  vcn_cidr:
+    type: string
+    title: "Retired VCN CIDR"
+    visible: false
+    required: false
+  public_subnet_cidr:
+    type: string
+    title: "Retired public subnet CIDR"
+    visible: false
+    required: false
+  vcn_dns_label:
+    type: string
+    title: "Retired VCN DNS label"
+    visible: false
+    required: false
+  wallet_bucket_name:
+    type: string
+    title: "Retired application bucket override"
+    visible: false
+    required: false
+  wallet_par_ttl_hours:
+    type: integer
+    title: "Retired PAR lifetime"
+    visible: false
+    required: false
+  genai_dynamic_group_name:
+    type: string
+    title: "Retired GenAI dynamic group name"
+    visible: false
+    required: false
+  genai_policy_name:
+    type: string
+    title: "Retired GenAI policy name"
+    visible: false
+    required: false
+
+outputs:
+  adb_console_url:
+    type: link
+    title: "Autonomous AI Database"
+    displayText: "Open Deep Sec in OCI Console"
+  lab_admin_jupyter_password:
+    type: copyableString
+    title: "ADB ADMIN, JupyterLab, and Marvin password"
+    sensitive: true
+  flask_url:
+    type: link
+    title: "Deep Data Security App"
+    displayText: "Open Deep Data Security App"
+  admin_console_url:
+    type: link
+    title: "Deep Sec Demo Setup"
+    displayText: "Open Deep Sec Demo Setup"
+  jupyter_url:
+    type: link
+    title: "JupyterLab"
+    displayText: "Open JupyterLab"
+  adb_db_name:
+    type: copyableString
+    title: "ADB DB name"
+  adb_tls_connection_string:
+    type: copyableString
+    title: "ADB LOW TLS descriptor"
+  adb_ocid:
+    type: copyableString
+    title: "ADB OCID"
+  compute_instance_ocid:
+    type: copyableString
+    title: "Application-server OCID"
+  compute_public_ip:
+    type: copyableString
+    title: "Application-server public IP"
+  compute_private_ip:
+    type: copyableString
+    title: "Application-server private IP"
+  ssh_command:
+    type: copyableString
+    title: "SSH command"
+  vcn_ocid:
+    type: copyableString
+    title: "VCN OCID"
+  public_subnet_ocid:
+    type: copyableString
+    title: "Public subnet OCID"
+  trusted_ingress_cidr:
+    type: copyableString
+    title: "Trusted ingress CIDR"
+  genai_model_id:
+    type: copyableString
+    title: "Default GenAI model"
+  genai_dynamic_group_name:
+    type: copyableString
+    title: "GenAI dynamic group"
+  genai_policy_name:
+    type: copyableString
+    title: "GenAI policy"
+
+primaryOutputButton: ${admin_console_url}
+
+outputGroups:
+  - title: "Start the Lab"
+    outputs:
+      - ${admin_console_url}
+      - ${adb_console_url}
+      - ${lab_admin_jupyter_password}
+      - ${flask_url}
+      - ${jupyter_url}
+  - title: "Database"
+    outputs:
+      - ${adb_db_name}
+      - ${adb_tls_connection_string}
+      - ${adb_ocid}
+  - title: "Application Server"
+    outputs:
+      - ${compute_instance_ocid}
+      - ${compute_public_ip}
+      - ${compute_private_ip}
+      - ${ssh_command}
+  - title: "Network"
+    outputs:
+      - ${vcn_ocid}
+      - ${public_subnet_ocid}
+      - ${trusted_ingress_cidr}
+  - title: "OCI Generative AI"
+    outputs:
+      - ${genai_model_id}
+      - ${genai_dynamic_group_name}
+      - ${genai_policy_name}

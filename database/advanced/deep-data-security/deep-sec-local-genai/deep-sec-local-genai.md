@@ -4,6 +4,8 @@
 
 In this lab, you build a customer-sales application. Oracle AI Database, not application code or an AI prompt, decides which rows and columns each user can see. You then test the same boundary with OCI Generative AI and with data outside the database.
 
+![Deep Data Security architecture showing an end user and Customer Sales App or OCI Generative AI sending requests through end-user security context to Oracle AI Database, where data roles and grants enforce each user's authorized rows and columns](images/lab-architecture.png)
+
 Complete the lab inside a guided web console. Each page has numbered steps, a **Run Action** button, DeeBee notes, and a short check-your-understanding quiz. You do not need to return to this document after you enter the console. The console provides the remaining instructions.
 
 Estimated time: 60 minutes once the Stack is ready. The console's Overview page also describes a twenty-minute fast path.
@@ -13,6 +15,7 @@ Estimated time: 60 minutes once the Stack is ready. The console's Overview page 
 - Create database end users, data roles, data grants, cross-table data grants, and end user context.
 - Walk through Oracle Deep Data Security's core authorization capabilities and observe how each one changes the authorized result.
 - Use OCI Generative AI to test natural-language queries against the data already authorized for the signed-in user.
+- Use the #11 red-team challenge to let GenAI request a read-only SQL check; the application runs it as the current local end user, so Oracle still makes the access decision.
 - Verify that GenAI queries cannot override or bypass database authorizations.
 
 ### Who this lab is for

@@ -1,0 +1,1671 @@
+schema_version: 1
+id: deep_data_security
+title: Deep Sec Demo Setup
+
+branding:
+  header: Deep Sec Demo Setup
+  footer: Deep Sec Administrator Console · Oracle Database is the authorization boundary
+
+# Executable and learner-display SQL lives beside this lesson manifest.
+script_root: database
+
+overview:
+  introduction: "In this lab, you will set up and configure the Customer Sales App where the Oracle AI Database, rather than the application code, determines the rows and columns each user can access. Scroll down to get started..."
+  scenario_heading: "The scenario"
+  scenario: "Marvin is a salesperson and end user of the Customer Sales App. Emma is a second salesperson you will use as a comparison. You will start with broad baseline access, then use Oracle Deep Data Security to narrow Marvin's rows and columns and later extend his access as a manager."
+  architecture_alt: "A browser connects to Admin Console and Customer Sales App on an OCI Compute VM. Both applications connect to Autonomous Database, which enforces Deep Sec data grants. Autonomous Database reads Iceberg order history files from OCI Object Storage."
+  architecture_caption: "Oracle Database is the authorization boundary: the applications request data, while Deep Sec data grants determine the rows and columns returned."
+  heading: "What you will do"
+  stage_heading: "Stage"
+  description_heading: "What you will do"
+  time_heading: "Estimated time"
+  total_label: "Total"
+  stages:
+    - label: "DB Setup"
+      description: "Create the APPLAB schema, customer data, and ordinary database login role."
+      estimated_minutes: 5
+    - label: "Deep Sec Setup"
+      description: "Create Deep Sec data roles and data grants, then create and grant access to Marvin and Emma."
+      estimated_minutes: 10
+    - label: "Customer Sales App"
+      description: "See the rows and columns Oracle returns for the signed-in user."
+      estimated_minutes: 5
+    - label: "Customize Grant"
+      description: "Narrow Marvin's customer access, then confirm the change in the Customer Sales App."
+      estimated_minutes: 10
+    - label: "Context"
+      description: "Build the manager context and define manager-level access."
+      estimated_minutes: 10
+    - label: "Iceberg"
+      description: "Inspect Iceberg files in Object Storage, create the external table, and extend the data grant."
+      estimated_minutes: 10
+    - label: "Exercises"
+      description: "Put Deep Sec to work through hands-on exercises."
+      estimated_minutes: 5
+    - label: "Best Practices"
+      description: "Apply Deep Sec principles at enterprise scale with trusted identity, least privilege, controlled context, and policy lifecycle management."
+      estimated_minutes: 5
+  note: "Use the navigation links at any time. The Review steps provide a read-only snapshot of the database objects created so far."
+  start_path: /db-setup
+  start_label: "Start DB Setup"
+
+tour:
+  - selector: '.header-link[href="/db-setup"]'
+    title: "DB Setup"
+    text: "Start here. Creates the schema, table, and the one ordinary Oracle role this lab uses before Deep Sec begins."
+  - selector: '.header-link[href="/deep-sec-basics"]'
+    title: "Deep Sec Setup"
+    text: "Deep Data Security actually starts here: data roles, data grants, and Marvin and Emma."
+  - selector: '.header-link[href="/customer-sales"]'
+    title: "Customer Sales App"
+    text: "The live application Marvin and Emma sign into. Come back here after every policy change to see the effect."
+  - selector: '.header-link[href="/build-grant"]'
+    title: "Customize Data Grant"
+    text: "Build Marvin's employee-level access yourself, by choosing which columns his data grant authorizes."
+  - selector: '.header-link[href="/end-user-context"]'
+    title: "End User Context"
+    text: "The most advanced page: a manager lookup, a session-scoped context, and Marvin's promotion to manager."
+  - selector: '.header-link[href="/order-history"]'
+    title: "Iceberg"
+    text: "See an Apache Iceberg table from three angles: raw Object Storage files, an Oracle external table over its metadata, and a cross-table data grant that limits which order rows each user can see."
+  - selector: '.header-link[href="/exercises"]'
+    title: "Exercises"
+    text: "Go back and forth between here and the Customer Sales App, confirming what you built actually holds up from the user's side, AI Insights included."
+  - selector: '.header-link[href="/best-practices"]'
+    title: "Best Practices"
+    text: "See how the patterns in this lab extend to enterprise applications: trusted identity, minimally privileged connections, precise grants, controlled context, and policy lifecycle management."
+  - selector: '.header-link[href="/admin"]'
+    title: "Admin"
+    text: "Run validation queries, or reset the whole lab back to nothing and start over."
+
+actions:
+  prepare_applab:
+    type: sql
+    title: Prepare APPLAB
+    description: Creates the APPLAB schema and customer table, then loads the 22 sample records used throughout the lab.
+    scripts:
+      - create_schema.sql
+      - load_sample_data.sql
+    destructive: true
+    internal_secret_script: create_schema.sql
+    short_label: Prepare App
+    output_title: Complete SQL*Plus output
+
+  create_db_roles:
+    type: sql
+    title: Create database role
+    description: "Creates HOL_DBROLE_CONNECT, the ordinary Oracle role that supplies CREATE SESSION through a data role. Data roles cannot receive system privileges directly: grant the system privilege to a traditional database role, then grant that database role to a Deep Data Security data role."
+    scripts:
+      - create_db_roles.sql
+    destructive: true
+    requires:
+      - prepare_applab
+    short_label: Create DB Role
+    output_title: Complete SQL*Plus output
+
+  review_db_setup:
+    type: sql
+    title: Review
+    description: Confirms the schema, table, and role this page created. No Deep Data Security views here, that starts on the next page.
+    scripts:
+      - db_setup_status.sql
+    short_label: Review
+    output_title: Complete SQL*Plus output
+
+  create_roles:
+    type: sql
+    title: Create data roles
+    description: Create two data roles that will receive permissions through the upcoming Deep Sec data grants. HOL_DATAROLE_EMPLOYEE_ACCESS is granted to users acting as employees. HOL_DATAROLE_MANAGER_ACCESS is used for employees acting as managers. Grant HOL_DBROLE_CONNECT to HOL_DATAROLE_EMPLOYEE_ACCESS so each user can sign in using the CREATE SESSION system privilege granted in the previous step.
+    scripts:
+      - create_data_roles.sql
+    destructive: true
+    requires:
+      - create_db_roles
+    short_label: Create data roles
+    output_title: Complete SQL*Plus output
+
+  create_data_grants:
+    type: sql
+    title: Create data grants
+    description: "Defines the employee data grant wide open: every row and every column. The Customize Data Grant page narrows it later."
+    scripts:
+      - create_data_grants.sql
+    destructive: true
+    requires:
+      - create_roles
+    short_label: Create data grants
+    output_title: Complete SQL*Plus output
+
+  create_end_users:
+    type: sql
+    title: Create end users
+    description: Creates Marvin and Emma together. Emma receives HOL_DATAROLE_EMPLOYEE_ACCESS; a separate action grants that data role to Marvin.
+    scripts:
+      - create_end_users.sql
+    destructive: true
+    needs_password: true
+    requires:
+      - create_data_grants
+    short_label: Create end users
+    output_title: Complete SQL*Plus output
+
+  grant_employee_access:
+    type: sql
+    title: Grant employee access
+    description: Grants HOL_DATAROLE_EMPLOYEE_ACCESS to Marvin and Emma. It begins wide open until you customize its data grant.
+    scripts:
+      - grant_employee_access.sql
+    destructive: true
+    requires:
+      - create_end_users
+    short_label: Grant employee access
+    output_title: Complete SQL*Plus output
+
+  customer_sales:
+    type: link
+    title: Customer Sales App
+    description: Navigate to the Customer Sales App to view Marvin's current access.
+    requires:
+      - grant_employee_access
+    link_target: customer_sales_app
+    completion: mark_viewed
+    short_label: Customer Sales App
+    config:
+      additional_link:
+        title: Customer Sales App as Emma
+        description: >-
+          Right-click the link below and open it in an Incognito (Chrome),
+          InPrivate (Edge), or private browsing window. Sign in as Emma using
+          the same lab password, then run Customer Report. Keep Marvin's
+          original window open so you can compare their access.
+        button_label: Right-click for Emma
+
+  review_light:
+    type: sql
+    title: Review
+    description: Confirms the schema, role, and wide-open employee grant exist. The detailed column breakdown is not useful yet because nothing has been customized.
+    scripts:
+      - end_user_status_light.sql
+    short_label: Review
+    output_title: Complete SQL*Plus output
+
+  review_grant:
+    type: sql
+    title: Review
+    description: Confirms the employee data grant after you customize it, including the selected rows, columns, and privileges.
+    scripts:
+      - end_user_status_light.sql
+    short_label: Review
+    output_title: Complete SQL*Plus output
+
+  review_context:
+    type: sql
+    title: Review
+    description: Confirms the manager context, manager data grant, and Marvin's manager role after the End User Context steps.
+    scripts:
+      - end_user_status_light.sql
+    short_label: Review
+    output_title: Complete SQL*Plus output
+
+  create_managers:
+    type: sql
+    title: Create managers
+    description: Creates a small lookup table resolving each manager's own numeric ID.
+    scripts:
+      - create_managers.sql
+    destructive: true
+    requires:
+      - create_end_users
+    short_label: Manager Lookup
+    output_title: Complete SQL*Plus output
+
+  create_manager_context:
+    type: sql
+    title: Create context
+    description: Creates the session-scoped end user context and its package, resolving the authenticated manager's own ID.
+    scripts:
+      - create_manager_context.sql
+    destructive: true
+    requires:
+      - create_managers
+    short_label: Create Context
+    output_title: Complete SQL*Plus output
+
+  set_context:
+    type: sql
+    title: Set Context
+    description: Grants APPLAB permission to update end user contexts, creates the bridge role, and authorizes both data roles to read the context object.
+    scripts:
+      - set_context.sql
+    destructive: true
+    requires:
+      - create_manager_context
+    short_label: Set Context
+    output_title: Complete SQL*Plus output
+
+  enable_manager:
+    type: sql
+    title: Grant manager role
+    description: Marvin is still an employee and has HOL_DATAROLE_EMPLOYEE_ACCESS. Now, he also holds the HOL_DATAROLE_MANAGER_ACCESS data role. These two data roles provide unique privileges.
+    scripts:
+      - promote_marvin_to_manager.sql
+    destructive: true
+    requires:
+      - customize_manager_grant
+    short_label: Grant manager role
+    output_title: Complete SQL*Plus output
+
+  disable_manager:
+    type: sql
+    title: Revoke manager role
+    description: Revokes HOL_DATAROLE_MANAGER_ACCESS from Marvin. His manager data grant stays defined, just unused until the role is granted again.
+    scripts:
+      - disable_manager_policy.sql
+    destructive: true
+    requires:
+      - create_end_users
+    short_label: Revoke manager role
+    output_title: Complete SQL*Plus output
+
+  customize_employee_grant:
+    type: wizard
+    handler: data_grant
+    title: Customize the employee grant
+    description: Choose the columns Marvin's employee data role can retrieve, which selected columns can be updated, whether rows are restricted to his sales_rep, and whether DELETE is allowed.
+    requires:
+      - create_data_grants
+      - create_end_users
+    short_label: Customize employee
+    confirm_apply: false
+    output_title: SQL*Plus output
+    config:
+      title: Columns Marvin's employee data role can see
+      grant_name: APPLAB.employee_customer_access
+      role: hol_datarole_employee_access
+      table: APPLAB.customers
+      required_columns:
+        - customer_id
+      optional_columns:
+        - sales_rep
+        - customer_name
+        - region
+        - revenue
+        - credit_limit
+        - sensitive_identifier
+      updatable_columns:
+        - sales_rep
+        - customer_name
+        - region
+        - revenue
+        - credit_limit
+        - sensitive_identifier
+      row_restriction:
+        mode: toggle
+        predicate: upper(sales_rep) = upper(ora_end_user_context.username)
+      row_restriction_option:
+        label: Restrict rows to your own sales_rep
+      allow_delete_option:
+        label: Also allow deleting rows
+      columns:
+        - key: customer_id
+          label: customer_id
+          required: true
+          note: always included, primary key
+        - key: sales_rep
+          label: sales_rep
+          required: false
+          default: true
+          allow_update: true
+        - key: customer_name
+          label: customer_name
+          required: false
+          default: true
+          allow_update: true
+        - key: region
+          label: region
+          required: false
+          default: true
+          allow_update: true
+        - key: revenue
+          label: revenue
+          required: false
+          default: true
+          allow_update: true
+        - key: credit_limit
+          label: credit_limit
+          required: false
+          default: true
+          allow_update: true
+        - key: sensitive_identifier
+          label: sensitive_identifier
+          required: false
+          default: true
+          allow_update: true
+
+  verify_employee_grant:
+    type: link
+    title: Check Customer Sales App
+    description: You already have the Customer Sales App open in another tab. Go there now and select Customer Report again.
+    link_button_label: Mark as viewed
+    completion: mark_viewed
+    short_label: Check Customer Sales App
+
+  customize_manager_grant:
+    type: wizard
+    handler: data_grant
+    title: Create the manager data grant
+    description: Create the data grant associated with the manager data role. Choose the columns the manager can see and update, then decide whether the manager can delete rows. The following step grants the manager data role to MARVIN.
+    requires:
+      - create_manager_context
+      - set_context
+    short_label: Manager Data Grant
+    confirm_apply: false
+    output_title: SQL*Plus output
+    config:
+      title: Columns Marvin's manager role can see
+      grant_name: APPLAB.manager_customer_access
+      role: hol_datarole_manager_access
+      table: APPLAB.customers
+      required_columns:
+        - customer_id
+        - manager_id
+      optional_columns:
+        - customer_name
+        - region
+        - sales_rep
+        - revenue
+        - credit_limit
+        - sensitive_identifier
+      updatable_columns:
+        - customer_name
+        - region
+        - sales_rep
+        - revenue
+        - credit_limit
+        - sensitive_identifier
+      row_restriction:
+        mode: fixed
+        predicate: manager_id = ora_end_user_context.APPLAB.MGR_CTX.id
+      allow_delete_option:
+        label: Also allow deleting rows
+      columns:
+        - key: customer_id
+          label: customer_id
+          required: true
+          note: always included, primary key
+        - key: manager_id
+          label: manager_id
+          required: true
+          note: always included, identifies the row's manager
+        - key: customer_name
+          label: customer_name
+          required: false
+          default: true
+          allow_update: true
+        - key: region
+          label: region
+          required: false
+          default: true
+          allow_update: true
+        - key: sales_rep
+          label: sales_rep
+          required: false
+          default: true
+          allow_update: true
+        - key: revenue
+          label: revenue
+          required: false
+          default: true
+          allow_update: true
+        - key: credit_limit
+          label: credit_limit
+          required: false
+          default: true
+          allow_update: true
+        - key: sensitive_identifier
+          label: sensitive_identifier
+          required: false
+          default: true
+          allow_update: true
+
+  explain_iceberg_architecture:
+    type: explanation
+    title: How Iceberg works
+    description: Before you look at the raw files, here's the chain Oracle actually walks to find your data. Every layer is a small index file, only the last hop touches the real rows.
+    completion: mark_viewed
+    short_label: How it works
+    output_title: Step status
+    config:
+      asset: iceberg-hierarchy.svg
+      button_label: Mark as viewed
+
+  show_iceberg_files:
+    type: object_storage
+    handler: iceberg_files
+    title: See the raw data
+    description: Lists the real files behind ORDER_HISTORY and shows the current metadata JSON. This is what the data looks like before Oracle ever gets involved.
+    short_label: See the raw data
+    output_title: Object Storage output
+    config:
+      bucket_setting: order_history_bucket
+      namespace_setting: order_history_namespace
+      region_setting: genai_region
+      prefix_setting: order_history_prefix
+      read_par_url_setting: order_history_read_par_url
+      metadata_read_par_url_setting: order_history_metadata_read_par_url
+
+  create_order_history:
+    type: sql
+    title: Create external table
+    description: APPLAB creates the external table over the published Iceberg metadata in private Object Storage. Oracle derives the Iceberg columns and does not copy data. No data grant exists yet.
+    scripts:
+      - create_order_history_table.sql
+    database_user: APPLAB
+    destructive: true
+    requires:
+      - create_manager_context
+    short_label: Create table
+    output_title: Complete SQL*Plus output
+
+  show_order_history_data:
+    type: sql
+    title: See the Iceberg data
+    description: Queries ORDER_HISTORY with plain SQL, same syntax you'd use against any table. No data was ever copied into the database.
+    scripts:
+      - show_order_history_data.sql
+    requires:
+      - create_order_history
+    short_label: See the data
+    output_title: Complete SQL*Plus output
+
+  extend_manager_context:
+    type: wizard
+    handler: data_grant
+    title: Extend customer access
+    description: "Choose which order-history columns the employee data role excludes from SELECT. AMOUNT starts included on purpose: notice it does not belong and check it to exclude it."
+    requires:
+      - create_order_history
+      - set_context
+    short_label: Extend access
+    confirm_apply: false
+    output_title: SQL*Plus output
+    config:
+      style: all_except
+      mode: all_except
+      grant_name: APPLAB.order_history_by_customer_access
+      table: APPLAB.order_history
+      when_select: APPLAB.customers
+      predicate: APPLAB.order_history.customer_id = APPLAB.customers.customer_id
+      optional_columns:
+        - order_id
+        - order_date
+        - sales_rep
+        - product_category
+        - amount
+      columns:
+        - key: order_id
+          label: order_id
+        - key: order_date
+          label: order_date
+        - key: sales_rep
+          label: sales_rep
+        - key: product_category
+          label: product_category
+        - key: amount
+          label: amount
+
+  review_order_history:
+    type: sql
+    title: Review
+    description: Confirms the external table and its data grant.
+    scripts:
+      - end_user_status_light.sql
+    short_label: Review
+    output_title: Complete SQL*Plus output
+
+  exercise_persona_compare:
+    type: link
+    title: Compare Emma and Marvin
+    description: In the Customer Sales App, sign in as Emma and run Customer Report, note her rows and columns. Then sign in as Marvin and do the same.
+    link_button_label: Mark as viewed
+    completion: mark_viewed
+    short_label: Compare personas
+
+  exercise_ai_insights:
+    type: link
+    title: Ask AI Insights
+    description: Whoever you're currently signed in as, open AI Insights and ask a broad question, something like "list every customer."
+    link_button_label: Mark as viewed
+    completion: mark_viewed
+    short_label: Ask AI Insights
+
+  exercise_order_history_before_after:
+    type: link
+    title: Order history, before and after
+    description: Check order history for Marvin. If you haven't already built the data grant connecting order history back to CUSTOMERS, do that now on the Iceberg page, then check again.
+    link_button_label: Mark as viewed
+    completion: mark_viewed
+    short_label: Order history before/after
+
+  exercise_manager_promotion:
+    type: link
+    title: Promote Marvin, then compare
+    description: Note Marvin's row count as an employee. Grant him the manager role, sign out and back in, check again.
+    link_button_label: Mark as viewed
+    completion: mark_viewed
+    short_label: Compare before/after promotion
+
+  exercise_reset:
+    type: link
+    title: Use a restore option
+    description: On Admin, use Restore to DB Setup or Restore to Deep Sec Setup, then check the Customer Sales App for Marvin again.
+    link_button_label: Mark as viewed
+    completion: mark_viewed
+    short_label: Try a restore
+
+  best_practice_authorization_model:
+    type: explanation
+    title: Design the authorization model before implementing policies
+    description: "Define who can access what data, which operations they can perform, and under what conditions. Translate those requirements into data roles and data grants so policies stay aligned with business rules instead of becoming one-off grants."
+    completion: mark_viewed
+    short_label: Design the model
+    output_title: Step status
+    config:
+      asset: best-practice-authorization-model.svg
+      asset_alt: "Business requirements flow into an authorization model and then into Deep Data Security data roles, data grants, and tests."
+      asset_caption: "Start with the business authorization model, then implement and test it with Deep Data Security."
+      button_label: Mark as viewed
+
+  best_practice_trusted_identity:
+    type: explanation
+    title: Use trusted identity and propagate the real end user to the database
+    description: "Prefer enterprise IAM such as Entra ID or OCI IAM for production applications, and propagate the authenticated user's identity, roles, and attributes through the end-user security context. Authorization should be based on the actual user, not only the shared connection-pool account."
+    completion: mark_viewed
+    short_label: Trusted identity
+    output_title: Step status
+    config:
+      asset: best-practice-trusted-identity.svg
+      asset_alt: "Marvin authenticates through enterprise IAM, the Customer Sales App uses its registered application identity, and the database receives Marvin's end-user security context over a pooled connection."
+      asset_caption: "Application identity identifies the calling application; the end-user security context tells Oracle that this request is for Marvin."
+      button_label: Mark as viewed
+      examples:
+        - title: Remove the local lab end user
+          language: SQL
+          description: "After moving to IAM-managed users and ending any local Marvin session, remove the local Deep Sec end user. This does not delete Marvin from Entra ID or OCI IAM."
+          code: |
+            -- Run as an authorized Deep Sec administrator.
+            DROP END USER marvin;
+        - title: "Microsoft Entra ID: map both application roles"
+          language: SQL
+          description: "Create application roles named employee and manager in Microsoft Entra ID, assign them to Marvin, then create the database-side mappings below."
+          code: |
+            CREATE DATA ROLE employee_role
+              MAPPED TO 'AZURE_ROLE=employee';
+
+            CREATE DATA ROLE manager_role
+              MAPPED TO 'AZURE_ROLE=manager';
+        - title: "OCI IAM: map both groups"
+          language: SQL
+          description: "Create OCI IAM groups named employee and manager, add Marvin to the appropriate groups, then create the database-side mappings below."
+          code: |
+            CREATE DATA ROLE employee_role
+              MAPPED TO 'IAM_OAUTH_GROUP=employee';
+
+            CREATE DATA ROLE manager_role
+              MAPPED TO 'IAM_OAUTH_GROUP=manager';
+
+  best_practice_minimal_connections:
+    type: explanation
+    title: Keep application connections minimally privileged
+    description: "Avoid broadly privileged service accounts. For user-mediated requests, the application connection should have only the privileges needed to connect and establish the end-user security context; access to application data should come from the user's data roles and data grants."
+    completion: mark_viewed
+    short_label: Minimize connections
+    output_title: Step status
+    config:
+      asset: best-practice-minimal-connections.svg
+      asset_alt: "A broad service account exposes all customer data, while a minimally privileged application connection establishes identity and lets Deep Data Security return only authorized data."
+      asset_caption: "Keep the connection narrow and put data authorization in Deep Data Security."
+      button_label: Mark as viewed
+      examples:
+        - title: "Microsoft Entra ID: register the Customer Sales App"
+          language: SQL
+          description: "Map the database application identity to the Entra application client ID. The placeholder is not a secret."
+          code: |
+            CREATE APPLICATION IDENTITY sales_app
+              MAPPED TO 'AZURE_CLIENT_ID=<entra-sales-app-client-id>';
+        - title: "OCI IAM: register the Customer Sales App"
+          language: SQL
+          description: "Map the database application identity to the OCI IAM OAuth client ID."
+          code: |
+            CREATE APPLICATION IDENTITY sales_app
+              MAPPED TO 'IAM_OAUTH_CLIENT_ID=<oci-sales-app-client-id>';
+        - title: Connection rule for user-mediated requests
+          language: SQL
+          description: "For a request on behalf of Marvin, the app establishes the end-user security context on the connection. The externally mapped employee and manager data roles come from Marvin's IAM claims; they are not granted to the local user."
+          code: |
+            -- Keep the connection role limited to connection and context setup.
+            CREATE ROLE sales_app_connect_role;
+            GRANT CREATE SESSION, CREATE END USER SECURITY CONTEXT
+              TO sales_app_connect_role;
+
+            -- Give the application identity only this local data role.
+            CREATE DATA ROLE sales_app_logon_role;
+            GRANT sales_app_connect_role TO sales_app_logon_role;
+            GRANT DATA ROLE sales_app_logon_role TO sales_app;
+
+  best_practice_least_privilege:
+    type: explanation
+    title: Apply least privilege at the row, column, and cell level
+    description: "Make data grants as precise as the business requirement: specify which rows, which columns, and which operations such as SELECT, UPDATE, INSERT, or DELETE. Multiple applicable data grants are additive, so evaluate their combined effect."
+    completion: mark_viewed
+    short_label: Fine-grained access
+    output_title: Step status
+    config:
+      asset: best-practice-least-privilege.svg
+      asset_alt: "A Customer Sales table shows row, column, cell, and operation-level authorization, with sensitive cells excluded from the result."
+      asset_caption: "Deep Data Security can express the exact rows, columns, cells, and operations the business rule allows."
+      button_label: Mark as viewed
+      examples:
+        - title: "Employee access: own rows and no sensitive columns"
+          language: SQL
+          description: "The employee role can read Marvin's own salesperson rows, while credit_limit and sensitive_identifier are excluded."
+          code: |
+            CREATE DATA GRANT employee_customer_access
+              AS SELECT (ALL COLUMNS EXCEPT credit_limit, sensitive_identifier)
+              ON APPLAB.customers
+              WHERE UPPER(sales_rep) = UPPER(ORA_END_USER_CONTEXT.username)
+              TO employee_role;
+        - title: "Manager access: context-driven rows"
+          language: SQL
+          description: "The manager role can read rows selected by the protected manager context."
+          code: |
+            CREATE DATA GRANT manager_customer_access
+              AS SELECT
+              ON APPLAB.customers
+              WHERE manager_id = ORA_END_USER_CONTEXT.APPLAB.MGR_CTX.id
+              TO manager_role;
+        - title: Separate update authority from read authority
+          language: SQL
+          description: "If the business permits an employee to update revenue, grant that operation explicitly and keep it scoped to the same authorized rows."
+          code: |
+            CREATE DATA GRANT employee_customer_update
+              AS UPDATE (revenue)
+              ON APPLAB.customers
+              WHERE UPPER(sales_rep) = UPPER(ORA_END_USER_CONTEXT.username)
+              TO employee_role;
+
+  best_practice_trusted_context:
+    type: explanation
+    title: Use trusted context and controlled elevation for complex authorization
+    description: "Put business attributes such as employee ID, organization, or territory into protected end-user contexts when policies need them. For sensitive workflows, use controlled privilege elevation rather than permanently granting broad access to users or agents."
+    completion: mark_viewed
+    short_label: Trusted context
+    output_title: Step status
+    config:
+      asset: best-practice-trusted-context.svg
+      asset_alt: "Trusted employee and territory attributes flow into a protected end-user context, which a Deep Data Security predicate evaluates before a controlled elevation is approved."
+      asset_caption: "Use trusted attributes for dynamic policy decisions and make exceptional elevation explicit, temporary, and auditable."
+      button_label: Mark as viewed
+      examples:
+        - title: Use a trusted context attribute in a predicate
+          language: SQL
+          description: "The application supplies validated context attributes through the end-user security context; the data grant evaluates them in Oracle."
+          code: |
+            CREATE DATA GRANT manager_customer_access
+              AS SELECT
+              ON APPLAB.customers
+              WHERE manager_id = ORA_END_USER_CONTEXT.APPLAB.MGR_CTX.id
+              TO manager_role;
+        - title: Keep elevation separate from ordinary access
+          language: SQL
+          description: "If an application needs a common, locally managed elevation role, grant only that narrowly defined role to the application identity and expose it through an approved workflow. Do not make it a permanent replacement for user authorization."
+          code: |
+            -- Illustrative: sales_approved_elevation is locally managed.
+            GRANT DATA ROLE sales_approved_elevation TO sales_app;
+
+  best_practice_policy_lifecycle:
+    type: explanation
+    title: Test, audit, and manage policies as code
+    description: "Test authorized and unauthorized access, multi-role users, role changes, pooled connections, and different access paths. Audit data role and data grant administration, capture runtime SELECT and DML on protected objects, and use the Deep Data Security dictionary views plus UNIFIED_AUDIT_TRAIL to trace policy changes and data use to the administrator, application, and end user."
+    completion: mark_viewed
+    short_label: Test and govern
+    output_title: Step status
+    config:
+      asset: best-practice-policy-lifecycle.svg
+      asset_alt: "Deep Data Security policy definitions move from version control through CI/CD and testing into runtime enforcement, dictionary inspection, and audit evidence."
+      asset_caption: "Enterprise authorization is a lifecycle: define, test, deploy, observe, and improve."
+      button_label: Mark as viewed
+      examples:
+        - title: Review mapped data roles
+          language: SQL
+          description: "Confirm which database data roles are mapped to external IAM claims."
+          code: |
+            SELECT data_role, mapped_to
+            FROM dba_data_roles
+            WHERE data_role IN ('EMPLOYEE_ROLE', 'MANAGER_ROLE')
+            ORDER BY data_role;
+        - title: Review data grants
+          language: SQL
+          description: "Inspect the row, column, and operation-level grants deployed to the application schema."
+          code: |
+            SELECT grant_name, object_name, privilege, column_name
+            FROM dba_data_grants
+            WHERE object_owner = 'APPLAB'
+            ORDER BY object_name, grant_name, column_name;
+        - title: Audit Deep Data Security administration
+          language: SQL
+          description: "Capture data role creation, assignment, and removal, plus data grant creation, replacement, and removal. CREATE OR REPLACE DATA GRANT changes are recorded through the documented CREATE DATA GRANT audit action."
+          code: |
+            CREATE AUDIT POLICY deep_sec_admin_pol
+              ACTIONS
+                CREATE DATA ROLE,
+                DROP DATA ROLE,
+                GRANT DATA ROLE,
+                REVOKE DATA ROLE,
+                CREATE DATA GRANT,
+                DROP DATA GRANT;
+
+            AUDIT POLICY deep_sec_admin_pol;
+
+            -- Later policy edits use the same audited data-grant action.
+            CREATE OR REPLACE DATA GRANT employee_customer_access
+              AS SELECT (ALL COLUMNS EXCEPT credit_limit, sensitive_identifier)
+              ON APPLAB.customers
+              WHERE UPPER(sales_rep) = UPPER(ORA_END_USER_CONTEXT.username)
+              TO employee_role;
+        - title: Audit role and grant runtime use
+          language: SQL
+          description: "Audit protected-object activity, then correlate each event with the end-user security context and current role/grant metadata."
+          code: |
+            CREATE AUDIT POLICY deep_sec_runtime_pol
+              ACTIONS
+                SELECT ON APPLAB.CUSTOMERS,
+                INSERT ON APPLAB.CUSTOMERS,
+                UPDATE ON APPLAB.CUSTOMERS,
+                DELETE ON APPLAB.CUSTOMERS;
+
+            AUDIT POLICY deep_sec_runtime_pol;
+
+            SELECT event_timestamp,
+                   dbusername,
+                   end_user_name,
+                   end_user_security_context_id,
+                   action_name,
+                   object_schema,
+                   object_name,
+                   sql_text,
+                   return_code
+            FROM unified_audit_trail
+            WHERE (object_schema = 'APPLAB'
+                   AND object_name = 'CUSTOMERS')
+               OR action_name IN ('CREATE DATA ROLE', 'DROP DATA ROLE',
+                                  'GRANT DATA ROLE', 'REVOKE DATA ROLE',
+                                  'CREATE DATA GRANT', 'DROP DATA GRANT')
+            ORDER BY event_timestamp DESC;
+
+            SELECT data_role, grantee, grantee_type
+            FROM dba_data_role_grants
+            ORDER BY data_role, grantee;
+        - title: Test the authorization contract
+          language: text
+          description: "Automate both allowed and denied paths for Marvin, Emma, multiple roles, role changes, pooled connections, and agent-assisted requests."
+          code: |
+            allowed:  Marvin reads his rows and approved columns
+            denied:   Marvin cannot read excluded columns or other rows
+            compare:  Emma's result remains independently attributable
+
+  what_you_proved:
+    type: explanation
+    title: Summary
+    description: "The application issued the same ordinary query throughout the lab. Oracle Deep Data Security changed the authorized result as the end user, data roles, grants, context, and cross-table relationship changed."
+    completion: mark_viewed
+    short_label: Summary
+    output_title: Step status
+    config:
+      asset: lab-architecture.png
+      asset_alt: "Architecture showing the Customer Sales App and OCI Generative AI sending the same request through end-user security context to Oracle AI Database 26ai, where Deep Data Security filters each user's rows and columns."
+      asset_caption: "The application and OCI Generative AI can issue the same request, but Oracle Deep Data Security enforces the authorized result for each end user."
+      query: SELECT * FROM APPLAB.customers ORDER BY revenue DESC
+      result_sets:
+        - title: Baseline access
+          description: 22 rows, all 8 customer columns.
+        - title: Employee access
+          description: 3 rows, 6 authorized columns.
+        - title: Manager access
+          description: 9 rows after the employee and manager grants union together.
+        - title: Iceberg
+          description: 618 authorized Iceberg rows through the cross-table data grant.
+      takeaways:
+        - The application sends ordinary SQL; Oracle decides which rows and columns the user can receive.
+        - Data roles and data grants apply consistently across the application, direct SQL, and OCI Generative AI.
+        - End user context extends the end user's attributes stored in memory.
+        - Cross-table data grants allow you to enforce parent/child table relationships.
+        - If you can query the data via SQL, you can protect it with Deep Data Security.
+      documentation_url: https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/index.html
+      button_label: Mark as viewed
+
+  validate_as_marvin:
+    type: sql
+    title: Run Marvin validation queries
+    description: Runs the same validation SQL as Marvin and shows the rows, context, and active data roles.
+    scripts:
+      - validation_queries.sql
+    database_user: MARVIN
+    requires:
+      - create_end_users
+    short_label: Run validation
+    output_title: Complete SQL*Plus output
+    config:
+      validation_comparison: true
+      query: SELECT * FROM APPLAB.customers ORDER BY revenue DESC
+
+  restore_db_setup:
+    type: sql
+    title: Restore to DB Setup
+    description: Drops this lab's objects, then recreates APPLAB, its 22 sample rows, and the ordinary database connect role. The console resumes as though DB Setup has been completed.
+    scripts:
+      - reset_lab.sql
+      - create_schema.sql
+      - load_sample_data.sql
+      - create_db_roles.sql
+    destructive: true
+    internal_secret_script: create_schema.sql
+    resets_setup: true
+    restored_actions:
+      - prepare_applab
+      - create_db_roles
+      - review_db_setup
+    short_label: Restore DB Setup
+    button_label: Restore to DB Setup
+    output_title: Complete SQL*Plus output
+    config:
+      scripts_open: false
+
+  restore_deep_sec_setup:
+    type: sql
+    title: Restore to Deep Sec Setup
+    description: Drops this lab's objects, rebuilds DB Setup, then recreates the employee data role, its baseline grant, Marvin, and Emma. The console resumes as though DB Setup and Deep Sec Setup have been completed.
+    scripts:
+      - reset_lab.sql
+      - create_schema.sql
+      - load_sample_data.sql
+      - create_db_roles.sql
+      - create_data_roles.sql
+      - create_data_grants.sql
+      - create_end_users.sql
+      - grant_employee_access.sql
+    destructive: true
+    needs_password: true
+    password_scripts:
+      - create_end_users.sql
+    internal_secret_script: create_schema.sql
+    resets_setup: true
+    restored_actions:
+      - prepare_applab
+      - create_db_roles
+      - review_db_setup
+      - create_roles
+      - create_data_grants
+      - create_end_users
+      - grant_employee_access
+      - review_light
+    short_label: Restore Deep Sec Setup
+    button_label: Restore to Deep Sec Setup
+    output_title: Complete SQL*Plus output
+    config:
+      scripts_open: false
+
+  download_lab_files:
+    type: download
+    title: Downloads
+    description: Build a fresh ZIP from the SQL scripts or the two running application source trees on this VM.
+    short_label: Downloads
+    config:
+      artifacts:
+        - sql_scripts
+        - application
+
+  reset_lab:
+    type: sql
+    title: Reset all lab database objects
+    description: Drops only the APPLAB schema, Marvin, and Deep Sec roles. Rebuild the lab afterward.
+    scripts:
+      - reset_lab.sql
+    destructive: true
+    resets_setup: true
+    short_label: Reset all
+    output_title: Complete SQL*Plus output
+
+steps:
+  - id: prepare_applab
+    badge: "1"
+    label: Prepare App
+    title: Prepare App
+    action_ids:
+      - prepare_applab
+    next_hint: Run Create database role to set up ordinary Oracle login plumbing before Deep Sec begins.
+    notes:
+      - "Let us get started by creating the lab schema, modifying the database's network ACL to allow access to Object Storage, creating the CUSTOMERS table and loading sample data. All very routine stuff!"
+
+  - id: create_db_roles
+    badge: "2"
+    label: Create DB Role
+    title: Create DB Role
+    action_ids:
+      - create_db_roles
+    next_hint: Continue to Create data roles. This is where Deep Sec starts.
+    notes:
+      - "Right now you are just creating basic Oracle Database roles and grants you are probably already familiar with."
+      - "One important thing to note: traditional system privileges cannot be granted directly to Deep Sec data roles. That is why you create this traditional database role, HOL_DBROLE_CONNECT, first."
+
+  - id: review_setup
+    badge: "3"
+    label: Review & Quiz
+    title: Review & Quiz
+    action_ids:
+      - review_db_setup
+    next_hint: Continue to Deep Sec Setup to create the data roles and grants Marvin will use.
+    quiz:
+      question: Why did you grant CREATE SESSION to the HOL_DBROLE_CONNECT database role?
+      options:
+        - key: data_role
+          label: Data roles can hold system privileges only after their first data grant.
+        - key: database_role
+          label: Data roles cannot receive system privileges directly, so the standard database role supplies the login privilege through the data role.
+        - key: local_user
+          label: Only local database users need CREATE SESSION; IAM users never need it.
+        - key: admin
+          label: CREATE SESSION must be granted directly to each end user by ADMIN.
+      correct_answer: database_role
+      explanation: Correct. HOL_DBROLE_CONNECT is the standard database-role bridge for CREATE SESSION; the data role carries that database role to the end user.
+    notes:
+      - "Each section ends with a SQL script showing what you have accomplished, plus a quiz. You are not being graded, the answers are in my earlier notes. Guess as many times as you want, or skip it by pressing Next Step."
+
+  - id: create_roles
+    badge: "1"
+    label: Create data roles
+    title: Create data roles
+    action_ids:
+      - create_roles
+    next_hint: Run Create data grants to give these data roles something to actually authorize.
+    notes:
+      - "Data roles are the first new Deep Sec concept you will learn. They are similar to traditional roles, you grant privileges to a data role and grant the data role to users, but with Deep Sec, you grant data grants to data roles, and data roles to end users. You will learn more about this in the next step."
+      - "In your environment this role would be named for the job, such as SALES_EMPLOYEE or CLAIMS_ADJUSTER. The HOL_ prefix is only a lab convention."
+      - "For now, just know this: you can grant data grants directly to end users, but to help you scale, it is better to grant them to standard database roles instead. In this example, you grant the traditional database role to the EMPLOYEE_ACCESS data role."
+      - "Data Roles can also be enterprise-identified, meaning they can be mapped to your OCI IAM or Azure Entra ID roles. This allows you to assign membership at the directory level and have it granted within the Oracle AI Database."
+      - "CREATE OR REPLACE is supported for data roles. Standard database roles do not support the REPLACE option, that is a Deep Sec-specific convenience."
+
+  - id: create_data_grants
+    badge: "2"
+    label: Create data grants
+    title: Create data grants
+    action_ids:
+      - create_data_grants
+    next_hint: Run Create end users to create Marvin and Emma. The employee data grant starts wide open and can be narrowed later.
+    notes:
+      - "This is where you start to see the power of Deep Sec. You are granting SELECT on a specific table, CUSTOMERS, to the data role you just created. This one is basic, you will build on it soon."
+      - "The data grant authorizes the data role to SELECT from the table. Whoever holds that data role can issue a SELECT. Data grants also support optional clauses, you will learn about those in the Customize Grant section."
+
+  - id: create_users
+    badge: "3"
+    label: Create end users
+    title: Create end users
+    action_ids:
+      - create_end_users
+    next_hint: The data roles and grants are defined before any people receive them. Continue to Grant Data Role for Marvin's starting state.
+    notes:
+      - "This is the third new Deep Sec concept, end users. They are like traditional database users, with one key difference, they are schemaless. They do not own any objects in the database, which matches how most real users behave anyway, most people only access data, they never create tables or views."
+      - "Think of end users as similar to application users, they did not used to exist in the database, only in the application. Deep Sec brings that concept into the database itself, so you can secure them directly with data roles and data grants."
+      - "If you are in an enterprise IAM environment, you will not use local end users the way this lab does. You will authenticate with your enterprise identity instead, for example, dee.bee@oracle.com. Deep Sec reads your token, knows who you are and what roles you hold in the directory, and your data roles and data grants take care of the rest."
+      - "That means you would never manage users directly again, that responsibility moves to your IAM or IDP team. You map directory groups to Deep Sec data roles, and data grants handle the security."
+
+  - id: grant_employee_access
+    badge: "4"
+    label: Grant Data Role
+    title: Grant Data Role
+    action_ids:
+      - grant_employee_access
+    next_hint: Open Customer Sales App to see this access from Marvin's side.
+    notes:
+      - "Remember the earlier note on local versus enterprise end users? Because Marvin and Emma are local end users, you have to manually assign them the data roles you want them to have."
+      - "If you were integrated with a directory instead, you would write something like CREATE DATA ROLE HOL_DATAROLE_EMPLOYEE_ACCESS MAPPED TO 'azure_role=EMPLOYEES', and the mapping would take care of itself automatically the next time Marvin or Emma logs in."
+
+  - id: review
+    badge: "5"
+    label: Review & Quiz
+    title: Review & Quiz
+    action_ids:
+      - review_light
+    next_hint: Continue to Customer Sales App to see this access from Marvin's side.
+    quiz:
+      question: "You've created a data role and a data grant. Why can't Marvin query APPLAB.CUSTOMERS yet?"
+      options:
+        - key: not_granted
+          label: "The data role hasn't been granted to Marvin yet, so he holds no access, no matter what the grant authorizes."
+        - key: copy_needed
+          label: "APPLAB.CUSTOMERS must first be copied into Marvin's own schema."
+        - key: app_permission
+          label: "The Customer Sales App hasn't been told to allow Marvin in."
+        - key: context_needed
+          label: "Marvin has the SELECT ANY TABLE system privilege."
+      correct_answer: not_granted
+      explanation: "Correct. A data role and its grant only define what access is possible. Nothing is actually authorized until an end user holds that data role."
+    notes:
+      - "Now let us see what you built. You should see two data roles, one data grant, a predicate that is wide open (1=1), the roles granted to your end users and data roles, and the two new end users, Emma and Marvin."
+
+  - id: customer_sales
+    badge: "1"
+    label: Customer Sales App
+    title: Customer Sales App
+    action_ids:
+      - customer_sales
+    next_hint: Continue to Customize Data Grant to narrow the rows and columns Oracle returns to Marvin.
+    quiz:
+      question: "The data grant you just created has no WHERE clause at all. What does that mean for which rows Marvin can see?"
+      options:
+        - key: every_row
+          label: "Every row is authorized, a data grant with no predicate means no row restriction at all."
+        - key: no_rows
+          label: "No rows are authorized until a predicate is added."
+        - key: filled_columns
+          label: "Only rows where every column is filled in are authorized."
+        - key: own_row_default
+          label: "Oracle defaults to showing just Marvin's own row."
+      correct_answer: every_row
+      explanation: "Correct. A data grant's WHERE clause is optional. Leaving it out is Deep Sec's own way of saying every row, not something you fake with 1=1."
+    notes:
+      - "This is where you get to see what you built. Open the Customer Sales App, sign in with the same password you used for this app, and run Customer Report. Then check your understanding with the quiz."
+
+  - id: customize_employee_grant
+    badge: "1"
+    label: Customize Data Grant
+    title: Customize Data Grant
+    action_ids:
+      - customize_employee_grant
+    next_hint: Continue to Check Customer Sales App to confirm the change took effect.
+    notes:
+      - "Now you are getting into the really good stuff. In this section, you will modify the basic data grant you created, choosing which columns to exclude from SELECT or include for UPDATE. This is the real power of Deep Sec, control down to the column level."
+      - "You will also restrict which rows come back, limited to the specific sales rep running the query. Nothing is hardcoded for Marvin or Emma specifically, you are matching their identity, ora_end_user_context.username, directly against the row data."
+      - "Notice DELETE does not get its own column here the way SELECT and UPDATE do. Oracle scopes DELETE at the row level only, it cannot be restricted to specific columns, so it is a single toggle instead of a per-column choice."
+      - "For this data grant, exclude the credit_limit and sensitive_identifier columns, and restrict rows to only the sales rep's own. As you toggle columns, row restriction, and delete permission, watch the Generated SQL window update to match your choices."
+
+  - id: verify_employee_grant
+    badge: "2"
+    label: Check Customer Sales App
+    title: Check Customer Sales App
+    action_ids:
+      - verify_employee_grant
+    next_hint: Continue to Review to confirm the grant.
+    quiz:
+      question: "Credit Limit and Sensitive Identifier now show 'Not authorized' for Marvin. What actually causes that?"
+      options:
+        - key: excluded_select
+          label: "Those columns were excluded from the data grant's SELECT list."
+        - key: app_hides
+          label: "The application hides those two columns in its display code."
+        - key: columns_gone
+          label: "Those columns don't exist in the CUSTOMERS table anymore."
+        - key: password_scope
+          label: "Marvin's password doesn't have permission for those columns."
+      correct_answer: excluded_select
+      explanation: "Correct. The data grant controls SELECT down to the column level. A column left out of the grant isn't hidden by the app, Oracle never returns it at all."
+    notes:
+      - "Check the Customer Sales App now, you should see a change in how many rows Marvin sees. Select a Not authorized value to see which Deep Sec data grant and role excluded that column. You can go back to Customize Data Grant and adjust it again to confirm it is working, or to fix a mistake if you are still seeing Credit Limit or Sensitive Identifier. Once you are satisfied, answer the check your understanding question."
+
+  - id: review_grant
+    badge: "3"
+    label: Review & Quiz
+    title: Review & Quiz
+    action_ids:
+      - review_grant
+    next_hint: Continue to End User Context to prepare Marvin's manager promotion.
+    quiz:
+      question: After row restriction and column exclusions are applied, what stops Marvin from seeing unauthorized data?
+      options:
+        - key: database
+          label: Oracle's Deep Data Security data grant enforcement.
+        - key: application
+          label: The Customer Sales App page logic.
+        - key: browser
+          label: The browser hiding rows and columns.
+        - key: password
+          label: A different password for the restricted user.
+      correct_answer: database
+      explanation: Correct. The database enforces the data grant, so changing or bypassing the application cannot reveal rows or columns that Oracle did not authorize.
+    notes:
+      - "Let us see what you built in the database. You should see two data roles, and five columns where EMPLOYEE_ACCESS is granted SELECT. You will also see the new predicate matching sales_rep to the user's identity, ora_end_user_context.username, and which of the eight CUSTOMERS columns each end user can SELECT, UPDATE, or DELETE."
+      - "You will also see the data roles, database roles, and end user information from the last section. One section will still be empty, end user context definitions, you will fill that in next."
+
+  - id: create_managers
+    badge: "1"
+    label: Manager Lookup
+    title: Manager Lookup
+    action_ids:
+      - create_managers
+    next_hint: Run Manager context to build the session-scoped context that reads this lookup.
+    notes:
+      - "Now you will create a small lookup table identifying who manages which sales rep. In this lab's data set, you are only working with Marvin and Emma, Marvin manages Emma. You also create Priya, but she is not used in this lab."
+
+  - id: create_manager_context
+    badge: "2"
+    label: Manager context
+    title: Manager context
+    action_ids:
+      - create_manager_context
+    next_hint: Run Set Context to wire up the bridge role and context access.
+    notes:
+      - "This is another genuinely powerful Deep Sec feature, the ability to create and set an end user context. It looks like a table, but UPDATE END_USER_CONTEXT actually updates context stored in the user's session memory, for the life of that session, until it is overwritten or destroyed. That lets Deep Sec quickly resolve any context set for that end user."
+      - "Remember, the end user does not have to exist in the database at all, it can live entirely in an enterprise directory. This context is set in memory for their session, letting you build relationships like who their manager is, where they are located, or what application roles they hold."
+      - "Traditionally, you would build this with a logon trigger or similar. Deep Sec does it automatically, setting it for the end user on your behalf."
+
+  - id: set_context
+    badge: "3"
+    label: Set Context
+    title: Set Context
+    action_ids:
+      - set_context
+    next_hint: Run Manager Data Grant to define what a manager can see, before granting the role itself.
+    notes:
+      - "Now you will give APPLAB, and the end users themselves, the ability to read and set the context. This grant is what makes the context actually usable, without it, the context exists but nothing can resolve it during a session."
+      - "Notice end users cannot set their own context manually. APPLAB and Deep Sec set it for them automatically, that is a deliberate boundary, not an oversight, it keeps context resolution out of the hands of whoever is signed in."
+
+  - id: customize_manager_grant
+    badge: "4"
+    label: Manager Data Grant
+    title: Manager Data Grant
+    action_ids:
+      - customize_manager_grant
+    next_hint: Run Grant Manager Role to promote Marvin now that his grant is defined.
+    notes:
+      - "Now that you have created the relationship between employees and managers, decide which columns the manager data role can SELECT or UPDATE, and whether it can DELETE rows."
+      - "For this data grant, managers should <u>not</u> be able to SELECT sensitive_identifier."
+      - "Managers <u>should</u> be able to UPDATE customer_name, region, and sales_rep."
+      - "Managers should <u>not</u> be allowed to delete rows."
+      - "Watch the Generated SQL update as you toggle columns to include or exclude, or check and uncheck allow deleting rows."
+
+  - id: grant_manager_role
+    badge: "5"
+    label: Grant Manager Role
+    title: Grant Manager Role
+    action_ids:
+      - enable_manager
+      - disable_manager
+    next_hint: Open the Customer Sales App as Marvin to see manager access apply.
+    notes:
+      - "Now give Marvin this new role, make him a manager. Switch to the Customer Sales App and re-run Customer Report, what changed? Answer the check your understanding question, how many rows do you see now, and are any columns still hidden? See if you can guess why."
+      - "One hint before you compare numbers: multiple applicable data grants combine as a union of their rows, not added together. If a row would already be authorized by more than one grant, it still only counts once, keep that in mind as you look at the new total."
+      - "Expected result: 3 employee rows + 6 team rows = 9, as a union, not a sum."
+    quiz:
+      question: Now that Marvin is both an employee and a manager, how many rows are returned?
+      options:
+        - key: nine
+          label: "9"
+        - key: twenty_two
+          label: "22"
+        - key: three
+          label: "3"
+        - key: zero
+          label: "0"
+      correct_answer: nine
+      explanation: "Correct. His employee grant authorizes his own 3 rows, and his manager grant separately authorizes his own row plus his team's 6 rows. Because the grants are combined as a union, Marvin's row is counted only once, for 9 rows total."
+
+  - id: review_context
+    badge: "6"
+    label: Review & Quiz
+    title: Review & Quiz
+    action_ids:
+      - review_context
+    next_hint: Continue to Iceberg to extend the existing customer authorization to Iceberg-backed data.
+    quiz:
+      question: What does the manager data grant use to determine which customer rows a manager can access?
+      options:
+        - key: context
+          label: The authenticated user's end-user context and the manager lookup relationship.
+        - key: browser
+          label: The manager selected in the Customer Sales App page.
+        - key: all_rows
+          label: Every row in APPLAB.CUSTOMERS, because managers always have full access.
+        - key: table_copy
+          label: A private copy of the customer table for each manager.
+      correct_answer: context
+      explanation: Correct. The data grant reads the authenticated user's context and the manager lookup to decide which rows Oracle returns.
+    notes:
+      - "This screen confirms the database steps so far. You will see the two data roles, the two data grants, and which columns each has SELECT or UPDATE privileges on."
+      - "You will also see the manager grant's new predicate, using the context you just created, ora_end_user_context.APPLAB.MGR_CTX.id, to resolve the manager's ID, and which columns each grant can SELECT or DELETE."
+      - "Scroll to the bottom of the script output and you will see a valid row in the end user context definitions view. Check your understanding, then move to the next section."
+
+  - id: explain_iceberg_architecture
+    badge: "1"
+    label: How it works
+    title: How it works
+    action_ids:
+      - explain_iceberg_architecture
+    next_hint: Continue to See the raw data to look at the actual files this diagram describes.
+    notes:
+      - "If you have made it this far, congratulations, you have already learned the core power of Deep Data Security. Now you will build on that further, protecting data that does not even live inside Oracle Database, an Apache Iceberg data set sitting in an OCI Object Storage bucket."
+      - "In this step, you will see that Deep Sec is not just for traditional data, it works with your modern data stack too. You will protect Apache Iceberg data with the same Deep Sec controls you already used on a traditional relational table."
+
+  - id: show_iceberg_files
+    badge: "2"
+    label: See the raw data
+    title: See the raw data
+    action_ids:
+      - show_iceberg_files
+    next_hint: Continue to Create table to see Oracle turn these files into a queryable object.
+    notes:
+      - "This is the actual proof that Iceberg data is not 'in' Oracle. The deployment publishes these pre-created files to Object Storage, Oracle never copies them into the database, it reads them exactly where they already live."
+
+  - id: create_order_history
+    badge: "3"
+    label: Create table
+    title: Create table
+    action_ids:
+      - create_order_history
+    next_hint: Continue to See the data to query it with ordinary SQL.
+    notes:
+      - "The published Iceberg metadata graph stays in Object Storage. One statement points Oracle at it and turns it into a queryable object, no ETL, no copy into Oracle."
+      - "Now you will give APPLAB the necessary Data Pump and network ACL privileges, then create the external table. In the creation statement, you will see it uses a credential built for this lab, granting APPLAB access to the bucket and the files listed in file_uri_list."
+
+  - id: show_order_history_data
+    badge: "4"
+    label: See the data
+    title: See the data
+    action_ids:
+      - show_order_history_data
+    next_hint: Continue to Extend customer access to authorize what you just saw.
+    notes:
+      - "The first test is querying it as the ADB's ADMIN user. ADMIN is a very powerful account, used here only to demonstrate that the external table's data is reachable through a standard SQL query."
+      - "You should see 1,500 rows, the 5 most recent orders, and a count of orders per sales rep, 395 for Emma, 223 for Marvin. What do those two numbers add up to? Keep that in mind as you continue."
+
+  - id: extend_manager_context
+    badge: "5"
+    label: Extend customer access
+    title: Extend customer access
+    action_ids:
+      - extend_manager_context
+    next_hint: Continue to Review to confirm the grant.
+    notes:
+      - "If you thought Deep Sec was already cool, wait until you see this. Now you will create a data grant based on the access a sales rep already has to the CUSTOMERS table, building a parent/child relationship between ORDER_HISTORY and CUSTOMERS through Deep Sec data grants. This is what is called a cross-table data grant."
+      - "Its predicate does not reference the sales rep's name or the manager context you built earlier at all, it matches customer_id on CUSTOMERS to customer_id on ORDER_HISTORY directly."
+      - "That means whatever rows you can see in CUSTOMERS, you can see the matching rows in ORDER_HISTORY, and nothing more. Do you remember how many rows Marvin could see as an employee? How many once he became Emma's manager? That is exactly how this narrows down too."
+      - "One more thing worth noticing, Deep Sec data grants support an EXCEPT clause. For this grant, exclude the amount column. Check that box and watch the Generated SQL change to match."
+    quiz:
+      question: "In the Customer Sales App, scroll down past the Customer Report and run the Iceberg Report. How many rows are returned?"
+      options:
+        - key: fifteen_hundred
+          label: "1500"
+        - key: nine_hundred_forty_five
+          label: "945"
+        - key: six_hundred_eighteen
+          label: "618"
+        - key: zero
+          label: "0"
+      correct_answer: six_hundred_eighteen
+      explanation: "Correct. Marvin can see 618 Apache Iceberg records through his sales-rep data grant and his manager data grant."
+
+  - id: review_order_history
+    badge: "6"
+    label: Review & Quiz
+    title: Review & Quiz
+    action_ids:
+      - review_order_history
+    next_hint: Continue to Exercises.
+    notes:
+      - "Run the SQL script to see the new data grants and data roles added to the database. You have now seen how external tables can be queried with plain SQL and still fully protected by Deep Sec. Try the check your understanding question, then move on."
+    quiz:
+      question: When Oracle creates APPLAB.ORDER_HISTORY, what happens to the Iceberg data?
+      options:
+        - key: object_storage
+          label: It remains in Object Storage; Oracle queries the existing Iceberg files without copying them into database storage.
+        - key: database_copy
+          label: Oracle copies every Parquet file into an APPLAB table.
+        - key: conversion
+          label: Oracle converts the Iceberg files into an Oracle-only format.
+        - key: deletion
+          label: Oracle deletes the Iceberg files after importing their rows.
+      correct_answer: object_storage
+      explanation: Correct. ORDER_HISTORY is an external table over the existing Iceberg files; the data remains in Object Storage.
+
+  - id: exercise_persona_compare
+    badge: "1"
+    label: Compare personas
+    title: Compare Emma and Marvin
+    notes:
+      - "Feel free to navigate back through the lab at any point, DB Setup, Deep Sec Setup, wherever you need, to jog your memory before answering."
+      - "Pay close attention to what is actually different between Emma and Marvin, and what is identical. The answer is not about their roles."
+    action_ids:
+      - exercise_persona_compare
+    next_hint: Continue to Ask AI Insights.
+    quiz:
+      question: Emma and Marvin both hold the employee data role. Why don't they see the same rows?
+      options:
+        - key: different_role
+          label: They're actually on different data roles.
+        - key: predicate
+          label: The grant's row predicate matches each one's own sales_rep value.
+        - key: app_logic
+          label: The application filters differently per user.
+        - key: random
+          label: Row order is randomized per session.
+      correct_answer: predicate
+      explanation: Correct. Same role, same grant, the predicate resolves against whoever's actually signed in, so each person's own rows are what comes back.
+
+  - id: exercise_ai_insights
+    badge: "2"
+    label: Ask AI Insights
+    title: Ask AI Insights
+    notes:
+      - "Feel free to navigate back through the lab at any point to jog your memory before answering."
+      - "Before you ask AI Insights anything, think about where its answer could actually come from. Is it running something new, or working from what is already on your screen?"
+    action_ids:
+      - exercise_ai_insights
+    next_hint: Continue to Order history before and after.
+    quiz:
+      question: You asked AI Insights a broad question. Did its answer include anyone outside what Customer Report already showed you?
+      options:
+        - key: yes_more
+          label: "Yes, the AI can see more than the table."
+        - key: no_same
+          label: "No, it's built from the exact same rows and columns Oracle already returned to Customer Report, nothing more."
+        - key: depends_prompt
+          label: It depends entirely on how the question is phrased.
+      correct_answer: no_same
+      explanation: "Correct. AI Insights doesn't run its own separate, unrestricted query. It reads from the same result set Oracle already filtered for this session, so whatever the data grant excluded from Customer Report is excluded from what the AI sees too."
+
+  - id: exercise_order_history_before_after
+    badge: "3"
+    label: Order history before/after
+    title: Order history, before and after
+    notes:
+      - "Feel free to navigate back through the lab at any point, Iceberg especially, to jog your memory before answering."
+      - "Look closely at what you actually get before the grant exists, not just whether a row count is low. What Oracle tells you matters."
+    action_ids:
+      - exercise_order_history_before_after
+    next_hint: Continue to Promote Marvin, then compare.
+    quiz:
+      question: Before the data grant connecting order history back to CUSTOMERS existed, what did Marvin see when he checked order history?
+      options:
+        - key: nothing
+          label: Nothing, not authorized.
+        - key: everything
+          label: Every order, unrestricted.
+        - key: three_rows
+          label: Only his own three customers' orders.
+      correct_answer: nothing
+      explanation: Correct. The external table existed, but nothing authorized any rows on it until that grant connected it back to CUSTOMERS.
+
+  - id: exercise_manager_promotion
+    badge: "4"
+    label: Compare before/after promotion
+    title: Promote Marvin, then compare
+    notes:
+      - "Feel free to navigate back through the lab at any point, especially Review & Quiz on End User Context, to jog your memory before answering."
+      - "Do the math yourself first. Add Marvin's employee rows to his manager rows, then compare that number to what you actually see."
+    action_ids:
+      - exercise_manager_promotion
+    next_hint: Continue to Try a restore.
+    quiz:
+      question: After promotion, is Marvin's new row count simply his employee rows plus his manager rows added together?
+      options:
+        - key: yes_sum
+          label: "Yes, exactly the sum of both."
+        - key: no_union
+          label: "No, the two grants union together, so any row both would authorize only counts once."
+        - key: manager_only
+          label: Only the manager grant's rows count now.
+      correct_answer: no_union
+      explanation: Correct. Multiple applicable grants combine as a union, not an additive sum, overlapping rows aren't counted twice.
+
+  - id: exercise_reset
+    badge: "5"
+    label: Try a restore
+    title: Use a restore option
+    notes:
+      - "Feel free to navigate back through the lab at any point to jog your memory before answering."
+      - "Think about what a restore would have to do differently if this lab only tracked state in the app, versus real objects living in the database."
+    action_ids:
+      - exercise_reset
+    next_hint: You've now seen this from every angle, the builder side and the user side.
+    quiz:
+      question: "A restore genuinely drops and recreates database objects, it isn't just an app-level reset. Why does that distinction matter?"
+      options:
+        - key: real_objects
+          label: "Data roles, data grants, and end users are real Oracle objects. Restoring rebuilds them, it doesn't just reset a display."
+        - key: no_difference
+          label: "It doesn't matter, restores and app resets behave identically either way."
+        - key: query_cache
+          label: "Oracle caches old query results that a restore has to clear separately."
+        - key: server_restart
+          label: "The application server needs to be manually restarted after every restore."
+      correct_answer: real_objects
+      explanation: "Correct. Everything in this lab, roles, grants, end users, context, is a real object living in the database. A restore is SQL running again, not a UI trick, so the application faithfully reflects wherever you rolled back to."
+
+  - id: best_practice_authorization_model
+    badge: "1"
+    label: Authorization Mode
+    title: Authorization Mode
+    action_ids:
+      - best_practice_authorization_model
+    next_hint: Continue to End User Context.
+    notes:
+      - "You saw this model become concrete when the employee role, row predicate, and column choices changed Marvin's Customer Sales App result without changing the application query."
+      - "Start with a decision table: who is the subject, what object is protected, which operation is allowed, which rows and columns are in scope, and what trusted attributes affect the decision."
+
+  - id: best_practice_trusted_identity
+    badge: "2"
+    label: End User Context
+    title: End User Context
+    action_ids:
+      - best_practice_trusted_identity
+    next_hint: Continue to Application Connections.
+    notes:
+      - "You saw this when Marvin's end user context changed his manager result while the Customer Sales App stayed unchanged."
+      - "Application identity and end-user identity are related but distinct. The application identity identifies the calling application; Marvin's end-user security context identifies the person whose request Oracle must authorize."
+      - "The lab uses local Marvin and Emma accounts to make the result visible. In production, map enterprise IAM users and roles, then propagate the trusted end-user security context through the connection pool."
+
+  - id: best_practice_minimal_connections
+    badge: "3"
+    label: Application Connections
+    title: Application Connections
+    action_ids:
+      - best_practice_minimal_connections
+    next_hint: Continue to Least Privilege.
+    notes:
+      - "You saw the safe boundary when the Customer Sales App issued the same query for Marvin and Oracle returned only his authorized result."
+      - "A connection pool is an efficiency mechanism, not an authorization model. Do not make the pooled account a back door to every application table."
+      - "For requests on behalf of a user, let the application establish trusted identity and context, while Deep Sec data roles and grants decide which data the user can read or change."
+
+  - id: best_practice_least_privilege
+    badge: "4"
+    label: Least Privilege
+    title: Least Privilege
+    action_ids:
+      - best_practice_least_privilege
+    next_hint: Continue to Privilege Elevation.
+    notes:
+      - "You saw least privilege when Marvin's result changed from 22 rows with all columns to 3 rows with 6 columns, even though the app still sent the same query."
+      - "Treat SELECT, UPDATE, INSERT, and DELETE as separate business decisions. An employee may be able to read a row without being able to update every column in it."
+      - "Multiple applicable data grants combine as a union. Review the combined result, not each grant in isolation, especially when users hold more than one data role."
+
+  - id: best_practice_trusted_context
+    badge: "5"
+    label: Privilege Elevation
+    title: Privilege Elevation
+    action_ids:
+      - best_practice_trusted_context
+    next_hint: Continue to Audit Policies.
+    notes:
+      - "You saw controlled elevation when Marvin's MGR_CTX context and manager role expanded his result to the union of his employee and team rows."
+      - "Never treat an arbitrary browser field as a trusted authorization attribute. Validate identity and business attributes before placing them in the protected end-user context."
+      - "The lab's MGR_CTX demonstrates context-driven manager access. At enterprise scale, sensitive elevation should be approved, scoped to the operation, time-limited, and auditable."
+
+  - id: best_practice_policy_lifecycle
+    badge: "6"
+    label: Audit Policies
+    title: Audit Policies
+    action_ids:
+      - best_practice_policy_lifecycle
+    next_hint: Continue to Summary when you are ready.
+    notes:
+      - "You saw why lifecycle testing matters when the same Customer Sales App and OCI Generative AI questions produced different authorized results after each policy change."
+      - "Test both sides of every policy: authorized and unauthorized users, multiple roles, role changes, pooled connections, direct access paths, and agent-assisted workflows."
+      - "Audit Deep Sec administration and runtime use separately. Capture data role creation, assignment, and removal, plus data grant creation, replacement, and removal with Oracle Unified Auditing."
+      - "There is no separate data-role-used event. Audit SELECT, INSERT, UPDATE, and DELETE on protected objects, then correlate END_USER_NAME and END_USER_SECURITY_CONTEXT_ID with DBA_DATA_ROLE_GRANTS and DBA_DATA_GRANTS."
+
+  - id: what_you_proved
+    badge: "1"
+    label: Summary
+    title: Summary
+    action_ids:
+      - what_you_proved
+    next_hint: Use Admin to validate or reset the lab when you are ready.
+    notes:
+      - "The query did not become more trusted because it came from an application or an AI prompt. The result changed because Oracle evaluated the signed-in end user, active data roles, data grants, and end user context."
+      - "The four result sets are the evidence to take home: broad baseline access, least-privilege employee access, the manager union, and cross-table Iceberg access."
+
+  - id: validate_as_marvin
+    badge: V
+    label: Run validation
+    title: Run validation
+    action_ids:
+      - validate_as_marvin
+    next_hint: Use Reset all if you want to start the whole lab over from scratch.
+    notes:
+      - "This page reads Emma's and Marvin's authorization straight from Oracle and shows them side by side, active data roles, applicable data grants, and the plain-English row rule each one resolves to."
+      - "Emma is a good reference point precisely because her access never changes, she is always on the employee role only. Comparing her card against Marvin's is a fast way to see exactly what his manager promotion actually added."
+
+  - id: restore_db_setup
+    badge: DB
+    label: Restore to DB Setup
+    title: Restore to DB Setup
+    notes:
+      - "This drops everything Deep Sec-specific and rebuilds fresh, right back to where DB Setup left off, ordinary schema, sample data, connect role, nothing more. Use it if you have been experimenting with data roles and grants and want a clean slate to redo Deep Sec Setup onward, without touching the basics."
+      - "Remember, this is real SQL running again, not a display reset. Every object it mentions is genuinely dropped and recreated."
+    action_ids:
+      - restore_db_setup
+    next_hint: Use Restore to Deep Sec Setup to add the baseline data roles, data grant, Marvin, and Emma.
+
+  - id: restore_deep_sec_setup
+    badge: DS
+    label: Restore to Deep Sec Setup
+    title: Restore to Deep Sec Setup
+    notes:
+      - "This goes one step further than Restore to DB Setup, it rebuilds the schema and also recreates the baseline employee data role, its wide-open grant, and both Marvin and Emma. Use it if you want to redo Customize Grant, End User Context, or Iceberg from a known-good starting point, without repeating Deep Sec Setup itself."
+      - "Whatever you customized past this point, excluded columns, the manager grant, order history access, is gone after this runs. That is the point, it is a genuine do-over, not a partial one."
+    action_ids:
+      - restore_deep_sec_setup
+    next_hint: Open the Customer Sales App to continue from the baseline employee access.
+
+  - id: download_lab_files
+    badge: D
+    label: Downloads
+    title: Downloads
+    notes:
+      - "These ZIPs are built fresh every time you click, straight from what is actually running on this VM right now, not a snapshot from whenever the lab was first deployed. If you have customized anything, that is what you will get."
+      - "This is worth doing if you want to bring Deep Sec into your own environment. The SQL here is not lab-specific magic, it is exactly what you would run against your own Oracle Database."
+    action_ids:
+      - download_lab_files
+
+  - id: reset_lab
+    badge: R
+    label: Reset all
+    title: Reset all
+    notes:
+      - "This is the most complete reset available, APPLAB, Marvin, Emma, and every Deep Sec role this lab created, all dropped. Nothing about DB Setup survives, you are rebuilding from Prepare App forward."
+      - "Use this when you want to start completely over, not just redo one section. For a smaller do-over, Restore to DB Setup or Restore to Deep Sec Setup gets you back to a working state faster."
+    action_ids:
+      - reset_lab
+    next_hint: Use the secure employee baseline reset once it is available, or run Prepare APPLAB to begin again.
+
+pages:
+  - id: db_setup
+    path: /db-setup
+    label: DB Setup
+    step_ids:
+      - prepare_applab
+      - create_db_roles
+      - review_setup
+
+  - id: deep_sec_basics
+    path: /deep-sec-basics
+    label: Deep Sec Setup
+    step_ids:
+      - create_roles
+      - create_data_grants
+      - create_users
+      - grant_employee_access
+      - review
+
+  - id: customer_sales
+    path: /customer-sales
+    label: Customer Sales App
+    step_ids:
+      - customer_sales
+
+  - id: build_grant
+    path: /build-grant
+    label: Customize Grant
+    step_ids:
+      - customize_employee_grant
+      - verify_employee_grant
+      - review_grant
+
+  - id: end_user_context
+    path: /end-user-context
+    label: Context
+    step_ids:
+      - create_managers
+      - create_manager_context
+      - set_context
+      - customize_manager_grant
+      - grant_manager_role
+      - review_context
+
+  - id: order_history
+    path: /order-history
+    label: Iceberg
+    step_ids:
+      - explain_iceberg_architecture
+      - show_iceberg_files
+      - create_order_history
+      - show_order_history_data
+      - extend_manager_context
+      - review_order_history
+
+  - id: exercises
+    path: /exercises
+    label: Exercises
+    step_ids:
+      - exercise_persona_compare
+      - exercise_ai_insights
+      - exercise_order_history_before_after
+      - exercise_manager_promotion
+      - exercise_reset
+
+  - id: best_practices
+    path: /best-practices
+    label: Best Practices
+    step_ids:
+      - best_practice_authorization_model
+      - best_practice_trusted_identity
+      - best_practice_minimal_connections
+      - best_practice_least_privilege
+      - best_practice_trusted_context
+      - best_practice_policy_lifecycle
+
+  - id: what_you_proved
+    path: /summary
+    label: Summary
+    step_ids:
+      - what_you_proved
+
+  - id: admin
+    path: /admin
+    label: Admin
+    ordered: false
+    step_ids:
+      - validate_as_marvin
+      - restore_db_setup
+      - restore_deep_sec_setup
+      - download_lab_files
+      - reset_lab

@@ -1,0 +1,26 @@
+{
+  "409": {
+    "retry_max_duration": 600,
+    "first_retry_sleep_duration": 10
+  },
+  "429": {
+    "retry_max_duration": 600,
+    "first_retry_sleep_duration": 10
+  },
+  "500": {
+    "retry_max_duration": 600,
+    "first_retry_sleep_duration": 10
+  },
+  "502": {
+    "retry_max_duration": 600,
+    "first_retry_sleep_duration": 10
+  },
+  "503": {
+    "retry_max_duration": 600,
+    "first_retry_sleep_duration": 10
+  },
+  "504": {
+    "retry_max_duration": 600,
+    "first_retry_sleep_duration": 10
+  }
+}

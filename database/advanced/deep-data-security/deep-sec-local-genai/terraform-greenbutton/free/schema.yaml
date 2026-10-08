@@ -1,0 +1,107 @@
+title: "Deep Sec Always Free IAM Verification"
+stackDescription: "Creates Always Free OCI resources to verify the Deep Sec IAM dynamic groups and policies."
+description: "This is a policy-verification stack, not the custom-image Deep Sec application deployment."
+informationalText: "Use your tenancy home region. The stack creates an Always Free Oracle Linux E2 Micro instance and an Always Free Autonomous AI Database, then creates the same IAM resources as the regular Deep Sec Terraform archive."
+instructions: "Run Plan, confirm the IAM resources, then Apply. Verify the dynamic-group matching rules and policy statements in the output or OCI Console. Destroy the stack when testing is complete."
+schemaVersion: 1.1.0
+version: "20260825"
+locale: "en"
+
+variableGroups:
+  - title: "Target"
+    variables:
+      - tenancy_ocid
+      - compartment_ocid
+      - region
+  - title: "Always Free verification instance"
+    variables:
+      - ssh_public_key
+      - allowed_ingress_home_ip_address
+      - allowed_ingress_description
+      - assign_public_ip
+  - title: "OCI Generative AI IAM"
+    variables:
+      - create_genai_iam
+      - genai_dynamic_group_name
+      - genai_policy_name
+      - genai_policy_compartment_ocid
+      - genai_model_id
+
+variables:
+  tenancy_ocid:
+    type: string
+    title: "Tenancy OCID"
+    required: true
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    title: "Lab compartment"
+    required: true
+  region:
+    type: oci:identity:region:name
+    title: "Home region"
+    required: true
+  ssh_public_key:
+    type: oci:core:ssh:publickey
+    title: "SSH public key"
+    required: true
+  allowed_ingress_home_ip_address:
+    type: string
+    title: "Home public IPv4 address or CIDR"
+    required: true
+  allowed_ingress_description:
+    type: string
+    title: "Trusted ingress description"
+    required: false
+  assign_public_ip:
+    type: boolean
+    title: "Assign public IP"
+    required: false
+  create_genai_iam:
+    type: boolean
+    title: "Create GenAI dynamic groups and policies"
+    required: true
+  genai_dynamic_group_name:
+    type: string
+    title: "Compute dynamic-group name"
+    required: true
+  genai_policy_name:
+    type: string
+    title: "Compute GenAI policy name"
+    required: true
+  genai_policy_compartment_ocid:
+    type: string
+    title: "GenAI policy compartment OCID"
+    required: false
+  genai_model_id:
+    type: string
+    title: "GenAI model ID for an optional runtime test"
+    required: false
+
+outputs:
+  adb_console_url:
+    type: link
+    title: "Always Free Autonomous AI Database"
+    displayText: "Open database in OCI Console"
+  adb_ocid:
+    type: copyableString
+    title: "ADB OCID"
+  compute_instance_ocid:
+    type: copyableString
+    title: "Verification instance OCID"
+  compute_public_ip:
+    type: copyableString
+    title: "Verification instance public IP"
+  ssh_command:
+    type: copyableString
+    title: "SSH command"
+  genai_dynamic_group_name:
+    type: copyableString
+    title: "Compute dynamic group"
+  genai_policy_name:
+    type: copyableString
+    title: "Compute GenAI policy"
+  deep_sec_free_iam_summary:
+    type: string
+    title: "Created IAM resources"
+
+primaryOutputButton: ${adb_console_url}

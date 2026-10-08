@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in | Oracle Customer Sales</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  </head>
+  <body>
+    <header class="app-header"><a class="brand" href="/" aria-label="Oracle Customer Sales home"><span class="oracle-mark" aria-hidden="true">O</span><span>Oracle Customer Sales</span></a><div class="header-context"><span class="status-dot"></span> Protected by Oracle Database</div></header>
+    <main class="page narrow-page">
+      <section class="page-heading compact-heading"><div><p class="eyebrow">Customer Sales</p><h1>Sign in</h1><p class="lead">Sign in to review customer accounts available to your database identity.</p></div><div class="security-badge"><span aria-hidden="true">✓</span> Protected by Oracle Database</div></section>
+      <section class="card sign-in-card" aria-labelledby="sign-in-title">
+        <div class="card-heading"><div><h2 id="sign-in-title">Database credentials</h2><p>Your database password is verified directly by Oracle Database.</p></div></div>
+        <form id="login-form" class="sign-in-fields">
+          <div class="field"><label for="persona">Database user</label><select id="persona"><option value="MARVIN">Marvin — Sales</option><option value="EMMA">Emma — Sales</option></select></div>
+          <div class="field"><label for="password">Database password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter password"></div>
+          <div class="field action-field"><button id="login" class="primary" type="submit">Sign in</button></div>
+        </form>
+        <p id="error" class="login-status error-text" aria-live="polite"></p>
+      </section>
+    </main>
+    <footer>Oracle Customer Sales · Protected by Oracle Deep Data Security</footer>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

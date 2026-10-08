@@ -22,6 +22,8 @@ Estimated Time: 5 minutes
 
 1. On the OCI Stack page, open the **Application Information** tab.
 
+    ![OCI Resource Manager Application Information tab with the Open Deep Sec Demo Setup action highlighted and the generated password, Customer Sales App, JupyterLab, database, and compute outputs listed](images/oci-stack-application-info.png)
+
 2. Find the generated password. Select **Unlock** if the password is hidden. Copy the password for both workshop applications.
 
 3. Open **Deep Sec Demo Setup** from the link in the **Application Information** tab. Sign in as `ADMIN` with the password shown on that tab.

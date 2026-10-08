@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-labelledby="title desc">
+  <title id="title">Deep Sec lab architecture</title>
+  <desc id="desc">A browser connects to the Admin Console and Customer Sales applications on an OCI Compute VM. Both applications connect to Autonomous Database, which enforces Deep Sec data grants. Autonomous Database reads Iceberg data from OCI Object Storage.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#56708a"/></marker>
+    <style>
+      .frame { fill: #f7f9fc; stroke: #8da3b8; stroke-width: 2; }
+      .box { fill: #fff; stroke: #56708a; stroke-width: 2; }
+      .app { fill: #fef2f2; stroke: #c74634; stroke-width: 2; }
+      .service { fill: #eef6ff; stroke: #2f6fae; stroke-width: 2; }
+      .storage { fill: #fff8e1; stroke: #af7d20; stroke-width: 2; }
+      .title { fill: #202c39; font: 700 20px Arial, sans-serif; }
+      .label { fill: #202c39; font: 700 16px Arial, sans-serif; }
+      .copy { fill: #425466; font: 14px Arial, sans-serif; }
+      .small { fill: #425466; font: 13px Arial, sans-serif; }
+      .line { fill: none; stroke: #56708a; stroke-width: 2.5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="20" y="20" width="960" height="460" rx="16" class="frame"/>
+  <text x="50" y="58" class="title">OCI Deep Sec Lab</text>
+
+  <rect x="55" y="190" width="165" height="100" rx="10" class="box"/>
+  <text x="137" y="230" text-anchor="middle" class="label">Browser</text>
+  <text x="137" y="255" text-anchor="middle" class="copy">Lab participant</text>
+
+  <rect x="285" y="105" width="300" height="270" rx="14" class="frame"/>
+  <text x="305" y="138" class="label">OCI Compute VM</text>
+  <text x="305" y="160" class="small">Deep Sec application server</text>
+  <rect x="320" y="185" width="230" height="65" rx="8" class="app"/>
+  <text x="435" y="213" text-anchor="middle" class="label">Admin Console</text>
+  <text x="435" y="234" text-anchor="middle" class="small">Build and review the lab</text>
+  <rect x="320" y="280" width="230" height="65" rx="8" class="app"/>
+  <text x="435" y="308" text-anchor="middle" class="label">Customer Sales</text>
+  <text x="435" y="329" text-anchor="middle" class="small">Application requests data</text>
+
+  <rect x="665" y="130" width="255" height="120" rx="10" class="service"/>
+  <text x="792" y="167" text-anchor="middle" class="label">Autonomous Database</text>
+  <text x="792" y="192" text-anchor="middle" class="copy">Deep Sec data grants</text>
+  <text x="792" y="214" text-anchor="middle" class="small">Authorization boundary</text>
+
+  <rect x="665" y="305" width="255" height="105" rx="10" class="storage"/>
+  <text x="792" y="342" text-anchor="middle" class="label">OCI Object Storage</text>
+  <text x="792" y="367" text-anchor="middle" class="copy">Iceberg order history files</text>
+
+  <path d="M220 220 H320" class="line"/>
+  <path d="M220 260 H270 V312 H320" class="line"/>
+  <path d="M550 217 H665" class="line"/>
+  <path d="M550 312 H615 V225 H665" class="line"/>
+  <path d="M792 305 V250" class="line"/>
+  <text x="812" y="281" class="small">External Iceberg table reads</text>
+</svg>

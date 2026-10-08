@@ -1,0 +1,231 @@
+title: "Deep Sec Local End-User GenAI Lab"
+stackDescription: "Pre-lab deployment of the Deep Sec Autonomous AI Database, application server, wallet bucket, and optional OCI Generative AI instance-principal access."
+description: "Deep Data Security demonstration using local database end user Marvin."
+informationalText: "After Apply completes, use the Application Outputs below. Terraform generates one sensitive password for ADB ADMIN, JupyterLab, and Marvin; select Unlock and copy it. Enter that password for Marvin when the database setup script prompts in Task 2."
+instructions: "Provisioning is pre-lab work and is excluded from the 60-minute hands-on estimate. Run Plan before Apply, then Apply. Terraform automatically generates and securely delivers the ADB wallet to the compute instance. Afterward, select Unlock and copy the shared ADB ADMIN, JupyterLab, and Marvin password, then use the JupyterLab link to configure the application."
+schemaVersion: 1.1.0
+version: "20260816"
+locale: "en"
+
+variableGroups:
+  - title: "Target"
+    variables:
+      - tenancy_ocid
+      - compartment_ocid
+      - region
+  - title: "Autonomous AI Database"
+    variables:
+      - adb_db_name
+      - adb_display_name
+      - adb_compute_count
+      - adb_storage_tbs
+      - adb_license_model
+  - title: "Application Server"
+    variables:
+      - compute_image_ocid
+      - compute_shape
+      - compute_ocpus
+      - compute_memory_in_gbs
+      - ssh_public_key
+  - title: "Trusted Browser Access"
+    variables:
+      - allowed_ingress_home_ip_address
+      - allowed_ingress_description
+      - assign_public_ip
+  - title: "Iceberg reader credential (required)"
+    variables:
+      - order_history_oci_username
+      - order_history_oci_auth_token
+  - title: "OCI Generative AI"
+    variables:
+      - create_genai_iam
+      - genai_policy_compartment_ocid
+      - genai_model_id
+
+variables:
+  tenancy_ocid:
+    type: string
+    title: "Tenancy OCID"
+    required: true
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    title: "Lab compartment"
+    required: true
+  region:
+    type: oci:identity:region:name
+    title: "Region"
+    required: true
+  adb_db_name:
+    type: string
+    title: "ADB database name override"
+    description: "Leave blank to generate a unique DEEPSEC-prefixed database name. The lab still connects through deepsec_low."
+    required: false
+  adb_display_name:
+    type: string
+    title: "ADB display name"
+    required: false
+  adb_compute_count:
+    type: integer
+    title: "ADB ECPU count"
+    required: false
+  adb_storage_tbs:
+    type: integer
+    title: "ADB storage (TB)"
+    required: false
+  adb_license_model:
+    type: enum
+    title: "ADB license model"
+    enum: ["BRING_YOUR_OWN_LICENSE", "LICENSE_INCLUDED"]
+    required: false
+  compute_image_ocid:
+    type: oci:core:image:id
+    title: "Application-server image"
+    required: false
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+  compute_shape:
+    type: oci:core:instanceshape:name
+    title: "Compute shape"
+    required: false
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+  compute_ocpus:
+    type: integer
+    title: "Compute OCPUs"
+    required: false
+  compute_memory_in_gbs:
+    type: integer
+    title: "Compute memory (GB)"
+    required: false
+  ssh_public_key:
+    type: oci:core:ssh:publickey
+    title: "SSH public key"
+    required: true
+  allowed_ingress_home_ip_address:
+    type: string
+    title: "Home public IPv4 address or CIDR"
+    description: "Enter a browser public IPv4 address or CIDR. A bare address is treated as /32."
+    required: true
+  allowed_ingress_description:
+    type: string
+    title: "Trusted ingress description"
+    required: false
+  assign_public_ip:
+    type: boolean
+    title: "Assign public IP"
+    required: false
+  order_history_oci_username:
+    type: string
+    title: "OCI username, including identity domain"
+    sensitive: true
+    required: true
+  order_history_oci_auth_token:
+    type: string
+    title: "OCI auth token"
+    sensitive: true
+    required: true
+  create_genai_iam:
+    type: boolean
+    title: "Create GenAI dynamic group and policy"
+    required: false
+  genai_policy_compartment_ocid:
+    type: string
+    title: "GenAI policy compartment OCID"
+    required: false
+  genai_model_id:
+    type: string
+    title: "On-demand GenAI model ID"
+    required: false
+
+outputs:
+  adb_console_url:
+    type: link
+    title: "Autonomous AI Database"
+    displayText: "Open Deep Sec in OCI Console"
+  lab_admin_jupyter_password:
+    type: copyableString
+    title: "ADB ADMIN, JupyterLab, and Marvin password"
+    sensitive: true
+  flask_url:
+    type: link
+    title: "Deep Data Security App"
+    displayText: "Open Deep Data Security App"
+  admin_console_url:
+    type: link
+    title: "Deep Sec DEMO Setup"
+    displayText: "Open Deep Sec DEMO Setup"
+  jupyter_url:
+    type: link
+    title: "JupyterLab"
+    displayText: "Open JupyterLab"
+  adb_db_name:
+    type: copyableString
+    title: "ADB DB name"
+  adb_service_alias:
+    type: copyableString
+    title: "ADB service alias"
+  adb_ocid:
+    type: copyableString
+    title: "ADB OCID"
+  compute_instance_ocid:
+    type: copyableString
+    title: "Application-server OCID"
+  compute_public_ip:
+    type: copyableString
+    title: "Application-server public IP"
+  compute_private_ip:
+    type: copyableString
+    title: "Application-server private IP"
+  ssh_command:
+    type: copyableString
+    title: "SSH command"
+  vcn_ocid:
+    type: copyableString
+    title: "VCN OCID"
+  public_subnet_ocid:
+    type: copyableString
+    title: "Public subnet OCID"
+  trusted_ingress_cidr:
+    type: copyableString
+    title: "Trusted ingress CIDR"
+  genai_model_id:
+    type: copyableString
+    title: "Default GenAI model"
+  genai_dynamic_group_name:
+    type: copyableString
+    title: "GenAI dynamic group"
+  genai_policy_name:
+    type: copyableString
+    title: "GenAI policy"
+
+primaryOutputButton: ${admin_console_url}
+
+outputGroups:
+  - title: "Start the Lab"
+    outputs:
+      - ${admin_console_url}
+      - ${adb_console_url}
+      - ${lab_admin_jupyter_password}
+      - ${flask_url}
+      - ${jupyter_url}
+  - title: "Database"
+    outputs:
+      - ${adb_db_name}
+      - ${adb_service_alias}
+      - ${adb_ocid}
+  - title: "Application Server"
+    outputs:
+      - ${compute_instance_ocid}
+      - ${compute_public_ip}
+      - ${compute_private_ip}
+      - ${ssh_command}
+  - title: "Network"
+    outputs:
+      - ${vcn_ocid}
+      - ${public_subnet_ocid}
+      - ${trusted_ingress_cidr}
+  - title: "OCI Generative AI"
+    outputs:
+      - ${genai_model_id}
+      - ${genai_dynamic_group_name}
+      - ${genai_policy_name}

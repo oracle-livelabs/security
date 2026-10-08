@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in | Deep Sec DEMO Setup</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+  </head>
+  <body>
+    <header class="app-header"><a class="brand" href="/"><span class="oracle-mark" aria-hidden="true">O</span><span>Deep Sec DEMO Setup</span></a><span class="login-context">Lab administration</span></header>
+    <main class="page login-page">
+      <section class="heading"><p>Use the Stack-generated password shared by ADB <code>ADMIN</code>, JupyterLab, and Marvin.</p></section>
+      <section class="card sign-in-card" aria-labelledby="sign-in-title">
+        <h2 id="sign-in-title">ADMIN database credentials</h2>
+        <p class="muted">The password is verified directly by Oracle Database and remains only in this console process for the active session.</p>
+        <form id="login-form">
+          <label for="password">ADMIN password</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="Enter the Stack-generated password" required>
+          <button id="login" class="primary" type="submit">Sign in to Admin Console</button>
+          <p id="error" class="error" role="alert" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+    <footer>Deep Sec Administrator Console · Fixed lab actions only</footer>
+    <script src="{{ url_for('static', filename='admin.js') }}"></script>
+  </body>
+</html>

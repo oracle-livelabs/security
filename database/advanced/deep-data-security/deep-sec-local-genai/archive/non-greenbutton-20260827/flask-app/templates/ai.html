@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AI Insights | Oracle Customer Sales</title><meta name="csrf-token" content="{{ csrf_token() }}"><link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}"></head>
+  <body>
+    <header class="app-header"><a class="brand" href="/query" aria-label="Oracle Customer Sales"><span class="oracle-mark" aria-hidden="true">O</span><span>Oracle Customer Sales</span></a><div class="header-actions"><nav class="header-nav" aria-label="Application"><a href="/query">Customer Accounts</a><a class="active" href="/ai">AI Insights</a></nav><span class="header-context"><span class="status-dot"></span> {{ persona.label }}</span><button id="logout" class="header-button">Sign out</button></div></header>
+    <main class="page narrow-page">
+      <section class="page-heading compact-heading"><div><p class="eyebrow">Customer Sales</p><h1>AI Insights</h1><p class="lead">Ask about the customer records Oracle Database returns for your current identity.</p></div><div class="security-badge"><span aria-hidden="true">✓</span> Oracle-authorized data only</div></section>
+      <section class="card insight-card" aria-labelledby="insight-title">
+        <div class="card-heading"><div><h2 id="insight-title">Customer analysis</h2><p>Customer Insights uses the same Oracle-authorized result set as Customer Accounts.</p></div></div>
+        <form id="ai-form">
+          <label for="ai-question">Question</label>
+          <textarea id="ai-question" rows="4" maxlength="1000">Show detailed information on all customers. Every customer in the table.</textarea>
+          <div class="query-actions"><button id="ask-ai" class="primary" type="submit">Generate Insights</button><span id="ai-status" class="loading-status" aria-live="polite"></span><span id="error" role="alert"></span></div>
+        </form>
+        <section id="ai-result" class="insight-result" aria-labelledby="ai-result-title" hidden><h3 id="ai-result-title">Customer Insights</h3><div class="ai-query-list"><p>Queries sent to Oracle for this request</p>{% for query in oracle_queries %}<code>{{ query }}</code>{% endfor %}</div><p id="ai-answer"></p></section>
+        <section id="security-context" class="security-context" aria-labelledby="security-context-title" hidden><h3 id="security-context-title">Database Security Context</h3><dl id="context" class="context"></dl></section>
+      </section>
+    </main>
+    <footer>Oracle Customer Sales · Protected by Oracle Deep Data Security</footer><script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

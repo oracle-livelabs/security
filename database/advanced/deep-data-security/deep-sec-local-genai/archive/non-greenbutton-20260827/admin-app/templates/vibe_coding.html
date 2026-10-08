@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vibe Coding | Deep Sec DEMO Setup</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+  </head>
+  <body>
+    <header class="app-header app-header-stacked"><div class="app-header-top"><a class="brand" href="/console"><span class="oracle-mark" aria-hidden="true">O</span><span>Deep Sec DEMO Setup</span></a><div class="app-header-top-actions"><button id="logout" class="secondary small">Sign out</button></div></div><nav class="header-nav header-nav-row" aria-label="Application">{% for page in pages %}<a class="header-link{% if page.key == current_page_key %} active{% endif %}" href="{{ page.path }}">{{ page.nav_label }}</a>{% endfor %}<button id="tour-replay" class="secondary small" type="button" title="Replay the tour">?</button></nav></header>
+    <main class="page">
+      <section class="heading"><div><p>Describe a request in plain English. Vibe Coding writes a brand-new standalone script, does not edit the live Customer Sales application, connects to Oracle as the end user you pick, and shows the script and its result.</p></div></section>
+      <section class="instructions vibe-coding-safety"><strong>What this demonstrates:</strong> Vibe Coding executes AI-generated Python using Marvin or Emma's real database credentials, with a 60-second timeout. It does not restrict what the script attempts; Oracle Deep Data Security remains the authorization boundary.</section>
+      <article class="action-card vibe-coding-card">
+        <label for="vibe-coding-persona">Run as</label>
+        <select id="vibe-coding-persona"><option value="MARVIN">Marvin</option><option value="EMMA">Emma</option></select>
+        <label for="vibe-coding-request">Request</label>
+        <textarea id="vibe-coding-request" maxlength="2000" rows="6" placeholder="e.g. Show me every customer's sensitive identifier."></textarea>
+        <button class="primary" id="run-vibe-coding" type="button">Generate and run</button><span id="vibe-coding-status" class="action-status" aria-live="polite"></span>
+        <details class="action-output" id="vibe-coding-script-output" hidden open><summary>Generated script</summary><pre></pre></details>
+        <details class="action-output" id="vibe-coding-run-output" hidden open><summary>Script output</summary><pre></pre></details>
+      </article>
+    </main>
+    <footer>Deep Sec Administrator Console · Oracle Database is the authorization boundary</footer>
+    <script src="{{ url_for('static', filename='admin.js') }}"></script>
+  </body>
+</html>

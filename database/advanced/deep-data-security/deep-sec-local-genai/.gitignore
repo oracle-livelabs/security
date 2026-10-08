@@ -1,0 +1,30 @@
+cloudshell/config.env
+cloudshell/generated/
+cloudshell/artifacts/
+flask-app/.env
+flask-app/.venv/
+flask-app/__pycache__/
+cloudshell/__pycache__/
+flask-app/logs/
+dist/*.zip
+dist/*.sha256
+!dist/deep-data-security-flask-app-GreenButton.zip
+!dist/deep-data-security-flask-app-GreenButton.zip.sha256
+!dist/deep-data-security-flask-app-Marketplace.zip
+!dist/deep-data-security-flask-app-Marketplace.zip.sha256
+terraform/.deep-sec-generated-wallet.zip
+
+# Local/editor and downloaded-file artifacts.
+**/__pycache__/
+*.py[cod]
+*:Zone.Identifier
+*.un~
+archive/**/*.par-url
+archive/**/*.sha256
+archive/**/*.zip
+
+# Recreated by build_greenbutton_terraform_zip.sh.
+terraform-greenbutton/artifacts/
+
+# Recreated by build_marketplace_terraform_zip.sh.
+terraform-marketplace/artifacts/

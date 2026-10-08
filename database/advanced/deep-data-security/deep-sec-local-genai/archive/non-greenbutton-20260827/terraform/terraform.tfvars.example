@@ -1,0 +1,47 @@
+tenancy_ocid              = "ocid1.tenancy.oc1..replace-me"
+compartment_ocid          = "ocid1.compartment.oc1..replace-me"
+region                    = "us-ashburn-1"
+# OCI profile is normally inherited by terraform.sh from OCI_PROFILE.
+# oci_profile              = "DEFAULT"
+# Leave blank to generate a unique DEEPSEC-prefixed database name. The lab's
+# stable wallet alias remains deepsec_low regardless of this generated name.
+adb_db_name               = ""
+adb_display_name          = "Deep Sec"
+adb_compute_count         = 2
+adb_storage_tbs           = 1
+adb_license_model         = "BRING_YOUR_OWN_LICENSE"
+
+# This is the supplied Ashburn custom image. Override it for another tenancy or region.
+compute_image_ocid        = "ocid1.image.oc1.iad.aaaaaaaaftfqwqdkerxwrqjjssmwvog6kohczmfhfj2i2kmjmqorteybgp2a"
+compute_shape             = "VM.Standard.E5.Flex"
+compute_ocpus             = 1
+compute_memory_in_gbs     = 16
+compute_display_name      = "deep-sec-app-server"
+ssh_public_key            = "ssh-rsa replace-me"
+
+# Terraform creates and later destroys this VCN and public subnet. Enter your
+# own public home IPv4 address or CIDR. Terraform treats a bare address as /32.
+# Examples: "203.0.113.10", "203.0.113.10/32", or "0.0.0.0/0".
+vcn_cidr                  = "10.0.0.0/16"
+public_subnet_cidr        = "10.0.1.0/24"
+allowed_ingress_home_ip_address = "203.0.113.10"
+allowed_ingress_description = "My Home IP"
+
+# Terraform creates this private bucket, uploads the generated wallet, and
+# gives the new compute instance a short-lived, single-object read link.
+# Leave blank to generate a unique bucket for this Stack build. Set a value only
+# when you intentionally need a specific unique bucket name.
+wallet_bucket_name        = ""
+wallet_object_name        = "deep-sec-wallet.zip"
+wallet_par_ttl_hours      = 24
+
+# Required by both archive variants. This OCI username (including identity
+# domain) and auth token create the database credential used to read the
+# Iceberg metadata and data through OCI's native Object Storage endpoint.
+order_history_oci_username   = "replace-with-identity-domain-and-oci-username"
+order_history_oci_auth_token = "replace-with-oci-auth-token"
+
+# The module creates a dynamic group bound to this new VM plus the least-privilege
+# GenAI chat policy. Set false if your Terraform principal lacks tenancy IAM permission.
+create_genai_iam          = true
+genai_model_id            = "google.gemini-2.5-flash"

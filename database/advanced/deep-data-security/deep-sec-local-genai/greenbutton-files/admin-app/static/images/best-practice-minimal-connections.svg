@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">Keep application connections minimally privileged</title>
+  <desc id="desc">The broad service-account pattern exposes all customer data, while a minimally privileged application connection establishes identity and lets Deep Data Security return only authorized data.</desc>
+  <rect width="960" height="300" rx="14" fill="#f7f6f4"/>
+  <text x="32" y="38" fill="#312d2a" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">A connection is not a data-access shortcut</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="32" y="76" fill="#c74634" font-size="16" font-weight="700">Avoid: broad service account</text>
+    <rect x="30" y="91" width="170" height="72" rx="10" fill="#fff2ef" stroke="#c74634" stroke-width="3"/>
+    <text x="54" y="121" fill="#312d2a" font-size="17" font-weight="700">Application</text>
+    <text x="54" y="146" fill="#625f5b" font-size="14">shared account</text>
+    <line x1="211" y1="127" x2="275" y2="127" stroke="#c74634" stroke-width="3"/>
+    <polygon points="275,127 263,119 263,135" fill="#c74634"/>
+    <rect x="288" y="91" width="205" height="72" rx="10" fill="#fff2ef" stroke="#c74634" stroke-width="3"/>
+    <text x="312" y="121" fill="#312d2a" font-size="17" font-weight="700">SELECT *</text>
+    <text x="312" y="146" fill="#625f5b" font-size="14">broad table access</text>
+    <line x1="504" y1="127" x2="568" y2="127" stroke="#c74634" stroke-width="3"/>
+    <polygon points="568,127 556,119 556,135" fill="#c74634"/>
+    <rect x="581" y="91" width="200" height="72" rx="10" fill="#fff2ef" stroke="#c74634" stroke-width="3"/>
+    <text x="605" y="121" fill="#312d2a" font-size="17" font-weight="700">All customers</text>
+    <text x="605" y="146" fill="#625f5b" font-size="14">data exposed to app</text>
+    <text x="811" y="132" fill="#c74634" font-size="32" font-weight="700">×</text>
+
+    <text x="32" y="204" fill="#005fb8" font-size="16" font-weight="700">Preferred: minimal connection</text>
+    <rect x="30" y="219" width="170" height="58" rx="10" fill="#eff6ff" stroke="#005fb8" stroke-width="3"/>
+    <text x="54" y="245" fill="#312d2a" font-size="17" font-weight="700">Application</text>
+    <text x="54" y="266" fill="#625f5b" font-size="13">identity + context</text>
+    <line x1="211" y1="248" x2="275" y2="248" stroke="#005fb8" stroke-width="3"/>
+    <polygon points="275,248 263,240 263,256" fill="#005fb8"/>
+    <rect x="288" y="219" width="205" height="58" rx="10" fill="#eff6ff" stroke="#005fb8" stroke-width="3"/>
+    <text x="312" y="245" fill="#312d2a" font-size="17" font-weight="700">CONNECT + context</text>
+    <text x="312" y="266" fill="#625f5b" font-size="13">no broad table grant</text>
+    <line x1="504" y1="248" x2="568" y2="248" stroke="#005fb8" stroke-width="3"/>
+    <polygon points="568,248 556,240 556,256" fill="#005fb8"/>
+    <rect x="581" y="219" width="200" height="58" rx="10" fill="#eff6ff" stroke="#005fb8" stroke-width="3"/>
+    <text x="605" y="245" fill="#312d2a" font-size="17" font-weight="700">Deep Sec grants</text>
+    <text x="605" y="266" fill="#625f5b" font-size="13">authorize the result</text>
+    <text x="811" y="254" fill="#005fb8" font-size="30" font-weight="700">✓</text>
+  </g>
+</svg>

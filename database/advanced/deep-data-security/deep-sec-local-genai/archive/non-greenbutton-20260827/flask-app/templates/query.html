@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Customer Accounts | Customer Sales Demo</title><meta name="csrf-token" content="{{ csrf_token() }}"><link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}"></head>
+  <body>
+    <header class="app-header"><a class="brand" href="/query" aria-label="Customer Sales Demo"><span class="oracle-mark" aria-hidden="true">O</span><span>Customer Sales Demo</span></a><div class="header-actions"><nav class="header-nav" aria-label="Application"><a class="active" href="/query">Customer Accounts</a><a href="/ai">AI Insights</a></nav><span class="header-context"><span class="status-dot"></span> {{ persona.label }}</span><button id="logout" class="header-button">Sign out</button></div></header>
+    <main class="page narrow-page">
+      <section class="page-heading compact-heading"><div><p class="eyebrow">Customer Sales</p><h1>Customer Accounts</h1><p class="lead">Review the customer accounts available to your current database identity.</p></div><div class="security-badge"><span aria-hidden="true">✓</span> Signed in as {{ persona.label }}</div></section>
+      <section class="card query-card" aria-labelledby="query-title">
+        <div class="card-heading"><div><h2 id="query-title">Customer Accounts</h2><p id="account-count">Load the accounts returned for your current database identity.</p></div></div>
+        <div class="query-actions"><button id="load" class="primary" type="button">Customer Report</button><span id="load-status" class="loading-status" aria-live="polite"></span><span id="error" role="alert"></span></div>
+        <section id="security-context" class="security-context" aria-labelledby="security-context-title" hidden>
+          <h3 id="security-context-title">Database Security Context</h3>
+          <dl id="context" class="context"></dl>
+        </section>
+        <details class="lab-details" open><summary>SQL Query <span>Sent to Oracle</span></summary><code>{{ query }}</code></details>
+        <div class="table-wrap"><table><thead><tr>
+          <th class="sortable" data-sort-key="customer_name" data-sort-type="text">Customer</th>
+          <th class="sortable" data-sort-key="region" data-sort-type="text">Region</th>
+          <th class="sortable" data-sort-key="revenue" data-sort-type="number">Revenue</th>
+          <th class="sortable" data-sort-key="credit_limit" data-sort-type="number">Credit Limit</th>
+          <th class="sortable" data-sort-key="sensitive_identifier" data-sort-type="text">Sensitive Identifier</th>
+        </tr></thead><tbody id="results"><tr class="empty"><td colspan="5">Load customer accounts to view available records.</td></tr></tbody></table></div>
+      </section>
+      <section class="card order-history-section" aria-labelledby="order-history-title">
+        <div class="card-heading"><div><h2 id="order-history-title">Order History</h2><p>Load the recent orders your current database identity is authorized to view.</p></div></div>
+        <button class="secondary" id="load-order-history" type="button">Load Order History</button>
+        <div id="order-history-result" aria-live="polite"></div>
+      </section>
+    </main>
+    <footer>Customer Sales Demo · Protected by Oracle Deep Data Security</footer><script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

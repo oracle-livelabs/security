@@ -1,0 +1,61 @@
+tenancy_ocid              = "ocid1.tenancy.oc1..replace-me"
+compartment_ocid          = "ocid1.compartment.oc1..replace-me"
+region                    = "us-ashburn-1"
+# OCI profile is normally inherited by terraform.sh from OCI_PROFILE.
+# oci_profile              = "DEFAULT"
+# Leave blank to generate a unique DEEPSEC-prefixed database name. The lab's
+# stable wallet alias remains deepsec_low regardless of this generated name.
+adb_db_name               = ""
+adb_display_name          = "Deep Sec"
+adb_compute_count         = 2
+adb_storage_tbs           = 1
+adb_license_model         = "BRING_YOUR_OWN_LICENSE"
+
+# Marketplace image subscription. The listing ID and package version reference
+# identify the published package. The stack resolves the launchable image OCID
+# after it creates the consuming-tenancy subscription.
+use_marketplace_image        = true
+marketplace_listing_id       = "ocid1.appcataloglisting.oc1..aaaaaaaaczjoa6swtlfcx3hmvw2wj4xpebjnrsh5w3eh46ytvxi4nyeiy32q"
+marketplace_resource_version = "1.0"
+
+# Internal fallback only; leave use_marketplace_image true for the other team.
+# compute_image_ocid        = "ocid1.image.oc1.iad.replace-with-a-custom-image-ocid"
+compute_shape             = "VM.Standard.E5.Flex"
+compute_ocpus             = 1
+compute_memory_in_gbs     = 16
+compute_display_name      = "deep-sec-app-server"
+ssh_public_key            = "ssh-rsa replace-me"
+
+# Terraform creates and later destroys this VCN and public-IP application
+# subnet. The Internet Gateway route enables inbound review access, while the
+# security list has no general Internet egress rule.
+vcn_cidr                  = "10.0.0.0/16"
+public_subnet_cidr        = "10.0.1.0/24"
+allowed_ingress_home_ip_address = "203.0.113.10"
+allowed_ingress_description = "My Home IP"
+assign_public_ip            = true
+
+# Terraform creates this private Stack bucket for the application and a
+# separate dedicated Stack-owned bucket for the Order History table.
+wallet_bucket_name        = ""
+wallet_par_ttl_hours      = 17520 # Two years; reduce for a stricter environment.
+
+# Order History. The Stack creates the destination bucket, uploads the
+# checked-in bundle, rewrites its metadata graph, and publishes the files.
+order_history_bucket_prefix = "deep-sec/order_history"
+
+# ADB Iceberg reader credential. The auth token belongs to the same
+# identity-domain user and is entered as a sensitive Resource Manager input.
+# Resource-principal authentication is not supported for this reader.
+order_history_oci_username    = "Oracle-SSO/USER@EXAMPLE.COM"
+order_history_oci_auth_token  = "replace-in-Resource-Manager-sensitive-input"
+# Retained Customer Secret Key inputs. The pre-baked bundle path uses PARs,
+# not these values, but older Stack variable maps may still contain them.
+order_history_access_key      = ""
+order_history_secret_key      = ""
+
+# The module creates a dynamic group bound to this new VM plus the least-privilege
+# GenAI chat policy. Leave false until the tenancy dynamic-group quota has
+# room, or an existing consolidated dynamic group has been configured.
+create_genai_iam          = false
+genai_model_id            = "google.gemini-2.5-flash"

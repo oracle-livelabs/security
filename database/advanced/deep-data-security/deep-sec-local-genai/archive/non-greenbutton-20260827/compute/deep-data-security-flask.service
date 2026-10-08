@@ -1,0 +1,19 @@
+[Unit]
+Description=Deep Security Local GenAI Flask application
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=opc
+WorkingDirectory=/opt/deep-sec-local-genai/flask-app
+EnvironmentFile=/opt/deep-sec-local-genai/flask-app/.env
+Environment=GUNICORN_WORKERS=1
+ExecStart=/opt/deep-sec-local-genai/flask-app/run.sh
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

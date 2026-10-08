@@ -1,0 +1,105 @@
+Deep Sec Demo Setup - What to expect
+=====================================
+
+DB Setup
+--------
+
+Prepare APPLAB
+APPLAB.CUSTOMERS is ready with 22 records. APPLAB owns the objects but is not used to sign in.
+
+Create database role
+HOL_DBROLE_CONNECT exists with CREATE SESSION. This is ordinary database-role plumbing, separate from Deep Data Security.
+
+Review
+Four short results: the schema exists, the table exists with its row count, the role exists, and its one system privilege, CREATE SESSION.
+
+Deep Sec Setup
+--------------
+
+Create data roles
+Two empty data roles exist. The employee role carries the database login privilege, while neither role authorizes table data until a data grant is attached.
+
+Create data grants
+HOL_DATAROLE_EMPLOYEE_ACCESS now authorizes every customer row and column. The manager grant is created later on its own page.
+
+Create end users
+Marvin is created with no data role. Emma is created with HOL_DATAROLE_EMPLOYEE_ACCESS. Grant employee access next for Marvin's 22-row starting view.
+
+Grant Data Role
+Marvin receives HOL_DATAROLE_EMPLOYEE_ACCESS and can retrieve all 22 rows including sensitive columns.
+
+Review & Quiz
+Five sections print in order. The end user context section is expected to be empty at this point, that fills in once you reach the End User Context page.
+
+Customer Sales App
+--------------
+
+Customer Sales App
+Sign in as Marvin and select Customer Report. You should see 22 rows, including Apex Treasury, with Credit Limit and Sensitive Identifier both visible.
+
+Customize Grant
+---------------
+
+Customize the employee grant
+The employee data grant updates immediately. Review Generated SQL and SQL*Plus output; Oracle applies the selected row restriction and SELECT, UPDATE, and DELETE privileges.
+
+Check Customer Sales App
+Instead of 22 rows, Marvin should see 3. Credit Limit and Sensitive Identifier should both read Not authorized.
+Select a Not authorized value to see which Deep Sec data grant and role excluded that column. The explanation is based on the authorization metadata available to Marvin's database session.
+
+Review & Quiz
+The employee data grant reflects your selected rows, columns, and privileges.
+
+End User Context
+----------------
+
+Manager Lookup
+APPLAB.MANAGERS exists with Marvin and Priya's numeric IDs. Nothing about Marvin's or Emma's access changes yet; this is just the lookup the context reads from next.
+
+Create Context
+APPLAB.MGR_CTX resolves the authenticated manager's own ID number. Run Set Context next to add the bridge role and context read authorization.
+
+Set Context
+The bridge role and SYS.END_USER_CONTEXT grant are both in place. Nothing about Marvin's or Emma's access changes yet.
+
+Manager Data Grant
+The grant updates immediately. Reload Customer Report in the Customer Sales App as Marvin, manager, to see the SELECT, UPDATE, and DELETE privileges you selected.
+
+Grant manager role
+Marvin now holds HOL_DATAROLE_MANAGER_ACCESS. Reload Customer Report as Marvin to see manager access apply.
+
+Revoke manager role
+HOL_DATAROLE_MANAGER_ACCESS is revoked. Marvin falls back to HOL_DATAROLE_EMPLOYEE_ACCESS if it remains active.
+
+Review & Quiz
+The status shows the manager context, manager data grant, and Marvin's active manager role.
+
+Order History
+-------------
+
+How Iceberg works
+Oracle never scans every Parquet file directly. It starts at metadata.json and narrows down through two more index layers before ever touching a row of real data.
+
+See the raw data
+A file listing, real .parquet data files and .json/.avro metadata files, plus the actual metadata JSON. Nothing here is Oracle-specific yet; this is exactly what Spark or Snowflake would see too.
+
+Create external table
+APPLAB.ORDER_HISTORY is queryable, backed by Iceberg files in the bucket, not by database storage. No one is authorized to see any of it yet.
+
+See the Iceberg data
+A row count and five recent orders, real Iceberg data, returned by an ordinary SELECT. Nothing about this query looks different from querying a normal table.
+
+Extend customer access
+The grant updates immediately. Order history follows each user's authorized CUSTOMER rows, with every column included until you explicitly exclude it. Check AMOUNT to remove it from SELECT.
+
+Review & Quiz
+Same review script as every other page, now also showing ORDER_HISTORY's grant if it was created successfully.
+
+Admin
+-----
+
+Run Marvin validation queries
+The output shows exactly what Marvin's own session sees: his rows, context, and active data roles.
+
+Reset all lab database objects
+The APPLAB schema, Marvin, and all Deep Sec roles are dropped. Run Create schema to start over from the beginning.

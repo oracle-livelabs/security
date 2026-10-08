@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">Row, column, and cell least privilege</title>
+  <desc id="desc">A Customer Sales table shows row, column, cell, and operation-level authorization, with a sensitive cell excluded from the result.</desc>
+  <rect width="960" height="300" rx="14" fill="#f7f6f4"/>
+  <text x="32" y="38" fill="#312d2a" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Make every data decision precise</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="32" y="70" fill="#625f5b" font-size="15">CUSTOMERS · authorized result for Marvin</text>
+    <g stroke="#d9d5d0" stroke-width="1">
+      <rect x="32" y="82" width="142" height="38" fill="#312d2a"/>
+      <rect x="174" y="82" width="135" height="38" fill="#312d2a"/>
+      <rect x="309" y="82" width="135" height="38" fill="#312d2a"/>
+      <rect x="444" y="82" width="135" height="38" fill="#312d2a"/>
+      <rect x="579" y="82" width="135" height="38" fill="#312d2a"/>
+      <rect x="32" y="120" width="142" height="42" fill="#fff"/>
+      <rect x="174" y="120" width="135" height="42" fill="#dcecff"/>
+      <rect x="309" y="120" width="135" height="42" fill="#dcecff"/>
+      <rect x="444" y="120" width="135" height="42" fill="#dcecff"/>
+      <rect x="579" y="120" width="135" height="42" fill="#fde5e1"/>
+      <rect x="32" y="162" width="142" height="42" fill="#fff"/>
+      <rect x="174" y="162" width="135" height="42" fill="#dcecff"/>
+      <rect x="309" y="162" width="135" height="42" fill="#dcecff"/>
+      <rect x="444" y="162" width="135" height="42" fill="#dcecff"/>
+      <rect x="579" y="162" width="135" height="42" fill="#fde5e1"/>
+      <rect x="32" y="204" width="142" height="42" fill="#fff"/>
+      <rect x="174" y="204" width="135" height="42" fill="#efedea"/>
+      <rect x="309" y="204" width="135" height="42" fill="#efedea"/>
+      <rect x="444" y="204" width="135" height="42" fill="#efedea"/>
+      <rect x="579" y="204" width="135" height="42" fill="#efedea"/>
+    </g>
+    <g fill="#fff" font-size="13" font-weight="700">
+      <text x="53" y="106">ROW</text><text x="199" y="106">customer_id</text><text x="339" y="106">sales_rep</text><text x="474" y="106">revenue</text><text x="596" y="106">sensitive_id</text>
+    </g>
+    <g fill="#312d2a" font-size="13">
+      <text x="53" y="145">Marvin row</text><text x="217" y="145">1001</text><text x="350" y="145">MARVIN</text><text x="486" y="145">$90K</text><text x="625" y="145">NULL</text>
+      <text x="53" y="187">Marvin row</text><text x="217" y="187">1002</text><text x="350" y="187">MARVIN</text><text x="486" y="187">$75K</text><text x="625" y="187">NULL</text>
+      <text x="53" y="229" fill="#8a847d">Other row</text><text x="217" y="229" fill="#8a847d">—</text><text x="350" y="229" fill="#8a847d">—</text><text x="486" y="229" fill="#8a847d">—</text><text x="625" y="229" fill="#8a847d">—</text>
+    </g>
+    <rect x="744" y="82" width="184" height="164" rx="11" fill="#eff6ff" stroke="#005fb8" stroke-width="3"/>
+    <text x="766" y="112" fill="#312d2a" font-size="17" font-weight="700">Four decisions</text>
+    <text x="766" y="140" fill="#625f5b" font-size="14">Rows: predicate</text>
+    <text x="766" y="164" fill="#625f5b" font-size="14">Columns: SELECT list</text>
+    <text x="766" y="188" fill="#625f5b" font-size="14">Cells: NULL / visible</text>
+    <text x="766" y="212" fill="#625f5b" font-size="14">Operations: CRUD</text>
+    <text x="32" y="272" fill="#625f5b" font-size="14" font-style="italic">Multiple applicable grants combine as a union, so review the effective result.</text>
+  </g>
+</svg>

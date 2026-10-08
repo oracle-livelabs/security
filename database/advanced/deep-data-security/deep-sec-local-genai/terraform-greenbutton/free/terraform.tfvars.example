@@ -1,0 +1,22 @@
+tenancy_ocid     = "ocid1.tenancy.oc1..replace-me"
+compartment_ocid = "ocid1.compartment.oc1..replace-me"
+# Always Free Compute and Autonomous AI Database are available only in the
+# tenancy home region. Enter that region, not the production Ashburn default.
+region = "replace-with-your-home-region"
+
+ssh_public_key                  = "ssh-ed25519 AAAA... replace-me"
+allowed_ingress_home_ip_address = "203.0.113.10"
+
+adb_display_name     = "Deep Sec Free IAM Verification"
+compute_display_name = "deep-sec-free-iam-verification"
+
+# Keep these names separate from a production Deep Sec deployment.
+create_genai_iam          = true
+genai_dynamic_group_name  = "DEEP_SEC_FREE_COMPUTE"
+genai_policy_name         = "DEEP_SEC_FREE_COMPUTE_GENAI"
+# Leave blank to use compartment_ocid, or provide a different GenAI compartment.
+genai_policy_compartment_ocid = ""
+
+# Select a model available to this home region. Policy creation itself does not
+# require a model invocation, but an end-to-end authorization test does.
+genai_model_id = "google.gemini-2.5-flash"
