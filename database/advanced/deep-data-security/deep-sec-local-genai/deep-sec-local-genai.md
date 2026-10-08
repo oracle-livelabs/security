@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you configure data access for a preinstalled Customer Sales App. Oracle AI Database enforces which rows and columns each signed-in end user can see. You then test the same boundary with OCI Generative AI and with data outside the database.
+In this lab, you configure Deep Data Security policies for a preinstalled Customer Sales App. Oracle AI Database enforces which rows and columns each signed-in end user can see. You then test the same boundary with OCI Generative AI and with data outside the database.
 
 ![Deep Data Security architecture showing an end user and Customer Sales App or OCI Generative AI sending requests through end-user security context to Oracle AI Database, where data roles and grants enforce each user's authorized rows and columns](images/lab-architecture.png)
 
@@ -27,14 +27,14 @@ Estimated Time: 60 minutes once the stack is ready.
 
 ### Prerequisites
 
-- Complete the [Introduction](introduction.md) and [Get Started](get-started.md). Use your provisioned LiveLabs environment or a deployed GreenButton stack.
-- The Stack's **Application Information** tab provides three URLs and one generated password. Use the password for `ADMIN` in the console, `MARVIN` and `EMMA` in the Customer Sales App, and JupyterLab.
+- Complete the [Introduction](introduction.md) and [Get Started](get-started.md). 
+- The lab **View Login Info** link provides three URLs and one generated password. Use the password for `ADMIN` in the console, `MARVIN` and `EMMA` in the Customer Sales App, and JupyterLab.
 
 ## Task 1: Start the Deep Data Security walkthrough
 
 ### Browser: Deep Sec Demo Setup
 
-1. If it is not already open, open **Deep Sec Demo Setup** from the link in the OCI Stack page's **Application Information** tab.
+1. If it is not already open, open **Admin Console URL** from the **View Login Info** link.
 2. Sign in as `ADMIN` with the password shown on the same tab. Read the **Overview** page. It shows the scenario, architecture, and purpose of each stage.
 3. Select **?** in the header for a guided tour of the navigation. Select **Next** to continue, or **Skip tour** to close it. You can also press **Esc** or click outside the tour to close it.
 4. Select **Start DB Setup** and follow the numbered steps. The console guides you through every stage from here:
@@ -51,7 +51,7 @@ Estimated Time: 60 minutes once the stack is ready.
 
 The console runs real SQL against an Autonomous AI Database. Use these steps to inspect the environment or run the same checks from a terminal.
 
-1. Open the JupyterLab link from the Stack's **Application Information** tab. Sign in with the generated password.
+1. Open the JupyterLab URL on the **View Login Info** link. Sign in with the generated password.
 
 2. Select either of the two **Terminal** tabs already open by default. If both are closed, select **File → New → Terminal**. These terminals run on the Compute VM that hosts both applications. Run the commands below there, not in a Python notebook cell or a terminal on your own computer.
 
