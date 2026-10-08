@@ -2,13 +2,43 @@
 
 ## Introduction
 
-In the previous two labs, you investigated the security posture of the database and reviewed who can access it and what they can do. The next question is: What data are we trying to protect? Knowing where sensitive data resides helps you assess data exposure, prioritize security controls, support compliance requirements, and plan appropriate protection throughout the data lifecycle.
+In the previous two labs, you investigated the security posture of the database and then reviewed who can access it and what they can do. You have now identified risky configuration changes and changes to privileged users and entitlements. The next question is more fundamental: What data are we actually trying to protect?
 
-Oracle Data Safe Data Discovery builds an inventory of sensitive data by scanning your target database and its data dictionary. You choose the schemas and sensitive types to search, and Data Safe records the discovered columns in a sensitive data model. Incremental discovery lets you update that model as your database and discovery requirements change.
+Knowing that a user has access to a database does not tell you whether that access puts sensitive information at risk. To understand the potential impact of a compromised or over-privileged account, you need to know where sensitive data resides.
+
+For example, a user might have access to a schema containing the following:
+- Customer information
+- Contact information
+- Identification information
+- Payment information
+- Support information
+
+Manually locating this information across database tables and columns can be difficult, particularly as databases grow and application schemas change. Oracle Data Safe Data Discovery helps you build an inventory of sensitive data by inspecting the actual data in your target database and its data dictionary. You specify the types of sensitive information you are interested in, and Data Safe identifies columns that contain or are related to that information.
+
+Data Discovery also allows you to incrementally expand an existing sensitive data model as your data protection requirements change. This helps you maintain a sensitive data inventory over time without having to recreate the entire model each time you need to discover sensitive data in additional schemas.
 
 ### Scenario
 
-Your team is preparing a test database for a retail application. Begin by discovering sensitive data in the `CUSTOMER` and `PAYMENT` schemas to build an inventory for masking. The testing scope then expands to include customer-support tickets. Use incremental discovery to find sensitive columns in the `SUPPORT` schema and add them to the same sensitive data model.
+Continue acting as the database security administrator from the previous labs. You have already done the following:
+- Reviewed the database's configuration and established an approved security baseline
+- Detected a risky configuration change
+- Reviewed database users and identified changes to privileged access
+
+Now your security team asks a different question: If one of these accounts were compromised, what sensitive information could potentially be exposed?
+
+Your application is being prepared for testing, and the initial testing scope includes customer and payment data. Your first step is therefore to discover where sensitive data exists in these schemas.
+
+You will create a sensitive data model and use Data Discovery to examine the `CUSTOMER` and `PAYMENT` schemas. You will review the results to understand what sensitive information was discovered and where it resides.
+
+The application testing scope then expands to include customer-support data. Rather than creating a new sensitive data model from scratch, you will reuse the existing model and perform an incremental discovery of the `SUPPORT` schema.
+
+Data Safe identifies the newly discovered sensitive columns so that you can review and approve the changes before applying them to the existing sensitive data model.
+
+This demonstrates how a sensitive data inventory can evolve as application requirements change:
+
+Discover → Review → Approve → Apply
+
+By the end of the lab, your sensitive data model will provide a more complete inventory covering the customer, payment, and support data relevant to application testing.
 
 Estimated Lab Time: 20 minutes
 
@@ -18,8 +48,9 @@ In this lab, you will:
 
 - Discover sensitive data in the `CUSTOMER` and `PAYMENT` schemas using common sensitive types.
 - Review the sensitive data model and the initial discovery results.
-- Run incremental discovery for the `SUPPORT` schema.
-- Review, approve, and apply the new sensitive columns to the existing model.
+- Run an incremental discovery for the `SUPPORT` schema.
+- Review, approve, and apply the newly discovered sensitive columns to the existing model.
+- Build and maintain a more complete sensitive data inventory as application requirements expand.
 
 ### Prerequisites
 
@@ -156,5 +187,5 @@ The same sensitive data model now covers the customer, payment, and support data
 ## Acknowledgements
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
-- **Contributor** - Kajal Singh, Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Kajal Singh, October 1, 2026
+- **Contributors** - Bettina Schäumer, Lead Principal Product Manager / Kajal Singh, Product Manager, Oracle Database Security
+- **Last Updated By/Date** - Bettina Schäumer, October 7, 2026
