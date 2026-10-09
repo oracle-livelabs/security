@@ -47,7 +47,7 @@ Estimated Lab Time: 20 minutes
 
 In this lab, you will:
 
-- (For your tenancy only): Grant the SQL Firewall role on your target database
+- Grant permissions on your target database
 - Enable SQL Firewall for your target database
 - Capture legitimate SQL activity for APP_USER
 - Create an allow-list of authorized SQL statements
@@ -65,16 +65,17 @@ This lab assumes you have:
 - Prepared your environment
 - A target database that is Oracle AI Database 26ai
 
-## Task 1 (For your tenancy only): Grant the SQL Firewall role on your target database
-
-Perform this task only if you are working in your own tenancy. If you are using a LiveLabs sandbox, you do not need to perform this task.
+## Task 1: Grant permissions on your target database
 
 1. Return to the SQL worksheet in Database Actions. If you are prompted to sign in to your target database, sign in as the `ADMIN` user. Clear the worksheet and the **Script Output** tab.
 
-2. On the SQL worksheet, enter the following command to grant the SQL Firewall role to the Oracle Data Safe service account on your target database.
+2. On the SQL worksheet, enter the following commands to grant the necessary permissions on your target database.
 
-    ```
-    <copy>EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$SQL_FIREWALL_ROLE');</copy>
+    ```text
+    <copy>EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$SQL_FIREWALL_ROLE');
+    GRANT SELECT ON HCM1.EMPLOYEES TO APP_USER;
+    GRANT SELECT ON HCM1.LOCATIONS TO APP_USER;
+    </copy>
     ```
 
 3. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query. 
@@ -315,4 +316,4 @@ Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Bettina Schäumer, October 7, 2026
+- **Last Updated By/Date** - Jody Glover, October 9, 2026
