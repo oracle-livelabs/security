@@ -248,7 +248,6 @@ Set `SALARY` to a fixed number, such as 50000.
 
     - Tablespace name: **DATA**
     - Parallel execution during data subsetting: **Default**
-    - Degree of parallelism: Not selected
     - Disable redo log generation during subsetting: Not selected
 
     b) Under **Post subsetting options**, leave the default selections as is.
@@ -278,7 +277,7 @@ Set `SALARY` to a fixed number, such as 50000.
 
 12. Select the **Logs** tab and review the list of messages in the table. Notice that one of the messages deals with identifying rows for the rule.
 
-13. In the breadcrumb at the top of the page, select **Work requests** to return to the **Work requests** tab. Wait for the subsetting job to be 100% complete.
+13. In the breadcrumb at the top of the page, select **Work requests** to return to the **Work requests** tab. Wait for the subsetting job to be 100% complete. If after a couple of minutes the job is not completed, refresh your browser tab.
 
 
 ## Task 5: Monitor the data masking job
@@ -336,4 +335,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, September 28, 2026
+- **Last Updated By/Date** - Jody Glover, October 9, 2026
