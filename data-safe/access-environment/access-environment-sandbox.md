@@ -58,7 +58,7 @@ A database registered with Oracle Data Safe is referred to as a *target database
 
 1. From the navigation menu, select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**.
 
-    The **Overview** page titled **Simplify security for your Oracle databases** opens. If the **Welcome to Data Safe** tour dialog box is displayed, click **Stop tour**.
+    The **Overview** page titled **Simplify security for your Oracle databases** opens. If the **Welcome to Data Safe** tour dialog box is displayed, select **Stop tour**.
 
 2. On the left under **Data Safe - Database Security**, select **Target databases**.
 
@@ -78,7 +78,7 @@ A database registered with Oracle Data Safe is referred to as a *target database
 
     The **Overview** page opens. On this page, you can register target databases; learn about Oracle Data Safe features, Oracle Data Safe private endpoints, and Oracle Data Safe on-premises connectors; and access documentation.
 
-2. Under **Data Safe - Database Security** on the left, select and review the landing pages for each of the features covered in this workshop: **Security assessment**, **User assessment**, **Data discovery**, **Data masking**, **Activity auditing**, **SQL Firewall**, and **Alerts**.
+2. Under **Data Safe - Database Security** on the left, select and review the landing pages for each of the features covered in this workshop: **Security assessment**, **User assessment**, **Data discovery**, **Data masking**, **Data subsetting**, **Activity auditing**, **SQL Firewall**, and **Alerts**.
 
     - From here on in, we simply say *Navigate to a feature's landing page* to simplify the instructions.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you.
@@ -126,4 +126,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 20, 2026
+- **Last Updated By/Date** - Jody Glover, October 9, 2026
