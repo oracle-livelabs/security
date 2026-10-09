@@ -57,13 +57,15 @@ A database registered with Oracle Data Safe is referred to as a *target database
 
 1. From the navigation menu (hamburger menu in the upper-left corner), select **Oracle AI Database**, and then **Overview** under **Data Safe - Database Security**.
 
-    The **Overview** page titled **Simplify security for your Oracle databases** opens.
+    The **Overview** page for Oracle Data Safe opens and the tour dialog box appears.
 
-2. On the left under **Data Safe - Database Security**, select **Target databases**.
+2. Select **Exit** to close the dialog box.
+
+3. On the left under **Data Safe - Database Security**, select **Target databases**.
 
     The **Target databases** page opens.
 
-3. Next to **Applied filters**, select your compartment, which is under the **LiveLabs** folder in the list. Deselect **Include child compartments**, and then select **Apply filter**.
+4. Next to **Applied filters**, select your compartment, which is under the **LiveLabs** folder in the list. Deselect **Include child compartments**, and then select **Apply filter**.
 
     Note: From here on in, the labs simply say *Select your compartment without child compartments* to simplify the instructions.
 
@@ -76,11 +78,11 @@ A database registered with Oracle Data Safe is referred to as a *target database
 
 ## Task 3: Explore the Oracle Data Safe user interface
 
-1. On the left, select **Target databases**, and then select **Overview**.
+1. On the left, select **Target databases**, and then select **Overview**. Select **Exit** to close the tour dialog box.
 
-    The **Overview** page opens. On this page, you can register target databases; learn about Oracle Data Safe features, Oracle Data Safe private endpoints, and Oracle Data Safe on-premises connectors; and access documentation.
+    On the **Overview** page, you can register target databases; learn about Oracle Data Safe features, Oracle Data Safe private endpoints, and Oracle Data Safe on-premises connectors; and access documentation.
 
-2. Under **Data Safe - Database Security** on the left, select and review the landing pages for each feature covered in this workshop: **Security assessment**, **User assessment**, **Data discovery**, **Data masking**, and **SQL Firewall**.
+2. Under **Data Safe - Database Security** on the left, select and review the landing pages for each feature covered in this workshop: **Security assessment**, **User assessment**, **Data discovery**, **Data masking**, **Data subsetting**, and **SQL Firewall**.
 
     - From here on in, we simply say *Navigate to a feature's landing page* to simplify the instructions.
     - When you register a target database, Oracle Data Safe automatically creates a security assessment and user assessment for you.
@@ -97,6 +99,8 @@ Database Actions provides a way for you to run SQL commands on your database. Th
 2. Next to **Applied filters**, select your compartment under the **LiveLabs** folder. In the table, select the name of your database.
 
 3. From the **Database actions** menu, select **SQL**.
+
+    A new browser tab is opened with **Database actions**.
 
 4. If required, sign in as the `ADMIN` user.
 
@@ -127,4 +131,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, August 20, 2026
+- **Last Updated By/Date** - Jody Glover, October 9, 2026

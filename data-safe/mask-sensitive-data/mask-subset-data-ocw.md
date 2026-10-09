@@ -47,7 +47,7 @@ The result is a smaller, protected data set designed around the development team
 
 Estimated Time: 15 min
 
-[Lab 5 - Mask sensitive data](videohub:1_dh9kov8c)
+[Lab 5 - Subset and mask sensitive data](videohub:1_dh9kov8c)
 
 ### Objectives
 
@@ -84,38 +84,44 @@ Use this task to inspect the target database before running the subsetting and m
 
 3. Run the following SQL command and review the results. There should be 20 locations.
 
-    ```
-    SELECT * FROM HCM1.LOCATIONS;
+    ```text
+    <copy>SELECT * FROM HCM1.LOCATIONS;
+    </copy>
     ```
 
 4. Run the following SQL command and review the results. There should be 3 locations that have **CA** as the country ID: location IDs 5, 6, and 20.
 
-    ```
-    SELECT * FROM HCM1.LOCATIONS WHERE COUNTRY_ID='CA';
+    ```text
+    <copy>SELECT * FROM HCM1.LOCATIONS WHERE COUNTRY_ID='CA';
+    </copy>
     ```
 
 5. Run the following SQL command and review the results. There should be 40 departments.
 
-    ```
-    SELECT * FROM HCM1.DEPARTMENTS;
+    ```text
+    <copy>SELECT * FROM HCM1.DEPARTMENTS;
+    </copy>
     ```
 
 6. Run the following SQL command and review the results. There should be 6 departments with location IDs of 5, 6, or 20.
 
-    ```
-    SELECT * FROM HCM1.DEPARTMENTS WHERE LOCATION_ID IN ('5','6','20');
+    ```text
+    <copy>SELECT * FROM HCM1.DEPARTMENTS WHERE LOCATION_ID IN ('5','6','20');
+    </copy>
     ```
 
 7. Run the following SQL command to view employee data. Data such as `EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, and `SALARY` are considered sensitive data and should be masked if shared for non-production use.
 
-    ```
-    SELECT * FROM HCM1.EMPLOYEES;
+    ```text
+    <copy>SELECT * FROM HCM1.EMPLOYEES;
+    </copy>
     ```
 
 8. Run the following SQL command to find the total number of records in the `EMPLOYEES` table. There should be 10000 records.
 
-    ```
-    SELECT COUNT(*) FROM HCM1.EMPLOYEES;
+    ```text
+    <copy>SELECT COUNT(*) FROM HCM1.EMPLOYEES;
+    </copy>
     ```
 
 9. Keep this browser tab open because you return to it later. Return to the browser tab for Oracle Data Safe.
@@ -248,7 +254,6 @@ Set `SALARY` to a fixed number, such as 50000.
 
     - Tablespace name: **DATA**
     - Parallel execution during data subsetting: **Default**
-    - Degree of parallelism: Not selected
     - Disable redo log generation during subsetting: Not selected
 
     b) Under **Post subsetting options**, leave the default selections as is.
@@ -278,7 +283,7 @@ Set `SALARY` to a fixed number, such as 50000.
 
 12. Select the **Logs** tab and review the list of messages in the table. Notice that one of the messages deals with identifying rows for the rule.
 
-13. In the breadcrumb at the top of the page, select **Work requests** to return to the **Work requests** tab. Wait for the subsetting job to be 100% complete.
+13. In the breadcrumb at the top of the page, select **Work requests** to return to the **Work requests** tab. Wait for the subsetting job to be 100% complete. If after a couple of minutes the job is not completed, refresh your browser tab.
 
 
 ## Task 5: Monitor the data masking job
@@ -303,29 +308,33 @@ In this task, you verify that the tables are reduced and masked according to the
 
 2. Run the following SQL command to check the `EMPLOYEES` table. The number of records is reduced to 1545.
 
-    ```
-    SELECT COUNT(*) FROM HCM1.EMPLOYEES;
+    ```text
+    <copy>SELECT COUNT(*) FROM HCM1.EMPLOYEES;
+    </copy>
     ```
 
 3. Run the following SQL command to check the `LOCATIONS` table. The number of records is reduced to 3; all have a country ID of CA.
 
-    ```
-    SELECT * FROM HCM1.LOCATIONS;
+    ```text
+    <copy>SELECT * FROM HCM1.LOCATIONS;
+    </copy>
     ```
 
 4. Run the following SQL command to check the `DEPARTMENTS` table. The number of records is reduced to 6; all the location IDs are 5, 6, or 20.
 
-    ```
-    SELECT * FROM HCM1.DEPARTMENTS;
+    ```text
+    <copy>SELECT * FROM HCM1.DEPARTMENTS;
+    </copy>
     ```
 
 5. Run the following SQL command to confirm the data in the `EMPLOYEES` table is masked. Notice the `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, and `SALARY` columns have masked data.
 
-    ```
-    SELECT * FROM HCM1.EMPLOYEES;
+    ```text
+    <copy>SELECT * FROM HCM1.EMPLOYEES;
+    </copy>
     ```
 
-You may now **proceed to the next lab**.
+Congratulations! You finished the Oracle Data Safe hands-on lab.
 
 
 ## Learn More
@@ -336,4 +345,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Jody Glover, September 28, 2026
+- **Last Updated By/Date** - Jody Glover, October 9, 2026

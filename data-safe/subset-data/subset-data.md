@@ -78,7 +78,7 @@ The result is a smaller, protected, and relationally consistent non-production d
 4. Connect to this same workshop database in Database Actions or SQL Developer with an account that can query the application tables. Run the following statements and save the counts for comparison after the job.
 
     ```sql
-    SELECT 'CUSTOMER.ORDERS' AS table_name, COUNT(*) AS rows_before FROM CUSTOMER.ORDERS
+    <copy>SELECT 'CUSTOMER.ORDERS' AS table_name, COUNT(*) AS rows_before FROM CUSTOMER.ORDERS
     UNION ALL
     SELECT 'CUSTOMER.CUSTOMERS', COUNT(*) FROM CUSTOMER.CUSTOMERS
     UNION ALL
@@ -93,6 +93,7 @@ The result is a smaller, protected, and relationally consistent non-production d
     SELECT COUNT(*) AS recent_orders_before
     FROM CUSTOMER.ORDERS
     WHERE ORDER_DATE >= DATE '2026-01-01';
+    </copy>
     ```
 
 The `recent_orders_before` result is the population to which the 10% rule will apply. Row counts for related tables follow the relationship settings and need not fall by the same percentage. Keep Database Actions or SQL Developer available for Task 5.
@@ -104,7 +105,7 @@ The Subset database workflow requires target-database credentials to refresh sta
 Connect to the target database as `ADMIN`, then run the following commands to create the user and grant its subsetting role. Replace `<strong-password>` with a password that meets the password policy; store it securely because you will enter it in the Data Safe workflow.
 
 ```sql
-CREATE USER DS_SUBSETTING IDENTIFIED BY "<strong-password>"
+<copy>CREATE USER DS_SUBSETTING IDENTIFIED BY "<strong-password>"
   DEFAULT TABLESPACE "DATA"
   TEMPORARY TABLESPACE "TEMP";
 
@@ -114,6 +115,7 @@ EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$DATA_SUBSETTING_ROLE');
 GRANT EXECUTE ON SYS.DBMS_CRYPTO TO DS_SUBSETTING;
 
 ALTER USER DS_SUBSETTING ACCOUNT UNLOCK;
+</copy>
 ```
 
 The example uses Autonomous Database. `DS_TARGET_UTIL` grants the subsetting role and its supporting privileges to `DS_SUBSETTING`; the call without a username grants the role to the Data Safe service account. The `DBMS_CRYPTO` grant supports the masking job that follows subsetting. The tablespaces are `DATA` and `TEMP`. For another database type, use the tablespaces supplied by your DBA. Keep the `DS_SUBSETTING` username and password available for the wizard.
@@ -236,7 +238,7 @@ The workflow uses the masking policy created in the preceding masking lab. In th
 After both jobs succeed, connect to the same workshop database in SQL Developer or Database Actions. Compare these row counts with the baseline recorded in Task 1.
 
 ```sql
-SELECT 'CUSTOMER.ORDERS' AS table_name, COUNT(*) AS rows_after FROM CUSTOMER.ORDERS
+<copy>SELECT 'CUSTOMER.ORDERS' AS table_name, COUNT(*) AS rows_after FROM CUSTOMER.ORDERS
 UNION ALL
 SELECT 'CUSTOMER.CUSTOMERS', COUNT(*) FROM CUSTOMER.CUSTOMERS
 UNION ALL
@@ -247,6 +249,7 @@ UNION ALL
 SELECT 'PAYMENT.PAYMENTS', COUNT(*) FROM PAYMENT.PAYMENTS
 UNION ALL
 SELECT 'SUPPORT.SUPPORT_TICKETS', COUNT(*) FROM SUPPORT.SUPPORT_TICKETS;
+</copy>
 ```
 
 The reference run retained the following rows. Your results can differ because the percentage selection and relationship rules determine which rows remain.
@@ -256,16 +259,17 @@ The reference run retained the following rows. Your results can differ because t
 Review a sample of the retained recent orders:
 
 ```sql
-SELECT ORDER_ID, CUSTOMER_ID, ORDER_DATE, ORDER_STATUS, ORDER_TOTAL
+<copy>SELECT ORDER_ID, CUSTOMER_ID, ORDER_DATE, ORDER_STATUS, ORDER_TOTAL
 FROM CUSTOMER.ORDERS
 WHERE ORDER_DATE >= DATE '2026-01-01'
 FETCH FIRST 10 ROWS ONLY;
+</copy>
 ```
 
 After the subsetting job and the selected masking policy complete, inspect representative sensitive columns and confirm that values are masked while the required formats remain usable:
 
 ```sql
-SELECT CUSTOMER_ID, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, PHONE_NUMBER
+<copy>SELECT CUSTOMER_ID, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, PHONE_NUMBER
 FROM CUSTOMER.CUSTOMERS
 FETCH FIRST 10 ROWS ONLY;
 
@@ -276,19 +280,22 @@ FETCH FIRST 10 ROWS ONLY;
 SELECT CONTACT_EMAIL, CONTACT_PHONE
 FROM SUPPORT.SUPPORT_TICKETS
 FETCH FIRST 10 ROWS ONLY;
+</copy>
 ```
 
 Compare the resulting order count with the source count and review the related rows retained for the application. Relationship rules can retain additional rows beyond those selected by the driving-table condition and percentage. Confirm that the selected masking policy has run and that the sensitive values are no longer the original values while required formats remain usable.
 
 Use the subsetting report and the relationships reviewed in the graph to confirm that the related customer, order-item, and payment rows were retained as configured. Compare each table with its own baseline; 10% applies to the condition-matching driving-table rows, not to every table in the database.
 
+You may now **proceed to the next lab**.
+
 
 ## Learn More
 
-- [Data Subsetting overview](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-subsetting.html)
+- [Data Subsetting Overview](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-subsetting.html)
 
 ## Acknowledgements
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributors** - Kajal Singh, Product Manager / Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Bettina Schäumer, October 7, 2026
+- **Last Updated By/Date** - Jody Glover, October 9, 2026

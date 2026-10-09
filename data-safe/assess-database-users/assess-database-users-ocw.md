@@ -194,7 +194,7 @@ You can select a user assessment to compare with the latest user assessment. Wit
 
     ![User Assessment Comparison report](images/ua-comparison-report.png "User Assessment Comparison report")
 
-4. In the row that has the **CRITICAL** potential risk, select the three dots, and then select **View added details**.
+4. In a row that has the **CRITICAL** potential risk, select the three dots, and then select **View added details**.
 
     The **Comparison details** panel opens.
 
@@ -212,4 +212,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Jody Glover, Lead Principal User Assistance Developer, Database Development
 - **Contributor** - Bettina Schäumer, Lead Principal Product Manager, Oracle Database Security
-- **Last Updated By/Date** - Bettina Schäumer, August 20, 2026
+- **Last Updated By/Date** - Jody Glover, October 9, 2026

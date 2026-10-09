@@ -81,9 +81,9 @@ This lab assumes you have:
 
     ![Security assessment overview charts for all targets](images/sa_overview_charts.png "Security assessment overview charts for all targets")
 
-4. Select the **Target summary** tab, and then select the name of your database.
+4. Select the **Target summary** tab, and then select the name of your target database.
 
-    The latest security assessment for your target database opens. Notice that **Latest assessment for target database...** is displayed at the top of the page.
+    The latest security assessment for your target database opens. Notice that **Latest assessment for target database** is displayed at the top of the page.
 
 5. Select the **Assessment summary** tab and review the risk level, finding name, and summary for the top 5 common security controls that Oracle considers to be the most important to the security of your target database.
 
