@@ -37,6 +37,11 @@
       "description": "Optionally review GDPR reports, then use Security Advisor to review the controls and summarize target-specific outcomes.",
       "publisheddate": "10/3/2026",
       "filename": "../../avdf-restructured/report-alert-aiworld2026.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://livelabs.oracle.com/cdn/common/labs/need-help/need-help-livelabs.md"
     }
   ]
 }
