@@ -72,7 +72,7 @@ This lab assumes you have:
 2. Use the following URL to download and save the `employee_data_load.sql` script:
 
     ```
-    <copy>https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/employee_data_load.sql</copy>   
+    <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/data-management-library-files/employee_data_load.sql</copy>   
     ```
 
 3. Drag and drop the `employee_data_load.sql` that was downloaded into the center of the SQL worksheet.

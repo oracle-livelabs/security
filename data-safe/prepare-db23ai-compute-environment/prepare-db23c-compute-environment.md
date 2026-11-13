@@ -91,7 +91,7 @@ Only perform this task if you are using your own VCN. If you plan to let Resourc
 
 ## Task 2: Create two compute instances using Resource Manager
 
-1. Download the stack ZIP file from here: https://objectstorage.us-ashburn-1.oraclecloud.com/p/AUKfPIGuTde04z4OnuaZN2EP0LxNl4hJWI2jZiTw23aWzSoa2_Byvs8OGPw20-dt/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_sqlfw.zip. You do not need to extract the file.
+1. Download the stack ZIP file from here: https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/security-library/dbseclabs-v55_sqlfw.zip. You do not need to extract the file.
 
 1. From the OCI navigation menu, click **Developer Services**, and then under **Resource Manager**, click **Stacks**.
 
